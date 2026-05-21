@@ -1,0 +1,122 @@
+[
+  {
+    "marca": "Dog Chow",
+    "referencias": [
+      {
+        "nombre": "Adulto Mediano y Grande",
+        "descripcion": "Para perros adultos medianos y grandes",
+        "imagen": "https://...",
+        "presentaciones": [
+          { "peso": "1kg", "precio": 20000 },
+          { "peso": "2kg", "precio": 38000 },
+          { "peso": "4kg", "precio": 70000 },
+          { "peso": "22.7kg", "precio": 320000 }
+        ]
+      },
+      {
+        "nombre": "Adulto Mini y Pequeño",
+        "descripcion": "Para perros pequeños",
+        "imagen": "https://...",
+        "presentaciones": [
+          { "peso": "1kg", "precio": 19000 },
+          { "peso": "2kg", "precio": 36000 },
+          { "peso": "4kg", "precio": 68000 },
+          { "peso": "22.7kg", "precio": 310000 }
+        ]
+      },
+      {
+        "nombre": "Cachorros Mediano y Grande",
+        "descripcion": "Para cachorros medianos y grandes",
+        "imagen": "https://...",
+        "presentaciones": [
+          { "peso": "1kg", "precio": 21000 },
+          { "peso": "2kg", "precio": 40000 },
+          { "peso": "4kg", "precio": 72000 },
+          { "peso": "22.7kg", "precio": 330000 }
+        ]
+      },
+      {
+        "nombre": "Cachorros Mini y Pequeño",
+        "descripcion": "Para cachorros pequeños",
+        "imagen": "https://...",
+        "presentaciones": [
+          { "peso": "1kg", "precio": 20000 },
+          { "peso": "2kg", "precio": 38000 },
+          { "peso": "4kg", "precio": 70000 },
+          { "peso": "22.7kg", "precio": 320000 }
+        ]
+      }
+    ]
+  },
+  {
+    "marca": "Chunky",
+    "referencias": [
+      {
+        "nombre": "Adulto Razas Pequeñas",
+        "descripcion": "Alimento para perros adultos de razas pequeñas",
+        "imagen": "https://...",
+        "presentaciones": [
+          { "peso": "1kg", "precio": 18000 },
+          { "peso": "2kg", "precio": 34000 },
+          { "peso": "4kg", "precio": 65000 },
+          { "peso": "20kg", "precio": 280000 }
+        ]
+      },
+      {
+        "nombre": "Adulto Todas las Razas",
+        "descripcion": "Alimento completo para perros adultos de cualquier tamaño",
+        "imagen": "https://...",
+        "presentaciones": [
+          { "peso": "1kg", "precio": 17000 },
+          { "peso": "2kg", "precio": 32000 },
+          { "peso": "4kg", "precio": 62000 },
+          { "peso": "20kg", "precio": 270000 }
+        ]
+      },
+      {
+        "nombre": "Cachorro Pollo",
+        "descripcion": "Alimento para cachorros sabor pollo",
+        "imagen": "https://...",
+        "presentaciones": [
+          { "peso": "1kg", "precio": 19000 },
+          { "peso": "2kg", "precio": 36000 },
+          { "peso": "4kg", "precio": 68000 },
+          { "peso": "20kg", "precio": 290000 }
+        ]
+      },
+      {
+        "nombre": "Cachorro Cordero y Salmón",
+        "descripcion": "Alimento premium para cachorros con proteína de cordero y salmón",
+        "imagen": "https://...",
+        "presentaciones": [
+          { "peso": "1kg", "precio": 21000 },
+          { "peso": "2kg", "precio": 40000 },
+          { "peso": "4kg", "precio": 72000 },
+          { "peso": "20kg", "precio": 310000 }
+        ]
+      },
+      {
+        "nombre": "Adulto Salmón y Cordero",
+        "descripcion": "Alimento premium para perros adultos con proteína de salmón y cordero",
+        "imagen": "https://...",
+        "presentaciones": [
+          { "peso": "1kg", "precio": 22000 },
+          { "peso": "2kg", "precio": 42000 },
+          { "peso": "4kg", "precio": 75000 },
+          { "peso": "20kg", "precio": 320000 }
+        ]
+      },
+      {
+        "nombre": "Adulto Mayores",
+        "descripcion": "Alimento para perros senior, enfocado en digestión y articulaciones",
+        "imagen": "https://...",
+        "presentaciones": [
+          { "peso": "1kg", "precio": 20000 },
+          { "peso": "2kg", "precio": 38000 },
+          { "peso": "4kg", "precio": 70000 },
+          { "peso": "20kg", "precio": 300000 }
+        ]
+      }
+    ]
+  }
+]
