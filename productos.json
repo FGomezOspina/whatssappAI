@@ -4,6 +4,7 @@
     "referencias": [
       {
         "nombre": "Adulto Mediano y Grande",
+        "especie": "perro",
         "descripcion": "Para perros adultos medianos y grandes",
         "imagen": "https://...",
         "presentaciones": [
@@ -15,6 +16,7 @@
       },
       {
         "nombre": "Adulto Mini y Pequeño",
+        "especie": "perro",
         "descripcion": "Para perros pequeños",
         "imagen": "https://...",
         "presentaciones": [
@@ -26,6 +28,7 @@
       },
       {
         "nombre": "Cachorros Mediano y Grande",
+        "especie": "perro",
         "descripcion": "Para cachorros medianos y grandes",
         "imagen": "https://...",
         "presentaciones": [
@@ -37,6 +40,7 @@
       },
       {
         "nombre": "Cachorros Mini y Pequeño",
+        "especie": "perro",
         "descripcion": "Para cachorros pequeños",
         "imagen": "https://...",
         "presentaciones": [
@@ -53,6 +57,7 @@
     "referencias": [
       {
         "nombre": "Adulto Razas Pequeñas",
+        "especie": "perro",
         "descripcion": "Alimento para perros adultos de razas pequeñas",
         "imagen": "https://...",
         "presentaciones": [
@@ -64,6 +69,7 @@
       },
       {
         "nombre": "Adulto Todas las Razas",
+        "especie": "perro",
         "descripcion": "Alimento completo para perros adultos de cualquier tamaño",
         "imagen": "https://...",
         "presentaciones": [
@@ -75,6 +81,7 @@
       },
       {
         "nombre": "Cachorro Pollo",
+        "especie": "perro",
         "descripcion": "Alimento para cachorros sabor pollo",
         "imagen": "https://...",
         "presentaciones": [
@@ -86,6 +93,7 @@
       },
       {
         "nombre": "Cachorro Cordero y Salmón",
+        "especie": "perro",
         "descripcion": "Alimento premium para cachorros con proteína de cordero y salmón",
         "imagen": "https://...",
         "presentaciones": [
@@ -97,6 +105,7 @@
       },
       {
         "nombre": "Adulto Salmón y Cordero",
+        "especie": "perro",
         "descripcion": "Alimento premium para perros adultos con proteína de salmón y cordero",
         "imagen": "https://...",
         "presentaciones": [
@@ -108,6 +117,7 @@
       },
       {
         "nombre": "Adulto Mayores",
+        "especie": "perro",
         "descripcion": "Alimento para perros senior, enfocado en digestión y articulaciones",
         "imagen": "https://...",
         "presentaciones": [
@@ -115,6 +125,15 @@
           { "peso": "2kg", "precio": 38000 },
           { "peso": "4kg", "precio": 70000 },
           { "peso": "20kg", "precio": 300000 }
+        ]
+      },
+      {
+        "nombre": "Gatito",
+        "especie": "gato",
+        "descripcion": "Alimento para gatito bebe",
+        "imagen": "https://...",
+        "presentaciones": [
+          { "peso": "1kg", "precio": 290000 }
         ]
       }
     ]
