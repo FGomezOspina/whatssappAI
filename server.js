@@ -204,6 +204,7 @@ function obtenerConversacion(usuario) {
       criterios: {},
       ultimaSeleccion: null,
       productosPendientes: [],
+      referenciasPendientes: null,
       carrito: [],
       datosDomicilio: {},
       esperandoDatosDomicilio: false,
@@ -295,9 +296,25 @@ function segmentosPorMarca(catalogo, mensaje) {
 
   return menciones.map((mencion, index) => {
     const siguiente = menciones[index + 1];
+    const anterior = menciones[index - 1];
+    let inicioSegmento = index === 0 ? 0 : mencion.inicio;
+
+    if (anterior) {
+      const entreMarcas = texto.slice(anterior.fin, mencion.inicio);
+      const separadores = [" y ", " tambien ", " además ", " adicional ", ","];
+      const separador = separadores
+        .map((valor) => ({ valor, indice: entreMarcas.lastIndexOf(valor) }))
+        .filter((item) => item.indice >= 0)
+        .sort((a, b) => b.indice - a.indice)[0];
+
+      if (separador) {
+        inicioSegmento = anterior.fin + separador.indice + separador.valor.length;
+      }
+    }
+
     return {
       marca: mencion.marca,
-      texto: texto.slice(mencion.inicio, siguiente ? siguiente.inicio : texto.length).trim(),
+      texto: texto.slice(inicioSegmento, siguiente ? siguiente.inicio : texto.length).trim(),
     };
   });
 }
@@ -1167,6 +1184,51 @@ function mensajeTienePresentacionExplicita(mensaje) {
   return /\b\d+(?:[.,]\d+)?\s*(kg|kl|kilo|kilos|gramo|gramos|gr|g|lb|libra|libras)\b/.test(texto);
 }
 
+function numeroCantidad(valor = "") {
+  const texto = normalizar(valor);
+  const palabras = {
+    un: 1,
+    una: 1,
+    uno: 1,
+    dos: 2,
+    tres: 3,
+    cuatro: 4,
+    cinco: 5,
+    seis: 6,
+    siete: 7,
+    ocho: 8,
+    nueve: 9,
+    diez: 10,
+  };
+
+  if (palabras[texto]) return palabras[texto];
+
+  const numero = Number(texto.replace(",", "."));
+  if (!Number.isInteger(numero) || numero < 1 || numero > 99) return null;
+  return numero;
+}
+
+function extraerCantidad(mensaje) {
+  const texto = normalizar(mensaje);
+  const numero = "(\\d{1,2}|un|una|uno|dos|tres|cuatro|cinco|seis|siete|ocho|nueve|diez)";
+  const unidades = "(?:paquetes?|bolsas?|bultos?|sacos?|unidades?|pacas?)";
+  const patrones = [
+    new RegExp(`\\b${numero}\\s+${unidades}\\b`),
+    new RegExp(`\\b${unidades}\\s+(?:de\\s+)?${numero}\\b`),
+    new RegExp(`\\b(?:dame|deme|quiero|necesito|agrega|agregue|agregar|sumale|suma|llevo|llevame)\\s+${numero}\\b(?!\\s*(?:kg|kl|kilo|kilos|gramo|gramos|gr|g|lb|libra|libras))`),
+  ];
+
+  for (const patron of patrones) {
+    const coincidencia = texto.match(patron);
+    if (!coincidencia) continue;
+
+    const cantidad = numeroCantidad(coincidencia[1]);
+    if (cantidad) return cantidad;
+  }
+
+  return null;
+}
+
 function tieneIntencionAgregarProducto(mensaje) {
   const texto = normalizar(mensaje);
   return contieneAlguno(texto, [
@@ -1182,6 +1244,7 @@ function tieneIntencionAgregarProducto(mensaje) {
     "dame",
     "pedir",
     "pedido",
+    "domicilio",
     "lo quiero",
     "me lo llevo",
     "me llevo",
@@ -1201,8 +1264,10 @@ function lineasItems(items) {
   return items
     .map(
       (item) =>
-        `- ${item.marca.marca} ${item.referencia.nombre} ${item.presentacion.peso}: ${formatearPrecio(
-          item.presentacion.precio
+        `- ${item.cantidad || 1} x ${item.marca.marca} ${item.referencia.nombre} ${
+          item.presentacion.peso
+        }: ${formatearPrecio(
+          item.presentacion.precio * (item.cantidad || 1)
         )}`
     )
     .join("\n");
@@ -1212,6 +1277,42 @@ function presentacionesReferencia(referencia) {
   return referencia.presentaciones
     .map((presentacion) => `- ${presentacion.peso}: ${formatearPrecio(presentacion.precio)}`)
     .join("\n");
+}
+
+function guardarReferenciasPendientes(estado, marca, referencias, contexto = {}) {
+  estado.referenciasPendientes = {
+    marca: marca.marca,
+    referencias: referencias.map((referencia) => referencia.nombre),
+    texto: contexto.texto || "",
+    criterios: contexto.criterios || {},
+    cantidad: contexto.cantidad || 1,
+    quiereDomicilio: Boolean(contexto.quiereDomicilio),
+    datosDomicilio: contexto.datosDomicilio || {},
+  };
+}
+
+function limpiarPendientesSeleccion(estado) {
+  estado.referenciasPendientes = null;
+  estado.productosPendientes = [];
+}
+
+function elegirReferenciaPendiente(referencias, criterios, mensaje) {
+  if (!referencias.length) return null;
+  if (referencias.length === 1) return referencias[0];
+
+  const ordenadas = referencias
+    .map((referencia) => ({
+      referencia,
+      puntos: puntuarReferencia(referencia, criterios, mensaje),
+    }))
+    .sort((a, b) => b.puntos - a.puntos);
+
+  const [primera, segunda] = ordenadas;
+  if (primera.puntos > 0 && primera.puntos >= segunda.puntos + 1) {
+    return primera.referencia;
+  }
+
+  return null;
 }
 
 function resolverProductosExplicitos(mensaje, estado, catalogo, opciones = {}) {
@@ -1232,6 +1333,8 @@ function resolverProductosExplicitos(mensaje, estado, catalogo, opciones = {}) {
 
   segmentos.forEach((segmento) => {
     const criterios = extraerCriterios(segmento.texto);
+    const cantidad = extraerCantidad(segmento.texto) || 1;
+    const datosDomicilio = extraerDatosDomicilio(segmento.texto);
     const referencias = referenciasPorCriterios(segmento.marca, criterios);
     const referencia =
       buscarReferenciaExacta(segmento.marca, segmento.texto, criterios) ||
@@ -1239,7 +1342,15 @@ function resolverProductosExplicitos(mensaje, estado, catalogo, opciones = {}) {
 
     if (!referencia) {
       if (quiereAgregar || tieneCriterios(criterios) || segmentos.length > 1) {
-        pendientesReferencia.push({ marca: segmento.marca, referencias });
+        pendientesReferencia.push({
+          marca: segmento.marca,
+          referencias,
+          texto: segmento.texto,
+          criterios,
+          cantidad,
+          quiereDomicilio: solicitaCierre(segmento.texto),
+          datosDomicilio,
+        });
       }
       return;
     }
@@ -1247,12 +1358,12 @@ function resolverProductosExplicitos(mensaje, estado, catalogo, opciones = {}) {
     const presentacion = buscarPresentacion(referencia, segmento.texto);
 
     if (presentacion) {
-      agregarAlCarrito(estado, segmento.marca, referencia, presentacion);
-      agregados.push({ marca: segmento.marca, referencia, presentacion });
+      agregarAlCarrito(estado, segmento.marca, referencia, presentacion, cantidad);
+      agregados.push({ marca: segmento.marca, referencia, presentacion, cantidad });
       return;
     }
 
-    pendientesPresentacion.push({ marca: segmento.marca, referencia });
+    pendientesPresentacion.push({ marca: segmento.marca, referencia, cantidad });
   });
 
   if (!agregados.length && !pendientesPresentacion.length && !pendientesReferencia.length) return null;
@@ -1262,6 +1373,7 @@ function resolverProductosExplicitos(mensaje, estado, catalogo, opciones = {}) {
   estado.esperandoPresupuesto = false;
   estado.pendienteRecomendacion = false;
   estado.esperandoConfirmacionDomicilio = false;
+  estado.referenciasPendientes = null;
 
   if (agregados.length) {
     const ultimo = agregados[agregados.length - 1];
@@ -1275,6 +1387,7 @@ function resolverProductosExplicitos(mensaje, estado, catalogo, opciones = {}) {
     estado.productosPendientes = pendientesPresentacion.map((item) => ({
       marca: item.marca.marca,
       referencia: item.referencia.nombre,
+      cantidad: item.cantidad,
     }));
     estado.marca = pendiente.marca.marca;
     estado.criterios = criteriosDesdeReferencia(pendiente.referencia);
@@ -1282,6 +1395,7 @@ function resolverProductosExplicitos(mensaje, estado, catalogo, opciones = {}) {
       marca: pendiente.marca.marca,
       referencia: pendiente.referencia.nombre,
       presentacion: null,
+      cantidad: pendiente.cantidad,
     };
 
     const intro = agregados.length
@@ -1299,6 +1413,18 @@ function resolverProductosExplicitos(mensaje, estado, catalogo, opciones = {}) {
     const referencias = (pendiente.referencias.length ? pendiente.referencias : pendiente.marca.referencias)
       .map((referencia) => `- ${referencia.nombre}`)
       .join("\n");
+    guardarReferenciasPendientes(
+      estado,
+      pendiente.marca,
+      pendiente.referencias.length ? pendiente.referencias : pendiente.marca.referencias,
+      {
+        texto: pendiente.texto,
+        criterios: pendiente.criterios,
+        cantidad: pendiente.cantidad,
+        quiereDomicilio: pendiente.quiereDomicilio,
+        datosDomicilio: pendiente.datosDomicilio,
+      }
+    );
     const intro = agregados.length
       ? `Listo, ya agregué al pedido:\n${lineasItems(agregados)}\n\n${resumenCarrito(estado)}`
       : `Claro, revisemos ${pendiente.marca.marca}.`;
@@ -1307,6 +1433,7 @@ function resolverProductosExplicitos(mensaje, estado, catalogo, opciones = {}) {
   }
 
   estado.productosPendientes = [];
+  estado.referenciasPendientes = null;
   return `Listo, agregué al pedido:\n${lineasItems(agregados)}\n\n${productoAgregadoRespuesta(estado)}`;
 }
 
@@ -1355,6 +1482,16 @@ function extraerDatosDomicilio(mensaje) {
 
   const nombre = campoEtiquetado("nombre|me llamo|soy");
   if (nombre) datos.nombre = nombre.replace(/\d+/g, "").trim();
+
+  if (!datos.direccion) {
+    const direccionInline = texto.match(
+      /\b(?:para\s+(?:la|el)?\s*)?((?:cll|calle|cra|carrera|kr|cr|av|avenida|diag|diagonal|transversal|tv|mz|manzana|apto|apartamento)\s+[a-z0-9#.\-\s]{3,60}?)(?=\s+(?:nombre|cedula|c[eé]dula|cc|correo|email|celular|telefono|tel|por favor)\b|[,;\n]|$)/i
+    );
+
+    if (direccionInline) {
+      datos.direccion = limpiarCampo(direccionInline[1]);
+    }
+  }
 
   if (!datos.celular) {
     const posibleCelular = textoNormalizado.match(/\b3\d{9}\b/);
@@ -1409,7 +1546,9 @@ function extraerDatosDomicilio(mensaje) {
     }
   }
 
-  asignarDatosPorOrden(lineas, datos);
+  if (lineas.length > 1) {
+    asignarDatosPorOrden(lineas, datos);
+  }
 
   return datos;
 }
@@ -1428,6 +1567,7 @@ function pareceNombre(valor = "") {
     /^[a-zA-ZÁÉÍÓÚÜÑáéíóúüñ ]{3,50}$/.test(valor) &&
     !texto.includes("gmail") &&
     !texto.includes("hotmail") &&
+    !contieneAlguno(texto, PALABRAS_CRITERIO) &&
     !contieneAlguno(texto, ["gracias", "listo", "asi esta bien", "esta bien", "eso es todo", "nada mas"])
   );
 }
@@ -1519,6 +1659,59 @@ function tieneDatosDomicilioUtiles(datos) {
   return Boolean(datos.cedula || datos.correo || datos.celular || datos.direccion);
 }
 
+function resolverReferenciaPendiente(mensaje, estado, catalogo) {
+  if (!estado.referenciasPendientes || estado.ultimaSeleccion || buscarMarca(catalogo, mensaje)) return null;
+
+  const marca = buscarMarcaPorNombre(catalogo, estado.referenciasPendientes.marca);
+  if (!marca) return null;
+
+  const referencias = estado.referenciasPendientes.referencias
+    .map((nombre) => marca.referencias.find((referencia) => referencia.nombre === nombre))
+    .filter(Boolean);
+  if (!referencias.length) return null;
+
+  const contextoPendiente = estado.referenciasPendientes;
+  const criteriosMensaje = extraerCriterios(mensaje);
+  const criterios = mezclarCriterios(contextoPendiente.criterios || {}, criteriosMensaje);
+  const referencia =
+    buscarReferenciaExacta({ ...marca, referencias }, mensaje, criterios) ||
+    elegirReferenciaPendiente(referencias, criterios, `${contextoPendiente.texto || ""} ${mensaje}`);
+
+  if (!referencia) return null;
+
+  const cantidad = extraerCantidad(mensaje) || contextoPendiente.cantidad || 1;
+  const presentacion =
+    buscarPresentacion(referencia, mensaje) ||
+    buscarPresentacion(referencia, contextoPendiente.texto || "");
+  estado.datosDomicilio = {
+    ...estado.datosDomicilio,
+    ...(contextoPendiente.datosDomicilio || {}),
+    ...extraerDatosDomicilio(mensaje),
+  };
+  estado.marca = marca.marca;
+  estado.criterios = { ...estado.criterios, ...criteriosDesdeReferencia(referencia), ...criterios };
+  estado.ultimaSeleccion = {
+    marca: marca.marca,
+    referencia: referencia.nombre,
+    presentacion: presentacion ? presentacion.peso : null,
+    cantidad,
+  };
+  estado.referenciasPendientes = null;
+
+  if (presentacion) {
+    agregarAlCarrito(estado, marca, referencia, presentacion, cantidad);
+    estado.ultimaSeleccion = null;
+
+    if (contextoPendiente.quiereDomicilio || tieneDatosDomicilioUtiles(estado.datosDomicilio)) {
+      return `${formatearProductoExacto(marca, referencia, presentacion)}\n\nTe lo agrego al pedido.\n\n${solicitarDatosDomicilio(estado)}`;
+    }
+
+    return `${formatearProductoExacto(marca, referencia, presentacion)}\n\nTe lo agrego al pedido.\n\n${productoAgregadoRespuesta(estado)}`;
+  }
+
+  return formatearReferencia(marca, referencia, "¿Cuál presentación quieres agregar al pedido?");
+}
+
 function resolverDesdeUltimaSeleccion(mensaje, estado, catalogo) {
   if (!estado.ultimaSeleccion) return null;
 
@@ -1530,6 +1723,7 @@ function resolverDesdeUltimaSeleccion(mensaje, estado, catalogo) {
 
   let presentacion = buscarPresentacion(referencia, mensaje);
   const clienteConfirma = esAfirmacion(mensaje);
+  const cantidad = extraerCantidad(mensaje) || estado.ultimaSeleccion.cantidad || 1;
 
   if (!presentacion && clienteConfirma && estado.ultimaSeleccion.presentacion) {
     presentacion = referencia.presentaciones.find(
@@ -1549,7 +1743,8 @@ function resolverDesdeUltimaSeleccion(mensaje, estado, catalogo) {
     return null;
   }
 
-  agregarAlCarrito(estado, marca, referencia, presentacion);
+  agregarAlCarrito(estado, marca, referencia, presentacion, cantidad);
+  estado.referenciasPendientes = null;
   estado.productosPendientes = (estado.productosPendientes || []).filter(
     (item) => !(normalizar(item.marca) === normalizar(marca.marca) && item.referencia === referencia.nombre)
   );
@@ -1566,6 +1761,7 @@ function resolverDesdeUltimaSeleccion(mensaje, estado, catalogo) {
         marca: siguienteMarca.marca,
         referencia: siguienteReferencia.nombre,
         presentacion: null,
+        cantidad: siguientePendiente.cantidad || 1,
       };
 
       return `${formatearProductoExacto(marca, referencia, presentacion)}\n\nTe lo agrego al pedido.\n\n${resumenCarrito(
@@ -1608,6 +1804,7 @@ function resolverAlternativaPendiente(mensaje, estado, catalogo) {
   if (!referencia) return null;
 
   const presentacion = buscarPresentacion(referencia, mensaje);
+  const cantidad = extraerCantidad(mensaje) || 1;
   estado.alternativaPendiente = null;
   estado.marca = marca.marca;
   estado.criterios = criteriosDesdeReferencia(referencia);
@@ -1615,11 +1812,13 @@ function resolverAlternativaPendiente(mensaje, estado, catalogo) {
     marca: marca.marca,
     referencia: referencia.nombre,
     presentacion: presentacion ? presentacion.peso : null,
+    cantidad,
   };
 
   if (presentacion) {
-    agregarAlCarrito(estado, marca, referencia, presentacion);
+    agregarAlCarrito(estado, marca, referencia, presentacion, cantidad);
     estado.ultimaSeleccion = null;
+    estado.referenciasPendientes = null;
     return `${formatearProductoExacto(marca, referencia, presentacion)}\n\nTe lo agrego al pedido.\n\n${productoAgregadoRespuesta(estado)}`;
   }
 
@@ -1667,6 +1866,9 @@ function resolverConsultaCatalogo(mensaje, estado, catalogo = cargarProductos())
   ) {
     return solicitarDatosDomicilio(estado);
   }
+
+  const respuestaReferenciaPendiente = resolverReferenciaPendiente(mensaje, estado, catalogo);
+  if (respuestaReferenciaPendiente) return respuestaReferenciaPendiente;
 
   const respuestaDesdeUltima = resolverDesdeUltimaSeleccion(mensaje, estado, catalogo);
   if (respuestaDesdeUltima) return respuestaDesdeUltima;
@@ -1780,6 +1982,7 @@ function resolverConsultaCatalogo(mensaje, estado, catalogo = cargarProductos())
       return respuestaSinOpciones(catalogo, criterios, marca, estado);
     }
 
+    guardarReferenciasPendientes(estado, marca, referenciasFiltradas);
     const aperturaCarrito = estado.carrito.length
       ? "\n\nTu pedido sigue guardado. Si te interesa alguna, dime cuál referencia y presentación quieres sumar."
       : "";
@@ -1793,6 +1996,7 @@ function resolverConsultaCatalogo(mensaje, estado, catalogo = cargarProductos())
 
   if (referencia) {
     const presentacion = buscarPresentacion(referencia, mensaje);
+    const cantidad = extraerCantidad(mensaje) || 1;
 
     estado.marca = marca.marca;
     estado.criterios = tieneCriterios(criterios) ? criterios : criteriosDesdeReferencia(referencia);
@@ -1800,10 +2004,12 @@ function resolverConsultaCatalogo(mensaje, estado, catalogo = cargarProductos())
       marca: marca.marca,
       referencia: referencia.nombre,
       presentacion: presentacion ? presentacion.peso : null,
+      cantidad,
     };
+    estado.referenciasPendientes = null;
 
     if (presentacion) {
-      agregarAlCarrito(estado, marca, referencia, presentacion);
+      agregarAlCarrito(estado, marca, referencia, presentacion, cantidad);
       estado.ultimaSeleccion = null;
       return `${formatearProductoExacto(marca, referencia, presentacion)}\n\nTe lo agrego al pedido.\n\n${productoAgregadoRespuesta(estado)}`;
     }
@@ -1824,11 +2030,13 @@ function resolverConsultaCatalogo(mensaje, estado, catalogo = cargarProductos())
       return respuestaSinOpciones(catalogo, criterios, marca, estado);
     }
 
+    guardarReferenciasPendientes(estado, marca, referenciasFiltradas);
     return listarReferencias(marca, referenciasFiltradas);
   }
 
   if (!tieneCriterios(criterios)) {
     estado.marca = marca.marca;
+    guardarReferenciasPendientes(estado, marca, marca.referencias);
     return listarReferencias(marca);
   }
 
@@ -1839,6 +2047,7 @@ function resolverConsultaCatalogo(mensaje, estado, catalogo = cargarProductos())
 
   estado.marca = marca.marca;
   estado.criterios = criterios;
+  guardarReferenciasPendientes(estado, marca, referencias);
   return listarReferencias(marca, referencias);
 }
 
