@@ -5,6 +5,11 @@ const ALIAS_MARCAS_EXTRA = {
   "dog chow": ["dogchow", "dog show", "chow"],
 };
 
+const SEDES_RECOGIDA = [
+  "calle 18 # 10 - 40",
+  "carrera 10 # 17-28",
+];
+
 const PALABRAS_CRITERIO = [
   "adulto",
   "adultos",
@@ -744,6 +749,22 @@ function esAgradecimiento(mensaje) {
   return contieneAlguno(texto, ["gracias", "muchas gracias", "listo gracias"]);
 }
 
+function esCierreFinal(mensaje) {
+  const texto = normalizar(mensaje);
+  return contieneAlguno(texto, [
+    "eso es todo",
+    "nada mas",
+    "no mas",
+    "asi esta bien",
+    "esta bien",
+    "muchas gracias",
+    "gracias",
+    "listo gracias",
+    "hasta ahi",
+    "solo eso",
+  ]);
+}
+
 function esAfirmacion(mensaje) {
   const texto = normalizar(mensaje);
   return contieneAlguno(texto, [
@@ -1016,6 +1037,8 @@ function recomendarOpciones(catalogo, criterios, presupuesto, marcaPreferida = n
 }
 
 function agregarAlCarrito(estado, marca, referencia, presentacion, cantidad = 1) {
+  estado.pedidoConfirmado = false;
+
   const existente = estado.carrito.find(
     (item) =>
       item.marca === marca.marca &&
@@ -1051,7 +1074,7 @@ function resumenCarrito(estado) {
 
 function productoAgregadoRespuesta(estado) {
   estado.esperandoConfirmacionDomicilio = true;
-  return `${resumenCarrito(estado)}\n\n¿Quieres agregar algo más o avanzamos con los datos para el domicilio?`;
+  return `${resumenCarrito(estado)}\n\n¿Quieres agregar algo más o avanzamos con la entrega?`;
 }
 
 function mensajeTienePresentacionExplicita(mensaje) {
@@ -1205,6 +1228,14 @@ function resolverProductosExplicitos(mensaje, estado, catalogo, opciones = {}) {
     const criterios = extraerCriterios(segmento.texto);
     const cantidad = extraerCantidad(segmento.texto) || 1;
     const datosDomicilio = extraerDatosDomicilio(segmento.texto);
+    const tipoEntrega = detectarTipoEntrega(segmento.texto) || (datosDomicilio.direccion ? "domicilio" : null);
+    if (tipoEntrega) {
+      estado.entrega = {
+        ...(estado.entrega || {}),
+        tipo: tipoEntrega,
+        sede: tipoEntrega === "recoger" ? detectarSedeRecogida(segmento.texto) : estado.entrega?.sede || null,
+      };
+    }
     const referencias = referenciasPorCriterios(segmento.marca, criterios);
     const referencia =
       buscarReferenciaExacta(segmento.marca, segmento.texto, criterios) ||
@@ -1486,6 +1517,129 @@ function asignarDatosPorOrden(lineas, datos) {
   }
 }
 
+function detectarTipoEntrega(mensaje) {
+  const texto = normalizar(mensaje);
+
+  if (
+    contieneAlguno(texto, [
+      "recoger",
+      "recojer",
+      "recogida",
+      "recgoer",
+      "recojo",
+      "paso por",
+      "pasar por",
+      "en sede",
+      "en la sede",
+      "en tienda",
+    ])
+  ) {
+    return "recoger";
+  }
+
+  if (contieneAlguno(texto, ["domicilio", "direccion", "enviar", "envio", "llevar", "llevarlo"])) {
+    return "domicilio";
+  }
+
+  return null;
+}
+
+function aplicarTipoEntrega(mensaje, estado) {
+  const tipo = detectarTipoEntrega(mensaje);
+  if (!tipo) return null;
+
+  estado.entrega = {
+    ...(estado.entrega || {}),
+    tipo,
+  };
+  estado.esperandoTipoEntrega = false;
+  return tipo;
+}
+
+function detectarSedeRecogida(mensaje) {
+  const texto = normalizar(mensaje);
+
+  if (texto.includes("18") || contieneFrase(texto, "calle 18")) {
+    return SEDES_RECOGIDA[0];
+  }
+
+  if (texto.includes("17") || contieneFrase(texto, "carrera 10") || contieneFrase(texto, "cra 10")) {
+    return SEDES_RECOGIDA[1];
+  }
+
+  return null;
+}
+
+function solicitarTipoEntrega(estado) {
+  estado.esperandoTipoEntrega = true;
+  estado.esperandoConfirmacionDomicilio = false;
+
+  return `${resumenCarrito(estado)}\n\nPerfecto, ¿lo quieres a domicilio o prefieres recogerlo en una sede?`;
+}
+
+function solicitarSedeRecogida(estado) {
+  estado.esperandoSedeRecogida = true;
+  estado.esperandoTipoEntrega = false;
+
+  return `${resumenCarrito(estado)}\n\nClaro, ¿en cuál sede deseas recogerlo?\n${SEDES_RECOGIDA.map((sede) => `- ${sede}`).join("\n")}`;
+}
+
+function confirmarRecogida(estado) {
+  estado.esperandoSedeRecogida = false;
+  estado.esperandoTipoEntrega = false;
+  estado.pedidoConfirmado = true;
+
+  return `${resumenCarrito(estado)}\n\nRecogida en sede:\n- ${estado.entrega.sede}\n\nListo, te lo dejamos separado para recoger en esa sede.`;
+}
+
+function detectarMetodoPago(mensaje) {
+  const texto = normalizar(mensaje);
+
+  if (contieneAlguno(texto, ["efectivo", "contraentrega", "contra entrega"])) return "efectivo";
+  if (contieneAlguno(texto, ["transferencia", "bancolombia", "davivienda", "bre b", "bre-b", "llave"])) {
+    return "transferencia bancaria";
+  }
+  if (contieneAlguno(texto, ["tarjeta", "debito", "credito", "datafono", "datáfono"])) {
+    return "tarjeta debito o credito";
+  }
+
+  return null;
+}
+
+function solicitarMetodoPago(estado) {
+  estado.esperandoMetodoPago = true;
+  estado.esperandoTipoEntrega = false;
+  estado.esperandoConfirmacionDomicilio = false;
+
+  return `${resumenCarrito(estado)}\n\nAntes de tomar los datos de domicilio, dime con qué método de pago deseas cancelar:\n- efectivo\n- transferencia bancaria Bancolombia y/o Davivienda\n- tarjeta débito o crédito\n- llave bre-B`;
+}
+
+function instruccionesTransferencia() {
+  return `Datos para transferencia:
+
+ahorros bancolombia:
+luz merida gomez ospina
+nr. 07300007105
+
+ahorros davivienda
+nr. 127200128222
+
+llave bre-B: @luzg5604
+
+Recuerde:
+- estas son nuestras unicas cuentas autorizadas.
+- Enviar el comprobante de pago, gracias.`;
+}
+
+function registrarMetodoPago(mensaje, estado) {
+  const metodo = detectarMetodoPago(mensaje);
+  if (!metodo) return null;
+
+  estado.metodoPago = metodo;
+  estado.esperandoMetodoPago = false;
+  return metodo;
+}
+
 function camposDomicilioFaltantes(estado) {
   return ["cedula", "correo", "celular", "direccion", "nombre"].filter(
     (campo) => !estado.datosDomicilio[campo]
@@ -1505,8 +1659,11 @@ function solicitarDatosDomicilio(estado) {
 function confirmarPedido(estado) {
   estado.esperandoDatosDomicilio = false;
   estado.esperandoConfirmacionDomicilio = false;
+  estado.pedidoConfirmado = true;
 
-  return `${resumenCarrito(estado)}\n\nDatos de facturación y domicilio:\n- Nombre: ${estado.datosDomicilio.nombre}\n- Cédula: ${estado.datosDomicilio.cedula}\n- Celular: ${estado.datosDomicilio.celular}\n- Correo: ${estado.datosDomicilio.correo}\n- Dirección: ${estado.datosDomicilio.direccion}\n\nListo, tu pedido queda confirmado con esos datos.`;
+  const metodoPago = estado.metodoPago ? `\n- Método de pago: ${estado.metodoPago}` : "";
+
+  return `${resumenCarrito(estado)}\n\nDatos de facturación y domicilio:\n- Nombre: ${estado.datosDomicilio.nombre}\n- Cédula: ${estado.datosDomicilio.cedula}\n- Celular: ${estado.datosDomicilio.celular}\n- Correo: ${estado.datosDomicilio.correo}\n- Dirección: ${estado.datosDomicilio.direccion}${metodoPago}\n\nListo, tu pedido queda confirmado con esos datos.`;
 }
 
 function resolverDomicilio(mensaje, estado) {
@@ -1517,6 +1674,10 @@ function resolverDomicilio(mensaje, estado) {
   }
 
   if (!estado.esperandoDatosDomicilio && !tieneDatosDomicilioUtiles(datos)) {
+    if (!camposDomicilioFaltantes(estado).length) {
+      return confirmarPedido(estado);
+    }
+
     return solicitarDatosDomicilio(estado);
   }
 
@@ -1531,6 +1692,57 @@ function resolverDomicilio(mensaje, estado) {
 
 function tieneDatosDomicilioUtiles(datos) {
   return Boolean(datos.cedula || datos.correo || datos.celular || datos.direccion);
+}
+
+function resolverEntregaYPago(mensaje, estado) {
+  if (!estado.carrito.length) {
+    return "Claro, primero dime qué producto quieres pedir y te ayudo a armar el pedido.";
+  }
+
+  aplicarTipoEntrega(mensaje, estado);
+
+  if (estado.esperandoSedeRecogida || (estado.entrega && estado.entrega.tipo === "recoger")) {
+    const sede = detectarSedeRecogida(mensaje) || estado.entrega.sede;
+    if (sede) {
+      estado.entrega = { tipo: "recoger", sede };
+      return confirmarRecogida(estado);
+    }
+
+    return solicitarSedeRecogida(estado);
+  }
+
+  if (estado.esperandoTipoEntrega && !(estado.entrega && estado.entrega.tipo)) {
+    return solicitarTipoEntrega(estado);
+  }
+
+  if (!(estado.entrega && estado.entrega.tipo)) {
+    return solicitarTipoEntrega(estado);
+  }
+
+  if (estado.entrega.tipo === "domicilio") {
+    const metodo = registrarMetodoPago(mensaje, estado);
+
+    if (!estado.metodoPago) {
+      return solicitarMetodoPago(estado);
+    }
+
+    if (metodo === "transferencia bancaria" && !estado.instruccionesPagoEnviadas) {
+      estado.instruccionesPagoEnviadas = true;
+      return `${instruccionesTransferencia()}\n\n${solicitarDatosDomicilio(estado)}`;
+    }
+
+    return resolverDomicilio(mensaje, estado);
+  }
+
+  return solicitarTipoEntrega(estado);
+}
+
+function respuestaPedidoYaConfirmado(mensaje) {
+  return elegirVariante(mensaje, [
+    "Con muchísimo gusto, tu pedido ya quedó confirmado. Cuando necesites algo más, me escribes y te ayudo con gusto 😊",
+    "Perfecto, gracias a ti. Tu pedido queda confirmado; si más adelante necesitas agregar algo, aquí estoy pendiente.",
+    "Listo, quedamos atentos. Tu pedido ya está confirmado y cualquier otra cosita que necesites me puedes escribir.",
+  ]);
 }
 
 function resolverReferenciaPendiente(mensaje, estado, catalogo) {
@@ -1732,13 +1944,21 @@ function resolverConsultaCatalogo(mensaje, estado, catalogo = cargarProductos())
   });
   if (respuestaProductosExplicitos) return respuestaProductosExplicitos;
 
+  if (estado.pedidoConfirmado && esCierreFinal(mensaje)) {
+    return respuestaPedidoYaConfirmado(mensaje);
+  }
+
+  if (estado.esperandoTipoEntrega || estado.esperandoSedeRecogida || estado.esperandoMetodoPago) {
+    return resolverEntregaYPago(mensaje, estado);
+  }
+
   if (
     estado.esperandoConfirmacionDomicilio &&
     esAfirmacion(mensaje) &&
     estado.carrito.length &&
     !estado.ultimaSeleccion
   ) {
-    return solicitarDatosDomicilio(estado);
+    return resolverEntregaYPago(mensaje, estado);
   }
 
   const respuestaReferenciaPendiente = resolverReferenciaPendiente(mensaje, estado, catalogo);
@@ -1747,9 +1967,9 @@ function resolverConsultaCatalogo(mensaje, estado, catalogo = cargarProductos())
   const respuestaDesdeUltima = resolverDesdeUltimaSeleccion(mensaje, estado, catalogo);
   if (respuestaDesdeUltima) return respuestaDesdeUltima;
 
-  if (estado.esperandoDatosDomicilio || solicitaCierre(mensaje)) {
+  if (estado.esperandoDatosDomicilio || solicitaCierre(mensaje) || (estado.carrito.length && detectarTipoEntrega(mensaje))) {
     if (estado.carrito.length || estado.esperandoDatosDomicilio) {
-      return resolverDomicilio(mensaje, estado);
+      return resolverEntregaYPago(mensaje, estado);
     }
   }
 
@@ -1940,4 +2160,5 @@ module.exports = {
   solicitaCierre,
   esSaludo,
   esAgradecimiento,
+  esCierreFinal,
 };

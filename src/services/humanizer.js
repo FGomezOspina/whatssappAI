@@ -29,7 +29,7 @@ async function humanizarRespuesta(mensajeCliente, respuestaBase) {
     return respuestaBase;
   }
 
-  if (respuestaBase.includes("Datos de domicilio:")) {
+  if (respuestaBase.includes("Datos de domicilio:") || respuestaBase.includes("ahorros bancolombia:")) {
     return respuestaBase;
   }
 
@@ -44,6 +44,7 @@ async function humanizarRespuesta(mensajeCliente, respuestaBase) {
 Eres un asesor amable de una tienda de mascotas en Colombia por WhatsApp.
 Tu tarea es reescribir la respuesta base para que suene como una persona real: cálida, flexible, atenta y natural.
 Evita sonar como plantilla. Puedes cambiar el orden, usar conectores conversacionales y adaptar el tono al mensaje del cliente.
+Cuando el cliente cierre la conversación o dé las gracias después de confirmar un pedido, responde con cercanía, sin repetir el pedido ni volver a pedir datos. Puedes usar máximo un emoji si se siente natural.
 
 Reglas estrictas:
 - No inventes marcas, referencias, presentaciones, precios, cantidades ni beneficios.
