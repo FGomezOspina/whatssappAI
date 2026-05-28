@@ -129,26 +129,20 @@ function clavePedido(estado) {
     estado.confirmacionPedidoId = crypto.randomUUID();
   }
 
-  return crypto
-    .createHash("sha256")
-    .update(
-      JSON.stringify({
-        confirmacionPedidoId: estado.confirmacionPedidoId,
-        carrito: estado.carrito || [],
-        datosDomicilio: estado.datosDomicilio || {},
-        entrega: estado.entrega || {},
-        metodoPago: estado.metodoPago || null,
-      })
-    )
-    .digest("hex");
+  return estado.confirmacionPedidoId;
 }
 
 async function guardarPedidoConfirmado(usuario, conversationId, estado) {
-  if (!supabaseConfigurado() || !estado.pedidoConfirmado || !estado.carrito?.length) return null;
+  if (
+    !supabaseConfigurado() ||
+    !estado.pedidoConfirmado ||
+    !estado.pedidoConfirmadoPendienteGuardar ||
+    !estado.carrito?.length
+  ) {
+    return null;
+  }
 
   const orderKey = clavePedido(estado);
-  if (estado.ultimoPedidoGuardadoKey === orderKey) return null;
-
   const total = estado.carrito.reduce((suma, item) => suma + item.precio * item.cantidad, 0);
   const payload = {
     conversation_id: conversationId,
@@ -174,6 +168,7 @@ async function guardarPedidoConfirmado(usuario, conversationId, estado) {
   }).then((filas) => {
     estado.ultimoPedidoGuardadoKey = orderKey;
     estado.ultimoPedidoGuardadoAt = payload.confirmed_at;
+    estado.pedidoConfirmadoPendienteGuardar = false;
     return filas;
   });
 }

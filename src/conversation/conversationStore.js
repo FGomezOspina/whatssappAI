@@ -26,6 +26,9 @@ function crearEstadoInicial() {
     confirmacionPedidoId: null,
     ultimoPedidoGuardadoKey: null,
     ultimoPedidoGuardadoAt: null,
+    pedidoConfirmadoPendienteGuardar: false,
+    pedidoNuevoConDatosPrevios: false,
+    datosPreviosConfirmados: false,
     esperandoTipoEntrega: false,
     esperandoSedeRecogida: false,
     esperandoMetodoPago: false,
@@ -36,6 +39,10 @@ function crearEstadoInicial() {
     esperandoMarca: false,
     esperandoConfirmacionDomicilio: false,
     esperandoConfirmacionRepetirPedido: false,
+    esperandoConfirmacionDatosPrevios: false,
+    esperandoCambioDireccion: false,
+    esperandoConfirmacionDatosFacturacion: false,
+    esperandoActualizacionDatosCliente: false,
     alternativaPendiente: null,
   };
 }
