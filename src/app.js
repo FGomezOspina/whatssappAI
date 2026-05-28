@@ -1,7 +1,6 @@
 const express = require("express");
 const {
   resolverConsultaCatalogo,
-  obtenerConversacion,
   cargarProductos,
   buscarMarca,
   extraerCriterios,
@@ -15,6 +14,10 @@ const {
   esSaludo,
   esAgradecimiento,
 } = require("./conversation/conversationEngine");
+const {
+  obtenerConversacionPersistida,
+  guardarConversacionPersistida,
+} = require("./conversation/conversationStore");
 const { humanizarRespuesta } = require("./services/humanizer");
 const { responder } = require("./services/twiml");
 
@@ -25,13 +28,21 @@ function crearApp() {
   app.post("/whatsapp", async (req, res) => {
     const mensaje = (req.body.Body || "").trim();
     const usuario = req.body.From || "anonimo";
-    const estado = obtenerConversacion(usuario);
+    const estado = await obtenerConversacionPersistida(usuario);
     const catalogo = cargarProductos();
 
     console.log("Mensaje recibido:", mensaje);
 
+    const responderYGuardar = async (respuestaFinal) => {
+      await guardarConversacionPersistida(usuario, estado, {
+        mensaje,
+        respuesta: respuestaFinal,
+      });
+      responder(res, respuestaFinal);
+    };
+
     if (!mensaje) {
-      responder(res, "Cuéntame qué necesitas para tu mascota 🐶");
+      await responderYGuardar("Cuéntame qué necesitas para tu mascota 🐶");
       return;
     }
 
@@ -45,8 +56,8 @@ function crearApp() {
       extraerPresupuesto(mensaje) ||
       solicitaCierre(mensaje);
 
-    if (esSaludo(mensaje) && !tieneIntencionCatalogo) {
-      responder(res, "¡Hola! Bienvenido 🐶 ¿Qué necesitas para tu mascota hoy?");
+    if (esSaludo(mensaje) && !tieneIntencionCatalogo && !(estado.pedidoConfirmado && estado.carrito.length)) {
+      await responderYGuardar("¡Hola! Bienvenido 🐶 ¿Qué necesitas para tu mascota hoy?");
       return;
     }
 
@@ -56,13 +67,13 @@ function crearApp() {
       !estado.carrito.length &&
       !estado.esperandoDatosDomicilio
     ) {
-      responder(res, "Con mucho gusto 🐶");
+      await responderYGuardar("Con mucho gusto 🐶");
       return;
     }
 
     const respuestaBase = resolverConsultaCatalogo(mensaje, estado, catalogo);
     const respuesta = await humanizarRespuesta(mensaje, respuestaBase);
-    responder(res, respuesta);
+    await responderYGuardar(respuesta);
   });
 
   return app;

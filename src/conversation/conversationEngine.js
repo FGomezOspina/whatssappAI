@@ -1,3 +1,4 @@
+const crypto = require("crypto");
 const { cargarProductos } = require("../repositories/productRepository");
 const { obtenerConversacion } = require("./conversationStore");
 
@@ -1038,6 +1039,9 @@ function recomendarOpciones(catalogo, criterios, presupuesto, marcaPreferida = n
 
 function agregarAlCarrito(estado, marca, referencia, presentacion, cantidad = 1) {
   estado.pedidoConfirmado = false;
+  estado.confirmacionPedidoId = null;
+  estado.ultimoPedidoGuardadoKey = null;
+  estado.ultimoPedidoGuardadoAt = null;
 
   const existente = estado.carrito.find(
     (item) =>
@@ -1070,6 +1074,160 @@ function resumenCarrito(estado) {
   const total = estado.carrito.reduce((suma, item) => suma + item.precio * item.cantidad, 0);
 
   return `Pedido:\n${lineas.join("\n")}\nTotal: ${formatearPrecio(total)}`;
+}
+
+function referenciaCatalogoParaItem(catalogo, itemCarrito) {
+  const marca = buscarMarcaPorNombre(catalogo, itemCarrito.marca);
+  if (!marca) return null;
+
+  return marca.referencias.find((referencia) => referencia.nombre === itemCarrito.referencia) || null;
+}
+
+function itemCarritoCoincide(catalogo, itemCarrito, mensaje) {
+  const texto = normalizar(mensaje);
+  const marcaDetectada = buscarMarca(catalogo, mensaje);
+  const criterios = extraerCriterios(mensaje);
+  const referencia = referenciaCatalogoParaItem(catalogo, itemCarrito);
+  const presentacionDetectada = referencia ? buscarPresentacion(referencia, mensaje) : null;
+  const textoItem = normalizar(`${itemCarrito.marca} ${itemCarrito.referencia} ${itemCarrito.peso}`);
+  let tieneDetalle = false;
+
+  if (marcaDetectada) {
+    tieneDetalle = true;
+    if (normalizar(marcaDetectada.marca) !== normalizar(itemCarrito.marca)) return false;
+  }
+
+  if (mensajeTienePresentacionExplicita(mensaje)) {
+    tieneDetalle = true;
+    if (!presentacionDetectada || normalizarPeso(itemCarrito.peso) !== normalizarPeso(presentacionDetectada.peso)) {
+      return false;
+    }
+  }
+
+  if (tieneCriterios(criterios)) {
+    tieneDetalle = true;
+    if (!referencia || !referenciaCumple(referencia, criterios)) return false;
+  }
+
+  const palabrasProducto = texto
+    .split(/\s+/)
+    .filter((palabra) => palabra.length > 3)
+    .filter(
+      (palabra) =>
+        ![
+          "solo",
+          "solamente",
+          "unicamente",
+          "elimina",
+          "eliminar",
+          "quita",
+          "quitar",
+          "saca",
+          "sacar",
+          "borra",
+          "borrar",
+          "producto",
+          "pedido",
+          "quiero",
+          "deseo",
+          "dejar",
+          "deja",
+          "con",
+          "del",
+          "sin",
+          "ese",
+          "este",
+          "paquete",
+          "paquetes",
+          "bolsa",
+          "bolsas",
+        ].includes(palabra)
+    );
+
+  const coincidePalabraProducto = palabrasProducto.some((palabra) => contieneFrase(textoItem, palabra));
+  if (coincidePalabraProducto) tieneDetalle = true;
+
+  return tieneDetalle && (coincidePalabraProducto || Boolean(marcaDetectada) || tieneCriterios(criterios));
+}
+
+function detectarCambioCarrito(mensaje) {
+  const texto = normalizar(mensaje);
+
+  if (contieneAlguno(texto, ["solamente", "solo", "unicamente", "unicamente con", "solo con", "solamente con"])) {
+    return "mantener";
+  }
+
+  if (
+    contieneAlguno(texto, [
+      "ya no",
+      "no quiero",
+      "quita",
+      "quitar",
+      "elimina",
+      "eliminar",
+      "saca",
+      "sacar",
+      "borra",
+      "borrar",
+      "sin",
+    ])
+  ) {
+    return "eliminar";
+  }
+
+  return null;
+}
+
+function limpiarFlujoVentaDespuesCambioCarrito(estado) {
+  estado.pedidoConfirmado = false;
+  estado.confirmacionPedidoId = null;
+  estado.ultimoPedidoGuardadoKey = null;
+  estado.ultimoPedidoGuardadoAt = null;
+  estado.esperandoConfirmacionDomicilio = Boolean(estado.carrito.length);
+  estado.esperandoDatosDomicilio = false;
+  estado.esperandoTipoEntrega = false;
+  estado.esperandoMetodoPago = false;
+  estado.esperandoSedeRecogida = false;
+}
+
+function resolverCambioCarrito(mensaje, estado, catalogo) {
+  if (!estado.carrito.length) return null;
+
+  const accion = detectarCambioCarrito(mensaje);
+  if (!accion) return null;
+
+  const coincidencias = estado.carrito.filter((item) => itemCarritoCoincide(catalogo, item, mensaje));
+  if (!coincidencias.length) {
+    return `Revisé tu pedido, pero no encontré ese producto en el carrito.\n\n${resumenCarrito(estado)}\n\nDime cuál quieres dejar o retirar y lo ajusto.`;
+  }
+
+  const antes = estado.carrito.length;
+
+  if (accion === "mantener") {
+    estado.carrito = coincidencias;
+  } else {
+    const clavesEliminar = new Set(
+      coincidencias.map((item) => `${item.marca}|${item.referencia}|${item.peso}|${item.precio}`)
+    );
+    estado.carrito = estado.carrito.filter(
+      (item) => !clavesEliminar.has(`${item.marca}|${item.referencia}|${item.peso}|${item.precio}`)
+    );
+  }
+
+  limpiarFlujoVentaDespuesCambioCarrito(estado);
+
+  if (!estado.carrito.length) {
+    return "Listo, retiré ese producto y el pedido quedó vacío. Dime qué producto quieres pedir y lo armamos de nuevo.";
+  }
+
+  const cambio =
+    accion === "mantener"
+      ? antes === estado.carrito.length
+        ? "Listo, dejamos el pedido solamente con ese producto."
+        : "Listo, dejé el pedido solo con ese producto."
+      : "Listo, retiré ese producto del pedido.";
+
+  return `${cambio}\n\n${resumenCarrito(estado)}\n\n¿Quieres agregar algo más o avanzamos con la entrega?`;
 }
 
 function productoAgregadoRespuesta(estado) {
@@ -1588,6 +1746,7 @@ function confirmarRecogida(estado) {
   estado.esperandoSedeRecogida = false;
   estado.esperandoTipoEntrega = false;
   estado.pedidoConfirmado = true;
+  estado.confirmacionPedidoId = estado.confirmacionPedidoId || crypto.randomUUID();
 
   return `${resumenCarrito(estado)}\n\nRecogida en sede:\n- ${estado.entrega.sede}\n\nListo, te lo dejamos separado para recoger en esa sede.`;
 }
@@ -1660,6 +1819,7 @@ function confirmarPedido(estado) {
   estado.esperandoDatosDomicilio = false;
   estado.esperandoConfirmacionDomicilio = false;
   estado.pedidoConfirmado = true;
+  estado.confirmacionPedidoId = estado.confirmacionPedidoId || crypto.randomUUID();
 
   const metodoPago = estado.metodoPago ? `\n- Método de pago: ${estado.metodoPago}` : "";
 
@@ -1743,6 +1903,69 @@ function respuestaPedidoYaConfirmado(mensaje) {
     "Perfecto, gracias a ti. Tu pedido queda confirmado; si más adelante necesitas agregar algo, aquí estoy pendiente.",
     "Listo, quedamos atentos. Tu pedido ya está confirmado y cualquier otra cosita que necesites me puedes escribir.",
   ]);
+}
+
+function esNegacion(mensaje) {
+  const texto = normalizar(mensaje);
+  return contieneAlguno(texto, ["no", "no gracias", "otra cosa", "diferente"]);
+}
+
+function deseaRepetirPedido(mensaje) {
+  const texto = normalizar(mensaje);
+  return esSaludo(mensaje) || contieneAlguno(texto, ["mismo pedido", "lo mismo", "igual", "repetir", "repite"]);
+}
+
+function descripcionEntregaAnterior(estado) {
+  if (estado.entrega?.tipo === "recoger" && estado.entrega.sede) {
+    return `la recogida en ${estado.entrega.sede}`;
+  }
+
+  if (estado.datosDomicilio?.direccion) {
+    return `la dirección ${estado.datosDomicilio.direccion}`;
+  }
+
+  return "la misma entrega";
+}
+
+function preguntarRepetirPedido(estado) {
+  estado.esperandoConfirmacionRepetirPedido = true;
+  return `${resumenCarrito(estado)}\n\nVeo que ya tenías este pedido confirmado. ¿Quieres que lo repitamos con ${descripcionEntregaAnterior(
+    estado
+  )}?`;
+}
+
+function reiniciarConfirmacionPedido(estado) {
+  estado.confirmacionPedidoId = null;
+  estado.ultimoPedidoGuardadoKey = null;
+  estado.ultimoPedidoGuardadoAt = null;
+}
+
+function resolverConfirmacionRepetirPedido(mensaje, estado) {
+  if (!estado.esperandoConfirmacionRepetirPedido) return null;
+
+  if (esAfirmacion(mensaje)) {
+    estado.esperandoConfirmacionRepetirPedido = false;
+    reiniciarConfirmacionPedido(estado);
+
+    if (estado.entrega?.tipo === "recoger" && estado.entrega.sede) {
+      return confirmarRecogida(estado);
+    }
+
+    if (estado.entrega?.tipo === "domicilio") {
+      if (!estado.metodoPago) return solicitarMetodoPago(estado);
+      if (camposDomicilioFaltantes(estado).length) return solicitarDatosDomicilio(estado);
+      return confirmarPedido(estado);
+    }
+
+    return solicitarTipoEntrega(estado);
+  }
+
+  if (esNegacion(mensaje)) {
+    estado.esperandoConfirmacionRepetirPedido = false;
+    return "Claro, sin problema. Cuéntame qué necesitas hoy y te ayudo a armarlo.";
+  }
+
+  return null;
 }
 
 function resolverReferenciaPendiente(mensaje, estado, catalogo) {
@@ -1933,8 +2156,24 @@ function resolverConsultaCatalogo(mensaje, estado, catalogo = cargarProductos())
     return listarMarcas(catalogo);
   }
 
+  const respuestaRepetirPedido = resolverConfirmacionRepetirPedido(mensaje, estado);
+  if (respuestaRepetirPedido) return respuestaRepetirPedido;
+
+  if (
+    estado.pedidoConfirmado &&
+    estado.carrito.length &&
+    !marcaDetectada &&
+    !tieneCriterios(criteriosMensaje) &&
+    deseaRepetirPedido(mensaje)
+  ) {
+    return preguntarRepetirPedido(estado);
+  }
+
   const respuestaAlternativa = resolverAlternativaPendiente(mensaje, estado, catalogo);
   if (respuestaAlternativa) return respuestaAlternativa;
+
+  const respuestaCambioCarrito = resolverCambioCarrito(mensaje, estado, catalogo);
+  if (respuestaCambioCarrito) return respuestaCambioCarrito;
 
   const respuestaProductosExplicitos = resolverProductosExplicitos(mensaje, estado, catalogo, {
     pidioMarcas,
