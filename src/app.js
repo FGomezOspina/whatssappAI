@@ -18,6 +18,7 @@ const {
   obtenerConversacionPersistida,
   guardarConversacionPersistida,
 } = require("./conversation/conversationStore");
+const { obtenerEjemplosEntrenamiento } = require("./repositories/trainingExampleRepository");
 const { humanizarRespuesta } = require("./services/humanizer");
 const { responder } = require("./services/twiml");
 
@@ -72,7 +73,8 @@ function crearApp() {
     }
 
     const respuestaBase = resolverConsultaCatalogo(mensaje, estado, catalogo);
-    const respuesta = await humanizarRespuesta(mensaje, respuestaBase);
+    const ejemplosEntrenamiento = await obtenerEjemplosEntrenamiento(mensaje);
+    const respuesta = await humanizarRespuesta(mensaje, respuestaBase, { ejemplosEntrenamiento });
     await responderYGuardar(respuesta);
   });
 
