@@ -46,6 +46,25 @@ function conservaAccionOperativa(respuestaBase, respuestaHumanizada) {
     return false;
   }
 
+  const baseAjustaCarrito = /ajust[eé]|dej[eé]|retir[eé]|qued[oó] vac[ií]o|solamente con eso/i.test(respuestaBase);
+  const humanizadaAgregaProducto =
+    /agreg[uéoe]|inclu[ií]|añad|dej[eé]|separ[ée]|reserv[ée]/i.test(respuestaHumanizada) &&
+    /pedido|paquete|producto/i.test(respuestaHumanizada);
+
+  if (baseAjustaCarrito && humanizadaAgregaProducto) {
+    return false;
+  }
+
+  const baseNiegaPresentacion = /no tengo presentaci[oó]n/i.test(respuestaBase);
+  const humanizadaOfreceExacta =
+    /opci[oó]n exacta|te lo agrego|ya agreg[uéoe]|dej[eé].*(pedido|paquete)|separ[ée]|reserv[ée]|precio:/i.test(
+      respuestaHumanizada
+    );
+
+  if (baseNiegaPresentacion && humanizadaOfreceExacta) {
+    return false;
+  }
+
   return true;
 }
 
@@ -62,12 +81,33 @@ function formatearEjemplos(ejemplos = []) {
     .join("\n\n");
 }
 
+function resumenEstadoParaRespuesta(estado = {}) {
+  return {
+    carrito: estado.carrito || [],
+    pedidoConfirmado: Boolean(estado.pedidoConfirmado),
+    datosDomicilio: estado.datosDomicilio || {},
+    entrega: estado.entrega || {},
+    metodoPago: estado.metodoPago || null,
+    pendientes: {
+      referencia: estado.referenciasPendientes || null,
+      seleccion: estado.ultimaSeleccion || null,
+      productos: estado.productosPendientes || [],
+      datosDomicilio: Boolean(estado.esperandoDatosDomicilio),
+      metodoPago: Boolean(estado.esperandoMetodoPago),
+      tipoEntrega: Boolean(estado.esperandoTipoEntrega),
+    },
+  };
+}
+
 async function humanizarRespuesta(mensajeCliente, respuestaBase, opciones = {}) {
   if (!openai || process.env.HUMANIZAR_IA === "false") {
     return respuestaBase;
   }
 
-  if (respuestaBase.includes("Datos de domicilio:") || respuestaBase.includes("ahorros bancolombia:")) {
+  if (
+    respuestaBase.includes("Datos de domicilio:") ||
+    respuestaBase.includes("ahorros bancolombia:")
+  ) {
     return respuestaBase;
   }
 
@@ -80,21 +120,33 @@ async function humanizarRespuesta(mensajeCliente, respuestaBase, opciones = {}) 
           role: "system",
           content: `
 Eres un asesor amable de una tienda de mascotas en Colombia por WhatsApp.
-Tu tarea es reescribir la respuesta base para que suene como una persona real: cálida, flexible, atenta y natural.
-Evita sonar como plantilla. Puedes cambiar el orden, usar conectores conversacionales y adaptar el tono al mensaje del cliente.
-Cuando el cliente cierre la conversación o dé las gracias después de confirmar un pedido, responde con cercanía, sin repetir el pedido ni volver a pedir datos. Puedes usar máximo un emoji si se siente natural.
+Tu tarea es tomar la respuesta operativa del backend y convertirla en una respuesta final humana.
+El backend ya validó catálogo, precios, presentaciones, carrito y datos. Tú decides el tono, el orden y la claridad, pero no cambias los hechos.
+
+Estilo:
+- Suena como asesor humano de WhatsApp: cálido, concreto, atento y sin frases robóticas.
+- Responde a lo que el cliente acaba de pedir, sin reabrir temas ya resueltos.
+- No repitas resumen, datos o preguntas que ya aparezcan como confirmadas en el estado.
+- Si el cliente pide varias cosas, atiende lo importante primero y deja una sola siguiente pregunta.
+- Cuando haya una negativa de disponibilidad, dilo con naturalidad y ofrece las opciones reales sin sonar brusco.
+- Si el cliente cierra la conversación o agradece después de confirmar, responde con cercanía sin volver a pedir datos.
+- Puedes usar máximo un emoji si aporta cercanía.
 
 Reglas estrictas:
 - No inventes marcas, referencias, presentaciones, precios, cantidades ni beneficios.
+- No seas complaciente si la respuesta base niega disponibilidad o pide validar un dato: conserva esa negativa o esa pregunta. Un asesor humano tambien dice "no lo manejo" cuando el catalogo no lo permite.
 - Conserva exactamente todas las líneas que empiecen por "- ", "Precio:" o "Total:".
 - Conserva exactamente pesos y precios como aparecen.
 - Mantén la respuesta corta, clara y vendedora, tipo WhatsApp.
 - Si falta información, haz solo una pregunta.
 - No preguntes por algo que el cliente ya dijo claramente.
 - Si la respuesta base ya agregó un producto al pedido, no lo conviertas en pregunta ni pidas confirmar ese mismo producto.
+- Si la respuesta base ajusta, retira o deja solo un producto del carrito, conserva esa acción y no digas que agregaste algo nuevo.
+- Si la respuesta base dice que una presentación no está disponible, no la conviertas en una opción exacta ni agregues productos al pedido.
 - Si solo falta un dato, pide solo ese dato.
 - No vuelvas a listar marcas o referencias si la respuesta base no lo hace.
 - No repitas información que ya fue confirmada salvo que la respuesta base sea un resumen de pedido.
+- Si el estado muestra carrito o datos ya tomados, no los pidas otra vez a menos que la respuesta base lo solicite.
 
 Ejemplos dinamicos de estilo y criterio:
 ${formatearEjemplos(opciones.ejemplosEntrenamiento)}
@@ -102,7 +154,11 @@ ${formatearEjemplos(opciones.ejemplosEntrenamiento)}
         },
         {
           role: "user",
-          content: `Mensaje del cliente: ${mensajeCliente}\n\nRespuesta base:\n${respuestaBase}`,
+          content: `Mensaje del cliente: ${mensajeCliente}\n\nInterpretacion estructurada de la IA:\n${JSON.stringify(
+            opciones.interpretacionIA || null
+          )}\n\nEstado actual resumido:\n${JSON.stringify(
+            resumenEstadoParaRespuesta(opciones.estado)
+          )}\n\nRespuesta operativa del backend:\n${respuestaBase}`,
         },
       ],
     });

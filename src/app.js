@@ -19,7 +19,9 @@ const {
   guardarConversacionPersistida,
 } = require("./conversation/conversationStore");
 const { obtenerEjemplosEntrenamiento } = require("./repositories/trainingExampleRepository");
+const { interpretarMensajeCliente } = require("./services/aiInterpreter");
 const { humanizarRespuesta } = require("./services/humanizer");
+const { asegurarRespuestaCatalogo } = require("./services/responseGuard");
 const { responder } = require("./services/twiml");
 
 function crearApp() {
@@ -47,6 +49,8 @@ function crearApp() {
       return;
     }
 
+    const interpretacionIA = await interpretarMensajeCliente({ mensaje, estado, catalogo });
+
     const tieneIntencionCatalogo =
       buscarMarca(catalogo, mensaje) ||
       tieneCriterios(extraerCriterios(mensaje)) ||
@@ -55,7 +59,10 @@ function crearApp() {
       solicitaRecomendacion(mensaje) ||
       solicitaOpinionMarca(mensaje) ||
       extraerPresupuesto(mensaje) ||
-      solicitaCierre(mensaje);
+      solicitaCierre(mensaje) ||
+      ["pedido_producto", "consulta_producto", "consulta_marcas", "recomendacion", "datos_envio", "metodo_pago"].includes(
+        interpretacionIA?.intencion
+      );
 
     if (esSaludo(mensaje) && !tieneIntencionCatalogo && !(estado.pedidoConfirmado && estado.carrito.length)) {
       await responderYGuardar("¡Hola! Bienvenido 🐶 ¿Qué necesitas para tu mascota hoy?");
@@ -72,9 +79,14 @@ function crearApp() {
       return;
     }
 
-    const respuestaBase = resolverConsultaCatalogo(mensaje, estado, catalogo);
+    const respuestaBase = resolverConsultaCatalogo(mensaje, estado, catalogo, interpretacionIA);
     const ejemplosEntrenamiento = await obtenerEjemplosEntrenamiento(mensaje);
-    const respuesta = await humanizarRespuesta(mensaje, respuestaBase, { ejemplosEntrenamiento });
+    const respuestaHumanizada = await humanizarRespuesta(mensaje, respuestaBase, {
+      ejemplosEntrenamiento,
+      estado,
+      interpretacionIA,
+    });
+    const respuesta = asegurarRespuestaCatalogo(mensaje, respuestaHumanizada, { catalogo, interpretacionIA });
     await responderYGuardar(respuesta);
   });
 
