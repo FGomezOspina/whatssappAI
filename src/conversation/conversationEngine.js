@@ -317,6 +317,10 @@ function referenciaCumple(referencia, criterios) {
     return false;
   }
 
+  if (!criterios.edadEspecial && atributos.edadEspecial) {
+    return false;
+  }
+
   if (criterios.tamano && atributos.tamano) {
     const coincideTamano =
       atributos.tamano === criterios.tamano ||
@@ -656,7 +660,8 @@ function respuestaSinOpciones(catalogo, criterios, marca = null, estado = null) 
 function limpiarCandidatoMarca(candidato) {
   let limpio = normalizar(candidato)
     .replace(/\b(la|el|los|las|un|una|unos|unas|de|del|para|por|favor|marca|alimento|comida|cuido|concentrado|algo|y|mi|mis|su|sus|es|esta|estan)\b/g, " ")
-    .replace(/\b(que|cual|cuales|tienes|tiene|manejan|maneja|venden|vende|hay|quiero|quisiera|necesito|busco|dame|deme|me|gustaria|gusta|interesa)\b/g, " ")
+    .replace(/\b(hola|buenas|buenos|dias|tardes|noches|hacer|pedido|comprar|cotizar|encargar|pedir)\b/g, " ")
+    .replace(/\b(que|cual|cuales|tengo|tienes|tiene|manejan|maneja|venden|vende|hay|quiero|quisiera|necesito|busco|dame|deme|me|gustaria|gusta|interesa)\b/g, " ")
     .replace(/\b(mil|pesos|peso|barato|economico|economica|recomiende|recomiendas|recomienda|recomiendame|recomendar|recomendarme)\b/g, " ");
 
   PALABRAS_CRITERIO.forEach((palabra) => {
@@ -670,6 +675,22 @@ function extraerMarcaDesconocida(mensaje, catalogo, opciones = {}) {
   if (buscarMarca(catalogo, mensaje)) return null;
 
   const texto = normalizar(mensaje);
+  const pareceDescripcionMascota =
+    /\b(tengo|mi|para mi|es un|es una)\b/.test(texto) &&
+    tieneCriterios(extraerCriterios(texto)) &&
+    !solicitaMarcas(texto) &&
+    !solicitaReferencias(texto);
+
+  if (pareceDescripcionMascota) return null;
+
+  const esAperturaSinProducto =
+    esSaludo(texto) &&
+    contieneAlguno(texto, ["pedido", "hacer pedido", "comprar", "cotizar", "encargar"]) &&
+    !tieneCriterios(extraerCriterios(texto)) &&
+    !mensajeTienePresentacionExplicita(texto);
+
+  if (esAperturaSinProducto) return null;
+
   const patrones = [
     /\bmarca\s+([a-z0-9. ]{2,50})/,
     /\b(?:tienen|tiene|manejan|maneja|venden|vende|hay|busco|quiero|necesito|dame|deme)\s+([a-z0-9. ]{2,60})/,
@@ -2310,7 +2331,6 @@ function pareceNombre(valor = "") {
       "porfa",
       "datafono",
       "datáfono",
-      "labrador",
       "mascota",
     ])
   );
@@ -3291,6 +3311,12 @@ function resolverConsultaCatalogo(mensaje, estado, catalogo = cargarProductos(),
       estado.esperandoMarca = true;
 
       if (marcas.length) {
+        if (estado.esperandoMarca || !pidioMarcas) {
+          estado.esperandoPresupuesto = false;
+          estado.pendienteRecomendacion = true;
+          return recomendarOpciones(catalogo, criterios, presupuesto, null, quiereEconomico(mensaje));
+        }
+
         return `${listarMarcas(catalogo, marcas, criterios)}\n\nSi prefieres, también puedo recomendarte según tu presupuesto.`;
       }
 

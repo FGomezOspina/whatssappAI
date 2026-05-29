@@ -86,13 +86,26 @@ function normalizarInterpretacion(valor) {
   };
 }
 
-async function interpretarMensajeCliente({ mensaje, estado, catalogo }) {
+function formatearEjemplos(ejemplos = []) {
+  if (!ejemplos.length) return "Sin ejemplos dinamicos para este mensaje.";
+
+  return ejemplos
+    .map(
+      (ejemplo, index) =>
+        `${index + 1}. Intencion: ${ejemplo.intent}\nCliente/contexto: ${
+          ejemplo.customer_message
+        }\nRespuesta ideal: ${ejemplo.ideal_response}\nNota: ${ejemplo.notes || "Aplicar el criterio sin copiar literalmente."}`
+    )
+    .join("\n\n");
+}
+
+async function interpretarMensajeCliente({ mensaje, estado, catalogo, ejemplosEntrenamiento = [] }) {
   if (!openai || process.env.AI_INTERPRETER === "false") return null;
 
   try {
     const completion = await openai.chat.completions.create({
-      model: process.env.OPENAI_INTERPRETER_MODEL || process.env.OPENAI_MODEL || "gpt-4.1-mini",
-      temperature: 0.1,
+      model: process.env.OPENAI_INTERPRETER_MODEL || process.env.OPENAI_MODEL || "gpt-5.2",
+      temperature: Number(process.env.OPENAI_INTERPRETER_TEMPERATURE || 0.2),
       response_format: { type: "json_object" },
       messages: [
         {
@@ -112,13 +125,15 @@ Fuente de verdad:
 - Si el cliente cambia informacion ya dada (direccion, celular, correo, nombre, cedula, metodo de pago o cantidad), clasificalo como actualizacion/cambio, no como una consulta nueva.
 - Si ya hay productos en carrito y el cliente dice algo como "asi esta bien", "listo", "eso es todo", "nada mas", "continua", "sigue", "dale" o "perfecto", interpreta que quiere avanzar con el pedido. Usa intencion "confirmacion" y accion "confirmar", no consulta_producto.
 - No vuelvas a extraer producto desde el historial si el ultimo mensaje no menciona marca, referencia, especie, peso ni cantidad. En esos casos usa el estado para decidir si es confirmacion, datos de entrega, metodo de pago o cambio.
+- Si el cliente solo saluda y dice que quiere hacer un pedido, no inventes marca ni producto. Interpreta apertura de pedido: intencion "otro", accion null, faltanteSugerido "marca" o "referencia" segun el contexto.
+- Si el cliente describe su mascota con una raza, apodo, escritura aproximada o mezcla ("tengo un labrador adulto", "mi perrita es french poodol", "es criollo grande", "tengo una gata adulta"), no lo trates como marca desconocida. Actua como experto en razas y deduce especie, etapa y tamano probable desde conocimiento general; si no estas seguro del tamano, deja tamano null y conserva especie/etapa.
 
 Razonamiento esperado:
 - "a", "adult", "adulto" en contexto de alimento puede significar adulto.
 - "cach", "cachorro", "puppy" significan cachorro.
 - "a.r.p", "arp", "adulto raza pequena", "mini" significan adulto/pequeno si aplica.
 - "a.r.g", "arg", "adulto raza grande", "mediano", razas medianas/grandes significan adulto/grande si aplica.
-- Si el cliente dice una raza, infiere tamano por conocimiento general sin necesitar una lista programada.
+- Si el cliente dice una raza o una descripcion de raza, infiere tamano por conocimiento general sin necesitar una lista programada. Tolera mala ortografia, diminutivos, abreviaturas y nombres locales.
 - Si el cliente ya dio presentacion, respeta exactamente esa presentacion. "8 kilos", "8kl" o "x 8 kilos" significa 8kg, no 22.7kg.
 - "Bulto" puede indicar una bolsa grande, pero nunca debe reemplazar un numero explicito de kilos. El numero explicito gana.
 - Si la presentacion pedida no existe en el catalogo para la marca/referencia/criterios detectados, deja producto.presentacion con el valor pedido por el cliente, usa faltanteSugerido "presentacion" y mantén accion "consultar" si no hay una opción exacta agregable. No elijas otra presentacion cercana.
@@ -137,6 +152,9 @@ Razonamiento esperado:
 - Si el cliente dice que ya no quiere, quite, elimine, saque o retire un producto, es operacion quitar.
 - Si el cliente está aclarando una referencia, tamaño, presentación o cantidad pendiente, conserva el contexto anterior y completa lo que falta; no reinicies la conversación.
 - No uses accion agregar cuando el mensaje sea una corrección del carrito o una aclaración de un producto que ya estaba en contexto.
+
+Ejemplos dinamicos curados desde conversaciones reales:
+${formatearEjemplos(ejemplosEntrenamiento)}
 
 JSON exacto:
 {

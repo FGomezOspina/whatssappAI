@@ -49,7 +49,13 @@ function crearApp() {
       return;
     }
 
-    const interpretacionIA = await interpretarMensajeCliente({ mensaje, estado, catalogo });
+    const ejemplosEntrenamiento = await obtenerEjemplosEntrenamiento(mensaje, 8);
+    const interpretacionIA = await interpretarMensajeCliente({
+      mensaje,
+      estado,
+      catalogo,
+      ejemplosEntrenamiento,
+    });
 
     const tieneIntencionCatalogo =
       buscarMarca(catalogo, mensaje) ||
@@ -80,7 +86,6 @@ function crearApp() {
     }
 
     const respuestaBase = resolverConsultaCatalogo(mensaje, estado, catalogo, interpretacionIA);
-    const ejemplosEntrenamiento = await obtenerEjemplosEntrenamiento(mensaje);
     const respuestaHumanizada = await humanizarRespuesta(mensaje, respuestaBase, {
       ejemplosEntrenamiento,
       estado,

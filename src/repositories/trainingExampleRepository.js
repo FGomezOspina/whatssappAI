@@ -54,7 +54,7 @@ function puntuarEjemplo(mensaje, ejemplo) {
   return palabras.reduce((total, palabra) => total + (base.includes(palabra) ? 1 : 0), 0);
 }
 
-async function obtenerEjemplosEntrenamiento(mensaje, limite = 4) {
+async function obtenerEjemplosEntrenamiento(mensaje, limite = 8) {
   if (!supabaseConfigurado()) return [];
 
   try {

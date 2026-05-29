@@ -112,9 +112,9 @@ async function humanizarRespuesta(mensajeCliente, respuestaBase, opciones = {}) 
   }
 
   try {
-    const completion = await openai.chat.completions.create({
-      model: process.env.OPENAI_MODEL || "gpt-4.1-mini",
-      temperature: 0.55,
+    const model = process.env.OPENAI_MODEL || "gpt-5.2-chat-latest";
+    const parametrosModelo = {
+      model,
       messages: [
         {
           role: "system",
@@ -161,6 +161,14 @@ ${formatearEjemplos(opciones.ejemplosEntrenamiento)}
           )}\n\nRespuesta operativa del backend:\n${respuestaBase}`,
         },
       ],
+    };
+
+    if (!/^gpt-5/i.test(model)) {
+      parametrosModelo.temperature = 0.55;
+    }
+
+    const completion = await openai.chat.completions.create({
+      ...parametrosModelo,
     });
 
     const respuesta = completion.choices[0].message.content.trim();

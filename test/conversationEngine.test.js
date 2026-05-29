@@ -116,3 +116,45 @@ test("avanza a pago cuando el cliente cierra el carrito aunque la IA reinterpret
   assert.doesNotMatch(respuesta, /presentaciones/i);
   assert.equal(estado.esperandoMetodoPago, true);
 });
+
+test("no trata una apertura de pedido como marca desconocida", () => {
+  const estado = crearEstadoInicial();
+  const catalogo = cargarProductos();
+
+  const respuesta = resolverConsultaCatalogo("hola, para hacer un pedido", estado, catalogo, null);
+
+  assert.doesNotMatch(respuesta, /no manejamos/i);
+  assert.match(respuesta, /Dog Chow|Chunky|marca|producto/i);
+});
+
+test("usa la raza de la mascota como contexto de recomendacion", () => {
+  const estado = crearEstadoInicial();
+  const catalogo = cargarProductos();
+  const interpretacionIA = {
+    intencion: "recomendacion",
+    accion: "consultar",
+    confianza: 0.95,
+    producto: {
+      marca: null,
+      referencia: null,
+      especie: "perro",
+      etapa: "adulto",
+      tamano: "grande",
+      presentacion: null,
+      cantidad: null,
+    },
+    entrega: {},
+    datosCliente: {},
+    carrito: { operacion: null },
+    faltanteSugerido: null,
+  };
+
+  resolverConsultaCatalogo("hola necesito un pedido", estado, catalogo, null);
+  const respuesta = resolverConsultaCatalogo("tengo un labrador adulto", estado, catalogo, interpretacionIA);
+
+  assert.doesNotMatch(respuesta, /no manejamos/i);
+  assert.match(respuesta, /Adulto Mediano y Grande|Adulto Todas las Razas/i);
+  assert.equal(estado.criterios.especie, "perro");
+  assert.equal(estado.criterios.etapa, "adulto");
+  assert.equal(estado.criterios.tamano, "grande");
+});
