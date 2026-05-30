@@ -13,6 +13,7 @@ function crearEstadoInicial() {
     marca: null,
     criterios: {},
     ultimaSeleccion: null,
+    productosConsultados: [],
     productosPendientes: [],
     referenciasPendientes: null,
     carrito: [],
@@ -65,6 +66,7 @@ function normalizarEstadoPersistido(estadoGuardado = {}) {
     },
     datosDomicilio: estadoGuardado.datosDomicilio || {},
     carrito: estadoGuardado.carrito || [],
+    productosConsultados: estadoGuardado.productosConsultados || [],
     productosPendientes: estadoGuardado.productosPendientes || [],
   };
 }

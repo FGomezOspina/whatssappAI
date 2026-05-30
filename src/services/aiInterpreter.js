@@ -26,6 +26,7 @@ function resumenEstado(estado = {}) {
     ultimaSeleccion: estado.ultimaSeleccion || null,
     referenciasPendientes: estado.referenciasPendientes || null,
     productosPendientes: estado.productosPendientes || [],
+    productosConsultados: estado.productosConsultados || [],
     carrito: estado.carrito || [],
     pedidoConfirmado: Boolean(estado.pedidoConfirmado),
     datosDomicilio: estado.datosDomicilio || {},
@@ -44,20 +45,27 @@ function resumenEstado(estado = {}) {
 function normalizarInterpretacion(valor) {
   if (!valor || typeof valor !== "object") return null;
 
+  const normalizarProducto = (producto = {}) => ({
+    marca: producto.marca || null,
+    referencia: producto.referencia || null,
+    especie: producto.especie || null,
+    etapa: producto.etapa || null,
+    tamano: producto.tamano || null,
+    sabores: Array.isArray(producto.sabores) ? producto.sabores : [],
+    presentacion: producto.presentacion || null,
+    cantidad: producto.cantidad || null,
+  });
+  const productos = Array.isArray(valor.productos)
+    ? valor.productos.map(normalizarProducto)
+    : [];
+  const productoPrincipal = normalizarProducto(valor.producto || productos[0] || {});
+
   return {
     intencion: valor.intencion || "otro",
     accion: valor.accion || null,
     confianza: Number(valor.confianza || 0),
-    producto: {
-      marca: valor.producto?.marca || null,
-      referencia: valor.producto?.referencia || null,
-      especie: valor.producto?.especie || null,
-      etapa: valor.producto?.etapa || null,
-      tamano: valor.producto?.tamano || null,
-      sabores: Array.isArray(valor.producto?.sabores) ? valor.producto.sabores : [],
-      presentacion: valor.producto?.presentacion || null,
-      cantidad: valor.producto?.cantidad || null,
-    },
+    producto: productoPrincipal,
+    productos,
     entrega: {
       tipo: valor.entrega?.tipo || null,
       direccion: valor.entrega?.direccion || null,
@@ -139,12 +147,19 @@ Razonamiento esperado:
 - Si la presentacion pedida no existe en el catalogo para la marca/referencia/criterios detectados, deja producto.presentacion con el valor pedido por el cliente, usa faltanteSugerido "presentacion" y mantén accion "consultar" si no hay una opción exacta agregable. No elijas otra presentacion cercana.
 - Si el cliente pide una referencia por descripcion ("razas pequeñas", "adulto raza grande", "gatito"), puedes mapearla a la referencia exacta del catalogo cuando sea claro. Si hay dos referencias posibles, deja referencia null y conserva criterios.
 - Si el cliente pide domicilio y producto en el mismo mensaje, extrae ambos. No asumas que el producto queda agregado si falta validacion de presentacion.
+- Si el cliente escribe varios productos en un mismo mensaje, en varias lineas o separados por comas/conectores, conserva cada item por separado en "productos". No mezcles presentaciones entre lineas. Ejemplo: si una linea dice 1kg y otra 2kg, cada producto conserva su propio peso.
+- Corrige errores leves de marca por contexto del catalogo ("dog choe", "dog chpw", "dogchow" -> Dog Chow) si la intencion es clara, pero la validacion final la hace el backend.
 - Si el cliente dio direccion tipo "Cra 10 #26-49 centro", es direccion completa.
 - Si solo dio barrio/sector/conjunto/ciudad, direccionCompleta debe ser false y sector debe quedar con ese texto.
 - Si falta un dato, identifica solo ese dato.
 - Lee el estado del carrito y de los productos pendientes antes de decidir.
 - Si el cliente ya habia dado un dato en el estado y no lo esta cambiando, no lo marques como faltante.
 - Si el cliente pregunta precio, disponibilidad o referencias, usa accion "consultar" aunque mencione un producto.
+- Para preguntas de precio/cotizacion ("precio", "cuanto vale", "a como", "me regalas precios", "cotizar", "valor de"), no uses accion "agregar" ni carrito.operacion "agregar". Devuelve productos[] si hay varios productos, pero con accion "consultar".
+- Si el cliente luego aclara "solo por preguntar", "era para cotizar", "solo averiguaba" o similar, reconoce que no queria comprar. Usa intencion "consulta_producto" o "rechazo" y no agregues nada nuevo; si habia productosConsultados, mantenlos como referencia de cotizacion.
+- Si despues de decir que solo estaba preguntando consulta otro producto con "y el...", "y de...", "cuanto vale el otro", entiende que sigue cotizando. Usa accion "consultar", no "agregar".
+- Si despues de consultar precios el cliente dice que lo quiere, "agrega ese", "me llevo los dos", "dejame el primero", usa productosConsultados del estado para saber a que productos se refiere. Si quiere todos los consultados, accion "agregar"; si solo uno, conserva solo ese producto en productos[].
+- Distingue cotizacion de compra: "necesito", "quiero" o "para domicilio" pueden ser compra, pero si aparecen con "precio/cuanto/valor/cotizar" son consulta hasta que el cliente confirme compra.
 - Si el cliente dice "me sirve", "esa", "la de 4", "de 4kg", "dale", "listo" y hay ultimaSeleccion o referenciasPendientes, interpreta como confirmacion/aclaracion del contexto pendiente.
 - Si ya se agrego un producto al carrito, no listes otra vez sus presentaciones salvo que el cliente pida explicitamente cambiar de presentacion, precio o disponibilidad.
 - Si el cliente corrige una cantidad ya mencionada o ya agregada ("solo es 1 paquete", "déjalo en 2", "eran dos", "solo uno"), NO es un producto nuevo: es operacion modificar_cantidad.
@@ -171,6 +186,18 @@ JSON exacto:
     "presentacion": "ej. 4kg, 2kg, 20kg o null",
     "cantidad": null
   },
+  "productos": [
+    {
+      "marca": "marca exacta del catalogo o null",
+      "referencia": "referencia exacta del catalogo o null",
+      "especie": "perro|gato|null",
+      "etapa": "adulto|cachorro|null",
+      "tamano": "pequeno|grande|todas|null",
+      "sabores": [],
+      "presentacion": "presentacion exacta pedida por el cliente o null",
+      "cantidad": null
+    }
+  ],
   "entrega": {
     "tipo": "domicilio|recoger|null",
     "direccion": "direccion exacta si existe o null",

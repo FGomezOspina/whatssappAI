@@ -1619,6 +1619,27 @@ function presentacionesReferencia(referencia) {
     .join("\n");
 }
 
+function guardarProductosConsultados(estado, items) {
+  estado.productosConsultados = items.map((item) => ({
+    marca: item.marca.marca,
+    referencia: item.referencia.nombre,
+    peso: item.presentacion.peso,
+    precio: item.presentacion.precio,
+    cantidad: item.cantidad || 1,
+  }));
+}
+
+function lineasItemsConsultados(items) {
+  return items
+    .map(
+      (item) =>
+        `- ${item.marca.marca} ${item.referencia.nombre} ${item.presentacion.peso}: ${formatearPrecio(
+          item.presentacion.precio
+        )}`
+    )
+    .join("\n");
+}
+
 function guardarReferenciasPendientes(estado, marca, referencias, contexto = {}) {
   estado.referenciasPendientes = {
     marca: marca.marca,
@@ -1631,9 +1652,7 @@ function guardarReferenciasPendientes(estado, marca, referencias, contexto = {})
   };
 }
 
-function criteriosDesdeInterpretacion(interpretacion = {}) {
-  interpretacion = interpretacion || {};
-  const producto = interpretacion.producto || {};
+function criteriosDesdeProducto(producto = {}) {
   const criterios = {};
 
   if (["perro", "gato"].includes(producto.especie)) criterios.especie = producto.especie;
@@ -1642,6 +1661,10 @@ function criteriosDesdeInterpretacion(interpretacion = {}) {
   if (Array.isArray(producto.sabores) && producto.sabores.length) criterios.sabores = producto.sabores;
 
   return criterios;
+}
+
+function criteriosDesdeInterpretacion(interpretacion = {}) {
+  return criteriosDesdeProducto(interpretacion?.producto || {});
 }
 
 function buscarMarcaInterpretada(catalogo, interpretacion) {
@@ -1691,6 +1714,58 @@ function cantidadInterpretada(interpretacion, mensaje) {
   return extraerCantidad(mensaje) || 1;
 }
 
+function productosInterpretados(interpretacion = {}) {
+  if (Array.isArray(interpretacion.productos) && interpretacion.productos.length > 1) {
+    return interpretacion.productos;
+  }
+
+  return [];
+}
+
+function resolverAgregarConsultadosIA(estado, catalogo, interpretacion) {
+  const consultados = estado.productosConsultados || [];
+  if (!consultados.length) return null;
+  if (!["agregar", "nuevo_pedido"].includes(interpretacion?.accion)) return null;
+
+  const productos = Array.isArray(interpretacion.productos) && interpretacion.productos.length
+    ? interpretacion.productos
+    : interpretacion.producto
+      ? [interpretacion.producto]
+      : [];
+  const pideTodos = !productos.length || productos.every((producto) => !producto.marca && !producto.referencia && !producto.presentacion);
+  const seleccionados = pideTodos
+    ? consultados
+    : consultados.filter((item) =>
+        productos.some((producto) => {
+          const coincideMarca = !producto.marca || normalizar(producto.marca) === normalizar(item.marca);
+          const coincideReferencia =
+            !producto.referencia ||
+            normalizar(producto.referencia) === normalizar(item.referencia) ||
+            contieneFrase(normalizar(item.referencia), producto.referencia);
+          const coincidePeso = !producto.presentacion || normalizarPeso(producto.presentacion) === normalizarPeso(item.peso);
+          return coincideMarca && coincideReferencia && coincidePeso;
+        })
+      );
+
+  if (!seleccionados.length) return null;
+
+  const agregados = [];
+  seleccionados.forEach((item) => {
+    const marca = buscarMarcaPorNombre(catalogo, item.marca);
+    const referencia = marca?.referencias.find((referencia) => referencia.nombre === item.referencia);
+    const presentacion = referencia?.presentaciones.find((presentacion) => normalizarPeso(presentacion.peso) === normalizarPeso(item.peso));
+    if (!marca || !referencia || !presentacion) return;
+
+    agregarAlCarrito(estado, marca, referencia, presentacion, item.cantidad || 1);
+    agregados.push({ marca, referencia, presentacion, cantidad: item.cantidad || 1 });
+  });
+
+  if (!agregados.length) return null;
+
+  estado.productosConsultados = [];
+  return `Listo, agregué al pedido:\n${lineasItems(agregados)}\n\n${productoAgregadoRespuesta(estado)}`;
+}
+
 function aplicarDatosInterpretados(estado, interpretacion = {}) {
   const entrega = interpretacion.entrega || {};
   const datosCliente = interpretacion.datosCliente || {};
@@ -1737,6 +1812,131 @@ function preguntaReferenciaFaltante(marca, referencias, interpretacion = {}) {
   return `Para escoger bien en ${marca.marca}, dime cuál de estas opciones necesitas:\n${lista}`;
 }
 
+function buscarPresentacionProducto(referencia, producto = {}) {
+  if (!producto.presentacion) return null;
+  const solicitada = normalizarPeso(producto.presentacion);
+  return (
+    referencia.presentaciones.find((presentacion) => normalizarPeso(presentacion.peso) === solicitada) || null
+  );
+}
+
+function respuestaPresentacionProductoNoDisponible(marca, referencia, producto = {}) {
+  if (!producto.presentacion) return null;
+  const solicitada = normalizarPeso(producto.presentacion);
+  if (!solicitada || presentacionDisponible(referencia, solicitada)) return null;
+  return respuestaPresentacionNoDisponible(marca, referencia, solicitada);
+}
+
+function resolverProductosInterpretadosIA(mensaje, estado, catalogo, interpretacion) {
+  const productos = productosInterpretados(interpretacion);
+  if (!productos.length) return null;
+  const esConsulta = interpretacion.accion === "consultar" || interpretacion.intencion === "consulta_producto";
+
+  const agregados = [];
+  const consultados = [];
+  const pendientes = [];
+  const noDisponibles = [];
+
+  productos.forEach((producto) => {
+    const marca = buscarMarcaPorNombre(catalogo, producto.marca) || buscarMarca(catalogo, producto.marca || "");
+    if (!marca) {
+      pendientes.push({ producto, razon: "marca" });
+      return;
+    }
+
+    const criterios = mezclarCriterios(extraerCriterios(mensaje), criteriosDesdeProducto(producto));
+    const referencias = referenciasPorCriterios(marca, criterios);
+    const referencia =
+      buscarReferenciaInterpretada(marca, { producto }, criterios) ||
+      elegirMejorReferencia(referencias, criterios, producto.referencia || mensaje);
+    const cantidad = Number.isInteger(Number(producto.cantidad)) && Number(producto.cantidad) > 0
+      ? Number(producto.cantidad)
+      : 1;
+
+    if (!referencia) {
+      pendientes.push({ marca, referencias, producto, criterios, cantidad });
+      return;
+    }
+
+    const presentacionNoDisponible = respuestaPresentacionProductoNoDisponible(marca, referencia, producto);
+    if (presentacionNoDisponible) {
+      noDisponibles.push(presentacionNoDisponible);
+      estado.ultimaSeleccion = {
+        marca: marca.marca,
+        referencia: referencia.nombre,
+        presentacion: null,
+        cantidad,
+      };
+      return;
+    }
+
+    const presentacion = buscarPresentacionProducto(referencia, producto);
+    if (!presentacion) {
+      pendientes.push({ marca, referencias: [referencia], referencia, producto, criterios, cantidad });
+      return;
+    }
+
+    if (esConsulta) {
+      consultados.push({ marca, referencia, presentacion, cantidad });
+      return;
+    }
+
+    agregarAlCarrito(estado, marca, referencia, presentacion, cantidad);
+    agregados.push({ marca, referencia, presentacion, cantidad });
+  });
+
+  if (!agregados.length && !consultados.length && !pendientes.length && !noDisponibles.length) return null;
+
+  if (agregados.length || consultados.length) {
+    const ultimo = (agregados.length ? agregados : consultados)[(agregados.length ? agregados : consultados).length - 1];
+    estado.marca = ultimo.marca.marca;
+    estado.criterios = criteriosDesdeReferencia(ultimo.referencia);
+    estado.ultimaSeleccion = null;
+    estado.referenciasPendientes = null;
+  }
+
+  const partes = [];
+  if (consultados.length) {
+    guardarProductosConsultados(estado, consultados);
+    partes.push(`Estos son los precios:\n${lineasItemsConsultados(consultados)}\n\nSi te sirve alguno, dime cuál quieres agregar al pedido.`);
+  }
+
+  if (agregados.length) {
+    partes.push(`Listo, agregué al pedido:\n${lineasItems(agregados)}\n\n${resumenCarrito(estado)}`);
+  }
+
+  if (noDisponibles.length) partes.push(noDisponibles[0]);
+
+  if (pendientes.length) {
+    const pendiente = pendientes[0];
+    if (pendiente.marca && pendiente.referencias?.length) {
+      guardarReferenciasPendientes(estado, pendiente.marca, pendiente.referencias, {
+        texto: mensaje,
+        criterios: pendiente.criterios,
+        cantidad: pendiente.cantidad,
+        quiereDomicilio: interpretacion.entrega?.tipo === "domicilio",
+        datosDomicilio: estado.datosDomicilio,
+      });
+      const lista = pendiente.referencias.map((referencia) => `- ${referencia.nombre}`).join("\n");
+      partes.push(`Para completar otro producto, dime cuál referencia necesitas:\n${lista}`);
+    } else {
+      partes.push("Me quedó un producto sin marca clara. Dime la marca y lo agrego al pedido.");
+    }
+  }
+
+  if (agregados.length && !pendientes.length && !noDisponibles.length) {
+    if (estado.entrega?.tipo === "domicilio" && tieneDireccionIncompleta(estado)) {
+      partes.push(solicitarDireccionCompleta(estado));
+    } else if (interpretacion.entrega?.tipo === "domicilio" || tieneDatosDomicilioUtiles(estado.datosDomicilio)) {
+      partes.push(solicitarDatosDomicilio(estado));
+    } else {
+      partes.push(productoAgregadoRespuesta(estado));
+    }
+  }
+
+  return partes.join("\n\n");
+}
+
 function resolverConInterpretacionIA(mensaje, estado, catalogo, interpretacion) {
   if (!interpretacion || interpretacion.confianza < 0.55) return null;
 
@@ -1749,6 +1949,12 @@ function resolverConInterpretacionIA(mensaje, estado, catalogo, interpretacion) 
 
   if (!["pedido_producto", "consulta_producto"].includes(interpretacion.intencion)) return null;
   if (!["agregar", "consultar", "nuevo_pedido", null].includes(interpretacion.accion)) return null;
+
+  const respuestaConsultados = resolverAgregarConsultadosIA(estado, catalogo, interpretacion);
+  if (respuestaConsultados) return respuestaConsultados;
+
+  const respuestaProductos = resolverProductosInterpretadosIA(mensaje, estado, catalogo, interpretacion);
+  if (respuestaProductos) return respuestaProductos;
 
   const marca = buscarMarcaInterpretada(catalogo, interpretacion) || buscarMarca(catalogo, mensaje);
   if (!marca) return null;
@@ -1828,6 +2034,13 @@ function resolverConInterpretacionIA(mensaje, estado, catalogo, interpretacion) 
 
   if (!presentacion) {
     return formatearReferencia(marca, referencia, "¿Cuál presentación quieres agregar al pedido?");
+  }
+
+  if (interpretacion.accion === "consultar" || interpretacion.intencion === "consulta_producto") {
+    const consultado = { marca, referencia, presentacion, cantidad };
+    guardarProductosConsultados(estado, [consultado]);
+    estado.ultimaSeleccion = null;
+    return `Estos son los precios:\n${lineasItemsConsultados([consultado])}\n\nSi te sirve, dime si quieres agregarlo al pedido.`;
   }
 
   agregarAlCarrito(estado, marca, referencia, presentacion, cantidad);
