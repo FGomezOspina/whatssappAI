@@ -45,3 +45,32 @@ test("mantiene separados los lotes de clientes distintos", async () => {
   );
   buffer.cerrar();
 });
+
+test("reinicia la espera cada vez que llega otro mensaje del mismo cliente", async () => {
+  const lotes = [];
+  const buffer = crearBufferMensajesEntrantes({
+    ventanaMs: 20,
+    alVaciar: (eventos) => lotes.push(eventos),
+  });
+
+  buffer.agregar({ channelUserId: "cliente-1", text: "Necesito hacer otro pedido" });
+  await esperar(12);
+  buffer.agregar({ channelUserId: "cliente-1", text: "Dog Chow cachorro pequeño 1kg" });
+  await esperar(12);
+
+  assert.equal(lotes.length, 0);
+
+  buffer.agregar({ channelUserId: "cliente-1", text: "para el mismo domicilio" });
+  await esperar(30);
+
+  assert.equal(lotes.length, 1);
+  assert.deepEqual(
+    lotes[0].map((evento) => evento.text),
+    [
+      "Necesito hacer otro pedido",
+      "Dog Chow cachorro pequeño 1kg",
+      "para el mismo domicilio",
+    ]
+  );
+  buffer.cerrar();
+});

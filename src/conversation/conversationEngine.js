@@ -825,6 +825,9 @@ function esAfirmacion(mensaje) {
     "ok",
     "okay",
     "bueno",
+    "perfecto",
+    "correcto",
+    "todo correcto",
     "me sirve",
     "sirve",
     "quiero",
@@ -854,20 +857,22 @@ function parsearNumeroMoneda(valor, sufijo = "") {
   return Math.round(numero);
 }
 
-function extraerPresupuesto(mensaje) {
+function extraerPresupuesto(mensaje, opciones = {}) {
   const texto = normalizar(mensaje);
-  const regex = /(?:\$|\b(?:hasta|maximo|presupuesto|tengo|menos de|de)\s+)?(\d[\d.,]*)(?:\s*(mil|k))?/g;
+  const permiteNumeroSolo = Boolean(opciones.permitirNumeroSolo);
+  const regex = /(\$|\b(?:hasta|maximo|presupuesto|tengo|menos de|de)\s+)?(\d[\d.,]*)(?:\s*(mil|k))?/g;
   const valores = [];
   let coincidencia;
 
   while ((coincidencia = regex.exec(texto))) {
     const despues = texto.slice(regex.lastIndex, regex.lastIndex + 8);
-    if (coincidencia[2] === "k" && /^[gil]/.test(texto.slice(regex.lastIndex, regex.lastIndex + 1))) {
+    if (!coincidencia[1] && !permiteNumeroSolo) continue;
+    if (coincidencia[3] === "k" && /^[gil]/.test(texto.slice(regex.lastIndex, regex.lastIndex + 1))) {
       continue;
     }
     if (/^\s*(kg|kl|kilo|kilos|g|gr|lb)/.test(despues)) continue;
 
-    const numero = parsearNumeroMoneda(coincidencia[1], coincidencia[2]);
+    const numero = parsearNumeroMoneda(coincidencia[2], coincidencia[3]);
     if (numero && numero >= 1000) valores.push(numero);
   }
 
@@ -1111,16 +1116,20 @@ function agregarAlCarrito(estado, marca, referencia, presentacion, cantidad = 1)
   }
 }
 
-function resumenCarrito(estado) {
-  if (!estado.carrito.length) return "Tu pedido está vacío.";
+function resumenItemsCarrito(items = []) {
+  if (!items.length) return "Tu pedido está vacío.";
 
-  const lineas = estado.carrito.map((item) => {
+  const lineas = items.map((item) => {
     const subtotal = item.precio * item.cantidad;
     return `- ${item.cantidad} x ${item.marca} ${item.referencia} ${item.peso}: ${formatearPrecio(subtotal)}`;
   });
-  const total = estado.carrito.reduce((suma, item) => suma + item.precio * item.cantidad, 0);
+  const total = items.reduce((suma, item) => suma + item.precio * item.cantidad, 0);
 
   return `Pedido:\n${lineas.join("\n")}\nTotal: ${formatearPrecio(total)}`;
+}
+
+function resumenCarrito(estado) {
+  return resumenItemsCarrito(estado.carrito);
 }
 
 function referenciaCatalogoParaItem(catalogo, itemCarrito) {
@@ -2669,6 +2678,7 @@ function confirmarRecogida(estado) {
   estado.pedidoConfirmadoPendienteGuardar = true;
   estado.pedidoNuevoConDatosPrevios = false;
   estado.datosPreviosConfirmados = true;
+  recordarUltimoPedidoConfirmado(estado);
 
   return `${resumenCarrito(estado)}\n\nRecogida en sede:\n- ${estado.entrega.sede}\n\nListo, te lo dejamos separado para recoger en esa sede.`;
 }
@@ -2785,6 +2795,7 @@ function confirmarPedido(estado) {
   estado.pedidoConfirmadoPendienteGuardar = true;
   estado.pedidoNuevoConDatosPrevios = false;
   estado.datosPreviosConfirmados = true;
+  recordarUltimoPedidoConfirmado(estado);
 
   return `${resumenCarrito(estado)}\n\n${resumenDatosFacturacionYDomicilio(
     estado
@@ -2854,7 +2865,7 @@ function solicitarNuevaDireccion(estado) {
   return `${resumenCarrito(estado)}\n\nClaro, dime la nueva dirección de envío y la actualizo.`;
 }
 
-function confirmarConDatosActuales(estado) {
+function confirmarConDatosActuales(estado, confirmarDirectamente = false) {
   estado.esperandoConfirmacionDatosPrevios = false;
   estado.esperandoCambioDireccion = false;
   estado.esperandoConfirmacionDatosFacturacion = false;
@@ -2863,10 +2874,18 @@ function confirmarConDatosActuales(estado) {
 
   if (!estado.metodoPago) return solicitarMetodoPago(estado);
   if (camposDomicilioFaltantes(estado).length) return solicitarDatosDomicilio(estado);
-  return solicitarConfirmacionPedido(estado);
+  return confirmarDirectamente ? confirmarPedido(estado) : solicitarConfirmacionPedido(estado);
 }
 
-function resolverConfirmacionPedido(mensaje, estado) {
+function interpretacionConfirma(interpretacion) {
+  return Boolean(
+    interpretacion?.confianza >= 0.55 &&
+      interpretacion.intencion === "confirmacion" &&
+      interpretacion.accion === "confirmar"
+  );
+}
+
+function resolverConfirmacionPedido(mensaje, estado, interpretacion = null) {
   if (!estado.esperandoConfirmacionPedido) return null;
 
   const metodoPago = detectarMetodoPago(mensaje);
@@ -2875,7 +2894,7 @@ function resolverConfirmacionPedido(mensaje, estado) {
     return solicitarConfirmacionPedido(estado);
   }
 
-  if (esAfirmacion(mensaje)) {
+  if (esAfirmacion(mensaje) || interpretacionConfirma(interpretacion)) {
     return confirmarPedido(estado);
   }
 
@@ -2895,7 +2914,7 @@ function resolverConfirmacionPedido(mensaje, estado) {
   return null;
 }
 
-function resolverDatosPrevios(mensaje, estado) {
+function resolverDatosPrevios(mensaje, estado, interpretacion = null) {
   const datos = extraerDatosDomicilio(mensaje);
 
   if (estado.esperandoCambioDireccion) {
@@ -2910,7 +2929,7 @@ function resolverDatosPrevios(mensaje, estado) {
   }
 
   if (estado.esperandoConfirmacionDatosFacturacion) {
-    if (esAfirmacion(mensaje)) {
+    if (esAfirmacion(mensaje) || interpretacionConfirma(interpretacion)) {
       return confirmarConDatosActuales(estado);
     }
 
@@ -2953,20 +2972,20 @@ function resolverDatosPrevios(mensaje, estado) {
       return confirmarConDatosActuales(estado);
     }
 
-    if (esAfirmacion(mensaje)) {
-      return confirmarConDatosActuales(estado);
+    if (esAfirmacion(mensaje) || interpretacionConfirma(interpretacion)) {
+      return confirmarConDatosActuales(estado, true);
     }
   }
 
   return null;
 }
 
-function resolverEntregaYPago(mensaje, estado) {
+function resolverEntregaYPago(mensaje, estado, interpretacion = null) {
   if (!estado.carrito.length) {
     return "Claro, primero dime qué producto quieres pedir y te ayudo a armar el pedido.";
   }
 
-  const respuestaDatosPrevios = resolverDatosPrevios(mensaje, estado);
+  const respuestaDatosPrevios = resolverDatosPrevios(mensaje, estado, interpretacion);
   if (respuestaDatosPrevios) return respuestaDatosPrevios;
 
   if (solicitaCambioDireccion(mensaje)) {
@@ -3088,10 +3107,44 @@ function descripcionEntregaAnterior(estado) {
   return "la misma entrega";
 }
 
+function copiar(valor) {
+  return JSON.parse(JSON.stringify(valor));
+}
+
+function obtenerUltimoPedidoConfirmado(estado) {
+  if (estado.ultimoPedidoConfirmado?.carrito?.length) {
+    return estado.ultimoPedidoConfirmado;
+  }
+
+  if (!estado.pedidoConfirmado || !estado.carrito.length) return null;
+
+  return {
+    carrito: copiar(estado.carrito),
+    datosDomicilio: copiar(estado.datosDomicilio || {}),
+    entrega: copiar(estado.entrega || {}),
+    metodoPago: estado.metodoPago || null,
+  };
+}
+
+function recordarUltimoPedidoConfirmado(estado) {
+  if (!estado.pedidoConfirmado || !estado.carrito.length) return;
+
+  estado.ultimoPedidoConfirmado = {
+    carrito: copiar(estado.carrito),
+    datosDomicilio: copiar(estado.datosDomicilio || {}),
+    entrega: copiar(estado.entrega || {}),
+    metodoPago: estado.metodoPago || null,
+  };
+}
+
 function preguntarRepetirPedido(estado) {
+  const pedidoAnterior = obtenerUltimoPedidoConfirmado(estado);
+  if (!pedidoAnterior) return null;
+
+  recordarUltimoPedidoConfirmado(estado);
   estado.esperandoConfirmacionRepetirPedido = true;
-  return `${resumenCarrito(estado)}\n\nVeo que ya tenías este pedido confirmado. ¿Quieres repetirlo con ${descripcionEntregaAnterior(
-    estado
+  return `${resumenItemsCarrito(pedidoAnterior.carrito)}\n\nVeo que ya habías realizado este pedido. ¿Deseas repetirlo con ${descripcionEntregaAnterior(
+    pedidoAnterior
   )} o prefieres hacer uno diferente?`;
 }
 
@@ -3103,6 +3156,7 @@ function reiniciarConfirmacionPedido(estado) {
 }
 
 function iniciarNuevoPedido(estado) {
+  recordarUltimoPedidoConfirmado(estado);
   const tieneDatosPrevios = Boolean(
     tieneDatosDomicilioUtiles(estado.datosDomicilio || {}) ||
       estado.entrega?.tipo ||
@@ -3136,7 +3190,7 @@ function iniciarNuevoPedido(estado) {
   reiniciarConfirmacionPedido(estado);
 }
 
-function resolverConfirmacionRepetirPedido(mensaje, estado) {
+function resolverConfirmacionRepetirPedido(mensaje, estado, interpretacion = null) {
   if (!estado.esperandoConfirmacionRepetirPedido) return null;
 
   if (esNegacion(mensaje)) {
@@ -3144,9 +3198,16 @@ function resolverConfirmacionRepetirPedido(mensaje, estado) {
     return "Claro, hacemos uno diferente. Dime qué producto necesitas ahora y te ayudo a dejarlo listo.";
   }
 
-  if (esAfirmacion(mensaje)) {
-    estado.esperandoConfirmacionRepetirPedido = false;
-    reiniciarConfirmacionPedido(estado);
+  if (esAfirmacion(mensaje) || interpretacionConfirma(interpretacion)) {
+    const pedidoAnterior = obtenerUltimoPedidoConfirmado(estado);
+    if (!pedidoAnterior) return null;
+
+    iniciarNuevoPedido(estado);
+    estado.carrito = copiar(pedidoAnterior.carrito);
+    estado.datosDomicilio = copiar(pedidoAnterior.datosDomicilio || {});
+    estado.entrega = copiar(pedidoAnterior.entrega || {});
+    estado.metodoPago = pedidoAnterior.metodoPago || null;
+    estado.datosPreviosConfirmados = true;
 
     if (estado.entrega?.tipo === "recoger" && estado.entrega.sede) {
       return confirmarRecogida(estado);
@@ -3155,7 +3216,7 @@ function resolverConfirmacionRepetirPedido(mensaje, estado) {
     if (estado.entrega?.tipo === "domicilio") {
       if (!estado.metodoPago) return solicitarMetodoPago(estado);
       if (camposDomicilioFaltantes(estado).length) return solicitarDatosDomicilio(estado);
-      return solicitarConfirmacionPedido(estado);
+      return confirmarPedido(estado);
     }
 
     return solicitarTipoEntrega(estado);
@@ -3396,7 +3457,10 @@ function resolverConsultaCatalogo(mensaje, estado, catalogo = cargarProductos(),
   const pidioReferencias = solicitaReferencias(mensaje);
   const pidioRecomendacion = solicitaRecomendacion(mensaje);
   const pidioOpinion = solicitaOpinionMarca(mensaje);
-  const presupuesto = extraerPresupuesto(mensaje);
+  const presupuesto = extraerPresupuesto(mensaje, {
+    permitirNumeroSolo: estado.esperandoPresupuesto,
+  });
+  const datosDomicilioMensaje = extraerDatosDomicilio(mensaje);
 
   if (esCambioDeMarca(mensaje)) {
     estado.marca = null;
@@ -3407,11 +3471,19 @@ function resolverConsultaCatalogo(mensaje, estado, catalogo = cargarProductos(),
     return listarMarcas(catalogo);
   }
 
-  const respuestaRepetirPedido = resolverConfirmacionRepetirPedido(mensaje, estado);
+  const respuestaRepetirPedido = resolverConfirmacionRepetirPedido(mensaje, estado, interpretacion);
   if (respuestaRepetirPedido) return respuestaRepetirPedido;
 
-  const respuestaConfirmacionPedido = resolverConfirmacionPedido(mensaje, estado);
+  const respuestaConfirmacionPedido = resolverConfirmacionPedido(mensaje, estado, interpretacion);
   if (respuestaConfirmacionPedido) return respuestaConfirmacionPedido;
+
+  if (
+    estado.pedidoConfirmado &&
+    estado.carrito.length &&
+    (marcaDetectada || tieneCriterios(criteriosMensaje))
+  ) {
+    iniciarNuevoPedido(estado);
+  }
 
   if (
     estado.esperandoConfirmacionRepetirPedido &&
@@ -3421,13 +3493,23 @@ function resolverConsultaCatalogo(mensaje, estado, catalogo = cargarProductos(),
   }
 
   if (
+    estado.pedidoConfirmado &&
+    estado.carrito.length &&
+    !marcaDetectada &&
+    !tieneCriterios(criteriosMensaje) &&
+    deseaRepetirPedido(mensaje)
+  ) {
+    return preguntarRepetirPedido(estado);
+  }
+
+  if (
     estado.carrito.length &&
     !marcaEnMensaje &&
     !tieneCriterios(criteriosTextoMensaje) &&
     !estado.ultimaSeleccion &&
     (solicitaCierre(mensaje) || esCierreFinal(mensaje))
   ) {
-    return resolverEntregaYPago(mensaje, estado);
+    return resolverEntregaYPago(mensaje, estado, interpretacion);
   }
 
   const respuestaIA = resolverConInterpretacionIA(mensaje, estado, catalogo, interpretacion);
@@ -3444,16 +3526,6 @@ function resolverConsultaCatalogo(mensaje, estado, catalogo = cargarProductos(),
     }
 
     iniciarNuevoPedido(estado);
-  }
-
-  if (
-    estado.pedidoConfirmado &&
-    estado.carrito.length &&
-    !marcaDetectada &&
-    !tieneCriterios(criteriosMensaje) &&
-    deseaRepetirPedido(mensaje)
-  ) {
-    return preguntarRepetirPedido(estado);
   }
 
   const respuestaAlternativa = resolverAlternativaPendiente(mensaje, estado, catalogo);
@@ -3483,7 +3555,7 @@ function resolverConsultaCatalogo(mensaje, estado, catalogo = cargarProductos(),
     estado.esperandoConfirmacionDatosFacturacion ||
     estado.esperandoActualizacionDatosCliente
   ) {
-    return resolverEntregaYPago(mensaje, estado);
+    return resolverEntregaYPago(mensaje, estado, interpretacion);
   }
 
   if (
@@ -3492,7 +3564,7 @@ function resolverConsultaCatalogo(mensaje, estado, catalogo = cargarProductos(),
     estado.carrito.length &&
     !estado.ultimaSeleccion
   ) {
-    return resolverEntregaYPago(mensaje, estado);
+    return resolverEntregaYPago(mensaje, estado, interpretacion);
   }
 
   const respuestaReferenciaPendiente = resolverReferenciaPendiente(mensaje, estado, catalogo, interpretacion);
@@ -3504,10 +3576,13 @@ function resolverConsultaCatalogo(mensaje, estado, catalogo = cargarProductos(),
   if (
     estado.esperandoDatosDomicilio ||
     solicitaCierre(mensaje) ||
-    (estado.carrito.length && (detectarTipoEntrega(mensaje) || solicitaCambioDireccion(mensaje)))
+    (estado.carrito.length &&
+      (tieneDatosDomicilioUtiles(datosDomicilioMensaje) ||
+        detectarTipoEntrega(mensaje) ||
+        solicitaCambioDireccion(mensaje)))
   ) {
     if (estado.carrito.length || estado.esperandoDatosDomicilio) {
-      return resolverEntregaYPago(mensaje, estado);
+      return resolverEntregaYPago(mensaje, estado, interpretacion);
     }
   }
 

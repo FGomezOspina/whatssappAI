@@ -19,6 +19,7 @@ function crearEstadoInicial() {
     referenciasPendientes: null,
     carrito: [],
     pedidoConfirmado: false,
+    ultimoPedidoConfirmado: null,
     datosDomicilio: {},
     entrega: {
       tipo: null,

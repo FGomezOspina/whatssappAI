@@ -25,6 +25,33 @@ function conservaDatosCriticos(respuestaBase, respuestaHumanizada) {
 }
 
 function conservaAccionOperativa(respuestaBase, respuestaHumanizada) {
+  const baseSolicitaConfirmacionPedido = /est[aá] todo correcto para confirmar el pedido/i.test(respuestaBase);
+  const basePreguntaSiguientePaso = /quieres agregar algo m[aá]s o avanzamos con la entrega/i.test(respuestaBase);
+  const basePreguntaDatosPrevios = /lo enviamos a esa misma direcci[oó]n con esos datos/i.test(respuestaBase);
+  const humanizadaConfirmaPedido =
+    /(?:pedido\s+)?(?:queda|qued[oó]|est[aá])\s+confirmad[oa]|confirmad[oa]\s+tu pedido|programad[oa]\s+para despacho|dejamos programad[oa]/i.test(
+      respuestaHumanizada
+    );
+  const humanizadaSolicitaConfirmacion =
+    /\?|me confirmas|conf[ií]rmame|deseas confirmar|podemos confirmar|est[aá] todo correcto/i.test(
+      respuestaHumanizada
+    );
+
+  if (baseSolicitaConfirmacionPedido && (humanizadaConfirmaPedido || !humanizadaSolicitaConfirmacion)) {
+    return false;
+  }
+
+  if (
+    basePreguntaSiguientePaso &&
+    !/quieres agregar algo m[aá]s|avanzamos con la entrega|seguimos con la entrega/i.test(respuestaHumanizada)
+  ) {
+    return false;
+  }
+
+  if (basePreguntaDatosPrevios && !/misma direcci[oó]n|mismos datos|esos datos/i.test(respuestaHumanizada)) {
+    return false;
+  }
+
   const baseAgregaProducto = /agreg[uéoe]|inclu[ií]|añad/i.test(respuestaBase) && /pedido/i.test(respuestaBase);
   const humanizadaPreguntaSiLoHace = /quieres que|te preparo|te lo preparo|solo dime si quieres|alguna presentaci[oó]n/i.test(
     respuestaHumanizada
@@ -86,6 +113,7 @@ function resumenEstadoParaRespuesta(estado = {}) {
     carrito: estado.carrito || [],
     productosConsultados: estado.productosConsultados || [],
     pedidoConfirmado: Boolean(estado.pedidoConfirmado),
+    ultimoPedidoConfirmado: estado.ultimoPedidoConfirmado || null,
     datosDomicilio: estado.datosDomicilio || {},
     entrega: estado.entrega || {},
     metodoPago: estado.metodoPago || null,
@@ -114,7 +142,10 @@ async function humanizarRespuesta(mensajeCliente, respuestaBase, opciones = {}) 
 
   if (
     respuestaBase.includes("Datos de domicilio:") ||
-    respuestaBase.includes("ahorros bancolombia:")
+    respuestaBase.includes("ahorros bancolombia:") ||
+    /est[aá] todo correcto para confirmar el pedido/i.test(respuestaBase) ||
+    /quieres agregar algo m[aá]s o avanzamos con la entrega/i.test(respuestaBase) ||
+    /lo enviamos a esa misma direcci[oó]n con esos datos/i.test(respuestaBase)
   ) {
     return respuestaBase;
   }
@@ -153,7 +184,11 @@ Reglas estrictas:
 - Trata los datos existentes en estado.datosDomicilio como memoria confirmada. No reinterpretar una respuesta corta como reemplazo de nombre, cedula, correo, celular o direccion.
 - Si el cliente responde con "efectivo", "transferencia", "tarjeta" o "llave" despues de preguntar el metodo de pago, esa palabra solo corresponde al metodo de pago y nunca al nombre del cliente.
 - El mensaje del cliente puede ser un lote de mensajes consecutivos unido por saltos de linea. Responde una sola vez al conjunto: recapitula lo entendido y pide unicamente el siguiente dato realmente faltante.
+- Un pedido confirmado anterior es memoria historica. Si el cliente menciona otro producto, no lo mezcles con productos anteriores; conserva solamente los datos de entrega que el backend mantenga en el estado.
+- Si respuestaBase pregunta si desea repetir un pedido anterior, conserva productos y direccion en la pregunta para que el cliente pueda decidir con claridad.
 - Si la respuesta base ya agregó un producto al pedido, no lo conviertas en pregunta ni pidas confirmar ese mismo producto.
+- Si respuestaBase pregunta si todo esta correcto para confirmar el pedido, conserva esa pregunta. Nunca afirmes que el pedido ya quedo confirmado o programado para despacho antes de recibir la confirmacion explicita del cliente.
+- Conserva las preguntas operativas del backend. No conviertas "quieres agregar algo mas o avanzamos con la entrega" ni "lo enviamos a esa misma direccion con esos datos" en otra pregunta.
 - Si la respuesta base ajusta, retira o deja solo un producto del carrito, conserva esa acción y no digas que agregaste algo nuevo.
 - Si la respuesta base dice que una presentación no está disponible, no la conviertas en una opción exacta ni agregues productos al pedido.
 - Si solo falta un dato, pide solo ese dato.
@@ -204,5 +239,6 @@ ${formatearEjemplos(opciones.ejemplosEntrenamiento)}
 }
 
 module.exports = {
+  conservaAccionOperativa,
   humanizarRespuesta,
 };

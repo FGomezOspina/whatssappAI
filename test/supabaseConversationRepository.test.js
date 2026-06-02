@@ -1,7 +1,11 @@
 const test = require("node:test");
 const assert = require("node:assert/strict");
 
-const { buscarMensajesRecientes } = require("../src/repositories/supabaseConversationRepository");
+const {
+  buscarMensajesRecientes,
+  guardarConversacion,
+  guardarPedidoConfirmado,
+} = require("../src/repositories/supabaseConversationRepository");
 
 test("carga historial reciente de Supabase por numero de WhatsApp", async () => {
   const urlAnterior = process.env.SUPABASE_URL;
@@ -36,6 +40,75 @@ test("carga historial reciente de Supabase por numero de WhatsApp", async () => 
       mensajes.map((mensaje) => mensaje.body),
       ["Hola", "¿Qué necesitas?"]
     );
+  } finally {
+    global.fetch = fetchAnterior;
+
+    if (urlAnterior === undefined) delete process.env.SUPABASE_URL;
+    else process.env.SUPABASE_URL = urlAnterior;
+
+    if (secretAnterior === undefined) delete process.env.SUPABASE_SECRET_KEY;
+    else process.env.SUPABASE_SECRET_KEY = secretAnterior;
+  }
+});
+
+test("persiste el estado confirmado e inserta el snapshot del pedido", async () => {
+  const urlAnterior = process.env.SUPABASE_URL;
+  const secretAnterior = process.env.SUPABASE_SECRET_KEY;
+  const fetchAnterior = global.fetch;
+  const solicitudes = [];
+  const estado = {
+    pedidoConfirmado: true,
+    pedidoConfirmadoPendienteGuardar: true,
+    confirmacionPedidoId: "pedido-confirmado-test",
+    carrito: [
+      {
+        marca: "Dog Chow",
+        referencia: "Adulto Mini y Pequeño",
+        peso: "2kg",
+        precio: 36000,
+        cantidad: 2,
+      },
+    ],
+    datosDomicilio: {
+      nombre: "Dora Inés Zapata",
+      cedula: "1004755939",
+      celular: "3124138191",
+      correo: "fabio@gmail.com",
+      direccion: "Carrera 21 No 20b22 barrio providencia",
+    },
+    entrega: { tipo: "domicilio", sede: null },
+    metodoPago: "efectivo",
+  };
+
+  process.env.SUPABASE_URL = "https://supabase.example";
+  process.env.SUPABASE_SECRET_KEY = "supabase-test-secret";
+  global.fetch = async (url, opciones) => {
+    solicitudes.push({ url, opciones });
+    return new Response(JSON.stringify([{ id: "row-test" }]), {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    });
+  };
+
+  try {
+    await guardarConversacion("+573001112233", estado, {
+      mensaje: "sí",
+      respuesta: "Listo, tu pedido queda confirmado con esos datos.",
+    });
+    await guardarPedidoConfirmado("+573001112233", "conversation-test", estado);
+
+    const conversacion = solicitudes.find((solicitud) =>
+      solicitud.url.includes("/rest/v1/whatsapp_conversations")
+    );
+    const pedido = solicitudes.find((solicitud) => solicitud.url.includes("/rest/v1/whatsapp_orders"));
+    const payloadConversacion = JSON.parse(conversacion.opciones.body);
+    const payloadPedido = JSON.parse(pedido.opciones.body);
+
+    assert.equal(payloadConversacion.status, "pedido_confirmado");
+    assert.equal(payloadPedido.status, "confirmado");
+    assert.equal(payloadPedido.total, 72000);
+    assert.equal(payloadPedido.order_key, "pedido-confirmado-test");
+    assert.equal(estado.pedidoConfirmadoPendienteGuardar, false);
   } finally {
     global.fetch = fetchAnterior;
 

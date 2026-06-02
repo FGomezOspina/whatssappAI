@@ -1,7 +1,7 @@
 const test = require("node:test");
 const assert = require("node:assert/strict");
 
-const { resolverConsultaCatalogo } = require("../src/conversation/conversationEngine");
+const { resolverConsultaCatalogo, extraerPresupuesto } = require("../src/conversation/conversationEngine");
 const { crearEstadoInicial } = require("../src/conversation/conversationStore");
 const { cargarProductos } = require("../src/repositories/productRepository");
 const { asegurarRespuestaCatalogo } = require("../src/services/responseGuard");
@@ -116,6 +116,60 @@ test("avanza a pago cuando el cliente cierra el carrito aunque la IA reinterpret
   assert.match(respuesta, /método de pago|metodo de pago/i);
   assert.doesNotMatch(respuesta, /presentaciones/i);
   assert.equal(estado.esperandoMetodoPago, true);
+});
+
+test("no interpreta una cedula aislada como presupuesto", () => {
+  assert.equal(extraerPresupuesto("1004755939"), null);
+  assert.equal(extraerPresupuesto("presupuesto 100000"), 100000);
+  assert.equal(extraerPresupuesto("100000", { permitirNumeroSolo: true }), 100000);
+});
+
+test("prioriza un bloque de datos de envio sobre recomendaciones por presupuesto", () => {
+  const estado = crearEstadoInicial();
+  const catalogo = cargarProductos();
+  const mensaje = [
+    "1004755939",
+    "fabio@gmail.com",
+    "Carrera 21 No 20b22 barrio providencia",
+    "Dora Inés Zapata",
+    "efectivo",
+  ].join("\n");
+  estado.carrito = [
+    {
+      marca: "Dog Chow",
+      referencia: "Adulto Mini y Pequeño",
+      peso: "2kg",
+      precio: 36000,
+      cantidad: 2,
+    },
+  ];
+  estado.esperandoConfirmacionDomicilio = true;
+
+  const interpretacionIA = {
+    intencion: "datos_envio",
+    accion: null,
+    confianza: 0.99,
+    entrega: {
+      tipo: "domicilio",
+      direccion: "Carrera 21 No 20b22 barrio providencia",
+      direccionCompleta: true,
+      sector: null,
+      metodoPago: "efectivo",
+      sede: null,
+    },
+    datosCliente: {
+      nombre: "Dora Inés Zapata",
+      cedula: "1004755939",
+      correo: "fabio@gmail.com",
+      celular: null,
+    },
+  };
+
+  const respuesta = resolverConsultaCatalogo(mensaje, estado, catalogo, interpretacionIA);
+
+  assert.equal(estado.datosDomicilio.cedula, "1004755939");
+  assert.match(respuesta, /- celular/);
+  assert.doesNotMatch(respuesta, /presupuesto/i);
 });
 
 test("no trata una apertura de pedido como marca desconocida", () => {
@@ -651,4 +705,224 @@ test("permite cambiar el metodo de pago desde el resumen sin alterar el nombre",
   assert.match(respuesta, /Nombre: Dora Inés Zapata/);
   assert.match(respuesta, /Método de pago: tarjeta debito o credito/);
   assert.doesNotMatch(respuesta, /Nombre: tarjeta/);
+});
+
+function crearEstadoConPedidoAnterior() {
+  const estado = crearEstadoInicial();
+  estado.carrito = [
+    {
+      marca: "Dog Chow",
+      referencia: "Adulto Mini y Pequeño",
+      peso: "2kg",
+      precio: 36000,
+      cantidad: 2,
+    },
+  ];
+  estado.entrega = { tipo: "domicilio", sede: null };
+  estado.metodoPago = "efectivo";
+  estado.datosDomicilio = {
+    nombre: "Dora Inés Zapata",
+    cedula: "42105604",
+    correo: "luz@gmail.com",
+    celular: "3124138191",
+    direccion: "Carrera 21 No 20b22 barrio providencia",
+  };
+  estado.pedidoConfirmado = true;
+  estado.confirmacionPedidoId = "pedido-anterior";
+  return estado;
+}
+
+function interpretacionProductoNuevo({
+  marca = "Chunky",
+  referencia = "Adulto Razas Pequeñas",
+  presentacion = "2kg",
+  cantidad = 1,
+  direccion = null,
+} = {}) {
+  return {
+    intencion: "pedido_producto",
+    accion: "nuevo_pedido",
+    confianza: 0.99,
+    producto: {
+      marca,
+      referencia,
+      especie: "perro",
+      etapa: "adulto",
+      tamano: "pequeno",
+      presentacion,
+      cantidad,
+    },
+    productos: [],
+    entrega: {
+      tipo: direccion ? "domicilio" : null,
+      direccion,
+      direccionCompleta: direccion ? true : null,
+      sector: null,
+      metodoPago: null,
+      sede: null,
+    },
+    datosCliente: {},
+    carrito: { operacion: "agregar" },
+    faltanteSugerido: null,
+  };
+}
+
+test("ofrece repetir el ultimo pedido confirmado con productos y direccion", () => {
+  const estado = crearEstadoConPedidoAnterior();
+  const catalogo = cargarProductos();
+
+  const pregunta = resolverConsultaCatalogo("Hola, quiero hacer un pedido", estado, catalogo, null);
+
+  assert.match(pregunta, /2 x Dog Chow Adulto Mini y Pequeño 2kg: \$72\.000/);
+  assert.match(pregunta, /Carrera 21 No 20b22 barrio providencia/);
+  assert.match(pregunta, /¿Deseas repetirlo/);
+  assert.equal(estado.esperandoConfirmacionRepetirPedido, true);
+
+  const respuesta = resolverConsultaCatalogo("Sí, por favor", estado, catalogo, null);
+
+  assert.equal(estado.pedidoConfirmado, true);
+  assert.equal(estado.carrito.length, 1);
+  assert.equal(estado.carrito[0].cantidad, 2);
+  assert.notEqual(estado.confirmacionPedidoId, "pedido-anterior");
+  assert.match(respuesta, /pedido queda confirmado/i);
+});
+
+test("un producto distinto crea carrito nuevo y conserva datos de envio anteriores", () => {
+  const estado = crearEstadoConPedidoAnterior();
+  const catalogo = cargarProductos();
+  const interpretacionIA = interpretacionProductoNuevo();
+
+  const respuesta = resolverConsultaCatalogo(
+    "Quiero un Chunky adulto razas pequeñas de 2kg",
+    estado,
+    catalogo,
+    interpretacionIA
+  );
+
+  assert.equal(estado.carrito.length, 1);
+  assert.equal(estado.carrito[0].marca, "Chunky");
+  assert.equal(estado.carrito[0].referencia, "Adulto Razas Pequeñas");
+  assert.equal(estado.datosDomicilio.direccion, "Carrera 21 No 20b22 barrio providencia");
+  assert.match(respuesta, /Nombre: Dora Inés Zapata/);
+  assert.doesNotMatch(respuesta, /Dog Chow/);
+});
+
+test("perfecto confirma un pedido nuevo con datos anteriores sin repetir preguntas", () => {
+  const estado = crearEstadoConPedidoAnterior();
+  const catalogo = cargarProductos();
+  const interpretacionIA = interpretacionProductoNuevo();
+
+  const resumen = resolverConsultaCatalogo(
+    "Quiero un Chunky adulto razas pequeñas de 2kg",
+    estado,
+    catalogo,
+    interpretacionIA
+  );
+
+  assert.equal(estado.esperandoConfirmacionPedido, true);
+  assert.match(resumen, /¿Está todo correcto para confirmar el pedido?/);
+
+  const confirmacion = resolverConsultaCatalogo("perfecto", estado, catalogo, null);
+
+  assert.equal(estado.pedidoConfirmado, true);
+  assert.equal(estado.esperandoConfirmacionPedido, false);
+  assert.match(confirmacion, /pedido queda confirmado/i);
+  assert.doesNotMatch(confirmacion, /información del pedido anterior/i);
+});
+
+test("una confirmacion con error ortografico usa la intencion semantica y no reemplaza el nombre", () => {
+  const estado = crearEstadoConPedidoAnterior();
+  const catalogo = cargarProductos();
+  estado.pedidoConfirmado = false;
+  estado.esperandoConfirmacionPedido = true;
+  const interpretacionIA = {
+    intencion: "confirmacion",
+    accion: "confirmar",
+    confianza: 0.96,
+    producto: {},
+    productos: [],
+    entrega: {},
+    datosCliente: {
+      nombre: null,
+      cedula: null,
+      correo: null,
+      celular: null,
+    },
+    carrito: { operacion: null },
+    faltanteSugerido: null,
+  };
+
+  const confirmacion = resolverConsultaCatalogo("perfect", estado, catalogo, interpretacionIA);
+
+  assert.equal(estado.pedidoConfirmado, true);
+  assert.equal(estado.datosDomicilio.nombre, "Dora Inés Zapata");
+  assert.match(confirmacion, /pedido queda confirmado/i);
+});
+
+test("un si a reutilizar la direccion anterior confirma sin pedir otra aprobacion", () => {
+  const estado = crearEstadoConPedidoAnterior();
+  const catalogo = cargarProductos();
+  estado.carrito = [
+    {
+      marca: "Chunky",
+      referencia: "Adulto Razas Pequeñas",
+      peso: "2kg",
+      precio: 21000,
+      cantidad: 1,
+    },
+  ];
+  estado.pedidoConfirmado = false;
+  estado.pedidoNuevoConDatosPrevios = true;
+  estado.datosPreviosConfirmados = false;
+  estado.esperandoConfirmacionDatosPrevios = true;
+
+  const confirmacion = resolverConsultaCatalogo("sí por favor", estado, catalogo, null);
+
+  assert.equal(estado.pedidoConfirmado, true);
+  assert.equal(estado.esperandoConfirmacionPedido, false);
+  assert.match(confirmacion, /pedido queda confirmado/i);
+  assert.doesNotMatch(confirmacion, /¿Está todo correcto para confirmar el pedido?/);
+});
+
+test("el mismo producto con direccion nueva no suma el pedido anterior", () => {
+  const estado = crearEstadoConPedidoAnterior();
+  const catalogo = cargarProductos();
+  const interpretacionIA = interpretacionProductoNuevo({
+    marca: "Dog Chow",
+    referencia: "Adulto Mini y Pequeño",
+    cantidad: 1,
+    direccion: "Calle 18 # 10-40 Centro",
+  });
+
+  resolverConsultaCatalogo(
+    "Quiero un Dog Chow adulto raza pequeña 2kg para Calle 18 # 10-40 Centro",
+    estado,
+    catalogo,
+    interpretacionIA
+  );
+
+  assert.equal(estado.carrito.length, 1);
+  assert.equal(estado.carrito[0].cantidad, 1);
+  assert.equal(estado.datosDomicilio.direccion, "Calle 18 # 10-40 Centro");
+});
+
+test("un producto distinto con direccion nueva reemplaza solo la entrega anterior", () => {
+  const estado = crearEstadoConPedidoAnterior();
+  const catalogo = cargarProductos();
+  const interpretacionIA = interpretacionProductoNuevo({
+    direccion: "Calle 18 # 10-40 Centro",
+  });
+
+  resolverConsultaCatalogo(
+    "Quiero un Chunky adulto razas pequeñas 2kg para Calle 18 # 10-40 Centro",
+    estado,
+    catalogo,
+    interpretacionIA
+  );
+
+  assert.equal(estado.carrito.length, 1);
+  assert.equal(estado.carrito[0].marca, "Chunky");
+  assert.equal(estado.datosDomicilio.direccion, "Calle 18 # 10-40 Centro");
+  assert.equal(estado.datosDomicilio.nombre, "Dora Inés Zapata");
+  assert.equal(estado.datosDomicilio.cedula, "42105604");
 });

@@ -59,7 +59,7 @@ Para cambiar de proveedor de mensajeria, crea otro adaptador equivalente a `kaps
 1. Kapso envia un evento `whatsapp.message.received`.
 2. `src/app.js` valida `x-webhook-signature` contra el cuerpo HTTP crudo, extrae eventos y responde HTTP `200 OK` inmediatamente.
 3. El provider normaliza cliente, destinatario, texto, `phone_number_id`, idempotencia y multimedia.
-4. La app agrupa durante una ventana corta los mensajes consecutivos del mismo cliente y procesa un solo lote.
+4. La app agrupa los mensajes consecutivos del mismo cliente y reinicia una espera corta con cada entrada para procesar un solo lote.
 5. `conversationService` carga el estado y el historial reciente del usuario desde Supabase antes de llamar a OpenAI.
 6. Si hay audio, reutiliza la transcripcion de Kapso o descarga el archivo y lo envia a Whisper.
 7. Si hay imagen, pasa la URL publica al interprete OpenAI con capacidades de vision.
@@ -80,6 +80,11 @@ Para cambiar de proveedor de mensajeria, crea otro adaptador equivalente a `kaps
 - Un cliente puede pedir varios productos en el mismo mensaje, incluso en varias lineas.
 - Una presentacion inexistente produce una negativa util con opciones reales.
 - `asi esta bien` avanza al siguiente paso si el carrito ya esta definido; no repite presentaciones.
+- El resumen final solicita confirmacion explicita. El humanizador no puede declarar despacho ni confirmacion antes del `si` del cliente.
+- Respuestas afirmativas como `perfecto` confirman el resumen final. Si el cliente acepta reutilizar direccion y datos completos de un pedido anterior, no se solicita una confirmacion adicional.
+- El ultimo pedido confirmado se conserva como memoria historica separada.
+- Un saludo posterior permite ofrecer repetir productos y direccion del ultimo pedido.
+- Si el cliente menciona un producto nuevo, el carrito anterior no se mezcla; solo se reutilizan los datos de entrega que no cambien.
 
 ### Comprension del cliente
 
@@ -87,6 +92,7 @@ Para cambiar de proveedor de mensajeria, crea otro adaptador equivalente a `kaps
 - OpenAI puede inferir especie, etapa y tamano desde una raza sin una tabla programada raza por raza.
 - Distingue direccion completa de sector o referencia parcial.
 - Conserva el hilo si el cliente envia aclaraciones cortas.
+- Usa el estado pendiente para interpretar confirmaciones breves con errores ortograficos sin reemplazar datos del cliente.
 
 ### Multimedia
 

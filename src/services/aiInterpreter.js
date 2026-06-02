@@ -29,6 +29,7 @@ function resumenEstado(estado = {}) {
     productosConsultados: estado.productosConsultados || [],
     carrito: estado.carrito || [],
     pedidoConfirmado: Boolean(estado.pedidoConfirmado),
+    ultimoPedidoConfirmado: estado.ultimoPedidoConfirmado || null,
     datosDomicilio: estado.datosDomicilio || {},
     entrega: estado.entrega || {},
     metodoPago: estado.metodoPago || null,
@@ -38,6 +39,10 @@ function resumenEstado(estado = {}) {
       datosDomicilio: Boolean(estado.esperandoDatosDomicilio),
       metodoPago: Boolean(estado.esperandoMetodoPago),
       entrega: Boolean(estado.esperandoTipoEntrega),
+      repetirPedido: Boolean(estado.esperandoConfirmacionRepetirPedido),
+      confirmacionPedido: Boolean(estado.esperandoConfirmacionPedido),
+      confirmacionDatosPrevios: Boolean(estado.esperandoConfirmacionDatosPrevios),
+      actualizacionDatosCliente: Boolean(estado.esperandoActualizacionDatosCliente),
     },
   };
 }
@@ -151,10 +156,19 @@ Fuente de verdad:
 - Prioriza la ultima pregunta del asistente y las banderas estado.esperando. Si esperando.metodoPago es true y el cliente responde "efectivo", "transferencia", "tarjeta" o "llave", usa intencion "metodo_pago", completa solo entrega.metodoPago y deja todos los campos de datosCliente en null.
 - Nunca interpretes una forma de pago como nombre de cliente. Una palabra suelta solo puede ser nombre si el asistente estaba pidiendo el nombre o si el cliente la presenta explicitamente con frases como "soy", "me llamo" o "a nombre de".
 - Ejemplo prioritario: si estado.datosDomicilio.nombre ya contiene "Maria Lopez", esperando.metodoPago es true y el ultimo mensaje es "efectivo", devuelve intencion "metodo_pago", entrega.metodoPago "efectivo" y datosCliente con nombre, cedula, correo y celular en null. No reemplaces "Maria Lopez".
+- Nunca interpretes una cedula, celular, direccion o presentacion de producto como presupuesto. Un numero aislado solo es presupuesto si el asistente estaba pidiendo presupuesto o si el cliente lo presenta explicitamente como presupuesto con expresiones como "$", "hasta", "maximo", "presupuesto" o "tengo para gastar".
+- Ejemplo prioritario: "1004755939" junto con correo, direccion, nombre y "efectivo" es una cedula dentro de datos_envio, no un presupuesto ni una recomendacion.
 - El mensaje puede contener varios mensajes consecutivos del cliente separados por saltos de linea. Interpretalos juntos como un solo turno: combina saludo, productos, cantidades, entrega, datos personales y metodo de pago antes de decidir que falta.
 - No reinicies el analisis ni respondas por cada fragmento. Devuelve una sola interpretacion consolidada con todos los datos presentes y faltanteSugerido solamente para el siguiente dato realmente pendiente.
+- Si existe un pedido confirmado anterior, tratelo como memoria historica y no como carrito activo para una compra nueva.
+- Si el cliente saluda o pide hacer un pedido sin mencionar producto y existe un pedido confirmado anterior, permite que el motor le pregunte si desea repetirlo.
+- Usa accion "repetir_pedido" solamente cuando el cliente pida claramente repetir lo mismo o responda afirmativamente a la pregunta de repeticion.
+- Si el cliente menciona un producto para una nueva compra, incluso si coincide con el producto anterior, usa accion "nuevo_pedido": el nuevo carrito debe contener solo lo pedido en el mensaje actual. No copies ni sumes productos del pedido anterior.
+- Los datos anteriores de cliente y entrega si son memoria reutilizable. Si el cliente no los cambia, pueden conservarse para que el motor pregunte si desea usarlos; si proporciona otra direccion o nuevos datos, estos reemplazan solamente esos campos.
 - Si el cliente cambia informacion ya dada (direccion, celular, correo, nombre, cedula, metodo de pago o cantidad), clasificalo como actualizacion/cambio, no como una consulta nueva.
 - Si ya hay productos en carrito y el cliente dice algo como "asi esta bien", "listo", "eso es todo", "nada mas", "continua", "sigue", "dale" o "perfecto", interpreta que quiere avanzar con el pedido. Usa intencion "confirmacion" y accion "confirmar", no consulta_producto.
+- Tolera errores ortograficos, letras omitidas y variantes informales tambien en respuestas cortas. Si esperando.confirmacionPedido o esperando.confirmacionDatosPrevios es true, interpreta una palabra breve semanticamente cercana a una aprobacion como confirmacion segun la pregunta pendiente; devuelve intencion "confirmacion", accion "confirmar" y datosCliente con todos sus campos en null.
+- Antes de interpretar una palabra suelta como nombre, revisa la ultima pregunta y estado.esperando. Una respuesta corta a una pregunta de confirmacion no reemplaza nunca nombre, cedula, correo, celular ni direccion aunque tenga errores de escritura.
 - No vuelvas a extraer producto desde el historial si el ultimo mensaje no menciona marca, referencia, especie, peso ni cantidad. En esos casos usa el estado para decidir si es confirmacion, datos de entrega, metodo de pago o cambio.
 - Si el cliente solo saluda y dice que quiere hacer un pedido, no inventes marca ni producto. Interpreta apertura de pedido: intencion "otro", accion null, faltanteSugerido "marca" o "referencia" segun el contexto.
 - Si el cliente describe su mascota con una raza, apodo, escritura aproximada o mezcla ("tengo un labrador adulto", "mi perrita es french poodol", "es criollo grande", "tengo una gata adulta"), no lo trates como marca desconocida. Actua como experto en razas y deduce especie, etapa y tamano probable desde conocimiento general; si no estas seguro del tamano, deja tamano null y conserva especie/etapa.

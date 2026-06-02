@@ -1,4 +1,4 @@
-const DEFAULT_BUFFER_WINDOW_MS = 2000;
+const DEFAULT_BUFFER_WINDOW_MS = 5000;
 
 function obtenerVentanaBufferMs() {
   const configurada = Number(process.env.INBOUND_MESSAGE_BUFFER_MS || DEFAULT_BUFFER_WINDOW_MS);
