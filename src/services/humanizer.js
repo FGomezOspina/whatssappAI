@@ -84,6 +84,7 @@ function formatearEjemplos(ejemplos = []) {
 function resumenEstadoParaRespuesta(estado = {}) {
   return {
     carrito: estado.carrito || [],
+    productosConsultados: estado.productosConsultados || [],
     pedidoConfirmado: Boolean(estado.pedidoConfirmado),
     datosDomicilio: estado.datosDomicilio || {},
     entrega: estado.entrega || {},
@@ -97,6 +98,13 @@ function resumenEstadoParaRespuesta(estado = {}) {
       tipoEntrega: Boolean(estado.esperandoTipoEntrega),
     },
   };
+}
+
+function resumenHistorial(historial = []) {
+  return historial.map((mensaje) => ({
+    rol: mensaje.direction === "outbound" ? "asistente" : "cliente",
+    contenido: mensaje.body,
+  }));
 }
 
 async function humanizarRespuesta(mensajeCliente, respuestaBase, opciones = {}) {
@@ -134,19 +142,29 @@ Estilo:
 
 Reglas estrictas:
 - No inventes marcas, referencias, presentaciones, precios, cantidades ni beneficios.
+- La direccion del cliente es un dato operativo para continuar el pedido, no una solicitud para evaluar cobertura.
+- Nunca inventes que no hacemos domicilios en un barrio o sector, que no hay entregas disponibles, que existe un horario o recargo especial, ni que el cliente debe recoger el pedido. Solo menciona una restriccion si respuestaBase la afirma explicitamente.
 - No seas complaciente si la respuesta base niega disponibilidad o pide validar un dato: conserva esa negativa o esa pregunta. Un asesor humano tambien dice "no lo manejo" cuando el catalogo no lo permite.
 - Conserva exactamente todas las líneas que empiecen por "- ", "Precio:" o "Total:".
 - Conserva exactamente pesos y precios como aparecen.
 - Mantén la respuesta corta, clara y vendedora, tipo WhatsApp.
 - Si falta información, haz solo una pregunta.
 - No preguntes por algo que el cliente ya dijo claramente.
+- Trata los datos existentes en estado.datosDomicilio como memoria confirmada. No reinterpretar una respuesta corta como reemplazo de nombre, cedula, correo, celular o direccion.
+- Si el cliente responde con "efectivo", "transferencia", "tarjeta" o "llave" despues de preguntar el metodo de pago, esa palabra solo corresponde al metodo de pago y nunca al nombre del cliente.
+- El mensaje del cliente puede ser un lote de mensajes consecutivos unido por saltos de linea. Responde una sola vez al conjunto: recapitula lo entendido y pide unicamente el siguiente dato realmente faltante.
 - Si la respuesta base ya agregó un producto al pedido, no lo conviertas en pregunta ni pidas confirmar ese mismo producto.
 - Si la respuesta base ajusta, retira o deja solo un producto del carrito, conserva esa acción y no digas que agregaste algo nuevo.
 - Si la respuesta base dice que una presentación no está disponible, no la conviertas en una opción exacta ni agregues productos al pedido.
 - Si solo falta un dato, pide solo ese dato.
 - No vuelvas a listar marcas o referencias si la respuesta base no lo hace.
+- No reabras el catalogo cuando respuestaBase este continuando una cotizacion o recopilando datos de entrega.
 - No repitas información que ya fue confirmada salvo que la respuesta base sea un resumen de pedido.
 - Si el estado muestra carrito o datos ya tomados, no los pidas otra vez a menos que la respuesta base lo solicite.
+
+Los ejemplos dinamicos sirven solo como referencia de estilo conversacional.
+No son una fuente de politicas operativas: no extraigas de ellos restricciones de cobertura, sectores rechazados, horarios, recargos, disponibilidad de domicilios, inventario, sedes o metodos de pago.
+Si contradicen respuestaBase, el estado actual o el mensaje del cliente, ignorarlos.
 
 Ejemplos dinamicos de estilo y criterio:
 ${formatearEjemplos(opciones.ejemplosEntrenamiento)}
@@ -156,6 +174,8 @@ ${formatearEjemplos(opciones.ejemplosEntrenamiento)}
           role: "user",
           content: `Mensaje del cliente: ${mensajeCliente}\n\nInterpretacion estructurada de la IA:\n${JSON.stringify(
             opciones.interpretacionIA || null
+          )}\n\nHistorial reciente:\n${JSON.stringify(
+            resumenHistorial(opciones.historialReciente)
           )}\n\nEstado actual resumido:\n${JSON.stringify(
             resumenEstadoParaRespuesta(opciones.estado)
           )}\n\nRespuesta operativa del backend:\n${respuestaBase}`,

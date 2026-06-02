@@ -8,6 +8,5 @@ function cargarProductos() {
 }
 
 module.exports = {
-  PRODUCTOS_PATH,
   cargarProductos,
 };

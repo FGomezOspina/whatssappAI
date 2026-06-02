@@ -1,8 +1,9 @@
 const test = require("node:test");
 const assert = require("node:assert/strict");
 
-const { resolverConsultaCatalogo, cargarProductos } = require("../src/conversation/conversationEngine");
+const { resolverConsultaCatalogo } = require("../src/conversation/conversationEngine");
 const { crearEstadoInicial } = require("../src/conversation/conversationStore");
+const { cargarProductos } = require("../src/repositories/productRepository");
 const { asegurarRespuestaCatalogo } = require("../src/services/responseGuard");
 
 test("niega una presentacion inexistente aunque la referencia este ambigua", () => {
@@ -157,6 +158,20 @@ test("usa la raza de la mascota como contexto de recomendacion", () => {
   assert.equal(estado.criterios.especie, "perro");
   assert.equal(estado.criterios.etapa, "adulto");
   assert.equal(estado.criterios.tamano, "grande");
+});
+
+test("responde con alternativas cuando una recomendacion no tiene coincidencias exactas", () => {
+  const estado = crearEstadoInicial();
+  const catalogo = cargarProductos();
+
+  const respuesta = resolverConsultaCatalogo(
+    "recomiendame alimento economico para gato senior",
+    estado,
+    catalogo,
+    null
+  );
+
+  assert.match(respuesta, /no tengo una referencia exacta|no encuentro una opción exacta/i);
 });
 
 test("agrega varios productos interpretados desde un mismo mensaje", () => {
@@ -390,4 +405,250 @@ test("otra pregunta de precio despues de cotizar sigue sin agregar", () => {
   assert.equal(estado.productosConsultados.length, 1);
   assert.match(respuesta, /\$20\.000/);
   assert.doesNotMatch(respuesta, /agregué|Pedido:/i);
+});
+
+test("una direccion despues de cotizar continua el pedido con el producto consultado", () => {
+  const estado = crearEstadoInicial();
+  const catalogo = cargarProductos();
+  estado.productosConsultados = [
+    {
+      marca: "Dog Chow",
+      referencia: "Adulto Mini y Pequeño",
+      peso: "4kg",
+      precio: 68000,
+      cantidad: 1,
+    },
+  ];
+  const interpretacionIA = {
+    intencion: "pedido_producto",
+    accion: "agregar",
+    confianza: 0.97,
+    producto: {},
+    productos: [],
+    entrega: {
+      tipo: "domicilio",
+      direccion: "calle 18 # 10-40, CENTRO",
+      direccionCompleta: true,
+      sector: null,
+      metodoPago: null,
+      sede: null,
+    },
+    datosCliente: {},
+    carrito: { operacion: "agregar" },
+    faltanteSugerido: null,
+  };
+
+  const respuesta = resolverConsultaCatalogo(
+    "para calle 18 # 10-40, CENTRO",
+    estado,
+    catalogo,
+    interpretacionIA
+  );
+
+  assert.equal(estado.carrito.length, 1);
+  assert.equal(estado.productosConsultados.length, 0);
+  assert.equal(estado.entrega.tipo, "domicilio");
+  assert.equal(estado.datosDomicilio.direccion, "calle 18 # 10-40, CENTRO");
+  assert.match(respuesta, /agregué al pedido/i);
+  assert.doesNotMatch(respuesta, /no estamos realizando domicilios|recoger/i);
+});
+
+test("un metodo de pago no reemplaza el nombre confirmado del domicilio", () => {
+  const estado = crearEstadoInicial();
+  const catalogo = cargarProductos();
+  estado.carrito = [
+    {
+      marca: "Dog Chow",
+      referencia: "Adulto Mini y Pequeño",
+      peso: "2kg",
+      precio: 36000,
+      cantidad: 2,
+    },
+  ];
+  estado.entrega = { tipo: "domicilio", sede: null };
+  estado.datosDomicilio = {
+    nombre: "Dora Inés Zapata",
+    cedula: "42105604",
+    correo: "luz@gmail.com",
+    celular: "3124138191",
+    direccion: "Carrera 21 No 20b22 barrio providencia",
+  };
+  estado.esperandoDatosDomicilio = true;
+  estado.esperandoMetodoPago = true;
+  const interpretacionIA = {
+    intencion: "metodo_pago",
+    accion: null,
+    confianza: 0.99,
+    producto: {},
+    productos: [],
+    entrega: {
+      tipo: null,
+      direccion: null,
+      direccionCompleta: null,
+      sector: null,
+      metodoPago: "efectivo",
+      sede: null,
+    },
+    datosCliente: {
+      nombre: null,
+      cedula: null,
+      correo: null,
+      celular: null,
+    },
+    carrito: { operacion: null },
+    faltanteSugerido: null,
+  };
+
+  const respuesta = resolverConsultaCatalogo("efectivo", estado, catalogo, interpretacionIA);
+
+  assert.equal(estado.datosDomicilio.nombre, "Dora Inés Zapata");
+  assert.equal(estado.metodoPago, "efectivo");
+  assert.match(respuesta, /Nombre: Dora Inés Zapata/);
+  assert.match(respuesta, /¿Está todo correcto para confirmar el pedido?/);
+  assert.doesNotMatch(respuesta, /Nombre: efectivo/);
+  assert.equal(estado.pedidoConfirmado, false);
+
+  const confirmacion = resolverConsultaCatalogo("sí", estado, catalogo, null);
+
+  assert.equal(estado.pedidoConfirmado, true);
+  assert.match(confirmacion, /pedido queda confirmado/i);
+});
+
+test("un lote completo recapitula el pedido y espera confirmacion explicita", () => {
+  const estado = crearEstadoInicial();
+  const catalogo = cargarProductos();
+  const mensaje = [
+    "Hola",
+    "Por favor me vende 2 paquetes de dog chow a raza pequeña 2kl?",
+    "Carrera 21 No 20b22 barrio providencia",
+    "Dora Inés Zapata",
+    "42105604",
+    "luz@gmail.com",
+    "3124138191",
+    "efectivo",
+  ].join("\n");
+  const interpretacionIA = {
+    intencion: "pedido_producto",
+    accion: "agregar",
+    confianza: 0.99,
+    producto: {
+      marca: "Dog Chow",
+      referencia: "Adulto Mini y Pequeño",
+      especie: "perro",
+      etapa: "adulto",
+      tamano: "pequeno",
+      presentacion: "2kg",
+      cantidad: 2,
+    },
+    productos: [],
+    entrega: {
+      tipo: "domicilio",
+      direccion: "Carrera 21 No 20b22 barrio providencia",
+      direccionCompleta: true,
+      sector: null,
+      metodoPago: "efectivo",
+      sede: null,
+    },
+    datosCliente: {
+      nombre: "Dora Inés Zapata",
+      cedula: "42105604",
+      correo: "luz@gmail.com",
+      celular: "3124138191",
+    },
+    carrito: { operacion: "agregar" },
+    faltanteSugerido: null,
+  };
+
+  const respuesta = resolverConsultaCatalogo(mensaje, estado, catalogo, interpretacionIA);
+
+  assert.equal(estado.carrito.length, 1);
+  assert.equal(estado.pedidoConfirmado, false);
+  assert.equal(estado.esperandoConfirmacionPedido, true);
+  assert.match(respuesta, /2 x Dog Chow Adulto Mini y Pequeño 2kg: \$72\.000/);
+  assert.match(respuesta, /Nombre: Dora Inés Zapata/);
+  assert.match(respuesta, /Método de pago: efectivo/);
+  assert.match(respuesta, /¿Está todo correcto para confirmar el pedido?/);
+});
+
+test("un lote incompleto pide solamente los datos de envio faltantes", () => {
+  const estado = crearEstadoInicial();
+  const catalogo = cargarProductos();
+  const mensaje = [
+    "Hola",
+    "Por favor me vende 2 paquetes de dog chow a raza pequeña 2kl?",
+    "Carrera 21 No 20b22 barrio providencia",
+    "Dora Inés Zapata",
+    "efectivo",
+  ].join("\n");
+  const interpretacionIA = {
+    intencion: "pedido_producto",
+    accion: "agregar",
+    confianza: 0.99,
+    producto: {
+      marca: "Dog Chow",
+      referencia: "Adulto Mini y Pequeño",
+      especie: "perro",
+      etapa: "adulto",
+      tamano: "pequeno",
+      presentacion: "2kg",
+      cantidad: 2,
+    },
+    productos: [],
+    entrega: {
+      tipo: "domicilio",
+      direccion: "Carrera 21 No 20b22 barrio providencia",
+      direccionCompleta: true,
+      sector: null,
+      metodoPago: "efectivo",
+      sede: null,
+    },
+    datosCliente: {
+      nombre: "Dora Inés Zapata",
+      cedula: null,
+      correo: null,
+      celular: null,
+    },
+    carrito: { operacion: "agregar" },
+    faltanteSugerido: "cedula",
+  };
+
+  const respuesta = resolverConsultaCatalogo(mensaje, estado, catalogo, interpretacionIA);
+
+  assert.match(respuesta, /- cedula/);
+  assert.match(respuesta, /- correo/);
+  assert.match(respuesta, /- celular/);
+  assert.doesNotMatch(respuesta, /- nombre/);
+  assert.doesNotMatch(respuesta, /- direccion completa/);
+});
+
+test("permite cambiar el metodo de pago desde el resumen sin alterar el nombre", () => {
+  const estado = crearEstadoInicial();
+  const catalogo = cargarProductos();
+  estado.carrito = [
+    {
+      marca: "Dog Chow",
+      referencia: "Adulto Mini y Pequeño",
+      peso: "2kg",
+      precio: 36000,
+      cantidad: 2,
+    },
+  ];
+  estado.entrega = { tipo: "domicilio", sede: null };
+  estado.metodoPago = "efectivo";
+  estado.datosDomicilio = {
+    nombre: "Dora Inés Zapata",
+    cedula: "42105604",
+    correo: "luz@gmail.com",
+    celular: "3124138191",
+    direccion: "Carrera 21 No 20b22 barrio providencia",
+  };
+  estado.esperandoConfirmacionPedido = true;
+
+  const respuesta = resolverConsultaCatalogo("tarjeta", estado, catalogo, null);
+
+  assert.equal(estado.datosDomicilio.nombre, "Dora Inés Zapata");
+  assert.equal(estado.metodoPago, "tarjeta debito o credito");
+  assert.match(respuesta, /Nombre: Dora Inés Zapata/);
+  assert.match(respuesta, /Método de pago: tarjeta debito o credito/);
+  assert.doesNotMatch(respuesta, /Nombre: tarjeta/);
 });

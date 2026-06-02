@@ -1,0 +1,44 @@
+const DEFAULT_BUFFER_WINDOW_MS = 2000;
+
+function obtenerVentanaBufferMs() {
+  const configurada = Number(process.env.INBOUND_MESSAGE_BUFFER_MS || DEFAULT_BUFFER_WINDOW_MS);
+  return Number.isFinite(configurada) && configurada >= 0 ? configurada : DEFAULT_BUFFER_WINDOW_MS;
+}
+
+function crearBufferMensajesEntrantes({ alVaciar, ventanaMs = obtenerVentanaBufferMs() }) {
+  const pendientesPorCliente = new Map();
+
+  function vaciar(channelUserId) {
+    const pendiente = pendientesPorCliente.get(channelUserId);
+    if (!pendiente) return;
+
+    clearTimeout(pendiente.timeout);
+    pendientesPorCliente.delete(channelUserId);
+    alVaciar(pendiente.eventos);
+  }
+
+  function agregar(evento) {
+    const pendiente = pendientesPorCliente.get(evento.channelUserId) || { eventos: [], timeout: null };
+    if (pendiente.timeout) clearTimeout(pendiente.timeout);
+
+    pendiente.eventos.push(evento);
+    pendiente.timeout = setTimeout(() => vaciar(evento.channelUserId), ventanaMs);
+    pendientesPorCliente.set(evento.channelUserId, pendiente);
+  }
+
+  function cerrar() {
+    pendientesPorCliente.forEach((pendiente) => clearTimeout(pendiente.timeout));
+    pendientesPorCliente.clear();
+  }
+
+  return {
+    agregar,
+    cerrar,
+    vaciar,
+  };
+}
+
+module.exports = {
+  crearBufferMensajesEntrantes,
+  obtenerVentanaBufferMs,
+};

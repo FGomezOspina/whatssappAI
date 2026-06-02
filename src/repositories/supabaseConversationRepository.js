@@ -124,6 +124,18 @@ async function guardarMensaje(usuario, direccion, cuerpo, conversationId = null)
   }
 }
 
+async function buscarMensajesRecientes(usuario, limite = 12) {
+  if (!supabaseConfigurado()) return [];
+
+  const limiteSeguro = Math.min(Math.max(Number(limite) || 12, 1), 50);
+  const query = `${MESSAGES_TABLE}?channel_user_id=eq.${encodeURIComponent(
+    usuario
+  )}&select=direction,body,created_at&order=created_at.desc&limit=${limiteSeguro}`;
+  const filas = (await requestSupabase(query)) || [];
+
+  return filas.reverse();
+}
+
 function clavePedido(estado) {
   if (!estado.confirmacionPedidoId) {
     estado.confirmacionPedidoId = crypto.randomUUID();
@@ -173,33 +185,11 @@ async function guardarPedidoConfirmado(usuario, conversationId, estado) {
   });
 }
 
-async function ultimoPedidoConfirmado(usuario) {
-  if (!supabaseConfigurado()) return null;
-
-  const query = `${ORDERS_TABLE}?channel_user_id=eq.${encodeURIComponent(
-    usuario
-  )}&status=eq.confirmado&select=*&order=confirmed_at.desc&limit=1`;
-
-  const filas = await requestSupabase(query);
-  return filas && filas.length ? filas[0] : null;
-}
-
-async function mensajesPorConversacion(conversationId, usuario) {
-  if (!supabaseConfigurado()) return [];
-
-  const filtros = conversationId
-    ? `conversation_id=eq.${conversationId}`
-    : `channel_user_id=eq.${encodeURIComponent(usuario)}`;
-
-  return requestSupabase(`${MESSAGES_TABLE}?${filtros}&select=*&order=created_at.asc`);
-}
-
 module.exports = {
   supabaseConfigurado,
   buscarConversacion,
   guardarConversacion,
   guardarMensaje,
+  buscarMensajesRecientes,
   guardarPedidoConfirmado,
-  ultimoPedidoConfirmado,
-  mensajesPorConversacion,
 };

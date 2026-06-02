@@ -1,7 +1,6 @@
 const crypto = require("crypto");
 const { cargarProductos } = require("../repositories/productRepository");
 const { formatearPrecio, normalizar, normalizarPeso } = require("../utils/text");
-const { obtenerConversacion } = require("./conversationStore");
 
 const ALIAS_MARCAS_EXTRA = {
   "dog chow": ["dogchow", "dog show", "chow"],
@@ -463,13 +462,11 @@ function presentacionDisponible(referencia, presentacionSolicitada) {
 
 function respuestaPresentacionNoDisponible(marca, referencia, presentacionSolicitada) {
   const disponibles = presentacionesReferencia(referencia);
-  const peso = presentacionSolicitada.replace("kg", "kg").replace("g", "g");
 
-  return `En ${marca.marca} ${referencia.nombre} no tengo presentación de ${peso} en este momento.\n\nPresentaciones disponibles:\n${disponibles}\n\nSi te sirve alguna de esas, te ayudo a dejarla en el pedido.`;
+  return `En ${marca.marca} ${referencia.nombre} no tengo presentación de ${presentacionSolicitada} en este momento.\n\nPresentaciones disponibles:\n${disponibles}\n\nSi te sirve alguna de esas, te ayudo a dejarla en el pedido.`;
 }
 
 function respuestaPresentacionNoDisponibleParaReferencias(marca, referencias, criterios, presentacionSolicitada) {
-  const peso = presentacionSolicitada.replace("kg", "kg").replace("g", "g");
   const descripcion = tieneCriterios(criterios)
     ? `${marca.marca} para ${describirCriterios(criterios)}`
     : marca.marca;
@@ -482,7 +479,7 @@ function respuestaPresentacionNoDisponibleParaReferencias(marca, referencias, cr
     })
     .join("\n");
 
-  return `En ${descripcion} no tengo presentación de ${peso} en este momento.\n\nPresentaciones disponibles:\n${disponibles}\n\nSi te sirve alguna de esas, te ayudo a dejarla en el pedido.`;
+  return `En ${descripcion} no tengo presentación de ${presentacionSolicitada} en este momento.\n\nPresentaciones disponibles:\n${disponibles}\n\nSi te sirve alguna de esas, te ayudo a dejarla en el pedido.`;
 }
 
 function respuestaSiPresentacionSolicitadaNoDisponible(marca, referencia, mensaje) {
@@ -1043,7 +1040,7 @@ function opcionesDisponibles(catalogo, criterios = {}, marcaPreferida = null) {
 function recomendarOpciones(catalogo, criterios, presupuesto, marcaPreferida = null, economico = false) {
   const opciones = opcionesDisponibles(catalogo, criterios, marcaPreferida);
   if (!opciones.length) {
-    return respuestaSinOpciones(catalogo, criterios, marcaPreferida, estado);
+    return respuestaSinOpciones(catalogo, criterios, marcaPreferida);
   }
 
   let candidatas = opciones;
@@ -1421,6 +1418,7 @@ function limpiarFlujoVentaDespuesCambioCarrito(estado) {
   estado.ultimoPedidoGuardadoAt = null;
   estado.pedidoConfirmadoPendienteGuardar = false;
   estado.esperandoConfirmacionDomicilio = Boolean(estado.carrito.length);
+  estado.esperandoConfirmacionPedido = false;
   estado.esperandoDatosDomicilio = false;
   estado.esperandoTipoEntrega = false;
   estado.esperandoMetodoPago = false;
@@ -2693,6 +2691,7 @@ function solicitarMetodoPago(estado) {
   estado.esperandoMetodoPago = true;
   estado.esperandoTipoEntrega = false;
   estado.esperandoConfirmacionDomicilio = false;
+  estado.esperandoConfirmacionPedido = false;
 
   return `${resumenCarrito(estado)}\n\nAntes de tomar los datos de domicilio, dime con qué método de pago deseas cancelar:\n- efectivo\n- transferencia bancaria Bancolombia y/o Davivienda\n- tarjeta débito o crédito\n- llave bre-B`;
 }
@@ -2731,8 +2730,13 @@ function camposDomicilioFaltantes(estado) {
 
 function solicitarDatosDomicilio(estado) {
   const faltantes = camposDomicilioFaltantes(estado);
+  if (!faltantes.length) {
+    return estado.metodoPago ? solicitarConfirmacionPedido(estado) : solicitarMetodoPago(estado);
+  }
+
   estado.esperandoDatosDomicilio = true;
   estado.esperandoConfirmacionDomicilio = false;
+  estado.esperandoConfirmacionPedido = false;
   const detalleDireccion =
     !estado.datosDomicilio.direccion && (estado.datosDomicilio.sector || estado.datosDomicilio.direccionParcial)
       ? `\n\nTengo como referencia ${
@@ -2747,9 +2751,31 @@ function solicitarDatosDomicilio(estado) {
     .join("\n")}`;
 }
 
+function resumenDatosFacturacionYDomicilio(estado) {
+  const metodoPago = estado.metodoPago ? `\n- Método de pago: ${estado.metodoPago}` : "";
+
+  return `Datos de facturación y domicilio:
+- Nombre: ${estado.datosDomicilio.nombre}
+- Cédula: ${estado.datosDomicilio.cedula}
+- Celular: ${estado.datosDomicilio.celular}
+- Correo: ${estado.datosDomicilio.correo}
+- Dirección: ${estado.datosDomicilio.direccion}${metodoPago}`;
+}
+
+function solicitarConfirmacionPedido(estado) {
+  estado.esperandoDatosDomicilio = false;
+  estado.esperandoConfirmacionDomicilio = false;
+  estado.esperandoConfirmacionPedido = true;
+
+  return `${resumenCarrito(estado)}\n\n${resumenDatosFacturacionYDomicilio(
+    estado
+  )}\n\n¿Está todo correcto para confirmar el pedido?`;
+}
+
 function confirmarPedido(estado) {
   estado.esperandoDatosDomicilio = false;
   estado.esperandoConfirmacionDomicilio = false;
+  estado.esperandoConfirmacionPedido = false;
   estado.esperandoConfirmacionDatosPrevios = false;
   estado.esperandoCambioDireccion = false;
   estado.esperandoConfirmacionDatosFacturacion = false;
@@ -2760,9 +2786,9 @@ function confirmarPedido(estado) {
   estado.pedidoNuevoConDatosPrevios = false;
   estado.datosPreviosConfirmados = true;
 
-  const metodoPago = estado.metodoPago ? `\n- Método de pago: ${estado.metodoPago}` : "";
-
-  return `${resumenCarrito(estado)}\n\nDatos de facturación y domicilio:\n- Nombre: ${estado.datosDomicilio.nombre}\n- Cédula: ${estado.datosDomicilio.cedula}\n- Celular: ${estado.datosDomicilio.celular}\n- Correo: ${estado.datosDomicilio.correo}\n- Dirección: ${estado.datosDomicilio.direccion}${metodoPago}\n\nListo, tu pedido queda confirmado con esos datos.`;
+  return `${resumenCarrito(estado)}\n\n${resumenDatosFacturacionYDomicilio(
+    estado
+  )}\n\nListo, tu pedido queda confirmado con esos datos.`;
 }
 
 function resolverDomicilio(mensaje, estado) {
@@ -2774,19 +2800,19 @@ function resolverDomicilio(mensaje, estado) {
 
   if (!estado.esperandoDatosDomicilio && !tieneDatosDomicilioUtiles(datos)) {
     if (!camposDomicilioFaltantes(estado).length) {
-      return confirmarPedido(estado);
+      return solicitarConfirmacionPedido(estado);
     }
 
     return solicitarDatosDomicilio(estado);
   }
 
-  estado.datosDomicilio = { ...estado.datosDomicilio, ...datos };
+  estado.datosDomicilio = { ...datos, ...estado.datosDomicilio };
 
   if (camposDomicilioFaltantes(estado).length) {
     return solicitarDatosDomicilio(estado);
   }
 
-  return confirmarPedido(estado);
+  return solicitarConfirmacionPedido(estado);
 }
 
 function tieneDatosDomicilioUtiles(datos) {
@@ -2837,7 +2863,36 @@ function confirmarConDatosActuales(estado) {
 
   if (!estado.metodoPago) return solicitarMetodoPago(estado);
   if (camposDomicilioFaltantes(estado).length) return solicitarDatosDomicilio(estado);
-  return confirmarPedido(estado);
+  return solicitarConfirmacionPedido(estado);
+}
+
+function resolverConfirmacionPedido(mensaje, estado) {
+  if (!estado.esperandoConfirmacionPedido) return null;
+
+  const metodoPago = detectarMetodoPago(mensaje);
+  if (metodoPago) {
+    estado.metodoPago = metodoPago;
+    return solicitarConfirmacionPedido(estado);
+  }
+
+  if (esAfirmacion(mensaje)) {
+    return confirmarPedido(estado);
+  }
+
+  if (esNegacion(mensaje)) {
+    estado.esperandoConfirmacionPedido = false;
+    estado.esperandoActualizacionDatosCliente = true;
+    return "Claro, dime qué dato debemos corregir: nombre, cédula, celular, correo o dirección.";
+  }
+
+  const datos = extraerDatosDomicilio(mensaje);
+  if (Object.keys(datos).length) {
+    estado.datosDomicilio = { ...estado.datosDomicilio, ...datos };
+    return solicitarConfirmacionPedido(estado);
+  }
+
+  estado.esperandoConfirmacionPedido = false;
+  return null;
 }
 
 function resolverDatosPrevios(mensaje, estado) {
@@ -2939,6 +2994,7 @@ function resolverEntregaYPago(mensaje, estado) {
   }
 
   if (estado.entrega.tipo === "domicilio") {
+    const estabaEsperandoMetodoPago = estado.esperandoMetodoPago;
     const metodo = registrarMetodoPago(mensaje, estado);
 
     if (!estado.metodoPago) {
@@ -2952,6 +3008,12 @@ function resolverEntregaYPago(mensaje, estado) {
     if (metodo === "transferencia bancaria" && !estado.instruccionesPagoEnviadas) {
       estado.instruccionesPagoEnviadas = true;
       return `${instruccionesTransferencia()}\n\n${solicitarDatosDomicilio(estado)}`;
+    }
+
+    if (estabaEsperandoMetodoPago && metodo) {
+      return camposDomicilioFaltantes(estado).length
+        ? solicitarDatosDomicilio(estado)
+        : solicitarConfirmacionPedido(estado);
     }
 
     return resolverDomicilio(mensaje, estado);
@@ -3063,6 +3125,7 @@ function iniciarNuevoPedido(estado) {
   estado.pendienteRecomendacion = false;
   estado.esperandoMarca = false;
   estado.esperandoConfirmacionDomicilio = false;
+  estado.esperandoConfirmacionPedido = false;
   estado.esperandoConfirmacionRepetirPedido = false;
   estado.esperandoConfirmacionDatosPrevios = false;
   estado.esperandoCambioDireccion = false;
@@ -3092,7 +3155,7 @@ function resolverConfirmacionRepetirPedido(mensaje, estado) {
     if (estado.entrega?.tipo === "domicilio") {
       if (!estado.metodoPago) return solicitarMetodoPago(estado);
       if (camposDomicilioFaltantes(estado).length) return solicitarDatosDomicilio(estado);
-      return confirmarPedido(estado);
+      return solicitarConfirmacionPedido(estado);
     }
 
     return solicitarTipoEntrega(estado);
@@ -3346,6 +3409,9 @@ function resolverConsultaCatalogo(mensaje, estado, catalogo = cargarProductos(),
 
   const respuestaRepetirPedido = resolverConfirmacionRepetirPedido(mensaje, estado);
   if (respuestaRepetirPedido) return respuestaRepetirPedido;
+
+  const respuestaConfirmacionPedido = resolverConfirmacionPedido(mensaje, estado);
+  if (respuestaConfirmacionPedido) return respuestaConfirmacionPedido;
 
   if (
     estado.esperandoConfirmacionRepetirPedido &&
@@ -3651,8 +3717,6 @@ function resolverConsultaCatalogo(mensaje, estado, catalogo = cargarProductos(),
 
 module.exports = {
   resolverConsultaCatalogo,
-  obtenerConversacion,
-  cargarProductos,
   buscarMarca,
   extraerCriterios,
   tieneCriterios,
@@ -3664,5 +3728,4 @@ module.exports = {
   solicitaCierre,
   esSaludo,
   esAgradecimiento,
-  esCierreFinal,
 };

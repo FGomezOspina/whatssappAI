@@ -107,13 +107,29 @@ function formatearEjemplos(ejemplos = []) {
     .join("\n\n");
 }
 
-async function interpretarMensajeCliente({ mensaje, estado, catalogo, ejemplosEntrenamiento = [] }) {
+function resumenHistorial(historial = []) {
+  return historial.map((mensaje) => ({
+    rol: mensaje.direction === "outbound" ? "asistente" : "cliente",
+    contenido: mensaje.body,
+  }));
+}
+
+async function interpretarMensajeCliente({
+  mensaje,
+  estado,
+  catalogo,
+  ejemplosEntrenamiento = [],
+  historialReciente = [],
+  imageUrl = null,
+  imageUrls = [],
+}) {
   if (!openai || process.env.AI_INTERPRETER === "false") return null;
 
   try {
-    const completion = await openai.chat.completions.create({
-      model: process.env.OPENAI_INTERPRETER_MODEL || process.env.OPENAI_MODEL || "gpt-5.2",
-      temperature: Number(process.env.OPENAI_INTERPRETER_TEMPERATURE || 0.2),
+    const model = process.env.OPENAI_INTERPRETER_MODEL || process.env.OPENAI_MODEL || "gpt-5.2";
+    const urlsImagen = [...imageUrls, imageUrl].filter(Boolean);
+    const parametrosModelo = {
+      model,
       response_format: { type: "json_object" },
       messages: [
         {
@@ -130,6 +146,13 @@ Fuente de verdad:
 - El backend es la autoridad para marca, referencia, presentaciones y precios. Tu trabajo es entender que quiere el cliente: agregar, consultar, recomendar, cambiar cantidad, quitar productos, cambiar datos o cerrar pedido.
 - El estado de conversacion importa tanto como el ultimo mensaje. Si ya hay carrito, datos, metodo de pago o una seleccion pendiente, interpreta el mensaje como continuacion salvo que el cliente pida claramente empezar de nuevo.
 - No conviertas una aclaracion corta en un pedido nuevo si responde a una pregunta pendiente. Ejemplo: si se esperaba presentacion y el cliente dice "4 kilos", completa presentacion; si se esperaba metodo de pago y dice "efectivo", completa pago.
+- Los valores existentes en estado.datosDomicilio son memoria confirmada de la conversacion. Conserva nombre, cedula, correo, celular y direccion salvo que el ultimo mensaje del cliente indique explicitamente que desea corregir uno de esos datos.
+- Devuelve en datosCliente solo los datos nuevos o corregidos que aparezcan en el ultimo mensaje del cliente. No copies datos desde el historial ni repitas valores ya guardados en el estado.
+- Prioriza la ultima pregunta del asistente y las banderas estado.esperando. Si esperando.metodoPago es true y el cliente responde "efectivo", "transferencia", "tarjeta" o "llave", usa intencion "metodo_pago", completa solo entrega.metodoPago y deja todos los campos de datosCliente en null.
+- Nunca interpretes una forma de pago como nombre de cliente. Una palabra suelta solo puede ser nombre si el asistente estaba pidiendo el nombre o si el cliente la presenta explicitamente con frases como "soy", "me llamo" o "a nombre de".
+- Ejemplo prioritario: si estado.datosDomicilio.nombre ya contiene "Maria Lopez", esperando.metodoPago es true y el ultimo mensaje es "efectivo", devuelve intencion "metodo_pago", entrega.metodoPago "efectivo" y datosCliente con nombre, cedula, correo y celular en null. No reemplaces "Maria Lopez".
+- El mensaje puede contener varios mensajes consecutivos del cliente separados por saltos de linea. Interpretalos juntos como un solo turno: combina saludo, productos, cantidades, entrega, datos personales y metodo de pago antes de decidir que falta.
+- No reinicies el analisis ni respondas por cada fragmento. Devuelve una sola interpretacion consolidada con todos los datos presentes y faltanteSugerido solamente para el siguiente dato realmente pendiente.
 - Si el cliente cambia informacion ya dada (direccion, celular, correo, nombre, cedula, metodo de pago o cantidad), clasificalo como actualizacion/cambio, no como una consulta nueva.
 - Si ya hay productos en carrito y el cliente dice algo como "asi esta bien", "listo", "eso es todo", "nada mas", "continua", "sigue", "dale" o "perfecto", interpreta que quiere avanzar con el pedido. Usa intencion "confirmacion" y accion "confirmar", no consulta_producto.
 - No vuelvas a extraer producto desde el historial si el ultimo mensaje no menciona marca, referencia, especie, peso ni cantidad. En esos casos usa el estado para decidir si es confirmacion, datos de entrega, metodo de pago o cambio.
@@ -151,6 +174,10 @@ Razonamiento esperado:
 - Corrige errores leves de marca por contexto del catalogo ("dog choe", "dog chpw", "dogchow" -> Dog Chow) si la intencion es clara, pero la validacion final la hace el backend.
 - Si el cliente dio direccion tipo "Cra 10 #26-49 centro", es direccion completa.
 - Si solo dio barrio/sector/conjunto/ciudad, direccionCompleta debe ser false y sector debe quedar con ese texto.
+- Una direccion es un dato operativo para continuar el pedido. Nunca determines cobertura, rechaces un barrio o sector, ni inventes restricciones de domicilio, horarios, recargos o disponibilidad de entrega.
+- Si el ultimo mensaje del asistente cotizo un producto y pregunto si debe agregarlo, una respuesta con direccion de envio como "para calle 18 # 10-40, centro" o "envialo a..." es una aceptacion implicita para continuar: usa intencion "pedido_producto", accion "agregar", entrega.tipo "domicilio" y conserva la direccion exacta.
+- En esa continuacion puedes dejar el producto vacio: usa productosConsultados del estado. No interpretes palabras de la direccion, barrios o sectores como marcas o productos desconocidos.
+- Una direccion posterior a una cotizacion no es una nueva consulta de catalogo.
 - Si falta un dato, identifica solo ese dato.
 - Lee el estado del carrito y de los productos pendientes antes de decidir.
 - Si el cliente ya habia dado un dato en el estado y no lo esta cambiando, no lo marques como faltante.
@@ -167,6 +194,10 @@ Razonamiento esperado:
 - Si el cliente dice que ya no quiere, quite, elimine, saque o retire un producto, es operacion quitar.
 - Si el cliente está aclarando una referencia, tamaño, presentación o cantidad pendiente, conserva el contexto anterior y completa lo que falta; no reinicies la conversación.
 - No uses accion agregar cuando el mensaje sea una corrección del carrito o una aclaración de un producto que ya estaba en contexto.
+
+Los ejemplos dinamicos ensenan patrones de conversacion e interpretacion, no politicas operativas vigentes.
+Nunca infieras desde ellos restricciones de cobertura, sectores rechazados, horarios, recargos, disponibilidad de domicilios, inventario, sedes o metodos de pago.
+Si un ejemplo contradice el estado actual o el mensaje del cliente, ignoralo.
 
 Ejemplos dinamicos curados desde conversaciones reales:
 ${formatearEjemplos(ejemplosEntrenamiento)}
@@ -224,14 +255,39 @@ JSON exacto:
         },
         {
           role: "user",
-          content: JSON.stringify({
-            mensaje,
-            estado: resumenEstado(estado),
-            catalogo: resumenCatalogo(catalogo),
-          }),
+          content: urlsImagen.length
+            ? [
+                {
+                  type: "text",
+                  text: JSON.stringify({
+                    mensaje,
+                    historialReciente: resumenHistorial(historialReciente),
+                    estado: resumenEstado(estado),
+                    catalogo: resumenCatalogo(catalogo),
+                    instruccionImagen:
+                      "Analiza la imagen para identificar productos, referencias, presentaciones, comprobantes o datos relevantes. No inventes datos ilegibles.",
+                  }),
+                },
+                ...urlsImagen.map((url) => ({
+                  type: "image_url",
+                  image_url: { url },
+                })),
+              ]
+            : JSON.stringify({
+                mensaje,
+                historialReciente: resumenHistorial(historialReciente),
+                estado: resumenEstado(estado),
+                catalogo: resumenCatalogo(catalogo),
+              }),
         },
       ],
-    });
+    };
+
+    if (!/^gpt-5/i.test(model)) {
+      parametrosModelo.temperature = Number(process.env.OPENAI_INTERPRETER_TEMPERATURE || 0.2);
+    }
+
+    const completion = await openai.chat.completions.create(parametrosModelo);
 
     return normalizarInterpretacion(JSON.parse(completion.choices[0].message.content));
   } catch (error) {

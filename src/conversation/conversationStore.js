@@ -3,6 +3,7 @@ const {
   buscarConversacion,
   guardarConversacion: persistirConversacion,
   guardarMensaje,
+  buscarMensajesRecientes,
   guardarPedidoConfirmado,
 } = require("../repositories/supabaseConversationRepository");
 
@@ -39,6 +40,7 @@ function crearEstadoInicial() {
     pendienteRecomendacion: false,
     esperandoMarca: false,
     esperandoConfirmacionDomicilio: false,
+    esperandoConfirmacionPedido: false,
     esperandoConfirmacionRepetirPedido: false,
     esperandoConfirmacionDatosPrevios: false,
     esperandoCambioDireccion: false,
@@ -57,11 +59,13 @@ function obtenerConversacion(usuario) {
 }
 
 function normalizarEstadoPersistido(estadoGuardado = {}) {
+  const estadoInicial = crearEstadoInicial();
+
   return {
-    ...crearEstadoInicial(),
+    ...estadoInicial,
     ...estadoGuardado,
     entrega: {
-      ...crearEstadoInicial().entrega,
+      ...estadoInicial.entrega,
       ...(estadoGuardado.entrega || {}),
     },
     datosDomicilio: estadoGuardado.datosDomicilio || {},
@@ -121,9 +125,20 @@ async function guardarConversacionPersistida(usuario, estado, metadatos = {}) {
   }
 }
 
+async function obtenerHistorialRecientePersistido(usuario, limite = 12) {
+  if (!supabaseConfigurado()) return [];
+
+  try {
+    return await buscarMensajesRecientes(usuario, limite);
+  } catch (error) {
+    console.error("Error cargando historial desde Supabase:", error.message);
+    return [];
+  }
+}
+
 module.exports = {
   crearEstadoInicial,
-  obtenerConversacion,
   obtenerConversacionPersistida,
+  obtenerHistorialRecientePersistido,
   guardarConversacionPersistida,
 };

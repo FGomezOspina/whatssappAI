@@ -1,98 +1,122 @@
 const express = require("express");
 const {
-  resolverConsultaCatalogo,
-  cargarProductos,
-  buscarMarca,
-  extraerCriterios,
-  tieneCriterios,
-  solicitaMarcas,
-  solicitaReferencias,
-  solicitaRecomendacion,
-  solicitaOpinionMarca,
-  extraerPresupuesto,
-  solicitaCierre,
-  esSaludo,
-  esAgradecimiento,
-} = require("./conversation/conversationEngine");
-const {
-  obtenerConversacionPersistida,
-  guardarConversacionPersistida,
-} = require("./conversation/conversationStore");
-const { obtenerEjemplosEntrenamiento } = require("./repositories/trainingExampleRepository");
-const { interpretarMensajeCliente } = require("./services/aiInterpreter");
-const { humanizarRespuesta } = require("./services/humanizer");
-const { asegurarRespuestaCatalogo } = require("./services/responseGuard");
-const { responder } = require("./services/twiml");
+  enviarTexto,
+  extraerEventos,
+  verificarFirmaWebhook,
+} = require("./providers/kapsoMessagingProvider");
+const { responderEventosEntrantes } = require("./services/conversationService");
+const { crearBufferMensajesEntrantes } = require("./services/inboundMessageBuffer");
+
+const idempotencyKeysProcesadas = new Set();
+const colasPorCliente = new Map();
+
+function clienteParaLog(channelUserId = "") {
+  if (process.env.NODE_ENV !== "production") return channelUserId || "desconocido";
+  return channelUserId ? `***${channelUserId.slice(-4)}` : "desconocido";
+}
+
+function contenidoParaLog(evento) {
+  const tipo = evento.messageType || evento.media?.type || "unknown";
+  const texto = evento.text || `[${tipo} sin texto]`;
+
+  if (process.env.NODE_ENV === "production") {
+    return `[${tipo}: ${texto.length} caracteres]`;
+  }
+
+  return texto.replace(/\s+/g, " ").trim().slice(0, 500);
+}
+
+function registrarMensajeEntrante(evento) {
+  console.log(
+    `[Kapso] Mensaje recibido | cliente=${clienteParaLog(evento.channelUserId)} | id=${
+      evento.messageId || "sin-id"
+    } | tipo=${evento.messageType || "unknown"} | texto=${JSON.stringify(contenidoParaLog(evento))}`
+  );
+}
+
+function registrarIdempotencyKey(key) {
+  if (!key) return true;
+  if (idempotencyKeysProcesadas.has(key)) return false;
+
+  idempotencyKeysProcesadas.add(key);
+  if (idempotencyKeysProcesadas.size > 10000) {
+    idempotencyKeysProcesadas.delete(idempotencyKeysProcesadas.values().next().value);
+  }
+
+  return true;
+}
+
+async function procesarEventos(eventos) {
+  const evento = eventos[eventos.length - 1];
+  const respuesta = await responderEventosEntrantes(eventos);
+  await enviarTexto({
+    to: evento.recipientId,
+    text: respuesta,
+    phoneNumberId: evento.phoneNumberId,
+  });
+  console.log(
+    `[Kapso] Respuesta enviada | cliente=${clienteParaLog(evento.channelUserId)} | mensajes=${
+      eventos.length
+    } | ids=${eventos.map((item) => item.messageId || "sin-id").join(",")}`
+  );
+}
+
+function encolarEventos(eventos) {
+  const channelUserId = eventos[0].channelUserId;
+  const colaAnterior = colasPorCliente.get(channelUserId) || Promise.resolve();
+  const procesamiento = colaAnterior
+    .catch(() => {})
+    .then(() => procesarEventos(eventos));
+
+  colasPorCliente.set(channelUserId, procesamiento);
+  procesamiento
+    .catch((error) => {
+      console.error("Error procesando webhook Kapso:", error.message);
+    })
+    .finally(() => {
+      if (colasPorCliente.get(channelUserId) === procesamiento) {
+        colasPorCliente.delete(channelUserId);
+      }
+    });
+}
+
+const bufferMensajesEntrantes = crearBufferMensajesEntrantes({
+  alVaciar: encolarEventos,
+});
 
 function crearApp() {
   const app = express();
-  app.use(express.urlencoded({ extended: false }));
+  app.use(
+    express.json({
+      limit: "2mb",
+      verify: (req, _res, buffer) => {
+        req.rawBody = buffer;
+      },
+    })
+  );
 
-  app.post("/whatsapp", async (req, res) => {
-    const mensaje = (req.body.Body || "").trim();
-    const usuario = req.body.From || "anonimo";
-    const estado = await obtenerConversacionPersistida(usuario);
-    const catalogo = cargarProductos();
+  app.post("/webhooks/kapso/whatsapp", (req, res) => {
+    const firma = req.headers["x-webhook-signature"];
+    if (!verificarFirmaWebhook(req.rawBody || req.body, firma)) {
+      res.status(401).send("Invalid signature");
+      return;
+    }
 
-    console.log("Mensaje recibido:", mensaje);
+    const eventos = extraerEventos(req.body, req.headers);
+    res.status(200).send("OK");
 
-    const responderYGuardar = async (respuestaFinal) => {
-      await guardarConversacionPersistida(usuario, estado, {
-        mensaje,
-        respuesta: respuestaFinal,
+    eventos.forEach((evento) => {
+      registrarMensajeEntrante(evento);
+      setImmediate(() => {
+        if (registrarIdempotencyKey(evento.idempotencyKey)) {
+          bufferMensajesEntrantes.agregar(evento);
+        }
       });
-      responder(res, respuestaFinal);
-    };
-
-    if (!mensaje) {
-      await responderYGuardar("Cuéntame qué necesitas para tu mascota 🐶");
-      return;
-    }
-
-    const ejemplosEntrenamiento = await obtenerEjemplosEntrenamiento(mensaje, 8);
-    const interpretacionIA = await interpretarMensajeCliente({
-      mensaje,
-      estado,
-      catalogo,
-      ejemplosEntrenamiento,
     });
+  });
 
-    const tieneIntencionCatalogo =
-      buscarMarca(catalogo, mensaje) ||
-      tieneCriterios(extraerCriterios(mensaje)) ||
-      solicitaMarcas(mensaje) ||
-      solicitaReferencias(mensaje) ||
-      solicitaRecomendacion(mensaje) ||
-      solicitaOpinionMarca(mensaje) ||
-      extraerPresupuesto(mensaje) ||
-      solicitaCierre(mensaje) ||
-      ["pedido_producto", "consulta_producto", "consulta_marcas", "recomendacion", "datos_envio", "metodo_pago"].includes(
-        interpretacionIA?.intencion
-      );
-
-    if (esSaludo(mensaje) && !tieneIntencionCatalogo && !(estado.pedidoConfirmado && estado.carrito.length)) {
-      await responderYGuardar("¡Hola! Bienvenido 🐶 ¿Qué necesitas para tu mascota hoy?");
-      return;
-    }
-
-    if (
-      esAgradecimiento(mensaje) &&
-      !tieneIntencionCatalogo &&
-      !estado.carrito.length &&
-      !estado.esperandoDatosDomicilio
-    ) {
-      await responderYGuardar("Con mucho gusto 🐶");
-      return;
-    }
-
-    const respuestaBase = resolverConsultaCatalogo(mensaje, estado, catalogo, interpretacionIA);
-    const respuestaHumanizada = await humanizarRespuesta(mensaje, respuestaBase, {
-      ejemplosEntrenamiento,
-      estado,
-      interpretacionIA,
-    });
-    const respuesta = asegurarRespuestaCatalogo(mensaje, respuestaHumanizada, { catalogo, interpretacionIA });
-    await responderYGuardar(respuesta);
+  app.get("/health", (_req, res) => {
+    res.json({ ok: true, provider: "kapso" });
   });
 
   return app;
