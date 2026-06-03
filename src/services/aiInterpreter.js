@@ -7,6 +7,42 @@ const openai = process.env.OPENAI_API_KEY
     })
   : null;
 
+function normalizarTexto(valor = "") {
+  return valor
+    .toString()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
+}
+
+function contiene(texto, palabras = []) {
+  return palabras.some((palabra) => texto.includes(palabra));
+}
+
+function atributosReferenciaCatalogo(referencia = {}) {
+  const texto = normalizarTexto(`${referencia.nombre || ""} ${referencia.descripcion || ""}`);
+  const sabores = [];
+  if (texto.includes("pollo")) sabores.push("pollo");
+  if (texto.includes("salmon")) sabores.push("salmon");
+  if (texto.includes("cordero")) sabores.push("cordero");
+  if (texto.includes("carne")) sabores.push("carne");
+
+  let etapa = null;
+  if (contiene(texto, ["cachorro", "cachorros", "puppy", "gatito"])) etapa = "cachorro";
+  if (contiene(texto, ["adulto", "adultos", "mayor", "mayores"])) etapa = "adulto";
+
+  let tamano = null;
+  if (contiene(texto, ["pequeno", "pequena", "pequenos", "pequenas", "mini"])) tamano = "pequeno";
+  if (contiene(texto, ["mediano", "mediana", "grande", "grandes"])) tamano = "grande";
+  if (contiene(texto, ["todas las razas", "cualquier tamano", "cualquier raza"])) tamano = "todas";
+
+  return {
+    etapa,
+    tamano,
+    sabores,
+  };
+}
+
 function resumenCatalogo(catalogo = []) {
   return catalogo.map((marca) => ({
     marca: marca.marca,
@@ -14,6 +50,7 @@ function resumenCatalogo(catalogo = []) {
       nombre: referencia.nombre,
       especie: referencia.especie || "perro",
       descripcion: referencia.descripcion || "",
+      atributos: atributosReferenciaCatalogo(referencia),
       presentaciones: referencia.presentaciones.map((presentacion) => presentacion.peso),
     })),
   }));
@@ -131,8 +168,13 @@ async function interpretarMensajeCliente({
   if (!openai || process.env.AI_INTERPRETER === "false") return null;
 
   try {
-    const model = process.env.OPENAI_INTERPRETER_MODEL || process.env.OPENAI_MODEL || "gpt-5.2";
     const urlsImagen = [...imageUrls, imageUrl].filter(Boolean);
+    const model = urlsImagen.length
+      ? process.env.OPENAI_VISION_MODEL ||
+        process.env.OPENAI_INTERPRETER_MODEL ||
+        process.env.OPENAI_MODEL ||
+        "gpt-4.1"
+      : process.env.OPENAI_INTERPRETER_MODEL || process.env.OPENAI_MODEL || "gpt-5.2";
     const parametrosModelo = {
       model,
       response_format: { type: "json_object" },
@@ -147,6 +189,7 @@ Fuente de verdad:
 - Las marcas, referencias y presentaciones validas salen del catalogo dado.
 - No inventes precios ni referencias. Si no estas seguro de una referencia del catalogo, usa null y deja criterios.
 - Puedes inferir especie, etapa, tamano y presentacion desde lenguaje humano, abreviaturas, mala ortografia y razas.
+- El cliente escribe en español colombiano y lenguaje comercial local. Entiende expresiones como "cuido", "concentrado", "comida", "purina", "referencia", "manejan esta referencia", "la de la foto", "la bolsa", "bulto", "paquete", "kilo", "kl", "libra", "raza pequeña", "todas las razas" y variantes coloquiales.
 - Tu criterio debe parecer de asesor humano, no de vendedor que siempre dice que si. Si el catalogo no respalda lo pedido, la decision correcta es marcar el dato solicitado y permitir que el motor responda con una negativa util.
 - El backend es la autoridad para marca, referencia, presentaciones y precios. Tu trabajo es entender que quiere el cliente: agregar, consultar, recomendar, cambiar cantidad, quitar productos, cambiar datos o cerrar pedido.
 - El estado de conversacion importa tanto como el ultimo mensaje. Si ya hay carrito, datos, metodo de pago o una seleccion pendiente, interpreta el mensaje como continuacion salvo que el cliente pida claramente empezar de nuevo.
@@ -173,6 +216,18 @@ Fuente de verdad:
 - Si el cliente solo saluda y dice que quiere hacer un pedido, no inventes marca ni producto. Interpreta apertura de pedido: intencion "otro", accion null, faltanteSugerido "marca" o "referencia" segun el contexto.
 - Si el cliente describe su mascota con una raza, apodo, escritura aproximada o mezcla ("tengo un labrador adulto", "mi perrita es french poodol", "es criollo grande", "tengo una gata adulta"), no lo trates como marca desconocida. Actua como experto en razas y deduce especie, etapa y tamano probable desde conocimiento general; si no estas seguro del tamano, deja tamano null y conserva especie/etapa.
 
+Vision de empaques:
+- Si recibes imagen, lee el empaque como lo haria un asesor de tienda en Colombia: marca visible, nombre grande, etapa (adulto/adultos/cachorro/cachorros), especie por foto o texto, tamano/raza ("mini", "pequeñas", "medianas", "grandes", "todas las razas"), sabor, peso neto/presentacion y cualquier frase comercial.
+- Compara lo visible contra el catalogo completo, no contra el caption solamente. El caption puede ser solo "manejan esta referencia"; la imagen es la fuente principal del producto.
+- No exijas coincidencia textual exacta entre empaque y referencia interna. Los empaques pueden decir "Adultos", "Pollo", "carne", "para todas las razas" o claims comerciales, mientras el catalogo guarda un nombre resumido.
+- Para mapear una imagen a referencia valida, prioriza en este orden: marca exacta visible, especie, etapa, tamano/raza, presentacion/peso. Usa sabor y claims como pistas secundarias; no descartes una referencia valida solo porque el sabor visible no aparece en el nombre interno.
+- Busca el peso/presentacion en zonas pequenas del empaque: esquinas inferiores, laterales, textos como "peso neto", "contenido neto", "kg", "g", "kl", "kilos". Si puedes leer numero y unidad con confianza razonable, normalizalo como presentacion exacta del catalogo: 2000g -> 2kg, 1000g -> 1kg, 4000g -> 4kg. Si el peso esta oculto o ilegible, deja presentacion null.
+- Si el empaque trae marca, etapa y tamano/raza claros pero el peso es dificil de ver, no rechaces la referencia; devuelve marca/referencia/criterios y solo deja presentacion null cuando de verdad no puedas leer el peso.
+- Si el empaque trae sabor visible pero el catalogo no tiene una referencia separada por ese sabor, ignora el sabor para elegir la referencia por etapa y tamano. Patron general: "Adultos + Pollo/Carne + para todas las razas" debe mapear a la referencia adulta de todas las razas de esa marca si existe y no hay una referencia adulta mas especifica por sabor.
+- Si el empaque muestra "para todas las razas", esa pista gana sobre la foto de un perro pequeño, mediano o grande; no lo conviertas en "razas pequeñas" solo por la imagen del perro.
+- Si una imagen muestra un producto y el cliente pregunta "manejan esta referencia", "tienen esta", "la venden" o similar, usa intencion "consulta_producto" y accion "consultar". No agregues al carrito hasta que el cliente confirme compra.
+- Si marca, etapa, tamano/raza y presentacion apuntan claramente a una referencia del catalogo, devuelve esa referencia exacta aunque el texto visual tenga palabras adicionales. Si de verdad hay dos referencias plausibles, deja referencia null y conserva criterios para que el motor pregunte.
+
 Razonamiento esperado:
 - "a", "adult", "adulto" en contexto de alimento puede significar adulto.
 - "cach", "cachorro", "puppy" significan cachorro.
@@ -183,6 +238,7 @@ Razonamiento esperado:
 - "Bulto" puede indicar una bolsa grande, pero nunca debe reemplazar un numero explicito de kilos. El numero explicito gana.
 - Si la presentacion pedida no existe en el catalogo para la marca/referencia/criterios detectados, deja producto.presentacion con el valor pedido por el cliente, usa faltanteSugerido "presentacion" y mantén accion "consultar" si no hay una opción exacta agregable. No elijas otra presentacion cercana.
 - Si el cliente pide una referencia por descripcion ("razas pequeñas", "adulto raza grande", "gatito"), puedes mapearla a la referencia exacta del catalogo cuando sea claro. Si hay dos referencias posibles, deja referencia null y conserva criterios.
+- Si un empaque o mensaje dice "adultos", normalizalo como etapa "adulto". Si dice "para todas las razas", usa tamano "todas". Si muestra una marca y "pollo/cordero/salmon/carne", pon ese sabor en sabores, pero no obligues a que el nombre interno de referencia contenga el sabor.
 - Si el cliente pide domicilio y producto en el mismo mensaje, extrae ambos. No asumas que el producto queda agregado si falta validacion de presentacion.
 - Si el cliente escribe varios productos en un mismo mensaje, en varias lineas o separados por comas/conectores, conserva cada item por separado en "productos". No mezcles presentaciones entre lineas. Ejemplo: si una linea dice 1kg y otra 2kg, cada producto conserva su propio peso.
 - Corrige errores leves de marca por contexto del catalogo ("dog choe", "dog chpw", "dogchow" -> Dog Chow) si la intencion es clara, pero la validacion final la hace el backend.
@@ -279,12 +335,12 @@ JSON exacto:
                     estado: resumenEstado(estado),
                     catalogo: resumenCatalogo(catalogo),
                     instruccionImagen:
-                      "Analiza la imagen para identificar productos, referencias, presentaciones, comprobantes o datos relevantes. No inventes datos ilegibles.",
+                      "Analiza la imagen completa, no solo el caption. Lee marca, etapa, especie, tamano/raza, sabor, peso neto/presentacion y frases del empaque. Revisa especialmente esquinas inferiores y textos pequenos de peso neto/contenido neto. Compara esos datos con el catalogo colombiano entregado y devuelve la referencia exacta mas compatible cuando exista. El sabor visible es pista secundaria si no aparece en el nombre interno. Si puedes leer el peso, normalizalo a una presentacion exacta del catalogo. No inventes datos ilegibles.",
                   }),
                 },
                 ...urlsImagen.map((url) => ({
                   type: "image_url",
-                  image_url: { url },
+                  image_url: { url, detail: "high" },
                 })),
               ]
             : JSON.stringify({
@@ -299,6 +355,10 @@ JSON exacto:
 
     if (!/^gpt-5/i.test(model)) {
       parametrosModelo.temperature = Number(process.env.OPENAI_INTERPRETER_TEMPERATURE || 0.2);
+    }
+
+    if (urlsImagen.length) {
+      console.log(`[OpenAI] Interpretando imagen con modelo=${model} | imagenes=${urlsImagen.length}`);
     }
 
     const completion = await openai.chat.completions.create(parametrosModelo);

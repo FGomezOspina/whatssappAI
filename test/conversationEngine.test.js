@@ -421,6 +421,41 @@ test("consulta de precio de un solo producto no agrega al carrito", () => {
   assert.doesNotMatch(respuesta, /Pedido:/);
 });
 
+test("una imagen con referencia exacta usa el producto interpretado aunque el caption sea generico", () => {
+  const estado = crearEstadoInicial();
+  const catalogo = cargarProductos();
+  const interpretacionIA = {
+    intencion: "consulta_producto",
+    accion: "consultar",
+    confianza: 0.95,
+    producto: {
+      marca: "Chunky",
+      referencia: "Adulto Todas las Razas",
+      especie: "perro",
+      etapa: "adulto",
+      tamano: "todas",
+      sabores: ["pollo"],
+      presentacion: "2kg",
+      cantidad: 1,
+    },
+    productos: [],
+    entrega: {},
+    datosCliente: {},
+    carrito: { operacion: null },
+    faltanteSugerido: null,
+  };
+
+  const respuesta = resolverConsultaCatalogo("Manejan esta referencia", estado, catalogo, interpretacionIA);
+
+  assert.equal(estado.carrito.length, 0);
+  assert.equal(estado.productosConsultados.length, 1);
+  assert.equal(estado.productosConsultados[0].marca, "Chunky");
+  assert.equal(estado.productosConsultados[0].referencia, "Adulto Todas las Razas");
+  assert.equal(estado.productosConsultados[0].peso, "2kg");
+  assert.match(respuesta, /Chunky Adulto Todas las Razas 2kg: \$32\.000/i);
+  assert.doesNotMatch(respuesta, /no tengo una referencia exacta|no tengo exactamente/i);
+});
+
 test("otra pregunta de precio despues de cotizar sigue sin agregar", () => {
   const estado = crearEstadoInicial();
   const catalogo = cargarProductos();

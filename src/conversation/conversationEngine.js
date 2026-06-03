@@ -1969,16 +1969,24 @@ function resolverConInterpretacionIA(mensaje, estado, catalogo, interpretacion) 
   const criteriosIA = criteriosDesdeInterpretacion(interpretacion);
   const criteriosBase = estado.referenciasPendientes?.marca === marca.marca ? estado.referenciasPendientes.criterios || {} : estado.criterios;
   const criterios = mezclarCriterios(criteriosBase || {}, mezclarCriterios(extraerCriterios(mensaje), criteriosIA));
-  const referencias = referenciasPorCriterios(marca, criterios);
+  const referenciaInterpretada = buscarReferenciaInterpretada(marca, interpretacion, criterios);
+  let referencias = referenciasPorCriterios(marca, criterios);
+  if (!referencias.length && referenciaInterpretada) {
+    referencias = [referenciaInterpretada];
+  }
   if (!referencias.length) return null;
 
   let referencia =
-    buscarReferenciaInterpretada(marca, interpretacion, criterios) ||
+    referenciaInterpretada ||
     buscarReferenciaExacta(marca, mensaje, criterios) ||
     elegirMejorReferencia(referencias, criterios, mensaje);
 
   if (referencia && !referencias.some((item) => item.nombre === referencia.nombre)) {
-    referencia = null;
+    if (referenciaInterpretada && referencia.nombre === referenciaInterpretada.nombre) {
+      referencias = [referencia];
+    } else {
+      referencia = null;
+    }
   }
 
   const cantidad = cantidadInterpretada(interpretacion, mensaje);
@@ -2015,7 +2023,9 @@ function resolverConInterpretacionIA(mensaje, estado, catalogo, interpretacion) 
     return preguntaReferenciaFaltante(marca, referencias, interpretacion);
   }
 
-  const presentacionNoDisponible = respuestaSiPresentacionSolicitadaNoDisponible(marca, referencia, mensaje);
+  const presentacionNoDisponible =
+    respuestaPresentacionProductoNoDisponible(marca, referencia, interpretacion.producto) ||
+    respuestaSiPresentacionSolicitadaNoDisponible(marca, referencia, mensaje);
   if (presentacionNoDisponible) {
     estado.marca = marca.marca;
     estado.criterios = { ...criteriosDesdeReferencia(referencia), ...criterios };

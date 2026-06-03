@@ -75,8 +75,20 @@ function obtenerDestinatario(payload) {
 
 function obtenerTextoMensaje(message = {}) {
   if (message.type === "text") return message.text?.body || message.kapso?.content || "";
-  if (message.type === "image") return message.image?.caption || message.kapso?.message_type_data?.caption || "";
-  if (message.type === "audio") return message.kapso?.transcript?.text || "";
+  if (message.type === "image") {
+    return message.image?.caption || message.kapso?.message_type_data?.caption || message.kapso?.content || "";
+  }
+  if (["audio", "voice"].includes(message.type)) {
+    const transcript = message.kapso?.transcript?.text || "";
+    const texto =
+      message.audio?.caption ||
+      message.voice?.caption ||
+      message.kapso?.message_type_data?.caption ||
+      message.kapso?.content ||
+      "";
+
+    return texto === transcript ? "" : texto;
+  }
   if (message.type === "interactive") {
     return (
       message.interactive?.button_reply?.title ||
@@ -89,15 +101,117 @@ function obtenerTextoMensaje(message = {}) {
   return message.kapso?.content || "";
 }
 
+function primerValor(...valores) {
+  return valores.find((valor) => typeof valor === "string" && valor.trim()) || null;
+}
+
+function extraerPrimerAdjunto(message = {}) {
+  if (Array.isArray(message.attachments) && message.attachments.length) return message.attachments[0];
+  if (Array.isArray(message.attachment) && message.attachment.length) return message.attachment[0];
+  return message.attachment || message.file || {};
+}
+
+function datosTipoMedia(message = {}) {
+  if (message.type === "voice") return message.voice || message.audio || {};
+  return message[message.type] || {};
+}
+
+function normalizarTipoMedia(tipo) {
+  return tipo === "voice" ? "audio" : tipo;
+}
+
 function normalizarMedia(message = {}) {
-  if (!["image", "audio"].includes(message.type)) return null;
+  if (!["image", "audio", "voice"].includes(message.type)) return null;
+
+  const adjunto = extraerPrimerAdjunto(message);
+  const mediaTipo = datosTipoMedia(message);
+  const kapso = message.kapso || {};
+  const mediaData = kapso.media_data || kapso.mediaData || {};
+  const mediaUrl = primerValor(
+    kapso.media_url,
+    kapso.mediaUrl,
+    kapso.file_url,
+    kapso.fileUrl,
+    kapso.url,
+    mediaData.url,
+    mediaData.media_url,
+    mediaData.mediaUrl,
+    mediaData.file_url,
+    mediaData.fileUrl,
+    message.media_url,
+    message.mediaUrl,
+    message.file_url,
+    message.fileUrl,
+    message.url,
+    mediaTipo.url,
+    mediaTipo.link,
+    mediaTipo.media_url,
+    mediaTipo.mediaUrl,
+    mediaTipo.file_url,
+    mediaTipo.fileUrl,
+    adjunto.url,
+    adjunto.link,
+    adjunto.media_url,
+    adjunto.mediaUrl,
+    adjunto.file_url,
+    adjunto.fileUrl
+  );
+  const mediaId = primerValor(
+    kapso.media_id,
+    kapso.mediaId,
+    mediaData.id,
+    mediaData.media_id,
+    mediaData.mediaId,
+    message.media_id,
+    message.mediaId,
+    mediaTipo.id,
+    mediaTipo.media_id,
+    mediaTipo.mediaId,
+    adjunto.id,
+    adjunto.media_id,
+    adjunto.mediaId
+  );
+  const contentType = primerValor(
+    mediaData.content_type,
+    mediaData.contentType,
+    mediaData.mime_type,
+    mediaData.mimetype,
+    message.mime_type,
+    message.mimetype,
+    message.content_type,
+    message.contentType,
+    mediaTipo.mime_type,
+    mediaTipo.mimetype,
+    mediaTipo.content_type,
+    mediaTipo.contentType,
+    adjunto.mime_type,
+    adjunto.mimetype,
+    adjunto.content_type,
+    adjunto.contentType
+  );
+  const filename = primerValor(
+    mediaData.filename,
+    mediaData.file_name,
+    mediaData.name,
+    message.filename,
+    message.file_name,
+    message.name,
+    mediaTipo.filename,
+    mediaTipo.file_name,
+    mediaTipo.name,
+    adjunto.filename,
+    adjunto.file_name,
+    adjunto.name
+  );
 
   return {
-    type: message.type,
-    url: message.kapso?.media_url || message.kapso?.media_data?.url || null,
-    filename: message.kapso?.media_data?.filename || `${message.type}-${message.id || "archivo"}`,
-    contentType: message.kapso?.media_data?.content_type || null,
-    transcript: message.kapso?.transcript?.text || null,
+    type: normalizarTipoMedia(message.type),
+    url: mediaUrl,
+    mediaId,
+    filename: filename || `${normalizarTipoMedia(message.type)}-${message.id || mediaId || "archivo"}`,
+    contentType,
+    transcript: kapso.transcript?.text || null,
+    hasFileReference: Boolean(mediaUrl || mediaId),
   };
 }
 

@@ -96,9 +96,9 @@ Para cambiar de proveedor de mensajeria, crea otro adaptador equivalente a `kaps
 
 ### Multimedia
 
-- Imagen: Kapso entrega una URL y OpenAI recibe `image_url`.
-- Audio: se reutiliza `message.kapso.transcript.text` cuando existe.
-- Voz sin transcripcion: el backend descarga el archivo y usa `whisper-1`.
+- Imagen: Kapso debe entregar una URL real; el backend descarga el archivo y OpenAI recibe `image_url` como data URL/base64 junto con el caption si existe.
+- Audio/nota de voz: si hay URL, el backend descarga el archivo y lo envia a OpenAI Whisper.
+- `message.kapso.transcript.text` solo se usa como respaldo cuando no hay URL descargable; en ese caso se deja warning porque OpenAI no recibio el audio real.
 - La descarga multimedia valida URL publica y aplica timeout y limite de bytes configurables.
 
 ### Seguridad y resiliencia inicial
@@ -192,9 +192,12 @@ Usos separados:
 
 | Componente | Variable | Proposito |
 | --- | --- | --- |
-| Interprete | `OPENAI_INTERPRETER_MODEL` | Convierte texto e imagen en JSON estructurado. |
+| Interprete | `OPENAI_INTERPRETER_MODEL` | Convierte texto en JSON estructurado. |
+| Vision | `OPENAI_VISION_MODEL` | Interpreta imagenes reales con alto detalle y las cruza contra el catalogo. |
 | Humanizador | `OPENAI_MODEL` | Redacta la respuesta final con tono natural. |
 | Voz | `OPENAI_TRANSCRIPTION_MODEL` | Transcribe audio cuando Kapso no lo hizo. |
+
+Para imagenes, el agente usa `OPENAI_VISION_MODEL` si esta configurado; si no, cae a `OPENAI_INTERPRETER_MODEL`. Para audio, `OPENAI_TRANSCRIPTION_MODEL` permite usar modelos de transcripcion como `gpt-4o-mini-transcribe`.
 
 Los modelos GPT-5 se invocan sin `temperature`, porque esos modelos pueden aceptar solamente el valor predeterminado. Para modelos anteriores, el interprete permite `OPENAI_INTERPRETER_TEMPERATURE`.
 

@@ -113,7 +113,8 @@ El sandbox sigue usando el flujo completo del agente. Conserva:
 OPENAI_API_KEY=
 OPENAI_MODEL=gpt-5.2-chat-latest
 OPENAI_INTERPRETER_MODEL=gpt-5.2
-OPENAI_TRANSCRIPTION_MODEL=whisper-1
+OPENAI_VISION_MODEL=gpt-4.1
+OPENAI_TRANSCRIPTION_MODEL=gpt-4o-mini-transcribe
 INBOUND_MESSAGE_BUFFER_MS=5000
 
 SUPABASE_URL=
@@ -255,9 +256,10 @@ Verifica tambien:
 
 ## Multimedia
 
-- Imagen: Kapso entrega `message.kapso.media_url`. El backend pasa esa URL al interprete OpenAI con vision.
-- Audio: Kapso entrega la URL del archivo. El backend descarga el audio y usa `whisper-1`.
-- Si Kapso incluye `message.kapso.transcript.text`, el backend reutiliza esa transcripcion.
+- Imagen: el backend busca URL real en `message.kapso.media_url`, `media_data.url`, `fileUrl`, `attachment`, `image.url` y campos equivalentes. Si hay URL, descarga la imagen y la envia al interprete OpenAI como `image_url` en formato data URL/base64 junto con el caption.
+- Audio/nota de voz: el backend busca URL real en `message.kapso.media_url`, `audio.url`, `voice.url`, `attachment` y campos equivalentes. Si hay URL, descarga el archivo y lo envia a OpenAI Whisper.
+- Si solo llega `message.kapso.transcript.text` pero no URL descargable, se usa como respaldo y se deja warning en consola porque OpenAI no recibio el audio real.
+- Si llega multimedia sin URL ni datos suficientes, el backend registra warning claro sin imprimir tokens.
 
 ## Solucion de problemas
 

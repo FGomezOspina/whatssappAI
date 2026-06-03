@@ -24,6 +24,43 @@ const { humanizarRespuesta } = require("./humanizer");
 const { procesarMultimedia } = require("./mediaProcessor");
 const { asegurarRespuestaCatalogo } = require("./responseGuard");
 
+function clienteParaLog(channelUserId = "") {
+  if (process.env.NODE_ENV !== "production") return channelUserId || "desconocido";
+  return channelUserId ? `***${channelUserId.slice(-4)}` : "desconocido";
+}
+
+function registrarEntradaOpenAI(evento, mensaje, imageUrls, contenidos) {
+  const audiosOpenAI = contenidos.filter((contenido) => contenido.metadata?.audioTranscribedWithOpenAI).length;
+  const imagenesOpenAI = imageUrls.length;
+  const multimediaFallback = contenidos.filter(
+    (contenido) => contenido.metadata?.tipo === "audio" && !contenido.metadata?.audioTranscribedWithOpenAI
+  ).length;
+
+  console.log(
+    `[OpenAI] Entrada preparada | cliente=${clienteParaLog(evento.channelUserId)} | textoChars=${
+      mensaje.length
+    } | imagenesVision=${imagenesOpenAI} | audiosTranscritos=${audiosOpenAI} | multimediaFallback=${multimediaFallback}`
+  );
+}
+
+function registrarInterpretacionOpenAI(evento, interpretacionIA) {
+  if (!interpretacionIA) {
+    console.log(`[OpenAI] Interpretacion IA | cliente=${clienteParaLog(evento.channelUserId)} | resultado=null`);
+    return;
+  }
+
+  const producto = interpretacionIA.producto || {};
+  console.log(
+    `[OpenAI] Interpretacion IA | cliente=${clienteParaLog(evento.channelUserId)} | intencion=${
+      interpretacionIA.intencion || "null"
+    } | accion=${interpretacionIA.accion || "null"} | marca=${producto.marca || "null"} | referencia=${
+      producto.referencia || "null"
+    } | etapa=${producto.etapa || "null"} | tamano=${producto.tamano || "null"} | presentacion=${
+      producto.presentacion || "null"
+    } | confianza=${interpretacionIA.confianza || 0}`
+  );
+}
+
 async function responderEventosEntrantes(eventos) {
   if (!eventos.length) throw new Error("No hay eventos entrantes para procesar");
 
@@ -37,7 +74,13 @@ async function responderEventosEntrantes(eventos) {
 
   try {
     contenidos = await Promise.all(
-      eventos.map((item) => procesarMultimedia({ text: item.text, media: item.media }))
+      eventos.map((item) =>
+        procesarMultimedia({
+          text: item.text,
+          media: item.media,
+          logger: console,
+        })
+      )
     );
   } catch (error) {
     console.error("Error procesando multimedia:", error.message);
@@ -56,6 +99,7 @@ async function responderEventosEntrantes(eventos) {
     .filter(Boolean)
     .join("\n");
   const imageUrls = contenidos.map((contenido) => contenido.imageUrl).filter(Boolean);
+  registrarEntradaOpenAI(evento, mensaje, imageUrls, contenidos);
 
   if (!mensaje && !imageUrls.length) {
     const respuesta = "Cuéntame qué necesitas para tu mascota 🐶";
@@ -75,6 +119,7 @@ async function responderEventosEntrantes(eventos) {
     historialReciente,
     imageUrls,
   });
+  registrarInterpretacionOpenAI(evento, interpretacionIA);
 
   const tieneIntencionCatalogo =
     buscarMarca(catalogo, mensaje) ||

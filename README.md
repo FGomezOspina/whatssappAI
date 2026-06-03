@@ -24,7 +24,7 @@ El proyecto esta migrando de Twilio a Kapso. La integracion activa recibe JSON d
 - Rechaza presentaciones inexistentes y ofrece alternativas reales.
 - Gestiona carrito, cantidades, eliminaciones, entrega, datos del cliente y metodo de pago.
 - Recibe imagenes por URL de Kapso para analizarlas con vision.
-- Reutiliza la transcripcion de Kapso o transcribe audios con OpenAI Whisper.
+- Transcribe audios reales con OpenAI Whisper cuando Kapso entrega URL descargable; usa transcript de Kapso solo como respaldo.
 - Guarda conversaciones, mensajes, pedidos confirmados y ejemplos curados en Supabase.
 
 ## Arquitectura

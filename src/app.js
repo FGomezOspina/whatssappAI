@@ -26,11 +26,26 @@ function contenidoParaLog(evento) {
   return texto.replace(/\s+/g, " ").trim().slice(0, 500);
 }
 
+function multimediaParaLog(evento) {
+  if (!evento.media) return "media=no";
+
+  return [
+    "media=si",
+    `mediaTipo=${evento.media.type}`,
+    `url=${evento.media.url ? "presente" : "ausente"}`,
+    `mediaId=${evento.media.mediaId ? "presente" : "ausente"}`,
+    `contentType=${evento.media.contentType || "desconocido"}`,
+    `transcript=${evento.media.transcript ? "presente" : "ausente"}`,
+  ].join(" | ");
+}
+
 function registrarMensajeEntrante(evento) {
   console.log(
     `[Kapso] Mensaje recibido | cliente=${clienteParaLog(evento.channelUserId)} | id=${
       evento.messageId || "sin-id"
-    } | tipo=${evento.messageType || "unknown"} | texto=${JSON.stringify(contenidoParaLog(evento))}`
+    } | tipo=${evento.messageType || "unknown"} | texto=${JSON.stringify(contenidoParaLog(evento))} | ${multimediaParaLog(
+      evento
+    )}`
   );
 }
 

@@ -59,6 +59,59 @@ test("extrae URL publica de una imagen Kapso", () => {
   assert.equal(evento.text, "Cuanto vale este producto?");
 });
 
+test("extrae multimedia desde fileUrl y attachment sin exponer dependencia a un solo campo", () => {
+  const [evento] = extraerEventos(
+    {
+      message: {
+        id: "wamid.image.alt",
+        type: "image",
+        from: "573001112233",
+        image: { id: "media-image-id", caption: "Tienen esta referencia" },
+        attachment: {
+          fileUrl: "https://api.kapso.ai/media/file-token",
+          mimetype: "image/jpeg",
+          filename: "referencia.jpg",
+        },
+        kapso: { direction: "inbound" },
+      },
+      phone_number_id: "phone_123",
+    },
+    { "x-webhook-event": "whatsapp.message.received" }
+  );
+
+  assert.equal(evento.text, "Tienen esta referencia");
+  assert.equal(evento.media.type, "image");
+  assert.equal(evento.media.url, "https://api.kapso.ai/media/file-token");
+  assert.equal(evento.media.mediaId, "media-image-id");
+  assert.equal(evento.media.contentType, "image/jpeg");
+});
+
+test("normaliza notas de voz como audio real", () => {
+  const [evento] = extraerEventos(
+    {
+      message: {
+        id: "wamid.voice",
+        type: "voice",
+        from: "573001112233",
+        voice: {
+          id: "media-voice-id",
+          url: "https://api.kapso.ai/media/voice-token",
+          mime_type: "audio/ogg",
+        },
+        kapso: { direction: "inbound" },
+      },
+      phone_number_id: "phone_123",
+    },
+    { "x-webhook-event": "whatsapp.message.received" }
+  );
+
+  assert.equal(evento.messageType, "voice");
+  assert.equal(evento.media.type, "audio");
+  assert.equal(evento.media.url, "https://api.kapso.ai/media/voice-token");
+  assert.equal(evento.media.mediaId, "media-voice-id");
+  assert.equal(evento.media.contentType, "audio/ogg");
+});
+
 test("extrae transcripcion y URL de audio Kapso", () => {
   const [evento] = extraerEventos(
     {
@@ -80,7 +133,7 @@ test("extrae transcripcion y URL de audio Kapso", () => {
 
   assert.equal(evento.media.type, "audio");
   assert.equal(evento.media.transcript, "Necesito un pedido");
-  assert.equal(evento.text, "Necesito un pedido");
+  assert.equal(evento.text, "");
 });
 
 test("deduplica mensajes bufferizados por message.id", () => {

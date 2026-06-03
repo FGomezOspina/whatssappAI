@@ -69,3 +69,25 @@ test("el interprete usa el contexto pendiente para afirmaciones con errores orto
   assert.match(prompt, /Tolera errores ortograficos, letras omitidas y variantes informales tambien en respuestas cortas/);
   assert.match(prompt, /respuesta corta a una pregunta de confirmacion no reemplaza nunca nombre/);
 });
+
+test("el interprete mapea empaques visuales contra referencias internas del catalogo", () => {
+  const prompt = leerServicio("aiInterpreter.js");
+
+  assert.match(prompt, /Vision de empaques/);
+  assert.match(prompt, /El caption puede ser solo "manejan esta referencia"; la imagen es la fuente principal/);
+  assert.match(prompt, /no exijas coincidencia textual exacta entre empaque y referencia interna/i);
+  assert.match(prompt, /sabor visible no aparece en el nombre interno/);
+  assert.match(prompt, /Si dice "para todas las razas", usa tamano "todas"/);
+  assert.match(prompt, /ignora el sabor para elegir la referencia por etapa y tamano/);
+  assert.match(prompt, /Busca el peso\/presentacion en zonas pequenas del empaque/);
+  assert.match(prompt, /normalizalo como presentacion exacta del catalogo/);
+  assert.match(prompt, /para todas las razas.*gana sobre la foto de un perro/i);
+  assert.match(prompt, /detail: "high"/);
+  assert.match(prompt, /OPENAI_VISION_MODEL/);
+});
+
+test("el procesador multimedia usa un modelo moderno de transcripcion por defecto", () => {
+  const servicio = leerServicio("mediaProcessor.js");
+
+  assert.match(servicio, /OPENAI_TRANSCRIPTION_MODEL \|\| "gpt-4o-mini-transcribe"/);
+});
