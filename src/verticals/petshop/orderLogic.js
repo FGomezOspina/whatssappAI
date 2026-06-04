@@ -771,6 +771,32 @@ function limpiarCandidatoMarca(candidato) {
   return limpio.replace(/\b\d+(?:[.,]\d+)?\b/g, " ").replace(/\s+/g, " ").trim();
 }
 
+function pareceRuidoOrtografico(valor = "") {
+  const tokens = normalizar(valor).split(/\s+/).filter(Boolean);
+  if (!tokens.length) return true;
+
+  return tokens.every((token) => {
+    const tieneLetras = /[a-z]/.test(token);
+    const tieneDigitos = /\d/.test(token);
+    const mezclaCorta = tieneLetras && tieneDigitos && token.length <= 4;
+    const pocasLetras = (token.match(/[a-z]/g) || []).length <= 2;
+
+    return mezclaCorta || pocasLetras;
+  });
+}
+
+function esAperturaPedidoSinProducto(mensaje) {
+  const texto = normalizar(mensaje);
+  const textoFlexible = texto.replace(/\b[a-z]{0,2}\d[a-z]{0,2}\b/g, " ");
+  const criterios = extraerCriterios(textoFlexible);
+
+  return (
+    contieneAlguno(textoFlexible, ["pedido", "hacer pedido", "comprar", "encargar", "pedir"]) &&
+    !tieneCriterios(criterios) &&
+    !mensajeTienePresentacionExplicita(textoFlexible)
+  );
+}
+
 function extraerMarcaDesconocida(mensaje, catalogo, opciones = {}) {
   if (buscarMarca(catalogo, mensaje)) return null;
 
@@ -783,11 +809,7 @@ function extraerMarcaDesconocida(mensaje, catalogo, opciones = {}) {
 
   if (pareceDescripcionMascota) return null;
 
-  const esAperturaSinProducto =
-    esSaludo(texto) &&
-    contieneAlguno(texto, ["pedido", "hacer pedido", "comprar", "cotizar", "encargar"]) &&
-    !tieneCriterios(extraerCriterios(texto)) &&
-    !mensajeTienePresentacionExplicita(texto);
+  const esAperturaSinProducto = esAperturaPedidoSinProducto(texto);
 
   if (esAperturaSinProducto) return null;
 
@@ -802,6 +824,7 @@ function extraerMarcaDesconocida(mensaje, catalogo, opciones = {}) {
     if (!coincidencia) continue;
 
     const candidato = limpiarCandidatoMarca(coincidencia[1]);
+    if (pareceRuidoOrtografico(candidato)) continue;
     if (candidato && candidato.length >= 3 && candidato.split(" ").length <= 4) return candidato;
   }
 
@@ -811,6 +834,7 @@ function extraerMarcaDesconocida(mensaje, catalogo, opciones = {}) {
     candidatoSolo &&
     candidatoSolo.length >= 3 &&
     candidatoSolo.split(" ").length <= 4 &&
+    !pareceRuidoOrtografico(candidatoSolo) &&
     !solicitaMarcas(texto) &&
     !solicitaReferencias(texto) &&
     !solicitaRecomendacion(texto) &&
@@ -2627,15 +2651,15 @@ function pareceDireccion(valor = "") {
   const texto = normalizar(valor);
   return (
     valor.includes("#") ||
-    /^(cll|calle|cra|carrera|kr|cr|av|avenida|diag|diagonal|transversal|tv|mz|manzana|apto|apartamento)\b/.test(texto)
+    /^(cll|calle|cra|carrera|kr|cr|av|avenida|diag|diagonal|transversal|tv|mz|manzana|cs|casa|apto|apartamento)\b/.test(texto)
   );
 }
 
 function extraerDireccionCompleta(texto = "") {
   const patrones = [
     /\b((?:cll|calle|cra|carrera|kr|cr|av|avenida|diag|diagonal|transversal|tv)\s+\d+[a-z]?\s*#\s*\d+[a-z]?\s*[- ]\s*\d+[a-z]?(?:\s+[a-z0-9áéíóúñ ]{2,30})?)/i,
-    /\b((?:mz|manzana)\s*[a-z0-9-]+\s+(?:casa|apto|apartamento)\s*[a-z0-9-]+(?:\s+[a-z0-9áéíóúñ ]{2,30})?)/i,
-    /\b((?:torre|bloque|blq)\s*[a-z0-9-]+\s+(?:apto|apartamento|casa)\s*[a-z0-9-]+(?:\s+[a-z0-9áéíóúñ ]{2,30})?)/i,
+    /\b((?:mz|manzana)\s*[a-z0-9-]+\s+(?:cs|casa|apto|apartamento)\s*[a-z0-9-]+(?:\s+(?:barrio|brr?|conjunto|condominio|unidad|sector|vereda|en)\s+[a-z0-9áéíóúñ ]{2,40})?)/i,
+    /\b((?:torre|bloque|blq)\s*[a-z0-9-]+\s+(?:apto|apartamento|cs|casa)\s*[a-z0-9-]+(?:\s+(?:barrio|brr?|conjunto|condominio|unidad|sector|vereda|en)\s+[a-z0-9áéíóúñ ]{2,40})?)/i,
   ];
 
   for (const patron of patrones) {
@@ -2650,8 +2674,8 @@ function direccionEsCompleta(valor = "") {
   const texto = normalizar(valor);
 
   if (/#\s*\d+[a-z]?\s*[- ]\s*\d+/i.test(valor)) return true;
-  if (/\b(?:casa|apto|apartamento|torre|interior|int|bloque|blq)\s*[a-z0-9-]+\b/i.test(valor)) return true;
-  if (/\b(?:mz|manzana)\s*[a-z0-9-]+.*\b(?:casa|apto|apartamento)\s*[a-z0-9-]+\b/i.test(valor)) return true;
+  if (/\b(?:casa|cs|apto|apartamento|torre|interior|int|bloque|blq)\s*[a-z0-9-]+\b/i.test(valor)) return true;
+  if (/\b(?:mz|manzana)\s*[a-z0-9-]+.*\b(?:casa|cs|apto|apartamento)\s*[a-z0-9-]+\b/i.test(valor)) return true;
   if (/^(?:cll|calle|cra|carrera|kr|cr|av|avenida|diag|diagonal|transversal|tv)\b/.test(texto)) {
     return false;
   }
@@ -2805,6 +2829,8 @@ function detectarTipoEntrega(mensaje) {
   if (contieneAlguno(texto, ["domicilio", "direccion", "enviar", "envio", "llevar", "llevarlo"])) {
     return "domicilio";
   }
+
+  if (extraerDireccionCompleta(mensaje)) return "domicilio";
 
   return null;
 }

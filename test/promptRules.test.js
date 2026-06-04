@@ -70,6 +70,16 @@ test("el interprete usa el contexto pendiente para afirmaciones con errores orto
   assert.match(prompt, /respuesta corta a una pregunta de confirmacion no reemplaza nunca nombre/);
 });
 
+test("el interprete entiende mala ortografia y direcciones colombianas informales", () => {
+  const prompt = leerServicio("aiInterpreter.js");
+
+  assert.match(prompt, /números metidos accidentalmente entre letras|numeros metidos accidentalmente entre letras/i);
+  assert.match(prompt, /apertura de compra/);
+  assert.match(prompt, /manzana\/mz/i);
+  assert.match(prompt, /casa\/cs/i);
+  assert.match(prompt, /tratala como direccion completa/i);
+});
+
 test("el interprete mapea empaques visuales contra referencias internas del catalogo", () => {
   const prompt = leerServicio("aiInterpreter.js");
 

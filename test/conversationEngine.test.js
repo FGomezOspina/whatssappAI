@@ -261,6 +261,17 @@ test("no trata una apertura de pedido como marca desconocida", () => {
   assert.match(respuesta, /Dog Chow|Chunky|marca|producto/i);
 });
 
+test("no trata errores de dedo en apertura de pedido como producto desconocido", () => {
+  const estado = crearEstadoInicial();
+  const catalogo = cargarProductos();
+
+  const respuesta = resolverConsultaCatalogo("buenos dias\nnecesito u8n pedido", estado, catalogo, null);
+
+  assert.doesNotMatch(respuesta, /no manejamos/i);
+  assert.doesNotMatch(respuesta, /u8n/i);
+  assert.match(respuesta, /Dog Chow|Chunky|marca|producto/i);
+});
+
 test("usa la raza de la mascota como contexto de recomendacion", () => {
   const estado = crearEstadoInicial();
   const catalogo = cargarProductos();
@@ -787,6 +798,41 @@ test("un lote incompleto pide solamente los datos de envio faltantes", () => {
   assert.match(respuesta, /- celular/);
   assert.doesNotMatch(respuesta, /- nombre/);
   assert.doesNotMatch(respuesta, /- direccion completa/);
+});
+
+test("acepta direccion colombiana con manzana y casa como direccion completa", () => {
+  const estado = crearEstadoInicial();
+  const catalogo = cargarProductos();
+  estado.carrito = [
+    {
+      marca: "Dog Chow",
+      referencia: "Adulto Mini y Pequeño",
+      peso: "4kg",
+      precio: 68000,
+      cantidad: 1,
+    },
+  ];
+  estado.metodoPago = "efectivo";
+  estado.esperandoDatosDomicilio = true;
+  estado.datosDomicilio = {
+    nombre: "Cliente Prueba",
+    cedula: "1000000000",
+    correo: "cliente@test.com",
+    celular: "3001234567",
+  };
+
+  const respuesta = resolverConsultaCatalogo(
+    "adulto raza pequena para la mz 1 cs 19 en dosquebradas",
+    estado,
+    catalogo,
+    null
+  );
+
+  assert.equal(estado.entrega.tipo, "domicilio");
+  assert.equal(estado.datosDomicilio.direccion, "mz 1 cs 19 en dosquebradas");
+  assert.equal(estado.datosDomicilio.direccionParcial, undefined);
+  assert.doesNotMatch(respuesta, /direccion completa/i);
+  assert.match(respuesta, /¿Está todo correcto para confirmar el pedido?/);
 });
 
 test("permite cambiar el metodo de pago desde el resumen sin alterar el nombre", () => {

@@ -1,7 +1,11 @@
 const test = require("node:test");
 const assert = require("node:assert/strict");
 
-const { crearBufferMensajesEntrantes } = require("../src/services/inboundMessageBuffer");
+const {
+  DEFAULT_BUFFER_WINDOW_MS,
+  crearBufferMensajesEntrantes,
+  obtenerVentanaBufferMs,
+} = require("../src/services/inboundMessageBuffer");
 
 function esperar(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -73,4 +77,16 @@ test("reinicia la espera cada vez que llega otro mensaje del mismo cliente", asy
     ]
   );
   buffer.cerrar();
+});
+
+test("usa ventana segura si la variable de entorno desactiva accidentalmente el buffer", () => {
+  const anterior = process.env.INBOUND_MESSAGE_BUFFER_MS;
+  process.env.INBOUND_MESSAGE_BUFFER_MS = "0";
+
+  try {
+    assert.equal(obtenerVentanaBufferMs(), DEFAULT_BUFFER_WINDOW_MS);
+  } finally {
+    if (anterior === undefined) delete process.env.INBOUND_MESSAGE_BUFFER_MS;
+    else process.env.INBOUND_MESSAGE_BUFFER_MS = anterior;
+  }
 });

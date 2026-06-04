@@ -259,7 +259,7 @@ Ejecuta:
 npm test
 ```
 
-Al corte de este documento existen 24 pruebas automatizadas para:
+Al corte de este documento existen 86 pruebas automatizadas para:
 
 - Presentacion inexistente y barrera final de catalogo.
 - Avance correcto despues de `asi esta bien`.
@@ -271,6 +271,11 @@ Al corte de este documento existen 24 pruebas automatizadas para:
 - Normalizacion de texto, imagen y audio Kapso.
 - Firma HMAC.
 - URL de imagen y reutilizacion de transcripcion.
+- Resolucion multiempresa por canal Kapso.
+- Persistencia de conversaciones, mensajes y pedidos por cliente.
+- Importacion de catalogo multiempresa desde JSON.
+- Buffer de mensajes consecutivos por cliente.
+- Reglas de humanizacion para no alterar acciones operativas.
 
 ## Archivos de Supabase
 

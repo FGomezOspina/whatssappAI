@@ -46,7 +46,7 @@ Riesgo actual: el webhook responde `200 OK` antes del procesamiento, como recomi
 
 ### Higiene del repositorio
 
-El repositorio heredado ya tiene `node_modules` rastreado por Git. El `.gitignore` fue actualizado para evitar nuevas incorporaciones, pero eso no retira archivos que ya estaban versionados.
+`node_modules` fue retirado del tracking de Git y queda excluido por `.gitignore`. Las dependencias deben recuperarse con `npm install` a partir de `package.json` y `package-lock.json`.
 
 Para iniciar un repositorio nuevo:
 
@@ -55,7 +55,7 @@ Para iniciar un repositorio nuevo:
 - Ejecuta `npm install`.
 - Confirma con `git status` que `node_modules` no aparece antes del primer commit.
 
-Si se decide limpiar el repositorio actual, hazlo en un cambio separado y revisable.
+El historial anterior todavia puede contener esos archivos; si se necesita reducir el tamano historico del repositorio, hazlo como una operacion separada de reescritura de historial.
 
 ### Multimedia
 

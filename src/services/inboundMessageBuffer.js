@@ -1,8 +1,11 @@
 const DEFAULT_BUFFER_WINDOW_MS = 5000;
+const MIN_CONFIGURED_BUFFER_WINDOW_MS = 1000;
 
 function obtenerVentanaBufferMs() {
   const configurada = Number(process.env.INBOUND_MESSAGE_BUFFER_MS || DEFAULT_BUFFER_WINDOW_MS);
-  return Number.isFinite(configurada) && configurada >= 0 ? configurada : DEFAULT_BUFFER_WINDOW_MS;
+  return Number.isFinite(configurada) && configurada >= MIN_CONFIGURED_BUFFER_WINDOW_MS
+    ? configurada
+    : DEFAULT_BUFFER_WINDOW_MS;
 }
 
 function crearBufferMensajesEntrantes({ alVaciar, ventanaMs = obtenerVentanaBufferMs() }) {
@@ -39,6 +42,7 @@ function crearBufferMensajesEntrantes({ alVaciar, ventanaMs = obtenerVentanaBuff
 }
 
 module.exports = {
+  DEFAULT_BUFFER_WINDOW_MS,
   crearBufferMensajesEntrantes,
   obtenerVentanaBufferMs,
 };
