@@ -59,6 +59,34 @@ test("combina texto adicional de audio con la transcripcion disponible", async (
   assert.equal(resultado.text, "Es para domicilio\nNecesito un Dog Chow adulto");
 });
 
+test("limpia resumen tecnico de audio antes de unir la transcripcion", async () => {
+  const resultado = await procesarMultimedia({
+    text: "Audio attached (audio_b8b5a13a5d63.ogg) [Size: 7.7 KB | Type: audio/opus] URL: https://app.kapso.ai/audio.ogg Transcript: ¿Qué costo tiene el Dog Chow cachorro pequeño de 4 kilos?",
+    media: {
+      type: "audio",
+      transcript: "¿Qué costo tiene el Dog Chow cachorro pequeño de 4 kilos?",
+    },
+    logger: loggerSilencioso,
+  });
+
+  assert.equal(resultado.text, "¿Qué costo tiene el Dog Chow cachorro pequeño de 4 kilos?");
+});
+
+test("usa transcript de Kapso como respaldo si falla OpenAI con audio real", async () => {
+  const resultado = await procesarMultimedia({
+    text: "",
+    media: {
+      type: "audio",
+      url: "https://api.kapso.ai/media/audio-token",
+      transcript: "Quiero dos bolsas de Chunky",
+    },
+    logger: loggerSilencioso,
+  });
+
+  assert.equal(resultado.text, "Quiero dos bolsas de Chunky");
+  assert.equal(resultado.metadata.audioTranscribedWithOpenAI, false);
+});
+
 test("rechaza imagenes sin URL publica valida", async () => {
   await assert.rejects(
     procesarMultimedia({

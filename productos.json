@@ -8,11 +8,36 @@
         "descripcion": "Para perros adultos medianos y grandes",
         "imagen": "https://...",
         "presentaciones": [
-          { "peso": "1kg", "precio": 20000 },
-          { "peso": "2kg", "precio": 38000 },
-          { "peso": "4kg", "precio": 70000 },
-          { "peso": "22.7kg", "precio": 320000 }
-        ]
+          {
+            "peso": "1kg",
+            "precio": 20000,
+            "stock": true,
+            "metadata": {}
+          },
+          {
+            "peso": "2kg",
+            "precio": 38000,
+            "stock": true,
+            "metadata": {}
+          },
+          {
+            "peso": "4kg",
+            "precio": 70000,
+            "stock": true,
+            "metadata": {}
+          },
+          {
+            "peso": "22.7kg",
+            "precio": 320000,
+            "stock": true,
+            "metadata": {}
+          }
+        ],
+        "categoria": "comida",
+        "subcategoria": "concentrado",
+        "etapa": "adulto",
+        "requiere_confirmacion": false,
+        "metadata": {}
       },
       {
         "nombre": "Adulto Mini y Pequeño",
@@ -20,11 +45,36 @@
         "descripcion": "Para perros pequeños",
         "imagen": "https://...",
         "presentaciones": [
-          { "peso": "1kg", "precio": 19000 },
-          { "peso": "2kg", "precio": 36000 },
-          { "peso": "4kg", "precio": 68000 },
-          { "peso": "22.7kg", "precio": 310000 }
-        ]
+          {
+            "peso": "1kg",
+            "precio": 19000,
+            "stock": true,
+            "metadata": {}
+          },
+          {
+            "peso": "2kg",
+            "precio": 36000,
+            "stock": true,
+            "metadata": {}
+          },
+          {
+            "peso": "4kg",
+            "precio": 68000,
+            "stock": true,
+            "metadata": {}
+          },
+          {
+            "peso": "22.7kg",
+            "precio": 310000,
+            "stock": true,
+            "metadata": {}
+          }
+        ],
+        "categoria": "comida",
+        "subcategoria": "concentrado",
+        "etapa": "adulto",
+        "requiere_confirmacion": false,
+        "metadata": {}
       },
       {
         "nombre": "Cachorros Mediano y Grande",
@@ -32,11 +82,36 @@
         "descripcion": "Para cachorros medianos y grandes",
         "imagen": "https://...",
         "presentaciones": [
-          { "peso": "1kg", "precio": 21000 },
-          { "peso": "2kg", "precio": 40000 },
-          { "peso": "4kg", "precio": 72000 },
-          { "peso": "22.7kg", "precio": 330000 }
-        ]
+          {
+            "peso": "1kg",
+            "precio": 21000,
+            "stock": true,
+            "metadata": {}
+          },
+          {
+            "peso": "2kg",
+            "precio": 40000,
+            "stock": true,
+            "metadata": {}
+          },
+          {
+            "peso": "4kg",
+            "precio": 72000,
+            "stock": true,
+            "metadata": {}
+          },
+          {
+            "peso": "22.7kg",
+            "precio": 330000,
+            "stock": true,
+            "metadata": {}
+          }
+        ],
+        "categoria": "comida",
+        "subcategoria": "concentrado",
+        "etapa": "cachorro",
+        "requiere_confirmacion": false,
+        "metadata": {}
       },
       {
         "nombre": "Cachorros Mini y Pequeño",
@@ -44,11 +119,36 @@
         "descripcion": "Para cachorros pequeños",
         "imagen": "https://...",
         "presentaciones": [
-          { "peso": "1kg", "precio": 20000 },
-          { "peso": "2kg", "precio": 38000 },
-          { "peso": "4kg", "precio": 70000 },
-          { "peso": "22.7kg", "precio": 320000 }
-        ]
+          {
+            "peso": "1kg",
+            "precio": 20000,
+            "stock": true,
+            "metadata": {}
+          },
+          {
+            "peso": "2kg",
+            "precio": 38000,
+            "stock": true,
+            "metadata": {}
+          },
+          {
+            "peso": "4kg",
+            "precio": 70000,
+            "stock": true,
+            "metadata": {}
+          },
+          {
+            "peso": "22.7kg",
+            "precio": 320000,
+            "stock": true,
+            "metadata": {}
+          }
+        ],
+        "categoria": "comida",
+        "subcategoria": "concentrado",
+        "etapa": "cachorro",
+        "requiere_confirmacion": false,
+        "metadata": {}
       }
     ]
   },
@@ -61,11 +161,36 @@
         "descripcion": "Alimento para perros adultos de razas pequeñas",
         "imagen": "https://...",
         "presentaciones": [
-          { "peso": "1kg", "precio": 18000 },
-          { "peso": "2kg", "precio": 34000 },
-          { "peso": "4kg", "precio": 65000 },
-          { "peso": "20kg", "precio": 280000 }
-        ]
+          {
+            "peso": "1kg",
+            "precio": 18000,
+            "stock": true,
+            "metadata": {}
+          },
+          {
+            "peso": "2kg",
+            "precio": 34000,
+            "stock": true,
+            "metadata": {}
+          },
+          {
+            "peso": "4kg",
+            "precio": 65000,
+            "stock": true,
+            "metadata": {}
+          },
+          {
+            "peso": "20kg",
+            "precio": 280000,
+            "stock": true,
+            "metadata": {}
+          }
+        ],
+        "categoria": "comida",
+        "subcategoria": "concentrado",
+        "etapa": "adulto",
+        "requiere_confirmacion": false,
+        "metadata": {}
       },
       {
         "nombre": "Adulto Todas las Razas",
@@ -73,11 +198,36 @@
         "descripcion": "Alimento completo para perros adultos de cualquier tamaño",
         "imagen": "https://...",
         "presentaciones": [
-          { "peso": "1kg", "precio": 17000 },
-          { "peso": "2kg", "precio": 32000 },
-          { "peso": "4kg", "precio": 62000 },
-          { "peso": "20kg", "precio": 270000 }
-        ]
+          {
+            "peso": "1kg",
+            "precio": 17000,
+            "stock": true,
+            "metadata": {}
+          },
+          {
+            "peso": "2kg",
+            "precio": 32000,
+            "stock": true,
+            "metadata": {}
+          },
+          {
+            "peso": "4kg",
+            "precio": 62000,
+            "stock": true,
+            "metadata": {}
+          },
+          {
+            "peso": "20kg",
+            "precio": 270000,
+            "stock": true,
+            "metadata": {}
+          }
+        ],
+        "categoria": "comida",
+        "subcategoria": "concentrado",
+        "etapa": "adulto",
+        "requiere_confirmacion": false,
+        "metadata": {}
       },
       {
         "nombre": "Cachorro Pollo",
@@ -85,11 +235,36 @@
         "descripcion": "Alimento para cachorros sabor pollo",
         "imagen": "https://...",
         "presentaciones": [
-          { "peso": "1kg", "precio": 19000 },
-          { "peso": "2kg", "precio": 36000 },
-          { "peso": "4kg", "precio": 68000 },
-          { "peso": "20kg", "precio": 290000 }
-        ]
+          {
+            "peso": "1kg",
+            "precio": 19000,
+            "stock": true,
+            "metadata": {}
+          },
+          {
+            "peso": "2kg",
+            "precio": 36000,
+            "stock": true,
+            "metadata": {}
+          },
+          {
+            "peso": "4kg",
+            "precio": 68000,
+            "stock": true,
+            "metadata": {}
+          },
+          {
+            "peso": "20kg",
+            "precio": 290000,
+            "stock": true,
+            "metadata": {}
+          }
+        ],
+        "categoria": "comida",
+        "subcategoria": "concentrado",
+        "etapa": "cachorro",
+        "requiere_confirmacion": false,
+        "metadata": {}
       },
       {
         "nombre": "Cachorro Cordero y Salmón",
@@ -97,11 +272,36 @@
         "descripcion": "Alimento premium para cachorros con proteína de cordero y salmón",
         "imagen": "https://...",
         "presentaciones": [
-          { "peso": "1kg", "precio": 21000 },
-          { "peso": "2kg", "precio": 40000 },
-          { "peso": "4kg", "precio": 72000 },
-          { "peso": "20kg", "precio": 310000 }
-        ]
+          {
+            "peso": "1kg",
+            "precio": 21000,
+            "stock": true,
+            "metadata": {}
+          },
+          {
+            "peso": "2kg",
+            "precio": 40000,
+            "stock": true,
+            "metadata": {}
+          },
+          {
+            "peso": "4kg",
+            "precio": 72000,
+            "stock": true,
+            "metadata": {}
+          },
+          {
+            "peso": "20kg",
+            "precio": 310000,
+            "stock": true,
+            "metadata": {}
+          }
+        ],
+        "categoria": "comida",
+        "subcategoria": "concentrado",
+        "etapa": "cachorro",
+        "requiere_confirmacion": false,
+        "metadata": {}
       },
       {
         "nombre": "Adulto Salmón y Cordero",
@@ -109,11 +309,36 @@
         "descripcion": "Alimento premium para perros adultos con proteína de salmón y cordero",
         "imagen": "https://...",
         "presentaciones": [
-          { "peso": "1kg", "precio": 22000 },
-          { "peso": "2kg", "precio": 42000 },
-          { "peso": "4kg", "precio": 75000 },
-          { "peso": "20kg", "precio": 320000 }
-        ]
+          {
+            "peso": "1kg",
+            "precio": 22000,
+            "stock": true,
+            "metadata": {}
+          },
+          {
+            "peso": "2kg",
+            "precio": 42000,
+            "stock": true,
+            "metadata": {}
+          },
+          {
+            "peso": "4kg",
+            "precio": 75000,
+            "stock": true,
+            "metadata": {}
+          },
+          {
+            "peso": "20kg",
+            "precio": 320000,
+            "stock": true,
+            "metadata": {}
+          }
+        ],
+        "categoria": "comida",
+        "subcategoria": "concentrado",
+        "etapa": "adulto",
+        "requiere_confirmacion": false,
+        "metadata": {}
       },
       {
         "nombre": "Adulto Mayores",
@@ -121,11 +346,36 @@
         "descripcion": "Alimento para perros senior, enfocado en digestión y articulaciones",
         "imagen": "https://...",
         "presentaciones": [
-          { "peso": "1kg", "precio": 20000 },
-          { "peso": "2kg", "precio": 38000 },
-          { "peso": "4kg", "precio": 70000 },
-          { "peso": "20kg", "precio": 300000 }
-        ]
+          {
+            "peso": "1kg",
+            "precio": 20000,
+            "stock": true,
+            "metadata": {}
+          },
+          {
+            "peso": "2kg",
+            "precio": 38000,
+            "stock": true,
+            "metadata": {}
+          },
+          {
+            "peso": "4kg",
+            "precio": 70000,
+            "stock": true,
+            "metadata": {}
+          },
+          {
+            "peso": "20kg",
+            "precio": 300000,
+            "stock": true,
+            "metadata": {}
+          }
+        ],
+        "categoria": "comida",
+        "subcategoria": "concentrado",
+        "etapa": "senior",
+        "requiere_confirmacion": false,
+        "metadata": {}
       },
       {
         "nombre": "Gatito",
@@ -133,8 +383,18 @@
         "descripcion": "Alimento para gatito bebe",
         "imagen": "https://...",
         "presentaciones": [
-          { "peso": "1kg", "precio": 290000 }
-        ]
+          {
+            "peso": "1kg",
+            "precio": 290000,
+            "stock": true,
+            "metadata": {}
+          }
+        ],
+        "categoria": "comida",
+        "subcategoria": "concentrado",
+        "etapa": "cachorro",
+        "requiere_confirmacion": false,
+        "metadata": {}
       }
     ]
   }

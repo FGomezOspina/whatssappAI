@@ -1,4 +1,4 @@
-const { formatearPrecio, normalizar, normalizarPeso } = require("../utils/text");
+const { formatearPrecio, normalizar, normalizarPeso } = require("../../utils/text");
 
 function extraerPresentacionSolicitada(mensaje = "", interpretacion = null) {
   const texto = normalizar(mensaje);
@@ -33,15 +33,26 @@ function criteriosProducto(mensaje, interpretacion) {
   const producto = interpretacion?.producto || {};
   const criterios = {};
 
-  if (["perro", "gato"].includes(producto.especie)) criterios.especie = producto.especie;
-  if (["adulto", "cachorro"].includes(producto.etapa)) criterios.etapa = producto.etapa;
+  if (["perro", "gato", "ave", "roedor", "pez", "equino", "bovino", "otro"].includes(producto.especie)) {
+    criterios.especie = producto.especie;
+  }
+  if (["adulto", "cachorro", "senior", "todas"].includes(producto.etapa)) criterios.etapa = producto.etapa;
   if (["pequeno", "grande", "todas"].includes(producto.tamano)) criterios.tamano = producto.tamano;
+  if (producto.categoria) criterios.categoria = producto.categoria;
+  if (producto.subcategoria) criterios.subcategoria = producto.subcategoria;
 
   if (!criterios.etapa && /\b(adulto|adultos)\b/.test(texto)) criterios.etapa = "adulto";
   if (!criterios.etapa && /\b(cachorro|cachorros|cach)\b/.test(texto)) criterios.etapa = "cachorro";
+  if (!criterios.etapa && /\b(senior|mayor|mayores)\b/.test(texto)) criterios.etapa = "senior";
   if (!criterios.tamano && /\b(pequeno|pequena|pequenos|pequenas|mini)\b/.test(texto)) criterios.tamano = "pequeno";
   if (!criterios.tamano && /\b(grande|grandes|mediano|mediana|medianos|medianas)\b/.test(texto)) {
     criterios.tamano = "grande";
+  }
+  if (!criterios.categoria && /\b(medicamento|medicamentos|medicina|antipulgas|desparasitante)\b/.test(texto)) {
+    criterios.categoria = "medicamento";
+  }
+  if (!criterios.subcategoria && /\b(antipulgas|pulga|pulgas|garrapata)\b/.test(texto)) {
+    criterios.subcategoria = "antipulgas";
   }
 
   return criterios;
@@ -51,7 +62,10 @@ function referenciaCoincide(referencia, criterios) {
   const texto = normalizar(`${referencia.nombre} ${referencia.descripcion || ""}`);
 
   if (criterios.especie && (referencia.especie || "perro") !== criterios.especie) return false;
-  if (criterios.etapa && !texto.includes(criterios.etapa === "cachorro" ? "cachorro" : "adulto")) return false;
+  if (criterios.categoria && referencia.categoria !== criterios.categoria) return false;
+  if (criterios.subcategoria && referencia.subcategoria !== criterios.subcategoria) return false;
+  if (criterios.etapa && criterios.etapa !== "todas" && referencia.etapa && referencia.etapa !== criterios.etapa) return false;
+  if (criterios.etapa && criterios.etapa !== "todas" && !referencia.etapa && !texto.includes(criterios.etapa === "cachorro" ? "cachorro" : criterios.etapa)) return false;
   if (criterios.tamano === "pequeno" && !/\b(pequeno|pequena|pequenos|pequenas|mini)\b/.test(texto)) return false;
   if (criterios.tamano === "grande" && !/\b(grande|grandes|mediano|mediana|medianos|medianas)\b/.test(texto)) {
     return false;

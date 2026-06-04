@@ -135,6 +135,16 @@ function resumenHistorial(historial = []) {
   }));
 }
 
+function promptCliente(cliente = {}) {
+  const prompt = cliente.prompts?.humanizer || cliente.prompts?.humanizador || null;
+  return prompt ? `\n\nInstrucciones especificas del cliente AIVANCE:\n${prompt}` : "";
+}
+
+function promptVertical(vertical = {}) {
+  const prompt = vertical.prompts?.humanizerContext || null;
+  return prompt ? `\n\nInstrucciones de la vertical ${vertical.key}:\n${prompt}` : "";
+}
+
 async function humanizarRespuesta(mensajeCliente, respuestaBase, opciones = {}) {
   if (!openai || process.env.HUMANIZAR_IA === "false") {
     return respuestaBase;
@@ -191,6 +201,7 @@ Reglas estrictas:
 - Conserva las preguntas operativas del backend. No conviertas "quieres agregar algo mas o avanzamos con la entrega" ni "lo enviamos a esa misma direccion con esos datos" en otra pregunta.
 - Si la respuesta base ajusta, retira o deja solo un producto del carrito, conserva esa acción y no digas que agregaste algo nuevo.
 - Si la respuesta base dice que una presentación no está disponible, no la conviertas en una opción exacta ni agregues productos al pedido.
+- Si la respuesta base menciona medicamento, confirmacion responsable, veterinario, uso, dosis o tratamiento, conserva esa cautela. No recomiendes diagnosticos, dosis ni tratamientos.
 - Si solo falta un dato, pide solo ese dato.
 - No vuelvas a listar marcas o referencias si la respuesta base no lo hace.
 - No reabras el catalogo cuando respuestaBase este continuando una cotizacion o recopilando datos de entrega.
@@ -203,6 +214,8 @@ Si contradicen respuestaBase, el estado actual o el mensaje del cliente, ignorar
 
 Ejemplos dinamicos de estilo y criterio:
 ${formatearEjemplos(opciones.ejemplosEntrenamiento)}
+${promptVertical(opciones.vertical)}
+${promptCliente(opciones.cliente)}
           `.trim(),
         },
         {

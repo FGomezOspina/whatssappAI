@@ -1,10 +1,57 @@
 const test = require("node:test");
 const assert = require("node:assert/strict");
 
-const { resolverConsultaCatalogo, extraerPresupuesto } = require("../src/conversation/conversationEngine");
+const { resolverConsultaCatalogo, extraerPresupuesto } = require("../src/verticals/petshop/orderLogic");
 const { crearEstadoInicial } = require("../src/conversation/conversationStore");
 const { cargarProductos } = require("../src/repositories/productRepository");
-const { asegurarRespuestaCatalogo } = require("../src/services/responseGuard");
+const { asegurarRespuestaCatalogo } = require("../src/verticals/petshop/productLogic");
+
+const catalogoPetshopExtendido = [
+  {
+    marca: "Boehringer",
+    referencias: [
+      {
+        nombre: "NexGard",
+        especie: "perro",
+        categoria: "medicamento",
+        subcategoria: "antipulgas",
+        etapa: "todas",
+        requiereConfirmacion: true,
+        descripcion: "Tableta antipulgas para perros",
+        metadata: { observaciones: "Confirmar peso" },
+        presentaciones: [{ peso: "10 a 25 kg", precio: 85000, stock: true, metadata: {} }],
+      },
+    ],
+  },
+  {
+    marca: "Chunky",
+    referencias: [
+      {
+        nombre: "Adulto Todas las Razas",
+        especie: "perro",
+        categoria: "comida",
+        subcategoria: "concentrado",
+        etapa: "adulto",
+        descripcion: "Alimento completo para perros adultos",
+        presentaciones: [{ peso: "2kg", precio: 32000, stock: true, metadata: {} }],
+      },
+    ],
+  },
+  {
+    marca: "Kong",
+    referencias: [
+      {
+        nombre: "Classic",
+        especie: "perro",
+        categoria: "accesorio",
+        subcategoria: "juguete",
+        etapa: "todas",
+        descripcion: "Juguete resistente para perros",
+        presentaciones: [{ peso: "M", precio: 45000, stock: true, metadata: {} }],
+      },
+    ],
+  },
+];
 
 test("niega una presentacion inexistente aunque la referencia este ambigua", () => {
   const estado = crearEstadoInicial();
@@ -122,6 +169,38 @@ test("no interpreta una cedula aislada como presupuesto", () => {
   assert.equal(extraerPresupuesto("1004755939"), null);
   assert.equal(extraerPresupuesto("presupuesto 100000"), 100000);
   assert.equal(extraerPresupuesto("100000", { permitirNumeroSolo: true }), 100000);
+});
+
+test("busca productos por categoria petshop", () => {
+  const estado = crearEstadoInicial();
+  const respuesta = resolverConsultaCatalogo("tienen medicamentos para perro", estado, catalogoPetshopExtendido, null);
+
+  assert.match(respuesta, /NexGard/i);
+  assert.doesNotMatch(respuesta, /Chunky/i);
+});
+
+test("busca productos por subcategoria petshop", () => {
+  const estado = crearEstadoInicial();
+  const respuesta = resolverConsultaCatalogo("necesito antipulgas para perro", estado, catalogoPetshopExtendido, null);
+
+  assert.match(respuesta, /NexGard/i);
+  assert.match(respuesta, /confirmaci[oó]n responsable|veterinario/i);
+});
+
+test("busca productos por especie y etapa", () => {
+  const estado = crearEstadoInicial();
+  const respuesta = resolverConsultaCatalogo("comida para perro adulto", estado, catalogoPetshopExtendido, null);
+
+  assert.match(respuesta, /Chunky/i);
+  assert.match(respuesta, /Adulto Todas las Razas/i);
+});
+
+test("busca accesorios sin mezclarlos con comida", () => {
+  const estado = crearEstadoInicial();
+  const respuesta = resolverConsultaCatalogo("accesorio juguete para perro", estado, catalogoPetshopExtendido, null);
+
+  assert.match(respuesta, /Kong/i);
+  assert.doesNotMatch(respuesta, /Chunky/i);
 });
 
 test("prioriza un bloque de datos de envio sobre recomendaciones por presupuesto", () => {

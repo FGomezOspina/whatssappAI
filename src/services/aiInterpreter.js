@@ -7,6 +7,14 @@ const openai = process.env.OPENAI_API_KEY
     })
   : null;
 
+function timeoutInterpretacion(urlsImagen = []) {
+  if (urlsImagen.length) {
+    return Number(process.env.OPENAI_VISION_TIMEOUT_MS || 20000);
+  }
+
+  return Number(process.env.OPENAI_TIMEOUT_MS || 7000);
+}
+
 function normalizarTexto(valor = "") {
   return valor
     .toString()
@@ -28,8 +36,10 @@ function atributosReferenciaCatalogo(referencia = {}) {
   if (texto.includes("carne")) sabores.push("carne");
 
   let etapa = null;
-  if (contiene(texto, ["cachorro", "cachorros", "puppy", "gatito"])) etapa = "cachorro";
-  if (contiene(texto, ["adulto", "adultos", "mayor", "mayores"])) etapa = "adulto";
+  if (referencia.etapa) etapa = referencia.etapa;
+  if (!etapa && contiene(texto, ["cachorro", "cachorros", "puppy", "gatito"])) etapa = "cachorro";
+  if (!etapa && contiene(texto, ["adulto", "adultos"])) etapa = "adulto";
+  if (!etapa && contiene(texto, ["senior", "mayor", "mayores"])) etapa = "senior";
 
   let tamano = null;
   if (contiene(texto, ["pequeno", "pequena", "pequenos", "pequenas", "mini"])) tamano = "pequeno";
@@ -49,9 +59,15 @@ function resumenCatalogo(catalogo = []) {
     referencias: marca.referencias.map((referencia) => ({
       nombre: referencia.nombre,
       especie: referencia.especie || "perro",
+      categoria: referencia.categoria || null,
+      subcategoria: referencia.subcategoria || null,
       descripcion: referencia.descripcion || "",
+      requiereConfirmacion: Boolean(referencia.requiereConfirmacion),
       atributos: atributosReferenciaCatalogo(referencia),
-      presentaciones: referencia.presentaciones.map((presentacion) => presentacion.peso),
+      presentaciones: referencia.presentaciones.map((presentacion) => ({
+        peso: presentacion.peso,
+        stock: presentacion.stock,
+      })),
     })),
   }));
 }
@@ -90,6 +106,8 @@ function normalizarInterpretacion(valor) {
   const normalizarProducto = (producto = {}) => ({
     marca: producto.marca || null,
     referencia: producto.referencia || null,
+    categoria: producto.categoria || null,
+    subcategoria: producto.subcategoria || null,
     especie: producto.especie || null,
     etapa: producto.etapa || null,
     tamano: producto.tamano || null,
@@ -156,6 +174,26 @@ function resumenHistorial(historial = []) {
   }));
 }
 
+function contextoCliente(cliente = {}) {
+  return {
+    slug: cliente.slug || null,
+    nombre: cliente.name || null,
+    vertical: cliente.vertical || null,
+    settings: cliente.settings || {},
+    deliveryRules: cliente.deliveryRules || [],
+  };
+}
+
+function promptCliente(cliente = {}) {
+  const prompt = cliente.prompts?.interpreter || cliente.prompts?.interprete || null;
+  return prompt ? `\n\nInstrucciones especificas del cliente AIVANCE:\n${prompt}` : "";
+}
+
+function promptVertical(vertical = {}) {
+  const prompt = vertical.prompts?.interpreterContext || null;
+  return prompt ? `\n\nInstrucciones de la vertical ${vertical.key}:\n${prompt}` : "";
+}
+
 async function interpretarMensajeCliente({
   mensaje,
   estado,
@@ -164,6 +202,8 @@ async function interpretarMensajeCliente({
   historialReciente = [],
   imageUrl = null,
   imageUrls = [],
+  cliente = null,
+  vertical = null,
 }) {
   if (!openai || process.env.AI_INTERPRETER === "false") return null;
 
@@ -190,6 +230,7 @@ Fuente de verdad:
 - No inventes precios ni referencias. Si no estas seguro de una referencia del catalogo, usa null y deja criterios.
 - Puedes inferir especie, etapa, tamano y presentacion desde lenguaje humano, abreviaturas, mala ortografia y razas.
 - El cliente escribe en español colombiano y lenguaje comercial local. Entiende expresiones como "cuido", "concentrado", "comida", "purina", "referencia", "manejan esta referencia", "la de la foto", "la bolsa", "bulto", "paquete", "kilo", "kl", "libra", "raza pequeña", "todas las razas" y variantes coloquiales.
+- El catalogo petshop puede traer categoria, subcategoria, especie, etapa, stock, metadata y requiereConfirmacion. Usa esos campos para entender consultas como "medicamentos", "antipulgas", "desparasitante", "snacks", "accesorios", "champu", "juguetes", "arena para gato" o "suplementos".
 - Tu criterio debe parecer de asesor humano, no de vendedor que siempre dice que si. Si el catalogo no respalda lo pedido, la decision correcta es marcar el dato solicitado y permitir que el motor responda con una negativa util.
 - El backend es la autoridad para marca, referencia, presentaciones y precios. Tu trabajo es entender que quiere el cliente: agregar, consultar, recomendar, cambiar cantidad, quitar productos, cambiar datos o cerrar pedido.
 - El estado de conversacion importa tanto como el ultimo mensaje. Si ya hay carrito, datos, metodo de pago o una seleccion pendiente, interpreta el mensaje como continuacion salvo que el cliente pida claramente empezar de nuevo.
@@ -215,6 +256,15 @@ Fuente de verdad:
 - No vuelvas a extraer producto desde el historial si el ultimo mensaje no menciona marca, referencia, especie, peso ni cantidad. En esos casos usa el estado para decidir si es confirmacion, datos de entrega, metodo de pago o cambio.
 - Si el cliente solo saluda y dice que quiere hacer un pedido, no inventes marca ni producto. Interpreta apertura de pedido: intencion "otro", accion null, faltanteSugerido "marca" o "referencia" segun el contexto.
 - Si el cliente describe su mascota con una raza, apodo, escritura aproximada o mezcla ("tengo un labrador adulto", "mi perrita es french poodol", "es criollo grande", "tengo una gata adulta"), no lo trates como marca desconocida. Actua como experto en razas y deduce especie, etapa y tamano probable desde conocimiento general; si no estas seguro del tamano, deja tamano null y conserva especie/etapa.
+- Si el cliente pregunta por una categoria o subcategoria sin marca ("tienen medicamentos", "antipulgas para perro", "snacks para gato", "accesorios"), usa intencion "consulta_producto", accion "consultar" y llena producto.categoria/producto.subcategoria/especie/etapa cuando aplique.
+- Para medicamentos o productos con requiereConfirmacion, no recomiendes tratamientos, dosis ni diagnosticos. Puedes interpretar disponibilidad, precio y presentacion, y pedir el dato necesario para validar venta responsable.
+
+Audio y transcripciones:
+- El mensaje puede venir de una nota de voz de WhatsApp. En audio, algunas palabras pueden llegar transcritas de forma fonetica o deformada por el modelo de voz.
+- Si una frase de audio pregunta por costo, precio, valor o disponibilidad, usa intencion "consulta_producto" aunque la transcripcion tenga errores.
+- Compara las palabras dudosas contra el catalogo por sonido y contexto de tienda de mascotas. Por ejemplo, "dog show", "doc chow", "dog chao", "zoom chow" o transcripciones parecidas pueden apuntar a "Dog Chow" si el resto del mensaje habla de cuido, perro, cachorro, adulto, razas o kilos.
+- No fuerces una marca si no hay una pista razonable del catalogo. Si solo detectas que pregunta un precio pero el producto no es recuperable, usa intencion "consulta_producto", accion "consultar", producto null y faltanteSugerido "marca" o "referencia".
+- Si puedes recuperar marca, etapa, tamano o presentacion desde una transcripcion imperfecta, devuelvelos como criterios para que el motor valide contra catalogo.
 
 Vision de empaques:
 - Si recibes imagen, lee el empaque como lo haria un asesor de tienda en Colombia: marca visible, nombre grande, etapa (adulto/adultos/cachorro/cachorros), especie por foto o texto, tamano/raza ("mini", "pequeñas", "medianas", "grandes", "todas las razas"), sabor, peso neto/presentacion y cualquier frase comercial.
@@ -271,6 +321,8 @@ Si un ejemplo contradice el estado actual o el mensaje del cliente, ignoralo.
 
 Ejemplos dinamicos curados desde conversaciones reales:
 ${formatearEjemplos(ejemplosEntrenamiento)}
+${promptVertical(vertical)}
+${promptCliente(cliente)}
 
 JSON exacto:
 {
@@ -280,8 +332,10 @@ JSON exacto:
   "producto": {
     "marca": "una marca exacta del catalogo o null",
     "referencia": "una referencia exacta del catalogo o null",
-    "especie": "perro|gato|null",
-    "etapa": "adulto|cachorro|null",
+    "categoria": "comida|medicamento|accesorio|snack|higiene|suplemento|juguete|arena_sustrato|otro|null",
+    "subcategoria": "concentrado|comida_humeda|antipulgas|desparasitante|collar|cama|champu|vitaminas|null",
+    "especie": "perro|gato|ave|roedor|pez|equino|bovino|otro|null",
+    "etapa": "adulto|cachorro|senior|todas|null",
     "tamano": "pequeno|grande|todas|null",
     "sabores": [],
     "presentacion": "ej. 4kg, 2kg, 20kg o null",
@@ -291,8 +345,10 @@ JSON exacto:
     {
       "marca": "marca exacta del catalogo o null",
       "referencia": "referencia exacta del catalogo o null",
-      "especie": "perro|gato|null",
-      "etapa": "adulto|cachorro|null",
+      "categoria": "comida|medicamento|accesorio|snack|higiene|suplemento|juguete|arena_sustrato|otro|null",
+      "subcategoria": "concentrado|comida_humeda|antipulgas|desparasitante|collar|cama|champu|vitaminas|null",
+      "especie": "perro|gato|ave|roedor|pez|equino|bovino|otro|null",
+      "etapa": "adulto|cachorro|senior|todas|null",
       "tamano": "pequeno|grande|todas|null",
       "sabores": [],
       "presentacion": "presentacion exacta pedida por el cliente o null",
@@ -333,6 +389,7 @@ JSON exacto:
                     mensaje,
                     historialReciente: resumenHistorial(historialReciente),
                     estado: resumenEstado(estado),
+                    cliente: contextoCliente(cliente),
                     catalogo: resumenCatalogo(catalogo),
                     instruccionImagen:
                       "Analiza la imagen completa, no solo el caption. Lee marca, etapa, especie, tamano/raza, sabor, peso neto/presentacion y frases del empaque. Revisa especialmente esquinas inferiores y textos pequenos de peso neto/contenido neto. Compara esos datos con el catalogo colombiano entregado y devuelve la referencia exacta mas compatible cuando exista. El sabor visible es pista secundaria si no aparece en el nombre interno. Si puedes leer el peso, normalizalo a una presentacion exacta del catalogo. No inventes datos ilegibles.",
@@ -347,6 +404,7 @@ JSON exacto:
                 mensaje,
                 historialReciente: resumenHistorial(historialReciente),
                 estado: resumenEstado(estado),
+                cliente: contextoCliente(cliente),
                 catalogo: resumenCatalogo(catalogo),
               }),
         },
@@ -361,11 +419,15 @@ JSON exacto:
       console.log(`[OpenAI] Interpretando imagen con modelo=${model} | imagenes=${urlsImagen.length}`);
     }
 
-    const completion = await openai.chat.completions.create(parametrosModelo);
+    const completion = await openai.chat.completions.create(parametrosModelo, {
+      timeout: timeoutInterpretacion(urlsImagen),
+    });
 
     return normalizarInterpretacion(JSON.parse(completion.choices[0].message.content));
   } catch (error) {
-    console.error("Error interpretando mensaje con IA:", error.message);
+    const urlsImagen = [...imageUrls, imageUrl].filter(Boolean);
+    const contexto = urlsImagen.length ? "imagen" : "texto";
+    console.warn(`[OpenAI] No se pudo interpretar ${contexto}; se usa motor operativo | error=${error.message}`);
     return null;
   }
 }

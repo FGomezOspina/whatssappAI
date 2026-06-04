@@ -79,15 +79,14 @@ function obtenerTextoMensaje(message = {}) {
     return message.image?.caption || message.kapso?.message_type_data?.caption || message.kapso?.content || "";
   }
   if (["audio", "voice"].includes(message.type)) {
-    const transcript = message.kapso?.transcript?.text || "";
-    const texto =
+    const caption =
       message.audio?.caption ||
       message.voice?.caption ||
       message.kapso?.message_type_data?.caption ||
-      message.kapso?.content ||
       "";
+    if (caption) return caption;
 
-    return texto === transcript ? "" : texto;
+    return limpiarContenidoAudioKapso(message.kapso?.content || "", message.kapso?.transcript?.text || "");
   }
   if (message.type === "interactive") {
     return (
@@ -99,6 +98,36 @@ function obtenerTextoMensaje(message = {}) {
   }
 
   return message.kapso?.content || "";
+}
+
+function normalizarTextoSimple(valor = "") {
+  return valor
+    .toString()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase();
+}
+
+function extraerTranscriptDesdeContenido(contenido = "") {
+  const match = contenido.match(/\bTranscript:\s*([\s\S]+)$/i);
+  return match?.[1]?.trim() || null;
+}
+
+function limpiarContenidoAudioKapso(contenido = "", transcript = "") {
+  const texto = contenido.toString().trim();
+  if (!texto) return "";
+  if (normalizarTextoSimple(texto) === normalizarTextoSimple(transcript)) return "";
+
+  const pareceResumenAdjunto =
+    /^audio attached\b/i.test(texto) ||
+    (/\bURL:\s*https?:\/\//i.test(texto) && /\bTranscript:\s*/i.test(texto));
+
+  if (!pareceResumenAdjunto) return texto;
+
+  const caption = texto.match(/\bCaption:\s*([\s\S]*?)(?:\bURL:|\bTranscript:|$)/i)?.[1]?.trim();
+  return caption && normalizarTextoSimple(caption) !== normalizarTextoSimple(transcript) ? caption : "";
 }
 
 function primerValor(...valores) {
@@ -118,6 +147,31 @@ function datosTipoMedia(message = {}) {
 
 function normalizarTipoMedia(tipo) {
   return tipo === "voice" ? "audio" : tipo;
+}
+
+function extensionDesdeContentType(contentType, tipo = "audio") {
+  const texto = (contentType || "").toLowerCase();
+
+  if (texto.includes("ogg")) return "ogg";
+  if (texto.includes("mpeg") || texto.includes("mp3")) return "mp3";
+  if (texto.includes("mp4") || texto.includes("m4a")) return "m4a";
+  if (texto.includes("wav")) return "wav";
+  if (texto.includes("webm")) return "webm";
+  if (texto.includes("jpeg") || texto.includes("jpg")) return "jpg";
+  if (texto.includes("png")) return "png";
+  if (texto.includes("webp")) return "webp";
+
+  return tipo === "image" ? "jpg" : "ogg";
+}
+
+function nombreArchivoSeguro(message, mediaId, filename, contentType) {
+  if (filename && /\.[a-z0-9]{2,5}$/i.test(filename)) return filename;
+
+  const tipo = normalizarTipoMedia(message.type);
+  const extension = extensionDesdeContentType(contentType, tipo);
+  const base = filename || `${tipo}_${message.id || mediaId || "archivo"}`;
+
+  return `${base.toString().replace(/[^a-zA-Z0-9_-]+/g, "_")}.${extension}`;
 }
 
 function normalizarMedia(message = {}) {
@@ -208,9 +262,9 @@ function normalizarMedia(message = {}) {
     type: normalizarTipoMedia(message.type),
     url: mediaUrl,
     mediaId,
-    filename: filename || `${normalizarTipoMedia(message.type)}-${message.id || mediaId || "archivo"}`,
+    filename: nombreArchivoSeguro(message, mediaId, filename, contentType),
     contentType,
-    transcript: kapso.transcript?.text || null,
+    transcript: kapso.transcript?.text || extraerTranscriptDesdeContenido(kapso.content || "") || null,
     hasFileReference: Boolean(mediaUrl || mediaId),
   };
 }
@@ -230,7 +284,16 @@ function normalizarEvento(payload, headers = {}) {
     idempotencyKey: message.id || headers["x-idempotency-key"] || null,
     messageId: message.id || null,
     messageType: message.type || "unknown",
-    phoneNumberId: payload.phone_number_id || payload.conversation?.phone_number_id || null,
+    phoneNumberId: primerValor(
+      payload.phone_number_id,
+      payload.phoneNumberId,
+      payload.phone_number?.id,
+      payload.phoneNumber?.id,
+      payload.conversation?.phone_number_id,
+      payload.conversation?.phoneNumberId,
+      message.kapso?.phone_number_id,
+      message.kapso?.phoneNumberId
+    ),
     recipientId,
     text: obtenerTextoMensaje(message).trim(),
     media: normalizarMedia(message),

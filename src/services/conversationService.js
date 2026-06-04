@@ -1,18 +1,6 @@
-const {
-  resolverConsultaCatalogo,
-  buscarMarca,
-  extraerCriterios,
-  tieneCriterios,
-  solicitaMarcas,
-  solicitaReferencias,
-  solicitaRecomendacion,
-  solicitaOpinionMarca,
-  extraerPresupuesto,
-  solicitaCierre,
-  esSaludo,
-  esAgradecimiento,
-} = require("../conversation/conversationEngine");
-const { cargarProductos } = require("../repositories/productRepository");
+const { obtenerClienteActual } = require("./clients.service");
+const { obtenerVerticalCliente } = require("../verticals");
+const { cargarCatalogoCliente } = require("../repositories/productRepository");
 const {
   obtenerConversacionPersistida,
   obtenerHistorialRecientePersistido,
@@ -22,7 +10,6 @@ const { obtenerEjemplosEntrenamiento } = require("../repositories/trainingExampl
 const { interpretarMensajeCliente } = require("./aiInterpreter");
 const { humanizarRespuesta } = require("./humanizer");
 const { procesarMultimedia } = require("./mediaProcessor");
-const { asegurarRespuestaCatalogo } = require("./responseGuard");
 
 function clienteParaLog(channelUserId = "") {
   if (process.env.NODE_ENV !== "production") return channelUserId || "desconocido";
@@ -65,12 +52,47 @@ async function responderEventosEntrantes(eventos) {
   if (!eventos.length) throw new Error("No hay eventos entrantes para procesar");
 
   const evento = eventos[0];
+  const cliente = await obtenerClienteActual(evento);
+  const vertical = obtenerVerticalCliente(cliente);
+  if (!vertical || !vertical.orderLogic || !vertical.productLogic) {
+    throw new Error(
+      `La vertical ${vertical?.key || cliente.vertical || "desconocida"} no tiene lógica conversacional activa`
+    );
+  }
+  const {
+    resolverConsultaCatalogo,
+    buscarMarca,
+    extraerCriterios,
+    tieneCriterios,
+    solicitaMarcas,
+    solicitaReferencias,
+    solicitaRecomendacion,
+    solicitaOpinionMarca,
+    extraerPresupuesto,
+    solicitaCierre,
+    esSaludo,
+    esAgradecimiento,
+  } = vertical.orderLogic;
+  const { asegurarRespuestaCatalogo } = vertical.productLogic;
   const [estado, historialReciente] = await Promise.all([
-    obtenerConversacionPersistida(evento.channelUserId),
-    obtenerHistorialRecientePersistido(evento.channelUserId),
+    obtenerConversacionPersistida(evento.channelUserId, cliente),
+    obtenerHistorialRecientePersistido(evento.channelUserId, 12, cliente),
   ]);
-  const catalogo = cargarProductos();
+  let catalogo;
   let contenidos;
+
+  try {
+    catalogo = await cargarCatalogoCliente(cliente);
+  } catch (error) {
+    console.error("Error cargando catálogo desde Supabase:", error.message);
+    const respuesta = "No pude cargar el catálogo en este momento. Inténtalo de nuevo en unos minutos.";
+    await guardarConversacionPersistida(evento.channelUserId, estado, {
+      cliente,
+      mensaje: eventos.map((item) => item.text || `[${item.media?.type || "multimedia"}]`).join("\n"),
+      respuesta,
+    });
+    return respuesta;
+  }
 
   try {
     contenidos = await Promise.all(
@@ -79,6 +101,7 @@ async function responderEventosEntrantes(eventos) {
           text: item.text,
           media: item.media,
           logger: console,
+          catalogo,
         })
       )
     );
@@ -86,6 +109,7 @@ async function responderEventosEntrantes(eventos) {
     console.error("Error procesando multimedia:", error.message);
     const respuesta = "No pude procesar ese archivo. Envíamelo de nuevo o cuéntame por texto qué necesitas.";
     await guardarConversacionPersistida(evento.channelUserId, estado, {
+      cliente,
       mensaje: eventos
         .map((item) => item.text || `[${item.media?.type || "multimedia"} no procesada]`)
         .join("\n"),
@@ -104,13 +128,14 @@ async function responderEventosEntrantes(eventos) {
   if (!mensaje && !imageUrls.length) {
     const respuesta = "Cuéntame qué necesitas para tu mascota 🐶";
     await guardarConversacionPersistida(evento.channelUserId, estado, {
+      cliente,
       mensaje: evento.text || "",
       respuesta,
     });
     return respuesta;
   }
 
-  const ejemplosEntrenamiento = await obtenerEjemplosEntrenamiento(mensaje, 8);
+  const ejemplosEntrenamiento = await obtenerEjemplosEntrenamiento(mensaje, 8, cliente);
   const interpretacionIA = await interpretarMensajeCliente({
     mensaje,
     estado,
@@ -118,6 +143,8 @@ async function responderEventosEntrantes(eventos) {
     ejemplosEntrenamiento,
     historialReciente,
     imageUrls,
+    cliente,
+    vertical,
   });
   registrarInterpretacionOpenAI(evento, interpretacionIA);
 
@@ -153,10 +180,13 @@ async function responderEventosEntrantes(eventos) {
     historialReciente,
     estado,
     interpretacionIA,
+    cliente,
+    vertical,
   });
   const respuesta = asegurarRespuestaCatalogo(mensaje, respuestaHumanizada, { catalogo, interpretacionIA });
 
   await guardarConversacionPersistida(evento.channelUserId, estado, {
+    cliente,
     mensaje,
     respuesta,
   });

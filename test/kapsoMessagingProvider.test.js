@@ -35,6 +35,26 @@ test("normaliza un mensaje de texto Kapso v2", () => {
   assert.equal(evento.idempotencyKey, "wamid.123");
 });
 
+test("extrae phoneNumberId desde campos alternos del canal Kapso", () => {
+  const evento = normalizarEvento(
+    {
+      message: {
+        id: "wamid.alt-phone",
+        type: "text",
+        from: "573001112233",
+        text: { body: "Hola" },
+        kapso: { direction: "inbound" },
+      },
+      phone_number: { id: "phone_alt_123" },
+    },
+    {
+      "x-webhook-event": "whatsapp.message.received",
+    }
+  );
+
+  assert.equal(evento.phoneNumberId, "phone_alt_123");
+});
+
 test("extrae URL publica de una imagen Kapso", () => {
   const [evento] = extraerEventos(
     {
@@ -110,6 +130,30 @@ test("normaliza notas de voz como audio real", () => {
   assert.equal(evento.media.url, "https://api.kapso.ai/media/voice-token");
   assert.equal(evento.media.mediaId, "media-voice-id");
   assert.equal(evento.media.contentType, "audio/ogg");
+  assert.match(evento.media.filename, /\.ogg$/);
+});
+
+test("crea nombre de archivo de audio con extension valida cuando Kapso no envia filename", () => {
+  const [evento] = extraerEventos(
+    {
+      message: {
+        id: "wamid.audio.no.filename",
+        type: "audio",
+        from: "573001112233",
+        audio: {
+          id: "media-audio-id",
+          url: "https://api.kapso.ai/media/audio-token",
+          mime_type: "audio/mpeg",
+        },
+        kapso: { direction: "inbound" },
+      },
+      phone_number_id: "phone_123",
+    },
+    { "x-webhook-event": "whatsapp.message.received" }
+  );
+
+  assert.equal(evento.media.type, "audio");
+  assert.match(evento.media.filename, /\.mp3$/);
 });
 
 test("extrae transcripcion y URL de audio Kapso", () => {
@@ -134,6 +178,31 @@ test("extrae transcripcion y URL de audio Kapso", () => {
   assert.equal(evento.media.type, "audio");
   assert.equal(evento.media.transcript, "Necesito un pedido");
   assert.equal(evento.text, "");
+});
+
+test("ignora resumen tecnico de audio Kapso y conserva solo la transcripcion", () => {
+  const [evento] = extraerEventos(
+    {
+      message: {
+        id: "wamid.audio.summary",
+        type: "audio",
+        from: "573001112233",
+        kapso: {
+          direction: "inbound",
+          content:
+            "Audio attached (audio_b8b5a13a5d63.ogg) [Size: 7.7 KB | Type: audio/opus] URL: https://app.kapso.ai/rails/active_storage/blobs/redirect/token/audio_b8b5a13a5d63.ogg Transcript: ¿Qué costo tiene el Dog Chow cachorro pequeño de 4 kilos?",
+          media_url: "https://app.kapso.ai/rails/active_storage/blobs/redirect/token/audio_b8b5a13a5d63.ogg",
+          media_data: { filename: "audio_b8b5a13a5d63.ogg", content_type: "audio/opus" },
+        },
+      },
+      phone_number_id: "phone_123",
+    },
+    { "x-webhook-event": "whatsapp.message.received" }
+  );
+
+  assert.equal(evento.text, "");
+  assert.equal(evento.media.type, "audio");
+  assert.equal(evento.media.transcript, "¿Qué costo tiene el Dog Chow cachorro pequeño de 4 kilos?");
 });
 
 test("deduplica mensajes bufferizados por message.id", () => {

@@ -80,22 +80,135 @@ function advertir(logger, mensaje, media) {
   if (logger?.warn) logger.warn(salida);
 }
 
-async function transcribirAudio(media, logger = console) {
+function extensionDesdeContentType(contentType = "") {
+  const texto = contentType.toLowerCase();
+
+  if (texto.includes("ogg")) return "ogg";
+  if (texto.includes("mpeg") || texto.includes("mp3")) return "mp3";
+  if (texto.includes("mp4") || texto.includes("m4a")) return "m4a";
+  if (texto.includes("wav")) return "wav";
+  if (texto.includes("webm")) return "webm";
+
+  return "ogg";
+}
+
+function nombreAudioSeguro(media = {}, contentType = "audio/ogg") {
+  if (media.filename && /\.[a-z0-9]{2,5}$/i.test(media.filename)) return media.filename;
+
+  const base = media.filename || `audio_${media.mediaId || "whatsapp"}`;
+  return `${base.toString().replace(/[^a-zA-Z0-9_-]+/g, "_")}.${extensionDesdeContentType(contentType)}`;
+}
+
+function normalizarTextoSimple(valor = "") {
+  return valor
+    .toString()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase();
+}
+
+function limpiarTextoAdjuntoAudio(texto = "") {
+  const contenido = texto.toString().trim();
+  if (!contenido) return "";
+
+  const pareceResumenAdjunto =
+    /^audio attached\b/i.test(contenido) ||
+    (/\bURL:\s*https?:\/\//i.test(contenido) && /\bTranscript:\s*/i.test(contenido));
+
+  if (!pareceResumenAdjunto) return contenido;
+
+  return contenido.match(/\bCaption:\s*([\s\S]*?)(?:\bURL:|\bTranscript:|$)/i)?.[1]?.trim() || "";
+}
+
+function unirSegmentosUnicos(segmentos = []) {
+  const vistos = new Set();
+
+  return segmentos
+    .map((segmento) => segmento?.toString().trim())
+    .filter(Boolean)
+    .filter((segmento) => {
+      const normalizado = normalizarTextoSimple(segmento);
+      if (!normalizado || vistos.has(normalizado)) return false;
+      vistos.add(normalizado);
+      return true;
+    })
+    .join("\n")
+    .trim();
+}
+
+function construirPromptTranscripcion(catalogo = []) {
+  const marcas = new Set();
+  const referencias = new Set();
+  const presentaciones = new Set();
+
+  catalogo.forEach((marca) => {
+    if (marca?.marca) marcas.add(marca.marca);
+    (marca?.referencias || []).forEach((referencia) => {
+      if (referencia?.nombre) referencias.add(referencia.nombre);
+      (referencia?.presentaciones || []).forEach((presentacion) => {
+        if (presentacion?.peso) presentaciones.add(presentacion.peso);
+      });
+    });
+  });
+
+  const partes = [
+    "Audio de WhatsApp de una tienda de mascotas en Colombia. Transcribe en español, conservando marcas y pesos.",
+    "No traduzcas ni reemplaces nombres de marcas. Corrige por contexto fonético cuando el audio suene a una marca o referencia del catálogo.",
+    marcas.size ? `Marcas posibles: ${Array.from(marcas).join(", ")}.` : null,
+    referencias.size ? `Referencias posibles: ${Array.from(referencias).slice(0, 40).join(", ")}.` : null,
+    presentaciones.size ? `Presentaciones posibles: ${Array.from(presentaciones).join(", ")}.` : null,
+    "Vocabulario frecuente: Dog Chow, Chunky, cachorro, cachorros, adulto, adultos, mini, pequeño, pequeñas, mediano, grande, todas las razas, cuido, concentrado, bulto, kilo, kilos, kg, kl.",
+  ].filter(Boolean);
+
+  return partes.join(" ");
+}
+
+async function transcribirConModelo({ buffer, filename, contentType, model, prompt }) {
+  const archivo = await toFile(buffer, filename, { type: contentType });
+  const transcripcion = await openai.audio.transcriptions.create({
+    file: archivo,
+    model,
+    language: "es",
+    prompt,
+  });
+
+  return transcripcion.text?.trim() || "";
+}
+
+async function transcribirAudio(media, logger = console, catalogo = []) {
   if (!openai) throw new Error("Falta OPENAI_API_KEY para transcribir audio");
   if (!media?.url) throw new Error("El audio recibido no tiene URL");
 
   if (logger?.log) logger.log(`[OpenAI] Enviando audio real a transcripción | ${referenciaSegura(media)}`);
   const { buffer, contentType } = await descargarArchivo(media.url);
-  const archivo = await toFile(buffer, media.filename || "audio.ogg", {
-    type: media.contentType || contentType || "audio/ogg",
-  });
-  const transcripcion = await openai.audio.transcriptions.create({
-    file: archivo,
-    model: process.env.OPENAI_TRANSCRIPTION_MODEL || "gpt-4o-mini-transcribe",
-    language: "es",
-  });
+  const tipo = media.contentType || contentType || "audio/ogg";
+  const filename = nombreAudioSeguro(media, tipo);
+  const prompt = construirPromptTranscripcion(catalogo);
+  const modelos = [
+    process.env.OPENAI_TRANSCRIPTION_MODEL || "gpt-4o-transcribe",
+    process.env.OPENAI_TRANSCRIPTION_FALLBACK_MODEL || "gpt-4o-mini-transcribe",
+    "whisper-1",
+  ].filter((model, index, lista) => model && lista.indexOf(model) === index);
 
-  return transcripcion.text?.trim() || "";
+  let ultimoError;
+  for (const model of modelos) {
+    try {
+      const texto = await transcribirConModelo({ buffer, filename, contentType: tipo, model, prompt });
+      if (logger?.log) {
+        logger.log(`[OpenAI] Audio transcrito | modelo=${model} | textoChars=${texto.length} | filename=${filename}`);
+      }
+      return texto;
+    } catch (error) {
+      ultimoError = error;
+      if (logger?.warn) {
+        logger.warn(`[OpenAI] Falló transcripción de audio | modelo=${model} | error=${error.message}`);
+      }
+    }
+  }
+
+  throw ultimoError || new Error("No se pudo transcribir audio");
 }
 
 async function prepararImagen(media, logger = console) {
@@ -115,7 +228,7 @@ async function prepararImagen(media, logger = console) {
   return dataUrl;
 }
 
-async function procesarMultimedia({ text = "", media = null, logger = console }) {
+async function procesarMultimedia({ text = "", media = null, logger = console, catalogo = [] }) {
   if (!media) return { text, imageUrl: null, metadata: { tipo: "text" } };
 
   if (media.type === "image") {
@@ -142,10 +255,27 @@ async function procesarMultimedia({ text = "", media = null, logger = console })
   if (media.type === "audio") {
     let transcripcion;
     let audioTranscribedWithOpenAI = false;
+    const textoAdjunto = limpiarTextoAdjuntoAudio(text);
 
     if (media.url) {
-      transcripcion = await transcribirAudio(media, logger);
-      audioTranscribedWithOpenAI = true;
+      try {
+        transcripcion = await transcribirAudio(media, logger, catalogo);
+        audioTranscribedWithOpenAI = true;
+      } catch (error) {
+        if (!media.transcript) throw error;
+        advertir(
+          logger,
+          `OpenAI no pudo transcribir el audio; se usa transcript de Kapso como respaldo (${error.message})`,
+          media
+        );
+        transcripcion = media.transcript;
+      }
+
+      if (!transcripcion && media.transcript) {
+        advertir(logger, "OpenAI devolvió transcripción vacía; se usa transcript de Kapso como respaldo", media);
+        transcripcion = media.transcript;
+        audioTranscribedWithOpenAI = false;
+      }
     } else if (media.transcript) {
       advertir(
         logger,
@@ -159,7 +289,7 @@ async function procesarMultimedia({ text = "", media = null, logger = console })
     }
 
     return {
-      text: [text, transcripcion].filter(Boolean).join("\n").trim(),
+      text: unirSegmentosUnicos([textoAdjunto, transcripcion]),
       imageUrl: null,
       metadata: { tipo: "audio", imageSentToOpenAI: false, audioTranscribedWithOpenAI },
     };

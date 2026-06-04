@@ -89,5 +89,23 @@ test("el interprete mapea empaques visuales contra referencias internas del cata
 test("el procesador multimedia usa un modelo moderno de transcripcion por defecto", () => {
   const servicio = leerServicio("mediaProcessor.js");
 
-  assert.match(servicio, /OPENAI_TRANSCRIPTION_MODEL \|\| "gpt-4o-mini-transcribe"/);
+  assert.match(servicio, /OPENAI_TRANSCRIPTION_MODEL \|\| "gpt-4o-transcribe"/);
+  assert.match(servicio, /OPENAI_TRANSCRIPTION_FALLBACK_MODEL \|\| "gpt-4o-mini-transcribe"/);
+  assert.match(servicio, /construirPromptTranscripcion/);
+});
+
+test("el interprete contempla errores foneticos de audios de WhatsApp", () => {
+  const prompt = leerServicio("aiInterpreter.js");
+
+  assert.match(prompt, /Audio y transcripciones/);
+  assert.match(prompt, /transcritas de forma fonetica/);
+  assert.match(prompt, /dog show/);
+  assert.match(prompt, /intencion "consulta_producto"/);
+});
+
+test("el interprete usa timeout especifico para vision", () => {
+  const servicio = leerServicio("aiInterpreter.js");
+
+  assert.match(servicio, /OPENAI_VISION_TIMEOUT_MS/);
+  assert.match(servicio, /timeoutInterpretacion\(urlsImagen\)/);
 });

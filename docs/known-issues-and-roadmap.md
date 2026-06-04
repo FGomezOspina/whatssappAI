@@ -1,6 +1,6 @@
 # Riesgos conocidos y hoja de ruta
 
-Fecha de corte: 2026-05-30.
+Fecha de corte: 2026-06-03.
 
 Este archivo separa lo que ya funciona de lo que todavia debe resolverse antes de operar con clientes reales.
 
@@ -70,7 +70,7 @@ La descarga valida URL publica y aplica limite de bytes y timeout configurables.
 - Definir politicas RLS si se agrega un frontend.
 - Revisar retencion de datos personales.
 
-Riesgo actual: si cargar Supabase falla, el flujo continua con un estado nuevo en memoria. Esto mantiene disponible el bot, pero puede perder contexto.
+Riesgo actual: Supabase es obligatorio para resolver clientes y catalogo en produccion. Si falla la lectura del catalogo, el bot responde que no pudo cargarlo en ese momento para evitar inventar productos o precios.
 
 ### Observabilidad
 
@@ -85,7 +85,7 @@ Riesgo actual: los errores se imprimen en consola sin correlacion suficiente.
 
 ### Catalogo y stock
 
-- Migrar `productos.json` a tablas de Supabase.
+- El catalogo ya esta preparado para vivir en Supabase por cliente. Siguiente mejora: administrar stock real y disponibilidad por sede.
 - Crear panel administrativo para marcas, referencias, presentaciones, precios e imagenes.
 - Integrar disponibilidad e inventario real.
 

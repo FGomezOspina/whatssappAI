@@ -20,7 +20,7 @@ GET /health
 flowchart LR
   A["Celulares autorizados"] --> B["Numero sandbox Kapso"]
   B --> C["Webhook local con HTTPS"]
-  C --> D["Backend Distrifinca"]
+  C --> D["Backend AIVANCE"]
   D --> B
   E["Clientes reales"] -. "Aun no conectar" .-> F["Numero comercial"]
 ```
@@ -38,7 +38,7 @@ Mientras se construye el banco de pruebas:
 Desde la raiz del proyecto:
 
 ```bash
-cp .env.example .env
+revisa y completa .env
 ```
 
 Completa progresivamente las variables descritas abajo.
@@ -77,7 +77,10 @@ No subas esta llave a Git ni la compartas en capturas.
 
 ```env
 KAPSO_PHONE_NUMBER_ID=id_del_numero_sandbox
+KAPSO_SANDBOX_CLIENT_SLUG=distrifinca
 ```
+
+`KAPSO_SANDBOX_CLIENT_SLUG` permite probar el sandbox aunque el `phone_number_id` aun no exista en `client_channels`. Solo se usa fuera de `NODE_ENV=production`.
 
 Tambien puedes consultar los numeros del proyecto con la API de Kapso:
 
@@ -115,13 +118,30 @@ OPENAI_MODEL=gpt-5.2-chat-latest
 OPENAI_INTERPRETER_MODEL=gpt-5.2
 OPENAI_VISION_MODEL=gpt-4.1
 OPENAI_TRANSCRIPTION_MODEL=gpt-4o-mini-transcribe
+OPENAI_TRANSCRIPTION_FALLBACK_MODEL=whisper-1
 INBOUND_MESSAGE_BUFFER_MS=5000
 
 SUPABASE_URL=
 SUPABASE_SECRET_KEY=
 ```
 
-En un proyecto Supabase nuevo, ejecuta `supabase/schema.sql` desde el SQL Editor.
+En un proyecto Supabase nuevo, ejecuta `supabase/schema.sql` desde el SQL Editor. En una base existente ejecuta `supabase/004_multiempresa_catalog.sql`.
+
+Luego registra el numero/canal de Kapso para Distrifinca. Este paso es obligatorio para que AIVANCE resuelva el cliente automaticamente sin cambiar `.env`:
+
+```sql
+insert into public.client_channels (client_id, provider, channel, phone_number_id, display_name)
+select id, 'kapso', 'whatsapp', 'TU_KAPSO_PHONE_NUMBER_ID', 'WhatsApp Distrifinca Sandbox'
+from public.aivance_clients
+where slug = 'distrifinca'
+on conflict do nothing;
+```
+
+Finalmente importa el catalogo de Distrifinca:
+
+```bash
+npm run catalog:import -- --file productos.json --client distrifinca --client-name Distrifinca --vertical petshop
+```
 
 ## 7. Exponer el servidor con HTTPS
 
@@ -257,8 +277,8 @@ Verifica tambien:
 ## Multimedia
 
 - Imagen: el backend busca URL real en `message.kapso.media_url`, `media_data.url`, `fileUrl`, `attachment`, `image.url` y campos equivalentes. Si hay URL, descarga la imagen y la envia al interprete OpenAI como `image_url` en formato data URL/base64 junto con el caption.
-- Audio/nota de voz: el backend busca URL real en `message.kapso.media_url`, `audio.url`, `voice.url`, `attachment` y campos equivalentes. Si hay URL, descarga el archivo y lo envia a OpenAI Whisper.
-- Si solo llega `message.kapso.transcript.text` pero no URL descargable, se usa como respaldo y se deja warning en consola porque OpenAI no recibio el audio real.
+- Audio/nota de voz: el backend busca URL real en `message.kapso.media_url`, `audio.url`, `voice.url`, `attachment` y campos equivalentes. Si hay URL, descarga el archivo y lo envia a OpenAI para transcripcion.
+- Si falla el modelo principal, intenta `OPENAI_TRANSCRIPTION_FALLBACK_MODEL`. Si aun asi Kapso incluyo `message.kapso.transcript.text`, se usa como respaldo y se deja warning en consola.
 - Si llega multimedia sin URL ni datos suficientes, el backend registra warning claro sin imprimir tokens.
 
 ## Solucion de problemas

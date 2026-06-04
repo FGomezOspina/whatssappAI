@@ -1,6 +1,6 @@
-# Distrifinca WhatsApp IA
+# AIVANCE WhatsApp IA
 
-Backend conversacional para atender clientes de una tienda de mascotas por WhatsApp. El agente entiende lenguaje informal, consulta un catalogo controlado por el backend, arma pedidos y conserva el contexto de cada cliente.
+Backend conversacional multiempresa de AIVANCE para atender clientes por WhatsApp. Distrifinca es el primer cliente configurado de la plataforma. El agente entiende lenguaje informal, consulta un catalogo controlado por el backend, arma pedidos y conserva el contexto de cada cliente.
 
 El proyecto esta migrando de Twilio a Kapso. La integracion activa recibe JSON de Kapso y esta pensada para probarse primero con el sandbox antes de conectar el numero comercial.
 
@@ -8,8 +8,11 @@ El proyecto esta migrando de Twilio a Kapso. La integracion activa recibe JSON d
 
 - Proveedor de WhatsApp activo: Kapso.
 - Entorno recomendado mientras se valida la migracion: sandbox de Kapso.
-- Persistencia: Supabase por REST API, con memoria local como respaldo para desarrollo.
-- Catalogo: `productos.json`.
+- Persistencia: Supabase por REST API, con memoria local como respaldo para desarrollo de conversaciones.
+- Cliente: se resuelve dinamicamente por el `phone_number_id`/canal de WhatsApp registrado en Supabase.
+- Tipo de negocio: se lee desde `aivance_clients.vertical`; la logica actual esta clasificada como vertical `petshop`.
+- Catalogo operativo: Supabase, separado por cliente AIVANCE.
+- Importacion de catalogo: `productos.json` como formato de carga masiva.
 - IA: OpenAI para interpretar mensajes, humanizar respuestas, analizar imagenes y transcribir voz.
 - Pruebas automatizadas: `npm test`.
 
@@ -24,7 +27,7 @@ El proyecto esta migrando de Twilio a Kapso. La integracion activa recibe JSON d
 - Rechaza presentaciones inexistentes y ofrece alternativas reales.
 - Gestiona carrito, cantidades, eliminaciones, entrega, datos del cliente y metodo de pago.
 - Recibe imagenes por URL de Kapso para analizarlas con vision.
-- Transcribe audios reales con OpenAI Whisper cuando Kapso entrega URL descargable; usa transcript de Kapso solo como respaldo.
+- Transcribe audios reales con OpenAI cuando Kapso entrega URL descargable; usa modelo fallback y transcript de Kapso como respaldo.
 - Guarda conversaciones, mensajes, pedidos confirmados y ejemplos curados en Supabase.
 
 ## Arquitectura
@@ -38,14 +41,14 @@ flowchart LR
   E --> F["Procesador multimedia"]
   E --> G["Interprete OpenAI"]
   E --> H["Motor comercial"]
-  H --> I["productos.json"]
+  H --> I["Supabase catalogo por cliente"]
   E --> J["Humanizador OpenAI"]
   E --> K["Supabase"]
   C --> L["Provider Kapso: enviar respuesta"]
   L --> B
 ```
 
-La mensajeria esta aislada en `src/providers/kapsoMessagingProvider.js`. La logica comercial y la persistencia no dependen del proveedor de WhatsApp.
+La mensajeria esta aislada en `src/providers/kapsoMessagingProvider.js`. La logica comercial y la persistencia no dependen del proveedor de WhatsApp. El cliente se resuelve con `src/services/clients.service.js`: el backend toma el `phone_number_id` que llega desde Kapso, busca ese canal en `client_channels` y carga el cliente activo desde `aivance_clients`. Luego `src/verticals/index.js` selecciona la logica por `aivance_clients.vertical`. La logica actual vive en `src/verticals/petshop` y se comparte entre Distrifinca y futuras tiendas de mascotas. `CLIENT_SLUG` ya no es base multiempresa ni variable operativa.
 
 Los mensajes consecutivos del mismo cliente se agrupan antes de llamar al agente. Cada mensaje reinicia la espera para recopilar el turno completo. La ventana local se configura con `INBOUND_MESSAGE_BUFFER_MS`; el valor recomendado para WhatsApp es `5000`.
 
@@ -64,17 +67,43 @@ Instala dependencias:
 npm install
 ```
 
-Crea tu archivo local de configuracion:
-
-```bash
-cp .env.example .env
-```
-
-Completa las variables, ejecuta el esquema de Supabase y arranca el servidor:
+Completa las variables en `.env`, ejecuta el esquema de Supabase y arranca el servidor:
 
 ```bash
 npm start
 ```
+
+Para un proyecto nuevo ejecuta primero `supabase/schema.sql`. Para una base existente ejecuta `supabase/004_multiempresa_catalog.sql`. El catalogo se importa siempre indicando explicitamente a que cliente pertenece; no hay cliente por defecto para evitar mezclar productos entre empresas.
+
+El archivo `productos.json` actual corresponde al catalogo inicial de Distrifinca:
+
+```bash
+npm run catalog:import -- --file productos.json --client distrifinca --client-name Distrifinca --vertical petshop
+```
+
+Para otra empresa petshop se usa la misma logica vertical, pero otro cliente y otro archivo de productos:
+
+```bash
+npm run catalog:import -- --file productos-mi-petshop.json --client mi_petshop --client-name "Mi Petshop" --vertical petshop
+```
+
+Despues registra el canal de Kapso para Distrifinca en Supabase. Ese registro es el que permite resolver el cliente sin tocar `.env`:
+
+```sql
+insert into public.client_channels (client_id, provider, channel, phone_number_id, display_name)
+select id, 'kapso', 'whatsapp', 'KAPSO_PHONE_NUMBER_ID', 'WhatsApp Distrifinca'
+from public.aivance_clients
+where slug = 'distrifinca'
+on conflict do nothing;
+```
+
+Mientras uses el sandbox antes de registrar el canal en Supabase, configura:
+
+```env
+KAPSO_SANDBOX_CLIENT_SLUG=distrifinca
+```
+
+Esa resolucion solo aplica fuera de `NODE_ENV=production`; en produccion el canal debe existir en `client_channels`.
 
 El backend expone:
 
@@ -108,6 +137,7 @@ Respuesta esperada:
 ## Documentacion
 
 - [Contexto tecnico vigente](docs/project-context.md)
+- [Arquitectura multiempresa AIVANCE](docs/aivance-multiempresa.md)
 - [Sandbox y migracion a Kapso](docs/kapso-migration.md)
 - [Riesgos y hoja de ruta](docs/known-issues-and-roadmap.md)
 - [Ejemplos de entrenamiento](docs/training-examples.md)

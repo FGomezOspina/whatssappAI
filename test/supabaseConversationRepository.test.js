@@ -119,3 +119,67 @@ test("persiste el estado confirmado e inserta el snapshot del pedido", async () 
     else process.env.SUPABASE_SECRET_KEY = secretAnterior;
   }
 });
+
+test("persiste conversaciones y pedidos asociados al cliente multiempresa", async () => {
+  const urlAnterior = process.env.SUPABASE_URL;
+  const secretAnterior = process.env.SUPABASE_SECRET_KEY;
+  const fetchAnterior = global.fetch;
+  const solicitudes = [];
+  const estado = {
+    pedidoConfirmado: true,
+    pedidoConfirmadoPendienteGuardar: true,
+    confirmacionPedidoId: "pedido-cliente-test",
+    carrito: [
+      {
+        marca: "Chunky",
+        referencia: "Adulto Todas las Razas",
+        peso: "2kg",
+        precio: 32000,
+        cantidad: 1,
+      },
+    ],
+    datosDomicilio: {},
+    entrega: { tipo: "domicilio", sede: null },
+    metodoPago: "efectivo",
+  };
+  const cliente = { id: "client-test", slug: "distrifinca" };
+
+  process.env.SUPABASE_URL = "https://supabase.example";
+  process.env.SUPABASE_SECRET_KEY = "supabase-test-secret";
+  global.fetch = async (url, opciones) => {
+    solicitudes.push({ url, opciones });
+    return new Response(JSON.stringify([{ id: "row-test" }]), {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    });
+  };
+
+  try {
+    await guardarConversacion("+573001112233", estado, {
+      cliente,
+      mensaje: "sí",
+      respuesta: "Listo.",
+    });
+    await guardarPedidoConfirmado("+573001112233", "conversation-test", estado, cliente);
+
+    const conversacion = solicitudes.find((solicitud) =>
+      solicitud.url.includes("/rest/v1/whatsapp_conversations")
+    );
+    const pedido = solicitudes.find((solicitud) => solicitud.url.includes("/rest/v1/whatsapp_orders"));
+    const payloadConversacion = JSON.parse(conversacion.opciones.body);
+    const payloadPedido = JSON.parse(pedido.opciones.body);
+
+    assert.match(conversacion.url, /on_conflict=client_id,channel_user_id/);
+    assert.match(pedido.url, /on_conflict=client_id,channel_user_id,order_key/);
+    assert.equal(payloadConversacion.client_id, "client-test");
+    assert.equal(payloadPedido.client_id, "client-test");
+  } finally {
+    global.fetch = fetchAnterior;
+
+    if (urlAnterior === undefined) delete process.env.SUPABASE_URL;
+    else process.env.SUPABASE_URL = urlAnterior;
+
+    if (secretAnterior === undefined) delete process.env.SUPABASE_SECRET_KEY;
+    else process.env.SUPABASE_SECRET_KEY = secretAnterior;
+  }
+});

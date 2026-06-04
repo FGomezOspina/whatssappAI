@@ -1,6 +1,5 @@
 const crypto = require("crypto");
-const { cargarProductos } = require("../repositories/productRepository");
-const { formatearPrecio, normalizar, normalizarPeso } = require("../utils/text");
+const { formatearPrecio, normalizar, normalizarPeso } = require("../../utils/text");
 
 const ALIAS_MARCAS_EXTRA = {
   "dog chow": ["dogchow", "dog show", "chow"],
@@ -16,6 +15,7 @@ const PALABRAS_CRITERIO = [
   "adultos",
   "cachorro",
   "cachorros",
+  "senior",
   "bebe",
   "senior",
   "mayor",
@@ -51,6 +51,34 @@ const PALABRAS_CRITERIO = [
   "gatitas",
   "felino",
   "felinos",
+  "ave",
+  "aves",
+  "roedor",
+  "roedores",
+  "pez",
+  "peces",
+  "equino",
+  "bovino",
+  "comida",
+  "concentrado",
+  "medicamento",
+  "medicamentos",
+  "antipulgas",
+  "desparasitante",
+  "accesorio",
+  "accesorios",
+  "snack",
+  "snacks",
+  "higiene",
+  "champu",
+  "shampoo",
+  "suplemento",
+  "vitamina",
+  "vitaminas",
+  "juguete",
+  "juguetes",
+  "arena",
+  "sustrato",
   "todas",
   "cualquier",
   "tamano",
@@ -185,8 +213,43 @@ function normalizarEspecie(especie = "perro") {
   if (contieneAlguno(texto, ["gato", "gatos", "gatito", "gatita", "gatitos", "gatitas", "felino", "felinos"])) {
     return "gato";
   }
+  if (contieneAlguno(texto, ["ave", "aves", "pajaro", "pajaros"])) return "ave";
+  if (contieneAlguno(texto, ["roedor", "roedores", "hamster", "conejo", "cobayo"])) return "roedor";
+  if (contieneAlguno(texto, ["pez", "peces"])) return "pez";
+  if (contieneAlguno(texto, ["equino", "caballo", "caballos"])) return "equino";
+  if (contieneAlguno(texto, ["bovino", "vaca", "ganado"])) return "bovino";
+  if (contieneAlguno(texto, ["otro"])) return "otro";
 
   return "perro";
+}
+
+function normalizarCategoria(valor = "") {
+  const texto = normalizar(valor);
+  if (contieneAlguno(texto, ["comida", "alimento", "concentrado", "purina"])) return "comida";
+  if (contieneAlguno(texto, ["medicamento", "medicamentos", "medicina", "antipulgas", "desparasitante"])) {
+    return "medicamento";
+  }
+  if (contieneAlguno(texto, ["accesorio", "accesorios", "collar", "cama", "correa", "arnes"])) return "accesorio";
+  if (contieneAlguno(texto, ["snack", "snacks", "premio", "galleta"])) return "snack";
+  if (contieneAlguno(texto, ["higiene", "champu", "shampoo", "limpieza"])) return "higiene";
+  if (contieneAlguno(texto, ["suplemento", "suplementos", "vitamina", "vitaminas"])) return "suplemento";
+  if (contieneAlguno(texto, ["juguete", "juguetes", "pelota", "mordedor"])) return "juguete";
+  if (contieneAlguno(texto, ["arena", "sustrato"])) return "arena_sustrato";
+  if (contieneAlguno(texto, ["otro"])) return "otro";
+  return null;
+}
+
+function normalizarSubcategoria(valor = "") {
+  const texto = normalizar(valor);
+  if (contieneAlguno(texto, ["concentrado", "cuido", "purina"])) return "concentrado";
+  if (contieneAlguno(texto, ["comida humeda", "humeda", "humedo", "lata", "sobre"])) return "comida_humeda";
+  if (contieneAlguno(texto, ["antipulgas", "pulga", "pulgas", "garrapata", "nexgard", "bravecto"])) return "antipulgas";
+  if (contieneAlguno(texto, ["desparasitante", "desparasitar", "parasitos"])) return "desparasitante";
+  if (contieneAlguno(texto, ["collar"])) return "collar";
+  if (contieneAlguno(texto, ["cama"])) return "cama";
+  if (contieneAlguno(texto, ["champu", "shampoo"])) return "champu";
+  if (contieneAlguno(texto, ["vitamina", "vitaminas"])) return "vitaminas";
+  return null;
 }
 
 function extraerCriterios(mensaje) {
@@ -202,7 +265,7 @@ function extraerCriterios(mensaje) {
   }
 
   if (contieneAlguno(texto, ["senior", "mayor", "mayores", "viejo", "viejito"])) {
-    criterios.etapa = "adulto";
+    criterios.etapa = "senior";
     criterios.edadEspecial = "mayor";
   }
 
@@ -231,6 +294,16 @@ function extraerCriterios(mensaje) {
   if (contieneAlguno(texto, ["gato", "gatos", "gatito", "gatita", "gatitos", "gatitas", "felino", "felinos"])) {
     criterios.especie = "gato";
   }
+  if (contieneAlguno(texto, ["ave", "aves", "pajaro", "pajaros"])) criterios.especie = "ave";
+  if (contieneAlguno(texto, ["roedor", "roedores", "hamster", "conejo", "cobayo"])) criterios.especie = "roedor";
+  if (contieneAlguno(texto, ["pez", "peces"])) criterios.especie = "pez";
+  if (contieneAlguno(texto, ["equino", "caballo", "caballos"])) criterios.especie = "equino";
+  if (contieneAlguno(texto, ["bovino", "vaca", "ganado"])) criterios.especie = "bovino";
+
+  const categoria = normalizarCategoria(texto);
+  const subcategoria = normalizarSubcategoria(texto);
+  if (categoria) criterios.categoria = categoria;
+  if (subcategoria) criterios.subcategoria = subcategoria;
 
   return criterios;
 }
@@ -251,30 +324,40 @@ function tieneCriterios(criterios = {}) {
       criterios.especie ||
       criterios.tamano ||
       criterios.edadEspecial ||
+      criterios.categoria ||
+      criterios.subcategoria ||
       (criterios.sabores && criterios.sabores.length)
   );
 }
 
 function atributosReferencia(referencia) {
-  const texto = normalizar(`${referencia.nombre} ${referencia.descripcion || ""}`);
+  const texto = normalizar(
+    `${referencia.nombre} ${referencia.descripcion || ""} ${referencia.categoria || ""} ${referencia.subcategoria || ""}`
+  );
   const atributos = {
     especie: normalizarEspecie(referencia.especie || "perro"),
-    etapa: null,
+    categoria: normalizarCategoria(referencia.categoria || "") || null,
+    subcategoria: normalizarSubcategoria(referencia.subcategoria || "") || normalizar(referencia.subcategoria || "") || null,
+    etapa: referencia.etapa || null,
     tamano: null,
     sabores: [],
     edadEspecial: null,
+    requiereConfirmacion: Boolean(referencia.requiereConfirmacion),
   };
 
-  if (contieneAlguno(texto, ["cachorro", "cachorros", "bebe", "puppy", "gatito", "gatita", "gatitos", "gatitas"])) {
+  if (!atributos.categoria) atributos.categoria = normalizarCategoria(texto);
+  if (!atributos.subcategoria) atributos.subcategoria = normalizarSubcategoria(texto);
+
+  if (!atributos.etapa && contieneAlguno(texto, ["cachorro", "cachorros", "bebe", "puppy", "gatito", "gatita", "gatitos", "gatitas"])) {
     atributos.etapa = "cachorro";
   }
 
-  if (contieneAlguno(texto, ["adulto", "adultos"])) {
+  if (!atributos.etapa && contieneAlguno(texto, ["adulto", "adultos"])) {
     atributos.etapa = "adulto";
   }
 
   if (contieneAlguno(texto, ["mayor", "mayores", "senior"])) {
-    atributos.etapa = "adulto";
+    atributos.etapa = "senior";
     atributos.edadEspecial = "mayor";
   }
 
@@ -316,7 +399,15 @@ function referenciaCumple(referencia, criterios) {
     return false;
   }
 
-  if (!criterios.edadEspecial && atributos.edadEspecial) {
+  if (!criterios.edadEspecial && atributos.edadEspecial && criterios.etapa && criterios.etapa !== "senior") {
+    return false;
+  }
+
+  if (criterios.categoria && atributos.categoria !== criterios.categoria) {
+    return false;
+  }
+
+  if (criterios.subcategoria && atributos.subcategoria !== criterios.subcategoria) {
     return false;
   }
 
@@ -347,6 +438,8 @@ function criteriosDesdeReferencia(referencia) {
   const criterios = {};
 
   if (atributos.especie) criterios.especie = atributos.especie;
+  if (atributos.categoria) criterios.categoria = atributos.categoria;
+  if (atributos.subcategoria) criterios.subcategoria = atributos.subcategoria;
   if (atributos.etapa) criterios.etapa = atributos.etapa;
   if (atributos.tamano) criterios.tamano = atributos.tamano;
   if (atributos.edadEspecial) criterios.edadEspecial = atributos.edadEspecial;
@@ -363,6 +456,8 @@ function puntuarReferencia(referencia, criterios, mensaje) {
 
   if (contieneFrase(textoMensaje, referencia.nombre)) puntos += 20;
   if (criterios.especie && atributos.especie === criterios.especie) puntos += 6;
+  if (criterios.categoria && atributos.categoria === criterios.categoria) puntos += 8;
+  if (criterios.subcategoria && atributos.subcategoria === criterios.subcategoria) puntos += 8;
   if (criterios.etapa && atributos.etapa === criterios.etapa) puntos += 5;
   if (criterios.edadEspecial && atributos.edadEspecial === criterios.edadEspecial) puntos += 5;
   if (criterios.tamano && atributos.tamano === criterios.tamano) puntos += 5;
@@ -518,6 +613,9 @@ function formatearReferencia(marca, referencia, apertura = "¿Qué presentación
     lineas.push("", referencia.descripcion);
   }
 
+  const nota = notaConfirmacionProducto(referencia);
+  if (nota) lineas.push("", nota);
+
   lineas.push("", "Presentaciones:");
   referencia.presentaciones.forEach((presentacion) => {
     lineas.push(`- ${presentacion.peso}: ${formatearPrecio(presentacion.precio)}`);
@@ -528,11 +626,14 @@ function formatearReferencia(marca, referencia, apertura = "¿Qué presentación
 }
 
 function formatearProductoExacto(marca, referencia, presentacion) {
-  return [
+  const partes = [
     `Listo, esta es la opción exacta: ${marca.marca} ${referencia.nombre} ${presentacion.peso} ${emojiMascota(referencia)}`,
     referencia.descripcion ? `\n${referencia.descripcion}` : "",
     `\nPrecio: ${formatearPrecio(presentacion.precio)}`,
-  ].join("");
+  ];
+  const nota = notaConfirmacionProducto(referencia);
+  if (nota) partes.push(`\n${nota}`);
+  return partes.join("");
 }
 
 function listarMarcas(catalogo, marcas = catalogo, criterios = null) {
@@ -572,6 +673,8 @@ function describirCriterios(criterios = {}) {
   if (criterios.sabores && criterios.sabores.length) {
     partes.push(`sabor ${unirNatural(criterios.sabores.map(etiquetaSabor))}`);
   }
+  if (criterios.categoria) partes.push(etiquetaCategoria(criterios.categoria));
+  if (criterios.subcategoria) partes.push(etiquetaSubcategoria(criterios.subcategoria));
 
   return partes.join(", ") || "perros";
 }
@@ -923,11 +1026,69 @@ function etiquetaSabor(sabor) {
 }
 
 function etiquetaEspecie(especie) {
-  return normalizarEspecie(especie) === "gato" ? "gatos" : "perros";
+  const normalizada = normalizarEspecie(especie);
+  const etiquetas = {
+    perro: "perros",
+    gato: "gatos",
+    ave: "aves",
+    roedor: "roedores",
+    pez: "peces",
+    equino: "equinos",
+    bovino: "bovinos",
+    otro: "mascotas",
+  };
+  return etiquetas[normalizada] || "mascotas";
 }
 
 function etiquetaMascotaSingular(especie) {
-  return normalizarEspecie(especie) === "gato" ? "gato" : "perro";
+  const normalizada = normalizarEspecie(especie);
+  const etiquetas = {
+    perro: "perro",
+    gato: "gato",
+    ave: "ave",
+    roedor: "roedor",
+    pez: "pez",
+    equino: "equino",
+    bovino: "bovino",
+    otro: "mascota",
+  };
+  return etiquetas[normalizada] || "mascota";
+}
+
+function etiquetaCategoria(categoria) {
+  const etiquetas = {
+    comida: "comida",
+    medicamento: "medicamentos",
+    accesorio: "accesorios",
+    snack: "snacks",
+    higiene: "higiene",
+    suplemento: "suplementos",
+    juguete: "juguetes",
+    arena_sustrato: "arena o sustrato",
+    otro: "otros productos",
+  };
+  return etiquetas[categoria] || categoria;
+}
+
+function etiquetaSubcategoria(subcategoria) {
+  const etiquetas = {
+    concentrado: "concentrado",
+    comida_humeda: "comida húmeda",
+    antipulgas: "antipulgas",
+    desparasitante: "desparasitantes",
+    collar: "collares",
+    cama: "camas",
+    champu: "champú",
+    vitaminas: "vitaminas",
+  };
+  return etiquetas[subcategoria] || subcategoria;
+}
+
+function notaConfirmacionProducto(referencia = {}) {
+  const atributos = atributosReferencia(referencia);
+  if (!atributos.requiereConfirmacion && atributos.categoria !== "medicamento") return "";
+
+  return "Nota: este producto requiere confirmación responsable antes de venderlo. Te confirmo disponibilidad y precio, pero para uso, dosis o tratamiento es mejor validarlo con un veterinario.";
 }
 
 function resumenMarca(marca, referencias = marca.referencias) {
@@ -1084,8 +1245,12 @@ function recomendarOpciones(catalogo, criterios, presupuesto, marcaPreferida = n
     (opcion) =>
       `- ${opcion.marca.marca} ${opcion.referencia.nombre} ${opcion.presentacion.peso}: ${formatearPrecio(opcion.presentacion.precio)}`
   );
+  const notas = valoresUnicos(
+    seleccionadas.map((opcion) => notaConfirmacionProducto(opcion.referencia)).filter(Boolean)
+  );
+  const nota = notas.length ? `\n\n${notas.join("\n")}` : "";
 
-  return `${intro}\n${lineas.join("\n")}\n\nDime cuál te gusta y te ayudo a dejarla lista en el pedido.`;
+  return `${intro}\n${lineas.join("\n")}${nota}\n\nDime cuál te gusta y te ayudo a dejarla lista en el pedido.`;
 }
 
 function agregarAlCarrito(estado, marca, referencia, presentacion, cantidad = 1) {
@@ -1112,6 +1277,10 @@ function agregarAlCarrito(estado, marca, referencia, presentacion, cantidad = 1)
       peso: presentacion.peso,
       precio: presentacion.precio,
       cantidad,
+      categoria: referencia.categoria || null,
+      subcategoria: referencia.subcategoria || null,
+      especie: referencia.especie || null,
+      requiereConfirmacion: Boolean(referencia.requiereConfirmacion),
     });
   }
 }
@@ -3454,7 +3623,7 @@ function resolverAlternativaPendiente(mensaje, estado, catalogo) {
   return formatearReferencia(marca, referencia, "¿Cuál presentación quieres agregar al pedido?");
 }
 
-function resolverConsultaCatalogo(mensaje, estado, catalogo = cargarProductos(), interpretacion = null) {
+function resolverConsultaCatalogo(mensaje, estado, catalogo = [], interpretacion = null) {
   const marcaEnMensaje = buscarMarca(catalogo, mensaje);
   const criteriosTextoMensaje = extraerCriterios(mensaje);
   const marcaDetectada = buscarMarcaInterpretada(catalogo, interpretacion) || marcaEnMensaje;

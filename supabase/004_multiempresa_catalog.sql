@@ -20,6 +20,9 @@ create table if not exists public.aivance_clients (
   updated_at timestamptz not null default now()
 );
 
+alter table public.aivance_clients
+  add column if not exists vertical text not null default 'generic';
+
 insert into public.aivance_clients (slug, name, vertical, owner_platform, status)
 values ('distrifinca', 'Distrifinca', 'petshop', 'AIVANCE', 'active')
 on conflict (slug) do update
@@ -102,6 +105,12 @@ create table if not exists public.catalog_references (
   unique (brand_id, name)
 );
 
+alter table public.catalog_references
+  add column if not exists category text,
+  add column if not exists subcategory text,
+  add column if not exists life_stage text,
+  add column if not exists requires_confirmation boolean not null default false;
+
 create table if not exists public.catalog_presentations (
   id uuid primary key default gen_random_uuid(),
   reference_id uuid not null references public.catalog_references(id) on delete cascade,
@@ -117,86 +126,71 @@ create table if not exists public.catalog_presentations (
   unique (reference_id, weight)
 );
 
-create table if not exists public.whatsapp_conversations (
-  id uuid primary key default gen_random_uuid(),
-  client_id uuid not null references public.aivance_clients(id) on delete restrict,
-  channel_user_id text not null,
-  customer jsonb not null default '{}'::jsonb,
-  state jsonb not null default '{}'::jsonb,
-  status text not null default 'conversacion_abierta',
-  last_message text,
-  last_response text,
-  last_interaction_at timestamptz not null default now(),
-  created_at timestamptz not null default now(),
-  updated_at timestamptz not null default now(),
-  unique (client_id, channel_user_id)
-);
+alter table public.catalog_presentations
+  add column if not exists stock boolean;
 
-create table if not exists public.whatsapp_messages (
-  id uuid primary key default gen_random_uuid(),
-  client_id uuid not null references public.aivance_clients(id) on delete restrict,
-  conversation_id uuid references public.whatsapp_conversations(id) on delete set null,
-  channel_user_id text not null,
-  direction text not null check (direction in ('inbound', 'outbound')),
-  body text not null,
-  created_at timestamptz not null default now()
-);
+alter table public.whatsapp_conversations
+  add column if not exists client_id uuid references public.aivance_clients(id) on delete restrict;
 
-create table if not exists public.whatsapp_orders (
-  id uuid primary key default gen_random_uuid(),
-  client_id uuid not null references public.aivance_clients(id) on delete restrict,
-  conversation_id uuid references public.whatsapp_conversations(id) on delete set null,
-  channel_user_id text not null,
-  order_key text not null,
-  order_snapshot jsonb not null default '{}'::jsonb,
-  total integer not null default 0,
-  status text not null default 'confirmado',
-  confirmed_at timestamptz not null default now(),
-  created_at timestamptz not null default now(),
-  updated_at timestamptz not null default now(),
-  unique (client_id, channel_user_id, order_key)
-);
+update public.whatsapp_conversations
+set client_id = (select id from public.aivance_clients where slug = 'distrifinca')
+where client_id is null;
 
-create table if not exists public.training_examples (
-  id uuid primary key default gen_random_uuid(),
-  client_id uuid references public.aivance_clients(id) on delete cascade,
-  intent text not null,
-  customer_message text not null,
-  ideal_response text not null,
-  notes text,
-  tags text[] not null default '{}'::text[],
-  active boolean not null default true,
-  priority integer not null default 0,
-  created_at timestamptz not null default now(),
-  updated_at timestamptz not null default now()
-);
+alter table public.whatsapp_conversations
+  alter column client_id set not null;
+
+alter table public.whatsapp_messages
+  add column if not exists client_id uuid references public.aivance_clients(id) on delete restrict;
+
+update public.whatsapp_messages message
+set client_id = conversation.client_id
+from public.whatsapp_conversations conversation
+where message.client_id is null
+  and message.channel_user_id = conversation.channel_user_id;
+
+update public.whatsapp_messages
+set client_id = (select id from public.aivance_clients where slug = 'distrifinca')
+where client_id is null;
+
+alter table public.whatsapp_messages
+  alter column client_id set not null;
+
+alter table public.whatsapp_orders
+  add column if not exists client_id uuid references public.aivance_clients(id) on delete restrict;
+
+update public.whatsapp_orders orders
+set client_id = conversation.client_id
+from public.whatsapp_conversations conversation
+where orders.client_id is null
+  and orders.channel_user_id = conversation.channel_user_id;
+
+update public.whatsapp_orders
+set client_id = (select id from public.aivance_clients where slug = 'distrifinca')
+where client_id is null;
+
+alter table public.whatsapp_orders
+  alter column client_id set not null;
+
+alter table public.training_examples
+  add column if not exists client_id uuid references public.aivance_clients(id) on delete cascade;
+
+alter table public.whatsapp_conversations
+  drop constraint if exists whatsapp_conversations_channel_user_id_key;
+
+alter table public.whatsapp_orders
+  drop constraint if exists whatsapp_orders_channel_user_id_order_key_key;
+
+create unique index if not exists whatsapp_conversations_client_channel_user_id_key
+  on public.whatsapp_conversations (client_id, channel_user_id);
+
+create unique index if not exists whatsapp_orders_client_channel_user_id_order_key_key
+  on public.whatsapp_orders (client_id, channel_user_id, order_key);
 
 create index if not exists whatsapp_messages_client_channel_user_id_created_at_idx
   on public.whatsapp_messages (client_id, channel_user_id, created_at desc);
 
-create index if not exists whatsapp_messages_conversation_id_created_at_idx
-  on public.whatsapp_messages (conversation_id, created_at asc);
-
-create index if not exists whatsapp_conversations_status_idx
-  on public.whatsapp_conversations (status);
-
 create index if not exists whatsapp_orders_client_id_confirmed_at_idx
   on public.whatsapp_orders (client_id, confirmed_at desc);
-
-create index if not exists whatsapp_orders_conversation_id_idx
-  on public.whatsapp_orders (conversation_id);
-
-create index if not exists training_examples_active_priority_idx
-  on public.training_examples (active, priority desc, created_at desc);
-
-create index if not exists training_examples_client_active_priority_idx
-  on public.training_examples (client_id, active, priority desc, created_at desc);
-
-create index if not exists client_prompts_client_active_priority_idx
-  on public.client_prompts (client_id, active, priority desc);
-
-create index if not exists client_delivery_rules_client_active_priority_idx
-  on public.client_delivery_rules (client_id, active, priority desc);
 
 create index if not exists catalog_brands_client_active_idx
   on public.catalog_brands (client_id, active, sort_order asc);
@@ -210,6 +204,15 @@ create index if not exists catalog_references_petshop_filters_idx
 create index if not exists catalog_presentations_reference_active_idx
   on public.catalog_presentations (reference_id, active, sort_order asc);
 
+create index if not exists training_examples_client_active_priority_idx
+  on public.training_examples (client_id, active, priority desc, created_at desc);
+
+create index if not exists client_prompts_client_active_priority_idx
+  on public.client_prompts (client_id, active, priority desc);
+
+create index if not exists client_delivery_rules_client_active_priority_idx
+  on public.client_delivery_rules (client_id, active, priority desc);
+
 alter table public.aivance_clients enable row level security;
 alter table public.client_channels enable row level security;
 alter table public.client_prompts enable row level security;
@@ -217,10 +220,6 @@ alter table public.client_delivery_rules enable row level security;
 alter table public.catalog_brands enable row level security;
 alter table public.catalog_references enable row level security;
 alter table public.catalog_presentations enable row level security;
-alter table public.whatsapp_conversations enable row level security;
-alter table public.whatsapp_messages enable row level security;
-alter table public.whatsapp_orders enable row level security;
-alter table public.training_examples enable row level security;
 
 drop trigger if exists set_aivance_clients_updated_at on public.aivance_clients;
 create trigger set_aivance_clients_updated_at
@@ -261,23 +260,5 @@ execute function public.set_updated_at();
 drop trigger if exists set_catalog_presentations_updated_at on public.catalog_presentations;
 create trigger set_catalog_presentations_updated_at
 before update on public.catalog_presentations
-for each row
-execute function public.set_updated_at();
-
-drop trigger if exists set_whatsapp_conversations_updated_at on public.whatsapp_conversations;
-create trigger set_whatsapp_conversations_updated_at
-before update on public.whatsapp_conversations
-for each row
-execute function public.set_updated_at();
-
-drop trigger if exists set_whatsapp_orders_updated_at on public.whatsapp_orders;
-create trigger set_whatsapp_orders_updated_at
-before update on public.whatsapp_orders
-for each row
-execute function public.set_updated_at();
-
-drop trigger if exists set_training_examples_updated_at on public.training_examples;
-create trigger set_training_examples_updated_at
-before update on public.training_examples
 for each row
 execute function public.set_updated_at();

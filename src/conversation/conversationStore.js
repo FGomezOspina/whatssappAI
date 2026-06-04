@@ -9,6 +9,10 @@ const {
 
 const conversaciones = {};
 
+function claveConversacion(usuario, cliente = null) {
+  return `${cliente?.slug || cliente?.id || "default"}:${usuario}`;
+}
+
 function crearEstadoInicial() {
   return {
     marca: null,
@@ -51,12 +55,13 @@ function crearEstadoInicial() {
   };
 }
 
-function obtenerConversacion(usuario) {
-  if (!conversaciones[usuario]) {
-    conversaciones[usuario] = crearEstadoInicial();
+function obtenerConversacion(usuario, cliente = null) {
+  const clave = claveConversacion(usuario, cliente);
+  if (!conversaciones[clave]) {
+    conversaciones[clave] = crearEstadoInicial();
   }
 
-  return conversaciones[usuario];
+  return conversaciones[clave];
 }
 
 function normalizarEstadoPersistido(estadoGuardado = {}) {
@@ -76,28 +81,29 @@ function normalizarEstadoPersistido(estadoGuardado = {}) {
   };
 }
 
-async function obtenerConversacionPersistida(usuario) {
-  if (conversaciones[usuario]) return conversaciones[usuario];
+async function obtenerConversacionPersistida(usuario, cliente = null) {
+  const clave = claveConversacion(usuario, cliente);
+  if (conversaciones[clave]) return conversaciones[clave];
 
   if (!supabaseConfigurado()) {
-    return obtenerConversacion(usuario);
+    return obtenerConversacion(usuario, cliente);
   }
 
   try {
-    const conversacion = await buscarConversacion(usuario);
-    conversaciones[usuario] = conversacion?.state
+    const conversacion = await buscarConversacion(usuario, cliente);
+    conversaciones[clave] = conversacion?.state
       ? normalizarEstadoPersistido(conversacion.state)
       : crearEstadoInicial();
   } catch (error) {
     console.error("Error cargando conversación desde Supabase:", error.message);
-    conversaciones[usuario] = crearEstadoInicial();
+    conversaciones[clave] = crearEstadoInicial();
   }
 
-  return conversaciones[usuario];
+  return conversaciones[clave];
 }
 
 async function guardarConversacionPersistida(usuario, estado, metadatos = {}) {
-  conversaciones[usuario] = estado;
+  conversaciones[claveConversacion(usuario, metadatos.cliente)] = estado;
 
   if (!supabaseConfigurado()) return;
 
@@ -106,15 +112,15 @@ async function guardarConversacionPersistida(usuario, estado, metadatos = {}) {
     const conversationId = conversacion?.id || null;
 
     if (metadatos.mensaje) {
-      await guardarMensaje(usuario, "inbound", metadatos.mensaje, conversationId);
+      await guardarMensaje(usuario, "inbound", metadatos.mensaje, conversationId, metadatos.cliente);
     }
 
     if (metadatos.respuesta) {
-      await guardarMensaje(usuario, "outbound", metadatos.respuesta, conversationId);
+      await guardarMensaje(usuario, "outbound", metadatos.respuesta, conversationId, metadatos.cliente);
     }
 
     try {
-      const pedidoGuardado = await guardarPedidoConfirmado(usuario, conversationId, estado);
+      const pedidoGuardado = await guardarPedidoConfirmado(usuario, conversationId, estado, metadatos.cliente);
       if (pedidoGuardado) {
         await persistirConversacion(usuario, estado, metadatos);
       }
@@ -126,11 +132,11 @@ async function guardarConversacionPersistida(usuario, estado, metadatos = {}) {
   }
 }
 
-async function obtenerHistorialRecientePersistido(usuario, limite = 12) {
+async function obtenerHistorialRecientePersistido(usuario, limite = 12, cliente = null) {
   if (!supabaseConfigurado()) return [];
 
   try {
-    return await buscarMensajesRecientes(usuario, limite);
+    return await buscarMensajesRecientes(usuario, limite, cliente);
   } catch (error) {
     console.error("Error cargando historial desde Supabase:", error.message);
     return [];
