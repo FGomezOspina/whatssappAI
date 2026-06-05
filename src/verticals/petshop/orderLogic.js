@@ -122,11 +122,13 @@ function buscarMarca(catalogo, mensaje) {
   const texto = normalizar(mensaje);
   const textoCompacto = texto.replace(/\s+/g, "");
   const marcasOrdenadas = [...catalogo].sort((a, b) => b.marca.length - a.marca.length);
+  const esBolsaComoEmpaque = /\bbolsa\s+de\s+(cuido|concentrado|comida|alimento|purina)\b/.test(texto);
 
   return marcasOrdenadas.find((producto) =>
     aliasesMarca(producto.marca).some((alias) => {
       const aliasNormalizado = normalizar(alias);
       const aliasCompacto = aliasNormalizado.replace(/\s+/g, "");
+      if (aliasNormalizado === "bolsa" && esBolsaComoEmpaque) return false;
 
       return contieneFrase(texto, aliasNormalizado) || textoCompacto.includes(aliasCompacto);
     })
@@ -145,11 +147,13 @@ function escaparRegex(texto = "") {
 function mencionesMarcaEnMensaje(catalogo, mensaje) {
   const texto = normalizar(mensaje);
   const menciones = [];
+  const esBolsaComoEmpaque = /\bbolsa\s+de\s+(cuido|concentrado|comida|alimento|purina)\b/.test(texto);
 
   catalogo.forEach((marca) => {
     aliasesMarca(marca.marca).forEach((alias) => {
       const aliasNormalizado = normalizar(alias);
       if (!aliasNormalizado) return;
+      if (aliasNormalizado === "bolsa" && esBolsaComoEmpaque) return;
 
       const regex = new RegExp(`(^|\\s)${escaparRegex(aliasNormalizado)}(?=\\s|$)`, "g");
       let coincidencia;
@@ -205,6 +209,23 @@ function segmentosPorMarca(catalogo, mensaje) {
 
 function contieneAlguno(textoNormalizado, palabras) {
   return palabras.some((palabra) => contieneFrase(textoNormalizado, palabra));
+}
+
+function extraerCondicionesProducto(textoNormalizado = "") {
+  const condiciones = [];
+  const agregar = (condicion) => {
+    if (!condiciones.includes(condicion)) condiciones.push(condicion);
+  };
+
+  if (/\b(castr|castra|castrado|castrados|esteriliz|steriliz)/.test(textoNormalizado)) agregar("castrado");
+  if (/\b(urin|uro|urinary|urology)/.test(textoNormalizado)) agregar("urinario");
+  if (/\brenal|kidney/.test(textoNormalizado)) agregar("renal");
+  if (/\bgastro|digestive/.test(textoNormalizado)) agregar("gastrointestinal");
+  if (/\bpiel|skin|derm|atopic/.test(textoNormalizado)) agregar("piel");
+  if (/\bbola de pelo|hairball/.test(textoNormalizado)) agregar("bola_pelo");
+  if (/\bobes|weight|sobrepeso/.test(textoNormalizado)) agregar("control_peso");
+
+  return condiciones;
 }
 
 function normalizarEspecie(especie = "perro") {
@@ -277,7 +298,7 @@ function extraerCriterios(mensaje) {
     criterios.tamano = "grande";
   }
 
-  if (contieneAlguno(texto, ["todas las razas", "cualquier tamano", "cualquier raza"])) {
+  if (contieneAlguno(texto, ["todas las razas", "todos los tamanos", "todo tamano", "cualquier tamano", "cualquier raza"])) {
     criterios.tamano = "todas";
   }
 
@@ -302,8 +323,10 @@ function extraerCriterios(mensaje) {
 
   const categoria = normalizarCategoria(texto);
   const subcategoria = normalizarSubcategoria(texto);
+  const condiciones = extraerCondicionesProducto(texto);
   if (categoria) criterios.categoria = categoria;
   if (subcategoria) criterios.subcategoria = subcategoria;
+  if (condiciones.length) criterios.condiciones = condiciones;
 
   return criterios;
 }
@@ -313,6 +336,9 @@ function mezclarCriterios(previos, nuevos) {
 
   if (previos.sabores || nuevos.sabores) {
     combinados.sabores = nuevos.sabores || previos.sabores;
+  }
+  if (previos.condiciones || nuevos.condiciones) {
+    combinados.condiciones = nuevos.condiciones || previos.condiciones;
   }
 
   return combinados;
@@ -326,6 +352,7 @@ function tieneCriterios(criterios = {}) {
       criterios.edadEspecial ||
       criterios.categoria ||
       criterios.subcategoria ||
+      (criterios.condiciones && criterios.condiciones.length) ||
       (criterios.sabores && criterios.sabores.length)
   );
 }
@@ -341,6 +368,7 @@ function atributosReferencia(referencia) {
     etapa: referencia.etapa || null,
     tamano: null,
     sabores: [],
+    condiciones: [],
     edadEspecial: null,
     requiereConfirmacion: Boolean(referencia.requiereConfirmacion),
   };
@@ -369,13 +397,14 @@ function atributosReferencia(referencia) {
     atributos.tamano = "grande";
   }
 
-  if (contieneAlguno(texto, ["todas las razas", "cualquier tamano", "cualquier raza"])) {
+  if (contieneAlguno(texto, ["todas las razas", "todos los tamanos", "todo tamano", "cualquier tamano", "cualquier raza"])) {
     atributos.tamano = "todas";
   }
 
   if (contieneFrase(texto, "pollo")) atributos.sabores.push("pollo");
   if (contieneFrase(texto, "salmon")) atributos.sabores.push("salmon");
   if (contieneFrase(texto, "cordero")) atributos.sabores.push("cordero");
+  atributos.condiciones = extraerCondicionesProducto(texto);
 
   return atributos;
 }
@@ -411,11 +440,15 @@ function referenciaCumple(referencia, criterios) {
     return false;
   }
 
-  if (criterios.tamano && atributos.tamano) {
+  if (criterios.tamano) {
+    if (criterios.tamano === "todas" && atributos.tamano !== "todas") {
+      return false;
+    }
+
     const coincideTamano =
+      !atributos.tamano ||
       atributos.tamano === criterios.tamano ||
-      atributos.tamano === "todas" ||
-      criterios.tamano === "todas";
+      atributos.tamano === "todas";
 
     if (!coincideTamano) return false;
   }
@@ -425,12 +458,56 @@ function referenciaCumple(referencia, criterios) {
     if (!coincideSabor) return false;
   }
 
+  if (criterios.condiciones && criterios.condiciones.length) {
+    const coincideCondicion = criterios.condiciones.every((condicion) => atributos.condiciones.includes(condicion));
+    if (!coincideCondicion) return false;
+  }
+
   return true;
 }
 
 function referenciasPorCriterios(marca, criterios) {
   if (!tieneCriterios(criterios)) return marca.referencias;
   return marca.referencias.filter((referencia) => referenciaCumple(referencia, criterios));
+}
+
+function mejorReferenciaParaMarca(marca, criterios, mensaje = "") {
+  const referencias = referenciasPorCriterios(marca, criterios);
+  const referencia = elegirMejorReferencia(referencias, criterios, mensaje);
+  if (!referencia) return { referencia: null, puntos: 0, referencias };
+
+  return {
+    referencia,
+    puntos: puntuarReferencia(referencia, criterios, mensaje),
+    referencias,
+  };
+}
+
+function refinarMarcaPorCriterios(catalogo, marca, criterios, mensaje = "") {
+  if (!marca || !tieneCriterios(criterios)) return marca;
+
+  const marcaBase = normalizar(marca.marca);
+  const candidatas = catalogo
+    .filter((item) => item !== marca)
+    .filter((item) => {
+      const nombre = normalizar(item.marca);
+      return nombre.startsWith(`${marcaBase} `);
+    })
+    .map((item) => {
+      const resultado = mejorReferenciaParaMarca(item, criterios, mensaje);
+      return { marca: item, ...resultado };
+    })
+    .filter((item) => item.referencia)
+    .sort((a, b) => b.puntos - a.puntos || a.marca.marca.length - b.marca.marca.length);
+
+  if (!candidatas.length) return marca;
+
+  const marcaActual = mejorReferenciaParaMarca(marca, criterios, mensaje);
+  if (!marcaActual.referencia || candidatas[0].puntos >= marcaActual.puntos + 2) {
+    return candidatas[0].marca;
+  }
+
+  return marca;
 }
 
 function criteriosDesdeReferencia(referencia) {
@@ -444,6 +521,7 @@ function criteriosDesdeReferencia(referencia) {
   if (atributos.tamano) criterios.tamano = atributos.tamano;
   if (atributos.edadEspecial) criterios.edadEspecial = atributos.edadEspecial;
   if (atributos.sabores.length) criterios.sabores = atributos.sabores;
+  if (atributos.condiciones.length) criterios.condiciones = atributos.condiciones;
 
   return criterios;
 }
@@ -462,6 +540,11 @@ function puntuarReferencia(referencia, criterios, mensaje) {
   if (criterios.edadEspecial && atributos.edadEspecial === criterios.edadEspecial) puntos += 5;
   if (criterios.tamano && atributos.tamano === criterios.tamano) puntos += 5;
   if (criterios.tamano && atributos.tamano === "todas") puntos += 2;
+  if (criterios.condiciones && criterios.condiciones.length) {
+    criterios.condiciones.forEach((condicion) => {
+      if (atributos.condiciones.includes(condicion)) puntos += 8;
+    });
+  }
 
   if (criterios.sabores && criterios.sabores.length) {
     criterios.sabores.forEach((sabor) => {
@@ -469,11 +552,22 @@ function puntuarReferencia(referencia, criterios, mensaje) {
     });
   }
 
+  if (referencia.presentaciones?.length > 1 && contieneAlguno(textoMensaje, ["todas las razas", "todos los tamanos", "cualquier tamano"])) {
+    puntos += 3;
+  }
+
   normalizar(referencia.nombre)
     .split(/\s+/)
     .filter((palabra) => palabra.length > 3)
     .forEach((palabra) => {
       if (contieneFrase(textoMensaje, palabra) && contieneFrase(textoReferencia, palabra)) puntos += 1;
+    });
+
+  normalizar(referencia.nombre)
+    .split(/\s+/)
+    .filter((palabra) => /^\d+(?:\.\d+)?$/.test(palabra))
+    .forEach((palabra) => {
+      if (!contieneFrase(textoMensaje, palabra)) puntos -= 3;
     });
 
   return puntos;
@@ -502,6 +596,8 @@ function elegirMejorReferencia(referencias, criterios, mensaje) {
   const haySuficienteDetalle =
     Boolean(criterios.etapa && criterios.tamano) ||
     Boolean(criterios.etapa && criterios.sabores && criterios.sabores.length) ||
+    Boolean(criterios.condiciones && criterios.condiciones.length && criterios.sabores && criterios.sabores.length) ||
+    Boolean(criterios.condiciones && criterios.condiciones.length && criterios.especie) ||
     Boolean(criterios.edadEspecial);
 
   if (haySuficienteDetalle && primera.puntos >= segunda.puntos + 2) {
@@ -584,10 +680,44 @@ function presentacionDisponible(referencia, presentacionSolicitada) {
   );
 }
 
-function respuestaPresentacionNoDisponible(marca, referencia, presentacionSolicitada) {
-  const disponibles = presentacionesReferencia(referencia);
+function alternativasConPresentacion(referencias = [], presentacionSolicitada, referenciaActual = null, criterios = {}, mensaje = "") {
+  if (!presentacionSolicitada) return [];
 
-  return `En ${marca.marca} ${referencia.nombre} no tengo presentación de ${presentacionSolicitada} en este momento.\n\nPresentaciones disponibles:\n${disponibles}\n\nSi te sirve alguna de esas, te ayudo a dejarla en el pedido.`;
+  return referencias
+    .filter((referencia) => referencia !== referenciaActual)
+    .map((referencia) => ({
+      referencia,
+      presentacion: referencia.presentaciones.find(
+        (presentacion) => normalizarPeso(presentacion.peso) === presentacionSolicitada
+      ),
+      puntos: puntuarReferencia(referencia, criterios, mensaje),
+    }))
+    .filter((item) => item.presentacion)
+    .sort((a, b) => b.puntos - a.puntos || a.referencia.nombre.length - b.referencia.nombre.length)
+    .slice(0, 4);
+}
+
+function lineasAlternativasConPresentacion(marca, alternativas = []) {
+  return alternativas
+    .map(
+      (item) =>
+        `- ${nombreProducto(marca, item.referencia)} ${item.presentacion.peso}: ${formatearPrecio(
+          item.presentacion.precio
+        )}`
+    )
+    .join("\n");
+}
+
+function respuestaPresentacionNoDisponible(marca, referencia, presentacionSolicitada, alternativas = []) {
+  const disponibles = presentacionesReferencia(referencia);
+  const alternativasTexto = alternativas.length
+    ? `\n\nTambién encontré referencias cercanas de ${marca.marca} con ${presentacionSolicitada}:\n${lineasAlternativasConPresentacion(
+        marca,
+        alternativas
+      )}\n\nSi alguna te sirve, dime cuál y te ayudo a dejarla en el pedido.`
+    : "\n\nSi te sirve alguna de esas, te ayudo a dejarla en el pedido.";
+
+  return `En ${nombreProducto(marca, referencia)} no tengo presentación de ${presentacionSolicitada} en este momento.\n\nPresentaciones disponibles:\n${disponibles}${alternativasTexto}`;
 }
 
 function respuestaPresentacionNoDisponibleParaReferencias(marca, referencias, criterios, presentacionSolicitada) {
@@ -606,11 +736,19 @@ function respuestaPresentacionNoDisponibleParaReferencias(marca, referencias, cr
   return `En ${descripcion} no tengo presentación de ${presentacionSolicitada} en este momento.\n\nPresentaciones disponibles:\n${disponibles}\n\nSi te sirve alguna de esas, te ayudo a dejarla en el pedido.`;
 }
 
-function respuestaSiPresentacionSolicitadaNoDisponible(marca, referencia, mensaje) {
+function respuestaSiPresentacionSolicitadaNoDisponible(marca, referencia, mensaje, opciones = {}) {
   const presentacionSolicitada = extraerPresentacionSolicitada(mensaje);
   if (!presentacionSolicitada || presentacionDisponible(referencia, presentacionSolicitada)) return null;
 
-  return respuestaPresentacionNoDisponible(marca, referencia, presentacionSolicitada);
+  const alternativas = alternativasConPresentacion(
+    opciones.referencias || [],
+    presentacionSolicitada,
+    referencia,
+    opciones.criterios || {},
+    mensaje
+  );
+
+  return respuestaPresentacionNoDisponible(marca, referencia, presentacionSolicitada, alternativas);
 }
 
 function respuestaSiPresentacionSolicitadaNoDisponibleEnReferencias(marca, referencias, criterios, mensaje) {
@@ -630,11 +768,36 @@ function emojiMascota(referencia) {
   return atributosReferencia(referencia).especie === "gato" ? "🐱" : "🐶";
 }
 
+function nombreProducto(marca, referencia) {
+  const nombreMarca = marca?.marca || "";
+  const nombreReferencia = referencia?.nombre || "";
+  const marcaNormalizada = normalizar(nombreMarca);
+  const referenciaNormalizada = normalizar(nombreReferencia);
+
+  if (marcaNormalizada && referenciaNormalizada.startsWith(`${marcaNormalizada} `)) {
+    return nombreReferencia;
+  }
+
+  return `${nombreMarca} ${nombreReferencia}`.trim();
+}
+
+function nombreProductoPlano(marca, referencia) {
+  const marcaNormalizada = normalizar(marca || "");
+  const referenciaNormalizada = normalizar(referencia || "");
+
+  if (marcaNormalizada && referenciaNormalizada.startsWith(`${marcaNormalizada} `)) {
+    return referencia;
+  }
+
+  return `${marca || ""} ${referencia || ""}`.trim();
+}
+
 function formatearReferencia(marca, referencia, apertura = "¿Qué presentación te interesa?") {
+  const producto = nombreProducto(marca, referencia);
   const intro = elegirVariante(`${marca.marca}-${referencia.nombre}`, [
-    `¡Claro! Te encontré esta opción: ${marca.marca} ${referencia.nombre} ${emojiMascota(referencia)}`,
-    `Perfecto, para eso te puede servir ${marca.marca} ${referencia.nombre} ${emojiMascota(referencia)}`,
-    `Sí, la referencia que encaja es ${marca.marca} ${referencia.nombre} ${emojiMascota(referencia)}`,
+    `¡Claro! Te encontré esta opción: ${producto} ${emojiMascota(referencia)}`,
+    `Perfecto, para eso te puede servir ${producto} ${emojiMascota(referencia)}`,
+    `Sí, la referencia que encaja es ${producto} ${emojiMascota(referencia)}`,
   ]);
   const lineas = [intro];
 
@@ -656,7 +819,7 @@ function formatearReferencia(marca, referencia, apertura = "¿Qué presentación
 
 function formatearProductoExacto(marca, referencia, presentacion) {
   const partes = [
-    `Listo, esta es la opción exacta: ${marca.marca} ${referencia.nombre} ${presentacion.peso} ${emojiMascota(referencia)}`,
+    `Listo, esta es la opción exacta: ${nombreProducto(marca, referencia)} ${presentacion.peso} ${emojiMascota(referencia)}`,
     referencia.descripcion ? `\n${referencia.descripcion}` : "",
     `\nPrecio: ${formatearPrecio(presentacion.precio)}`,
   ];
@@ -1239,7 +1402,7 @@ function resenarReferencia(marca, referencia) {
     ? `${referencia.descripcion}. `
     : "";
 
-  return `Sí, esa referencia te puede servir: ${marca.marca} ${referencia.nombre}.\n\n${descripcion}Es una opción para revisar si buscas algo acorde a esa necesidad del ${mascota}.\n\nPresentaciones:\n- ${presentaciones}\n\n¿Cuál presentación quieres que agregue al pedido?`;
+  return `Sí, esa referencia te puede servir: ${nombreProducto(marca, referencia)}.\n\n${descripcion}Es una opción para revisar si buscas algo acorde a esa necesidad del ${mascota}.\n\nPresentaciones:\n- ${presentaciones}\n\n¿Cuál presentación quieres que agregue al pedido?`;
 }
 
 function opcionesDisponibles(catalogo, criterios = {}, marcaPreferida = null) {
@@ -1297,7 +1460,7 @@ function recomendarOpciones(catalogo, criterios, presupuesto, marcaPreferida = n
 
   const lineas = seleccionadas.map(
     (opcion) =>
-      `- ${opcion.marca.marca} ${opcion.referencia.nombre} ${opcion.presentacion.peso}: ${formatearPrecio(opcion.presentacion.precio)}`
+      `- ${nombreProducto(opcion.marca, opcion.referencia)} ${opcion.presentacion.peso}: ${formatearPrecio(opcion.presentacion.precio)}`
   );
   const notas = valoresUnicos(
     seleccionadas.map((opcion) => notaConfirmacionProducto(opcion.referencia)).filter(Boolean)
@@ -1344,7 +1507,7 @@ function resumenItemsCarrito(items = []) {
 
   const lineas = items.map((item) => {
     const subtotal = item.precio * item.cantidad;
-    return `- ${item.cantidad} x ${item.marca} ${item.referencia} ${item.peso}: ${formatearPrecio(subtotal)}`;
+    return `- ${item.cantidad} x ${nombreProductoPlano(item.marca, item.referencia)} ${item.peso}: ${formatearPrecio(subtotal)}`;
   });
   const total = items.reduce((suma, item) => suma + item.precio * item.cantidad, 0);
 
@@ -1834,7 +1997,7 @@ function lineasItems(items) {
   return items
     .map(
       (item) =>
-        `- ${item.cantidad || 1} x ${item.marca.marca} ${item.referencia.nombre} ${
+        `- ${item.cantidad || 1} x ${nombreProducto(item.marca, item.referencia)} ${
           item.presentacion.peso
         }: ${formatearPrecio(
           item.presentacion.precio * (item.cantidad || 1)
@@ -1863,7 +2026,7 @@ function lineasItemsConsultados(items) {
   return items
     .map(
       (item) =>
-        `- ${item.marca.marca} ${item.referencia.nombre} ${item.presentacion.peso}: ${formatearPrecio(
+        `- ${nombreProducto(item.marca, item.referencia)} ${item.presentacion.peso}: ${formatearPrecio(
           item.presentacion.precio
         )}`
     )
@@ -1889,12 +2052,18 @@ function criteriosDesdeProducto(producto = {}) {
   if (["adulto", "cachorro"].includes(producto.etapa)) criterios.etapa = producto.etapa;
   if (["pequeno", "grande", "todas"].includes(producto.tamano)) criterios.tamano = producto.tamano;
   if (Array.isArray(producto.sabores) && producto.sabores.length) criterios.sabores = producto.sabores;
+  if (Array.isArray(producto.condiciones) && producto.condiciones.length) criterios.condiciones = producto.condiciones;
 
   return criterios;
 }
 
 function criteriosDesdeInterpretacion(interpretacion = {}) {
   return criteriosDesdeProducto(interpretacion?.producto || {});
+}
+
+function criteriosSinSabores(criterios = {}) {
+  const { sabores, ...resto } = criterios;
+  return resto;
 }
 
 function buscarMarcaInterpretada(catalogo, interpretacion) {
@@ -1909,13 +2078,15 @@ function buscarReferenciaInterpretada(marca, interpretacion, criterios) {
   if (!nombre) return null;
 
   const texto = normalizar(nombre);
+  const criteriosReferencia = criteriosSinSabores(criterios);
   return (
     marca.referencias.find(
       (referencia) =>
-        normalizar(referencia.nombre) === texto ||
-        contieneFrase(normalizar(referencia.nombre), texto) ||
-        contieneFrase(texto, referencia.nombre)
-    ) || buscarReferenciaExacta(marca, nombre, criterios)
+        referenciaCumple(referencia, criteriosReferencia) &&
+        (normalizar(referencia.nombre) === texto ||
+          contieneFrase(normalizar(referencia.nombre), texto) ||
+          contieneFrase(texto, referencia.nombre))
+    ) || buscarReferenciaExacta(marca, nombre, criteriosReferencia)
   );
 }
 
@@ -2050,11 +2221,18 @@ function buscarPresentacionProducto(referencia, producto = {}) {
   );
 }
 
-function respuestaPresentacionProductoNoDisponible(marca, referencia, producto = {}) {
+function respuestaPresentacionProductoNoDisponible(marca, referencia, producto = {}, opciones = {}) {
   if (!producto.presentacion) return null;
   const solicitada = normalizarPeso(producto.presentacion);
   if (!solicitada || presentacionDisponible(referencia, solicitada)) return null;
-  return respuestaPresentacionNoDisponible(marca, referencia, solicitada);
+  const alternativas = alternativasConPresentacion(
+    opciones.referencias || [],
+    solicitada,
+    referencia,
+    opciones.criterios || {},
+    opciones.mensaje || producto.referencia || ""
+  );
+  return respuestaPresentacionNoDisponible(marca, referencia, solicitada, alternativas);
 }
 
 function resolverProductosInterpretadosIA(mensaje, estado, catalogo, interpretacion) {
@@ -2068,13 +2246,14 @@ function resolverProductosInterpretadosIA(mensaje, estado, catalogo, interpretac
   const noDisponibles = [];
 
   productos.forEach((producto) => {
-    const marca = buscarMarcaPorNombre(catalogo, producto.marca) || buscarMarca(catalogo, producto.marca || "");
+    let marca = buscarMarcaPorNombre(catalogo, producto.marca) || buscarMarca(catalogo, producto.marca || "");
     if (!marca) {
       pendientes.push({ producto, razon: "marca" });
       return;
     }
 
     const criterios = mezclarCriterios(extraerCriterios(mensaje), criteriosDesdeProducto(producto));
+    marca = refinarMarcaPorCriterios(catalogo, marca, criterios, producto.referencia || mensaje);
     const referencias = referenciasPorCriterios(marca, criterios);
     const referencia =
       buscarReferenciaInterpretada(marca, { producto }, criterios) ||
@@ -2088,7 +2267,11 @@ function resolverProductosInterpretadosIA(mensaje, estado, catalogo, interpretac
       return;
     }
 
-    const presentacionNoDisponible = respuestaPresentacionProductoNoDisponible(marca, referencia, producto);
+    const presentacionNoDisponible = respuestaPresentacionProductoNoDisponible(marca, referencia, producto, {
+      referencias,
+      criterios,
+      mensaje: producto.referencia || mensaje,
+    });
     if (presentacionNoDisponible) {
       noDisponibles.push(presentacionNoDisponible);
       estado.ultimaSeleccion = {
@@ -2186,12 +2369,13 @@ function resolverConInterpretacionIA(mensaje, estado, catalogo, interpretacion) 
   const respuestaProductos = resolverProductosInterpretadosIA(mensaje, estado, catalogo, interpretacion);
   if (respuestaProductos) return respuestaProductos;
 
-  const marca = buscarMarcaInterpretada(catalogo, interpretacion) || buscarMarca(catalogo, mensaje);
+  let marca = buscarMarcaInterpretada(catalogo, interpretacion) || buscarMarca(catalogo, mensaje);
   if (!marca) return null;
 
   const criteriosIA = criteriosDesdeInterpretacion(interpretacion);
   const criteriosBase = estado.referenciasPendientes?.marca === marca.marca ? estado.referenciasPendientes.criterios || {} : estado.criterios;
   const criterios = mezclarCriterios(criteriosBase || {}, mezclarCriterios(extraerCriterios(mensaje), criteriosIA));
+  marca = refinarMarcaPorCriterios(catalogo, marca, criterios, mensaje);
   const referenciaInterpretada = buscarReferenciaInterpretada(marca, interpretacion, criterios);
   let referencias = referenciasPorCriterios(marca, criterios);
   if (!referencias.length && referenciaInterpretada) {
@@ -2247,8 +2431,12 @@ function resolverConInterpretacionIA(mensaje, estado, catalogo, interpretacion) 
   }
 
   const presentacionNoDisponible =
-    respuestaPresentacionProductoNoDisponible(marca, referencia, interpretacion.producto) ||
-    respuestaSiPresentacionSolicitadaNoDisponible(marca, referencia, mensaje);
+    respuestaPresentacionProductoNoDisponible(marca, referencia, interpretacion.producto, {
+      referencias,
+      criterios,
+      mensaje,
+    }) ||
+    respuestaSiPresentacionSolicitadaNoDisponible(marca, referencia, mensaje, { referencias, criterios });
   if (presentacionNoDisponible) {
     estado.marca = marca.marca;
     estado.criterios = { ...criteriosDesdeReferencia(referencia), ...criterios };
@@ -2351,6 +2539,7 @@ function resolverProductosExplicitos(mensaje, estado, catalogo, opciones = {}) {
 
   segmentos.forEach((segmento) => {
     const criterios = extraerCriterios(segmento.texto);
+    const marcaSegmento = refinarMarcaPorCriterios(catalogo, segmento.marca, criterios, segmento.texto);
     const cantidad = extraerCantidad(segmento.texto) || 1;
     const datosDomicilio = extraerDatosDomicilio(mensaje);
     const tipoEntrega = detectarTipoEntrega(mensaje) || (datosDomicilio.direccion ? "domicilio" : null);
@@ -2364,14 +2553,14 @@ function resolverProductosExplicitos(mensaje, estado, catalogo, opciones = {}) {
     const metodoPago = detectarMetodoPago(mensaje);
     if (metodoPago) estado.metodoPago = metodoPago;
 
-    const referencias = referenciasPorCriterios(segmento.marca, criterios);
+    const referencias = referenciasPorCriterios(marcaSegmento, criterios);
     const referencia =
-      buscarReferenciaExacta(segmento.marca, segmento.texto, criterios) ||
+      buscarReferenciaExacta(marcaSegmento, segmento.texto, criterios) ||
       elegirMejorReferencia(referencias, criterios, segmento.texto);
 
     if (!referencia) {
       const presentacionNoDisponible = respuestaSiPresentacionSolicitadaNoDisponibleEnReferencias(
-        segmento.marca,
+        marcaSegmento,
         referencias,
         criterios,
         segmento.texto
@@ -2379,7 +2568,7 @@ function resolverProductosExplicitos(mensaje, estado, catalogo, opciones = {}) {
       if (presentacionNoDisponible) {
         presentacionesNoDisponibles.push({
           respuesta: presentacionNoDisponible,
-          marca: segmento.marca,
+          marca: marcaSegmento,
           referencias,
           texto: segmento.texto,
           criterios,
@@ -2392,7 +2581,7 @@ function resolverProductosExplicitos(mensaje, estado, catalogo, opciones = {}) {
 
       if (quiereAgregar || tieneCriterios(criterios) || segmentos.length > 1) {
         pendientesReferencia.push({
-          marca: segmento.marca,
+          marca: marcaSegmento,
           referencias,
           texto: segmento.texto,
           criterios,
@@ -2405,14 +2594,15 @@ function resolverProductosExplicitos(mensaje, estado, catalogo, opciones = {}) {
     }
 
     const presentacionNoDisponible = respuestaSiPresentacionSolicitadaNoDisponible(
-      segmento.marca,
+      marcaSegmento,
       referencia,
-      segmento.texto
+      segmento.texto,
+      { referencias, criterios }
     );
     if (presentacionNoDisponible) {
       presentacionesNoDisponibles.push({
         respuesta: presentacionNoDisponible,
-        marca: segmento.marca,
+        marca: marcaSegmento,
         referencia,
         referencias: [referencia],
         texto: segmento.texto,
@@ -2431,12 +2621,12 @@ function resolverProductosExplicitos(mensaje, estado, catalogo, opciones = {}) {
         estado.datosDomicilio = { ...estado.datosDomicilio, ...datosDomicilio };
       }
 
-      agregarAlCarrito(estado, segmento.marca, referencia, presentacion, cantidad);
-      agregados.push({ marca: segmento.marca, referencia, presentacion, cantidad });
+      agregarAlCarrito(estado, marcaSegmento, referencia, presentacion, cantidad);
+      agregados.push({ marca: marcaSegmento, referencia, presentacion, cantidad });
       return;
     }
 
-    pendientesPresentacion.push({ marca: segmento.marca, referencia, cantidad });
+    pendientesPresentacion.push({ marca: marcaSegmento, referencia, cantidad });
   });
 
   if (
@@ -2511,7 +2701,7 @@ function resolverProductosExplicitos(mensaje, estado, catalogo, opciones = {}) {
       ? `Listo, ya agregué al pedido:\n${lineasItems(agregados)}\n\n${resumenCarrito(estado)}`
       : "Sí, te ayudo con ese pedido.";
 
-    return `${intro}\n\nPara completar ${pendiente.marca.marca} ${pendiente.referencia.nombre}, dime qué presentación quieres:\n${presentacionesReferencia(pendiente.referencia)}`;
+    return `${intro}\n\nPara completar ${nombreProducto(pendiente.marca, pendiente.referencia)}, dime qué presentación quieres:\n${presentacionesReferencia(pendiente.referencia)}`;
   }
 
   if (pendientesReferencia.length) {
@@ -3490,7 +3680,8 @@ function resolverReferenciaPendiente(mensaje, estado, catalogo, interpretacion =
   const presentacionNoDisponible = respuestaSiPresentacionSolicitadaNoDisponible(
     marca,
     referencia,
-    `${contextoPendiente.texto || ""} ${mensaje}`
+    `${contextoPendiente.texto || ""} ${mensaje}`,
+    { referencias, criterios }
   );
   if (presentacionNoDisponible) {
     estado.marca = marca.marca;
@@ -3682,8 +3873,9 @@ function resolverAlternativaPendiente(mensaje, estado, catalogo) {
 function resolverConsultaCatalogo(mensaje, estado, catalogo = [], interpretacion = null) {
   const marcaEnMensaje = buscarMarca(catalogo, mensaje);
   const criteriosTextoMensaje = extraerCriterios(mensaje);
-  const marcaDetectada = buscarMarcaInterpretada(catalogo, interpretacion) || marcaEnMensaje;
+  const marcaDetectadaBase = buscarMarcaInterpretada(catalogo, interpretacion) || marcaEnMensaje;
   const criteriosMensaje = mezclarCriterios(criteriosTextoMensaje, criteriosDesdeInterpretacion(interpretacion));
+  const marcaDetectada = refinarMarcaPorCriterios(catalogo, marcaDetectadaBase, criteriosMensaje, mensaje);
   const marcaDesconocida = extraerMarcaDesconocida(mensaje, catalogo, {
     permitirCandidatoSolo:
       estado.esperandoMarca || (!estado.marca && !tieneCriterios(criteriosMensaje)),
@@ -3990,7 +4182,10 @@ function resolverConsultaCatalogo(mensaje, estado, catalogo = [], interpretacion
 
   if (referencia) {
     const cantidad = extraerCantidad(mensaje) || 1;
-    const presentacionNoDisponible = respuestaSiPresentacionSolicitadaNoDisponible(marca, referencia, mensaje);
+    const presentacionNoDisponible = respuestaSiPresentacionSolicitadaNoDisponible(marca, referencia, mensaje, {
+      referencias,
+      criterios,
+    });
     const presentacion = presentacionNoDisponible ? null : buscarPresentacion(referencia, mensaje);
 
     estado.marca = marca.marca;

@@ -141,6 +141,110 @@ const catalogoPetshopExtendido = [
   },
 ];
 
+const catalogoConMarcaBaseYFamilia = [
+  {
+    marca: "BR",
+    referencias: [
+      {
+        nombre: "BR CORDERO",
+        especie: "perro",
+        categoria: "comida",
+        subcategoria: "concentrado",
+        etapa: "adulto",
+        descripcion: "Alimento para perros adultos",
+        presentaciones: [{ peso: "3kg", precio: 78000, stock: true, metadata: {} }],
+      },
+    ],
+  },
+  {
+    marca: "BR CAT",
+    referencias: [
+      {
+        nombre: "BR CAT ADUL POLLO",
+        especie: "gato",
+        categoria: "comida",
+        subcategoria: "concentrado",
+        etapa: "adulto",
+        presentaciones: [{ peso: "3kg", precio: 81700, stock: true, metadata: {} }],
+      },
+      {
+        nombre: "BR CAT CASTRADO POLLO",
+        especie: "gato",
+        categoria: "comida",
+        subcategoria: "concentrado",
+        etapa: "adulto",
+        presentaciones: [{ peso: "3kg", precio: 81900, stock: true, metadata: {} }],
+      },
+      {
+        nombre: "BR CAT GATITO POLLO",
+        especie: "gato",
+        categoria: "comida",
+        subcategoria: "concentrado",
+        etapa: "cachorro",
+        presentaciones: [{ peso: "3kg", precio: 81900, stock: true, metadata: {} }],
+      },
+    ],
+  },
+  {
+    marca: "BOLSA",
+    referencias: [
+      {
+        nombre: "BOLSA POPIS",
+        especie: "perro",
+        categoria: "higiene",
+        descripcion: "Bolsas sanitarias",
+        presentaciones: [{ peso: "unidad", precio: 5000, stock: true, metadata: {} }],
+      },
+    ],
+  },
+];
+
+const catalogoDogChowSimilitud = [
+  {
+    marca: "DOG CHOW",
+    referencias: [
+      {
+        nombre: "DOG CHOW",
+        especie: "perro",
+        categoria: "comida",
+        subcategoria: "concentrado",
+        descripcion: "Referencia generica promocional",
+        presentaciones: [{ peso: "x100", precio: 13500, stock: true, metadata: {} }],
+      },
+      {
+        nombre: "DOG CHOW A.R.P A GRANEL",
+        especie: "perro",
+        categoria: "comida",
+        subcategoria: "concentrado",
+        descripcion: "Adulto raza pequena a granel",
+        presentaciones: [{ peso: "unidad", precio: 10400, stock: true, metadata: {} }],
+      },
+      {
+        nombre: "DOG CHOW ADUL TODOS LOS TAMAÑOS",
+        especie: "perro",
+        categoria: "comida",
+        subcategoria: "concentrado",
+        etapa: "adulto",
+        descripcion: "Adulto todos los tamanos",
+        presentaciones: [
+          { peso: "1kg", precio: 12900, stock: true, metadata: {} },
+          { peso: "2kg", precio: 23000, stock: true, metadata: {} },
+          { peso: "4kg", precio: 45600, stock: true, metadata: {} },
+        ],
+      },
+      {
+        nombre: "DOG CHOW ADUL TODOS LOS TAMAÑOS 475",
+        especie: "perro",
+        categoria: "comida",
+        subcategoria: "concentrado",
+        etapa: "adulto",
+        descripcion: "Adulto todos los tamanos 475",
+        presentaciones: [{ peso: "unidad", precio: 5400, stock: true, metadata: {} }],
+      },
+    ],
+  },
+];
+
 test("niega una presentacion inexistente aunque la referencia este ambigua", () => {
   const estado = crearEstadoInicial();
   const catalogo = cargarCatalogoPruebas();
@@ -152,6 +256,79 @@ test("niega una presentacion inexistente aunque la referencia este ambigua", () 
   assert.match(respuesta, /Adulto Mini y Pequeño/i);
   assert.match(respuesta, /Cachorros Mini y Pequeño/i);
   assert.equal(estado.carrito.length, 0);
+});
+
+test("entiende condiciones del producto y refina una marca base sin pedir confirmacion innecesaria", () => {
+  const estado = crearEstadoInicial();
+  const mensaje = "Una bolsa de cuido de BR 3 kl para gato castrado pollo";
+
+  const respuesta = resolverConsultaCatalogo(mensaje, estado, catalogoConMarcaBaseYFamilia, null);
+
+  assert.match(respuesta, /BR CAT CASTRADO POLLO 3kg/i);
+  assert.match(respuesta, /\$81\.900/i);
+  assert.doesNotMatch(respuesta, /BR CAT ADUL POLLO/i);
+  assert.doesNotMatch(respuesta, /BR CAT GATITO POLLO/i);
+  assert.doesNotMatch(respuesta, /cu[aá]l referencia/i);
+  assert.equal(estado.carrito[0].marca, "BR CAT");
+  assert.equal(estado.carrito[0].referencia, "BR CAT CASTRADO POLLO");
+});
+
+test("no confunde bolsa como empaque generico con la marca bolsa cuando el producto si la menciona", () => {
+  const estado = crearEstadoInicial();
+
+  const respuesta = resolverConsultaCatalogo("necesito bolsa popis unidad", estado, catalogoConMarcaBaseYFamilia, null);
+
+  assert.match(respuesta, /BOLSA POPIS unidad/i);
+  assert.equal(estado.carrito[0].marca, "BOLSA");
+  assert.equal(estado.carrito[0].referencia, "BOLSA POPIS");
+});
+
+test("muestra alternativas cercanas cuando la referencia exacta no tiene la presentacion pedida", () => {
+  const estado = crearEstadoInicial();
+
+  const respuesta = resolverConsultaCatalogo(
+    "dog chow adultos razas pequenas 2kg",
+    estado,
+    catalogoDogChowSimilitud,
+    null
+  );
+
+  assert.match(respuesta, /DOG CHOW A\.R\.P A GRANEL no tengo presentación de 2kg/i);
+  assert.match(respuesta, /referencias cercanas/i);
+  assert.match(respuesta, /DOG CHOW ADUL TODOS LOS TAMAÑOS 2kg: \$23\.000/i);
+  assert.doesNotMatch(respuesta, /DOG CHOW DOG CHOW/i);
+});
+
+test("prioriza la referencia de todos los tamanos sobre una referencia generica interpretada por IA", () => {
+  const estado = crearEstadoInicial();
+  const interpretacionIA = {
+    intencion: "consulta_producto",
+    accion: "consultar",
+    confianza: 0.92,
+    producto: {
+      marca: "DOG CHOW",
+      referencia: "DOG CHOW",
+      especie: "perro",
+      etapa: "adulto",
+      tamano: "todas",
+      presentacion: null,
+      sabores: [],
+      condiciones: [],
+    },
+    productos: [],
+  };
+
+  const respuesta = resolverConsultaCatalogo(
+    "dog chow adultos todos los tamaños",
+    estado,
+    catalogoDogChowSimilitud,
+    interpretacionIA
+  );
+
+  assert.match(respuesta, /DOG CHOW ADUL TODOS LOS TAMAÑOS/i);
+  assert.match(respuesta, /2kg: \$23\.000/i);
+  assert.doesNotMatch(respuesta, /x100: \$13\.500/i);
+  assert.doesNotMatch(respuesta, /cu[aá]l de estas opciones/i);
 });
 
 test("niega una presentacion inexistente cuando la IA detecta la referencia exacta", () => {

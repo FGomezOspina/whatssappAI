@@ -30,10 +30,18 @@ function contiene(texto, palabras = []) {
 function atributosReferenciaCatalogo(referencia = {}) {
   const texto = normalizarTexto(`${referencia.nombre || ""} ${referencia.descripcion || ""}`);
   const sabores = [];
+  const condiciones = [];
   if (texto.includes("pollo")) sabores.push("pollo");
   if (texto.includes("salmon")) sabores.push("salmon");
   if (texto.includes("cordero")) sabores.push("cordero");
   if (texto.includes("carne")) sabores.push("carne");
+  if (/\b(castr|esteriliz)/.test(texto)) condiciones.push("castrado");
+  if (/\b(urin|uro|urinary|urology)/.test(texto)) condiciones.push("urinario");
+  if (/\brenal|kidney/.test(texto)) condiciones.push("renal");
+  if (/\bgastro|digestive/.test(texto)) condiciones.push("gastrointestinal");
+  if (/\bpiel|skin|derm/.test(texto)) condiciones.push("piel");
+  if (/\bbola de pelo|hairball/.test(texto)) condiciones.push("bola_pelo");
+  if (/\bobes|weight|sobrepeso/.test(texto)) condiciones.push("control_peso");
 
   let etapa = null;
   if (referencia.etapa) etapa = referencia.etapa;
@@ -50,6 +58,7 @@ function atributosReferenciaCatalogo(referencia = {}) {
     etapa,
     tamano,
     sabores,
+    condiciones,
   };
 }
 
@@ -73,6 +82,27 @@ function resumenCatalogo(catalogo = []) {
       })),
     })),
   }));
+}
+
+function resumenCatalogoVision(catalogo = []) {
+  return {
+    modo: "vision_compacta",
+    nota:
+      "Indice compacto para vision: contiene marcas y pares marca|referencia exactos. Las presentaciones, precios y stock se validan despues contra el catalogo completo del backend.",
+    marcas: catalogo.map((marca) => marca.marca),
+    referencias: catalogo.flatMap((marca) =>
+      marca.referencias.map((referencia) => `${marca.marca} | ${referencia.nombre}`)
+    ),
+  };
+}
+
+function resumenCatalogoParaPrompt(catalogo = [], opciones = {}) {
+  return opciones.vision ? resumenCatalogoVision(catalogo) : resumenCatalogo(catalogo);
+}
+
+function detalleVision() {
+  const valor = (process.env.OPENAI_VISION_DETAIL || "auto").toLowerCase();
+  return ["auto", "low", "high"].includes(valor) ? valor : "auto";
 }
 
 function resumenEstado(estado = {}) {
@@ -116,6 +146,7 @@ function normalizarInterpretacion(valor) {
     tamano: producto.tamano || null,
     sabores: Array.isArray(producto.sabores) ? producto.sabores : [],
     presentacion: producto.presentacion || null,
+    condiciones: Array.isArray(producto.condiciones) ? producto.condiciones : [],
     cantidad: producto.cantidad || null,
   });
   const productos = Array.isArray(valor.productos)
@@ -212,6 +243,8 @@ async function interpretarMensajeCliente({
 
   try {
     const urlsImagen = [...imageUrls, imageUrl].filter(Boolean);
+    const usaVision = urlsImagen.length > 0;
+    const catalogoPrompt = resumenCatalogoParaPrompt(catalogo, { vision: usaVision });
     const model = urlsImagen.length
       ? process.env.OPENAI_VISION_MODEL ||
         process.env.OPENAI_INTERPRETER_MODEL ||
@@ -240,7 +273,11 @@ Fuente de verdad:
 - Actua como un asesor experto de petshop/veterinaria: entiendes cuidos/concentrados, comidas humedas, snacks, juguetes, higiene, arenas/sustratos, suplementos, medicamentos, antipulgas, desparasitantes y vacunas. Usa ese conocimiento solo para identificar disponibilidad en catalogo, no para diagnosticar ni formular tratamientos.
 - Muchas referencias del catalogo pueden estar abreviadas o resumidas. Si el cliente escribe una referencia incompleta, mal escrita o con palabras adicionales, compara por contexto veterinario y comercial: marca, linea, especie, etapa, tamano, uso comun, principio o familia del producto cuando sea evidente, y presentacion.
 - Las presentaciones son parte central de la identidad del producto. Reconoce tabletas/tab, suspension, gotas/gotero, ampolla, frasco, jeringa, sobre/sachet/pouch, lata, bulto, kg/kl/gr/g/ml/mg, rangos de peso como 4-10kg o 10-25kg, y empaques tipo x100, x150gr o unidad.
+- Las palabras de linea o condicion del producto pesan mucho para elegir referencia: castrado/castrada, esterilizado, urinary/urinario, renal, gastrointestinal/gastro, piel/skin/derm, bola de pelo/hairball, weight/obesos/control de peso. No las trates como detalle secundario si el catalogo trae referencias separadas con esas palabras.
+- Si el cliente ya dijo una condicion clara, por ejemplo "gato castrado pollo", no preguntes entre adulto pollo, gatito pollo y castrado pollo: devuelve la referencia exacta que combine especie + condicion + sabor + presentacion cuando exista.
 - Si existe una marca y una referencia del catalogo claramente compatible aunque el texto del cliente no coincida literal con Supabase, devuelve la marca y referencia exactas del catalogo. Si hay varias opciones razonables, deja referencia null y conserva categoria, subcategoria, especie, etapa, tamano, sabores o presentacion para que el motor pregunte.
+- Si el cliente dice una linea como "adultos todos los tamaños", "todas las razas", "adulto raza pequeña/grande" o una abreviatura equivalente, no devuelvas una referencia generica cuyo nombre sea solo la marca si existe una referencia de catalogo que incluya esa linea. La referencia generica solo se usa cuando el cliente realmente pidio ese producto generico.
+- "Todos los tamaños", "todos los tamanos", "todas las razas" y "cualquier tamaño" significan tamano "todas"; deben pesar mas que una foto o palabra suelta que sugiera perro pequeño/grande.
 - Tu criterio debe parecer de asesor humano, no de vendedor que siempre dice que si. Si el catalogo no respalda lo pedido, la decision correcta es marcar el dato solicitado y permitir que el motor responda con una negativa util.
 - El backend es la autoridad para marca, referencia, presentaciones y precios. Tu trabajo es entender que quiere el cliente: agregar, consultar, recomendar, cambiar cantidad, quitar productos, cambiar datos o cerrar pedido.
 - El estado de conversacion importa tanto como el ultimo mensaje. Si ya hay carrito, datos, metodo de pago o una seleccion pendiente, interpreta el mensaje como continuacion salvo que el cliente pida claramente empezar de nuevo.
@@ -279,14 +316,17 @@ Audio y transcripciones:
 Vision de empaques:
 - Si recibes imagen, lee el empaque como lo haria un asesor de tienda en Colombia: marca visible, nombre grande, etapa (adulto/adultos/cachorro/cachorros), especie por foto o texto, tamano/raza ("mini", "pequeñas", "medianas", "grandes", "todas las razas"), sabor, peso neto/presentacion y cualquier frase comercial.
 - Compara lo visible contra el catalogo completo, no contra el caption solamente. El caption puede ser solo "manejan esta referencia"; la imagen es la fuente principal del producto.
+- Para imagenes, el catalogo puede venir en modo "vision_compacta" para no exceder limites de tokens: trae marcas y pares marca|referencia exactos, pero omite precios, stock, descripciones y presentaciones. En ese caso identifica la referencia por nombre visible/contexto y lee la presentacion desde la imagen; el backend valida disponibilidad, presentacion y precio contra Supabase.
 - No exijas coincidencia textual exacta entre empaque y referencia interna. Los empaques pueden decir "Adultos", "Pollo", "carne", "para todas las razas" o claims comerciales, mientras el catalogo guarda un nombre resumido.
-- Para mapear una imagen a referencia valida, prioriza en este orden: marca exacta visible, especie, etapa, tamano/raza, presentacion/peso. Usa sabor y claims como pistas secundarias; no descartes una referencia valida solo porque el sabor visible no aparece en el nombre interno.
+- Para mapear una imagen a referencia valida, prioriza en este orden: marca exacta visible, linea/condicion del producto, especie, etapa, tamano/raza, presentacion/peso. Usa sabor y claims como pistas secundarias; no descartes una referencia valida solo porque el sabor visible no aparece en el nombre interno.
 - Busca el peso/presentacion en zonas pequenas del empaque: esquinas inferiores, laterales, textos como "peso neto", "contenido neto", "kg", "g", "kl", "kilos". Si puedes leer numero y unidad con confianza razonable, normalizalo como presentacion exacta del catalogo: 2000g -> 2kg, 1000g -> 1kg, 4000g -> 4kg. Si el peso esta oculto o ilegible, deja presentacion null.
 - Si el empaque trae marca, etapa y tamano/raza claros pero el peso es dificil de ver, no rechaces la referencia; devuelve marca/referencia/criterios y solo deja presentacion null cuando de verdad no puedas leer el peso.
 - Si el empaque trae sabor visible pero el catalogo no tiene una referencia separada por ese sabor, ignora el sabor para elegir la referencia por etapa y tamano. Patron general: "Adultos + Pollo/Carne + para todas las razas" debe mapear a la referencia adulta de todas las razas de esa marca si existe y no hay una referencia adulta mas especifica por sabor.
 - Si el empaque muestra "para todas las razas", esa pista gana sobre la foto de un perro pequeño, mediano o grande; no lo conviertas en "razas pequeñas" solo por la imagen del perro.
 - Si una imagen muestra un producto y el cliente pregunta "manejan esta referencia", "tienen esta", "la venden" o similar, usa intencion "consulta_producto" y accion "consultar". No agregues al carrito hasta que el cliente confirme compra.
 - Si marca, etapa, tamano/raza y presentacion apuntan claramente a una referencia del catalogo, devuelve esa referencia exacta aunque el texto visual tenga palabras adicionales. Si de verdad hay dos referencias plausibles, deja referencia null y conserva criterios para que el motor pregunte.
+- Si la imagen es una formula medica, receta veterinaria, orden o foto de medicamentos escritos a mano/impresos, interpreta que el cliente quiere cotizar esos productos. Lee nombres de medicamentos, concentraciones, forma farmaceutica, presentacion y cantidades indicadas, por ejemplo numero de tabletas/pastas, gotas, ml, sobres, frascos o unidades. Devuelve productos[] con intencion "consulta_producto" y accion "consultar"; no diagnostiques, no expliques dosis y no agregues al carrito hasta que el cliente confirme compra.
+- En formulas medicas, separa cada medicamento como un producto distinto aunque vengan en una misma linea. Si no puedes leer una palabra con confianza, deja marca/referencia null y conserva la parte legible en criterios o faltanteSugerido "referencia"; no inventes medicamentos.
 
 Razonamiento esperado:
 - "a", "adult", "adulto" en contexto de alimento puede significar adulto.
@@ -299,6 +339,7 @@ Razonamiento esperado:
 - Si la presentacion pedida no existe en el catalogo para la marca/referencia/criterios detectados, deja producto.presentacion con el valor pedido por el cliente, usa faltanteSugerido "presentacion" y mantén accion "consultar" si no hay una opción exacta agregable. No elijas otra presentacion cercana.
 - Si el cliente pide una referencia por descripcion ("razas pequeñas", "adulto raza grande", "gatito"), puedes mapearla a la referencia exacta del catalogo cuando sea claro. Si hay dos referencias posibles, deja referencia null y conserva criterios.
 - Si un empaque o mensaje dice "adultos", normalizalo como etapa "adulto". Si dice "para todas las razas", usa tamano "todas". Si muestra una marca y "pollo/cordero/salmon/carne", pon ese sabor en sabores, pero no obligues a que el nombre interno de referencia contenga el sabor.
+- Si un mensaje dice castrado, castra, sterilized, esterilizado, urinario, renal, gastro, piel, bola de pelo o control de peso, ponlo en condiciones y úsalo para elegir la referencia exacta. No lo confundas con sabor ni con presentacion.
 - Si el cliente pide domicilio y producto en el mismo mensaje, extrae ambos. No asumas que el producto queda agregado si falta validacion de presentacion.
 - Si el cliente escribe varios productos en un mismo mensaje, en varias lineas o separados por comas/conectores, conserva cada item por separado en "productos". No mezcles presentaciones entre lineas. Ejemplo: si una linea dice 1kg y otra 2kg, cada producto conserva su propio peso.
 - Corrige errores leves de marca por contexto del catalogo ("dog choe", "dog chpw", "dogchow" -> Dog Chow) si la intencion es clara, pero la validacion final la hace el backend.
@@ -349,6 +390,7 @@ JSON exacto:
     "etapa": "adulto|cachorro|senior|todas|null",
     "tamano": "pequeno|grande|todas|null",
     "sabores": [],
+    "condiciones": [],
     "presentacion": "ej. 4kg, 2kg, 20kg o null",
     "cantidad": null
   },
@@ -362,6 +404,7 @@ JSON exacto:
       "etapa": "adulto|cachorro|senior|todas|null",
       "tamano": "pequeno|grande|todas|null",
       "sabores": [],
+      "condiciones": [],
       "presentacion": "presentacion exacta pedida por el cliente o null",
       "cantidad": null
     }
@@ -401,14 +444,14 @@ JSON exacto:
                     historialReciente: resumenHistorial(historialReciente),
                     estado: resumenEstado(estado),
                     cliente: contextoCliente(cliente),
-                    catalogo: resumenCatalogo(catalogo),
+                    catalogo: catalogoPrompt,
                     instruccionImagen:
-                      "Analiza la imagen completa, no solo el caption. Lee marca, etapa, especie, tamano/raza, sabor, peso neto/presentacion y frases del empaque. Revisa especialmente esquinas inferiores y textos pequenos de peso neto/contenido neto. Compara esos datos con el catalogo colombiano entregado y devuelve la referencia exacta mas compatible cuando exista. El sabor visible es pista secundaria si no aparece en el nombre interno. Si puedes leer el peso, normalizalo a una presentacion exacta del catalogo. No inventes datos ilegibles.",
+                      "Analiza la imagen completa, no solo el caption. Si es empaque, lee marca, linea/condicion, etapa, especie, tamano/raza, sabor, peso neto/presentacion y frases del empaque. Si es formula medica o receta veterinaria, lee cada medicamento, concentracion, forma, cantidad indicada y presentacion solicitada para cotizar. Revisa esquinas inferiores, textos pequenos y escritura manual. Compara esos datos con el catalogo colombiano entregado y devuelve la referencia exacta mas compatible cuando exista. El sabor visible es pista secundaria si no aparece en el nombre interno, pero la linea/condicion visible como castrado, renal, urinario, piel o gastro es pista fuerte. Si puedes leer el peso o cantidad, normalizalo a una presentacion exacta del catalogo o cantidad pedida. No inventes datos ilegibles.",
                   }),
                 },
                 ...urlsImagen.map((url) => ({
                   type: "image_url",
-                  image_url: { url, detail: "high" },
+                  image_url: { url, detail: detalleVision() },
                 })),
               ]
             : JSON.stringify({
@@ -416,7 +459,7 @@ JSON exacto:
                 historialReciente: resumenHistorial(historialReciente),
                 estado: resumenEstado(estado),
                 cliente: contextoCliente(cliente),
-                catalogo: resumenCatalogo(catalogo),
+                catalogo: catalogoPrompt,
               }),
         },
       ],
@@ -427,7 +470,9 @@ JSON exacto:
     }
 
     if (urlsImagen.length) {
-      console.log(`[OpenAI] Interpretando imagen con modelo=${model} | imagenes=${urlsImagen.length}`);
+      console.log(
+        `[OpenAI] Interpretando imagen con modelo=${model} | imagenes=${urlsImagen.length} | catalogo=vision_compacta | referencias=${catalogoPrompt.referencias?.length || 0} | detail=${detalleVision()}`
+      );
     }
 
     const completion = await openai.chat.completions.create(parametrosModelo, {
@@ -445,4 +490,10 @@ JSON exacto:
 
 module.exports = {
   interpretarMensajeCliente,
+  _internals: {
+    resumenCatalogo,
+    resumenCatalogoVision,
+    resumenCatalogoParaPrompt,
+    detalleVision,
+  },
 };

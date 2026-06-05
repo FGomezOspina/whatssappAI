@@ -2,6 +2,7 @@ const test = require("node:test");
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const path = require("node:path");
+const { _internals: aiInterpreterInternals } = require("../src/services/aiInterpreter");
 
 function leerServicio(nombre) {
   return fs.readFileSync(path.join(__dirname, "..", "src", "services", nombre), "utf8");
@@ -93,6 +94,25 @@ test("el interprete usa criterio experto para mapear referencias veterinarias im
   assert.match(prompt, /nombresOriginales/);
 });
 
+test("el interprete trata condiciones como senales fuertes para escoger referencias", () => {
+  const prompt = leerServicio("aiInterpreter.js");
+
+  assert.match(prompt, /Las palabras de linea o condicion del producto pesan mucho/);
+  assert.match(prompt, /castrado\/castrada/);
+  assert.match(prompt, /gato castrado pollo/);
+  assert.match(prompt, /no preguntes entre adulto pollo, gatito pollo y castrado pollo/i);
+  assert.match(prompt, /ponlo en condiciones y úsalo para elegir la referencia exacta|ponlo en condiciones y usalo para elegir la referencia exacta/i);
+  assert.match(prompt, /"condiciones": \[\]/);
+});
+
+test("el interprete no usa referencias genericas cuando el cliente da linea y tamano", () => {
+  const prompt = leerServicio("aiInterpreter.js");
+
+  assert.match(prompt, /adultos todos los tamaños/);
+  assert.match(prompt, /no devuelvas una referencia generica cuyo nombre sea solo la marca/i);
+  assert.match(prompt, /Todos los tamaños.*tamano "todas"/i);
+});
+
 test("el interprete mapea empaques visuales contra referencias internas del catalogo", () => {
   const prompt = leerServicio("aiInterpreter.js");
 
@@ -105,8 +125,51 @@ test("el interprete mapea empaques visuales contra referencias internas del cata
   assert.match(prompt, /Busca el peso\/presentacion en zonas pequenas del empaque/);
   assert.match(prompt, /normalizalo como presentacion exacta del catalogo/);
   assert.match(prompt, /para todas las razas.*gana sobre la foto de un perro/i);
-  assert.match(prompt, /detail: "high"/);
+  assert.match(prompt, /vision_compacta/);
+  assert.match(prompt, /OPENAI_VISION_DETAIL/);
   assert.match(prompt, /OPENAI_VISION_MODEL/);
+});
+
+test("el interprete usa catalogo compacto para vision y evita metadata pesada", () => {
+  const catalogo = [
+    {
+      marca: "Marca Test",
+      referencias: [
+        {
+          nombre: "Referencia Test",
+          descripcion: "descripcion pesada que no debe ir a vision",
+          metadata: { original_names: ["nombre original pesado"] },
+          presentaciones: [
+            { peso: "10kg", precio: 99999, stock: true },
+            { peso: "20kg", precio: 199999, stock: true },
+          ],
+        },
+      ],
+    },
+  ];
+
+  const resumen = aiInterpreterInternals.resumenCatalogoParaPrompt(catalogo, { vision: true });
+  const texto = JSON.stringify(resumen);
+
+  assert.equal(resumen.modo, "vision_compacta");
+  assert.deepEqual(resumen.marcas, ["Marca Test"]);
+  assert.deepEqual(resumen.referencias, ["Marca Test | Referencia Test"]);
+  assert.doesNotMatch(texto, /descripcion pesada/);
+  assert.doesNotMatch(texto, /nombre original pesado/);
+  assert.doesNotMatch(texto, /99999/);
+  assert.doesNotMatch(texto, /10kg/);
+});
+
+test("el interprete convierte formulas medicas en cotizaciones de productos", () => {
+  const prompt = leerServicio("aiInterpreter.js");
+
+  assert.match(prompt, /formula medica, receta veterinaria/i);
+  assert.match(prompt, /cliente quiere cotizar esos productos/i);
+  assert.match(prompt, /numero de tabletas\/pastas, gotas, ml, sobres, frascos o unidades/i);
+  assert.match(prompt, /Devuelve productos\[\] con intencion "consulta_producto" y accion "consultar"/);
+  assert.match(prompt, /no diagnostiques, no expliques dosis/i);
+  assert.match(prompt, /separa cada medicamento como un producto distinto/i);
+  assert.match(prompt, /no inventes medicamentos/i);
 });
 
 test("el procesador multimedia usa un modelo moderno de transcripcion por defecto", () => {
