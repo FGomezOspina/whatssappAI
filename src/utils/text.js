@@ -27,14 +27,25 @@ function normalizar(texto = "") {
 }
 
 function normalizarPeso(texto = "") {
-  return normalizar(texto)
-    .replace(/\s+/g, "")
+  const peso = normalizar(texto)
     .replace(/,/g, ".")
+    .replace(
+      /\b(?:x|por)\s*(?=\d+(?:\.\d+)?\s*(?:kg|kl|kilogramos?|kilos?|g|gr|gramos?|lb|libras?)\b)/g,
+      ""
+    )
+    .replace(/\s+/g, "")
     .replace(/kl/g, "kg")
     .replace(/kilogramos?|kilos?/g, "kg")
     .replace(/gramos?/g, "g")
     .replace(/(\d+(?:\.\d+)?)gr\b/g, "$1g")
     .replace(/libras?/g, "lb");
+
+  const gramos = peso.match(/^(\d+(?:\.\d+)?)g$/);
+  if (gramos && Number(gramos[1]) >= 1000) {
+    return `${Number(gramos[1]) / 1000}kg`;
+  }
+
+  return peso;
 }
 
 function formatearPrecio(precio) {

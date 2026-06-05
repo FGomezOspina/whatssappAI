@@ -3,6 +3,7 @@ const assert = require("node:assert/strict");
 const crypto = require("crypto");
 
 const {
+  dividirTextoWhatsApp,
   enviarTexto,
   extraerEventos,
   normalizarEvento,
@@ -328,6 +329,63 @@ test("envia texto mediante el SDK oficial de Kapso", async () => {
       to: "573001112233",
       type: "text",
       text: { body: "Hola desde Kapso" },
+    });
+  } finally {
+    global.fetch = fetchAnterior;
+
+    if (apiKeyAnterior === undefined) delete process.env.KAPSO_API_KEY;
+    else process.env.KAPSO_API_KEY = apiKeyAnterior;
+
+    if (baseUrlAnterior === undefined) delete process.env.KAPSO_API_BASE_URL;
+    else process.env.KAPSO_API_BASE_URL = baseUrlAnterior;
+  }
+});
+
+test("divide respuestas largas antes de enviarlas a WhatsApp", async () => {
+  const partes = dividirTextoWhatsApp(`${"Linea larga de catalogo\n".repeat(260)}Cierre`, 4096);
+
+  assert.ok(partes.length > 1);
+  assert.ok(partes.every((parte) => parte.length <= 4096));
+  assert.match(partes.join("\n"), /Linea larga de catalogo/);
+  assert.match(partes.at(-1), /Cierre/);
+});
+
+test("envia respuestas largas en varios mensajes validos para Kapso", async () => {
+  const apiKeyAnterior = process.env.KAPSO_API_KEY;
+  const baseUrlAnterior = process.env.KAPSO_API_BASE_URL;
+  const fetchAnterior = global.fetch;
+  const solicitudes = [];
+
+  process.env.KAPSO_API_KEY = "kapso-test-key";
+  process.env.KAPSO_API_BASE_URL = "https://api.kapso.ai/meta/whatsapp/v24.0";
+  global.fetch = async (url, opciones) => {
+    solicitudes.push({ url, opciones });
+    return new Response(
+      JSON.stringify({
+        messaging_product: "whatsapp",
+        contacts: [{ input: "573001112233", wa_id: "573001112233" }],
+        messages: [{ id: `wamid.sent.${solicitudes.length}` }],
+      }),
+      {
+        status: 200,
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+  };
+
+  try {
+    await enviarTexto({
+      to: "573001112233",
+      text: `${"Producto del catalogo con precio y presentacion\n".repeat(260)}Fin`,
+      phoneNumberId: "phone_123",
+    });
+
+    assert.ok(solicitudes.length > 1);
+    solicitudes.forEach((solicitud) => {
+      const body = JSON.parse(solicitud.opciones.body);
+      assert.equal(solicitud.url, "https://api.kapso.ai/meta/whatsapp/v24.0/phone_123/messages");
+      assert.equal(body.type, "text");
+      assert.ok(body.text.body.length <= 4096);
     });
   } finally {
     global.fetch = fetchAnterior;

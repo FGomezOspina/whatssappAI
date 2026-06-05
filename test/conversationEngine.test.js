@@ -96,6 +96,20 @@ function cargarCatalogoPruebas() {
 
 const catalogoPetshopExtendido = [
   {
+    marca: "BR",
+    referencias: [
+      {
+        nombre: "BR CAT ADUL POLLO",
+        especie: "gato",
+        categoria: "comida",
+        subcategoria: "concentrado",
+        etapa: "adulto",
+        descripcion: "Alimento para gatos adultos sabor pollo",
+        presentaciones: [{ peso: "1kg", precio: 28000, stock: true, metadata: {} }],
+      },
+    ],
+  },
+  {
     marca: "Boehringer",
     referencias: [
       {
@@ -112,6 +126,34 @@ const catalogoPetshopExtendido = [
     ],
   },
   {
+    marca: "Bayer",
+    referencias: [
+      {
+        nombre: "Drontal Gatos",
+        especie: "gato",
+        categoria: "medicamento",
+        subcategoria: "desparasitante",
+        requiereConfirmacion: true,
+        descripcion: "Desparasitante para gatos",
+        presentaciones: [{ peso: "unidad", precio: 18000, stock: true, metadata: {} }],
+      },
+    ],
+  },
+  {
+    marca: "Frontline",
+    referencias: [
+      {
+        nombre: "Frontline Gato",
+        especie: "gato",
+        categoria: "medicamento",
+        subcategoria: "antipulgas",
+        requiereConfirmacion: true,
+        descripcion: "Antipulgas y garrapatas para gatos",
+        presentaciones: [{ peso: "unidad", precio: 43000, stock: true, metadata: {} }],
+      },
+    ],
+  },
+  {
     marca: "Chunky",
     referencias: [
       {
@@ -122,6 +164,32 @@ const catalogoPetshopExtendido = [
         etapa: "adulto",
         descripcion: "Alimento completo para perros adultos",
         presentaciones: [{ peso: "2kg", precio: 32000, stock: true, metadata: {} }],
+      },
+    ],
+  },
+  {
+    marca: "Churu",
+    referencias: [
+      {
+        nombre: "Churu Gato Pollo",
+        especie: "gato",
+        categoria: "snack",
+        subcategoria: "snack",
+        descripcion: "Snack para gatos",
+        presentaciones: [{ peso: "unidad", precio: 6500, stock: true, metadata: {} }],
+      },
+    ],
+  },
+  {
+    marca: "Arena Max",
+    referencias: [
+      {
+        nombre: "Arena Max Gato",
+        especie: "gato",
+        categoria: "arena_sustrato",
+        subcategoria: "arena",
+        descripcion: "Arena sanitaria para gatos",
+        presentaciones: [{ peso: "4kg", precio: 28000, stock: true, metadata: {} }],
       },
     ],
   },
@@ -245,6 +313,67 @@ const catalogoDogChowSimilitud = [
   },
 ];
 
+const catalogoProPlanBilingue = [
+  {
+    marca: "PRO PLAN",
+    referencias: [
+      {
+        nombre: "PRO PLAN ADULT SMALL",
+        especie: "perro",
+        categoria: "comida",
+        subcategoria: "concentrado",
+        etapa: "adulto",
+        presentaciones: [{ peso: "1kg", precio: 57000, stock: true, metadata: {} }],
+      },
+      {
+        nombre: "PRO PLAN CANINE LATA OM",
+        especie: "perro",
+        categoria: "comida",
+        subcategoria: "comida_humeda",
+        presentaciones: [{ peso: "unidad", precio: 28600, stock: true, metadata: {} }],
+      },
+      {
+        nombre: "PRO PLAN CANINE OM",
+        especie: "perro",
+        categoria: "comida",
+        subcategoria: "concentrado",
+        presentaciones: [
+          { peso: "2kg", precio: 122000, stock: true, metadata: {} },
+          { peso: "18lb", precio: 359800, stock: true, metadata: {} },
+        ],
+      },
+      {
+        nombre: "PRO PLAN FELINE OM",
+        especie: "perro",
+        categoria: "comida",
+        subcategoria: "concentrado",
+        presentaciones: [{ peso: "1.5kg", precio: 113600, stock: true, metadata: {} }],
+      },
+    ],
+  },
+];
+
+const catalogoChunkyImportado = [
+  {
+    marca: "CHUNKY",
+    referencias: [
+      {
+        nombre: "CHUNKY ADULTO",
+        especie: "perro",
+        categoria: "comida",
+        subcategoria: "concentrado",
+        etapa: "adulto",
+        tamano: "todas",
+        presentaciones: [
+          { peso: "x 2 kg", precio: 18900, stock: true, metadata: {} },
+          { peso: "x 4 kg", precio: 37000, stock: true, metadata: {} },
+          { peso: "x 9 kg", precio: 74200, stock: true, metadata: {} },
+        ],
+      },
+    ],
+  },
+];
+
 test("niega una presentacion inexistente aunque la referencia este ambigua", () => {
   const estado = crearEstadoInicial();
   const catalogo = cargarCatalogoPruebas();
@@ -329,6 +458,112 @@ test("prioriza la referencia de todos los tamanos sobre una referencia generica 
   assert.match(respuesta, /2kg: \$23\.000/i);
   assert.doesNotMatch(respuesta, /x100: \$13\.500/i);
   assert.doesNotMatch(respuesta, /cu[aá]l de estas opciones/i);
+});
+
+test("filtra por siglas terapeuticas y muestra precios sin caer en referencia generica", () => {
+  const estado = crearEstadoInicial();
+
+  const respuesta = resolverConsultaCatalogo("que precio tiene pro plan om?", estado, catalogoProPlanBilingue, null);
+
+  assert.match(respuesta, /PRO PLAN CANINE OM 2kg: \$122\.000/i);
+  assert.match(respuesta, /PRO PLAN FELINE OM 1\.5kg: \$113\.600/i);
+  assert.match(respuesta, /PRO PLAN CANINE LATA OM unidad: \$28\.600/i);
+  assert.doesNotMatch(respuesta, /PRO PLAN ADULT SMALL/i);
+});
+
+test("mapea una imagen con OM y perro a canine om aunque la referencia interpretada venga incompleta", () => {
+  const estado = crearEstadoInicial();
+  const interpretacionIA = {
+    intencion: "consulta_producto",
+    accion: "consultar",
+    confianza: 0.95,
+    producto: {
+      marca: "PRO PLAN",
+      referencia: "PRO PLAN OM",
+      especie: "perro",
+      categoria: "comida",
+      subcategoria: "concentrado",
+      presentacion: null,
+      sabores: [],
+      condiciones: [],
+    },
+    productos: [],
+  };
+
+  const respuesta = resolverConsultaCatalogo("manejan este que busco", estado, catalogoProPlanBilingue, interpretacionIA);
+
+  assert.match(respuesta, /PRO PLAN CANINE OM/i);
+  assert.match(respuesta, /2kg: \$122\.000/i);
+  assert.doesNotMatch(respuesta, /PRO PLAN ADULT SMALL/i);
+  assert.doesNotMatch(respuesta, /PRO PLAN CANINE LATA OM/i);
+});
+
+test("no descarta una referencia exacta de imagen por tamano generico todas", () => {
+  const estado = crearEstadoInicial();
+  const interpretacionIA = {
+    intencion: "consulta_producto",
+    accion: "consultar",
+    confianza: 0.98,
+    producto: {
+      marca: "PRO PLAN",
+      referencia: "PRO PLAN CANINE OM",
+      especie: "perro",
+      categoria: "comida",
+      subcategoria: "concentrado",
+      etapa: "todas",
+      tamano: "todas",
+      presentacion: "2kg",
+      sabores: [],
+      condiciones: [],
+    },
+    productos: [],
+  };
+
+  const respuesta = resolverConsultaCatalogo("Que costo tiene", estado, catalogoProPlanBilingue, interpretacionIA);
+
+  assert.match(respuesta, /PRO PLAN CANINE OM 2kg: \$122\.000/i);
+  assert.doesNotMatch(respuesta, /no tengo una referencia exacta/i);
+  assert.doesNotMatch(respuesta, /Lo que sí tengo para perros/i);
+  assert.equal(estado.productosConsultados[0].referencia, "PRO PLAN CANINE OM");
+  assert.equal(estado.productosConsultados[0].peso, "2kg");
+});
+
+test("una referencia exacta del catalogo gana sobre criterios visuales incompatibles", () => {
+  const estado = crearEstadoInicial();
+  const interpretacionIA = {
+    intencion: "consulta_producto",
+    accion: "consultar",
+    confianza: 0.96,
+    producto: {
+      marca: "PRO PLAN",
+      referencia: "PRO PLAN CANINE OM",
+      especie: "gato",
+      categoria: "comida",
+      subcategoria: "concentrado",
+      etapa: "todas",
+      tamano: "todas",
+      presentacion: "2kg",
+      sabores: [],
+      condiciones: [],
+    },
+    productos: [],
+  };
+
+  const respuesta = resolverConsultaCatalogo("Que costo tiene", estado, catalogoProPlanBilingue, interpretacionIA);
+
+  assert.match(respuesta, /PRO PLAN CANINE OM 2kg: \$122\.000/i);
+  assert.doesNotMatch(respuesta, /no tengo una referencia exacta/i);
+  assert.equal(estado.productosConsultados[0].referencia, "PRO PLAN CANINE OM");
+});
+
+test("usa feline del nombre como especie aunque el campo del catalogo venga incorrecto", () => {
+  const estado = crearEstadoInicial();
+
+  const respuesta = resolverConsultaCatalogo("que precio tiene pro plan feline om?", estado, catalogoProPlanBilingue, null);
+
+  assert.match(respuesta, /PRO PLAN FELINE OM/i);
+  assert.match(respuesta, /1\.5kg: \$113\.600/i);
+  assert.doesNotMatch(respuesta, /PRO PLAN CANINE OM/i);
 });
 
 test("niega una presentacion inexistente cuando la IA detecta la referencia exacta", () => {
@@ -450,6 +685,69 @@ test("busca productos por subcategoria petshop", () => {
 
   assert.match(respuesta, /NexGard/i);
   assert.match(respuesta, /confirmaci[oó]n responsable|veterinario/i);
+});
+
+test("una consulta nueva por purgantes no arrastra la referencia anterior de comida", () => {
+  const estado = crearEstadoInicial();
+  estado.marca = "BR";
+  estado.criterios = {
+    especie: "gato",
+    categoria: "comida",
+    subcategoria: "concentrado",
+    etapa: "adulto",
+  };
+  estado.ultimaSeleccion = {
+    marca: "BR",
+    referencia: "BR CAT ADUL POLLO",
+    presentacion: null,
+    cantidad: 1,
+  };
+
+  const respuesta = resolverConsultaCatalogo("y que purgantes tienes para gato?", estado, catalogoPetshopExtendido, null);
+
+  assert.match(respuesta, /Drontal Gatos/i);
+  assert.match(respuesta, /desparasitante|medicamento|confirmaci[oó]n responsable|veterinario/i);
+  assert.doesNotMatch(respuesta, /BR CAT ADUL POLLO/i);
+  assert.doesNotMatch(respuesta, /Presentaciones:\s*- 1kg/i);
+});
+
+test("entiende pulgas y garrapatas por especie sin quedarse en la marca anterior", () => {
+  const estado = crearEstadoInicial();
+  estado.marca = "BR";
+  estado.criterios = { especie: "gato", categoria: "comida", subcategoria: "concentrado" };
+
+  const respuesta = resolverConsultaCatalogo(
+    "que tienen para pulgas y garrapatas en gatos?",
+    estado,
+    catalogoPetshopExtendido,
+    null
+  );
+
+  assert.match(respuesta, /Frontline Gato/i);
+  assert.doesNotMatch(respuesta, /NexGard/i);
+  assert.doesNotMatch(respuesta, /BR CAT ADUL POLLO/i);
+});
+
+test("cambia de contexto para snacks arena y juguetes", () => {
+  const estadoSnack = crearEstadoInicial();
+  estadoSnack.marca = "BR";
+  estadoSnack.criterios = { especie: "gato", categoria: "comida", subcategoria: "concentrado" };
+
+  const snacks = resolverConsultaCatalogo("que snacks tienes para gato?", estadoSnack, catalogoPetshopExtendido, null);
+  assert.match(snacks, /Churu Gato Pollo/i);
+  assert.doesNotMatch(snacks, /BR CAT ADUL POLLO/i);
+
+  const estadoArena = crearEstadoInicial();
+  estadoArena.marca = "BR";
+  estadoArena.criterios = { especie: "gato", categoria: "comida", subcategoria: "concentrado" };
+
+  const arena = resolverConsultaCatalogo("manejan arena para gato?", estadoArena, catalogoPetshopExtendido, null);
+  assert.match(arena, /Arena Max Gato/i);
+  assert.doesNotMatch(arena, /BR CAT ADUL POLLO/i);
+
+  const juguetes = resolverConsultaCatalogo("juguetes para perro", crearEstadoInicial(), catalogoPetshopExtendido, null);
+  assert.match(juguetes, /Kong/i);
+  assert.doesNotMatch(juguetes, /Chunky/i);
 });
 
 test("reconoce una referencia exacta aunque no sea marca del catalogo", () => {
@@ -843,6 +1141,66 @@ test("una imagen con referencia exacta usa el producto interpretado aunque el ca
   assert.equal(estado.productosConsultados[0].peso, "2kg");
   assert.match(respuesta, /Chunky Adulto Todas las Razas 2kg: \$32\.000/i);
   assert.doesNotMatch(respuesta, /no tengo una referencia exacta|no tengo exactamente/i);
+});
+
+test("normaliza presentaciones importadas con prefijo x contra imagen texto o audio", () => {
+  const estado = crearEstadoInicial();
+  const interpretacionIA = {
+    intencion: "consulta_producto",
+    accion: "consultar",
+    confianza: 0.96,
+    producto: {
+      marca: "CHUNKY",
+      referencia: "CHUNKY ADULTO",
+      especie: "perro",
+      etapa: "adulto",
+      tamano: "todas",
+      presentacion: "2kg",
+      cantidad: 1,
+    },
+    productos: [],
+    entrega: {},
+    datosCliente: {},
+    carrito: { operacion: null },
+    faltanteSugerido: null,
+  };
+
+  const respuesta = resolverConsultaCatalogo("Y este que costo tiene?", estado, catalogoChunkyImportado, interpretacionIA);
+
+  assert.equal(estado.productosConsultados.length, 1);
+  assert.equal(estado.productosConsultados[0].referencia, "CHUNKY ADULTO");
+  assert.equal(estado.productosConsultados[0].peso, "x 2 kg");
+  assert.match(respuesta, /CHUNKY ADULTO x 2 kg: \$18\.900/i);
+  assert.doesNotMatch(respuesta, /no tengo presentación de 2kg/i);
+});
+
+test("normaliza gramos leidos desde imagen contra presentaciones en kilos", () => {
+  const estado = crearEstadoInicial();
+  const interpretacionIA = {
+    intencion: "consulta_producto",
+    accion: "consultar",
+    confianza: 0.96,
+    producto: {
+      marca: "CHUNKY",
+      referencia: "CHUNKY ADULTO",
+      especie: "perro",
+      etapa: "adulto",
+      tamano: "todas",
+      presentacion: "2000g",
+      cantidad: 1,
+    },
+    productos: [],
+    entrega: {},
+    datosCliente: {},
+    carrito: { operacion: null },
+    faltanteSugerido: null,
+  };
+
+  const respuesta = resolverConsultaCatalogo("Y este que costo tiene?", estado, catalogoChunkyImportado, interpretacionIA);
+
+  assert.equal(estado.productosConsultados[0].peso, "x 2 kg");
+  assert.match(respuesta, /CHUNKY ADULTO x 2 kg: \$18\.900/i);
+  assert.doesNotMatch(respuesta, /no tengo presentación/i);
 });
 
 test("otra pregunta de precio despues de cotizar sigue sin agregar", () => {

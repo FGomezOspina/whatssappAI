@@ -2,6 +2,7 @@ const crypto = require("crypto");
 const { WhatsAppClient } = require("@kapso/whatsapp-cloud-api");
 
 const DEFAULT_BASE_URL = "https://api.kapso.ai/meta/whatsapp";
+const WHATSAPP_TEXT_BODY_MAX_CHARS = 4096;
 const DEFAULT_GRAPH_VERSION = "v24.0";
 
 function normalizarBaseUrl(baseUrl = DEFAULT_BASE_URL) {
@@ -306,6 +307,32 @@ function extraerEventos(payload, headers = {}) {
   return payloads.map((item) => normalizarEvento(item, headers)).filter(Boolean);
 }
 
+function dividirTextoWhatsApp(texto = "", maximo = WHATSAPP_TEXT_BODY_MAX_CHARS) {
+  const contenido = texto.toString();
+  if (contenido.length <= maximo) return [contenido];
+
+  const partes = [];
+  let restante = contenido;
+
+  while (restante.length > maximo) {
+    const ventana = restante.slice(0, maximo + 1);
+    const cortes = [
+      ventana.lastIndexOf("\n\n"),
+      ventana.lastIndexOf("\n"),
+      ventana.lastIndexOf(". "),
+      ventana.lastIndexOf(" "),
+    ].filter((indice) => indice > Math.floor(maximo * 0.55) && indice <= maximo);
+    const corte = cortes.length ? Math.max(...cortes) : maximo;
+    const parte = restante.slice(0, corte).trim();
+
+    if (parte) partes.push(parte);
+    restante = restante.slice(corte).trimStart();
+  }
+
+  if (restante.trim()) partes.push(restante.trim());
+  return partes;
+}
+
 async function enviarTexto({ to, text, phoneNumberId }) {
   const { apiKey, baseUrl, graphVersion, phoneNumberId: phoneNumberIdConfigurado } = obtenerConfiguracion();
   const numeroOrigen = phoneNumberId || phoneNumberIdConfigurado;
@@ -320,15 +347,25 @@ async function enviarTexto({ to, text, phoneNumberId }) {
     kapsoApiKey: apiKey,
   });
 
-  return client.messages.sendText({
-    phoneNumberId: numeroOrigen,
-    to,
-    body: text,
-  });
+  const partes = dividirTextoWhatsApp(text);
+  const respuestas = [];
+
+  for (const parte of partes) {
+    respuestas.push(
+      await client.messages.sendText({
+        phoneNumberId: numeroOrigen,
+        to,
+        body: parte,
+      })
+    );
+  }
+
+  return respuestas.length === 1 ? respuestas[0] : respuestas;
 }
 
 module.exports = {
   enviarTexto,
+  dividirTextoWhatsApp,
   extraerEventos,
   normalizarEvento,
   verificarFirmaWebhook,

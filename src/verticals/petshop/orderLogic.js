@@ -97,6 +97,35 @@ const PALABRAS_CRITERIO = [
   "g",
 ];
 
+const TOKENS_CORTOS_REFERENCIA = new Set(["om", "ur", "nf", "ha", "cn", "rp", "rmg"]);
+const TOKENS_REFERENCIA_IGNORADOS = new Set([
+  "de",
+  "del",
+  "la",
+  "el",
+  "los",
+  "las",
+  "un",
+  "una",
+  "y",
+  "para",
+  "que",
+  "precio",
+  "tiene",
+  "tienen",
+  "manejan",
+  "este",
+  "esta",
+  "referencia",
+  "kg",
+  "kl",
+  "gr",
+  "g",
+  "lb",
+  "x",
+]);
+const TOKENS_FORMATO_REFERENCIA = ["lata", "pouch", "pouche", "sobre", "sachet"];
+
 function elegirVariante(llave, opciones) {
   const base = normalizar(llave);
   const suma = base.split("").reduce((total, caracter) => total + caracter.charCodeAt(0), 0);
@@ -211,6 +240,42 @@ function contieneAlguno(textoNormalizado, palabras) {
   return palabras.some((palabra) => contieneFrase(textoNormalizado, palabra));
 }
 
+function tokensNormalizados(texto = "") {
+  return normalizar(texto).split(/\s+/).filter(Boolean);
+}
+
+function tokensReferencia(texto = "") {
+  return tokensNormalizados(texto).filter(
+    (token) => !TOKENS_REFERENCIA_IGNORADOS.has(token) && !/^\d+(?:\.\d+)?$/.test(token)
+  );
+}
+
+function tokensClaveCortos(texto = "") {
+  return tokensReferencia(texto).filter((token) => TOKENS_CORTOS_REFERENCIA.has(token));
+}
+
+function referenciaContieneConsulta(referencia, consulta = "") {
+  const consultaTokens = tokensReferencia(consulta);
+  if (!consultaTokens.length) return false;
+
+  const referenciaTokens = new Set(tokensReferencia(`${referencia.nombre} ${referencia.descripcion || ""}`));
+  const distintivos = consultaTokens.filter(
+    (token) => token.length > 3 || TOKENS_CORTOS_REFERENCIA.has(token)
+  );
+
+  return distintivos.length > 0 && distintivos.every((token) => referenciaTokens.has(token));
+}
+
+function referenciasPorSenalesMensaje(referencias = [], mensaje = "") {
+  const tokensCortos = tokensClaveCortos(mensaje);
+  if (!tokensCortos.length) return referencias;
+
+  return referencias.filter((referencia) => {
+    const tokens = new Set(tokensReferencia(`${referencia.nombre} ${referencia.descripcion || ""}`));
+    return tokensCortos.some((token) => tokens.has(token));
+  });
+}
+
 function extraerCondicionesProducto(textoNormalizado = "") {
   const condiciones = [];
   const agregar = (condicion) => {
@@ -231,9 +296,10 @@ function extraerCondicionesProducto(textoNormalizado = "") {
 function normalizarEspecie(especie = "perro") {
   const texto = normalizar(especie);
 
-  if (contieneAlguno(texto, ["gato", "gatos", "gatito", "gatita", "gatitos", "gatitas", "felino", "felinos"])) {
+  if (contieneAlguno(texto, ["gato", "gatos", "gatito", "gatita", "gatitos", "gatitas", "felino", "felinos", "feline", "cat"])) {
     return "gato";
   }
+  if (contieneAlguno(texto, ["perro", "perros", "perrito", "perrita", "canino", "canina", "canine", "dog"])) return "perro";
   if (contieneAlguno(texto, ["ave", "aves", "pajaro", "pajaros"])) return "ave";
   if (contieneAlguno(texto, ["roedor", "roedores", "hamster", "conejo", "cobayo"])) return "roedor";
   if (contieneAlguno(texto, ["pez", "peces"])) return "pez";
@@ -247,7 +313,27 @@ function normalizarEspecie(especie = "perro") {
 function normalizarCategoria(valor = "") {
   const texto = normalizar(valor);
   if (contieneAlguno(texto, ["comida", "alimento", "concentrado", "purina"])) return "comida";
-  if (contieneAlguno(texto, ["medicamento", "medicamentos", "medicina", "antipulgas", "desparasitante"])) {
+  if (
+    contieneAlguno(texto, [
+      "medicamento",
+      "medicamentos",
+      "medicina",
+      "antipulgas",
+      "desparasitante",
+      "desparasitantes",
+      "desparasitar",
+      "purgante",
+      "purgantes",
+      "purga",
+      "purgar",
+      "antiparasitario",
+      "antiparasitarios",
+      "pulga",
+      "pulgas",
+      "garrapata",
+      "garrapatas",
+    ])
+  ) {
     return "medicamento";
   }
   if (contieneAlguno(texto, ["accesorio", "accesorios", "collar", "cama", "correa", "arnes"])) return "accesorio";
@@ -263,13 +349,32 @@ function normalizarCategoria(valor = "") {
 function normalizarSubcategoria(valor = "") {
   const texto = normalizar(valor);
   if (contieneAlguno(texto, ["concentrado", "cuido", "purina"])) return "concentrado";
-  if (contieneAlguno(texto, ["comida humeda", "humeda", "humedo", "lata", "sobre"])) return "comida_humeda";
-  if (contieneAlguno(texto, ["antipulgas", "pulga", "pulgas", "garrapata"])) return "antipulgas";
-  if (contieneAlguno(texto, ["desparasitante", "desparasitar", "parasitos"])) return "desparasitante";
+  if (contieneAlguno(texto, ["comida humeda", "humeda", "humedo", "lata", "sobre", "pouch", "pouche", "sachet"])) return "comida_humeda";
+  if (contieneAlguno(texto, ["antipulgas", "pulga", "pulgas", "garrapata", "garrapatas"])) return "antipulgas";
+  if (
+    contieneAlguno(texto, [
+      "desparasitante",
+      "desparasitantes",
+      "desparasitar",
+      "parasito",
+      "parasitos",
+      "purgante",
+      "purgantes",
+      "purga",
+      "purgar",
+      "antiparasitario",
+      "antiparasitarios",
+    ])
+  ) {
+    return "desparasitante";
+  }
   if (contieneAlguno(texto, ["collar"])) return "collar";
   if (contieneAlguno(texto, ["cama"])) return "cama";
   if (contieneAlguno(texto, ["champu", "shampoo"])) return "champu";
   if (contieneAlguno(texto, ["vitamina", "vitaminas"])) return "vitaminas";
+  if (contieneAlguno(texto, ["snack", "snacks", "premio", "premios", "galleta", "galletas"])) return "snack";
+  if (contieneAlguno(texto, ["juguete", "juguetes", "pelota", "mordedor"])) return "juguete";
+  if (contieneAlguno(texto, ["arena", "sustrato"])) return "arena";
   return null;
 }
 
@@ -290,15 +395,15 @@ function extraerCriterios(mensaje) {
     criterios.edadEspecial = "mayor";
   }
 
-  if (contieneAlguno(texto, ["pequeno", "pequena", "pequenos", "pequenas", "mini"])) {
+  if (contieneAlguno(texto, ["pequeno", "pequena", "pequenos", "pequenas", "mini", "small"])) {
     criterios.tamano = "pequeno";
   }
 
-  if (contieneAlguno(texto, ["grande", "grandes", "mediano", "mediana", "medianos", "medianas"])) {
+  if (contieneAlguno(texto, ["grande", "grandes", "mediano", "mediana", "medianos", "medianas", "medium", "large"])) {
     criterios.tamano = "grande";
   }
 
-  if (contieneAlguno(texto, ["todas las razas", "todos los tamanos", "todo tamano", "cualquier tamano", "cualquier raza"])) {
+  if (contieneAlguno(texto, ["todas las razas", "todos los tamanos", "todo tamano", "cualquier tamano", "cualquier raza", "all breeds", "all sizes"])) {
     criterios.tamano = "todas";
   }
 
@@ -308,11 +413,11 @@ function extraerCriterios(mensaje) {
   if (contieneFrase(texto, "cordero")) sabores.push("cordero");
   if (sabores.length) criterios.sabores = sabores;
 
-  if (contieneAlguno(texto, ["perro", "perros", "perrito", "perrita", "canino"])) {
+  if (contieneAlguno(texto, ["perro", "perros", "perrito", "perrita", "canino", "canina", "canine", "dog"])) {
     criterios.especie = "perro";
   }
 
-  if (contieneAlguno(texto, ["gato", "gatos", "gatito", "gatita", "gatitos", "gatitas", "felino", "felinos"])) {
+  if (contieneAlguno(texto, ["gato", "gatos", "gatito", "gatita", "gatitos", "gatitas", "felino", "felinos", "feline", "cat"])) {
     criterios.especie = "gato";
   }
   if (contieneAlguno(texto, ["ave", "aves", "pajaro", "pajaros"])) criterios.especie = "ave";
@@ -373,6 +478,12 @@ function atributosReferencia(referencia) {
     requiereConfirmacion: Boolean(referencia.requiereConfirmacion),
   };
 
+  if (contieneAlguno(texto, ["feline", "felino", "felina", "cat", "gato", "gata"])) {
+    atributos.especie = "gato";
+  } else if (contieneAlguno(texto, ["canine", "canino", "canina", "dog", "perro", "perra"])) {
+    atributos.especie = "perro";
+  }
+
   if (!atributos.categoria) atributos.categoria = normalizarCategoria(texto);
   if (!atributos.subcategoria) atributos.subcategoria = normalizarSubcategoria(texto);
 
@@ -389,15 +500,15 @@ function atributosReferencia(referencia) {
     atributos.edadEspecial = "mayor";
   }
 
-  if (contieneAlguno(texto, ["pequeno", "pequena", "pequenos", "pequenas", "mini"])) {
+  if (contieneAlguno(texto, ["pequeno", "pequena", "pequenos", "pequenas", "mini", "small"])) {
     atributos.tamano = "pequeno";
   }
 
-  if (contieneAlguno(texto, ["grande", "grandes", "mediano", "mediana", "medianos", "medianas"])) {
+  if (contieneAlguno(texto, ["grande", "grandes", "mediano", "mediana", "medianos", "medianas", "medium", "large"])) {
     atributos.tamano = "grande";
   }
 
-  if (contieneAlguno(texto, ["todas las razas", "todos los tamanos", "todo tamano", "cualquier tamano", "cualquier raza"])) {
+  if (contieneAlguno(texto, ["todas las razas", "todos los tamanos", "todo tamano", "cualquier tamano", "cualquier raza", "all breeds", "all sizes"])) {
     atributos.tamano = "todas";
   }
 
@@ -432,11 +543,19 @@ function referenciaCumple(referencia, criterios) {
     return false;
   }
 
-  if (criterios.categoria && atributos.categoria !== criterios.categoria) {
+  if (
+    criterios.categoria &&
+    atributos.categoria !== criterios.categoria &&
+    atributos.subcategoria !== criterios.categoria
+  ) {
     return false;
   }
 
-  if (criterios.subcategoria && atributos.subcategoria !== criterios.subcategoria) {
+  if (
+    criterios.subcategoria &&
+    atributos.subcategoria !== criterios.subcategoria &&
+    atributos.categoria !== criterios.subcategoria
+  ) {
     return false;
   }
 
@@ -530,6 +649,8 @@ function puntuarReferencia(referencia, criterios, mensaje) {
   const textoReferencia = normalizar(`${referencia.nombre} ${referencia.descripcion || ""}`);
   const textoMensaje = normalizar(mensaje);
   const atributos = atributosReferencia(referencia);
+  const tokensMensaje = new Set(tokensReferencia(textoMensaje));
+  const tokensRef = new Set(tokensReferencia(textoReferencia));
   let puntos = 0;
 
   if (contieneFrase(textoMensaje, referencia.nombre)) puntos += 20;
@@ -555,6 +676,14 @@ function puntuarReferencia(referencia, criterios, mensaje) {
   if (referencia.presentaciones?.length > 1 && contieneAlguno(textoMensaje, ["todas las razas", "todos los tamanos", "cualquier tamano"])) {
     puntos += 3;
   }
+
+  tokensClaveCortos(textoMensaje).forEach((token) => {
+    if (tokensRef.has(token)) puntos += 12;
+  });
+
+  TOKENS_FORMATO_REFERENCIA.forEach((token) => {
+    if (tokensRef.has(token) && !tokensMensaje.has(token)) puntos -= 4;
+  });
 
   normalizar(referencia.nombre)
     .split(/\s+/)
@@ -598,6 +727,7 @@ function elegirMejorReferencia(referencias, criterios, mensaje) {
     Boolean(criterios.etapa && criterios.sabores && criterios.sabores.length) ||
     Boolean(criterios.condiciones && criterios.condiciones.length && criterios.sabores && criterios.sabores.length) ||
     Boolean(criterios.condiciones && criterios.condiciones.length && criterios.especie) ||
+    Boolean(tokensClaveCortos(mensaje).length) ||
     Boolean(criterios.edadEspecial);
 
   if (haySuficienteDetalle && primera.puntos >= segunda.puntos + 2) {
@@ -844,6 +974,22 @@ function listarReferencias(marca, referencias = marca.referencias) {
   return `Súper. En ${marca.marca} tengo estas referencias disponibles:\n${lista}\n\nCuéntame cuál te interesa o dime cómo es tu ${mascota} y te ayudo a escoger.`;
 }
 
+function itemsConsultaReferencias(marca, referencias = []) {
+  return referencias.flatMap((referencia) =>
+    referencia.presentaciones.map((presentacion) => ({
+      marca,
+      referencia,
+      presentacion,
+      cantidad: 1,
+    }))
+  );
+}
+
+function solicitaPrecioProducto(mensaje) {
+  const texto = normalizar(mensaje);
+  return contieneAlguno(texto, ["precio", "precios", "cuanto vale", "a como", "valor", "cotizar", "cotizacion"]);
+}
+
 function describirCriterios(criterios = {}) {
   const partes = [];
 
@@ -886,16 +1032,19 @@ function referenciasPorEspecie(catalogo, especie) {
     .filter((grupo) => grupo.referencias.length);
 }
 
-function listarReferenciasPorEspecie(catalogo, especie) {
+function listarReferenciasPorEspecie(catalogo, especie, limite = 18) {
   const grupos = referenciasPorEspecie(catalogo, especie);
   if (!grupos.length) return "";
 
-  return grupos
+  const lineas = grupos
     .map((grupo) => {
       const referencias = grupo.referencias.map((referencia) => referencia.nombre).join(", ");
       return `- ${grupo.marca.marca}: ${referencias}`;
-    })
-    .join("\n");
+    });
+  const visibles = lineas.slice(0, limite);
+  const restantes = lineas.length - visibles.length;
+
+  return `${visibles.join("\n")}${restantes > 0 ? `\n- Y ${restantes} marcas más disponibles. Dime una referencia o marca más específica y la reviso.` : ""}`;
 }
 
 function crearAlternativaPendiente(estado, gruposPorEspecie) {
@@ -2061,8 +2210,8 @@ function criteriosDesdeInterpretacion(interpretacion = {}) {
   return criteriosDesdeProducto(interpretacion?.producto || {});
 }
 
-function criteriosSinSabores(criterios = {}) {
-  const { sabores, ...resto } = criterios;
+function criteriosParaReferenciaInterpretada(criterios = {}) {
+  const { sabores, tamano, etapa, ...resto } = criterios;
   return resto;
 }
 
@@ -2078,16 +2227,39 @@ function buscarReferenciaInterpretada(marca, interpretacion, criterios) {
   if (!nombre) return null;
 
   const texto = normalizar(nombre);
-  const criteriosReferencia = criteriosSinSabores(criterios);
-  return (
-    marca.referencias.find(
-      (referencia) =>
-        referenciaCumple(referencia, criteriosReferencia) &&
-        (normalizar(referencia.nombre) === texto ||
-          contieneFrase(normalizar(referencia.nombre), texto) ||
-          contieneFrase(texto, referencia.nombre))
-    ) || buscarReferenciaExacta(marca, nombre, criteriosReferencia)
+  const tieneDetalleDeLinea = Boolean(
+    criterios.etapa ||
+      criterios.tamano ||
+      criterios.edadEspecial ||
+      (criterios.condiciones && criterios.condiciones.length) ||
+      (criterios.sabores && criterios.sabores.length)
   );
+  if (tieneDetalleDeLinea && texto === normalizar(marca.marca)) return null;
+
+  const exactaPorNombre = marca.referencias.find((referencia) => normalizar(referencia.nombre) === texto);
+  if (exactaPorNombre) return exactaPorNombre;
+
+  const criteriosReferencia = criteriosParaReferenciaInterpretada(criterios);
+  const candidatas = marca.referencias
+    .filter((referencia) => referenciaCumple(referencia, criteriosReferencia))
+    .filter(
+      (referencia) =>
+        !(tieneDetalleDeLinea && normalizar(referencia.nombre) === normalizar(marca.marca))
+    )
+    .filter(
+      (referencia) =>
+        normalizar(referencia.nombre) === texto ||
+        contieneFrase(normalizar(referencia.nombre), texto) ||
+        contieneFrase(texto, referencia.nombre) ||
+        referenciaContieneConsulta(referencia, nombre)
+    )
+    .map((referencia) => ({
+      referencia,
+      puntos: puntuarReferencia(referencia, criteriosReferencia, nombre),
+    }))
+    .sort((a, b) => b.puntos - a.puntos);
+
+  return candidatas[0]?.referencia || buscarReferenciaExacta(marca, nombre, criteriosReferencia);
 }
 
 function buscarPresentacionInterpretada(referencia, interpretacion, mensaje) {
@@ -2254,7 +2426,8 @@ function resolverProductosInterpretadosIA(mensaje, estado, catalogo, interpretac
 
     const criterios = mezclarCriterios(extraerCriterios(mensaje), criteriosDesdeProducto(producto));
     marca = refinarMarcaPorCriterios(catalogo, marca, criterios, producto.referencia || mensaje);
-    const referencias = referenciasPorCriterios(marca, criterios);
+    const referenciasBase = referenciasPorCriterios(marca, criterios);
+    const referencias = referenciasPorSenalesMensaje(referenciasBase, producto.referencia || mensaje);
     const referencia =
       buscarReferenciaInterpretada(marca, { producto }, criterios) ||
       elegirMejorReferencia(referencias, criterios, producto.referencia || mensaje);
@@ -2377,7 +2550,8 @@ function resolverConInterpretacionIA(mensaje, estado, catalogo, interpretacion) 
   const criterios = mezclarCriterios(criteriosBase || {}, mezclarCriterios(extraerCriterios(mensaje), criteriosIA));
   marca = refinarMarcaPorCriterios(catalogo, marca, criterios, mensaje);
   const referenciaInterpretada = buscarReferenciaInterpretada(marca, interpretacion, criterios);
-  let referencias = referenciasPorCriterios(marca, criterios);
+  const textoBusquedaIA = `${interpretacion.producto?.referencia || ""} ${mensaje}`;
+  let referencias = referenciasPorSenalesMensaje(referenciasPorCriterios(marca, criterios), textoBusquedaIA);
   if (!referencias.length && referenciaInterpretada) {
     referencias = [referenciaInterpretada];
   }
@@ -2553,7 +2727,10 @@ function resolverProductosExplicitos(mensaje, estado, catalogo, opciones = {}) {
     const metodoPago = detectarMetodoPago(mensaje);
     if (metodoPago) estado.metodoPago = metodoPago;
 
-    const referencias = referenciasPorCriterios(marcaSegmento, criterios);
+    const referencias = referenciasPorSenalesMensaje(
+      referenciasPorCriterios(marcaSegmento, criterios),
+      segmento.texto
+    );
     const referencia =
       buscarReferenciaExacta(marcaSegmento, segmento.texto, criterios) ||
       elegirMejorReferencia(referencias, criterios, segmento.texto);
@@ -3876,10 +4053,12 @@ function resolverConsultaCatalogo(mensaje, estado, catalogo = [], interpretacion
   const marcaDetectadaBase = buscarMarcaInterpretada(catalogo, interpretacion) || marcaEnMensaje;
   const criteriosMensaje = mezclarCriterios(criteriosTextoMensaje, criteriosDesdeInterpretacion(interpretacion));
   const marcaDetectada = refinarMarcaPorCriterios(catalogo, marcaDetectadaBase, criteriosMensaje, mensaje);
-  const marcaDesconocida = extraerMarcaDesconocida(mensaje, catalogo, {
-    permitirCandidatoSolo:
-      estado.esperandoMarca || (!estado.marca && !tieneCriterios(criteriosMensaje)),
-  });
+  const marcaDesconocida = criteriosMensaje.categoria || criteriosMensaje.subcategoria
+    ? null
+    : extraerMarcaDesconocida(mensaje, catalogo, {
+        permitirCandidatoSolo:
+          estado.esperandoMarca || (!estado.marca && !tieneCriterios(criteriosMensaje)),
+      });
   const pidioMarcas = solicitaMarcas(mensaje);
   const pidioReferencias = solicitaReferencias(mensaje);
   const pidioRecomendacion = solicitaRecomendacion(mensaje);
@@ -4092,13 +4271,16 @@ function resolverConsultaCatalogo(mensaje, estado, catalogo = [], interpretacion
     return listarMarcas(catalogo);
   }
 
-  const debeUsarMarcaEnMemoria = !(pidioMarcas && !marcaDetectada && criteriosMensaje.especie);
+  const consultaNuevaPorTaxonomia = Boolean(
+    !marcaDetectada && (criteriosMensaje.categoria || criteriosMensaje.subcategoria)
+  );
+  const debeUsarMarcaEnMemoria = !consultaNuevaPorTaxonomia && !(pidioMarcas && !marcaDetectada && criteriosMensaje.especie);
   const marca =
     marcaDetectada || (debeUsarMarcaEnMemoria && estado.marca ? buscarMarcaPorNombre(catalogo, estado.marca) : null);
   const estaExplorandoMarca = solicitaExplorarMarca(mensaje, { pidioMarcas, pidioReferencias });
   const marcaExplicitaEnMensaje = Boolean(marcaDetectada);
   const debeIgnorarCriteriosPrevios = estaExplorandoMarca && !tieneCriterios(criteriosMensaje);
-  const criteriosBase = marcaExplicitaEnMensaje ? {} : estado.criterios;
+  const criteriosBase = marcaExplicitaEnMensaje || consultaNuevaPorTaxonomia ? {} : estado.criterios;
   const criterios = debeIgnorarCriteriosPrevios ? {} : mezclarCriterios(criteriosBase, criteriosMensaje);
 
   if (marcaDetectada) {
@@ -4134,9 +4316,10 @@ function resolverConsultaCatalogo(mensaje, estado, catalogo = [], interpretacion
   }
 
   if (estaExplorandoMarca) {
-    const referenciasFiltradas = tieneCriterios(criteriosMensaje)
-      ? referenciasPorCriterios(marca, criterios)
-      : marca.referencias;
+    const referenciasFiltradas = referenciasPorSenalesMensaje(
+      tieneCriterios(criteriosMensaje) ? referenciasPorCriterios(marca, criterios) : marca.referencias,
+      mensaje
+    );
 
     estado.marca = marca.marca;
     estado.criterios = tieneCriterios(criteriosMensaje) ? criterios : {};
@@ -4156,7 +4339,7 @@ function resolverConsultaCatalogo(mensaje, estado, catalogo = [], interpretacion
   }
 
   const referenciaExacta = buscarReferenciaExacta(marca, mensaje, criterios);
-  const referencias = referenciasPorCriterios(marca, criterios);
+  const referencias = referenciasPorSenalesMensaje(referenciasPorCriterios(marca, criterios), mensaje);
   const referencia = referenciaExacta || elegirMejorReferencia(referencias, criterios, mensaje);
 
   if (!referencia) {
@@ -4216,7 +4399,10 @@ function resolverConsultaCatalogo(mensaje, estado, catalogo = [], interpretacion
   }
 
   if (pidioReferencias) {
-    const referenciasFiltradas = tieneCriterios(criteriosMensaje) ? referencias : marca.referencias;
+    const referenciasFiltradas = referenciasPorSenalesMensaje(
+      tieneCriterios(criteriosMensaje) ? referencias : marca.referencias,
+      mensaje
+    );
 
     estado.marca = marca.marca;
     estado.criterios = tieneCriterios(criteriosMensaje) ? criterios : {};
@@ -4230,8 +4416,15 @@ function resolverConsultaCatalogo(mensaje, estado, catalogo = [], interpretacion
 
   if (!tieneCriterios(criterios)) {
     estado.marca = marca.marca;
-    guardarReferenciasPendientes(estado, marca, marca.referencias);
-    return listarReferencias(marca);
+    guardarReferenciasPendientes(estado, marca, referencias);
+    if (solicitaPrecioProducto(mensaje) && referencias.length && referencias.length <= 6) {
+      const consultados = itemsConsultaReferencias(marca, referencias);
+      guardarProductosConsultados(estado, consultados);
+      return `Estos son los precios que encontré:\n${lineasItemsConsultados(
+        consultados
+      )}\n\nSi te sirve alguno, dime cuál quieres agregar al pedido.`;
+    }
+    return listarReferencias(marca, referencias);
   }
 
   if (!referencias.length) {

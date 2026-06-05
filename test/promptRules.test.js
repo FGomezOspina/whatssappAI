@@ -113,6 +113,19 @@ test("el interprete no usa referencias genericas cuando el cliente da linea y ta
   assert.match(prompt, /Todos los tamaños.*tamano "todas"/i);
 });
 
+test("el interprete cruza referencias bilingues y siglas terapeuticas", () => {
+  const prompt = leerServicio("aiInterpreter.js");
+
+  assert.match(prompt, /canine\/canino\/dog\/perro/);
+  assert.match(prompt, /feline\/felino\/cat\/gato/);
+  assert.match(prompt, /OM, UR, NF, HA, CN o RP/);
+  assert.match(prompt, /no lo reemplaces por una referencia generica de Pro Plan ni por Adult Small/i);
+  assert.match(prompt, /si ves perro\/dog\/canine y la sigla OM/i);
+  assert.match(prompt, /no elijas lata\/pouch\/sobre/i);
+  assert.match(prompt, /no rellenes etapa o tamano con valores genericos/i);
+  assert.match(prompt, /deja null cualquier criterio no visible/i);
+});
+
 test("el interprete mapea empaques visuales contra referencias internas del catalogo", () => {
   const prompt = leerServicio("aiInterpreter.js");
 
@@ -170,6 +183,17 @@ test("el interprete convierte formulas medicas en cotizaciones de productos", ()
   assert.match(prompt, /no diagnostiques, no expliques dosis/i);
   assert.match(prompt, /separa cada medicamento como un producto distinto/i);
   assert.match(prompt, /no inventes medicamentos/i);
+});
+
+test("el interprete cambia de foco cuando preguntan por categorias no comida", () => {
+  const prompt = leerServicio("aiInterpreter.js");
+
+  assert.match(prompt, /purgantes para gato/);
+  assert.match(prompt, /pulgas y garrapatas para gato/);
+  assert.match(prompt, /arena para gato/);
+  assert.match(prompt, /cambia el foco aunque antes hubiera una referencia pendiente/i);
+  assert.match(prompt, /medicamento\/desparasitante para gato/i);
+  assert.match(prompt, /medicamento\/antipulgas para esa especie/i);
 });
 
 test("el procesador multimedia usa un modelo moderno de transcripcion por defecto", () => {
