@@ -3,8 +3,96 @@ const assert = require("node:assert/strict");
 
 const { resolverConsultaCatalogo, extraerPresupuesto } = require("../src/verticals/petshop/orderLogic");
 const { crearEstadoInicial } = require("../src/conversation/conversationStore");
-const { cargarProductos } = require("../src/repositories/productRepository");
 const { asegurarRespuestaCatalogo } = require("../src/verticals/petshop/productLogic");
+
+const catalogoConversacionalPruebas = [
+  {
+    marca: "Dog Chow",
+    referencias: [
+      {
+        nombre: "Adulto Mini y Pequeño",
+        especie: "perro",
+        categoria: "comida",
+        subcategoria: "concentrado",
+        etapa: "adulto",
+        tamano: "pequeno",
+        descripcion: "Alimento para perros adultos de razas mini y pequeñas",
+        presentaciones: [
+          { peso: "1kg", precio: 19000, stock: true, metadata: {} },
+          { peso: "2kg", precio: 36000, stock: true, metadata: {} },
+          { peso: "4kg", precio: 68000, stock: true, metadata: {} },
+        ],
+      },
+      {
+        nombre: "Adulto Mediano y Grande",
+        especie: "perro",
+        categoria: "comida",
+        subcategoria: "concentrado",
+        etapa: "adulto",
+        tamano: "grande",
+        descripcion: "Alimento para perros adultos medianos y grandes",
+        presentaciones: [
+          { peso: "1kg", precio: 20000, stock: true, metadata: {} },
+          { peso: "2kg", precio: 38000, stock: true, metadata: {} },
+        ],
+      },
+      {
+        nombre: "Cachorros Mini y Pequeño",
+        especie: "perro",
+        categoria: "comida",
+        subcategoria: "concentrado",
+        etapa: "cachorro",
+        tamano: "pequeno",
+        descripcion: "Alimento para cachorros de razas mini y pequeñas",
+        presentaciones: [{ peso: "2kg", precio: 42000, stock: true, metadata: {} }],
+      },
+    ],
+  },
+  {
+    marca: "Chunky",
+    referencias: [
+      {
+        nombre: "Adulto Todas las Razas",
+        especie: "perro",
+        categoria: "comida",
+        subcategoria: "concentrado",
+        etapa: "adulto",
+        tamano: "todas",
+        descripcion: "Alimento para perros adultos de todas las razas",
+        presentaciones: [{ peso: "2kg", precio: 32000, stock: true, metadata: {} }],
+      },
+      {
+        nombre: "Adulto Razas Pequeñas",
+        especie: "perro",
+        categoria: "comida",
+        subcategoria: "concentrado",
+        etapa: "adulto",
+        tamano: "pequeno",
+        descripcion: "Alimento para perros adultos de razas pequeñas",
+        presentaciones: [{ peso: "2kg", precio: 21000, stock: true, metadata: {} }],
+      },
+    ],
+  },
+  {
+    marca: "Mirringo",
+    referencias: [
+      {
+        nombre: "Gato Adulto",
+        especie: "gato",
+        categoria: "comida",
+        subcategoria: "concentrado",
+        etapa: "adulto",
+        tamano: "todas",
+        descripcion: "Alimento para gatos adultos",
+        presentaciones: [{ peso: "1kg", precio: 18000, stock: true, metadata: {} }],
+      },
+    ],
+  },
+];
+
+function cargarCatalogoPruebas() {
+  return JSON.parse(JSON.stringify(catalogoConversacionalPruebas));
+}
 
 const catalogoPetshopExtendido = [
   {
@@ -55,7 +143,7 @@ const catalogoPetshopExtendido = [
 
 test("niega una presentacion inexistente aunque la referencia este ambigua", () => {
   const estado = crearEstadoInicial();
-  const catalogo = cargarProductos();
+  const catalogo = cargarCatalogoPruebas();
   const mensaje = "necesito un domicilio para car 10 17.28 de un bulto de dog chow razas pequeñas x 8 kilos";
 
   const respuesta = resolverConsultaCatalogo(mensaje, estado, catalogo, null);
@@ -68,7 +156,7 @@ test("niega una presentacion inexistente aunque la referencia este ambigua", () 
 
 test("niega una presentacion inexistente cuando la IA detecta la referencia exacta", () => {
   const estado = crearEstadoInicial();
-  const catalogo = cargarProductos();
+  const catalogo = cargarCatalogoPruebas();
   const mensaje = "necesito un domicilio para car 10 17.28 de un bulto de dog chow razas pequeñas x 8 kilos";
   const interpretacionIA = {
     intencion: "pedido_producto",
@@ -104,7 +192,7 @@ test("niega una presentacion inexistente cuando la IA detecta la referencia exac
 });
 
 test("bloquea una respuesta humanizada que afirma agregar una presentacion inexistente", () => {
-  const catalogo = cargarProductos();
+  const catalogo = cargarCatalogoPruebas();
   const mensaje = "necesito un domicilio para car 10 17.28 de un bulto de dog chow razas pequeñas x 8 kilos";
   const respuestaHumanizada =
     "Perfecto, ya dejé 1 paquete de Dog Chow para razas pequeñas de 8 kilos. ¿Quieres que continuemos con algún otro producto?";
@@ -126,7 +214,7 @@ test("bloquea una respuesta humanizada que afirma agregar una presentacion inexi
 
 test("avanza a pago cuando el cliente cierra el carrito aunque la IA reinterprete el producto anterior", () => {
   const estado = crearEstadoInicial();
-  const catalogo = cargarProductos();
+  const catalogo = cargarCatalogoPruebas();
   estado.entrega = { tipo: "domicilio", sede: null };
   estado.carrito = [
     {
@@ -187,6 +275,40 @@ test("busca productos por subcategoria petshop", () => {
   assert.match(respuesta, /confirmaci[oó]n responsable|veterinario/i);
 });
 
+test("reconoce una referencia exacta aunque no sea marca del catalogo", () => {
+  const estado = crearEstadoInicial();
+  const respuesta = resolverConsultaCatalogo("buenas tardes, manejan nexgard?", estado, catalogoPetshopExtendido, null);
+
+  assert.doesNotMatch(respuesta, /no manejamos/i);
+  assert.match(respuesta, /NexGard/i);
+  assert.match(respuesta, /10 a 25 kg/i);
+});
+
+test("una marca conocida no se vuelve criterio de antipulgas que oculte sus referencias", () => {
+  const estado = crearEstadoInicial();
+  const catalogo = [
+    {
+      marca: "NEXGARD",
+      referencias: [
+        {
+          nombre: "NEXGARD",
+          especie: "perro",
+          categoria: "medicamento",
+          subcategoria: "medicamento",
+          requiereConfirmacion: true,
+          presentaciones: [{ peso: "10-25 kg", precio: 49700, stock: true, metadata: {} }],
+        },
+      ],
+    },
+  ];
+
+  const respuesta = resolverConsultaCatalogo("buenas tardes, manejan nexgard?", estado, catalogo, null);
+
+  assert.doesNotMatch(respuesta, /no encuentro una opción exacta/i);
+  assert.match(respuesta, /NEXGARD/i);
+  assert.match(respuesta, /10-25 kg/i);
+});
+
 test("busca productos por especie y etapa", () => {
   const estado = crearEstadoInicial();
   const respuesta = resolverConsultaCatalogo("comida para perro adulto", estado, catalogoPetshopExtendido, null);
@@ -205,7 +327,7 @@ test("busca accesorios sin mezclarlos con comida", () => {
 
 test("prioriza un bloque de datos de envio sobre recomendaciones por presupuesto", () => {
   const estado = crearEstadoInicial();
-  const catalogo = cargarProductos();
+  const catalogo = cargarCatalogoPruebas();
   const mensaje = [
     "1004755939",
     "fabio@gmail.com",
@@ -253,7 +375,7 @@ test("prioriza un bloque de datos de envio sobre recomendaciones por presupuesto
 
 test("no trata una apertura de pedido como marca desconocida", () => {
   const estado = crearEstadoInicial();
-  const catalogo = cargarProductos();
+  const catalogo = cargarCatalogoPruebas();
 
   const respuesta = resolverConsultaCatalogo("hola, para hacer un pedido", estado, catalogo, null);
 
@@ -263,7 +385,7 @@ test("no trata una apertura de pedido como marca desconocida", () => {
 
 test("no trata errores de dedo en apertura de pedido como producto desconocido", () => {
   const estado = crearEstadoInicial();
-  const catalogo = cargarProductos();
+  const catalogo = cargarCatalogoPruebas();
 
   const respuesta = resolverConsultaCatalogo("buenos dias\nnecesito u8n pedido", estado, catalogo, null);
 
@@ -274,7 +396,7 @@ test("no trata errores de dedo en apertura de pedido como producto desconocido",
 
 test("usa la raza de la mascota como contexto de recomendacion", () => {
   const estado = crearEstadoInicial();
-  const catalogo = cargarProductos();
+  const catalogo = cargarCatalogoPruebas();
   const interpretacionIA = {
     intencion: "recomendacion",
     accion: "consultar",
@@ -306,7 +428,7 @@ test("usa la raza de la mascota como contexto de recomendacion", () => {
 
 test("responde con alternativas cuando una recomendacion no tiene coincidencias exactas", () => {
   const estado = crearEstadoInicial();
-  const catalogo = cargarProductos();
+  const catalogo = cargarCatalogoPruebas();
 
   const respuesta = resolverConsultaCatalogo(
     "recomiendame alimento economico para gato senior",
@@ -320,7 +442,7 @@ test("responde con alternativas cuando una recomendacion no tiene coincidencias 
 
 test("agrega varios productos interpretados desde un mismo mensaje", () => {
   const estado = crearEstadoInicial();
-  const catalogo = cargarProductos();
+  const catalogo = cargarCatalogoPruebas();
   const mensaje = [
     "Hola buenos días",
     "Por favor un pedido a domicilio p Arreboles Bl 1 Apto 102 Belmonte",
@@ -383,7 +505,7 @@ test("agrega varios productos interpretados desde un mismo mensaje", () => {
 
 test("consultar precios no agrega productos al carrito", () => {
   const estado = crearEstadoInicial();
-  const catalogo = cargarProductos();
+  const catalogo = cargarCatalogoPruebas();
   const interpretacionIA = {
     intencion: "consulta_producto",
     accion: "consultar",
@@ -439,7 +561,7 @@ test("consultar precios no agrega productos al carrito", () => {
 
 test("despues de cotizar puede agregar los productos consultados", () => {
   const estado = crearEstadoInicial();
-  const catalogo = cargarProductos();
+  const catalogo = cargarCatalogoPruebas();
   estado.productosConsultados = [
     {
       marca: "Dog Chow",
@@ -477,7 +599,7 @@ test("despues de cotizar puede agregar los productos consultados", () => {
 
 test("consulta de precio de un solo producto no agrega al carrito", () => {
   const estado = crearEstadoInicial();
-  const catalogo = cargarProductos();
+  const catalogo = cargarCatalogoPruebas();
   const interpretacionIA = {
     intencion: "consulta_producto",
     accion: "consultar",
@@ -513,7 +635,7 @@ test("consulta de precio de un solo producto no agrega al carrito", () => {
 
 test("una imagen con referencia exacta usa el producto interpretado aunque el caption sea generico", () => {
   const estado = crearEstadoInicial();
-  const catalogo = cargarProductos();
+  const catalogo = cargarCatalogoPruebas();
   const interpretacionIA = {
     intencion: "consulta_producto",
     accion: "consultar",
@@ -548,7 +670,7 @@ test("una imagen con referencia exacta usa el producto interpretado aunque el ca
 
 test("otra pregunta de precio despues de cotizar sigue sin agregar", () => {
   const estado = crearEstadoInicial();
-  const catalogo = cargarProductos();
+  const catalogo = cargarCatalogoPruebas();
   estado.productosConsultados = [
     {
       marca: "Dog Chow",
@@ -588,7 +710,7 @@ test("otra pregunta de precio despues de cotizar sigue sin agregar", () => {
 
 test("una direccion despues de cotizar continua el pedido con el producto consultado", () => {
   const estado = crearEstadoInicial();
-  const catalogo = cargarProductos();
+  const catalogo = cargarCatalogoPruebas();
   estado.productosConsultados = [
     {
       marca: "Dog Chow",
@@ -634,7 +756,7 @@ test("una direccion despues de cotizar continua el pedido con el producto consul
 
 test("un metodo de pago no reemplaza el nombre confirmado del domicilio", () => {
   const estado = crearEstadoInicial();
-  const catalogo = cargarProductos();
+  const catalogo = cargarCatalogoPruebas();
   estado.carrito = [
     {
       marca: "Dog Chow",
@@ -695,7 +817,7 @@ test("un metodo de pago no reemplaza el nombre confirmado del domicilio", () => 
 
 test("un lote completo recapitula el pedido y espera confirmacion explicita", () => {
   const estado = crearEstadoInicial();
-  const catalogo = cargarProductos();
+  const catalogo = cargarCatalogoPruebas();
   const mensaje = [
     "Hola",
     "Por favor me vende 2 paquetes de dog chow a raza pequeña 2kl?",
@@ -751,7 +873,7 @@ test("un lote completo recapitula el pedido y espera confirmacion explicita", ()
 
 test("un lote incompleto pide solamente los datos de envio faltantes", () => {
   const estado = crearEstadoInicial();
-  const catalogo = cargarProductos();
+  const catalogo = cargarCatalogoPruebas();
   const mensaje = [
     "Hola",
     "Por favor me vende 2 paquetes de dog chow a raza pequeña 2kl?",
@@ -802,7 +924,7 @@ test("un lote incompleto pide solamente los datos de envio faltantes", () => {
 
 test("acepta direccion colombiana con manzana y casa como direccion completa", () => {
   const estado = crearEstadoInicial();
-  const catalogo = cargarProductos();
+  const catalogo = cargarCatalogoPruebas();
   estado.carrito = [
     {
       marca: "Dog Chow",
@@ -837,7 +959,7 @@ test("acepta direccion colombiana con manzana y casa como direccion completa", (
 
 test("permite cambiar el metodo de pago desde el resumen sin alterar el nombre", () => {
   const estado = crearEstadoInicial();
-  const catalogo = cargarProductos();
+  const catalogo = cargarCatalogoPruebas();
   estado.carrito = [
     {
       marca: "Dog Chow",
@@ -929,7 +1051,7 @@ function interpretacionProductoNuevo({
 
 test("ofrece repetir el ultimo pedido confirmado con productos y direccion", () => {
   const estado = crearEstadoConPedidoAnterior();
-  const catalogo = cargarProductos();
+  const catalogo = cargarCatalogoPruebas();
 
   const pregunta = resolverConsultaCatalogo("Hola, quiero hacer un pedido", estado, catalogo, null);
 
@@ -949,7 +1071,7 @@ test("ofrece repetir el ultimo pedido confirmado con productos y direccion", () 
 
 test("un producto distinto crea carrito nuevo y conserva datos de envio anteriores", () => {
   const estado = crearEstadoConPedidoAnterior();
-  const catalogo = cargarProductos();
+  const catalogo = cargarCatalogoPruebas();
   const interpretacionIA = interpretacionProductoNuevo();
 
   const respuesta = resolverConsultaCatalogo(
@@ -969,7 +1091,7 @@ test("un producto distinto crea carrito nuevo y conserva datos de envio anterior
 
 test("perfecto confirma un pedido nuevo con datos anteriores sin repetir preguntas", () => {
   const estado = crearEstadoConPedidoAnterior();
-  const catalogo = cargarProductos();
+  const catalogo = cargarCatalogoPruebas();
   const interpretacionIA = interpretacionProductoNuevo();
 
   const resumen = resolverConsultaCatalogo(
@@ -992,7 +1114,7 @@ test("perfecto confirma un pedido nuevo con datos anteriores sin repetir pregunt
 
 test("una confirmacion con error ortografico usa la intencion semantica y no reemplaza el nombre", () => {
   const estado = crearEstadoConPedidoAnterior();
-  const catalogo = cargarProductos();
+  const catalogo = cargarCatalogoPruebas();
   estado.pedidoConfirmado = false;
   estado.esperandoConfirmacionPedido = true;
   const interpretacionIA = {
@@ -1021,7 +1143,7 @@ test("una confirmacion con error ortografico usa la intencion semantica y no ree
 
 test("un si a reutilizar la direccion anterior confirma sin pedir otra aprobacion", () => {
   const estado = crearEstadoConPedidoAnterior();
-  const catalogo = cargarProductos();
+  const catalogo = cargarCatalogoPruebas();
   estado.carrito = [
     {
       marca: "Chunky",
@@ -1046,7 +1168,7 @@ test("un si a reutilizar la direccion anterior confirma sin pedir otra aprobacio
 
 test("el mismo producto con direccion nueva no suma el pedido anterior", () => {
   const estado = crearEstadoConPedidoAnterior();
-  const catalogo = cargarProductos();
+  const catalogo = cargarCatalogoPruebas();
   const interpretacionIA = interpretacionProductoNuevo({
     marca: "Dog Chow",
     referencia: "Adulto Mini y Pequeño",
@@ -1068,7 +1190,7 @@ test("el mismo producto con direccion nueva no suma el pedido anterior", () => {
 
 test("un producto distinto con direccion nueva reemplaza solo la entrega anterior", () => {
   const estado = crearEstadoConPedidoAnterior();
-  const catalogo = cargarProductos();
+  const catalogo = cargarCatalogoPruebas();
   const interpretacionIA = interpretacionProductoNuevo({
     direccion: "Calle 18 # 10-40 Centro",
   });

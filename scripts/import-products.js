@@ -17,6 +17,14 @@ function argumento(nombre, valorPorDefecto = null) {
   return process.argv[indice + 1] || valorPorDefecto;
 }
 
+function bandera(nombre) {
+  const indice = process.argv.indexOf(`--${nombre}`);
+  if (indice < 0) return false;
+
+  const siguiente = process.argv[indice + 1];
+  return !siguiente || siguiente.startsWith("--") || ["1", "true", "si", "sí", "yes"].includes(normalizarTexto(siguiente));
+}
+
 function requerirArgumento(nombre) {
   const valor = argumento(nombre);
   if (!valor) {
@@ -267,6 +275,10 @@ function sinValoresVacios(payload) {
   );
 }
 
+function filtroIn(ids = []) {
+  return `in.(${ids.join(",")})`;
+}
+
 async function upsert(tabla, payload, onConflict) {
   const filas = await requestSupabase(`${tabla}?on_conflict=${onConflict}`, {
     method: "POST",
@@ -296,7 +308,33 @@ async function obtenerCliente(slug, nombre, vertical = "petshop") {
   return cliente;
 }
 
-async function importarCatalogo({ archivo, clientSlug, clientName, vertical = "petshop" }) {
+async function desactivarCatalogoCliente(clientId) {
+  const marcas = (await requestSupabase(`${BRANDS_TABLE}?client_id=eq.${clientId}&select=id`)) || [];
+  const brandIds = marcas.map((marca) => marca.id);
+  if (!brandIds.length) return;
+
+  const referencias =
+    (await requestSupabase(`${REFERENCES_TABLE}?brand_id=${filtroIn(brandIds)}&select=id`)) || [];
+  const referenceIds = referencias.map((referencia) => referencia.id);
+
+  if (referenceIds.length) {
+    await requestSupabase(`${PRESENTATIONS_TABLE}?reference_id=${filtroIn(referenceIds)}`, {
+      method: "PATCH",
+      body: JSON.stringify({ active: false }),
+    });
+  }
+
+  await requestSupabase(`${REFERENCES_TABLE}?brand_id=${filtroIn(brandIds)}`, {
+    method: "PATCH",
+    body: JSON.stringify({ active: false }),
+  });
+  await requestSupabase(`${BRANDS_TABLE}?client_id=eq.${clientId}`, {
+    method: "PATCH",
+    body: JSON.stringify({ active: false }),
+  });
+}
+
+async function importarCatalogo({ archivo, clientSlug, clientName, vertical = "petshop", replace = false }) {
   if (!supabaseConfigurado()) {
     throw new Error("Faltan SUPABASE_URL y SUPABASE_SECRET_KEY o SUPABASE_SERVICE_ROLE_KEY");
   }
@@ -306,6 +344,9 @@ async function importarCatalogo({ archivo, clientSlug, clientName, vertical = "p
 
   const catalogo = normalizarCatalogo(leerCatalogoJson(archivo), archivo);
   const cliente = await obtenerCliente(clientSlug, clientName, vertical);
+  if (replace) {
+    await desactivarCatalogoCliente(cliente.id);
+  }
   let totalReferencias = 0;
   let totalPresentaciones = 0;
 
@@ -377,6 +418,7 @@ if (require.main === module) {
     clientSlug: requerirArgumento("client"),
     clientName: requerirArgumento("client-name"),
     vertical: argumento("vertical", "petshop"),
+    replace: bandera("replace"),
   })
     .then(importarCatalogo)
     .then((resultado) => {
@@ -391,6 +433,7 @@ if (require.main === module) {
 }
 
 module.exports = {
+  desactivarCatalogoCliente,
   importarCatalogo,
   normalizarCatalogo,
 };

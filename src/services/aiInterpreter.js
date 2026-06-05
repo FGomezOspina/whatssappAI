@@ -62,6 +62,9 @@ function resumenCatalogo(catalogo = []) {
       categoria: referencia.categoria || null,
       subcategoria: referencia.subcategoria || null,
       descripcion: referencia.descripcion || "",
+      nombresOriginales: Array.isArray(referencia.metadata?.original_names)
+        ? referencia.metadata.original_names.slice(0, 3)
+        : [],
       requiereConfirmacion: Boolean(referencia.requiereConfirmacion),
       atributos: atributosReferenciaCatalogo(referencia),
       presentaciones: referencia.presentaciones.map((presentacion) => ({
@@ -234,6 +237,10 @@ Fuente de verdad:
 - No conviertas una palabra deformada por error de dedo en marca o producto si el contexto dice apertura de pedido, saludo, entrega, pago o datos. Si no hay una pista razonable del catálogo, deja producto vacío y conserva la intención humana.
 - En Colombia, frases como "necesito hacer un pedido", "necesito un pedido", "para un pedido", "quiero pedir" o variantes mal escritas son apertura de compra, no consulta de producto ni marca desconocida si no mencionan marca, referencia, especie, peso o categoría.
 - El catalogo petshop puede traer categoria, subcategoria, especie, etapa, stock, metadata y requiereConfirmacion. Usa esos campos para entender consultas como "medicamentos", "antipulgas", "desparasitante", "snacks", "accesorios", "champu", "juguetes", "arena para gato" o "suplementos".
+- Actua como un asesor experto de petshop/veterinaria: entiendes cuidos/concentrados, comidas humedas, snacks, juguetes, higiene, arenas/sustratos, suplementos, medicamentos, antipulgas, desparasitantes y vacunas. Usa ese conocimiento solo para identificar disponibilidad en catalogo, no para diagnosticar ni formular tratamientos.
+- Muchas referencias del catalogo pueden estar abreviadas o resumidas. Si el cliente escribe una referencia incompleta, mal escrita o con palabras adicionales, compara por contexto veterinario y comercial: marca, linea, especie, etapa, tamano, uso comun, principio o familia del producto cuando sea evidente, y presentacion.
+- Las presentaciones son parte central de la identidad del producto. Reconoce tabletas/tab, suspension, gotas/gotero, ampolla, frasco, jeringa, sobre/sachet/pouch, lata, bulto, kg/kl/gr/g/ml/mg, rangos de peso como 4-10kg o 10-25kg, y empaques tipo x100, x150gr o unidad.
+- Si existe una marca y una referencia del catalogo claramente compatible aunque el texto del cliente no coincida literal con Supabase, devuelve la marca y referencia exactas del catalogo. Si hay varias opciones razonables, deja referencia null y conserva categoria, subcategoria, especie, etapa, tamano, sabores o presentacion para que el motor pregunte.
 - Tu criterio debe parecer de asesor humano, no de vendedor que siempre dice que si. Si el catalogo no respalda lo pedido, la decision correcta es marcar el dato solicitado y permitir que el motor responda con una negativa util.
 - El backend es la autoridad para marca, referencia, presentaciones y precios. Tu trabajo es entender que quiere el cliente: agregar, consultar, recomendar, cambiar cantidad, quitar productos, cambiar datos o cerrar pedido.
 - El estado de conversacion importa tanto como el ultimo mensaje. Si ya hay carrito, datos, metodo de pago o una seleccion pendiente, interpreta el mensaje como continuacion salvo que el cliente pida claramente empezar de nuevo.

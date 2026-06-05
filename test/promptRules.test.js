@@ -80,6 +80,19 @@ test("el interprete entiende mala ortografia y direcciones colombianas informale
   assert.match(prompt, /tratala como direccion completa/i);
 });
 
+test("el interprete usa criterio experto para mapear referencias veterinarias imperfectas", () => {
+  const prompt = leerServicio("aiInterpreter.js");
+
+  assert.match(prompt, /asesor experto de petshop\/veterinaria/);
+  assert.match(prompt, /cuidos\/concentrados/);
+  assert.match(prompt, /medicamentos, antipulgas, desparasitantes y vacunas/);
+  assert.match(prompt, /referencias del catalogo pueden estar abreviadas o resumidas/);
+  assert.match(prompt, /compara por contexto veterinario y comercial/);
+  assert.match(prompt, /Las presentaciones son parte central de la identidad del producto/);
+  assert.match(prompt, /devuelve la marca y referencia exactas del catalogo/);
+  assert.match(prompt, /nombresOriginales/);
+});
+
 test("el interprete mapea empaques visuales contra referencias internas del catalogo", () => {
   const prompt = leerServicio("aiInterpreter.js");
 

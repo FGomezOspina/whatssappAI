@@ -197,3 +197,126 @@ test("importa y actualiza por cliente marca referencia presentacion sin duplicar
     restaurarEnv(envAnterior);
   }
 });
+
+test("replace desactiva catalogo anterior antes de importar el nuevo", async () => {
+  const envAnterior = {
+    url: process.env.SUPABASE_URL,
+    secret: process.env.SUPABASE_SECRET_KEY,
+  };
+  const fetchAnterior = global.fetch;
+  const solicitudes = [];
+  const archivo = path.join(os.tmpdir(), `catalogo-replace-${Date.now()}.json`);
+
+  fs.writeFileSync(
+    archivo,
+    JSON.stringify([
+      {
+        marca: "Agility",
+        referencia: "Gato Adulto",
+        presentacion: "1.5kg",
+        precio: 39048,
+        categoria: "comida",
+        subcategoria: "concentrado",
+        especie: "gato",
+      },
+    ])
+  );
+
+  process.env.SUPABASE_URL = "https://supabase.example";
+  process.env.SUPABASE_SECRET_KEY = "supabase-test-secret";
+  global.fetch = async (url, opciones = {}) => {
+    const body = opciones.body ? JSON.parse(opciones.body) : null;
+    solicitudes.push({ url, method: opciones.method || "GET", body });
+
+    if (url.includes("/aivance_clients")) {
+      return new Response(JSON.stringify([{ id: "client-1", slug: body.slug }]), {
+        status: 200,
+        headers: { "Content-Type": "application/json" },
+      });
+    }
+
+    if (url.includes("/catalog_brands?client_id=eq.client-1&select=id")) {
+      return new Response(JSON.stringify([{ id: "brand-old" }]), {
+        status: 200,
+        headers: { "Content-Type": "application/json" },
+      });
+    }
+
+    if (url.includes("/catalog_references?brand_id=in.(brand-old)&select=id")) {
+      return new Response(JSON.stringify([{ id: "reference-old" }]), {
+        status: 200,
+        headers: { "Content-Type": "application/json" },
+      });
+    }
+
+    if (opciones.method === "PATCH") {
+      return new Response(null, { status: 204 });
+    }
+
+    if (url.includes("/catalog_brands")) {
+      return new Response(JSON.stringify([{ id: `brand-${body.name}`, name: body.name }]), {
+        status: 200,
+        headers: { "Content-Type": "application/json" },
+      });
+    }
+
+    if (url.includes("/catalog_references")) {
+      return new Response(JSON.stringify([{ id: `reference-${body.name}`, name: body.name }]), {
+        status: 200,
+        headers: { "Content-Type": "application/json" },
+      });
+    }
+
+    if (url.includes("/catalog_presentations")) {
+      return new Response(JSON.stringify([{ id: `presentation-${body.weight}`, weight: body.weight }]), {
+        status: 200,
+        headers: { "Content-Type": "application/json" },
+      });
+    }
+
+    return new Response(JSON.stringify([]), {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    });
+  };
+
+  try {
+    const resultado = await importarCatalogo({
+      archivo,
+      clientSlug: "distrifinca",
+      clientName: "Distrifinca",
+      vertical: "petshop",
+      replace: true,
+    });
+
+    assert.equal(resultado.presentaciones, 1);
+    assert.ok(
+      solicitudes.some(
+        (solicitud) =>
+          solicitud.method === "PATCH" &&
+          solicitud.url.includes("/catalog_presentations?reference_id=in.(reference-old)") &&
+          solicitud.body.active === false
+      )
+    );
+    assert.ok(
+      solicitudes.some(
+        (solicitud) =>
+          solicitud.method === "PATCH" &&
+          solicitud.url.includes("/catalog_references?brand_id=in.(brand-old)") &&
+          solicitud.body.active === false
+      )
+    );
+    assert.ok(
+      solicitudes.some(
+        (solicitud) =>
+          solicitud.method === "PATCH" &&
+          solicitud.url.includes("/catalog_brands?client_id=eq.client-1") &&
+          solicitud.body.active === false
+      )
+    );
+  } finally {
+    global.fetch = fetchAnterior;
+    fs.rmSync(archivo, { force: true });
+    restaurarEnv(envAnterior);
+  }
+});

@@ -243,7 +243,7 @@ function normalizarSubcategoria(valor = "") {
   const texto = normalizar(valor);
   if (contieneAlguno(texto, ["concentrado", "cuido", "purina"])) return "concentrado";
   if (contieneAlguno(texto, ["comida humeda", "humeda", "humedo", "lata", "sobre"])) return "comida_humeda";
-  if (contieneAlguno(texto, ["antipulgas", "pulga", "pulgas", "garrapata", "nexgard", "bravecto"])) return "antipulgas";
+  if (contieneAlguno(texto, ["antipulgas", "pulga", "pulgas", "garrapata"])) return "antipulgas";
   if (contieneAlguno(texto, ["desparasitante", "desparasitar", "parasitos"])) return "desparasitante";
   if (contieneAlguno(texto, ["collar"])) return "collar";
   if (contieneAlguno(texto, ["cama"])) return "cama";
@@ -547,6 +547,35 @@ function buscarPresentacion(referencia, mensaje) {
   return coincidencias.length === 1 ? coincidencias[0] : null;
 }
 
+function nombresReferencia(referencia = {}) {
+  return [
+    referencia.nombre,
+    ...((Array.isArray(referencia.metadata?.original_names) && referencia.metadata.original_names) || []),
+  ]
+    .filter(Boolean)
+    .map((nombre) => normalizar(nombre))
+    .filter((nombre, index, nombres) => nombre.length >= 3 && nombres.indexOf(nombre) === index);
+}
+
+function buscarReferenciaEnCatalogo(catalogo = [], mensaje = "") {
+  const texto = normalizar(mensaje);
+  const coincidencias = [];
+
+  catalogo.forEach((marca) => {
+    marca.referencias.forEach((referencia) => {
+      const nombre = nombresReferencia(referencia)
+        .filter((nombreReferencia) => contieneFrase(texto, nombreReferencia))
+        .sort((a, b) => b.length - a.length)[0];
+
+      if (nombre) {
+        coincidencias.push({ marca, referencia, largo: nombre.length });
+      }
+    });
+  });
+
+  return coincidencias.sort((a, b) => b.largo - a.largo)[0] || null;
+}
+
 function presentacionDisponible(referencia, presentacionSolicitada) {
   if (!presentacionSolicitada) return true;
 
@@ -799,6 +828,7 @@ function esAperturaPedidoSinProducto(mensaje) {
 
 function extraerMarcaDesconocida(mensaje, catalogo, opciones = {}) {
   if (buscarMarca(catalogo, mensaje)) return null;
+  if (buscarReferenciaEnCatalogo(catalogo, mensaje)) return null;
 
   const texto = normalizar(mensaje);
   const pareceDescripcionMascota =
@@ -3746,6 +3776,31 @@ function resolverConsultaCatalogo(mensaje, estado, catalogo = [], interpretacion
     pidioOpinion,
   });
   if (respuestaProductosExplicitos) return respuestaProductosExplicitos;
+
+  const referenciaEnCatalogo = !marcaDetectada ? buscarReferenciaEnCatalogo(catalogo, mensaje) : null;
+  if (referenciaEnCatalogo) {
+    const { marca, referencia } = referenciaEnCatalogo;
+    const cantidad = extraerCantidad(mensaje) || 1;
+    const presentacion = buscarPresentacion(referencia, mensaje);
+
+    estado.marca = marca.marca;
+    estado.criterios = criteriosDesdeReferencia(referencia);
+    estado.ultimaSeleccion = {
+      marca: marca.marca,
+      referencia: referencia.nombre,
+      presentacion: presentacion ? presentacion.peso : null,
+      cantidad,
+    };
+    estado.esperandoMarca = false;
+
+    if (presentacion) {
+      agregarAlCarrito(estado, marca, referencia, presentacion, cantidad);
+      estado.ultimaSeleccion = null;
+      return respuestaProductoAgregado(estado, marca, referencia, presentacion);
+    }
+
+    return formatearReferencia(marca, referencia, "¿Cuál presentación quieres agregar al pedido?");
+  }
 
   if (estado.pedidoConfirmado && esCierreFinal(mensaje)) {
     return respuestaPedidoYaConfirmado(mensaje);
