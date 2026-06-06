@@ -1,7 +1,10 @@
 const test = require("node:test");
 const assert = require("node:assert/strict");
 
-const { conservaAccionOperativa } = require("../src/services/humanizer");
+const {
+  conservaAccionOperativa,
+  _internals: { omitirHumanizadorProducto },
+} = require("../src/services/humanizer");
 
 test("rechaza una humanizacion que confirma el pedido antes del si del cliente", () => {
   const respuestaBase =
@@ -28,4 +31,23 @@ test("rechaza convertir el siguiente paso del carrito en confirmacion final", ()
     "Pedido:\n- 1 x Dog Chow Cachorros Mini y Pequeño 1kg: $20.000\nTotal: $20.000\n\n¿Está todo correcto para confirmar el pedido?";
 
   assert.equal(conservaAccionOperativa(respuestaBase, respuestaHumanizada), false);
+});
+
+test("omite humanizador en busqueda simple aunque el motor deje seleccion pendiente", () => {
+  const anterior = process.env.HUMANIZER_PRODUCT_SEARCH;
+  delete process.env.HUMANIZER_PRODUCT_SEARCH;
+
+  try {
+    assert.equal(
+      omitirHumanizadorProducto("Estas son las presentaciones disponibles.", {
+        clasificacion: { perfilContexto: "producto" },
+        cliente: { prompts: {} },
+        estado: { ultimaSeleccion: { marca: "BR", referencia: "Adulto RP" } },
+      }),
+      true
+    );
+  } finally {
+    if (anterior === undefined) delete process.env.HUMANIZER_PRODUCT_SEARCH;
+    else process.env.HUMANIZER_PRODUCT_SEARCH = anterior;
+  }
 });

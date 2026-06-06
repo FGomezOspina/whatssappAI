@@ -1,7 +1,7 @@
 const { normalizar, normalizarPeso } = require("../utils/text");
 const { buscarProductosCatalogoCliente } = require("../repositories/productRepository");
 
-const DEFAULT_TEXT_REFERENCE_LIMIT = 12;
+const DEFAULT_TEXT_REFERENCE_LIMIT = 8;
 const DEFAULT_VISION_REFERENCE_LIMIT = 20;
 const MAX_REFERENCE_LIMIT = 20;
 

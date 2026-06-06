@@ -94,13 +94,44 @@ function requiereBusquedaProducto(intencion, mensaje = "", estado = {}) {
   ]);
 }
 
-function limiteHistorial(complejidad) {
+function tieneContextoActivo(estado = {}) {
+  return Boolean(
+    (estado.carrito?.length && !estado.pedidoConfirmado) ||
+      estado.ultimaSeleccion ||
+      estado.referenciasPendientes ||
+      estado.productosConsultados?.length ||
+      estado.esperandoDatosDomicilio ||
+      estado.esperandoMetodoPago ||
+      estado.esperandoConfirmacionPedido ||
+      estado.esperandoConfirmacionDatosPrevios ||
+      estado.esperandoConfirmacionRepetirPedido
+  );
+}
+
+function perfilContexto({ intencion, complejidad, estado = {}, requiereVision, requiereAudio }) {
+  if (requiereVision || requiereAudio) return "multimedia";
+  if (
+    tieneContextoActivo(estado) ||
+    ["continuacion", "domicilio", "comprobante"].includes(intencion)
+  ) {
+    return "pedido";
+  }
+  if (complejidad === "compleja" || complejidad === "avanzada") return "complejo";
+  if (["precio", "busqueda_producto"].includes(intencion)) return "producto";
+  return "simple";
+}
+
+function limiteHistorial(complejidad, perfil) {
+  if (perfil === "simple" || perfil === "producto") return 0;
+  if (perfil === "pedido") return Number(process.env.OPENAI_HISTORY_ORDER_LIMIT || 3);
   if (complejidad === "simple") return Number(process.env.OPENAI_HISTORY_SIMPLE_LIMIT || 2);
   if (complejidad === "normal") return Number(process.env.OPENAI_HISTORY_NORMAL_LIMIT || 4);
   return Number(process.env.OPENAI_HISTORY_COMPLEX_LIMIT || 8);
 }
 
-function limiteEjemplos(complejidad) {
+function limiteEjemplos(complejidad, perfil) {
+  if (perfil === "simple" || perfil === "producto") return 0;
+  if (perfil === "pedido") return Number(process.env.TRAINING_EXAMPLES_ORDER_LIMIT || 2);
   if (complejidad === "simple") return Number(process.env.TRAINING_EXAMPLES_SIMPLE_LIMIT || 2);
   if (complejidad === "normal") return Number(process.env.TRAINING_EXAMPLES_NORMAL_LIMIT || 4);
   return Number(process.env.TRAINING_EXAMPLES_COMPLEX_LIMIT || 6);
@@ -111,6 +142,7 @@ function clasificarInteraccion({ mensaje = "", estado = {}, contenidos = [], ima
   const complejidad = detectarComplejidad(mensaje, estado, intencion);
   const requiereVision = tieneImagen(imageUrls);
   const requiereAudio = tieneAudio(contenidos);
+  const perfil = perfilContexto({ intencion, complejidad, estado, requiereVision, requiereAudio });
   const requiereOpenAI = !(
     complejidad === "simple" &&
     ["saludo", "general"].includes(intencion) &&
@@ -126,8 +158,9 @@ function clasificarInteraccion({ mensaje = "", estado = {}, contenidos = [], ima
     requiereAudio,
     requiereOpenAI,
     requiereBusquedaProducto: requiereBusquedaProducto(intencion, mensaje, estado),
-    limiteHistorial: limiteHistorial(complejidad),
-    limiteEjemplos: limiteEjemplos(complejidad),
+    perfilContexto: perfil,
+    limiteHistorial: limiteHistorial(complejidad, perfil),
+    limiteEjemplos: limiteEjemplos(complejidad, perfil),
   };
 }
 

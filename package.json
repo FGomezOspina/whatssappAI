@@ -6,6 +6,7 @@
   "scripts": {
     "test": "node --test",
     "start": "node server.js",
+    "ai:diagnose": "node scripts/diagnose-ai-context.js",
     "catalog:import": "node scripts/import-products.js"
   },
   "keywords": [],

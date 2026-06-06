@@ -14,7 +14,12 @@ const { clasificarInteraccion } = require("./interactionClassifier");
 const { seleccionarCatalogoParaIA } = require("./catalogContextService");
 const { construirMemoriaOperativa } = require("./contextBuilder");
 const { modeloInterprete, modeloHumanizador } = require("./modelRouter");
-const { clienteParaLog } = require("./aiUsageLogger");
+const { clienteParaLog, logResumenInteraccionIA } = require("./aiUsageLogger");
+const {
+  aplicarCoincidenciaValidada,
+  respuestaValidacionProducto,
+  validarCoincidenciaProducto,
+} = require("./productMatchValidator");
 
 function registrarEntradaOpenAI(evento, mensaje, imageUrls, contenidos) {
   const audiosOpenAI = contenidos.filter((contenido) => contenido.metadata?.audioTranscribedWithOpenAI).length;
@@ -56,8 +61,48 @@ function registrarClasificacion(evento, cliente, clasificacion, catalogoIA) {
       clasificacion.requiereVision ? "si" : "no"
     } | audio=${clasificacion.requiereAudio ? "si" : "no"} | catalogoIA=${
       catalogoIA.metadata.referenciasEnviadas
-    }/${catalogoIA.metadata.totalReferencias} | estrategia=${catalogoIA.metadata.estrategia}`
+    }/${catalogoIA.metadata.totalReferencias} | estrategia=${catalogoIA.metadata.estrategia} | topScore=${
+      catalogoIA.metadata.topScore ?? "n/a"
+    } | secondScore=${catalogoIA.metadata.secondScore ?? "n/a"}`
   );
+}
+
+function registrarValidacionProducto(evento, validacion) {
+  console.log(
+    `[Catalog Match] cliente=${clienteParaLog(evento.channelUserId)} | nivel=${
+      validacion.nivel
+    } | razon=${validacion.razon} | terminos="${(validacion.terminos || []).join(" ")}" | score=${
+      validacion.score ?? 0
+    } | diferencia=${validacion.diferencia ?? 0}`
+  );
+}
+
+async function responderValidacionNoConfiable({
+  evento,
+  cliente,
+  estado,
+  mensaje,
+  validacion,
+}) {
+  registrarValidacionProducto(evento, validacion);
+  const respuesta = respuestaValidacionProducto(validacion);
+  await guardarConversacionPersistida(evento.channelUserId, estado, {
+    cliente,
+    mensaje,
+    respuesta,
+  });
+  console.log(
+    `[OpenAI] Omitido por validacion de catalogo | cliente=${clienteParaLog(
+      evento.channelUserId
+    )} | nivel=${validacion.nivel}`
+  );
+  logResumenInteraccionIA({
+    channelUserId: evento.channelUserId,
+    cliente,
+    interpretacionIA: null,
+    humanizerUsage: { skipped: true, reason: "validacion_catalogo" },
+  });
+  return respuesta;
 }
 
 async function responderEventosEntrantes(eventos) {
@@ -146,16 +191,45 @@ async function responderEventosEntrantes(eventos) {
 
   const clasificacion = clasificarInteraccion({ mensaje, estado, contenidos, imageUrls });
   const catalogoIA = await seleccionarCatalogoParaIA({ catalogo, mensaje, estado, clasificacion, cliente });
+  const validacionPrevia = validarCoincidenciaProducto({
+    mensaje,
+    catalogo,
+    catalogoCandidatos: catalogoIA.catalogo,
+    clasificacion,
+  });
+
+  if (["media", "baja"].includes(validacionPrevia.nivel)) {
+    return responderValidacionNoConfiable({
+      evento,
+      cliente,
+      estado,
+      mensaje,
+      validacion: validacionPrevia,
+    });
+  }
+
+  if (validacionPrevia.nivel === "alta") {
+    registrarValidacionProducto(evento, validacionPrevia);
+  }
+
+  const omitirInterpretePorConsultaExploratoria =
+    ["consulta_generica", "consulta_categoria"].includes(validacionPrevia.razon) &&
+    !clasificacion.requiereVision;
   const [historialReciente, ejemplosEntrenamiento] = await Promise.all([
-    obtenerHistorialRecientePersistido(evento.channelUserId, clasificacion.limiteHistorial, cliente),
-    obtenerEjemplosEntrenamiento(mensaje, clasificacion.limiteEjemplos, cliente),
+    clasificacion.limiteHistorial > 0
+      ? obtenerHistorialRecientePersistido(evento.channelUserId, clasificacion.limiteHistorial, cliente)
+      : Promise.resolve([]),
+    clasificacion.limiteEjemplos > 0
+      ? obtenerEjemplosEntrenamiento(mensaje, clasificacion.limiteEjemplos, cliente)
+      : Promise.resolve([]),
   ]);
   const memoriaOperativa = construirMemoriaOperativa(estado, historialReciente);
   const modeloIA = modeloInterprete(clasificacion);
   const modeloHumanizar = modeloHumanizador(clasificacion);
   registrarClasificacion(evento, cliente, clasificacion, catalogoIA);
 
-  const interpretacionIA = clasificacion.requiereOpenAI
+  let interpretacionIA =
+    clasificacion.requiereOpenAI && !omitirInterpretePorConsultaExploratoria
     ? await interpretarMensajeCliente({
         mensaje,
         estado,
@@ -172,6 +246,35 @@ async function responderEventosEntrantes(eventos) {
         channelUserId: evento.channelUserId,
       })
     : null;
+  if (omitirInterpretePorConsultaExploratoria) {
+    console.log(
+      `[OpenAI] Interprete omitido | cliente=${clienteParaLog(
+        evento.channelUserId
+      )} | razon=${validacionPrevia.razon}`
+    );
+  }
+
+  const validacionFinal = validarCoincidenciaProducto({
+    mensaje,
+    interpretacion: interpretacionIA,
+    catalogo,
+    catalogoCandidatos: catalogoIA.catalogo,
+    clasificacion,
+  });
+  if (["media", "baja"].includes(validacionFinal.nivel)) {
+    return responderValidacionNoConfiable({
+      evento,
+      cliente,
+      estado,
+      mensaje,
+      validacion: validacionFinal,
+    });
+  }
+  if (validacionFinal.nivel === "alta") {
+    registrarValidacionProducto(evento, validacionFinal);
+    interpretacionIA = aplicarCoincidenciaValidada(interpretacionIA, validacionFinal);
+  }
+
   registrarInterpretacionOpenAI(evento, interpretacionIA);
 
   const tieneIntencionCatalogo =
@@ -202,6 +305,7 @@ async function responderEventosEntrantes(eventos) {
   }
 
   const debeHumanizar = clasificacion.requiereOpenAI || !["saludo", "general"].includes(clasificacion.intencion);
+  let humanizerUsage = { skipped: true, reason: "no_requerido" };
   const respuestaHumanizada = debeHumanizar
     ? await humanizarRespuesta(mensaje, respuestaBase, {
         ejemplosEntrenamiento,
@@ -214,6 +318,9 @@ async function responderEventosEntrantes(eventos) {
         memoriaOperativa,
         model: modeloHumanizar,
         channelUserId: evento.channelUserId,
+        onUsage: (usage) => {
+          humanizerUsage = usage;
+        },
       })
     : respuestaBase;
   const respuesta = asegurarRespuestaCatalogo(mensaje, respuestaHumanizada, { catalogo, interpretacionIA });
@@ -222,6 +329,12 @@ async function responderEventosEntrantes(eventos) {
     cliente,
     mensaje,
     respuesta,
+  });
+  logResumenInteraccionIA({
+    channelUserId: evento.channelUserId,
+    cliente,
+    interpretacionIA,
+    humanizerUsage,
   });
 
   return respuesta;

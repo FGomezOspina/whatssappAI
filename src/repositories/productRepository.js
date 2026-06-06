@@ -204,6 +204,8 @@ async function buscarProductosCatalogoCliente(cliente = null, opciones = {}) {
       totalResultados: filas.length,
       query,
       duracionMs: Date.now() - inicio,
+      topScore: filas.length ? Number(filas[0].score || 0) : 0,
+      secondScore: filas.length > 1 ? Number(filas[1].score || 0) : 0,
     },
   };
 }

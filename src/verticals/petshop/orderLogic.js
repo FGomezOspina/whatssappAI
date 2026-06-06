@@ -350,7 +350,31 @@ function normalizarSubcategoria(valor = "") {
   const texto = normalizar(valor);
   if (contieneAlguno(texto, ["concentrado", "cuido", "purina"])) return "concentrado";
   if (contieneAlguno(texto, ["comida humeda", "humeda", "humedo", "lata", "sobre", "pouch", "pouche", "sachet"])) return "comida_humeda";
-  if (contieneAlguno(texto, ["antipulgas", "pulga", "pulgas", "garrapata", "garrapatas"])) return "antipulgas";
+  if (
+    contieneAlguno(texto, [
+      "antipulgas",
+      "pulga",
+      "pulgas",
+      "garrapata",
+      "garrapatas",
+      "bravecto",
+      "nexgard",
+      "simparica",
+      "credelio",
+      "frontline",
+      "advantage",
+      "advocate",
+      "revolution",
+      "fiprostar",
+      "puloff",
+      "pulfen",
+      "bolfo",
+      "kiltix",
+      "asuntol",
+    ])
+  ) {
+    return "antipulgas";
+  }
   if (
     contieneAlguno(texto, [
       "desparasitante",
@@ -485,7 +509,13 @@ function atributosReferencia(referencia) {
   }
 
   if (!atributos.categoria) atributos.categoria = normalizarCategoria(texto);
-  if (!atributos.subcategoria) atributos.subcategoria = normalizarSubcategoria(texto);
+  const subcategoriaInferida = normalizarSubcategoria(texto);
+  if (
+    subcategoriaInferida &&
+    (!atributos.subcategoria || atributos.subcategoria === "medicamento" || atributos.subcategoria === "aseo")
+  ) {
+    atributos.subcategoria = subcategoriaInferida;
+  }
 
   if (!atributos.etapa && contieneAlguno(texto, ["cachorro", "cachorros", "bebe", "puppy", "gatito", "gatita", "gatitos", "gatitas"])) {
     atributos.etapa = "cachorro";
@@ -904,7 +934,11 @@ function nombreProducto(marca, referencia) {
   const marcaNormalizada = normalizar(nombreMarca);
   const referenciaNormalizada = normalizar(nombreReferencia);
 
-  if (marcaNormalizada && referenciaNormalizada.startsWith(`${marcaNormalizada} `)) {
+  if (
+    marcaNormalizada &&
+    (referenciaNormalizada === marcaNormalizada ||
+      referenciaNormalizada.startsWith(`${marcaNormalizada} `))
+  ) {
     return nombreReferencia;
   }
 
@@ -1616,7 +1650,14 @@ function recomendarOpciones(catalogo, criterios, presupuesto, marcaPreferida = n
   );
   const nota = notas.length ? `\n\n${notas.join("\n")}` : "";
 
-  return `${intro}\n${lineas.join("\n")}${nota}\n\nDime cuál te gusta y te ayudo a dejarla lista en el pedido.`;
+  const siguientePregunta =
+    criterios.subcategoria === "antipulgas"
+      ? criterios.especie
+        ? `¿Cuánto pesa tu ${etiquetaMascotaSingular(criterios.especie)}? Con eso te confirmo cuál presentación aplica.`
+        : "¿Es para perro o gato y cuánto pesa? Con eso te muestro las opciones y presentaciones adecuadas."
+      : "Dime cuál te gusta y te ayudo a dejarla lista en el pedido.";
+
+  return `${intro}\n${lineas.join("\n")}${nota}\n\n${siguientePregunta}`;
 }
 
 function agregarAlCarrito(estado, marca, referencia, presentacion, cantidad = 1) {
@@ -4050,8 +4091,16 @@ function resolverAlternativaPendiente(mensaje, estado, catalogo) {
 function resolverConsultaCatalogo(mensaje, estado, catalogo = [], interpretacion = null) {
   const marcaEnMensaje = buscarMarca(catalogo, mensaje);
   const criteriosTextoMensaje = extraerCriterios(mensaje);
-  const marcaDetectadaBase = buscarMarcaInterpretada(catalogo, interpretacion) || marcaEnMensaje;
-  const criteriosMensaje = mezclarCriterios(criteriosTextoMensaje, criteriosDesdeInterpretacion(interpretacion));
+  const consultaExploratoriaTaxonomia = Boolean(
+    !marcaEnMensaje &&
+      (criteriosTextoMensaje.categoria || criteriosTextoMensaje.subcategoria)
+  );
+  const interpretacionCatalogo = consultaExploratoriaTaxonomia ? null : interpretacion;
+  const marcaDetectadaBase = buscarMarcaInterpretada(catalogo, interpretacionCatalogo) || marcaEnMensaje;
+  const criteriosMensaje = mezclarCriterios(
+    criteriosTextoMensaje,
+    criteriosDesdeInterpretacion(interpretacionCatalogo)
+  );
   const marcaDetectada = refinarMarcaPorCriterios(catalogo, marcaDetectadaBase, criteriosMensaje, mensaje);
   const marcaDesconocida = criteriosMensaje.categoria || criteriosMensaje.subcategoria
     ? null
@@ -4118,7 +4167,9 @@ function resolverConsultaCatalogo(mensaje, estado, catalogo = [], interpretacion
     return resolverEntregaYPago(mensaje, estado, interpretacion);
   }
 
-  const respuestaIA = resolverConInterpretacionIA(mensaje, estado, catalogo, interpretacion);
+  const respuestaIA = consultaExploratoriaTaxonomia
+    ? null
+    : resolverConInterpretacionIA(mensaje, estado, catalogo, interpretacionCatalogo);
   if (respuestaIA) return respuestaIA;
 
   const respuestaOperacionCarritoIA = resolverOperacionCarritoIA(mensaje, estado, catalogo, interpretacion);

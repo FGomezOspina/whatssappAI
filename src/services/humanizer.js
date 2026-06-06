@@ -1,5 +1,9 @@
 const OpenAI = require("openai");
 const { logUsoIA } = require("./aiUsageLogger");
+const {
+  construirSolicitudHumanizador,
+  logDiagnosticoContexto,
+} = require("./aiContextOptimizer");
 
 const openai = process.env.OPENAI_API_KEY
   ? new OpenAI({
@@ -146,29 +150,67 @@ function promptVertical(vertical = {}) {
   return prompt ? `\n\nInstrucciones de la vertical ${vertical.key}:\n${prompt}` : "";
 }
 
-async function humanizarRespuesta(mensajeCliente, respuestaBase, opciones = {}) {
-  if (!openai || process.env.HUMANIZAR_IA === "false") {
-    return respuestaBase;
-  }
+function tienePromptHumanizadorCliente(cliente = {}) {
+  return Boolean(cliente.prompts?.humanizer || cliente.prompts?.humanizador);
+}
 
-  if (
+function esRespuestaOperativaProtegida(respuestaBase = "") {
+  return Boolean(
     respuestaBase.includes("Datos de domicilio:") ||
-    respuestaBase.includes("ahorros bancolombia:") ||
-    /est[aá] todo correcto para confirmar el pedido/i.test(respuestaBase) ||
-    /quieres agregar algo m[aá]s o avanzamos con la entrega/i.test(respuestaBase) ||
-    /lo enviamos a esa misma direcci[oó]n con esos datos/i.test(respuestaBase)
-  ) {
+      respuestaBase.includes("ahorros bancolombia:") ||
+      /est[aá] todo correcto para confirmar el pedido/i.test(respuestaBase) ||
+      /quieres agregar algo m[aá]s o avanzamos con la entrega/i.test(respuestaBase) ||
+      /lo enviamos a esa misma direcci[oó]n con esos datos/i.test(respuestaBase)
+  );
+}
+
+function omitirHumanizadorProducto(respuestaBase, opciones = {}) {
+  return Boolean(
+    opciones.clasificacion?.perfilContexto === "producto" &&
+      !tienePromptHumanizadorCliente(opciones.cliente) &&
+      process.env.HUMANIZER_PRODUCT_SEARCH !== "true" &&
+      respuestaBase.length <= Number(process.env.HUMANIZER_PRODUCT_MAX_BASE_CHARS || 1600)
+  );
+}
+
+function debeHumanizarRespuesta(respuestaBase, opciones = {}) {
+  if (!openai || process.env.HUMANIZAR_IA === "false") return false;
+  if (esRespuestaOperativaProtegida(respuestaBase)) return false;
+
+  if (omitirHumanizadorProducto(respuestaBase, opciones)) return false;
+
+  return true;
+}
+
+async function humanizarRespuesta(mensajeCliente, respuestaBase, opciones = {}) {
+  if (!debeHumanizarRespuesta(respuestaBase, opciones)) {
+    opciones.onUsage?.({ skipped: true, reason: "respuesta_operativa_suficiente" });
     return respuestaBase;
   }
 
   try {
     const model = opciones.model || process.env.OPENAI_HUMANIZER_MODEL || process.env.OPENAI_MODEL || "gpt-5.2-chat-latest";
+    const solicitud = construirSolicitudHumanizador({
+      mensaje: mensajeCliente,
+      respuestaBase,
+      interpretacion: opciones.interpretacionIA,
+      clasificacion: opciones.clasificacion,
+      estado: opciones.estado,
+      cliente: opciones.cliente,
+      vertical: opciones.vertical,
+      model,
+    });
+    logDiagnosticoContexto(solicitud.diagnostico);
+    if (solicitud.excedePresupuesto) {
+      opciones.onUsage?.({ skipped: true, reason: "presupuesto_contexto" });
+      return respuestaBase;
+    }
     const parametrosModelo = {
       model,
       messages: [
         {
           role: "system",
-          content: `
+          content: solicitud.promptBase || `
 Eres un asesor amable de una tienda de mascotas en Colombia por WhatsApp.
 Tu tarea es tomar la respuesta operativa del backend y convertirla en una respuesta final humana.
 El backend ya validó catálogo, precios, presentaciones, carrito y datos. Tú decides el tono, el orden y la claridad, pero no cambias los hechos.
@@ -221,17 +263,7 @@ ${promptCliente(opciones.cliente)}
         },
         {
           role: "user",
-          content: `Mensaje del cliente: ${mensajeCliente}\n\nInterpretacion estructurada de la IA:\n${JSON.stringify(
-            opciones.interpretacionIA || null
-          )}\n\nClasificacion previa:\n${JSON.stringify(
-            opciones.clasificacion || null
-          )}\n\nMemoria operativa:\n${JSON.stringify(
-            opciones.memoriaOperativa || null
-          )}\n\nHistorial reciente:\n${JSON.stringify(
-            resumenHistorial(opciones.historialReciente)
-          )}\n\nEstado actual resumido:\n${JSON.stringify(
-            resumenEstadoParaRespuesta(opciones.estado)
-          )}\n\nRespuesta operativa del backend:\n${respuestaBase}`,
+          content: JSON.stringify(solicitud.contexto),
         },
       ],
     };
@@ -255,6 +287,12 @@ ${promptCliente(opciones.cliente)}
       duracionMs,
       usage: completion.usage,
     });
+    opciones.onUsage?.({
+      skipped: false,
+      usage: completion.usage || null,
+      model,
+      estimatedTokens: solicitud.diagnostico.tokensEstimados,
+    });
 
     const respuesta = completion.choices[0].message.content.trim();
     if (!respuesta || !conservaDatosCriticos(respuestaBase, respuesta) || !conservaAccionOperativa(respuestaBase, respuesta)) {
@@ -264,11 +302,16 @@ ${promptCliente(opciones.cliente)}
     return respuesta;
   } catch (error) {
     console.error("Error humanizando respuesta:", error.message);
+    opciones.onUsage?.({ skipped: true, reason: "error", error: error.message });
     return respuestaBase;
   }
 }
 
 module.exports = {
   conservaAccionOperativa,
+  debeHumanizarRespuesta,
   humanizarRespuesta,
+  _internals: {
+    omitirHumanizadorProducto,
+  },
 };

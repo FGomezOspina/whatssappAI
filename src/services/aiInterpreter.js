@@ -1,5 +1,9 @@
 const OpenAI = require("openai");
 const { logUsoIA } = require("./aiUsageLogger");
+const {
+  construirSolicitudInterprete,
+  logDiagnosticoContexto,
+} = require("./aiContextOptimizer");
 
 const openai = process.env.OPENAI_API_KEY
   ? new OpenAI({
@@ -250,20 +254,32 @@ async function interpretarMensajeCliente({
   try {
     const urlsImagen = [...imageUrls, imageUrl].filter(Boolean);
     const usaVision = urlsImagen.length > 0;
-    const catalogoPrompt = resumenCatalogoParaPrompt(catalogo, { vision: usaVision });
+    const catalogoPrompt = usaVision ? resumenCatalogoParaPrompt(catalogo, { vision: true }) : null;
     const model = modelOverride || (urlsImagen.length
       ? process.env.OPENAI_VISION_MODEL ||
         process.env.OPENAI_INTERPRETER_MODEL ||
         process.env.OPENAI_MODEL ||
         "gpt-4.1"
       : process.env.OPENAI_INTERPRETER_MODEL || process.env.OPENAI_MODEL || "gpt-5.2");
+    const solicitud = construirSolicitudInterprete({
+      mensaje,
+      estado,
+      catalogo,
+      ejemplosEntrenamiento,
+      historialReciente,
+      clasificacion,
+      cliente,
+      vertical,
+      model,
+    });
+    logDiagnosticoContexto(solicitud.diagnostico);
     const parametrosModelo = {
       model,
       response_format: { type: "json_object" },
       messages: [
         {
           role: "system",
-          content: `
+          content: solicitud.promptBase || `
 Eres el interprete semantico de una automatizacion de WhatsApp para una tienda de mascotas en Colombia.
 Tu trabajo NO es responder al cliente. Tu trabajo es entender el mensaje y devolver SOLO JSON valido.
 
@@ -450,32 +466,14 @@ JSON exacto:
             ? [
                 {
                   type: "text",
-                  text: JSON.stringify({
-                    mensaje,
-                    historialReciente: resumenHistorial(historialReciente),
-                    estado: resumenEstado(estado),
-                    memoriaOperativa,
-                    clasificacion,
-                    cliente: contextoCliente(cliente),
-                    catalogo: catalogoPrompt,
-                    instruccionImagen:
-                      "Analiza la imagen completa, no solo el caption. Si es empaque, lee marca, linea/condicion, etapa, especie, tamano/raza, sabor, peso neto/presentacion y frases del empaque. Si es formula medica o receta veterinaria, lee cada medicamento, concentracion, forma, cantidad indicada y presentacion solicitada para cotizar. Revisa esquinas inferiores, textos pequenos y escritura manual. Compara esos datos con el catalogo colombiano entregado y devuelve la referencia exacta mas compatible cuando exista. El sabor visible es pista secundaria si no aparece en el nombre interno, pero la linea/condicion visible como castrado, renal, urinario, piel o gastro es pista fuerte. Si puedes leer el peso o cantidad, normalizalo a una presentacion exacta del catalogo o cantidad pedida. No inventes datos ilegibles.",
-                  }),
+                  text: JSON.stringify(solicitud.contexto),
                 },
                 ...urlsImagen.map((url) => ({
                   type: "image_url",
                   image_url: { url, detail: detalleVision() },
                 })),
               ]
-            : JSON.stringify({
-                mensaje,
-                historialReciente: resumenHistorial(historialReciente),
-                estado: resumenEstado(estado),
-                memoriaOperativa,
-                clasificacion,
-                cliente: contextoCliente(cliente),
-                catalogo: catalogoPrompt,
-              }),
+            : JSON.stringify(solicitud.contexto),
         },
       ],
     };
@@ -504,7 +502,7 @@ JSON exacto:
       modelo: model,
       duracionMs,
       usage: completion.usage,
-      productosEnviados: catalogoMetadata?.referenciasEnviadas ?? catalogoPrompt.referencias?.length ?? null,
+      productosEnviados: catalogoMetadata?.referenciasEnviadas ?? catalogoPrompt?.referencias?.length ?? null,
       imagenes: urlsImagen.length,
       audios: clasificacion?.requiereAudio ? 1 : 0,
     });

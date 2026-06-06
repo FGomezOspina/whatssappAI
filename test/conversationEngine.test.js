@@ -687,6 +687,35 @@ test("busca productos por subcategoria petshop", () => {
   assert.match(respuesta, /confirmaci[oó]n responsable|veterinario/i);
 });
 
+test("lista productos para garrapatas sin tratarlos como una referencia llamada productos", () => {
+  const estado = crearEstadoInicial();
+  const interpretacionEquivocada = {
+    confianza: 0.95,
+    intencion: "consulta_producto",
+    accion: "consultar",
+    producto: {
+      marca: "Chunky",
+      referencia: "Adulto Todas las Razas",
+      presentacion: null,
+    },
+    productos: [],
+    entrega: {},
+    datosCliente: {},
+    carrito: { operacion: null },
+  };
+
+  const respuesta = resolverConsultaCatalogo(
+    "Que productos tienes para garrapatas",
+    estado,
+    catalogoPetshopExtendido,
+    interpretacionEquivocada
+  );
+
+  assert.match(respuesta, /NexGard|Frontline Gato/i);
+  assert.doesNotMatch(respuesta, /no manejamos productos|Chunky/i);
+  assert.match(respuesta, /perro o gato|cu[aá]nto pesa/i);
+});
+
 test("una consulta nueva por purgantes no arrastra la referencia anterior de comida", () => {
   const estado = crearEstadoInicial();
   estado.marca = "BR";

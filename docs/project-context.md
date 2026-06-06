@@ -277,19 +277,62 @@ El `KAPSO_PHONE_NUMBER_ID` se conserva para enviar respuestas por el numero conf
 Variables de optimizacion opcionales:
 
 - `OPENAI_INTERPRETER_MODEL_SIMPLE`: modelo economico para turnos simples.
+- `OPENAI_INTERPRETER_MODEL_PRODUCT`: modelo economico para busquedas y precios sin pedido activo.
+- `OPENAI_INTERPRETER_MODEL_ORDER`: modelo para pedidos en construccion.
 - `OPENAI_INTERPRETER_MODEL_COMPLEX`: modelo avanzado para casos complejos.
 - `OPENAI_HUMANIZER_MODEL`: modelo por defecto del humanizador.
 - `OPENAI_HUMANIZER_MODEL_SIMPLE`: modelo economico del humanizador.
+- `OPENAI_HUMANIZER_MODEL_PRODUCT`: modelo del humanizador cuando se habilita para busquedas simples.
 - `OPENAI_HUMANIZER_MODEL_COMPLEX`: modelo avanzado del humanizador.
 - `CATALOG_CONTEXT_MAX_REFERENCES`: maximo de referencias candidatas enviadas a OpenAI en texto.
 - `VISION_CATALOG_CONTEXT_MAX_REFERENCES`: maximo de referencias candidatas enviadas a OpenAI en vision.
+- `CATALOG_MATCH_HIGH_THRESHOLD`: similitud minima para confirmar una coincidencia unica; por defecto `0.84`.
+- `CATALOG_MATCH_MEDIUM_THRESHOLD`: similitud minima para mostrar opciones como posibles coincidencias; por defecto `0.68`.
+- `CATALOG_MATCH_AMBIGUITY_MARGIN`: diferencia minima entre el primer y segundo resultado; por defecto `0.08`.
+- `CATALOG_MATCH_ALTERNATIVE_LIMIT`: maximo de opciones mostradas cuando la coincidencia es ambigua; por defecto `3`.
 - `SUPABASE_CATALOG_SEARCH_RPC`: nombre de la RPC de busqueda; por defecto `search_catalog_products`.
 - `CATALOG_SEARCH_BACKEND`: usar `local` para desactivar temporalmente la RPC y forzar fallback local.
 - `CATALOG_SEARCH_LOGS`: usar `false` para apagar logs de busqueda de catalogo.
 - `OPENAI_HISTORY_SIMPLE_LIMIT`, `OPENAI_HISTORY_NORMAL_LIMIT`, `OPENAI_HISTORY_COMPLEX_LIMIT`: limites de historial reciente enviado al modelo.
+- `OPENAI_HISTORY_ORDER_LIMIT`: historial maximo para un pedido activo; por defecto `3`.
 - `TRAINING_EXAMPLES_SIMPLE_LIMIT`, `TRAINING_EXAMPLES_NORMAL_LIMIT`, `TRAINING_EXAMPLES_COMPLEX_LIMIT`: limites de ejemplos curados por complejidad.
+- `TRAINING_EXAMPLES_ORDER_LIMIT`: ejemplos maximos para un pedido activo; por defecto `2`.
 - `AI_USAGE_LOGS`: usar `false` para apagar logs de uso de IA.
+- `AI_CONTEXT_LOGS`: activa el desglose aproximado de caracteres y tokens por bloque antes de cada llamada.
+- `AI_CONTEXT_BUDGET_INTERPRETER_<PERFIL>`: presupuesto estimado para `SIMPLE`, `PRODUCTO`, `PEDIDO`, `MULTIMEDIA` o `COMPLEJO`.
+- `AI_CONTEXT_BUDGET_HUMANIZER_<PERFIL>`: presupuesto equivalente del humanizador.
+- `AI_CONTEXT_CHARS_PER_TOKEN`: relacion conservadora para estimar tokens antes de llamar al API; por defecto `4`.
+- `AI_PRODUCT_DESCRIPTION_MAX_CHARS`: longitud maxima de descripcion por candidato; por defecto `120`.
+- `HUMANIZER_PRODUCT_SEARCH`: usar `true` para volver a humanizar busquedas simples; por defecto se conserva la respuesta operativa y se evita la segunda llamada.
+- `HUMANIZER_PRODUCT_MAX_BASE_CHARS`: longitud maxima de respuesta base elegible para omitir el humanizador; por defecto `1600`.
+- `AI_TOKEN_BASELINE_INTERPRETER` y `AI_TOKEN_BASELINE_HUMANIZER`: linea base opcional para calcular reduccion porcentual en logs.
 - `CATALOG_SEARCH_STRATEGY`: reservado para `keyword` o `semantic`; la busqueda actual usa FTS/RPC en Supabase con fallback local seguro.
+
+### Presupuestos de contexto
+
+El contexto enviado a OpenAI se construye por perfil sin modificar lo almacenado en Supabase:
+
+- `simple`: sin historial ni catalogo cuando no hacen falta.
+- `producto`: mensaje actual, contexto pendiente breve y candidatos compactos; sin historial ni ejemplos si no hay pedido activo.
+- `pedido`: carrito, datos operativos pendientes y un historial reciente limitado.
+- `multimedia`: instrucciones de audio/vision y candidatos, con contexto operativo acotado.
+- `complejo`: contexto ampliado dentro del presupuesto configurado.
+
+Los candidatos enviados al interprete omiten ids, metadata, timestamps y stock interno. Conservan marca, nombre, categoria, especie, etapa, descripcion breve, presentaciones y precios. El humanizador no recibe historial completo, ejemplos ni memoria duplicada.
+
+Antes del interprete, `productMatchValidator` compara marca, referencia, aliases, etapa, tamano, especie y errores de escritura contra el catalogo completo. Una coincidencia baja responde "no encontrado" sin llamar a OpenAI; una coincidencia media muestra opciones como posibles coincidencias; solo una coincidencia alta puede continuar como producto confirmado. En imagenes, la misma validacion se ejecuta despues de extraer marca y referencia visibles.
+
+Diagnostico contra el catalogo real, sin guardar conversacion ni enviar mensajes:
+
+```bash
+npm run ai:diagnose -- "tienes br adulto r pequena?"
+```
+
+Para ejecutar tambien las llamadas a OpenAI y obtener tokens reales:
+
+```bash
+npm run ai:diagnose -- --live "tienes br adulto r pequena?"
+```
 
 ## Pruebas
 

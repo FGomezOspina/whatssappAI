@@ -5,6 +5,11 @@ const { clasificarInteraccion } = require("../src/services/interactionClassifier
 const { seleccionarCatalogoParaIA } = require("../src/services/catalogContextService");
 const { construirMemoriaOperativa } = require("../src/services/contextBuilder");
 const { modeloInterprete, modeloHumanizador } = require("../src/services/modelRouter");
+const {
+  construirPromptInterprete,
+  construirSolicitudHumanizador,
+  construirSolicitudInterprete,
+} = require("../src/services/aiContextOptimizer");
 
 const catalogo = [
   {
@@ -112,13 +117,19 @@ test("construye memoria por niveles sin reenviar historial completo", () => {
 test("router de modelos respeta variables por complejidad", () => {
   const envAnterior = {
     OPENAI_INTERPRETER_MODEL_SIMPLE: process.env.OPENAI_INTERPRETER_MODEL_SIMPLE,
+    OPENAI_INTERPRETER_MODEL_PRODUCT: process.env.OPENAI_INTERPRETER_MODEL_PRODUCT,
     OPENAI_HUMANIZER_MODEL_COMPLEX: process.env.OPENAI_HUMANIZER_MODEL_COMPLEX,
   };
   process.env.OPENAI_INTERPRETER_MODEL_SIMPLE = "modelo-simple";
+  process.env.OPENAI_INTERPRETER_MODEL_PRODUCT = "modelo-producto";
   process.env.OPENAI_HUMANIZER_MODEL_COMPLEX = "modelo-humano-complejo";
 
   try {
     assert.equal(modeloInterprete({ complejidad: "simple" }), "modelo-simple");
+    assert.equal(
+      modeloInterprete({ complejidad: "normal", perfilContexto: "producto" }),
+      "modelo-producto"
+    );
     assert.equal(modeloHumanizador({ complejidad: "compleja" }), "modelo-humano-complejo");
   } finally {
     Object.entries(envAnterior).forEach(([clave, valor]) => {
@@ -126,4 +137,149 @@ test("router de modelos respeta variables por complejidad", () => {
       else process.env[clave] = valor;
     });
   }
+});
+
+test("consulta simple de producto usa contexto compacto dentro del presupuesto", () => {
+  const referencias = Array.from({ length: 12 }, (_, index) => ({
+    nombre: `BR Adulto Raza Pequena ${index + 1}`,
+    especie: "perro",
+    categoria: "comida",
+    subcategoria: "concentrado",
+    etapa: "adulto",
+    descripcion:
+      "Alimento completo para perros adultos de raza pequena con nutricion balanceada y texto comercial adicional.",
+    metadata: { id: `interno-${index}`, original_names: ["texto interno"] },
+    presentaciones: [
+      { peso: "2kg", precio: 30000 + index, stock: true, metadata: { id: "interno" } },
+      { peso: "4kg", precio: 50000 + index, stock: true },
+    ],
+  }));
+  const mensaje = "tienes br adulto r pequena?";
+  const clasificacion = clasificarInteraccion({ mensaje, estado: {} });
+  const solicitud = construirSolicitudInterprete({
+    mensaje,
+    estado: {},
+    catalogo: [{ marca: "BR", referencias }],
+    historialReciente: Array.from({ length: 10 }, () => ({
+      direction: "inbound",
+      body: "mensaje historico que no debe enviarse",
+    })),
+    ejemplosEntrenamiento: Array.from({ length: 5 }, () => ({
+      customer_message: "ejemplo historico",
+      ideal_response: "respuesta historica",
+    })),
+    clasificacion,
+    cliente: { name: "Distrifinca", vertical: "petshop", prompts: {} },
+    vertical: { prompts: {} },
+    model: "gpt-5.4-mini",
+  });
+  const payload = JSON.stringify(solicitud.contexto);
+
+  assert.equal(clasificacion.perfilContexto, "producto");
+  assert.equal(clasificacion.limiteHistorial, 0);
+  assert.equal(clasificacion.limiteEjemplos, 0);
+  assert.deepEqual(solicitud.contexto.historial, []);
+  assert.deepEqual(solicitud.contexto.ejemplos, []);
+  assert.ok(solicitud.diagnostico.tokensEstimados < 2000);
+  assert.doesNotMatch(payload, /interno-/);
+  assert.doesNotMatch(payload, /original_names|metadata|stock/);
+});
+
+test("humanizador compacto queda por debajo de mil tokens", () => {
+  const mensaje = "tienes br adulto r pequena?";
+  const clasificacion = clasificarInteraccion({ mensaje, estado: {} });
+  const solicitud = construirSolicitudHumanizador({
+    mensaje,
+    respuestaBase:
+      "Sí, manejo BR Adulto Raza Pequeña.\n- 2kg: $30.000\n- 4kg: $50.000\n¿Cuál presentación necesitas?",
+    interpretacion: {
+      intencion: "consulta_producto",
+      accion: "consultar",
+      producto: { marca: "BR", etapa: "adulto", tamano: "pequeno" },
+    },
+    clasificacion,
+    estado: {},
+    cliente: { prompts: {} },
+    vertical: { prompts: {} },
+    model: "gpt-5.4-mini",
+  });
+
+  assert.ok(solicitud.diagnostico.tokensEstimados < 1000);
+  assert.deepEqual(solicitud.contexto.contextoActivo, {});
+  assert.equal(solicitud.excedePresupuesto, false);
+});
+
+test("prompts por perfil conservan las reglas criticas del flujo", () => {
+  const producto = construirPromptInterprete({ perfil: "producto" });
+  const pedido = construirPromptInterprete({ perfil: "pedido" });
+  const multimedia = construirPromptInterprete({ perfil: "multimedia" });
+  const complejo = construirPromptInterprete({ perfil: "complejo" });
+
+  assert.match(producto, /a\.r\.p\/arp significa adulto raza pequena/i);
+  assert.match(producto, /Consultar precio o disponibilidad usa accion consultar/i);
+  assert.match(producto, /varias opciones plausibles deja referencia null/i);
+
+  assert.match(pedido, /Prioriza estado\.esperando y el carrito activo/i);
+  assert.match(pedido, /pedido anterior es memoria historica/i);
+  assert.match(pedido, /quitar, mantener_solo o modificar_cantidad/i);
+
+  assert.match(multimedia, /audio corrige errores foneticos/i);
+  assert.match(multimedia, /imagen lee marca, linea, especie, etapa, tamano, peso y siglas/i);
+  assert.match(multimedia, /receta o formula se interpreta como cotizacion/i);
+
+  assert.match(complejo, /Consolida todos los mensajes del lote/i);
+  assert.match(complejo, /Separa productos y cantidades/i);
+});
+
+test("pedido activo conserva contexto limitado sin reenviar memoria duplicada", () => {
+  const estado = {
+    carrito: [{ marca: "BR", referencia: "Adulto Pequeno", peso: "4kg", cantidad: 1, precio: 50000 }],
+    datosDomicilio: { nombre: "Cliente", direccion: "Cra 10 # 20-30" },
+    esperandoMetodoPago: true,
+  };
+  const clasificacion = clasificarInteraccion({ mensaje: "efectivo", estado });
+  const solicitud = construirSolicitudInterprete({
+    mensaje: "efectivo",
+    estado,
+    catalogo: [],
+    historialReciente: Array.from({ length: 10 }, (_, index) => ({
+      direction: index % 2 ? "outbound" : "inbound",
+      body: `mensaje ${index}`,
+    })),
+    ejemplosEntrenamiento: [],
+    clasificacion,
+    model: "gpt-5.2",
+  });
+
+  assert.equal(clasificacion.perfilContexto, "pedido");
+  assert.equal(solicitud.contexto.historial.length, 3);
+  assert.equal(solicitud.contexto.contextoActivo.carrito.length, 1);
+  assert.equal(solicitud.contexto.contextoActivo.esperando.metodoPago, true);
+  assert.equal("memoriaOperativa" in solicitud.contexto, false);
+  assert.equal("estado" in solicitud.contexto, false);
+  assert.ok(solicitud.diagnostico.tokensEstimados < 4200);
+});
+
+test("pedido confirmado anterior no infla una nueva busqueda de producto", () => {
+  const estado = {
+    pedidoConfirmado: true,
+    carrito: [{ marca: "Dog Chow", referencia: "Adulto", peso: "4kg", cantidad: 1 }],
+    ultimoPedidoConfirmado: {
+      carrito: [{ marca: "Dog Chow", referencia: "Adulto", peso: "4kg", cantidad: 1 }],
+    },
+    datosDomicilio: { direccion: "Cra 10 # 20-30" },
+  };
+  const mensaje = "tienes br adulto r pequena?";
+  const clasificacion = clasificarInteraccion({ mensaje, estado });
+  const solicitud = construirSolicitudInterprete({
+    mensaje,
+    estado,
+    catalogo: catalogo.slice(0, 1),
+    clasificacion,
+    model: "gpt-5.4-mini",
+  });
+
+  assert.equal(clasificacion.perfilContexto, "producto");
+  assert.deepEqual(solicitud.contexto.contextoActivo, {});
+  assert.equal(clasificacion.limiteHistorial, 0);
 });
