@@ -1,4 +1,5 @@
 const OpenAI = require("openai");
+const { logUsoIA } = require("./aiUsageLogger");
 
 const openai = process.env.OPENAI_API_KEY
   ? new OpenAI({
@@ -161,7 +162,7 @@ async function humanizarRespuesta(mensajeCliente, respuestaBase, opciones = {}) 
   }
 
   try {
-    const model = process.env.OPENAI_MODEL || "gpt-5.2-chat-latest";
+    const model = opciones.model || process.env.OPENAI_HUMANIZER_MODEL || process.env.OPENAI_MODEL || "gpt-5.2-chat-latest";
     const parametrosModelo = {
       model,
       messages: [
@@ -222,6 +223,10 @@ ${promptCliente(opciones.cliente)}
           role: "user",
           content: `Mensaje del cliente: ${mensajeCliente}\n\nInterpretacion estructurada de la IA:\n${JSON.stringify(
             opciones.interpretacionIA || null
+          )}\n\nClasificacion previa:\n${JSON.stringify(
+            opciones.clasificacion || null
+          )}\n\nMemoria operativa:\n${JSON.stringify(
+            opciones.memoriaOperativa || null
           )}\n\nHistorial reciente:\n${JSON.stringify(
             resumenHistorial(opciones.historialReciente)
           )}\n\nEstado actual resumido:\n${JSON.stringify(
@@ -235,8 +240,20 @@ ${promptCliente(opciones.cliente)}
       parametrosModelo.temperature = 0.55;
     }
 
+    const inicio = Date.now();
     const completion = await openai.chat.completions.create({
       ...parametrosModelo,
+    });
+    const duracionMs = Date.now() - inicio;
+
+    logUsoIA({
+      etapa: "humanizador",
+      channelUserId: opciones.channelUserId,
+      cliente: opciones.cliente,
+      intencion: opciones.clasificacion?.intencion,
+      modelo: model,
+      duracionMs,
+      usage: completion.usage,
     });
 
     const respuesta = completion.choices[0].message.content.trim();

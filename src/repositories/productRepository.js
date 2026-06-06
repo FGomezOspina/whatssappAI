@@ -7,6 +7,7 @@ const PRODUCTOS_PATH = path.join(__dirname, "..", "..", "productos.json");
 const BRANDS_TABLE = process.env.SUPABASE_CATALOG_BRANDS_TABLE || "catalog_brands";
 const REFERENCES_TABLE = process.env.SUPABASE_CATALOG_REFERENCES_TABLE || "catalog_references";
 const PRESENTATIONS_TABLE = process.env.SUPABASE_CATALOG_PRESENTATIONS_TABLE || "catalog_presentations";
+const CATALOG_SEARCH_RPC = process.env.SUPABASE_CATALOG_SEARCH_RPC || "search_catalog_products";
 const DEFAULT_CATALOG_QUERY_BATCH_SIZE = 50;
 
 function rutaCatalogoLocal() {
@@ -117,6 +118,96 @@ function construirCatalogo({ marcas = [], referencias = [], presentaciones = [] 
   }));
 }
 
+function construirCatalogoDesdeBusqueda(filas = []) {
+  const marcas = new Map();
+
+  filas.forEach((fila) => {
+    const nombreMarca = fila.brand_name;
+    if (!marcas.has(nombreMarca)) {
+      marcas.set(nombreMarca, {
+        marca: nombreMarca,
+        metadata: { id: fila.brand_id },
+        referencias: [],
+      });
+    }
+
+    const presentaciones = Array.isArray(fila.presentations) ? fila.presentations : [];
+    marcas.get(nombreMarca).referencias.push({
+      nombre: fila.reference_name,
+      especie: fila.species || "perro",
+      categoria: fila.category || null,
+      subcategoria: fila.subcategory || null,
+      etapa: fila.life_stage || null,
+      requiereConfirmacion: Boolean(fila.requires_confirmation),
+      descripcion: fila.description || "",
+      imagen: fila.image_url || "",
+      metadata: {
+        ...(fila.reference_metadata || {}),
+        id: fila.reference_id,
+        searchScore: Number(fila.score || 0),
+        matchReason: fila.match_reason || null,
+      },
+      presentaciones: presentaciones.map((presentacion) => ({
+        peso: presentacion.peso || presentacion.weight,
+        precio: presentacion.precio ?? presentacion.price,
+        stock: typeof presentacion.stock === "boolean" ? presentacion.stock : null,
+        metadata: presentacion.metadata || {},
+      })),
+    });
+  });
+
+  return Array.from(marcas.values());
+}
+
+async function buscarProductosCatalogoCliente(cliente = null, opciones = {}) {
+  if (!supabaseConfigurado()) {
+    throw new Error("Supabase debe estar configurado para buscar productos del catálogo");
+  }
+
+  const clienteActual = cliente || (await obtenerClienteActual());
+  if (!clienteActual.id) {
+    throw new Error(`No existe el cliente activo en Supabase: ${clienteActual.slug}`);
+  }
+
+  const query = (opciones.query || "").toString().trim();
+  if (!query) {
+    return {
+      catalogo: [],
+      filas: [],
+      metadata: {
+        estrategia: "supabase_fts",
+        referenciasEnviadas: 0,
+        totalResultados: 0,
+        query,
+      },
+    };
+  }
+
+  const limit = Math.max(1, Math.min(Number(opciones.limit || 20), 100));
+  const inicio = Date.now();
+  const filas =
+    (await requestSupabase(`rpc/${CATALOG_SEARCH_RPC}`, {
+      method: "POST",
+      body: JSON.stringify({
+        p_client_id: clienteActual.id,
+        p_query: query,
+        p_limit: limit,
+      }),
+    })) || [];
+
+  return {
+    catalogo: construirCatalogoDesdeBusqueda(filas),
+    filas,
+    metadata: {
+      estrategia: "supabase_fts",
+      referenciasEnviadas: filas.length,
+      totalResultados: filas.length,
+      query,
+      duracionMs: Date.now() - inicio,
+    },
+  };
+}
+
 async function cargarCatalogoCliente(cliente = null) {
   if (!supabaseConfigurado()) {
     throw new Error("Supabase debe estar configurado para cargar el catálogo multiempresa");
@@ -160,7 +251,11 @@ async function cargarCatalogoCliente(cliente = null) {
 }
 
 module.exports = {
+  buscarProductosCatalogoCliente,
   cargarCatalogoCliente,
   cargarProductos: cargarProductosDesdeJson,
   cargarProductosDesdeJson,
+  _internals: {
+    construirCatalogoDesdeBusqueda,
+  },
 };

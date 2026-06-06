@@ -240,6 +240,29 @@ Para imagenes, el agente usa `OPENAI_VISION_MODEL` si esta configurado; si no, c
 
 Los modelos GPT-5 se invocan sin `temperature`, porque esos modelos pueden aceptar solamente el valor predeterminado. Para modelos anteriores, el interprete permite `OPENAI_INTERPRETER_TEMPERATURE`.
 
+### Optimizacion de contexto y costos
+
+Antes de llamar a OpenAI, `src/services/conversationService.js` clasifica la interaccion con `src/services/interactionClassifier.js`. Esa clasificacion define si el turno es saludo, busqueda, precio, domicilio, audio, imagen, continuacion o caso complejo. Con eso se decide:
+
+- cuantos mensajes recientes consultar desde Supabase;
+- cuantos ejemplos curados cargar;
+- que modelo usar para interprete y humanizador;
+- si el turno puede responderse sin OpenAI;
+- si hace falta contexto de catalogo;
+- cuantos productos candidatos enviar al modelo.
+
+El catalogo completo sigue cargandose desde Supabase y el motor lo usa como fuente de verdad para validar marcas, referencias, presentaciones y precios. OpenAI ya no necesita recibir todo el catalogo: `src/services/catalogContextService.js` consulta candidatos con `src/repositories/productRepository.js` usando la RPC `search_catalog_products`. Esa RPC vive en `supabase/005_catalog_search_rpc.sql`, filtra siempre por `client_id` y combina Full Text Search, trigramas, normalizacion `unaccent` y sinonimos comunes. Si la RPC falla o aun no existe, el backend usa el selector local como fallback seguro y registra el evento.
+
+El sistema queda preparado para cambiar `CATALOG_SEARCH_STRATEGY=semantic` cuando exista busqueda vectorial o embeddings por cliente. En ese modo futuro, cada referencia debe tener un texto unificado de busqueda y embeddings filtrados por `client_id`; por ahora la implementacion completa activa es FTS/RPC.
+
+La memoria se envia al modelo en tres niveles mediante `src/services/contextBuilder.js`:
+
+- Nivel 1: conversacion activa, carrito, seleccion pendiente, productos consultados y entrega actual.
+- Nivel 2: perfil resumido del cliente, datos frecuentes y ultimo pedido confirmado.
+- Nivel 3: historial completo conservado en Supabase, sin reenviarlo automaticamente.
+
+La observabilidad de uso de IA vive en `src/services/aiUsageLogger.js` y registra etapa, cliente, intencion, modelo, duracion, uso de imagen/audio, productos enviados y tokens reportados por OpenAI.
+
 ## Variables de entorno
 
 Usa `.env` como archivo unico de configuracion local. Grupos principales:
@@ -251,6 +274,23 @@ Usa `.env` como archivo unico de configuracion local. Grupos principales:
 
 El `KAPSO_PHONE_NUMBER_ID` se conserva para enviar respuestas por el numero configurado y para pruebas locales, pero la propiedad multiempresa vive en `client_channels`.
 
+Variables de optimizacion opcionales:
+
+- `OPENAI_INTERPRETER_MODEL_SIMPLE`: modelo economico para turnos simples.
+- `OPENAI_INTERPRETER_MODEL_COMPLEX`: modelo avanzado para casos complejos.
+- `OPENAI_HUMANIZER_MODEL`: modelo por defecto del humanizador.
+- `OPENAI_HUMANIZER_MODEL_SIMPLE`: modelo economico del humanizador.
+- `OPENAI_HUMANIZER_MODEL_COMPLEX`: modelo avanzado del humanizador.
+- `CATALOG_CONTEXT_MAX_REFERENCES`: maximo de referencias candidatas enviadas a OpenAI en texto.
+- `VISION_CATALOG_CONTEXT_MAX_REFERENCES`: maximo de referencias candidatas enviadas a OpenAI en vision.
+- `SUPABASE_CATALOG_SEARCH_RPC`: nombre de la RPC de busqueda; por defecto `search_catalog_products`.
+- `CATALOG_SEARCH_BACKEND`: usar `local` para desactivar temporalmente la RPC y forzar fallback local.
+- `CATALOG_SEARCH_LOGS`: usar `false` para apagar logs de busqueda de catalogo.
+- `OPENAI_HISTORY_SIMPLE_LIMIT`, `OPENAI_HISTORY_NORMAL_LIMIT`, `OPENAI_HISTORY_COMPLEX_LIMIT`: limites de historial reciente enviado al modelo.
+- `TRAINING_EXAMPLES_SIMPLE_LIMIT`, `TRAINING_EXAMPLES_NORMAL_LIMIT`, `TRAINING_EXAMPLES_COMPLEX_LIMIT`: limites de ejemplos curados por complejidad.
+- `AI_USAGE_LOGS`: usar `false` para apagar logs de uso de IA.
+- `CATALOG_SEARCH_STRATEGY`: reservado para `keyword` o `semantic`; la busqueda actual usa FTS/RPC en Supabase con fallback local seguro.
+
 ## Pruebas
 
 Ejecuta:
@@ -259,7 +299,7 @@ Ejecuta:
 npm test
 ```
 
-Al corte de este documento existen 86 pruebas automatizadas para:
+Al corte de este documento existen 124 pruebas automatizadas para:
 
 - Presentacion inexistente y barrera final de catalogo.
 - Avance correcto despues de `asi esta bien`.
@@ -283,6 +323,7 @@ Al corte de este documento existen 86 pruebas automatizadas para:
 - `supabase/002_conversation_orders.sql`: migracion historica de pedidos.
 - `supabase/003_training_examples.sql`: migracion historica de ejemplos.
 - `supabase/004_multiempresa_catalog.sql`: migracion de una base existente hacia clientes AIVANCE y catalogo en Supabase.
+- `supabase/005_catalog_search_rpc.sql`: extensiones, indices y RPC de busqueda FTS/trigram por cliente.
 
 Para un proyecto nuevo basta ejecutar `supabase/schema.sql`.
 

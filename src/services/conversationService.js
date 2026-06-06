@@ -10,11 +10,11 @@ const { obtenerEjemplosEntrenamiento } = require("../repositories/trainingExampl
 const { interpretarMensajeCliente } = require("./aiInterpreter");
 const { humanizarRespuesta } = require("./humanizer");
 const { procesarMultimedia } = require("./mediaProcessor");
-
-function clienteParaLog(channelUserId = "") {
-  if (process.env.NODE_ENV !== "production") return channelUserId || "desconocido";
-  return channelUserId ? `***${channelUserId.slice(-4)}` : "desconocido";
-}
+const { clasificarInteraccion } = require("./interactionClassifier");
+const { seleccionarCatalogoParaIA } = require("./catalogContextService");
+const { construirMemoriaOperativa } = require("./contextBuilder");
+const { modeloInterprete, modeloHumanizador } = require("./modelRouter");
+const { clienteParaLog } = require("./aiUsageLogger");
 
 function registrarEntradaOpenAI(evento, mensaje, imageUrls, contenidos) {
   const audiosOpenAI = contenidos.filter((contenido) => contenido.metadata?.audioTranscribedWithOpenAI).length;
@@ -48,6 +48,18 @@ function registrarInterpretacionOpenAI(evento, interpretacionIA) {
   );
 }
 
+function registrarClasificacion(evento, cliente, clasificacion, catalogoIA) {
+  console.log(
+    `[Router] Interaccion | cliente=${cliente?.slug || cliente?.id || "sin_cliente"} | usuario=${clienteParaLog(
+      evento.channelUserId
+    )} | intencion=${clasificacion.intencion} | complejidad=${clasificacion.complejidad} | vision=${
+      clasificacion.requiereVision ? "si" : "no"
+    } | audio=${clasificacion.requiereAudio ? "si" : "no"} | catalogoIA=${
+      catalogoIA.metadata.referenciasEnviadas
+    }/${catalogoIA.metadata.totalReferencias} | estrategia=${catalogoIA.metadata.estrategia}`
+  );
+}
+
 async function responderEventosEntrantes(eventos) {
   if (!eventos.length) throw new Error("No hay eventos entrantes para procesar");
 
@@ -74,10 +86,7 @@ async function responderEventosEntrantes(eventos) {
     esAgradecimiento,
   } = vertical.orderLogic;
   const { asegurarRespuestaCatalogo } = vertical.productLogic;
-  const [estado, historialReciente] = await Promise.all([
-    obtenerConversacionPersistida(evento.channelUserId, cliente),
-    obtenerHistorialRecientePersistido(evento.channelUserId, 12, cliente),
-  ]);
+  const estado = await obtenerConversacionPersistida(evento.channelUserId, cliente);
   let catalogo;
   let contenidos;
 
@@ -135,17 +144,34 @@ async function responderEventosEntrantes(eventos) {
     return respuesta;
   }
 
-  const ejemplosEntrenamiento = await obtenerEjemplosEntrenamiento(mensaje, 8, cliente);
-  const interpretacionIA = await interpretarMensajeCliente({
-    mensaje,
-    estado,
-    catalogo,
-    ejemplosEntrenamiento,
-    historialReciente,
-    imageUrls,
-    cliente,
-    vertical,
-  });
+  const clasificacion = clasificarInteraccion({ mensaje, estado, contenidos, imageUrls });
+  const catalogoIA = await seleccionarCatalogoParaIA({ catalogo, mensaje, estado, clasificacion, cliente });
+  const [historialReciente, ejemplosEntrenamiento] = await Promise.all([
+    obtenerHistorialRecientePersistido(evento.channelUserId, clasificacion.limiteHistorial, cliente),
+    obtenerEjemplosEntrenamiento(mensaje, clasificacion.limiteEjemplos, cliente),
+  ]);
+  const memoriaOperativa = construirMemoriaOperativa(estado, historialReciente);
+  const modeloIA = modeloInterprete(clasificacion);
+  const modeloHumanizar = modeloHumanizador(clasificacion);
+  registrarClasificacion(evento, cliente, clasificacion, catalogoIA);
+
+  const interpretacionIA = clasificacion.requiereOpenAI
+    ? await interpretarMensajeCliente({
+        mensaje,
+        estado,
+        catalogo: catalogoIA.catalogo,
+        ejemplosEntrenamiento,
+        historialReciente,
+        imageUrls,
+        cliente,
+        vertical,
+        clasificacion,
+        memoriaOperativa,
+        model: modeloIA,
+        catalogoMetadata: catalogoIA.metadata,
+        channelUserId: evento.channelUserId,
+      })
+    : null;
   registrarInterpretacionOpenAI(evento, interpretacionIA);
 
   const tieneIntencionCatalogo =
@@ -175,14 +201,21 @@ async function responderEventosEntrantes(eventos) {
     respuestaBase = resolverConsultaCatalogo(mensaje, estado, catalogo, interpretacionIA);
   }
 
-  const respuestaHumanizada = await humanizarRespuesta(mensaje, respuestaBase, {
-    ejemplosEntrenamiento,
-    historialReciente,
-    estado,
-    interpretacionIA,
-    cliente,
-    vertical,
-  });
+  const debeHumanizar = clasificacion.requiereOpenAI || !["saludo", "general"].includes(clasificacion.intencion);
+  const respuestaHumanizada = debeHumanizar
+    ? await humanizarRespuesta(mensaje, respuestaBase, {
+        ejemplosEntrenamiento,
+        historialReciente,
+        estado,
+        interpretacionIA,
+        cliente,
+        vertical,
+        clasificacion,
+        memoriaOperativa,
+        model: modeloHumanizar,
+        channelUserId: evento.channelUserId,
+      })
+    : respuestaBase;
   const respuesta = asegurarRespuestaCatalogo(mensaje, respuestaHumanizada, { catalogo, interpretacionIA });
 
   await guardarConversacionPersistida(evento.channelUserId, estado, {

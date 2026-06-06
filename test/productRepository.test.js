@@ -4,7 +4,11 @@ const fs = require("node:fs");
 const os = require("node:os");
 const path = require("node:path");
 
-const { cargarCatalogoCliente, cargarProductosDesdeJson } = require("../src/repositories/productRepository");
+const {
+  buscarProductosCatalogoCliente,
+  cargarCatalogoCliente,
+  cargarProductosDesdeJson,
+} = require("../src/repositories/productRepository");
 
 function restaurarEnvCatalogo(envAnterior) {
   for (const [clave, valor] of Object.entries(envAnterior)) {
@@ -100,6 +104,70 @@ test("carga el catalogo multiempresa desde Supabase con el formato actual del mo
 
     if (secretAnterior === undefined) delete process.env.SUPABASE_SECRET_KEY;
     else process.env.SUPABASE_SECRET_KEY = secretAnterior;
+  }
+});
+
+test("busca candidatos de catalogo por RPC filtrando por cliente", async () => {
+  const envAnterior = {
+    SUPABASE_URL: process.env.SUPABASE_URL,
+    SUPABASE_SECRET_KEY: process.env.SUPABASE_SECRET_KEY,
+    SUPABASE_CATALOG_SEARCH_RPC: process.env.SUPABASE_CATALOG_SEARCH_RPC,
+  };
+  const fetchAnterior = global.fetch;
+  const solicitudes = [];
+
+  process.env.SUPABASE_URL = "https://supabase.example";
+  process.env.SUPABASE_SECRET_KEY = "supabase-test-secret";
+  process.env.SUPABASE_CATALOG_SEARCH_RPC = "search_catalog_products";
+
+  global.fetch = async (url, opciones) => {
+    solicitudes.push({ url, opciones, body: JSON.parse(opciones.body) });
+
+    return new Response(
+      JSON.stringify([
+        {
+          brand_id: "brand-1",
+          reference_id: "reference-1",
+          brand_name: "Boehringer",
+          reference_name: "Bravecto Perro",
+          species: "perro",
+          category: "medicamento",
+          subcategory: "antipulgas",
+          life_stage: null,
+          requires_confirmation: true,
+          description: "Pastilla para pulgas y garrapatas",
+          image_url: "",
+          reference_metadata: { original_names: ["BRAVECTO"] },
+          presentations: [{ peso: "10 a 20kg", precio: 95000, stock: true, metadata: {} }],
+          score: 12.5,
+          match_reason: "fts, similarity",
+        },
+      ]),
+      { status: 200, headers: { "Content-Type": "application/json" } }
+    );
+  };
+
+  try {
+    const resultado = await buscarProductosCatalogoCliente(
+      { id: "client-1", slug: "distrifinca" },
+      { query: "brabecto garrapatas perro", limit: 5 }
+    );
+
+    assert.equal(solicitudes.length, 1);
+    assert.match(solicitudes[0].url, /\/rpc\/search_catalog_products$/);
+    assert.deepEqual(solicitudes[0].body, {
+      p_client_id: "client-1",
+      p_query: "brabecto garrapatas perro",
+      p_limit: 5,
+    });
+    assert.equal(resultado.metadata.estrategia, "supabase_fts");
+    assert.equal(resultado.catalogo[0].marca, "Boehringer");
+    assert.equal(resultado.catalogo[0].referencias[0].nombre, "Bravecto Perro");
+    assert.equal(resultado.catalogo[0].referencias[0].metadata.searchScore, 12.5);
+    assert.equal(resultado.catalogo[0].referencias[0].presentaciones[0].precio, 95000);
+  } finally {
+    global.fetch = fetchAnterior;
+    restaurarEnvCatalogo(envAnterior);
   }
 });
 

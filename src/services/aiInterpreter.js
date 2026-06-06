@@ -1,4 +1,5 @@
 const OpenAI = require("openai");
+const { logUsoIA } = require("./aiUsageLogger");
 
 const openai = process.env.OPENAI_API_KEY
   ? new OpenAI({
@@ -238,6 +239,11 @@ async function interpretarMensajeCliente({
   imageUrls = [],
   cliente = null,
   vertical = null,
+  clasificacion = null,
+  memoriaOperativa = null,
+  model: modelOverride = null,
+  catalogoMetadata = null,
+  channelUserId = null,
 }) {
   if (!openai || process.env.AI_INTERPRETER === "false") return null;
 
@@ -245,12 +251,12 @@ async function interpretarMensajeCliente({
     const urlsImagen = [...imageUrls, imageUrl].filter(Boolean);
     const usaVision = urlsImagen.length > 0;
     const catalogoPrompt = resumenCatalogoParaPrompt(catalogo, { vision: usaVision });
-    const model = urlsImagen.length
+    const model = modelOverride || (urlsImagen.length
       ? process.env.OPENAI_VISION_MODEL ||
         process.env.OPENAI_INTERPRETER_MODEL ||
         process.env.OPENAI_MODEL ||
         "gpt-4.1"
-      : process.env.OPENAI_INTERPRETER_MODEL || process.env.OPENAI_MODEL || "gpt-5.2";
+      : process.env.OPENAI_INTERPRETER_MODEL || process.env.OPENAI_MODEL || "gpt-5.2");
     const parametrosModelo = {
       model,
       response_format: { type: "json_object" },
@@ -448,6 +454,8 @@ JSON exacto:
                     mensaje,
                     historialReciente: resumenHistorial(historialReciente),
                     estado: resumenEstado(estado),
+                    memoriaOperativa,
+                    clasificacion,
                     cliente: contextoCliente(cliente),
                     catalogo: catalogoPrompt,
                     instruccionImagen:
@@ -463,6 +471,8 @@ JSON exacto:
                 mensaje,
                 historialReciente: resumenHistorial(historialReciente),
                 estado: resumenEstado(estado),
+                memoriaOperativa,
+                clasificacion,
                 cliente: contextoCliente(cliente),
                 catalogo: catalogoPrompt,
               }),
@@ -480,11 +490,38 @@ JSON exacto:
       );
     }
 
+    const inicio = Date.now();
     const completion = await openai.chat.completions.create(parametrosModelo, {
       timeout: timeoutInterpretacion(urlsImagen),
     });
+    const duracionMs = Date.now() - inicio;
 
-    return normalizarInterpretacion(JSON.parse(completion.choices[0].message.content));
+    logUsoIA({
+      etapa: "interprete",
+      channelUserId,
+      cliente,
+      intencion: clasificacion?.intencion,
+      modelo: model,
+      duracionMs,
+      usage: completion.usage,
+      productosEnviados: catalogoMetadata?.referenciasEnviadas ?? catalogoPrompt.referencias?.length ?? null,
+      imagenes: urlsImagen.length,
+      audios: clasificacion?.requiereAudio ? 1 : 0,
+    });
+
+    const interpretacion = normalizarInterpretacion(JSON.parse(completion.choices[0].message.content));
+    if (interpretacion) {
+      Object.defineProperty(interpretacion, "_meta", {
+        value: {
+          modelo: model,
+          duracionMs,
+          usage: completion.usage || null,
+          catalogo: catalogoMetadata || null,
+        },
+        enumerable: false,
+      });
+    }
+    return interpretacion;
   } catch (error) {
     const urlsImagen = [...imageUrls, imageUrl].filter(Boolean);
     const contexto = urlsImagen.length ? "imagen" : "texto";
