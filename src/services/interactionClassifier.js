@@ -50,7 +50,7 @@ function detectarIntencionBasica(mensaje = "", estado = {}, contenidos = [], ima
   ) {
     return "busqueda_producto";
   }
-  if (contieneAlguno(texto, ["tienes", "manejan", "venden", "hay", "busco", "necesito", "quiero"])) {
+  if (contieneAlguno(texto, ["tiene", "tienes", "manejan", "venden", "hay", "busco", "necesito", "quiero"])) {
     return "busqueda_producto";
   }
   if (esSenalReferenciaProducto(mensaje)) {
@@ -192,12 +192,14 @@ function clasificarInteraccion({ mensaje = "", estado = {}, contenidos = [], ima
     requiereOpenAI,
     requiereBusquedaProducto: requiereBusquedaProducto(intencion, mensaje, estado),
     perfilContexto: perfil,
-    limiteHistorial: limiteHistorial(
-      complejidad,
-      perfil,
-      fallbackHistorialProductoCandidato
-    ),
-    limiteEjemplos: limiteEjemplos(complejidad, perfil),
+    limiteHistorial: requiereVision
+      ? 0
+      : limiteHistorial(
+          complejidad,
+          perfil,
+          fallbackHistorialProductoCandidato
+        ),
+    limiteEjemplos: requiereVision ? 0 : limiteEjemplos(complejidad, perfil),
     fallbackHistorialProductoCandidato,
     fallbackHistorialProductoActivo: false,
   };

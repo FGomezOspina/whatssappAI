@@ -51,3 +51,25 @@ test("omite humanizador en busqueda simple aunque el motor deje seleccion pendie
     else process.env.HUMANIZER_PRODUCT_SEARCH = anterior;
   }
 });
+
+test("no omite humanizador cuando la cotizacion incluye presentaciones disponibles", () => {
+  const anterior = process.env.HUMANIZER_PRODUCT_SEARCH;
+  delete process.env.HUMANIZER_PRODUCT_SEARCH;
+
+  try {
+    assert.equal(
+      omitirHumanizadorProducto(
+        "Te confirmo, esa referencia la tenemos en estas presentaciones:\n- AGILITY PEQ ADUL 1.5kg: $37.300\n- AGILITY PEQ ADUL 3kg: $59.800",
+        {
+          clasificacion: { perfilContexto: "producto" },
+          cliente: { prompts: {} },
+          estado: {},
+        }
+      ),
+      false
+    );
+  } finally {
+    if (anterior === undefined) delete process.env.HUMANIZER_PRODUCT_SEARCH;
+    else process.env.HUMANIZER_PRODUCT_SEARCH = anterior;
+  }
+});

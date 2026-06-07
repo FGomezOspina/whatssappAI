@@ -320,12 +320,12 @@ El contexto enviado a OpenAI se construye por perfil sin modificar lo almacenado
 - `simple`: sin historial ni catalogo cuando no hacen falta.
 - `producto`: mensaje actual, contexto pendiente breve y candidatos compactos; normalmente sin historial ni ejemplos. Si el estado no resuelve una referencia corta y el turno anterior fue de producto, agrega solo los ultimos `2` mensajes.
 - `pedido`: carrito, datos operativos pendientes y un historial reciente limitado.
-- `multimedia`: instrucciones de audio/vision y candidatos, con contexto operativo acotado.
+- `multimedia`: audio conserva contexto reciente limitado; una imagen nueva conserva carrito y entrega, pero omite historial textual, ejemplos y foco de productos anteriores para evitar arrastrar otra foto.
 - `complejo`: contexto ampliado dentro del presupuesto configurado.
 
 Los candidatos enviados al interprete omiten ids, metadata, timestamps y stock interno. Conservan marca, nombre, categoria, especie, etapa, descripcion breve, presentaciones y precios. El humanizador no recibe historial completo, ejemplos ni memoria duplicada.
 
-Antes del interprete, `productMatchValidator` compara marca, referencia, aliases, etapa, tamano, especie y errores de escritura contra el catalogo completo. Una coincidencia baja responde "no encontrado" sin llamar a OpenAI; una coincidencia media muestra opciones como posibles coincidencias; solo una coincidencia alta puede continuar como producto confirmado. En imagenes, la misma validacion se ejecuta despues de extraer marca y referencia visibles.
+Antes del interprete, `productMatchValidator` compara marca, referencia, aliases, etapa, tamano, especie y errores de escritura contra el catalogo completo. Una coincidencia baja responde "no encontrado" sin llamar a OpenAI; una coincidencia media muestra opciones como posibles coincidencias; solo una coincidencia alta puede continuar como producto confirmado. En imagenes, la misma validacion se ejecuta despues de extraer las senales visibles; en texto y audio transcrito usa las mismas reglas con las palabras del cliente. Una marca sola no confirma una referencia: linea, especie, etapa, tamano, condicion y peso ajustan el puntaje y descartan referencias contradictorias. Los nombres comerciales visibles se comparan con una identidad normalizada para tolerar submarcas o claims ausentes en la base, equivalencias como `cat/gato`, typos de linea y pesos leidos como `KR`. Las condiciones o formatos no solicitados, como `piel`, `obesos`, `esterilizado`, `lata` o `pouch`, tienen techo de confianza para que no desplacen la linea normal. Cuando varias senales convergen en una sola opcion, el agente responde directamente con esa referencia y una invitacion comercial breve; solo pregunta cuando la ambiguedad es real.
 
 Las coincidencias medias se guardan temporalmente en el estado de la conversacion con marca, referencia y presentaciones. El siguiente mensaje puede seleccionarlas por nombre completo, fragmento distintivo u ordinal (`primera`, `opcion 2`). La seleccion se resuelve contra el catalogo completo antes de iniciar otra busqueda y responde directamente con precios y disponibilidad.
 
@@ -351,7 +351,7 @@ Ejecuta:
 npm test
 ```
 
-Al corte de este documento existen 124 pruebas automatizadas para:
+Al corte de este documento existen 197 pruebas automatizadas para:
 
 - Presentacion inexistente y barrera final de catalogo.
 - Avance correcto despues de `asi esta bien`.

@@ -15,6 +15,7 @@ const { seleccionarCatalogoParaIA } = require("./catalogContextService");
 const { construirMemoriaOperativa } = require("./contextBuilder");
 const { modeloInterprete, modeloHumanizador } = require("./modelRouter");
 const { clienteParaLog, logResumenInteraccionIA } = require("./aiUsageLogger");
+const { respuestaParaHistorial } = require("../utils/responseMessages");
 const {
   aplicarCoincidenciaValidada,
   respuestaValidacionProducto,
@@ -211,6 +212,10 @@ async function responderEventosEntrantes(eventos) {
     contenidos,
     imageUrls,
   });
+  const reinicioPorVision = clasificacion.requiereVision;
+  if (reinicioPorVision) {
+    reiniciarFocoProducto(estado);
+  }
   const iniciaNuevaBusquedaProducto = Boolean(
     clasificacion.requiereBusquedaProducto &&
       !esSenalReferenciaProducto(mensaje) &&
@@ -300,7 +305,7 @@ async function responderEventosEntrantes(eventos) {
     }
   }
 
-  if (iniciaNuevaBusquedaProducto) {
+  if (iniciaNuevaBusquedaProducto && !reinicioPorVision) {
     reiniciarFocoProducto(estado);
     clasificacion = clasificarInteraccion({
       mensaje,
@@ -522,11 +527,12 @@ async function responderEventosEntrantes(eventos) {
       })
     : respuestaBase;
   const respuesta = asegurarRespuestaCatalogo(mensaje, respuestaHumanizada, { catalogo, interpretacionIA });
+  const respuestaPersistida = respuestaParaHistorial(respuesta);
 
   await guardarConversacionPersistida(evento.channelUserId, estado, {
     cliente,
     mensaje,
-    respuesta,
+    respuesta: respuestaPersistida,
   });
   logResumenInteraccionIA({
     channelUserId: evento.channelUserId,

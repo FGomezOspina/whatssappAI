@@ -88,9 +88,12 @@ test("la respuesta ambigua muestra precios de todas las coincidencias", () => {
   assert.match(respuesta, /ADVANCE URINAY.*1\.5kg: \$108\.000/i);
   assert.match(
     respuesta,
-    /¿Te refieres a ADVANCE CAT URINARY o a ADVANCE URINAY\?/i
+    /¿Buscas ADVANCE CAT URINARY o ADVANCE URINAY\?/i
   );
-  assert.doesNotMatch(respuesta, /coincidencia exacta|responder con el número/i);
+  assert.doesNotMatch(
+    respuesta,
+    /Revisando la foto|¿Es esa\?|coincidencia exacta|responder con el número/i
+  );
 });
 
 test("selecciona por nombre completo sin volver a buscar ni pedir aclaración", () => {
@@ -494,6 +497,10 @@ test("una búsqueda nueva limpia el foco pero conserva el historial cotizado", (
     marca: "ADVANCE",
     referencia: "ADVANCE CAT URINARY",
   };
+  estado.ultimaInteraccionProducto = {
+    intencionOriginal: "foto anterior",
+    tipoIntencion: "consulta_producto",
+  };
   establecerProductosConsultados(estado, [
     {
       marca: "ADVANCE",
@@ -508,6 +515,7 @@ test("una búsqueda nueva limpia el foco pero conserva el historial cotizado", (
   assert.equal(estado.marca, null);
   assert.deepEqual(estado.criterios, {});
   assert.equal(estado.ultimaSeleccion, null);
+  assert.equal(estado.ultimaInteraccionProducto, null);
   assert.deepEqual(estado.productosConsultados, []);
   assert.equal(estado.historialProductosConsultados.length, 1);
 });

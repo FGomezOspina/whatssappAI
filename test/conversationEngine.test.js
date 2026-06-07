@@ -370,6 +370,19 @@ const catalogoChunkyImportado = [
           { peso: "x 9 kg", precio: 74200, stock: true, metadata: {} },
         ],
       },
+      {
+        nombre: "CHUNKY ADULTO RP",
+        especie: "perro",
+        categoria: "comida",
+        subcategoria: "concentrado",
+        etapa: "adulto",
+        presentaciones: [
+          { peso: "x 1.5 kg", precio: 16900, stock: true, metadata: {} },
+          { peso: "x 4 kg", precio: 37200, stock: true, metadata: {} },
+          { peso: "x 500", precio: 5200, stock: true, metadata: {} },
+          { peso: "x 8 kg", precio: 67600, stock: true, metadata: {} },
+        ],
+      },
     ],
   },
 ];
@@ -1152,9 +1165,14 @@ test("consultar precios no agrega productos al carrito", () => {
 
   assert.equal(estado.carrito.length, 0);
   assert.equal(estado.productosConsultados.length, 2);
-  assert.match(respuesta, /Estos son los precios/i);
+  assert.match(respuesta, /Te confirmo esta referencia/i);
+  assert.match(respuesta, /También manejamos estas presentaciones de Dog Chow Adulto Mini y Pequeño/i);
   assert.match(respuesta, /Adulto Mini y Pequeño 1kg/i);
+  assert.match(respuesta, /Adulto Mini y Pequeño 2kg/i);
+  assert.match(respuesta, /Adulto Mini y Pequeño 4kg/i);
   assert.match(respuesta, /Adulto Mediano y Grande 2kg/i);
+  assert.match(respuesta, /Adulto Mediano y Grande 1kg/i);
+  assert.match(respuesta, /\[\[AIVANCE_MESSAGE_BREAK\]\]/);
 });
 
 test("despues de cotizar puede agregar los productos consultados", () => {
@@ -1228,6 +1246,22 @@ test("consulta de precio de un solo producto no agrega al carrito", () => {
   assert.equal(estado.carrito.length, 0);
   assert.equal(estado.productosConsultados.length, 1);
   assert.match(respuesta, /\$68\.000/);
+  assert.match(
+    respuesta,
+    /Claro, lo tenemos|Sí, esa presentación está disponible|Te confirmo, esa referencia la manejamos/i
+  );
+  assert.match(respuesta, /También manejamos estas presentaciones de esa referencia/i);
+  assert.match(respuesta, /Adulto Mini y Pequeño 1kg: \$19\.000/i);
+  assert.match(respuesta, /Adulto Mini y Pequeño 2kg: \$36\.000/i);
+  assert.match(respuesta, /Adulto Mini y Pequeño 4kg: \$68\.000/i);
+  assert.doesNotMatch(respuesta, /Adulto Mediano y Grande/i);
+  assert.doesNotMatch(respuesta, /Cachorros Mini y Pequeño/i);
+  assert.doesNotMatch(respuesta, /Mirringo/i);
+  assert.match(
+    respuesta,
+    /¿Cuál presentación quieres que te deje en el pedido\?|¿Te dejo alguna de estas presentaciones en el pedido\?|¿Con cuál presentación seguimos para el pedido\?/i
+  );
+  assert.doesNotMatch(respuesta, /Si te sirve/i);
   assert.doesNotMatch(respuesta, /Pedido:/);
 });
 
@@ -1324,6 +1358,129 @@ test("normaliza gramos leidos desde imagen contra presentaciones en kilos", () =
   assert.equal(estado.productosConsultados[0].peso, "x 2 kg");
   assert.match(respuesta, /CHUNKY ADULTO x 2 kg: \$18\.900/i);
   assert.doesNotMatch(respuesta, /no tengo presentación/i);
+});
+
+test("chunky adulto razas pequenas prioriza RP sobre la referencia adulta generica", () => {
+  const estado = crearEstadoInicial();
+
+  const respuesta = resolverConsultaCatalogo(
+    "chunky adultos razas pquenas",
+    estado,
+    catalogoChunkyImportado,
+    null
+  );
+
+  assert.equal(estado.ultimaSeleccion.referencia, "CHUNKY ADULTO RP");
+  assert.match(respuesta, /CHUNKY ADULTO RP/i);
+  assert.match(respuesta, /\$16\.900/);
+  assert.doesNotMatch(respuesta, /\$178\.800/);
+});
+
+test("consulta con marca clara y referencia ambigua no lista referencias globales por especie", () => {
+  const estado = crearEstadoInicial();
+  estado.productosConsultados = [
+    {
+      marca: "ADVANCE",
+      referencia: "ADVANCE CAT URINARY",
+      peso: "1.5kg",
+      precio: 108000,
+    },
+  ];
+  const catalogoMixto = [
+    {
+      marca: "ADVANCE",
+      referencias: [
+        {
+          nombre: "ADVANCE DOG ATOPIC MINI",
+          especie: "perro",
+          etapa: "adulto",
+          presentaciones: [{ peso: "1.5kg", precio: 108000, stock: true, metadata: {} }],
+        },
+      ],
+    },
+    {
+      marca: "AGILITY",
+      referencias: [
+        {
+          nombre: "AGILITY EN LATA PERRO",
+          especie: "perro",
+          presentaciones: [{ peso: "360gr", precio: 16800, stock: true, metadata: {} }],
+        },
+        {
+          nombre: "AGILITY GRAN ADUL",
+          especie: "perro",
+          etapa: "adulto",
+          tamano: "grande",
+          presentaciones: [{ peso: "3kg", precio: 76000, stock: true, metadata: {} }],
+        },
+        {
+          nombre: "AGILITY PEQ ADUL",
+          especie: "perro",
+          etapa: "adulto",
+          tamano: "pequeno",
+          presentaciones: [{ peso: "1.5kg", precio: 43600, stock: true, metadata: {} }],
+        },
+        {
+          nombre: "AGILITY OBESOS",
+          especie: "perro",
+          etapa: "adulto",
+          presentaciones: [{ peso: "1.5kg", precio: 38900, stock: true, metadata: {} }],
+        },
+      ],
+    },
+    {
+      marca: "ALPO",
+      referencias: [
+        {
+          nombre: "ALPO ADUL",
+          especie: "perro",
+          etapa: "adulto",
+          presentaciones: [{ peso: "2kg", precio: 20000, stock: true, metadata: {} }],
+        },
+      ],
+    },
+    {
+      marca: "BR",
+      referencias: [
+        {
+          nombre: "BR CORDERO",
+          especie: "perro",
+          etapa: "adulto",
+          presentaciones: [{ peso: "3kg", precio: 78000, stock: true, metadata: {} }],
+        },
+      ],
+    },
+  ];
+  const interpretacionIA = {
+    intencion: "consulta_producto",
+    accion: "consultar",
+    confianza: 0.76,
+    producto: {
+      marca: "AGILITY",
+      referencia: null,
+      especie: "perro",
+      etapa: "adulto",
+      tamano: null,
+      presentacion: null,
+    },
+    productos: [],
+    entrega: {},
+    datosCliente: {},
+    carrito: { operacion: null },
+    faltanteSugerido: null,
+  };
+
+  const respuesta = resolverConsultaCatalogo(
+    "TIENE AGILITY GOLD PERRO ADULTO?",
+    estado,
+    catalogoMixto,
+    interpretacionIA
+  );
+
+  assert.match(respuesta, /AGILITY GRAN ADUL/i);
+  assert.match(respuesta, /AGILITY PEQ ADUL/i);
+  assert.doesNotMatch(respuesta, /Lo que sí tengo para perros/i);
+  assert.doesNotMatch(respuesta, /ADVANCE DOG|ALPO ADUL|BR CORDERO/i);
 });
 
 test("otra pregunta de precio despues de cotizar sigue sin agregar", () => {

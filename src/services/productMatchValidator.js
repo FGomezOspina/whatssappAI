@@ -121,6 +121,32 @@ const TERMINOS_ATRIBUTO = new Set(
   ].map(normalizar)
 );
 
+const TERMINOS_COMERCIALES_VISUALES = new Set(
+  [
+    "adul",
+    "adult",
+    "all",
+    "breeds",
+    "developed",
+    "diet",
+    "diets",
+    "for",
+    "gold",
+    "line",
+    "linea",
+    "nutrition",
+    "nutricion",
+    "plus",
+    "premium",
+    "sizes",
+    "veterinaria",
+    "veterinarias",
+    "veterinario",
+    "veterinarios",
+    "veterinary",
+  ].map(normalizar)
+);
+
 function numeroEnv(nombre, defecto) {
   const valor = Number(process.env[nombre]);
   return Number.isFinite(valor) ? valor : defecto;
@@ -157,8 +183,51 @@ function similitudTexto(a = "", b = "") {
   return 1 - distanciaLevenshtein(izquierda, derecha) / Math.max(izquierda.length, derecha.length);
 }
 
+function normalizarIdentidadProducto(texto = "") {
+  return normalizar(texto)
+    .replace(/\bad\b/g, "adulto")
+    .replace(/\brp\b/g, "raza pequeno")
+    .replace(/\b(?:peq|pequena|pequenas|pequenos)\b/g, "pequeno")
+    .replace(/\b(?:rg|rmg)\b/g, "raza grande")
+    .replace(/\b(?:gran|grand|grandes|mediano|mediana|medianos|medianas)\b/g, "grande");
+}
+
+function tokenIdentidadVisual(token = "") {
+  if (/^(?:cat|cats|gato|gatos|feline|felino|felina)$/.test(token)) {
+    return "gato";
+  }
+  if (/^(?:dog|dogs|perro|perros|canine|canino|canina)$/.test(token)) {
+    return "perro";
+  }
+  if (/^(?:urin|uro|urinary|urinay|urinario|urology)/.test(token)) {
+    return "urinario";
+  }
+  if (/^(?:renal|kidney)/.test(token)) return "renal";
+  if (/^(?:gastro|digestive|digestivo)/.test(token)) return "gastro";
+  if (/^(?:derm|skin|piel|atopic)/.test(token)) return "piel";
+  if (/^(?:castr|steriliz|esteriliz)/.test(token)) return "castrado";
+  if (/^(?:obes|weight|sobrepeso)/.test(token)) return "peso";
+  return token;
+}
+
+function tokensIdentidadVisual(texto = "") {
+  return [
+    ...new Set(
+      normalizarIdentidadProducto(texto)
+        .replace(/\b\d+(?:\.\d+)?\s*(?:kg|g|gr|lb|ml|mg|unidad|unidades)\b/g, " ")
+        .split(/\s+/)
+        .filter(Boolean)
+        .filter((token) => !STOPWORDS.has(token))
+        .filter((token) => !TERMINOS_COMERCIALES_VISUALES.has(token))
+        .filter((token) => !/^\d+(?:\.\d+)?$/.test(token))
+        .map(tokenIdentidadVisual)
+        .filter((token) => token.length >= 2)
+    ),
+  ];
+}
+
 function tokensDistintivos(texto = "", opciones = {}) {
-  let textoNormalizado = normalizar(texto);
+  let textoNormalizado = normalizarIdentidadProducto(texto);
   if (opciones.inferirEspeciePorRaza) {
     textoNormalizado = textoNormalizado.replace(
       /\b(?:r|raza|razas)\s+(?=pequena|pequeno|mediana|mediano|grande)/g,
@@ -224,7 +293,7 @@ function marcaExactaConsultada(catalogo = [], terminos = []) {
 }
 
 function coincidenciaNombre(terminos = [], nombre = "") {
-  const nombreNormalizado = normalizar(nombre);
+  const nombreNormalizado = normalizarIdentidadProducto(nombre);
   const tokensNombre = nombreNormalizado.split(/\s+/).filter(Boolean);
   const consulta = terminos.join(" ");
   const consultaCompacta = consulta.replace(/\s+/g, "");
@@ -260,7 +329,46 @@ function coincidenciaNombre(terminos = [], nombre = "") {
   };
 }
 
-function puntuarItem(item, terminos) {
+function coincidenciaIdentidadVisual(terminos = [], nombre = "") {
+  const tokensConsulta = tokensIdentidadVisual(terminos.join(" "));
+  const tokensNombre = tokensIdentidadVisual(nombre);
+  if (!tokensConsulta.length || !tokensNombre.length) {
+    return { score: 0, exacta: false };
+  }
+
+  const mejorCoincidencia = (token, candidatos) =>
+    candidatos.reduce((maximo, candidato) => {
+      if (token === candidato) return 1;
+      if (token.length <= 3 || candidato.length <= 3) return maximo;
+      return Math.max(maximo, similitudTexto(token, candidato));
+    }, 0);
+
+  const coberturaConsulta =
+    tokensConsulta.reduce(
+      (suma, token) => suma + mejorCoincidencia(token, tokensNombre),
+      0
+    ) / tokensConsulta.length;
+  const coberturaNombre =
+    tokensNombre.reduce(
+      (suma, token) => suma + mejorCoincidencia(token, tokensConsulta),
+      0
+    ) / tokensNombre.length;
+  const score = Math.min(coberturaConsulta, coberturaNombre);
+
+  return {
+    score,
+    exacta: score >= 0.96,
+  };
+}
+
+function puntuarItem(item, terminos, opciones = {}) {
+  const tokensMarca = new Set(
+    normalizarIdentidadProducto(item.marca.marca).split(/\s+/).filter(Boolean)
+  );
+  const consultaSoloMarca =
+    opciones.desambiguarMarca &&
+    terminos.length > 0 &&
+    terminos.every((termino) => tokensMarca.has(termino));
   const resultados = [
     { nombre: item.marca.marca, tipo: "marca" },
     { nombre: item.referencia.nombre, tipo: "referencia" },
@@ -273,25 +381,120 @@ function puntuarItem(item, terminos) {
       tipo: "referencia",
     },
     ...item.nombres.slice(2).map((nombre) => ({ nombre, tipo: "alias" })),
-  ].map((entrada) => ({
-    ...entrada,
-    ...coincidenciaNombre(terminos, entrada.nombre),
-  }));
-  resultados.sort((a, b) => b.score - a.score);
+  ].flatMap((entrada) => {
+    const coincidenciaTextual = coincidenciaNombre(terminos, entrada.nombre);
+    const coincidenciaVisual = coincidenciaIdentidadVisual(
+      terminos,
+      entrada.nombre
+    );
+    const limitarMarcaEnReferencia =
+      consultaSoloMarca && entrada.tipo !== "marca";
+
+    return [
+      {
+        ...entrada,
+        ...coincidenciaTextual,
+        score:
+          limitarMarcaEnReferencia && coincidenciaTextual.exacta
+            ? 0.56
+            : coincidenciaTextual.score,
+        exacta:
+          limitarMarcaEnReferencia && coincidenciaTextual.exacta
+            ? false
+            : coincidenciaTextual.exacta,
+      },
+      {
+        ...entrada,
+        tipo: entrada.tipo === "marca" ? "marca" : "identidad_visual",
+        ...coincidenciaVisual,
+        score:
+          limitarMarcaEnReferencia && coincidenciaVisual.exacta
+            ? 0.56
+            : coincidenciaVisual.score,
+        exacta:
+          limitarMarcaEnReferencia && coincidenciaVisual.exacta
+            ? false
+            : coincidenciaVisual.exacta,
+      },
+    ];
+  });
+  const prioridadResultado = (resultado = {}) =>
+    resultado.tipo === "marca" ? 0 : 1;
+  resultados.sort(
+    (a, b) => b.score - a.score || prioridadResultado(b) - prioridadResultado(a)
+  );
+  const mejor = resultados[0];
+  const coincidenciaSoloMarca =
+    opciones.desambiguarMarca && mejor?.tipo === "marca";
   return {
     ...item,
-    score: resultados[0]?.score || 0,
-    exacta: Boolean(resultados[0]?.exacta),
-    nombreCoincidente: resultados[0]?.nombre || null,
-    tipoCoincidencia: resultados[0]?.tipo || null,
+    score: coincidenciaSoloMarca ? 0.56 : mejor?.score || 0,
+    exacta: coincidenciaSoloMarca ? false : Boolean(mejor?.exacta),
+    nombreCoincidente: mejor?.nombre || null,
+    tipoCoincidencia: mejor?.tipo || null,
   };
 }
 
 function normalizarEspecie(valor = "") {
-  const texto = normalizar(valor);
+  const texto = normalizar(valor || "");
   if (/\b(gato|cat|feline|felino)\b/.test(texto)) return "gato";
   if (/\b(perro|dog|canine|canino)\b/.test(texto)) return "perro";
-  return texto || null;
+  if (/\b(ave|aves|pajaro|pajaros)\b/.test(texto)) return "ave";
+  if (/\b(roedor|roedores|hamster|conejo|cobayo)\b/.test(texto)) return "roedor";
+  if (/\b(pez|peces)\b/.test(texto)) return "pez";
+  if (/\b(equino|caballo|caballos)\b/.test(texto)) return "equino";
+  if (/\b(bovino|vaca|ganado)\b/.test(texto)) return "bovino";
+  return null;
+}
+
+function normalizarEtapa(valor = "") {
+  const texto = normalizar(valor || "");
+  if (/\b(senior|mayor|mayores|viejo|viejito)\b/.test(texto)) {
+    return "senior";
+  }
+  if (/\b(cach|cachorro|cachorros|puppy|kitten|gatito|gatitos|bebe)\b/.test(texto)) {
+    return "cachorro";
+  }
+  if (/\b(adult|adulto|adultos)\b/.test(texto)) return "adulto";
+  return null;
+}
+
+function normalizarTamano(valor = "") {
+  const texto = normalizar(valor || "");
+  if (
+    /\b(todas las razas|todos los tamanos|all breeds|all sizes)\b/.test(texto)
+  ) {
+    return "todas";
+  }
+  if (
+    /\b(rp|peq|mini|small|pequeno|pequena|pequenos|pequenas)\b/.test(texto)
+  ) {
+    return "pequeno";
+  }
+  if (
+    /\b(rg|rmg|gran|grand|medium|large|mediano|mediana|medianos|medianas|grande|grandes)\b/.test(
+      texto
+    )
+  ) {
+    return "grande";
+  }
+  return null;
+}
+
+function etapaReferencia(referencia = {}) {
+  return (
+    normalizarEtapa(
+      `${referencia.nombre || ""} ${referencia.descripcion || ""}`
+    ) || normalizarEtapa(referencia.etapa)
+  );
+}
+
+function tamanoReferencia(referencia = {}) {
+  return (
+    normalizarTamano(
+      `${referencia.nombre || ""} ${referencia.descripcion || ""}`
+    ) || normalizarTamano(referencia.tamano)
+  );
 }
 
 function condicionesProducto(texto = "", condiciones = []) {
@@ -316,6 +519,17 @@ function condicionesProducto(texto = "", condiciones = []) {
   if (/\b(castr|steriliz|esteriliz)\w*\b/.test(normalizado)) {
     agregar("castrado");
   }
+  return resultado;
+}
+
+function formatosProducto(texto = "") {
+  const normalizado = normalizar(texto);
+  const resultado = [];
+  const agregar = (valor) => {
+    if (!resultado.includes(valor)) resultado.push(valor);
+  };
+  if (/\b(lata|can)\b/.test(normalizado)) agregar("lata");
+  if (/\b(pouch|pouche|sobre|sachet)\b/.test(normalizado)) agregar("pouch");
   return resultado;
 }
 
@@ -431,8 +645,8 @@ function referenciasEquivalentes(itemA, itemB) {
   return similitudTokensIdentidad(identidadA, identidadB) >= 0.86;
 }
 
-function compatibleConSenales(item, interpretacion) {
-  const señales = señalesInterpretadas(interpretacion);
+function compatibleConSenales(item, interpretacion, mensaje = "") {
+  const señales = señalesInterpretadas(interpretacion, mensaje);
   const condicionesReferencia = condicionesProducto(
     `${item.referencia.nombre} ${item.referencia.descripcion || ""}`
   );
@@ -447,11 +661,23 @@ function compatibleConSenales(item, interpretacion) {
   }
 
   const especieNombre = especieExplicita(item.referencia.nombre);
-  return !(
+  if (
     señales.especie &&
     especieNombre &&
     señales.especie !== especieNombre
-  );
+  ) {
+    return false;
+  }
+
+  if (!item.exacta) {
+    const etapa = etapaReferencia(item.referencia);
+    if (señales.etapa && etapa && señales.etapa !== etapa) return false;
+
+    const tamano = tamanoReferencia(item.referencia);
+    if (señales.tamano && tamano && señales.tamano !== tamano) return false;
+  }
+
+  return true;
 }
 
 function agruparReferenciasEquivalentes(items = []) {
@@ -478,6 +704,14 @@ function agruparReferenciasEquivalentes(items = []) {
         items: grupo.items,
         score: Math.max(...grupo.items.map((item) => item.score)),
         exacta: grupo.items.some((item) => item.exacta),
+        coincidenciaReferenciaExacta: grupo.items.some(
+          (item) => item.exacta && item.tipoCoincidencia !== "marca"
+        ),
+        senalesFuertesCoincidentes: Math.max(
+          ...grupo.items.map(
+            (item) => item.senalesFuertesCoincidentes || 0
+          )
+        ),
         presentacionCoincide: grupo.items.some(
           (item) => item.presentacionCoincide === true
         )
@@ -490,16 +724,34 @@ function agruparReferenciasEquivalentes(items = []) {
     .sort((a, b) => b.score - a.score);
 }
 
-function señalesInterpretadas(interpretacion = null) {
+function señalesInterpretadas(interpretacion = null, mensaje = "") {
   const producto =
     interpretacion?.producto ||
     (interpretacion?.productos?.length === 1 ? interpretacion.productos[0] : {});
+  const texto = [
+    producto.referencia,
+    producto.especie,
+    producto.etapa,
+    producto.tamano,
+    mensaje,
+  ]
+    .filter(Boolean)
+    .join(" ");
   return {
-    especie: normalizarEspecie(producto.especie),
+    especie:
+      normalizarEspecie(producto.especie) ||
+      normalizarEspecie(texto),
+    etapa:
+      normalizarEtapa(producto.etapa) ||
+      normalizarEtapa(texto),
+    tamano:
+      normalizarTamano(producto.tamano) ||
+      normalizarTamano(texto),
     condiciones: condicionesProducto(
-      producto.referencia,
+      texto,
       producto.condiciones
     ),
+    formatos: formatosProducto(texto),
   };
 }
 
@@ -509,11 +761,16 @@ function ajustarPorSenales(item, mensaje, interpretacion, clasificacion = {}) {
     mensaje,
     interpretacion
   );
-  const señales = señalesInterpretadas(interpretacion);
+  const señales = señalesInterpretadas(interpretacion, mensaje);
   const especieReferencia = normalizarEspecie(item.referencia.especie);
   const condicionesReferencia = condicionesProducto(
     `${item.referencia.nombre} ${item.referencia.descripcion || ""}`
   );
+  const formatosReferencia = formatosProducto(
+    `${item.referencia.nombre} ${item.referencia.descripcion || ""}`
+  );
+  const etapa = etapaReferencia(item.referencia);
+  const tamano = tamanoReferencia(item.referencia);
   const esVision = Boolean(clasificacion.requiereVision);
   let ajuste =
     coincide === true
@@ -527,25 +784,93 @@ function ajustarPorSenales(item, mensaje, interpretacion, clasificacion = {}) {
         : 0;
 
   if (señales.especie && especieReferencia) {
-    ajuste += señales.especie === especieReferencia ? 0.05 : -0.14;
+    ajuste += señales.especie === especieReferencia ? 0.07 : -0.24;
   }
   señales.condiciones.forEach((condicion) => {
     ajuste += condicionesReferencia.includes(condicion) ? 0.12 : -0.2;
   });
+  if (!señales.condiciones.length && condicionesReferencia.length) {
+    ajuste -= 0.22;
+  }
+  señales.formatos.forEach((formato) => {
+    ajuste += formatosReferencia.includes(formato) ? 0.08 : -0.12;
+  });
+  if (!señales.formatos.length && formatosReferencia.length) {
+    ajuste -= 0.12;
+  }
+  let scoreMaximo = 1;
+  if (!señales.condiciones.length && condicionesReferencia.length) {
+    scoreMaximo = Math.min(scoreMaximo, 0.66);
+  }
+  if (!señales.formatos.length && formatosReferencia.length) {
+    scoreMaximo = Math.min(scoreMaximo, 0.66);
+  }
+  if (señales.etapa && etapa) {
+    ajuste += señales.etapa === etapa ? 0.1 : -0.22;
+  }
+  if (señales.tamano && tamano) {
+    ajuste += señales.tamano === tamano ? 0.14 : -0.24;
+  }
+
+  const especieCoincide =
+    señales.especie && especieReferencia
+      ? señales.especie === especieReferencia
+      : null;
+  const etapaCoincide =
+    señales.etapa && etapa ? señales.etapa === etapa : null;
+  const tamanoCoincide =
+    señales.tamano && tamano ? señales.tamano === tamano : null;
+  const condicionesCoinciden =
+    señales.condiciones.length > 0 &&
+    señales.condiciones.every((condicion) =>
+      condicionesReferencia.includes(condicion)
+    );
+  const senalesFuertesCoincidentes = [
+    coincide === true,
+    especieCoincide === true,
+    etapaCoincide === true,
+    tamanoCoincide === true,
+    condicionesCoinciden,
+  ].filter(Boolean).length;
 
   return {
     ...item,
     scoreBase: item.score,
-    score: Math.max(0, Math.min(1, item.score + ajuste)),
+    score: Math.max(0, Math.min(1, scoreMaximo, item.score + ajuste)),
     presentacionCoincide: coincide,
-    especieCoincide:
-      señales.especie && especieReferencia
-        ? señales.especie === especieReferencia
-        : null,
-    condicionesCoinciden: señales.condiciones.every((condicion) =>
-      condicionesReferencia.includes(condicion)
-    ),
+    especieCoincide,
+    etapaCoincide,
+    tamanoCoincide,
+    condicionesCoinciden,
+    senalesFuertesCoincidentes,
   };
+}
+
+function filtrarPorSenalesEspecificas(
+  items = [],
+  interpretacion,
+  clasificacion = {},
+  mensaje = ""
+) {
+  if (!clasificacion.requiereVision) return items;
+  const señales = señalesInterpretadas(interpretacion, mensaje);
+  let filtrados = items;
+
+  [
+    ["etapa", "etapaCoincide"],
+    ["tamano", "tamanoCoincide"],
+  ].forEach(([senal, propiedad]) => {
+    if (!señales[senal] || !filtrados.some((item) => item[propiedad] === true)) {
+      return;
+    }
+    filtrados = filtrados.filter(
+      (item) =>
+        item[propiedad] === true ||
+        (item.exacta && item.tipoCoincidencia !== "marca")
+    );
+  });
+
+  return filtrados;
 }
 
 function terminosInterpretados(interpretacion = null) {
@@ -560,7 +885,7 @@ function obtenerPresentacionSolicitada(mensaje, interpretacion) {
     interpretacion?.producto ||
     (interpretacion?.productos?.length === 1 ? interpretacion.productos[0] : {});
   return normalizarPeso(
-    producto.presentacion || mensaje.match(/\b\d+(?:[.,]\d+)?\s*(?:kg|kl|g|gr|lb)\b/i)?.[0] || ""
+    producto.presentacion || mensaje.match(/\b\d+(?:[.,]\d+)?\s*(?:kg|kl|kr|g|gr|lb)\b/i)?.[0] || ""
   );
 }
 
@@ -570,6 +895,14 @@ function presentacionCoincide(referencia, mensaje, interpretacion) {
   return (referencia.presentaciones || []).some(
     (presentacion) => normalizarPeso(presentacion.peso) === solicitada
   );
+}
+
+function consultaTraeDetalleAdicional(terminos = [], marcaExacta = null) {
+  if (!marcaExacta) return false;
+  const tokensMarca = new Set(
+    normalizarIdentidadProducto(marcaExacta).split(/\s+/).filter(Boolean)
+  );
+  return terminos.some((termino) => !tokensMarca.has(termino));
 }
 
 function estaEnCandidatos(item, catalogoCandidatos = []) {
@@ -686,13 +1019,25 @@ function validarCoincidenciaProducto({
   const itemsEvaluados = catalogoPlano(catalogo).filter(
     (item) => !marcaExacta || normalizar(item.marca.marca) === marcaExacta
   );
-  const puntuados = itemsEvaluados
-    .map((item) => puntuarItem(item, terminos))
+  const puntuadosSinFiltrar = itemsEvaluados
+    .map((item) =>
+      puntuarItem(item, terminos, {
+        desambiguarMarca:
+          clasificacion.requiereVision ||
+          consultaTraeDetalleAdicional(terminos, marcaExacta),
+      })
+    )
     .map((item) =>
       ajustarPorSenales(item, mensaje, interpretacion, clasificacion)
     )
-    .filter((item) => compatibleConSenales(item, interpretacion))
+    .filter((item) => compatibleConSenales(item, interpretacion, mensaje))
     .sort((a, b) => b.score - a.score);
+  const puntuados = filtrarPorSenalesEspecificas(
+    puntuadosSinFiltrar,
+    interpretacion,
+    clasificacion,
+    mensaje
+  );
   const gruposPuntuados = agruparReferenciasEquivalentes(puntuados);
   const [primero, segundo] = gruposPuntuados;
   const high = numeroEnv("CATALOG_MATCH_HIGH_THRESHOLD", DEFAULT_HIGH_THRESHOLD);
@@ -702,33 +1047,69 @@ function validarCoincidenciaProducto({
   const enCandidatos = primero ? estaEnCandidatos(primero, catalogoCandidatos) : false;
   const confianzaIA = Number(interpretacion?.confianza || 0);
   const presentacionValida = primero?.presentacionCoincide ?? null;
+  const coincidenciaReferenciaExacta = Boolean(
+    primero?.coincidenciaReferenciaExacta
+  );
+  const evidenciaVisualFuerte = Boolean(
+    clasificacion.requiereVision &&
+      primero?.score >= high &&
+      primero?.senalesFuertesCoincidentes >= 2 &&
+      (!segundo || diferencia >= Math.min(margin, 0.04))
+  );
+  const evidenciaEstructuradaFuerte = Boolean(
+    primero?.score >= high &&
+      primero?.senalesFuertesCoincidentes >= 2 &&
+      (!segundo || diferencia >= Math.min(margin, 0.04))
+  );
 
   let nivel = "baja";
   let razon = "sin_coincidencia_confiable";
   const exactaSinAmbiguedad =
-    primero?.exacta &&
-    (primero.tipoCoincidencia === "marca" || diferencia >= margin);
+    coincidenciaReferenciaExacta &&
+    (!segundo || diferencia >= margin);
   const presentacionDesambigua = Boolean(
-    primero?.exacta &&
+    (coincidenciaReferenciaExacta || evidenciaVisualFuerte || primero?.score >= high) &&
       primero.presentacionCoincide === true &&
-      segundo?.presentacionCoincide === false &&
+      (!segundo || segundo.presentacionCoincide === false) &&
       diferencia >= Math.min(margin, 0.04)
   );
 
   if (
     primero &&
-    (primero.exacta || primero.score >= high) &&
-    (diferencia >= margin || exactaSinAmbiguedad || presentacionDesambigua) &&
-    (enCandidatos || !catalogoCandidatos.length)
+    (coincidenciaReferenciaExacta || primero.score >= high) &&
+    (
+      !segundo ||
+      diferencia >= margin ||
+      exactaSinAmbiguedad ||
+      presentacionDesambigua ||
+      evidenciaVisualFuerte ||
+      evidenciaEstructuradaFuerte
+    ) &&
+    (enCandidatos ||
+      !catalogoCandidatos.length ||
+      evidenciaVisualFuerte ||
+      evidenciaEstructuradaFuerte)
   ) {
     nivel = "alta";
-    razon = primero.exacta ? "nombre_exacto" : "similitud_alta";
+    razon = coincidenciaReferenciaExacta
+      ? "nombre_exacto"
+      : evidenciaVisualFuerte
+        ? "senales_visuales_convergentes"
+        : evidenciaEstructuradaFuerte
+          ? "senales_convergentes"
+        : "similitud_alta";
   } else if (primero && primero.score >= medium) {
     nivel = "media";
     razon = diferencia < margin ? "ambigua" : "similitud_media";
   }
 
-  if (usaInterpretacion && nivel === "alta" && !primero.exacta && confianzaIA < 0.85) {
+  if (
+    usaInterpretacion &&
+    nivel === "alta" &&
+    !coincidenciaReferenciaExacta &&
+    !evidenciaVisualFuerte &&
+    confianzaIA < 0.85
+  ) {
     nivel = "media";
     razon = "entidad_multimedia_por_confirmar";
   }
@@ -785,17 +1166,12 @@ function respuestaValidacionProducto(validacion = {}) {
       })
       .join("\n");
     const [primera, segunda] = validacion.alternativas;
-    const cierre =
-      validacion.diferencia >= 0.04
-        ? `La que más se parece a lo que buscas es ${primera.referencia}. ¿Es esa?`
-        : segunda
-          ? `¿Te refieres a ${primera.referencia} o a ${segunda.referencia}?`
-          : `¿Te refieres a ${primera.referencia}?`;
-    const apertura = validacion.usaInterpretacion
-      ? "Revisando la foto, encontré estas referencias en el catálogo:"
-      : `Encontré estas referencias relacionadas con ${etiquetaConsulta(
-          validacion
-        )}:`;
+    const cierre = segunda
+      ? `¿Buscas ${primera.referencia} o ${segunda.referencia}?`
+      : "No alcanzo a distinguir un dato del empaque. ¿Me envías una foto más cerca del nombre o el peso?";
+    const apertura = segunda
+      ? "Veo estas referencias muy parecidas:"
+      : "Alcancé a identificar esta opción:";
     return `${apertura}\n\n${opciones}\n\n${cierre}`;
   }
 

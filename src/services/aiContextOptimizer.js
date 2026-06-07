@@ -215,6 +215,20 @@ function compactarEstado(estado = {}, perfil = "simple") {
   };
 }
 
+function omitirFocoProductoAnterior(memoria = {}) {
+  return {
+    ...memoria,
+    marca: null,
+    criterios: {},
+    ultimaSeleccion: null,
+    referenciasPendientes: null,
+    coincidenciasProductoPendientes: null,
+    productosConsultados: [],
+    historialProductosConsultados: [],
+    ultimaInteraccionProducto: null,
+  };
+}
+
 function compactarHistorial(historial = [], limite = 0) {
   if (!limite) return [];
   return historial.slice(-limite).map((item) => ({
@@ -246,7 +260,7 @@ function instruccionesPerfil(perfil) {
       "Mapea marca, referencia, especie, etapa, tamano y presentacion contra los candidatos.",
       "Usa productosConsultados para ese o el de cierto peso, e historialProductosConsultados para primero, segundo u otra cotizacion anterior.",
       "Un nombre, audio o imagen nuevos cambian el producto activo; no arrastres la referencia anterior.",
-      "a.r.p/arp significa adulto raza pequena; a.r.g/arg significa adulto raza grande.",
+      "RP/raza pequena/mini/small indican tamano pequeno; RG/RMG/mediano/grande indican tamano grande. CACH/puppy es cachorro y MAYORES/senior es senior.",
       "Entiende canine/perro, feline/gato, puppy/cachorro, adult/adulto y small/pequeno.",
       "Condiciones como castrado, urinary, renal, gastro, piel y siglas como OM/UR/NF son parte fuerte de la referencia.",
       "Consultas por antipulgas, desparasitante, arena, snack, juguete o accesorio cambian la categoria activa.",
@@ -265,6 +279,9 @@ function instruccionesPerfil(perfil) {
     multimedia: [
       "En audio corrige errores foneticos usando los candidatos, sin forzar marcas.",
       "En imagen lee marca, linea, especie, etapa, tamano, peso y siglas visibles.",
+      "Si marca y linea distintiva son legibles y encajan con especie, etapa, tamano o peso, devuelve la referencia exacta del candidato con confianza alta; no devuelvas solo la marca.",
+      "El empaque puede traer submarcas o claims comerciales que no estan literales en la base; conserva las senales utiles y no descartes equivalencias por palabras extra.",
+      "No incluyas referencias que contradigan texto visible del empaque como cachorro, adulto, senior, razas pequenas, razas grandes o todas las razas.",
       "Una receta o formula se interpreta como cotizacion de productos separados, sin diagnosticar ni indicar dosis.",
       "No inventes texto ilegible. Usa null y pide el dato faltante.",
     ],
@@ -376,6 +393,9 @@ function construirSolicitudInterprete({
   let historial = compactarHistorial(historialReciente, clasificacion.limiteHistorial || 0);
   let ejemplos = compactarEjemplos(ejemplosEntrenamiento, clasificacion.limiteEjemplos || 0);
   let memoria = compactarEstado(estado, perfil);
+  if (clasificacion.requiereVision) {
+    memoria = omitirFocoProductoAnterior(memoria);
+  }
   const reducciones = [];
   const historialProductoProtegido = Boolean(
     clasificacion.fallbackHistorialProductoActivo
@@ -463,6 +483,7 @@ function construirPromptHumanizador({ cliente = null, vertical = null } = {}) {
     "Redacta una respuesta breve y natural de WhatsApp en espanol colombiano.",
     "El backend ya valido los hechos. No cambies productos, acciones, precios, pesos, cantidades ni preguntas.",
     "Conserva exactamente lineas que empiecen por '- ', 'Precio:' o 'Total:'.",
+    "Evita sonar como plantilla: puedes variar apertura y cierre, manteniendo una sola pregunta clara.",
     "No confirmes pedidos antes de la confirmacion explicita. No inventes cobertura, horarios, recargos, dosis ni tratamientos.",
     "Haz como maximo una pregunta y usa maximo un emoji. Devuelve solo la respuesta final.",
     adicionales,

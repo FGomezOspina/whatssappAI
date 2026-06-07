@@ -5,6 +5,7 @@ const {
   logDiagnosticoContexto,
 } = require("./aiContextOptimizer");
 const { logPayloadOpenAI } = require("./aiContextAuditLogger");
+const { esRespuestaMultiMensaje } = require("../utils/responseMessages");
 
 const openai = process.env.OPENAI_API_KEY
   ? new OpenAI({
@@ -167,6 +168,12 @@ function esRespuestaOperativaProtegida(respuestaBase = "") {
 }
 
 function omitirHumanizadorProducto(respuestaBase, opciones = {}) {
+  const respuestaConPresentacionesCotizadas =
+    /referencia.*presentaciones|referencias.*presentaciones/i.test(
+      respuestaBase
+    );
+  if (respuestaConPresentacionesCotizadas) return false;
+
   return Boolean(
     opciones.clasificacion?.perfilContexto === "producto" &&
       !tienePromptHumanizadorCliente(opciones.cliente) &&
@@ -185,6 +192,11 @@ function debeHumanizarRespuesta(respuestaBase, opciones = {}) {
 }
 
 async function humanizarRespuesta(mensajeCliente, respuestaBase, opciones = {}) {
+  if (esRespuestaMultiMensaje(respuestaBase)) {
+    opciones.onUsage?.({ skipped: true, reason: "respuesta_multi_mensaje" });
+    return respuestaBase;
+  }
+
   if (!debeHumanizarRespuesta(respuestaBase, opciones)) {
     opciones.onUsage?.({ skipped: true, reason: "respuesta_operativa_suficiente" });
     return respuestaBase;

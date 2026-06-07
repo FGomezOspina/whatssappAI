@@ -281,13 +281,84 @@ test("humanizador compacto queda por debajo de mil tokens", () => {
   assert.equal(solicitud.excedePresupuesto, false);
 });
 
+test("una imagen nueva omite el foco anterior pero conserva el carrito activo", () => {
+  const estado = {
+    marca: "Chunky",
+    criterios: { etapa: "adulto" },
+    ultimaSeleccion: { marca: "Chunky", referencia: "CHUNKY ADULTO" },
+    productosConsultados: [
+      { marca: "Chunky", referencia: "CHUNKY ADULTO", peso: "2kg" },
+    ],
+    historialProductosConsultados: [
+      {
+        marca: "Chunky",
+        referencia: "CHUNKY ADULTO",
+        presentaciones: [{ peso: "2kg", precio: 18900 }],
+      },
+    ],
+    ultimaInteraccionProducto: {
+      intencionOriginal: "foto anterior",
+      tipoIntencion: "consulta_producto",
+    },
+    carrito: [
+      {
+        marca: "Dog Chow",
+        referencia: "Adulto Mini y Pequeno",
+        peso: "2kg",
+        cantidad: 1,
+      },
+    ],
+    entrega: { tipo: "domicilio" },
+  };
+  const mensaje =
+    "El cliente envió una imagen. Analízala para entender su solicitud.";
+  const clasificacion = clasificarInteraccion({
+    mensaje,
+    estado,
+    contenidos: [{ metadata: { tipo: "image" } }],
+    imageUrls: ["data:image/jpeg;base64,abc"],
+  });
+  const solicitud = construirSolicitudInterprete({
+    mensaje,
+    estado,
+    catalogo: [],
+    historialReciente: [
+      { direction: "outbound", body: "CHUNKY ADULTO 2kg: $18.900" },
+    ],
+    ejemplosEntrenamiento: [
+      {
+        customer_message: "Chunky adulto",
+        ideal_response: "Mostrar Chunky adulto",
+      },
+    ],
+    clasificacion,
+    model: "gpt-4.1",
+  });
+
+  assert.equal(clasificacion.limiteHistorial, 0);
+  assert.equal(clasificacion.limiteEjemplos, 0);
+  assert.deepEqual(solicitud.contexto.historial, []);
+  assert.deepEqual(solicitud.contexto.ejemplos, []);
+  assert.equal(solicitud.contexto.contextoActivo.marca, null);
+  assert.deepEqual(
+    solicitud.contexto.contextoActivo.historialProductosConsultados,
+    []
+  );
+  assert.equal(solicitud.contexto.contextoActivo.carrito.length, 1);
+  assert.equal(solicitud.contexto.contextoActivo.entrega.tipo, "domicilio");
+  assert.doesNotMatch(
+    JSON.stringify(solicitud.contexto),
+    /CHUNKY ADULTO 2kg/
+  );
+});
+
 test("prompts por perfil conservan las reglas criticas del flujo", () => {
   const producto = construirPromptInterprete({ perfil: "producto" });
   const pedido = construirPromptInterprete({ perfil: "pedido" });
   const multimedia = construirPromptInterprete({ perfil: "multimedia" });
   const complejo = construirPromptInterprete({ perfil: "complejo" });
 
-  assert.match(producto, /a\.r\.p\/arp significa adulto raza pequena/i);
+  assert.match(producto, /RP\/raza pequena\/mini\/small indican tamano pequeno/i);
   assert.match(producto, /Consultar precio o disponibilidad usa accion consultar/i);
   assert.match(producto, /varias opciones plausibles deja referencia null/i);
 
@@ -297,6 +368,9 @@ test("prompts por perfil conservan las reglas criticas del flujo", () => {
 
   assert.match(multimedia, /audio corrige errores foneticos/i);
   assert.match(multimedia, /imagen lee marca, linea, especie, etapa, tamano, peso y siglas/i);
+  assert.match(multimedia, /devuelve la referencia exacta del candidato con confianza alta/i);
+  assert.match(multimedia, /submarcas o claims comerciales/i);
+  assert.match(multimedia, /No incluyas referencias que contradigan texto visible/i);
   assert.match(multimedia, /receta o formula se interpreta como cotizacion/i);
 
   assert.match(complejo, /Consolida todos los mensajes del lote/i);

@@ -1,5 +1,6 @@
 const crypto = require("crypto");
 const { formatearPrecio, normalizar, normalizarPeso } = require("../../utils/text");
+const { unirMensajesRespuesta } = require("../../utils/responseMessages");
 const {
   establecerProductosConsultados,
 } = require("../../services/pendingProductMatchService");
@@ -422,11 +423,17 @@ function extraerCriterios(mensaje) {
     criterios.edadEspecial = "mayor";
   }
 
-  if (contieneAlguno(texto, ["pequeno", "pequena", "pequenos", "pequenas", "mini", "small"])) {
+  if (
+    contieneAlguno(texto, ["pequeno", "pequena", "pequenos", "pequenas", "mini", "small"]) ||
+    /\brp\b/.test(texto)
+  ) {
     criterios.tamano = "pequeno";
   }
 
-  if (contieneAlguno(texto, ["grande", "grandes", "mediano", "mediana", "medianos", "medianas", "medium", "large"])) {
+  if (
+    contieneAlguno(texto, ["grande", "grandes", "mediano", "mediana", "medianos", "medianas", "medium", "large"]) ||
+    /\b(?:rg|rmg)\b/.test(texto)
+  ) {
     criterios.tamano = "grande";
   }
 
@@ -533,11 +540,17 @@ function atributosReferencia(referencia) {
     atributos.edadEspecial = "mayor";
   }
 
-  if (contieneAlguno(texto, ["pequeno", "pequena", "pequenos", "pequenas", "mini", "small"])) {
+  if (
+    contieneAlguno(texto, ["pequeno", "pequena", "pequenos", "pequenas", "mini", "small"]) ||
+    /\brp\b/.test(texto)
+  ) {
     atributos.tamano = "pequeno";
   }
 
-  if (contieneAlguno(texto, ["grande", "grandes", "mediano", "mediana", "medianos", "medianas", "medium", "large"])) {
+  if (
+    contieneAlguno(texto, ["grande", "grandes", "mediano", "mediana", "medianos", "medianas", "medium", "large"]) ||
+    /\b(?:rg|rmg)\b/.test(texto)
+  ) {
     atributos.tamano = "grande";
   }
 
@@ -685,8 +698,18 @@ function puntuarReferencia(referencia, criterios, mensaje) {
   const tokensMensaje = new Set(tokensReferencia(textoMensaje));
   const tokensRef = new Set(tokensReferencia(textoReferencia));
   let puntos = 0;
+  const omiteDetalleExplicito =
+    (criterios.tamano && !atributos.tamano) ||
+    (criterios.condiciones?.length &&
+      !criterios.condiciones.every((condicion) =>
+        atributos.condiciones.includes(condicion)
+      )) ||
+    (criterios.sabores?.length &&
+      !criterios.sabores.some((sabor) => atributos.sabores.includes(sabor)));
 
-  if (contieneFrase(textoMensaje, referencia.nombre)) puntos += 20;
+  if (contieneFrase(textoMensaje, referencia.nombre) && !omiteDetalleExplicito) {
+    puntos += 20;
+  }
   if (criterios.especie && atributos.especie === criterios.especie) puntos += 6;
   if (criterios.categoria && atributos.categoria === criterios.categoria) puntos += 8;
   if (criterios.subcategoria && atributos.subcategoria === criterios.subcategoria) puntos += 8;
@@ -738,9 +761,30 @@ function puntuarReferencia(referencia, criterios, mensaje) {
 function buscarReferenciaExacta(marca, mensaje, criterios = {}) {
   const texto = normalizar(mensaje);
 
-  return marca.referencias.find(
-    (referencia) => contieneFrase(texto, referencia.nombre) && referenciaCumple(referencia, criterios)
-  );
+  return marca.referencias.find((referencia) => {
+    if (!contieneFrase(texto, referencia.nombre) || !referenciaCumple(referencia, criterios)) {
+      return false;
+    }
+
+    const atributos = atributosReferencia(referencia);
+    if (criterios.tamano && !atributos.tamano) return false;
+    if (
+      criterios.condiciones?.length &&
+      !criterios.condiciones.every((condicion) =>
+        atributos.condiciones.includes(condicion)
+      )
+    ) {
+      return false;
+    }
+    if (
+      criterios.sabores?.length &&
+      !criterios.sabores.some((sabor) => atributos.sabores.includes(sabor))
+    ) {
+      return false;
+    }
+
+    return true;
+  });
 }
 
 function elegirMejorReferencia(referencias, criterios, mensaje) {
@@ -1084,6 +1128,31 @@ function listarReferenciasPorEspecie(catalogo, especie, limite = 18) {
   return `${visibles.join("\n")}${restantes > 0 ? `\n- Y ${restantes} marcas más disponibles. Dime una referencia o marca más específica y la reviso.` : ""}`;
 }
 
+function referenciasMarcaPorEspecie(marca, especie) {
+  const especieNormalizada = normalizarEspecie(especie);
+  if (!marca || !especieNormalizada) return [];
+  return marca.referencias.filter(
+    (referencia) => atributosReferencia(referencia).especie === especieNormalizada
+  );
+}
+
+function listarReferenciasDeMarca(marca, referencias, limite = 8) {
+  const visibles = referencias.slice(0, limite);
+  const restantes = referencias.length - visibles.length;
+  const lineas = visibles.map((referencia) => {
+    const presentaciones = referencia.presentaciones?.length
+      ? `: ${referencia.presentaciones.map((presentacion) => `${presentacion.peso}: ${formatoPrecio(presentacion.precio)}`).join(", ")}`
+      : "";
+    return `- ${referencia.nombre}${presentaciones}`;
+  });
+
+  if (restantes > 0) {
+    lineas.push(`- Y ${restantes} referencias más de ${marca.marca}. Dime la referencia o presentación y la reviso.`);
+  }
+
+  return lineas.join("\n");
+}
+
 function crearAlternativaPendiente(estado, gruposPorEspecie) {
   const opciones = gruposPorEspecie.flatMap((grupo) =>
     grupo.referencias.map((referencia) => ({
@@ -1101,6 +1170,27 @@ function crearAlternativaPendiente(estado, gruposPorEspecie) {
 }
 
 function respuestaSinOpciones(catalogo, criterios, marca = null, estado = null) {
+  if (marca) {
+    const referenciasCompatiblesMarca = referenciasPorCriterios(marca, criterios);
+    const referenciasMarca = referenciasCompatiblesMarca.length
+      ? referenciasCompatiblesMarca
+      : criterios.especie
+        ? referenciasMarcaPorEspecie(marca, criterios.especie)
+        : marca.referencias;
+
+    if (referenciasMarca.length) {
+      if (estado) crearAlternativaPendiente(estado, [{ marca, referencias: referenciasMarca }]);
+      const intro = referenciasCompatiblesMarca.length
+        ? `En ${marca.marca} tengo estas opciones para ${describirCriterios(criterios)}`
+        : `No veo una coincidencia exacta para ${describirCriterios(criterios)}, pero en ${marca.marca} tengo estas opciones`;
+
+      return `${intro}:\n${listarReferenciasDeMarca(marca, referenciasMarca)}\n\n¿Cuál deseas revisar?`;
+    }
+
+    if (estado) estado.alternativaPendiente = null;
+    return `Por ahora no encuentro una opción exacta en ${marca.marca} para ${describirCriterios(criterios)}. ¿Me confirmas la referencia o presentación y la reviso mejor?`;
+  }
+
   const marcasCompatibles = marcasConOpciones(catalogo, criterios);
 
   if (criterios.especie && !marcasCompatibles.length) {
@@ -2222,6 +2312,17 @@ function guardarProductosConsultados(estado, items) {
         typeof item.presentacion.stock === "boolean"
           ? item.presentacion.stock
           : null,
+      presentaciones: (item.referencia.presentaciones || []).map(
+        (presentacion) => ({
+          peso: presentacion.peso,
+          precio: presentacion.precio,
+          stock:
+            typeof presentacion.stock === "boolean"
+              ? presentacion.stock
+              : null,
+          referenciaCatalogo: item.referencia.nombre,
+        })
+      ),
       cantidad: item.cantidad || 1,
     }))
   );
@@ -2236,6 +2337,115 @@ function lineasItemsConsultados(items) {
         )}`
     )
     .join("\n");
+}
+
+function presentacionesOrdenadasParaConsulta(item) {
+  const seleccionada = normalizarPeso(item.presentacion?.peso || "");
+  return [...(item.referencia.presentaciones || [])].sort((a, b) => {
+    const aSeleccionada = normalizarPeso(a.peso || "") === seleccionada;
+    const bSeleccionada = normalizarPeso(b.peso || "") === seleccionada;
+    if (aSeleccionada !== bSeleccionada) return aSeleccionada ? -1 : 1;
+    return 0;
+  });
+}
+
+function lineasPresentacionesConsultadas(items = [], { incluirSeleccionada = true } = {}) {
+  const vistas = new Set();
+  return items
+    .flatMap((item) =>
+      presentacionesOrdenadasParaConsulta(item).map((presentacion) => ({
+        item,
+        presentacion,
+      }))
+    )
+    .filter(({ item, presentacion }) => {
+      if (
+        !incluirSeleccionada &&
+        normalizarPeso(presentacion.peso || "") ===
+          normalizarPeso(item.presentacion?.peso || "")
+      ) {
+        return false;
+      }
+
+      const clave = `${item.marca.marca}-${item.referencia.nombre}-${normalizarPeso(
+        presentacion.peso
+      )}-${presentacion.precio}`;
+      if (vistas.has(clave)) return false;
+      vistas.add(clave);
+      return true;
+    })
+    .map(
+      ({ item, presentacion }) =>
+        `- ${nombreProducto(item.marca, item.referencia)} ${presentacion.peso}: ${formatearPrecio(
+          presentacion.precio
+        )}`
+    )
+    .join("\n");
+}
+
+function tieneOtrasPresentaciones(item) {
+  return Boolean(
+    lineasPresentacionesConsultadas([item], { incluirSeleccionada: false })
+  );
+}
+
+function respuestaConsultaConfirmada(items = []) {
+  const clave = items
+    .map(
+      (item) =>
+        `${item.marca.marca}-${item.referencia.nombre}-${item.presentacion.peso}`
+    )
+    .join("|");
+
+  if (items.length === 1) {
+    const item = items[0];
+    const lineasConsulta = lineasItemsConsultados([item]);
+    const lineasOtrasPresentaciones = lineasPresentacionesConsultadas([item], {
+      incluirSeleccionada: false,
+    });
+    const apertura = elegirVariante(clave, [
+      "Claro, lo tenemos:",
+      "Sí, esa presentación está disponible:",
+      "Te confirmo, esa referencia la manejamos:",
+    ]);
+    const introPresentaciones = elegirVariante(`${clave}-presentaciones`, [
+      "También manejamos estas presentaciones de esa referencia:",
+      "De esa misma referencia también tenemos estas presentaciones:",
+      "Por si quieres mirar otra opción, esa referencia también está en:",
+    ]);
+    const cierre = elegirVariante(`${clave}-cierre`, [
+      "¿Cuál presentación quieres que te deje en el pedido?",
+      "¿Te dejo alguna de estas presentaciones en el pedido?",
+      "¿Con cuál presentación seguimos para el pedido?",
+    ]);
+    return unirMensajesRespuesta([
+      `${apertura}\n${lineasConsulta}`,
+      lineasOtrasPresentaciones
+        ? `${introPresentaciones}\n${lineasOtrasPresentaciones}`
+        : "",
+      cierre,
+    ]);
+  }
+
+  const partes = items.flatMap((item) => {
+    const lineasConsulta = lineasItemsConsultados([item]);
+    const lineasOtrasPresentaciones = lineasPresentacionesConsultadas([item], {
+      incluirSeleccionada: false,
+    });
+    const intro = tieneOtrasPresentaciones(item)
+      ? `También manejamos estas presentaciones de ${nombreProducto(item.marca, item.referencia)}:`
+      : "";
+
+    return [
+      `Te confirmo esta referencia:\n${lineasConsulta}`,
+      lineasOtrasPresentaciones ? `${intro}\n${lineasOtrasPresentaciones}` : "",
+    ];
+  });
+
+  return unirMensajesRespuesta([
+    ...partes,
+    "¿Cuál presentación quieres que te agregue al pedido?",
+  ]);
 }
 
 function guardarReferenciasPendientes(estado, marca, referencias, contexto = {}) {
@@ -2609,7 +2819,7 @@ function resolverProductosInterpretadosIA(mensaje, estado, catalogo, interpretac
   const partes = [];
   if (consultados.length) {
     guardarProductosConsultados(estado, consultados);
-    partes.push(`Estos son los precios:\n${lineasItemsConsultados(consultados)}\n\nSi te sirve alguno, dime cuál quieres agregar al pedido.`);
+    partes.push(respuestaConsultaConfirmada(consultados));
   }
 
   if (agregados.length) {
@@ -2808,7 +3018,7 @@ function resolverConInterpretacionIA(mensaje, estado, catalogo, interpretacion) 
     };
     guardarProductosConsultados(estado, [consultado]);
     estado.ultimaSeleccion = null;
-    return `Estos son los precios:\n${lineasItemsConsultados([consultado])}\n\nSi te sirve, dime si quieres agregarlo al pedido.`;
+    return respuestaConsultaConfirmada([consultado]);
   }
 
   agregarAlCarrito(estado, marca, referencia, presentacion, cantidad);

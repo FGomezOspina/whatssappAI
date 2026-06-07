@@ -50,6 +50,12 @@ function expandirConsulta(texto = "") {
 
   if (/dog\s*chow|dogchow|doc\s*chow|dog\s*show/.test(normalizado)) expansiones.push("dog chow");
   if (/brabecto|bravecto/.test(normalizado)) expansiones.push("bravecto");
+  if (/\b(pequeno|pequena|pequenos|pequenas|mini)\b/.test(normalizado)) {
+    expansiones.push("rp raza pequena");
+  }
+  if (/\b(grande|grandes|mediano|mediana|medianos|medianas)\b/.test(normalizado)) {
+    expansiones.push("rg rmg raza grande");
+  }
   if (/purg|desparas|parasito|antiparas/.test(normalizado)) expansiones.push("desparasitante medicamento");
   if (/pulga|garrapata/.test(normalizado)) expansiones.push("antipulgas medicamento");
   if (/snack|premio|galleta/.test(normalizado)) expansiones.push("snack");

@@ -39,7 +39,8 @@ Los limites cuentan mensajes individuales, no turnos completos.
 | `simple` | 0 |
 | `producto` | 0 normalmente; 2 como fallback contextual |
 | `pedido` | 3 |
-| `multimedia` | 8 |
+| `multimedia` con imagen | 0 |
+| `multimedia` con audio | 8 |
 | `complejo` | 8 |
 
 Consecuencia: un limite de `3` suele contener un turno completo y un mensaje suelto del turno anterior. No equivale a tres intercambios cliente-asistente.
@@ -95,6 +96,12 @@ Las referencias operativas cortas se resuelven principalmente con `state`, no co
 - carrito y pedido anterior: snapshots estructurados.
 
 Esto reduce tokens y es mas confiable que pedir al modelo reconstruir hechos comerciales. Sin embargo, matices libres que no quedaron estructurados pueden perderse en perfiles con historial cero.
+
+Una imagen nueva limpia el foco temporal del producto anterior antes de interpretar vision. El payload conserva carrito, entrega y datos operativos activos, pero omite seleccion anterior, productos cotizados, historial textual y ejemplos. Asi la nueva foto no queda sesgada por la referencia identificada en una imagen previa.
+
+La validacion visual no trata una marca legible como referencia confirmada. Combina linea, especie, etapa, tamano, condicion terapeutica y presentacion contra todo el catalogo. Normaliza nombres comerciales visibles contra referencias internas: ignora claims o submarcas no guardadas literalmente, traduce especies como `cat/gato`, agrupa typos de linea como `URINAY/URINARY` y corrige presentaciones tipo `KR` a `KG`. Si varias senales visibles convergen en una sola referencia, continua directamente con su precio o presentaciones; si solo se reconoce la marca o quedan referencias compatibles, conserva la ambiguedad y pide un dato visible faltante. Etapa y tamano tambien eliminan opciones contradictorias, por ejemplo cachorro frente a adulto o razas pequenas frente a una linea senior.
+
+La misma identidad normalizada se usa para texto y audio transcrito. Cuando el cliente agrega detalle adicional a la marca, como `for dog`, `adulto`, `grandes`, `pequenas`, `15kg` o una condicion terapeutica, la referencia debe ganar por esas senales y no por orden del catalogo. Las referencias con condicion o formato no solicitado se mantienen por debajo del umbral medio para no ofrecer `lata`, `pouch`, `obesos`, `esterilizado` o `piel` si el cliente pidio una linea adulta normal.
 
 ## Casos donde no se usa historial
 

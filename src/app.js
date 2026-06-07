@@ -6,6 +6,7 @@ const {
 } = require("./providers/kapsoMessagingProvider");
 const { responderEventosEntrantes } = require("./services/conversationService");
 const { crearBufferMensajesEntrantes } = require("./services/inboundMessageBuffer");
+const { dividirRespuestaMensajes } = require("./utils/responseMessages");
 
 const idempotencyKeysProcesadas = new Set();
 const colasPorCliente = new Map();
@@ -64,15 +65,18 @@ function registrarIdempotencyKey(key) {
 async function procesarEventos(eventos) {
   const evento = eventos[eventos.length - 1];
   const respuesta = await responderEventosEntrantes(eventos);
-  await enviarTexto({
-    to: evento.recipientId,
-    text: respuesta,
-    phoneNumberId: evento.phoneNumberId,
-  });
+  const mensajesRespuesta = dividirRespuestaMensajes(respuesta);
+  for (const text of mensajesRespuesta) {
+    await enviarTexto({
+      to: evento.recipientId,
+      text,
+      phoneNumberId: evento.phoneNumberId,
+    });
+  }
   console.log(
     `[Kapso] Respuesta enviada | cliente=${clienteParaLog(evento.channelUserId)} | mensajes=${
       eventos.length
-    } | ids=${eventos.map((item) => item.messageId || "sin-id").join(",")}`
+    } | respuestas=${mensajesRespuesta.length} | ids=${eventos.map((item) => item.messageId || "sin-id").join(",")}`
   );
 }
 

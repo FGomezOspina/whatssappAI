@@ -34,7 +34,8 @@ test("documenta las ventanas actuales por perfil", () => {
   assert.equal(pedido.perfilContexto, "pedido");
   assert.equal(pedido.limiteHistorial, 3);
   assert.equal(multimedia.perfilContexto, "multimedia");
-  assert.equal(multimedia.limiteHistorial, 8);
+  assert.equal(multimedia.limiteHistorial, 0);
+  assert.equal(multimedia.limiteEjemplos, 0);
 });
 
 test("producto activa dos mensajes de fallback solo ante una referencia implícita", () => {
@@ -52,6 +53,24 @@ test("producto activa dos mensajes de fallback solo ante una referencia implíci
   assert.equal(implicita.fallbackHistorialProductoCandidato, true);
   assert.equal(explicita.limiteHistorial, 0);
   assert.equal(explicita.fallbackHistorialProductoCandidato, false);
+});
+
+test("tiene en singular inicia busqueda de producto aunque haya contexto activo", () => {
+  const clasificacion = clasificarInteraccion({
+    mensaje: "TIENE AGILITY GOLD PERRO ADULTO?",
+    estado: {
+      productosConsultados: [
+        {
+          marca: "ADVANCE",
+          referencia: "ADVANCE CAT URINARY",
+          peso: "1.5kg",
+        },
+      ],
+    },
+  });
+
+  assert.equal(clasificacion.intencion, "busqueda_producto");
+  assert.equal(clasificacion.requiereBusquedaProducto, true);
 });
 
 test("el interprete incluye mensajes del cliente y del asistente", () => {

@@ -99,24 +99,42 @@ function registrarProductosConsultados(estado, productos = []) {
       });
     }
     const grupo = grupos.get(clave);
-    const peso = item.peso || item.presentacion || null;
-    const clavePresentacion = `${normalizarPeso(peso || "")}::${
-      item.precio ?? ""
-    }`;
-    if (
-      !grupo.presentaciones.some(
-        (presentacion) => presentacion.clave === clavePresentacion
-      )
-    ) {
-      grupo.presentaciones.push({
-        clave: clavePresentacion,
-        peso,
-        precio: item.precio ?? null,
-        stock: typeof item.stock === "boolean" ? item.stock : null,
-        referenciaCatalogo:
-          item.referenciaCatalogo || item.referencia,
-      });
-    }
+    const presentacionesItem =
+      Array.isArray(item.presentaciones) && item.presentaciones.length
+        ? item.presentaciones
+        : [
+            {
+              peso: item.peso || item.presentacion || null,
+              precio: item.precio ?? null,
+              stock: typeof item.stock === "boolean" ? item.stock : null,
+              referenciaCatalogo: item.referenciaCatalogo || item.referencia,
+            },
+          ];
+
+    presentacionesItem.forEach((presentacionItem) => {
+      const peso = presentacionItem.peso || presentacionItem.presentacion || null;
+      const precio = presentacionItem.precio ?? null;
+      const clavePresentacion = `${normalizarPeso(peso || "")}::${precio ?? ""}`;
+      if (
+        !grupo.presentaciones.some(
+          (presentacion) => presentacion.clave === clavePresentacion
+        )
+      ) {
+        grupo.presentaciones.push({
+          clave: clavePresentacion,
+          peso,
+          precio,
+          stock:
+            typeof presentacionItem.stock === "boolean"
+              ? presentacionItem.stock
+              : null,
+          referenciaCatalogo:
+            presentacionItem.referenciaCatalogo ||
+            item.referenciaCatalogo ||
+            item.referencia,
+        });
+      }
+    });
   });
 
   const historial = Array.isArray(estado.historialProductosConsultados)
@@ -188,6 +206,7 @@ function reiniciarFocoProducto(estado) {
   estado.referenciasPendientes = null;
   estado.coincidenciasProductoPendientes = null;
   estado.productosConsultados = [];
+  estado.ultimaInteraccionProducto = null;
   estado.alternativaPendiente = null;
   estado.esperandoMarca = false;
   estado.esperandoPresupuesto = false;
