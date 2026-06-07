@@ -4,6 +4,7 @@ const {
   construirSolicitudInterprete,
   logDiagnosticoContexto,
 } = require("./aiContextOptimizer");
+const { logPayloadOpenAI } = require("./aiContextAuditLogger");
 
 const openai = process.env.OPENAI_API_KEY
   ? new OpenAI({
@@ -116,8 +117,13 @@ function resumenEstado(estado = {}) {
     criterios: estado.criterios || {},
     ultimaSeleccion: estado.ultimaSeleccion || null,
     referenciasPendientes: estado.referenciasPendientes || null,
+    coincidenciasProductoPendientes:
+      estado.coincidenciasProductoPendientes || null,
     productosPendientes: estado.productosPendientes || [],
     productosConsultados: estado.productosConsultados || [],
+    historialProductosConsultados: (
+      estado.historialProductosConsultados || []
+    ).slice(-10),
     carrito: estado.carrito || [],
     pedidoConfirmado: Boolean(estado.pedidoConfirmado),
     ultimoPedidoConfirmado: estado.ultimoPedidoConfirmado || null,
@@ -126,6 +132,7 @@ function resumenEstado(estado = {}) {
     metodoPago: estado.metodoPago || null,
     esperando: {
       referencia: Boolean(estado.referenciasPendientes),
+      coincidenciaProducto: Boolean(estado.coincidenciasProductoPendientes),
       presentacion: Boolean(estado.ultimaSeleccion),
       datosDomicilio: Boolean(estado.esperandoDatosDomicilio),
       metodoPago: Boolean(estado.esperandoMetodoPago),
@@ -385,6 +392,7 @@ Razonamiento esperado:
 - Si el cliente luego aclara "solo por preguntar", "era para cotizar", "solo averiguaba" o similar, reconoce que no queria comprar. Usa intencion "consulta_producto" o "rechazo" y no agregues nada nuevo; si habia productosConsultados, mantenlos como referencia de cotizacion.
 - Si despues de decir que solo estaba preguntando consulta otro producto con "y el...", "y de...", "cuanto vale el otro", entiende que sigue cotizando. Usa accion "consultar", no "agregar".
 - Si despues de consultar precios el cliente dice que lo quiere, "agrega ese", "me llevo los dos", "dejame el primero", usa productosConsultados del estado para saber a que productos se refiere. Si quiere todos los consultados, accion "agregar"; si solo uno, conserva solo ese producto en productos[].
+- historialProductosConsultados conserva las cotizaciones de la conversación en orden. Resuelve "el primero", "el segundo" y referencias a cotizaciones anteriores contra ese orden, pero trata un nombre o imagen nuevos como una búsqueda nueva.
 - Distingue cotizacion de compra: "necesito", "quiero" o "para domicilio" pueden ser compra, pero si aparecen con "precio/cuanto/valor/cotizar" son consulta hasta que el cliente confirme compra.
 - Si el cliente dice "me sirve", "esa", "la de 4", "de 4kg", "dale", "listo" y hay ultimaSeleccion o referenciasPendientes, interpreta como confirmacion/aclaracion del contexto pendiente.
 - Si ya se agrego un producto al carrito, no listes otra vez sus presentaciones salvo que el cliente pida explicitamente cambiar de presentacion, precio o disponibilidad.
@@ -481,6 +489,14 @@ JSON exacto:
     if (!/^gpt-5/i.test(model)) {
       parametrosModelo.temperature = Number(process.env.OPENAI_INTERPRETER_TEMPERATURE || 0.2);
     }
+    logPayloadOpenAI({
+      etapa: "interprete",
+      model,
+      cliente,
+      channelUserId,
+      perfil: solicitud.perfil,
+      messages: parametrosModelo.messages,
+    });
 
     if (urlsImagen.length) {
       console.log(

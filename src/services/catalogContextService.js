@@ -1,5 +1,8 @@
 const { normalizar, normalizarPeso } = require("../utils/text");
 const { buscarProductosCatalogoCliente } = require("../repositories/productRepository");
+const {
+  esSenalReferenciaProducto,
+} = require("./pendingProductMatchService");
 
 const DEFAULT_TEXT_REFERENCE_LIMIT = 8;
 const DEFAULT_VISION_REFERENCE_LIMIT = 20;
@@ -24,6 +27,10 @@ function limiteReferencias(clasificacion = {}) {
 }
 
 function textoBusqueda(mensaje = "", estado = {}) {
+  if (mensaje.trim() && !esSenalReferenciaProducto(mensaje)) {
+    return mensaje;
+  }
+
   const partes = [
     mensaje,
     estado.marca,

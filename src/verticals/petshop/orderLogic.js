@@ -1,5 +1,8 @@
 const crypto = require("crypto");
 const { formatearPrecio, normalizar, normalizarPeso } = require("../../utils/text");
+const {
+  establecerProductosConsultados,
+} = require("../../services/pendingProductMatchService");
 
 const ALIAS_MARCAS_EXTRA = {
   "dog chow": ["dogchow", "dog show", "chow"],
@@ -2165,6 +2168,8 @@ function tieneIntencionAgregarProducto(mensaje) {
     "suma",
     "deme",
     "dame",
+    "regalame",
+    "dejame",
     "pedir",
     "pedido",
     "domicilio",
@@ -2203,13 +2208,23 @@ function presentacionesReferencia(referencia) {
 }
 
 function guardarProductosConsultados(estado, items) {
-  estado.productosConsultados = items.map((item) => ({
-    marca: item.marca.marca,
-    referencia: item.referencia.nombre,
-    peso: item.presentacion.peso,
-    precio: item.presentacion.precio,
-    cantidad: item.cantidad || 1,
-  }));
+  establecerProductosConsultados(
+    estado,
+    items.map((item) => ({
+      marca: item.marca.marca,
+      referencia: item.referencia.nombre,
+      referenciaCatalogo: item.referencia.nombre,
+      familiaReferencia: item.familiaReferencia || null,
+      referenciasEquivalentes: item.referenciasEquivalentes || null,
+      peso: item.presentacion.peso,
+      precio: item.presentacion.precio,
+      stock:
+        typeof item.presentacion.stock === "boolean"
+          ? item.presentacion.stock
+          : null,
+      cantidad: item.cantidad || 1,
+    }))
+  );
 }
 
 function lineasItemsConsultados(items) {
@@ -2378,6 +2393,75 @@ function resolverAgregarConsultadosIA(estado, catalogo, interpretacion) {
 
   estado.productosConsultados = [];
   return `Listo, agregué al pedido:\n${lineasItems(agregados)}\n\n${productoAgregadoRespuesta(estado)}`;
+}
+
+function resolverConsultaFamiliaEquivalente(estado, catalogo, interpretacion) {
+  const producto = interpretacion?.producto || {};
+  const referenciasEquivalentes = [
+    ...new Set(
+      (producto.referenciasEquivalentes || []).filter(Boolean)
+    ),
+  ];
+  if (
+    interpretacion.intencion !== "consulta_producto" ||
+    !["consultar", null].includes(interpretacion.accion) ||
+    producto.presentacion ||
+    referenciasEquivalentes.length < 2
+  ) {
+    return null;
+  }
+
+  const marca = buscarMarcaPorNombre(catalogo, producto.marca);
+  if (!marca) return null;
+  const referencias = referenciasEquivalentes
+    .map((nombre) =>
+      marca.referencias.find(
+        (referencia) => normalizar(referencia.nombre) === normalizar(nombre)
+      )
+    )
+    .filter(Boolean);
+  if (referencias.length < 2) return null;
+
+  const items = referencias.flatMap((referencia) =>
+    (referencia.presentaciones || []).map((presentacion) => ({
+      marca,
+      referencia,
+      presentacion,
+      cantidad: 1,
+      familiaReferencia:
+        producto.nombreFamilia || referencias[0].nombre,
+      referenciasEquivalentes,
+    }))
+  );
+  if (!items.length) return null;
+
+  guardarProductosConsultados(estado, items);
+  estado.marca = marca.marca;
+  estado.criterios = criteriosDesdeReferencia(referencias[0]);
+  estado.referenciasPendientes = null;
+  estado.ultimaSeleccion = null;
+
+  const vistas = new Set();
+  const presentaciones = items
+    .filter((item) => {
+      const clave = `${normalizarPeso(item.presentacion.peso)}::${
+        item.presentacion.precio
+      }`;
+      if (vistas.has(clave)) return false;
+      vistas.add(clave);
+      return true;
+    })
+    .map(
+      (item) =>
+        `- ${item.presentacion.peso}: ${formatearPrecio(
+          item.presentacion.precio
+        )}`
+    )
+    .join("\n");
+  const nombreFamilia =
+    producto.nombreFamilia || referencias[0].nombre;
+
+  return `Sí, encontré ${nombreFamilia} en estas presentaciones:\n\n${presentaciones}\n\n¿Cuál te interesa?`;
 }
 
 function aplicarDatosInterpretados(estado, interpretacion = {}) {
@@ -2580,14 +2664,42 @@ function resolverConInterpretacionIA(mensaje, estado, catalogo, interpretacion) 
   const respuestaConsultados = resolverAgregarConsultadosIA(estado, catalogo, interpretacion);
   if (respuestaConsultados) return respuestaConsultados;
 
+  const respuestaFamilia = resolverConsultaFamiliaEquivalente(
+    estado,
+    catalogo,
+    interpretacion
+  );
+  if (respuestaFamilia) return respuestaFamilia;
+
   const respuestaProductos = resolverProductosInterpretadosIA(mensaje, estado, catalogo, interpretacion);
   if (respuestaProductos) return respuestaProductos;
 
   let marca = buscarMarcaInterpretada(catalogo, interpretacion) || buscarMarca(catalogo, mensaje);
   if (!marca) return null;
 
-  const criteriosIA = criteriosDesdeInterpretacion(interpretacion);
-  const criteriosBase = estado.referenciasPendientes?.marca === marca.marca ? estado.referenciasPendientes.criterios || {} : estado.criterios;
+  const criteriosExplicitosMensaje = extraerCriterios(mensaje);
+  const referenciaExplicitaDetectada = buscarReferenciaExacta(
+    marca,
+    mensaje,
+    {}
+  );
+  const referenciaExplicitaMensaje =
+    referenciaExplicitaDetectada &&
+    !(
+      normalizar(referenciaExplicitaDetectada.nombre) ===
+        normalizar(marca.marca) &&
+      tieneCriterios(criteriosExplicitosMensaje)
+    )
+      ? referenciaExplicitaDetectada
+      : null;
+  const criteriosIA = referenciaExplicitaMensaje
+    ? criteriosDesdeReferencia(referenciaExplicitaMensaje)
+    : criteriosDesdeInterpretacion(interpretacion);
+  const criteriosBase = referenciaExplicitaMensaje
+    ? {}
+    : estado.referenciasPendientes?.marca === marca.marca
+      ? estado.referenciasPendientes.criterios || {}
+      : estado.criterios;
   const criterios = mezclarCriterios(criteriosBase || {}, mezclarCriterios(extraerCriterios(mensaje), criteriosIA));
   marca = refinarMarcaPorCriterios(catalogo, marca, criterios, mensaje);
   const referenciaInterpretada = buscarReferenciaInterpretada(marca, interpretacion, criterios);
@@ -2599,12 +2711,17 @@ function resolverConInterpretacionIA(mensaje, estado, catalogo, interpretacion) 
   if (!referencias.length) return null;
 
   let referencia =
-    referenciaInterpretada ||
+    referenciaExplicitaMensaje ||
     buscarReferenciaExacta(marca, mensaje, criterios) ||
+    referenciaInterpretada ||
     elegirMejorReferencia(referencias, criterios, mensaje);
 
   if (referencia && !referencias.some((item) => item.nombre === referencia.nombre)) {
-    if (referenciaInterpretada && referencia.nombre === referenciaInterpretada.nombre) {
+    if (
+      referencia === referenciaExplicitaMensaje ||
+      (referenciaInterpretada &&
+        referencia.nombre === referenciaInterpretada.nombre)
+    ) {
       referencias = [referencia];
     } else {
       referencia = null;
@@ -2680,7 +2797,15 @@ function resolverConInterpretacionIA(mensaje, estado, catalogo, interpretacion) 
   }
 
   if (interpretacion.accion === "consultar" || interpretacion.intencion === "consulta_producto") {
-    const consultado = { marca, referencia, presentacion, cantidad };
+    const consultado = {
+      marca,
+      referencia,
+      presentacion,
+      cantidad,
+      familiaReferencia: interpretacion.producto?.nombreFamilia || null,
+      referenciasEquivalentes:
+        interpretacion.producto?.referenciasEquivalentes || null,
+    };
     guardarProductosConsultados(estado, [consultado]);
     estado.ultimaSeleccion = null;
     return `Estos son los precios:\n${lineasItemsConsultados([consultado])}\n\nSi te sirve, dime si quieres agregarlo al pedido.`;
@@ -3813,6 +3938,7 @@ function iniciarNuevoPedido(estado) {
   estado.ultimaSeleccion = null;
   estado.productosPendientes = [];
   estado.referenciasPendientes = null;
+  estado.coincidenciasProductoPendientes = null;
   estado.alternativaPendiente = null;
   estado.esperandoTipoEntrega = false;
   estado.esperandoSedeRecogida = false;

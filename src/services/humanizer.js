@@ -4,6 +4,7 @@ const {
   construirSolicitudHumanizador,
   logDiagnosticoContexto,
 } = require("./aiContextOptimizer");
+const { logPayloadOpenAI } = require("./aiContextAuditLogger");
 
 const openai = process.env.OPENAI_API_KEY
   ? new OpenAI({
@@ -124,6 +125,7 @@ function resumenEstadoParaRespuesta(estado = {}) {
     metodoPago: estado.metodoPago || null,
     pendientes: {
       referencia: estado.referenciasPendientes || null,
+      coincidenciasProducto: estado.coincidenciasProductoPendientes || null,
       seleccion: estado.ultimaSeleccion || null,
       productos: estado.productosPendientes || [],
       datosDomicilio: Boolean(estado.esperandoDatosDomicilio),
@@ -271,6 +273,14 @@ ${promptCliente(opciones.cliente)}
     if (!/^gpt-5/i.test(model)) {
       parametrosModelo.temperature = 0.55;
     }
+    logPayloadOpenAI({
+      etapa: "humanizador",
+      model,
+      cliente: opciones.cliente,
+      channelUserId: opciones.channelUserId,
+      perfil: solicitud.perfil,
+      messages: parametrosModelo.messages,
+    });
 
     const inicio = Date.now();
     const completion = await openai.chat.completions.create({

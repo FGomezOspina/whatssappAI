@@ -20,6 +20,17 @@ const {
   respuestaValidacionProducto,
   validarCoincidenciaProducto,
 } = require("./productMatchValidator");
+const {
+  esSenalReferenciaProducto,
+  historialRepresentaInteraccionProducto,
+  guardarCoincidenciasProductoPendientes,
+  reiniciarFocoProducto,
+  resolverSeleccionProductoPendiente,
+} = require("./pendingProductMatchService");
+const {
+  logContextoProducto,
+  logContextoRecuperado,
+} = require("./aiContextAuditLogger");
 
 function registrarEntradaOpenAI(evento, mensaje, imageUrls, contenidos) {
   const audiosOpenAI = contenidos.filter((contenido) => contenido.metadata?.audioTranscribedWithOpenAI).length;
@@ -83,8 +94,13 @@ async function responderValidacionNoConfiable({
   estado,
   mensaje,
   validacion,
+  clasificacion = null,
 }) {
   registrarValidacionProducto(evento, validacion);
+  guardarCoincidenciasProductoPendientes(estado, validacion, {
+    intencionOriginal: mensaje,
+    tipoIntencion: clasificacion?.intencion || "consulta_producto",
+  });
   const respuesta = respuestaValidacionProducto(validacion);
   await guardarConversacionPersistida(evento.channelUserId, estado, {
     cliente,
@@ -189,14 +205,179 @@ async function responderEventosEntrantes(eventos) {
     return respuesta;
   }
 
-  const clasificacion = clasificarInteraccion({ mensaje, estado, contenidos, imageUrls });
-  const catalogoIA = await seleccionarCatalogoParaIA({ catalogo, mensaje, estado, clasificacion, cliente });
-  const validacionPrevia = validarCoincidenciaProducto({
+  let clasificacion = clasificarInteraccion({
     mensaje,
-    catalogo,
-    catalogoCandidatos: catalogoIA.catalogo,
-    clasificacion,
+    estado,
+    contenidos,
+    imageUrls,
   });
+  const iniciaNuevaBusquedaProducto = Boolean(
+    clasificacion.requiereBusquedaProducto &&
+      !esSenalReferenciaProducto(mensaje) &&
+      [
+        "imagen",
+        "audio",
+        "precio",
+        "busqueda_producto",
+        "referencia_producto",
+      ].includes(clasificacion.intencion)
+  );
+  logContextoProducto({
+    fase: "antes_resolver",
+    cliente,
+    channelUserId: evento.channelUserId,
+    mensaje,
+    estado,
+  });
+  const seleccionPendiente = resolverSeleccionProductoPendiente({
+    mensaje,
+    estado,
+    catalogo,
+    nuevaBusquedaProducto: iniciaNuevaBusquedaProducto,
+  });
+  logContextoProducto({
+    fase: seleccionPendiente ? "resuelto_por_estado" : "busqueda_nueva",
+    cliente,
+    channelUserId: evento.channelUserId,
+    mensaje,
+    estado,
+    resolucion: seleccionPendiente
+      ? {
+          resuelta: seleccionPendiente.resuelta,
+          origen: seleccionPendiente.origen || "estado",
+          seleccion: seleccionPendiente.seleccion || null,
+        }
+      : { resuelta: false, origen: "sin_coincidencia_estado" },
+  });
+  if (seleccionPendiente) {
+    if (seleccionPendiente.delegarMotorPedido) {
+      const respuestaMotor = resolverConsultaCatalogo(
+        seleccionPendiente.mensajeMotor || mensaje,
+        estado,
+        catalogo,
+        null
+      );
+      if (respuestaMotor) {
+        await guardarConversacionPersistida(evento.channelUserId, estado, {
+          cliente,
+          mensaje,
+          respuesta: respuestaMotor,
+        });
+        logResumenInteraccionIA({
+          channelUserId: evento.channelUserId,
+          cliente,
+          interpretacionIA: null,
+          humanizerUsage: {
+            skipped: true,
+            reason: "continuacion_producto_por_estado",
+          },
+        });
+        return respuestaMotor;
+      }
+    } else {
+      await guardarConversacionPersistida(evento.channelUserId, estado, {
+        cliente,
+        mensaje,
+        respuesta: seleccionPendiente.respuesta,
+      });
+      console.log(
+        `[Catalog Match] seleccion_pendiente | cliente=${clienteParaLog(
+          evento.channelUserId
+        )} | resuelta=${seleccionPendiente.resuelta ? "si" : "no"} | referencia=${
+          seleccionPendiente.seleccion?.referencia || "ambigua"
+        }`
+      );
+      logResumenInteraccionIA({
+        channelUserId: evento.channelUserId,
+        cliente,
+        interpretacionIA: null,
+        humanizerUsage: {
+          skipped: true,
+          reason: "seleccion_catalogo_pendiente",
+        },
+      });
+      return seleccionPendiente.respuesta;
+    }
+  }
+
+  if (iniciaNuevaBusquedaProducto) {
+    reiniciarFocoProducto(estado);
+    clasificacion = clasificarInteraccion({
+      mensaje,
+      estado,
+      contenidos,
+      imageUrls,
+    });
+  }
+  let historialFallbackRecuperado = [];
+  let fallbackHistorialProductoActivo = false;
+  if (clasificacion.fallbackHistorialProductoCandidato) {
+    historialFallbackRecuperado = await obtenerHistorialRecientePersistido(
+      evento.channelUserId,
+      clasificacion.limiteHistorial,
+      cliente
+    );
+    const creadoEnProducto = Date.parse(
+      estado.ultimaInteraccionProducto?.creadoEn || ""
+    );
+    const fallbackPorEstado = Boolean(
+      Number.isFinite(creadoEnProducto) &&
+        Date.now() - creadoEnProducto <=
+          Number(process.env.CATALOG_PENDING_MATCH_TTL_MS || 20 * 60 * 1000)
+    );
+    fallbackHistorialProductoActivo = Boolean(
+      fallbackPorEstado ||
+        historialRepresentaInteraccionProducto(historialFallbackRecuperado)
+    );
+    clasificacion = {
+      ...clasificacion,
+      fallbackHistorialProductoActivo,
+      limiteHistorial: fallbackHistorialProductoActivo
+        ? clasificacion.limiteHistorial
+        : 0,
+    };
+    logContextoProducto({
+      fase: "fallback_historial",
+      cliente,
+      channelUserId: evento.channelUserId,
+      mensaje,
+      estado,
+      fallbackHistorial: {
+        candidato: true,
+        activo: fallbackHistorialProductoActivo,
+        mensajesRecuperados: historialFallbackRecuperado.length,
+        mensajesEnviados: fallbackHistorialProductoActivo
+          ? historialFallbackRecuperado.length
+          : 0,
+      },
+    });
+  }
+
+  const mensajeBusquedaCatalogo = fallbackHistorialProductoActivo
+    ? `${historialFallbackRecuperado
+        .map((item) => item.body)
+        .filter(Boolean)
+        .join("\n")}\n${mensaje}`
+    : mensaje;
+  const catalogoIA = await seleccionarCatalogoParaIA({
+    catalogo,
+    mensaje: mensajeBusquedaCatalogo,
+    estado,
+    clasificacion,
+    cliente,
+  });
+  const validacionPrevia = fallbackHistorialProductoActivo
+    ? {
+        nivel: "no_aplica",
+        razon: "fallback_historial_producto",
+        terminos: [],
+      }
+    : validarCoincidenciaProducto({
+        mensaje,
+        catalogo,
+        catalogoCandidatos: catalogoIA.catalogo,
+        clasificacion,
+      });
 
   if (["media", "baja"].includes(validacionPrevia.nivel)) {
     return responderValidacionNoConfiable({
@@ -205,24 +386,40 @@ async function responderEventosEntrantes(eventos) {
       estado,
       mensaje,
       validacion: validacionPrevia,
+      clasificacion,
     });
   }
 
   if (validacionPrevia.nivel === "alta") {
+    estado.coincidenciasProductoPendientes = null;
     registrarValidacionProducto(evento, validacionPrevia);
   }
 
   const omitirInterpretePorConsultaExploratoria =
     ["consulta_generica", "consulta_categoria"].includes(validacionPrevia.razon) &&
     !clasificacion.requiereVision;
-  const [historialReciente, ejemplosEntrenamiento] = await Promise.all([
-    clasificacion.limiteHistorial > 0
+  const [historialRecuperado, ejemplosEntrenamiento] = await Promise.all([
+    fallbackHistorialProductoActivo
+      ? Promise.resolve(historialFallbackRecuperado)
+      : clasificacion.limiteHistorial > 0
       ? obtenerHistorialRecientePersistido(evento.channelUserId, clasificacion.limiteHistorial, cliente)
       : Promise.resolve([]),
     clasificacion.limiteEjemplos > 0
       ? obtenerEjemplosEntrenamiento(mensaje, clasificacion.limiteEjemplos, cliente)
       : Promise.resolve([]),
   ]);
+  const historialReciente =
+    clasificacion.fallbackHistorialProductoCandidato &&
+    !fallbackHistorialProductoActivo
+      ? []
+      : historialRecuperado;
+  logContextoRecuperado({
+    cliente,
+    channelUserId: evento.channelUserId,
+    clasificacion,
+    historial: historialReciente,
+    estado,
+  });
   const memoriaOperativa = construirMemoriaOperativa(estado, historialReciente);
   const modeloIA = modeloInterprete(clasificacion);
   const modeloHumanizar = modeloHumanizador(clasificacion);
@@ -268,6 +465,7 @@ async function responderEventosEntrantes(eventos) {
       estado,
       mensaje,
       validacion: validacionFinal,
+      clasificacion,
     });
   }
   if (validacionFinal.nivel === "alta") {

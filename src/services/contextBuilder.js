@@ -21,8 +21,14 @@ function construirMemoriaOperativa(estado = {}, historialReciente = []) {
       criterios: estado.criterios || {},
       ultimaSeleccion: estado.ultimaSeleccion || null,
       referenciasPendientes: estado.referenciasPendientes || null,
+      coincidenciasProductoPendientes:
+        estado.coincidenciasProductoPendientes || null,
       productosPendientes: estado.productosPendientes || [],
       productosConsultados: estado.productosConsultados || [],
+      historialProductosConsultados: ultimosItems(
+        estado.historialProductosConsultados || [],
+        10
+      ),
       carrito: estado.carrito || [],
       entrega: estado.entrega || {},
       metodoPago: estado.metodoPago || null,

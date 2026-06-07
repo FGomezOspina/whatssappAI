@@ -428,6 +428,100 @@ test("muestra alternativas cercanas cuando la referencia exacta no tiene la pres
   assert.doesNotMatch(respuesta, /DOG CHOW DOG CHOW/i);
 });
 
+test("una consulta explícita cambia de referencia similar y respeta su presentación", () => {
+  const estado = crearEstadoInicial();
+  const catalogoSimilar = [
+    {
+      marca: "NUTRILINE",
+      referencias: [
+        {
+          nombre: "NUTRILINE CAT URINARY",
+          especie: "gato",
+          categoria: "comida",
+          subcategoria: "concentrado",
+          presentaciones: [{ peso: "3kg", precio: 150000, stock: true }],
+        },
+        {
+          nombre: "NUTRILINE URINARY",
+          especie: "perro",
+          categoria: "comida",
+          subcategoria: "concentrado",
+          presentaciones: [{ peso: "1.5kg", precio: 92000, stock: true }],
+        },
+      ],
+    },
+  ];
+  estado.marca = "NUTRILINE";
+  estado.criterios = { especie: "gato" };
+  estado.ultimaSeleccion = {
+    marca: "NUTRILINE",
+    referencia: "NUTRILINE CAT URINARY",
+    presentacion: null,
+    cantidad: 1,
+  };
+
+  const respuesta = resolverConsultaCatalogo(
+    "qué precio tiene nutriline urinary 1.5kg",
+    estado,
+    catalogoSimilar,
+    null
+  );
+
+  assert.match(respuesta, /NUTRILINE URINARY 1\.5kg: \$92\.000/i);
+  assert.doesNotMatch(respuesta, /CAT URINARY/);
+});
+
+test("el texto actual gana aunque la IA arrastre una referencia similar anterior", () => {
+  const estado = crearEstadoInicial();
+  const catalogoSimilar = [
+    {
+      marca: "NUTRILINE",
+      referencias: [
+        {
+          nombre: "NUTRILINE CAT URINARY",
+          especie: "gato",
+          categoria: "comida",
+          subcategoria: "concentrado",
+          presentaciones: [{ peso: "3kg", precio: 150000, stock: true }],
+        },
+        {
+          nombre: "NUTRILINE URINARY",
+          especie: "perro",
+          categoria: "comida",
+          subcategoria: "concentrado",
+          presentaciones: [{ peso: "1.5kg", precio: 92000, stock: true }],
+        },
+      ],
+    },
+  ];
+  estado.marca = "NUTRILINE";
+  estado.criterios = { especie: "gato" };
+  const interpretacionAnterior = {
+    intencion: "consulta_producto",
+    accion: "consultar",
+    confianza: 0.95,
+    producto: {
+      marca: "NUTRILINE",
+      referencia: "NUTRILINE CAT URINARY",
+      especie: "gato",
+      presentacion: "1.5kg",
+      sabores: [],
+      condiciones: ["urinario"],
+    },
+    productos: [],
+  };
+
+  const respuesta = resolverConsultaCatalogo(
+    "qué precio tiene nutriline urinary 1.5kg",
+    estado,
+    catalogoSimilar,
+    interpretacionAnterior
+  );
+
+  assert.match(respuesta, /NUTRILINE URINARY 1\.5kg: \$92\.000/i);
+  assert.doesNotMatch(respuesta, /CAT URINARY/);
+});
+
 test("prioriza la referencia de todos los tamanos sobre una referencia generica interpretada por IA", () => {
   const estado = crearEstadoInicial();
   const interpretacionIA = {
@@ -1270,6 +1364,68 @@ test("otra pregunta de precio despues de cotizar sigue sin agregar", () => {
   assert.equal(estado.productosConsultados.length, 1);
   assert.match(respuesta, /\$20\.000/);
   assert.doesNotMatch(respuesta, /agregué|Pedido:/i);
+});
+
+test("cotiza productos consecutivos y conserva su orden conversacional", () => {
+  const estado = crearEstadoInicial();
+  const catalogo = cargarCatalogoPruebas();
+  const base = {
+    intencion: "consulta_producto",
+    accion: "consultar",
+    confianza: 0.96,
+    productos: [],
+    entrega: {},
+    datosCliente: {},
+    carrito: { operacion: null },
+    faltanteSugerido: null,
+  };
+
+  resolverConsultaCatalogo(
+    "precio dog chow adulto pequeño 1kg",
+    estado,
+    catalogo,
+    {
+      ...base,
+      producto: {
+        marca: "Dog Chow",
+        referencia: "Adulto Mini y Pequeño",
+        especie: "perro",
+        etapa: "adulto",
+        tamano: "pequeno",
+        presentacion: "1kg",
+        cantidad: 1,
+      },
+    }
+  );
+  const respuesta = resolverConsultaCatalogo(
+    "y el dog chow adulto grande 2kg",
+    estado,
+    catalogo,
+    {
+      ...base,
+      producto: {
+        marca: "Dog Chow",
+        referencia: "Adulto Mediano y Grande",
+        especie: "perro",
+        etapa: "adulto",
+        tamano: "grande",
+        presentacion: "2kg",
+        cantidad: 1,
+      },
+    }
+  );
+
+  assert.match(respuesta, /Adulto Mediano y Grande 2kg/i);
+  assert.equal(estado.productosConsultados.length, 1);
+  assert.equal(
+    estado.productosConsultados[0].referencia,
+    "Adulto Mediano y Grande"
+  );
+  assert.equal(estado.historialProductosConsultados.length, 2);
+  assert.deepEqual(
+    estado.historialProductosConsultados.map((item) => item.referencia),
+    ["Adulto Mini y Pequeño", "Adulto Mediano y Grande"]
+  );
 });
 
 test("una direccion despues de cotizar continua el pedido con el producto consultado", () => {

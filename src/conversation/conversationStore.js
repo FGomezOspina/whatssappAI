@@ -19,8 +19,12 @@ function crearEstadoInicial() {
     criterios: {},
     ultimaSeleccion: null,
     productosConsultados: [],
+    historialProductosConsultados: [],
     productosPendientes: [],
     referenciasPendientes: null,
+    coincidenciasProductoPendientes: null,
+    ultimaInteraccionProducto: null,
+    ultimoTurnoContextoProducto: 0,
     carrito: [],
     pedidoConfirmado: false,
     ultimoPedidoConfirmado: null,
@@ -77,6 +81,8 @@ function normalizarEstadoPersistido(estadoGuardado = {}) {
     datosDomicilio: estadoGuardado.datosDomicilio || {},
     carrito: estadoGuardado.carrito || [],
     productosConsultados: estadoGuardado.productosConsultados || [],
+    historialProductosConsultados:
+      estadoGuardado.historialProductosConsultados || [],
     productosPendientes: estadoGuardado.productosPendientes || [],
   };
 }

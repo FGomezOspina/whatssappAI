@@ -290,15 +290,20 @@ Variables de optimizacion opcionales:
 - `CATALOG_MATCH_MEDIUM_THRESHOLD`: similitud minima para mostrar opciones como posibles coincidencias; por defecto `0.68`.
 - `CATALOG_MATCH_AMBIGUITY_MARGIN`: diferencia minima entre el primer y segundo resultado; por defecto `0.08`.
 - `CATALOG_MATCH_ALTERNATIVE_LIMIT`: maximo de opciones mostradas cuando la coincidencia es ambigua; por defecto `3`.
+- `CATALOG_PENDING_MATCH_TTL_MS`: vigencia del contexto temporal de coincidencias mostradas; por defecto `1200000` (20 minutos).
+- `CATALOG_PENDING_MATCH_MAX_TURNS`: turnos maximos para resolver una seleccion pendiente; por defecto `3`.
 - `SUPABASE_CATALOG_SEARCH_RPC`: nombre de la RPC de busqueda; por defecto `search_catalog_products`.
 - `CATALOG_SEARCH_BACKEND`: usar `local` para desactivar temporalmente la RPC y forzar fallback local.
 - `CATALOG_SEARCH_LOGS`: usar `false` para apagar logs de busqueda de catalogo.
 - `OPENAI_HISTORY_SIMPLE_LIMIT`, `OPENAI_HISTORY_NORMAL_LIMIT`, `OPENAI_HISTORY_COMPLEX_LIMIT`: limites de historial reciente enviado al modelo.
+- `OPENAI_HISTORY_PRODUCT_FALLBACK_LIMIT`: mensajes del ultimo turno usados solo cuando una referencia de producto no se pudo resolver por estado; por defecto `2`.
 - `OPENAI_HISTORY_ORDER_LIMIT`: historial maximo para un pedido activo; por defecto `3`.
 - `TRAINING_EXAMPLES_SIMPLE_LIMIT`, `TRAINING_EXAMPLES_NORMAL_LIMIT`, `TRAINING_EXAMPLES_COMPLEX_LIMIT`: limites de ejemplos curados por complejidad.
 - `TRAINING_EXAMPLES_ORDER_LIMIT`: ejemplos maximos para un pedido activo; por defecto `2`.
 - `AI_USAGE_LOGS`: usar `false` para apagar logs de uso de IA.
 - `AI_CONTEXT_LOGS`: activa el desglose aproximado de caracteres y tokens por bloque antes de cada llamada.
+- `AI_CONTEXT_PAYLOAD_LOGS`: imprime temporalmente el historial recuperado y el payload textual final enviado a OpenAI; puede contener datos personales y debe permanecer apagado normalmente.
+- `PRODUCT_CONTEXT_LOGS`: registra el estado de producto leido, la fuente de resolucion, si se hizo busqueda nueva y si se activo el fallback de historial.
 - `AI_CONTEXT_BUDGET_INTERPRETER_<PERFIL>`: presupuesto estimado para `SIMPLE`, `PRODUCTO`, `PEDIDO`, `MULTIMEDIA` o `COMPLEJO`.
 - `AI_CONTEXT_BUDGET_HUMANIZER_<PERFIL>`: presupuesto equivalente del humanizador.
 - `AI_CONTEXT_CHARS_PER_TOKEN`: relacion conservadora para estimar tokens antes de llamar al API; por defecto `4`.
@@ -313,7 +318,7 @@ Variables de optimizacion opcionales:
 El contexto enviado a OpenAI se construye por perfil sin modificar lo almacenado en Supabase:
 
 - `simple`: sin historial ni catalogo cuando no hacen falta.
-- `producto`: mensaje actual, contexto pendiente breve y candidatos compactos; sin historial ni ejemplos si no hay pedido activo.
+- `producto`: mensaje actual, contexto pendiente breve y candidatos compactos; normalmente sin historial ni ejemplos. Si el estado no resuelve una referencia corta y el turno anterior fue de producto, agrega solo los ultimos `2` mensajes.
 - `pedido`: carrito, datos operativos pendientes y un historial reciente limitado.
 - `multimedia`: instrucciones de audio/vision y candidatos, con contexto operativo acotado.
 - `complejo`: contexto ampliado dentro del presupuesto configurado.
@@ -321,6 +326,10 @@ El contexto enviado a OpenAI se construye por perfil sin modificar lo almacenado
 Los candidatos enviados al interprete omiten ids, metadata, timestamps y stock interno. Conservan marca, nombre, categoria, especie, etapa, descripcion breve, presentaciones y precios. El humanizador no recibe historial completo, ejemplos ni memoria duplicada.
 
 Antes del interprete, `productMatchValidator` compara marca, referencia, aliases, etapa, tamano, especie y errores de escritura contra el catalogo completo. Una coincidencia baja responde "no encontrado" sin llamar a OpenAI; una coincidencia media muestra opciones como posibles coincidencias; solo una coincidencia alta puede continuar como producto confirmado. En imagenes, la misma validacion se ejecuta despues de extraer marca y referencia visibles.
+
+Las coincidencias medias se guardan temporalmente en el estado de la conversacion con marca, referencia y presentaciones. El siguiente mensaje puede seleccionarlas por nombre completo, fragmento distintivo u ordinal (`primera`, `opcion 2`). La seleccion se resuelve contra el catalogo completo antes de iniciar otra busqueda y responde directamente con precios y disponibilidad.
+
+La auditoria detallada de recuperacion, limites y payloads vive en `docs/context-audit.md`.
 
 Diagnostico contra el catalogo real, sin guardar conversacion ni enviar mensajes:
 

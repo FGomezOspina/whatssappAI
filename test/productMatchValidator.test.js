@@ -6,6 +6,12 @@ const {
   respuestaValidacionProducto,
   validarCoincidenciaProducto,
 } = require("../src/services/productMatchValidator");
+const {
+  crearEstadoInicial,
+} = require("../src/conversation/conversationStore");
+const {
+  resolverConsultaCatalogo,
+} = require("../src/verticals/petshop/orderLogic");
 
 const clasificacionTexto = {
   intencion: "busqueda_producto",
@@ -116,6 +122,118 @@ test("tolera un error de escritura cercano cuando la coincidencia es única", ()
   assert.equal(validacion.coincidencia.referencia, "BRAVECTO 10 A 20 KG");
 });
 
+test("la presentación desempata referencias similares existentes", () => {
+  const catalogoSimilar = [
+    {
+      marca: "NUTRILINE",
+      referencias: [
+        {
+          nombre: "NUTRILINE CAT URINARY",
+          metadata: {},
+          presentaciones: [{ peso: "3kg", precio: 150000 }],
+        },
+        {
+          nombre: "NUTRILINE URINARY",
+          metadata: {},
+          presentaciones: [{ peso: "1.5kg", precio: 92000 }],
+        },
+      ],
+    },
+  ];
+  const validacion = validarCoincidenciaProducto({
+    mensaje: "precio nutriline urinary 1.5kg",
+    catalogo: catalogoSimilar,
+    catalogoCandidatos: catalogoSimilar,
+    clasificacion: {
+      ...clasificacionTexto,
+      intencion: "precio",
+    },
+  });
+
+  assert.equal(validacion.nivel, "alta");
+  assert.equal(validacion.coincidencia.referencia, "NUTRILINE CAT URINARY");
+  assert.equal(validacion.coincidencia.referenciaCatalogo, "NUTRILINE URINARY");
+  assert.deepEqual(validacion.coincidencia.referenciasEquivalentes, [
+    "NUTRILINE URINARY",
+    "NUTRILINE CAT URINARY",
+  ]);
+  assert.equal(validacion.presentacionValida, true);
+  const interpretacionValidada = aplicarCoincidenciaValidada(
+    {
+      producto: {
+        marca: "NUTRILINE",
+        referencia: "NUTRILINE URINARY",
+      },
+    },
+    validacion
+  );
+  assert.equal(
+    interpretacionValidada.producto.referencia,
+    "NUTRILINE URINARY"
+  );
+});
+
+test("sin presentación consolida nombres equivalentes como un solo producto", () => {
+  const catalogoSimilar = [
+    {
+      marca: "NUTRILINE",
+      referencias: [
+        {
+          nombre: "NUTRILINE CAT URINARY",
+          metadata: {},
+          presentaciones: [{ peso: "3kg", precio: 150000 }],
+        },
+        {
+          nombre: "NUTRILINE URINARY",
+          metadata: {},
+          presentaciones: [{ peso: "1.5kg", precio: 92000 }],
+        },
+      ],
+    },
+  ];
+  const validacion = validarCoincidenciaProducto({
+    mensaje: "precio nutriline urinary",
+    catalogo: catalogoSimilar,
+    catalogoCandidatos: catalogoSimilar,
+    clasificacion: {
+      ...clasificacionTexto,
+      intencion: "precio",
+    },
+  });
+  assert.equal(validacion.nivel, "alta");
+  assert.equal(validacion.alternativas.length, 1);
+  assert.deepEqual(
+    validacion.coincidencia.presentaciones.map((item) => item.peso).sort(),
+    ["1.5kg", "3kg"]
+  );
+
+  const interpretacion = aplicarCoincidenciaValidada(
+    {
+      confianza: 0.96,
+      intencion: "consulta_producto",
+      accion: "consultar",
+      producto: {
+        marca: "NUTRILINE",
+        referencia: "NUTRILINE URINARY",
+        condiciones: ["urinario"],
+      },
+    },
+    validacion
+  );
+  const estado = crearEstadoInicial();
+  const respuesta = resolverConsultaCatalogo(
+    "precio nutriline urinary",
+    estado,
+    catalogoSimilar,
+    interpretacion
+  );
+
+  assert.match(respuesta, /NUTRILINE CAT URINARY/i);
+  assert.match(respuesta, /3kg: \$150\.000/i);
+  assert.match(respuesta, /1\.5kg: \$92\.000/i);
+  assert.equal(estado.productosConsultados.length, 2);
+});
+
 test("una consulta genérica de categoría no confirma una referencia específica", () => {
   const validacion = validarCoincidenciaProducto({
     mensaje: "tienes pastillas para pulgas y garrapatas?",
@@ -192,6 +310,151 @@ test("valida el producto interpretado desde una imagen contra catálogo", () => 
 
   assert.equal(validacion.nivel, "alta");
   assert.equal(validacion.usaInterpretacion, true);
+});
+
+test("vision combina linea especie y presentación para confirmar la referencia real", () => {
+  const catalogoVision = [
+    {
+      marca: "NUTRILINE",
+      referencias: [
+        {
+          nombre: "NUTRILINE CAT RENAL",
+          especie: "gato",
+          metadata: {},
+          presentaciones: [{ peso: "1.5kg", precio: 108000 }],
+        },
+        {
+          nombre: "NUTRILINE URINAY",
+          especie: "gato",
+          metadata: {},
+          presentaciones: [{ peso: "1.5kg", precio: 108000 }],
+        },
+        {
+          nombre: "NUTRILINE CAT URINARY",
+          especie: "gato",
+          metadata: {},
+          presentaciones: [{ peso: "3kg", precio: 196000 }],
+        },
+      ],
+    },
+  ];
+  const validacion = validarCoincidenciaProducto({
+    mensaje: "El cliente envió una imagen. Qué costo tiene",
+    interpretacion: {
+      confianza: 0.96,
+      producto: {
+        marca: "NUTRILINE",
+        referencia: "NUTRILINE CAT URINARY",
+        especie: "gato",
+        presentacion: "1.5kg",
+        condiciones: ["urinario"],
+      },
+    },
+    catalogo: catalogoVision,
+    catalogoCandidatos: catalogoVision,
+    clasificacion: {
+      intencion: "imagen",
+      perfilContexto: "multimedia",
+      requiereVision: true,
+    },
+  });
+
+  assert.equal(validacion.nivel, "alta");
+  assert.equal(validacion.coincidencia.referencia, "NUTRILINE CAT URINARY");
+  assert.equal(validacion.coincidencia.referenciaCatalogo, "NUTRILINE URINAY");
+  assert.deepEqual(
+    [...validacion.coincidencia.referenciasEquivalentes].sort(),
+    ["NUTRILINE CAT URINARY", "NUTRILINE URINAY"].sort()
+  );
+  assert.doesNotMatch(
+    JSON.stringify(validacion.alternativas),
+    /NUTRILINE CAT RENAL/
+  );
+  assert.equal(validacion.presentacionValida, true);
+  assert.equal(validacion.etiqueta, "nutriline cat urinary");
+  assert.ok(validacion.diferencia >= 0.08);
+});
+
+test("agrupa equivalentes de cualquier marca y excluye líneas terapéuticas distintas", () => {
+  const catalogoGenerico = [
+    {
+      marca: "VETLIFE",
+      referencias: [
+        {
+          nombre: "VETLIFE DOG GASTROINTESTINAL",
+          metadata: {},
+          presentaciones: [{ peso: "2kg", precio: 87000 }],
+        },
+        {
+          nombre: "VETLIFE GASTRO",
+          metadata: {},
+          presentaciones: [{ peso: "7.5kg", precio: 240000 }],
+        },
+        {
+          nombre: "VETLIFE DOG RENAL",
+          metadata: {},
+          presentaciones: [{ peso: "2kg", precio: 91000 }],
+        },
+      ],
+    },
+  ];
+  const validacion = validarCoincidenciaProducto({
+    mensaje: "El cliente envió una imagen. ¿Cuánto cuesta?",
+    interpretacion: {
+      confianza: 0.96,
+      producto: {
+        marca: "VETLIFE",
+        referencia: "VETLIFE DOG GASTROINTESTINAL",
+        especie: "perro",
+        condiciones: ["gastrointestinal"],
+      },
+    },
+    catalogo: catalogoGenerico,
+    catalogoCandidatos: catalogoGenerico,
+    clasificacion: {
+      intencion: "imagen",
+      perfilContexto: "multimedia",
+      requiereVision: true,
+    },
+  });
+
+  assert.equal(validacion.nivel, "alta");
+  assert.deepEqual(validacion.coincidencia.referenciasEquivalentes, [
+    "VETLIFE DOG GASTROINTESTINAL",
+    "VETLIFE GASTRO",
+  ]);
+  assert.doesNotMatch(JSON.stringify(validacion), /VETLIFE DOG RENAL/);
+});
+
+test("la respuesta ambigua es natural y no usa instrucciones numeradas", () => {
+  const respuesta = respuestaValidacionProducto({
+    nivel: "media",
+    etiqueta: "nutriline urinary",
+    diferencia: 0,
+    usaInterpretacion: true,
+    alternativas: [
+      {
+        marca: "NUTRILINE",
+        referencia: "NUTRILINE URINARY",
+        presentaciones: [{ peso: "1.5kg", precio: 92000 }],
+      },
+      {
+        marca: "NUTRILINE",
+        referencia: "NUTRILINE CAT URINARY",
+        presentaciones: [{ peso: "3kg", precio: 150000 }],
+      },
+    ],
+  });
+
+  assert.match(respuesta, /Revisando la foto/i);
+  assert.match(
+    respuesta,
+    /¿Te refieres a NUTRILINE URINARY o a NUTRILINE CAT URINARY\?/i
+  );
+  assert.doesNotMatch(
+    respuesta,
+    /No encontré una coincidencia exacta|posibles coincidencias|responder con el nombre o el número|^\d+\./im
+  );
 });
 
 test("rechaza un producto interpretado desde imagen que no existe", () => {

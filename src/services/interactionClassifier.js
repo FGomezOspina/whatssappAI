@@ -1,4 +1,7 @@
 const { normalizar } = require("../utils/text");
+const {
+  esSenalReferenciaProducto,
+} = require("./pendingProductMatchService");
 
 function contieneAlguno(texto, palabras = []) {
   return palabras.some((palabra) => texto.includes(normalizar(palabra)));
@@ -50,7 +53,15 @@ function detectarIntencionBasica(mensaje = "", estado = {}, contenidos = [], ima
   if (contieneAlguno(texto, ["tienes", "manejan", "venden", "hay", "busco", "necesito", "quiero"])) {
     return "busqueda_producto";
   }
-  if (estado.ultimaSeleccion || estado.referenciasPendientes || estado.productosConsultados?.length) {
+  if (esSenalReferenciaProducto(mensaje)) {
+    return "referencia_producto";
+  }
+  if (
+    estado.ultimaSeleccion ||
+    estado.referenciasPendientes ||
+    estado.coincidenciasProductoPendientes ||
+    estado.productosConsultados?.length
+  ) {
     return "continuacion";
   }
   return "general";
@@ -70,12 +81,24 @@ function detectarComplejidad(mensaje = "", estado = {}, intencion = "general") {
 
   if (["imagen", "audio", "comprobante"].includes(intencion)) return "avanzada";
   if (lineas > 2 || tieneMultiplesProductos || (hayPedidoActivo && esperaDatos)) return "compleja";
-  if (["precio", "busqueda_producto", "continuacion", "domicilio"].includes(intencion)) return "normal";
+  if (
+    ["precio", "busqueda_producto", "referencia_producto", "continuacion", "domicilio"].includes(
+      intencion
+    )
+  ) {
+    return "normal";
+  }
   return "simple";
 }
 
 function requiereBusquedaProducto(intencion, mensaje = "", estado = {}) {
-  if (["imagen", "precio", "busqueda_producto", "audio"].includes(intencion)) return true;
+  if (
+    ["imagen", "precio", "busqueda_producto", "referencia_producto", "audio"].includes(
+      intencion
+    )
+  ) {
+    return true;
+  }
   if (intencion === "continuacion" && (estado.ultimaSeleccion || estado.referenciasPendientes)) return true;
 
   const texto = normalizar(mensaje);
@@ -99,6 +122,7 @@ function tieneContextoActivo(estado = {}) {
     (estado.carrito?.length && !estado.pedidoConfirmado) ||
       estado.ultimaSeleccion ||
       estado.referenciasPendientes ||
+      estado.coincidenciasProductoPendientes ||
       estado.productosConsultados?.length ||
       estado.esperandoDatosDomicilio ||
       estado.esperandoMetodoPago ||
@@ -117,11 +141,16 @@ function perfilContexto({ intencion, complejidad, estado = {}, requiereVision, r
     return "pedido";
   }
   if (complejidad === "compleja" || complejidad === "avanzada") return "complejo";
-  if (["precio", "busqueda_producto"].includes(intencion)) return "producto";
+  if (["precio", "busqueda_producto", "referencia_producto"].includes(intencion)) {
+    return "producto";
+  }
   return "simple";
 }
 
-function limiteHistorial(complejidad, perfil) {
+function limiteHistorial(complejidad, perfil, fallbackProducto = false) {
+  if (perfil === "producto" && fallbackProducto) {
+    return Number(process.env.OPENAI_HISTORY_PRODUCT_FALLBACK_LIMIT || 2);
+  }
   if (perfil === "simple" || perfil === "producto") return 0;
   if (perfil === "pedido") return Number(process.env.OPENAI_HISTORY_ORDER_LIMIT || 3);
   if (complejidad === "simple") return Number(process.env.OPENAI_HISTORY_SIMPLE_LIMIT || 2);
@@ -143,12 +172,16 @@ function clasificarInteraccion({ mensaje = "", estado = {}, contenidos = [], ima
   const requiereVision = tieneImagen(imageUrls);
   const requiereAudio = tieneAudio(contenidos);
   const perfil = perfilContexto({ intencion, complejidad, estado, requiereVision, requiereAudio });
+  const fallbackHistorialProductoCandidato = Boolean(
+    perfil === "producto" && esSenalReferenciaProducto(mensaje)
+  );
   const requiereOpenAI = !(
     complejidad === "simple" &&
     ["saludo", "general"].includes(intencion) &&
     !estado.carrito?.length &&
     !estado.ultimaSeleccion &&
-    !estado.referenciasPendientes
+    !estado.referenciasPendientes &&
+    !estado.coincidenciasProductoPendientes
   );
 
   return {
@@ -159,8 +192,14 @@ function clasificarInteraccion({ mensaje = "", estado = {}, contenidos = [], ima
     requiereOpenAI,
     requiereBusquedaProducto: requiereBusquedaProducto(intencion, mensaje, estado),
     perfilContexto: perfil,
-    limiteHistorial: limiteHistorial(complejidad, perfil),
+    limiteHistorial: limiteHistorial(
+      complejidad,
+      perfil,
+      fallbackHistorialProductoCandidato
+    ),
     limiteEjemplos: limiteEjemplos(complejidad, perfil),
+    fallbackHistorialProductoCandidato,
+    fallbackHistorialProductoActivo: false,
   };
 }
 

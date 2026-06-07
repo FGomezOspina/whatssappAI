@@ -2,13 +2,17 @@ const test = require("node:test");
 const assert = require("node:assert/strict");
 
 const { clasificarInteraccion } = require("../src/services/interactionClassifier");
-const { seleccionarCatalogoParaIA } = require("../src/services/catalogContextService");
+const {
+  seleccionarCatalogoParaIA,
+  _internals: catalogContextInternals,
+} = require("../src/services/catalogContextService");
 const { construirMemoriaOperativa } = require("../src/services/contextBuilder");
 const { modeloInterprete, modeloHumanizador } = require("../src/services/modelRouter");
 const {
   construirPromptInterprete,
   construirSolicitudHumanizador,
   construirSolicitudInterprete,
+  _internals: contextOptimizerInternals,
 } = require("../src/services/aiContextOptimizer");
 
 const catalogo = [
@@ -89,6 +93,49 @@ test("filtra catalogo para OpenAI con tolerancia a errores y limite configurable
   }
 });
 
+test("una consulta explícita no mezcla la referencia anterior en el ranking", () => {
+  const catalogoSimilar = [
+    {
+      marca: "NUTRILINE",
+      referencias: [
+        {
+          nombre: "NUTRILINE CAT URINARY",
+          presentaciones: [{ peso: "3kg", precio: 150000 }],
+        },
+        {
+          nombre: "NUTRILINE URINARY",
+          presentaciones: [{ peso: "1.5kg", precio: 92000 }],
+        },
+      ],
+    },
+  ];
+  const clasificacion = clasificarInteraccion({
+    mensaje: "nutriline urinary 1.5kg",
+    estado: {},
+  });
+  const resultado = catalogContextInternals.seleccionarCatalogoLocal({
+    catalogo: catalogoSimilar,
+    mensaje: "nutriline urinary 1.5kg",
+    estado: {
+      marca: "NUTRILINE",
+      ultimaSeleccion: {
+        marca: "NUTRILINE",
+        referencia: "NUTRILINE CAT URINARY",
+      },
+      criterios: { especie: "gato" },
+    },
+    clasificacion: {
+      ...clasificacion,
+      requiereBusquedaProducto: true,
+    },
+  });
+
+  assert.equal(
+    resultado.catalogo[0].referencias[0].nombre,
+    "NUTRILINE URINARY"
+  );
+});
+
 test("no envia catalogo al modelo cuando no hay busqueda de producto", async () => {
   const clasificacion = clasificarInteraccion({ mensaje: "gracias", estado: {} });
   const resultado = await seleccionarCatalogoParaIA({ catalogo, mensaje: "gracias", estado: {}, clasificacion });
@@ -112,6 +159,31 @@ test("construye memoria por niveles sin reenviar historial completo", () => {
   assert.equal(memoria.nivel2PerfilCliente.datosDomicilio.direccion, "Cuba");
   assert.equal(memoria.nivel3HistorialDisponible.conservadoEnSupabase, true);
   assert.equal(memoria.nivel3HistorialDisponible.mensajesRecientesEnviadosAlModelo, 2);
+});
+
+test("el historial estructurado conserva diez cotizaciones sin enviar conversaciones completas", () => {
+  const historialProductosConsultados = Array.from(
+    { length: 15 },
+    (_, index) => ({
+      indice: index + 1,
+      marca: `Marca ${index + 1}`,
+      referencia: `Producto ${index + 1}`,
+      presentaciones: [
+        { peso: `${index + 1}kg`, precio: 10000 + index },
+      ],
+    })
+  );
+  const compacto = contextOptimizerInternals.compactarEstado(
+    {
+      productosConsultados: [{ marca: "Marca 15", referencia: "Producto 15" }],
+      historialProductosConsultados,
+    },
+    "producto"
+  );
+
+  assert.equal(compacto.historialProductosConsultados.length, 10);
+  assert.equal(compacto.historialProductosConsultados[0].referencia, "Producto 6");
+  assert.equal(compacto.historialProductosConsultados[9].referencia, "Producto 15");
 });
 
 test("router de modelos respeta variables por complejidad", () => {

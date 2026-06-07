@@ -114,11 +114,26 @@ function compactarItem(item = {}) {
   };
 }
 
+function compactarCotizacion(item = {}) {
+  return {
+    indice: item.indice || null,
+    marca: item.marca || null,
+    referencia: item.referencia || null,
+    presentaciones: (item.presentaciones || []).slice(0, 4).map(
+      (presentacion) => ({
+        peso: presentacion.peso || null,
+        precio: presentacion.precio ?? null,
+      })
+    ),
+  };
+}
+
 function hayPedidoActivo(estado = {}) {
   return Boolean(
     (estado.carrito?.length && !estado.pedidoConfirmado) ||
       estado.ultimaSeleccion ||
       estado.referenciasPendientes ||
+      estado.coincidenciasProductoPendientes ||
       estado.productosConsultados?.length ||
       estado.esperandoDatosDomicilio ||
       estado.esperandoMetodoPago ||
@@ -140,7 +155,33 @@ function compactarEstado(estado = {}, perfil = "simple") {
           referencias: (estado.referenciasPendientes.referencias || []).slice(0, 6),
         }
       : null,
+    coincidenciasProductoPendientes: estado.coincidenciasProductoPendientes
+      ? {
+          opciones: (estado.coincidenciasProductoPendientes.opciones || [])
+            .slice(0, 5)
+            .map((opcion) => ({
+              indice: opcion.indice,
+              marca: opcion.marca,
+              referencia: opcion.referencia,
+            })),
+        }
+      : null,
     productosConsultados: (estado.productosConsultados || []).slice(-6).map(compactarItem),
+    historialProductosConsultados: (
+      estado.historialProductosConsultados || []
+    )
+      .slice(-10)
+      .map(compactarCotizacion),
+    ultimaInteraccionProducto: estado.ultimaInteraccionProducto
+      ? {
+          intencionOriginal: recortarTexto(
+            estado.ultimaInteraccionProducto.intencionOriginal,
+            160
+          ),
+          tipoIntencion: estado.ultimaInteraccionProducto.tipoIntencion || null,
+          creadoEn: estado.ultimaInteraccionProducto.creadoEn || null,
+        }
+      : null,
     carrito: estado.pedidoConfirmado ? [] : (estado.carrito || []).map(compactarItem),
     entrega: estado.entrega || {},
     metodoPago: estado.metodoPago || null,
@@ -203,6 +244,8 @@ function instruccionesPerfil(perfil) {
     simple: ["Clasifica el mensaje sin reconstruir conversaciones anteriores."],
     producto: [
       "Mapea marca, referencia, especie, etapa, tamano y presentacion contra los candidatos.",
+      "Usa productosConsultados para ese o el de cierto peso, e historialProductosConsultados para primero, segundo u otra cotizacion anterior.",
+      "Un nombre, audio o imagen nuevos cambian el producto activo; no arrastres la referencia anterior.",
       "a.r.p/arp significa adulto raza pequena; a.r.g/arg significa adulto raza grande.",
       "Entiende canine/perro, feline/gato, puppy/cachorro, adult/adulto y small/pequeno.",
       "Condiciones como castrado, urinary, renal, gastro, piel y siglas como OM/UR/NF son parte fuerte de la referencia.",
@@ -334,6 +377,9 @@ function construirSolicitudInterprete({
   let ejemplos = compactarEjemplos(ejemplosEntrenamiento, clasificacion.limiteEjemplos || 0);
   let memoria = compactarEstado(estado, perfil);
   const reducciones = [];
+  const historialProductoProtegido = Boolean(
+    clasificacion.fallbackHistorialProductoActivo
+  );
 
   function contenido() {
     return {
@@ -357,7 +403,11 @@ function construirSolicitudInterprete({
     ejemplos.pop();
     if (!reducciones.includes("ejemplos")) reducciones.push("ejemplos");
   }
-  while (tokensActuales() > presupuesto && historial.length) {
+  while (
+    tokensActuales() > presupuesto &&
+    historial.length &&
+    !historialProductoProtegido
+  ) {
     historial.shift();
     if (!reducciones.includes("historial")) reducciones.push("historial");
   }
@@ -365,7 +415,11 @@ function construirSolicitudInterprete({
     productos = compactarCatalogo(catalogo, { incluirDescripcion: false });
     reducciones.push("descripciones_productos");
   }
-  while (tokensActuales() > presupuesto && totalReferencias(productos) > 4) {
+  const minimoReferencias = historialProductoProtegido ? 2 : 4;
+  while (
+    tokensActuales() > presupuesto &&
+    totalReferencias(productos) > minimoReferencias
+  ) {
     productos = reducirCatalogo(productos);
     if (!reducciones.includes("candidatos")) reducciones.push("candidatos");
   }
