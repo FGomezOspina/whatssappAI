@@ -343,14 +343,46 @@ function opcionesDesdeProductosConsultados(productos = []) {
         presentaciones: [],
       });
     }
-    if (item.peso || item.precio != null) {
-      grupos.get(clave).presentaciones.push({
-        peso: item.peso || item.presentacion || null,
-        precio: item.precio ?? null,
-        stock: typeof item.stock === "boolean" ? item.stock : null,
-        referencia: item.referenciaCatalogo || item.referencia,
+    const presentacionesItem =
+      Array.isArray(item.presentaciones) && item.presentaciones.length
+        ? item.presentaciones
+        : [
+            {
+              peso: item.peso || item.presentacion || null,
+              precio: item.precio ?? null,
+              stock: typeof item.stock === "boolean" ? item.stock : null,
+              referencia: item.referenciaCatalogo || item.referencia,
+            },
+          ];
+    presentacionesItem
+      .filter((presentacion) => presentacion.peso || presentacion.precio != null)
+      .forEach((presentacion) => {
+        const grupo = grupos.get(clave);
+        const peso = presentacion.peso || presentacion.presentacion || null;
+        const clavePresentacion = `${normalizarPeso(peso || "")}::${
+          presentacion.precio ?? ""
+        }`;
+        if (
+          grupo.presentaciones.some(
+            (itemPresentacion) =>
+              `${normalizarPeso(itemPresentacion.peso || "")}::${
+                itemPresentacion.precio ?? ""
+              }` === clavePresentacion
+          )
+        ) {
+          return;
+        }
+        grupo.presentaciones.push({
+          peso,
+          precio: presentacion.precio ?? null,
+          stock: typeof presentacion.stock === "boolean" ? presentacion.stock : null,
+          referencia:
+            presentacion.referencia ||
+            presentacion.referenciaCatalogo ||
+            item.referenciaCatalogo ||
+            item.referencia,
+        });
       });
-    }
   });
   return [...grupos.values()];
 }
@@ -543,6 +575,20 @@ function solicitaOperacionSobreSeleccion(mensaje = "") {
       /\b(?:quiero|llevo|dame|deme|regalame|dejame|agrega|agregame)\b/.test(
         texto
       )
+  );
+}
+
+function esConsultaDePrecio(mensaje = "") {
+  const texto = normalizarSeleccion(mensaje);
+  return /\b(?:cuanto|precio|costo|vale|valor|a como|cotizar)\b/.test(texto);
+}
+
+function seleccionaPresentacionParaAgregar(mensaje = "", contexto = {}, presentacion = null) {
+  return Boolean(
+    presentacion &&
+      ["productosConsultados", "ultimaSeleccion"].includes(contexto.fuente) &&
+      esSenalReferenciaProducto(mensaje) &&
+      !esConsultaDePrecio(mensaje)
   );
 }
 
@@ -962,6 +1008,20 @@ function resolverSeleccionProductoPendiente({
       contexto.turnoCreacion || estado.ultimoTurnoContextoProducto || null,
     resueltaPor: origen || "estado",
   };
+
+  if (seleccionaPresentacionParaAgregar(mensaje, contexto, presentacion)) {
+    return {
+      resuelta: true,
+      delegarMotorPedido: true,
+      mensajeMotor: `agrega ${presentacion.peso}`,
+      origen: origen || "estado",
+      seleccion: {
+        marca: producto.marca.marca,
+        referencia: producto.referencia.nombre,
+        presentacion: presentacion.peso,
+      },
+    };
+  }
 
   return {
     resuelta: true,

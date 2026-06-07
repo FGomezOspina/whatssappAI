@@ -414,7 +414,7 @@ test("ignora y limpia un contexto temporal vencido", () => {
   assert.equal(estado.coincidenciasProductoPendientes, null);
 });
 
-test("una presentación consolidada conserva la referencia física correcta", () => {
+test("una presentación consolidada se delega al motor para agregarla al pedido", () => {
   const estado = crearEstadoInicial();
   estado.productosConsultados = [
     {
@@ -451,9 +451,84 @@ test("una presentación consolidada conserva la referencia física correcta", ()
   });
 
   assert.equal(resultado.resuelta, true);
+  assert.equal(resultado.delegarMotorPedido, true);
+  assert.equal(resultado.mensajeMotor, "agrega 1.5kg");
   assert.equal(resultado.seleccion.referencia, "ADVANCE URINAY");
   assert.equal(resultado.seleccion.presentacion, "1.5kg");
+});
+
+test("una pregunta de precio sobre una presentación consultada no se agrega al pedido", () => {
+  const estado = crearEstadoInicial();
+  estado.productosConsultados = [
+    {
+      marca: "ADVANCE",
+      referencia: "ADVANCE URINAY",
+      peso: "1.5kg",
+      precio: 108000,
+    },
+  ];
+  estado.ultimaInteraccionProducto = {
+    creadoEn: new Date().toISOString(),
+  };
+
+  const resultado = resolverSeleccionProductoPendiente({
+    mensaje: "cuánto vale el de 1.5kg",
+    estado,
+    catalogo,
+  });
+
+  assert.equal(resultado.resuelta, true);
+  assert.equal(resultado.delegarMotorPedido, undefined);
+  assert.equal(resultado.seleccion.referencia, "ADVANCE URINAY");
   assert.match(resultado.respuesta, /1\.5kg: \$108\.000/);
+});
+
+test("selecciona una presentación distinta mostrada en la misma referencia", () => {
+  const estado = crearEstadoInicial();
+  const catalogoMultiple = [
+    {
+      marca: "AGILITY",
+      referencias: [
+        {
+          nombre: "AGILITY GATO AD",
+          especie: "gato",
+          presentaciones: [
+            { peso: "1.5kg", precio: 41000, stock: null },
+            { peso: "3kg", precio: 78000, stock: null },
+            { peso: "500gr", precio: 14300, stock: null },
+          ],
+        },
+      ],
+    },
+  ];
+  estado.productosConsultados = [
+    {
+      marca: "AGILITY",
+      referencia: "AGILITY GATO AD",
+      peso: "1.5kg",
+      precio: 41000,
+      presentaciones: [
+        { peso: "1.5kg", precio: 41000 },
+        { peso: "3kg", precio: 78000 },
+        { peso: "500gr", precio: 14300 },
+      ],
+    },
+  ];
+  estado.ultimaInteraccionProducto = {
+    creadoEn: new Date().toISOString(),
+  };
+
+  const resultado = resolverSeleccionProductoPendiente({
+    mensaje: "el de 3kg",
+    estado,
+    catalogo: catalogoMultiple,
+  });
+
+  assert.equal(resultado.resuelta, true);
+  assert.equal(resultado.delegarMotorPedido, true);
+  assert.equal(resultado.mensajeMotor, "agrega 3kg");
+  assert.equal(resultado.seleccion.referencia, "AGILITY GATO AD");
+  assert.equal(resultado.seleccion.presentacion, "3kg");
 });
 
 test("conserva cotizaciones distintas aunque cambie el producto activo", () => {
