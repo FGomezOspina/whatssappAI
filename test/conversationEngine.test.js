@@ -1213,6 +1213,55 @@ test("despues de cotizar puede agregar los productos consultados", () => {
   assert.match(respuesta, /agregué al pedido/i);
 });
 
+test("si asi esta bien despues de armar carrito avanza a entrega sin buscar producto", () => {
+  const estado = crearEstadoInicial();
+  const catalogo = cargarCatalogoPruebas();
+  estado.carrito = [
+    {
+      marca: "Agility",
+      referencia: "AGILITY GATO AD",
+      peso: "1.5kg",
+      precio: 41000,
+      cantidad: 1,
+    },
+    {
+      marca: "Agility",
+      referencia: "AGILITY GATITO",
+      peso: "500gr",
+      precio: 16900,
+      cantidad: 1,
+    },
+  ];
+  estado.esperandoConfirmacionDomicilio = true;
+  const interpretacionErrada = {
+    intencion: "consulta_producto",
+    accion: "consultar",
+    confianza: 0.75,
+    producto: {
+      marca: "SI ASI BIEN",
+      referencia: null,
+      presentacion: null,
+    },
+    productos: [],
+    entrega: {},
+    datosCliente: {},
+    carrito: { operacion: null },
+    faltanteSugerido: null,
+  };
+
+  const respuesta = resolverConsultaCatalogo(
+    "si asi esta bien",
+    estado,
+    catalogo,
+    interpretacionErrada
+  );
+
+  assert.match(respuesta, /entrega|domicilio|recoger|método de pago|metodo de pago/i);
+  assert.doesNotMatch(respuesta, /SI ASI BIEN/i);
+  assert.doesNotMatch(respuesta, /cat[aá]logo actual/i);
+  assert.equal(estado.carrito.length, 2);
+});
+
 test("consulta de precio de un solo producto no agrega al carrito", () => {
   const estado = crearEstadoInicial();
   const catalogo = cargarCatalogoPruebas();

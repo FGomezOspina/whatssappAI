@@ -73,6 +73,27 @@ test("tiene en singular inicia busqueda de producto aunque haya contexto activo"
   assert.equal(clasificacion.requiereBusquedaProducto, true);
 });
 
+test("si asi esta bien con carrito activo continua pedido y no busca producto", () => {
+  const clasificacion = clasificarInteraccion({
+    mensaje: "si asi esta bien",
+    estado: {
+      carrito: [
+        {
+          marca: "AGILITY",
+          referencia: "AGILITY GATO AD",
+          peso: "1.5kg",
+          cantidad: 1,
+        },
+      ],
+      esperandoConfirmacionDomicilio: true,
+    },
+  });
+
+  assert.equal(clasificacion.perfilContexto, "pedido");
+  assert.equal(clasificacion.requiereBusquedaProducto, false);
+  assert.equal(clasificacion.fallbackHistorialProductoCandidato, false);
+});
+
 test("el interprete incluye mensajes del cliente y del asistente", () => {
   const clasificacion = {
     perfilContexto: "pedido",

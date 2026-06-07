@@ -327,6 +327,8 @@ test("detecta señales y un turno previo de producto para el fallback mínimo", 
   assert.equal(esSenalReferenciaProducto("ese"), true);
   assert.equal(esSenalReferenciaProducto("el primero"), true);
   assert.equal(esSenalReferenciaProducto("cuánto vale el de 3kg"), true);
+  assert.equal(esSenalReferenciaProducto("si asi esta bien"), false);
+  assert.equal(esSenalReferenciaProducto("está bien"), false);
   assert.equal(esSenalReferenciaProducto("bravecto"), false);
   assert.equal(
     historialRepresentaInteraccionProducto([

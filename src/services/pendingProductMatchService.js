@@ -554,6 +554,12 @@ function pesoSolicitado(mensaje = "") {
 function esSenalReferenciaProducto(mensaje = "") {
   const texto = normalizarSeleccion(mensaje);
   if (!texto || texto.length > 80) return false;
+  if (
+    /\b(?:asi\s+)?esta\s+bien\b/.test(texto) ||
+    /\b(?:eso\s+es\s+todo|nada\s+mas|no\s+mas|hasta\s+ahi)\b/.test(texto)
+  ) {
+    return false;
+  }
   return Boolean(
     /^(?:si|sii+|dale|listo|correcto|esa|ese|esta|este|lo quiero|quiero ese|quiero esa)$/.test(
       texto
