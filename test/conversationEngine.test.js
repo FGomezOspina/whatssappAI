@@ -1,7 +1,7 @@
 const test = require("node:test");
 const assert = require("node:assert/strict");
 
-const { resolverConsultaCatalogo, extraerPresupuesto } = require("../src/verticals/petshop/orderLogic");
+const { resolverConsultaCatalogo, extraerPresupuesto, buscarMarca } = require("../src/verticals/petshop/orderLogic");
 const { crearEstadoInicial } = require("../src/conversation/conversationStore");
 const { asegurarRespuestaCatalogo } = require("../src/verticals/petshop/productLogic");
 
@@ -1993,6 +1993,102 @@ test("ofrece repetir el ultimo pedido confirmado con productos y direccion", () 
   assert.equal(estado.carrito[0].cantidad, 2);
   assert.notEqual(estado.confirmacionPedidoId, "pedido-anterior");
   assert.match(respuesta, /pedido queda confirmado/i);
+});
+
+test("no confunde apertura de pedido con una marca corta del catalogo", () => {
+  const catalogo = [
+    {
+      marca: "PED",
+      referencias: [
+        {
+          nombre: "PED ADULT RP",
+          especie: "perro",
+          categoria: "comida",
+          subcategoria: "concentrado",
+          etapa: "adulto",
+          presentaciones: [{ peso: "1kg", precio: 1000, stock: true, metadata: {} }],
+        },
+      ],
+    },
+  ];
+
+  assert.equal(buscarMarca(catalogo, "para hacer un pedido"), undefined);
+  assert.equal(buscarMarca(catalogo, "para hacer un pedidp"), undefined);
+
+  const respuesta = resolverConsultaCatalogo("para hacer un pedido", crearEstadoInicial(), catalogo, null);
+  const respuestaTypo = resolverConsultaCatalogo("para hacer un pedidp", crearEstadoInicial(), catalogo, null);
+
+  assert.match(respuesta, /producto necesitas|producto estás buscando|armemos ese pedido/i);
+  assert.match(respuestaTypo, /producto necesitas|producto estás buscando|armemos ese pedido/i);
+  assert.doesNotMatch(respuesta, /referencias disponibles|PED ADULT RP/);
+  assert.doesNotMatch(respuestaTypo, /referencias disponibles|PED ADULT RP/);
+});
+
+test("otro pedido con compra anterior ofrece repetir aunque exista una marca PED", () => {
+  const estado = crearEstadoInicial();
+  estado.carrito = [
+    {
+      marca: "PED",
+      referencia: "PED ADULT RP",
+      peso: "1kg",
+      precio: 1000,
+      cantidad: 2,
+    },
+  ];
+  estado.pedidoConfirmado = true;
+  estado.entrega = { tipo: "domicilio", sede: null };
+  estado.datosDomicilio = { direccion: "Calle 1" };
+  const catalogo = [
+    {
+      marca: "PED",
+      referencias: [
+        {
+          nombre: "PED ADULT RP",
+          especie: "perro",
+          categoria: "comida",
+          subcategoria: "concentrado",
+          etapa: "adulto",
+          presentaciones: [{ peso: "1kg", precio: 1000, stock: true, metadata: {} }],
+        },
+      ],
+    },
+  ];
+  const interpretacion = {
+    intencion: "pedido_producto",
+    accion: "nuevo_pedido",
+    confianza: 0.74,
+    producto: {},
+    productos: [],
+  };
+
+  const respuesta = resolverConsultaCatalogo("hola, para hacer otro pedido", estado, catalogo, interpretacion);
+
+  assert.match(respuesta, /2 x PED ADULT RP 1kg: \$2\.000/);
+  assert.match(respuesta, /¿Deseas repetirlo/);
+  assert.equal(estado.esperandoConfirmacionRepetirPedido, true);
+});
+
+test("listar una marca corta formatea precios sin romper", () => {
+  const catalogo = [
+    {
+      marca: "PED",
+      referencias: [
+        {
+          nombre: "PED ADULT RP",
+          especie: "perro",
+          categoria: "comida",
+          subcategoria: "concentrado",
+          etapa: "adulto",
+          presentaciones: [{ peso: "1kg", precio: 1000, stock: true, metadata: {} }],
+        },
+      ],
+    },
+  ];
+
+  const respuesta = resolverConsultaCatalogo("PED", crearEstadoInicial(), catalogo, null);
+
+  assert.match(respuesta, /PED ADULT RP/);
+  assert.match(respuesta, /1kg: \$1\.000/);
 });
 
 test("un producto distinto crea carrito nuevo y conserva datos de envio anteriores", () => {

@@ -162,6 +162,7 @@ function buscarMarca(catalogo, mensaje) {
       const aliasNormalizado = normalizar(alias);
       const aliasCompacto = aliasNormalizado.replace(/\s+/g, "");
       if (aliasNormalizado === "bolsa" && esBolsaComoEmpaque) return false;
+      if (aliasCompacto.length <= 3) return contieneFrase(texto, aliasNormalizado);
 
       return contieneFrase(texto, aliasNormalizado) || textoCompacto.includes(aliasCompacto);
     })
@@ -1141,7 +1142,7 @@ function listarReferenciasDeMarca(marca, referencias, limite = 8) {
   const restantes = referencias.length - visibles.length;
   const lineas = visibles.map((referencia) => {
     const presentaciones = referencia.presentaciones?.length
-      ? `: ${referencia.presentaciones.map((presentacion) => `${presentacion.peso}: ${formatoPrecio(presentacion.precio)}`).join(", ")}`
+      ? `: ${referencia.presentaciones.map((presentacion) => `${presentacion.peso}: ${formatearPrecio(presentacion.precio)}`).join(", ")}`
       : "";
     return `- ${referencia.nombre}${presentaciones}`;
   });
@@ -1253,14 +1254,29 @@ function pareceRuidoOrtografico(valor = "") {
   });
 }
 
+function tieneCriteriosProductoConcretos(criterios = {}, textoNormalizado = "") {
+  if (
+    criterios.categoria === "otro" &&
+    Object.keys(criterios).length === 1 &&
+    /\botr[oa]s?\s+pedid[a-z]?\b/.test(textoNormalizado)
+  ) {
+    return false;
+  }
+
+  return tieneCriterios(criterios);
+}
+
 function esAperturaPedidoSinProducto(mensaje) {
   const texto = normalizar(mensaje);
   const textoFlexible = texto.replace(/\b[a-z]{0,2}\d[a-z]{0,2}\b/g, " ");
   const criterios = extraerCriterios(textoFlexible);
+  const mencionaPedido =
+    contieneAlguno(textoFlexible, ["pedido", "hacer pedido", "comprar", "encargar", "pedir"]) ||
+    /\bpedid[a-z]?\b/.test(textoFlexible);
 
   return (
-    contieneAlguno(textoFlexible, ["pedido", "hacer pedido", "comprar", "encargar", "pedir"]) &&
-    !tieneCriterios(criterios) &&
+    mencionaPedido &&
+    !tieneCriteriosProductoConcretos(criterios, textoFlexible) &&
     !mensajeTienePresentacionExplicita(textoFlexible)
   );
 }
@@ -4042,13 +4058,24 @@ function esNegacion(mensaje) {
 
 function solicitaNuevoPedido(mensaje) {
   const texto = normalizar(mensaje);
-  return contieneAlguno(texto, [
-    "otro pedido",
-    "nuevo pedido",
-    "pedido nuevo",
-    "hacer otro pedido",
-    "hacer un pedido nuevo",
-    "otra compra",
+  return (
+    contieneAlguno(texto, [
+      "otro pedido",
+      "nuevo pedido",
+      "pedido nuevo",
+      "hacer otro pedido",
+      "hacer un pedido nuevo",
+      "otra compra",
+    ]) ||
+    /\b(?:otro|nuevo|hacer|realizar|armar|montar)\b(?:\s+\w+){0,3}\s+\bpedid[a-z]?\b/.test(texto)
+  );
+}
+
+function respuestaAperturaPedido(mensaje) {
+  return elegirVariante(mensaje, [
+    "Claro, hagámoslo. Cuéntame qué producto necesitas y, si sabes la presentación, me la puedes mandar de una.",
+    "De una, te ayudo con el pedido. Dime qué producto estás buscando y reviso precio y presentación.",
+    "Listo, armemos ese pedido. ¿Qué producto necesitas esta vez?",
   ]);
 }
 
@@ -4448,6 +4475,10 @@ function resolverConsultaCatalogo(mensaje, estado, catalogo = [], interpretacion
   const pidioReferencias = solicitaReferencias(mensaje);
   const pidioRecomendacion = solicitaRecomendacion(mensaje);
   const pidioOpinion = solicitaOpinionMarca(mensaje);
+  const pidioAbrirPedidoSinProducto =
+    !marcaDetectada &&
+    !tieneCriteriosProductoConcretos(criteriosMensaje, normalizar(mensaje)) &&
+    esAperturaPedidoSinProducto(mensaje);
   const presupuesto = extraerPresupuesto(mensaje, {
     permitirNumeroSolo: estado.esperandoPresupuesto,
   });
@@ -4491,6 +4522,10 @@ function resolverConsultaCatalogo(mensaje, estado, catalogo = [], interpretacion
     deseaRepetirPedido(mensaje)
   ) {
     return preguntarRepetirPedido(estado);
+  }
+
+  if (pidioAbrirPedidoSinProducto && (!estado.carrito.length || estado.pedidoConfirmado)) {
+    return preguntarRepetirPedido(estado) || respuestaAperturaPedido(mensaje);
   }
 
   if (
