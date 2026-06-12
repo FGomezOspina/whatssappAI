@@ -182,6 +182,13 @@ function compactarEstado(estado = {}, perfil = "simple") {
           creadoEn: estado.ultimaInteraccionProducto.creadoEn || null,
         }
       : null,
+    ultimaConsultaProducto: estado.ultimaConsultaProducto
+      ? {
+          terminos: (estado.ultimaConsultaProducto.terminos || []).slice(0, 8),
+          fuente: estado.ultimaConsultaProducto.fuente || null,
+          creadoEn: estado.ultimaConsultaProducto.creadoEn || null,
+        }
+      : null,
     carrito: estado.pedidoConfirmado ? [] : (estado.carrito || []).map(compactarItem),
     entrega: estado.entrega || {},
     metodoPago: estado.metodoPago || null,
@@ -199,7 +206,11 @@ function compactarEstado(estado = {}, perfil = "simple") {
     ),
   };
 
-  if (perfil === "producto" && !hayPedidoActivo(estado)) return {};
+  if (perfil === "producto" && !hayPedidoActivo(estado)) {
+    return estado.ultimaConsultaProducto
+      ? { ultimaConsultaProducto: activo.ultimaConsultaProducto }
+      : {};
+  }
   if (perfil === "producto") return activo;
 
   return {
@@ -260,6 +271,8 @@ function instruccionesPerfil(perfil) {
       "Mapea marca, referencia, especie, etapa, tamano y presentacion contra los candidatos.",
       "Usa productosConsultados para ese o el de cierto peso, e historialProductosConsultados para primero, segundo u otra cotizacion anterior.",
       "Un nombre, audio o imagen nuevos cambian el producto activo; no arrastres la referencia anterior.",
+      "Si el cliente dice no es, era, quise decir o me refiero a, descarta la referencia propuesta y usa el texto nuevo como correccion; nunca incluyas esas palabras en el nombre del producto.",
+      "ultimaConsultaProducto conserva señales crudas del intento anterior. Usala solo para completar una correccion corta; si la correccion trae nombre suficiente, el texto nuevo reemplaza lo anterior.",
       "RP/raza pequena/mini/small indican tamano pequeno; RG/RMG/mediano/grande indican tamano grande. CACH/puppy es cachorro y MAYORES/senior es senior.",
       "Entiende canine/perro, feline/gato, puppy/cachorro, adult/adulto y small/pequeno.",
       "Condiciones como castrado, urinary, renal, gastro, piel y siglas como OM/UR/NF son parte fuerte de la referencia.",

@@ -18,6 +18,8 @@ const { clienteParaLog, logResumenInteraccionIA } = require("./aiUsageLogger");
 const { respuestaParaHistorial } = require("../utils/responseMessages");
 const {
   aplicarCoincidenciaValidada,
+  construirConsultaProductoContextual,
+  esCorreccionProducto,
   respuestaValidacionProducto,
   validarCoincidenciaProducto,
 } = require("./productMatchValidator");
@@ -89,6 +91,25 @@ function registrarValidacionProducto(evento, validacion) {
   );
 }
 
+function recordarConsultaProducto(estado, validacion, clasificacion = null) {
+  if (!validacion?.terminos?.length) return;
+
+  estado.ultimaConsultaProducto = {
+    terminos: validacion.terminos.slice(0, 10),
+    etiqueta:
+      validacion.etiqueta || validacion.terminos.join(" "),
+    presentacion: validacion.presentacionSolicitada || null,
+    fuente: clasificacion?.requiereVision
+      ? "imagen"
+      : clasificacion?.requiereAudio
+        ? "audio"
+        : "texto",
+    nivel: validacion.nivel,
+    razon: validacion.razon,
+    creadoEn: new Date().toISOString(),
+  };
+}
+
 async function responderValidacionNoConfiable({
   evento,
   cliente,
@@ -98,6 +119,7 @@ async function responderValidacionNoConfiable({
   clasificacion = null,
 }) {
   registrarValidacionProducto(evento, validacion);
+  recordarConsultaProducto(estado, validacion, clasificacion);
   guardarCoincidenciasProductoPendientes(estado, validacion, {
     intencionOriginal: mensaje,
     tipoIntencion: clasificacion?.intencion || "consulta_producto",
@@ -212,13 +234,22 @@ async function responderEventosEntrantes(eventos) {
     contenidos,
     imageUrls,
   });
+  const contextoProductoAnterior = estado.ultimaConsultaProducto || null;
+  const corrigeProductoAnterior = esCorreccionProducto(mensaje);
+  if (corrigeProductoAnterior) {
+    reiniciarFocoProducto(estado);
+  }
+  const mensajeProductoRazonado = construirConsultaProductoContextual(
+    mensaje,
+    contextoProductoAnterior
+  );
   const reinicioPorVision = clasificacion.requiereVision;
   if (reinicioPorVision) {
     reiniciarFocoProducto(estado);
   }
   const iniciaNuevaBusquedaProducto = Boolean(
     clasificacion.requiereBusquedaProducto &&
-      !esSenalReferenciaProducto(mensaje) &&
+      (!esSenalReferenciaProducto(mensaje) || corrigeProductoAnterior) &&
       [
         "imagen",
         "audio",
@@ -227,6 +258,9 @@ async function responderEventosEntrantes(eventos) {
         "referencia_producto",
       ].includes(clasificacion.intencion)
   );
+  if (iniciaNuevaBusquedaProducto && !corrigeProductoAnterior) {
+    estado.ultimaConsultaProducto = null;
+  }
   logContextoProducto({
     fase: "antes_resolver",
     cliente,
@@ -363,7 +397,7 @@ async function responderEventosEntrantes(eventos) {
         .map((item) => item.body)
         .filter(Boolean)
         .join("\n")}\n${mensaje}`
-    : mensaje;
+    : mensajeProductoRazonado;
   const catalogoIA = await seleccionarCatalogoParaIA({
     catalogo,
     mensaje: mensajeBusquedaCatalogo,
@@ -382,6 +416,7 @@ async function responderEventosEntrantes(eventos) {
         catalogo,
         catalogoCandidatos: catalogoIA.catalogo,
         clasificacion,
+        contextoProducto: contextoProductoAnterior,
       });
 
   if (["media", "baja"].includes(validacionPrevia.nivel)) {
@@ -462,6 +497,7 @@ async function responderEventosEntrantes(eventos) {
     catalogo,
     catalogoCandidatos: catalogoIA.catalogo,
     clasificacion,
+    contextoProducto: contextoProductoAnterior,
   });
   if (["media", "baja"].includes(validacionFinal.nivel)) {
     return responderValidacionNoConfiable({
@@ -475,6 +511,7 @@ async function responderEventosEntrantes(eventos) {
   }
   if (validacionFinal.nivel === "alta") {
     registrarValidacionProducto(evento, validacionFinal);
+    recordarConsultaProducto(estado, validacionFinal, clasificacion);
     interpretacionIA = aplicarCoincidenciaValidada(interpretacionIA, validacionFinal);
   }
 

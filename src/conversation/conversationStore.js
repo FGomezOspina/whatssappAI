@@ -24,6 +24,7 @@ function crearEstadoInicial() {
     referenciasPendientes: null,
     coincidenciasProductoPendientes: null,
     ultimaInteraccionProducto: null,
+    ultimaConsultaProducto: null,
     ultimoTurnoContextoProducto: 0,
     carrito: [],
     pedidoConfirmado: false,

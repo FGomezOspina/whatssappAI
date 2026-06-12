@@ -71,6 +71,17 @@ test("el interprete usa el contexto pendiente para afirmaciones con errores orto
   assert.match(prompt, /respuesta corta a una pregunta de confirmacion no reemplaza nunca nombre/);
 });
 
+test("el interprete trata no es como correccion de producto y no como nombre literal", () => {
+  const prompt = leerServicio("aiInterpreter.js");
+  const promptCompacto = leerServicio("aiContextOptimizer.js");
+
+  assert.match(prompt, /descarta la referencia propuesta anteriormente/i);
+  assert.match(prompt, /no forman parte de la marca ni de la referencia/i);
+  assert.match(prompt, /ultimaConsultaProducto contiene señales crudas/i);
+  assert.match(promptCompacto, /usa el texto nuevo como correccion/i);
+  assert.match(promptCompacto, /el texto nuevo reemplaza lo anterior/i);
+});
+
 test("el interprete entiende mala ortografia y direcciones colombianas informales", () => {
   const prompt = leerServicio("aiInterpreter.js");
 

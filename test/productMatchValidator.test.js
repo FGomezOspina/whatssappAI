@@ -3,6 +3,7 @@ const test = require("node:test");
 
 const {
   aplicarCoincidenciaValidada,
+  construirConsultaProductoContextual,
   respuestaValidacionProducto,
   validarCoincidenciaProducto,
 } = require("../src/services/productMatchValidator");
@@ -1054,4 +1055,130 @@ test("solo corrige la referencia interpretada cuando se validó una referencia",
   assert.equal(resultado.producto.marca, "MSD");
   assert.equal(resultado.producto.referencia, "BRAVECTO 10 A 20 KG");
   assert.equal(resultado.producto.presentacion, "unidad");
+});
+
+const catalogoArenasSimilares = [
+  {
+    marca: "ARENA",
+    referencias: [
+      {
+        nombre: "ARENA FOFICAT",
+        especie: "gato",
+        categoria: "arena_sustrato",
+        subcategoria: "arena",
+        metadata: {},
+        presentaciones: [{ peso: "5kg", precio: 19000 }],
+      },
+    ],
+  },
+  {
+    marca: "ARENA FOFICAT TOFU",
+    referencias: [
+      {
+        nombre: "ARENA FOFICAT TOFU",
+        especie: "gato",
+        categoria: "arena_sustrato",
+        subcategoria: "arena",
+        metadata: {},
+        presentaciones: [{ peso: "2.5kg", precio: 25900 }],
+      },
+    ],
+  },
+  {
+    marca: "CAT",
+    referencias: [
+      {
+        nombre: "CAT BALANCE",
+        especie: "gato",
+        categoria: "medicamento",
+        metadata: {},
+        presentaciones: [{ peso: "unidad", precio: 1000 }],
+      },
+    ],
+  },
+];
+
+test("une palabras separadas y tolera orden distinto al buscar en todo el catalogo", () => {
+  for (const mensaje of ["fofi cat tofu", "arena tofu fofi", "tofu cat"]) {
+    const validacion = validarCoincidenciaProducto({
+      mensaje,
+      catalogo: catalogoArenasSimilares,
+      catalogoCandidatos: [],
+      clasificacion: clasificacionTexto,
+    });
+
+    assert.equal(validacion.nivel, "alta", mensaje);
+    assert.equal(validacion.coincidencia.referencia, "ARENA FOFICAT TOFU");
+    assert.notEqual(validacion.coincidencia.referencia, "CAT BALANCE");
+  }
+});
+
+test("corrige un error de OCR usando nombre categoria especie y presentacion", () => {
+  const validacion = validarCoincidenciaProducto({
+    mensaje: "Que costo tiene",
+    catalogo: catalogoArenasSimilares,
+    catalogoCandidatos: [],
+    clasificacion: {
+      intencion: "imagen",
+      perfilContexto: "multimedia",
+      requiereVision: true,
+    },
+    interpretacion: {
+      intencion: "consulta_producto",
+      accion: "consultar",
+      confianza: 0.8,
+      producto: {
+        marca: null,
+        referencia: "FOEI CAT TOFU",
+        categoria: "arena_sustrato",
+        especie: "gato",
+        presentacion: "2.5kg",
+      },
+    },
+  });
+
+  assert.equal(validacion.nivel, "alta");
+  assert.equal(validacion.coincidencia.referencia, "ARENA FOFICAT TOFU");
+});
+
+test("una correccion corta completa señales del intento anterior sin conservar la hipotesis equivocada", () => {
+  const contextoProducto = {
+    terminos: ["foei", "cat", "tofu"],
+    etiqueta: "foei cat tofu",
+    fuente: "imagen",
+    creadoEn: new Date().toISOString(),
+  };
+  const validacion = validarCoincidenciaProducto({
+    mensaje: "no, es arena foffi",
+    contextoProducto,
+    catalogo: catalogoArenasSimilares,
+    catalogoCandidatos: [],
+    clasificacion: clasificacionTexto,
+  });
+
+  assert.equal(validacion.nivel, "alta");
+  assert.equal(validacion.coincidencia.referencia, "ARENA FOFICAT TOFU");
+  assert.equal(
+    construirConsultaProductoContextual("no, es dog chow", contextoProducto),
+    "dog chow"
+  );
+});
+
+test("una marca corta solo limita el catalogo cuando completa una referencia real", () => {
+  const productoCompuesto = validarCoincidenciaProducto({
+    mensaje: "fofi cat tofu",
+    catalogo: catalogoArenasSimilares,
+    catalogoCandidatos: [],
+    clasificacion: clasificacionTexto,
+  });
+  const referenciaCat = validarCoincidenciaProducto({
+    mensaje: "cat balance",
+    catalogo: catalogoArenasSimilares,
+    catalogoCandidatos: [],
+    clasificacion: clasificacionTexto,
+  });
+
+  assert.equal(productoCompuesto.coincidencia.referencia, "ARENA FOFICAT TOFU");
+  assert.equal(referenciaCat.nivel, "alta");
+  assert.equal(referenciaCat.coincidencia.referencia, "CAT BALANCE");
 });

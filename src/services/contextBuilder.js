@@ -25,6 +25,7 @@ function construirMemoriaOperativa(estado = {}, historialReciente = []) {
         estado.coincidenciasProductoPendientes || null,
       productosPendientes: estado.productosPendientes || [],
       productosConsultados: estado.productosConsultados || [],
+      ultimaConsultaProducto: estado.ultimaConsultaProducto || null,
       historialProductosConsultados: ultimosItems(
         estado.historialProductosConsultados || [],
         10

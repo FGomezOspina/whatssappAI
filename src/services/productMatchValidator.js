@@ -11,6 +11,8 @@ const STOPWORDS = new Set(
     "al",
     "algo",
     "agregar",
+    "agrega",
+    "agregame",
     "busco",
     "categoria",
     "comida",
@@ -20,6 +22,8 @@ const STOPWORDS = new Set(
     "cuanto",
     "cuesta",
     "de",
+    "dame",
+    "deme",
     "del",
     "disponible",
     "el",
@@ -38,6 +42,14 @@ const STOPWORDS = new Set(
     "medicamento",
     "medicamentos",
     "necesito",
+    "no",
+    "es",
+    "era",
+    "digo",
+    "quise",
+    "queria",
+    "decir",
+    "refiero",
     "para",
     "pastilla",
     "pastillas",
@@ -183,6 +195,58 @@ function similitudTexto(a = "", b = "") {
   return 1 - distanciaLevenshtein(izquierda, derecha) / Math.max(izquierda.length, derecha.length);
 }
 
+function normalizarFonetico(texto = "") {
+  return normalizar(texto)
+    .replace(/h/g, "")
+    .replace(/ph/g, "f")
+    .replace(/qu/g, "k")
+    .replace(/[cq]/g, "k")
+    .replace(/[vz]/g, "b")
+    .replace(/ll/g, "y")
+    .replace(/y/g, "i")
+    .replace(/(.)\1+/g, "$1");
+}
+
+function similitudTokenFlexible(a = "", b = "") {
+  const izquierda = normalizar(a);
+  const derecha = normalizar(b);
+  if (!izquierda || !derecha) return 0;
+  if (izquierda === derecha) return 1;
+
+  let score = similitudTexto(izquierda, derecha);
+  if (izquierda.length >= 3 && derecha.length >= 3) {
+    if (izquierda.includes(derecha) || derecha.includes(izquierda)) {
+      const proporcion =
+        Math.min(izquierda.length, derecha.length) /
+        Math.max(izquierda.length, derecha.length);
+      score = Math.max(score, 0.78 + proporcion * 0.2);
+    }
+
+    const foneticaIzquierda = normalizarFonetico(izquierda);
+    const foneticaDerecha = normalizarFonetico(derecha);
+    score = Math.max(
+      score,
+      similitudTexto(foneticaIzquierda, foneticaDerecha)
+    );
+  }
+
+  return Math.min(1, score);
+}
+
+function combinacionesContiguas(tokens = [], maximo = 3) {
+  const combinaciones = [];
+  for (let inicio = 0; inicio < tokens.length; inicio += 1) {
+    for (
+      let largo = 1;
+      largo <= maximo && inicio + largo <= tokens.length;
+      largo += 1
+    ) {
+      combinaciones.push(tokens.slice(inicio, inicio + largo).join(""));
+    }
+  }
+  return [...new Set(combinaciones)];
+}
+
 function normalizarIdentidadProducto(texto = "") {
   return normalizar(texto)
     .replace(/\bad\b/g, "adulto")
@@ -244,6 +308,66 @@ function tokensDistintivos(texto = "", opciones = {}) {
     .filter((token) => token.length >= 2))];
 }
 
+function esCorreccionProducto(mensaje = "") {
+  const texto = normalizar(mensaje).trim();
+  return Boolean(
+    /^(?:no[\s,]+)?(?:es|era|quise decir|queria decir|me refiero a|digo)\b/.test(
+      texto
+    ) ||
+      /\b(?:no es|sino|quise decir|queria decir|me refiero a)\b/.test(texto)
+  );
+}
+
+function limpiarMarcadoresCorreccion(mensaje = "") {
+  return normalizar(mensaje)
+    .replace(
+      /^(?:no[\s,]+)?(?:es|era|quise decir|queria decir|me refiero a|digo)\s+/,
+      ""
+    )
+    .trim();
+}
+
+function contextoProductoVigente(contexto = {}) {
+  if (!contexto || typeof contexto !== "object") return false;
+  const creadoEn = Date.parse(contexto.creadoEn || "");
+  if (!Number.isFinite(creadoEn)) return false;
+  const ttl = numeroEnv("PRODUCT_REASONING_CONTEXT_TTL_MS", 30 * 60 * 1000);
+  return Date.now() - creadoEn <= ttl;
+}
+
+function construirConsultaProductoContextual(
+  mensaje = "",
+  contextoProducto = null
+) {
+  if (
+    !esCorreccionProducto(mensaje) ||
+    !contextoProductoVigente(contextoProducto)
+  ) {
+    return mensaje;
+  }
+
+  const correccion = limpiarMarcadoresCorreccion(mensaje);
+  const terminosActuales = tokensDistintivos(correccion);
+  const terminosPrevios = Array.isArray(contextoProducto.terminos)
+    ? contextoProducto.terminos
+    : tokensDistintivos(contextoProducto.etiqueta || "");
+  const conservaContexto = terminosActuales.some((actual) =>
+    terminosPrevios.some(
+      (anterior) => similitudTokenFlexible(actual, anterior) >= 0.66
+    )
+  );
+  if (terminosActuales.length >= 3 || !conservaContexto) return correccion;
+
+  const complementarios = terminosPrevios.filter(
+    (anterior) =>
+      !terminosActuales.some(
+        (actual) => similitudTokenFlexible(actual, anterior) >= 0.66
+      )
+  );
+
+  return [correccion, ...complementarios].filter(Boolean).join(" ");
+}
+
 function nombresReferencia(marca, referencia) {
   const palabrasClave = Array.isArray(referencia.metadata?.keywords)
     ? referencia.metadata.keywords
@@ -287,8 +411,27 @@ function marcaExactaConsultada(catalogo = [], terminos = []) {
     .map((marca) => ({
       marca: normalizar(marca.marca),
       tokens: normalizar(marca.marca).split(/\s+/).filter(Boolean),
+      completaReferencia: (marca.referencias || []).some((referencia) => {
+        const tokensReferencia = new Set(
+          normalizar(`${marca.marca} ${referencia.nombre}`)
+            .split(/\s+/)
+            .filter(Boolean)
+        );
+        return terminos.every((termino) => tokensReferencia.has(termino));
+      }),
     }))
-    .filter((entrada) => entrada.tokens.length && entrada.tokens.every((token) => terminos.includes(token)))
+    .filter(
+      (entrada) =>
+        entrada.tokens.length &&
+        entrada.tokens.every((token) => terminos.includes(token)) &&
+        !(
+          entrada.tokens.length === 1 &&
+          entrada.tokens[0].length <= 3 &&
+          terminos.some((termino) => termino !== entrada.tokens[0]) &&
+          !entrada.completaReferencia &&
+          terminos[0] !== entrada.tokens[0]
+        )
+    )
     .sort((a, b) => b.tokens.length - a.tokens.length)[0]?.marca;
 }
 
@@ -307,15 +450,22 @@ function coincidenciaNombre(terminos = [], nombre = "") {
   if (coincidenciaExacta) {
     return { score: 1, exacta: true };
   }
+  if (
+    consultaCompacta.length >= 5 &&
+    nombreCompacto.includes(consultaCompacta)
+  ) {
+    return { score: 0.98, exacta: false };
+  }
 
   let suma = 0;
   let coincidencias = 0;
+  const unidadesNombre = combinacionesContiguas(tokensNombre);
   terminos.forEach((termino) => {
-    const mejor = tokensNombre.reduce((maximo, token) => {
-      if (termino === token) return 1;
-      if (termino.length <= 3 || token.length <= 3) return maximo;
-      return Math.max(maximo, similitudTexto(termino, token));
-    }, 0);
+    const mejor = unidadesNombre.reduce(
+      (maximo, token) =>
+        Math.max(maximo, similitudTokenFlexible(termino, token)),
+      0
+    );
     suma += mejor;
     if (mejor >= 0.72) coincidencias += 1;
   });
@@ -323,8 +473,28 @@ function coincidenciaNombre(terminos = [], nombre = "") {
   const cobertura = coincidencias / terminos.length;
   const promedio = suma / terminos.length;
   const frase = similitudTexto(consulta, nombreNormalizado);
+  const consultaCompuesta = terminos.length > 1 ? terminos.join("") : "";
+  const similitudCompuesta = consultaCompuesta
+    ? unidadesNombre.reduce(
+        (mejor, nombreCompuesto) => {
+          const proporcion =
+            Math.min(consultaCompuesta.length, nombreCompuesto.length) /
+            Math.max(consultaCompuesta.length, nombreCompuesto.length);
+          if (proporcion < 0.65) return mejor;
+          return Math.max(
+            mejor,
+            similitudTokenFlexible(consultaCompuesta, nombreCompuesto)
+          );
+        },
+        0
+      )
+    : 0;
   return {
-    score: Math.max(frase, promedio * 0.75 + cobertura * 0.25),
+    score: Math.max(
+      frase,
+      promedio * 0.75 + cobertura * 0.25,
+      similitudCompuesta
+    ),
     exacta: false,
   };
 }
@@ -444,6 +614,25 @@ function normalizarEspecie(valor = "") {
   if (/\b(pez|peces)\b/.test(texto)) return "pez";
   if (/\b(equino|caballo|caballos)\b/.test(texto)) return "equino";
   if (/\b(bovino|vaca|ganado)\b/.test(texto)) return "bovino";
+  return null;
+}
+
+function normalizarCategoria(valor = "") {
+  const texto = normalizar(valor || "").replace(/_/g, " ");
+  if (/\b(arena|sustrato|tofu)\b/.test(texto)) return "arena_sustrato";
+  if (/\b(snack|premio|galleta)\b/.test(texto)) return "snack";
+  if (/\b(juguete|pelota|mordedor)\b/.test(texto)) return "juguete";
+  if (/\b(accesorio|collar|cama|comedero)\b/.test(texto)) return "accesorio";
+  if (/\b(champu|shampoo|higiene)\b/.test(texto)) return "higiene";
+  if (/\b(vitamina|suplemento)\b/.test(texto)) return "suplemento";
+  if (
+    /\b(medicamento|medicina|antipulgas|desparasitante|purgante)\b/.test(
+      texto
+    )
+  ) {
+    return "medicamento";
+  }
+  if (/\b(comida|alimento|concentrado|cuido)\b/.test(texto)) return "comida";
   return null;
 }
 
@@ -647,9 +836,17 @@ function referenciasEquivalentes(itemA, itemB) {
 
 function compatibleConSenales(item, interpretacion, mensaje = "") {
   const señales = señalesInterpretadas(interpretacion, mensaje);
+  const categoriaReferencia = normalizarCategoria(item.referencia.categoria);
   const condicionesReferencia = condicionesProducto(
     `${item.referencia.nombre} ${item.referencia.descripcion || ""}`
   );
+  if (
+    señales.categoria &&
+    categoriaReferencia &&
+    señales.categoria !== categoriaReferencia
+  ) {
+    return false;
+  }
   if (
     señales.condiciones.length &&
     condicionesReferencia.length &&
@@ -738,6 +935,9 @@ function señalesInterpretadas(interpretacion = null, mensaje = "") {
     .filter(Boolean)
     .join(" ");
   return {
+    categoria:
+      normalizarCategoria(producto.categoria) ||
+      normalizarCategoria(texto),
     especie:
       normalizarEspecie(producto.especie) ||
       normalizarEspecie(texto),
@@ -762,6 +962,7 @@ function ajustarPorSenales(item, mensaje, interpretacion, clasificacion = {}) {
     interpretacion
   );
   const señales = señalesInterpretadas(interpretacion, mensaje);
+  const categoriaReferencia = normalizarCategoria(item.referencia.categoria);
   const especieReferencia = normalizarEspecie(item.referencia.especie);
   const condicionesReferencia = condicionesProducto(
     `${item.referencia.nombre} ${item.referencia.descripcion || ""}`
@@ -783,6 +984,9 @@ function ajustarPorSenales(item, mensaje, interpretacion, clasificacion = {}) {
           : -0.05
         : 0;
 
+  if (señales.categoria && categoriaReferencia) {
+    ajuste += señales.categoria === categoriaReferencia ? 0.1 : -0.22;
+  }
   if (señales.especie && especieReferencia) {
     ajuste += señales.especie === especieReferencia ? 0.07 : -0.24;
   }
@@ -807,14 +1011,22 @@ function ajustarPorSenales(item, mensaje, interpretacion, clasificacion = {}) {
   }
   if (señales.etapa && etapa) {
     ajuste += señales.etapa === etapa ? 0.1 : -0.22;
+  } else if (señales.etapa && !etapa) {
+    ajuste -= 0.06;
   }
   if (señales.tamano && tamano) {
     ajuste += señales.tamano === tamano ? 0.14 : -0.24;
+  } else if (señales.tamano && !tamano) {
+    ajuste -= 0.12;
   }
 
   const especieCoincide =
     señales.especie && especieReferencia
       ? señales.especie === especieReferencia
+      : null;
+  const categoriaCoincide =
+    señales.categoria && categoriaReferencia
+      ? señales.categoria === categoriaReferencia
       : null;
   const etapaCoincide =
     señales.etapa && etapa ? señales.etapa === etapa : null;
@@ -827,6 +1039,7 @@ function ajustarPorSenales(item, mensaje, interpretacion, clasificacion = {}) {
     );
   const senalesFuertesCoincidentes = [
     coincide === true,
+    categoriaCoincide === true,
     especieCoincide === true,
     etapaCoincide === true,
     tamanoCoincide === true,
@@ -838,6 +1051,7 @@ function ajustarPorSenales(item, mensaje, interpretacion, clasificacion = {}) {
     scoreBase: item.score,
     score: Math.max(0, Math.min(1, scoreMaximo, item.score + ajuste)),
     presentacionCoincide: coincide,
+    categoriaCoincide,
     especieCoincide,
     etapaCoincide,
     tamanoCoincide,
@@ -964,6 +1178,7 @@ function validarCoincidenciaProducto({
   catalogoCandidatos = [],
   clasificacion = {},
   interpretacion = null,
+  contextoProducto = null,
 } = {}) {
   const intencionProducto = [
     "precio",
@@ -987,10 +1202,16 @@ function validarCoincidenciaProducto({
     return { nivel: "no_aplica", razon: "sin_busqueda_especifica", terminos: [] };
   }
 
+  const mensajeRazonado = construirConsultaProductoContextual(
+    mensaje,
+    contextoProducto
+  );
   const terminosMensaje = clasificacion.requiereVision
     ? []
-    : tokensDistintivos(mensaje, { inferirEspeciePorRaza: true });
-  const terminosVisibles = clasificacion.requiereVision ? [] : tokensDistintivos(mensaje);
+    : tokensDistintivos(mensajeRazonado, { inferirEspeciePorRaza: true });
+  const terminosVisibles = clasificacion.requiereVision
+    ? []
+    : tokensDistintivos(limpiarMarcadoresCorreccion(mensaje));
   const terminosIA = terminosInterpretados(interpretacion);
   const puedeUsarInterpretacion = Boolean(clasificacion.requiereVision);
   const usaInterpretacion =
@@ -1028,15 +1249,17 @@ function validarCoincidenciaProducto({
       })
     )
     .map((item) =>
-      ajustarPorSenales(item, mensaje, interpretacion, clasificacion)
+      ajustarPorSenales(item, mensajeRazonado, interpretacion, clasificacion)
     )
-    .filter((item) => compatibleConSenales(item, interpretacion, mensaje))
+    .filter((item) =>
+      compatibleConSenales(item, interpretacion, mensajeRazonado)
+    )
     .sort((a, b) => b.score - a.score);
   const puntuados = filtrarPorSenalesEspecificas(
     puntuadosSinFiltrar,
     interpretacion,
     clasificacion,
-    mensaje
+    mensajeRazonado
   );
   const gruposPuntuados = agruparReferenciasEquivalentes(puntuados);
   const [primero, segundo] = gruposPuntuados;
@@ -1060,6 +1283,11 @@ function validarCoincidenciaProducto({
     primero?.score >= high &&
       primero?.senalesFuertesCoincidentes >= 2 &&
       (!segundo || diferencia >= Math.min(margin, 0.04))
+  );
+  const evidenciaLexicaFuerte = Boolean(
+    primero?.scoreBase >= high &&
+      primero?.tipoCoincidencia !== "marca" &&
+      (!segundo || diferencia >= margin)
   );
 
   let nivel = "baja";
@@ -1088,7 +1316,8 @@ function validarCoincidenciaProducto({
     (enCandidatos ||
       !catalogoCandidatos.length ||
       evidenciaVisualFuerte ||
-      evidenciaEstructuradaFuerte)
+      evidenciaEstructuradaFuerte ||
+      evidenciaLexicaFuerte)
   ) {
     nivel = "alta";
     razon = coincidenciaReferenciaExacta
@@ -1097,6 +1326,8 @@ function validarCoincidenciaProducto({
         ? "senales_visuales_convergentes"
         : evidenciaEstructuradaFuerte
           ? "senales_convergentes"
+          : evidenciaLexicaFuerte
+            ? "similitud_lexica_catalogo_completo"
         : "similitud_alta";
   } else if (primero && primero.score >= medium) {
     nivel = "media";
@@ -1125,7 +1356,7 @@ function validarCoincidenciaProducto({
     marcaExacta,
     presentacionValida,
     presentacionSolicitada: obtenerPresentacionSolicitada(
-      mensaje,
+      mensajeRazonado,
       interpretacion
     ) || null,
     coincidencia: nivel === "alta" && primero ? resumirAlternativa(primero) : null,
@@ -1231,11 +1462,14 @@ function aplicarCoincidenciaValidada(interpretacion, validacion) {
 
 module.exports = {
   aplicarCoincidenciaValidada,
+  construirConsultaProductoContextual,
+  esCorreccionProducto,
   respuestaValidacionProducto,
   validarCoincidenciaProducto,
   _internals: {
     distanciaLevenshtein,
     referenciasEquivalentes,
+    similitudTokenFlexible,
     similitudTexto,
     tokensDistintivos,
   },
