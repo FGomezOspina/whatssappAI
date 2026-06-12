@@ -141,6 +141,9 @@ test("el interprete mapea empaques visuales contra referencias internas del cata
   const prompt = leerServicio("aiInterpreter.js");
 
   assert.match(prompt, /Vision de empaques/);
+  assert.match(prompt, /producto\.textoVisible transcribe/i);
+  assert.match(prompt, /producto\.linea conserva la variante o especialidad distintiva/i);
+  assert.match(prompt, /Una linea visible pesa mas que una coincidencia generica/i);
   assert.match(prompt, /El caption puede ser solo "manejan esta referencia"; la imagen es la fuente principal/);
   assert.match(prompt, /no exijas coincidencia textual exacta entre empaque y referencia interna/i);
   assert.match(prompt, /sabor visible no aparece en el nombre interno/);

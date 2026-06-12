@@ -177,6 +177,14 @@ test("productos.json queda disponible como formato de importacion", () => {
   assert.ok(catalogo.length > 0);
   assert.ok(catalogo[0].marca);
   assert.ok(catalogo[0].referencias.length > 0);
+  const excellent = catalogo.find((marca) => marca.marca === "EXCELLENT");
+  const urinary = excellent.referencias.find(
+    (referencia) => referencia.nombre === "EXCELLENT GATO URINARY"
+  );
+  assert.deepEqual(
+    urinary.presentaciones.map((presentacion) => presentacion.peso),
+    ["1kg", "7.5kg", "x 3kg"]
+  );
 });
 
 test("carga referencias por lotes para evitar URLs enormes en Supabase", async () => {

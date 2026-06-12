@@ -4,6 +4,7 @@ const assert = require("node:assert/strict");
 const { clasificarInteraccion } = require("../src/services/interactionClassifier");
 const {
   seleccionarCatalogoParaIA,
+  seleccionarCatalogoRefinadoVision,
   _internals: catalogContextInternals,
 } = require("../src/services/catalogContextService");
 const { construirMemoriaOperativa } = require("../src/services/contextBuilder");
@@ -367,6 +368,8 @@ test("prompts por perfil conservan las reglas criticas del flujo", () => {
   assert.match(pedido, /quitar, mantener_solo o modificar_cantidad/i);
 
   assert.match(multimedia, /audio corrige errores foneticos/i);
+  assert.match(multimedia, /transcribe en textoVisible/i);
+  assert.match(multimedia, /revisionVision esta activa/i);
   assert.match(multimedia, /imagen lee marca, linea, especie, etapa, tamano, peso y siglas/i);
   assert.match(multimedia, /devuelve la referencia exacta del candidato con confianza alta/i);
   assert.match(multimedia, /submarcas o claims comerciales/i);
@@ -375,6 +378,97 @@ test("prompts por perfil conservan las reglas criticas del flujo", () => {
 
   assert.match(complejo, /Consolida todos los mensajes del lote/i);
   assert.match(complejo, /Separa productos y cantidades/i);
+});
+
+test("la segunda lectura visual recibe la familia detectada y sus variantes", () => {
+  const catalogoVision = [
+    {
+      marca: "EXCELLENT",
+      referencias: [
+        {
+          nombre: "EXCELLENT GATO ADULT",
+          especie: "gato",
+          presentaciones: [{ peso: "3kg", precio: 74700 }],
+        },
+        {
+          nombre: "EXCELLENT GATO URINARY",
+          especie: "gato",
+          presentaciones: [
+            { peso: "1kg", precio: 34000 },
+            { peso: "3kg", precio: 81900 },
+            { peso: "7.5kg", precio: 163700 },
+          ],
+        },
+      ],
+    },
+    {
+      marca: "OTRA",
+      referencias: [
+        {
+          nombre: "OTRA GATO ADULTO",
+          especie: "gato",
+          presentaciones: [{ peso: "3kg", precio: 50000 }],
+        },
+      ],
+    },
+  ];
+  const resultado = seleccionarCatalogoRefinadoVision({
+    catalogo: catalogoVision,
+    interpretacion: {
+      producto: {
+        marca: "EXCELLENT",
+        referencia: "EXCELLENT GATO ADULT",
+        textoVisible: "Excellent gatos adultos 3 kg",
+        presentacion: "3kg",
+      },
+    },
+    clasificacion: {
+      requiereVision: true,
+      requiereBusquedaProducto: true,
+    },
+  });
+
+  assert.equal(resultado.metadata.estrategia, "vision_refinada_por_entidad");
+  assert.ok(
+    resultado.catalogo[0].referencias.some(
+      (referencia) => referencia.nombre === "EXCELLENT GATO URINARY"
+    )
+  );
+});
+
+test("combina recuperacion fuzzy local con candidatos remotos sin exceder el limite", () => {
+  const local = [
+    {
+      marca: "RINGO",
+      referencias: [
+        { nombre: "RINGO CROQUETAS", metadata: {}, presentaciones: [] },
+        { nombre: "RINGO PREMIUM", metadata: {}, presentaciones: [] },
+      ],
+    },
+  ];
+  const remoto = [
+    {
+      marca: "OTRA",
+      referencias: [
+        { nombre: "OTRA ORIGINAL", metadata: {}, presentaciones: [] },
+      ],
+    },
+  ];
+  const combinado = catalogContextInternals.combinarCatalogosCandidatos(
+    local,
+    remoto,
+    3
+  );
+  const nombres = combinado.flatMap((marca) =>
+    marca.referencias.map((referencia) => referencia.nombre)
+  );
+
+  assert.deepEqual(nombres, [
+    "RINGO CROQUETAS",
+    "RINGO PREMIUM",
+    "OTRA ORIGINAL",
+  ]);
+  assert.equal(nombres.length, 3);
 });
 
 test("pedido activo conserva contexto limitado sin reenviar memoria duplicada", () => {

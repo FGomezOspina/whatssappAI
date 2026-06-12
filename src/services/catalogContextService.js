@@ -86,6 +86,9 @@ function puntuarReferencia({ marca, referencia }, consulta, tokensConsulta) {
       referencia.subcategoria,
       referencia.etapa,
       ...(referencia.metadata?.original_names || []),
+      ...(referencia.metadata?.aliases || []),
+      ...(referencia.metadata?.equivalent_references || []),
+      ...(referencia.aliases || []),
       ...(referencia.presentaciones || []).map((presentacion) => presentacion.peso),
     ].join(" ")
   );
@@ -126,6 +129,30 @@ function agruparCatalogo(items = []) {
     grupos.get(nombre).referencias.push(referencia);
   });
   return Array.from(grupos.values());
+}
+
+function combinarCatalogosCandidatos(
+  catalogoLocal = [],
+  catalogoRemoto = [],
+  limite = MAX_REFERENCE_LIMIT
+) {
+  const locales = referenciasCatalogo(catalogoLocal);
+  const remotos = referenciasCatalogo(catalogoRemoto);
+  const candidatos = [
+    ...locales.slice(0, Math.min(5, limite)),
+    ...remotos,
+    ...locales.slice(Math.min(5, limite)),
+  ];
+  const vistos = new Set();
+  const seleccionados = candidatos.filter(({ marca, referencia }) => {
+    const clave = `${normalizar(marca.marca)}::${normalizar(
+      referencia.nombre
+    )}`;
+    if (vistos.has(clave)) return false;
+    vistos.add(clave);
+    return true;
+  });
+  return agruparCatalogo(seleccionados.slice(0, limite));
 }
 
 function seleccionarCatalogoLocal({ catalogo = [], mensaje = "", estado = {}, clasificacion = {} } = {}) {
@@ -176,6 +203,66 @@ function seleccionarCatalogoLocal({ catalogo = [], mensaje = "", estado = {}, cl
   };
 }
 
+function consultaProductoInterpretado(interpretacion = {}) {
+  const producto =
+    interpretacion.producto ||
+    (interpretacion.productos?.length === 1
+      ? interpretacion.productos[0]
+      : {});
+  return [
+    producto.marca,
+    producto.referencia,
+    producto.linea,
+    producto.textoVisible,
+    producto.especie,
+    producto.etapa,
+    producto.tamano,
+    producto.presentacion,
+    ...(producto.condiciones || []),
+    ...(producto.sabores || []),
+  ]
+    .filter(Boolean)
+    .join(" ");
+}
+
+function seleccionarCatalogoRefinadoVision({
+  catalogo = [],
+  interpretacion = null,
+  clasificacion = {},
+} = {}) {
+  const consulta = consultaProductoInterpretado(interpretacion || {});
+  if (!consulta) {
+    return {
+      catalogo: [],
+      metadata: {
+        totalReferencias: referenciasCatalogo(catalogo).length,
+        referenciasEnviadas: 0,
+        limite: limiteReferencias({ ...clasificacion, requiereVision: true }),
+        estrategia: "vision_sin_entidad",
+      },
+    };
+  }
+
+  const resultado = seleccionarCatalogoLocal({
+    catalogo,
+    mensaje: consulta,
+    estado: {},
+    clasificacion: {
+      ...clasificacion,
+      requiereVision: true,
+      requiereBusquedaProducto: true,
+    },
+  });
+  return {
+    ...resultado,
+    metadata: {
+      ...resultado.metadata,
+      estrategia: "vision_refinada_por_entidad",
+      query: normalizar(consulta),
+    },
+  };
+}
+
 function debeBuscarEnSupabase(clasificacion = {}) {
   if (!clasificacion.requiereBusquedaProducto && !clasificacion.requiereVision) return false;
   return process.env.CATALOG_SEARCH_BACKEND !== "local";
@@ -205,17 +292,36 @@ async function seleccionarCatalogoParaIA({ catalogo = [], mensaje = "", estado =
 
   try {
     const resultado = await buscarProductosCatalogoCliente(cliente, { query, limit: limite });
+    const resultadoLocal = seleccionarCatalogoLocal({
+      catalogo,
+      mensaje,
+      estado,
+      clasificacion,
+    });
+    const catalogoCombinado = combinarCatalogosCandidatos(
+      resultadoLocal.catalogo,
+      resultado.catalogo,
+      limite
+    );
+    const referenciasCombinadas = referenciasCatalogo(catalogoCombinado).length;
     const metadata = {
       totalReferencias: referenciasCatalogo(catalogo).length,
       limite,
       semanticaPreparada: process.env.CATALOG_SEARCH_STRATEGY === "semantic",
       ...resultado.metadata,
+      estrategia: resultado.metadata.estrategia || "supabase_fts",
+      estrategiaExtendida: "supabase_fts_mas_fuzzy_local",
+      referenciasEnviadas: referenciasCombinadas,
+      candidatosFuzzyLocales: Math.min(
+        5,
+        resultadoLocal.metadata.referenciasEnviadas || 0
+      ),
     };
 
     logBusquedaCatalogo({ cliente, query, metadata, fallback: false });
 
     return {
-      catalogo: resultado.catalogo,
+      catalogo: catalogoCombinado,
       metadata,
     };
   } catch (error) {
@@ -237,7 +343,10 @@ async function seleccionarCatalogoParaIA({ catalogo = [], mensaje = "", estado =
 
 module.exports = {
   seleccionarCatalogoParaIA,
+  seleccionarCatalogoRefinadoVision,
   _internals: {
+    combinarCatalogosCandidatos,
+    consultaProductoInterpretado,
     expandirConsulta,
     puntuarReferencia,
     seleccionarCatalogoLocal,

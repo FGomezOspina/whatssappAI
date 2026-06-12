@@ -148,9 +148,13 @@ function resumenEstado(estado = {}) {
 function normalizarInterpretacion(valor) {
   if (!valor || typeof valor !== "object") return null;
 
+  const textoBreve = (valor, limite) =>
+    typeof valor === "string" ? valor.trim().slice(0, limite) || null : null;
   const normalizarProducto = (producto = {}) => ({
     marca: producto.marca || null,
     referencia: producto.referencia || null,
+    linea: textoBreve(producto.linea, 120),
+    textoVisible: textoBreve(producto.textoVisible, 500),
     categoria: producto.categoria || null,
     subcategoria: producto.subcategoria || null,
     especie: producto.especie || null,
@@ -349,6 +353,8 @@ Audio y transcripciones:
 
 Vision de empaques:
 - Si recibes imagen, lee el empaque como lo haria un asesor de tienda en Colombia: marca visible, nombre grande, etapa (adulto/adultos/cachorro/cachorros), especie por foto o texto, tamano/raza ("mini", "pequeñas", "medianas", "grandes", "todas las razas"), sabor, peso neto/presentacion y cualquier frase comercial.
+- En producto.textoVisible transcribe de forma breve todas las palabras comerciales legibles que identifican el empaque. En producto.linea conserva la variante o especialidad distintiva, por ejemplo Urinary, Sterilised, Indoor, Gastrointestinal, Renal, Skin, Sensitive o Hairball. No omitas esa linea aunque tambien veas "gatos adultos" o el nombre general de la marca.
+- Antes de elegir referencia, enumera mentalmente marca, linea, especie, etapa, presentacion y sabor. Una linea visible pesa mas que una coincidencia generica de marca + especie + etapa.
 - Compara lo visible contra el catalogo completo, no contra el caption solamente. El caption puede ser solo "manejan esta referencia"; la imagen es la fuente principal del producto.
 - Para imagenes, el catalogo puede venir en modo "vision_compacta" para no exceder limites de tokens: trae marcas y pares marca|referencia exactos, pero omite precios, stock, descripciones y presentaciones. En ese caso identifica la referencia por nombre visible/contexto y lee la presentacion desde la imagen; el backend valida disponibilidad, presentacion y precio contra Supabase.
 - No exijas coincidencia textual exacta entre empaque y referencia interna. Los empaques pueden decir "Adultos", "Pollo", "carne", "para todas las razas" o claims comerciales, mientras el catalogo guarda un nombre resumido.
@@ -421,6 +427,8 @@ JSON exacto:
   "producto": {
     "marca": "una marca exacta del catalogo o null",
     "referencia": "una referencia exacta del catalogo o null",
+    "linea": "variante o especialidad visible como Urinary, Sterilised, Indoor, Gastrointestinal o null",
+    "textoVisible": "transcripcion breve de las palabras comerciales legibles del empaque o null",
     "categoria": "comida|medicamento|accesorio|snack|higiene|suplemento|juguete|arena_sustrato|otro|null",
     "subcategoria": "concentrado|comida_humeda|antipulgas|desparasitante|collar|cama|champu|vitaminas|null",
     "especie": "perro|gato|ave|roedor|pez|equino|bovino|otro|null",
@@ -435,6 +443,8 @@ JSON exacto:
     {
       "marca": "marca exacta del catalogo o null",
       "referencia": "referencia exacta del catalogo o null",
+      "linea": "variante o especialidad visible o null",
+      "textoVisible": "texto comercial visible o null",
       "categoria": "comida|medicamento|accesorio|snack|higiene|suplemento|juguete|arena_sustrato|otro|null",
       "subcategoria": "concentrado|comida_humeda|antipulgas|desparasitante|collar|cama|champu|vitaminas|null",
       "especie": "perro|gato|ave|roedor|pez|equino|bovino|otro|null",

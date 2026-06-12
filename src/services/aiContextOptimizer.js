@@ -26,6 +26,8 @@ const OUTPUT_SCHEMA = {
   producto: {
     marca: null,
     referencia: null,
+    linea: null,
+    textoVisible: null,
     categoria: null,
     subcategoria: null,
     especie: null,
@@ -291,7 +293,9 @@ function instruccionesPerfil(perfil) {
     ],
     multimedia: [
       "En audio corrige errores foneticos usando los candidatos, sin forzar marcas.",
-      "En imagen lee marca, linea, especie, etapa, tamano, peso y siglas visibles.",
+      "En imagen transcribe en textoVisible las palabras comerciales legibles del empaque y separa en linea la variante distintiva, por ejemplo Urinary, Sterilised, Indoor o Gastrointestinal.",
+      "En imagen lee marca, linea, especie, etapa, tamano, peso y siglas visibles; identifica tambien el sabor. No omitas una linea porque tambien aparezcan especie o etapa.",
+      "Si revisionVision esta activa, vuelve a inspeccionar el empaque usando la familia de candidatos refinada y confirma especialmente la linea, especialidad y presentacion.",
       "Si marca y linea distintiva son legibles y encajan con especie, etapa, tamano o peso, devuelve la referencia exacta del candidato con confianza alta; no devuelvas solo la marca.",
       "El empaque puede traer submarcas o claims comerciales que no estan literales en la base; conserva las senales utiles y no descartes equivalencias por palabras extra.",
       "No incluyas referencias que contradigan texto visible del empaque como cachorro, adulto, senior, razas pequenas, razas grandes o todas las razas.",
@@ -425,6 +429,9 @@ function construirSolicitudInterprete({
       historial,
       ejemplos,
       productosCandidatos: productos,
+      revisionVision: clasificacion.revisionVision
+        ? "Segunda lectura focalizada: revisa otra vez marca, linea o especialidad, especie y presentacion contra estos candidatos."
+        : null,
     };
   }
 

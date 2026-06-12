@@ -11,7 +11,10 @@ const { interpretarMensajeCliente } = require("./aiInterpreter");
 const { humanizarRespuesta } = require("./humanizer");
 const { procesarMultimedia } = require("./mediaProcessor");
 const { clasificarInteraccion } = require("./interactionClassifier");
-const { seleccionarCatalogoParaIA } = require("./catalogContextService");
+const {
+  seleccionarCatalogoParaIA,
+  seleccionarCatalogoRefinadoVision,
+} = require("./catalogContextService");
 const { construirMemoriaOperativa } = require("./contextBuilder");
 const { modeloInterprete, modeloHumanizador } = require("./modelRouter");
 const { clienteParaLog, logResumenInteraccionIA } = require("./aiUsageLogger");
@@ -47,6 +50,89 @@ function registrarEntradaOpenAI(evento, mensaje, imageUrls, contenidos) {
       mensaje.length
     } | imagenesVision=${imagenesOpenAI} | audiosTranscritos=${audiosOpenAI} | multimediaFallback=${multimediaFallback}`
   );
+}
+
+function cantidadReferenciasCatalogo(catalogo = []) {
+  return catalogo.reduce(
+    (total, marca) => total + (marca.referencias || []).length,
+    0
+  );
+}
+
+function tieneLineaVisualInterpretada(interpretacion = null) {
+  const producto =
+    interpretacion?.producto ||
+    (interpretacion?.productos?.length === 1
+      ? interpretacion.productos[0]
+      : {});
+  return Boolean(
+    producto.linea ||
+      (Array.isArray(producto.condiciones) && producto.condiciones.length)
+  );
+}
+
+function debeRefinarInterpretacionVisual({
+  clasificacion,
+  interpretacion,
+  validacion,
+  catalogoInicial,
+  catalogoRefinado,
+}) {
+  if (process.env.AI_VISION_REFINEMENT === "false") return false;
+  if (!clasificacion?.requiereVision || !interpretacion) return false;
+
+  const referenciasRefinadas = cantidadReferenciasCatalogo(catalogoRefinado);
+  if (!referenciasRefinadas) return false;
+  const referenciasIniciales = cantidadReferenciasCatalogo(catalogoInicial);
+  return Boolean(
+    validacion?.nivel !== "alta" ||
+      !tieneLineaVisualInterpretada(interpretacion) ||
+      referenciasRefinadas > referenciasIniciales
+  );
+}
+
+function elegirLecturaVisual({
+  interpretacionInicial,
+  validacionInicial,
+  interpretacionRefinada,
+  validacionRefinada,
+}) {
+  if (!interpretacionRefinada) {
+    return {
+      interpretacion: interpretacionInicial,
+      validacion: validacionInicial,
+    };
+  }
+
+  const prioridadNivel = {
+    alta: 4,
+    media: 3,
+    baja: 2,
+    no_aplica: 1,
+  };
+  const ganaLineaCritica =
+    tieneLineaVisualInterpretada(interpretacionRefinada) &&
+    !tieneLineaVisualInterpretada(interpretacionInicial) &&
+    validacionRefinada?.nivel === "alta";
+  const ganaNivel =
+    (prioridadNivel[validacionRefinada?.nivel] || 0) >
+    (prioridadNivel[validacionInicial?.nivel] || 0);
+  const ganaScore =
+    validacionRefinada?.nivel === validacionInicial?.nivel &&
+    Number(validacionRefinada?.score || 0) >
+      Number(validacionInicial?.score || 0) + 0.02;
+
+  if (ganaLineaCritica || ganaNivel || ganaScore) {
+    return {
+      interpretacion: interpretacionRefinada,
+      validacion: validacionRefinada,
+    };
+  }
+
+  return {
+    interpretacion: interpretacionInicial,
+    validacion: validacionInicial,
+  };
 }
 
 function registrarInterpretacionOpenAI(evento, interpretacionIA) {
@@ -491,7 +577,7 @@ async function responderEventosEntrantes(eventos) {
     );
   }
 
-  const validacionFinal = validarCoincidenciaProducto({
+  let validacionFinal = validarCoincidenciaProducto({
     mensaje,
     interpretacion: interpretacionIA,
     catalogo,
@@ -499,6 +585,69 @@ async function responderEventosEntrantes(eventos) {
     clasificacion,
     contextoProducto: contextoProductoAnterior,
   });
+  if (clasificacion.requiereVision && interpretacionIA) {
+    const catalogoRefinado = seleccionarCatalogoRefinadoVision({
+      catalogo,
+      interpretacion: interpretacionIA,
+      clasificacion,
+    });
+    if (
+      debeRefinarInterpretacionVisual({
+        clasificacion,
+        interpretacion: interpretacionIA,
+        validacion: validacionFinal,
+        catalogoInicial: catalogoIA.catalogo,
+        catalogoRefinado: catalogoRefinado.catalogo,
+      })
+    ) {
+      const clasificacionRevision = {
+        ...clasificacion,
+        revisionVision: true,
+      };
+      const interpretacionRefinada = await interpretarMensajeCliente({
+        mensaje,
+        estado,
+        catalogo: catalogoRefinado.catalogo,
+        ejemplosEntrenamiento: [],
+        historialReciente,
+        imageUrls,
+        cliente,
+        vertical,
+        clasificacion: clasificacionRevision,
+        memoriaOperativa,
+        model: modeloIA,
+        catalogoMetadata: catalogoRefinado.metadata,
+        channelUserId: evento.channelUserId,
+      });
+      const validacionRefinada = validarCoincidenciaProducto({
+        mensaje,
+        interpretacion: interpretacionRefinada,
+        catalogo,
+        catalogoCandidatos: catalogoRefinado.catalogo,
+        clasificacion: clasificacionRevision,
+        contextoProducto: contextoProductoAnterior,
+      });
+      const nivelInicial = validacionFinal?.nivel;
+      const nivelRefinado = validacionRefinada?.nivel;
+      const lecturaElegida = elegirLecturaVisual({
+        interpretacionInicial: interpretacionIA,
+        validacionInicial: validacionFinal,
+        interpretacionRefinada,
+        validacionRefinada,
+      });
+      interpretacionIA = lecturaElegida.interpretacion;
+      validacionFinal = lecturaElegida.validacion;
+      console.log(
+        `[OpenAI] Revision visual | cliente=${clienteParaLog(
+          evento.channelUserId
+        )} | candidatos=${catalogoRefinado.metadata.referenciasEnviadas || 0} | inicial=${nivelInicial} | refinada=${nivelRefinado} | elegida=${
+          lecturaElegida.interpretacion === interpretacionRefinada
+            ? "refinada"
+            : "inicial"
+        } | resultado=${validacionFinal?.nivel}`
+      );
+    }
+  }
   if (["media", "baja"].includes(validacionFinal.nivel)) {
     return responderValidacionNoConfiable({
       evento,

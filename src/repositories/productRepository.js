@@ -2,6 +2,9 @@ const fs = require("fs");
 const path = require("path");
 const { esErrorTransitorioSupabase, requestSupabase, supabaseConfigurado } = require("./supabaseClient");
 const { obtenerClienteActual } = require("../services/clients.service");
+const {
+  consolidarCatalogo,
+} = require("../services/catalogConsolidationService");
 
 const PRODUCTOS_PATH = path.join(__dirname, "..", "..", "productos.json");
 const BRANDS_TABLE = process.env.SUPABASE_CATALOG_BRANDS_TABLE || "catalog_brands";
@@ -33,7 +36,7 @@ function clientePermiteFallbackLocal(cliente = null) {
 }
 
 function cargarProductosDesdeJson(ruta = PRODUCTOS_PATH) {
-  return JSON.parse(fs.readFileSync(ruta, "utf8"));
+  return consolidarCatalogo(JSON.parse(fs.readFileSync(ruta, "utf8")));
 }
 
 function cargarCatalogoLocalComoRespaldo(error, cliente = null) {
@@ -95,7 +98,7 @@ function construirCatalogo({ marcas = [], referencias = [], presentaciones = [] 
     presentacionesPorReferencia.set(presentacion.reference_id, lista);
   });
 
-  return marcas.sort(ordenarPorCatalogo).map((marca) => ({
+  return consolidarCatalogo(marcas.sort(ordenarPorCatalogo).map((marca) => ({
     marca: marca.name,
     metadata: marca.metadata || {},
     referencias: (referenciasPorMarca.get(marca.id) || []).map((referencia) => ({
@@ -115,7 +118,7 @@ function construirCatalogo({ marcas = [], referencias = [], presentaciones = [] 
         metadata: presentacion.metadata || {},
       })),
     })),
-  }));
+  })));
 }
 
 function construirCatalogoDesdeBusqueda(filas = []) {
@@ -156,7 +159,7 @@ function construirCatalogoDesdeBusqueda(filas = []) {
     });
   });
 
-  return Array.from(marcas.values());
+  return consolidarCatalogo(Array.from(marcas.values()));
 }
 
 async function buscarProductosCatalogoCliente(cliente = null, opciones = {}) {

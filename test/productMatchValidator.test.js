@@ -13,6 +13,9 @@ const {
 const {
   resolverConsultaCatalogo,
 } = require("../src/verticals/petshop/orderLogic");
+const {
+  consolidarCatalogo,
+} = require("../src/services/catalogConsolidationService");
 
 const clasificacionTexto = {
   intencion: "busqueda_producto",
@@ -613,6 +616,258 @@ test("vision combina linea especie y presentación para confirmar la referencia 
   assert.equal(validacion.presentacionValida, true);
   assert.equal(validacion.etiqueta, "nutriline cat urinary");
   assert.ok(validacion.diferencia >= 0.08);
+});
+
+test("vision prioriza una linea critica aunque la referencia inicial sea generica", () => {
+  const catalogoVision = [
+    {
+      marca: "EXCELLENT",
+      referencias: [
+        {
+          nombre: "EXCELLENT GATO ADULT",
+          especie: "gato",
+          etapa: "adulto",
+          metadata: {},
+          presentaciones: [{ peso: "3kg", precio: 74700 }],
+        },
+        {
+          nombre: "EXCELLENT GATO URINARY",
+          especie: "gato",
+          etapa: "adulto",
+          metadata: {},
+          presentaciones: [{ peso: "1kg", precio: 34000 }],
+        },
+      ],
+    },
+    {
+      marca: "EXCELLLET",
+      referencias: [
+        {
+          nombre: "EXCELLLET GATO URINARY",
+          especie: "gato",
+          etapa: "adulto",
+          metadata: {},
+          presentaciones: [{ peso: "x 3kg", precio: 81900 }],
+        },
+      ],
+    },
+  ];
+  const validacion = validarCoincidenciaProducto({
+    mensaje: "El cliente envió una imagen. ¿Qué precio tiene?",
+    interpretacion: {
+      confianza: 0.97,
+      producto: {
+        marca: "EXCELLENT",
+        referencia: "EXCELLENT GATO ADULT",
+        linea: "Urinary",
+        textoVisible:
+          "Purina Excellent Urinary gatos adultos con pollo carne y arroz 3 kg",
+        especie: "gato",
+        etapa: "adulto",
+        presentacion: "3kg",
+        condiciones: ["urinario"],
+        sabores: ["pollo", "carne"],
+      },
+    },
+    catalogo: catalogoVision,
+    catalogoCandidatos: catalogoVision,
+    clasificacion: {
+      intencion: "imagen",
+      perfilContexto: "multimedia",
+      requiereVision: true,
+    },
+  });
+
+  assert.equal(validacion.nivel, "alta");
+  assert.equal(validacion.razon, "senales_visuales_convergentes");
+  assert.equal(validacion.coincidencia.marca, "EXCELLENT");
+  assert.equal(validacion.coincidencia.referencia, "EXCELLENT GATO URINARY");
+  assert.equal(
+    validacion.coincidencia.referenciaCatalogo,
+    "EXCELLLET GATO URINARY"
+  );
+  assert.equal(validacion.presentacionValida, true);
+  assert.equal(
+    validacion.coincidencia.presentaciones.find(
+      (presentacion) => presentacion.referencia === "EXCELLLET GATO URINARY"
+    ).precio,
+    81900
+  );
+  assert.doesNotMatch(
+    JSON.stringify(validacion.alternativas),
+    /EXCELLENT GATO ADULT/
+  );
+});
+
+test("el flujo muestra todas las presentaciones consolidadas de la referencia visual", () => {
+  const catalogoVision = consolidarCatalogo([
+    {
+      marca: "EXCELLENT",
+      referencias: [
+        {
+          nombre: "EXCELLENT GATO URINARY",
+          especie: "gato",
+          categoria: "comida",
+          metadata: {},
+          presentaciones: [{ peso: "1kg", precio: 34000 }],
+        },
+      ],
+    },
+    {
+      marca: "EXCELLLET",
+      referencias: [
+        {
+          nombre: "EXCELLLET GATO URINARY",
+          especie: "gato",
+          categoria: "comida",
+          metadata: {},
+          presentaciones: [{ peso: "x 3kg", precio: 81900 }],
+        },
+      ],
+    },
+    {
+      marca: "EXCELLET",
+      referencias: [
+        {
+          nombre: "EXCELLET GATO UNINARY",
+          especie: "gato",
+          categoria: "comida",
+          metadata: {},
+          presentaciones: [{ peso: "7.5kg", precio: 163700 }],
+        },
+      ],
+    },
+  ]);
+  const interpretacion = {
+    intencion: "consulta_producto",
+    accion: "consultar",
+    confianza: 0.97,
+    producto: {
+      marca: "EXCELLENT",
+      referencia: "EXCELLENT GATO URINARY",
+      linea: "Urinary",
+      textoVisible: "Purina Excellent Urinary gatos adultos 3 kg",
+      especie: "gato",
+      presentacion: "3kg",
+      condiciones: ["urinario"],
+    },
+  };
+  const clasificacion = {
+    intencion: "imagen",
+    perfilContexto: "multimedia",
+    requiereVision: true,
+  };
+  const validacion = validarCoincidenciaProducto({
+    mensaje: "¿Qué precio tiene esta referencia?",
+    interpretacion,
+    catalogo: catalogoVision,
+    catalogoCandidatos: catalogoVision,
+    clasificacion,
+  });
+  const interpretacionValidada = aplicarCoincidenciaValidada(
+    interpretacion,
+    validacion
+  );
+  const respuesta = resolverConsultaCatalogo(
+    "¿Qué precio tiene esta referencia?",
+    crearEstadoInicial(),
+    catalogoVision,
+    interpretacionValidada
+  );
+
+  assert.match(respuesta, /EXCELLENT GATO URINARY x 3kg: \$81\.900/);
+  assert.match(respuesta, /EXCELLENT GATO URINARY 1kg: \$34\.000/);
+  assert.match(respuesta, /EXCELLENT GATO URINARY 7\.5kg: \$163\.700/);
+  assert.doesNotMatch(respuesta, /EXCELLENT GATO ADULT/);
+});
+
+test("resuelve una referencia comercial por alias y no la confunde con otra linea", () => {
+  const catalogoRingo = consolidarCatalogo([
+    {
+      marca: "RINGO",
+      referencias: [
+        {
+          nombre: "RINGO CROQUETA",
+          especie: "perro",
+          categoria: "comida",
+          descripcion: "RINGO CROQUETA",
+          metadata: {
+            original_names: ["RINGO CROQUETA X 20"],
+          },
+          presentaciones: [{ peso: "x 20", precio: 95500 }],
+        },
+        {
+          nombre: "RINGO CROQUETAS",
+          especie: "perro",
+          categoria: "comida",
+          descripcion: "RINGO CROQUETAS",
+          metadata: {
+            original_names: [
+              "RINGO CROQUETAS 1KL",
+              "RINGO CROQUETAS 2KL",
+              "RINGO CROQUETAS 30KL",
+            ],
+          },
+          presentaciones: [
+            { peso: "1kg", precio: 5600 },
+            { peso: "2kg", precio: 10900 },
+            { peso: "30kg", precio: 140000 },
+          ],
+        },
+        {
+          nombre: "RINGO PREMIUM",
+          especie: "perro",
+          categoria: "comida",
+          descripcion: "RINGO PREMIUM",
+          metadata: {
+            original_names: ["RINGO PREMIUM 20KL"],
+          },
+          presentaciones: [{ peso: "20kg", precio: 116000 }],
+        },
+      ],
+    },
+  ]);
+  const interpretacion = {
+    intencion: "consulta_producto",
+    accion: "consultar",
+    confianza: 0.96,
+    producto: {
+      marca: "RINGO",
+      referencia: "RINGO CROQUETAS",
+      textoVisible: "RINGO ORIGINAL ADULTOS 20kg",
+      especie: "perro",
+      etapa: "adulto",
+      presentacion: "20kg",
+    },
+  };
+  const clasificacion = {
+    intencion: "imagen",
+    perfilContexto: "multimedia",
+    requiereVision: true,
+  };
+  const validacion = validarCoincidenciaProducto({
+    mensaje: "¿Qué precio tienen Ringo croquetas x20kl?",
+    interpretacion,
+    catalogo: catalogoRingo,
+    catalogoCandidatos: catalogoRingo,
+    clasificacion,
+  });
+  const interpretacionValidada = aplicarCoincidenciaValidada(
+    interpretacion,
+    validacion
+  );
+  const respuesta = resolverConsultaCatalogo(
+    "¿Qué precio tienen Ringo croquetas x20kl?",
+    crearEstadoInicial(),
+    catalogoRingo,
+    interpretacionValidada
+  );
+
+  assert.equal(validacion.nivel, "alta");
+  assert.equal(validacion.presentacionSolicitada, "20kg");
+  assert.equal(validacion.coincidencia.referencia, "RINGO CROQUETAS");
+  assert.match(respuesta, /RINGO CROQUETAS 20kg: \$95\.500/);
+  assert.doesNotMatch(respuesta, /RINGO PREMIUM/);
 });
 
 test("vision mapea nombre comercial visible a la referencia interna equivalente", () => {
