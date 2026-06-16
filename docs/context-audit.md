@@ -1,152 +1,166 @@
-# Auditoria de contexto conversacional
+# Auditoria De Contexto Conversacional
 
-Fecha: 2026-06-06.
+Ultima revision: 2026-06-16.
 
-Esta auditoria describe el flujo actual. La instrumentacion agregada es opt-in y no cambia limites, prompts ni decisiones del agente.
+Esta auditoria describe como se usa memoria, historial, catalogo y presupuesto de IA. Es un documento de soporte; la arquitectura general vive en `docs/project-context.md`.
 
-## Fuentes de memoria
+## Fuentes De Memoria
 
 ### `whatsapp_conversations`
 
 Se consulta por `client_id + channel_user_id`. La columna `state` conserva memoria estructurada:
 
-- carrito y productos consultados;
+- carrito;
+- productos consultados;
 - ultima seleccion;
-- referencias y coincidencias pendientes;
-- datos de entrega y metodo de pago;
-- banderas de la pregunta operativa pendiente;
+- coincidencias o presentaciones pendientes;
+- entrega, direccion y metodo de pago;
+- banderas de pregunta pendiente;
 - ultimo pedido confirmado.
 
-El estado se carga desde Supabase la primera vez que el proceso atiende esa conversacion. Despues se reutiliza la copia en memoria del proceso y se actualiza al persistir cada respuesta.
+El estado se carga desde Supabase la primera vez que el proceso atiende esa conversacion. Despues se usa la copia en memoria del proceso y se persiste al final de cada turno.
 
 ### `whatsapp_messages`
 
-Cada interaccion completada inserta:
+Cada turno completado inserta:
 
-1. mensaje `inbound`;
-2. respuesta `outbound`.
+1. mensaje inbound;
+2. respuesta outbound.
 
-La consulta de historial filtra por `client_id + channel_user_id`, ordena por `created_at desc`, limita la cantidad y luego invierte el resultado para entregarlo cronologicamente. No filtra por direccion, por lo que incluye mensajes del cliente y del asistente.
+El historial se filtra por `client_id + channel_user_id`, se ordena por fecha descendente, se limita y luego se invierte para entregarlo en orden cronologico.
 
-El mensaje actual aun no esta almacenado cuando se llama a OpenAI. Se envia separadamente como `mensaje` y se persiste junto con la respuesta al terminar el turno.
+El mensaje actual se envia por separado al interprete y se persiste al terminar el turno.
 
-## Ventanas actuales
+## Ventanas De Historial
 
-Los limites cuentan mensajes individuales, no turnos completos.
+Los limites cuentan mensajes individuales, no pares completos cliente-asistente.
 
-| Perfil | Historial por defecto |
-| --- | ---: |
-| `simple` | 0 |
-| `producto` | 0 normalmente; 2 como fallback contextual |
-| `pedido` | 3 |
-| `multimedia` con imagen | 0 |
-| `multimedia` con audio | 8 |
-| `complejo` | 8 |
+| Perfil | Uso de historial |
+| --- | --- |
+| `simple` | Normalmente cero. |
+| `producto` | Normalmente cero; fallback breve si una referencia corta no se resuelve por estado. |
+| `pedido` | Historial reciente limitado. |
+| `multimedia` imagen | Sin historial textual para no sesgar una foto nueva. |
+| `multimedia` audio | Historial reciente limitado. |
+| `complejo` | Contexto ampliado dentro de presupuesto. |
 
-Consecuencia: un limite de `3` suele contener un turno completo y un mensaje suelto del turno anterior. No equivale a tres intercambios cliente-asistente.
+Riesgo: un limite de tres mensajes no equivale a tres turnos completos.
 
-`OPENAI_HISTORY_SIMPLE_LIMIT` y `OPENAI_HISTORY_NORMAL_LIMIT` tienen poco uso efectivo con el router vigente. Las consultas explicitas de producto conservan historial cero. Una referencia corta no resuelta por estado puede usar `OPENAI_HISTORY_PRODUCT_FALLBACK_LIMIT`, por defecto `2`.
+## Payload Del Interprete
 
-## Contexto del interprete
+OpenAI recibe:
 
-El interprete recibe dos mensajes OpenAI:
+1. `system`: prompt de perfil, esquema JSON y reglas de cliente/vertical.
+2. `user`: JSON compacto con mensaje actual, intencion detectada, cliente, estado operativo, historial reciente, ejemplos y candidatos de catalogo.
 
-1. `system`: prompt del perfil, esquema JSON y reglas del cliente/vertical.
-2. `user`: un JSON con:
-   - mensaje actual;
-   - intencion detectada;
-   - cliente;
-   - estado operativo compacto;
-   - historial reciente;
-   - ejemplos;
-   - candidatos de catalogo.
+Antes de construir el payload:
 
-El historial convierte `inbound` en `cliente` y `outbound` en `asistente`. Cada cuerpo se recorta a 500 caracteres.
+- `interactionClassifier` define perfil, modelos y limites.
+- `catalogContextService` recupera candidatos FTS/RPC y fuzzy local.
+- `contextBuilder` reduce bloques si se supera presupuesto.
 
-Si se supera el presupuesto, se eliminan en este orden:
+Orden de reduccion:
 
 1. ejemplos;
-2. mensajes historicos mas antiguos;
-3. descripciones de productos;
+2. historial mas antiguo;
+3. descripciones largas;
 4. candidatos adicionales;
-5. memoria no activa del perfil producto.
+5. memoria no activa en perfil producto.
 
-Por tanto, incluso cuando Supabase recupera historial, el constructor puede reducirlo antes de la llamada.
+El catalogo completo no se envia a OpenAI, pero queda disponible para validacion backend.
 
-## Contexto del humanizador
+## Payload Del Humanizador
 
-El humanizador no recibe historial de mensajes. Recibe:
+El humanizador recibe:
 
 - intencion y accion interpretadas;
-- producto interpretado;
+- producto o carrito relevante;
 - estado operativo compacto;
 - mensaje actual recortado;
 - respuesta operativa ya decidida.
 
-Esto es deliberadamente barato. El parametro `historialReciente` se pasa al servicio, pero no se incluye en la solicitud compacta actual.
+No recibe historial completo. La respuesta operativa conserva los hechos; el humanizador solo mejora tono.
 
-## Cobertura de referencias recientes
+## Resolucion De Referencias Cortas
 
-Las referencias operativas cortas se resuelven principalmente con `state`, no con texto historico:
+Se resuelven primero desde estado:
 
-- `si`, `ese`, `el primero`: selecciones y coincidencias pendientes;
-- pesos o presentaciones: `ultimaSeleccion` y `referenciasPendientes`;
-- productos cotizados: `productosConsultados`;
+- `si`, `ese`, `esa`, `el primero`: coincidencias o selecciones pendientes;
+- pesos: `ultimaSeleccion`, `referenciasPendientes` o productos consultados;
 - entrega/pago: banderas `esperando*`;
-- carrito y pedido anterior: snapshots estructurados.
+- repeticion de pedido: snapshot de ultimo pedido confirmado.
 
-Esto reduce tokens y es mas confiable que pedir al modelo reconstruir hechos comerciales. Sin embargo, matices libres que no quedaron estructurados pueden perderse en perfiles con historial cero.
+Esto ahorra tokens y evita pedir al modelo reconstruir hechos comerciales desde texto libre.
 
-Una imagen nueva limpia el foco temporal del producto anterior antes de interpretar vision. El payload conserva carrito, entrega y datos operativos activos, pero omite seleccion anterior, productos cotizados, historial textual y ejemplos. Asi la nueva foto no queda sesgada por la referencia identificada en una imagen previa.
+## Imagenes
 
-La validacion visual no trata una marca legible como referencia confirmada. Combina linea, especie, etapa, tamano, condicion terapeutica y presentacion contra todo el catalogo. Normaliza nombres comerciales visibles contra referencias internas: ignora claims o submarcas no guardadas literalmente, traduce especies como `cat/gato`, agrupa typos de linea como `URINAY/URINARY` y corrige presentaciones tipo `KR` a `KG`. Si varias senales visibles convergen en una sola referencia, continua directamente con su precio o presentaciones; si solo se reconoce la marca o quedan referencias compatibles, conserva la ambiguedad y pide un dato visible faltante. Etapa y tamano tambien eliminan opciones contradictorias, por ejemplo cachorro frente a adulto o razas pequenas frente a una linea senior.
+Una imagen nueva limpia el foco temporal de productos anteriores. Conserva carrito y entrega activos, pero omite historial textual y productos consultados para evitar sesgo.
 
-La misma identidad normalizada se usa para texto y audio transcrito. Cuando el cliente agrega detalle adicional a la marca, como `for dog`, `adulto`, `grandes`, `pequenas`, `15kg` o una condicion terapeutica, la referencia debe ganar por esas senales y no por orden del catalogo. Las referencias con condicion o formato no solicitado se mantienen por debajo del umbral medio para no ofrecer `lata`, `pouch`, `obesos`, `esterilizado` o `piel` si el cliente pidio una linea adulta normal.
+La lectura visual extrae marca, linea/variante, especie, etapa, tamano, condicion, presentacion, sabor y texto visible. Una marca sola no confirma una referencia. Si la primera lectura omite una senal critica o deja ambiguedad real, puede ejecutarse una segunda lectura enfocada con candidatos refinados.
 
-## Casos donde no se usa historial
+`AI_VISION_REFINEMENT=false` desactiva esa segunda llamada.
 
-- Busqueda nueva y explicita de producto sin estado activo.
-- Saludo/general simple que se responde sin OpenAI.
+## Matching
+
+`productMatchValidator` compara interpretacion contra:
+
+- marca y referencia;
+- descripcion;
+- aliases;
+- `metadata.original_names`;
+- referencias equivalentes;
+- especie, etapa, tamano, condicion y sabor;
+- presentaciones disponibles;
+- errores de escritura tolerables.
+
+`catalogConsolidationService` agrupa typos compatibles y fusiona presentaciones. No contiene excepciones por producto.
+
+## Casos Sin Historial
+
+- Saludo simple.
+- Consulta nueva y explicita de producto.
 - Seleccion determinista de una coincidencia pendiente.
-- Consulta exploratoria de categoria resuelta por el motor.
-- Respuestas tempranas de validacion de catalogo.
-- Humanizador, en todos los perfiles.
+- Validacion temprana de catalogo.
+- Humanizador.
+- Imagen nueva.
 
-Estos casos no implican necesariamente perdida: varios se resuelven directamente con catalogo y estado. El riesgo aparece cuando una referencia natural depende de texto previo que no fue convertido a estado.
+No siempre implica perdida: varios casos se resuelven mejor con estado y catalogo. El riesgo aparece cuando el dato importante quedo solo en texto libre y no en estado estructurado.
 
-## Riesgos detectados
+## Riesgos Detectados
 
-1. `pedido` recupera tres mensajes, no tres turnos. Puede empezar con una respuesta del asistente separada de la pregunta que la origino.
-2. `producto` usa historial cero para consultas explicitas. Referencias como `ese`, `el primero`, `si` o `el de 3kg` intentan primero resolver estado y, si falta, pueden recuperar un turno.
-3. El historial normal puede reducirse por presupuesto. El turno minimo de fallback de producto queda protegido y reduce primero descripciones y candidatos.
-4. `memoriaOperativa` se construye en `conversationService`, pero el payload compacto vuelve a construir memoria desde `estado`; el objeto de tres niveles no se usa.
-5. La cache por proceso no vuelve a leer `whatsapp_conversations` mientras la conversacion exista en memoria. En despliegues con varias instancias pueden existir estados temporalmente divergentes.
-6. Si falla una insercion individual en `whatsapp_messages`, el `state` puede quedar guardado aunque el historial textual quede incompleto.
-7. Imagenes y audios se persisten como texto procesado/transcrito; el archivo visual o sonoro no forma parte del historial textual posterior.
+1. Los limites de historial son por mensaje, no por turno completo.
+2. Una cache en memoria por proceso puede divergir en despliegues con varias instancias.
+3. Si falla una insercion en `whatsapp_messages`, el estado puede quedar mas completo que el historial textual.
+4. Imagenes y audios se persisten como texto procesado/transcrito; el archivo original no queda en historial.
+5. La consolidacion fuzzy debe monitorearse para no unir referencias comercialmente distintas.
+6. La segunda lectura visual mejora precision, pero agrega costo en casos ambiguos.
 
-## Logs temporales
+## Logs De Diagnostico
 
-Activar solamente durante diagnostico:
+Activar solo temporalmente:
 
 ```env
 AI_CONTEXT_PAYLOAD_LOGS=true
+PRODUCT_CONTEXT_LOGS=true
+AI_CONTEXT_LOGS=true
+AI_USAGE_LOGS=true
 ```
 
-Genera:
+Logs utiles:
 
-- `[AI Context Retrieval]`: limite, mensajes recuperados, direcciones, estado activo y cuerpos obtenidos desde Supabase.
-- `[AI Context Payload]`: `system` y `user` finales inmediatamente antes de OpenAI.
-- `[Product Context]`: referencias pendientes, ultima seleccion, productos consultados, resolucion por estado o busqueda nueva y activacion del fallback.
+- `[AI Context Retrieval]`: historial recuperado y limites.
+- `[AI Context Payload]`: payload final hacia OpenAI.
+- `[Product Context]`: fuente de resolucion de productos.
+- `[Catalog Search]`: estrategia, query y candidatos.
+- `[OpenAI] Revision visual`: lectura inicial/refinada/elegida.
 
-Las imagenes se registran solo como tipo, detalle y cantidad de caracteres; no se imprime el base64. Los logs pueden contener mensajes, direcciones y datos personales. No deben permanecer activos en produccion.
+Estos logs pueden contener mensajes, direcciones y datos personales. No deben quedar activos en produccion.
 
-## Mejoras propuestas
+## Mejoras Propuestas
 
-No implementadas en esta auditoria:
-
-1. Expresar los limites en turnos completos y recuperar pares `inbound/outbound`.
-2. Para perfil `pedido`, conservar como minimo los dos ultimos turnos completos.
-3. Persistir una propiedad breve como `ultimaPreguntaAsistente` para referencias naturales no cubiertas por otras banderas.
-4. Eliminar o conectar formalmente `memoriaOperativa` para evitar dos representaciones de memoria.
-5. Mantener el humanizador sin historial salvo que aparezca un caso concreto que la respuesta operativa no pueda cubrir.
-6. En despliegue horizontal, revisar cache por proceso, versionado del estado o bloqueo optimista.
+1. Recuperar turnos completos inbound/outbound.
+2. Proteger un minimo de dos turnos para pedidos activos.
+3. Persistir `ultimaPreguntaAsistente` para referencias naturales.
+4. Revisar cache/locking para despliegue horizontal.
+5. Medir falsos positivos de vision y consolidacion.
+6. Evaluar embeddings por cliente solo si FTS + fuzzy no alcanza con casos reales.

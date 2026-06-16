@@ -1,120 +1,134 @@
-# Riesgos conocidos y hoja de ruta
+# Riesgos Conocidos y Hoja De Ruta
 
-Fecha de corte: 2026-06-03.
+Ultima revision: 2026-06-16.
 
-Este archivo separa lo que ya funciona de lo que todavia debe resolverse antes de operar con clientes reales.
+Este documento lista riesgos vigentes y mejoras pendientes. No repite arquitectura ni pasos de instalacion; esos viven en `docs/project-context.md` y `docs/kapso-migration.md`.
 
-## Antes de produccion
+## Antes De Operacion Comercial Amplia
 
-### P0: validar el sandbox de Kapso extremo a extremo
+### P0: validar Kapso extremo a extremo
 
-- Confirmar el payload real para texto, imagen y audio.
-- Verificar que `x-webhook-signature` coincide con la serializacion usada por el backend.
-- Confirmar envio de respuestas con el `Phone Number ID` del sandbox.
-- Probar que solamente los celulares autorizados interactuan con el banco de pruebas.
+Confirmar con el numero real:
 
-Riesgo actual: las pruebas automatizadas usan fixtures representativos, pero aun no sustituyen una prueba real contra Kapso.
+- Webhook activo con evento `Message received`.
+- Firma `x-webhook-signature` validada con el cuerpo crudo.
+- `phone_number_id` asociado a Distrifinca en `client_channels`.
+- Envio saliente con el mismo numero Kapso.
+- Texto, imagen y audio reales.
 
-### P0: variables y secretos
+Riesgo: las pruebas automatizadas no sustituyen una prueba real contra Kapso, OpenAI y Supabase.
 
-- Usar `NODE_ENV=production` cuando se conecte un canal real.
+### P0: secretos y entorno
+
+- Usar `NODE_ENV=production` con canales reales.
 - Definir obligatoriamente `KAPSO_WEBHOOK_SECRET`.
-- Mantener llaves de Kapso, OpenAI y Supabase fuera de Git.
+- Mantener llaves de Kapso, OpenAI y Supabase fuera de Git, capturas y chats.
 - Rotar cualquier llave que se haya compartido accidentalmente.
 
-Riesgo actual: fuera de produccion el backend permite webhooks sin firma si no existe secreto, para facilitar desarrollo local.
+Riesgo: fuera de produccion el backend puede aceptar webhooks sin firma si no existe secreto, para facilitar desarrollo local.
 
-### P1: concurrencia distribuida por cliente
+### P1: concurrencia distribuida
 
-La instancia local ya agrupa mensajes consecutivos durante una ventana configurable y serializa el procesamiento por `channel_user_id`. Antes de escalar horizontalmente, mover ese buffer y la cola a Redis o a un sistema compartido.
+La instancia local agrupa mensajes consecutivos y serializa procesamiento por usuario. Antes de escalar horizontalmente, mover buffer, cola y locks a Redis, Supabase o una cola compartida.
 
-Riesgo actual: la cola vive en memoria y no coordina varias instancias del backend.
+Riesgo: con varias instancias pueden procesarse mensajes del mismo usuario fuera de orden.
 
 ### P1: idempotencia durable
 
-Mover las llaves procesadas a Supabase o Redis y registrar el estado de cada evento.
+Mover llaves procesadas a un almacenamiento compartido y registrar estado del evento.
 
-Riesgo actual: el dedupe actual vive en un `Set` de memoria. Se pierde al reiniciar y no se comparte entre varias instancias.
+Riesgo: el dedupe actual vive en memoria y se pierde al reiniciar.
 
-### P1: entrega confiable de respuestas
+### P1: entrega confiable
 
-Implementar una tabla outbox o cola con reintentos y registrar por separado `Message failed`.
+Implementar outbox o cola de respuestas salientes con reintentos y estado por mensaje.
 
-Riesgo actual: el webhook responde `200 OK` antes del procesamiento, como recomienda Kapso para evitar timeouts. Si falla OpenAI, Supabase o el envio saliente despues de responder, hoy solo queda un error en consola.
+Riesgo: el webhook responde `200 OK` antes de terminar el procesamiento. Si falla OpenAI, Supabase o el envio saliente despues, hoy queda principalmente en logs.
 
-## Robustez tecnica
-
-### Higiene del repositorio
-
-`node_modules` fue retirado del tracking de Git y queda excluido por `.gitignore`. Las dependencias deben recuperarse con `npm install` a partir de `package.json` y `package-lock.json`.
-
-Para iniciar un repositorio nuevo:
-
-- Copia el codigo sin `node_modules`.
-- Conserva `package.json` y `package-lock.json`.
-- Ejecuta `npm install`.
-- Confirma con `git status` que `node_modules` no aparece antes del primer commit.
-
-El historial anterior todavia puede contener esos archivos; si se necesita reducir el tamano historico del repositorio, hazlo como una operacion separada de reescritura de historial.
-
-### Multimedia
-
-- Registrar tipo MIME y errores sin exponer datos personales.
-
-La descarga valida URL publica y aplica limite de bytes y timeout configurables. Falta mejorar la observabilidad sin exponer datos personales.
+## Robustez Tecnica
 
 ### Supabase
 
-- Agregar health check opcional para Supabase.
-- Crear alertas ante fallos de lectura o escritura.
-- Definir politicas RLS si se agrega un frontend.
+- Agregar health check opcional de lectura/escritura.
+- Alertar fallos de catalogo, estado y pedidos.
+- Definir politicas RLS si aparece frontend.
 - Revisar retencion de datos personales.
 
-Riesgo actual: Supabase es obligatorio para resolver clientes y catalogo en produccion. Si falla la lectura del catalogo, el bot responde que no pudo cargarlo en ese momento para evitar inventar productos o precios.
+Riesgo: si Supabase falla en produccion, el bot no debe inventar productos ni precios.
 
 ### Observabilidad
 
-- Logs estructurados con `messageId`, `channelUserId` anonimizado y duracion por etapa.
-- Metricas de errores OpenAI, Supabase y Kapso.
+- Logs estructurados con `messageId`, `phoneNumberId`, usuario anonimizado y duracion por etapa.
+- Metricas de errores por proveedor: Kapso, OpenAI y Supabase.
 - Panel de conversaciones fallidas.
-- Trazabilidad del modelo usado y respuesta operativa vs humanizada.
+- Trazabilidad entre respuesta operativa y respuesta humanizada.
 
-Riesgo actual: los errores se imprimen en consola sin correlacion suficiente.
+Riesgo: los logs actuales ayudan a diagnosticar, pero no dan una vista operacional completa.
 
-## Evolucion de producto
+### Multimedia
+
+- Registrar tipo MIME, tamano y causa de fallo sin exponer archivos ni datos personales.
+- Medir latencia de descarga y transcripcion.
+- Mantener limites de bytes y timeout ajustados al canal real.
+
+Riesgo: imagen/audio puede fallar por URL vencida, archivo grande, MIME inesperado o timeout.
+
+## Producto
 
 ### Catalogo y stock
 
-- El catalogo ya esta preparado para vivir en Supabase por cliente. Siguiente mejora: administrar stock real y disponibilidad por sede.
-- Crear panel administrativo para marcas, referencias, presentaciones, precios e imagenes.
-- Integrar disponibilidad e inventario real.
+- Administrar stock real y disponibilidad por sede.
+- Crear panel para marcas, referencias, presentaciones, precios e imagenes.
+- Auditar cambios de precio y disponibilidad.
 
 ### Pedidos y pagos
 
-- Integrar software de facturacion.
-- Procesar comprobantes enviados por imagen.
-- Validar transferencias antes de confirmar pago.
+- Integrar facturacion.
+- Procesar o validar comprobantes de pago.
 - Mantener auditoria de modificaciones del carrito.
+- Separar confirmacion de pedido, pago y despacho.
 
 ### Calidad conversacional
 
-- Ampliar ejemplos curados para cotizacion, varios productos, voz e imagenes.
-- Construir una suite de regresion con conversaciones anonimizadas.
-- Medir respuestas repetidas, preguntas innecesarias y falsas confirmaciones.
-- Mantener el motor como autoridad comercial y reducir reglas textuales solamente cuando exista cobertura equivalente.
+- Ampliar ejemplos curados con conversaciones anonimizadas.
+- Construir suite de regresion basada en casos reales.
+- Medir preguntas innecesarias, falsos positivos y respuestas repetidas.
+- Mantener el backend como autoridad comercial.
 
-## Casos de regresion obligatorios
+### Matching De Productos
 
-- Solicitar una presentacion inexistente.
-- Cotizar uno o varios productos sin agregarlos.
-- Agregar uno o varios productos consultados despues.
-- Enviar varios productos en un mensaje.
-- Confirmar con `asi esta bien`.
-- Consultar desde una raza escrita con errores.
-- Corregir cantidad o eliminar un item.
-- Cambiar direccion.
-- Repetir un pedido anterior.
-- Enviar imagen con y sin texto.
-- Enviar audio con y sin transcripcion de Kapso.
-- Reenviar el mismo webhook.
-- Enviar dos mensajes seguidos con poca diferencia de tiempo.
+Ya existe:
+
+- Busqueda por nombre, descripcion, aliases y nombres originales.
+- FTS/trigram en Supabase con fallback fuzzy local.
+- Consolidacion dinamica de typos compatibles.
+- Validacion final contra catalogo completo.
+- Segunda lectura visual cuando la primera es incompleta o ambigua.
+- Selecciones pendientes para respuestas como `la segunda`, `esa` o `de 4kg`.
+
+Pendiente:
+
+- Medir falsos positivos entre referencias comercialmente parecidas.
+- Crear conjunto anonimizado de evaluacion con imagenes reales.
+- Observar costo de segunda lectura visual.
+- Evaluar embeddings solo si FTS + fuzzy deja casos reales sin resolver.
+
+## Regresiones Obligatorias
+
+- Presentacion inexistente.
+- Consulta de precio sin agregar al carrito.
+- Cotizacion de varios productos.
+- Agregar productos consultados despues.
+- Varios productos en un mensaje.
+- Confirmacion con `asi esta bien`.
+- Consulta desde raza o abreviatura escrita con errores.
+- Correccion de producto con `no, es...`.
+- Seleccion de opcion mostrada previamente.
+- Cambio de direccion.
+- Repetir pedido anterior.
+- Imagen con y sin texto.
+- Imagen con variante critica visible.
+- Audio con URL descargable.
+- Audio con transcript de Kapso como respaldo.
+- Reenvio del mismo webhook.
+- Dos mensajes seguidos con poca diferencia.

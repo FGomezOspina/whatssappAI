@@ -1,25 +1,34 @@
-# Ejemplos de entrenamiento conversacional
+# Ejemplos De Entrenamiento Conversacional
 
-La tabla `training_examples` no debe guardar chats completos de clientes. Guarda ejemplos curados: una situacion, el mensaje del cliente, la respuesta ideal y el criterio que debe conservar el agente.
+La tabla `training_examples` guarda ejemplos curados, no chats completos. Cada ejemplo debe explicar una situacion, el mensaje del cliente, la respuesta ideal y el criterio que el agente debe conservar.
 
-Estos ejemplos se inyectan como contexto dinamico en el interprete y el humanizador. No son fine-tuning y no reemplazan la validacion del catalogo.
+Los ejemplos se inyectan como contexto dinamico. No son fine-tuning y no reemplazan la validacion de catalogo.
 
-## Que extraer de WhatsApp
+## Principios
 
-- Casos donde el asesor humano respondio muy bien.
+- Enseñar decisiones conversacionales, no excepciones de producto.
+- No guardar precios o presentaciones como verdad permanente.
+- No usar ejemplos como diccionario de aliases.
+- Anonimizar datos personales antes de guardar.
+- Mantener el backend como autoridad sobre catalogo, carrito y pedido.
+
+## Que Extraer De WhatsApp
+
+- Respuestas humanas especialmente buenas.
 - Casos donde el bot pregunto de mas.
-- Casos de nuevo pedido, repetir pedido, cambio de direccion, agregar/quitar productos.
-- Casos donde el cliente manda varios mensajes cortos seguidos.
-- Casos donde el cliente consulta precios sin querer agregar productos.
-- Casos donde el cliente envia varios productos en un solo mensaje.
-- Casos con raza, abreviaturas o errores de escritura.
-- Casos de imagen y audio, sin guardar archivos personales innecesarios.
+- Nuevo pedido, repetir pedido, cambio de direccion, agregar o quitar productos.
+- Varios mensajes cortos seguidos.
+- Consultas de precio sin intencion de compra.
+- Varios productos en un mensaje.
+- Raza, abreviaturas o errores de escritura.
+- Correccion de identificacion: `no, es...`.
+- Seleccion de opcion mostrada previamente.
+- Imagen con marca, linea, especie y peso.
+- Audio o nota de voz con transcripcion util.
 
-Antes de guardar ejemplos, elimina o cambia datos personales reales: cedulas, celulares, correos y direcciones exactas.
+Antes de guardar, elimina cedulas, celulares, correos, direcciones exactas, comprobantes, imagenes privadas y audios originales.
 
-No guardes API keys, comprobantes, audios, imagenes privadas ni conversaciones crudas en Supabase.
-
-## Carpeta procesada
+## Carpeta Procesada
 
 Los chats exportados se procesan con:
 
@@ -29,25 +38,25 @@ node scripts/generate-training-examples.js /Users/gomez/Downloads/Examples_chats
 
 Ese comando genera:
 
-- `data/training_examples/generated_training_examples.sql`: ejemplos listos para revisar y subir a Supabase.
-- `data/training_examples/generated_training_examples.json`: la misma informacion en JSON.
-- `data/training_examples/observed_terms.json`: terminos/productos vistos en chats que pueden servir para ampliar el catalogo.
-- `data/training_examples/summary.json`: conteo de archivos, mensajes y ejemplos.
+- `data/training_examples/generated_training_examples.sql`
+- `data/training_examples/generated_training_examples.json`
+- `data/training_examples/observed_terms.json`
+- `data/training_examples/summary.json`
 
-No subas chats crudos a Supabase. Usa solo los ejemplos anonimizados.
+Revisa y anonimiza antes de subir a Supabase.
 
-## Formato recomendado
+## Formato Recomendado
 
 `intent`: nombre corto de la situacion.
 
-`customer_message`: mensaje o mini contexto. Ejemplo:
+`customer_message`: mensaje o mini contexto.
 
 ```text
 Cliente ya tenia un pedido confirmado. Agente pregunta si desea repetirlo.
 Cliente responde: para un dog chow a.rp 4kg
 ```
 
-`ideal_response`: criterio de respuesta ideal. Ejemplo:
+`ideal_response`: criterio de respuesta ideal.
 
 ```text
 Agregar Dog Chow Adulto Mini y Pequeno 4kg al pedido nuevo. No sumar el pedido anterior ni pedir presentacion otra vez. Luego confirmar si usa la misma direccion.
@@ -57,18 +66,30 @@ Agregar Dog Chow Adulto Mini y Pequeno 4kg al pedido nuevo. No sumar el pedido a
 
 `tags`: palabras clave como `nuevo pedido`, `direccion`, `no preguntar de mas`.
 
-`priority`: entre 0 y 100. Usa 100 para reglas muy importantes.
+`priority`: 0 a 100. Usa 100 para criterios criticos.
 
-## Criterios que conviene reforzar
+## Criterios A Reforzar
 
 - Preguntar precio no significa comprar.
-- Una negativa por presentacion inexistente es una respuesta valida.
+- Una negativa por presentacion inexistente es valida.
 - Si el cliente envia dos productos, conservar cada item por separado.
-- Si el cliente dice `asi esta bien`, avanzar sin repetir informacion ya resuelta.
+- Si dice `asi esta bien`, avanzar sin repetir informacion resuelta.
 - Una raza describe a la mascota; no es una marca desconocida.
-- Si el cliente aclara `de 4kl`, completar la pregunta pendiente en vez de iniciar otra conversacion.
-- Si una imagen no es legible, pedir solamente el dato faltante.
-- Si un audio ya llega transcrito desde Kapso, razonar sobre la transcripcion como si fuera texto del cliente.
+- Si aclara `de 4kl`, completar la pregunta pendiente.
+- Si una imagen no es legible, pedir solo el dato faltante.
+- Si una imagen tiene variante critica visible, conservarla.
+- Si el audio ya llega transcrito desde Kapso, razonar sobre la transcripcion.
+- Si el cliente corrige el producto, descartar la hipotesis anterior y validar de nuevo.
+
+## Que No Guardar
+
+- Chats completos.
+- Mapeos manuales de una referencia a otra.
+- Listas de aliases que pertenecen al catalogo.
+- Precios o presentaciones cambiantes.
+- Respuestas literales obligatorias.
+- Datos personales reales.
+- API keys o secretos.
 
 ## Ejemplo SQL
 

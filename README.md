@@ -2,17 +2,17 @@
 
 Backend conversacional multiempresa de AIVANCE para atender clientes por WhatsApp. Distrifinca es el primer cliente configurado de la plataforma. El agente entiende lenguaje informal, consulta un catalogo controlado por el backend, arma pedidos y conserva el contexto de cada cliente.
 
-El proyecto esta migrando de Twilio a Kapso. La integracion activa recibe JSON de Kapso y esta pensada para probarse primero con el sandbox antes de conectar el numero comercial.
+Kapso es el proveedor activo de WhatsApp. Twilio pertenece solamente al antecedente historico del proyecto. El sandbox sigue siendo el entorno recomendado para validar cambios antes de llevarlos al numero comercial.
 
 ## Estado actual
 
 - Proveedor de WhatsApp activo: Kapso.
-- Entorno recomendado mientras se valida la migracion: sandbox de Kapso.
+- Entorno recomendado para pruebas y regresiones: sandbox de Kapso.
 - Persistencia: Supabase por REST API, con memoria local como respaldo para desarrollo de conversaciones.
 - Cliente: se resuelve dinamicamente por el `phone_number_id`/canal de WhatsApp registrado en Supabase.
 - Tipo de negocio: se lee desde `aivance_clients.vertical`; la logica actual esta clasificada como vertical `petshop`.
-- Catalogo operativo: Supabase, separado por cliente AIVANCE.
-- Importacion de catalogo: `productos.json` como formato de carga masiva.
+- Catalogo operativo: Supabase, separado por cliente AIVANCE y consolidado en tiempo de ejecucion.
+- Importacion de catalogo: `productos.json` como formato de carga masiva. El archivo actual contiene 392 marcas, 1120 referencias y 1394 presentaciones antes de consolidar duplicados ortograficos.
 - IA: OpenAI para interpretar mensajes, humanizar respuestas, analizar imagenes y transcribir voz.
 - Pruebas automatizadas: `npm test`.
 
@@ -23,7 +23,11 @@ El proyecto esta migrando de Twilio a Kapso. La integracion activa recibe JSON d
 - Procesa varios productos enviados en el mismo mensaje.
 - Conserva contexto entre mensajes cortos como `de 4kl`, `asi esta bien` o `agrega los dos`.
 - Interpreta abreviaturas, errores de escritura y razas de mascotas sin programar una lista raza por raza.
-- Valida marcas, referencias, presentaciones y precios contra el catalogo.
+- Busca por nombre, descripcion, aliases, `metadata.original_names`, referencias equivalentes y contexto conversacional.
+- Consolida dinamicamente marcas o referencias duplicadas por errores ortograficos y une sus presentaciones sin reglas por producto.
+- Combina candidatos de Supabase FTS con candidatos fuzzy locales antes de interpretar que una referencia no existe.
+- En imagenes pondera marca, linea o variante, especie, presentacion y sabor; si la primera lectura es ambigua puede ejecutar una segunda lectura enfocada.
+- Valida marcas, referencias, presentaciones y precios contra el catalogo completo antes de responder.
 - Rechaza presentaciones inexistentes y ofrece alternativas reales.
 - Gestiona carrito, cantidades, eliminaciones, entrega, datos del cliente y metodo de pago.
 - Recibe imagenes por URL de Kapso para analizarlas con vision.
@@ -38,17 +42,22 @@ flowchart LR
   B --> C["POST /webhooks/kapso/whatsapp"]
   C --> D["Provider Kapso"]
   C --> E["Conversation Service"]
-  E --> F["Procesador multimedia"]
-  E --> G["Interprete OpenAI"]
-  E --> H["Motor comercial"]
-  H --> I["Supabase catalogo por cliente"]
-  E --> J["Humanizador OpenAI"]
-  E --> K["Supabase"]
-  C --> L["Provider Kapso: enviar respuesta"]
-  L --> B
+  E --> F["Clasificador y contexto"]
+  E --> G["Procesador multimedia"]
+  E --> H["Busqueda hibrida de candidatos"]
+  H --> I["Supabase FTS + fuzzy local"]
+  E --> J["Interprete OpenAI"]
+  J --> K["Validador contra catalogo completo"]
+  K --> L["Motor comercial"]
+  E --> M["Humanizador protegido"]
+  E --> N["Supabase"]
+  C --> O["Provider Kapso: enviar respuesta"]
+  O --> B
 ```
 
 La mensajeria esta aislada en `src/providers/kapsoMessagingProvider.js`. La logica comercial y la persistencia no dependen del proveedor de WhatsApp. El cliente se resuelve con `src/services/clients.service.js`: el backend toma el `phone_number_id` que llega desde Kapso, busca ese canal en `client_channels` y carga el cliente activo desde `aivance_clients`. Luego `src/verticals/index.js` selecciona la logica por `aivance_clients.vertical`. La logica actual vive en `src/verticals/petshop` y se comparte entre Distrifinca y futuras tiendas de mascotas. `CLIENT_SLUG` ya no es base multiempresa ni variable operativa.
+
+La resolucion de productos se reparte entre `catalogContextService`, `catalogConsolidationService`, `productMatchValidator` y `pendingProductMatchService`. OpenAI propone una interpretacion, pero estos servicios recuperan candidatos, toleran errores de catalogo/OCR, validan la identidad contra el catalogo completo y conservan selecciones pendientes. No existe una excepcion programada para referencias concretas.
 
 Los mensajes consecutivos del mismo cliente se agrupan antes de llamar al agente. Cada mensaje reinicia la espera para recopilar el turno completo. La ventana local se configura con `INBOUND_MESSAGE_BUFFER_MS`; el valor recomendado para WhatsApp es `5000`.
 
@@ -75,7 +84,7 @@ npm start
 
 Para un proyecto nuevo ejecuta primero `supabase/schema.sql`. Para una base existente ejecuta `supabase/004_multiempresa_catalog.sql`. El catalogo se importa siempre indicando explicitamente a que cliente pertenece; no hay cliente por defecto para evitar mezclar productos entre empresas.
 
-El archivo `productos.json` actual corresponde al catalogo inicial de Distrifinca:
+El archivo `productos.json` actual corresponde al catalogo de importacion de Distrifinca:
 
 ```bash
 npm run catalog:import -- --file productos.json --client distrifinca --client-name Distrifinca --vertical petshop
@@ -112,7 +121,7 @@ GET  /health
 POST /webhooks/kapso/whatsapp
 ```
 
-Para configurar el sandbox paso a paso consulta [docs/kapso-migration.md](docs/kapso-migration.md).
+Para configurar o verificar Kapso paso a paso consulta [docs/kapso-migration.md](docs/kapso-migration.md).
 
 ## Verificacion
 
@@ -138,9 +147,10 @@ Respuesta esperada:
 
 - [Contexto tecnico vigente](docs/project-context.md)
 - [Arquitectura multiempresa AIVANCE](docs/aivance-multiempresa.md)
-- [Sandbox y migracion a Kapso](docs/kapso-migration.md)
+- [Kapso: sandbox y paso a produccion](docs/kapso-migration.md)
 - [Riesgos y hoja de ruta](docs/known-issues-and-roadmap.md)
 - [Ejemplos de entrenamiento](docs/training-examples.md)
+- [Auditoria de contexto y costos](docs/context-audit.md)
 
 ## Principio central
 

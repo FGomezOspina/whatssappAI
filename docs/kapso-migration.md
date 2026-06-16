@@ -1,163 +1,114 @@
-# Sandbox y migracion de Twilio a Kapso
+# Kapso: Numero, Webhook y Produccion
 
-El objetivo inicial no es responder mensajes del numero comercial. Primero se debe validar el agente dentro del sandbox de Kapso con celulares de prueba autorizados.
+Este documento es la guia operativa para conectar WhatsApp por Kapso. Sirve tanto para sandbox como para un numero dedicado/comercial. La arquitectura interna esta en `docs/project-context.md`.
 
-El backend recibe:
+El backend recibe eventos en:
 
 ```text
 POST /webhooks/kapso/whatsapp
 ```
 
-Y expone:
+Y expone health check en:
 
 ```text
 GET /health
 ```
 
-## Estrategia recomendada
+## Regla Basica
 
-```mermaid
-flowchart LR
-  A["Celulares autorizados"] --> B["Numero sandbox Kapso"]
-  B --> C["Webhook local con HTTPS"]
-  C --> D["Backend AIVANCE"]
-  D --> B
-  E["Clientes reales"] -. "Aun no conectar" .-> F["Numero comercial"]
-```
+Para que un numero funcione deben coincidir cuatro piezas:
 
-Mientras se construye el banco de pruebas:
+1. `KAPSO_PHONE_NUMBER_ID` en `.env`.
+2. Una fila activa en Supabase `client_channels` con ese `phone_number_id`.
+3. Un webhook activo en Kapso para ese mismo numero.
+4. `KAPSO_WEBHOOK_SECRET` igual en `.env` y en Kapso.
 
-- Usa el numero sandbox de Kapso.
-- Autoriza solamente tus celulares de prueba.
-- Registra el webhook solamente para el sandbox.
-- Selecciona unicamente el evento `Message received`.
-- No conectes todavia el numero comercial.
+Cambiar solo `KAPSO_PHONE_NUMBER_ID` permite enviar por ese numero, pero no basta para recibir ni para resolver el cliente AIVANCE.
 
-## 1. Crear el archivo de configuracion
+## Configuracion De `.env`
 
-Desde la raiz del proyecto:
-
-```bash
-revisa y completa .env
-```
-
-Completa progresivamente las variables descritas abajo.
-
-## 2. Crear el sandbox
-
-1. Entra al proyecto en Kapso.
-2. Abre la seccion de WhatsApp y busca `Sandbox`.
-3. Agrega tu numero personal como numero autorizado de prueba.
-4. Usa formato internacional, por ejemplo `+573001112233`.
-5. Kapso mostrara su numero sandbox y un codigo de activacion.
-6. Abre WhatsApp y envia ese codigo al numero sandbox.
-7. Espera el mensaje de confirmacion.
-8. Repite el proceso para cada celular adicional del equipo de pruebas.
-
-Solo los celulares autorizados deben escribir al sandbox.
-
-## 3. Generar `KAPSO_API_KEY`
-
-1. En Kapso entra a `Project Settings`.
-2. Abre `API Keys`.
-3. Crea una nueva llave con un nombre descriptivo, por ejemplo `distrifinca-sandbox-local`.
-4. Copia el valor y guardalo solamente en `.env`.
+Variables Kapso:
 
 ```env
-KAPSO_API_KEY=tu_api_key
+KAPSO_API_KEY=...
+KAPSO_PHONE_NUMBER_ID=...
+KAPSO_WEBHOOK_SECRET=...
+KAPSO_API_BASE_URL=https://api.kapso.ai/meta/whatsapp/v24.0
+META_GRAPH_VERSION=v24.0
 ```
 
-No subas esta llave a Git ni la compartas en capturas.
-
-## 4. Obtener `KAPSO_PHONE_NUMBER_ID`
-
-1. En Kapso abre la configuracion de WhatsApp creada para el sandbox.
-2. Copia el `Phone Number ID`.
-3. Confirma visualmente que corresponde al sandbox y no al numero comercial.
+Para un numero dedicado en produccion:
 
 ```env
-KAPSO_PHONE_NUMBER_ID=id_del_numero_sandbox
+NODE_ENV=production
+```
+
+Para pruebas locales con sandbox puedes usar:
+
+```env
+NODE_ENV=development
 KAPSO_SANDBOX_CLIENT_SLUG=distrifinca
 ```
 
-`KAPSO_SANDBOX_CLIENT_SLUG` permite probar el sandbox aunque el `phone_number_id` aun no exista en `client_channels`. Solo se usa fuera de `NODE_ENV=production`.
+Ese fallback solo existe para desarrollo. En produccion el canal debe existir en Supabase.
 
-Tambien puedes consultar los numeros del proyecto con la API de Kapso:
+## Asociar El Numero A Distrifinca
 
-```bash
-curl --request GET \
-  --url "https://api.kapso.ai/platform/v1/whatsapp/phone_numbers" \
-  --header "X-API-Key: TU_KAPSO_API_KEY"
-```
-
-## 5. Generar `KAPSO_WEBHOOK_SECRET`
-
-Este secreto lo defines tu. Permite comprobar que los eventos recibidos fueron enviados por Kapso.
-
-Genera uno:
-
-```bash
-openssl rand -hex 32
-```
-
-Guarda el resultado:
-
-```env
-KAPSO_WEBHOOK_SECRET=secreto_generado
-```
-
-Usa exactamente el mismo valor al crear el webhook en Kapso.
-
-## 6. Completar OpenAI y Supabase
-
-El sandbox sigue usando el flujo completo del agente. Conserva:
-
-```env
-OPENAI_API_KEY=
-OPENAI_MODEL=gpt-5.2-chat-latest
-OPENAI_INTERPRETER_MODEL=gpt-5.2
-OPENAI_VISION_MODEL=gpt-4.1
-OPENAI_TRANSCRIPTION_MODEL=gpt-4o-mini-transcribe
-OPENAI_TRANSCRIPTION_FALLBACK_MODEL=whisper-1
-INBOUND_MESSAGE_BUFFER_MS=5000
-
-SUPABASE_URL=
-SUPABASE_SECRET_KEY=
-```
-
-En un proyecto Supabase nuevo, ejecuta `supabase/schema.sql` desde el SQL Editor. En una base existente ejecuta `supabase/004_multiempresa_catalog.sql`.
-
-Luego registra el numero/canal de Kapso para Distrifinca. Este paso es obligatorio para que AIVANCE resuelva el cliente automaticamente sin cambiar `.env`:
+Ejecuta en Supabase, cambiando `TU_PHONE_NUMBER_ID_DE_KAPSO` por el id real del numero:
 
 ```sql
-insert into public.client_channels (client_id, provider, channel, phone_number_id, display_name)
-select id, 'kapso', 'whatsapp', 'TU_KAPSO_PHONE_NUMBER_ID', 'WhatsApp Distrifinca Sandbox'
+insert into public.client_channels
+  (client_id, provider, channel, phone_number_id, display_name, active)
+select
+  id,
+  'kapso',
+  'whatsapp',
+  'TU_PHONE_NUMBER_ID_DE_KAPSO',
+  'WhatsApp Distrifinca',
+  true
 from public.aivance_clients
 where slug = 'distrifinca'
-on conflict do nothing;
+on conflict (client_id, provider, channel, phone_number_id)
+do update set
+  display_name = excluded.display_name,
+  active = true,
+  updated_at = now();
 ```
 
-Finalmente importa el catalogo de Distrifinca:
+Verifica:
 
-```bash
-npm run catalog:import -- --file productos.json --client distrifinca --client-name Distrifinca --vertical petshop
+```sql
+select
+  ac.slug,
+  cc.provider,
+  cc.channel,
+  cc.phone_number_id,
+  cc.display_name,
+  cc.active
+from public.client_channels cc
+join public.aivance_clients ac on ac.id = cc.client_id
+where cc.provider = 'kapso'
+  and cc.channel = 'whatsapp'
+  and cc.phone_number_id = 'TU_PHONE_NUMBER_ID_DE_KAPSO';
 ```
 
-## 7. Exponer el servidor con HTTPS
+Debe devolver `slug = distrifinca` y `active = true`.
 
-Inicia el backend:
+## Exponer El Backend
+
+Local:
 
 ```bash
 npm start
 ```
 
-En otra terminal crea un tunel:
+En otra terminal:
 
 ```bash
 ngrok http 3000
 ```
 
-Ngrok entregara una URL similar a:
+La URL publica queda similar a:
 
 ```text
 https://abc123.ngrok-free.app
@@ -169,39 +120,43 @@ La URL completa del webhook sera:
 https://abc123.ngrok-free.app/webhooks/kapso/whatsapp
 ```
 
-Si ngrok cambia la URL al reiniciar, actualizala en Kapso.
+En produccion usa el dominio HTTPS estable del backend.
 
-## 8. Registrar el webhook del sandbox
+## Crear El Webhook En Kapso
 
-En la configuracion sandbox de Kapso:
-
-1. Abre la gestion de webhooks.
-2. Crea un webhook apuntando a:
+En el numero de WhatsApp dentro de Kapso, abre **Manage Webhooks** y crea un webhook:
 
 ```text
-https://TU_DOMINIO/webhooks/kapso/whatsapp
+URL: https://TU_DOMINIO/webhooks/kapso/whatsapp
+Kind: kapso
+Payload: v2
+Secret: mismo valor de KAPSO_WEBHOOK_SECRET
+Active: true
 ```
 
-3. Usa el mismo valor de `KAPSO_WEBHOOK_SECRET`.
-4. Selecciona solamente:
+Selecciona solamente:
 
 ```text
 Message received
 ```
 
-5. Usa payload `v2` y activa buffering con una ventana corta, por ejemplo 2 segundos, para agrupar mensajes consecutivos del mismo cliente.
-
-No selecciones por ahora:
+No selecciones para el flujo conversacional inicial:
 
 - `Message sent`
 - `Message delivered`
 - `Message read`
+- `Conversation started`
+- `Conversation inactive`
+- `Conversation ended`
 - `Message failed`
-- Eventos de inicio, inactividad o cierre de conversacion
 
-El agente solo necesita `Message received`. Los demas eventos sirven para observabilidad futura y conviene tratarlos en endpoints o procesos separados.
+Los eventos de entrega y falla sirven para observabilidad futura, pero el bot actual solo necesita mensajes entrantes.
 
-Alternativamente, registra el webhook por API:
+Si Kapso ofrece buffering para `Message received`, usa una ventana corta, por ejemplo 2 segundos. El backend tambien tiene su propio buffer con `INBOUND_MESSAGE_BUFFER_MS`.
+
+## Crear Webhook Por API
+
+Alternativa por API:
 
 ```bash
 curl --request POST \
@@ -222,9 +177,9 @@ curl --request POST \
   }'
 ```
 
-## 9. Verificar el servidor
+## Verificacion
 
-Comprueba:
+Comprueba el backend:
 
 ```bash
 curl https://TU_DOMINIO/health
@@ -236,15 +191,27 @@ Respuesta esperada:
 { "ok": true, "provider": "kapso" }
 ```
 
-Ejecuta tambien:
+Ejecuta pruebas:
 
 ```bash
 npm test
 ```
 
-## 10. Banco de pruebas recomendado
+Luego envia un WhatsApp al numero configurado. En logs debe aparecer:
 
-Envia desde un celular autorizado:
+```text
+[Kapso] Mensaje recibido
+```
+
+Y despues:
+
+```text
+[Kapso] Respuesta enviada
+```
+
+## Banco De Pruebas
+
+Prueba desde un celular autorizado o desde el numero real:
 
 ```text
 Hola, necesito hacer un pedido
@@ -266,57 +233,70 @@ Necesito un domicilio con Dog Chow a.r.p 1kl y Dog Chow adulto grande 2kl
 Necesito un Dog Chow razas pequenas de 8 kilos
 ```
 
-Verifica tambien:
+Tambien verifica:
 
-- Imagen de un producto con una pregunta corta.
+- Imagen con marca, linea, especie y peso visibles.
 - Imagen sin texto.
 - Nota de voz.
 - Dos mensajes enviados rapidamente.
-- Reenvio manual de un payload para revisar idempotencia.
+- Reenvio del mismo payload para idempotencia.
+- Seleccion posterior de una opcion mostrada.
 
 ## Multimedia
 
-- Imagen: el backend busca URL real en `message.kapso.media_url`, `media_data.url`, `fileUrl`, `attachment`, `image.url` y campos equivalentes. Si hay URL, descarga la imagen y la envia al interprete OpenAI como `image_url` en formato data URL/base64 junto con el caption.
-- Audio/nota de voz: el backend busca URL real en `message.kapso.media_url`, `audio.url`, `voice.url`, `attachment` y campos equivalentes. Si hay URL, descarga el archivo y lo envia a OpenAI para transcripcion.
-- Si falla el modelo principal, intenta `OPENAI_TRANSCRIPTION_FALLBACK_MODEL`. Si aun asi Kapso incluyo `message.kapso.transcript.text`, se usa como respaldo y se deja warning en consola.
-- Si llega multimedia sin URL ni datos suficientes, el backend registra warning claro sin imprimir tokens.
+- Imagen: el backend busca URL real en campos equivalentes de Kapso, descarga el archivo y lo envia a OpenAI como data URL/base64.
+- Audio/nota de voz: el backend descarga el archivo si hay URL y lo envia al modelo de transcripcion configurado.
+- Si no hay URL descargable, `message.kapso.transcript.text` puede usarse como respaldo.
+- Los logs no imprimen base64 ni tokens de descarga.
 
-## Solucion de problemas
+## Solucion De Problemas
 
-### El webhook responde `401 Invalid signature`
+### Kapso muestra `0 configured`
 
-- Confirma que `KAPSO_WEBHOOK_SECRET` coincide en `.env` y Kapso.
-- Reinicia `npm start` despues de modificar `.env`.
-- Revisa el riesgo de serializacion documentado en `known-issues-and-roadmap.md`.
+No hay webhook creado para ese numero. Entra a **Manage Webhooks** y registra la URL del backend con `Message received`.
 
-### El webhook recibe eventos pero no responde en WhatsApp
+### `401 Invalid signature`
+
+- Confirma que `KAPSO_WEBHOOK_SECRET` en `.env` coincide exactamente con el secreto configurado en Kapso.
+- Reinicia el servidor despues de cambiar `.env`.
+- Verifica que Kapso este enviando el webhook en formato `kapso` y payload `v2`.
+
+### Llega el webhook pero no responde
 
 - Confirma `KAPSO_API_KEY`.
-- Confirma que `KAPSO_PHONE_NUMBER_ID` pertenece al sandbox.
-- Revisa la terminal del backend.
-- Verifica que el celular este autorizado en el sandbox.
+- Confirma `KAPSO_PHONE_NUMBER_ID`.
+- Revisa que `client_channels` tenga ese `phone_number_id` asociado a Distrifinca.
+- Revisa logs de OpenAI, Supabase y Kapso.
+
+### El cliente no se resuelve
+
+El error esperado es similar a:
+
+```text
+No hay cliente activo asociado al canal de WhatsApp phone_number_id=...
+```
+
+Solucion: registrar o activar la fila correspondiente en `client_channels`.
 
 ### Kapso no alcanza el backend
 
-- Confirma que `npm start` sigue corriendo.
-- Prueba `GET /health`.
-- Confirma la URL HTTPS actual de ngrok.
-- Actualiza el webhook si ngrok cambio de dominio.
+- Comprueba `GET /health`.
+- Verifica que ngrok o el dominio HTTPS esten activos.
+- Actualiza la URL del webhook si el dominio cambio.
 
-## Paso futuro: numero comercial
+## Paso A Operacion Comercial
 
-No avances a produccion hasta resolver o aceptar conscientemente los puntos P0 y P1 de `docs/known-issues-and-roadmap.md`.
+Antes de usar el numero con clientes reales:
 
-Cuando llegue ese momento:
+1. Usa `NODE_ENV=production`.
+2. Exige `KAPSO_WEBHOOK_SECRET`.
+3. Verifica `client_channels` para el numero real.
+4. Deja activo solo `Message received`.
+5. Ejecuta `npm test`.
+6. Prueba texto, imagen, audio, cotizacion, carrito y confirmacion.
+7. Revisa `docs/known-issues-and-roadmap.md`.
 
-1. Conecta el numero comercial en Kapso.
-2. Cambia `KAPSO_PHONE_NUMBER_ID`.
-3. Registra el webhook para el numero comercial.
-4. Usa `NODE_ENV=production`.
-5. Mantiene `Message received` como unico evento conversacional.
-6. Agrega monitoreo separado para `Message failed`.
-
-## Referencias oficiales
+## Referencias
 
 - [Kapso webhooks](https://docs.kapso.ai/docs/platform/webhooks)
 - [Kapso event types](https://docs.kapso.ai/docs/platform/webhooks/event-types)
