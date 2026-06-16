@@ -44,6 +44,78 @@ Scripts:
 - `supabase/004_multiempresa_catalog.sql`: migracion para bases existentes.
 - `supabase/005_catalog_search_rpc.sql`: busqueda FTS/trigram por cliente.
 - `supabase/005_petshop_product_classification.sql`: clasificacion comercial petshop.
+- `supabase/006_multi_vertical_clients.sql`: alias `business_type`, identificadores alternos de canal y registro inicial de `sanmarcospetsclub`.
+
+## Que Pasa Al Agregar Mas Clientes
+
+Agregar otro cliente de la misma vertical no deberia crear otro backend, otra carpeta ni reglas especiales en codigo. El cambio normal es de datos y configuracion:
+
+1. Crear una fila en `aivance_clients`.
+2. Registrar uno o mas canales en `client_channels`.
+3. Importar catalogo con `--client`.
+4. Configurar prompts, tono y reglas operativas del cliente.
+5. Probar el numero Kapso real o sandbox asociado a ese cliente.
+
+Cuando llega un mensaje, el backend no pregunta "de que cliente es" al usuario final. Lo deduce por el `phone_number_id` recibido desde Kapso. Ese id debe apuntar a un solo cliente activo en `client_channels`; desde ahi se cargan su vertical, catalogo, reglas, prompts, conversaciones y pedidos.
+
+Separacion esperada por cliente:
+
+| Area | Como se separa |
+| --- | --- |
+| Canal WhatsApp | Fila unica en `client_channels` por `phone_number_id`. |
+| Catalogo y precios | Registros ligados al `client_id`. |
+| Conversaciones | `whatsapp_conversations` por `client_id + channel_user_id`. |
+| Historial | `whatsapp_messages` filtrado por `client_id`. |
+| Pedidos | `whatsapp_orders` ligados al cliente. |
+| Tono y reglas | `client_prompts` y `client_delivery_rules`. |
+| Logica comercial | Compartida por vertical, no por empresa. |
+
+Ejemplo: si Distrifinca y otra tienda petshop venden "Chunky Adulto", cada una debe tener su propia referencia/precio en su catalogo. El usuario final puede tener el mismo celular en ambas tiendas; el estado conversacional no debe mezclarse porque el `client_id` cambia.
+
+`sanmarcospetsclub` queda registrado como cliente de vertical `guarderia` en estado `setup_pending`. No debe activarse hasta implementar el flujo de guarderia y registrar su canal Kapso.
+
+## Organizacion Recomendada
+
+Para operar varios clientes sin desorden, mantener un inventario por cliente con:
+
+- `slug`, nombre comercial, vertical y estado.
+- `phone_number_id`, numero visible y ambiente: sandbox o produccion.
+- archivo/fuente de catalogo, fecha de ultima importacion y responsable de aprobar precios.
+- reglas de domicilio, sedes, cobertura, pagos y horarios.
+- prompts activos de interprete/humanizador y criterio de tono.
+- checklist de pruebas antes de activar el numero.
+- contactos internos para soporte comercial y tecnico.
+
+Convenciones recomendadas:
+
+- Usar slugs estables, por ejemplo `distrifinca`, `mi_petshop`, `cliente_bogota`.
+- Nombrar catalogos por cliente y fecha, por ejemplo `catalogos/mi_petshop-2026-06.json`.
+- No reutilizar `productos.json` para varios clientes salvo que sea una copia revisada.
+- Registrar cada numero Kapso antes de probar flujos reales.
+- Mantener ejemplos de entrenamiento globales solo para criterios generales; los casos muy propios de una tienda deben guardarse por cliente cuando aplique.
+
+## Problemas A Vigilar Con Varios Clientes
+
+- Un `phone_number_id` mal registrado enviaria la conversacion al cliente equivocado.
+- Si se importa catalogo sin `--client`, o con slug incorrecto, se mezclan precios/productos.
+- Prompts demasiado especificos de Distrifinca podrian contaminar otra empresa petshop.
+- Reglas de domicilio y pago pueden variar por cliente aunque compartan vertical.
+- El fallback `KAPSO_SANDBOX_CLIENT_SLUG` solo sirve en desarrollo; usarlo como operacion normal oculta errores de canal.
+- Cache, idempotencia y locks en memoria son suficientes para una instancia, pero no para escalar horizontalmente con varios clientes activos.
+- Observabilidad sin `client_id`, `phone_numberId` y `messageId` dificulta saber que cliente fallo.
+
+## Checklist De Alta
+
+Antes de activar un cliente:
+
+- Cliente creado en `aivance_clients` con `status='active'`.
+- Canal Kapso creado en `client_channels`, activo y con `phone_number_id` correcto.
+- Webhook de Kapso apuntando a `/webhooks/kapso/whatsapp`.
+- Catalogo importado y validado con conteos esperados.
+- Prompts y reglas revisados para que no mencionen otra empresa.
+- Pruebas de texto, imagen, audio, consulta de precio, carrito y confirmacion.
+- Logs revisados con `client_id`/slug esperado.
+- Plan de soporte definido para errores de catalogo, pagos, domicilio y despacho.
 
 ## Alta De Cliente
 

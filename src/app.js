@@ -11,6 +11,13 @@ const { dividirRespuestaMensajes } = require("./utils/responseMessages");
 const idempotencyKeysProcesadas = new Set();
 const colasPorCliente = new Map();
 
+function claveTenantUsuario(evento = {}) {
+  return [
+    evento.phoneNumberId || evento.workspaceId || evento.integrationId || "canal-desconocido",
+    evento.channelUserId || "usuario-desconocido",
+  ].join(":");
+}
+
 function clienteParaLog(channelUserId = "") {
   if (process.env.NODE_ENV !== "production") return channelUserId || "desconocido";
   return channelUserId ? `***${channelUserId.slice(-4)}` : "desconocido";
@@ -81,20 +88,20 @@ async function procesarEventos(eventos) {
 }
 
 function encolarEventos(eventos) {
-  const channelUserId = eventos[0].channelUserId;
-  const colaAnterior = colasPorCliente.get(channelUserId) || Promise.resolve();
+  const queueKey = claveTenantUsuario(eventos[0]);
+  const colaAnterior = colasPorCliente.get(queueKey) || Promise.resolve();
   const procesamiento = colaAnterior
     .catch(() => {})
     .then(() => procesarEventos(eventos));
 
-  colasPorCliente.set(channelUserId, procesamiento);
+  colasPorCliente.set(queueKey, procesamiento);
   procesamiento
     .catch((error) => {
       console.error("Error procesando webhook Kapso:", error.message);
     })
     .finally(() => {
-      if (colasPorCliente.get(channelUserId) === procesamiento) {
-        colasPorCliente.delete(channelUserId);
+      if (colasPorCliente.get(queueKey) === procesamiento) {
+        colasPorCliente.delete(queueKey);
       }
     });
 }

@@ -1,9 +1,14 @@
 const petshop = require("./petshop");
+const guarderia = require("./guarderia");
 
 const registry = {
   petshop,
   tienda_mascotas: petshop,
   mascotas: petshop,
+  guarderia,
+  daycare: guarderia,
+  pet_daycare: guarderia,
+  hotel_mascotas: guarderia,
 };
 
 function normalizarVertical(valor = "") {
@@ -16,7 +21,7 @@ function normalizarVertical(valor = "") {
 }
 
 function obtenerVerticalCliente(cliente = {}) {
-  const tipoNegocio = cliente.businessType || cliente.tipo_negocio || cliente.vertical || "";
+  const tipoNegocio = cliente.businessType || cliente.business_type || cliente.tipo_negocio || cliente.vertical || "";
   const key = normalizarVertical(tipoNegocio);
   return registry[key] || null;
 }

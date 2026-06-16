@@ -282,7 +282,21 @@ function normalizarEvento(payload, headers = {}) {
 
   return {
     channelUserId,
-    idempotencyKey: message.id || headers["x-idempotency-key"] || null,
+    idempotencyKey: [
+      primerValor(
+        payload.phone_number_id,
+        payload.phoneNumberId,
+        payload.phone_number?.id,
+        payload.phoneNumber?.id,
+        payload.conversation?.phone_number_id,
+        payload.conversation?.phoneNumberId,
+        message.kapso?.phone_number_id,
+        message.kapso?.phoneNumberId
+      ),
+      message.id || headers["x-idempotency-key"] || null,
+    ]
+      .filter(Boolean)
+      .join(":") || null,
     messageId: message.id || null,
     messageType: message.type || "unknown",
     phoneNumberId: primerValor(
@@ -294,6 +308,26 @@ function normalizarEvento(payload, headers = {}) {
       payload.conversation?.phoneNumberId,
       message.kapso?.phone_number_id,
       message.kapso?.phoneNumberId
+    ),
+    workspaceId: primerValor(
+      payload.workspace_id,
+      payload.workspaceId,
+      payload.project_id,
+      payload.projectId,
+      payload.customer?.workspace_id,
+      payload.customer?.workspaceId,
+      message.kapso?.workspace_id,
+      message.kapso?.workspaceId
+    ),
+    integrationId: primerValor(
+      payload.integration_id,
+      payload.integrationId,
+      payload.connection_id,
+      payload.connectionId,
+      payload.conversation?.integration_id,
+      payload.conversation?.integrationId,
+      message.kapso?.integration_id,
+      message.kapso?.integrationId
     ),
     recipientId,
     text: obtenerTextoMensaje(message).trim(),

@@ -298,6 +298,7 @@ async function obtenerCliente(slug, nombre, vertical = "petshop") {
       slug,
       name: nombre,
       vertical,
+      business_type: vertical,
       owner_platform: "AIVANCE",
       status: "active",
     },

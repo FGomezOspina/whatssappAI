@@ -258,6 +258,7 @@ npm run ai:diagnose -- --live "tienes br adulto r pequena?"
 - `supabase/004_multiempresa_catalog.sql`: multiempresa y catalogo para bases existentes.
 - `supabase/005_catalog_search_rpc.sql`: FTS/trigram/RPC por cliente.
 - `supabase/005_petshop_product_classification.sql`: clasificacion comercial petshop.
+- `supabase/006_multi_vertical_clients.sql`: soporte incremental para `business_type`, IDs alternos de canal y cliente guarderia en preparacion.
 
 ## Notas De Compatibilidad
 

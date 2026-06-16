@@ -15,6 +15,12 @@ test("selecciona petshop desde el tipo de negocio del cliente", () => {
   assert.equal(obtenerVerticalCliente({ businessType: "mascotas" }).key, "petshop");
 });
 
+test("registra guarderia como vertical preparada sin usar petshop como fallback", () => {
+  const vertical = obtenerVerticalCliente({ business_type: "guarderia" });
+  assert.equal(vertical.key, "guarderia");
+  assert.equal(vertical.implemented, false);
+});
+
 test("una vertical no registrada no usa una logica alternativa silenciosa", () => {
   assert.equal(obtenerVerticalCliente({ vertical: "restaurant" }), null);
 });

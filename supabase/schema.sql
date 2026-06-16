@@ -13,6 +13,7 @@ create table if not exists public.aivance_clients (
   slug text not null unique,
   name text not null,
   vertical text not null default 'generic',
+  business_type text,
   owner_platform text not null default 'AIVANCE',
   status text not null default 'active',
   settings jsonb not null default '{}'::jsonb,
@@ -20,14 +21,34 @@ create table if not exists public.aivance_clients (
   updated_at timestamptz not null default now()
 );
 
-insert into public.aivance_clients (slug, name, vertical, owner_platform, status)
-values ('distrifinca', 'Distrifinca', 'petshop', 'AIVANCE', 'active')
+insert into public.aivance_clients (slug, name, vertical, business_type, owner_platform, status)
+values ('distrifinca', 'Distrifinca', 'petshop', 'petshop', 'AIVANCE', 'active')
 on conflict (slug) do update
 set
   name = excluded.name,
   vertical = excluded.vertical,
+  business_type = excluded.business_type,
   owner_platform = excluded.owner_platform,
   status = excluded.status,
+  updated_at = now();
+
+insert into public.aivance_clients (slug, name, vertical, business_type, owner_platform, status, settings)
+values (
+  'sanmarcospetsclub',
+  'San Marcos Pets Club',
+  'guarderia',
+  'guarderia',
+  'AIVANCE',
+  'setup_pending',
+  '{"vertical_status": "placeholder"}'::jsonb
+)
+on conflict (slug) do update
+set
+  name = excluded.name,
+  vertical = excluded.vertical,
+  business_type = excluded.business_type,
+  owner_platform = excluded.owner_platform,
+  settings = public.aivance_clients.settings || excluded.settings,
   updated_at = now();
 
 create table if not exists public.client_channels (
@@ -36,6 +57,8 @@ create table if not exists public.client_channels (
   provider text not null,
   channel text not null,
   phone_number_id text,
+  workspace_id text,
+  integration_id text,
   display_name text,
   settings jsonb not null default '{}'::jsonb,
   active boolean not null default true,
@@ -197,6 +220,18 @@ create index if not exists client_prompts_client_active_priority_idx
 
 create index if not exists client_delivery_rules_client_active_priority_idx
   on public.client_delivery_rules (client_id, active, priority desc);
+
+create unique index if not exists client_channels_provider_channel_phone_number_active_idx
+  on public.client_channels (provider, channel, phone_number_id)
+  where active = true and phone_number_id is not null;
+
+create index if not exists client_channels_provider_channel_workspace_active_idx
+  on public.client_channels (provider, channel, workspace_id)
+  where active = true and workspace_id is not null;
+
+create index if not exists client_channels_provider_channel_integration_active_idx
+  on public.client_channels (provider, channel, integration_id)
+  where active = true and integration_id is not null;
 
 create index if not exists catalog_brands_client_active_idx
   on public.catalog_brands (client_id, active, sort_order asc);

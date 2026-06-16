@@ -11,22 +11,30 @@ function obtenerVentanaBufferMs() {
 function crearBufferMensajesEntrantes({ alVaciar, ventanaMs = obtenerVentanaBufferMs() }) {
   const pendientesPorCliente = new Map();
 
-  function vaciar(channelUserId) {
-    const pendiente = pendientesPorCliente.get(channelUserId);
+  function claveEvento(evento = {}) {
+    return [
+      evento.phoneNumberId || evento.workspaceId || evento.integrationId || "canal-desconocido",
+      evento.channelUserId || "usuario-desconocido",
+    ].join(":");
+  }
+
+  function vaciar(key) {
+    const pendiente = pendientesPorCliente.get(key);
     if (!pendiente) return;
 
     clearTimeout(pendiente.timeout);
-    pendientesPorCliente.delete(channelUserId);
+    pendientesPorCliente.delete(key);
     alVaciar(pendiente.eventos);
   }
 
   function agregar(evento) {
-    const pendiente = pendientesPorCliente.get(evento.channelUserId) || { eventos: [], timeout: null };
+    const key = claveEvento(evento);
+    const pendiente = pendientesPorCliente.get(key) || { eventos: [], timeout: null };
     if (pendiente.timeout) clearTimeout(pendiente.timeout);
 
     pendiente.eventos.push(evento);
-    pendiente.timeout = setTimeout(() => vaciar(evento.channelUserId), ventanaMs);
-    pendientesPorCliente.set(evento.channelUserId, pendiente);
+    pendiente.timeout = setTimeout(() => vaciar(key), ventanaMs);
+    pendientesPorCliente.set(key, pendiente);
   }
 
   function cerrar() {

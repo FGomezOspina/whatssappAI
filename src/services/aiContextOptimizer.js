@@ -324,13 +324,16 @@ function construirPromptInterprete({ perfil = "complejo", cliente = null, vertic
   const promptCliente =
     cliente?.prompts?.interpreter || cliente?.prompts?.interprete || "";
   const promptVertical = vertical?.prompts?.interpreterContext || "";
+  const rolVertical =
+    vertical?.prompts?.interpreterRole ||
+    "Eres el interprete semantico de un agente comercial de WhatsApp multiempresa.";
   const reglasAdicionales = [promptVertical, promptCliente]
     .filter(Boolean)
     .map((item) => recortarTexto(item, 800))
     .join("\n");
 
   return [
-    "Eres el interprete semantico de un agente comercial de WhatsApp para petshop en Colombia.",
+    rolVertical,
     `Perfil de contexto: ${perfil}.`,
     instruccionesPerfil(perfil).map((regla) => `- ${regla}`).join("\n"),
     reglasAdicionales ? `Reglas adicionales:\n${reglasAdicionales}` : "",

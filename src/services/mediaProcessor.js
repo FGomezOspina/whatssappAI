@@ -138,7 +138,7 @@ function unirSegmentosUnicos(segmentos = []) {
     .trim();
 }
 
-function construirPromptTranscripcion(catalogo = []) {
+function construirPromptTranscripcion(catalogo = [], vertical = null) {
   const marcas = new Set();
   const referencias = new Set();
   const presentaciones = new Set();
@@ -153,13 +153,17 @@ function construirPromptTranscripcion(catalogo = []) {
     });
   });
 
+  const contextoTranscripcion = vertical?.prompts?.transcriptionContext || {};
   const partes = [
-    "Audio de WhatsApp de una tienda de mascotas en Colombia. Transcribe en español, conservando marcas y pesos.",
+    contextoTranscripcion.intro ||
+      "Audio de WhatsApp de un negocio atendido por AIVANCE. Transcribe en español y conserva nombres propios, servicios, productos, cantidades, fechas y horarios.",
     "No traduzcas ni reemplaces nombres de marcas. Corrige por contexto fonético cuando el audio suene a una marca o referencia del catálogo.",
     marcas.size ? `Marcas posibles: ${Array.from(marcas).join(", ")}.` : null,
     referencias.size ? `Referencias posibles: ${Array.from(referencias).slice(0, 40).join(", ")}.` : null,
     presentaciones.size ? `Presentaciones posibles: ${Array.from(presentaciones).join(", ")}.` : null,
-    "Vocabulario frecuente: Dog Chow, Chunky, cachorro, cachorros, adulto, adultos, mini, pequeño, pequeñas, mediano, grande, todas las razas, cuido, concentrado, bulto, kilo, kilos, kg, kl.",
+    contextoTranscripcion.vocabulary
+      ? `Vocabulario frecuente: ${contextoTranscripcion.vocabulary}`
+      : null,
   ].filter(Boolean);
 
   return partes.join(" ");
@@ -177,7 +181,7 @@ async function transcribirConModelo({ buffer, filename, contentType, model, prom
   return transcripcion.text?.trim() || "";
 }
 
-async function transcribirAudio(media, logger = console, catalogo = []) {
+async function transcribirAudio(media, logger = console, catalogo = [], vertical = null) {
   if (!openai) throw new Error("Falta OPENAI_API_KEY para transcribir audio");
   if (!media?.url) throw new Error("El audio recibido no tiene URL");
 
@@ -185,7 +189,7 @@ async function transcribirAudio(media, logger = console, catalogo = []) {
   const { buffer, contentType } = await descargarArchivo(media.url);
   const tipo = media.contentType || contentType || "audio/ogg";
   const filename = nombreAudioSeguro(media, tipo);
-  const prompt = construirPromptTranscripcion(catalogo);
+  const prompt = construirPromptTranscripcion(catalogo, vertical);
   const modelos = [
     process.env.OPENAI_TRANSCRIPTION_MODEL || "gpt-4o-transcribe",
     process.env.OPENAI_TRANSCRIPTION_FALLBACK_MODEL || "gpt-4o-mini-transcribe",
@@ -228,7 +232,7 @@ async function prepararImagen(media, logger = console) {
   return dataUrl;
 }
 
-async function procesarMultimedia({ text = "", media = null, logger = console, catalogo = [] }) {
+async function procesarMultimedia({ text = "", media = null, logger = console, catalogo = [], vertical = null }) {
   if (!media) return { text, imageUrl: null, metadata: { tipo: "text" } };
 
   if (media.type === "image") {
@@ -259,7 +263,7 @@ async function procesarMultimedia({ text = "", media = null, logger = console, c
 
     if (media.url) {
       try {
-        transcripcion = await transcribirAudio(media, logger, catalogo);
+        transcripcion = await transcribirAudio(media, logger, catalogo, vertical);
         audioTranscribedWithOpenAI = true;
       } catch (error) {
         if (!media.transcript) throw error;

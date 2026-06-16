@@ -870,6 +870,181 @@ test("resuelve una referencia comercial por alias y no la confunde con otra line
   assert.doesNotMatch(respuesta, /RINGO PREMIUM/);
 });
 
+test("vision mapea linea original visible a la referencia base con presentacion exacta", () => {
+  const catalogoRingo = consolidarCatalogo([
+    {
+      marca: "RINGO",
+      referencias: [
+        {
+          nombre: "RINGO ADUL",
+          especie: "perro",
+          categoria: "comida",
+          etapa: "adulto",
+          presentaciones: [{ peso: "x 4kg", precio: 21400 }],
+        },
+        {
+          nombre: "RINGO CROQUETA",
+          especie: "perro",
+          categoria: "comida",
+          metadata: { original_names: ["RINGO CROQUETA X 20"] },
+          presentaciones: [{ peso: "x 20", precio: 95500 }],
+        },
+        {
+          nombre: "RINGO CROQUETAS",
+          especie: "perro",
+          categoria: "comida",
+          metadata: {
+            original_names: [
+              "RINGO CROQUETAS 1KL",
+              "RINGO CROQUETAS 2KL",
+              "RINGO CROQUETAS 30KL",
+            ],
+          },
+          presentaciones: [
+            { peso: "1kg", precio: 5600 },
+            { peso: "2kg", precio: 10900 },
+            { peso: "30kg", precio: 140000 },
+          ],
+        },
+        {
+          nombre: "RINGO PREMIUM",
+          especie: "perro",
+          categoria: "comida",
+          metadata: { original_names: ["RINGO PREMIUM 20KL"] },
+          presentaciones: [{ peso: "20kg", precio: 116000 }],
+        },
+      ],
+    },
+  ]);
+  const interpretacion = {
+    intencion: "consulta_producto",
+    accion: "consultar",
+    confianza: 0.96,
+    producto: {
+      marca: "RINGO",
+      referencia: "RINGO ORIGINAL",
+      textoVisible: "RINGO ORIGINAL ADULTOS PARA TODAS LAS RAZAS 20kg",
+      especie: "perro",
+      etapa: "adulto",
+      tamano: "todas",
+      presentacion: "20kg",
+    },
+  };
+  const clasificacion = {
+    intencion: "imagen",
+    perfilContexto: "multimedia",
+    requiereVision: true,
+  };
+  const validacion = validarCoincidenciaProducto({
+    mensaje: "El cliente envió una imagen. Analízala para entender su solicitud.",
+    interpretacion,
+    catalogo: catalogoRingo,
+    catalogoCandidatos: catalogoRingo,
+    clasificacion,
+  });
+  const respuesta = resolverConsultaCatalogo(
+    "El cliente envió una imagen. Analízala para entender su solicitud.",
+    crearEstadoInicial(),
+    catalogoRingo,
+    aplicarCoincidenciaValidada(interpretacion, validacion)
+  );
+
+  assert.equal(validacion.nivel, "alta");
+  assert.equal(validacion.razon, "senales_visuales_convergentes");
+  assert.equal(validacion.coincidencia.referencia, "RINGO CROQUETAS");
+  assert.equal(validacion.presentacionSolicitada, "20kg");
+  assert.match(respuesta, /RINGO CROQUETAS 20kg: \$95\.500/);
+  assert.doesNotMatch(respuesta, /RINGO PREMIUM 20kg/);
+});
+
+test("vision interpreta linea pro como premium y respeta la presentacion exacta", () => {
+  const catalogoRingo = consolidarCatalogo([
+    {
+      marca: "RINGO",
+      referencias: [
+        {
+          nombre: "RINGO PREMIUN PRO",
+          especie: "perro",
+          categoria: "comida",
+          metadata: {
+            original_names: ["RINGO PREMIUN PRO X 4KG"],
+          },
+          presentaciones: [{ peso: "4kg", precio: 25900 }],
+        },
+        {
+          nombre: "RINGO PREMIUM",
+          especie: "perro",
+          categoria: "comida",
+          metadata: {
+            original_names: [
+              "RINGO PREMIUM 1KL",
+              "RINGO PREMIUM 2KL",
+              "RINGO PREMIUM 20KL",
+              "RINGO PREMIUM 30KL",
+            ],
+          },
+          presentaciones: [
+            { peso: "1kg", precio: 6900 },
+            { peso: "2kg", precio: 13300 },
+            { peso: "20kg", precio: 116000 },
+            { peso: "30kg", precio: 170000 },
+          ],
+        },
+        {
+          nombre: "RINGO CROQUETAS",
+          especie: "perro",
+          categoria: "comida",
+          metadata: { original_names: ["RINGO CROQUETAS 20KL"] },
+          presentaciones: [{ peso: "20kg", precio: 95500 }],
+        },
+      ],
+    },
+  ]);
+  const interpretacion = {
+    intencion: "consulta_producto",
+    accion: "consultar",
+    confianza: 0.96,
+    producto: {
+      marca: "RINGO",
+      referencia: "RINGO PRO",
+      linea: "PRO",
+      textoVisible: "RINGO PRO ADULTOS DIGESTION AVANZADA 20kg",
+      especie: "perro",
+      etapa: "adulto",
+      presentacion: "20kg",
+    },
+  };
+  const clasificacion = {
+    intencion: "imagen",
+    perfilContexto: "multimedia",
+    requiereVision: true,
+  };
+  const validacion = validarCoincidenciaProducto({
+    mensaje: "y que precio?",
+    interpretacion,
+    catalogo: catalogoRingo,
+    catalogoCandidatos: catalogoRingo,
+    clasificacion,
+  });
+  const respuesta = resolverConsultaCatalogo(
+    "y que precio?",
+    crearEstadoInicial(),
+    catalogoRingo,
+    aplicarCoincidenciaValidada(interpretacion, validacion)
+  );
+
+  assert.equal(validacion.nivel, "alta");
+  assert.equal(validacion.razon, "senales_visuales_convergentes");
+  assert.equal(validacion.coincidencia.referencia, "RINGO PREMIUM");
+  assert.equal(validacion.presentacionSolicitada, "20kg");
+  assert.match(respuesta, /RINGO PREMIUM 20kg: \$116\.000/);
+  assert.match(respuesta, /RINGO PREMIUM 1kg: \$6\.900/);
+  assert.match(respuesta, /RINGO PREMIUM 2kg: \$13\.300/);
+  assert.match(respuesta, /RINGO PREMIUM 30kg: \$170\.000/);
+  assert.doesNotMatch(respuesta, /RINGO PREMIUN PRO 4kg/);
+  assert.doesNotMatch(respuesta, /RINGO CROQUETAS 20kg/);
+});
+
 test("vision mapea nombre comercial visible a la referencia interna equivalente", () => {
   const catalogoVision = [
     {

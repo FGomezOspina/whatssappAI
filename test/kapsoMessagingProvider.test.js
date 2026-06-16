@@ -33,7 +33,7 @@ test("normaliza un mensaje de texto Kapso v2", () => {
   assert.equal(evento.recipientId, "573001112233");
   assert.equal(evento.text, "Hola");
   assert.equal(evento.phoneNumberId, "phone_123");
-  assert.equal(evento.idempotencyKey, "wamid.123");
+  assert.equal(evento.idempotencyKey, "phone_123:wamid.123");
 });
 
 test("extrae phoneNumberId desde campos alternos del canal Kapso", () => {
@@ -240,7 +240,7 @@ test("deduplica mensajes bufferizados por message.id", () => {
 
   assert.deepEqual(
     eventos.map((evento) => evento.idempotencyKey),
-    ["wamid.batch.1", "wamid.batch.2"]
+    ["phone_123:wamid.batch.1", "phone_123:wamid.batch.2"]
   );
 });
 

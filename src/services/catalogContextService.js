@@ -50,6 +50,7 @@ function expandirConsulta(texto = "") {
 
   if (/dog\s*chow|dogchow|doc\s*chow|dog\s*show/.test(normalizado)) expansiones.push("dog chow");
   if (/brabecto|bravecto/.test(normalizado)) expansiones.push("bravecto");
+  if (/\b(pro|premium|premiun)\b/.test(normalizado)) expansiones.push("premium pro premiun");
   if (/\b(pequeno|pequena|pequenos|pequenas|mini)\b/.test(normalizado)) {
     expansiones.push("rp raza pequena");
   }

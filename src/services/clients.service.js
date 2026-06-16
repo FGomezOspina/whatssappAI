@@ -29,16 +29,23 @@ function guardarCache(key, value) {
 }
 
 function normalizarCliente(fila, resolution = "supabase") {
-  const vertical = fila.vertical || null;
+  const vertical = fila.business_type || fila.vertical || null;
   return {
     id: fila.id,
     slug: fila.slug,
     name: fila.name,
     vertical,
+    business_type: vertical,
     businessType: vertical,
     tipo_negocio: vertical,
     platform: fila.owner_platform || DEFAULT_PLATFORM_NAME,
     settings: fila.settings || {},
+    config: {
+      settings: fila.settings || {},
+      prompts: {},
+      deliveryRules: [],
+      channel: null,
+    },
     prompts: {},
     deliveryRules: [],
     resolution,
@@ -80,13 +87,19 @@ async function cargarExtrasCliente(cliente) {
     ...cliente,
     prompts,
     deliveryRules,
+    config: {
+      ...(cliente.config || {}),
+      settings: cliente.settings || {},
+      prompts,
+      deliveryRules,
+    },
   };
 }
 
 async function buscarClientePorId(id, resolution = "client_id") {
   if (!id) return null;
 
-  const query = `${CLIENTS_TABLE}?id=eq.${id}&status=eq.active&select=id,slug,name,vertical,owner_platform,settings&limit=1`;
+  const query = `${CLIENTS_TABLE}?id=eq.${id}&status=eq.active&select=id,slug,name,vertical,business_type,owner_platform,settings&limit=1`;
   const filas = (await requestSupabase(query)) || [];
   return filas[0] ? cargarExtrasCliente(normalizarCliente(filas[0], resolution)) : null;
 }
@@ -96,7 +109,7 @@ async function buscarClientePorSlug(slug, resolution = "slug") {
 
   const query = `${CLIENTS_TABLE}?slug=eq.${encodeURIComponent(
     slug
-  )}&status=eq.active&select=id,slug,name,vertical,owner_platform,settings&limit=1`;
+  )}&status=eq.active&select=id,slug,name,vertical,business_type,owner_platform,settings&limit=1`;
   const filas = (await requestSupabase(query)) || [];
   return filas[0] ? cargarExtrasCliente(normalizarCliente(filas[0], resolution)) : null;
 }
@@ -106,25 +119,75 @@ function canalDesdeEvento(evento = {}) {
     provider: "kapso",
     channel: "whatsapp",
     phoneNumberId: evento.phoneNumberId || null,
+    workspaceId: evento.workspaceId || null,
+    integrationId: evento.integrationId || null,
   };
+}
+
+function filtrosCanal(canal) {
+  return [
+    ["phone_number_id", canal.phoneNumberId, "phone_number_id"],
+    ["workspace_id", canal.workspaceId, "workspace_id"],
+    ["integration_id", canal.integrationId, "integration_id"],
+  ].filter(([, valor]) => Boolean(valor));
+}
+
+async function buscarFilaCanal(canal, campo, valor) {
+  const query = `${CHANNELS_TABLE}?provider=eq.${canal.provider}&channel=eq.${canal.channel}&${campo}=eq.${encodeURIComponent(
+    valor
+  )}&active=eq.true&select=client_id,settings,display_name&limit=1`;
+  const filas = (await requestSupabase(query)) || [];
+  return filas[0] || null;
 }
 
 async function buscarClientePorCanal(evento = {}) {
   const canal = canalDesdeEvento(evento);
-  if (!canal.phoneNumberId) return null;
+  const filtros = filtrosCanal(canal);
+  if (!filtros.length) return null;
 
-  const cacheKey = `channel:${canal.provider}:${canal.channel}:${canal.phoneNumberId}`;
+  const cacheKey = `channel:${canal.provider}:${canal.channel}:${filtros
+    .map(([campo, valor]) => `${campo}:${valor}`)
+    .join("|")}`;
   const cache = obtenerCache(cacheKey);
   if (cache) return cache;
 
-  const query = `${CHANNELS_TABLE}?provider=eq.${canal.provider}&channel=eq.${canal.channel}&phone_number_id=eq.${encodeURIComponent(
-    canal.phoneNumberId
-  )}&active=eq.true&select=client_id&limit=1`;
-  const filas = (await requestSupabase(query)) || [];
-  const cliente = filas[0]?.client_id ? await buscarClientePorId(filas[0].client_id, "channel") : null;
+  for (const [campo, valor, resolution] of filtros) {
+    const filaCanal = await buscarFilaCanal(canal, campo, valor);
+    const cliente = filaCanal?.client_id ? await buscarClientePorId(filaCanal.client_id, resolution) : null;
+    if (cliente) {
+      const conCanal = {
+        ...cliente,
+        channel: {
+          provider: canal.provider,
+          channel: canal.channel,
+          resolution,
+          phoneNumberId: canal.phoneNumberId,
+          workspaceId: canal.workspaceId,
+          integrationId: canal.integrationId,
+          displayName: filaCanal.display_name || null,
+          settings: filaCanal.settings || {},
+        },
+        config: {
+          ...(cliente.config || {}),
+          channel: {
+            provider: canal.provider,
+            channel: canal.channel,
+            resolution,
+            phoneNumberId: canal.phoneNumberId,
+            workspaceId: canal.workspaceId,
+            integrationId: canal.integrationId,
+            displayName: filaCanal.display_name || null,
+            settings: filaCanal.settings || {},
+          },
+        },
+      };
 
-  if (cliente) guardarCache(cacheKey, cliente);
-  return cliente;
+      guardarCache(cacheKey, conCanal);
+      return conCanal;
+    }
+  }
+
+  return null;
 }
 
 function sandboxActivoParaEvento(evento = {}) {

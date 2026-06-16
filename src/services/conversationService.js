@@ -236,6 +236,11 @@ async function responderEventosEntrantes(eventos) {
   const evento = eventos[0];
   const cliente = await obtenerClienteActual(evento);
   const vertical = obtenerVerticalCliente(cliente);
+  if (vertical && vertical.implemented === false) {
+    throw new Error(
+      `La vertical ${vertical.key} esta registrada, pero su flujo conversacional aun no esta implementado`
+    );
+  }
   if (!vertical || !vertical.orderLogic || !vertical.productLogic) {
     throw new Error(
       `La vertical ${vertical?.key || cliente.vertical || "desconocida"} no tiene lógica conversacional activa`
@@ -281,6 +286,7 @@ async function responderEventosEntrantes(eventos) {
           media: item.media,
           logger: console,
           catalogo,
+          vertical,
         })
       )
     );

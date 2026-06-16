@@ -257,6 +257,8 @@ function combinacionesContiguas(tokens = [], maximo = 3) {
 
 function normalizarIdentidadProducto(texto = "") {
   return normalizar(texto)
+    .replace(/\bpremiun\b/g, "premium")
+    .replace(/\bpro\b/g, "premium")
     .replace(/\bad\b/g, "adulto")
     .replace(/\brp\b/g, "raza pequeno")
     .replace(/\b(?:peq|pequena|pequenas|pequenos)\b/g, "pequeno")
@@ -765,6 +767,38 @@ function formatosProducto(texto = "") {
   return resultado;
 }
 
+function pideLineaBaseOriginal(interpretacion = null, mensaje = "") {
+  const producto =
+    interpretacion?.producto ||
+    (interpretacion?.productos?.length === 1 ? interpretacion.productos[0] : {});
+  const texto = normalizar(
+    [
+      producto.referencia,
+      producto.linea,
+      producto.textoVisible,
+      mensaje,
+    ]
+      .filter(Boolean)
+      .join(" ")
+  );
+  return /\b(original|tradicional|clasico|clasica|normal|regular)\b/.test(texto);
+}
+
+function referenciaTieneLineaNoBase(referencia = {}) {
+  const texto = normalizar(
+    [
+      referencia.nombre,
+      referencia.descripcion,
+      ...(referencia.metadata?.original_names || []),
+      ...(referencia.metadata?.equivalent_references || []),
+      ...(referencia.metadata?.aliases || []),
+    ]
+      .filter(Boolean)
+      .join(" ")
+  );
+  return /\b(premium|premiun|pro|plus|vitality|vitalidad|gold|gourmet)\b/.test(texto);
+}
+
 function especieExplicita(texto = "") {
   const normalizado = normalizar(texto);
   if (/\b(gato|gatos|cat|cats|feline|felino|felina)\b/.test(normalizado)) {
@@ -1148,7 +1182,15 @@ function ajustarPorSenales(item, mensaje, interpretacion, clasificacion = {}) {
   if (señales.tamano && tamano) {
     ajuste += señales.tamano === tamano ? 0.14 : -0.24;
   } else if (señales.tamano && !tamano) {
-    ajuste -= 0.12;
+    ajuste += esVision && coincide === true ? 0 : -0.12;
+  }
+
+  if (esVision && pideLineaBaseOriginal(interpretacion, mensaje)) {
+    if (referenciaTieneLineaNoBase(item.referencia)) {
+      ajuste -= 0.28;
+    } else if (coincide === true) {
+      ajuste += 0.38;
+    }
   }
 
   const especieCoincide =
@@ -1262,9 +1304,17 @@ function filtrarPorSenalesEspecificas(
     if (!señales[senal] || !filtrados.some((item) => item[propiedad] === true)) {
       return;
     }
+    const existeCoincidenciaEspecificaConPresentacion = filtrados.some(
+      (item) => item[propiedad] === true && item.presentacionCoincide === true
+    );
     filtrados = filtrados.filter(
       (item) =>
         item[propiedad] === true ||
+        (!existeCoincidenciaEspecificaConPresentacion &&
+          item[propiedad] === null &&
+          item.presentacionCoincide === true &&
+          item.categoriaCoincide !== false &&
+          item.especieCoincide !== false) ||
         (item.exacta && item.tipoCoincidencia !== "marca")
     );
   });
@@ -1662,7 +1712,13 @@ function aplicarCoincidenciaValidada(interpretacion, validacion) {
     marca: coincidencia.marca || producto.marca,
   };
 
-  if (coincidencia.tipoCoincidencia !== "marca" && coincidencia.referencia) {
+  const permiteReferenciaValidada =
+    coincidencia.tipoCoincidencia !== "marca" ||
+    ["senales_visuales_convergentes", "senales_convergentes"].includes(
+      validacion.razon
+    );
+
+  if (permiteReferenciaValidada && coincidencia.referencia) {
     const presentacionSolicitada = normalizarPeso(
       producto.presentacion || validacion.presentacionSolicitada || ""
     );

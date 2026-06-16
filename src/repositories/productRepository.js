@@ -22,7 +22,7 @@ function fallbackCatalogoLocalHabilitado() {
 }
 
 function clientesConFallbackLocal() {
-  return (process.env.CATALOG_FALLBACK_CLIENTS || "distrifinca")
+  return (process.env.CATALOG_FALLBACK_CLIENTS || "")
     .split(",")
     .map((valor) => valor.trim().toLowerCase())
     .filter(Boolean);

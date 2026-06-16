@@ -297,8 +297,8 @@ test("usa catalogo local de respaldo si Supabase falla al cargar productos", asy
   process.env.SUPABASE_SECRET_KEY = "supabase-test-secret";
   process.env.CATALOG_FALLBACK_FILE = archivo;
   process.env.CATALOG_FALLBACK_LOCAL = "true";
+  process.env.CATALOG_FALLBACK_CLIENTS = "distrifinca";
   process.env.SUPABASE_REQUEST_RETRIES = "0";
-  delete process.env.CATALOG_FALLBACK_CLIENTS;
   global.fetch = async () => {
     throw new Error("fetch failed");
   };
@@ -325,6 +325,7 @@ test("no usa catalogo local de Distrifinca para otros clientes", async () => {
     SUPABASE_SECRET_KEY: process.env.SUPABASE_SECRET_KEY,
     CATALOG_FALLBACK_FILE: process.env.CATALOG_FALLBACK_FILE,
     CATALOG_FALLBACK_LOCAL: process.env.CATALOG_FALLBACK_LOCAL,
+    CATALOG_FALLBACK_CLIENTS: process.env.CATALOG_FALLBACK_CLIENTS,
     SUPABASE_REQUEST_RETRIES: process.env.SUPABASE_REQUEST_RETRIES,
   };
   const fetchAnterior = global.fetch;
@@ -336,6 +337,7 @@ test("no usa catalogo local de Distrifinca para otros clientes", async () => {
   process.env.SUPABASE_SECRET_KEY = "supabase-test-secret";
   process.env.CATALOG_FALLBACK_FILE = archivo;
   process.env.CATALOG_FALLBACK_LOCAL = "true";
+  process.env.CATALOG_FALLBACK_CLIENTS = "distrifinca";
   process.env.SUPABASE_REQUEST_RETRIES = "0";
   global.fetch = async () => {
     throw new Error("fetch failed");

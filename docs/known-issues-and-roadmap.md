@@ -12,7 +12,7 @@ Confirmar con el numero real:
 
 - Webhook activo con evento `Message received`.
 - Firma `x-webhook-signature` validada con el cuerpo crudo.
-- `phone_number_id` asociado a Distrifinca en `client_channels`.
+- `phone_number_id` asociado al cliente correcto en `client_channels`.
 - Envio saliente con el mismo numero Kapso.
 - Texto, imagen y audio reales.
 
@@ -26,6 +26,12 @@ Riesgo: las pruebas automatizadas no sustituyen una prueba real contra Kapso, Op
 - Rotar cualquier llave que se haya compartido accidentalmente.
 
 Riesgo: fuera de produccion el backend puede aceptar webhooks sin firma si no existe secreto, para facilitar desarrollo local.
+
+### P0: alta controlada de cada cliente
+
+Antes de activar otra empresa, validar que su `slug`, `vertical`, canal Kapso, catalogo, prompts y reglas pertenezcan al mismo `client_id`.
+
+Riesgo: un canal o catalogo asociado al cliente equivocado mezcla conversaciones, precios o pedidos entre empresas.
 
 ### P1: concurrencia distribuida
 
@@ -59,6 +65,7 @@ Riesgo: si Supabase falla en produccion, el bot no debe inventar productos ni pr
 ### Observabilidad
 
 - Logs estructurados con `messageId`, `phoneNumberId`, usuario anonimizado y duracion por etapa.
+- Incluir `client_id`, `client_slug`, `vertical` y ambiente para diagnosticar clientes especificos.
 - Metricas de errores por proveedor: Kapso, OpenAI y Supabase.
 - Panel de conversaciones fallidas.
 - Trazabilidad entre respuesta operativa y respuesta humanizada.
@@ -80,6 +87,15 @@ Riesgo: imagen/audio puede fallar por URL vencida, archivo grande, MIME inespera
 - Administrar stock real y disponibilidad por sede.
 - Crear panel para marcas, referencias, presentaciones, precios e imagenes.
 - Auditar cambios de precio y disponibilidad.
+- Definir flujo de aprobacion por cliente antes de publicar cambios de catalogo.
+
+### Operacion Multiempresa
+
+- Crear inventario operativo de clientes, numeros Kapso, ambientes, catalogos y responsables.
+- Validar que prompts y ejemplos propios de una empresa no se reutilicen como reglas globales.
+- Agregar pruebas de regresion con dos clientes petshop que compartan marcas pero tengan precios distintos.
+- Definir tablero de salud por cliente: errores, mensajes pendientes, fallos de catalogo, latencia y costo de IA.
+- Documentar proceso de baja o pausa de un cliente sin borrar historial ni catalogo.
 
 ### Pedidos y pagos
 

@@ -82,7 +82,7 @@ Completa las variables en `.env`, ejecuta el esquema de Supabase y arranca el se
 npm start
 ```
 
-Para un proyecto nuevo ejecuta primero `supabase/schema.sql`. Para una base existente ejecuta `supabase/004_multiempresa_catalog.sql`. El catalogo se importa siempre indicando explicitamente a que cliente pertenece; no hay cliente por defecto para evitar mezclar productos entre empresas.
+Para un proyecto nuevo ejecuta primero `supabase/schema.sql`. Para una base existente ejecuta `supabase/004_multiempresa_catalog.sql`, `supabase/005_catalog_search_rpc.sql`, `supabase/005_petshop_product_classification.sql` y `supabase/006_multi_vertical_clients.sql` segun aplique. El catalogo se importa siempre indicando explicitamente a que cliente pertenece; no hay cliente por defecto para evitar mezclar productos entre empresas.
 
 El archivo `productos.json` actual corresponde al catalogo de importacion de Distrifinca:
 
