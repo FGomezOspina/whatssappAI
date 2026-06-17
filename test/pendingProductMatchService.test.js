@@ -86,10 +86,7 @@ test("la respuesta ambigua muestra precios de todas las coincidencias", () => {
 
   assert.match(respuesta, /ADVANCE CAT URINARY.*3kg: \$196\.000/i);
   assert.match(respuesta, /ADVANCE URINAY.*1\.5kg: \$108\.000/i);
-  assert.match(
-    respuesta,
-    /¿Buscas ADVANCE CAT URINARY o ADVANCE URINAY\?/i
-  );
+  assert.match(respuesta, /¿Cuál te sirve\?/i);
   assert.doesNotMatch(
     respuesta,
     /Revisando la foto|¿Es esa\?|coincidencia exacta|responder con el número/i

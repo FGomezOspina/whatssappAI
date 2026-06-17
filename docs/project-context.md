@@ -8,6 +8,11 @@ Este documento es la fuente canonica para entender el codigo actual. Los detalle
 
 Construir un asesor conversacional de WhatsApp para clientes de la plataforma AIVANCE. Distrifinca es el primer cliente configurado y usa la vertical `petshop`.
 
+Estado de verticales:
+
+- `petshop`: flujo conversacional operativo para tiendas de mascotas.
+- `guarderia`: registrada como vertical futura y cliente `sanmarcospetsclub` en preparacion; `implemented: false` bloquea su uso conversacional hasta implementar reglas reales.
+
 La autonomia esta separada deliberadamente:
 
 - OpenAI interpreta intencion, lenguaje informal, errores, imagenes y audio.
@@ -23,7 +28,7 @@ flowchart TD
   C --> D["kapsoMessagingProvider"]
   D --> E["conversationService"]
   E --> F["clients.service"]
-  F --> G["client_channels por phone_number_id"]
+  F --> G["client_channels por identificador Kapso"]
   G --> H["aivance_clients"]
   E --> I["interactionClassifier"]
   E --> J["conversationStore"]
@@ -42,10 +47,10 @@ flowchart TD
 
 1. Kapso envia `whatsapp.message.received`.
 2. `src/app.js` valida `x-webhook-signature` contra el cuerpo HTTP crudo y responde `200 OK` rapido.
-3. `kapsoMessagingProvider` normaliza texto, multimedia, ids, `phone_number_id` e idempotencia.
+3. `kapsoMessagingProvider` normaliza texto, multimedia, identificadores de canal e idempotencia.
 4. El buffer agrupa mensajes consecutivos del mismo usuario antes de llamar al agente.
-5. `clients.service` busca `client_channels` por `provider='kapso'`, `channel='whatsapp'` y `phone_number_id`.
-6. El cliente activo en `aivance_clients` define `vertical`, prompts, reglas y catalogo.
+5. `clients.service` busca `client_channels` por `provider='kapso'`, `channel='whatsapp'` y, en orden, `phone_number_id`, `workspace_id` o `integration_id`.
+6. El cliente activo en `aivance_clients` define `business_type`/`vertical`, prompts, reglas y catalogo.
 7. `interactionClassifier` decide perfil, historial, ejemplos, modelos y necesidad de catalogo.
 8. `mediaProcessor` descarga imagenes o audios cuando Kapso entrega URL.
 9. `catalogContextService` recupera candidatos compactos; el catalogo completo sigue disponible para validar.
@@ -74,8 +79,9 @@ flowchart TD
 | `src/services/humanizer.js` | Redaccion natural protegida. |
 | `src/conversation/conversationStore.js` | Estado conversacional en memoria con persistencia Supabase. |
 | `src/repositories/*` | Acceso a Supabase para catalogo, mensajes, pedidos y ejemplos. |
-| `src/verticals/index.js` | Seleccion de vertical por `aivance_clients.vertical`. |
+| `src/verticals/index.js` | Seleccion de vertical por `business_type`, `businessType`, `tipo_negocio` o `vertical`. |
 | `src/verticals/petshop/*` | Motor comercial, prompt, barreras y utilidades petshop. |
+| `src/verticals/guarderia/*` | Placeholder registrado con `implemented: false`; no atiende conversaciones todavia. |
 
 ## Multiempresa
 
@@ -83,10 +89,11 @@ AIVANCE es la plataforma. Cada empresa cliente vive en `aivance_clients`; cada c
 
 Reglas vigentes:
 
-- En produccion, el cliente se identifica por `phone_number_id`.
-- `client_channels` debe tener una fila activa para cada numero Kapso operativo.
-- `aivance_clients.vertical` define el tipo de negocio.
-- Distrifinca usa `slug='distrifinca'` y `vertical='petshop'`.
+- En produccion, el cliente se identifica por una fila activa de `client_channels`.
+- El identificador preferido es `phone_number_id`; `workspace_id` e `integration_id` funcionan como respaldos cuando Kapso los envia.
+- `aivance_clients.business_type` define el tipo de negocio; si no existe, se usa `vertical`.
+- Distrifinca usa `slug='distrifinca'` y tipo de negocio `petshop`.
+- `sanmarcospetsclub` queda en `setup_pending` con `vertical='guarderia'` mientras la vertical siga como placeholder.
 - No se crean carpetas por cliente.
 - No se cambia codigo para agregar otra empresa de la misma vertical.
 - `CLIENT_SLUG` y `CLIENT_NAME` no forman parte de la configuracion operativa.
@@ -112,11 +119,14 @@ Reglas:
 
 - El catalogo de Supabase manda sobre cualquier interpretacion de IA.
 - Toda importacion exige `--client` y `--client-name`.
+- El importador acepta `--replace` para desactivar el catalogo activo del cliente antes de cargar el nuevo archivo.
 - Busqueda considera nombre, descripcion, aliases, `metadata.original_names`, referencias equivalentes, especie, etapa, categoria y presentaciones.
 - FTS/RPC en Supabase se combina con candidatos fuzzy locales.
 - La consolidacion dinamica une typos compatibles sin reglas quemadas por producto.
 - Una presentacion pedida debe existir exactamente en el catalogo consolidado.
 - El catalogo aun no maneja inventario real.
+
+Existe respaldo local solo para desarrollo o incidentes controlados: `CATALOG_FALLBACK_LOCAL=true`, `CATALOG_FALLBACK_CLIENTS` y `CATALOG_FALLBACK_FILE`. Solo se usa ante errores transitorios de Supabase y para clientes permitidos explicitamente.
 
 ## Estado Conversacional
 
@@ -149,7 +159,7 @@ Tablas principales:
 | Tabla | Uso |
 | --- | --- |
 | `aivance_clients` | Empresas cliente de AIVANCE. |
-| `client_channels` | Canales por empresa, incluyendo Kapso WhatsApp. |
+| `client_channels` | Canales por empresa, incluyendo `phone_number_id`, `workspace_id` e `integration_id`. |
 | `client_prompts` | Instrucciones adicionales por cliente. |
 | `client_delivery_rules` | Reglas y fletes por cliente. |
 | `catalog_brands` | Marcas por cliente. |
@@ -193,24 +203,27 @@ La auditoria detallada vive en `docs/context-audit.md`.
 Grupos principales:
 
 - Servidor: `PORT`, `NODE_ENV`.
-- Kapso: `KAPSO_API_KEY`, `KAPSO_PHONE_NUMBER_ID`, `KAPSO_WEBHOOK_SECRET`, `KAPSO_API_BASE_URL`, `META_GRAPH_VERSION`.
+- Kapso: `KAPSO_API_KEY`, `KAPSO_PHONE_NUMBER_ID`, `KAPSO_SANDBOX_PHONE_NUMBER_ID`, `KAPSO_WEBHOOK_SECRET`, `KAPSO_API_BASE_URL`, `META_GRAPH_VERSION`.
 - Supabase: `SUPABASE_URL`, `SUPABASE_SECRET_KEY` y nombres de tablas si se personalizan.
 - OpenAI: llaves, modelos, timeouts y banderas de IA.
 - Multimedia: `MEDIA_DOWNLOAD_TIMEOUT_MS`, `MEDIA_MAX_BYTES`.
 - Buffer: `INBOUND_MESSAGE_BUFFER_MS`.
 - Cliente: `CLIENT_CACHE_MS`.
 - Catalogo/contexto: limites de candidatos, thresholds de matching y logs diagnosticos.
+- Catalogo/respaldo local: `CATALOG_FALLBACK_LOCAL`, `CATALOG_FALLBACK_CLIENTS`, `CATALOG_FALLBACK_FILE`, `CATALOG_QUERY_BATCH_SIZE`.
 
 Variables operativas frecuentes:
 
 - `KAPSO_PHONE_NUMBER_ID`: numero Kapso usado para enviar respuestas.
 - `KAPSO_WEBHOOK_SECRET`: secreto HMAC; obligatorio en produccion.
 - `KAPSO_SANDBOX_CLIENT_SLUG`: respaldo solo para pruebas locales fuera de produccion.
+- `KAPSO_SANDBOX_PHONE_NUMBER_ID`: phone number id que habilita ese respaldo si difiere del numero saliente.
 - `CATALOG_CONTEXT_MAX_REFERENCES`: maximo de candidatos de texto.
 - `VISION_CATALOG_CONTEXT_MAX_REFERENCES`: maximo de candidatos de vision.
 - `AI_VISION_REFINEMENT`: desactiva la segunda lectura visual con `false`.
 - `SUPABASE_CATALOG_SEARCH_RPC`: RPC de busqueda, por defecto `search_catalog_products`.
-- `CATALOG_SEARCH_BACKEND=local`: fuerza fallback local temporal.
+- `CATALOG_SEARCH_BACKEND=local`: fuerza busqueda local temporal.
+- `CATALOG_FALLBACK_LOCAL=true`: permite cargar un JSON local cuando Supabase tiene un error transitorio y el cliente esta autorizado en `CATALOG_FALLBACK_CLIENTS`.
 - `AI_CONTEXT_LOGS`, `AI_CONTEXT_PAYLOAD_LOGS`, `PRODUCT_CONTEXT_LOGS`, `AI_USAGE_LOGS`: diagnostico; no dejarlos activos en produccion si exponen datos.
 
 No expongas `SUPABASE_SECRET_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `KAPSO_API_KEY` ni `OPENAI_API_KEY`.

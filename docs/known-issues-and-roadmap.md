@@ -12,7 +12,7 @@ Confirmar con el numero real:
 
 - Webhook activo con evento `Message received`.
 - Firma `x-webhook-signature` validada con el cuerpo crudo.
-- `phone_number_id` asociado al cliente correcto en `client_channels`.
+- Identificador de canal asociado al cliente correcto en `client_channels`.
 - Envio saliente con el mismo numero Kapso.
 - Texto, imagen y audio reales.
 
@@ -32,6 +32,8 @@ Riesgo: fuera de produccion el backend puede aceptar webhooks sin firma si no ex
 Antes de activar otra empresa, validar que su `slug`, `vertical`, canal Kapso, catalogo, prompts y reglas pertenezcan al mismo `client_id`.
 
 Riesgo: un canal o catalogo asociado al cliente equivocado mezcla conversaciones, precios o pedidos entre empresas.
+
+`guarderia` y `sanmarcospetsclub` estan preparados en datos/codigo, pero el flujo sigue bloqueado por `implemented: false`. Activarlos requiere implementar reglas conversacionales, horarios, cupos, requisitos, precios y pruebas reales.
 
 ### P1: concurrencia distribuida
 
@@ -64,7 +66,7 @@ Riesgo: si Supabase falla en produccion, el bot no debe inventar productos ni pr
 
 ### Observabilidad
 
-- Logs estructurados con `messageId`, `phoneNumberId`, usuario anonimizado y duracion por etapa.
+- Logs estructurados con `messageId`, identificador de canal, usuario anonimizado y duracion por etapa.
 - Incluir `client_id`, `client_slug`, `vertical` y ambiente para diagnosticar clientes especificos.
 - Metricas de errores por proveedor: Kapso, OpenAI y Supabase.
 - Panel de conversaciones fallidas.
@@ -92,10 +94,12 @@ Riesgo: imagen/audio puede fallar por URL vencida, archivo grande, MIME inespera
 ### Operacion Multiempresa
 
 - Crear inventario operativo de clientes, numeros Kapso, ambientes, catalogos y responsables.
+- Registrar por cliente `phone_number_id`, `workspace_id` e `integration_id` cuando Kapso los entregue.
 - Validar que prompts y ejemplos propios de una empresa no se reutilicen como reglas globales.
 - Agregar pruebas de regresion con dos clientes petshop que compartan marcas pero tengan precios distintos.
 - Definir tablero de salud por cliente: errores, mensajes pendientes, fallos de catalogo, latencia y costo de IA.
 - Documentar proceso de baja o pausa de un cliente sin borrar historial ni catalogo.
+- Completar la vertical `guarderia` antes de activar San Marcos Pets Club u otros clientes de esa categoria.
 
 ### Pedidos y pagos
 

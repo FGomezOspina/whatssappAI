@@ -7,6 +7,44 @@ const {
 const DEFAULT_TEXT_REFERENCE_LIMIT = 8;
 const DEFAULT_VISION_REFERENCE_LIMIT = 20;
 const MAX_REFERENCE_LIMIT = 20;
+const TOKENS_CONVERSACIONALES = new Set(
+  [
+    "buen",
+    "buena",
+    "buenas",
+    "bueno",
+    "buenos",
+    "chao",
+    "cual",
+    "cuales",
+    "dia",
+    "dias",
+    "gracia",
+    "gracias",
+    "hago",
+    "hacer",
+    "hola",
+    "me",
+    "noche",
+    "noches",
+    "para",
+    "pregunta",
+    "preguntar",
+    "que",
+    "tarde",
+    "tardes",
+    "te",
+    "tiene",
+    "tienes",
+    "tienen",
+    "maneja",
+    "manejan",
+    "manejas",
+    "manejamos",
+    "manejo",
+    "quiero",
+  ].map(normalizar)
+);
 
 function referenciasCatalogo(catalogo = []) {
   return catalogo.flatMap((marca) =>
@@ -69,7 +107,7 @@ function expandirConsulta(texto = "") {
 function tokens(texto = "") {
   return expandirConsulta(texto)
     .split(/\s+/)
-    .filter((token) => token.length > 1 && !["para", "tiene", "tienes", "manejan", "quiero"].includes(token));
+    .filter((token) => token.length > 1 && !TOKENS_CONVERSACIONALES.has(token));
 }
 
 function contiene(texto, token) {

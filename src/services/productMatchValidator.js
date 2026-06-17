@@ -21,18 +21,28 @@ const STOPWORDS = new Set(
     "agregar",
     "agrega",
     "agregame",
+    "buen",
+    "buena",
+    "buenas",
+    "bueno",
+    "buenos",
     "busco",
     "categoria",
+    "chao",
     "comida",
     "comprar",
     "concentrado",
     "consulta",
+    "cual",
+    "cuales",
     "cuanto",
     "cuesta",
     "de",
     "dame",
     "deme",
     "del",
+    "dia",
+    "dias",
     "disponible",
     "el",
     "en",
@@ -45,11 +55,17 @@ const STOPWORDS = new Set(
     "los",
     "maneja",
     "manejan",
+    "manejas",
+    "manejamos",
+    "manejo",
     "marca",
     "medicina",
     "medicamento",
     "medicamentos",
+    "me",
     "necesito",
+    "noche",
+    "noches",
     "no",
     "es",
     "era",
@@ -66,6 +82,11 @@ const STOPWORDS = new Set(
     "antipulgas",
     "garrapata",
     "garrapatas",
+    "gracia",
+    "gracias",
+    "hago",
+    "hacer",
+    "hola",
     "desparasitante",
     "arena",
     "snack",
@@ -75,6 +96,8 @@ const STOPWORDS = new Set(
     "accesorio",
     "accesorios",
     "precio",
+    "pregunta",
+    "preguntar",
     "producto",
     "productos",
     "opcion",
@@ -87,6 +110,9 @@ const STOPWORDS = new Set(
     "recomendaciones",
     "sirve",
     "sirven",
+    "tarde",
+    "tardes",
+    "te",
     "que",
     "raza",
     "razas",
@@ -430,6 +456,48 @@ function catalogoPlano(catalogo = []) {
       referencia,
       nombres: nombresReferencia(marca, referencia),
     }))
+  );
+}
+
+function tokensItemCatalogo(item = {}) {
+  return new Set(
+    normalizarIdentidadProducto(
+      [
+        item.marca?.marca,
+        item.referencia?.nombre,
+        item.referencia?.descripcion,
+        item.referencia?.categoria,
+        item.referencia?.subcategoria,
+        ...(Array.isArray(item.referencia?.metadata?.original_names)
+          ? item.referencia.metadata.original_names
+          : []),
+        ...(Array.isArray(item.referencia?.metadata?.aliases)
+          ? item.referencia.metadata.aliases
+          : []),
+      ]
+        .filter(Boolean)
+        .join(" ")
+    )
+      .split(/\s+/)
+      .filter(Boolean)
+  );
+}
+
+function coincideCategoriaConsulta(item = {}, mensaje = "") {
+  const categoriaConsulta = normalizarCategoria(mensaje);
+  if (!categoriaConsulta) return false;
+  const categoriaReferencia = normalizarCategoria(item.referencia?.categoria);
+  return !categoriaReferencia || categoriaReferencia === categoriaConsulta;
+}
+
+function itemCompatibleConConsultaParcial(item = {}, terminos = [], mensaje = "") {
+  if (!coincideCategoriaConsulta(item, mensaje)) return false;
+  const tokensItem = tokensItemCatalogo(item);
+  return terminos.some(
+    (termino) =>
+      termino.length > 3 &&
+      !TERMINOS_ATRIBUTO.has(termino) &&
+      tokensItem.has(termino)
   );
 }
 
@@ -1517,7 +1585,8 @@ function validarCoincidenciaProducto({
         clasificacion.requiereVision &&
         similitudTokenFlexible(item.marca.marca, marcaExacta) >=
           MIN_SIMILITUD_MARCA_VISUAL
-      )
+      ) ||
+      itemCompatibleConConsultaParcial(item, terminos, mensajeRazonado)
   );
   const puntuadosSinFiltrar = itemsEvaluados
     .map((item) =>
@@ -1638,6 +1707,7 @@ function validarCoincidenciaProducto({
     usaInterpretacion,
     marcaExacta,
     presentacionValida,
+    requiereVision: Boolean(clasificacion.requiereVision),
     presentacionSolicitada: obtenerPresentacionSolicitada(
       mensajeRazonado,
       interpretacion
@@ -1680,18 +1750,26 @@ function respuestaValidacionProducto(validacion = {}) {
       })
       .join("\n");
     const [primera, segunda] = validacion.alternativas;
+    const esVision = Boolean(validacion.requiereVision);
     const cierre = segunda
-      ? `¿Buscas ${primera.referencia} o ${segunda.referencia}?`
-      : "No alcanzo a distinguir un dato del empaque. ¿Me envías una foto más cerca del nombre o el peso?";
+      ? "¿Cuál te sirve?"
+      : esVision
+        ? "No alcanzo a distinguir un dato del empaque. ¿Me envías una foto más cerca del nombre o el peso?"
+        : "¿Te sirve esa presentación?";
     const apertura = segunda
       ? "Veo estas referencias muy parecidas:"
-      : "Alcancé a identificar esta opción:";
+      : esVision
+        ? "Alcancé a identificar esta opción:"
+        : "Tengo esta opción cercana:";
     return `${apertura}\n\n${opciones}\n\n${cierre}`;
   }
 
+  const cierre = validacion.requiereVision
+    ? "¿Tienes una foto, la marca completa o la presentación para revisarlo mejor?"
+    : "¿Me confirmas la marca completa o la presentación para revisarlo mejor?";
   return `Por ahora no encuentro ${etiquetaConsulta(
     validacion
-  )} en el catálogo actual. Puede que no lo manejemos o que esté escrito de otra forma. ¿Tienes una foto, la marca completa o la presentación para revisarlo mejor?`;
+  )} en el catálogo actual. Puede que no lo manejemos o que esté escrito de otra forma. ${cierre}`;
 }
 
 function aplicarCoincidenciaValidada(interpretacion, validacion) {

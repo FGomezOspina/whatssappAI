@@ -7,6 +7,46 @@ function contieneAlguno(texto, palabras = []) {
   return palabras.some((palabra) => texto.includes(normalizar(palabra)));
 }
 
+function esCierreORechazoContextual(mensaje = "") {
+  const texto = normalizar(mensaje);
+  const tieneNegacion = /\b(?:no|nop|nah|paso)\b/.test(texto);
+  const expresaDesinteres =
+    /\b(?:sirv|funcion|necesit|quier|dese|interes|compr|llevar|pedir|agregar)\w*\b/.test(texto) ||
+    contieneAlguno(texto, ["por ahora no", "ya no", "nada mas", "asi esta bien"]);
+  const tieneCierreSocial = contieneAlguno(texto, [
+    "gracias",
+    "agradezco",
+    "te agradezco",
+    "muchas gracias",
+    "listo",
+    "tranquilo",
+    "tranquila",
+    "no hay problema",
+  ]);
+  const mencionaProductoComoContexto = contieneAlguno(texto, [
+    "producto",
+    "referencia",
+    "marca",
+    "comida",
+    "concentrado",
+    "purgante",
+    "purgantes",
+    "desparasitante",
+    "pulgas",
+    "garrapatas",
+    "snacks",
+    "juguetes",
+    "arena",
+    "medicamento",
+    "pastilla",
+  ]);
+
+  return Boolean(
+    mencionaProductoComoContexto &&
+      ((tieneNegacion && expresaDesinteres) || (tieneNegacion && tieneCierreSocial))
+  );
+}
+
 function tieneAudio(contenidos = []) {
   return contenidos.some((contenido) => contenido.metadata?.tipo === "audio");
 }
@@ -25,6 +65,9 @@ function detectarIntencionBasica(mensaje = "", estado = {}, contenidos = [], ima
   }
   if (contieneAlguno(texto, ["hola", "buenos dias", "buenas tardes", "buenas noches"]) && texto.length <= 30) {
     return "saludo";
+  }
+  if (esCierreORechazoContextual(mensaje)) {
+    return "cierre_contextual";
   }
   if (contieneAlguno(texto, ["direccion", "domicilio", "enviar", "recoger", "recogida", "sede"])) {
     return "domicilio";
@@ -80,6 +123,7 @@ function detectarComplejidad(mensaje = "", estado = {}, intencion = "general") {
   );
 
   if (["imagen", "audio", "comprobante"].includes(intencion)) return "avanzada";
+  if (intencion === "cierre_contextual") return "normal";
   if (lineas > 2 || tieneMultiplesProductos || (hayPedidoActivo && esperaDatos)) return "compleja";
   if (
     ["precio", "busqueda_producto", "referencia_producto", "continuacion", "domicilio"].includes(
@@ -92,6 +136,7 @@ function detectarComplejidad(mensaje = "", estado = {}, intencion = "general") {
 }
 
 function requiereBusquedaProducto(intencion, mensaje = "", estado = {}) {
+  if (intencion === "cierre_contextual") return false;
   if (
     ["imagen", "precio", "busqueda_producto", "referencia_producto", "audio"].includes(
       intencion
@@ -208,4 +253,5 @@ function clasificarInteraccion({ mensaje = "", estado = {}, contenidos = [], ima
 module.exports = {
   clasificarInteraccion,
   detectarIntencionBasica,
+  esCierreORechazoContextual,
 };

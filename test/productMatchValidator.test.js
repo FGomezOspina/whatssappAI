@@ -6,6 +6,7 @@ const {
   construirConsultaProductoContextual,
   respuestaValidacionProducto,
   validarCoincidenciaProducto,
+  _internals: productMatchInternals,
 } = require("../src/services/productMatchValidator");
 const {
   crearEstadoInicial,
@@ -16,6 +17,9 @@ const {
 const {
   consolidarCatalogo,
 } = require("../src/services/catalogConsolidationService");
+const {
+  cargarProductosDesdeJson,
+} = require("../src/repositories/productRepository");
 
 const clasificacionTexto = {
   intencion: "busqueda_producto",
@@ -1338,10 +1342,7 @@ test("la respuesta ambigua es natural y no usa instrucciones numeradas", () => {
   });
 
   assert.match(respuesta, /Veo estas referencias muy parecidas/i);
-  assert.match(
-    respuesta,
-    /¿Buscas NUTRILINE URINARY o NUTRILINE CAT URINARY\?/i
-  );
+  assert.match(respuesta, /¿Cuál te sirve\?/i);
   assert.doesNotMatch(
     respuesta,
     /Revisando la foto|¿Es esa\?|No encontré una coincidencia exacta|posibles coincidencias|responder con el nombre o el número|^\d+\./im
@@ -1515,6 +1516,32 @@ const catalogoArenasSimilares = [
     ],
   },
   {
+    marca: "ARENA MICHIKO LIMON",
+    referencias: [
+      {
+        nombre: "ARENA MICHIKO LIMON",
+        especie: "gato",
+        categoria: "arena_sustrato",
+        subcategoria: "arena",
+        metadata: {},
+        presentaciones: [{ peso: "4.5kg", precio: 29900 }],
+      },
+    ],
+  },
+  {
+    marca: "ARENA MICHIKO LAVANDA",
+    referencias: [
+      {
+        nombre: "ARENA MICHIKO LAVANDA",
+        especie: "gato",
+        categoria: "arena_sustrato",
+        subcategoria: "arena",
+        metadata: {},
+        presentaciones: [{ peso: "2.5kg", precio: 25000 }],
+      },
+    ],
+  },
+  {
     marca: "CAT",
     referencias: [
       {
@@ -1527,6 +1554,50 @@ const catalogoArenasSimilares = [
     ],
   },
 ];
+
+test("saludos y muletillas no contaminan la busqueda de referencias", () => {
+  const mensaje = "Hola, buena tarde\nTe hago una pregunta, ¿tienen arena de tofu de Michiko?";
+  const validacion = validarCoincidenciaProducto({
+    mensaje,
+    catalogo: catalogoArenasSimilares,
+    catalogoCandidatos: catalogoArenasSimilares,
+    clasificacion: clasificacionTexto,
+  });
+  const respuesta = respuestaValidacionProducto(validacion);
+
+  assert.deepEqual(
+    productMatchInternals.tokensDistintivos(mensaje, { inferirEspeciePorRaza: true }),
+    ["tofu", "michiko"]
+  );
+  assert.equal(validacion.nivel, "media");
+  assert.equal(validacion.etiqueta, "tofu michiko");
+  assert.match(
+    validacion.alternativas.map((item) => item.referencia).join(" "),
+    /ARENA FOFICAT TOFU/
+  );
+  assert.match(
+    validacion.alternativas.map((item) => item.referencia).join(" "),
+    /ARENA MICHIKO LIMON/
+  );
+  assert.doesNotMatch(respuesta, /HOLA BUENA TARDE|TE HAGO UNA PREGUNTA/i);
+});
+
+test("texto con combinacion inexistente recomienda referencias cercanas sin pedir foto", () => {
+  const mensaje = "Hola, buena tarde\nTe hago una pregunta, ¿tienen arena de tofu de Michiko?";
+  const validacion = validarCoincidenciaProducto({
+    mensaje,
+    catalogo: cargarProductosDesdeJson(),
+    catalogoCandidatos: cargarProductosDesdeJson(),
+    clasificacion: clasificacionTexto,
+  });
+  const respuesta = respuestaValidacionProducto(validacion);
+
+  assert.equal(validacion.nivel, "media");
+  assert.match(respuesta, /ARENA FOFICAT TOFU/i);
+  assert.match(respuesta, /ARENA MICHIKO LIMON|ARENA MICHIKO LAVANDA/i);
+  assert.doesNotMatch(respuesta, /foto|empaque/i);
+  assert.doesNotMatch(respuesta, /no encuentro/i);
+});
 
 test("une palabras separadas y tolera orden distinto al buscar en todo el catalogo", () => {
   for (const mensaje of ["fofi cat tofu", "arena tofu fofi", "tofu cat"]) {

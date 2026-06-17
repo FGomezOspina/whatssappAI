@@ -3,10 +3,43 @@ const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const path = require("node:path");
 const { _internals: aiInterpreterInternals } = require("../src/services/aiInterpreter");
+const { construirPromptInterprete } = require("../src/services/aiContextOptimizer");
 
 function leerServicio(nombre) {
   return fs.readFileSync(path.join(__dirname, "..", "src", "services", nombre), "utf8");
 }
+
+function leerArchivo(...partes) {
+  return fs.readFileSync(path.join(__dirname, "..", ...partes), "utf8");
+}
+
+test("el prompt petshop entiende WhatsApp colombiano y cierres sin hardcodear frases", () => {
+  const prompt = leerArchivo("src", "verticals", "petshop", "prompt.js");
+
+  assert.match(prompt, /WhatsApp colombiano/i);
+  assert.match(prompt, /vocativos afectivos/i);
+  assert.match(prompt, /tono social de intencion de compra/i);
+  assert.match(prompt, /producto solo como contexto/i);
+  assert.match(prompt, /experiencia negativa, desinteres de compra/i);
+  assert.match(prompt, /clasifica como rechazo o agradecimiento/i);
+  assert.match(prompt, /tokens distintivos/i);
+  assert.match(prompt, /marca, referencia, descripcion, aliases, nombres originales/i);
+});
+
+test("el prompt compacto interpreta rechazos sin extraer producto", () => {
+  const prompt = construirPromptInterprete({
+    perfil: "simple",
+    vertical: {
+      key: "petshop",
+      prompts: require("../src/verticals/petshop/prompt"),
+    },
+  });
+
+  assert.match(prompt, /vocativos, tono carinoso/i);
+  assert.match(prompt, /no le sirvio/i);
+  assert.match(prompt, /usa intencion rechazo o agradecimiento/i);
+  assert.match(prompt, /deja producto sin datos/i);
+});
 
 test("el interprete trata una direccion posterior a cotizacion como continuacion del pedido", () => {
   const prompt = leerServicio("aiInterpreter.js");

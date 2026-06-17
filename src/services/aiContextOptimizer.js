@@ -263,6 +263,8 @@ function instruccionesPerfil(perfil) {
     "Devuelve solo JSON valido con el esquema solicitado.",
     "El catalogo candidato y el backend son la fuente de verdad; no inventes productos ni presentaciones.",
     "Interpreta espanol colombiano, errores de escritura y abreviaturas.",
+    "En WhatsApp colombiano, vocativos, tono carinoso, disculpas, cierres y agradecimientos no son datos de producto.",
+    "Si el cliente menciona un producto solo para decir que no lo quiere, no le sirvio, no seguira con la compra o solo agradece/cierra, usa intencion rechazo o agradecimiento y deja producto sin datos.",
     "Consultar precio o disponibilidad usa accion consultar; no agrega al carrito.",
     "Devuelve solo datos nuevos del mensaje. Usa null cuando no haya evidencia.",
   ];

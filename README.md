@@ -9,8 +9,9 @@ Kapso es el proveedor activo de WhatsApp. Twilio pertenece solamente al antecede
 - Proveedor de WhatsApp activo: Kapso.
 - Entorno recomendado para pruebas y regresiones: sandbox de Kapso.
 - Persistencia: Supabase por REST API, con memoria local como respaldo para desarrollo de conversaciones.
-- Cliente: se resuelve dinamicamente por el `phone_number_id`/canal de WhatsApp registrado en Supabase.
-- Tipo de negocio: se lee desde `aivance_clients.vertical`; la logica actual esta clasificada como vertical `petshop`.
+- Cliente: se resuelve dinamicamente por el canal WhatsApp registrado en Supabase (`phone_number_id`, `workspace_id` o `integration_id`).
+- Tipo de negocio: se lee desde `aivance_clients.business_type` o `vertical`.
+- Vertical operativa: `petshop`. La vertical `guarderia` esta registrada como placeholder y se bloquea hasta implementar su flujo.
 - Catalogo operativo: Supabase, separado por cliente AIVANCE y consolidado en tiempo de ejecucion.
 - Importacion de catalogo: `productos.json` como formato de carga masiva. El archivo actual contiene 392 marcas, 1120 referencias y 1394 presentaciones antes de consolidar duplicados ortograficos.
 - IA: OpenAI para interpretar mensajes, humanizar respuestas, analizar imagenes y transcribir voz.
@@ -55,7 +56,9 @@ flowchart LR
   O --> B
 ```
 
-La mensajeria esta aislada en `src/providers/kapsoMessagingProvider.js`. La logica comercial y la persistencia no dependen del proveedor de WhatsApp. El cliente se resuelve con `src/services/clients.service.js`: el backend toma el `phone_number_id` que llega desde Kapso, busca ese canal en `client_channels` y carga el cliente activo desde `aivance_clients`. Luego `src/verticals/index.js` selecciona la logica por `aivance_clients.vertical`. La logica actual vive en `src/verticals/petshop` y se comparte entre Distrifinca y futuras tiendas de mascotas. `CLIENT_SLUG` ya no es base multiempresa ni variable operativa.
+La mensajeria esta aislada en `src/providers/kapsoMessagingProvider.js`. La logica comercial y la persistencia no dependen del proveedor de WhatsApp. El cliente se resuelve con `src/services/clients.service.js`: el backend toma identificadores del canal Kapso (`phone_number_id`, `workspace_id` o `integration_id`), busca una fila activa en `client_channels` y carga el cliente desde `aivance_clients`. Luego `src/verticals/index.js` selecciona la logica por `business_type`/`vertical`. `CLIENT_SLUG` ya no es base multiempresa ni variable operativa.
+
+`petshop` es la unica vertical conversacional implementada. `guarderia` existe en el registro para preparar clientes como `sanmarcospetsclub`, pero `implemented: false` hace que el backend rechace ese flujo hasta que tenga reglas conversacionales reales.
 
 La resolucion de productos se reparte entre `catalogContextService`, `catalogConsolidationService`, `productMatchValidator` y `pendingProductMatchService`. OpenAI propone una interpretacion, pero estos servicios recuperan candidatos, toleran errores de catalogo/OCR, validan la identidad contra el catalogo completo y conservan selecciones pendientes. No existe una excepcion programada para referencias concretas.
 
@@ -82,7 +85,7 @@ Completa las variables en `.env`, ejecuta el esquema de Supabase y arranca el se
 npm start
 ```
 
-Para un proyecto nuevo ejecuta primero `supabase/schema.sql`. Para una base existente ejecuta `supabase/004_multiempresa_catalog.sql`, `supabase/005_catalog_search_rpc.sql`, `supabase/005_petshop_product_classification.sql` y `supabase/006_multi_vertical_clients.sql` segun aplique. El catalogo se importa siempre indicando explicitamente a que cliente pertenece; no hay cliente por defecto para evitar mezclar productos entre empresas.
+Para un proyecto nuevo ejecuta primero `supabase/schema.sql`. Para una base existente ejecuta las migraciones indicadas en [docs/aivance-multiempresa.md](docs/aivance-multiempresa.md). El catalogo se importa siempre indicando explicitamente a que cliente pertenece; no hay cliente por defecto para evitar mezclar productos entre empresas.
 
 El archivo `productos.json` actual corresponde al catalogo de importacion de Distrifinca:
 
@@ -96,7 +99,9 @@ Para otra empresa petshop se usa la misma logica vertical, pero otro cliente y o
 npm run catalog:import -- --file productos-mi-petshop.json --client mi_petshop --client-name "Mi Petshop" --vertical petshop
 ```
 
-Despues registra el canal de Kapso para Distrifinca en Supabase. Ese registro es el que permite resolver el cliente sin tocar `.env`:
+Para reemplazar el catalogo activo de un cliente antes de importar, agrega `--replace`.
+
+Despues registra el canal de Kapso para el cliente en Supabase. Ese registro es el que permite resolver el cliente sin tocar `.env`:
 
 ```sql
 insert into public.client_channels (client_id, provider, channel, phone_number_id, display_name)
@@ -109,10 +114,11 @@ on conflict do nothing;
 Mientras uses el sandbox antes de registrar el canal en Supabase, configura:
 
 ```env
+KAPSO_SANDBOX_PHONE_NUMBER_ID=...
 KAPSO_SANDBOX_CLIENT_SLUG=distrifinca
 ```
 
-Esa resolucion solo aplica fuera de `NODE_ENV=production`; en produccion el canal debe existir en `client_channels`.
+Esa resolucion solo aplica fuera de `NODE_ENV=production` y solo cuando el `phone_number_id` del evento coincide con `KAPSO_SANDBOX_PHONE_NUMBER_ID` o `KAPSO_PHONE_NUMBER_ID`. En produccion el canal debe existir en `client_channels`.
 
 El backend expone:
 

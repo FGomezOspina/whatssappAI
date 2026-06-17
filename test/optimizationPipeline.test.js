@@ -71,6 +71,18 @@ test("clasifica interacciones simples y busquedas sin llamar a OpenAI", () => {
   assert.equal(busqueda.requiereOpenAI, true);
 });
 
+test("rechazo con producto como contexto pasa por IA sin buscar catalogo", () => {
+  const clasificacion = clasificarInteraccion({
+    mensaje: "Ahh si, no esa arena no me funciono. Te agradezco mucho",
+    estado: {},
+  });
+
+  assert.equal(clasificacion.intencion, "cierre_contextual");
+  assert.equal(clasificacion.requiereOpenAI, true);
+  assert.equal(clasificacion.requiereBusquedaProducto, false);
+  assert.equal(clasificacion.perfilContexto, "simple");
+});
+
 test("filtra catalogo para OpenAI con tolerancia a errores y limite configurable", async () => {
   const envAnterior = process.env.CATALOG_CONTEXT_MAX_REFERENCES;
   process.env.CATALOG_CONTEXT_MAX_REFERENCES = "1";

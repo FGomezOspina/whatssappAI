@@ -2,7 +2,7 @@
 
 La tabla `training_examples` guarda ejemplos curados, no chats completos. Cada ejemplo debe explicar una situacion, el mensaje del cliente, la respuesta ideal y el criterio que el agente debe conservar.
 
-Los ejemplos se inyectan como contexto dinamico. No son fine-tuning y no reemplazan la validacion de catalogo.
+Los ejemplos se inyectan como contexto dinamico. Pueden ser globales (`client_id` nulo) o propios de un cliente. No son fine-tuning y no reemplazan la validacion de catalogo.
 
 ## Principios
 
@@ -11,6 +11,7 @@ Los ejemplos se inyectan como contexto dinamico. No son fine-tuning y no reempla
 - No usar ejemplos como diccionario de aliases.
 - Anonimizar datos personales antes de guardar.
 - Mantener el backend como autoridad sobre catalogo, carrito y pedido.
+- Usar `client_id` para criterios propios de una empresa; dejar global solo lo que aplique a toda la plataforma.
 
 ## Que Extraer De WhatsApp
 
@@ -95,14 +96,15 @@ Agregar Dog Chow Adulto Mini y Pequeno 4kg al pedido nuevo. No sumar el pedido a
 
 ```sql
 insert into public.training_examples
-  (intent, customer_message, ideal_response, notes, tags, priority)
-values
-  (
-    'nuevo_pedido_producto_exacto',
-    'Cliente quiere hacer otro pedido y responde: para un dog chow a.rp 4kg',
-    'Agregar ese producto exacto al pedido nuevo y preguntar si se envia a la misma direccion. No pedir presentacion porque ya dijo 4kg.',
-    'Cuando hay marca, referencia y presentacion exacta, avanzar sin preguntar de mas.',
-    array['nuevo pedido', 'producto exacto', 'directo'],
-    100
-  );
+  (client_id, intent, customer_message, ideal_response, notes, tags, priority)
+select
+  id,
+  'nuevo_pedido_producto_exacto',
+  'Cliente quiere hacer otro pedido y responde: para un dog chow a.rp 4kg',
+  'Agregar ese producto exacto al pedido nuevo y preguntar si se envia a la misma direccion. No pedir presentacion porque ya dijo 4kg.',
+  'Cuando hay marca, referencia y presentacion exacta, avanzar sin preguntar de mas.',
+  array['nuevo pedido', 'producto exacto', 'directo'],
+  100
+from public.aivance_clients
+where slug = 'distrifinca';
 ```

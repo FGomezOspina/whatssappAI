@@ -114,10 +114,38 @@ const TOKENS_REFERENCIA_IGNORADOS = new Set([
   "y",
   "para",
   "que",
+  "buen",
+  "buena",
+  "buenas",
+  "bueno",
+  "buenos",
+  "chao",
+  "cual",
+  "cuales",
+  "dia",
+  "dias",
+  "gracia",
+  "gracias",
+  "hago",
+  "hacer",
+  "hola",
+  "me",
+  "noche",
+  "noches",
   "precio",
+  "pregunta",
+  "preguntar",
+  "tarde",
+  "tardes",
+  "te",
   "tiene",
+  "tienes",
   "tienen",
+  "maneja",
   "manejan",
+  "manejas",
+  "manejamos",
+  "manejo",
   "este",
   "esta",
   "referencia",
@@ -259,6 +287,12 @@ function tokensClaveCortos(texto = "") {
   return tokensReferencia(texto).filter((token) => TOKENS_CORTOS_REFERENCIA.has(token));
 }
 
+function tieneSenalesReferenciaDistintivas(texto = "") {
+  return tokensReferencia(texto).some(
+    (token) => token.length > 3 && !PALABRAS_CRITERIO.includes(token)
+  );
+}
+
 function referenciaContieneConsulta(referencia, consulta = "") {
   const consultaTokens = tokensReferencia(consulta);
   if (!consultaTokens.length) return false;
@@ -273,12 +307,34 @@ function referenciaContieneConsulta(referencia, consulta = "") {
 
 function referenciasPorSenalesMensaje(referencias = [], mensaje = "") {
   const tokensCortos = tokensClaveCortos(mensaje);
-  if (!tokensCortos.length) return referencias;
+  if (tokensCortos.length) {
+    return referencias.filter((referencia) => {
+      const tokens = new Set(tokensReferencia(`${referencia.nombre} ${referencia.descripcion || ""}`));
+      return tokensCortos.some((token) => tokens.has(token));
+    });
+  }
 
-  return referencias.filter((referencia) => {
-    const tokens = new Set(tokensReferencia(`${referencia.nombre} ${referencia.descripcion || ""}`));
-    return tokensCortos.some((token) => tokens.has(token));
-  });
+  const tokensDistintivosMensaje = tokensReferencia(mensaje).filter(
+    (token) => token.length > 3 && !PALABRAS_CRITERIO.includes(token)
+  );
+  if (tokensDistintivosMensaje.length) {
+    const filtradas = referencias.filter((referencia) => {
+      const tokens = new Set(
+        tokensReferencia(
+          [
+            referencia.nombre,
+            referencia.descripcion || "",
+            ...((Array.isArray(referencia.metadata?.original_names) && referencia.metadata.original_names) || []),
+            ...((Array.isArray(referencia.metadata?.aliases) && referencia.metadata.aliases) || []),
+          ].join(" ")
+        )
+      );
+      return tokensDistintivosMensaje.every((token) => tokens.has(token));
+    });
+    if (filtradas.length) return filtradas;
+  }
+
+  return referencias;
 }
 
 function extraerCondicionesProducto(textoNormalizado = "") {
@@ -861,9 +917,32 @@ function nombresReferencia(referencia = {}) {
     .filter((nombre, index, nombres) => nombre.length >= 3 && nombres.indexOf(nombre) === index);
 }
 
+function prioridadCategoriaConsulta(marca, referencia, mensaje = "") {
+  const criterios = extraerCriterios(mensaje);
+  const candidatos = [
+    criterios.subcategoria,
+    criterios.categoria && criterios.categoria.replace(/_/g, " "),
+  ]
+    .filter(Boolean)
+    .flatMap((valor) => normalizar(valor).split(/\s+/).filter(Boolean))
+    .filter((token) => token.length > 3 || token === "arena");
+  if (!candidatos.length) return 0;
+
+  const marcaTexto = normalizar(marca.marca || "");
+  const referenciaTexto = normalizar(referencia.nombre || "");
+  return candidatos.some(
+    (token) => marcaTexto.startsWith(`${token} `) || referenciaTexto.startsWith(`${token} `)
+  )
+    ? 1
+    : 0;
+}
+
 function buscarReferenciaEnCatalogo(catalogo = [], mensaje = "") {
   const texto = normalizar(mensaje);
   const coincidencias = [];
+  const tokensConsulta = tokensReferencia(mensaje).filter(
+    (token) => token.length > 3 || TOKENS_CORTOS_REFERENCIA.has(token)
+  );
 
   catalogo.forEach((marca) => {
     marca.referencias.forEach((referencia) => {
@@ -872,12 +951,82 @@ function buscarReferenciaEnCatalogo(catalogo = [], mensaje = "") {
         .sort((a, b) => b.length - a.length)[0];
 
       if (nombre) {
-        coincidencias.push({ marca, referencia, largo: nombre.length });
+        const prioridadCategoria = prioridadCategoriaConsulta(marca, referencia, mensaje);
+        coincidencias.push({
+          marca,
+          referencia,
+          largo: nombre.length,
+          prioridadCategoria,
+          puntos: nombre.length + 20 + prioridadCategoria * 8,
+        });
+        return;
+      }
+
+      if (!tokensConsulta.length) return;
+
+      const textoReferencia = normalizar(
+        [
+          marca.marca,
+          referencia.nombre,
+          referencia.descripcion,
+          referencia.categoria,
+          referencia.subcategoria,
+          referencia.especie,
+          ...((Array.isArray(referencia.metadata?.original_names) && referencia.metadata.original_names) || []),
+          ...((Array.isArray(referencia.metadata?.aliases) && referencia.metadata.aliases) || []),
+        ]
+          .filter(Boolean)
+          .join(" ")
+      );
+      const tokensReferenciaProducto = new Set(textoReferencia.split(/\s+/).filter(Boolean));
+      const coincidentes = tokensConsulta.filter((token) => tokensReferenciaProducto.has(token));
+      const distintivos = coincidentes.filter((token) => !PALABRAS_CRITERIO.includes(token));
+      const extrasNoSolicitados = new Set(
+        tokensReferencia(textoReferencia).filter(
+          (token) =>
+            token.length > 3 &&
+            !PALABRAS_CRITERIO.includes(token) &&
+            !tokensConsulta.includes(token) &&
+            !normalizarPeso(token)
+        )
+      ).size;
+      const prioridadCategoria = prioridadCategoriaConsulta(marca, referencia, mensaje);
+
+      if (
+        tokensConsulta.length &&
+        coincidentes.length === tokensConsulta.length &&
+        distintivos.length
+      ) {
+        coincidencias.push({
+          marca,
+          referencia,
+          largo: textoReferencia.length,
+          extrasNoSolicitados,
+          prioridadCategoria,
+          puntos: distintivos.length * 20 + coincidentes.length * 5 + prioridadCategoria * 8,
+        });
       }
     });
   });
 
-  return coincidencias.sort((a, b) => b.largo - a.largo)[0] || null;
+  const ordenadas = coincidencias.sort(
+    (a, b) =>
+      b.puntos - a.puntos ||
+      (b.prioridadCategoria || 0) - (a.prioridadCategoria || 0) ||
+      (a.extrasNoSolicitados || 0) - (b.extrasNoSolicitados || 0) ||
+      a.largo - b.largo
+  );
+  const primera = ordenadas[0];
+  if (!primera) return null;
+  primera.relacionadas = ordenadas
+    .filter(
+      (item) =>
+        item.puntos === primera.puntos &&
+        (item.prioridadCategoria || 0) === (primera.prioridadCategoria || 0) &&
+        (item.extrasNoSolicitados || 0) === (primera.extrasNoSolicitados || 0)
+    )
+    .slice(0, 6);
+  return primera;
 }
 
 function presentacionDisponible(referencia, presentacionSolicitada) {
@@ -1070,6 +1219,24 @@ function itemsConsultaReferencias(marca, referencias = []) {
 function solicitaPrecioProducto(mensaje) {
   const texto = normalizar(mensaje);
   return contieneAlguno(texto, ["precio", "precios", "cuanto vale", "a como", "valor", "cotizar", "cotizacion"]);
+}
+
+function solicitaDisponibilidadProducto(mensaje) {
+  const texto = normalizar(mensaje);
+  return contieneAlguno(texto, [
+    "tiene",
+    "tienes",
+    "tienen",
+    "maneja",
+    "manejan",
+    "manejas",
+    "manejamos",
+    "manejo",
+    "venden",
+    "vende",
+    "hay",
+    "disponible",
+  ]);
 }
 
 function describirCriterios(criterios = {}) {
@@ -4562,15 +4729,11 @@ function resolverConsultaCatalogo(mensaje, estado, catalogo = [], interpretacion
   const respuestaCambioCarrito = resolverCambioCarrito(mensaje, estado, catalogo);
   if (respuestaCambioCarrito) return respuestaCambioCarrito;
 
-  const respuestaProductosExplicitos = resolverProductosExplicitos(mensaje, estado, catalogo, {
-    pidioMarcas,
-    pidioReferencias,
-    pidioRecomendacion,
-    pidioOpinion,
-  });
-  if (respuestaProductosExplicitos) return respuestaProductosExplicitos;
-
-  const referenciaEnCatalogo = !marcaDetectada ? buscarReferenciaEnCatalogo(catalogo, mensaje) : null;
+  const esConsultaDisponibilidadReferencia =
+    solicitaPrecioProducto(mensaje) || solicitaDisponibilidadProducto(mensaje);
+  const referenciaEnCatalogo = esConsultaDisponibilidadReferencia && tieneSenalesReferenciaDistintivas(mensaje)
+    ? buscarReferenciaEnCatalogo(catalogo, mensaje)
+    : null;
   if (referenciaEnCatalogo) {
     const { marca, referencia } = referenciaEnCatalogo;
     const cantidad = extraerCantidad(mensaje) || 1;
@@ -4586,14 +4749,26 @@ function resolverConsultaCatalogo(mensaje, estado, catalogo = [], interpretacion
     };
     estado.esperandoMarca = false;
 
-    if (presentacion) {
-      agregarAlCarrito(estado, marca, referencia, presentacion, cantidad);
-      estado.ultimaSeleccion = null;
-      return respuestaProductoAgregado(estado, marca, referencia, presentacion);
-    }
-
-    return formatearReferencia(marca, referencia, "¿Cuál presentación quieres agregar al pedido?");
+    const relacionadas = Array.isArray(referenciaEnCatalogo.relacionadas) &&
+      referenciaEnCatalogo.relacionadas.length
+      ? referenciaEnCatalogo.relacionadas
+      : [{ marca, referencia }];
+    const consultados = relacionadas.flatMap((item) =>
+      itemsConsultaReferencias(item.marca, [item.referencia])
+    );
+    guardarProductosConsultados(estado, consultados);
+    estado.ultimaSeleccion = null;
+    estado.referenciasPendientes = null;
+    return respuestaConsultaConfirmada(consultados);
   }
+
+  const respuestaProductosExplicitos = resolverProductosExplicitos(mensaje, estado, catalogo, {
+    pidioMarcas,
+    pidioReferencias,
+    pidioRecomendacion,
+    pidioOpinion,
+  });
+  if (respuestaProductosExplicitos) return respuestaProductosExplicitos;
 
   if (estado.pedidoConfirmado && esCierreFinal(mensaje)) {
     return respuestaPedidoYaConfirmado(mensaje);
@@ -4856,6 +5031,14 @@ function resolverConsultaCatalogo(mensaje, estado, catalogo = [], interpretacion
 
   estado.marca = marca.marca;
   estado.criterios = criterios;
+  if ((solicitaPrecioProducto(mensaje) || solicitaDisponibilidadProducto(mensaje)) && referencias.length <= 6) {
+    const consultados = itemsConsultaReferencias(marca, referencias);
+    guardarProductosConsultados(estado, consultados);
+    estado.ultimaSeleccion = null;
+    estado.referenciasPendientes = null;
+    return respuestaConsultaConfirmada(consultados);
+  }
+
   guardarReferenciasPendientes(estado, marca, referencias);
   return listarReferencias(marca, referencias);
 }

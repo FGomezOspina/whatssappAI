@@ -9,14 +9,16 @@ Este documento describe como AIVANCE soporta varias empresas cliente sin duplica
 - Cada numero/canal vive en `client_channels`.
 - La logica se organiza por vertical de negocio, no por cliente.
 - Distrifinca es un cliente con `slug='distrifinca'` y `vertical='petshop'`.
+- `business_type` es el campo preferido para elegir vertical; `vertical` queda como compatibilidad.
+- `guarderia` esta registrada como vertical futura, pero no tiene flujo conversacional activo.
 
 El mensaje entrante se resuelve asi:
 
 ```mermaid
 flowchart LR
-  A["Kapso phone_number_id"] --> B["client_channels"]
+  A["Kapso channel ids"] --> B["client_channels"]
   B --> C["aivance_clients"]
-  C --> D["vertical"]
+  C --> D["business_type / vertical"]
   D --> E["src/verticals/petshop"]
   C --> F["catalogo por client_id"]
   C --> G["prompts y reglas por cliente"]
@@ -27,7 +29,7 @@ flowchart LR
 | Tabla | Responsabilidad |
 | --- | --- |
 | `aivance_clients` | Empresas cliente de la plataforma. |
-| `client_channels` | Numeros o canales conectados a cada cliente. |
+| `client_channels` | Numeros o canales conectados a cada cliente; puede resolver por `phone_number_id`, `workspace_id` o `integration_id`. |
 | `client_prompts` | Instrucciones adicionales para interprete o humanizador. |
 | `client_delivery_rules` | Reglas/fletes por cliente. |
 | `catalog_brands` | Marcas por cliente. |
@@ -48,7 +50,7 @@ Scripts:
 
 ## Que Pasa Al Agregar Mas Clientes
 
-Agregar otro cliente de la misma vertical no deberia crear otro backend, otra carpeta ni reglas especiales en codigo. El cambio normal es de datos y configuracion:
+Agregar otro cliente de una vertical implementada no deberia crear otro backend, otra carpeta ni reglas especiales en codigo. El cambio normal es de datos y configuracion:
 
 1. Crear una fila en `aivance_clients`.
 2. Registrar uno o mas canales en `client_channels`.
@@ -56,13 +58,13 @@ Agregar otro cliente de la misma vertical no deberia crear otro backend, otra ca
 4. Configurar prompts, tono y reglas operativas del cliente.
 5. Probar el numero Kapso real o sandbox asociado a ese cliente.
 
-Cuando llega un mensaje, el backend no pregunta "de que cliente es" al usuario final. Lo deduce por el `phone_number_id` recibido desde Kapso. Ese id debe apuntar a un solo cliente activo en `client_channels`; desde ahi se cargan su vertical, catalogo, reglas, prompts, conversaciones y pedidos.
+Cuando llega un mensaje, el backend no pregunta "de que cliente es" al usuario final. Lo deduce por los identificadores recibidos desde Kapso. La busqueda intenta `phone_number_id`, luego `workspace_id` y luego `integration_id`; uno de esos valores debe apuntar a un solo cliente activo en `client_channels`. Desde ahi se cargan su vertical, catalogo, reglas, prompts, conversaciones y pedidos.
 
 Separacion esperada por cliente:
 
 | Area | Como se separa |
 | --- | --- |
-| Canal WhatsApp | Fila unica en `client_channels` por `phone_number_id`. |
+| Canal WhatsApp | Fila unica activa en `client_channels` por `phone_number_id` cuando exista; `workspace_id` o `integration_id` pueden respaldar la resolucion. |
 | Catalogo y precios | Registros ligados al `client_id`. |
 | Conversaciones | `whatsapp_conversations` por `client_id + channel_user_id`. |
 | Historial | `whatsapp_messages` filtrado por `client_id`. |
@@ -72,14 +74,14 @@ Separacion esperada por cliente:
 
 Ejemplo: si Distrifinca y otra tienda petshop venden "Chunky Adulto", cada una debe tener su propia referencia/precio en su catalogo. El usuario final puede tener el mismo celular en ambas tiendas; el estado conversacional no debe mezclarse porque el `client_id` cambia.
 
-`sanmarcospetsclub` queda registrado como cliente de vertical `guarderia` en estado `setup_pending`. No debe activarse hasta implementar el flujo de guarderia y registrar su canal Kapso.
+`sanmarcospetsclub` queda registrado como cliente de vertical `guarderia` en estado `setup_pending`. Aunque el registro de la vertical existe en codigo, `implemented: false` hace que el servicio rechace conversaciones de guarderia. No debe activarse hasta implementar el flujo y registrar su canal Kapso.
 
 ## Organizacion Recomendada
 
 Para operar varios clientes sin desorden, mantener un inventario por cliente con:
 
-- `slug`, nombre comercial, vertical y estado.
-- `phone_number_id`, numero visible y ambiente: sandbox o produccion.
+- `slug`, nombre comercial, `business_type`/vertical y estado.
+- `phone_number_id`, `workspace_id`, `integration_id`, numero visible y ambiente: sandbox o produccion.
 - archivo/fuente de catalogo, fecha de ultima importacion y responsable de aprobar precios.
 - reglas de domicilio, sedes, cobertura, pagos y horarios.
 - prompts activos de interprete/humanizador y criterio de tono.
@@ -96,20 +98,20 @@ Convenciones recomendadas:
 
 ## Problemas A Vigilar Con Varios Clientes
 
-- Un `phone_number_id` mal registrado enviaria la conversacion al cliente equivocado.
+- Un identificador de canal mal registrado enviaria la conversacion al cliente equivocado.
 - Si se importa catalogo sin `--client`, o con slug incorrecto, se mezclan precios/productos.
 - Prompts demasiado especificos de Distrifinca podrian contaminar otra empresa petshop.
 - Reglas de domicilio y pago pueden variar por cliente aunque compartan vertical.
 - El fallback `KAPSO_SANDBOX_CLIENT_SLUG` solo sirve en desarrollo; usarlo como operacion normal oculta errores de canal.
 - Cache, idempotencia y locks en memoria son suficientes para una instancia, pero no para escalar horizontalmente con varios clientes activos.
-- Observabilidad sin `client_id`, `phone_numberId` y `messageId` dificulta saber que cliente fallo.
+- Observabilidad sin `client_id`, identificador de canal y `messageId` dificulta saber que cliente fallo.
 
 ## Checklist De Alta
 
 Antes de activar un cliente:
 
 - Cliente creado en `aivance_clients` con `status='active'`.
-- Canal Kapso creado en `client_channels`, activo y con `phone_number_id` correcto.
+- Canal Kapso creado en `client_channels`, activo y con identificador correcto.
 - Webhook de Kapso apuntando a `/webhooks/kapso/whatsapp`.
 - Catalogo importado y validado con conteos esperados.
 - Prompts y reglas revisados para que no mencionen otra empresa.
@@ -122,12 +124,13 @@ Antes de activar un cliente:
 Crear o actualizar cliente:
 
 ```sql
-insert into public.aivance_clients (slug, name, vertical, owner_platform, status)
-values ('nuevo_cliente', 'Nuevo Cliente', 'petshop', 'AIVANCE', 'active')
+insert into public.aivance_clients (slug, name, vertical, business_type, owner_platform, status)
+values ('nuevo_cliente', 'Nuevo Cliente', 'petshop', 'petshop', 'AIVANCE', 'active')
 on conflict (slug) do update
 set
   name = excluded.name,
   vertical = excluded.vertical,
+  business_type = excluded.business_type,
   status = excluded.status,
   updated_at = now();
 ```
@@ -153,13 +156,17 @@ do update set
   updated_at = now();
 ```
 
+Si Kapso no entrega `phone_number_id` de forma confiable para un caso puntual, tambien puedes registrar `workspace_id` o `integration_id` en la misma tabla. Mantener `phone_number_id` como identificador principal sigue siendo lo recomendado para numeros WhatsApp.
+
 Verificar:
 
 ```sql
 select
   ac.slug,
-  ac.vertical,
+  ac.business_type,
   cc.phone_number_id,
+  cc.workspace_id,
+  cc.integration_id,
   cc.active
 from public.client_channels cc
 join public.aivance_clients ac on ac.id = cc.client_id
@@ -254,7 +261,7 @@ Importar otro cliente:
 npm run catalog:import -- --file productos-nuevo-cliente.json --client nuevo_cliente --client-name "Nuevo Cliente" --vertical petshop
 ```
 
-El importador no tiene cliente por defecto. Siempre pasa `--client` y `--client-name`.
+El importador no tiene cliente por defecto. Siempre pasa `--client` y `--client-name`. Usa `--replace` cuando quieras desactivar primero el catalogo activo del cliente y cargar una version nueva completa.
 
 El catalogo puede incluir aliases, `metadata.original_names` y nombres heredados con errores. El backend consolida typos compatibles en tiempo de ejecucion y fusiona presentaciones equivalentes sin crear reglas por producto.
 
@@ -279,8 +286,9 @@ Crea codigo solo cuando cambia el tipo de negocio:
 1. Crear `src/verticals/nueva_vertical`.
 2. Implementar `orderLogic.js`, `productLogic.js`, `prompt.js` y `tools.js` segun aplique.
 3. Registrar la vertical en `src/verticals/index.js`.
-4. Crear clientes en Supabase con `vertical='nueva_vertical'`.
-5. Importar catalogo y configurar prompts/reglas desde Supabase.
+4. Marcar la vertical como implementada solo cuando pueda atender conversaciones reales.
+5. Crear clientes en Supabase con `business_type='nueva_vertical'` y `vertical='nueva_vertical'`.
+6. Importar catalogo y configurar prompts/reglas desde Supabase.
 
 ## Reglas De Diseno
 

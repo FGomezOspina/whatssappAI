@@ -19,7 +19,7 @@ GET /health
 Para que un numero funcione deben coincidir cuatro piezas:
 
 1. `KAPSO_PHONE_NUMBER_ID` en `.env`.
-2. Una fila activa en Supabase `client_channels` con ese `phone_number_id`.
+2. Una fila activa en Supabase `client_channels` con ese `phone_number_id` o, si aplica, `workspace_id`/`integration_id`.
 3. Un webhook activo en Kapso para ese mismo numero.
 4. `KAPSO_WEBHOOK_SECRET` igual en `.env` y en Kapso.
 
@@ -47,14 +47,15 @@ Para pruebas locales con sandbox puedes usar:
 
 ```env
 NODE_ENV=development
+KAPSO_SANDBOX_PHONE_NUMBER_ID=...
 KAPSO_SANDBOX_CLIENT_SLUG=distrifinca
 ```
 
-Ese fallback solo existe para desarrollo. En produccion el canal debe existir en Supabase.
+Ese fallback solo existe para desarrollo y se activa cuando el `phone_number_id` del evento coincide con `KAPSO_SANDBOX_PHONE_NUMBER_ID` o `KAPSO_PHONE_NUMBER_ID`. En produccion el canal debe existir en Supabase.
 
-## Asociar El Numero A Distrifinca
+## Asociar El Numero A Un Cliente
 
-Ejecuta en Supabase, cambiando `TU_PHONE_NUMBER_ID_DE_KAPSO` por el id real del numero:
+Ejecuta en Supabase, cambiando `TU_PHONE_NUMBER_ID_DE_KAPSO` por el id real del numero y `distrifinca` por el slug del cliente si corresponde:
 
 ```sql
 insert into public.client_channels
@@ -92,7 +93,9 @@ where cc.provider = 'kapso'
   and cc.phone_number_id = 'TU_PHONE_NUMBER_ID_DE_KAPSO';
 ```
 
-Debe devolver `slug = distrifinca` y `active = true`.
+Debe devolver el `slug` esperado y `active = true`.
+
+Si un evento de Kapso llega sin `phone_number_id` pero con `workspace_id` o `integration_id`, registra ese identificador en `client_channels`. El orden de resolucion del backend es `phone_number_id`, `workspace_id`, `integration_id`.
 
 ## Exponer El Backend
 
@@ -265,7 +268,7 @@ No hay webhook creado para ese numero. Entra a **Manage Webhooks** y registra la
 
 - Confirma `KAPSO_API_KEY`.
 - Confirma `KAPSO_PHONE_NUMBER_ID`.
-- Revisa que `client_channels` tenga ese `phone_number_id` asociado a Distrifinca.
+- Revisa que `client_channels` tenga ese identificador de canal asociado al cliente correcto.
 - Revisa logs de OpenAI, Supabase y Kapso.
 
 ### El cliente no se resuelve
@@ -276,7 +279,7 @@ El error esperado es similar a:
 No hay cliente activo asociado al canal de WhatsApp phone_number_id=...
 ```
 
-Solucion: registrar o activar la fila correspondiente en `client_channels`.
+Solucion: registrar o activar la fila correspondiente en `client_channels`. Si el evento no trae `phone_number_id`, revisa si trae `workspace_id` o `integration_id` y registra ese valor.
 
 ### Kapso no alcanza el backend
 

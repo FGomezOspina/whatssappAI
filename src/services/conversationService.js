@@ -230,6 +230,46 @@ async function responderValidacionNoConfiable({
   return respuesta;
 }
 
+function tieneProductoInterpretado(interpretacion = null) {
+  const productos = [
+    interpretacion?.producto,
+    ...((Array.isArray(interpretacion?.productos) && interpretacion.productos) || []),
+  ].filter(Boolean);
+
+  return productos.some((producto = {}) =>
+    [
+      producto.marca,
+      producto.referencia,
+      producto.linea,
+      producto.textoVisible,
+      producto.categoria,
+      producto.subcategoria,
+      producto.especie,
+      producto.etapa,
+      producto.tamano,
+      producto.presentacion,
+      ...(Array.isArray(producto.condiciones) ? producto.condiciones : []),
+      ...(Array.isArray(producto.sabores) ? producto.sabores : []),
+    ].some(Boolean)
+  );
+}
+
+function interpretacionFueraDeProducto(interpretacion = null) {
+  if (!interpretacion) return false;
+  if (
+    [
+      "pedido_producto",
+      "consulta_producto",
+      "consulta_marcas",
+      "recomendacion",
+    ].includes(interpretacion.intencion)
+  ) {
+    return false;
+  }
+
+  return !tieneProductoInterpretado(interpretacion);
+}
+
 async function responderEventosEntrantes(eventos) {
   if (!eventos.length) throw new Error("No hay eventos entrantes para procesar");
 
@@ -511,7 +551,7 @@ async function responderEventosEntrantes(eventos) {
         contextoProducto: contextoProductoAnterior,
       });
 
-  if (["media", "baja"].includes(validacionPrevia.nivel)) {
+  if (["media", "baja"].includes(validacionPrevia.nivel) && !clasificacion.requiereOpenAI) {
     return responderValidacionNoConfiable({
       evento,
       cliente,
@@ -583,14 +623,20 @@ async function responderEventosEntrantes(eventos) {
     );
   }
 
-  let validacionFinal = validarCoincidenciaProducto({
-    mensaje,
-    interpretacion: interpretacionIA,
-    catalogo,
-    catalogoCandidatos: catalogoIA.catalogo,
-    clasificacion,
-    contextoProducto: contextoProductoAnterior,
-  });
+  let validacionFinal = interpretacionFueraDeProducto(interpretacionIA)
+    ? {
+        nivel: "no_aplica",
+        razon: "intencion_no_producto_por_ia",
+        terminos: [],
+      }
+    : validarCoincidenciaProducto({
+        mensaje,
+        interpretacion: interpretacionIA,
+        catalogo,
+        catalogoCandidatos: catalogoIA.catalogo,
+        clasificacion,
+        contextoProducto: contextoProductoAnterior,
+      });
   if (clasificacion.requiereVision && interpretacionIA) {
     const catalogoRefinado = seleccionarCatalogoRefinadoVision({
       catalogo,
@@ -695,6 +741,9 @@ async function responderEventosEntrantes(eventos) {
     !estado.esperandoDatosDomicilio
   ) {
     respuestaBase = "Con mucho gusto 🐶";
+  } else if (interpretacionIA?.intencion === "rechazo" || interpretacionIA?.intencion === "agradecimiento") {
+    respuestaBase =
+      "Objetivo operativo: cerrar de forma breve, amable y contextual. No buscar catalogo, no cambiar carrito y no listar productos salvo que el cliente haya pedido alternativas reales.";
   } else {
     respuestaBase = resolverConsultaCatalogo(mensaje, estado, catalogo, interpretacionIA);
   }

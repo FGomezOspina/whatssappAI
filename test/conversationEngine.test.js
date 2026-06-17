@@ -4,6 +4,7 @@ const assert = require("node:assert/strict");
 const { resolverConsultaCatalogo, extraerPresupuesto, buscarMarca } = require("../src/verticals/petshop/orderLogic");
 const { crearEstadoInicial } = require("../src/conversation/conversationStore");
 const { asegurarRespuestaCatalogo } = require("../src/verticals/petshop/productLogic");
+const { cargarProductosDesdeJson } = require("../src/repositories/productRepository");
 
 const catalogoConversacionalPruebas = [
   {
@@ -85,6 +86,38 @@ const catalogoConversacionalPruebas = [
         tamano: "todas",
         descripcion: "Alimento para gatos adultos",
         presentaciones: [{ peso: "1kg", precio: 18000, stock: true, metadata: {} }],
+      },
+    ],
+  },
+  {
+    marca: "Arena",
+    referencias: [
+      {
+        nombre: "Arena Michiko Lavanda",
+        especie: "gato",
+        categoria: "arena_sustrato",
+        subcategoria: "arena",
+        descripcion: "Arena sanitaria con aroma lavanda",
+        presentaciones: [
+          { peso: "4kg", precio: 24000, stock: true, metadata: {} },
+          { peso: "10kg", precio: 52000, stock: true, metadata: {} },
+        ],
+      },
+      {
+        nombre: "Arena Michiko Bebe",
+        especie: "gato",
+        categoria: "arena_sustrato",
+        subcategoria: "arena",
+        descripcion: "Arena sanitaria aroma bebe",
+        presentaciones: [{ peso: "4kg", precio: 24000, stock: true, metadata: {} }],
+      },
+      {
+        nombre: "Arena Aglomerante Premium",
+        especie: "gato",
+        categoria: "arena_sustrato",
+        subcategoria: "arena",
+        descripcion: "Arena aglomerante para gatos",
+        presentaciones: [{ peso: "5kg", precio: 28000, stock: true, metadata: {} }],
       },
     ],
   },
@@ -884,6 +917,35 @@ test("cambia de contexto para snacks arena y juguetes", () => {
   const juguetes = resolverConsultaCatalogo("juguetes para perro", crearEstadoInicial(), catalogoPetshopExtendido, null);
   assert.match(juguetes, /Kong/i);
   assert.doesNotMatch(juguetes, /Chunky/i);
+});
+
+test("encuentra referencias parciales de arena por nombre distintivo", () => {
+  const estado = crearEstadoInicial();
+  const respuesta = resolverConsultaCatalogo(
+    "Y Arena michiko tienen?",
+    estado,
+    cargarCatalogoPruebas(),
+    null
+  );
+
+  assert.doesNotMatch(respuesta, /no encuentro|no manejamos/i);
+  assert.match(respuesta, /Arena Michiko Lavanda|Arena Michiko Bebe/i);
+  assert.match(respuesta, /4kg|10kg/i);
+});
+
+test("encuentra arena michiko en el catalogo real sin caer en desodorizantes", () => {
+  const estado = crearEstadoInicial();
+  const respuesta = resolverConsultaCatalogo(
+    "Y Arena michiko tienen?",
+    estado,
+    cargarProductosDesdeJson(),
+    null
+  );
+
+  assert.doesNotMatch(respuesta, /no encuentro|no manejamos|ARENA A GRANEL/i);
+  assert.match(respuesta, /ARENA MICHIKO LIMON/i);
+  assert.match(respuesta, /ARENA MICHIKO LAVANDA/i);
+  assert.doesNotMatch(respuesta, /DEODORIZANTE ARENA MICHIKO/i);
 });
 
 test("reconoce una referencia exacta aunque no sea marca del catalogo", () => {
