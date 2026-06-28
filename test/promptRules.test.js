@@ -63,6 +63,8 @@ test("el interprete trata una direccion posterior a cotizacion como continuacion
   assert.match(prompt, /es una aceptacion implicita para continuar/);
   assert.match(prompt, /usa productosConsultados del estado/);
   assert.match(prompt, /no politicas operativas vigentes/);
+  assert.match(prompt, /marcas muy cortas o abreviadas.*palabra exacta.*alias comercial claro/i);
+  assert.match(prompt, /Nunca extraigas marcas abreviadas desde verbos o palabras operativas/i);
 });
 
 test("el humanizador no infiere politicas de domicilio desde ejemplos historicos", () => {

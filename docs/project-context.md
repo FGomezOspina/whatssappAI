@@ -1,6 +1,6 @@
 # Contexto Tecnico Vigente
 
-Ultima revision: 2026-06-16.
+Ultima revision: 2026-06-28.
 
 Este documento es la fuente canonica para entender el codigo actual. Los detalles operativos de Kapso viven en `docs/kapso-migration.md`; los pasos para alta de clientes viven en `docs/aivance-multiempresa.md`.
 
@@ -120,11 +120,13 @@ Reglas:
 - El catalogo de Supabase manda sobre cualquier interpretacion de IA.
 - Toda importacion exige `--client` y `--client-name`.
 - El importador acepta `--replace` para desactivar el catalogo activo del cliente antes de cargar el nuevo archivo.
-- Busqueda considera nombre, descripcion, aliases, `metadata.original_names`, referencias equivalentes, especie, etapa, categoria y presentaciones.
+- Busqueda considera nombre, descripcion, aliases, `metadata.original_names`, referencias equivalentes, especie, etapa, categoria, subcategoria, presentaciones y stock cuando existe.
+- El catalogo petshop puede clasificar referencias con `category`, `subcategory`, `life_stage` y `requires_confirmation`.
+- El importador normaliza categorias como comida, medicamento, accesorio, snack, higiene, suplemento, juguete y arena/sustrato.
 - FTS/RPC en Supabase se combina con candidatos fuzzy locales.
 - La consolidacion dinamica une typos compatibles sin reglas quemadas por producto.
 - Una presentacion pedida debe existir exactamente en el catalogo consolidado.
-- El catalogo aun no maneja inventario real.
+- El catalogo maneja disponibilidad basica por `stock` booleano en presentaciones cuando la fuente lo trae; aun no maneja inventario real por cantidad, sede o reserva.
 
 Existe respaldo local solo para desarrollo o incidentes controlados: `CATALOG_FALLBACK_LOCAL=true`, `CATALOG_FALLBACK_CLIENTS` y `CATALOG_FALLBACK_FILE`. Solo se usa ante errores transitorios de Supabase y para clientes permitidos explicitamente.
 
@@ -224,6 +226,9 @@ Variables operativas frecuentes:
 - `SUPABASE_CATALOG_SEARCH_RPC`: RPC de busqueda, por defecto `search_catalog_products`.
 - `CATALOG_SEARCH_BACKEND=local`: fuerza busqueda local temporal.
 - `CATALOG_FALLBACK_LOCAL=true`: permite cargar un JSON local cuando Supabase tiene un error transitorio y el cliente esta autorizado en `CATALOG_FALLBACK_CLIENTS`.
+- `CATALOG_MATCH_HIGH_THRESHOLD`, `CATALOG_MATCH_MEDIUM_THRESHOLD`, `CATALOG_MATCH_AMBIGUITY_MARGIN` y `CATALOG_MATCH_ALTERNATIVE_LIMIT`: ajuste fino de validacion de identidad y alternativas.
+- `CATALOG_PENDING_MATCH_TTL_MS`, `CATALOG_PENDING_MATCH_MAX_TURNS` y `PRODUCT_REASONING_CONTEXT_TTL_MS`: vigencia de selecciones pendientes y contexto de correccion.
+- `OPENAI_HISTORY_*` y `TRAINING_EXAMPLES_*`: limites de historial y ejemplos por perfil de interaccion.
 - `AI_CONTEXT_LOGS`, `AI_CONTEXT_PAYLOAD_LOGS`, `PRODUCT_CONTEXT_LOGS`, `AI_USAGE_LOGS`: diagnostico; no dejarlos activos en produccion si exponen datos.
 
 No expongas `SUPABASE_SECRET_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `KAPSO_API_KEY` ni `OPENAI_API_KEY`.
@@ -246,6 +251,8 @@ Cobertura esperada:
 - Busqueda hibrida FTS/fuzzy.
 - Consolidacion dinamica de catalogo.
 - Matching por aliases y nombres originales.
+- Consultas por categoria y subcategoria sin marca explicita.
+- Disponibilidad basica por `stock` y productos con confirmacion requerida.
 - Barreras de presentaciones inexistentes.
 - Cotizaciones sin agregar al carrito.
 - Continuidad por estado y selecciones pendientes.

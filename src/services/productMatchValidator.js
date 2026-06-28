@@ -27,12 +27,17 @@ const STOPWORDS = new Set(
     "bueno",
     "buenos",
     "busco",
+    "calle",
+    "carrera",
+    "cra",
+    "cl",
     "categoria",
     "chao",
     "comida",
     "comprar",
     "concentrado",
     "consulta",
+    "cuido",
     "cual",
     "cuales",
     "cuanto",
@@ -43,12 +48,25 @@ const STOPWORDS = new Set(
     "del",
     "dia",
     "dias",
+    "direccion",
+    "dir",
+    "domicilio",
     "disponible",
     "el",
     "en",
     "esta",
     "este",
+    "favor",
+    "porfa",
     "hay",
+    "avenida",
+    "av",
+    "barrio",
+    "bodega",
+    "local",
+    "torre",
+    "apartamento",
+    "apto",
     "la",
     "las",
     "lo",
@@ -75,6 +93,14 @@ const STOPWORDS = new Set(
     "decir",
     "refiero",
     "para",
+    "pedir",
+    "pedido",
+    "pedidos",
+    "pagar",
+    "pago",
+    "efectivo",
+    "transferencia",
+    "por",
     "pastilla",
     "pastillas",
     "pulga",
@@ -185,11 +211,25 @@ const TERMINOS_COMERCIALES_VISUALES = new Set(
     "plus",
     "premium",
     "sizes",
+    "trio",
     "veterinaria",
     "veterinarias",
     "veterinario",
     "veterinarios",
     "veterinary",
+  ].map(normalizar)
+);
+
+const TERMINOS_LINEA_NO_BASE = new Set(
+  [
+    "gold",
+    "gourmet",
+    "plus",
+    "premium",
+    "premiun",
+    "trio",
+    "vitalidad",
+    "vitality",
   ].map(normalizar)
 );
 
@@ -541,7 +581,12 @@ function coincidenciaNombre(terminos = [], nombre = "") {
   const coincidenciaExacta =
     nombreNormalizado === consulta ||
     nombreCompacto === consultaCompacta ||
-    terminos.every((termino) => tokensNombre.includes(termino));
+    (
+      terminos.every((termino) => tokensNombre.includes(termino)) &&
+      !tokensNombre.some(
+        (token) => TERMINOS_LINEA_NO_BASE.has(token) && !terminos.includes(token)
+      )
+    );
   if (coincidenciaExacta) {
     return { score: 1, exacta: true };
   }
@@ -626,6 +671,12 @@ function coincidenciaIdentidadVisual(terminos = [], nombre = "") {
   };
 }
 
+function tokensLineaNoBaseTexto(texto = "") {
+  return normalizarIdentidadProducto(texto)
+    .split(/\s+/)
+    .filter((token) => TERMINOS_LINEA_NO_BASE.has(token));
+}
+
 function puntuarItem(item, terminos, opciones = {}) {
   const tokensMarca = new Set(
     normalizarIdentidadProducto(item.marca.marca).split(/\s+/).filter(Boolean)
@@ -652,8 +703,34 @@ function puntuarItem(item, terminos, opciones = {}) {
       terminos,
       entrada.nombre
     );
+    const entradaEsReferenciaBase =
+      entrada.tipo !== "marca" &&
+      normalizar(entrada.nombre) === normalizar(item.marca.marca) &&
+      normalizar(item.referencia.nombre) === normalizar(item.marca.marca);
     const limitarMarcaEnReferencia =
-      consultaSoloMarca && entrada.tipo !== "marca";
+      consultaSoloMarca && entrada.tipo !== "marca" && !entradaEsReferenciaBase;
+    const lineasConsulta = terminos.filter((termino) =>
+      TERMINOS_LINEA_NO_BASE.has(termino)
+    );
+    const lineasNombre = tokensLineaNoBaseTexto(entrada.nombre);
+    const lineaNoSolicitada = lineasNombre.some(
+      (token) => !lineasConsulta.includes(token)
+    );
+    const omiteLineaSolicitada =
+      lineasConsulta.length &&
+      entrada.tipo !== "marca" &&
+      lineasConsulta.some((token) => opciones.lineasSolicitadasDisponibles?.includes(token)) &&
+      !lineasConsulta.every((token) => lineasNombre.includes(token));
+    const limitarLineaComercial =
+      entrada.tipo !== "marca" && (lineaNoSolicitada || omiteLineaSolicitada);
+    const scoreTextual =
+      limitarLineaComercial && coincidenciaTextual.score > 0.56
+        ? 0.56
+        : coincidenciaTextual.score;
+    const scoreVisual =
+      limitarLineaComercial && coincidenciaVisual.score > 0.56
+        ? 0.56
+        : coincidenciaVisual.score;
 
     return [
       {
@@ -662,9 +739,10 @@ function puntuarItem(item, terminos, opciones = {}) {
         score:
           limitarMarcaEnReferencia && coincidenciaTextual.exacta
             ? 0.56
-            : coincidenciaTextual.score,
+            : scoreTextual,
         exacta:
-          limitarMarcaEnReferencia && coincidenciaTextual.exacta
+          (limitarMarcaEnReferencia && coincidenciaTextual.exacta) ||
+          limitarLineaComercial
             ? false
             : coincidenciaTextual.exacta,
       },
@@ -675,9 +753,10 @@ function puntuarItem(item, terminos, opciones = {}) {
         score:
           limitarMarcaEnReferencia && coincidenciaVisual.exacta
             ? 0.56
-            : coincidenciaVisual.score,
+            : scoreVisual,
         exacta:
-          limitarMarcaEnReferencia && coincidenciaVisual.exacta
+          (limitarMarcaEnReferencia && coincidenciaVisual.exacta) ||
+          limitarLineaComercial
             ? false
             : coincidenciaVisual.exacta,
       },
@@ -864,7 +943,7 @@ function referenciaTieneLineaNoBase(referencia = {}) {
       .filter(Boolean)
       .join(" ")
   );
-  return /\b(premium|premiun|pro|plus|vitality|vitalidad|gold|gourmet)\b/.test(texto);
+  return /\b(premium|premiun|pro|plus|trio|vitality|vitalidad|gold|gourmet)\b/.test(texto);
 }
 
 function especieExplicita(texto = "") {
@@ -1588,12 +1667,35 @@ function validarCoincidenciaProducto({
       ) ||
       itemCompatibleConConsultaParcial(item, terminos, mensajeRazonado)
   );
+  const lineasConsultaDisponibles = [
+    ...new Set(
+      itemsEvaluados
+        .flatMap((item) =>
+          tokensLineaNoBaseTexto(
+            `${item.referencia.nombre} ${item.referencia.descripcion || ""}`
+          )
+        )
+        .filter((token) => terminos.includes(token))
+    ),
+  ];
+  const marcaTieneLineasNoBase = Boolean(
+    marcaExacta &&
+      itemsEvaluados.some(
+        (item) =>
+          normalizar(item.marca.marca) === marcaExacta &&
+          tokensLineaNoBaseTexto(
+            `${item.referencia.nombre} ${item.referencia.descripcion || ""}`
+          ).length
+      )
+  );
   const puntuadosSinFiltrar = itemsEvaluados
     .map((item) =>
       puntuarItem(item, terminos, {
         desambiguarMarca:
           clasificacion.requiereVision ||
+          marcaTieneLineasNoBase ||
           consultaTraeDetalleAdicional(terminos, marcaExacta),
+        lineasSolicitadasDisponibles: lineasConsultaDisponibles,
       })
     )
     .map((item) =>

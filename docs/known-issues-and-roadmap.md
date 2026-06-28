@@ -1,6 +1,6 @@
 # Riesgos Conocidos y Hoja De Ruta
 
-Ultima revision: 2026-06-16.
+Ultima revision: 2026-06-28.
 
 Este documento lista riesgos vigentes y mejoras pendientes. No repite arquitectura ni pasos de instalacion; esos viven en `docs/project-context.md` y `docs/kapso-migration.md`.
 
@@ -86,7 +86,8 @@ Riesgo: imagen/audio puede fallar por URL vencida, archivo grande, MIME inespera
 
 ### Catalogo y stock
 
-- Administrar stock real y disponibilidad por sede.
+- Ya existe disponibilidad basica por `stock` booleano en presentaciones cuando el catalogo la trae.
+- Pendiente: administrar stock real por cantidad, sede, reserva y sincronizacion operativa.
 - Crear panel para marcas, referencias, presentaciones, precios e imagenes.
 - Auditar cambios de precio y disponibilidad.
 - Definir flujo de aprobacion por cliente antes de publicar cambios de catalogo.
@@ -123,6 +124,8 @@ Ya existe:
 - FTS/trigram en Supabase con fallback fuzzy local.
 - Consolidacion dinamica de typos compatibles.
 - Validacion final contra catalogo completo.
+- Consultas por categoria/subcategoria sin marca explicita.
+- Uso de disponibilidad basica y productos con confirmacion requerida cuando el catalogo lo trae.
 - Segunda lectura visual cuando la primera es incompleta o ambigua.
 - Selecciones pendientes para respuestas como `la segunda`, `esa` o `de 4kg`.
 

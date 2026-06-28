@@ -238,16 +238,24 @@ El JSON de importacion debe conservar esta forma:
       {
         "nombre": "Adulto Todas las Razas",
         "especie": "perro",
+        "categoria": "comida",
+        "subcategoria": "concentrado",
+        "etapa": "adulto",
+        "requiere_confirmacion": false,
         "descripcion": "Alimento completo para perros adultos",
         "imagen": "https://...",
         "presentaciones": [
-          { "peso": "2kg", "precio": 32000 }
+          { "peso": "2kg", "precio": 32000, "stock": true }
         ]
       }
     ]
   }
 ]
 ```
+
+Campos como `categoria`, `subcategoria`, `etapa`, `requiere_confirmacion` y `stock` son opcionales, pero recomendados. Si faltan, el importador intenta inferir parte de la clasificacion desde nombre y descripcion; aun asi, para medicamentos, antipulgas, desparasitantes, snacks, accesorios, juguetes, arena/sustratos y suplementos conviene cargarlos explicitamente.
+
+`stock` es disponibilidad basica por presentacion. No reemplaza un inventario real por cantidad, sede o reserva.
 
 Importar Distrifinca:
 

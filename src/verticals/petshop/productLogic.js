@@ -1,5 +1,12 @@
 const { formatearPrecio, normalizar, normalizarPeso } = require("../../utils/text");
 
+function contieneFrase(textoNormalizado, frase) {
+  const fraseNormalizada = normalizar(frase);
+  if (!fraseNormalizada) return false;
+
+  return ` ${textoNormalizado} `.includes(` ${fraseNormalizada} `);
+}
+
 function extraerPresentacionSolicitada(mensaje = "", interpretacion = null) {
   const texto = normalizar(mensaje);
   const unidad = "(kg|kl|kilo|kilos|kilogramo|kilogramos|gramo|gramos|gr|g|lb|libra|libras)";
@@ -16,16 +23,48 @@ function extraerPresentacionSolicitada(mensaje = "", interpretacion = null) {
   return null;
 }
 
-function buscarMarca(catalogo, mensaje, interpretacion) {
+function marcaApareceEnTexto(marca, textoNormalizado = "") {
+  const marcaNormalizada = normalizar(marca.marca);
+  const marcaCompacta = marcaNormalizada.replace(/\s+/g, "");
+  const marcaCompuesta = /\s/.test(marcaNormalizada);
+
+  return contieneFrase(textoNormalizado, marcaNormalizada) || (marcaCompuesta && textoNormalizado.replace(/\s+/g, "").includes(marcaCompacta));
+}
+
+function mensajeSoportaMarca(marca, mensaje = "", respuesta = "") {
+  const texto = normalizar([mensaje, respuesta].filter(Boolean).join(" "));
+  return marcaApareceEnTexto(marca, texto);
+}
+
+function interpretacionSoportaMarca(marca, interpretacion = null, respuesta = "") {
+  if (!marca) return false;
+
+  const texto = normalizar(respuesta);
+
+  return (
+    marcaApareceEnTexto(marca, texto) ||
+    (marca.referencias || []).some((referencia) => contieneFrase(texto, referencia.nombre))
+  );
+}
+
+function buscarMarca(catalogo, mensaje, interpretacion, respuesta = "") {
   const marcaInterpretada = interpretacion?.producto?.marca;
   if (marcaInterpretada) {
     const nombre = normalizar(marcaInterpretada);
     const encontrada = catalogo.find((marca) => normalizar(marca.marca) === nombre);
-    if (encontrada) return encontrada;
+    if (
+      encontrada &&
+      (mensajeSoportaMarca(encontrada, mensaje, respuesta) ||
+        interpretacionSoportaMarca(encontrada, interpretacion, respuesta))
+    ) {
+      return encontrada;
+    }
   }
 
   const texto = normalizar(mensaje);
-  return catalogo.find((marca) => texto.includes(normalizar(marca.marca)));
+  return catalogo.find((marca) => {
+    return marcaApareceEnTexto(marca, texto);
+  });
 }
 
 function criteriosProducto(mensaje, interpretacion) {
@@ -111,7 +150,7 @@ function asegurarRespuestaCatalogo(mensaje, respuesta, { catalogo = [], interpre
   const presentacionSolicitada = extraerPresentacionSolicitada(mensaje, interpretacionIA);
   if (!presentacionSolicitada || !respuestaAfirmaAgregado(respuesta)) return respuesta;
 
-  const marca = buscarMarca(catalogo, mensaje, interpretacionIA);
+  const marca = buscarMarca(catalogo, mensaje, interpretacionIA, respuesta);
   if (!marca) return respuesta;
 
   const referencias = referenciasCandidatas(marca, mensaje, interpretacionIA);

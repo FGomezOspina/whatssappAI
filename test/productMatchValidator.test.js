@@ -318,6 +318,56 @@ test("texto descarta condiciones no solicitadas y entiende abreviaturas internas
   assert.equal(grande.coincidencia.referencia, "AGILITY GRAND ADUL");
 });
 
+test("texto no cambia una linea base por una submarca comercial no solicitada", () => {
+  const catalogoSimparica = [
+    {
+      marca: "SIMPARICA",
+      referencias: [
+        {
+          nombre: "SIMPARICA",
+          categoria: "medicamento",
+          subcategoria: "antipulgas",
+          metadata: {},
+          presentaciones: [{ peso: "10-20 kg", precio: 52000 }],
+        },
+        {
+          nombre: "SIMPARICA TRIO",
+          categoria: "medicamento",
+          subcategoria: "antipulgas",
+          metadata: {},
+          presentaciones: [{ peso: "10-20 kg", precio: 59500 }],
+        },
+      ],
+    },
+  ];
+
+  const base = validarCoincidenciaProducto({
+    mensaje: "q precio tiene la simparica",
+    catalogo: catalogoSimparica,
+    catalogoCandidatos: catalogoSimparica,
+    clasificacion: {
+      intencion: "precio",
+      perfilContexto: "producto",
+      requiereVision: false,
+    },
+  });
+  const trio = validarCoincidenciaProducto({
+    mensaje: "q precio tiene la simparica trio",
+    catalogo: catalogoSimparica,
+    catalogoCandidatos: catalogoSimparica,
+    clasificacion: {
+      intencion: "precio",
+      perfilContexto: "producto",
+      requiereVision: false,
+    },
+  });
+
+  assert.equal(base.nivel, "alta");
+  assert.equal(base.coincidencia.referencia, "SIMPARICA");
+  assert.equal(trio.nivel, "alta");
+  assert.equal(trio.coincidencia.referencia, "SIMPARICA TRIO");
+});
+
 test("texto usa una presentacion unica para subir confianza sin nombre literal", () => {
   const catalogoAgility = [
     {

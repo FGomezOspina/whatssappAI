@@ -1,6 +1,6 @@
 # Auditoria De Contexto Conversacional
 
-Ultima revision: 2026-06-16.
+Ultima revision: 2026-06-28.
 
 Esta auditoria describe como se usa memoria, historial, catalogo y presupuesto de IA. Es un documento de soporte; la arquitectura general vive en `docs/project-context.md`.
 
@@ -57,6 +57,7 @@ Antes de construir el payload:
 
 - `interactionClassifier` define perfil, modelos y limites.
 - `catalogContextService` recupera candidatos FTS/RPC y fuzzy local.
+- `productMatchValidator` hace una validacion previa; si detecta consulta generica o de categoria sin marca explicita, puede dejar que el motor de la vertical responda sin llamar al interprete.
 - `contextBuilder` reduce bloques si se supera presupuesto.
 
 Orden de reduccion:
@@ -109,11 +110,14 @@ La lectura visual extrae marca, linea/variante, especie, etapa, tamano, condicio
 - aliases;
 - `metadata.original_names`;
 - referencias equivalentes;
-- especie, etapa, tamano, condicion y sabor;
+- categoria, subcategoria, especie, etapa, tamano, condicion y sabor;
 - presentaciones disponibles;
+- disponibilidad basica de presentaciones cuando `stock` viene en catalogo;
 - errores de escritura tolerables.
 
 `catalogConsolidationService` agrupa typos compatibles y fusiona presentaciones. No contiene excepciones por producto.
+
+Las consultas por familias como medicamentos, antipulgas, desparasitantes, snacks, juguetes, accesorios o arena se tratan como busquedas de categoria/subcategoria. El sistema debe conservar esos criterios sin convertirlos en una marca desconocida ni arrastrar una referencia pendiente de comida.
 
 ## Casos Sin Historial
 
@@ -123,6 +127,7 @@ La lectura visual extrae marca, linea/variante, especie, etapa, tamano, condicio
 - Validacion temprana de catalogo.
 - Humanizador.
 - Imagen nueva.
+- Consulta exploratoria de categoria con validacion suficiente.
 
 No siempre implica perdida: varios casos se resuelven mejor con estado y catalogo. El riesgo aparece cuando el dato importante quedo solo en texto libre y no en estado estructurado.
 

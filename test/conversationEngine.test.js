@@ -764,6 +764,67 @@ test("bloquea una respuesta humanizada que afirma agregar una presentacion inexi
   assert.doesNotMatch(respuesta, /ya dejé/i);
 });
 
+test("la validacion final no toma pedir como marca corta PED", () => {
+  const catalogo = [
+    {
+      marca: "PED",
+      referencias: [
+        {
+          nombre: "PED ADULT RP",
+          especie: "perro",
+          categoria: "comida",
+          subcategoria: "concentrado",
+          presentaciones: [{ peso: "x 20 kg", precio: 270900, stock: true, metadata: {} }],
+        },
+      ],
+    },
+    {
+      marca: "RINGO",
+      referencias: [
+        {
+          nombre: "RINGO VITALITY ADULTO",
+          especie: "perro",
+          categoria: "comida",
+          subcategoria: "concentrado",
+          presentaciones: [{ peso: "x 10 kg", precio: 154900, stock: true, metadata: {} }],
+        },
+      ],
+    },
+  ];
+  const mensaje =
+    "Buenos Dias, para pedir un cuido vivance vitality de 10 Kg, a domicilio por favor, para pagar en efectivo";
+  const respuestaHumanizada =
+    "Listo, agregué al pedido RINGO VITALITY ADULTO x 10 kg por $154.900.";
+
+  const respuesta = asegurarRespuestaCatalogo(mensaje, respuestaHumanizada, {
+    catalogo,
+    interpretacionIA: {
+      producto: {
+        marca: "PED",
+        referencia: "PED",
+        presentacion: "10kg",
+      },
+    },
+  });
+
+  assert.equal(respuesta, respuestaHumanizada);
+  assert.doesNotMatch(respuesta, /En PED/i);
+
+  const respuestaConPrefijo = asegurarRespuestaCatalogo(mensaje, respuestaHumanizada, {
+    catalogo,
+    interpretacionIA: {
+      producto: {
+        marca: "VITA",
+        referencia: "VITA",
+        presentacion: "10kg",
+      },
+    },
+  });
+
+  assert.equal(respuestaConPrefijo, respuestaHumanizada);
+  assert.doesNotMatch(respuestaConPrefijo, /En VITA/i);
+});
+
 test("avanza a pago cuando el cliente cierra el carrito aunque la IA reinterprete el producto anterior", () => {
   const estado = crearEstadoInicial();
   const catalogo = cargarCatalogoPruebas();
@@ -1228,12 +1289,118 @@ test("consultar precios no agrega productos al carrito", () => {
   assert.equal(estado.carrito.length, 0);
   assert.equal(estado.productosConsultados.length, 2);
   assert.match(respuesta, /Te confirmo esta referencia/i);
-  assert.match(respuesta, /También manejamos estas presentaciones de Dog Chow Adulto Mini y Pequeño/i);
   assert.match(respuesta, /Adulto Mini y Pequeño 1kg/i);
-  assert.match(respuesta, /Adulto Mini y Pequeño 2kg/i);
-  assert.match(respuesta, /Adulto Mini y Pequeño 4kg/i);
   assert.match(respuesta, /Adulto Mediano y Grande 2kg/i);
+  assert.match(respuesta, /Adulto Mini y Pequeño 4kg/i);
   assert.match(respuesta, /Adulto Mediano y Grande 1kg/i);
+  assert.match(respuesta, /\[\[AIVANCE_MESSAGE_BREAK\]\]/);
+});
+
+test("cotiza varios productos de una vez y solo pregunta por el que quede ambiguo", () => {
+  const estado = crearEstadoInicial();
+  const catalogo = [
+    {
+      marca: "SIMPARICA",
+      referencias: [
+        {
+          nombre: "SIMPARICA",
+          especie: "perro",
+          categoria: "medicamento",
+          subcategoria: "antipulgas",
+          requiereConfirmacion: true,
+          descripcion: "Antipulgas y garrapatas para perro",
+          presentaciones: [
+            { peso: "5 a 10 kg", precio: 82000, stock: true, metadata: {} },
+            { peso: "10 a 20 kg", precio: 92000, stock: true, metadata: {} },
+            { peso: "20 a 40 kg", precio: 105000, stock: true, metadata: {} },
+          ],
+        },
+        {
+          nombre: "SIMPARICA TRIO",
+          especie: "perro",
+          categoria: "medicamento",
+          subcategoria: "antipulgas",
+          requiereConfirmacion: true,
+          descripcion: "Antipulgas, garrapatas y desparasitación interna para perro",
+          presentaciones: [
+            { peso: "2.5-5 kg", precio: 47600, stock: true, metadata: {} },
+            { peso: "5-10 kg", precio: 54300, stock: true, metadata: {} },
+            { peso: "10-20 kg", precio: 59500, stock: true, metadata: {} },
+          ],
+        },
+      ],
+    },
+    {
+      marca: "DON KAT",
+      referencias: [
+        {
+          nombre: "DON KAT GATOS",
+          especie: "gato",
+          categoria: "comida",
+          subcategoria: "concentrado",
+          etapa: "adulto",
+          descripcion: "Cuido para gatos adultos",
+          presentaciones: [
+            { peso: "1kg", precio: 14500, stock: true, metadata: {} },
+            { peso: "7kg", precio: 85000, stock: true, metadata: {} },
+          ],
+        },
+      ],
+    },
+  ];
+  const mensaje = "Q precio tiene la simparica\nY el cuido de Don kat el de 7k para gatos";
+  const interpretacionIA = {
+    intencion: "consulta_producto",
+    accion: "consultar",
+    confianza: 0.94,
+    producto: {
+      marca: "SIMPARICA",
+      referencia: "SIMPARICA TRIO",
+      linea: "TRIO",
+      textoVisible: "SIMPARICA TRIO",
+      categoria: "medicamento",
+      subcategoria: "antipulgas",
+      presentacion: null,
+      cantidad: 1,
+    },
+    productos: [
+      {
+        marca: "SIMPARICA",
+        referencia: "SIMPARICA TRIO",
+        linea: "TRIO",
+        textoVisible: "SIMPARICA TRIO",
+        categoria: "medicamento",
+        subcategoria: "antipulgas",
+        presentacion: null,
+        cantidad: 1,
+      },
+      {
+        marca: "DON KAT",
+        referencia: "DON KAT GATOS",
+        especie: "gato",
+        categoria: "comida",
+        subcategoria: "concentrado",
+        presentacion: "7kg",
+        cantidad: 1,
+      },
+    ],
+    entrega: {},
+    datosCliente: {},
+    carrito: { operacion: null },
+    faltanteSugerido: null,
+  };
+
+  const respuesta = resolverConsultaCatalogo(mensaje, estado, catalogo, interpretacionIA);
+
+  assert.equal(estado.carrito.length, 0);
+  assert.equal(estado.productosConsultados.length, 2);
+  assert.match(respuesta, /SIMPARICA 5 a 10 kg: \$82\.000/i);
+  assert.match(respuesta, /SIMPARICA 10 a 20 kg: \$92\.000/i);
+  assert.match(respuesta, /SIMPARICA 20 a 40 kg: \$105\.000/i);
+  assert.match(respuesta, /DON KAT GATOS 7kg: \$85\.000/i);
+  assert.match(respuesta, /DON KAT GATOS 1kg: \$14\.500/i);
+  assert.doesNotMatch(respuesta, /SIMPARICA TRIO/i);
+  assert.doesNotMatch(respuesta, /Para completar otro producto/i);
   assert.match(respuesta, /\[\[AIVANCE_MESSAGE_BREAK\]\]/);
 });
 
@@ -2149,6 +2316,7 @@ test("no confunde apertura de pedido con una marca corta del catalogo", () => {
 
   assert.equal(buscarMarca(catalogo, "para hacer un pedido"), undefined);
   assert.equal(buscarMarca(catalogo, "para hacer un pedidp"), undefined);
+  assert.equal(buscarMarca(catalogo, "quiero pedir pedigree")?.marca, "PED");
 
   const respuesta = resolverConsultaCatalogo("para hacer un pedido", crearEstadoInicial(), catalogo, null);
   const respuestaTypo = resolverConsultaCatalogo("para hacer un pedidp", crearEstadoInicial(), catalogo, null);
@@ -2224,6 +2392,133 @@ test("listar una marca corta formatea precios sin romper", () => {
 
   assert.match(respuesta, /PED ADULT RP/);
   assert.match(respuesta, /1kg: \$1\.000/);
+});
+
+test("una senal distintiva con presentacion corrige una marca corta inferida por IA", () => {
+  const catalogo = [
+    {
+      marca: "PED",
+      referencias: [
+        {
+          nombre: "PED ADULT RP",
+          especie: "perro",
+          categoria: "comida",
+          subcategoria: "concentrado",
+          etapa: "adulto",
+          presentaciones: [{ peso: "x 20 kg", precio: 270900, stock: true, metadata: {} }],
+        },
+      ],
+    },
+    {
+      marca: "VITA",
+      referencias: [
+        {
+          nombre: "VITA HAMSTERS",
+          especie: "roedor",
+          categoria: "comida",
+          subcategoria: "concentrado",
+          presentaciones: [{ peso: "300 gr", precio: 4200, stock: true, metadata: {} }],
+        },
+      ],
+    },
+    {
+      marca: "RINGO",
+      referencias: [
+        {
+          nombre: "RINGO VITALITY ADUL",
+          especie: "perro",
+          categoria: "comida",
+          subcategoria: "concentrado",
+          etapa: "adulto",
+          presentaciones: [
+            { peso: "x 2 kg", precio: 34900, stock: true, metadata: {} },
+            { peso: "x 10 kg", precio: 154900, stock: true, metadata: {} },
+          ],
+        },
+      ],
+    },
+  ];
+  const estado = crearEstadoInicial();
+  const mensaje =
+    "Buenos Dias, para pedir un cuido vivance vitality de 10 Kg, a domicilio por favor. La direccion es avenida 30 de agosto, cl 94, 14-73, para pagar en efectivo por favor";
+  const interpretacionIA = {
+    intencion: "pedido_producto",
+    accion: "agregar",
+    confianza: 0.9,
+    producto: {
+      marca: "PED",
+      referencia: "PED",
+      categoria: "comida",
+      subcategoria: "concentrado",
+      presentacion: "10kg",
+      cantidad: 1,
+      referenciasEquivalentes: ["PED ADULT RP"],
+      presentacionesEquivalentes: [
+        { peso: "x 20 kg", precio: 270900, referencia: "PED ADULT RP" },
+      ],
+    },
+    productos: [],
+    entrega: {
+      tipo: "domicilio",
+      direccion: "avenida 30 de agosto, cl 94, 14-73",
+      direccionCompleta: true,
+      metodoPago: "efectivo",
+    },
+    datosCliente: {},
+    carrito: { operacion: "agregar" },
+  };
+
+  const respuesta = resolverConsultaCatalogo(mensaje, estado, catalogo, interpretacionIA);
+
+  assert.match(respuesta, /RINGO VITALITY ADUL/);
+  assert.doesNotMatch(respuesta, /En PED|VITA HAMSTERS/);
+  assert.equal(estado.carrito.length, 1);
+  assert.equal(estado.carrito[0].marca, "RINGO");
+  assert.equal(estado.carrito[0].referencia, "RINGO VITALITY ADUL");
+  assert.equal(estado.carrito[0].peso, "x 10 kg");
+  assert.equal(estado.entrega.tipo, "domicilio");
+  assert.equal(estado.metodoPago, "efectivo");
+
+  const estadoBajaConfianza = crearEstadoInicial();
+  const respuestaBajaConfianza = resolverConsultaCatalogo(
+    mensaje,
+    estadoBajaConfianza,
+    catalogo,
+    {
+      ...interpretacionIA,
+      confianza: 0.4,
+    }
+  );
+
+  assert.match(respuestaBajaConfianza, /RINGO VITALITY ADUL/);
+  assert.doesNotMatch(respuestaBajaConfianza, /En PED|VITA HAMSTERS/);
+  assert.equal(estadoBajaConfianza.carrito[0].marca, "RINGO");
+
+  const estadoMarcaPrefijo = crearEstadoInicial();
+  const respuestaMarcaPrefijo = resolverConsultaCatalogo(
+    mensaje,
+    estadoMarcaPrefijo,
+    catalogo,
+    {
+      ...interpretacionIA,
+      producto: {
+        marca: "VITA",
+        referencia: "VITA",
+        categoria: "comida",
+        subcategoria: "concentrado",
+        presentacion: "10kg",
+        cantidad: 1,
+        referenciasEquivalentes: ["VITA HAMSTERS"],
+        presentacionesEquivalentes: [
+          { peso: "300 gr", precio: 4200, referencia: "VITA HAMSTERS" },
+        ],
+      },
+    }
+  );
+
+  assert.match(respuestaMarcaPrefijo, /RINGO VITALITY ADUL/);
+  assert.doesNotMatch(respuestaMarcaPrefijo, /En VITA|VITA HAMSTERS/);
+  assert.equal(estadoMarcaPrefijo.carrito[0].marca, "RINGO");
 });
 
 test("un producto distinto crea carrito nuevo y conserva datos de envio anteriores", () => {

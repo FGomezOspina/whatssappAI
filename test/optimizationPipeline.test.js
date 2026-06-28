@@ -149,6 +149,55 @@ test("una consulta explícita no mezcla la referencia anterior en el ranking", (
   );
 });
 
+test("el ranking de catalogo prioriza referencia distintiva sobre datos de domicilio", () => {
+  const catalogoSimilar = [
+    {
+      marca: "PED",
+      referencias: [
+        {
+          nombre: "PED ADULT RP",
+          categoria: "comida",
+          subcategoria: "concentrado",
+          presentaciones: [{ peso: "x 20 kg", precio: 270900 }],
+        },
+      ],
+    },
+    {
+      marca: "VITA",
+      referencias: [
+        {
+          nombre: "VITA HAMSTERS",
+          categoria: "comida",
+          subcategoria: "concentrado",
+          presentaciones: [{ peso: "300 gr", precio: 4200 }],
+        },
+      ],
+    },
+    {
+      marca: "RINGO",
+      referencias: [
+        {
+          nombre: "RINGO VITALITY ADUL",
+          categoria: "comida",
+          subcategoria: "concentrado",
+          presentaciones: [{ peso: "x 10 kg", precio: 154900 }],
+        },
+      ],
+    },
+  ];
+
+  const resultado = catalogContextInternals.seleccionarCatalogoLocal({
+    catalogo: catalogoSimilar,
+    mensaje:
+      "Buenos Dias, para pedir un cuido vivance vitality de 10 Kg, a domicilio por favor. La direccion es avenida 30 de agosto, cl 94, 14-73, para pagar en efectivo",
+    estado: {},
+    clasificacion: { requiereBusquedaProducto: true },
+  });
+
+  assert.equal(resultado.catalogo[0].marca, "RINGO");
+  assert.equal(resultado.catalogo[0].referencias[0].nombre, "RINGO VITALITY ADUL");
+});
+
 test("no envia catalogo al modelo cuando no hay busqueda de producto", async () => {
   const clasificacion = clasificarInteraccion({ mensaje: "gracias", estado: {} });
   const resultado = await seleccionarCatalogoParaIA({ catalogo, mensaje: "gracias", estado: {}, clasificacion });

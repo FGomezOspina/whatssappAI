@@ -15,19 +15,40 @@ const TOKENS_CONVERSACIONALES = new Set(
     "bueno",
     "buenos",
     "chao",
+    "calle",
+    "carrera",
+    "cra",
+    "cl",
     "cual",
     "cuales",
     "dia",
     "dias",
+    "de",
+    "del",
+    "direccion",
+    "dir",
+    "domicilio",
     "gracia",
     "gracias",
     "hago",
     "hacer",
+    "pedir",
+    "pedido",
+    "pedidos",
     "hola",
+    "el",
+    "en",
+    "es",
+    "efectivo",
     "me",
     "noche",
     "noches",
     "para",
+    "pagar",
+    "pago",
+    "por",
+    "favor",
+    "porfa",
     "pregunta",
     "preguntar",
     "que",
@@ -43,6 +64,27 @@ const TOKENS_CONVERSACIONALES = new Set(
     "manejamos",
     "manejo",
     "quiero",
+    "kg",
+    "kl",
+    "kilo",
+    "kilos",
+    "gr",
+    "g",
+    "gramos",
+    "la",
+    "las",
+    "los",
+    "un",
+    "una",
+    "avenida",
+    "av",
+    "barrio",
+    "bodega",
+    "local",
+    "torre",
+    "apartamento",
+    "apto",
+    "transferencia",
   ].map(normalizar)
 );
 
@@ -83,7 +125,11 @@ function textoBusqueda(mensaje = "", estado = {}) {
 }
 
 function expandirConsulta(texto = "") {
-  const normalizado = normalizar(texto);
+  const normalizado = normalizar(texto)
+    .replace(/\b(?:a\s+)?domicilio\b.*$/g, " ")
+    .replace(/\b(?:la\s+)?direcci(?:o|0)n(?:\s+es)?\b.*$/g, " ")
+    .replace(/\b(?:para\s+)?pagar\b.*$/g, " ")
+    .trim();
   const expansiones = [normalizado];
 
   if (/dog\s*chow|dogchow|doc\s*chow|dog\s*show/.test(normalizado)) expansiones.push("dog chow");
@@ -99,6 +145,9 @@ function expandirConsulta(texto = "") {
   if (/pulga|garrapata/.test(normalizado)) expansiones.push("antipulgas medicamento");
   if (/snack|premio|galleta/.test(normalizado)) expansiones.push("snack");
   if (/arena|sustrato/.test(normalizado)) expansiones.push("arena sustrato");
+  if (/comida|alimento|concentrado|cuido|purina/.test(normalizado)) {
+    expansiones.push("comida alimento concentrado");
+  }
   if (/juguete|pelota|mordedor/.test(normalizado)) expansiones.push("juguete accesorio");
 
   return normalizar(expansiones.join(" "));
@@ -107,11 +156,17 @@ function expandirConsulta(texto = "") {
 function tokens(texto = "") {
   return expandirConsulta(texto)
     .split(/\s+/)
-    .filter((token) => token.length > 1 && !TOKENS_CONVERSACIONALES.has(token));
+    .filter((token) => token.length > 1 && !TOKENS_CONVERSACIONALES.has(token))
+    .filter((token) => !/^\d+(?:\.\d+)?$/.test(token));
 }
 
 function contiene(texto, token) {
-  return texto.includes(token);
+  const tokenNormalizado = normalizar(token);
+  if (!tokenNormalizado) return false;
+  if (!/\s/.test(tokenNormalizado)) {
+    return ` ${texto} `.includes(` ${tokenNormalizado} `);
+  }
+  return texto.includes(tokenNormalizado);
 }
 
 function puntuarReferencia({ marca, referencia }, consulta, tokensConsulta) {

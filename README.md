@@ -25,11 +25,13 @@ Kapso es el proveedor activo de WhatsApp. Twilio pertenece solamente al antecede
 - Conserva contexto entre mensajes cortos como `de 4kl`, `asi esta bien` o `agrega los dos`.
 - Interpreta abreviaturas, errores de escritura y razas de mascotas sin programar una lista raza por raza.
 - Busca por nombre, descripcion, aliases, `metadata.original_names`, referencias equivalentes y contexto conversacional.
+- Usa categoria, subcategoria, especie, etapa, tamano, stock y `requiereConfirmacion` cuando el catalogo los trae.
 - Consolida dinamicamente marcas o referencias duplicadas por errores ortograficos y une sus presentaciones sin reglas por producto.
 - Combina candidatos de Supabase FTS con candidatos fuzzy locales antes de interpretar que una referencia no existe.
 - En imagenes pondera marca, linea o variante, especie, presentacion y sabor; si la primera lectura es ambigua puede ejecutar una segunda lectura enfocada.
 - Valida marcas, referencias, presentaciones y precios contra el catalogo completo antes de responder.
 - Rechaza presentaciones inexistentes y ofrece alternativas reales.
+- Responde consultas exploratorias por categoria, como antipulgas, purgantes, snacks, juguetes o arena, sin forzar una marca inventada.
 - Gestiona carrito, cantidades, eliminaciones, entrega, datos del cliente y metodo de pago.
 - Recibe imagenes por URL de Kapso para analizarlas con vision.
 - Transcribe audios reales con OpenAI cuando Kapso entrega URL descargable; usa modelo fallback y transcript de Kapso como respaldo.
@@ -60,7 +62,7 @@ La mensajeria esta aislada en `src/providers/kapsoMessagingProvider.js`. La logi
 
 `petshop` es la unica vertical conversacional implementada. `guarderia` existe en el registro para preparar clientes como `sanmarcospetsclub`, pero `implemented: false` hace que el backend rechace ese flujo hasta que tenga reglas conversacionales reales.
 
-La resolucion de productos se reparte entre `catalogContextService`, `catalogConsolidationService`, `productMatchValidator` y `pendingProductMatchService`. OpenAI propone una interpretacion, pero estos servicios recuperan candidatos, toleran errores de catalogo/OCR, validan la identidad contra el catalogo completo y conservan selecciones pendientes. No existe una excepcion programada para referencias concretas.
+La resolucion de productos se reparte entre `catalogContextService`, `catalogConsolidationService`, `productMatchValidator` y `pendingProductMatchService`. OpenAI propone una interpretacion, pero estos servicios recuperan candidatos, toleran errores de catalogo/OCR, validan la identidad contra el catalogo completo, resuelven consultas por categoria y conservan selecciones pendientes. No existe una excepcion programada para referencias concretas.
 
 Los mensajes consecutivos del mismo cliente se agrupan antes de llamar al agente. Cada mensaje reinicia la espera para recopilar el turno completo. La ventana local se configura con `INBOUND_MESSAGE_BUFFER_MS`; el valor recomendado para WhatsApp es `5000`.
 
