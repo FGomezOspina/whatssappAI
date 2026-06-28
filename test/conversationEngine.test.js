@@ -1742,6 +1742,79 @@ test("una direccion despues de cotizar continua el pedido con el producto consul
   assert.doesNotMatch(respuesta, /no estamos realizando domicilios|recoger/i);
 });
 
+test("una direccion despues de cotizacion con presentacion elegida no reabre referencias", () => {
+  const estado = crearEstadoInicial();
+  const catalogo = [
+    {
+      marca: "BR",
+      referencias: [
+        {
+          nombre: "BR CAT CASTRADO POLLO",
+          especie: "gato",
+          categoria: "comida",
+          subcategoria: "concentrado",
+          etapa: "adulto",
+          descripcion: "BR CAT CASTRADO POLLO",
+          presentaciones: [
+            { peso: "10kg", precio: 264000, stock: true, metadata: {} },
+            { peso: "1kg", precio: 28000, stock: true, metadata: {} },
+            { peso: "3kg", precio: 81900, stock: true, metadata: {} },
+          ],
+        },
+      ],
+    },
+  ];
+  estado.productosConsultados = [
+    {
+      marca: "BR",
+      referencia: "BR CAT CASTRADO POLLO",
+      referenciaCatalogo: "BR CAT CASTRADO POLLO",
+      peso: "3kg",
+      precio: 81900,
+      cantidad: 1,
+      presentaciones: [
+        { peso: "10kg", precio: 264000, stock: true, referenciaCatalogo: "BR CAT CASTRADO POLLO" },
+        { peso: "1kg", precio: 28000, stock: true, referenciaCatalogo: "BR CAT CASTRADO POLLO" },
+        { peso: "3kg", precio: 81900, stock: true, referenciaCatalogo: "BR CAT CASTRADO POLLO" },
+      ],
+    },
+  ];
+  const interpretacionIA = {
+    intencion: "datos_envio",
+    accion: null,
+    confianza: 0.95,
+    producto: {},
+    productos: [],
+    entrega: {
+      tipo: "domicilio",
+      direccion: "Cra 38A No 29-03 Palmar de villa verde",
+      direccionCompleta: true,
+      sector: null,
+      metodoPago: null,
+      sede: null,
+    },
+    datosCliente: {},
+    carrito: { operacion: null },
+    faltanteSugerido: null,
+  };
+
+  const respuesta = resolverConsultaCatalogo(
+    "Para Cra 38A No 29-03 Palmar de villa verde",
+    estado,
+    catalogo,
+    interpretacionIA
+  );
+
+  assert.equal(estado.carrito.length, 1);
+  assert.equal(estado.carrito[0].referencia, "BR CAT CASTRADO POLLO");
+  assert.equal(estado.carrito[0].peso, "3kg");
+  assert.equal(estado.productosConsultados.length, 0);
+  assert.equal(estado.entrega.tipo, "domicilio");
+  assert.equal(estado.datosDomicilio.direccion, "Cra 38A No 29-03 Palmar de villa verde");
+  assert.match(respuesta, /método de pago|metodo de pago|efectivo|transferencia/i);
+  assert.doesNotMatch(respuesta, /Presentaciones:|Cuál presentación quieres agregar/i);
+});
+
 test("un metodo de pago no reemplaza el nombre confirmado del domicilio", () => {
   const estado = crearEstadoInicial();
   const catalogo = cargarCatalogoPruebas();

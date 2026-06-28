@@ -2788,6 +2788,48 @@ function resolverAgregarConsultadosIA(estado, catalogo, interpretacion) {
   return `Listo, agregué al pedido:\n${lineasItems(agregados)}\n\n${productoAgregadoRespuesta(estado)}`;
 }
 
+function agregarProductoConsultadoAlCarrito(estado, catalogo, item) {
+  const marca = buscarMarcaPorNombre(catalogo, item.marca);
+  const referencia = marca?.referencias.find((referencia) => referencia.nombre === item.referencia);
+  const presentacion = referencia?.presentaciones.find(
+    (presentacion) => normalizarPeso(presentacion.peso) === normalizarPeso(item.peso)
+  );
+  if (!marca || !referencia || !presentacion) return false;
+
+  agregarAlCarrito(estado, marca, referencia, presentacion, item.cantidad || 1);
+  return true;
+}
+
+function resolverEntregaConCotizacionActiva(mensaje, estado, catalogo, interpretacion = null) {
+  if (estado.carrito.length) return null;
+  const consultados = estado.productosConsultados || [];
+  if (consultados.length !== 1) return null;
+
+  const datosMensaje = extraerDatosDomicilio(mensaje);
+  const tipoEntrega =
+    interpretacion?.entrega?.tipo ||
+    detectarTipoEntrega(mensaje) ||
+    (tieneDatosDomicilioUtiles(datosMensaje) ? "domicilio" : null);
+  if (tipoEntrega !== "domicilio" && !tieneDatosDomicilioUtiles(datosMensaje)) {
+    return null;
+  }
+
+  aplicarDatosInterpretados(estado, interpretacion || {});
+  if (tipoEntrega === "domicilio") {
+    estado.entrega = { ...(estado.entrega || {}), tipo: "domicilio" };
+  }
+  if (tieneDatosDomicilioUtiles(datosMensaje)) {
+    estado.datosDomicilio = { ...estado.datosDomicilio, ...datosMensaje };
+  }
+
+  if (!agregarProductoConsultadoAlCarrito(estado, catalogo, consultados[0])) return null;
+
+  estado.productosConsultados = [];
+  estado.ultimaSeleccion = null;
+  estado.referenciasPendientes = null;
+  return resolverEntregaYPago(mensaje, estado, interpretacion);
+}
+
 function resolverConsultaFamiliaEquivalente(estado, catalogo, interpretacion) {
   const producto = interpretacion?.producto || {};
   const referenciasEquivalentes = [
@@ -3613,7 +3655,7 @@ function pareceDireccion(valor = "") {
 
 function extraerDireccionCompleta(texto = "") {
   const patrones = [
-    /\b((?:cll|calle|cra|carrera|kr|cr|av|avenida|diag|diagonal|transversal|tv)\s+\d+[a-z]?\s*#\s*\d+[a-z]?\s*[- ]\s*\d+[a-z]?(?:\s+[a-z0-9áéíóúñ ]{2,30})?)/i,
+    /\b((?:cll|calle|cra|carrera|kr|cr|av|avenida|diag|diagonal|transversal|tv)\s+\d+[a-z]?\s*(?:#|no\.?|nro\.?|numero|n°)\s*\d+[a-z]?\s*[- ]\s*\d+[a-z]?(?:\s+[a-z0-9áéíóúñ ]{2,30})?)/i,
     /\b((?:mz|manzana)\s*[a-z0-9-]+\s+(?:cs|casa|apto|apartamento)\s*[a-z0-9-]+(?:\s+(?:barrio|brr?|conjunto|condominio|unidad|sector|vereda|en)\s+[a-z0-9áéíóúñ ]{2,40})?)/i,
     /\b((?:torre|bloque|blq)\s*[a-z0-9-]+\s+(?:apto|apartamento|cs|casa)\s*[a-z0-9-]+(?:\s+(?:barrio|brr?|conjunto|condominio|unidad|sector|vereda|en)\s+[a-z0-9áéíóúñ ]{2,40})?)/i,
   ];
@@ -3629,7 +3671,7 @@ function extraerDireccionCompleta(texto = "") {
 function direccionEsCompleta(valor = "") {
   const texto = normalizar(valor);
 
-  if (/#\s*\d+[a-z]?\s*[- ]\s*\d+/i.test(valor)) return true;
+  if (/(?:#|no\.?|nro\.?|numero|n°)\s*\d+[a-z]?\s*[- ]\s*\d+/i.test(valor)) return true;
   if (/\b(?:casa|cs|apto|apartamento|torre|interior|int|bloque|blq)\s*[a-z0-9-]+\b/i.test(valor)) return true;
   if (/\b(?:mz|manzana)\s*[a-z0-9-]+.*\b(?:casa|cs|apto|apartamento)\s*[a-z0-9-]+\b/i.test(valor)) return true;
   if (/^(?:cll|calle|cra|carrera|kr|cr|av|avenida|diag|diagonal|transversal|tv)\b/.test(texto)) {
@@ -4712,6 +4754,14 @@ function resolverConsultaCatalogo(mensaje, estado, catalogo = [], interpretacion
 
   const respuestaOperacionCarritoIA = resolverOperacionCarritoIA(mensaje, estado, catalogo, interpretacion);
   if (respuestaOperacionCarritoIA) return respuestaOperacionCarritoIA;
+
+  const respuestaEntregaCotizacion = resolverEntregaConCotizacionActiva(
+    mensaje,
+    estado,
+    catalogo,
+    interpretacion
+  );
+  if (respuestaEntregaCotizacion) return respuestaEntregaCotizacion;
 
   if (estado.pedidoConfirmado && estado.carrito.length && solicitaNuevoPedido(mensaje)) {
     const traeProductoNuevo = Boolean(marcaDetectada) || tieneCriterios(criteriosMensaje);

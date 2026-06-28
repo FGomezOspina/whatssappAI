@@ -1,0 +1,6 @@
+{
+  "install_method": "curl",
+  "prefix": "/Users/gomez/Documents/WhatsappVELTIA/.tools",
+  "bin": "/Users/gomez/Documents/WhatsappVELTIA/.tools/bin/higgsfield",
+  "version": "0.2.3"
+}

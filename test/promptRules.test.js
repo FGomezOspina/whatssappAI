@@ -3,7 +3,10 @@ const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const path = require("node:path");
 const { _internals: aiInterpreterInternals } = require("../src/services/aiInterpreter");
-const { construirPromptInterprete } = require("../src/services/aiContextOptimizer");
+const {
+  construirPromptHumanizador,
+  construirPromptInterprete,
+} = require("../src/services/aiContextOptimizer");
 
 function leerServicio(nombre) {
   return fs.readFileSync(path.join(__dirname, "..", "src", "services", nombre), "utf8");
@@ -39,6 +42,18 @@ test("el prompt compacto interpreta rechazos sin extraer producto", () => {
   assert.match(prompt, /no le sirvio/i);
   assert.match(prompt, /usa intencion rechazo o agradecimiento/i);
   assert.match(prompt, /deja producto sin datos/i);
+});
+
+test("el humanizador petshop mantiene cercania sin vocativos afectivos", () => {
+  const prompt = construirPromptHumanizador({
+    vertical: {
+      key: "petshop",
+      prompts: require("../src/verticals/petshop/prompt"),
+    },
+  });
+
+  assert.match(prompt, /no los uses para tratar al cliente/i);
+  assert.match(prompt, /tono vendedor, amable, cordial y profesional/i);
 });
 
 test("el interprete trata una direccion posterior a cotizacion como continuacion del pedido", () => {
