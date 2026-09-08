@@ -8,11 +8,11 @@ function contieneFrase(textoNormalizado, frase) {
 }
 
 function extraerPresentacionSolicitada(mensaje = "", interpretacion = null) {
+  const presentaciones = presentacionesSolicitadas(mensaje);
+  if (presentaciones.length) return presentaciones[0];
+
   const texto = normalizar(mensaje);
   const unidad = "(kg|kl|kilo|kilos|kilogramo|kilogramos|gramo|gramos|gr|g|lb|libra|libras)";
-  const conUnidad = texto.match(new RegExp(`\\b(\\d+(?:[.,]\\d+)?)\\s*${unidad}\\b`));
-  if (conUnidad) return normalizarPeso(`${conUnidad[1]}${conUnidad[2]}`);
-
   const por = texto.match(new RegExp(`\\bx\\s*(\\d+(?:[.,]\\d+)?)\\s*${unidad}\\b`));
   if (por) return normalizarPeso(`${por[1]}${por[2]}`);
 
@@ -21,6 +21,31 @@ function extraerPresentacionSolicitada(mensaje = "", interpretacion = null) {
   }
 
   return null;
+}
+
+function presentacionesSolicitadas(mensaje = "") {
+  const texto = normalizar(mensaje);
+  const unidad = "(kg|kl|kilo|kilos|kilogramo|kilogramos|gramo|gramos|gr|g|lb|libra|libras)";
+  const regex = new RegExp(`\\b(\\d+(?:[.,]\\d+)?)\\s*${unidad}\\b`, "g");
+  const presentaciones = [];
+  let coincidencia;
+
+  while ((coincidencia = regex.exec(texto))) {
+    const presentacion = normalizarPeso(`${coincidencia[1]}${coincidencia[2]}`);
+    if (presentacion && !presentaciones.includes(presentacion)) {
+      presentaciones.push(presentacion);
+    }
+  }
+
+  return presentaciones;
+}
+
+function tieneMultiplesProductosInterpretados(interpretacion = null) {
+  return Array.isArray(interpretacion?.productos) && interpretacion.productos.length > 1;
+}
+
+function tieneMultiplesPresentacionesSolicitadas(mensaje = "") {
+  return presentacionesSolicitadas(mensaje).length > 1;
 }
 
 function marcaApareceEnTexto(marca, textoNormalizado = "") {
@@ -147,6 +172,10 @@ function respuestaNoDisponible(marca, referencias, presentacionSolicitada) {
 }
 
 function asegurarRespuestaCatalogo(mensaje, respuesta, { catalogo = [], interpretacionIA = null } = {}) {
+  if (tieneMultiplesProductosInterpretados(interpretacionIA) || tieneMultiplesPresentacionesSolicitadas(mensaje)) {
+    return respuesta;
+  }
+
   const presentacionSolicitada = extraerPresentacionSolicitada(mensaje, interpretacionIA);
   if (!presentacionSolicitada || !respuestaAfirmaAgregado(respuesta)) return respuesta;
 

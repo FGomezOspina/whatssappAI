@@ -192,3 +192,80 @@ test("infiere una unidad omitida solo cuando la familia usa una unidad consisten
   assert.equal(original.presentaciones[2].metadata.original_weight, "x 20");
   assert.equal(tabletas.presentaciones[0].peso, "x100");
 });
+
+test("consolida referencias abreviadas por prefijo y conserva unidades plausibles", () => {
+  const catalogo = consolidarCatalogo([
+    {
+      marca: "CHUNKY",
+      referencias: [
+        {
+          nombre: "CHUNKY GATOS SALMON CORDERO",
+          especie: "gato",
+          categoria: "comida",
+          metadata: {
+            original_names: [
+              "CHUNKY GATOS SALMON CORDERO X 1.5KL",
+              "CHUNKY GATOS SALMON CORDERO X 500",
+            ],
+          },
+          presentaciones: [
+            { peso: "x 1.5kg", precio: 25700 },
+            { peso: "x 500", precio: 10200 },
+          ],
+        },
+        {
+          nombre: "CHUNKY GATOS SALMON Y CORD",
+          especie: "gato",
+          categoria: "comida",
+          metadata: {
+            original_names: ["CHUNKY GATOS SALMON Y CORD X 8KG"],
+          },
+          presentaciones: [{ peso: "x 8kg", precio: 90000 }],
+        },
+      ],
+    },
+  ]);
+
+  assert.equal(catalogo[0].referencias.length, 1);
+  assert.equal(catalogo[0].referencias[0].nombre, "CHUNKY GATOS SALMON CORDERO");
+  assert.deepEqual(
+    catalogo[0].referencias[0].presentaciones.map((presentacion) => presentacion.peso),
+    ["x 1.5kg", "500g", "x 8kg"]
+  );
+  assert.deepEqual(
+    catalogo[0].referencias[0].metadata.equivalent_references,
+    ["CHUNKY GATOS SALMON CORDERO", "CHUNKY GATOS SALMON Y CORD"]
+  );
+});
+
+test("infiere unidades desde otra presentacion de la misma referencia y conserva decimales originales", () => {
+  const catalogo = consolidarCatalogo([
+    {
+      marca: "CHUNKY",
+      referencias: [
+        {
+          nombre: "CHUNKY CORDERO ADULTO",
+          especie: "perro",
+          categoria: "comida",
+          metadata: {
+            original_names: [
+              "CHUNKY CORDERO ADULTO X 1.5",
+              "CHUNKY CORDERO ADULTO X 12",
+              "CHUNKY CORDERO ADULTO X 4 KL",
+            ],
+          },
+          presentaciones: [
+            { peso: "x 1", precio: 27600, metadata: { nombre_original: "CHUNKY CORDERO ADULTO X 1.5" } },
+            { peso: "x 12", precio: 151900, metadata: { nombre_original: "CHUNKY CORDERO ADULTO X 12" } },
+            { peso: "x 4 kg", precio: 66000, metadata: { nombre_original: "CHUNKY CORDERO ADULTO X 4 KL" } },
+          ],
+        },
+      ],
+    },
+  ]);
+
+  assert.deepEqual(
+    catalogo[0].referencias[0].presentaciones.map((presentacion) => presentacion.peso),
+    ["1.5kg", "12kg", "x 4 kg"]
+  );
+});

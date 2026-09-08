@@ -55,14 +55,14 @@ function modeloHumanizador(clasificacion = {}) {
     );
   }
   if (clasificacion.complejidad === "simple") {
-    return process.env.OPENAI_HUMANIZER_MODEL_SIMPLE || process.env.OPENAI_MODEL || "gpt-5.2-chat-latest";
+    return process.env.OPENAI_HUMANIZER_MODEL_SIMPLE || process.env.OPENAI_HUMANIZER_MODEL || process.env.OPENAI_MODEL || "gpt-5.4-mini";
   }
 
   if (clasificacion.complejidad === "compleja" || clasificacion.complejidad === "avanzada") {
-    return process.env.OPENAI_HUMANIZER_MODEL_COMPLEX || process.env.OPENAI_MODEL || "gpt-5.2-chat-latest";
+    return process.env.OPENAI_HUMANIZER_MODEL_COMPLEX || process.env.OPENAI_HUMANIZER_MODEL || process.env.OPENAI_MODEL || "gpt-5.4-mini";
   }
 
-  return process.env.OPENAI_HUMANIZER_MODEL || process.env.OPENAI_MODEL || "gpt-5.2-chat-latest";
+  return process.env.OPENAI_HUMANIZER_MODEL || process.env.OPENAI_MODEL || "gpt-5.4-mini";
 }
 
 module.exports = {

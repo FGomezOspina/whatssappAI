@@ -2,6 +2,7 @@ const { normalizar, normalizarPeso } = require("../utils/text");
 
 const MIN_SIMILITUD_MARCA = 0.76;
 const MIN_SIMILITUD_REFERENCIA = 0.84;
+const TOKENS_IDENTIDAD_IGNORADOS = new Set(["y", "e", "and"]);
 
 function distanciaDamerauLevenshtein(a = "", b = "") {
   if (a === b) return 0;
@@ -76,11 +77,15 @@ function identidadReferencia(marca = "", referencia = "") {
 function tokensIdentidad(marca, referencia) {
   return identidadReferencia(marca, referencia)
     .split(/\s+/)
-    .filter(Boolean);
+    .filter(Boolean)
+    .filter((token) => !TOKENS_IDENTIDAD_IGNORADOS.has(token));
 }
 
 function similitudToken(token, candidato) {
   if (token === candidato) return 1;
+  const [corto, largo] =
+    token.length <= candidato.length ? [token, candidato] : [candidato, token];
+  if (corto.length >= 4 && largo.startsWith(corto)) return 0.94;
   if (Math.min(token.length, candidato.length) <= 3) return 0;
   return similitudOrtografica(token, candidato);
 }
@@ -178,32 +183,69 @@ function fusionarMetadata(referencias = []) {
 function inferirUnidadesPresentaciones(presentaciones = []) {
   const unidades = presentaciones
     .map((presentacion) =>
-      normalizarPeso(presentacion.peso).match(/(kg|g|lb|ml|mg)$/)?.[1]
+      unidadPresentacion(presentacion)
     )
     .filter(Boolean);
   const unidadesUnicas = [...new Set(unidades)];
   const unidadInferible =
-    unidades.length >= 2 && unidadesUnicas.length === 1
+    unidades.length >= 1 && unidadesUnicas.length === 1
       ? unidadesUnicas[0]
       : null;
   if (!unidadInferible) return presentaciones;
 
   return presentaciones.map((presentacion) => {
-    const pesoOriginal = normalizar(presentacion.peso);
-    const valorSinUnidad = pesoOriginal.match(
-      /^(?:x|por)\s*(\d+(?:\.\d+)?)$/
-    )?.[1];
+    if (normalizarPeso(presentacion.peso).match(/(kg|g|lb|ml|mg)$/)) {
+      return presentacion;
+    }
+
+    const valorSinUnidad = valorPresentacionSinUnidad(presentacion);
     if (!valorSinUnidad) return presentacion;
+    const valorNumerico = Number(valorSinUnidad);
+    const unidad = unidadInferible === "kg" && valorNumerico >= 100
+      ? "g"
+      : unidadInferible;
     return {
       ...presentacion,
-      peso: `${valorSinUnidad}${unidadInferible}`,
+      peso: `${valorSinUnidad}${unidad}`,
       metadata: {
         ...(presentacion.metadata || {}),
         original_weight: presentacion.peso,
-        inferred_unit: unidadInferible,
+        inferred_unit: unidad,
       },
     };
   });
+}
+
+function textosPresentacion(presentacion = {}) {
+  return [
+    presentacion.peso,
+    presentacion.metadata?.nombre_original,
+    presentacion.metadata?.original_name,
+    presentacion.metadata?.original_weight,
+  ].filter(Boolean);
+}
+
+function unidadPresentacion(presentacion = {}) {
+  return textosPresentacion(presentacion)
+    .map((texto) => normalizarPeso(texto).match(/(kg|g|lb|ml|mg)$/)?.[1])
+    .find(Boolean) || null;
+}
+
+function valorPresentacionSinUnidad(presentacion = {}) {
+  const valorDesdeTexto = (texto = "") =>
+    normalizar(texto).match(/(?:^|\s)(?:x|por)\s*(\d+(?:\.\d+)?)(?:\s|$)/)?.[1] || null;
+  const pesoNormalizado = normalizar(presentacion.peso);
+  const valorPeso = pesoNormalizado.match(/^(?:x|por)\s*(\d+(?:\.\d+)?)$/)?.[1] || null;
+  const valorMetadata = [
+    presentacion.metadata?.nombre_original,
+    presentacion.metadata?.original_name,
+    presentacion.metadata?.original_weight,
+  ]
+    .filter(Boolean)
+    .map(valorDesdeTexto)
+    .find(Boolean);
+
+  return valorMetadata || valorPeso;
 }
 
 function fusionarPresentaciones(referencias = []) {

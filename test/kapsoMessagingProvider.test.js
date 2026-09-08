@@ -36,6 +36,31 @@ test("normaliza un mensaje de texto Kapso v2", () => {
   assert.equal(evento.idempotencyKey, "phone_123:wamid.123");
 });
 
+test("normaliza mensajes Kapso con contenido null sin romper", () => {
+  const evento = normalizarEvento(
+    {
+      message: {
+        id: "wamid.null-text",
+        type: "text",
+        from: "573001112233",
+        text: { body: null },
+        kapso: { direction: "inbound", content: null },
+      },
+      conversation: { id: "conv_123", phone_number_id: "phone_123" },
+      phone_number_id: "phone_123",
+    },
+    {
+      "x-webhook-event": "whatsapp.message.received",
+    }
+  );
+
+  assert.equal(evento.text, "");
+});
+
+test("divide texto WhatsApp null como respuesta vacia", () => {
+  assert.deepEqual(dividirTextoWhatsApp(null), [""]);
+});
+
 test("extrae phoneNumberId desde campos alternos del canal Kapso", () => {
   const evento = normalizarEvento(
     {
@@ -395,5 +420,33 @@ test("envia respuestas largas en varios mensajes validos para Kapso", async () =
 
     if (baseUrlAnterior === undefined) delete process.env.KAPSO_API_BASE_URL;
     else process.env.KAPSO_API_BASE_URL = baseUrlAnterior;
+  }
+});
+
+test("ignora elementos nulos o invalidos en lotes de webhooks", () => {
+  assert.deepEqual(extraerEventos({ data: [null, false, 42, "texto", []] }), []);
+  assert.equal(normalizarEvento(null), null);
+});
+
+test("un canal sin identificador de mensaje no se usa como clave de deduplicacion", () => {
+  const payload = {
+    event: "whatsapp.message.received",
+    phone_number_id: "phone_123",
+    message: { from: "573001112233", type: "text", text: { body: "Hola" } },
+  };
+  assert.equal(normalizarEvento(payload).idempotencyKey, null);
+  assert.equal(normalizarEvento(payload, { "x-idempotency-key": "delivery_1" }).idempotencyKey,
+    "phone_123:delivery_1");
+});
+
+test("rechaza firmas malformadas sin lanzar errores de longitud de bytes", (t) => {
+  const anterior = process.env.KAPSO_WEBHOOK_SECRET;
+  process.env.KAPSO_WEBHOOK_SECRET = "test-secret";
+  t.after(() => {
+    if (anterior === undefined) delete process.env.KAPSO_WEBHOOK_SECRET;
+    else process.env.KAPSO_WEBHOOK_SECRET = anterior;
+  });
+  for (const firma of ["é".repeat(64), [], {}, null, "z".repeat(64)]) {
+    assert.equal(verificarFirmaWebhook(Buffer.from("{}"), firma), false);
   }
 });

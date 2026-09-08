@@ -5,8 +5,12 @@ const DEFAULT_BASE_URL = "https://api.kapso.ai/meta/whatsapp";
 const WHATSAPP_TEXT_BODY_MAX_CHARS = 4096;
 const DEFAULT_GRAPH_VERSION = "v24.0";
 
+function textoSeguro(valor = "") {
+  return valor == null ? "" : valor.toString();
+}
+
 function normalizarBaseUrl(baseUrl = DEFAULT_BASE_URL) {
-  const normalizada = baseUrl.replace(/\/+$/, "").replace(/\/v\d+\.\d+$/, "");
+  const normalizada = textoSeguro(baseUrl || DEFAULT_BASE_URL).replace(/\/+$/, "").replace(/\/v\d+\.\d+$/, "");
   return normalizada.endsWith("/meta/whatsapp")
     ? normalizada
     : `${normalizada}/meta/whatsapp`;
@@ -23,7 +27,7 @@ function obtenerConfiguracion() {
 }
 
 function compararFirmas(firmaRecibida, firmaEsperada) {
-  if (!firmaRecibida || firmaRecibida.length !== firmaEsperada.length) return false;
+  if (typeof firmaRecibida !== "string" || !/^[a-f0-9]{64}$/.test(firmaRecibida)) return false;
 
   return crypto.timingSafeEqual(
     Buffer.from(firmaRecibida, "utf8"),
@@ -102,8 +106,7 @@ function obtenerTextoMensaje(message = {}) {
 }
 
 function normalizarTextoSimple(valor = "") {
-  return valor
-    .toString()
+  return textoSeguro(valor)
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
     .replace(/\s+/g, " ")
@@ -112,12 +115,12 @@ function normalizarTextoSimple(valor = "") {
 }
 
 function extraerTranscriptDesdeContenido(contenido = "") {
-  const match = contenido.match(/\bTranscript:\s*([\s\S]+)$/i);
+  const match = textoSeguro(contenido).match(/\bTranscript:\s*([\s\S]+)$/i);
   return match?.[1]?.trim() || null;
 }
 
 function limpiarContenidoAudioKapso(contenido = "", transcript = "") {
-  const texto = contenido.toString().trim();
+  const texto = textoSeguro(contenido).trim();
   if (!texto) return "";
   if (normalizarTextoSimple(texto) === normalizarTextoSimple(transcript)) return "";
 
@@ -172,7 +175,7 @@ function nombreArchivoSeguro(message, mediaId, filename, contentType) {
   const extension = extensionDesdeContentType(contentType, tipo);
   const base = filename || `${tipo}_${message.id || mediaId || "archivo"}`;
 
-  return `${base.toString().replace(/[^a-zA-Z0-9_-]+/g, "_")}.${extension}`;
+  return `${textoSeguro(base).replace(/[^a-zA-Z0-9_-]+/g, "_")}.${extension}`;
 }
 
 function normalizarMedia(message = {}) {
@@ -271,6 +274,7 @@ function normalizarMedia(message = {}) {
 }
 
 function normalizarEvento(payload, headers = {}) {
+  if (!payload || typeof payload !== "object" || Array.isArray(payload)) return null;
   const message = payload.message || {};
   const event = headers["x-webhook-event"] || payload.event;
 
@@ -282,7 +286,7 @@ function normalizarEvento(payload, headers = {}) {
 
   return {
     channelUserId,
-    idempotencyKey: [
+    idempotencyKey: (message.id || headers["x-idempotency-key"]) ? [
       primerValor(
         payload.phone_number_id,
         payload.phoneNumberId,
@@ -296,7 +300,7 @@ function normalizarEvento(payload, headers = {}) {
       message.id || headers["x-idempotency-key"] || null,
     ]
       .filter(Boolean)
-      .join(":") || null,
+      .join(":") : null,
     messageId: message.id || null,
     messageType: message.type || "unknown",
     phoneNumberId: primerValor(
@@ -330,7 +334,7 @@ function normalizarEvento(payload, headers = {}) {
       message.kapso?.integrationId
     ),
     recipientId,
-    text: obtenerTextoMensaje(message).trim(),
+    text: textoSeguro(obtenerTextoMensaje(message)).trim(),
     media: normalizarMedia(message),
     raw: payload,
   };
@@ -342,7 +346,7 @@ function extraerEventos(payload, headers = {}) {
 }
 
 function dividirTextoWhatsApp(texto = "", maximo = WHATSAPP_TEXT_BODY_MAX_CHARS) {
-  const contenido = texto.toString();
+  const contenido = textoSeguro(texto);
   if (contenido.length <= maximo) return [contenido];
 
   const partes = [];

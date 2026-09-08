@@ -1,5 +1,9 @@
+function textoSeguro(valor = "") {
+  return valor == null ? "" : valor.toString();
+}
+
 function expandirAbreviaturasProducto(texto = "") {
-  return texto
+  return textoSeguro(texto)
     .toString()
     .replace(/\bdog\s+chow\s+a(?=\s+\d|\s*$)/gi, "dog chow adulto")
     .replace(/\ba[\s.,-]*r[\s.,-]*g\b/gi, "adulto raza grande")
@@ -21,7 +25,6 @@ function expandirAbreviaturasProducto(texto = "") {
 
 function normalizar(texto = "") {
   return expandirAbreviaturasProducto(texto)
-    .toString()
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
     .toLowerCase()
@@ -54,7 +57,7 @@ function normalizarPeso(texto = "") {
 }
 
 function formatearPrecio(precio) {
-  return `$${precio.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}`;
+  return `$${textoSeguro(precio).replace(/\B(?=(\d{3})+(?!\d))/g, ".")}`;
 }
 
 module.exports = {
@@ -62,4 +65,5 @@ module.exports = {
   formatearPrecio,
   normalizar,
   normalizarPeso,
+  textoSeguro,
 };

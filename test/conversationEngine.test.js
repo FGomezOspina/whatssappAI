@@ -5,6 +5,7 @@ const { resolverConsultaCatalogo, extraerPresupuesto, buscarMarca } = require(".
 const { crearEstadoInicial } = require("../src/conversation/conversationStore");
 const { asegurarRespuestaCatalogo } = require("../src/verticals/petshop/productLogic");
 const { cargarProductosDesdeJson } = require("../src/repositories/productRepository");
+const { consolidarCatalogo } = require("../src/services/catalogConsolidationService");
 
 const catalogoConversacionalPruebas = [
   {
@@ -823,6 +824,55 @@ test("la validacion final no toma pedir como marca corta PED", () => {
 
   assert.equal(respuestaConPrefijo, respuestaHumanizada);
   assert.doesNotMatch(respuestaConPrefijo, /En VITA/i);
+});
+
+test("la validacion final no mezcla presentaciones cuando hay varios productos", () => {
+  const catalogo = [
+    {
+      marca: "CHUNKY",
+      referencias: [
+        {
+          nombre: "CHUNKY GATOS SALMON",
+          especie: "gato",
+          categoria: "comida",
+          subcategoria: "concentrado",
+          presentaciones: [{ peso: "12kg", precio: 120000, stock: true, metadata: {} }],
+        },
+      ],
+    },
+    {
+      marca: "ARENA",
+      referencias: [
+        {
+          nombre: "ARENA KITTEN LAVANDA",
+          especie: "gato",
+          categoria: "higiene",
+          subcategoria: "arena",
+          presentaciones: [{ peso: "8kg", precio: 28000, stock: true, metadata: {} }],
+        },
+      ],
+    },
+  ];
+  const mensaje = "Necesito un chunky salmón de 12 kilos y una arena kitten de 8 kilos de lavanda";
+  const respuestaHumanizada = [
+    "Listo, agregué al pedido:",
+    "- CHUNKY GATOS SALMON 12kg x 1: $120.000",
+    "- ARENA KITTEN LAVANDA 8kg x 1: $28.000",
+  ].join("\n");
+
+  const respuesta = asegurarRespuestaCatalogo(mensaje, respuestaHumanizada, {
+    catalogo,
+    interpretacionIA: {
+      producto: { marca: "ARENA", referencia: "ARENA KITTEN LAVANDA", presentacion: "12kg" },
+      productos: [
+        { marca: "CHUNKY", referencia: "CHUNKY GATOS SALMON", presentacion: "12kg" },
+        { marca: "ARENA", referencia: "ARENA KITTEN LAVANDA", presentacion: "12kg" },
+      ],
+    },
+  });
+
+  assert.equal(respuesta, respuestaHumanizada);
+  assert.doesNotMatch(respuesta, /En ARENA no tengo presentación de 12kg/i);
 });
 
 test("avanza a pago cuando el cliente cierra el carrito aunque la IA reinterprete el producto anterior", () => {
@@ -1759,6 +1809,195 @@ test("consulta con marca clara y referencia ambigua no lista referencias globale
   assert.match(respuesta, /AGILITY PEQ ADUL/i);
   assert.doesNotMatch(respuesta, /Lo que sí tengo para perros/i);
   assert.doesNotMatch(respuesta, /ADVANCE DOG|ALPO ADUL|BR CORDERO/i);
+});
+
+test("referencias abreviadas consolidadas permiten cotizar la presentacion solicitada", () => {
+  const estado = crearEstadoInicial();
+  const catalogo = consolidarCatalogo([
+    {
+      marca: "CHUNKY",
+      referencias: [
+        {
+          nombre: "CHUNKY GATOS SALMON CORDERO",
+          especie: "gato",
+          categoria: "comida",
+          subcategoria: "concentrado",
+          descripcion: "CHUNKY GATOS SALMON CORDERO",
+          metadata: {
+            original_names: [
+              "CHUNKY GATOS SALMON CORDERO X 1.5KL",
+              "CHUNKY GATOS SALMON CORDERO X 500",
+            ],
+          },
+          presentaciones: [
+            { peso: "x 1.5kg", precio: 25700, stock: true, metadata: {} },
+            { peso: "x 500", precio: 10200, stock: true, metadata: {} },
+          ],
+        },
+        {
+          nombre: "CHUNKY GATOS SALMON Y CORD",
+          especie: "gato",
+          categoria: "comida",
+          subcategoria: "concentrado",
+          descripcion: "CHUNKY GATOS SALMON Y CORD",
+          metadata: {
+            original_names: ["CHUNKY GATOS SALMON Y CORD X 8KG"],
+          },
+          presentaciones: [{ peso: "x 8kg", precio: 90000, stock: true, metadata: {} }],
+        },
+      ],
+    },
+  ]);
+  const interpretacionIA = {
+    intencion: "consulta_producto",
+    accion: "consultar",
+    confianza: 0.95,
+    producto: {
+      marca: "CHUNKY",
+      referencia: "CHUNKY GATOS SALMON CORDERO",
+      especie: "gato",
+      categoria: "comida",
+      subcategoria: "concentrado",
+      sabores: ["salmon", "cordero"],
+      presentacion: "8kg",
+      cantidad: 1,
+    },
+    productos: [],
+    entrega: {},
+    datosCliente: {},
+    carrito: { operacion: null },
+    faltanteSugerido: null,
+  };
+
+  const respuesta = resolverConsultaCatalogo(
+    "precio de chunky gatos salmon y cordero 8kg",
+    estado,
+    catalogo,
+    interpretacionIA
+  );
+
+  assert.match(respuesta, /CHUNKY GATOS SALMON CORDERO x 8kg: \$90\.000/i);
+  assert.doesNotMatch(respuesta, /no tengo presentación de 8kg|no disponible/i);
+});
+
+test("referencia especifica con presentacion inferida gana sobre referencias de la misma marca", () => {
+  const estado = crearEstadoInicial();
+  const catalogo = cargarProductosDesdeJson();
+  const interpretacionIA = {
+    intencion: "consulta_producto",
+    accion: "consultar",
+    confianza: 0.95,
+    producto: {
+      marca: "CHUNKY",
+      referencia: null,
+      especie: "perro",
+      categoria: "comida",
+      subcategoria: "concentrado",
+      sabores: ["cordero", "salmon"],
+      presentacion: "12kg",
+      cantidad: 1,
+    },
+    productos: [],
+    entrega: {},
+    datosCliente: {},
+    carrito: { operacion: null },
+    faltanteSugerido: null,
+  };
+
+  const respuesta = resolverConsultaCatalogo(
+    "precio chunky cordero y salmon 12kl",
+    estado,
+    catalogo,
+    interpretacionIA
+  );
+
+  assert.equal(estado.productosConsultados[0].referencia, "CHUNKY CORDERO ADULTO");
+  assert.equal(estado.productosConsultados[0].peso, "12kg");
+  assert.match(respuesta, /CHUNKY CORDERO ADULTO 12kg: \$151\.900/i);
+  assert.doesNotMatch(respuesta, /CHUNKY CHUROS|CHUNKY ADUL MAYORES/i);
+});
+
+test("no cruza la presentacion entre productos diferentes en el mismo mensaje", () => {
+  const estado = crearEstadoInicial();
+  const catalogo = [
+    {
+      marca: "CHUNKY",
+      referencias: [
+        {
+          nombre: "CHUNKY GATOS SALMON",
+          especie: "gato",
+          categoria: "comida",
+          subcategoria: "concentrado",
+          descripcion: "CHUNKY GATOS SALMON",
+          presentaciones: [{ peso: "12kg", precio: 120000, stock: true, metadata: {} }],
+        },
+      ],
+    },
+    {
+      marca: "ARENA",
+      referencias: [
+        {
+          nombre: "ARENA KITTEN LAVANDA",
+          especie: "gato",
+          categoria: "higiene",
+          subcategoria: "arena",
+          etapa: "cachorro",
+          descripcion: "ARENA KITTEN LAVANDA",
+          presentaciones: [{ peso: "8kg", precio: 28000, stock: true, metadata: {} }],
+        },
+      ],
+    },
+  ];
+  const mensaje = "Necesito un chunky salmón de 12 kilos y una arena kitten de 8 kilos de lavanda";
+  const interpretacionIA = {
+    intencion: "consulta_producto",
+    accion: "consultar",
+    confianza: 0.95,
+    producto: {
+      marca: "CHUNKY",
+      referencia: "CHUNKY GATOS SALMON",
+      especie: "gato",
+      categoria: "comida",
+      subcategoria: "concentrado",
+      sabores: ["salmon"],
+      presentacion: "12kg",
+      cantidad: 1,
+    },
+    productos: [
+      {
+        marca: "CHUNKY",
+        referencia: "CHUNKY GATOS SALMON",
+        especie: "gato",
+        categoria: "comida",
+        subcategoria: "concentrado",
+        sabores: ["salmon"],
+        presentacion: "12kg",
+        cantidad: 1,
+      },
+      {
+        marca: "ARENA",
+        referencia: "ARENA KITTEN LAVANDA",
+        especie: "gato",
+        categoria: "higiene",
+        subcategoria: "arena",
+        etapa: "cachorro",
+        presentacion: "12kg",
+        cantidad: 1,
+      },
+    ],
+    entrega: {},
+    datosCliente: {},
+    carrito: { operacion: null },
+    faltanteSugerido: null,
+  };
+
+  const respuesta = resolverConsultaCatalogo(mensaje, estado, catalogo, interpretacionIA);
+
+  assert.equal(estado.carrito.length, 0);
+  assert.equal(estado.productosConsultados.length, 2);
+  assert.match(respuesta, /CHUNKY GATOS SALMON 12kg: \$120\.000/i);
+  assert.match(respuesta, /ARENA KITTEN LAVANDA 8kg: \$28\.000/i);
+  assert.doesNotMatch(respuesta, /En ARENA no tengo presentación de 12kg/i);
 });
 
 test("otra pregunta de precio despues de cotizar sigue sin agregar", () => {

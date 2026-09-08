@@ -1,4 +1,5 @@
 const OpenAI = require("openai");
+const { modeloHumanizador } = require("./modelRouter");
 const { logUsoIA } = require("./aiUsageLogger");
 const {
   construirSolicitudHumanizador,
@@ -203,7 +204,7 @@ async function humanizarRespuesta(mensajeCliente, respuestaBase, opciones = {}) 
   }
 
   try {
-    const model = opciones.model || process.env.OPENAI_HUMANIZER_MODEL || process.env.OPENAI_MODEL || "gpt-5.2-chat-latest";
+    const model = opciones.model || modeloHumanizador(opciones.clasificacion);
     const solicitud = construirSolicitudHumanizador({
       mensaje: mensajeCliente,
       respuestaBase,

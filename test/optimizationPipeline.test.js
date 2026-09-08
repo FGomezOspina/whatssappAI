@@ -584,3 +584,20 @@ test("pedido confirmado anterior no infla una nueva busqueda de producto", () =>
   assert.deepEqual(solicitud.contexto.contextoActivo, {});
   assert.equal(clasificacion.limiteHistorial, 0);
 });
+
+test("humanizador usa modelo vigente y respeta la configuracion general en toda complejidad", (t) => {
+  const claves = ["OPENAI_MODEL", "OPENAI_HUMANIZER_MODEL", "OPENAI_HUMANIZER_MODEL_SIMPLE", "OPENAI_HUMANIZER_MODEL_COMPLEX", "OPENAI_HUMANIZER_MODEL_PRODUCT"];
+  const anteriores = Object.fromEntries(claves.map(clave => [clave, process.env[clave]]));
+  claves.forEach(clave => delete process.env[clave]);
+  t.after(() => {
+    for (const [clave, valor] of Object.entries(anteriores)) {
+      if (valor === undefined) delete process.env[clave];
+      else process.env[clave] = valor;
+    }
+  });
+  const perfiles = [{}, { complejidad: "simple" }, { complejidad: "compleja" }, { complejidad: "avanzada" }, { perfilContexto: "producto" }];
+  for (const perfil of perfiles) assert.equal(modeloHumanizador(perfil), "gpt-5.4-mini");
+  process.env.OPENAI_MODEL = "modelo-global";
+  process.env.OPENAI_HUMANIZER_MODEL = "modelo-humanizador";
+  for (const perfil of perfiles) assert.equal(modeloHumanizador(perfil), "modelo-humanizador");
+});
