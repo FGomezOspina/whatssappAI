@@ -1,3 +1,4 @@
+const { _internals: { marcaExactaConsultada, tokensDistintivos } } = require("./productMatchValidator");
 const { normalizar, normalizarPeso } = require("../utils/text");
 const { buscarProductosCatalogoCliente } = require("../repositories/productRepository");
 const {
@@ -15,6 +16,8 @@ const TOKENS_CONVERSACIONALES = new Set(
     "bueno",
     "buenos",
     "chao",
+    "catalogo",
+    "catalogos",
     "calle",
     "carrera",
     "cra",
@@ -262,7 +265,13 @@ function seleccionarCatalogoLocal({ catalogo = [], mensaje = "", estado = {}, cl
 
   const consulta = expandirConsulta(textoBusqueda(mensaje, estado));
   const tokensConsulta = tokens(consulta);
-  const items = referenciasCatalogo(catalogo);
+  const identidadConsulta = tokensDistintivos(consulta);
+  const marcasConsulta = new Set(catalogo
+    .filter(marca => marcaExactaConsultada([marca], identidadConsulta))
+    .map(marca => normalizar(marca.marca)));
+  const items = referenciasCatalogo(catalogo).filter(item =>
+    !marcasConsulta.size || marcasConsulta.has(normalizar(item.marca.marca))
+  );
   const conPuntaje = items
     .map((item, index) => ({
       ...item,
@@ -276,8 +285,7 @@ function seleccionarCatalogoLocal({ catalogo = [], mensaje = "", estado = {}, cl
   let estrategia = "candidatos_keyword";
 
   if (!seleccionados.length && clasificacion.requiereBusquedaProducto) {
-    seleccionados = items.slice(0, limite).map((item, index) => ({ ...item, index, puntos: 0 }));
-    estrategia = "fallback_limitado";
+    estrategia = "sin_coincidencias";
   }
 
   if (!clasificacion.requiereBusquedaProducto && !clasificacion.requiereVision) {
@@ -392,9 +400,20 @@ async function seleccionarCatalogoParaIA({ catalogo = [], mensaje = "", estado =
       estado,
       clasificacion,
     });
+    const identidadConsulta = tokensDistintivos(query);
+    const marcasConsulta = new Set(catalogo
+      .filter(marca => marcaExactaConsultada([marca], identidadConsulta))
+      .map(marca => normalizar(marca.marca)));
     const catalogoCombinado = combinarCatalogosCandidatos(
       resultadoLocal.catalogo,
-      resultado.catalogo,
+      resultado.catalogo.map(marca => ({
+        ...marca,
+        referencias: marca.referencias.filter(referencia =>
+          clasificacion.requiereVision || puntuarReferencia({ marca, referencia }, query, tokens(query)) > 0
+        ),
+      })).filter(marca =>
+        !marcasConsulta.size || marcasConsulta.has(normalizar(marca.marca))
+      ),
       limite
     );
     const referenciasCombinadas = referenciasCatalogo(catalogoCombinado).length;

@@ -97,6 +97,10 @@ function encolarEventos(eventos) {
   colasPorCliente.set(queueKey, procesamiento);
   procesamiento
     .catch((error) => {
+      eventos.forEach(evento => {
+        const identificador = evento.idempotencyKey || evento.messageId;
+        if (identificador) idempotencyKeysProcesadas.delete(`${claveTenantUsuario(evento)}:${identificador}`);
+      });
       console.error("Error procesando webhook Kapso:", error.message);
     })
     .finally(() => {
@@ -134,7 +138,9 @@ function crearApp() {
     eventos.forEach((evento) => {
       registrarMensajeEntrante(evento);
       setImmediate(() => {
-        if (registrarIdempotencyKey(evento.idempotencyKey)) {
+        const identificador = evento.idempotencyKey || evento.messageId;
+        const key = identificador ? `${claveTenantUsuario(evento)}:${identificador}` : null;
+        if (registrarIdempotencyKey(key)) {
           bufferMensajesEntrantes.agregar(evento);
         }
       });

@@ -73,3 +73,10 @@ test("no omite humanizador cuando la cotizacion incluye presentaciones disponibl
     else process.env.HUMANIZER_PRODUCT_SEARCH = anterior;
   }
 });
+
+test("una cotizacion de referencia y peso concretos conserva la redaccion libre del humanizador", () => {
+  assert.equal(omitirHumanizadorProducto("- Alimento adulto 3kg: $78.000", {
+    clasificacion: { perfilContexto: "producto" },
+    interpretacionIA: { producto: { referencia: "Alimento adulto", presentacion: "3kg" } },
+  }), false);
+});

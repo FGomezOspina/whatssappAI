@@ -852,6 +852,13 @@ function resolverSeleccionProductoPendiente({
   catalogo,
   nuevaBusquedaProducto = false,
 }) {
+  if (estado.pedidoConfirmado || Object.keys(estado).some(campo =>
+    campo.startsWith("esperando") && estado[campo] === true &&
+    !["esperandoMarca", "esperandoPresupuesto"].includes(campo)
+  )) return null;
+  // Una pregunta de atributos no es una lista numerada para seleccionar productos.
+  // El interprete y el validador deben combinar la respuesta con la consulta previa.
+  if (estado.ultimaConsultaProducto?.aclaracion) return null;
   const seleccionHistorica = resolverOrdinalHistorial({
     mensaje,
     estado,

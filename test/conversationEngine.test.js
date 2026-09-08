@@ -1341,8 +1341,8 @@ test("consultar precios no agrega productos al carrito", () => {
   assert.match(respuesta, /Te confirmo esta referencia/i);
   assert.match(respuesta, /Adulto Mini y Pequeño 1kg/i);
   assert.match(respuesta, /Adulto Mediano y Grande 2kg/i);
-  assert.match(respuesta, /Adulto Mini y Pequeño 4kg/i);
-  assert.match(respuesta, /Adulto Mediano y Grande 1kg/i);
+  assert.doesNotMatch(respuesta, /Adulto Mini y Pequeño 4kg/i);
+  assert.doesNotMatch(respuesta, /Adulto Mediano y Grande 1kg/i);
   assert.match(respuesta, /\[\[AIVANCE_MESSAGE_BREAK\]\]/);
 });
 
@@ -1448,7 +1448,7 @@ test("cotiza varios productos de una vez y solo pregunta por el que quede ambigu
   assert.match(respuesta, /SIMPARICA 10 a 20 kg: \$92\.000/i);
   assert.match(respuesta, /SIMPARICA 20 a 40 kg: \$105\.000/i);
   assert.match(respuesta, /DON KAT GATOS 7kg: \$85\.000/i);
-  assert.match(respuesta, /DON KAT GATOS 1kg: \$14\.500/i);
+  assert.doesNotMatch(respuesta, /DON KAT GATOS 1kg: \$14\.500/i);
   assert.doesNotMatch(respuesta, /SIMPARICA TRIO/i);
   assert.doesNotMatch(respuesta, /Para completar otro producto/i);
   assert.match(respuesta, /\[\[AIVANCE_MESSAGE_BREAK\]\]/);
@@ -1578,14 +1578,14 @@ test("consulta de precio de un solo producto no agrega al carrito", () => {
     respuesta,
     /Claro, lo tenemos|Sí, esa presentación está disponible|Te confirmo, esa referencia la manejamos/i
   );
-  assert.match(respuesta, /También manejamos estas presentaciones de esa referencia/i);
-  assert.match(respuesta, /Adulto Mini y Pequeño 1kg: \$19\.000/i);
-  assert.match(respuesta, /Adulto Mini y Pequeño 2kg: \$36\.000/i);
+  assert.doesNotMatch(respuesta, /También manejamos estas presentaciones de esa referencia/i);
+  assert.doesNotMatch(respuesta, /Adulto Mini y Pequeño 1kg: \$19\.000/i);
+  assert.doesNotMatch(respuesta, /Adulto Mini y Pequeño 2kg: \$36\.000/i);
   assert.match(respuesta, /Adulto Mini y Pequeño 4kg: \$68\.000/i);
   assert.doesNotMatch(respuesta, /Adulto Mediano y Grande/i);
   assert.doesNotMatch(respuesta, /Cachorros Mini y Pequeño/i);
   assert.doesNotMatch(respuesta, /Mirringo/i);
-  assert.match(
+  assert.doesNotMatch(
     respuesta,
     /¿Cuál presentación quieres que te deje en el pedido\?|¿Te dejo alguna de estas presentaciones en el pedido\?|¿Con cuál presentación seguimos para el pedido\?/i
   );

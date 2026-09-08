@@ -753,7 +753,7 @@ test("vision prioriza una linea critica aunque la referencia inicial sea generic
   );
 });
 
-test("el flujo muestra todas las presentaciones consolidadas de la referencia visual", () => {
+test("el flujo cotiza solo la presentacion solicitada de la referencia visual consolidada", () => {
   const catalogoVision = consolidarCatalogo([
     {
       marca: "EXCELLENT",
@@ -830,8 +830,8 @@ test("el flujo muestra todas las presentaciones consolidadas de la referencia vi
   );
 
   assert.match(respuesta, /EXCELLENT GATO URINARY x 3kg: \$81\.900/);
-  assert.match(respuesta, /EXCELLENT GATO URINARY 1kg: \$34\.000/);
-  assert.match(respuesta, /EXCELLENT GATO URINARY 7\.5kg: \$163\.700/);
+  assert.doesNotMatch(respuesta, /EXCELLENT GATO URINARY 1kg: \$34\.000/);
+  assert.doesNotMatch(respuesta, /EXCELLENT GATO URINARY 7\.5kg: \$163\.700/);
   assert.doesNotMatch(respuesta, /EXCELLENT GATO ADULT/);
 });
 
@@ -1092,9 +1092,9 @@ test("vision interpreta linea pro como premium y respeta la presentacion exacta"
   assert.equal(validacion.coincidencia.referencia, "RINGO PREMIUM");
   assert.equal(validacion.presentacionSolicitada, "20kg");
   assert.match(respuesta, /RINGO PREMIUM 20kg: \$116\.000/);
-  assert.match(respuesta, /RINGO PREMIUM 1kg: \$6\.900/);
-  assert.match(respuesta, /RINGO PREMIUM 2kg: \$13\.300/);
-  assert.match(respuesta, /RINGO PREMIUM 30kg: \$170\.000/);
+  assert.doesNotMatch(respuesta, /RINGO PREMIUM 1kg: \$6\.900/);
+  assert.doesNotMatch(respuesta, /RINGO PREMIUM 2kg: \$13\.300/);
+  assert.doesNotMatch(respuesta, /RINGO PREMIUM 30kg: \$170\.000/);
   assert.doesNotMatch(respuesta, /RINGO PREMIUN PRO 4kg/);
   assert.doesNotMatch(respuesta, /RINGO CROQUETAS 20kg/);
 });
@@ -1632,7 +1632,7 @@ test("saludos y muletillas no contaminan la busqueda de referencias", () => {
   assert.doesNotMatch(respuesta, /HOLA BUENA TARDE|TE HAGO UNA PREGUNTA/i);
 });
 
-test("texto con combinacion inexistente recomienda referencias cercanas sin pedir foto", () => {
+test("texto con combinacion inexistente no sustituye una marca explicita por otra", () => {
   const mensaje = "Hola, buena tarde\nTe hago una pregunta, ¿tienen arena de tofu de Michiko?";
   const validacion = validarCoincidenciaProducto({
     mensaje,
@@ -1642,11 +1642,11 @@ test("texto con combinacion inexistente recomienda referencias cercanas sin pedi
   });
   const respuesta = respuestaValidacionProducto(validacion);
 
-  assert.equal(validacion.nivel, "media");
-  assert.match(respuesta, /ARENA FOFICAT TOFU/i);
-  assert.match(respuesta, /ARENA MICHIKO LIMON|ARENA MICHIKO LAVANDA/i);
+  assert.equal(validacion.nivel, "baja");
+  assert.doesNotMatch(respuesta, /ARENA FOFICAT TOFU/i);
+  assert.ok(validacion.alternativas.every(item => item.marca === "MICHIKO"));
   assert.doesNotMatch(respuesta, /foto|empaque/i);
-  assert.doesNotMatch(respuesta, /no encuentro/i);
+  assert.match(respuesta, /no encuentro/i);
 });
 
 test("une palabras separadas y tolera orden distinto al buscar en todo el catalogo", () => {
@@ -1732,4 +1732,42 @@ test("una marca corta solo limita el catalogo cuando completa una referencia rea
   assert.equal(productoCompuesto.coincidencia.referencia, "ARENA FOFICAT TOFU");
   assert.equal(referenciaCat.nivel, "alta");
   assert.equal(referenciaCat.coincidencia.referencia, "CAT BALANCE");
+});
+
+test("consulta especifica selecciona solo la variante y peso solicitados para distintas marcas", () => {
+  for (const marca of ["NUTRIMASCOTA", "ALIMENTOVITAL"]) {
+    const catalogo = [{ marca, referencias: [
+      { nombre: `${marca} GATO AD`, especie: "gato", etapa: "adulto", presentaciones: [{ peso: "500gr", precio: 15000 }, { peso: "3kg", precio: 78000 }] },
+      { nombre: `${marca} EN GATO`, especie: "gato", presentaciones: [{ peso: "140gr", precio: 9600 }] },
+      { nombre: `${marca} PERRO ADUL`, especie: "perro", etapa: "adulto", presentaciones: [{ peso: "3kg", precio: 59000 }] },
+      { nombre: `${marca} GATO CACH`, especie: "gato", etapa: "cachorro", presentaciones: [{ peso: "3kg", precio: 85000 }] },
+    ] }];
+    const mensaje = `Tienes ${marca} para gatos adultos de 3 kilos?`;
+    const interpretacion = { intencion: "consulta_producto", accion: "consultar", producto: { marca, referencia: `${marca} GATO AD`, especie: "gato", etapa: "adulto", presentacion: "3kg" } };
+    for (const lectura of [null, interpretacion]) {
+      const validacion = validarCoincidenciaProducto({ mensaje, catalogo, clasificacion: clasificacionTexto, interpretacion: lectura });
+      assert.equal(validacion.nivel, "alta");
+      assert.equal(validacion.coincidencia.referenciaCatalogo, `${marca} GATO AD`);
+      assert.equal(validacion.presentacionValida, true);
+      assert.deepEqual(validacion.alternativas.map(item => item.referenciaCatalogo), [`${marca} GATO AD`]);
+    }
+    const estado = crearEstadoInicial();
+    const respuesta = resolverConsultaCatalogo(mensaje, estado, catalogo, interpretacion);
+    assert.match(respuesta, /3kg: \$78\.000/);
+    assert.doesNotMatch(respuesta, /500gr|140gr|PERRO|CACH|cu[aá]l presentaci[oó]n/i);
+    assert.equal(estado.carrito.length, 0);
+    const general = validarCoincidenciaProducto({ mensaje: `Tienes ${marca}?`, catalogo, clasificacion: clasificacionTexto });
+    assert.notEqual(general.nivel, "alta");
+    assert.ok(general.alternativas.length > 1);
+    const ambiguo = [{ marca, referencias: ["POLLO", "SALMON"].map(sabor => ({
+      ...catalogo[0].referencias[0], nombre: `${marca} GATO AD ${sabor}`,
+    })) }];
+    const varias = validarCoincidenciaProducto({ mensaje, catalogo: ambiguo, clasificacion: clasificacionTexto });
+    assert.notEqual(varias.nivel, "alta");
+    assert.equal(varias.alternativas.length, 2);
+    const inexistente = resolverConsultaCatalogo(`Tienes ${marca} para gatos adultos de 9 kilos?`, crearEstadoInicial(), catalogo,
+      { ...interpretacion, producto: { ...interpretacion.producto, presentacion: "9kg" } });
+    assert.match(inexistente, /no.*(?:disponible|manejamos)|no lo tengo|no tengo|no tenemos/i);
+    assert.doesNotMatch(inexistente, /9kg: \$/);
+  }
 });

@@ -188,6 +188,8 @@ function compactarEstado(estado = {}, perfil = "simple") {
       ? {
           terminos: (estado.ultimaConsultaProducto.terminos || []).slice(0, 8),
           fuente: estado.ultimaConsultaProducto.fuente || null,
+          aclaracion: estado.ultimaConsultaProducto.aclaracion || null,
+          presentacion: estado.ultimaConsultaProducto.presentacion || null,
           creadoEn: estado.ultimaConsultaProducto.creadoEn || null,
         }
       : null,
@@ -204,6 +206,9 @@ function compactarEstado(estado = {}, perfil = "simple") {
         repetirPedido: estado.esperandoConfirmacionRepetirPedido,
         datosPrevios: estado.esperandoConfirmacionDatosPrevios,
         cambioDireccion: estado.esperandoCambioDireccion,
+        confirmacionDomicilio: estado.esperandoConfirmacionDomicilio,
+        confirmacionDatosFacturacion: estado.esperandoConfirmacionDatosFacturacion,
+        actualizacionDatosCliente: estado.esperandoActualizacionDatosCliente,
       }).filter(([, valor]) => Boolean(valor))
     ),
   };
@@ -266,6 +271,7 @@ function instruccionesPerfil(perfil) {
     "En WhatsApp colombiano, vocativos, tono carinoso, disculpas, cierres y agradecimientos no son datos de producto.",
     "Si el cliente menciona un producto solo para decir que no lo quiere, no le sirvio, no seguira con la compra o solo agradece/cierra, usa intencion rechazo o agradecimiento y deja producto sin datos.",
     "Consultar precio o disponibilidad usa accion consultar; no agrega al carrito.",
+    "Interpreta la intencion antes de elegir: marca o categoria no identifican una referencia. Completa aclaraciones con contexto vigente; un producto nuevo cambia el foco. Pregunta solo el atributo faltante que distingue opciones reales, sin inferirlo del primer candidato ni mezclar marcas. Si referencia y peso son suficientes, cotiza solo esa opcion; si no existe, no la sustituyas silenciosamente.",
     "Devuelve solo datos nuevos del mensaje. Usa null cuando no haya evidencia.",
   ];
 
@@ -276,7 +282,7 @@ function instruccionesPerfil(perfil) {
       "Usa productosConsultados para ese o el de cierto peso, e historialProductosConsultados para primero, segundo u otra cotizacion anterior.",
       "Un nombre, audio o imagen nuevos cambian el producto activo; no arrastres la referencia anterior.",
       "Si el cliente dice no es, era, quise decir o me refiero a, descarta la referencia propuesta y usa el texto nuevo como correccion; nunca incluyas esas palabras en el nombre del producto.",
-      "ultimaConsultaProducto conserva señales crudas del intento anterior. Usala solo para completar una correccion corta; si la correccion trae nombre suficiente, el texto nuevo reemplaza lo anterior.",
+      "ultimaConsultaProducto conserva señales crudas del intento anterior. Usala para completar aclaraciones y correcciones cortas; si la correccion trae nombre suficiente, el texto nuevo reemplaza lo anterior.",
       "RP/raza pequena/mini/small indican tamano pequeno; RG/RMG/mediano/grande indican tamano grande. CACH/puppy es cachorro y MAYORES/senior es senior.",
       "Entiende canine/perro, feline/gato, puppy/cachorro, adult/adulto y small/pequeno.",
       "Condiciones como castrado, urinary, renal, gastro, piel y siglas como OM/UR/NF son parte fuerte de la referencia.",
@@ -287,6 +293,8 @@ function instruccionesPerfil(perfil) {
       "Las presentaciones pedidas deben conservarse exactamente aunque no existan.",
     ],
     pedido: [
+    "Interpreta primero la respuesta respecto a estado.esperando y la ultima pregunta. Productos consultados o incluidos en un resumen son contexto historico, no una solicitud nueva. Solo cambia al catalogo si el mensaje actual expresa una nueva consulta o cambio de producto. Al confirmar o completar datos, deja producto y productos vacios.",
+
       "Prioriza estado.esperando y el carrito activo.",
       "Una aclaracion breve completa el dato pendiente; no inicia otra conversacion.",
       "No reemplaces datos confirmados con metodo de pago, confirmaciones o numeros ambiguos.",
@@ -508,7 +516,8 @@ function construirPromptHumanizador({ cliente = null, vertical = null } = {}) {
     "Redacta una respuesta breve y natural de WhatsApp en espanol colombiano.",
     "El backend ya valido los hechos. No cambies productos, acciones, precios, pesos, cantidades ni preguntas.",
     "Conserva exactamente lineas que empiecen por '- ', 'Precio:' o 'Total:'.",
-    "Evita sonar como plantilla: puedes variar apertura y cierre, manteniendo una sola pregunta clara.",
+    "Evita sonar como plantilla: se cercano, entusiasta y comercial; puedes variar apertura y cierre, manteniendo una sola pregunta clara.",
+    "Si la respuesta base pide un atributo, conserva solo esa aclaracion y sus opciones; no listes productos ni precios del contexto previo. Si ya cotiza una referencia y peso concretos, no reabras la seleccion y puedes invitar a continuar la compra sin afirmar que ya se agrego.",
     "No confirmes pedidos antes de la confirmacion explicita. No inventes cobertura, horarios, recargos, dosis ni tratamientos.",
     "Haz como maximo una pregunta y usa maximo un emoji. Devuelve solo la respuesta final.",
     adicionales,

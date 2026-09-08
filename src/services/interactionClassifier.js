@@ -212,6 +212,10 @@ function limiteEjemplos(complejidad, perfil) {
 }
 
 function clasificarInteraccion({ mensaje = "", estado = {}, contenidos = [], imageUrls = [] } = {}) {
+  const accionPendiente = Object.keys(estado).find(campo =>
+    campo.startsWith("esperando") && estado[campo] === true &&
+    !["esperandoMarca", "esperandoPresupuesto"].includes(campo)
+  ) || null;
   const intencion = detectarIntencionBasica(mensaje, estado, contenidos, imageUrls);
   const complejidad = detectarComplejidad(mensaje, estado, intencion);
   const requiereVision = tieneImagen(imageUrls);
@@ -231,11 +235,12 @@ function clasificarInteraccion({ mensaje = "", estado = {}, contenidos = [], ima
 
   return {
     intencion,
+    accionPendiente,
     complejidad,
     requiereVision,
     requiereAudio,
-    requiereOpenAI,
-    requiereBusquedaProducto: requiereBusquedaProducto(intencion, mensaje, estado),
+    requiereOpenAI: Boolean(accionPendiente) || requiereOpenAI,
+    requiereBusquedaProducto: !accionPendiente && requiereBusquedaProducto(intencion, mensaje, estado),
     perfilContexto: perfil,
     limiteHistorial: requiereVision
       ? 0

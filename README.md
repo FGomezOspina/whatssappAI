@@ -8,7 +8,7 @@ Kapso es el proveedor activo de WhatsApp. Twilio pertenece solamente al antecede
 
 - Proveedor de WhatsApp activo: Kapso.
 - Entorno recomendado para pruebas y regresiones: sandbox de Kapso.
-- Persistencia: Supabase por REST API, con memoria local como respaldo para desarrollo de conversaciones.
+- Persistencia: Supabase por REST API y cache local por client_id/usuario. Si Supabase esta configurado y falla, se propaga el error sin reemplazar el estado por una conversacion vacia. La memoria sin persistencia queda disponible cuando Supabase no esta configurado.
 - Cliente: se resuelve dinamicamente por el canal WhatsApp registrado en Supabase (`phone_number_id`, `workspace_id` o `integration_id`).
 - Tipo de negocio: se lee desde `aivance_clients.business_type` o `vertical`.
 - Vertical operativa: `petshop`. La vertical `guarderia` esta registrada como placeholder y se bloquea hasta implementar su flujo.

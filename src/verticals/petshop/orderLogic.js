@@ -3,6 +3,7 @@ const { formatearPrecio, normalizar, normalizarPeso } = require("../../utils/tex
 const { unirMensajesRespuesta } = require("../../utils/responseMessages");
 const {
   establecerProductosConsultados,
+  reiniciarFocoProducto,
 } = require("../../services/pendingProductMatchService");
 
 const ALIAS_MARCAS_EXTRA = {
@@ -2805,6 +2806,14 @@ function tieneOtrasPresentaciones(item) {
 
 function bloqueConsultaConfirmada(item, clave, opciones = {}) {
   const lineasConsulta = lineasConsultaItem(item);
+  const apertura = elegirVariante(clave, [
+    "Claro, lo tenemos:",
+    "Sí, esa presentación está disponible:",
+    "Te confirmo, esa referencia la manejamos:",
+  ]);
+  if (item.presentacion && !item.cotizarTodasPresentaciones) {
+    return `${opciones.multiple ? "Te confirmo esta referencia:" : apertura}\n${lineasConsulta}`;
+  }
   const lineasOtrasPresentaciones = item.cotizarTodasPresentaciones
     ? ""
     : lineasPresentacionesConsultadas([item], {
@@ -2823,11 +2832,6 @@ function bloqueConsultaConfirmada(item, clave, opciones = {}) {
       .join("\n\n");
   }
 
-  const apertura = elegirVariante(clave, [
-    "Claro, lo tenemos:",
-    "Sí, esa presentación está disponible:",
-    "Te confirmo, esa referencia la manejamos:",
-  ]);
   const introPresentaciones = elegirVariante(`${clave}-presentaciones`, [
     "También manejamos estas presentaciones de esa referencia:",
     "De esa misma referencia también tenemos estas presentaciones:",
@@ -2865,7 +2869,7 @@ function respuestaConsultaConfirmada(items = []) {
 
   const partes = items.map((item, index) => {
     const bloque = bloqueConsultaConfirmada(item, `${clave}-${index}`, { multiple: true });
-    if (index !== items.length - 1) return bloque;
+    if (index !== items.length - 1 || items.every((item) => !item.cotizarTodasPresentaciones)) return bloque;
     return `${bloque}\n\n¿Cuál presentación quieres que te agregue al pedido?`;
   });
 
@@ -4462,6 +4466,8 @@ function detectarSedeRecogida(mensaje) {
 }
 
 function solicitarTipoEntrega(estado) {
+  reiniciarFocoProducto(estado);
+  estado.ultimaConsultaProducto = null;
   estado.esperandoTipoEntrega = true;
   estado.esperandoConfirmacionDomicilio = false;
 
@@ -4469,6 +4475,8 @@ function solicitarTipoEntrega(estado) {
 }
 
 function solicitarSedeRecogida(estado) {
+  reiniciarFocoProducto(estado);
+  estado.ultimaConsultaProducto = null;
   estado.esperandoSedeRecogida = true;
   estado.esperandoTipoEntrega = false;
 
@@ -4476,6 +4484,11 @@ function solicitarSedeRecogida(estado) {
 }
 
 function confirmarRecogida(estado) {
+  Object.keys(estado).forEach(campo => {
+    if (campo.startsWith("esperando")) estado[campo] = false;
+  });
+  reiniciarFocoProducto(estado);
+  estado.ultimaConsultaProducto = null;
   estado.esperandoSedeRecogida = false;
   estado.esperandoTipoEntrega = false;
   estado.pedidoConfirmado = true;
@@ -4503,6 +4516,8 @@ function detectarMetodoPago(mensaje) {
 }
 
 function solicitarMetodoPago(estado) {
+  reiniciarFocoProducto(estado);
+  estado.ultimaConsultaProducto = null;
   estado.esperandoMetodoPago = true;
   estado.esperandoTipoEntrega = false;
   estado.esperandoConfirmacionDomicilio = false;
@@ -4544,6 +4559,8 @@ function camposDomicilioFaltantes(estado) {
 }
 
 function solicitarDatosDomicilio(estado) {
+  reiniciarFocoProducto(estado);
+  estado.ultimaConsultaProducto = null;
   const faltantes = camposDomicilioFaltantes(estado);
   if (!faltantes.length) {
     return estado.metodoPago ? solicitarConfirmacionPedido(estado) : solicitarMetodoPago(estado);
@@ -4578,6 +4595,12 @@ function resumenDatosFacturacionYDomicilio(estado) {
 }
 
 function solicitarConfirmacionPedido(estado) {
+  Object.keys(estado).forEach(campo => {
+    if (campo.startsWith("esperando")) estado[campo] = false;
+  });
+  estado.confirmacionPedidoId = estado.confirmacionPedidoId || crypto.randomUUID();
+  reiniciarFocoProducto(estado);
+  estado.ultimaConsultaProducto = null;
   estado.esperandoDatosDomicilio = false;
   estado.esperandoConfirmacionDomicilio = false;
   estado.esperandoConfirmacionPedido = true;
@@ -4588,6 +4611,11 @@ function solicitarConfirmacionPedido(estado) {
 }
 
 function confirmarPedido(estado) {
+  Object.keys(estado).forEach(campo => {
+    if (campo.startsWith("esperando")) estado[campo] = false;
+  });
+  reiniciarFocoProducto(estado);
+  estado.ultimaConsultaProducto = null;
   estado.esperandoDatosDomicilio = false;
   estado.esperandoConfirmacionDomicilio = false;
   estado.esperandoConfirmacionPedido = false;
@@ -4703,20 +4731,28 @@ function resolverConfirmacionPedido(mensaje, estado, interpretacion = null) {
     return confirmarPedido(estado);
   }
 
-  if (esNegacion(mensaje)) {
+  if (esNegacion(mensaje) || (interpretacion?.confianza >= 0.55 &&
+      interpretacion.intencion === "rechazo" && interpretacion.accion === "rechazar")) {
     estado.esperandoConfirmacionPedido = false;
     estado.esperandoActualizacionDatosCliente = true;
     return "Claro, dime qué dato debemos corregir: nombre, cédula, celular, correo o dirección.";
   }
 
   const datos = extraerDatosDomicilio(mensaje);
+  if (interpretacion && interpretacion.intencion !== "datos_envio") delete datos.nombre;
   if (Object.keys(datos).length) {
     estado.datosDomicilio = { ...estado.datosDomicilio, ...datos };
+    aplicarDatosInterpretados(estado, interpretacion || {});
     return solicitarConfirmacionPedido(estado);
   }
 
-  estado.esperandoConfirmacionPedido = false;
-  return null;
+  if (["pedido_producto", "consulta_producto", "consulta_marcas", "recomendacion", "carrito"].includes(interpretacion?.intencion)) {
+    return null;
+  }
+  aplicarDatosInterpretados(estado, interpretacion || {});
+  // Si no se pudo resolver la respuesta, mantenemos la etapa y solicitamos
+  // confirmacion otra vez; nunca usamos una cotizacion antigua como alternativa.
+  return solicitarConfirmacionPedido(estado);
 }
 
 function resolverDatosPrevios(mensaje, estado, interpretacion = null) {
@@ -5317,6 +5353,10 @@ function resolverConsultaCatalogo(mensaje, estado, catalogo = [], interpretacion
 
   const respuestaConfirmacionPedido = resolverConfirmacionPedido(mensaje, estado, interpretacion);
   if (respuestaConfirmacionPedido) return respuestaConfirmacionPedido;
+
+  if (estado.pedidoConfirmado && interpretacionConfirma(interpretacion)) {
+    return respuestaPedidoYaConfirmado(mensaje);
+  }
 
   if (
     estado.pedidoConfirmado &&

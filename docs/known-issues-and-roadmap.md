@@ -43,9 +43,9 @@ Riesgo: con varias instancias pueden procesarse mensajes del mismo usuario fuera
 
 ### P1: idempotencia durable
 
-Mover llaves procesadas a un almacenamiento compartido y registrar estado del evento.
+El webhook deduplica por canal y usuario dentro de la instancia. La conversacion conserva los ultimos 256 identificadores procesados en su JSON de estado, por client_id/usuario, y los recupera despues de reiniciar. El pedido recibe una clave estable al presentar el resumen final; el upsert usa la restriccion unica existente (client_id, channel_user_id, order_key).
 
-Riesgo: el dedupe actual vive en memoria y se pierde al reiniciar.
+Pendiente: reclamacion atomica de eventos entre replicas y retencion durable sin limite de 256 mensajes. La cola local y los recibos JSON no garantizan ejecucion unica entre varias instancias concurrentes.
 
 ### P1: entrega confiable
 

@@ -169,6 +169,9 @@ function esRespuestaOperativaProtegida(respuestaBase = "") {
 }
 
 function omitirHumanizadorProducto(respuestaBase, opciones = {}) {
+  if (opciones.aclaracion) return false;
+  if (opciones.interpretacionIA?.producto?.referencia &&
+      opciones.interpretacionIA?.producto?.presentacion) return false;
   const respuestaConPresentacionesCotizadas =
     /referencia.*presentaciones|referencias.*presentaciones/i.test(
       respuestaBase

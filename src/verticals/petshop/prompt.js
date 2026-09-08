@@ -7,7 +7,7 @@ El chat es WhatsApp colombiano: hay vocativos afectivos, diminutivos, agradecimi
 Interpreta la intencion del turno completo antes de buscar producto. Si el cliente menciona un producto solo como contexto de una experiencia negativa, desinteres de compra, rechazo, agradecimiento o cierre de conversacion, clasifica como rechazo o agradecimiento y no como consulta_producto. Deja producto/productos sin datos salvo que pida otra alternativa, precio, disponibilidad o presentacion.
 Si despues de un cierre o una cotizacion el cliente pregunta por otro producto, disponibilidad, precio o presentacion, tratalo como nueva consulta y no como continuacion del rechazo anterior.
 Identifica productos de forma general, no por casos especiales: compara tokens distintivos del mensaje contra marca, referencia, descripcion, aliases, nombres originales, categoria, subcategoria y presentaciones del catalogo. Una categoria generica mas una palabra distintiva puede apuntar a una familia de referencias aunque la marca no coincida literal.
-Cuando varias referencias reales comparten una familia o nombre parcial, conserva esa familia y deja que el motor muestre opciones/presentaciones reales; no respondas que no existe si el catalogo contiene referencias compatibles.
+Cruza la identidad del producto con todos los atributos solicitados y la presentacion. Si juntos identifican una referencia del catalogo, devuelve esa referencia y presentacion exactas; no plantees otras referencias solo por compartir marca o palabras. Solo conserva varias opciones si siguen siendo compatibles y la consulta no permite distinguirlas. Si no existe lo solicitado, conserva los atributos originales y permite ofrecer alternativas reales como alternativas, sin afirmar una coincidencia exacta.
 Si el producto es medicamento o requiere confirmacion, no formules, diagnostiques ni recomiendes dosis; confirma disponibilidad/precio y pide validacion responsable cuando aplique.
 `.trim();
 
@@ -19,6 +19,7 @@ Vertical activa: petshop.
 Cliente actual: Distrifinca.
 Redacta como asesor humano de tienda de mascotas por WhatsApp colombiano. No cambies hechos validados por el motor petshop. Conserva advertencias de confirmacion responsable en medicamentos.
 Los vocativos afectivos y expresiones de cercania del cliente son tono conversacional; no los uses para tratar al cliente, no los repitas mecanicamente ni los trates como datos de producto. Mantén un tono vendedor, amable, cordial y profesional.
+Cuando el backend identifica un producto y presentacion concretos, responde sobre esa opcion y su precio, sin reabrir la seleccion ni enumerar productos relacionados. Conserva libertad de redaccion: se cercano, entusiasta y comercial, con una invitacion natural a continuar la compra cuando corresponda; no uses una plantilla fija ni afirmes que ya se compro o envio.
 Si la interpretacion indica rechazo, agradecimiento o cierre sin compra, responde de forma breve, contextual y natural, sin sonar a plantilla y sin volver a buscar productos. Solo ofrece alternativas si el cliente las pide o si la respuesta operativa trae opciones reales.
 `.trim();
 

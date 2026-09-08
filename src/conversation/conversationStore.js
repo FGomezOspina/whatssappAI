@@ -10,11 +10,12 @@ const {
 const conversaciones = {};
 
 function claveConversacion(usuario, cliente = null) {
-  return `${cliente?.slug || cliente?.id || "default"}:${usuario}`;
+  return `${cliente?.id || cliente?.slug || "default"}:${usuario}`;
 }
 
 function crearEstadoInicial() {
   return {
+    mensajesProcesados: [],
     marca: null,
     criterios: {},
     ultimaSeleccion: null,
@@ -103,7 +104,7 @@ async function obtenerConversacionPersistida(usuario, cliente = null) {
       : crearEstadoInicial();
   } catch (error) {
     console.error("Error cargando conversación desde Supabase:", error.message);
-    conversaciones[clave] = crearEstadoInicial();
+    throw error;
   }
 
   return conversaciones[clave];
@@ -112,7 +113,13 @@ async function obtenerConversacionPersistida(usuario, cliente = null) {
 async function guardarConversacionPersistida(usuario, estado, metadatos = {}) {
   conversaciones[claveConversacion(usuario, metadatos.cliente)] = estado;
 
-  if (!supabaseConfigurado()) return;
+  const mensajesProcesados = [...new Set([
+    ...(estado.mensajesProcesados || []), ...(metadatos.idsEventos || []),
+  ])].slice(-256);
+  if (!supabaseConfigurado()) {
+    estado.mensajesProcesados = mensajesProcesados;
+    return;
+  }
 
   try {
     const conversacion = await persistirConversacion(usuario, estado, metadatos);
@@ -128,14 +135,17 @@ async function guardarConversacionPersistida(usuario, estado, metadatos = {}) {
 
     try {
       const pedidoGuardado = await guardarPedidoConfirmado(usuario, conversationId, estado, metadatos.cliente);
-      if (pedidoGuardado) {
-        await persistirConversacion(usuario, estado, metadatos);
+      if (pedidoGuardado || metadatos.idsEventos?.length) {
+        await persistirConversacion(usuario, { ...estado, mensajesProcesados }, metadatos);
       }
+      estado.mensajesProcesados = mensajesProcesados;
     } catch (error) {
       console.error("Error guardando pedido confirmado en Supabase:", error.message);
+      throw error;
     }
   } catch (error) {
     console.error("Error guardando conversación en Supabase:", error.message);
+    throw error;
   }
 }
 

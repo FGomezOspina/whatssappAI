@@ -192,12 +192,14 @@ function recordarConsultaProducto(estado, validacion, clasificacion = null) {
         : "texto",
     nivel: validacion.nivel,
     razon: validacion.razon,
+    aclaracion: validacion.aclaracion || null,
     creadoEn: new Date().toISOString(),
   };
 }
 
 async function responderValidacionNoConfiable({
   evento,
+  idsEventos = [],
   cliente,
   estado,
   mensaje,
@@ -210,8 +212,18 @@ async function responderValidacionNoConfiable({
     intencionOriginal: mensaje,
     tipoIntencion: clasificacion?.intencion || "consulta_producto",
   });
-  const respuesta = respuestaValidacionProducto(validacion);
+  const respuestaBase = respuestaValidacionProducto(validacion);
+  let humanizerUsage = { skipped: true, reason: "validacion_catalogo" };
+  const respuesta = validacion.aclaracion
+    ? await humanizarRespuesta(mensaje, respuestaBase, {
+        estado, cliente, vertical: obtenerVerticalCliente(cliente),
+        clasificacion, aclaracion: validacion.aclaracion,
+        model: modeloHumanizador(clasificacion || {}),
+        onUsage: (usage) => { humanizerUsage = usage; },
+      })
+    : respuestaBase;
   await guardarConversacionPersistida(evento.channelUserId, estado, {
+    idsEventos,
     cliente,
     mensaje,
     respuesta,
@@ -225,7 +237,7 @@ async function responderValidacionNoConfiable({
     channelUserId: evento.channelUserId,
     cliente,
     interpretacionIA: null,
-    humanizerUsage: { skipped: true, reason: "validacion_catalogo" },
+    humanizerUsage,
   });
   return respuesta;
 }
@@ -302,6 +314,24 @@ async function responderEventosEntrantes(eventos) {
   } = vertical.orderLogic;
   const { asegurarRespuestaCatalogo } = vertical.productLogic;
   const estado = await obtenerConversacionPersistida(evento.channelUserId, cliente);
+  const procesados = new Set(estado.mensajesProcesados || []);
+  const idsEventos = [];
+  eventos = eventos.filter(item => {
+    const identificador = item.messageId || item.idempotencyKey;
+    if (!identificador) return true;
+    const key = `${item.phoneNumberId || item.workspaceId || item.integrationId || "canal"}:${identificador}`;
+    if (procesados.has(key)) return false;
+    procesados.add(key);
+    idsEventos.push(key);
+    return true;
+  });
+  if (!eventos.length) {
+    if (estado.pedidoConfirmadoPendienteGuardar) {
+      await guardarConversacionPersistida(evento.channelUserId, estado, { cliente });
+    }
+    return null;
+  }
+
   let catalogo;
   let contenidos;
 
@@ -311,6 +341,7 @@ async function responderEventosEntrantes(eventos) {
     console.error("Error cargando catálogo desde Supabase:", error.message);
     const respuesta = "No pude cargar el catálogo en este momento. Inténtalo de nuevo en unos minutos.";
     await guardarConversacionPersistida(evento.channelUserId, estado, {
+      idsEventos,
       cliente,
       mensaje: eventos.map((item) => item.text || `[${item.media?.type || "multimedia"}]`).join("\n"),
       respuesta,
@@ -334,6 +365,7 @@ async function responderEventosEntrantes(eventos) {
     console.error("Error procesando multimedia:", error.message);
     const respuesta = "No pude procesar ese archivo. Envíamelo de nuevo o cuéntame por texto qué necesitas.";
     await guardarConversacionPersistida(evento.channelUserId, estado, {
+      idsEventos,
       cliente,
       mensaje: eventos
         .map((item) => item.text || `[${item.media?.type || "multimedia"} no procesada]`)
@@ -353,6 +385,7 @@ async function responderEventosEntrantes(eventos) {
   if (!mensaje && !imageUrls.length) {
     const respuesta = "Cuéntame qué necesitas para tu mascota 🐶";
     await guardarConversacionPersistida(evento.channelUserId, estado, {
+      idsEventos,
       cliente,
       mensaje: evento.text || "",
       respuesta,
@@ -366,7 +399,11 @@ async function responderEventosEntrantes(eventos) {
     contenidos,
     imageUrls,
   });
-  const contextoProductoAnterior = estado.ultimaConsultaProducto || null;
+  if (!clasificacion.accionPendiente && clasificacion.intencion === "general" && buscarMarca(catalogo, mensaje)) {
+    clasificacion = { ...clasificacion, intencion: "busqueda_producto", perfilContexto: "producto",
+      requiereOpenAI: true, requiereBusquedaProducto: true };
+  }
+  const contextoProductoAnterior = clasificacion.accionPendiente ? null : estado.ultimaConsultaProducto || null;
   const corrigeProductoAnterior = esCorreccionProducto(mensaje);
   if (corrigeProductoAnterior) {
     reiniciarFocoProducto(estado);
@@ -375,12 +412,16 @@ async function responderEventosEntrantes(eventos) {
     mensaje,
     contextoProductoAnterior
   );
+  const continuaAclaracion = Boolean(contextoProductoAnterior?.aclaracion && mensajeProductoRazonado !== mensaje);
+  if (continuaAclaracion) {
+    clasificacion = clasificarInteraccion({ mensaje: mensajeProductoRazonado, estado, contenidos, imageUrls });
+  }
   const reinicioPorVision = clasificacion.requiereVision;
   if (reinicioPorVision) {
     reiniciarFocoProducto(estado);
   }
   const iniciaNuevaBusquedaProducto = Boolean(
-    clasificacion.requiereBusquedaProducto &&
+    !clasificacion.accionPendiente && !continuaAclaracion && clasificacion.requiereBusquedaProducto &&
       (!esSenalReferenciaProducto(mensaje) || corrigeProductoAnterior) &&
       [
         "imagen",
@@ -430,6 +471,7 @@ async function responderEventosEntrantes(eventos) {
       );
       if (respuestaMotor) {
         await guardarConversacionPersistida(evento.channelUserId, estado, {
+          idsEventos,
           cliente,
           mensaje,
           respuesta: respuestaMotor,
@@ -447,6 +489,7 @@ async function responderEventosEntrantes(eventos) {
       }
     } else {
       await guardarConversacionPersistida(evento.channelUserId, estado, {
+        idsEventos,
         cliente,
         mensaje,
         respuesta: seleccionPendiente.respuesta,
@@ -480,9 +523,20 @@ async function responderEventosEntrantes(eventos) {
       imageUrls,
     });
   }
+  if (!clasificacion.accionPendiente && ["general", "continuacion"].includes(clasificacion.intencion) &&
+      buscarMarca(catalogo, continuaAclaracion ? mensajeProductoRazonado : mensaje)) {
+    clasificacion = {
+      ...clasificacion,
+      intencion: "busqueda_producto",
+      perfilContexto: continuaAclaracion ? "pedido" : "producto",
+      requiereOpenAI: true,
+      requiereBusquedaProducto: true,
+      fallbackHistorialProductoCandidato: false,
+    };
+  }
   let historialFallbackRecuperado = [];
   let fallbackHistorialProductoActivo = false;
-  if (clasificacion.fallbackHistorialProductoCandidato) {
+  if (!clasificacion.accionPendiente && clasificacion.fallbackHistorialProductoCandidato) {
     historialFallbackRecuperado = await obtenerHistorialRecientePersistido(
       evento.channelUserId,
       clasificacion.limiteHistorial,
@@ -537,7 +591,7 @@ async function responderEventosEntrantes(eventos) {
     clasificacion,
     cliente,
   });
-  const validacionPrevia = fallbackHistorialProductoActivo
+  const validacionPrevia = clasificacion.accionPendiente || fallbackHistorialProductoActivo
     ? {
         nivel: "no_aplica",
         razon: "fallback_historial_producto",
@@ -554,6 +608,7 @@ async function responderEventosEntrantes(eventos) {
   if (["media", "baja"].includes(validacionPrevia.nivel) && !clasificacion.requiereOpenAI) {
     return responderValidacionNoConfiable({
       evento,
+      idsEventos,
       cliente,
       estado,
       mensaje,
@@ -615,6 +670,13 @@ async function responderEventosEntrantes(eventos) {
         channelUserId: evento.channelUserId,
       })
     : null;
+  if ((clasificacion.accionPendiente || estado.pedidoConfirmado) && interpretacionIA &&
+      !["pedido_producto", "consulta_producto", "consulta_marcas", "recomendacion"].includes(interpretacionIA.intencion)) {
+    // Los datos de productos historicos no convierten una confirmacion o un
+    // cambio de datos en una busqueda nueva.
+    interpretacionIA.producto = null;
+    interpretacionIA.productos = [];
+  }
   if (omitirInterpretePorConsultaExploratoria) {
     console.log(
       `[OpenAI] Interprete omitido | cliente=${clienteParaLog(
@@ -623,7 +685,7 @@ async function responderEventosEntrantes(eventos) {
     );
   }
 
-  let validacionFinal = interpretacionFueraDeProducto(interpretacionIA)
+  let validacionFinal = (clasificacion.accionPendiente && !interpretacionIA) || interpretacionFueraDeProducto(interpretacionIA)
     ? {
         nivel: "no_aplica",
         razon: "intencion_no_producto_por_ia",
@@ -703,6 +765,7 @@ async function responderEventosEntrantes(eventos) {
   if (["media", "baja"].includes(validacionFinal.nivel)) {
     return responderValidacionNoConfiable({
       evento,
+      idsEventos,
       cliente,
       estado,
       mensaje,
@@ -745,7 +808,7 @@ async function responderEventosEntrantes(eventos) {
     respuestaBase =
       "Objetivo operativo: cerrar de forma breve, amable y contextual. No buscar catalogo, no cambiar carrito y no listar productos salvo que el cliente haya pedido alternativas reales.";
   } else {
-    respuestaBase = resolverConsultaCatalogo(mensaje, estado, catalogo, interpretacionIA);
+    respuestaBase = resolverConsultaCatalogo(continuaAclaracion ? mensajeProductoRazonado : mensaje, estado, catalogo, interpretacionIA);
   }
 
   const debeHumanizar = clasificacion.requiereOpenAI || !["saludo", "general"].includes(clasificacion.intencion);
@@ -771,6 +834,7 @@ async function responderEventosEntrantes(eventos) {
   const respuestaPersistida = respuestaParaHistorial(respuesta);
 
   await guardarConversacionPersistida(evento.channelUserId, estado, {
+    idsEventos,
     cliente,
     mensaje,
     respuesta: respuestaPersistida,
