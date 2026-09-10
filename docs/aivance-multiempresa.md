@@ -47,6 +47,7 @@ Scripts:
 - `supabase/005_catalog_search_rpc.sql`: busqueda FTS/trigram por cliente.
 - `supabase/005_petshop_product_classification.sql`: clasificacion comercial petshop.
 - `supabase/006_multi_vertical_clients.sql`: alias `business_type`, identificadores alternos de canal y registro inicial de `sanmarcospetsclub`.
+- `supabase/008_conversation_memory.sql`: metadata de mensajes y paginacion de memoria; necesaria para esta version en bases existentes.
 
 ## Que Pasa Al Agregar Mas Clientes
 

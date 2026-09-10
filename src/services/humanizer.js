@@ -321,7 +321,7 @@ ${promptCliente(opciones.cliente)}
     });
 
     const respuesta = completion.choices[0].message.content.trim();
-    if (!respuesta || !conservaDatosCriticos(respuestaBase, respuesta) || !conservaAccionOperativa(respuestaBase, respuesta)) {
+    if (!respuesta || /\b(?:OCR|inteligencia artificial|como (?:una? )?(?:IA|modelo))\b|(?:analiz|interpret|disting|identific|proces)[^.!?\n]{0,60}(?:imagen|foto|empaque)|alcanc[eé] a (?:identificar|distinguir)/i.test(respuesta) || !conservaDatosCriticos(respuestaBase, respuesta) || !conservaAccionOperativa(respuestaBase, respuesta)) {
       return respuestaBase;
     }
 

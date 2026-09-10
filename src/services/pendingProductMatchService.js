@@ -15,6 +15,8 @@ function numeroEnv(nombre, defecto) {
 
 function normalizarSeleccion(texto = "") {
   return normalizar(texto)
+    .replace(/\b(?:x|por)\s*(?=\d+(?:\.\d+)?\s*(?:kg|kl|g|gr|lb)\b)/g, "")
+    .replace(/(\d)\s*kl\b/g, "$1kg")
     .replace(/\bgatos?\b/g, "cat")
     .replace(/\bperros?\b/g, "dog")
     .replace(/\bopci[oó]n\b/g, "opcion")
@@ -570,6 +572,7 @@ function esSenalReferenciaProducto(mensaje = "") {
       /\b(?:ese|esa|este|esta)\b/.test(texto) ||
       /\bcu[aá]nto\s+(?:vale|cuesta).*(?:ese|esa|este|esta)\b/.test(texto) ||
       /\b(?:el|la)\s+de\s+\d+(?:\.\d+)?\s*(?:kg|g|gr|lb)\b/.test(texto) ||
+      /^(?:el|la)\s+(?:grande|pequeñ[oa]|pequen[oa]|median[oa])$/.test(texto) ||
       /^(?:de\s+)?\d+(?:\.\d+)?\s*(?:kg|g|gr|lb)$/.test(texto)
   );
 }
@@ -866,6 +869,10 @@ function resolverSeleccionProductoPendiente({
   });
   if (seleccionHistorica) return seleccionHistorica;
 
+  if (nuevaBusquedaProducto && !esSenalReferenciaProducto(mensaje)) {
+    reiniciarFocoProducto(estado);
+    return null;
+  }
   const contexto = contextoVigente(estado);
   if (!contexto) return null;
   if (
@@ -904,7 +911,7 @@ function resolverSeleccionProductoPendiente({
   let origen = opcion ? "referenciasPendientes" : null;
   const peso = pesoSolicitado(mensaje);
 
-  if (!opcion && peso) {
+  if (!opcion && peso && esSenalReferenciaProducto(mensaje)) {
     const porPresentacion = contexto.opciones.filter((item) =>
       (item.presentaciones || []).some(
         (presentacion) => normalizarPeso(presentacion.peso) === peso

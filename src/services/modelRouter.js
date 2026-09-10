@@ -1,4 +1,14 @@
 function modeloInterprete(clasificacion = {}) {
+  if (clasificacion.requiereVision) {
+    return (
+      process.env.OPENAI_VISION_MODEL ||
+      process.env.OPENAI_INTERPRETER_MODEL_COMPLEX ||
+      process.env.OPENAI_INTERPRETER_MODEL ||
+      process.env.OPENAI_MODEL ||
+      "gpt-4.1"
+    );
+  }
+
   if (clasificacion.perfilContexto === "producto") {
     return (
       process.env.OPENAI_INTERPRETER_MODEL_PRODUCT ||
@@ -18,15 +28,6 @@ function modeloInterprete(clasificacion = {}) {
     );
   }
 
-  if (clasificacion.requiereVision) {
-    return (
-      process.env.OPENAI_VISION_MODEL ||
-      process.env.OPENAI_INTERPRETER_MODEL_COMPLEX ||
-      process.env.OPENAI_INTERPRETER_MODEL ||
-      process.env.OPENAI_MODEL ||
-      "gpt-4.1"
-    );
-  }
 
   if (clasificacion.complejidad === "simple") {
     return process.env.OPENAI_INTERPRETER_MODEL_SIMPLE || process.env.OPENAI_INTERPRETER_MODEL || process.env.OPENAI_MODEL || "gpt-5.2";

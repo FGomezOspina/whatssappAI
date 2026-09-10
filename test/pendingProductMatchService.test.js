@@ -646,3 +646,12 @@ test("los ordinales históricos soportan hasta la décima cotización", () => {
     9
   );
 });
+
+test('un nombre nuevo no selecciona otra referencia pendiente por compartir peso', () => {
+  const estado = crearEstadoInicial();
+  guardarCoincidenciasProductoPendientes(estado, validacionAmbigua());
+  const respuesta = resolverSeleccionProductoPendiente({ mensaje: 'advance otra referencia 3kg',
+    estado, catalogo, nuevaBusquedaProducto: true });
+  assert.equal(respuesta, null);
+  assert.equal(estado.coincidenciasProductoPendientes, null);
+});

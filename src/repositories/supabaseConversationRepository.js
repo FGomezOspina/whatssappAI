@@ -58,8 +58,8 @@ async function guardarConversacion(usuario, estado, metadatos = {}) {
     customer: extraerClienteDesdeEstado(estado),
     state: estado,
     status: estadoCliente(estado),
-    last_message: metadatos.mensaje || null,
-    last_response: metadatos.respuesta || null,
+    ...(metadatos.mensaje !== undefined ? { last_message: metadatos.mensaje } : {}),
+    ...(metadatos.respuesta !== undefined ? { last_response: metadatos.respuesta } : {}),
     last_interaction_at: new Date().toISOString(),
     updated_at: new Date().toISOString(),
   };
@@ -75,7 +75,7 @@ async function guardarConversacion(usuario, estado, metadatos = {}) {
   return filas && filas.length ? filas[0] : null;
 }
 
-async function guardarMensaje(usuario, direccion, cuerpo, conversationId = null, cliente = null) {
+async function guardarMensaje(usuario, direccion, cuerpo, conversationId = null, cliente = null, metadata = {}) {
   if (!supabaseConfigurado()) return null;
 
   const payload = {
@@ -84,11 +84,16 @@ async function guardarMensaje(usuario, direccion, cuerpo, conversationId = null,
     conversation_id: conversationId,
     direction: direccion,
     body: cuerpo,
+    metadata,
+    ...(metadata.eventKey ? { id: crypto.createHash("sha256")
+      .update(JSON.stringify([cliente?.id || null, usuario, direccion, metadata.eventKey]))
+      .digest("hex").slice(0, 32).replace(/(.{8})(.{4})(.{4})(.{4})(.{12})/, "$1-$2-$3-$4-$5") } : {}),
   };
 
   try {
-    return await requestSupabase(MESSAGES_TABLE, {
+    return await requestSupabase(`${MESSAGES_TABLE}?on_conflict=id`, {
       method: "POST",
+      headers: { Prefer: "resolution=merge-duplicates,return=representation" },
       body: JSON.stringify(payload),
     });
   } catch (error) {
@@ -102,16 +107,23 @@ async function guardarMensaje(usuario, direccion, cuerpo, conversationId = null,
   }
 }
 
-async function buscarMensajesRecientes(usuario, limite = 12, cliente = null) {
+async function buscarMensajesRecientes(usuario, limite = 60, cliente = null, opciones = {}) {
   if (!supabaseConfigurado()) return [];
-
-  const limiteSeguro = Math.min(Math.max(Number(limite) || 12, 1), 50);
-  const query = `${MESSAGES_TABLE}?channel_user_id=eq.${encodeURIComponent(
-    usuario
-  )}${filtroCliente(cliente)}&select=direction,body,created_at&order=created_at.desc&limit=${limiteSeguro}`;
+  const limiteSeguro = Math.min(Math.max(Number(limite) || 60, 1), 200);
+  const orden = opciones.orden === "asc" ? "asc" : "desc";
+  let query = `${MESSAGES_TABLE}?channel_user_id=eq.${encodeURIComponent(usuario)}${filtroCliente(cliente)}&select=id,direction,body,created_at,metadata&order=created_at.${orden},id.${orden}&limit=${limiteSeguro}`;
+  // Tuple cursors prevent skipping messages with identical timestamps.
+  const filtros = [];
+  for (const [campo, operador] of [["antes", "lt"], ["despues", "gt"]]) {
+    const cursor = opciones[campo];
+    if (cursor?.created_at && cursor?.id) {
+      filtros.push(`or(created_at.${operador}.${cursor.created_at},and(created_at.eq.${cursor.created_at},id.${operador}.${cursor.id}))`);
+    }
+  }
+  if (filtros.length) query += `&and=${encodeURIComponent(`(${filtros.join(",")})`)}`;
+  if (opciones.excluirTurno) query += `&or=${encodeURIComponent(`(metadata->>turnId.is.null,metadata->>turnId.neq.${opciones.excluirTurno})`)}`;
   const filas = (await requestSupabase(query)) || [];
-
-  return filas.reverse();
+  return orden === "asc" ? filas : filas.reverse();
 }
 
 function clavePedido(estado) {

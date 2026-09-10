@@ -17,6 +17,7 @@ function resumirPedido(pedido = null) {
 function construirMemoriaOperativa(estado = {}, historialReciente = []) {
   return {
     nivel1ConversacionActiva: {
+      ultimaPreguntaAsistente: estado.ultimaPreguntaAsistente || null,
       marca: estado.marca || null,
       criterios: estado.criterios || {},
       ultimaSeleccion: estado.ultimaSeleccion || null,
@@ -43,6 +44,8 @@ function construirMemoriaOperativa(estado = {}, historialReciente = []) {
     },
     nivel3HistorialDisponible: {
       conservadoEnSupabase: true,
+      resumenPersistente: estado.memoriaConversacional?.resumen || null,
+      resumidoHasta: estado.memoriaConversacional?.hasta || null,
       mensajesRecientesEnviadosAlModelo: historialReciente.length,
     },
   };

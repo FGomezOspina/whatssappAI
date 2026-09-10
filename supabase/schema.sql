@@ -162,6 +162,7 @@ create table if not exists public.whatsapp_messages (
   channel_user_id text not null,
   direction text not null check (direction in ('inbound', 'outbound')),
   body text not null,
+  metadata jsonb not null default '{}'::jsonb,
   created_at timestamptz not null default now()
 );
 
@@ -199,6 +200,9 @@ create index if not exists whatsapp_messages_client_channel_user_id_created_at_i
 
 create index if not exists whatsapp_messages_conversation_id_created_at_idx
   on public.whatsapp_messages (conversation_id, created_at asc);
+
+create index if not exists whatsapp_messages_memory_cursor_idx
+  on public.whatsapp_messages (client_id, channel_user_id, created_at, id);
 
 create index if not exists whatsapp_conversations_status_idx
   on public.whatsapp_conversations (status);

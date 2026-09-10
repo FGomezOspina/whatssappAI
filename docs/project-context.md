@@ -1,6 +1,6 @@
 # Contexto Tecnico Vigente
 
-Ultima revision: 2026-06-28.
+Ultima revision: 2026-09-10.
 
 Este documento es la fuente canonica para entender el codigo actual. Los detalles operativos de Kapso viven en `docs/kapso-migration.md`; los pasos para alta de clientes viven en `docs/aivance-multiempresa.md`.
 
@@ -154,6 +154,8 @@ El estado conserva informacion estructurada, por ejemplo:
 
 Las referencias cortas como `ese`, `el primero`, `de 4kg` o `asi esta bien` deben resolverse primero desde estado estructurado y solo despues desde historial textual.
 
+El estado se recarga desde Supabase en cada turno. Cada entrada se registra antes de OpenAI y conserva texto original, tipo, media ID y evidencia procesada en `whatsapp_messages.metadata`; el turno actual se envia aparte y se excluye del historial consultado. `state.ultimaPreguntaAsistente` conserva la ultima respuesta y `state.memoriaConversacional` conserva un resumen historico con cursor compuesto. El router recibe hasta 60 mensajes recientes (ventana de 24000 caracteres) y resume por paginas de 20 los anteriores, sin borrar el archivo. No se sustituyen errores de historial por listas vacias. Ver `docs/context-audit.md` para orden, paginacion, limites y multimedia.
+
 ## Supabase
 
 Tablas principales:
@@ -279,6 +281,7 @@ npm run ai:diagnose -- --live "tienes br adulto r pequena?"
 - `supabase/005_catalog_search_rpc.sql`: FTS/trigram/RPC por cliente.
 - `supabase/005_petshop_product_classification.sql`: clasificacion comercial petshop.
 - `supabase/006_multi_vertical_clients.sql`: soporte incremental para `business_type`, IDs alternos de canal y cliente guarderia en preparacion.
+- `supabase/008_conversation_memory.sql`: metadata por mensaje e indice para paginar memoria. Aplicar antes de ejecutar esta version sobre una base existente.
 
 ## Notas De Compatibilidad
 

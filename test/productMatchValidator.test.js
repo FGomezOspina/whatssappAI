@@ -1391,7 +1391,7 @@ test("la respuesta ambigua es natural y no usa instrucciones numeradas", () => {
     ],
   });
 
-  assert.match(respuesta, /Veo estas referencias muy parecidas/i);
+  assert.match(respuesta, /Tengo estas referencias/i);
   assert.match(respuesta, /¿Cuál te sirve\?/i);
   assert.doesNotMatch(
     respuesta,

@@ -5299,6 +5299,47 @@ function resolverAlternativaPendiente(mensaje, estado, catalogo) {
 }
 
 function resolverConsultaCatalogo(mensaje, estado, catalogo = [], interpretacion = null) {
+  // Una decision semantica negativa tambien limita al motor: las heuristicas
+  // de marcas y referencias no pueden reabrir una herramienta descartada.
+  if (interpretacion?.consultaCatalogo?.necesaria === false) {
+    const respuestaRepetir = resolverConfirmacionRepetirPedido(mensaje, estado, interpretacion);
+    if (respuestaRepetir) return respuestaRepetir;
+    const respuestaConfirmar = resolverConfirmacionPedido(mensaje, estado, interpretacion);
+    if (respuestaConfirmar) return respuestaConfirmar;
+    if (estado.pedidoConfirmado && interpretacionConfirma(interpretacion)) {
+      return respuestaPedidoYaConfirmado(mensaje);
+    }
+    if (interpretacion.accion === "repetir_pedido") {
+      return preguntarRepetirPedido(estado) || interpretacion.respuestaConversacional || null;
+    }
+    if (interpretacion.accion === "nuevo_pedido" && estado.pedidoConfirmado) {
+      iniciarNuevoPedido(estado);
+    }
+    aplicarDatosInterpretados(estado, interpretacion);
+    const respuestaCarrito = resolverOperacionCarritoIA(mensaje, estado, [], interpretacion);
+    if (respuestaCarrito) return respuestaCarrito;
+    if (estado.carrito.length && (interpretacion.entrega?.tipo ||
+      interpretacion.intencion === "datos_envio" || interpretacion.intencion === "metodo_pago" ||
+      Object.entries(estado).some(([campo, valor]) => valor === true && campo.startsWith("esperando") &&
+        !["esperandoMarca", "esperandoPresupuesto"].includes(campo)))) {
+      return resolverEntregaYPago(mensaje, estado, interpretacion);
+    }
+    return interpretacion.respuestaConversacional || null;
+  }
+  const productoValidado = interpretacion?.producto;
+  if (productoValidado?.coincidenciaVisualValidada) {
+    const nombres = productoValidado.referenciasEquivalentes || [productoValidado.referencia];
+    catalogo = catalogo.filter(marca => normalizar(marca.marca) === normalizar(productoValidado.marca))
+      .map(marca => ({ ...marca, referencias: marca.referencias.filter(referencia =>
+        nombres.some(nombre => normalizar(nombre) === normalizar(referencia.nombre))) }));
+    if (productoValidado.requierePresentacion) {
+      estado.marca = productoValidado.marca;
+      estado.referenciasPendientes = null;
+      estado.ultimaSeleccion = { marca: productoValidado.marca, referencia: productoValidado.referencia,
+        presentacion: null, cantidad: productoValidado.cantidad || 1 };
+      return `¿Qué presentación necesitas de ${productoValidado.referencia}?`;
+    }
+  }
   const marcaEnMensaje = buscarMarca(catalogo, mensaje);
   const criteriosTextoMensaje = extraerCriterios(mensaje);
   const tieneSenalesReferenciaMensaje = tieneSenalesReferenciaDistintivas(mensaje);
@@ -5542,7 +5583,12 @@ function resolverConsultaCatalogo(mensaje, estado, catalogo = [], interpretacion
     estado.esperandoMarca = true;
     estado.esperandoPresupuesto = false;
     estado.pendienteRecomendacion = false;
-    return `Por ahora no manejamos ${marcaDesconocida}.\n\n${listarMarcas(catalogo)}`;
+    // Una extraccion heuristica sin coincidencia no demuestra que sea una
+    // marca ni autoriza ofrecer otras. Preservar el producto leido por la IA.
+    const productoSolicitado = interpretacion?.producto?.referencia || interpretacion?.producto?.textoVisible;
+    return productoSolicitado
+      ? `No pude confirmar la información de ${productoSolicitado} con los datos disponibles.`
+      : "¿De qué producto quieres consultar la información?";
   }
 
   if (estado.esperandoPresupuesto || pidioRecomendacion || pidioOpinion || presupuesto) {
@@ -5633,7 +5679,7 @@ function resolverConsultaCatalogo(mensaje, estado, catalogo = [], interpretacion
     }
 
     estado.esperandoMarca = true;
-    return listarMarcas(catalogo);
+    return "¿Qué producto necesitas consultar?";
   }
 
   if (estaExplorandoMarca) {

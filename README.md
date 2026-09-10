@@ -8,7 +8,7 @@ Kapso es el proveedor activo de WhatsApp. Twilio pertenece solamente al antecede
 
 - Proveedor de WhatsApp activo: Kapso.
 - Entorno recomendado para pruebas y regresiones: sandbox de Kapso.
-- Persistencia: Supabase por REST API y cache local por client_id/usuario. Si Supabase esta configurado y falla, se propaga el error sin reemplazar el estado por una conversacion vacia. La memoria sin persistencia queda disponible cuando Supabase no esta configurado.
+- Persistencia: Supabase por REST API, con recarga de estado por client_id/usuario en cada turno. Entradas se guardan antes de OpenAI; historial reciente, pregunta anterior, evidencia multimedia y resumen persistente mantienen el contexto. Los errores de lectura no se reemplazan por memoria vacia. Aplicar `supabase/008_conversation_memory.sql` en bases existentes.
 - Cliente: se resuelve dinamicamente por el canal WhatsApp registrado en Supabase (`phone_number_id`, `workspace_id` o `integration_id`).
 - Tipo de negocio: se lee desde `aivance_clients.business_type` o `vertical`.
 - Vertical operativa: `petshop`. La vertical `guarderia` esta registrada como placeholder y se bloquea hasta implementar su flujo.
@@ -29,6 +29,7 @@ Kapso es el proveedor activo de WhatsApp. Twilio pertenece solamente al antecede
 - Consolida dinamicamente marcas o referencias duplicadas por errores ortograficos y une sus presentaciones sin reglas por producto.
 - Combina candidatos de Supabase FTS con candidatos fuzzy locales antes de interpretar que una referencia no existe.
 - En imagenes pondera marca, linea o variante, especie, presentacion y sabor; si la primera lectura es ambigua puede ejecutar una segunda lectura enfocada.
+- Separa el producto y peso fotografiados de la presentacion solicitada: prioriza texto explicito, contexto vigente y evidencia visual confiable. Si falta presentacion, pregunta antes de cotizar; una coincidencia visual exacta no lista referencias similares automaticamente.
 - Valida marcas, referencias, presentaciones y precios contra el catalogo completo antes de responder.
 - Rechaza presentaciones inexistentes y ofrece alternativas reales.
 - Responde consultas exploratorias por categoria, como antipulgas, purgantes, snacks, juguetes o arena, sin forzar una marca inventada.

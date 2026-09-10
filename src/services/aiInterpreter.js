@@ -1,3 +1,4 @@
+const { resolverEvidenciaInterpretacion } = require("./productEvidenceService");
 const OpenAI = require("openai");
 const { logUsoIA } = require("./aiUsageLogger");
 const {
@@ -18,7 +19,7 @@ function timeoutInterpretacion(urlsImagen = []) {
     return Number(process.env.OPENAI_VISION_TIMEOUT_MS || 20000);
   }
 
-  return Number(process.env.OPENAI_TIMEOUT_MS || 7000);
+  return Number(process.env.OPENAI_INTERPRETER_TIMEOUT_MS || 30000);
 }
 
 function normalizarTexto(valor = "") {
@@ -164,6 +165,21 @@ function normalizarInterpretacion(valor) {
     presentacion: producto.presentacion || null,
     condiciones: Array.isArray(producto.condiciones) ? producto.condiciones : [],
     cantidad: producto.cantidad || null,
+    ...(producto.observado && typeof producto.observado === "object" ? {
+      observado: {
+        nombre: textoBreve(producto.observado.nombre, 200),
+        presentacion: textoBreve(producto.observado.presentacion, 80),
+        confianzaIdentidad: Number(producto.observado.confianzaIdentidad) || 0,
+        confianzaPresentacion: Number(producto.observado.confianzaPresentacion) || 0,
+      },
+      solicitud: {
+        presentacionTexto: textoBreve(producto.solicitud?.presentacionTexto, 80),
+        presentacionContexto: textoBreve(producto.solicitud?.presentacionContexto, 80),
+        contextoVigente: producto.solicitud?.contextoVigente === true,
+        cantidadTexto: Number(producto.solicitud?.cantidadTexto) > 0 ? Number(producto.solicitud.cantidadTexto) : null,
+        cantidadContexto: Number(producto.solicitud?.cantidadContexto) > 0 ? Number(producto.solicitud.cantidadContexto) : null,
+      },
+    } : {}),
   });
   const productos = Array.isArray(valor.productos)
     ? valor.productos.map(normalizarProducto)
@@ -171,6 +187,14 @@ function normalizarInterpretacion(valor) {
   const productoPrincipal = normalizarProducto(valor.producto || productos[0] || {});
 
   return {
+    resumenMemoria: textoBreve(valor.resumenMemoria, 5000),
+    continuarFlujo: valor.continuarFlujo === true,
+    consultaCatalogo: {
+      necesaria: typeof valor.consultaCatalogo?.necesaria === "boolean"
+        ? valor.consultaCatalogo.necesaria : null,
+      consulta: typeof valor.consultaCatalogo?.consulta === "string" ? valor.consultaCatalogo.consulta.trim() : null,
+    },
+    respuestaConversacional: typeof valor.respuestaConversacional === "string" ? valor.respuestaConversacional.trim() : null,
     intencion: valor.intencion || "otro",
     accion: valor.accion || null,
     confianza: Number(valor.confianza || 0),
@@ -278,7 +302,7 @@ async function interpretarMensajeCliente({
       catalogo,
       ejemplosEntrenamiento,
       historialReciente,
-      clasificacion,
+      clasificacion: { ...clasificacion, requiereVision: usaVision || clasificacion?.requiereVision },
       cliente,
       vertical,
       model,
@@ -523,6 +547,7 @@ JSON exacto:
     const inicio = Date.now();
     const completion = await openai.chat.completions.create(parametrosModelo, {
       timeout: timeoutInterpretacion(urlsImagen),
+      maxRetries: 1,
     });
     const duracionMs = Date.now() - inicio;
 
@@ -539,7 +564,22 @@ JSON exacto:
       audios: clasificacion?.requiereAudio ? 1 : 0,
     });
 
-    const interpretacion = normalizarInterpretacion(JSON.parse(completion.choices[0].message.content));
+    let interpretacion = normalizarInterpretacion(JSON.parse(completion.choices[0].message.content));
+    if (usaVision && interpretacion) {
+      // Missing evidence is unknown, not permission to use a catalog size.
+      const asegurar = producto => ({ ...producto, observado: producto?.observado || {
+        nombre: null, presentacion: null, confianzaIdentidad: 0, confianzaPresentacion: 0,
+      } });
+      interpretacion.producto = asegurar(interpretacion.producto);
+      interpretacion.productos = interpretacion.productos.map(asegurar);
+      interpretacion = resolverEvidenciaInterpretacion(interpretacion);
+    }
+    if (!usaVision && interpretacion) {
+      for (const producto of [interpretacion.producto, ...interpretacion.productos]) {
+        delete producto.observado;
+        delete producto.solicitud;
+      }
+    }
     if (interpretacion) {
       Object.defineProperty(interpretacion, "_meta", {
         value: {
@@ -555,7 +595,7 @@ JSON exacto:
   } catch (error) {
     const urlsImagen = [...imageUrls, imageUrl].filter(Boolean);
     const contexto = urlsImagen.length ? "imagen" : "texto";
-    console.warn(`[OpenAI] No se pudo interpretar ${contexto}; se usa motor operativo | error=${error.message}`);
+    console.warn(`[OpenAI] No se pudo interpretar ${contexto}; interpretacion no disponible | error=${error.message}`);
     return null;
   }
 }
@@ -563,6 +603,7 @@ JSON exacto:
 module.exports = {
   interpretarMensajeCliente,
   _internals: {
+    normalizarInterpretacion,
     resumenCatalogo,
     resumenCatalogoVision,
     resumenCatalogoParaPrompt,

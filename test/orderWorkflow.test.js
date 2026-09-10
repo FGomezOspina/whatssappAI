@@ -57,7 +57,7 @@ test('resumen, confirmacion semantica y repeticion conservan un solo pedido por 
     './aiInterpreter': { interpretarMensajeCliente: async () => {
       interpretaciones++;
       // La intencion es semantica. El producto residual no debe reabrir catalogo.
-      return { intencion: 'confirmacion', accion: 'confirmar', confianza: 0.99,
+      return { continuarFlujo: true, intencion: 'confirmacion', accion: 'confirmar', confianza: 0.99,
         producto: { marca: 'MARCA TEST', referencia: 'SNACK TEST', presentacion: '75gr' } };
     } },
     './humanizer': { humanizarRespuesta: async (_mensaje, base) => base },

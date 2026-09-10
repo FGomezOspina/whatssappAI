@@ -32,8 +32,9 @@ test("flujo completo precisa marca, especie y etapa sin mostrar ni agregar produ
       obtenerHistorialRecientePersistido: async () => [],
       guardarConversacionPersistida: async () => {},
     },
-    "./catalogContextService": { seleccionarCatalogoParaIA: async opciones => seleccionarCatalogoLocal(opciones) },
-    "./aiInterpreter": { interpretarMensajeCliente: async ({ mensaje }) => ({
+    "./catalogContextService": { seleccionarCatalogoParaIA: async opciones => seleccionarCatalogoLocal({ ...opciones, catalogo }) },
+    "./aiInterpreter": { interpretarMensajeCliente: async ({ mensaje, estado }) => ({
+      consultaCatalogo: { necesaria: true, consulta: construirConsultaProductoContextual(mensaje, estado.ultimaConsultaProducto) },
       intencion: "consulta_producto", accion: "consultar", confianza: 0.99,
       // También prueba que un candidato no autoriza a inventar atributos ausentes.
       producto: { marca: "NUTRIMASCOTA", referencia: "NUTRIMASCOTA GATO AD", especie: "gato", etapa: "adulto", presentacion: mensaje.includes("3") ? "3kg" : null },
