@@ -178,3 +178,44 @@ test('una segunda lectura mejora evidencia visual sin reescribir la solicitud ex
   assert.equal(resultado.producto.fuentePresentacion, 'texto');
   assert.equal(refinada.producto.solicitud.presentacionTexto, undefined);
 });
+
+test('nombre visible con plural y sabor omitido en catalogo conserva solo referencia compatible', async () => {
+  const resultado = await conversar(producto({ referencia: 'NUTRIVA ADULTOS POLLO', sabores: ['pollo'],
+    textoVisible: 'NUTRIVA Adultos Pollo 3kg',
+    observado: { nombre: 'NUTRIVA ADULTOS POLLO', presentacion: '3kg', confianzaIdentidad: 0.98, confianzaPresentacion: 0.98 },
+  }));
+  assert.match(resultado.respuesta, /31\.000/);
+  assert.doesNotMatch(resultado.respuesta, /RP|CORDERO|36\.000|47\.000/);
+});
+
+test('equivalencias declaradas conservan presentaciones y aliases al consolidar y continuar por peso', () => {
+  const { consolidarCatalogo } = require('../src/services/catalogConsolidationService');
+  const { validarCoincidenciaProducto } = require('../src/services/productMatchValidator');
+  const catalogo = consolidarCatalogo([{ marca: 'ALFA', referencias: [
+    { nombre: 'ALFA ADUL', especie: 'perro', metadata: { equivalent_references: ['ALFA CROQUETAS'] }, presentaciones: [{ peso: '7kg', precio: 100 }] },
+    { nombre: 'ALFA CROQUETAS', especie: 'perro', metadata: { aliases: ['ALFA ADULTOS', 'ALFA ORIGINAL ADULTOS'] }, presentaciones: [{ peso: '3kg', precio: 50 }] },
+    { nombre: 'ALFA PREMIUM', especie: 'perro', presentaciones: [{ peso: '3kg', precio: 90 }] },
+  ] }]);
+  assert.equal(catalogo[0].referencias.length, 2);
+  const validacion = validarCoincidenciaProducto({ mensaje: 'ALFA ADULTOS 3kg', catalogo, catalogoCandidatos: catalogo,
+    clasificacion: { intencion: 'precio', perfilContexto: 'producto' },
+    interpretacion: { producto: { marca: 'ALFA', referencia: 'ALFA ADULTOS', presentacion: '3kg' } } });
+  assert.equal(validacion.nivel, 'alta');
+  assert.equal(validacion.presentacionValida, true);
+  assert.ok(validacion.coincidencia.presentaciones.some(p => p.precio === 50));
+  assert.ok(!validacion.coincidencia.presentaciones.some(p => p.precio === 90));
+});
+
+test('mapeo del modelo y publicidad no sustituyen la identidad observada por otra linea', async () => {
+  const catalogoAlias = [{ marca: 'NUTRIVA', referencias: [
+    { nombre: 'NUTRIVA CROQUETAS', especie: 'perro', metadata: { aliases: ['NUTRIVA ORIGINAL ADULTOS'] }, presentaciones: [{ peso: '3kg', precio: 31000 }] },
+    { nombre: 'NUTRIVA VITALITY ADULTO', especie: 'perro', presentaciones: [{ peso: '3kg', precio: 99000 }] },
+  ] }];
+  const lectura = producto({ referencia: 'NUTRIVA VITALITY ADULTO', linea: 'VITALITY',
+    textoVisible: 'NUTRIVA ORIGINAL ADULTOS ENERGIA Y VITALIDAD',
+    observado: { nombre: 'NUTRIVA ORIGINAL ADULTOS', presentacion: null, confianzaIdentidad: 0.96, confianzaPresentacion: 0.05 } });
+  const resultado = await conversar(lectura, 'Que precio tiene', { catalogo: catalogoAlias });
+  assert.match(resultado.respuesta, /presentaci[oó]n|peso/i);
+  assert.doesNotMatch(resultado.respuesta, /VITALITY|99\.000|31\.000/);
+  assert.match(resultado.respuesta, /CROQUETAS/);
+});

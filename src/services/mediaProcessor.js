@@ -2,7 +2,7 @@ const OpenAI = require("openai");
 const { toFile } = OpenAI;
 
 const DEFAULT_MEDIA_MAX_BYTES = 24 * 1024 * 1024;
-const DEFAULT_MEDIA_TIMEOUT_MS = 10000;
+const DEFAULT_MEDIA_TIMEOUT_MS = 30000;
 
 const openai = process.env.OPENAI_API_KEY
   ? new OpenAI({
@@ -11,39 +11,62 @@ const openai = process.env.OPENAI_API_KEY
     })
   : null;
 
-async function descargarArchivo(url) {
-  const controller = new AbortController();
-  const timeout = setTimeout(
-    () => controller.abort(),
-    Number(process.env.MEDIA_DOWNLOAD_TIMEOUT_MS || DEFAULT_MEDIA_TIMEOUT_MS)
-  );
+async function descargarArchivo(url, logger = console) {
+  const urlValidada = validarUrlPublica(url);
+  const timeoutMs = Math.max(1, Number(process.env.MEDIA_DOWNLOAD_TIMEOUT_MS) || DEFAULT_MEDIA_TIMEOUT_MS);
+  const reintentos = Math.min(2, Math.max(0, Number(process.env.MEDIA_DOWNLOAD_RETRIES ?? 1) || 0));
   const limiteBytes = Number(process.env.MEDIA_MAX_BYTES || DEFAULT_MEDIA_MAX_BYTES);
 
-  try {
-    const respuesta = await fetch(validarUrlPublica(url), { signal: controller.signal });
-    if (!respuesta.ok) throw new Error(`No se pudo descargar multimedia: ${respuesta.status}`);
-
-    const contentLength = Number(respuesta.headers.get("content-length"));
-    if (contentLength && contentLength > limiteBytes) {
-      throw new Error("El archivo multimedia supera el límite permitido");
-    }
-
-    const partes = [];
-    let totalBytes = 0;
-    for await (const parte of respuesta.body) {
-      totalBytes += parte.length;
-      if (totalBytes > limiteBytes) {
+  for (let intento = 0; intento <= reintentos; intento++) {
+    const controller = new AbortController();
+    const inicio = Date.now();
+    const timeout = setTimeout(() => controller.abort(), timeoutMs);
+    try {
+      const respuesta = await fetch(urlValidada, { signal: controller.signal });
+      if (!respuesta.ok) {
+        const error = new Error(`Descarga multimedia HTTP ${respuesta.status}`);
+        error.status = respuesta.status;
+        throw error;
+      }
+      const contentLength = Number(respuesta.headers.get("content-length"));
+      if (contentLength && contentLength > limiteBytes) {
         throw new Error("El archivo multimedia supera el límite permitido");
       }
-      partes.push(Buffer.from(parte));
+      const partes = [];
+      let totalBytes = 0;
+      for await (const parte of respuesta.body) {
+        totalBytes += parte.length;
+        if (totalBytes > limiteBytes) {
+          throw new Error("El archivo multimedia supera el límite permitido");
+        }
+        partes.push(Buffer.from(parte));
+      }
+      return {
+        buffer: Buffer.concat(partes, totalBytes),
+        contentType: respuesta.headers.get("content-type") || null,
+      };
+    } catch (error) {
+      const agotado = controller.signal.aborted;
+      const transitorio = agotado || [408, 429].includes(error.status) || error.status >= 500 ||
+        (error instanceof TypeError && /fetch failed|network/i.test(error.message)) ||
+        /^(?:ECONNRESET|ETIMEDOUT|EAI_AGAIN|UND_ERR_)/.test(error.cause?.code || error.code || "");
+      const motivo = agotado ? `timeout de descarga (${timeoutMs} ms)`
+        : error.status ? `HTTP ${error.status}` : transitorio ? "fallo de red" : "archivo no descargable";
+      const repetir = transitorio && intento < reintentos;
+      logger?.warn?.(`[Multimedia] Descarga fallida | intento=${intento + 1}/${reintentos + 1} | motivo=${motivo} | duracionMs=${Date.now() - inicio} | reintentar=${repetir ? "si" : "no"}`);
+      if (!repetir) {
+        if (transitorio) {
+          const fallo = new Error(`No se pudo descargar multimedia: ${motivo}; intentos=${intento + 1}`);
+          fallo.code = agotado ? "MEDIA_DOWNLOAD_TIMEOUT" : "MEDIA_DOWNLOAD_NETWORK";
+          throw fallo;
+        }
+        throw error;
+      }
+    } finally {
+      clearTimeout(timeout);
+      controller.abort(); // Cancel incomplete bodies before the next attempt.
     }
-
-    return {
-      buffer: Buffer.concat(partes, totalBytes),
-      contentType: respuesta.headers.get("content-type") || null,
-    };
-  } finally {
-    clearTimeout(timeout);
+    await new Promise(resolve => setTimeout(resolve, 250 * (intento + 1)));
   }
 }
 
@@ -186,7 +209,7 @@ async function transcribirAudio(media, logger = console, catalogo = [], vertical
   if (!media?.url) throw new Error("El audio recibido no tiene URL");
 
   if (logger?.log) logger.log(`[OpenAI] Enviando audio real a transcripción | ${referenciaSegura(media)}`);
-  const { buffer, contentType } = await descargarArchivo(media.url);
+  const { buffer, contentType } = await descargarArchivo(media.url, logger);
   const tipo = media.contentType || contentType || "audio/ogg";
   const filename = nombreAudioSeguro(media, tipo);
   const prompt = construirPromptTranscripcion(catalogo, vertical);
@@ -216,7 +239,7 @@ async function transcribirAudio(media, logger = console, catalogo = [], vertical
 }
 
 async function prepararImagen(media, logger = console) {
-  const { buffer, contentType } = await descargarArchivo(media.url);
+  const { buffer, contentType } = await descargarArchivo(media.url, logger);
   const tipo = media.contentType || contentType || "image/jpeg";
   const dataUrl = `data:${tipo};base64,${buffer.toString("base64")}`;
 
@@ -244,7 +267,7 @@ async function procesarMultimedia({ text = "", media = null, logger = console, c
     validarUrlPublica(media.url);
     if (logger?.log) {
       logger.log(
-        `[OpenAI] Enviando imagen real a vision | captionChars=${text.length} | ${referenciaSegura(media)}`
+        `[Multimedia] Preparando descarga de imagen para vision | captionChars=${text.length} | ${referenciaSegura(media)}`
       );
     }
     const imageUrl = await prepararImagen(media, logger);

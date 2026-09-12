@@ -122,6 +122,12 @@ function referenciasCompatibles(marcaA, referenciaA, marcaB, referenciaB) {
     return false;
   }
 
+  const declaradas = referencia => (referencia.metadata?.equivalent_references || []).map(normalizar);
+  if (normalizar(marcaA.marca) === normalizar(marcaB.marca) && (
+    declaradas(referenciaA).includes(normalizar(referenciaB.nombre)) ||
+    declaradas(referenciaB).includes(normalizar(referenciaA.nombre))
+  )) return true;
+
   const identidadA = identidadReferencia(marcaA.marca, referenciaA.nombre);
   const identidadB = identidadReferencia(marcaB.marca, referenciaB.nombre);
   const tokensA = tokensIdentidad(marcaA.marca, referenciaA.nombre);
@@ -174,8 +180,9 @@ function fusionarMetadata(referencias = []) {
   return {
     ...principal,
     original_names: nombresOriginales,
+    aliases: unirValoresUnicos(referencias.flatMap(referencia => referencia.metadata?.aliases || [])),
     equivalent_references: unirValoresUnicos(
-      referencias.map((referencia) => referencia.nombre)
+      referencias.flatMap((referencia) => [referencia.nombre, ...(referencia.metadata?.equivalent_references || [])])
     ),
   };
 }

@@ -328,7 +328,7 @@ function normalizarIdentidadProducto(texto = "") {
   return normalizar(texto)
     .replace(/\bpremiun\b/g, "premium")
     .replace(/\bpro\b/g, "premium")
-    .replace(/\bad\b/g, "adulto")
+    .replace(/\b(?:ad|adul|adult|adultos)\b/g, "adulto")
     .replace(/\brp\b/g, "raza pequeno")
     .replace(/\b(?:peq|pequena|pequenas|pequenos)\b/g, "pequeno")
     .replace(/\b(?:rg|rmg)\b/g, "raza grande")
@@ -1080,6 +1080,14 @@ function referenciasEquivalentes(itemA, itemB) {
     return false;
   }
 
+  // Equivalences are catalog data, never inferred from a shared brand or size.
+  const equivalentes = referencia => (referencia.metadata?.equivalent_references || [])
+    .map(normalizarIdentidadProducto);
+  if (marcaA === marcaB && (
+    equivalentes(itemA.referencia).includes(normalizarIdentidadProducto(itemB.referencia.nombre)) ||
+    equivalentes(itemB.referencia).includes(normalizarIdentidadProducto(itemA.referencia.nombre))
+  )) return true;
+
   const identidadA = tokensIdentidadReferencia(itemA.marca, itemA.referencia);
   const identidadB = tokensIdentidadReferencia(itemB.marca, itemB.referencia);
   if (condicionesA.length && !identidadA.length && !identidadB.length) {
@@ -1640,6 +1648,23 @@ function validarCoincidenciaProducto({
   contextoProducto = null,
 } = {}) {
   interpretacion = resolverEvidenciaInterpretacion(interpretacion);
+  const evidenciaIdentidad = interpretacion?.producto?.observado;
+  if (clasificacion.requiereVision && evidenciaIdentidad?.nombre &&
+      Number(evidenciaIdentidad.confianzaIdentidad) >= 0.85) {
+    const producto = interpretacion.producto;
+    const nombre = evidenciaIdentidad.nombre;
+    const tokensNombre = normalizarIdentidadProducto(nombre).split(/\s+/);
+    // Score the observed identity, not the model's proposed catalog mapping.
+    // Raw packaging copy remains in the interpretation for audit, never in
+    // identity scoring: benefits and slogans are not commercial variants.
+    interpretacion = { ...interpretacion, producto: { ...producto,
+      referencia: nombre,
+      textoVisible: nombre,
+      linea: producto.linea && normalizarIdentidadProducto(producto.linea).split(/\s+/)
+        .every(token => tokensNombre.includes(token)) ? producto.linea : null,
+    } };
+  }
+
   const intencionProducto = [
     "precio",
     "busqueda_producto",
@@ -1767,20 +1792,24 @@ function validarCoincidenciaProducto({
   );
   const productoVisual = interpretacion?.producto;
   if (clasificacion.requiereVision && Number(productoVisual?.observado?.confianzaIdentidad) >= 0.85) {
+    const marcaTokens = normalizarIdentidadProducto(productoVisual.marca || "").split(/\s+/);
     const identidad = nombre => normalizarIdentidadProducto(nombre || "").split(/\s+/)
-      .filter(token => token && !normalizarIdentidadProducto(productoVisual.marca || "").split(/\s+/).includes(token))
-      .sort().join(" ");
+      .filter(token => token && !marcaTokens.includes(token));
     const leida = identidad(productoVisual.observado.nombre);
-    const solicitada = identidad(productoVisual.referencia);
-    // Only literal/normalized observed identity can break a lexical tie.
-    // A partial name or a catalog guess must still pass ambiguity scoring.
-    if (leida && (!solicitada || leida === solicitada)) {
-      const exactas = puntuados.filter(item =>
-        [item.referencia.nombre, ...(item.referencia.metadata?.original_names || [])]
-          .some(nombre => identidad(nombre) === leida));
-      if (exactas.length) puntuados = exactas;
-    }
+    const atributos = new Set(saboresProducto(productoVisual.observado.nombre));
+    // Permit a visible attribute omitted by the commercial name, but never
+    // discard an unknown identity token or add an unobserved variant.
+    const exactas = puntuados.filter(item => [item.referencia.nombre,
+      ...(item.referencia.aliases || []), ...(item.referencia.metadata?.aliases || []),
+      ...(item.referencia.metadata?.equivalent_references || [])].some(nombre => {
+        const registrada = identidad(nombre);
+        return registrada.length && registrada.every(token => leida.includes(token)) &&
+          leida.every(token => registrada.includes(token) || atributos.has(token));
+      }));
+    if (exactas.length) puntuados = puntuados.filter(item => exactas.some(exacta =>
+      item === exacta || referenciasEquivalentes(item, exacta)));
   }
+
   const pesoConsultaMarca = obtenerPresentacionSolicitada(mensajeRazonado, interpretacion);
   const tokensMarcaConsulta = marcaExacta ? normalizarIdentidadProducto(marcaExacta).split(/\s+/) : [];
   if (!clasificacion.requiereVision && marcaExacta && pesoConsultaMarca && terminos.every(token => tokensMarcaConsulta.includes(token))) {

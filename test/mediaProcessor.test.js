@@ -117,3 +117,69 @@ test("advierte y rechaza imagen cuando solo llega media_id sin URL", async () =>
   assert.match(warnings[0], /Imagen recibida sin URL pública/);
   assert.match(warnings[0], /mediaId=presente/);
 });
+
+test('reintenta descarga que agota el plazo con una señal nueva y entrega la imagen completa', async () => {
+  const anterior = global.fetch;
+  const config = process.env.MEDIA_DOWNLOAD_TIMEOUT_MS;
+  const retries = process.env.MEDIA_DOWNLOAD_RETRIES;
+  process.env.MEDIA_DOWNLOAD_TIMEOUT_MS = '5';
+  process.env.MEDIA_DOWNLOAD_RETRIES = '1';
+  const senales = [];
+  const logs = [];
+  global.fetch = async (_url, { signal }) => {
+    senales.push(signal);
+    if (senales.length === 1) return new Promise((_resolve, reject) =>
+      signal.addEventListener('abort', () => reject(new DOMException('This operation was aborted', 'AbortError')), { once: true }));
+    return new Response(Buffer.from('imagen-completa'), { headers: { 'content-type': 'image/jpeg' } });
+  };
+  try {
+    const resultado = await procesarMultimedia({ media: { type: 'image', url: 'https://example.com/secret-token' }, logger: { log() {}, warn: x => logs.push(x) } });
+    assert.equal(resultado.imageUrl, 'data:image/jpeg;base64,' + Buffer.from('imagen-completa').toString('base64'));
+    assert.equal(senales.length, 2);
+    assert.notEqual(senales[0], senales[1]);
+    assert.match(logs[0], /timeout de descarga.*reintentar=si/);
+    assert.doesNotMatch(logs.join(' '), /secret-token/);
+  } finally {
+    global.fetch = anterior;
+    if (config === undefined) delete process.env.MEDIA_DOWNLOAD_TIMEOUT_MS; else process.env.MEDIA_DOWNLOAD_TIMEOUT_MS = config;
+    if (retries === undefined) delete process.env.MEDIA_DOWNLOAD_RETRIES; else process.env.MEDIA_DOWNLOAD_RETRIES = retries;
+  }
+});
+
+test('limita los reintentos y cancela tambien un cuerpo de imagen que se queda esperando', async () => {
+  const anterior = global.fetch;
+  const config = process.env.MEDIA_DOWNLOAD_TIMEOUT_MS;
+  const retries = process.env.MEDIA_DOWNLOAD_RETRIES;
+  process.env.MEDIA_DOWNLOAD_TIMEOUT_MS = '5';
+  process.env.MEDIA_DOWNLOAD_RETRIES = '1';
+  let intentos = 0;
+  global.fetch = async (_url, { signal }) => {
+    intentos++;
+    return { ok: true, headers: new Headers(), body: {
+      async *[Symbol.asyncIterator]() {
+        yield Buffer.from('parcial');
+        await new Promise((_resolve, reject) => signal.addEventListener('abort', () => reject(new DOMException('aborted', 'AbortError')), { once: true }));
+      },
+    } };
+  };
+  try {
+    await assert.rejects(procesarMultimedia({ media: { type: 'image', url: 'https://example.com/image' }, logger: loggerSilencioso }), error => error.code === 'MEDIA_DOWNLOAD_TIMEOUT' && /intentos=2/.test(error.message));
+    assert.equal(intentos, 2);
+  } finally {
+    global.fetch = anterior;
+    if (config === undefined) delete process.env.MEDIA_DOWNLOAD_TIMEOUT_MS; else process.env.MEDIA_DOWNLOAD_TIMEOUT_MS = config;
+    if (retries === undefined) delete process.env.MEDIA_DOWNLOAD_RETRIES; else process.env.MEDIA_DOWNLOAD_RETRIES = retries;
+  }
+});
+
+test('no reintenta errores permanentes ni archivos sobre el limite', async () => {
+  const anterior = global.fetch;
+  try {
+    for (const respuesta of [new Response('', { status: 403 }), new Response('', { headers: { 'content-length': '999999999' } })]) {
+      let intentos = 0;
+      global.fetch = async () => { intentos++; return respuesta; };
+      await assert.rejects(procesarMultimedia({ media: { type: 'image', url: 'https://example.com/image' }, logger: loggerSilencioso }));
+      assert.equal(intentos, 1);
+    }
+  } finally { global.fetch = anterior; }
+});

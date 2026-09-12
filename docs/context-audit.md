@@ -114,6 +114,10 @@ Actualizacion del flujo visual (2026-09-10): cada producto separa `observado` (n
 
 La busqueda usa la presentacion resuelta, sin arrastrar el peso crudo del OCR. Una segunda lectura puede mejorar evidencia visual, pero conserva la solicitud del router. Una identidad visual exacta suficientemente confiable limita las referencias antes de agrupar similitudes; si hay ambiguedad, se muestran candidatos cercanos sin precios. Si el producto esta validado pero falta presentacion, el motor conserva la seleccion y pregunta solo ese dato, incluso si Supabase devuelve una unica presentacion. Aclarar la presentacion conserva la intencion de consulta y no autoriza agregar al carrito.
 
+Correccion verificada el 2026-09-12: la identidad visual normaliza abreviaturas de etapa y admite un sabor visible omitido por el nombre comercial, sin admitir palabras de variantes no observadas. La consolidacion conserva todos los aliases y respeta `metadata.equivalent_references` dentro de la misma marca y categoria/especie compatibles. Las equivalencias comerciales se declaran en los datos; no se deducen de compartir marca o peso. La equivalencia RINGO ADUL/CROQUETA/CROQUETAS, confirmada por el propietario, quedo registrada en Supabase y `productos.json`, junto a sus aliases de empaque.
+
+Se verifico el recorrido real de recuperacion de candidatos en Supabase, validacion y construccion de respuesta con identidades estructuradas: RINGO ADULTOS 2kg devuelve solo RINGO CROQUETAS 2kg ($10.900); CHUNKY ADULTOS POLLO 2kg devuelve solo CHUNKY ADULTO 2kg ($18.900). Esta comprobacion no envia WhatsApp ni ejecuta una nueva lectura de imagen en OpenAI. La suite de 299 pruebas incluye continuidad por peso y distincion de variantes visuales.
+
 La lectura visual extrae marca, linea/variante, especie, etapa, tamano, condicion, presentacion, sabor y texto visible. Una marca sola no confirma una referencia. Si la primera lectura omite una senal critica o deja ambiguedad real, puede ejecutarse una segunda lectura enfocada con candidatos refinados.
 
 `AI_VISION_REFINEMENT=false` desactiva esa segunda llamada.
@@ -185,3 +189,7 @@ Estos logs pueden contener mensajes, direcciones y datos personales. No deben qu
 3. Revisar locking y transacciones para despliegue horizontal.
 5. Medir falsos positivos de vision y consolidacion.
 6. Evaluar embeddings por cliente solo si FTS + fuzzy no alcanza con casos reales.
+
+Descarga multimedia: `mediaProcessor` aplica `MEDIA_DOWNLOAD_TIMEOUT_MS` (30.000 ms por defecto) a cabeceras y cuerpo completo, con `MEDIA_DOWNLOAD_RETRIES=1` por defecto (un reintento). Solo reintenta timeout, errores transitorios de red y HTTP 408/429/5xx; no reintenta rechazo de acceso ni exceso del limite de bytes. Cada intento usa su propio AbortController y descarta datos parciales. Los logs indican fase de descarga, plazo, intento y duracion sin revelar la URL firmada. El registro previo a descargar ya no afirma que OpenAI recibio la imagen. La configuracion local de 10.000 ms se actualizo a 30.000 ms.
+
+Correccion de identidad tras lectura visual: con evidencia de nombre >= 0.85, el validador puntua el nombre observado y excluye el OCR publicitario y las lineas propuestas no contenidas en esa identidad. Antes se puntuaba primero la referencia sugerida por el modelo y se filtraban candidatos antes de comprobar la identidad observada; eso permitia validar una linea distinta aun con lectura correcta. Se reprodujo el turno real guardado (Ringo Original Adultos, confianza 0.96): paso de RINGO VITALITY ADULTO a RINGO CROQUETAS, sin inventar peso. Prueba de regresion con otra marca y suite completa: 303 pruebas aprobadas.
