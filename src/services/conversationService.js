@@ -468,7 +468,10 @@ async function responderEventosEntrantes(eventos) {
     const respuestaConversacional = decisionSemantica?.respuestaConversacional ||
       "¿Puedes contarme un poco más sobre lo que necesitas?";
     // El motor existente conserva la autoridad sobre las transiciones y pedidos.
-    const respuestaBase = decisionSemantica?.continuarFlujo === true
+    const operacionPendiente = estado.carrito?.length > 0 &&
+      Object.entries(estado).some(([campo, valor]) => campo.startsWith("esperando") && valor === true) &&
+      ["datos_envio", "metodo_pago", "confirmacion"].includes(decisionSemantica?.intencion);
+    const respuestaBase = decisionSemantica?.continuarFlujo === true || operacionPendiente
       ? resolverConsultaCatalogo(mensaje, estado, [], decisionSemantica)
       : respuestaConversacional;
     const respuesta = await humanizarRespuesta(mensaje, respuestaBase || respuestaConversacional, {

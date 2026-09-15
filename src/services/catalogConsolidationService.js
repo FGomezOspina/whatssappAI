@@ -1,4 +1,4 @@
-const { normalizar, normalizarPeso } = require("../utils/text");
+const { normalizar, normalizarPeso, codigosReferencia } = require("../utils/text");
 
 const MIN_SIMILITUD_MARCA = 0.76;
 const MIN_SIMILITUD_REFERENCIA = 0.84;
@@ -127,6 +127,11 @@ function referenciasCompatibles(marcaA, referenciaA, marcaB, referenciaB) {
     declaradas(referenciaA).includes(normalizar(referenciaB.nombre)) ||
     declaradas(referenciaB).includes(normalizar(referenciaA.nombre))
   )) return true;
+
+  const codigosA = codigosReferencia(referenciaA.nombre, marcaA.marca);
+  const codigosB = codigosReferencia(referenciaB.nombre, marcaB.marca);
+  if (codigosA.some(codigo => !codigosB.includes(codigo)) ||
+      codigosB.some(codigo => !codigosA.includes(codigo))) return false;
 
   const identidadA = identidadReferencia(marcaA.marca, referenciaA.nombre);
   const identidadB = identidadReferencia(marcaB.marca, referenciaB.nombre);

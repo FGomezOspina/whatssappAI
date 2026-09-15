@@ -219,3 +219,24 @@ test('mapeo del modelo y publicidad no sustituyen la identidad observada por otr
   assert.doesNotMatch(resultado.respuesta, /VITALITY|99\.000|31\.000/);
   assert.match(resultado.respuesta, /CROQUETAS/);
 });
+
+test('codigo visual exige la referencia codificada aunque el modelo sugiera la descriptiva', () => {
+  const { validarCoincidenciaProducto } = require('../src/services/productMatchValidator');
+  const { consolidarCatalogo } = require('../src/services/catalogConsolidationService');
+  for (const codigo of ['UR', 'EN', 'HA', 'I/D', 'ZX']) {
+    const catalogo = consolidarCatalogo([{ marca: 'NUTRIVA', referencias: [
+      { nombre: `NUTRIVA FELINE ${codigo}`, especie: 'gato', presentaciones: [{ peso: '1.5kg', precio: 99000 }] },
+      { nombre: 'NUTRIVA FELINE URINARY', especie: 'gato', presentaciones: [{ peso: '1.5kg', precio: 50000 }] },
+    ] }]);
+    assert.equal(catalogo[0].referencias.length, 2);
+    const lectura = { confianza: 0.98, producto: { marca: 'NUTRIVA', referencia: 'NUTRIVA FELINE URINARY', especie: 'gato', condiciones: ['urinario'],
+      observado: { nombre: `NUTRIVA ${codigo} URINARY`, presentacion: '1.5kg', confianzaIdentidad: 0.98, confianzaPresentacion: 0.98 }, solicitud: {} } };
+    const v = validarCoincidenciaProducto({ mensaje: 'Tienes esta referencia?', interpretacion: lectura, catalogo, catalogoCandidatos: catalogo,
+      clasificacion: { intencion: 'imagen', perfilContexto: 'multimedia', requiereVision: true } });
+    assert.equal(v.nivel, 'alta', codigo + JSON.stringify(v));
+    assert.equal(v.coincidencia.referencia, `NUTRIVA FELINE ${codigo}`);
+    const sinCodigo = validarCoincidenciaProducto({ mensaje: 'Tienes esta referencia?', interpretacion: lectura, catalogo: [{marca:'NUTRIVA',referencias:[catalogo[0].referencias.find(r=>r.nombre.endsWith('URINARY'))]}],
+      clasificacion: { intencion: 'imagen', perfilContexto: 'multimedia', requiereVision: true } });
+    assert.notEqual(sinCodigo.nivel, 'alta', 'No sustituir codigo inexistente');
+  }
+});

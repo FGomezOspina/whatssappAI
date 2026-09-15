@@ -24,7 +24,7 @@ test('resumen, confirmacion semantica y repeticion conservan un solo pedido por 
     ultimaConsultaProducto: { terminos: ['marca', 'test'], aclaracion: { campo: 'especie', valores: ['perro', 'gato'] }, creadoEn: new Date().toISOString() },
   };
   const resumen = resolverConsultaCatalogo('Datos de entrega completos', estado, catalogo, { intencion: 'datos_envio', accion: null });
-  assert.match(resumen, /confirmar el pedido/);
+  assert.match(resumen, /finalizamos el pedido/);
   assert.equal(estado.esperandoConfirmacionPedido, true);
   assert.deepEqual(estado.productosConsultados, []);
   assert.equal(estado.ultimaConsultaProducto, null);
@@ -89,13 +89,38 @@ test('respuesta no resuelta mantiene la confirmacion y permite corregir datos se
     carrito: [{ marca: 'Prueba', referencia: 'Producto', peso: '1kg', precio: 1000, cantidad: 1 }],
     datosDomicilio: { nombre: 'Anterior', cedula: '0000', celular: '0000', correo: 'prueba@example.com', direccion: 'Calle de prueba 1' }, metodoPago: 'efectivo', entrega: { tipo: 'domicilio' } };
   const noResuelta = resolverConsultaCatalogo('...', estado, [], null);
-  assert.match(noResuelta, /confirmar el pedido/);
+  assert.match(noResuelta, /finalizamos el pedido/);
   assert.equal(estado.esperandoConfirmacionPedido, true);
   const corregida = resolverConsultaCatalogo('debe figurar otra persona', estado, [], {
     intencion: 'datos_envio', confianza: 0.99, datosCliente: { nombre: 'Cliente Prueba' },
   });
   assert.equal(estado.datosDomicilio.nombre, 'Cliente Prueba');
   assert.equal(estado.confirmacionPedidoId, 'estable');
-  assert.match(corregida, /confirmar el pedido/);
+  assert.match(corregida, /finalizamos el pedido/);
   assert.equal(estado.pedidoConfirmado, false);
+});
+
+test('cierre detalla datos, conserva contexto ante pregunta y finaliza semanticamente al dejarlo asi', () => {
+  let estado = { ...crearEstadoInicial(), esperandoDatosDomicilio: true,
+    carrito: [{ marca: 'Prueba', referencia: 'Producto', peso: '2kg', precio: 28000, cantidad: 1 }],
+    entrega: { tipo: 'domicilio' }, metodoPago: 'efectivo',
+    datosDomicilio: { nombre: 'Cliente Prueba', cedula: '123', correo: 'cliente@example.com', celular: '3000000000', direccion: 'Municipio Barrio Mz 1 Casa 10' } };
+  const resumen = resolverConsultaCatalogo('Cliente Prueba', estado, [], { intencion: 'datos_envio', confianza: 0.99 });
+  for (const dato of Object.values(estado.datosDomicilio)) assert.ok(resumen.includes(dato));
+  assert.match(resumen, /28\.000/);
+  assert.match(resumen, /Método de pago: efectivo/);
+  assert.match(resumen, /agregar algo más o finalizamos el pedido así/);
+  // Supabase serializes this entire state; a restart must keep the review stage.
+  estado = JSON.parse(JSON.stringify(estado));
+  const clave = estado.confirmacionPedidoId;
+  const datos = structuredClone(estado.datosDomicilio);
+  resolverConsultaCatalogo('Sí, pero tengo otra pregunta', estado, [], { intencion: 'otro', confianza: 0.99 });
+  assert.equal(estado.pedidoConfirmado, false);
+  assert.equal(estado.esperandoConfirmacionPedido, true);
+  assert.deepEqual(estado.datosDomicilio, datos);
+  assert.equal(estado.carrito.length, 1);
+  const respuesta = resolverConsultaCatalogo('Déjalo así', estado, [], { intencion: 'confirmacion', accion: 'confirmar', confianza: 0.99 });
+  assert.match(respuesta, /pedido queda confirmado/);
+  assert.equal(estado.confirmacionPedidoId, clave);
+  assert.deepEqual(estado.datosDomicilio, datos);
 });

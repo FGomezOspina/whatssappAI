@@ -4584,14 +4584,12 @@ function solicitarDatosDomicilio(estado) {
 }
 
 function resumenDatosFacturacionYDomicilio(estado) {
-  const metodoPago = estado.metodoPago ? `\n- Método de pago: ${estado.metodoPago}` : "";
-
-  return `Datos de facturación y domicilio:
-- Nombre: ${estado.datosDomicilio.nombre}
-- Cédula: ${estado.datosDomicilio.cedula}
-- Celular: ${estado.datosDomicilio.celular}
-- Correo: ${estado.datosDomicilio.correo}
-- Dirección: ${estado.datosDomicilio.direccion}${metodoPago}`;
+  const etiquetas = { nombre: "Nombre", cedula: "Cédula", celular: "Celular", correo: "Correo", direccion: "Dirección" };
+  const datos = Object.entries(estado.datosDomicilio || {})
+    .filter(([, valor]) => valor !== null && valor !== undefined && String(valor).trim())
+    .map(([campo, valor]) => `- ${etiquetas[campo] || campo}: ${valor}`);
+  if (estado.metodoPago) datos.push(`- Método de pago: ${estado.metodoPago}`);
+  return `Datos de facturación y domicilio:\n${datos.join("\n")}`;
 }
 
 function solicitarConfirmacionPedido(estado) {
@@ -4607,7 +4605,7 @@ function solicitarConfirmacionPedido(estado) {
 
   return `${resumenCarrito(estado)}\n\n${resumenDatosFacturacionYDomicilio(
     estado
-  )}\n\n¿Está todo correcto para confirmar el pedido?`;
+  )}\n\n¿Deseas agregar algo más o finalizamos el pedido así?`;
 }
 
 function confirmarPedido(estado) {
@@ -4727,7 +4725,8 @@ function resolverConfirmacionPedido(mensaje, estado, interpretacion = null) {
     return solicitarConfirmacionPedido(estado);
   }
 
-  if (esAfirmacion(mensaje) || interpretacionConfirma(interpretacion)) {
+  const otraIntencion = interpretacion?.intencion && interpretacion.intencion !== "confirmacion";
+  if ((!otraIntencion && esAfirmacion(mensaje)) || interpretacionConfirma(interpretacion)) {
     return confirmarPedido(estado);
   }
 

@@ -2272,7 +2272,7 @@ test("un metodo de pago no reemplaza el nombre confirmado del domicilio", () => 
   assert.equal(estado.datosDomicilio.nombre, "Dora Inés Zapata");
   assert.equal(estado.metodoPago, "efectivo");
   assert.match(respuesta, /Nombre: Dora Inés Zapata/);
-  assert.match(respuesta, /¿Está todo correcto para confirmar el pedido?/);
+  assert.match(respuesta, /¿Deseas agregar algo más o finalizamos el pedido así?/);
   assert.doesNotMatch(respuesta, /Nombre: efectivo/);
   assert.equal(estado.pedidoConfirmado, false);
 
@@ -2335,7 +2335,7 @@ test("un lote completo recapitula el pedido y espera confirmacion explicita", ()
   assert.match(respuesta, /2 x Dog Chow Adulto Mini y Pequeño 2kg: \$72\.000/);
   assert.match(respuesta, /Nombre: Dora Inés Zapata/);
   assert.match(respuesta, /Método de pago: efectivo/);
-  assert.match(respuesta, /¿Está todo correcto para confirmar el pedido?/);
+  assert.match(respuesta, /¿Deseas agregar algo más o finalizamos el pedido así?/);
 });
 
 test("un lote incompleto pide solamente los datos de envio faltantes", () => {
@@ -2421,7 +2421,7 @@ test("acepta direccion colombiana con manzana y casa como direccion completa", (
   assert.equal(estado.datosDomicilio.direccion, "mz 1 cs 19 en dosquebradas");
   assert.equal(estado.datosDomicilio.direccionParcial, undefined);
   assert.doesNotMatch(respuesta, /direccion completa/i);
-  assert.match(respuesta, /¿Está todo correcto para confirmar el pedido?/);
+  assert.match(respuesta, /¿Deseas agregar algo más o finalizamos el pedido así?/);
 });
 
 test("permite cambiar el metodo de pago desde el resumen sin alterar el nombre", () => {
@@ -2793,7 +2793,7 @@ test("perfecto confirma un pedido nuevo con datos anteriores sin repetir pregunt
   );
 
   assert.equal(estado.esperandoConfirmacionPedido, true);
-  assert.match(resumen, /¿Está todo correcto para confirmar el pedido?/);
+  assert.match(resumen, /¿Deseas agregar algo más o finalizamos el pedido así?/);
 
   const confirmacion = resolverConsultaCatalogo("perfecto", estado, catalogo, null);
 
@@ -2854,7 +2854,7 @@ test("un si a reutilizar la direccion anterior confirma sin pedir otra aprobacio
   assert.equal(estado.pedidoConfirmado, true);
   assert.equal(estado.esperandoConfirmacionPedido, false);
   assert.match(confirmacion, /pedido queda confirmado/i);
-  assert.doesNotMatch(confirmacion, /¿Está todo correcto para confirmar el pedido?/);
+  assert.doesNotMatch(confirmacion, /¿Deseas agregar algo más o finalizamos el pedido así?/);
 });
 
 test("el mismo producto con direccion nueva no suma el pedido anterior", () => {

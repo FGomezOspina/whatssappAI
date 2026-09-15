@@ -1,5 +1,5 @@
 const { resolverEvidenciaInterpretacion } = require("./productEvidenceService");
-const { formatearPrecio, normalizar, normalizarPeso } = require("../utils/text");
+const { formatearPrecio, normalizar, normalizarPeso, codigosReferencia } = require("../utils/text");
 
 const DEFAULT_HIGH_THRESHOLD = 0.84;
 const DEFAULT_MEDIUM_THRESHOLD = 0.68;
@@ -1088,6 +1088,11 @@ function referenciasEquivalentes(itemA, itemB) {
     equivalentes(itemB.referencia).includes(normalizarIdentidadProducto(itemA.referencia.nombre))
   )) return true;
 
+  const codigosA = codigosReferencia(itemA.referencia.nombre, itemA.marca.marca);
+  const codigosB = codigosReferencia(itemB.referencia.nombre, itemB.marca.marca);
+  if (codigosA.some(codigo => !codigosB.includes(codigo)) ||
+      codigosB.some(codigo => !codigosA.includes(codigo))) return false;
+
   const identidadA = tokensIdentidadReferencia(itemA.marca, itemA.referencia);
   const identidadB = tokensIdentidadReferencia(itemB.marca, itemB.referencia);
   if (condicionesA.length && !identidadA.length && !identidadB.length) {
@@ -1111,6 +1116,7 @@ function compatibleConSenales(item, interpretacion, mensaje = "") {
     return false;
   }
   if (
+    !codigosReferencia(interpretacion?.producto?.observado?.nombre || "", interpretacion?.producto?.marca || "").length &&
     señales.condiciones.length &&
     !señales.condiciones.every((condicion) =>
       condicionesReferencia.includes(condicion)
@@ -1715,13 +1721,27 @@ function validarCoincidenciaProducto({
     return { nivel: "no_aplica", razon: "consulta_generica", terminos: [] };
   }
 
-  const marcaExacta = marcaExactaConsultada(catalogo, terminos);
+  const marcaVisualExacta = clasificacion.requiereVision && interpretacion?.producto?.marca &&
+    catalogo.find(marca => normalizar(marca.marca) === normalizar(interpretacion.producto.marca));
+  const marcaExacta = marcaVisualExacta ? normalizar(marcaVisualExacta.marca)
+    : marcaExactaConsultada(catalogo, terminos);
   const terminosIdentidad = terminos.filter((termino) => !TERMINOS_ATRIBUTO.has(termino));
   const consultaCategoria = !marcaExacta && (!terminosIdentidad.length ||
     (!terminosMensaje.length && normalizarCategoria(mensajeRazonado)));
 
-  const codigosSolicitados = (mensaje.match(/\b[A-Z]{2,5}\b/g) || [])
-    .map(normalizar).filter(token => STOPWORDS.has(token));
+  const fuenteCodigos = clasificacion.requiereVision
+    ? interpretacion?.producto?.observado?.nombre || interpretacion?.producto?.referencia || ""
+    : mensaje;
+  const codigosSolicitados = codigosReferencia(fuenteCodigos, interpretacion?.producto?.marca || marcaExacta || "");
+  if (codigosSolicitados.length && interpretacion?.producto) {
+    // Descriptive conditions must not require the catalog to repeat the long
+    // label when its exact commercial code is already present.
+    interpretacion = { ...interpretacion, producto: { ...interpretacion.producto,
+      condiciones: [], textoVisible: codigosSolicitados.join(" "),
+      referencia: [interpretacion.producto.marca, ...codigosSolicitados].filter(Boolean).join(" "),
+      linea: null,
+    } };
+  }
   const itemsEvaluados = catalogoPlano(catalogo).filter(
     (item) =>
       (!marcaExacta ||
@@ -1732,7 +1752,7 @@ function validarCoincidenciaProducto({
           MIN_SIMILITUD_MARCA_VISUAL
       ) ||
       (marcaExacta.length <= 3 && itemCompatibleConConsultaParcial(item, terminos, mensajeRazonado))) &&
-      codigosSolicitados.every(codigo => normalizar(item.referencia.nombre).split(/\s+/).includes(codigo))
+      codigosSolicitados.every(codigo => codigosReferencia(item.referencia.nombre, item.marca.marca).includes(codigo))
   );
   const lineasConsultaDisponibles = [
     ...new Set(
@@ -1834,7 +1854,11 @@ function validarCoincidenciaProducto({
   const confianzaIA = Number(interpretacion?.confianza || 0);
   const presentacionValida = primero?.presentacionCoincide ?? null;
   const coincidenciaReferenciaExacta = Boolean(
-    primero?.coincidenciaReferenciaExacta
+    primero?.coincidenciaReferenciaExacta ||
+    (primero && (!segundo || (primero.presentacionCoincide === true &&
+      segundo.presentacionCoincide === false && diferencia >= margin)) && codigosSolicitados.length && marcaExacta &&
+      Number(interpretacion?.producto?.observado?.confianzaIdentidad) >= 0.85 &&
+      primero.especieCoincide !== false && primero.etapaCoincide !== false)
   );
   const evidenciaVisualFuerte = Boolean(
     clasificacion.requiereVision &&

@@ -56,11 +56,19 @@ function normalizarPeso(texto = "") {
   return peso;
 }
 
+// Preserve short commercial identifiers before punctuation/stopword expansion.
+function codigosReferencia(nombre = "", marca = "") {
+  const marcaTokens = new Set(textoSeguro(marca).toUpperCase().split(/\s+/));
+  return [...new Set((textoSeguro(nombre).match(/\b(?:[A-Z]\/[A-Z]|[A-Z]{2})\b/g) || [])
+    .filter(token => !marcaTokens.has(token) && !/^(KG|KL|GR|ML|MG|LB|CM)$/.test(token)))];
+}
+
 function formatearPrecio(precio) {
   return `$${textoSeguro(precio).replace(/\B(?=(\d{3})+(?!\d))/g, ".")}`;
 }
 
 module.exports = {
+  codigosReferencia,
   expandirAbreviaturasProducto,
   formatearPrecio,
   normalizar,

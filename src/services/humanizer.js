@@ -161,6 +161,8 @@ function tienePromptHumanizadorCliente(cliente = {}) {
 function esRespuestaOperativaProtegida(respuestaBase = "") {
   return Boolean(
     respuestaBase.includes("Datos de domicilio:") ||
+      respuestaBase.includes("Datos de facturación y domicilio:") ||
+      /deseas agregar algo m[aá]s o finalizamos el pedido as[ií]/i.test(respuestaBase) ||
       respuestaBase.includes("ahorros bancolombia:") ||
       /est[aá] todo correcto para confirmar el pedido/i.test(respuestaBase) ||
       /quieres agregar algo m[aá]s o avanzamos con la entrega/i.test(respuestaBase) ||
