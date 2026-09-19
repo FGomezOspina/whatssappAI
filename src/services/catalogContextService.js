@@ -1,5 +1,5 @@
 const { _internals: { marcaExactaConsultada, tokensDistintivos, similitudTokenFlexible } } = require("./productMatchValidator");
-const { normalizar, normalizarPeso } = require("../utils/text");
+const { normalizarMarcasCatalogo, normalizar, normalizarPeso } = require("../utils/text");
 const { buscarProductosCatalogoCliente } = require("../repositories/productRepository");
 const {
   esSenalReferenciaProducto,
@@ -195,6 +195,10 @@ function puntuarReferencia({ marca, referencia }, consulta, tokensConsulta) {
   const textoCompleto = `${textoMarca} ${textoReferencia}`;
   let puntos = 0;
 
+  // Los nombres comerciales declarados deben entrar al contexto antes que
+  // referencias que solo comparten un peso o una categoria generica.
+  const aliases = [...(referencia.aliases || []), ...(referencia.metadata?.aliases || [])];
+  if (aliases.some(alias => contiene(consulta, alias))) puntos += 100;
   if (textoMarca && contiene(consulta, textoMarca)) puntos += 40;
   if (normalizar(referencia.nombre || "") && contiene(consulta, normalizar(referencia.nombre))) puntos += 60;
 
@@ -271,7 +275,7 @@ function seleccionarCatalogoLocal({ catalogo = [], mensaje = "", estado = {}, cl
     };
   }
 
-  const consulta = expandirConsulta(textoBusqueda(mensaje, estado));
+  const consulta = expandirConsulta(normalizarMarcasCatalogo(textoBusqueda(mensaje, estado), catalogo));
   const tokensConsulta = tokens(consulta);
   const identidadConsulta = tokensDistintivos(consulta);
   const marcasConsulta = new Set(catalogo
@@ -419,6 +423,10 @@ async function seleccionarCatalogoParaIA({ catalogo = [], mensaje = "", mensajeO
       // para recuperar una referencia escrita en singular o plural.
       expandirConsulta((clasificacion.requiereVision ? mensaje : mensajeOriginal || mensaje).replace(/\b([a-záéíóúñ]{4,})s\b/gi, "$1")),
     ].filter(Boolean))];
+    const palabras = normalizar(mensaje).split(/\s+/);
+    const unidas = palabras.slice(0, -1).map((palabra, i) =>
+      /^[a-z]{2,}$/.test(palabra) && /^[a-z]{2,}$/.test(palabras[i + 1]) ? palabra + palabras[i + 1] : "").filter(Boolean);
+    if (unidas.length) consultasBusqueda.push(unidas.join(" "));
     const respuestasBusqueda = await Promise.allSettled(consultasBusqueda.map(consulta =>
       buscarProductosCatalogoCliente(cliente, { query: consulta, limit: limite })
     ));
@@ -440,7 +448,8 @@ async function seleccionarCatalogoParaIA({ catalogo = [], mensaje = "", mensajeO
       estado,
       clasificacion,
     });
-    const identidadConsulta = tokensDistintivos(query);
+    const consultaValidada = expandirConsulta(normalizarMarcasCatalogo(query, resultado.catalogo));
+    const identidadConsulta = tokensDistintivos(consultaValidada);
     const marcasConsulta = new Set(resultado.catalogo
       .filter(marca => marcaExactaConsultada([marca], identidadConsulta))
       .map(marca => normalizar(marca.marca)));
@@ -449,7 +458,7 @@ async function seleccionarCatalogoParaIA({ catalogo = [], mensaje = "", mensajeO
       resultado.catalogo.map(marca => ({
         ...marca,
         referencias: marca.referencias.filter(referencia =>
-          clasificacion.requiereVision || puntuarReferencia({ marca, referencia }, query, tokens(query)) > 0
+          clasificacion.requiereVision || puntuarReferencia({ marca, referencia }, consultaValidada, tokens(consultaValidada)) > 0
         ),
       })).filter(marca =>
         !marcasConsulta.size || marcasConsulta.has(normalizar(marca.marca))

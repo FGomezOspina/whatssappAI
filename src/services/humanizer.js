@@ -164,6 +164,7 @@ function esRespuestaOperativaProtegida(respuestaBase = "") {
     /(?:^|\n)Pedido:\n[\s\S]*\nTotal:/.test(respuestaBase) ||
     respuestaBase.includes("Para completar tu domicilio, compárteme estos datos:") ||
     respuestaBase.includes("Datos de domicilio:") ||
+    respuestaBase.includes("Tu carrito está vacío;") ||
       respuestaBase.includes("Datos de facturación y domicilio:") ||
       /deseas agregar algo m[aá]s o finalizamos el pedido as[ií]/i.test(respuestaBase) ||
       respuestaBase.includes("ahorros bancolombia:") ||
@@ -402,7 +403,7 @@ async function redactarRespuestaProducto(mensaje, respuestaOperativa, opciones) 
   const prompt = `Redacta autonomamente una respuesta de WhatsApp en español colombiano para atender el mensaje completo.
 Usa exclusivamente los hechos validados. Los hechos operativos describen el resultado del motor, no son una plantilla ni texto que debas copiar.
 Si hay coincidencia confirmada, comunica con naturalidad la referencia, presentacion y precio solicitado en una frase breve; evita encabezados, fichas repetidas, listas para un solo producto y lenguaje sobre coincidencias, opciones cercanas, catalogo, identificacion o procesos internos. No repitas marca y referencia. No uses una apertura fija: elige tu redaccion segun la conversacion.
-Si la identidad es incierta o no hay coincidencia, haz una pregunta breve que aporte el dato que falta para identificarla. Usa los atributos que distinguen candidatos; no vuelvas a pedir peso o marca ya expresados. No cotices candidatos inciertos, no los declares disponibles y no ofrezcas comprar otra referencia como si fuera la solicitada.
+Si la identidad es incierta o no hay coincidencia, haz una pregunta breve que aporte el dato que falta para identificarla. Usa los atributos que distinguen candidatos; no vuelvas a pedir peso o marca ya expresados. Incluye las opciones concretas de la aclaracion (etapas o nombres de referencias compatibles); no preguntes simplemente por la referencia exacta. Conserva el peso solicitado y no sugieras categorias ni formatos distintos. No cotices candidatos inciertos, no los declares disponibles y no ofrezcas comprar otra referencia como si fuera la solicitada.
 Conserva las acciones realmente realizadas por el motor. Una consulta de precio no agrega al carrito. No confirmes un pedido si solo se agrego un producto. Respeta el siguiente paso operativo sin repetir preguntas resueltas. Mantén todas las solicitudes cuando hay varios productos. Distingue coincidencia de accion realizada: solo di que un articulo quedo agregado si figura en carrito. Los resultados pendientes requieren una pregunta concreta usando el atributo que falta y los datos ya solicitados; no pidas otra vez referencia y presentacion cuando una de ellas ya se conoce. No omitas los productos identificados por atender una aclaracion.
 Si preguntaPendiente contiene una pregunta, el sistema la muestra despues del resumen: no la repitas ni inventes otras preguntas; explica brevemente que productos quedaron agregados y cual esta pendiente.
 Solo si el cliente pregunta por domicilio, responde tambien: el precio del producto no es un total con envio. Si los hechos no incluyen una tarifa validada, indica que falta verificar ese costo, sin inventar tarifas, cobertura ni plazos. No inventes cuentas ni datos de pago.
@@ -437,6 +438,12 @@ No cambies cantidades, presentaciones ni precios. Puedes expresarlos en prosa li
     const precioAutorizado = token => [...permitidos].some(p => precioNumerico(p) === precioNumerico(token));
     if (incierto && precios.length) { rechazar("precio_sin_coincidencia_confirmada"); continue; }
     if (incierto && !respuesta.includes("?")) { rechazar("falta_pregunta_de_aclaracion"); continue; }
+    if (incierto && hechos.aclaracion?.campo === "referencia" && hechos.aclaracion.valores?.length > 1 &&
+        hechos.aclaracion.valores.some(valor => !normalizar(respuesta).includes(normalizar(valor.replace(/_/g, " "))))) {
+      rechazar("faltan_opciones_de_aclaracion"); continue;
+    }
+    if (!incierto && respuestaOperativa?.includes("?") && !respuesta.includes("?") &&
+        !opciones.interpretacionIA?.preguntaPendiente) { rechazar("falta_siguiente_paso"); continue; }
     if (!incierto && precios.some(p => !precioAutorizado(p))) { rechazar("precio_no_autorizado"); continue; }
     if (!incierto && coincidencia && presentaciones.length === 1) {
       const p = presentaciones[0];

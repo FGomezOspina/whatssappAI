@@ -104,9 +104,11 @@ test('recupera cada producto con una consulta independiente sin fusionar atribut
   });
   await modulo.exports.seleccionarCatalogoParaIA({ consultas: ['alimento perro adulto', 'arena maiz 20kg'],
     clasificacion: { requiereBusquedaProducto: true }, cliente: { id: 'synthetic' } });
-  assert.equal(queries.length, 2);
-  assert.match(queries[0], /alimento/);
-  assert.doesNotMatch(queries[0], /arena|20kg/);
-  assert.match(queries[1], /arena/);
-  assert.doesNotMatch(queries[1], /adulto/);
+  assert.equal(queries.length, 4);
+  const alimentos = queries.filter(query => query.includes('alimento'));
+  const arenas = queries.filter(query => query.includes('arena'));
+  assert.equal(alimentos.length, 2);
+  assert.equal(arenas.length, 2);
+  for (const query of alimentos) assert.doesNotMatch(query, /arena|20kg/);
+  for (const query of arenas) assert.doesNotMatch(query, /adulto/);
 });

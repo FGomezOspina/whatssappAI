@@ -1,5 +1,5 @@
 const { resolverEvidenciaInterpretacion } = require("./productEvidenceService");
-const { formatearPrecio, normalizar, normalizarPeso, codigosReferencia } = require("../utils/text");
+const { formatearPrecio, normalizarMarcasCatalogo, normalizar, normalizarPeso, codigosReferencia } = require("../utils/text");
 
 const DEFAULT_HIGH_THRESHOLD = 0.84;
 const DEFAULT_MEDIUM_THRESHOLD = 0.68;
@@ -468,11 +468,14 @@ function construirConsultaProductoContextual(
   return [correccion, ...complementarios].filter(Boolean).join(" ");
 }
 
-function nombresReferencia(marca, referencia) {
+function nombresReferencia(marca, referencia, mensaje = null) {
   const palabrasClave = Array.isArray(referencia.metadata?.keywords)
     ? referencia.metadata.keywords
     : [referencia.metadata?.keywords];
-  const aliases = [
+  const contextoAlias = referencia.metadata?.alias_context;
+  const permiteAliases = !mensaje || !Array.isArray(contextoAlias) || !contextoAlias.length ||
+    contextoAlias.some(termino => ` ${normalizar(mensaje)} `.includes(` ${normalizar(termino)} `));
+  const aliases = permiteAliases ? [
     ...(Array.isArray(referencia.aliases) ? referencia.aliases : []),
     ...(Array.isArray(referencia.metadata?.aliases)
       ? referencia.metadata.aliases
@@ -480,7 +483,7 @@ function nombresReferencia(marca, referencia) {
     ...(Array.isArray(referencia.metadata?.equivalent_references)
       ? referencia.metadata.equivalent_references
       : []),
-  ];
+  ] : [];
   return [
     marca.marca,
     referencia.nombre,
@@ -507,12 +510,12 @@ function descriptorReferencia(marca, referencia) {
     .join(" ");
 }
 
-function catalogoPlano(catalogo = []) {
+function catalogoPlano(catalogo = [], mensaje = null) {
   return catalogo.flatMap((marca) =>
     (marca.referencias || []).map((referencia) => ({
       marca,
       referencia,
-      nombres: nombresReferencia(marca, referencia),
+      nombres: nombresReferencia(marca, referencia, mensaje),
     }))
   );
 }
@@ -1697,13 +1700,7 @@ function validarCoincidenciaProducto({
   }
 
   let mensajeRazonado = construirConsultaProductoContextual(mensaje, contextoProducto);
-  for (const marca of catalogo) {
-    const partes = normalizar(marca.marca).split(/\s+/).filter(Boolean);
-    if (partes.length > 1) {
-      mensajeRazonado = mensajeRazonado.split(/\s+/).map(token =>
-        normalizar(token) === partes.join("") ? marca.marca : token).join(" ");
-    }
-  }
+  mensajeRazonado = normalizarMarcasCatalogo(mensajeRazonado, catalogo);
   const terminosMensaje = clasificacion.requiereVision
     ? []
     : tokensDistintivos(mensajeRazonado, { inferirEspeciePorRaza: true });
@@ -1745,7 +1742,8 @@ function validarCoincidenciaProducto({
       linea: null,
     } };
   }
-  const itemsEvaluados = catalogoPlano(catalogo).filter(
+  const formatoSeco = /\b(concentrado|cuido|seco)\b/.test(normalizar(mensajeRazonado));
+  const itemsEvaluados = catalogoPlano(catalogo, mensajeRazonado).filter(
     (item) =>
       (!marcaExacta ||
       normalizar(item.marca.marca) === marcaExacta ||
@@ -1755,7 +1753,9 @@ function validarCoincidenciaProducto({
           MIN_SIMILITUD_MARCA_VISUAL
       ) ||
       (marcaExacta.length <= 3 && itemCompatibleConConsultaParcial(item, terminos, mensajeRazonado))) &&
-      codigosSolicitados.every(codigo => codigosReferencia(item.referencia.nombre, item.marca.marca).includes(codigo))
+      codigosSolicitados.every(codigo => codigosReferencia(item.referencia.nombre, item.marca.marca).includes(codigo)) &&
+      (!formatoSeco || !/\b(humed[oa]s?|latas?|pouche?s?|sobres?|juguetes?|snacks?)\b/.test(normalizar(
+        [item.referencia.nombre, item.referencia.categoria, item.referencia.subcategoria].join(" ")).replace(/_/g, " ")))
   );
   const lineasConsultaDisponibles = [
     ...new Set(
@@ -1843,10 +1843,27 @@ function validarCoincidenciaProducto({
         presentaciones: item.presentaciones.filter(p => normalizarPeso(p.peso) === pesoConsultaMarca) }));
       return { nivel: alternativas.length === 1 ? "alta" : "media",
         razon: "marca_y_presentacion", terminos, etiqueta: mensaje,
+        aclaracion: alternativas.length > 1 ? { campo: "referencia", valores: alternativas.map(item => item.referencia) } : null,
         marcaExacta, presentacionSolicitada: pesoConsultaMarca, presentacionValida: true,
         coincidencia: alternativas.length === 1 ? alternativas[0] : null, alternativas };
     }
   }
+  // Un alias declarado que cubre toda la identidad solicitada prevalece
+  // sobre similitudes parciales. Mantener ambiguos los aliases compartidos.
+  const aliasesExactos = puntuados.filter(item => (item.referencia.metadata?.aliases || []).some(alias => {
+    if (!item.nombres.includes(alias)) return false;
+    const tokensAlias = [...new Set(tokensDistintivos(alias))];
+    return tokensAlias.length === terminos.length && tokensAlias.every(token => terminos.includes(token));
+  }));
+  if (aliasesExactos.length) puntuados = aliasesExactos;
+  // Si el cliente escribe una variante completa, la referencia que solo lleva
+  // la marca no compite con ella por compartir especie, categoria y peso.
+  const variantesExplicitas = puntuados.filter(item =>
+    normalizar(item.referencia.nombre) !== normalizar(item.marca.marca) &&
+    ` ${normalizar(mensajeRazonado)} `.includes(` ${normalizar(item.referencia.nombre)} `));
+  if (variantesExplicitas.length) puntuados = puntuados.filter(item =>
+    normalizar(item.referencia.nombre) !== normalizar(item.marca.marca) ||
+    !variantesExplicitas.some(variante => normalizar(variante.marca.marca) === normalizar(item.marca.marca)));
   const gruposPuntuados = agruparReferenciasEquivalentes(puntuados);
   const [primero, segundo] = gruposPuntuados;
   const high = numeroEnv("CATALOG_MATCH_HIGH_THRESHOLD", DEFAULT_HIGH_THRESHOLD);
@@ -1935,12 +1952,18 @@ function validarCoincidenciaProducto({
     razon = "entidad_multimedia_por_confirmar";
   }
 
-  const relevantes = puntuados.filter((item) =>
+  let relevantes = puntuados.filter((item) =>
     (marcaExacta ? normalizar(item.marca.marca) === marcaExacta : item.score >= medium) &&
     (soloFamilia || item.score >= medium) &&
     item.especieCoincide !== false && item.etapaCoincide !== false &&
     item.categoriaCoincide !== false && item.tamanoCoincide !== false
   );
+  // Las opciones de una aclaracion respetan tambien la presentacion y el
+  // formato solicitados; compartir marca no hace intercambiables los productos.
+  const pesoPedido = obtenerPresentacionSolicitada(mensajeRazonado, interpretacion);
+  const delPeso = relevantes.filter(item => (item.referencia.presentaciones || []).some(p =>
+    normalizarPeso(p.peso) === normalizarPeso(pesoPedido || "")));
+  if (pesoPedido && delPeso.length) relevantes = delPeso;
   let aclaracion = null;
   if (!clasificacion.requiereVision && (marcaExacta || consultaCategoria) &&
       (nivel !== "alta" || soloFamilia || consultaSinReferencia || consultaCategoria) && relevantes.length > 1) {
@@ -1962,6 +1985,10 @@ function validarCoincidenciaProducto({
         break;
       }
     }
+  }
+  if (!aclaracion && marcaExacta && nivel !== "alta" && relevantes.length > 1) {
+    aclaracion = { campo: "referencia", valores: agruparReferenciasEquivalentes(relevantes)
+      .map(item => resumirAlternativa(item).referencia) };
   }
   if (consultaCategoria && !aclaracion) {
     return { nivel: "no_aplica", razon: "consulta_categoria", terminos, etiqueta: terminosVisibles.join(" ") };
@@ -2015,6 +2042,7 @@ function respuestaValidacionProducto(validacion = {}) {
     const opciones = valores.map(valor => valor.replace(/_/g, " ")).join(" o ");
     const contexto = validacion.marcaExacta ? `Tenemos opciones de ${validacion.marcaExacta}. ` : "Claro, te ayudo a encontrarlo. ";
     const preguntas = {
+      referencia: `¿Cuál referencia necesitas: ${opciones}?`,
       especie: `¿Buscas para ${opciones}?`,
       categoria: `¿Qué tipo de producto buscas: ${opciones}?`,
       etapa: `¿Para qué etapa lo necesitas: ${opciones}?`,
@@ -2124,7 +2152,8 @@ function aplicarCoincidenciaValidada(interpretacion, validacion) {
 // by that query. An inferred reference must not supply missing species/stage.
 function consultaIdentidadRespaldada(producto, consulta) {
   if (!producto || !(producto.marca || producto.referencia)) return null;
-  const identidad = [producto.marca, producto.referencia, producto.linea,
+  const formatoSolicitado = normalizar(consulta).match(/\b(concentrado|cuido|seco)\b/)?.[0];
+  const identidad = [producto.marca, producto.referencia, producto.linea, formatoSolicitado,
     producto.especie, producto.etapa, producto.tamano,
     ...(producto.sabores || []), ...(producto.condiciones || []), producto.presentacion]
     .filter(Boolean).join(" ");

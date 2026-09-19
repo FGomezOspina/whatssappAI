@@ -24,7 +24,8 @@ test('marca y peso solo ofrecen variantes de ese peso sin inventar una especie f
   const resultado = validarCoincidenciaProducto({ mensaje: 'nutrialfa x20kl', catalogo, catalogoCandidatos: catalogo, clasificacion });
   assert.equal(resultado.nivel, 'media');
   assert.equal(resultado.alternativas.length, 2);
-  assert.equal(resultado.aclaracion, undefined);
+  assert.equal(resultado.aclaracion.campo, "referencia");
+  assert.deepEqual(resultado.aclaracion.valores, resultado.alternativas.map(item => item.referencia));
   for (const alternativa of resultado.alternativas) {
     assert.doesNotMatch(alternativa.referencia, /VITALITY/);
     assert.ok(alternativa.presentaciones.every(p => p.peso === '20kg'));

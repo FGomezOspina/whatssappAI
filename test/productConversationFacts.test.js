@@ -191,3 +191,31 @@ test('la redaccion natural no elimina el resumen ni el avance tras agregar un pr
   });
   assert.equal(respuesta, `${intro}\n\n${cierre}`);
 });
+
+test('aclaracion de referencia rechaza pregunta al aire y conserva opciones de catalogo', async () => {
+  const solicitudes = [];
+  const buena = '¿Necesitas NUTRIALFA PREMIUM o NUTRIALFA CAMPO de 30 kg?';
+  const redactar = humanizador(['¿Me confirmas la referencia exacta?', buena], solicitudes);
+  const respuesta = await redactar('NUTRIALFA 30kg', '', {
+    productoAutonomo: { nivel: 'media', presentacionSolicitada: '30kg',
+      aclaracion: { campo: 'referencia', valores: ['NUTRIALFA PREMIUM', 'NUTRIALFA CAMPO'] } },
+    estado: {}, clasificacion,
+  });
+  assert.equal(respuesta, buena);
+  assert.match(solicitudes[1].messages.at(-1).content, /faltan_opciones_de_aclaracion/);
+});
+
+test('redaccion conserva el siguiente paso comercial cuando el motor lo solicita', async () => {
+  const solicitudes = [];
+  const buena = 'NUTRIPRUEBA de 30 kg vale $103.000. ¿Quieres agregar algo más?';
+  const redactar = humanizador(['NUTRIPRUEBA de 30 kg vale $103.000.', buena], solicitudes);
+  const productos = catalogo();
+  const hechos = validarCoincidenciaProducto({ mensaje: 'NUTRIPRUEBA 30kg', catalogo: productos, clasificacion });
+  const respuesta = await redactar('quiero NUTRIPRUEBA 30kg',
+    'NUTRIPRUEBA 30 kg: $103.000. ¿Quieres agregar algo más?', {
+      productoAutonomo: hechos, estado: { carrito: [{}] }, clasificacion,
+      interpretacionIA: { accion: 'agregar' },
+    });
+  assert.equal(respuesta, buena);
+  assert.match(solicitudes[1].messages.at(-1).content, /falta_siguiente_paso/);
+});

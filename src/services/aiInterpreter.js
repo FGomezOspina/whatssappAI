@@ -437,7 +437,7 @@ Razonamiento esperado:
 - Si el cliente dice que quiere "solo", "solamente" o "únicamente" un producto específico entre varios, es operacion mantener_solo.
 - Si el cliente dice que ya no quiere, quite, elimine, saque o retire un producto, es operacion quitar.
 - Si el cliente está aclarando una referencia, tamaño, presentación o cantidad pendiente, conserva el contexto anterior y completa lo que falta; no reinicies la conversación.
-- No uses accion agregar cuando el mensaje sea una corrección del carrito o una aclaración de un producto que ya estaba en contexto.
+- No uses accion agregar para corregir un producto ya agregado: usa la operacion de carrito correspondiente. Completar la referencia de una compra pendiente que aun no esta agregada conserva accion agregar. Aceptar comprar una cotizacion pendiente tambien usa agregar.
 
 Los ejemplos dinamicos ensenan patrones de conversacion e interpretacion, no politicas operativas vigentes.
 Nunca infieras desde ellos restricciones de cobertura, sectores rechazados, horarios, recargos, disponibilidad de domicilios, inventario, sedes o metodos de pago.

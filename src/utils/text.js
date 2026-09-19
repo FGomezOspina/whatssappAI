@@ -33,6 +33,32 @@ function normalizar(texto = "") {
     .trim();
 }
 
+// Une o separa solo secuencias completas que identifican una marca del
+// catalogo. No borra los limites entre marca, variante, peso y otras palabras.
+function normalizarMarcasCatalogo(texto = "", catalogo = []) {
+  let palabras = textoSeguro(texto).split(/\s+/);
+  const marcas = new Map();
+  for (const item of catalogo) {
+    const nombre = normalizar(item.marca);
+    const clave = nombre.replace(/\s/g, "");
+    if (clave.length < 4) continue;
+    if (!marcas.has(clave)) marcas.set(clave, new Set());
+    marcas.get(clave).add(nombre);
+  }
+  for (let inicio = 0; inicio < palabras.length; inicio++) {
+    let unidas = "";
+    for (let fin = inicio; fin < Math.min(palabras.length, inicio + 5); fin++) {
+      unidas += normalizar(palabras[fin]);
+      const nombres = marcas.get(unidas);
+      if (nombres?.size === 1) {
+        palabras.splice(inicio, fin - inicio + 1, [...nombres][0]);
+        break;
+      }
+    }
+  }
+  return palabras.join(" ");
+}
+
 function normalizarPeso(texto = "") {
   const peso = normalizar(texto)
     .replace(/,/g, ".")
@@ -68,6 +94,7 @@ function formatearPrecio(precio) {
 }
 
 module.exports = {
+  normalizarMarcasCatalogo,
   codigosReferencia,
   expandirAbreviaturasProducto,
   formatearPrecio,

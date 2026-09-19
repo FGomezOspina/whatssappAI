@@ -1,5 +1,5 @@
 const crypto = require("crypto");
-const { formatearPrecio, normalizar, normalizarPeso } = require("../../utils/text");
+const { formatearPrecio, normalizarMarcasCatalogo, normalizar, normalizarPeso } = require("../../utils/text");
 const { unirMensajesRespuesta } = require("../../utils/responseMessages");
 const {
   establecerProductosConsultados,
@@ -239,7 +239,7 @@ function aliasesMarca(marca) {
 }
 
 function buscarMarca(catalogo, mensaje) {
-  const texto = limpiarDatosLogisticosConsulta(mensaje) || normalizar(mensaje);
+  const texto = normalizar(normalizarMarcasCatalogo(limpiarDatosLogisticosConsulta(mensaje) || mensaje, catalogo));
   const textoCompacto = texto.replace(/\s+/g, "");
   const marcasOrdenadas = [...catalogo].sort((a, b) => b.marca.length - a.marca.length);
   const esBolsaComoEmpaque = /\bbolsa\s+de\s+(cuido|concentrado|comida|alimento|purina)\b/.test(texto);
@@ -3076,8 +3076,17 @@ function resolverAgregarConsultadosIA(estado, catalogo, interpretacion) {
     const presentacion = referencia?.presentaciones.find((presentacion) => normalizarPeso(presentacion.peso) === normalizarPeso(item.peso));
     if (!marca || !referencia || !presentacion) return;
 
-    agregarAlCarrito(estado, marca, referencia, presentacion, item.cantidad || 1);
-    agregados.push({ marca, referencia, presentacion, cantidad: item.cantidad || 1 });
+    // Una opcion consultada conserva cantidad 1 por defecto. La solicitud
+    // actual validada puede completar esa opcion con otra cantidad de compra.
+    const solicitado = productos.find(producto =>
+      normalizar(producto.referencia || "") === normalizar(item.referencia) &&
+      (!producto.marca || normalizar(producto.marca) === normalizar(item.marca)) &&
+      (!producto.presentacion || normalizarPeso(producto.presentacion) === normalizarPeso(item.peso)));
+    const unidades = Number(solicitado?.cantidad);
+    const cantidad = Number.isInteger(unidades) && unidades > 0 && unidades < 100
+      ? unidades : item.cantidad || 1;
+    agregarAlCarrito(estado, marca, referencia, presentacion, cantidad);
+    agregados.push({ marca, referencia, presentacion, cantidad });
   });
 
   if (!agregados.length) return null;
@@ -5312,7 +5321,18 @@ function resolverAlternativaPendiente(mensaje, estado, catalogo) {
   return formatearReferencia(marca, referencia, "¿Cuál presentación quieres agregar al pedido?");
 }
 
+function esConsultaResumenCarrito(mensaje = "", interpretacion = null) {
+  const operacion = interpretacion?.carrito?.operacion || interpretacion?.accion;
+  if (["agregar", "quitar", "mantener_solo", "modificar_cantidad", "nuevo_pedido"].includes(operacion)) return false;
+  return interpretacion?.intencion === "carrito" ||
+    /\b(?:muestra(?:me|nos)?|ver|revisa(?:r)?|dame|envia(?:me)?|manda(?:me)?)\b[^?!.]*\b(?:carrito|resumen(?: del pedido)?)\b/.test(normalizar(mensaje));
+}
+
 function resolverConsultaCatalogo(mensaje, estado, catalogo = [], interpretacion = null) {
+  if (esConsultaResumenCarrito(mensaje, interpretacion)) {
+    return estado.carrito?.length ? resumenCarrito(estado)
+      : "Tu carrito está vacío; todavía no hay productos agregados. ¿Qué producto quieres agregar?";
+  }
   if (estado.carrito?.length &&
       /\b(?:cuanto (?:seria|es|vale|cuesta)(?: en)? (?:todo|total)|(?:cual es |dame |dime |el )?total(?: del pedido| de todo)?)\b/.test(normalizar(mensaje)) &&
       (!interpretacion || interpretacion.accion === "consultar") &&
@@ -5376,6 +5396,9 @@ function resolverConsultaCatalogo(mensaje, estado, catalogo = [], interpretacion
     if (respuestaCarrito) return respuestaCarrito;
     if (estado.carrito.length && (interpretacion.entrega?.tipo ||
       interpretacion.intencion === "datos_envio" || interpretacion.intencion === "metodo_pago" ||
+      interpretacionConfirma(interpretacion) ||
+      Object.values(interpretacion.datosCliente || {}).some(Boolean) ||
+      Object.values(interpretacion.entrega || {}).some(Boolean) ||
       Object.entries(estado).some(([campo, valor]) => valor === true && campo.startsWith("esperando") &&
         !["esperandoMarca", "esperandoPresupuesto"].includes(campo)))) {
       return resolverEntregaYPago(mensaje, estado, interpretacion);
@@ -5870,6 +5893,8 @@ function resolverConsultaCatalogo(mensaje, estado, catalogo = [], interpretacion
 }
 
 module.exports = {
+  esConsultaResumenCarrito,
+  aplicarDatosInterpretados,
   resumenCarrito,
   esConfirmacionCierreExplicita,
   resolverConsultaCatalogo,

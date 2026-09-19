@@ -94,6 +94,8 @@ function compactarCatalogo(catalogo = [], { incluirDescripcion = true } = {}) {
     marca: marca.marca,
     productos: (marca.referencias || []).map((referencia) => ({
       nombre: referencia.nombre,
+      ...(referencia.metadata?.aliases?.length ? { aliases: referencia.metadata.aliases } : {}),
+      ...(referencia.metadata?.usage_context ? { contextoUso: recortarTexto(referencia.metadata.usage_context, 320) } : {}),
       categoria: referencia.categoria || null,
       subcategoria: referencia.subcategoria || null,
       especie: referencia.especie || null,
@@ -193,6 +195,7 @@ function compactarEstado(estado = {}, perfil = "simple") {
           terminos: (estado.ultimaConsultaProducto.terminos || []).slice(0, 8),
           fuente: estado.ultimaConsultaProducto.fuente || null,
           aclaracion: estado.ultimaConsultaProducto.aclaracion || null,
+          solicitudOriginal: estado.ultimaConsultaProducto.solicitudOriginal || null,
           presentacion: estado.ultimaConsultaProducto.presentacion || null,
           creadoEn: estado.ultimaConsultaProducto.creadoEn || null,
         }
@@ -300,7 +303,7 @@ function instruccionesPerfil(perfil) {
     ],
     pedido: [
       "Conserva siglas y lineas solicitadas: una referencia generica no equivale a una especialidad. Si la especie estructurada contradice explicitamente el nombre, considera la identidad del nombre y senala la inconsistencia; nunca inventes unidades para corregir un peso dudoso.",
-    "Interpreta primero la respuesta respecto a estado.esperando y la ultima pregunta. Productos consultados o incluidos en un resumen son contexto historico, no una solicitud nueva. Solo cambia al catalogo si el mensaje actual expresa una nueva consulta o cambio de producto. Al confirmar o completar datos, deja producto y productos vacios.",
+    "Interpreta primero la respuesta respecto a estado.esperando y la ultima pregunta. Productos consultados o incluidos en un resumen son contexto historico, no una solicitud nueva. Solo cambia al catalogo si el mensaje actual expresa una nueva consulta o cambio de producto. Al confirmar el cierre de un carrito o completar datos, deja producto y productos vacios; aceptar comprar una cotizacion pendiente usa pedido_producto y agregar con el producto seleccionado.",
 
       "Prioriza estado.esperando y el carrito activo.",
       "Ante el resumen pendiente de confirmacion, asi esta bien seguido de gracias (incluso en mensajes agrupados) confirma el pedido: intencion=confirmacion, accion=confirmar y continuarFlujo=true. El agradecimiento acompana la decision, no la sustituye. Devuelve entrega y datosCliente sin valores nuevos si el cliente no los cambia; no copies el metodo de pago del historial como instruccion actual. Gracias solo, si ambiguo, una pregunta o una correccion no autorizan confirmar.",
@@ -443,13 +446,16 @@ Integra el resumen anterior con estos mensajes cronologicos sin inventar hechos.
     ? `Interpreta semanticamente el mensaje con el historial, la ultima pregunta y el estado activo.
 Devuelve JSON con la estructura indicada. Las etiquetas operativas sirven al motor existente; no son una lista exhaustiva de significados.
 Antes de cualquier busqueda decide si necesitas datos del catalogo para atender la intencion actual.
+Aceptar una cotizacion ante una pregunta de compra (por ejemplo lo agregamos o lo dejamos asi) usa pedido_producto, agregar y continuarFlujo=true: recupera el producto seleccionado y consulta su referencia para agregarlo. Un si a una pregunta de identidad solo confirma esa identidad; conserva la intencion de compra si ya existia. No pidas una segunda confirmacion de la referencia ya elegida.
+Mostrar carrito o resumen usa intencion=carrito, accion=consultar, continuarFlujo=true y consultaCatalogo.necesaria=false. La respuesta debe contener el resumen real, no prometer mostrarlo despues. Las confirmaciones, datos y pago de un pedido activo se ejecutan en el motor; respuestaConversacional no sustituye esa ejecucion ni autoriza afirmar que un pedido esta confirmado.
+Una aclaracion de la solicitudOriginal pendiente conserva su accion (agregar o consultar), cantidad, peso y entrega: resolver la referencia de una compra usa pedido_producto y agregar aunque el cliente no repita quiero. Una nueva consulta de precio, cancelacion o cambio de producto no hereda esa compra; interpreta el mensaje actual. No agregues de nuevo un item ya resuelto.
 Una respuesta corta puede completar la ultimaPreguntaAsistente. Reconstruye el producto desde la seleccion pendiente, las interpretaciones multimedia del historial y la memoria persistente; formula la consulta con producto y atributo nuevo. La expiracion de candidatos temporales no borra la conversacion. No vuelvas a preguntar un producto que ya esta en ese contexto.
 Habla como quien atiende una tienda, con una pregunta comercial corta. No menciones IA, OCR, vision, analisis ni que estas identificando, viendo o distinguiendo una imagen.
 Anade continuarFlujo: boolean (true solo si el mensaje solicita avanzar o modificar una operacion del estado actual; tener un carrito no basta), consultaCatalogo: {necesaria: boolean, consulta: string|null} y respuestaConversacional: string|null.
 Busca solo cuando exista una necesidad real de informacion de productos, marcas, categorias o recomendaciones. Formula una consulta concreta con los atributos solicitados, resolviendo referencias al contexto. No copies todo el historial ni productos residuales. Una solicitud de servicio, iniciar una compra sin producto, conversacion social o una duda sin objeto identificable no justifican consultar productos.
 Antes de pedir datos personales o de entrega, comprueba si ya existe una compra o producto definido; si no existe, pregunta que desea pedir. Las unidades de peso o volumen corresponden a presentacion, no al tamano del animal.
 Si hay un pedido activo y el cliente pregunta por domicilio o solicita coordinarlo, usa intencion=datos_envio, entrega.tipo=domicilio y continuarFlujo=true para que el motor pida juntos todos los datos pendientes: nombre, cedula, celular, correo, direccion completa y metodo de pago. No redactes preguntas individuales por direccion, luego pago, luego celular o nombre. Extrae todos los datos que entregue en un mensaje o lote, conserva los conocidos y deja al motor solicitar juntos solo los faltantes. No confirmes envio ni pedido al recibir una direccion. Una pregunta general sobre domicilios sin compra definida no autoriza agregar productos al carrito ni pedir datos personales.
-Una lista actual de productos con cantidades para hacer un pedido usa pedido_producto y agregar aunque empiece con gracias o saludo. No la conviertas en agradecimiento, cotizacion o confirmacion; las preguntas explicitas de precio o una lista hipotetica siguen siendo consultar. Si una referencia necesita aclaracion, conserva la accion de compra para los demas productos identificables. Una aclaracion de un item pendiente conserva la cantidad original de ese mismo item. Nunca reconstruyas el carrito a partir de solo la ultima aclaracion.
+Una lista actual de productos con cantidades para hacer un pedido usa pedido_producto y agregar aunque empiece con gracias o saludo. No la conviertas en agradecimiento, cotizacion o confirmacion; las preguntas explicitas de precio o una lista hipotetica siguen siendo consultar. Si una referencia necesita aclaracion, conserva la accion de compra para los demas productos identificables. Una aclaracion de un item pendiente conserva la cantidad y accion original de ese mismo item: averiguar disponibilidad sigue siendo consultar, completar su nombre no autoriza agregar. Al aceptar comprar toda una cotizacion recupera TODOS los items identificados de ultimaSolicitudProductos, no solo la ultima aclaracion. Nunca reconstruyas el carrito a partir de solo la ultima aclaracion.
 En cada producto, textoVisible conserva el nombre y descripcion solicitados, no solo el color o el empaque. No inventes referencias concatenando categoria o especie al nombre: esos atributos van en sus campos separados. Conserva las cantidades por item.
 Si el cliente solicita varios productos, productos debe contener obligatoriamente un objeto independiente por cada solicitud, usando los mismos campos del objeto producto del esquema. Comprueba que ninguno falte antes de devolver el JSON. Conserva cada uno con sus atributos en productos y en la consulta, sin fusionar sus presentaciones o categorias. Una referencia identificable ya permite buscar: no pidas al cliente que repita detalles antes de comprobar los candidatos; pregunta solo atributos faltantes que los resultados hagan necesarios.
 Cuando el cliente completa datos del pedido, usa continuarFlujo=true: el motor muestra productos, total, domicilio y pago antes del cierre. No reemplaces ese resumen con una pregunta generica. Ante la pregunta agregar algo mas o finalizar asi, interpreta la respuesta segun su sentido: dejarlo asi confirma; preguntar, agregar o corregir no confirma. Un si aislado ante dos alternativas requiere aclaracion, con intencion=otro y continuarFlujo=false. Conserva el pedido al atender preguntas intermedias.
@@ -462,6 +468,9 @@ Si esperas confirmacion del resumen, «asi esta bien» junto con «gracias», in
 Una marca, referencia parcial o categoria reconocible basta para consultar el catalogo aunque falten especie, etapa o presentacion. Descubre primero que atributos distinguen sus candidatos; no preguntes especie por rutina ni presupongas lineas del historial. Solo si no hay objeto de busqueda identificable, necesaria=false y pregunta lo minimo. No inventes productos, disponibilidad, precios, cobertura ni politicas. Si necesitas catalogo, deja respuestaConversacional=null hasta obtener resultados. Si no, genera una respuesta cercana, entusiasta y comercial apropiada al contexto, sin plantilla. Conserva los campos operativos necesarios para avanzar el flujo existente.
 ${JSON.stringify(OUTPUT_SCHEMA)}`
     : construirPromptInterprete({ perfil, cliente, vertical });
+  if (catalogo.some(marca => (marca.referencias || []).some(ref => ref.metadata?.usage_context))) {
+    promptBase += "\nLos aliases son nombres comerciales confirmados. Usa contextoUso y el producto pendiente para completar aclaraciones de etapa o uso; no los conviertas en pesos ni cambies una marca explicita. Si falta contexto para distinguir referencias, pregunta ese dato.";
+  }
   if (clasificacion.requiereVision) promptBase += `\n${INSTRUCCIONES_EVIDENCIA}`;
   let productos = compactarCatalogo(catalogo);
   let historial = compactarHistorial(historialReciente, clasificacion.limiteHistorial || 0);

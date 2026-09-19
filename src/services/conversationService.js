@@ -19,7 +19,7 @@ const { construirMemoriaOperativa } = require("./contextBuilder");
 const { modeloInterprete, modeloHumanizador } = require("./modelRouter");
 const { clienteParaLog, logResumenInteraccionIA } = require("./aiUsageLogger");
 const { respuestaParaHistorial } = require("../utils/responseMessages");
-const { normalizar, normalizarPeso } = require("../utils/text");
+const { normalizar, normalizarPeso, normalizarMarcasCatalogo, formatearPrecio } = require("../utils/text");
 const {
   aplicarCoincidenciaValidada,
   consultaIdentidadRespaldada,
@@ -237,13 +237,25 @@ async function responderValidacionNoConfiable({
   mensaje,
   validacion,
   clasificacion = null,
+  interpretacion = null,
 }) {
   registrarValidacionProducto(evento, validacion);
   recordarConsultaProducto(estado, validacion, clasificacion);
   guardarCoincidenciasProductoPendientes(estado, validacion, {
     intencionOriginal: mensaje,
-    tipoIntencion: clasificacion?.intencion || "consulta_producto",
+    tipoIntencion: interpretacion?.intencion || clasificacion?.intencion || "consulta_producto",
+    cantidad: interpretacion?.producto?.cantidad,
+    presentacion: interpretacion?.producto?.presentacion || validacion.presentacionSolicitada,
   });
+  // La aclaracion sale antes del motor: conserva la operacion y los datos
+  // aportados sin agregar una referencia que aun no ha sido validada.
+  if (interpretacion && estado.ultimaConsultaProducto) {
+    estado.ultimaConsultaProducto.solicitudOriginal = {
+      intencion: interpretacion.intencion, accion: interpretacion.accion,
+      producto: interpretacion.producto, entrega: interpretacion.entrega,
+    };
+    obtenerVerticalCliente(cliente).orderLogic.aplicarDatosInterpretados?.(estado, interpretacion);
+  }
   const respuestaBase = respuestaValidacionProducto(validacion);
   let humanizerUsage = { skipped: true, reason: "validacion_catalogo" };
   const respuesta = await humanizarRespuesta(mensaje, respuestaBase, {
@@ -484,6 +496,37 @@ async function responderEventosEntrantes(eventos) {
       confianza: 1, continuarFlujo: true, consultaCatalogo: { necesaria: false, consulta: null },
       producto: null, productos: [], entrega: {}, datosCliente: {}, carrito: {} };
   }
+  // Aceptar una cotizacion o completar una compra requiere ejecutar el motor,
+  // aunque el router crea que ya no hace falta buscar informacion.
+  const seleccionActual = !estado.ultimaSeleccion?.pendiente && estado.ultimaSeleccion?.referencia
+    ? estado.ultimaSeleccion
+    : estado.productosConsultados?.length === 1 ? estado.productosConsultados[0] : null;
+  const cotizacionCompleta = estado.ultimaSolicitudProductos?.length > 1 &&
+    estado.ultimaSolicitudProductos.every(item => item.estado === "identificado" && item.accion === "consultar")
+    ? estado.productosConsultados || [] : [];
+  const aceptaSeleccion = decisionSemantica.intencion === "confirmacion" &&
+    decisionSemantica.accion === "confirmar" && decisionSemantica.confianza >= 0.55 &&
+    !estado.carrito?.length && !estado.pedidoConfirmado && (seleccionActual || cotizacionCompleta.length) &&
+    (estado.ultimaConsultaProducto?.solicitudOriginal?.accion === "agregar" ||
+      /(?:agreg|llev|dejamos|pedido|sirve)/i.test(estado.ultimaPreguntaAsistente || ""));
+  const compraSinBusqueda = decisionSemantica.accion === "agregar" &&
+    decisionSemantica.consultaCatalogo?.necesaria !== true;
+  if (aceptaSeleccion || compraSinBusqueda) {
+    const producto = decisionSemantica.producto?.referencia ? decisionSemantica.producto : seleccionActual;
+    const productos = decisionSemantica.productos?.length ? decisionSemantica.productos
+      : aceptaSeleccion && cotizacionCompleta.length ? cotizacionCompleta : [producto];
+    if (productos.every(item => item?.marca && item?.referencia)) {
+      const solicitados = productos.map(item => ({ ...item, presentacion: item.presentacion || item.peso || null }));
+      decisionSemantica = { ...decisionSemantica, intencion: "pedido_producto", accion: "agregar",
+        continuarFlujo: true, producto: solicitados.length === 1 ? solicitados[0] : null, productos: solicitados,
+        consultaCatalogo: { necesaria: true, consulta: solicitados.map(item =>
+          [item.marca, item.referencia, item.presentacion].filter(Boolean).join(" ")).join("; ") } };
+    }
+  }
+  const consultaCarrito = vertical.orderLogic.esConsultaResumenCarrito?.(mensaje, decisionSemantica);
+  if (consultaCarrito) decisionSemantica = { ...decisionSemantica, intencion: "carrito",
+    accion: "consultar", continuarFlujo: true, carrito: {},
+    consultaCatalogo: { necesaria: false, consulta: null } };
   Object.defineProperty(estado, "_interpretacionTurno", { configurable: true, writable: true,
     value: { intencion: decisionSemantica.intencion, accion: decisionSemantica.accion,
       producto: decisionSemantica.producto, productos: decisionSemantica.productos } });
@@ -502,8 +545,9 @@ async function responderEventosEntrantes(eventos) {
     // El motor existente conserva la autoridad sobre las transiciones y pedidos.
     const operacionPendiente = estado.carrito?.length > 0 &&
       ((!estado.pedidoConfirmado && ["datos_envio", "metodo_pago"].includes(decisionSemantica?.intencion)) ||
-        (Object.entries(estado).some(([campo, valor]) => campo.startsWith("esperando") && valor === true) &&
-          decisionSemantica?.intencion === "confirmacion"));
+        decisionSemantica?.intencion === "confirmacion" ||
+        (!estado.pedidoConfirmado && (Object.values(decisionSemantica?.datosCliente || {}).some(Boolean) ||
+          Object.values(decisionSemantica?.entrega || {}).some(Boolean))));
     const consultaPago = decisionSemantica?.accion === "consultar_pago" ||
       (estado.pedidoConfirmado && decisionSemantica?.intencion === "metodo_pago");
     const aclaracionPendiente = estado.ultimaSolicitudProductos?.find(item => item.estado === "pendiente" && item.pregunta);
@@ -511,7 +555,7 @@ async function responderEventosEntrantes(eventos) {
       ? ["Conservo los productos de tu carrito.",
           estado.carrito.length && vertical.orderLogic.resumenCarrito?.(estado),
           aclaracionPendiente.pregunta].filter(Boolean).join("\n\n")
-      : decisionSemantica?.continuarFlujo === true || operacionPendiente || consultaPago
+      : decisionSemantica?.continuarFlujo === true || operacionPendiente || consultaPago || consultaCarrito
         ? resolverConsultaCatalogo(mensaje, estado, [], decisionSemantica)
         : respuestaConversacional;
     const respuesta = await humanizarRespuesta(mensaje, respuestaBase || respuestaConversacional, {
@@ -582,7 +626,13 @@ async function responderEventosEntrantes(eventos) {
     mensaje,
     estado,
   });
-  const seleccionPendiente = resolverSeleccionProductoPendiente({
+  // Una compra ya resuelta por identidad y peso pasa a validacion y al motor;
+  // el selector de cotizaciones no debe volver a preguntar si quiere agregarla.
+  const compraDefinida = decisionSemantica.accion === "agregar" &&
+    ((decisionSemantica.producto?.referencia && decisionSemantica.producto?.presentacion) ||
+      (decisionSemantica.productos?.length > 1 && decisionSemantica.productos.every(item => item.referencia && item.presentacion)));
+  const aclaracionMultiple = estado.ultimaSolicitudProductos?.some(item => item.estado === "pendiente");
+  const seleccionPendiente = compraDefinida || aclaracionMultiple ? null : resolverSeleccionProductoPendiente({
     mensaje,
     estado,
     catalogo,
@@ -693,6 +743,7 @@ async function responderEventosEntrantes(eventos) {
       estado,
       mensaje,
       validacion: validacionPrevia,
+      interpretacion: decisionSemantica,
       clasificacion,
     });
   }
@@ -914,6 +965,7 @@ async function responderEventosEntrantes(eventos) {
       estado,
       mensaje,
       validacion: validacionFinal,
+      interpretacion: interpretacionIA || decisionSemantica,
       clasificacion,
     });
   }
@@ -951,7 +1003,7 @@ async function responderEventosEntrantes(eventos) {
     let siguientePaso = "";
     for (const resultado of resultadosMultiples) {
       const titulo = resultado.solicitud.textoVisible || resultado.textoSolicitud;
-      const registro = { ...resultado.solicitud, estado: "pendiente" };
+      const registro = { ...resultado.solicitud, accion: decisionSemantica.accion, estado: "pendiente" };
       solicitudesProcesadas.push(registro);
       if (!resultado.lectura) {
         respuestas.push(`${titulo}: no pude procesar esta solicitud por un problema temporal.`);
@@ -998,14 +1050,17 @@ async function responderEventosEntrantes(eventos) {
       if (!lecturaValidada.producto?.requierePresentacion &&
           (lecturaValidada.accion === "consultar" || lecturaValidada.intencion === "consulta_producto")) {
         const coincidencia = resultado.validacion.coincidencia;
+        registro.cotizacion = [];
         for (const presentacion of coincidencia.presentaciones || []) {
           if (resultado.validacion.presentacionSolicitada &&
             normalizarPeso(presentacion.peso) !== normalizarPeso(resultado.validacion.presentacionSolicitada)) continue;
-          consultados.push({ marca: coincidencia.marca,
+          const cotizado = { marca: coincidencia.marca,
             referencia: presentacion.referencia || coincidencia.referenciaCatalogo,
             referenciaCatalogo: presentacion.referencia || coincidencia.referenciaCatalogo,
             peso: presentacion.peso, precio: presentacion.precio, stock: presentacion.stock,
-            cantidad: lecturaValidada.producto?.cantidad || 1, presentaciones: coincidencia.presentaciones });
+            cantidad: lecturaValidada.producto?.cantidad || 1, presentaciones: coincidencia.presentaciones };
+          consultados.push(cotizado);
+          registro.cotizacion.push(cotizado);
         }
       }
       if (lecturaValidada.producto) productosValidados.push(lecturaValidada.producto);
@@ -1014,7 +1069,8 @@ async function responderEventosEntrantes(eventos) {
     estado.productosConsultados = [...new Map(consultados.map(item =>
       [`${item.marca}:${item.referencia}:${item.peso || item.presentacion}`, item])).values()]
       .map((item, indice) => ({ ...item, indice: indice + 1 }));
-    const anteriores = estado.ultimaSolicitudProductos || [];
+    const anteriores = estado.ultimaSolicitudProductos?.some(item => item.estado === "pendiente")
+      ? estado.ultimaSolicitudProductos : [];
     for (const solicitud of solicitudesProcesadas) {
       const mismaIdentidad = item => normalizar(item.marca || "") === normalizar(solicitud.marca || "") &&
         (normalizar(item.referencia || item.textoVisible || "") === normalizar(solicitud.referencia || solicitud.textoVisible || ""));
@@ -1047,6 +1103,9 @@ async function responderEventosEntrantes(eventos) {
         ? `${nombre} de ${pendiente.presentacion}` : nombre;
       const resultadoPendiente = resultadosMultiples[solicitudesProcesadas.indexOf(pendiente)];
       recordarConsultaProducto(estado, resultadoPendiente.validacion, clasificacion);
+      if (estado.ultimaConsultaProducto) estado.ultimaConsultaProducto.solicitudOriginal = {
+        intencion: decisionSemantica.intencion, accion: decisionSemantica.accion, producto: pendiente,
+      };
       guardarCoincidenciasProductoPendientes(estado, resultadoPendiente.validacion, {
         intencionOriginal: resultadoPendiente.textoSolicitud,
         tipoIntencion: decisionSemantica.intencion, cantidad: pendiente.cantidad,
@@ -1097,6 +1156,31 @@ async function responderEventosEntrantes(eventos) {
       estado, catalogo, interpretacionIA);
   }
 
+  let aclaroSolicitudMultiple = false;
+  if (!resultadosMultiples.length && validacionFinal.nivel === "alta" && interpretacionIA?.producto) {
+    const producto = interpretacionIA.producto;
+    const mismaMarca = item => normalizar(normalizarMarcasCatalogo(item.marca || "", catalogo)) === normalizar(producto.marca);
+    const pendientes = (estado.ultimaSolicitudProductos || []).filter(item => item.estado === "pendiente" && mismaMarca(item));
+    if (pendientes.length === 1) {
+      const solicitud = pendientes[0];
+      const agregado = estado.carrito.some(item => item.marca === producto.marca && item.referencia === producto.referencia &&
+        normalizarPeso(item.peso) === normalizarPeso(producto.presentacion || ""));
+      const cotizados = (estado.productosConsultados || []).filter(item => item.marca === producto.marca &&
+        item.referencia === producto.referencia && normalizarPeso(item.peso) === normalizarPeso(producto.presentacion || ""));
+      if (agregado || (interpretacionIA.accion === "consultar" && cotizados.length)) {
+        aclaroSolicitudMultiple = true;
+        Object.assign(solicitud, producto, { estado: "identificado", pregunta: null,
+          accion: interpretacionIA.accion, cotizacion: agregado ? [] : cotizados });
+      }
+    }
+  }
+  const cotizacionConjunto = resultadosMultiples.length || aclaroSolicitudMultiple
+    ? (estado.ultimaSolicitudProductos || []).flatMap(item => item.cotizacion || []) : [];
+  if (interpretacionIA?.accion === "consultar" && cotizacionConjunto.length) {
+    // Los candidatos de una aclaracion no reemplazan las cotizaciones confirmadas.
+    estado.productosConsultados = cotizacionConjunto;
+  }
+
   const debeHumanizar = clasificacion.requiereOpenAI || !["saludo", "general"].includes(clasificacion.intencion);
   let humanizerUsage = { skipped: true, reason: "no_requerido" };
   const respuestaHumanizada = debeHumanizar
@@ -1134,6 +1218,11 @@ async function responderEventosEntrantes(eventos) {
       productoAutonomo: { ...validacionFinal, nivel: "media", presentacionValida: false },
       model: modeloHumanizar, channelUserId: evento.channelUserId,
     });
+  }
+  if (interpretacionIA?.accion === "consultar" && cotizacionConjunto.length) {
+    const lineas = cotizacionConjunto.map(item => `- ${item.cantidad || 1} x ${item.referencia} ${item.peso}: ${formatearPrecio(item.precio * (item.cantidad || 1))}`);
+    const total = cotizacionConjunto.reduce((suma, item) => suma + item.precio * (item.cantidad || 1), 0);
+    respuesta += `\n\nCotización de productos identificados:\n${lineas.join("\n")}\nTotal cotizado: ${formatearPrecio(total)}`;
   }
   const respuestaPersistida = respuestaParaHistorial(respuesta);
 

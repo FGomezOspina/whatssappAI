@@ -52,12 +52,12 @@ test('pedido multiple consulta nombres sin categorias inventadas y respeta alias
     module: modulo, process, console: { log() {}, error() {} } });
   const respuesta = await modulo.exports.responderEventoEntrante({ channelUserId: 'synthetic', text: mensaje });
   assert.deepEqual(estado.carrito.map(p => [p.referencia, p.cantidad]), [
-    ['RINGO PREMIUM', 1], ['CUCHUCO', 4], ['PED POUCHE ADUL RP POLLO', 3],
+    ['RINGO PREMIUM', 1], ['CUCHUCO', 4], ['FINCA HUEVO QUEBRADA', 1], ['PED POUCHE ADUL RP POLLO', 3],
   ], respuesta);
-  assert.match(respuesta, /134\.600/);
+  assert.match(respuesta, /137\.200/);
   assert.doesNotMatch(respuesta, /CHUNKY|NUTRECAN|TASTE OF THE WILD|CUCHUCO ALIMENTO|PONEDORA ALIMENTO AVE|Tengo estas referencias/);
   assert.equal(contextoRedaccion.productoAutonomo.resultados.length, 4);
-  assert.equal(contextoRedaccion.productoAutonomo.resultados[2].coincidencia, null);
+  assert.equal(contextoRedaccion.productoAutonomo.resultados[2].coincidencia.referencia, 'FINCA HUEVO QUEBRADA');
 });
 
 test('limpieza por solicitud es general y no elimina sabores o variantes explicitas', () => {

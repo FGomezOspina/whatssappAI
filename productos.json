@@ -17732,7 +17732,7 @@
       },
       {
         "nombre": "FINCA HUEVO QUEBRADA",
-        "especie": "perro",
+        "especie": "ave",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": null,
@@ -17743,6 +17743,26 @@
           "source": "Productos.pdf",
           "original_names": [
             "FINCA HUEVO QUEBRADA 1 KL"
+          ],
+          "aliases": [
+            "ponedora",
+            "ponedoras",
+            "finca ponedora",
+            "finca ponedora gruesa",
+            "ponedora gruesa",
+            "huevo grueso",
+            "finca huevo grueso",
+            "huevo quebrado",
+            "finca huevo quebrado",
+            "alimento para gallinas ponedoras"
+          ],
+          "usage_context": "Alimento para gallinas ponedoras. Ponedora, ponedora gruesa y huevo grueso son nombres comerciales confirmados de esta referencia. No confundir huevo grueso con pollo grueso: pollo grueso es alimento de engorde para pollos.",
+          "alias_context": [
+            "ponedora",
+            "ponedoras",
+            "huevo",
+            "gallina",
+            "gallinas"
           ]
         },
         "presentaciones": [
@@ -17763,7 +17783,7 @@
       },
       {
         "nombre": "FINCA POLLO CAMP ENG",
-        "especie": "perro",
+        "especie": "ave",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": null,
@@ -17774,6 +17794,21 @@
           "source": "Productos.pdf",
           "original_names": [
             "FINCA POLLO CAMP ENG 1 KL"
+          ],
+          "aliases": [
+            "finca pollo campesino engorde",
+            "pollo campesino engorde",
+            "pollo engorde",
+            "pollo de engorde",
+            "pollo grueso",
+            "finca pollo engorde",
+            "finca pollo grueso"
+          ],
+          "usage_context": "Alimento para pollo en etapa de engorde. En una solicitud de alimento para pollo, grueso significa engorde. Grueso solo, sin contexto de pollo, no identifica esta referencia. No confundir con alimento para gallinas ponedoras.",
+          "alias_context": [
+            "pollo",
+            "pollos",
+            "campesino"
           ]
         },
         "presentaciones": [
@@ -17794,7 +17829,7 @@
       },
       {
         "nombre": "FINCA POLLO CAMP LEV",
-        "especie": "perro",
+        "especie": "ave",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": null,
@@ -17805,6 +17840,21 @@
           "source": "Productos.pdf",
           "original_names": [
             "FINCA POLLO CAMP LEV 1KL"
+          ],
+          "aliases": [
+            "finca pollo campesino levante",
+            "pollo campesino levante",
+            "pollo levante",
+            "pollo de levante",
+            "pollo delgado",
+            "finca pollo levante",
+            "finca pollo delgado"
+          ],
+          "usage_context": "Alimento para pollo en etapa de levante. En una solicitud de alimento para pollo, delgado significa levante. Delgado solo, sin contexto de pollo, no identifica esta referencia; no es una recomendacion veterinaria.",
+          "alias_context": [
+            "pollo",
+            "pollos",
+            "campesino"
           ]
         },
         "presentaciones": [
@@ -18300,9 +18350,9 @@
     "referencias": [
       {
         "nombre": "FREEMIAU",
-        "especie": "otro",
-        "categoria": "higiene",
-        "subcategoria": "aseo",
+        "especie": "gato",
+        "categoria": "arena_sustrato",
+        "subcategoria": "arena",
         "etapa": null,
         "descripcion": "FREEMIAU",
         "imagen": "",
@@ -18345,9 +18395,9 @@
       },
       {
         "nombre": "FREEMIAU CITRICA",
-        "especie": "otro",
-        "categoria": "higiene",
-        "subcategoria": "aseo",
+        "especie": "gato",
+        "categoria": "arena_sustrato",
+        "subcategoria": "arena",
         "etapa": null,
         "descripcion": "FREEMIAU CITRICA",
         "imagen": "",
@@ -18390,9 +18440,9 @@
       },
       {
         "nombre": "FREEMIAU LAVANDA",
-        "especie": "otro",
-        "categoria": "higiene",
-        "subcategoria": "aseo",
+        "especie": "gato",
+        "categoria": "arena_sustrato",
+        "subcategoria": "arena",
         "etapa": null,
         "descripcion": "FREEMIAU LAVANDA",
         "imagen": "",
