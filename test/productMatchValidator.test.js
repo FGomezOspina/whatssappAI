@@ -1099,7 +1099,7 @@ test("vision interpreta linea pro como premium y respeta la presentacion exacta"
   assert.doesNotMatch(respuesta, /RINGO CROQUETAS 20kg/);
 });
 
-test("vision mapea nombre comercial visible a la referencia interna equivalente", () => {
+test("vision no toma una presentacion de otra especie aunque el nombre sea similar", () => {
   const catalogoVision = [
     {
       marca: "ADVANCE",
@@ -1146,12 +1146,12 @@ test("vision mapea nombre comercial visible a la referencia interna equivalente"
 
   assert.equal(validacion.nivel, "alta");
   assert.equal(validacion.coincidencia.referencia, "ADVANCE CAT URINARY");
-  assert.equal(validacion.coincidencia.referenciaCatalogo, "ADVANCE URINAY");
+  assert.equal(validacion.coincidencia.referenciaCatalogo, "ADVANCE CAT URINARY");
   assert.equal(validacion.presentacionSolicitada, "1.5kg");
-  assert.equal(validacion.presentacionValida, true);
+  assert.equal(validacion.presentacionValida, false);
   assert.deepEqual(
     [...validacion.coincidencia.referenciasEquivalentes].sort(),
-    ["ADVANCE CAT URINARY", "ADVANCE URINAY"].sort()
+    ["ADVANCE CAT URINARY"]
   );
   assert.doesNotMatch(JSON.stringify(validacion.alternativas), /RENAL/);
 });

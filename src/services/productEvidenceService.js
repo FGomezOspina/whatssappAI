@@ -32,6 +32,7 @@ function resolverEvidenciaInterpretacion(interpretacion, evidenciaPrevia = null)
   if (!interpretacion) return interpretacion;
   const resolver = (producto, previo) => resolverEvidenciaProducto(producto && {
     ...producto,
+    ...(previo?.cantidad != null ? { cantidad: previo.cantidad } : {}),
     // The catalog-mapping pass may refine identity, but not rewrite intent.
     ...(previo?.observado ? {
       observado: {
@@ -46,6 +47,18 @@ function resolverEvidenciaInterpretacion(interpretacion, evidenciaPrevia = null)
   });
   const resultado = {
     ...interpretacion,
+    // Catalog mapping refines product identity, not the customer's purchasing
+    // decision or delivery/payment details extracted before retrieval.
+    ...(evidenciaPrevia ? {
+      ...(evidenciaPrevia.intencion ? { intencion: evidenciaPrevia.intencion } : {}),
+      ...(evidenciaPrevia.accion ? { accion: evidenciaPrevia.accion } : {}),
+      carrito: { ...interpretacion.carrito, ...Object.fromEntries(
+        Object.entries(evidenciaPrevia.carrito || {}).filter(([, valor]) => valor != null)) },
+      entrega: { ...interpretacion.entrega, ...Object.fromEntries(
+        Object.entries(evidenciaPrevia.entrega || {}).filter(([, valor]) => valor != null)) },
+      datosCliente: { ...interpretacion.datosCliente, ...Object.fromEntries(
+        Object.entries(evidenciaPrevia.datosCliente || {}).filter(([, valor]) => valor != null)) },
+    } : {}),
     producto: resolver(interpretacion.producto, evidenciaPrevia?.producto),
     productos: (interpretacion.productos || []).map((producto, i) =>
       resolver(producto, evidenciaPrevia?.productos?.[i] ||

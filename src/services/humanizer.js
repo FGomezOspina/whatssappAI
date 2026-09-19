@@ -6,7 +6,8 @@ const {
   logDiagnosticoContexto,
 } = require("./aiContextOptimizer");
 const { logPayloadOpenAI } = require("./aiContextAuditLogger");
-const { esRespuestaMultiMensaje } = require("../utils/responseMessages");
+const { esRespuestaMultiMensaje, dividirRespuestaMensajes, unirMensajesRespuesta } = require("../utils/responseMessages");
+const { normalizar, normalizarPeso } = require("../utils/text");
 
 const openai = process.env.OPENAI_API_KEY
   ? new OpenAI({
@@ -160,6 +161,8 @@ function tienePromptHumanizadorCliente(cliente = {}) {
 
 function esRespuestaOperativaProtegida(respuestaBase = "") {
   return Boolean(
+    /(?:^|\n)Pedido:\n[\s\S]*\nTotal:/.test(respuestaBase) ||
+    respuestaBase.includes("Para completar tu domicilio, compárteme estos datos:") ||
     respuestaBase.includes("Datos de domicilio:") ||
       respuestaBase.includes("Datos de facturación y domicilio:") ||
       /deseas agregar algo m[aá]s o finalizamos el pedido as[ií]/i.test(respuestaBase) ||
@@ -198,6 +201,46 @@ function debeHumanizarRespuesta(respuestaBase, opciones = {}) {
 }
 
 async function humanizarRespuesta(mensajeCliente, respuestaBase, opciones = {}) {
+  // Una aclaracion de un item no oculta los productos ya guardados.
+  if (opciones.estado?.carrito?.length &&
+      opciones.estado.ultimaSolicitudProductos?.some(item => item.estado === "pendiente") &&
+      typeof respuestaBase === "string" && !respuestaBase.includes("Pedido:")) {
+    const resumen = opciones.vertical?.orderLogic?.resumenCarrito;
+    if (resumen) respuestaBase += `\n\n${resumen(opciones.estado)}`;
+  }
+  if (opciones.productoAutonomo) {
+    // Keep banking facts outside generation. The motor may have prefixed the
+    // product to the banking segment; move that prefix into the commercial reply.
+    if (esRespuestaMultiMensaje(respuestaBase)) {
+      const partes = dividirRespuestaMensajes(respuestaBase);
+      const indiceBanco = partes.findIndex(parte => parte.includes("Datos para transferencia:"));
+      if (indiceBanco >= 0) {
+        const inicioBanco = partes[indiceBanco].indexOf("Datos para transferencia:");
+        const cuentas = partes[indiceBanco].slice(inicioBanco);
+        const comercial = [partes[indiceBanco].slice(0, inicioBanco),
+          ...partes.filter((_, i) => i !== indiceBanco)].filter(Boolean).join("\n\n");
+        return unirMensajesRespuesta([cuentas,
+          await humanizarRespuesta(mensajeCliente, comercial, opciones)]);
+      }
+    }
+    if (esRespuestaOperativaProtegida(respuestaBase) &&
+        /Datos de facturación|Datos de domicilio|Datos para transferencia|Para completar tu domicilio/.test(respuestaBase)) {
+      const inicioPedido = respuestaBase.indexOf("Pedido:");
+      if (inicioPedido > 0 && !respuestaBase.slice(0, inicioPedido).includes("Datos para transferencia")) {
+        const introduccion = await redactarRespuestaProducto(mensajeCliente, respuestaBase.slice(0, inicioPedido), opciones);
+        return `${introduccion}\n\n${respuestaBase.slice(inicioPedido)}`;
+      }
+      return respuestaBase;
+    }
+    const inicioResumen = respuestaBase.indexOf("Pedido:");
+    if (inicioResumen === 0) return respuestaBase;
+    if (inicioResumen > 0) {
+      const introduccion = await redactarRespuestaProducto(mensajeCliente,
+        respuestaBase.slice(0, inicioResumen), opciones);
+      return `${introduccion}\n\n${respuestaBase.slice(inicioResumen)}`;
+    }
+    return redactarRespuestaProducto(mensajeCliente, respuestaBase, opciones);
+  }
   if (esRespuestaMultiMensaje(respuestaBase)) {
     opciones.onUsage?.({ skipped: true, reason: "respuesta_multi_mensaje" });
     return respuestaBase;
@@ -333,6 +376,82 @@ ${promptCliente(opciones.cliente)}
     opciones.onUsage?.({ skipped: true, reason: "error", error: error.message });
     return respuestaBase;
   }
+}
+
+async function redactarRespuestaProducto(mensaje, respuestaOperativa, opciones) {
+  if (!openai) throw new Error("OpenAI no disponible para redactar la respuesta de producto");
+  const hechos = opciones.productoAutonomo;
+  const incierto = ["media", "baja"].includes(hechos.nivel);
+  const coincidencia = hechos.coincidencia;
+  const presentaciones = (coincidencia?.presentaciones || []).filter(p =>
+    !hechos.presentacionSolicitada || normalizarPeso(p.peso) === normalizarPeso(hechos.presentacionSolicitada));
+  const contexto = {
+    mensaje,
+    resultado: incierto ? { nivel: hechos.nivel, aclaracion: hechos.aclaracion,
+      presentacionSolicitada: hechos.presentacionSolicitada, terminos: hechos.terminos,
+      candidatos: (hechos.alternativas || []).map(p => ({ marca: p.marca, referencia: p.referencia,
+        presentaciones: p.presentaciones?.map(p => ({ peso: p.peso })) })) }
+      : { ...hechos, coincidencia: coincidencia && { ...coincidencia, presentaciones } },
+    hechosOperativos: incierto ? null : respuestaOperativa,
+    accion: opciones.interpretacionIA?.accion || null,
+    preguntaPendiente: opciones.interpretacionIA?.preguntaPendiente || null,
+    carrito: incierto ? undefined : opciones.estado?.carrito,
+    ultimaPregunta: opciones.estado?.ultimaPreguntaAsistente || null,
+    instruccionesCliente: opciones.cliente?.prompts?.humanizer || opciones.cliente?.prompts?.humanizador || null,
+  };
+  const prompt = `Redacta autonomamente una respuesta de WhatsApp en español colombiano para atender el mensaje completo.
+Usa exclusivamente los hechos validados. Los hechos operativos describen el resultado del motor, no son una plantilla ni texto que debas copiar.
+Si hay coincidencia confirmada, comunica con naturalidad la referencia, presentacion y precio solicitado en una frase breve; evita encabezados, fichas repetidas, listas para un solo producto y lenguaje sobre coincidencias, opciones cercanas, catalogo, identificacion o procesos internos. No repitas marca y referencia. No uses una apertura fija: elige tu redaccion segun la conversacion.
+Si la identidad es incierta o no hay coincidencia, haz una pregunta breve que aporte el dato que falta para identificarla. Usa los atributos que distinguen candidatos; no vuelvas a pedir peso o marca ya expresados. No cotices candidatos inciertos, no los declares disponibles y no ofrezcas comprar otra referencia como si fuera la solicitada.
+Conserva las acciones realmente realizadas por el motor. Una consulta de precio no agrega al carrito. No confirmes un pedido si solo se agrego un producto. Respeta el siguiente paso operativo sin repetir preguntas resueltas. Mantén todas las solicitudes cuando hay varios productos. Distingue coincidencia de accion realizada: solo di que un articulo quedo agregado si figura en carrito. Los resultados pendientes requieren una pregunta concreta usando el atributo que falta y los datos ya solicitados; no pidas otra vez referencia y presentacion cuando una de ellas ya se conoce. No omitas los productos identificados por atender una aclaracion.
+Si preguntaPendiente contiene una pregunta, el sistema la muestra despues del resumen: no la repitas ni inventes otras preguntas; explica brevemente que productos quedaron agregados y cual esta pendiente.
+Solo si el cliente pregunta por domicilio, responde tambien: el precio del producto no es un total con envio. Si los hechos no incluyen una tarifa validada, indica que falta verificar ese costo, sin inventar tarifas, cobertura ni plazos. No inventes cuentas ni datos de pago.
+No cambies cantidades, presentaciones ni precios. Puedes expresarlos en prosa libre sin conservar el formato de la respuesta operativa. Maximo una pregunta util y un emoji. Devuelve solo el mensaje final, sin comentarios tecnicos.`;
+  const modelo = opciones.model || modeloHumanizador(opciones.clasificacion);
+  let motivoRechazo = null;
+  let respuestaAnterior = null;
+  const rechazar = motivo => {
+    motivoRechazo = motivo;
+    console.warn(`[Respuesta Producto] Redaccion rechazada | motivo=${motivo}`);
+  };
+  for (let intento = 0; intento < 2; intento++) {
+    const inicio = Date.now();
+    const completion = await openai.chat.completions.create({ model: modelo,
+      messages: [{ role: "system", content: prompt }, { role: "user", content: JSON.stringify(contexto) },
+        ...(intento ? [
+          ...(respuestaAnterior ? [{ role: "assistant", content: respuestaAnterior }] : []),
+          { role: "system", content: `Corrige la respuesta anterior. Motivo del rechazo: ${motivoRechazo}. Conserva solo los hechos autorizados. Si el resultado es incierto, pide el atributo pendiente mediante una pregunta directa con signos de interrogacion y sin cotizar.` }
+        ] : [])],
+      ...(!/^gpt-5/i.test(modelo) ? { temperature: 0.55 } : {}),
+    });
+    logUsoIA({ etapa: "respuesta_producto", channelUserId: opciones.channelUserId,
+      cliente: opciones.cliente, intencion: opciones.clasificacion?.intencion,
+      modelo, duracionMs: Date.now() - inicio, usage: completion.usage });
+    opciones.onUsage?.({ skipped: false, usage: completion.usage, model: modelo });
+    const respuesta = completion.choices?.[0]?.message?.content?.trim();
+    respuestaAnterior = respuesta;
+    if (!respuesta) { rechazar("respuesta_vacia"); continue; }
+    const precios = extraerTokensCriticos(respuesta).filter(token => token.startsWith("$"));
+    const permitidos = new Set(extraerTokensCriticos(respuestaOperativa || "").filter(token => token.startsWith("$")));
+    const precioNumerico = token => Number(token.replace(/\D/g, ""));
+    const precioAutorizado = token => [...permitidos].some(p => precioNumerico(p) === precioNumerico(token));
+    if (incierto && precios.length) { rechazar("precio_sin_coincidencia_confirmada"); continue; }
+    if (incierto && !respuesta.includes("?")) { rechazar("falta_pregunta_de_aclaracion"); continue; }
+    if (!incierto && precios.some(p => !precioAutorizado(p))) { rechazar("precio_no_autorizado"); continue; }
+    if (!incierto && coincidencia && presentaciones.length === 1) {
+      const p = presentaciones[0];
+      if (!normalizar(respuesta).includes(normalizar(p.referencia || coincidencia.referenciaCatalogo || coincidencia.referencia))) { rechazar("falta_referencia_validada"); continue; }
+      if (!precios.some(valor => precioNumerico(valor) === Number(p.precio))) { rechazar("falta_precio_validado"); continue; }
+      const pesos = extraerTokensCriticos(respuesta).filter(token => !token.startsWith("$"));
+      if (/\d\s*(?:kg|gr|g|lb)\b/i.test(p.peso) && !pesos.some(peso => normalizarPeso(peso) === normalizarPeso(p.peso))) { rechazar("falta_presentacion_validada"); continue; }
+    }
+    if (!opciones.estado?.pedidoConfirmado && /(?:pedido\s+)?(?:queda|quedo|esta)\s+confirmado|confirmado tu pedido|programado para despacho/.test(normalizar(respuesta))) { rechazar("accion_no_autorizada"); continue; }
+    if ((incierto || opciones.interpretacionIA?.accion === "consultar") &&
+        /(?:agregue|agrego|anadi|inclui|reserve|separe).*(?:pedido|carrito)|(?:pedido|carrito).*(?:agregado|reservado)/.test(normalizar(respuesta))) { rechazar("accion_no_autorizada"); continue; }
+    return respuesta;
+  }
+  // Never publish the operational template as a substitute for generation.
+  throw new Error(`No se obtuvo una respuesta de producto fiel a los hechos validados: ${motivoRechazo}`);
 }
 
 module.exports = {

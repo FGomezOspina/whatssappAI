@@ -1063,9 +1063,12 @@ function referenciasEquivalentes(itemA, itemB) {
     return false;
   }
 
-  const especieA = especieExplicita(itemA.referencia.nombre);
-  const especieB = especieExplicita(itemB.referencia.nombre);
+  const especieA = normalizarEspecie(itemA.referencia.especie) || especieExplicita(itemA.referencia.nombre);
+  const especieB = normalizarEspecie(itemB.referencia.especie) || especieExplicita(itemB.referencia.nombre);
   if (especieA && especieB && especieA !== especieB) return false;
+  const categoriaA = normalizarCategoria(itemA.referencia.categoria);
+  const categoriaB = normalizarCategoria(itemB.referencia.categoria);
+  if (categoriaA && categoriaB && categoriaA !== categoriaB) return false;
 
   const condicionesA = condicionesProducto(
     `${itemA.referencia.nombre} ${itemA.referencia.descripcion || ""}`
@@ -1149,7 +1152,7 @@ function agruparReferenciasEquivalentes(items = []) {
   const grupos = [];
   items.forEach((item) => {
     const grupo = grupos.find((actual) =>
-      actual.items.some((existente) =>
+      actual.items.every((existente) =>
         referenciasEquivalentes(existente, item)
       )
     );
@@ -2117,7 +2120,23 @@ function aplicarCoincidenciaValidada(interpretacion, validacion) {
   return resultado;
 }
 
+// Only compress retrieval prose when the extracted identity is also supported
+// by that query. An inferred reference must not supply missing species/stage.
+function consultaIdentidadRespaldada(producto, consulta) {
+  if (!producto || !(producto.marca || producto.referencia)) return null;
+  const identidad = [producto.marca, producto.referencia, producto.linea,
+    producto.especie, producto.etapa, producto.tamano,
+    ...(producto.sabores || []), ...(producto.condiciones || []), producto.presentacion]
+    .filter(Boolean).join(" ");
+  const evidencia = tokensDistintivos(consulta);
+  const atributos = tokensDistintivos(identidad);
+  const pesoConsulta = obtenerPresentacionSolicitada(consulta, null);
+  if (producto.presentacion && normalizarPeso(producto.presentacion) !== normalizarPeso(pesoConsulta || "")) return null;
+  return atributos.length && atributos.every(token => evidencia.includes(token)) ? identidad : null;
+}
+
 module.exports = {
+  consultaIdentidadRespaldada,
   aplicarCoincidenciaValidada,
   construirConsultaProductoContextual,
   esCorreccionProducto,

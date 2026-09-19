@@ -117,6 +117,7 @@ function resumenEstado(estado = {}) {
     marca: estado.marca,
     criterios: estado.criterios || {},
     ultimaSeleccion: estado.ultimaSeleccion || null,
+    ultimaSolicitudProductos: estado.pedidoConfirmado ? [] : (estado.ultimaSolicitudProductos || []),
     referenciasPendientes: estado.referenciasPendientes || null,
     coincidenciasProductoPendientes:
       estado.coincidenciasProductoPendientes || null,

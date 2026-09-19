@@ -21,6 +21,7 @@ function crearEstadoInicial() {
     marca: null,
     criterios: {},
     ultimaSeleccion: null,
+    ultimaSolicitudProductos: [],
     productosConsultados: [],
     historialProductosConsultados: [],
     productosPendientes: [],

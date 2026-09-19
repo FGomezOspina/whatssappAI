@@ -8,6 +8,58 @@ const { resolverConsultaCatalogo } = require('../src/verticals/petshop/orderLogi
 const { resolverSeleccionProductoPendiente } = require('../src/services/pendingProductMatchService');
 const catalogo = [{ marca: 'MARCA TEST', referencias: [{ nombre: 'SNACK TEST', especie: 'gato', presentaciones: [{ peso: '75gr', precio: 7800 }] }] }];
 
+function pendienteDeCierre() {
+  return { ...crearEstadoInicial(), esperandoConfirmacionPedido: true, confirmacionPedidoId: 'pedido-estable',
+    carrito: [{ marca: 'Prueba', referencia: 'Alimento', peso: '2kg', precio: 28000, cantidad: 1 }],
+    entrega: { tipo: 'domicilio' }, metodoPago: 'transferencia bancaria', instruccionesPagoEnviadas: true,
+    datosDomicilio: { nombre: 'Cliente Prueba', cedula: '1000000000', celular: '3000000000',
+      correo: 'cliente@example.com', direccion: 'Calle 10 # 20-30' } };
+}
+
+test('asi esta bien con gracias confirma aunque el modelo devuelva agradecimiento o el pago historico', () => {
+  for (const mensaje of ['asi esta bien', 'Así está bien\ngracias', 'Así está bien. Muchas gracias 🤗']) {
+    for (const intencion of ['confirmacion', 'agradecimiento', 'otro']) {
+      const estado = pendienteDeCierre();
+      const respuesta = resolverConsultaCatalogo(mensaje, estado, [], {
+        intencion, accion: intencion === 'confirmacion' ? 'confirmar' : null, confianza: 0.99,
+        entrega: { metodoPago: 'transferencia bancaria' }, consultaCatalogo: { necesaria: false },
+      });
+      assert.match(respuesta, /pedido queda confirmado/);
+      assert.doesNotMatch(respuesta, /finalizamos el pedido/);
+      assert.equal(estado.pedidoConfirmado, true);
+      assert.equal(estado.esperandoConfirmacionPedido, false);
+      assert.equal(estado.confirmacionPedidoId, 'pedido-estable');
+      assert.equal(estado.pedidoConfirmadoPendienteGuardar, true);
+    }
+  }
+});
+
+test('confirmacion semantica no queda bloqueada por un metodo de pago repetido del historial', () => {
+  const estado = pendienteDeCierre();
+  const respuesta = resolverConsultaCatalogo('Adelante con lo revisado', estado, [], {
+    intencion: 'confirmacion', accion: 'confirmar', confianza: 0.99,
+    entrega: { metodoPago: 'transferencia bancaria' }, consultaCatalogo: { necesaria: false },
+  });
+  assert.match(respuesta, /pedido queda confirmado/);
+  assert.equal(estado.pedidoConfirmado, true);
+});
+
+test('agradecimiento solo, preguntas y cambios no se convierten en una confirmacion explicita', () => {
+  const { esConfirmacionCierreExplicita } = require('../src/verticals/petshop/orderLogic');
+  for (const mensaje of ['gracias', 'si', '¿Así está bien?', 'así está bien pero cambia la dirección',
+    'así está bien\nagrega otro paquete', 'no, así está bien no', 'así está bien\n¿a dónde transfiero?']) {
+    const estado = pendienteDeCierre();
+    assert.equal(esConfirmacionCierreExplicita(mensaje, estado), false, mensaje);
+    resolverConsultaCatalogo(mensaje, estado, [], { intencion: 'otro', accion: null, confianza: 0.99,
+      consultaCatalogo: { necesaria: false } });
+    assert.equal(estado.pedidoConfirmado, false, mensaje);
+  }
+  assert.equal(esConfirmacionCierreExplicita('asi esta bien', crearEstadoInicial()), false);
+  const incompleto = pendienteDeCierre();
+  delete incompleto.datosDomicilio.celular;
+  assert.equal(esConfirmacionCierreExplicita('asi esta bien', incompleto), false);
+});
+
 test('el selector no intercepta una accion operativa aunque quede una cotizacion residual', () => {
   for (const campo of ['esperandoConfirmacionPedido', 'esperandoDatosDomicilio', 'esperandoMetodoPago', 'esperandoTipoEntrega', 'esperandoCambioDireccion', 'esperandoConfirmacionRepetirPedido']) {
     const estado = { ...crearEstadoInicial(), [campo]: true,

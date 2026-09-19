@@ -1370,7 +1370,8 @@ function nombreProductoPlano(marca, referencia) {
   const marcaNormalizada = normalizar(marca || "");
   const referenciaNormalizada = normalizar(referencia || "");
 
-  if (marcaNormalizada && referenciaNormalizada.startsWith(`${marcaNormalizada} `)) {
+  if (marcaNormalizada && (referenciaNormalizada === marcaNormalizada ||
+      referenciaNormalizada.startsWith(`${marcaNormalizada} `))) {
     return referencia;
   }
 
@@ -2572,9 +2573,11 @@ function respuestaProductoAgregado(estado, marca, referencia, presentacion, opci
   let siguientePaso = opciones.siguientePaso;
 
   if (!siguientePaso) {
-    if (opciones.pedirDireccionCompleta) {
+    if (opciones.pedirDireccionCompleta ||
+        (estado.entrega?.tipo === "domicilio" && tieneDireccionIncompleta(estado))) {
       siguientePaso = solicitarDireccionCompleta(estado);
-    } else if (opciones.pedirDatosDomicilio) {
+    } else if (opciones.pedirDatosDomicilio || estado.entrega?.tipo === "domicilio" ||
+        tieneDatosDomicilioUtiles(estado.datosDomicilio)) {
       siguientePaso = solicitarDatosDomicilio(estado);
     } else {
       siguientePaso = productoAgregadoRespuesta(estado);
@@ -2589,14 +2592,7 @@ function tieneDireccionIncompleta(estado) {
 }
 
 function solicitarDireccionCompleta(estado) {
-  estado.esperandoDatosDomicilio = true;
-  estado.esperandoConfirmacionDomicilio = false;
-
-  const referencia = estado.datosDomicilio.sector
-    ? `el sector ${estado.datosDomicilio.sector}`
-    : `la dirección parcial ${estado.datosDomicilio.direccionParcial}`;
-
-  return `${resumenCarrito(estado)}\n\nTengo como referencia ${referencia}. Para enviarlo sin enredos, regálame la dirección completa, por favor.`;
+  return solicitarDatosDomicilio(estado);
 }
 
 function mensajeTienePresentacionExplicita(mensaje) {
@@ -3216,7 +3212,8 @@ function resolverPresentacionValidadaIA(estado, catalogo, interpretacion, mensaj
   const marca = buscarMarcaPorNombre(catalogo, producto.marca);
   if (!marca) return null;
   const referencia = (marca.referencias || []).find(
-    (item) => normalizar(item.nombre) === normalizar(equivalente.referencia)
+    (item) => normalizar(item.nombre) === normalizar(equivalente.referencia) &&
+      buscarPresentacion(item, equivalente.peso || producto.presentacion)
   );
   if (!referencia) return null;
   if (!productoSoportaLineaReferencia(producto, referencia, mensaje)) return null;
@@ -3258,7 +3255,7 @@ function aplicarDatosInterpretados(estado, interpretacion = {}) {
     };
   }
 
-  if (entrega.metodoPago) estado.metodoPago = entrega.metodoPago;
+  if (entrega.metodoPago) estado.metodoPago = detectarMetodoPago(entrega.metodoPago) || entrega.metodoPago;
 
   const datos = {};
   if (datosCliente.nombre) datos.nombre = datosCliente.nombre;
@@ -3647,6 +3644,9 @@ function resolverConInterpretacionIA(mensaje, estado, catalogo, interpretacion) 
     aplicarDatosInterpretados(estado, interpretacion);
   }
 
+  // Una instruccion explicita de corregir el carrito tiene prioridad sobre
+  // la etiqueta general de agregar. La resuelve el manejador existente.
+  if (["quitar", "mantener_solo", "modificar_cantidad"].includes(interpretacion.carrito?.operacion)) return null;
   if (!["pedido_producto", "consulta_producto"].includes(interpretacion.intencion)) return null;
   if (!["agregar", "consultar", "nuevo_pedido", null].includes(interpretacion.accion)) return null;
 
@@ -4336,6 +4336,7 @@ function pareceNombre(valor = "") {
   const texto = normalizar(valor);
   return (
     /^[a-zA-ZÁÉÍÓÚÜÑáéíóúüñ ]{3,50}$/.test(valor) &&
+    !detectarMetodoPago(valor) &&
     !texto.includes("gmail") &&
     !texto.includes("hotmail") &&
     !contieneAlguno(texto, PALABRAS_CRITERIO) &&
@@ -4505,7 +4506,7 @@ function detectarMetodoPago(mensaje) {
   const texto = normalizar(mensaje);
 
   if (contieneAlguno(texto, ["efectivo", "contraentrega", "contra entrega"])) return "efectivo";
-  if (contieneAlguno(texto, ["transferencia", "bancolombia", "davivienda", "bre b", "bre-b", "llave"])) {
+  if (contieneAlguno(texto, ["transferencia", "consignacion", "consignar", "bancolombia", "davivienda", "bre b", "bre-b", "llave"])) {
     return "transferencia bancaria";
   }
   if (contieneAlguno(texto, ["tarjeta", "debito", "credito", "datafono", "datáfono"])) {
@@ -4516,14 +4517,7 @@ function detectarMetodoPago(mensaje) {
 }
 
 function solicitarMetodoPago(estado) {
-  reiniciarFocoProducto(estado);
-  estado.ultimaConsultaProducto = null;
-  estado.esperandoMetodoPago = true;
-  estado.esperandoTipoEntrega = false;
-  estado.esperandoConfirmacionDomicilio = false;
-  estado.esperandoConfirmacionPedido = false;
-
-  return `${resumenCarrito(estado)}\n\nAntes de tomar los datos de domicilio, dime con qué método de pago deseas cancelar:\n- efectivo\n- transferencia bancaria Bancolombia y/o Davivienda\n- tarjeta débito o crédito\n- llave bre-B`;
+  return solicitarDatosDomicilio(estado);
 }
 
 function instruccionesTransferencia() {
@@ -4541,6 +4535,14 @@ llave bre-B: @luzg5604
 Recuerde:
 - estas son nuestras unicas cuentas autorizadas.
 - Enviar el comprobante de pago, gracias.`;
+}
+
+function incluirInstruccionesPago(estado, respuesta) {
+  const metodo = detectarMetodoPago(estado.metodoPago || "");
+  if (metodo) estado.metodoPago = metodo;
+  if (metodo !== "transferencia bancaria" || estado.instruccionesPagoEnviadas) return respuesta;
+  estado.instruccionesPagoEnviadas = true;
+  return unirMensajesRespuesta([instruccionesTransferencia(), respuesta]);
 }
 
 function registrarMetodoPago(mensaje, estado) {
@@ -4562,11 +4564,13 @@ function solicitarDatosDomicilio(estado) {
   reiniciarFocoProducto(estado);
   estado.ultimaConsultaProducto = null;
   const faltantes = camposDomicilioFaltantes(estado);
-  if (!faltantes.length) {
-    return estado.metodoPago ? solicitarConfirmacionPedido(estado) : solicitarMetodoPago(estado);
+  if (!faltantes.length && estado.metodoPago) {
+    return solicitarConfirmacionPedido(estado);
   }
 
-  estado.esperandoDatosDomicilio = true;
+  estado.esperandoDatosDomicilio = faltantes.length > 0;
+  estado.esperandoMetodoPago = !estado.metodoPago;
+  estado.esperandoTipoEntrega = false;
   estado.esperandoConfirmacionDomicilio = false;
   estado.esperandoConfirmacionPedido = false;
   const detalleDireccion =
@@ -4578,9 +4582,12 @@ function solicitarDatosDomicilio(estado) {
         }, pero necesito la dirección completa para enviarlo bien.`
       : "";
 
-  return `${resumenCarrito(estado)}${detalleDireccion}\n\nPerfecto, para dejar el domicilio bien tomado me faltan estos datos:\n${faltantes
-    .map((campo) => `- ${campo === "direccion" ? "direccion completa" : campo}`)
-    .join("\n")}`;
+  const datosSolicitados = faltantes.map((campo) => `- ${campo === "direccion" ? "direccion completa" : campo}`);
+  if (!estado.metodoPago) {
+    datosSolicitados.push("- método de pago: efectivo/contraentrega, transferencia bancaria, tarjeta débito o crédito, o llave bre-B");
+  }
+  return incluirInstruccionesPago(estado,
+    `${resumenCarrito(estado)}${detalleDireccion}\n\nPara completar tu domicilio, compárteme estos datos:\n${datosSolicitados.join("\n")}`);
 }
 
 function resumenDatosFacturacionYDomicilio(estado) {
@@ -4603,9 +4610,9 @@ function solicitarConfirmacionPedido(estado) {
   estado.esperandoConfirmacionDomicilio = false;
   estado.esperandoConfirmacionPedido = true;
 
-  return `${resumenCarrito(estado)}\n\n${resumenDatosFacturacionYDomicilio(
+  return incluirInstruccionesPago(estado, `${resumenCarrito(estado)}\n\n${resumenDatosFacturacionYDomicilio(
     estado
-  )}\n\n¿Deseas agregar algo más o finalizamos el pedido así?`;
+  )}\n\n¿Deseas agregar algo más o finalizamos el pedido así?`);
 }
 
 function confirmarPedido(estado) {
@@ -4628,9 +4635,9 @@ function confirmarPedido(estado) {
   estado.datosPreviosConfirmados = true;
   recordarUltimoPedidoConfirmado(estado);
 
-  return `${resumenCarrito(estado)}\n\n${resumenDatosFacturacionYDomicilio(
+  return incluirInstruccionesPago(estado, `${resumenCarrito(estado)}\n\n${resumenDatosFacturacionYDomicilio(
     estado
-  )}\n\nListo, tu pedido queda confirmado con esos datos.`;
+  )}\n\nListo, tu pedido queda confirmado con esos datos.`);
 }
 
 function resolverDomicilio(mensaje, estado) {
@@ -4641,7 +4648,7 @@ function resolverDomicilio(mensaje, estado) {
   }
 
   if (!estado.esperandoDatosDomicilio && !tieneDatosDomicilioUtiles(datos)) {
-    if (!camposDomicilioFaltantes(estado).length) {
+    if (!camposDomicilioFaltantes(estado).length && estado.metodoPago) {
       return solicitarConfirmacionPedido(estado);
     }
 
@@ -4650,7 +4657,7 @@ function resolverDomicilio(mensaje, estado) {
 
   estado.datosDomicilio = { ...datos, ...estado.datosDomicilio };
 
-  if (camposDomicilioFaltantes(estado).length) {
+  if (camposDomicilioFaltantes(estado).length || !estado.metodoPago) {
     return solicitarDatosDomicilio(estado);
   }
 
@@ -4677,13 +4684,13 @@ function solicitarConfirmacionDatosPrevios(estado) {
 
   const metodo = estado.metodoPago ? `\n- Método de pago: ${estado.metodoPago}` : "";
 
-  return `${resumenCarrito(estado)}\n\nTengo guardada esta información del pedido anterior:\n- Nombre: ${
+  return incluirInstruccionesPago(estado, `${resumenCarrito(estado)}\n\nTengo guardada esta información del pedido anterior:\n- Nombre: ${
     estado.datosDomicilio.nombre || "pendiente"
   }\n- Cédula: ${estado.datosDomicilio.cedula || "pendiente"}\n- Celular: ${
     estado.datosDomicilio.celular || "pendiente"
   }\n- Correo: ${estado.datosDomicilio.correo || "pendiente"}\n- Dirección: ${
     estado.datosDomicilio.direccion
-  }${metodo}\n\n¿Lo enviamos a esa misma dirección con esos datos?`;
+  }${metodo}\n\n¿Lo enviamos a esa misma dirección con esos datos?`);
 }
 
 function solicitarNuevaDireccion(estado) {
@@ -4716,10 +4723,24 @@ function interpretacionConfirma(interpretacion) {
   );
 }
 
+function esConfirmacionCierreExplicita(mensaje, estado) {
+  if (!estado.esperandoConfirmacionPedido || estado.pedidoConfirmado ||
+      !estado.carrito?.length || camposDomicilioFaltantes(estado).length || !estado.metodoPago) return false;
+  // Match the whole reply, allowing courtesy, never a question or extra request.
+  if (/[?¿]/.test(mensaje)) return false;
+  const texto = normalizar(mensaje).replace(/\./g, " ").replace(/\s+/g, " ").trim();
+  return /^(?:(?:muchas )?gracias )?(?:asi esta bien|dejalo asi|dejemoslo asi|finalicemos|finaliza el pedido|confirmo el pedido)(?: por favor)?(?: (?:muchas )?gracias)?$/.test(texto);
+}
+
 function resolverConfirmacionPedido(mensaje, estado, interpretacion = null) {
   if (!estado.esperandoConfirmacionPedido) return null;
 
-  const metodoPago = detectarMetodoPago(mensaje);
+  if (esConfirmacionCierreExplicita(mensaje, estado)) return confirmarPedido(estado);
+
+  const metodoInterpretado = ["metodo_pago", "datos_envio"].includes(interpretacion?.intencion)
+    ? detectarMetodoPago(interpretacion?.entrega?.metodoPago || "") : null;
+  const metodoPago = detectarMetodoPago(mensaje) ||
+    (metodoInterpretado !== detectarMetodoPago(estado.metodoPago || "") ? metodoInterpretado : null);
   if (metodoPago) {
     estado.metodoPago = metodoPago;
     return solicitarConfirmacionPedido(estado);
@@ -4826,7 +4847,7 @@ function resolverEntregaYPago(mensaje, estado, interpretacion = null) {
   }
 
   const respuestaDatosPrevios = resolverDatosPrevios(mensaje, estado, interpretacion);
-  if (respuestaDatosPrevios) return respuestaDatosPrevios;
+  if (respuestaDatosPrevios) return incluirInstruccionesPago(estado, respuestaDatosPrevios);
 
   if (solicitaCambioDireccion(mensaje)) {
     return solicitarNuevaDireccion(estado);
@@ -4853,8 +4874,12 @@ function resolverEntregaYPago(mensaje, estado, interpretacion = null) {
   }
 
   if (estado.entrega.tipo === "domicilio") {
-    const estabaEsperandoMetodoPago = estado.esperandoMetodoPago;
-    const metodo = registrarMetodoPago(mensaje, estado);
+    // Preserve every field in a batch, even when payment is still missing.
+    const datos = extraerDatosDomicilio(mensaje);
+    if (interpretacion && (interpretacion.intencion !== "datos_envio" ||
+        (!estado.esperandoDatosDomicilio && !/\bnombre\s*:/i.test(mensaje)))) delete datos.nombre;
+    estado.datosDomicilio = { ...datos, ...estado.datosDomicilio };
+    registrarMetodoPago(mensaje, estado);
 
     if (!estado.metodoPago) {
       return solicitarMetodoPago(estado);
@@ -4864,18 +4889,7 @@ function resolverEntregaYPago(mensaje, estado, interpretacion = null) {
       return solicitarConfirmacionDatosPrevios(estado);
     }
 
-    if (metodo === "transferencia bancaria" && !estado.instruccionesPagoEnviadas) {
-      estado.instruccionesPagoEnviadas = true;
-      return `${instruccionesTransferencia()}\n\n${solicitarDatosDomicilio(estado)}`;
-    }
-
-    if (estabaEsperandoMetodoPago && metodo) {
-      return camposDomicilioFaltantes(estado).length
-        ? solicitarDatosDomicilio(estado)
-        : solicitarConfirmacionPedido(estado);
-    }
-
-    return resolverDomicilio(mensaje, estado);
+    return solicitarDatosDomicilio(estado);
   }
 
   return solicitarTipoEntrega(estado);
@@ -5015,6 +5029,7 @@ function iniciarNuevoPedido(estado) {
   );
 
   estado.carrito = [];
+  estado.ultimaSolicitudProductos = [];
   estado.pedidoConfirmado = false;
   estado.marca = null;
   estado.criterios = {};
@@ -5298,6 +5313,48 @@ function resolverAlternativaPendiente(mensaje, estado, catalogo) {
 }
 
 function resolverConsultaCatalogo(mensaje, estado, catalogo = [], interpretacion = null) {
+  if (estado.carrito?.length &&
+      /\b(?:cuanto (?:seria|es|vale|cuesta)(?: en)? (?:todo|total)|(?:cual es |dame |dime |el )?total(?: del pedido| de todo)?)\b/.test(normalizar(mensaje)) &&
+      (!interpretacion || interpretacion.accion === "consultar") &&
+      !interpretacion?.entrega?.tipo && !Object.values(interpretacion?.datosCliente || {}).some(Boolean)) {
+    return `${resumenCarrito(estado)}\n\nEl total de productos no incluye el domicilio.`;
+  }
+  // Payment support after checkout must not restart checkout or mutate the order.
+  const consultaPago = interpretacion?.accion === "consultar_pago";
+  if (estado.pedidoConfirmado && (consultaPago || interpretacion?.intencion === "metodo_pago")) {
+    const metodo = detectarMetodoPago(interpretacion?.entrega?.metodoPago || "") ||
+      detectarMetodoPago(mensaje) || detectarMetodoPago(estado.metodoPago || "");
+    return consultaPago || metodo === "transferencia bancaria"
+      ? instruccionesTransferencia()
+      : interpretacion.respuestaConversacional || "Tu pedido ya está confirmado. ¿Qué necesitas saber sobre el pago?";
+  }
+  if (consultaPago) {
+    if (!estado.carrito?.length) return instruccionesTransferencia();
+    // A payment request does not finish a pending checkout. Recover delivery
+    // data from the actual message too, if the router omitted those fields.
+    const datos = extraerDatosDomicilio(mensaje);
+    if (!/\b(?:nombre|me llamo|soy)\b/i.test(mensaje)) delete datos.nombre;
+    estado.datosDomicilio = { ...estado.datosDomicilio, ...datos };
+    aplicarDatosInterpretados(estado, interpretacion);
+    registrarMetodoPago(mensaje, estado);
+    estado.instruccionesPagoEnviadas = false;
+    const direccionAportada = datos.direccion || interpretacion.entrega?.direccion;
+    if (direccionAportada) {
+      estado.entrega = { ...estado.entrega, tipo: "domicilio", sede: null };
+      estado.datosPreviosConfirmados = true;
+      estado.esperandoConfirmacionDatosPrevios = false;
+      estado.esperandoCambioDireccion = false;
+      estado.esperandoConfirmacionDatosFacturacion = false;
+    }
+    const siguientePaso = estado.entrega?.tipo === "domicilio"
+      ? solicitarDatosDomicilio(estado)
+      : resolverEntregaYPago(mensaje, estado, interpretacion);
+    // This is an explicit request: send the accounts even if the method has
+    // not been chosen yet. Do not let the one-time flag suppress this reply.
+    if (estado.instruccionesPagoEnviadas) return siguientePaso;
+    estado.instruccionesPagoEnviadas = true;
+    return unirMensajesRespuesta([instruccionesTransferencia(), siguientePaso]);
+  }
   // Una decision semantica negativa tambien limita al motor: las heuristicas
   // de marcas y referencias no pueden reabrir una herramienta descartada.
   if (interpretacion?.consultaCatalogo?.necesaria === false) {
@@ -5440,7 +5497,7 @@ function resolverConsultaCatalogo(mensaje, estado, catalogo = [], interpretacion
   const respuestaIA = consultaExploratoriaTaxonomia
     ? null
     : resolverConInterpretacionIA(mensaje, estado, catalogo, interpretacionCatalogo);
-  if (respuestaIA) return respuestaIA;
+  if (respuestaIA) return estado.pedidoConfirmado ? respuestaIA : incluirInstruccionesPago(estado, respuestaIA);
 
   const respuestaOperacionCarritoIA = resolverOperacionCarritoIA(mensaje, estado, catalogo, interpretacion);
   if (respuestaOperacionCarritoIA) return respuestaOperacionCarritoIA;
@@ -5813,6 +5870,8 @@ function resolverConsultaCatalogo(mensaje, estado, catalogo = [], interpretacion
 }
 
 module.exports = {
+  resumenCarrito,
+  esConfirmacionCierreExplicita,
   resolverConsultaCatalogo,
   buscarMarca,
   extraerCriterios,
