@@ -86,6 +86,7 @@ function compactarPresentacion(presentacion = {}) {
   return {
     peso: presentacion.peso || null,
     precio: presentacion.precio ?? null,
+    ...(presentacion.metadata?.precios_por_cantidad ? { preciosPorCantidad: presentacion.metadata.precios_por_cantidad } : {}),
   };
 }
 
@@ -99,6 +100,7 @@ function compactarCatalogo(catalogo = [], { incluirDescripcion = true } = {}) {
       categoria: referencia.categoria || null,
       subcategoria: referencia.subcategoria || null,
       especie: referencia.especie || null,
+      ...(referencia.metadata?.especies ? { especies: referencia.metadata.especies } : {}),
       etapa: referencia.etapa || null,
       descripcion:
         incluirDescripcion && referencia.descripcion
@@ -113,6 +115,8 @@ function compactarItem(item = {}) {
   return {
     marca: item.marca || null,
     referencia: item.referencia || item.nombre || null,
+    categoria: item.categoria || null,
+    subcategoria: item.subcategoria || null,
     presentacion: item.presentacion || item.peso || null,
     cantidad: item.cantidad || 1,
     precio: item.precio ?? null,
@@ -124,6 +128,8 @@ function compactarCotizacion(item = {}) {
     indice: item.indice || null,
     marca: item.marca || null,
     referencia: item.referencia || null,
+    categoria: item.categoria || null,
+    subcategoria: item.subcategoria || null,
     presentaciones: (item.presentaciones || []).slice(0, 4).map(
       (presentacion) => ({
         peso: presentacion.peso || null,
@@ -195,6 +201,7 @@ function compactarEstado(estado = {}, perfil = "simple") {
           terminos: (estado.ultimaConsultaProducto.terminos || []).slice(0, 8),
           fuente: estado.ultimaConsultaProducto.fuente || null,
           aclaracion: estado.ultimaConsultaProducto.aclaracion || null,
+          sinCoincidenciaInformada: estado.ultimaConsultaProducto.sinCoincidenciaInformada || false,
           solicitudOriginal: estado.ultimaConsultaProducto.solicitudOriginal || null,
           presentacion: estado.ultimaConsultaProducto.presentacion || null,
           creadoEn: estado.ultimaConsultaProducto.creadoEn || null,
@@ -446,7 +453,11 @@ Integra el resumen anterior con estos mensajes cronologicos sin inventar hechos.
     ? `Interpreta semanticamente el mensaje con el historial, la ultima pregunta y el estado activo.
 Devuelve JSON con la estructura indicada. Las etiquetas operativas sirven al motor existente; no son una lista exhaustiva de significados.
 Antes de cualquier busqueda decide si necesitas datos del catalogo para atender la intencion actual.
+Segmenta semanticamente el mensaje completo: separa identidad del producto, cantidad de unidades solicitadas, consulta de disponibilidad e informacion contextual (indicaciones copiadas, frecuencia, duracion, direccion o saludos). En cada producto anade mencionOriginal: un fragmento LITERAL continuo del mensaje actual que nombra el producto y su variante; no corrijas su ortografia ni incluyas instrucciones de uso. Si no hay fragmento explicito en este turno, usa null y conserva el contexto previo por separado. No reduzcas una lista de productos a uno.
+En una consulta de disponibilidad, mencionar las unidades que necesita no autoriza agregar: usa consultar salvo que tambien solicite comprar, reservar o enviar. Para medicamentos, cantidades fraccionarias de administracion, intervalos y dias no son unidades comerciales. Conserva la cantidad que el cliente pide comprar por separado; no calcules cantidades desde una pauta ni recomiendes o valides dosis. Un numero unido al nombre puede ser una variante comercial: no agregues mg, ml ni otra unidad que no figure en el mensaje; primero busca esa identidad y luego vincula la variante con la presentacion registrada en el catalogo.
 Aceptar una cotizacion ante una pregunta de compra (por ejemplo lo agregamos o lo dejamos asi) usa pedido_producto, agregar y continuarFlujo=true: recupera el producto seleccionado y consulta su referencia para agregarlo. Un si a una pregunta de identidad solo confirma esa identidad; conserva la intencion de compra si ya existia. No pidas una segunda confirmacion de la referencia ya elegida.
+Si ya cotizaste una referencia y presentacion, una solicitud de envio o compra de esa seleccion usa agregar y conserva la cantidad del mensaje actual. No vuelvas a confirmar su identidad ni respondas solo con otra cotizacion: el motor debe agregarla, mostrar carrito y continuar con los datos pendientes.
+Las peticiones corteses de incorporar productos, como "podria incluir tres sobres" o "me puedes agregar dos", son solicitudes de compra (agregar), aunque tengan forma de pregunta. Distinguelas de "cuanto costarian tres" o "tienes en otro peso", que son consultas. Una consulta adicional no cancela, sustituye ni cambia cantidades del pedido establecido. Al proporcionar una direccion para enviar la seleccion ya cotizada, conserva esa seleccion y continua la compra; no uses una alternativa consultada como reemplazo sin que el cliente la elija. Usa todos los datos de envio guardados y pide solamente los faltantes.
 Mostrar carrito o resumen usa intencion=carrito, accion=consultar, continuarFlujo=true y consultaCatalogo.necesaria=false. La respuesta debe contener el resumen real, no prometer mostrarlo despues. Las confirmaciones, datos y pago de un pedido activo se ejecutan en el motor; respuestaConversacional no sustituye esa ejecucion ni autoriza afirmar que un pedido esta confirmado.
 Una aclaracion de la solicitudOriginal pendiente conserva su accion (agregar o consultar), cantidad, peso y entrega: resolver la referencia de una compra usa pedido_producto y agregar aunque el cliente no repita quiero. Una nueva consulta de precio, cancelacion o cambio de producto no hereda esa compra; interpreta el mensaje actual. No agregues de nuevo un item ya resuelto.
 Una respuesta corta puede completar la ultimaPreguntaAsistente. Reconstruye el producto desde la seleccion pendiente, las interpretaciones multimedia del historial y la memoria persistente; formula la consulta con producto y atributo nuevo. La expiracion de candidatos temporales no borra la conversacion. No vuelvas a preguntar un producto que ya esta en ese contexto.
@@ -459,15 +470,19 @@ Una lista actual de productos con cantidades para hacer un pedido usa pedido_pro
 En cada producto, textoVisible conserva el nombre y descripcion solicitados, no solo el color o el empaque. No inventes referencias concatenando categoria o especie al nombre: esos atributos van en sus campos separados. Conserva las cantidades por item.
 Si el cliente solicita varios productos, productos debe contener obligatoriamente un objeto independiente por cada solicitud, usando los mismos campos del objeto producto del esquema. Comprueba que ninguno falte antes de devolver el JSON. Conserva cada uno con sus atributos en productos y en la consulta, sin fusionar sus presentaciones o categorias. Una referencia identificable ya permite buscar: no pidas al cliente que repita detalles antes de comprobar los candidatos; pregunta solo atributos faltantes que los resultados hagan necesarios.
 Cuando el cliente completa datos del pedido, usa continuarFlujo=true: el motor muestra productos, total, domicilio y pago antes del cierre. No reemplaces ese resumen con una pregunta generica. Ante la pregunta agregar algo mas o finalizar asi, interpreta la respuesta segun su sentido: dejarlo asi confirma; preguntar, agregar o corregir no confirma. Un si aislado ante dos alternativas requiere aclaracion, con intencion=otro y continuarFlujo=false. Conserva el pedido al atender preguntas intermedias.
+Para agregar unidades adicionales a un item existente, usa accion=agregar y cantidad como incremento; no reemplaces el total por ese incremento. Para fijar un total, usa modificar_cantidad con cantidadObjetivo absoluta. «Conserva lo demás» deja intactos los otros items: no los incluyas como productos a agregar o modificar.
 Si el cliente pide varios productos, conserva TODOS en productos[] con su cantidad individual. La busqueda de candidatos no cambia la accion de compra. Para correcciones elipticas, consulta ultimaSolicitudProductos y el carrito: una cantidad sin nombre no se asigna al producto mas cercano si pertenecia a otro en la solicitud original. No vuelvas a agregar lo ya guardado; usa modificar_cantidad para corregir unidades existentes o pregunta si no hay asociacion segura. Los items pendientes no estan agregados y deben aclararse o descartarse explicitamente, sin perder los identificados. Para cuanto seria todo usa el carrito activo y continuarFlujo=true, consultaCatalogo.necesaria=false; conocer la entrega no es requisito para sumar productos.
 Una solicitud de compra de un producto con cantidad y direccion sigue siendo pedido_producto, accion=agregar y continuarFlujo=true aunque incluya preguntas sobre precio total, domicilio o pago. Conserva producto, entrega y metodoPago juntos; no la reduzcas a consulta de precio ni a metodo_pago. Una cotizacion hipotetica o pregunta informativa sin solicitud de compra sigue siendo consulta_producto, accion=consultar.
 Consignacion o consignar como metodo de pago equivale a transferencia bancaria: usa entrega.metodoPago=transferencia bancaria y continuarFlujo=true; usa intencion=metodo_pago solo cuando el mensaje no incluye una nueva solicitud de producto. Si tambien aporta datos personales, conservalos todos. El motor proporciona las cuentas y la llave autorizadas; no las inventes. Solicita los datos pendientes juntos sin exigir que el cliente responda en un solo mensaje.
 Pedir cuentas, llave o instrucciones para pagar (por ejemplo «a donde transfiero», «me regalas la cuenta» o «reenviame los datos») usa intencion=metodo_pago, accion=consultar_pago y consultaCatalogo.necesaria=false. Esto aplica aunque ya se hayan enviado las cuentas. Si el pedido esta confirmado, atiende solo ese requerimiento: no pidas datos de domicilio ni otra confirmacion, no crees otro pedido ni cambies el carrito. Si tambien aporta direccion o datos de un pedido pendiente, extraelos todos para atenderlos junto con las cuentas. Solo una nueva solicitud de compra inicia otro pedido.
 Interpreta primero cualquier accion pendiente. Confirmaciones, cambios de entrega o datos no requieren buscar productos ya procesados. Un cambio explicito de producto puede necesitar catalogo.
 Si esperas confirmacion del resumen, «asi esta bien» junto con «gracias», incluso agrupados en un turno, significa confirmar: intencion=confirmacion, accion=confirmar, continuarFlujo=true. El agradecimiento no anula el cierre. No copies el metodo de pago, direccion ni datos ya conocidos en entrega/datosCliente cuando no se cambian en este turno. «Gracias» solo, «si» ambiguo, preguntas o correcciones no confirman por si solos.
+Cuando ultimaConsultaProducto.sinCoincidenciaInformada=true, ya se informo que no hay coincidencia validada: un si no confirma la existencia ni autoriza agregar ese producto. Si se ofrecio revisar otra referencia, pide cual desea; no vuelvas a confirmar los mismos atributos ni inventes disponibilidad.
 Una marca, referencia parcial o categoria reconocible basta para consultar el catalogo aunque falten especie, etapa o presentacion. Descubre primero que atributos distinguen sus candidatos; no preguntes especie por rutina ni presupongas lineas del historial. Solo si no hay objeto de busqueda identificable, necesaria=false y pregunta lo minimo. No inventes productos, disponibilidad, precios, cobertura ni politicas. Si necesitas catalogo, deja respuestaConversacional=null hasta obtener resultados. Si no, genera una respuesta cercana, entusiasta y comercial apropiada al contexto, sin plantilla. Conserva los campos operativos necesarios para avanzar el flujo existente.
 ${JSON.stringify(OUTPUT_SCHEMA)}`
     : construirPromptInterprete({ perfil, cliente, vertical });
+  if (clasificacion.revisionLista) promptBase += "\nRevisa la cobertura de la lista completa: una primera lectura extrajo solo un producto. Extrae TODOS los articulos solicitados, incluso los que no tienen marca o necesitan aclaracion, en productos[]. No conviertas direccion, saludo ni datos de entrega en productos. Conserva accion y cantidad de cada articulo; una duda en uno no bloquea los otros.";
+  if (clasificacion.decisionHerramientas) promptBase += "\nEl nombre comercial escrito en el mensaje actual tiene prioridad sobre productos del historial. Conserva sus palabras distintivas en consultaCatalogo.consulta aunque tengan errores ortograficos. No sustituyas marca, linea o sabor por un producto conocido solo porque comparte especie, etapa o peso. La consulta propuesta y tu confianza no prueban que un candidato sea el solicitado; si los nombres no se corresponden, pide aclaracion y no agregues otra referencia.";
   if (catalogo.some(marca => (marca.referencias || []).some(ref => ref.metadata?.usage_context))) {
     promptBase += "\nLos aliases son nombres comerciales confirmados. Usa contextoUso y el producto pendiente para completar aclaraciones de etapa o uso; no los conviertas en pesos ni cambies una marca explicita. Si falta contexto para distinguir referencias, pregunta ese dato.";
   }

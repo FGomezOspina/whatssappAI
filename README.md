@@ -65,7 +65,7 @@ La mensajeria esta aislada en `src/providers/kapsoMessagingProvider.js`. La logi
 
 La resolucion de productos se reparte entre `catalogContextService`, `catalogConsolidationService`, `productMatchValidator` y `pendingProductMatchService`. OpenAI propone una interpretacion, pero estos servicios recuperan candidatos, toleran errores de catalogo/OCR, validan la identidad contra el catalogo completo, resuelven consultas por categoria y conservan selecciones pendientes. No existe una excepcion programada para referencias concretas.
 
-Los mensajes consecutivos del mismo cliente se agrupan antes de llamar al agente. Cada mensaje reinicia la espera para recopilar el turno completo. La ventana local se configura con `INBOUND_MESSAGE_BUFFER_MS`; el valor recomendado para WhatsApp es `5000`.
+Los mensajes consecutivos del mismo cliente se agrupan antes de llamar al agente. Cada mensaje reinicia la espera para recopilar el turno completo. La ventana local se configura con `INBOUND_MESSAGE_BUFFER_MS`; el valor por defecto es `60000` (un minuto de inactividad). Si llega otro mensaje a los 50 segundos, comienza una nueva espera de 60 segundos desde ese último mensaje. El contador es independiente por cliente y canal.
 
 ## Inicio rapido
 
@@ -140,6 +140,18 @@ Ejecuta la suite:
 npm test
 ```
 
+Para verificar fotos con OpenAI y el catálogo real, sin enviar WhatsApp ni
+persistir conversaciones o pedidos (requiere las credenciales de `.env`):
+
+```bash
+node scripts/diagnose-product-images.js /ruta/producto.jpg /ruta/otro.png
+```
+
+El diagnóstico muestra la lectura inicial, los candidatos recuperados y la
+respuesta final. Las pruebas de regresión también cubren la lectura en
+mayúsculas, fabricante frente a marca comercial y variantes agrupadas bajo
+una marca raíz diferente.
+
 Comprueba el servidor:
 
 ```bash
@@ -164,3 +176,23 @@ Respuesta esperada:
 ## Principio central
 
 La IA interpreta el lenguaje humano y mantiene una conversacion agradable. El backend sigue siendo la fuente de verdad para marcas, referencias, presentaciones, precios y cambios reales del carrito.
+
+### Reglas comerciales del catálogo
+
+Una referencia compartida por especies puede declarar `metadata.especies: ["perro", "gato"]`.
+La presentación admite `metadata.precios_por_cantidad: [{ "desde": 4, "precio": 3000 }]`;
+`precio` conserva el valor base. El umbral usa la cantidad total de esa referencia y
+presentación en el carrito, y se recalcula al sumar o reducir unidades. El carrito
+persiste el precio base y las tarifas para mantener el cálculo entre mensajes.
+
+`metadata.venta_por_unidad: true` distingue una unidad suelta de las cajas o paquetes
+que tienen su propia referencia. Solo en referencias con esa declaración y una
+presentación única se convierte «M paquetes de N tubos/sobres» a M × N unidades.
+`metadata.usage_context` explica esa forma de venta al intérprete.
+
+Para revisar y sincronizar únicamente estas reglas desde `productos.json`:
+
+```sh
+node scripts/update-catalog-commercial-rules.js CLIENTE MARCA REFERENCIA
+# Añadir --apply para guardar; crea respaldo previo y verifica los cambios.
+```

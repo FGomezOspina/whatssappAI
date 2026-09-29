@@ -1,5 +1,6 @@
+const { admiteEspecie, precioPorCantidad, datosPrecio, actualizarPrecioItem } = require('../../utils/catalogCommercialRules');
 const crypto = require("crypto");
-const { formatearPrecio, normalizarMarcasCatalogo, normalizar, normalizarPeso } = require("../../utils/text");
+const { formatearPrecio, normalizarMarcasCatalogo, normalizar, normalizarPeso, contieneCondicionBolaPelo } = require("../../utils/text");
 const { unirMensajesRespuesta } = require("../../utils/responseMessages");
 const {
   establecerProductosConsultados,
@@ -416,7 +417,7 @@ function extraerCondicionesProducto(textoNormalizado = "") {
   if (/\brenal|kidney/.test(textoNormalizado)) agregar("renal");
   if (/\bgastro|digestive/.test(textoNormalizado)) agregar("gastrointestinal");
   if (/\bpiel|skin|derm|atopic/.test(textoNormalizado)) agregar("piel");
-  if (/\bbola de pelo|hairball/.test(textoNormalizado)) agregar("bola_pelo");
+  if (contieneCondicionBolaPelo(textoNormalizado)) agregar("bola_pelo");
   if (/\bobes|weight|sobrepeso/.test(textoNormalizado)) agregar("control_peso");
 
   return condiciones;
@@ -759,7 +760,7 @@ function productoReferenciaSoportada(producto = {}, mensaje = "") {
 function referenciaCumple(referencia, criterios) {
   const atributos = atributosReferencia(referencia);
 
-  if (criterios.especie && atributos.especie !== criterios.especie) {
+  if (criterios.especie && atributos.especie !== criterios.especie && !admiteEspecie(referencia, criterios.especie)) {
     return false;
   }
 
@@ -1283,7 +1284,7 @@ function lineasAlternativasConPresentacion(marca, alternativas = []) {
     .map(
       (item) =>
         `- ${nombreProducto(marca, item.referencia)} ${item.presentacion.peso}: ${formatearPrecio(
-          item.presentacion.precio
+          precioPorCantidad(item.presentacion, item.cantidad || 1)
         )}`
     )
     .join("\n");
@@ -1500,7 +1501,7 @@ function referenciasPorEspecie(catalogo, especie) {
     .map((marca) => ({
       marca,
       referencias: marca.referencias.filter(
-        (referencia) => atributosReferencia(referencia).especie === normalizarEspecie(especie)
+        (referencia) => admiteEspecie(referencia, normalizarEspecie(especie))
       ),
     }))
     .filter((grupo) => grupo.referencias.length);
@@ -1525,7 +1526,7 @@ function referenciasMarcaPorEspecie(marca, especie) {
   const especieNormalizada = normalizarEspecie(especie);
   if (!marca || !especieNormalizada) return [];
   return marca.referencias.filter(
-    (referencia) => atributosReferencia(referencia).especie === especieNormalizada
+    (referencia) => admiteEspecie(referencia, especieNormalizada)
   );
 }
 
@@ -2172,18 +2173,20 @@ function agregarAlCarrito(estado, marca, referencia, presentacion, cantidad = 1)
     (item) =>
       item.marca === marca.marca &&
       item.referencia === referencia.nombre &&
-      item.peso === presentacion.peso &&
-      item.precio === presentacion.precio
+      item.peso === presentacion.peso
   );
 
   if (existente) {
     existente.cantidad += cantidad;
+    Object.assign(existente, datosPrecio(presentacion));
+    existente.precio = precioPorCantidad(presentacion, existente.cantidad);
   } else {
     estado.carrito.push({
       marca: marca.marca,
       referencia: referencia.nombre,
       peso: presentacion.peso,
-      precio: presentacion.precio,
+      precio: precioPorCantidad(presentacion, cantidad),
+      ...datosPrecio(presentacion),
       cantidad,
       categoria: referencia.categoria || null,
       subcategoria: referencia.subcategoria || null,
@@ -2319,13 +2322,16 @@ function itemCarritoCoincideInterpretacion(catalogo, itemCarrito, interpretacion
 
   const producto = interpretacion.producto || {};
   const criterios = criteriosDesdeInterpretacion(interpretacion);
-  const referenciaCatalogo = referenciaCatalogoParaItem(catalogo, itemCarrito);
+  const referenciaCatalogo = referenciaCatalogoParaItem(catalogo, itemCarrito) || {
+    ...itemCarrito, nombre: itemCarrito.referencia,
+    presentaciones: [{ peso: itemCarrito.peso, precio: itemCarrito.precio }],
+  };
   let tieneDetalle = false;
 
   if (producto.marca) {
     tieneDetalle = true;
     const marca = buscarMarcaPorNombre(catalogo, producto.marca) || buscarMarca(catalogo, producto.marca);
-    if (!marca || normalizar(marca.marca) !== normalizar(itemCarrito.marca)) return false;
+    if (normalizar(marca?.marca || producto.marca) !== normalizar(itemCarrito.marca)) return false;
   }
 
   if (producto.referencia) {
@@ -2372,7 +2378,7 @@ function productosCarritoPorInterpretacion(catalogo, estado, interpretacion = {}
 
   if (
     estado.carrito.length &&
-    (aplicaAlUltimo || (operacion === "modificar_cantidad" && sinDetalle && estado.carrito.length === 1))
+    (sinDetalle && (aplicaAlUltimo || (operacion === "modificar_cantidad" && estado.carrito.length === 1)))
   ) {
     return [estado.carrito[estado.carrito.length - 1]];
   }
@@ -2436,6 +2442,7 @@ function resolverOperacionCarritoIA(mensaje, estado, catalogo, interpretacion = 
 
     coincidencias.forEach((item) => {
       item.cantidad = cantidadObjetivo;
+      actualizarPrecioItem(item);
     });
     limpiarFlujoVentaDespuesCambioCarrito(estado);
 
@@ -2447,6 +2454,7 @@ function resolverOperacionCarritoIA(mensaje, estado, catalogo, interpretacion = 
     if (cantidadObjetivo) {
       estado.carrito.forEach((item) => {
         item.cantidad = cantidadObjetivo;
+      actualizarPrecioItem(item);
       });
     }
     limpiarFlujoVentaDespuesCambioCarrito(estado);
@@ -2524,6 +2532,7 @@ function resolverCambioCarrito(mensaje, estado, catalogo) {
     if (accion === "mantener" && cantidad) {
       if (estado.carrito.length === 1) {
         estado.carrito[0].cantidad = cantidad;
+        actualizarPrecioItem(estado.carrito[0]);
         limpiarFlujoVentaDespuesCambioCarrito(estado);
         return `Listo, ajusté la cantidad.\n\n${resumenCarrito(estado)}\n\n¿Quieres agregar algo más o avanzamos con la entrega?`;
       }
@@ -2584,7 +2593,9 @@ function respuestaProductoAgregado(estado, marca, referencia, presentacion, opci
     }
   }
 
-  return `${formatearProductoExacto(marca, referencia, presentacion)}\n\n${accion}\n\n${siguientePaso}`;
+  const agregado = estado.carrito.find(item => item.marca === marca.marca && item.referencia === referencia.nombre && item.peso === presentacion.peso);
+  const cotizada = { ...presentacion, precio: agregado?.precio ?? presentacion.precio };
+  return `${formatearProductoExacto(marca, referencia, cotizada)}\n\n${accion}\n\n${siguientePaso}`;
 }
 
 function tieneDireccionIncompleta(estado) {
@@ -2688,7 +2699,7 @@ function lineasItems(items) {
         `- ${item.cantidad || 1} x ${nombreProducto(item.marca, item.referencia)} ${
           item.presentacion.peso
         }: ${formatearPrecio(
-          item.presentacion.precio * (item.cantidad || 1)
+          precioPorCantidad(item.presentacion, item.cantidad || 1) * (item.cantidad || 1)
         )}`
     )
     .join("\n");
@@ -2710,7 +2721,8 @@ function guardarProductosConsultados(estado, items) {
       familiaReferencia: item.familiaReferencia || null,
       referenciasEquivalentes: item.referenciasEquivalentes || null,
       peso: item.presentacion.peso,
-      precio: item.presentacion.precio,
+      precio: precioPorCantidad(item.presentacion, item.cantidad || 1),
+      ...datosPrecio(item.presentacion),
       stock:
         typeof item.presentacion.stock === "boolean"
           ? item.presentacion.stock
@@ -2719,6 +2731,7 @@ function guardarProductosConsultados(estado, items) {
         (presentacion) => ({
           peso: presentacion.peso,
           precio: presentacion.precio,
+          metadata: presentacion.metadata || {},
           stock:
             typeof presentacion.stock === "boolean"
               ? presentacion.stock
@@ -2736,7 +2749,7 @@ function lineasItemsConsultados(items) {
     .map(
       (item) =>
         `- ${nombreProducto(item.marca, item.referencia)} ${item.presentacion.peso}: ${formatearPrecio(
-          item.presentacion.precio
+          precioPorCantidad(item.presentacion, item.cantidad || 1)
         )}`
     )
     .join("\n");
@@ -2978,7 +2991,14 @@ function buscarPresentacionInterpretada(referencia, interpretacion, mensaje) {
     if (encontrada) return encontrada;
   }
 
-  return buscarPresentacion(referencia, mensaje);
+  const encontrada = buscarPresentacion(referencia, mensaje);
+  if (encontrada) return encontrada;
+  // La intencion ya fue interpretada semanticamente; no exigir otro verbo
+  // de compra ni una eleccion inexistente cuando solo hay una presentacion.
+  if (!presentacion && !interpretacion?.producto?.requierePresentacion &&
+      interpretacion?.accion === "agregar" && interpretacion?.intencion !== "consulta_producto" &&
+      referencia.presentaciones.length === 1) return referencia.presentaciones[0];
+  return null;
 }
 
 function cantidadInterpretada(interpretacion, mensaje) {
@@ -3196,7 +3216,7 @@ function resolverConsultaFamiliaEquivalente(estado, catalogo, interpretacion) {
     .map(
       (item) =>
         `- ${item.presentacion.peso}: ${formatearPrecio(
-          item.presentacion.precio
+          precioPorCantidad(item.presentacion, item.cantidad || 1)
         )}`
     )
     .join("\n");
@@ -5402,6 +5422,13 @@ function resolverConsultaCatalogo(mensaje, estado, catalogo = [], interpretacion
       Object.entries(estado).some(([campo, valor]) => valor === true && campo.startsWith("esperando") &&
         !["esperandoMarca", "esperandoPresupuesto"].includes(campo)))) {
       return resolverEntregaYPago(mensaje, estado, interpretacion);
+    }
+    if (!estado.carrito.length && ["datos_envio", "metodo_pago"].includes(interpretacion.intencion) &&
+        (Object.values(interpretacion.datosCliente || {}).some(Boolean) || interpretacion.entrega?.direccion)) {
+      const pendientes = (estado.ultimaSolicitudProductos || []).filter(item => item.estado === "pendiente");
+      return pendientes.length
+        ? `Conservo tus datos de entrega. ${pendientes[0].pregunta || "¿Qué referencia y presentación quieres completar para el pedido?"}`
+        : "Conservo tus datos de entrega. ¿Qué productos y cantidades quieres incluir en el pedido?";
     }
     return interpretacion.respuestaConversacional || null;
   }

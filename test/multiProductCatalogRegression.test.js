@@ -11,7 +11,7 @@ const catalogo = require('../productos.json');
 
 // La busqueda, los aliases, la validacion y el motor usan el catalogo real.
 // Solo se sustituye OpenAI: estas pruebas no garantizan su extraccion en vivo.
-test('pedido multiple consulta nombres sin categorias inventadas y respeta aliases del motor', async t => {
+for (const extraccion of ['original', 'sin_marca', 'kilos_como_cantidad']) test(`pedido multiple conserva aliases, granel y sabores alternativos: ${extraccion}`, async t => {
   const backend = process.env.CATALOG_SEARCH_BACKEND;
   process.env.CATALOG_SEARCH_BACKEND = 'local';
   t.after(() => { if (backend === undefined) delete process.env.CATALOG_SEARCH_BACKEND; else process.env.CATALOG_SEARCH_BACKEND = backend; });
@@ -22,6 +22,13 @@ test('pedido multiple consulta nombres sin categorias inventadas y respeta alias
     { marca: 'PONEDORA', referencia: 'PONEDORA ALIMENTO AVE', textoVisible: 'Ponedora', categoria: 'alimento', subcategoria: 'ave', presentacion: '1kg', cantidad: 1 },
     { marca: 'PEDIGREE', textoVisible: 'carnitas Pedigree', categoria: 'alimento', especie: 'perro', etapa: 'adulto', tamano: 'pequeno', sabores: ['pollo'], cantidad: 3 },
   ];
+  if (extraccion !== 'original') {
+    Object.assign(solicitudes[1], { marca: null, referencia: 'cuchuco',
+      cantidad: extraccion === 'kilos_como_cantidad' ? 4 : 1,
+      presentacion: extraccion === 'kilos_como_cantidad' ? '1kg' : '4 kilos' });
+    Object.assign(solicitudes[3], { sabores: ['pollo en filetes', 'carne'],
+      textoVisible: '3 paquetes de carnitas Pedigree para perros adultos razas pequeñas (sabor pollo en filetes o carne)' });
+  }
   const estado = crearEstadoInicial();
   let contextoRedaccion;
   const archivo = require.resolve('../src/services/conversationService');
@@ -36,13 +43,13 @@ test('pedido multiple consulta nombres sin categorias inventadas y respeta alias
     './aiInterpreter': { interpretarMensajeCliente: async args => {
       if (args.clasificacion.decisionHerramientas) return normalizarInterpretacion({ intencion: 'pedido_producto',
         accion: 'agregar', confianza: 1, productos: solicitudes, consultaCatalogo: { necesaria: true, consulta: mensaje } });
-      const solicitud = solicitudes.find(p => args.mensaje.toUpperCase().includes(p.marca));
+      const solicitud = solicitudes.find(p => args.mensaje.toUpperCase().includes(p.marca || 'CUCHUCO'));
       assert.ok(solicitud);
       assert.doesNotMatch(args.mensaje, /CUCHUCO ALIMENTO|PONEDORA ALIMENTO AVE/);
       if (solicitud.marca === 'PEDIGREE') assert.ok(args.catalogo.every(m => m.marca === 'PED'));
-      const referencia = solicitud.marca === 'RINGO' ? 'RINGO PREMIUM' : solicitud.marca === 'PEDIGREE' ? 'PED POUCHE ADUL RP POLLO' : solicitud.marca;
-      return normalizarInterpretacion({ intencion: 'pedido_producto', accion: 'agregar', confianza: 1,
-        producto: { ...solicitud, marca: solicitud.marca === 'PEDIGREE' ? 'PED' : solicitud.marca,
+      const referencia = !solicitud.marca ? 'CUCHUCO' : solicitud.marca === 'RINGO' ? 'RINGO PREMIUM' : solicitud.marca === 'PEDIGREE' ? 'PED POUCHE ADUL RP POLLO' : solicitud.marca;
+      return normalizarInterpretacion({ intencion: 'pedido_producto', accion: 'agregar', confianza: extraccion === 'original' ? 1 : 0.74,
+        producto: { ...solicitud, marca: solicitud.marca === 'PEDIGREE' ? 'PED' : solicitud.marca || 'CUCHUCO',
           referencia, presentacion: solicitud.marca === 'PEDIGREE' ? '100gr' : solicitud.presentacion, cantidad: 1 } });
     } },
     './humanizer': { humanizarRespuesta: async (_mensaje, base, opciones) => { contextoRedaccion = opciones; return base; } },
@@ -85,4 +92,21 @@ test('descripciones de empaque y unidades no vuelven ambigua una identidad recon
   }
   const alimento = consultaSolicitudProducto({ marca: 'MARCA', textoVisible: 'MARCA (sabor pollo)', sabores: ['pollo'] }, 'MARCA (sabor pollo)');
   assert.match(alimento, /pollo/); // No borrar parentesis con atributos comerciales.
+});
+
+test('sabores alternativos no exigen mezcla y un formato omitido no bloquea una referencia unica', () => {
+  const { validarCoincidenciaProducto } = require('../src/services/productMatchValidator');
+  const catalogo = [{ marca: 'PRUEBA', referencias: [
+    { nombre: 'PRUEBA POUCHE ADUL RP POLLO', especie: 'perro', presentaciones: [{ peso: '100g', precio: 10 }] },
+    { nombre: 'PRUEBA POUCHE ADUL RP SALMON', especie: 'perro', presentaciones: [{ peso: '100g', precio: 20 }] },
+  ] }];
+  const validar = mensaje => validarCoincidenciaProducto({ mensaje, catalogo,
+    clasificacion: { perfilContexto: 'pedido', intencion: 'busqueda_producto' } });
+  for (const sabores of ['pollo', 'pollo en filetes o carne']) {
+    const v = validar(`PRUEBA perros adultos razas pequeñas ${sabores}`);
+    assert.equal(v.nivel, 'alta');
+    assert.equal(v.coincidencia.referencia, 'PRUEBA POUCHE ADUL RP POLLO');
+  }
+  assert.notEqual(validar('PRUEBA perros adultos razas pequeñas pollo y carne').nivel, 'alta');
+  assert.notEqual(validar('PRUEBA perros adultos razas pequeñas pollo o salmon').nivel, 'alta');
 });

@@ -219,3 +219,155 @@ test('redaccion conserva el siguiente paso comercial cuando el motor lo solicita
   assert.equal(respuesta, buena);
   assert.match(solicitudes[1].messages.at(-1).content, /falta_siguiente_paso/);
 });
+
+test('precios COP equivalentes pasan y un importe distinto sigue rechazado', async () => {
+  const hechos = { nivel: 'alta', coincidencia: { referencia: 'PRO PLAN FELINE EN',
+    presentaciones: [{ peso: '1.5kg', precio: 113600 }] } };
+  for (const precio of ['$113.600', '$ 113.600', '113.600 pesos', 'COP 113,600', '$113.600,00']) {
+    const solicitudes = [];
+    const buena = `PRO PLAN FELINE EN de 1.5kg a ${precio}. ¿Avanzamos con la entrega?`;
+    const redactar = humanizador(['PRO PLAN FELINE EN de 1.5kg a $113.600.', buena], solicitudes);
+    assert.equal(await redactar('Me podrías enviar dos paquetes',
+      'PRO PLAN FELINE EN 1.5kg a $113.600. ¿Avanzamos con la entrega?', {
+        productoAutonomo: hechos, estado: {}, interpretacionIA: { accion: 'agregar' },
+      }), buena);
+  }
+  const redactar = humanizador(Array(2).fill('PRO PLAN FELINE EN de 1.5kg a 113.601 pesos. ¿Avanzamos?'), []);
+  await assert.rejects(redactar('Dos paquetes', 'Precio: $113.600. ¿Avanzamos?', {
+    productoAutonomo: hechos, estado: {},
+  }), /precio_no_autorizado/);
+});
+
+test('compra interpretada conserva dos unidades sin exigir palabra clave ni elegir presentacion unica', () => {
+  const { crearEstadoInicial } = require('../src/conversation/conversationStore');
+  const { resolverConsultaCatalogo } = require('../src/verticals/petshop/orderLogic');
+  const productos = [{ marca: 'PRO PLAN', referencias: [{ nombre: 'PRO PLAN FELINE EN', especie: 'gato',
+    categoria: 'comida', presentaciones: [{ peso: '1.5kg', precio: 113600 }] }] }];
+  const lectura = { intencion: 'pedido_producto', accion: 'agregar', confianza: 0.99,
+    producto: { marca: 'PRO PLAN', referencia: 'PRO PLAN FELINE EN', cantidad: 2 } };
+  for (const mensaje of ['Me podrías por favor enviarme dos paquetes de concentrado proplan feline EN',
+    'PRO PLAN FELINE EN, dos para mañana por favor']) {
+    const estado = crearEstadoInicial();
+    const respuesta = resolverConsultaCatalogo(mensaje, estado, productos, lectura);
+    assert.equal(estado.carrito.length, 1);
+    assert.equal(estado.carrito[0].cantidad, 2);
+    assert.equal(estado.carrito[0].peso, '1.5kg');
+    assert.match(respuesta, /227\.200/);
+  }
+  for (const variante of ['consulta', 'multiples', 'peso_no_disponible']) {
+    const estado = crearEstadoInicial();
+    const catalogo = structuredClone(productos);
+    const interpretacion = structuredClone(lectura);
+    if (variante === 'consulta') { interpretacion.accion = 'consultar'; interpretacion.intencion = 'consulta_producto'; }
+    if (variante === 'multiples') catalogo[0].referencias[0].presentaciones.push({ peso: '3kg', precio: 200000 });
+    if (variante === 'peso_no_disponible') interpretacion.producto.presentacion = '5kg';
+    resolverConsultaCatalogo('PRO PLAN FELINE EN', estado, catalogo, interpretacion);
+    assert.equal(estado.carrito.length, 0, variante);
+  }
+});
+
+test('dos redacciones de aclaracion incompletas producen una pregunta validada sin romper el webhook', async () => {
+  for (const aclaracion of [
+    { campo: 'sabores', valores: ['pollo', 'pavo', 'conejo'] },
+    { campo: 'referencia', valores: ['NUTRIALFA CASTRADO POLLO', 'NUTRIALFA CASTRADO PAVO'] },
+  ]) {
+    const redactar = humanizador(['¿Cuál necesitas?', '¿Cuál prefieres?'], []);
+    const respuesta = await redactar('Tienes este x3kl?', 'Candidato no confirmado a $90.000', {
+      productoAutonomo: { nivel: 'media', aclaracion }, estado: {}, clasificacion,
+    });
+    for (const valor of aclaracion.valores) assert.ok(respuesta.toLowerCase().includes(valor.toLowerCase()));
+    assert.match(respuesta, /\?/);
+    assert.doesNotMatch(respuesta, /\$|90.000|agreg|confirmado/);
+  }
+});
+
+test('pregunta pendiente se publica una sola vez despues del carrito', async () => {
+  const pregunta = 'Para el otro alimento, ¿me confirmas la referencia?';
+  const resumen = 'Pedido:\n- 1 x NUTRIPRUEBA 30kg: $103.000\nTotal: $103.000';
+  const redactar = humanizador([`Agregué NUTRIPRUEBA al pedido. ${pregunta}`], []);
+  const respuesta = await redactar('Mi lista', `Agregado.\n\n${resumen}\n\n${pregunta}`, {
+    productoAutonomo: { nivel: 'no_aplica' }, interpretacionIA: { accion: 'agregar', preguntaPendiente: pregunta },
+    estado: { carrito: [{ referencia: 'NUTRIPRUEBA' }] }, clasificacion,
+  });
+  assert.equal((respuesta.match(/me confirmas la referencia/g) || []).length, 1);
+  assert.ok(respuesta.includes(resumen));
+  assert.ok(respuesta.endsWith(pregunta));
+});
+
+test('redaccion de un item acepta el total real del carrito y conserva sus separadores', async () => {
+  const pregunta = '¿Qué sabor necesitas del otro alimento?';
+  const carrito = [{ referencia: 'NUTRIPRUEBA', peso: '30kg', precio: 103000, cantidad: 1 }, { referencia: 'OTRO', precio: 81900, cantidad: 1 }];
+  const resumen = 'Pedido:\n- 1 x NUTRIPRUEBA 30kg: $103.000\n- 1 x OTRO: $81.900\nTotal: $184.900';
+  const redactar = humanizador([`Agregué NUTRIPRUEBA de 30kg por $103.000. El total es $184.900. ${pregunta}`], []);
+  const respuesta = await redactar('Ese', `NUTRIPRUEBA 30kg: $103.000\n\n${resumen}\n\n${pregunta}`, {
+    productoAutonomo: { nivel: 'alta', coincidencia: { referencia: 'NUTRIPRUEBA', presentaciones: [{ peso: '30kg', precio: 103000 }] } },
+    interpretacionIA: { accion: 'agregar', preguntaPendiente: pregunta }, estado: { carrito }, clasificacion,
+  });
+  assert.match(respuesta, /El total es \$184\.900\./);
+  assert.equal((respuesta.match(/Qué sabor/g) || []).length, 1);
+  assert.ok(respuesta.includes(resumen));
+});
+
+test('sin candidatos comunica ausencia y no genera confirmaciones de atributos ya recibidos', async () => {
+  const solicitudes = [];
+  const redactar = humanizador(['¿Me confirmas cachorro o adulto?', '¿Es 1.5 kg?'], solicitudes);
+  const respuesta = await redactar('De 1.5 kilos', 'No encuentro el producto.', {
+    productoAutonomo: { nivel: 'baja', terminos: ['PRUEBA', 'cachorro', 'grande'],
+      presentacionSolicitada: '1.5kg', alternativas: [], aclaracion: null }, estado: {}, clasificacion,
+  });
+  assert.match(respuesta, /No encuentro.*PRUEBA CACHORRO GRANDE.*1\.5kg/);
+  assert.match(respuesta, /No la he agregado/);
+  assert.doesNotMatch(respuesta, /confirmas|cachorro o adulto/);
+  assert.equal(solicitudes.length, 0);
+});
+
+test('consulta de varias unidades cotiza cantidad solicitada sin agregar ni usar pauta', async () => {
+  const solicitudes = [];
+  const redactar = humanizador(['Sí, PRUEBA 10mg cuesta $5.800 por unidad; las dos unidades suman $11.600.'], solicitudes);
+  const r = await redactar('¿Manejan PRUEBA 10? 1/4 cada 24 horas por 6 días. Necesito dos tabletas.',
+    'PRUEBA 10mg: $5.800', { estado: {carrito:[]}, clasificacion,
+      interpretacionIA: {accion:'consultar',producto:{cantidad:2}},
+      productoAutonomo: {nivel:'alta',presentacionSolicitada:'10mg',coincidencia:{referencia:'PRUEBA',
+        presentaciones:[{peso:'10mg',precio:5800}]}},
+    });
+  assert.match(r,/11\.600/);
+  const contexto = JSON.parse(solicitudes[0].messages[1].content);
+  assert.equal(contexto.cotizacionCantidad.unidades,2);
+  assert.equal(contexto.cotizacionCantidad.total,11600);
+});
+
+test('aclarar un producto de varias fotos no omite la cotizacion del ya identificado', async () => {
+  const solicitudes = [];
+  const completa = 'ALFA POUCH ADULT de 85 g cuesta $6.200. ¿Qué presentación quieres del otro producto?';
+  const redactar = humanizador([
+    'El alimento húmedo quedó identificado; me falta que confirmes el otro producto.', completa,
+  ], solicitudes);
+  const resultado = await redactar('Tienen estos dos productos', completa, {
+    productoAutonomo: { nivel: 'no_aplica', resultados: [
+      { nivel: 'alta', solicitud: { presentacion: '85g' }, coincidencia: { referencia: 'ALFA POUCH ADULT',
+        presentaciones: [{ peso: '85gr', precio: 6200 }] } },
+      { nivel: 'media', solicitud: { marca: 'OTRA' }, coincidencia: null },
+    ] }, estado: {}, clasificacion, interpretacionIA: { accion: 'consultar', preguntaPendiente: '¿Qué presentación quieres?' },
+  });
+  assert.equal(resultado, completa);
+  assert.equal(solicitudes.length, 2);
+});
+
+test('dos fotos mantienen respuesta validada si el redactor insiste en cotizar el peso pendiente', async () => {
+  const solicitudes = [];
+  const base = 'ALFA POUCH ADULT 85gr: $6.200. ¿Qué presentación necesitas de BETA WILD?';
+  const redactar = humanizador(['ALFA POUCH ADULT 85gr $6.200 y BETA WILD 1kg $35.900?',
+    'Ambos cuestan $42.100. ¿Los agrego?'], solicitudes);
+  const respuesta = await redactar('Tienen estos dos', base, {
+    productoAutonomo: { nivel: 'no_aplica', resultados: [
+      { nivel: 'alta', solicitud: { presentacion: '85g' }, coincidencia: { referencia: 'ALFA POUCH ADULT',
+        presentaciones: [{ peso: '85gr', precio: 6200 }] } },
+      { nivel: 'alta', solicitud: { presentacion: null }, coincidencia: { referencia: 'BETA WILD',
+        presentaciones: [{ peso: '1kg', precio: 35900 }] } },
+    ] }, estado: {}, clasificacion, interpretacionIA: { accion: 'consultar' },
+  });
+  assert.equal(respuesta, base);
+  const contexto = JSON.parse(solicitudes[0].messages[1].content);
+  assert.equal(contexto.resultado.resultados[1].pendiente, 'presentacion');
+  assert.doesNotMatch(JSON.stringify(contexto), /35900/);
+});

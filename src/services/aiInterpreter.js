@@ -1,3 +1,4 @@
+const { contieneCondicionBolaPelo } = require("../utils/text");
 const { resolverEvidenciaInterpretacion } = require("./productEvidenceService");
 const OpenAI = require("openai");
 const { logUsoIA } = require("./aiUsageLogger");
@@ -47,7 +48,7 @@ function atributosReferenciaCatalogo(referencia = {}) {
   if (/\brenal|kidney/.test(texto)) condiciones.push("renal");
   if (/\bgastro|digestive/.test(texto)) condiciones.push("gastrointestinal");
   if (/\bpiel|skin|derm/.test(texto)) condiciones.push("piel");
-  if (/\bbola de pelo|hairball/.test(texto)) condiciones.push("bola_pelo");
+  if (contieneCondicionBolaPelo(texto)) condiciones.push("bola_pelo");
   if (/\bobes|weight|sobrepeso/.test(texto)) condiciones.push("control_peso");
 
   let etapa = null;
@@ -75,6 +76,8 @@ function resumenCatalogo(catalogo = []) {
     referencias: marca.referencias.map((referencia) => ({
       nombre: referencia.nombre,
       especie: referencia.especie || "perro",
+      especies: referencia.metadata?.especies,
+      contextoUso: referencia.metadata?.usage_context,
       categoria: referencia.categoria || null,
       subcategoria: referencia.subcategoria || null,
       descripcion: referencia.descripcion || "",
@@ -108,7 +111,7 @@ function resumenCatalogoParaPrompt(catalogo = [], opciones = {}) {
 }
 
 function detalleVision() {
-  const valor = (process.env.OPENAI_VISION_DETAIL || "auto").toLowerCase();
+  const valor = (process.env.OPENAI_VISION_DETAIL || "high").toLowerCase();
   return ["auto", "low", "high"].includes(valor) ? valor : "auto";
 }
 
@@ -157,6 +160,7 @@ function normalizarInterpretacion(valor) {
     referencia: producto.referencia || null,
     linea: textoBreve(producto.linea, 120),
     textoVisible: textoBreve(producto.textoVisible, 500),
+    mencionOriginal: textoBreve(producto.mencionOriginal, 500),
     categoria: producto.categoria || null,
     subcategoria: producto.subcategoria || null,
     especie: producto.especie || null,
@@ -325,6 +329,7 @@ Fuente de verdad:
 - Puedes inferir especie, etapa, tamano y presentacion desde lenguaje humano, abreviaturas, mala ortografia y razas.
 - El cliente escribe en español colombiano y lenguaje comercial local. Entiende expresiones como "cuido", "concentrado", "comida", "purina", "referencia", "manejan esta referencia", "la de la foto", "la bolsa", "bulto", "paquete", "kilo", "kl", "libra", "raza pequeña", "todas las razas" y variantes coloquiales.
 - En WhatsApp colombiano, vocativos, tono carinoso, diminutivos, disculpas, cierres y agradecimientos son tono social; no los conviertas en marca, referencia ni instruccion comercial.
+- Resuelve la intencion por el significado del mensaje y el contexto, no por la presencia de palabras clave. Una solicitud cortes o indirecta de enviar cantidades de un producto puede ser pedido_producto con accion agregar sin decir "comprar". Conserva la cantidad solicitada; distingue preguntas de cotizacion de solicitudes de compra.
 - Interpreta la intencion del turno completo antes de extraer producto. Si el cliente menciona un producto solo para decir que no lo quiere, no le sirvio, no seguira con la compra, ya no le interesa o solo agradece/cierra, usa intencion "rechazo" o "agradecimiento", accion "rechazar" o null, y deja producto/productos sin datos.
 - Despues de una cotizacion, no asumas que toda mencion del producto es una compra o nueva busqueda: puede ser comentario, rechazo, cierre o agradecimiento. Solo usa consulta_producto/pedido_producto si pide precio, disponibilidad, alternativas, cantidad, presentacion o agregar.
 - El cliente puede escribir con errores normales de WhatsApp: letras cambiadas, tildes omitidas, palabras pegadas, números metidos accidentalmente entre letras, abreviaturas, duplicación de letras, frases incompletas y autocorrector raro. Corrige mentalmente esos errores antes de decidir intención.
@@ -343,6 +348,7 @@ Fuente de verdad:
 - Si el cliente dice una linea como "adultos todos los tamaños", "todas las razas", "adulto raza pequeña/grande" o una abreviatura equivalente, no devuelvas una referencia generica cuyo nombre sea solo la marca si existe una referencia de catalogo que incluya esa linea. La referencia generica solo se usa cuando el cliente realmente pidio ese producto generico.
 - "Todos los tamaños", "todos los tamanos", "todas las razas" y "cualquier tamaño" significan tamano "todas"; deben pesar mas que una foto o palabra suelta que sugiera perro pequeño/grande.
 - Tu criterio debe parecer de asesor humano, no de vendedor que siempre dice que si. Si el catalogo no respalda lo pedido, la decision correcta es marcar el dato solicitado y permitir que el motor responda con una negativa util.
+- Usa contextoUso del catálogo para interpretar la unidad de venta. Si se vende por unidad, un paquete solicitado de N unidades equivale a N unidades (M paquetes de N son M*N), sin inventar una presentación. Conserva preferencias de sabor sin afirmar disponibilidad cuando el catálogo no detalla sabores.
 - El backend es la autoridad para marca, referencia, presentaciones y precios. Tu trabajo es entender que quiere el cliente: agregar, consultar, recomendar, cambiar cantidad, quitar productos, cambiar datos o cerrar pedido.
 - El estado de conversacion importa tanto como el ultimo mensaje. Si ya hay carrito, datos, metodo de pago o una seleccion pendiente, interpreta el mensaje como continuacion salvo que el cliente pida claramente empezar de nuevo.
 - No conviertas una aclaracion corta en un pedido nuevo si responde a una pregunta pendiente. Ejemplo: si se esperaba presentacion y el cliente dice "4 kilos", completa presentacion; si se esperaba metodo de pago y dice "efectivo", completa pago.

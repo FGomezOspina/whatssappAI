@@ -4,6 +4,7 @@ require("dotenv").config({ quiet: true });
 
 const fs = require("fs");
 const path = require("path");
+const { especiePorNombre, pesoCorregido } = require("../src/utils/catalogCorrections");
 const { requestSupabase, supabaseConfigurado } = require("../src/repositories/supabaseClient");
 
 const CLIENTS_TABLE = process.env.SUPABASE_CLIENTS_TABLE || "aivance_clients";
@@ -212,7 +213,7 @@ function normalizarReferencia(item = {}, archivo) {
 
   return {
     nombre,
-    especie: normalizarEspecie(primerDefinido(item.especie, item.species)) || "perro",
+    especie: especiePorNombre(nombre) || normalizarEspecie(primerDefinido(item.especie, item.species)) || "perro",
     categoria,
     subcategoria,
     etapa,
@@ -220,7 +221,7 @@ function normalizarReferencia(item = {}, archivo) {
     descripcion: primerDefinido(item.descripcion, item.description),
     imagen: primerDefinido(item.imagen, item.image_url, item.imageUrl),
     metadata: metadataConFuente(item.metadata, archivo),
-    presentaciones,
+    presentaciones: presentaciones.map(p => ({ ...p, peso: pesoCorregido(nombre, p.peso) })),
   };
 }
 

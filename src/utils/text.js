@@ -56,12 +56,47 @@ function normalizarMarcasCatalogo(texto = "", catalogo = []) {
       }
     }
   }
+  // Resolver variaciones gramaticales contra las marcas de ESTE catalogo:
+  // conectores entre palabras y singular/plural. La coincidencia mas completa
+  // gana a una marca raiz; un empate entre marcas distintas queda sin resolver.
+  const marcasPorPalabras = catalogo.map(item => ({ nombre: item.marca,
+    tokens: normalizar(item.marca).split(/\s+/).filter(Boolean) })).filter(item => item.tokens.length > 1);
+  const equivalente = (a, b) => a === b || (a.length > 3 && a.endsWith("s") && a.slice(0, -1) === b) ||
+    (b.length > 3 && b.endsWith("s") && b.slice(0, -1) === a);
+  for (let inicio = 0; inicio < palabras.length; inicio++) {
+    const candidatos = [];
+    for (const marca of marcasPorPalabras) {
+      let cursor = inicio, cambios = 0, coincide = true;
+      for (let indice = 0; indice < marca.tokens.length; indice++) {
+        let token = normalizar(palabras[cursor] || "");
+        if (indice > 0 && /^(for|para)$/.test(token) && token !== marca.tokens[indice]) {
+          cambios++; cursor++; token = normalizar(palabras[cursor] || "");
+        }
+        if (!equivalente(token, marca.tokens[indice])) { coincide = false; break; }
+        if (token !== marca.tokens[indice]) cambios++;
+        cursor++;
+      }
+      if (coincide) candidatos.push({ ...marca, cursor, cambios });
+    }
+    candidatos.sort((a, b) => b.tokens.length - a.tokens.length || a.cambios - b.cambios);
+    const [primero, segundo] = candidatos;
+    if (primero?.cambios > 0 && (!segundo || primero.tokens.length > segundo.tokens.length || primero.cambios < segundo.cambios)) {
+      // Mantener palabras separadas para no alterar los limites del resto de
+      // la frase ni repetir normalizaciones en consultas posteriores.
+      palabras.splice(inicio, primero.cursor - inicio, ...primero.nombre.split(/\s+/));
+      inicio += primero.tokens.length - 1;
+    }
+  }
   return palabras.join(" ");
 }
 
+function contieneCondicionBolaPelo(texto = "") {
+  return /\b(?:hairballs?|bolas?\s+(?:de\s+)?pelos?)\b/.test(normalizar(texto));
+}
+
 function normalizarPeso(texto = "") {
-  const peso = normalizar(texto)
-    .replace(/,/g, ".")
+  // La coma decimal debe conservarse ANTES de quitar puntuacion.
+  const peso = normalizar(textoSeguro(texto).replace(/(\d),(?=\d)/g, "$1."))
     .replace(
       /\b(?:x|por)\s*(?=\d+(?:\.\d+)?\s*(?:kg|kl|kr|kilogramos?|kilos?|g|gr|gramos?|lb|libras?)\b)/g,
       ""
@@ -85,7 +120,13 @@ function normalizarPeso(texto = "") {
 // Preserve short commercial identifiers before punctuation/stopword expansion.
 function codigosReferencia(nombre = "", marca = "") {
   const marcaTokens = new Set(textoSeguro(marca).toUpperCase().split(/\s+/));
-  return [...new Set((textoSeguro(nombre).match(/\b(?:[A-Z]\/[A-Z]|[A-Z]{2})\b/g) || [])
+  // El OCR suele devolver todo el empaque en mayusculas. Las preposiciones
+  // de una descripcion no son siglas comerciales (p. ej. "EN SALSA").
+  // EN aislado sigue siendo un identificador valido de una dieta.
+  const texto = textoSeguro(nombre).replace(/\bEN\s+(?:SALSA|GEL|POLVO|TABLETAS?|CAPSULAS?|TROZOS?|PATE|PATÉ|CALDO)\b/g,
+    frase => frase.toLowerCase());
+  return [...new Set((texto.match(/\b(?:[A-Z]\/[A-Z]|[A-Z]{2})\b/g) || [])
+    .filter(token => !/^(DE|LA|EL|LO|AL|UN)$/.test(token))
     .filter(token => !marcaTokens.has(token) && !/^(KG|KL|GR|ML|MG|LB|CM)$/.test(token)))];
 }
 
@@ -94,6 +135,7 @@ function formatearPrecio(precio) {
 }
 
 module.exports = {
+  contieneCondicionBolaPelo,
   normalizarMarcasCatalogo,
   codigosReferencia,
   expandirAbreviaturasProducto,

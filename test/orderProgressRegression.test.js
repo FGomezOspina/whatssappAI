@@ -109,3 +109,52 @@ test('confirmar avance con carrito sin banderas pendientes ejecuta entrega', asy
   assert.match(respuesta, /280\.000/);
   assert.equal(f.estado.pedidoConfirmado, false);
 });
+
+test('solicitud de envio convierte cotizacion persistida en carrito sin reconfirmar identidad', async () => {
+  for (const necesaria of [false, true]) {
+    const inicial = crearEstadoInicial();
+    resolverConsultaCatalogo('PRUEBA ADULTO 30kg', inicial, catalogo,
+      { intencion: 'consulta_producto', accion: 'consultar', confianza: 1, producto });
+    inicial.ultimaPreguntaAsistente = 'PRUEBA ADULTO de 30kg cuesta $140.000.';
+    const f = flujo(inicial);
+    const respuesta = await f.turno('me envias uno por favor', {
+      intencion: 'pedido_producto', accion: 'agregar', producto: { ...producto, cantidad: 1 },
+      consultaCatalogo: { necesaria, consulta: necesaria ? 'PRUEBA ADULTO 30kg' : null },
+    });
+    assert.equal(f.estado.carrito.length, 1, respuesta);
+    assert.equal(f.estado.carrito[0].cantidad, 1);
+    assert.match(respuesta, /Pedido:|Total:/);
+    assert.doesNotMatch(respuesta, /confirmas si es|buscas PRUEBA|cu[aá]l presentaci[oó]n/i);
+    assert.equal(f.estado.productosConsultados.length, 0);
+    const siguiente = await f.turno('si', { intencion: 'confirmacion', accion: 'confirmar' });
+    assert.equal(f.estado.carrito[0].cantidad, 1, siguiente);
+    assert.doesNotMatch(siguiente, /confirmas si es|buscas PRUEBA/i);
+  }
+});
+
+test('aceptacion sin repetir producto conserva la cantidad nueva y recupera aclaracion redundante', async () => {
+  for (const recuperar of [false, true]) {
+    const inicial = crearEstadoInicial();
+    resolverConsultaCatalogo('PRUEBA ADULTO 30kg', inicial, catalogo,
+      { intencion: 'consulta_producto', accion: 'consultar', confianza: 1, producto });
+    inicial.ultimaPreguntaAsistente = 'PRUEBA ADULTO de 30kg cuesta $140.000.';
+    if (recuperar) {
+      const { guardarCoincidenciasProductoPendientes } = require('../src/services/pendingProductMatchService');
+      guardarCoincidenciasProductoPendientes(inicial, { nivel: 'media', alternativas: [{
+        marca: 'PRUEBA', referencia: 'PRUEBA ADULTO', presentaciones: [{ peso: '30kg', precio: 140000 }],
+      }] }, { cantidad: 1, presentacion: '30kg', tipoIntencion: 'pedido_producto' });
+      inicial.ultimaConsultaProducto = { solicitudOriginal: { accion: 'agregar', producto: { ...producto, cantidad: 1 } } };
+      inicial.ultimaPreguntaAsistente = '¿Me confirmas si es PRUEBA ADULTO de 30kg?';
+    }
+    const f = flujo(inicial);
+    const respuesta = await f.turno(recuperar ? 'si' : 'me envias uno por favor', {
+      intencion: recuperar ? 'confirmacion' : 'pedido_producto', accion: recuperar ? 'confirmar' : 'agregar',
+      producto: { cantidad: 1 },
+    });
+    assert.equal(f.estado.carrito.length, 1, respuesta);
+    assert.match(respuesta, /Pedido:|Total:/);
+    assert.doesNotMatch(respuesta, /confirmas si es|buscas PRUEBA/i);
+    assert.equal(f.estado.productosConsultados.length, 0);
+    assert.equal(f.estado.carrito[0].cantidad, 1);
+  }
+});

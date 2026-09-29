@@ -1,9 +1,11 @@
+const { normalizar } = require('../utils/text');
 const fs = require("fs");
 const path = require("path");
 const { esErrorTransitorioSupabase, requestSupabase, supabaseConfigurado } = require("./supabaseClient");
 const { obtenerClienteActual } = require("../services/clients.service");
 const {
   consolidarCatalogo,
+  _internals: { distanciaDamerauLevenshtein },
 } = require("../services/catalogConsolidationService");
 
 const PRODUCTOS_PATH = path.join(__dirname, "..", "..", "productos.json");
@@ -188,7 +190,7 @@ async function buscarProductosCatalogoCliente(cliente = null, opciones = {}) {
 
   const limit = Math.max(1, Math.min(Number(opciones.limit || 20), 100));
   const inicio = Date.now();
-  const filas =
+  let filas =
     (await requestSupabase(`rpc/${CATALOG_SEARCH_RPC}`, {
       method: "POST",
       body: JSON.stringify({
@@ -197,6 +199,23 @@ async function buscarProductosCatalogoCliente(cliente = null, opciones = {}) {
         p_limit: limit,
       }),
     })) || [];
+
+  // La similitud del RPC usa todo el documento y puede diluir una errata
+  // de marca. Comparar nombres cortos del mismo cliente recupera candidatos,
+  // sin confirmar variantes ni consultar catálogos de otras empresas.
+  if (opciones.recuperarMarcaAproximada && /^[a-z]{5,}$/i.test(normalizar(query))) {
+    const marcas = await requestSupabase(`${BRANDS_TABLE}?client_id=eq.${clienteActual.id}&active=eq.true&select=name&order=name&limit=1000`);
+    const token = normalizar(query);
+    const exacta = marcas.some(m => normalizar(m.name) === token);
+    const cercanas = exacta ? [] : marcas.filter(m => distanciaDamerauLevenshtein(normalizar(m.name), token) === 1);
+    if (cercanas.length > 0 && cercanas.length <= 3) {
+      const resultados = await Promise.all(cercanas.map(m => requestSupabase(`rpc/${CATALOG_SEARCH_RPC}`, {
+        method: 'POST', body: JSON.stringify({p_client_id: clienteActual.id, p_query: m.name, p_limit: limit}),
+      })));
+      const unicas = new Map([...resultados.flat(), ...filas].map(f => [f.reference_id, f]));
+      filas = [...unicas.values()];
+    }
+  }
 
   return {
     catalogo: construirCatalogoDesdeBusqueda(filas),

@@ -708,6 +708,50 @@
         ]
       },
       {
+        "nombre": "AGILITY GRAND CACH",
+        "especie": "perro",
+        "categoria": "comida",
+        "subcategoria": "concentrado",
+        "etapa": "cachorro",
+        "descripcion": "AGILITY GRAND CACH",
+        "imagen": "",
+        "requiere_confirmacion": false,
+        "metadata": {
+          "source": "Actualizacion confirmada por cliente 2026-09-24",
+          "original_names": [
+            "AGILITY GRANDES CACHORROS 1.5KG",
+            "AGILITY GRANDES CACHORROS 3KG",
+            "AGILITY GRANDES CACHORROS 15KG"
+          ]
+        },
+        "presentaciones": [
+          {
+            "peso": "1.5kg",
+            "precio": 33700,
+            "metadata": {
+              "source": "Actualizacion confirmada por cliente 2026-09-24",
+              "nombre_original": "AGILITY GRANDES CACHORROS 1.5KG"
+            }
+          },
+          {
+            "peso": "3kg",
+            "precio": 65400,
+            "metadata": {
+              "source": "Actualizacion confirmada por cliente 2026-09-24",
+              "nombre_original": "AGILITY GRANDES CACHORROS 3KG"
+            }
+          },
+          {
+            "peso": "15kg",
+            "precio": 299900,
+            "metadata": {
+              "source": "Actualizacion confirmada por cliente 2026-09-24",
+              "nombre_original": "AGILITY GRANDES CACHORROS 15KG"
+            }
+          }
+        ]
+      },
+      {
         "nombre": "AGILITY OBESOS",
         "especie": "perro",
         "categoria": "comida",
@@ -8709,12 +8753,12 @@
         ]
       },
       {
-        "nombre": "CAT CHOW DELIMI",
+        "nombre": "CAT CHOW DELIMIX",
         "especie": "gato",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": null,
-        "descripcion": "CAT CHOW DELIMI",
+        "descripcion": "CAT CHOW DELIMIX",
         "imagen": "",
         "requiere_confirmacion": false,
         "metadata": {
@@ -10751,9 +10795,9 @@
       },
       {
         "nombre": "CHURU",
-        "especie": "perro",
-        "categoria": "comida",
-        "subcategoria": "concentrado",
+        "especie": "perro y gato",
+        "categoria": "snack",
+        "subcategoria": "snack",
         "etapa": null,
         "descripcion": "CHURU",
         "imagen": "",
@@ -10762,7 +10806,13 @@
           "source": "Productos.pdf",
           "original_names": [
             "CHURU 14GR"
-          ]
+          ],
+          "especies": [
+            "perro",
+            "gato"
+          ],
+          "usage_context": "Se vende por unidad individual de 14gr para perro o gato. Un paquete solicitado de 4 tubitos o sobres corresponde a 4 unidades individuales, no a una presentación diferente. El catálogo no detalla sabores: conservar la preferencia del cliente sin prometer un sabor disponible.",
+          "venta_por_unidad": true
         },
         "presentaciones": [
           {
@@ -10775,6 +10825,12 @@
               "nombre_original": "CHURU 14GR",
               "codigos": [
                 "105010102000"
+              ],
+              "precios_por_cantidad": [
+                {
+                  "desde": 4,
+                  "precio": 3000
+                }
               ]
             }
           }
@@ -18272,7 +18328,7 @@
     "referencias": [
       {
         "nombre": "FORTIFLOR FELINE",
-        "especie": "otro",
+        "especie": "gato",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -18311,7 +18367,7 @@
     "referencias": [
       {
         "nombre": "FORTIFLORA CANINE",
-        "especie": "otro",
+        "especie": "perro",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -32348,7 +32404,7 @@
       },
       {
         "nombre": "PRO PLAN FELINE EN",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": null,
@@ -32363,7 +32419,7 @@
         },
         "presentaciones": [
           {
-            "peso": "1.5g",
+            "peso": "1.5kg",
             "precio": 113600,
             "metadata": {
               "source": "Productos.pdf",
@@ -32379,7 +32435,7 @@
       },
       {
         "nombre": "PRO PLAN FELINE LATA EN",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
         "subcategoria": "comida_humeda",
         "etapa": null,
@@ -32410,7 +32466,7 @@
       },
       {
         "nombre": "PRO PLAN FELINE LATA NF",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
         "subcategoria": "comida_humeda",
         "etapa": null,
@@ -32441,7 +32497,7 @@
       },
       {
         "nombre": "PRO PLAN FELINE LATA UR",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
         "subcategoria": "comida_humeda",
         "etapa": null,
@@ -32472,7 +32528,7 @@
       },
       {
         "nombre": "PRO PLAN FELINE NF EARLY CARE",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": null,
@@ -32503,7 +32559,7 @@
       },
       {
         "nombre": "PRO PLAN FELINE OM",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": null,
@@ -32534,7 +32590,7 @@
       },
       {
         "nombre": "PRO PLAN FELINE UR",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": null,
@@ -35145,7 +35201,7 @@
       },
       {
         "nombre": "ROYAL CANIN FELINE STERILIZED",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": null,
@@ -38181,7 +38237,7 @@
       },
       {
         "nombre": "TASTE LOWLAND PATO FELINE 14B",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": null,
@@ -38476,7 +38532,7 @@
       },
       {
         "nombre": "TASTE OF THE WILD PATO FELINE",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": null,
@@ -40172,7 +40228,7 @@
       },
       {
         "nombre": "VACUNA TRIPLE FELINA",
-        "especie": "otro",
+        "especie": "gato",
         "categoria": "vacuna",
         "subcategoria": "biologico",
         "etapa": null,
@@ -40203,7 +40259,7 @@
       },
       {
         "nombre": "VACUNA TRIPLE FELINA + LEUCEMIA",
-        "especie": "otro",
+        "especie": "gato",
         "categoria": "vacuna",
         "subcategoria": "biologico",
         "etapa": null,
@@ -40234,7 +40290,7 @@
       },
       {
         "nombre": "VACUNA TRIPLE FELINA + RABIA",
-        "especie": "otro",
+        "especie": "gato",
         "categoria": "vacuna",
         "subcategoria": "biologico",
         "etapa": null,

@@ -1,4 +1,5 @@
-const { _internals: { marcaExactaConsultada, tokensDistintivos, similitudTokenFlexible } } = require("./productMatchValidator");
+const { admiteEspecie } = require('../utils/catalogCommercialRules');
+const { _internals: { marcaExactaConsultada, marcaCompatibleConIdentidad, tokensDistintivos, similitudTokenFlexible, distanciaLevenshtein } } = require("./productMatchValidator");
 const { normalizarMarcasCatalogo, normalizar, normalizarPeso } = require("../utils/text");
 const { buscarProductosCatalogoCliente } = require("../repositories/productRepository");
 const {
@@ -189,7 +190,7 @@ function puntuarReferencia({ marca, referencia }, consulta, tokensConsulta) {
       ...(referencia.presentaciones || []).map((presentacion) => presentacion.peso),
     ].join(" ")
   );
-  const tokensNombre = normalizar(referencia.nombre || "").split(/\s+/);
+  const tokensNombre = tokensDistintivos(referencia.nombre || "");
   const tokensMarca = new Set(textoMarca.split(/\s+/));
   const tokensIdentidad = tokensDistintivos(consulta).filter(token => !tokensMarca.has(token));
   const textoCompleto = `${textoMarca} ${textoReferencia}`;
@@ -208,10 +209,14 @@ function puntuarReferencia({ marca, referencia }, consulta, tokensConsulta) {
   });
 
   // El nombre pedido pesa mas que compartir marca, especie o presentacion.
+  // Recuperar una errata de una letra permite validarla despues; no confirma
+  // por si sola la identidad ni permite sustituir variantes comerciales.
   for (const token of tokensIdentidad) {
     if (tokensNombre.some(nombre => nombre === token ||
-      (nombre.length >= 5 && token.length >= 5 && similitudTokenFlexible(nombre, token) >= 0.94))) puntos += 30;
+      (nombre.length >= 5 && token.length >= 5 && (similitudTokenFlexible(nombre, token) >= 0.94 || distanciaLevenshtein(nombre, token) === 1)))) puntos += 30;
   }
+  const nombreCorto = normalizar(referencia.nombre || '');
+  if (/^[a-z]{5,}$/.test(nombreCorto) && tokensConsulta.some(t => distanciaLevenshtein(t, nombreCorto) === 1)) puntos += 60;
   const pesoConsulta = normalizarPeso(consulta);
   if (pesoConsulta) {
     const coincidePeso = (referencia.presentaciones || []).some((presentacion) =>
@@ -220,8 +225,8 @@ function puntuarReferencia({ marca, referencia }, consulta, tokensConsulta) {
     if (coincidePeso) puntos += 6;
   }
 
-  if (consulta.includes("gato") && referencia.especie === "gato") puntos += 10;
-  if (consulta.includes("perro") && referencia.especie === "perro") puntos += 10;
+  if (consulta.includes("gato") && admiteEspecie(referencia, "gato")) puntos += 10;
+  if (consulta.includes("perro") && admiteEspecie(referencia, "perro")) puntos += 10;
   if (consulta.includes("desparasitante") && referencia.subcategoria === "desparasitante") puntos += 20;
   if (consulta.includes("antipulgas") && referencia.subcategoria === "antipulgas") puntos += 20;
 
@@ -282,7 +287,8 @@ function seleccionarCatalogoLocal({ catalogo = [], mensaje = "", estado = {}, cl
     .filter(marca => marcaExactaConsultada([marca], identidadConsulta))
     .map(marca => normalizar(marca.marca)));
   const items = referenciasCatalogo(catalogo).filter(item =>
-    !marcasConsulta.size || marcasConsulta.has(normalizar(item.marca.marca))
+    !marcasConsulta.size || marcasConsulta.has(normalizar(item.marca.marca)) ||
+    [...marcasConsulta].some(marca => marcaCompatibleConIdentidad(item.marca, item.referencia, marca, identidadConsulta))
   );
   const conPuntaje = items
     .map((item, index) => ({
@@ -407,10 +413,11 @@ async function seleccionarCatalogoParaIA({ catalogo = [], mensaje = "", mensajeO
     } };
   }
   const limite = limiteReferencias(clasificacion);
+  const textoIdentidad = !clasificacion.requiereVision && mensajeOriginal && !(esSenalReferenciaProducto(mensajeOriginal) && tokensDistintivos(mensajeOriginal).length <= 1) && tokensDistintivos(mensajeOriginal).length ? mensajeOriginal : mensaje;
   const query = expandirConsulta(textoBusqueda(mensaje, estado));
 
   if (!debeBuscarEnSupabase(clasificacion)) {
-    const resultadoLocal = seleccionarCatalogoLocal({ catalogo, mensaje, estado, clasificacion });
+    const resultadoLocal = seleccionarCatalogoLocal({ catalogo, mensaje: textoIdentidad, estado, clasificacion });
     logBusquedaCatalogo({ cliente, query, metadata: resultadoLocal.metadata, fallback: false });
     return resultadoLocal;
   }
@@ -423,12 +430,17 @@ async function seleccionarCatalogoParaIA({ catalogo = [], mensaje = "", mensajeO
       // para recuperar una referencia escrita en singular o plural.
       expandirConsulta((clasificacion.requiereVision ? mensaje : mensajeOriginal || mensaje).replace(/\b([a-záéíóúñ]{4,})s\b/gi, "$1")),
     ].filter(Boolean))];
+    // Una errata comercial se diluye en consultas largas con sabor/especie.
+    // Recuperar además el primer término distintivo; validar luego la variante.
+    const identidadCorta = tokensDistintivos(mensaje).find(t => t.length >= 4 &&
+      !/^(?:paquetes?|paquetitos?|bolsas?|tubitos?|tubos?|unidades?|gatos?|perros?|comida|alimento|snack|salmon|atun)$/.test(t));
+    if (identidadCorta && !consultasBusqueda.includes(identidadCorta)) consultasBusqueda.push(identidadCorta);
     const palabras = normalizar(mensaje).split(/\s+/);
     const unidas = palabras.slice(0, -1).map((palabra, i) =>
       /^[a-z]{2,}$/.test(palabra) && /^[a-z]{2,}$/.test(palabras[i + 1]) ? palabra + palabras[i + 1] : "").filter(Boolean);
     if (unidas.length) consultasBusqueda.push(unidas.join(" "));
     const respuestasBusqueda = await Promise.allSettled(consultasBusqueda.map(consulta =>
-      buscarProductosCatalogoCliente(cliente, { query: consulta, limit: limite })
+      buscarProductosCatalogoCliente(cliente, { query: consulta, limit: limite, recuperarMarcaAproximada: consulta === identidadCorta })
     ));
     const recuperados = respuestasBusqueda.filter(item => item.status === "fulfilled").map(item => item.value);
     if (!recuperados.length) throw respuestasBusqueda[0].reason;
@@ -444,11 +456,11 @@ async function seleccionarCatalogoParaIA({ catalogo = [], mensaje = "", mensajeO
     resultado.catalogo = candidatosOrdenados.catalogo;
     const resultadoLocal = seleccionarCatalogoLocal({
       catalogo,
-      mensaje,
+      mensaje: textoIdentidad,
       estado,
       clasificacion,
     });
-    const consultaValidada = expandirConsulta(normalizarMarcasCatalogo(query, resultado.catalogo));
+    const consultaValidada = expandirConsulta(normalizarMarcasCatalogo(expandirConsulta(textoIdentidad), resultado.catalogo));
     const identidadConsulta = tokensDistintivos(consultaValidada);
     const marcasConsulta = new Set(resultado.catalogo
       .filter(marca => marcaExactaConsultada([marca], identidadConsulta))
@@ -461,7 +473,9 @@ async function seleccionarCatalogoParaIA({ catalogo = [], mensaje = "", mensajeO
           clasificacion.requiereVision || puntuarReferencia({ marca, referencia }, consultaValidada, tokens(consultaValidada)) > 0
         ),
       })).filter(marca =>
-        !marcasConsulta.size || marcasConsulta.has(normalizar(marca.marca))
+        !marcasConsulta.size || marcasConsulta.has(normalizar(marca.marca)) ||
+        marca.referencias.some(referencia => [...marcasConsulta].some(consultada =>
+          marcaCompatibleConIdentidad(marca, referencia, consultada, identidadConsulta)))
       ),
       limite
     );
@@ -487,7 +501,7 @@ async function seleccionarCatalogoParaIA({ catalogo = [], mensaje = "", mensajeO
       metadata,
     };
   } catch (error) {
-    const resultadoLocal = seleccionarCatalogoLocal({ catalogo, mensaje, estado, clasificacion });
+    const resultadoLocal = seleccionarCatalogoLocal({ catalogo, mensaje: textoIdentidad, estado, clasificacion });
     const metadata = {
       ...resultadoLocal.metadata,
       estrategia: `fallback_${resultadoLocal.metadata.estrategia}`,

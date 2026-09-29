@@ -1,3 +1,4 @@
+const { precioPorCantidad } = require('../utils/catalogCommercialRules');
 const OpenAI = require("openai");
 const { modeloHumanizador } = require("./modelRouter");
 const { logUsoIA } = require("./aiUsageLogger");
@@ -8,6 +9,7 @@ const {
 const { logPayloadOpenAI } = require("./aiContextAuditLogger");
 const { esRespuestaMultiMensaje, dividirRespuestaMensajes, unirMensajesRespuesta } = require("../utils/responseMessages");
 const { normalizar, normalizarPeso } = require("../utils/text");
+const { respuestaValidacionProducto } = require("./productMatchValidator");
 
 const openai = process.env.OPENAI_API_KEY
   ? new OpenAI({
@@ -21,6 +23,19 @@ function extraerTokensCriticos(respuesta) {
     ...(respuesta.match(/\$\d[\d.]*/g) || []),
     ...(respuesta.match(/\b\d+(?:[.,]\d+)?\s?(?:kg|g|gr|lb)\b/gi) || []),
   ];
+}
+
+// Importes COP en prosa: el simbolo y su espaciado no cambian el valor.
+function extraerPrecios(texto = "") {
+  const numero = String.raw`\d+(?:[.,]\d+)*`;
+  const patron = new RegExp(String.raw`(?:\$\s*|\bCOP\s*)(${numero})|(${numero})\s*(?:pesos\b|COP\b)`, "gi");
+  return [...texto.matchAll(patron)].map(match => {
+    const importe = match[1] || match[2];
+    const decimal = importe.match(/[.,](\d{1,2})$/);
+    return decimal
+      ? Number(importe.slice(0, decimal.index).replace(/[.,]/g, "") + "." + decimal[1])
+      : Number(importe.replace(/[.,]/g, ""));
+  });
 }
 
 function conservaDatosCriticos(respuestaBase, respuestaHumanizada) {
@@ -236,9 +251,14 @@ async function humanizarRespuesta(mensajeCliente, respuestaBase, opciones = {}) 
     const inicioResumen = respuestaBase.indexOf("Pedido:");
     if (inicioResumen === 0) return respuestaBase;
     if (inicioResumen > 0) {
-      const introduccion = await redactarRespuestaProducto(mensajeCliente,
+      let introduccion = await redactarRespuestaProducto(mensajeCliente,
         respuestaBase.slice(0, inicioResumen), opciones);
-      return `${introduccion}\n\n${respuestaBase.slice(inicioResumen)}`;
+      if (opciones.interpretacionIA?.preguntaPendiente) {
+        // El cierre protegido ya contiene la pregunta pendiente. La introduccion
+        // generada solo informa acciones; no publica otra copia de la pregunta.
+        introduccion = introduccion.replace(/(?:[^.!?\n]|\.(?=\d))*¿[^?]*\?/g, "").trim();
+      }
+      return [introduccion, respuestaBase.slice(inicioResumen)].filter(Boolean).join("\n\n");
     }
     return redactarRespuestaProducto(mensajeCliente, respuestaBase, opciones);
   }
@@ -380,33 +400,65 @@ ${promptCliente(opciones.cliente)}
 }
 
 async function redactarRespuestaProducto(mensaje, respuestaOperativa, opciones) {
-  if (!openai) throw new Error("OpenAI no disponible para redactar la respuesta de producto");
   const hechos = opciones.productoAutonomo;
+  // No hay una identidad que confirmar si la busqueda no encontro candidatos
+  // compatibles. Una pregunta generada no debe convertir ausencia en certeza.
+  if (hechos.nivel === "baja" && !hechos.aclaracion && !hechos.alternativas?.length) {
+    opciones.onUsage?.({ skipped: true, reason: "sin_coincidencia_catalogo" });
+    return respuestaValidacionProducto(hechos);
+  }
+  if (!openai) throw new Error("OpenAI no disponible para redactar la respuesta de producto");
   const incierto = ["media", "baja"].includes(hechos.nivel);
   const coincidencia = hechos.coincidencia;
+  const cantidadSolicitada = Number(opciones.interpretacionIA?.producto?.cantidad || 1);
+  const precioVigente = (p, identidad, cantidad) => {
+    const item = opciones.interpretacionIA?.accion !== "consultar" && opciones.estado?.carrito?.find(item =>
+      normalizar(item.marca) === normalizar(identidad.marca) &&
+      normalizar(item.referencia) === normalizar(p.referencia || identidad.referenciaCatalogo || identidad.referencia) &&
+      normalizarPeso(item.peso) === normalizarPeso(p.peso));
+    const { metadata, ...presentacion } = p;
+    return { ...presentacion, precio: item ? item.precio : precioPorCantidad(p, cantidad) };
+  };
   const presentaciones = (coincidencia?.presentaciones || []).filter(p =>
-    !hechos.presentacionSolicitada || normalizarPeso(p.peso) === normalizarPeso(hechos.presentacionSolicitada));
+    !hechos.presentacionSolicitada || normalizarPeso(p.peso) === normalizarPeso(hechos.presentacionSolicitada))
+    .map(p => precioVigente(p, coincidencia, cantidadSolicitada));
+  const cotizacionCantidad = !incierto && opciones.interpretacionIA?.accion === "consultar" &&
+    presentaciones.length === 1 && Number.isInteger(cantidadSolicitada) && cantidadSolicitada > 1
+    ? { unidades: cantidadSolicitada, precioUnitario: Number(presentaciones[0].precio),
+        total: cantidadSolicitada * Number(presentaciones[0].precio) } : null;
+  const resultados = hechos.resultados?.map(item => {
+    if (!item.coincidencia) return item;
+    const peso = item.solicitud?.presentacion;
+    return { ...item, pendiente: peso ? null : "presentacion",
+      coincidencia: { ...item.coincidencia, presentaciones: peso
+        ? item.coincidencia.presentaciones.filter(p => normalizarPeso(p.peso) === normalizarPeso(peso))
+            .map(p => precioVigente(p, item.coincidencia, item.solicitud?.cantidad || 1))
+        : item.coincidencia.presentaciones.map(p => ({ peso: p.peso })) } };
+  });
   const contexto = {
     mensaje,
+    cotizacionCantidad,
     resultado: incierto ? { nivel: hechos.nivel, aclaracion: hechos.aclaracion,
       presentacionSolicitada: hechos.presentacionSolicitada, terminos: hechos.terminos,
       candidatos: (hechos.alternativas || []).map(p => ({ marca: p.marca, referencia: p.referencia,
         presentaciones: p.presentaciones?.map(p => ({ peso: p.peso })) })) }
-      : { ...hechos, coincidencia: coincidencia && { ...coincidencia, presentaciones } },
+      : { ...hechos, ...(resultados ? { resultados } : {}), coincidencia: coincidencia && { ...coincidencia, presentaciones } },
     hechosOperativos: incierto ? null : respuestaOperativa,
     accion: opciones.interpretacionIA?.accion || null,
     preguntaPendiente: opciones.interpretacionIA?.preguntaPendiente || null,
-    carrito: incierto ? undefined : opciones.estado?.carrito,
+    carrito: incierto ? undefined : opciones.estado?.carrito?.map(({ precioBase, preciosPorCantidad, ...item }) => item),
     ultimaPregunta: opciones.estado?.ultimaPreguntaAsistente || null,
     instruccionesCliente: opciones.cliente?.prompts?.humanizer || opciones.cliente?.prompts?.humanizador || null,
   };
   const prompt = `Redacta autonomamente una respuesta de WhatsApp en español colombiano para atender el mensaje completo.
-Usa exclusivamente los hechos validados. Los hechos operativos describen el resultado del motor, no son una plantilla ni texto que debas copiar.
+Usa exclusivamente los hechos validados. Los precios unitarios y totales actuales sustituyen los de la ultima pregunta o mensajes anteriores; no reutilices importes historicos al cambiar cantidades. Los hechos operativos describen el resultado del motor, no son una plantilla ni texto que debas copiar.
 Si hay coincidencia confirmada, comunica con naturalidad la referencia, presentacion y precio solicitado en una frase breve; evita encabezados, fichas repetidas, listas para un solo producto y lenguaje sobre coincidencias, opciones cercanas, catalogo, identificacion o procesos internos. No repitas marca y referencia. No uses una apertura fija: elige tu redaccion segun la conversacion.
 Si la identidad es incierta o no hay coincidencia, haz una pregunta breve que aporte el dato que falta para identificarla. Usa los atributos que distinguen candidatos; no vuelvas a pedir peso o marca ya expresados. Incluye las opciones concretas de la aclaracion (etapas o nombres de referencias compatibles); no preguntes simplemente por la referencia exacta. Conserva el peso solicitado y no sugieras categorias ni formatos distintos. No cotices candidatos inciertos, no los declares disponibles y no ofrezcas comprar otra referencia como si fuera la solicitada.
 Conserva las acciones realmente realizadas por el motor. Una consulta de precio no agrega al carrito. No confirmes un pedido si solo se agrego un producto. Respeta el siguiente paso operativo sin repetir preguntas resueltas. Mantén todas las solicitudes cuando hay varios productos. Distingue coincidencia de accion realizada: solo di que un articulo quedo agregado si figura en carrito. Los resultados pendientes requieren una pregunta concreta usando el atributo que falta y los datos ya solicitados; no pidas otra vez referencia y presentacion cuando una de ellas ya se conoce. No omitas los productos identificados por atender una aclaracion.
+Un resultado con nivel alta y pendiente presentacion ya tiene identidad confirmada: nombra su referencia validada y pregunta solo el peso. No preguntes cual de los productos busca si solicito ambos. Los precios no incluidos no estan autorizados para cotizar.
 Si preguntaPendiente contiene una pregunta, el sistema la muestra despues del resumen: no la repitas ni inventes otras preguntas; explica brevemente que productos quedaron agregados y cual esta pendiente.
 Solo si el cliente pregunta por domicilio, responde tambien: el precio del producto no es un total con envio. Si los hechos no incluyen una tarifa validada, indica que falta verificar ese costo, sin inventar tarifas, cobertura ni plazos. No inventes cuentas ni datos de pago.
+Si cotizacionCantidad existe, indica el precio por unidad y el total de las unidades solicitadas. Esto es una cotizacion, no una adicion al carrito. No deduzcas unidades ni dosis de pautas de administracion.
 No cambies cantidades, presentaciones ni precios. Puedes expresarlos en prosa libre sin conservar el formato de la respuesta operativa. Maximo una pregunta util y un emoji. Devuelve solo el mensaje final, sin comentarios tecnicos.`;
   const modelo = opciones.model || modeloHumanizador(opciones.clasificacion);
   let motivoRechazo = null;
@@ -421,7 +473,7 @@ No cambies cantidades, presentaciones ni precios. Puedes expresarlos en prosa li
       messages: [{ role: "system", content: prompt }, { role: "user", content: JSON.stringify(contexto) },
         ...(intento ? [
           ...(respuestaAnterior ? [{ role: "assistant", content: respuestaAnterior }] : []),
-          { role: "system", content: `Corrige la respuesta anterior. Motivo del rechazo: ${motivoRechazo}. Conserva solo los hechos autorizados. Si el resultado es incierto, pide el atributo pendiente mediante una pregunta directa con signos de interrogacion y sin cotizar.` }
+          { role: "system", content: `Corrige la respuesta anterior. Motivo del rechazo: ${motivoRechazo}. Conserva solo los hechos autorizados. Si la coincidencia esta confirmada, incluye referencia, presentacion y precio unitario validado, ademas de la pregunta operativa pendiente. Corregir una omision no autoriza eliminar los otros datos. Si el resultado es incierto, pide el atributo pendiente mediante una pregunta directa con signos de interrogacion y sin cotizar.` }
         ] : [])],
       ...(!/^gpt-5/i.test(modelo) ? { temperature: 0.55 } : {}),
     });
@@ -432,23 +484,48 @@ No cambies cantidades, presentaciones ni precios. Puedes expresarlos en prosa li
     const respuesta = completion.choices?.[0]?.message?.content?.trim();
     respuestaAnterior = respuesta;
     if (!respuesta) { rechazar("respuesta_vacia"); continue; }
-    const precios = extraerTokensCriticos(respuesta).filter(token => token.startsWith("$"));
-    const permitidos = new Set(extraerTokensCriticos(respuestaOperativa || "").filter(token => token.startsWith("$")));
-    const precioNumerico = token => Number(token.replace(/\D/g, ""));
-    const precioAutorizado = token => [...permitidos].some(p => precioNumerico(p) === precioNumerico(token));
+    const precios = extraerPrecios(respuesta);
+    const permitidos = new Set(extraerPrecios(respuestaOperativa || ""));
+    if (cotizacionCantidad) permitidos.add(cotizacionCantidad.total);
+    // El contexto incluye el carrito completo. Sus precios y total tambien
+    // son hechos validados aunque el resumen se adjunte fuera del redactor.
+    if (!incierto && opciones.estado?.carrito?.length) {
+      let total = 0;
+      for (const item of opciones.estado.carrito) {
+        const precio = Number(item.precio), cantidad = Number(item.cantidad || 1);
+        if (!Number.isFinite(precio) || !Number.isFinite(cantidad)) continue;
+        permitidos.add(precio); permitidos.add(precio * cantidad); total += precio * cantidad;
+      }
+      permitidos.add(total);
+    }
+    const precioAutorizado = precio => permitidos.has(precio);
     if (incierto && precios.length) { rechazar("precio_sin_coincidencia_confirmada"); continue; }
     if (incierto && !respuesta.includes("?")) { rechazar("falta_pregunta_de_aclaracion"); continue; }
-    if (incierto && hechos.aclaracion?.campo === "referencia" && hechos.aclaracion.valores?.length > 1 &&
+    if (incierto && ["referencia", "sabores"].includes(hechos.aclaracion?.campo) && hechos.aclaracion.valores?.length > 1 &&
         hechos.aclaracion.valores.some(valor => !normalizar(respuesta).includes(normalizar(valor.replace(/_/g, " "))))) {
       rechazar("faltan_opciones_de_aclaracion"); continue;
     }
     if (!incierto && respuestaOperativa?.includes("?") && !respuesta.includes("?") &&
         !opciones.interpretacionIA?.preguntaPendiente) { rechazar("falta_siguiente_paso"); continue; }
     if (!incierto && precios.some(p => !precioAutorizado(p))) { rechazar("precio_no_autorizado"); continue; }
+    if (cotizacionCantidad && !precios.includes(cotizacionCantidad.total)) {
+      rechazar("falta_total_cantidad_solicitada"); continue;
+    }
+    const cotizacionesMultiples = (resultados || []).filter(item =>
+      item.nivel === "alta" && item.coincidencia && item.solicitud?.presentacion)
+      .flatMap(item => (item.coincidencia.presentaciones || []).filter(p =>
+        normalizarPeso(p.peso) === normalizarPeso(item.solicitud.presentacion))
+        .map(p => ({ ...p, referencia: p.referencia || item.coincidencia.referenciaCatalogo || item.coincidencia.referencia })));
+    if (cotizacionesMultiples.some(p =>
+      !normalizar(respuesta).includes(normalizar(p.referencia)) ||
+      (p.precio != null && !precios.includes(Number(p.precio))) ||
+      !extraerTokensCriticos(respuesta).some(peso => normalizarPeso(peso) === normalizarPeso(p.peso)))) {
+      rechazar("falta_cotizacion_de_producto_identificado"); continue;
+    }
     if (!incierto && coincidencia && presentaciones.length === 1) {
       const p = presentaciones[0];
       if (!normalizar(respuesta).includes(normalizar(p.referencia || coincidencia.referenciaCatalogo || coincidencia.referencia))) { rechazar("falta_referencia_validada"); continue; }
-      if (!precios.some(valor => precioNumerico(valor) === Number(p.precio))) { rechazar("falta_precio_validado"); continue; }
+      if (!precios.some(valor => valor === Number(p.precio))) { rechazar("falta_precio_validado"); continue; }
       const pesos = extraerTokensCriticos(respuesta).filter(token => !token.startsWith("$"));
       if (/\d\s*(?:kg|gr|g|lb)\b/i.test(p.peso) && !pesos.some(peso => normalizarPeso(peso) === normalizarPeso(p.peso))) { rechazar("falta_presentacion_validada"); continue; }
     }
@@ -457,7 +534,21 @@ No cambies cantidades, presentaciones ni precios. Puedes expresarlos en prosa li
         /(?:agregue|agrego|anadi|inclui|reserve|separe).*(?:pedido|carrito)|(?:pedido|carrito).*(?:agregado|reservado)/.test(normalizar(respuesta))) { rechazar("accion_no_autorizada"); continue; }
     return respuesta;
   }
-  // Never publish the operational template as a substitute for generation.
+  // Una aclaracion fallida no deja al cliente sin respuesta. Construirla
+  // desde atributos validados, nunca desde candidatos cotizados ni del carrito.
+  if (incierto && hechos.aclaracion?.valores?.length &&
+      ["referencia", "especie", "categoria", "etapa", "tamano", "sabores"].includes(hechos.aclaracion.campo)) {
+    return respuestaValidacionProducto({ aclaracion: hechos.aclaracion });
+  }
+  // Un fallo de redaccion no pierde los resultados independientes de una lista.
+  // La respuesta del motor contiene solamente importes y acciones validados.
+  if (hechos.resultados?.length && respuestaOperativa) return respuestaOperativa;
+  // Un ajuste ya ejecutado mantiene su respuesta operativa validada aunque
+  // la redacción falle. Nunca publicar los precios rechazados de la IA.
+  if (!incierto && respuestaOperativa && opciones.estado?.carrito?.length &&
+      (opciones.interpretacionIA?.carrito?.operacion === "modificar_cantidad" ||
+       opciones.interpretacionIA?.accion === "modificar_cantidad")) return respuestaOperativa;
+  // Una cotizacion invalida sigue sin autorizar publicar importes incorrectos.
   throw new Error(`No se obtuvo una respuesta de producto fiel a los hechos validados: ${motivoRechazo}`);
 }
 

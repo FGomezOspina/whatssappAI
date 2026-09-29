@@ -163,6 +163,9 @@ test('respuesta visual sin evidencia de peso no hereda la presentacion elegida d
   const resultado = await modulo.exports.interpretarMensajeCliente({ mensaje: 'Precio', estado: {}, catalogo,
     imageUrls: ['data:image/png;base64,synthetic'], clasificacion: { perfilContexto: 'pedido' } });
   assert.match(payload.messages[0].content, /confianzaPresentacion/);
+  const imagenEnviada = payload.messages.flatMap(m => Array.isArray(m.content) ? m.content : [])
+    .find(parte => parte.type === "image_url");
+  assert.equal(imagenEnviada.image_url.detail, "high");
   assert.equal(resultado.producto.presentacion, null);
   assert.equal(resultado.producto.requierePresentacion, true);
 });
@@ -239,4 +242,63 @@ test('codigo visual exige la referencia codificada aunque el modelo sugiera la d
       clasificacion: { intencion: 'imagen', perfilContexto: 'multimedia', requiereVision: true } });
     assert.notEqual(sinCodigo.nivel, 'alta', 'No sustituir codigo inexistente');
   }
+});
+
+test('sabor visual conserva referencia con etapa vacia frente a otras con etapa completa', () => {
+  const { validarCoincidenciaProducto } = require('../src/services/productMatchValidator');
+  const catalogo = require('../productos.json').filter(m => m.marca === 'BR CAT');
+  const validar = sabores => validarCoincidenciaProducto({ mensaje: 'Tienes este alimento x3kl?',
+    catalogo, catalogoCandidatos: catalogo,
+    clasificacion: { intencion: 'busqueda_producto', perfilContexto: 'multimedia', requiereVision: true },
+    interpretacion: { intencion: 'consulta_producto', accion: 'consultar', confianza: 0.95,
+      producto: { marca: 'BR CAT', referencia: 'BR FOR CAT PURE', especie: 'gato', etapa: 'adulto',
+        condiciones: ['castrado'], sabores,
+        observado: { nombre: 'BR FOR CAT PURE CASTRADOS', confianzaIdentidad: 0.95 },
+        solicitud: { presentacionTexto: '3kg' } } } });
+  const identificada = validar(['pollo']);
+  assert.equal(identificada.nivel, 'alta');
+  assert.equal(identificada.coincidencia.referencia, 'BR CAT CASTRADO POLLO');
+  assert.equal(identificada.presentacionSolicitada, '3kg');
+  assert.equal(identificada.coincidencia.presentaciones.find(p => p.peso === '3kg').precio, 81900);
+  const incierta = validar([]);
+  assert.equal(incierta.nivel, 'media');
+  assert.equal(incierta.aclaracion.campo, 'sabores');
+  assert.ok(incierta.aclaracion.valores.includes('pollo'));
+  assert.ok(incierta.aclaracion.valores.includes('pavo'));
+});
+
+test('sabor y etapa ausente se resuelven con marcas arbitrarias en texto, audio e imagen', () => {
+  const { validarCoincidenciaProducto } = require('../src/services/productMatchValidator');
+  const catalogo = [{ marca: 'NUTRIALFA', referencias: [
+    { nombre: 'NUTRIALFA CASTRADO POLLO', especie: 'gato', etapa: null, presentaciones: [{ peso: '3kg', precio: 80000 }] },
+    { nombre: 'NUTRIALFA ADULTO CASTRADO PAVO', especie: 'gato', etapa: 'adulto', presentaciones: [{ peso: '3kg', precio: 90000 }] },
+  ] }];
+  for (const intencion of ['busqueda_producto', 'audio', 'imagen']) {
+    const requiereVision = intencion === 'imagen';
+    const resultado = validarCoincidenciaProducto({ mensaje: requiereVision ? 'Tienes este x3kl?' : 'NUTRIALFA castrado pollo adulto 3kg',
+      catalogo, clasificacion: { intencion, requiereVision, perfilContexto: 'multimedia' },
+      interpretacion: { confianza: 0.95, producto: { marca: 'NUTRIALFA', referencia: 'NUTRIALFA CASTRADO POLLO',
+        especie: 'gato', etapa: 'adulto', sabores: ['pollo'], condiciones: ['castrado'], presentacion: '3kg',
+        ...(requiereVision ? { observado: { nombre: 'NUTRIALFA CASTRADO POLLO', confianzaIdentidad: 0.95 },
+          solicitud: { presentacionTexto: '3kg' } } : {}) } } });
+    assert.equal(resultado.nivel, 'alta', intencion);
+    assert.equal(resultado.coincidencia.referencia, 'NUTRIALFA CASTRADO POLLO');
+  }
+});
+
+
+test('sabor conocido sin candidato compatible no confirma otro sabor', () => {
+  const { validarCoincidenciaProducto } = require('../src/services/productMatchValidator');
+  const catalogo = [{ marca: 'NUTRIALFA', referencias: [
+    { nombre: 'NUTRIALFA CASTRADO PAVO', especie: 'gato', etapa: 'adulto',
+      presentaciones: [{ peso: '3kg', precio: 90000 }] },
+  ] }];
+  const resultado = validarCoincidenciaProducto({ mensaje: 'Tienes este x3kl?', catalogo,
+    clasificacion: { intencion: 'imagen', requiereVision: true, perfilContexto: 'multimedia' },
+    interpretacion: { confianza: 0.99, producto: { marca: 'NUTRIALFA', especie: 'gato', etapa: 'adulto',
+      sabores: ['pollo'], condiciones: ['castrado'],
+      observado: { nombre: 'NUTRIALFA CASTRADO POLLO', confianzaIdentidad: 0.99 },
+      solicitud: { presentacionTexto: '3kg' } } } });
+  assert.notEqual(resultado.nivel, 'alta');
+  assert.equal(resultado.coincidencia, null);
 });

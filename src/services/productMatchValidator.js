@@ -1,5 +1,6 @@
+const { admiteEspecie } = require('../utils/catalogCommercialRules');
 const { resolverEvidenciaInterpretacion } = require("./productEvidenceService");
-const { formatearPrecio, normalizarMarcasCatalogo, normalizar, normalizarPeso, codigosReferencia } = require("../utils/text");
+const { formatearPrecio, normalizarMarcasCatalogo, normalizar, normalizarPeso, codigosReferencia, contieneCondicionBolaPelo } = require("../utils/text");
 
 const DEFAULT_HIGH_THRESHOLD = 0.84;
 const DEFAULT_MEDIUM_THRESHOLD = 0.68;
@@ -24,6 +25,13 @@ const STOPWORDS = new Set(
     "agregar",
     "agrega",
     "agregame",
+    "si",
+    "bulto",
+    "bultos",
+    "paquete",
+    "paquetes",
+    "bolsa",
+    "bolsas",
     "buen",
     "buena",
     "buenas",
@@ -202,6 +210,10 @@ const TERMINOS_COMERCIALES_VISUALES = new Set(
     "adult",
     "all",
     "breeds",
+    "complete",
+    "food",
+    "with",
+    "con",
     "developed",
     "diet",
     "diets",
@@ -274,6 +286,7 @@ function similitudTexto(a = "", b = "") {
 
 function normalizarFonetico(texto = "") {
   return normalizar(texto)
+    .replace(/(?:ch|sh)/g, "x")
     .replace(/h/g, "")
     .replace(/ph/g, "f")
     .replace(/qu/g, "k")
@@ -326,9 +339,11 @@ function combinacionesContiguas(tokens = [], maximo = 3) {
 
 function normalizarIdentidadProducto(texto = "") {
   return normalizar(texto)
+    .replace(/\b(?:hairballs?|bolas?\s+(?:de\s+)?pelos?)\b/g, "bola pelo")
     .replace(/\bpremiun\b/g, "premium")
     .replace(/\bpro\b/g, "premium")
-    .replace(/\b(?:ad|adul|adult|adultos)\b/g, "adulto")
+    .replace(/\b(?:ad|adul|adult|adults|adultos)\b/g, "adulto")
+    .replace(/\b(?:cach|cachorros|puppy)\b/g, "cachorro")
     .replace(/\brp\b/g, "raza pequeno")
     .replace(/\b(?:peq|pequena|pequenas|pequenos)\b/g, "pequeno")
     .replace(/\b(?:rg|rmg)\b/g, "raza grande")
@@ -589,6 +604,17 @@ function marcaExactaConsultada(catalogo = [], terminos = []) {
         )
     )
     .sort((a, b) => b.tokens.length - a.tokens.length)[0]?.marca;
+}
+
+// Una agrupacion comercial mas larga puede contener especie/linea. No debe
+// ocultar una referencia completa registrada bajo la marca raiz.
+function marcaCompatibleConIdentidad(marca, referencia, marcaConsultada, terminos = []) {
+  const raiz = tokensDistintivos(marca.marca);
+  const agrupacion = tokensDistintivos(marcaConsultada);
+  if (!raiz.length || !raiz.every(token => agrupacion.includes(token))) return false;
+  const nombre = tokensIdentidadVisual(referencia.nombre);
+  const identidad = tokensIdentidadVisual(terminos.join(" ")).filter(token => !saboresProducto(token).length);
+  return identidad.length > raiz.length && identidad.every(token => nombre.includes(token));
 }
 
 function coincidenciaNombre(terminos = [], nombre = "") {
@@ -910,7 +936,7 @@ function condicionesProducto(texto = "", condiciones = []) {
   if (/\b(indoor|interior)\w*\b/.test(normalizado)) agregar("indoor");
   if (/\b(sensitiv|sensible)\w*\b/.test(normalizado)) agregar("sensitive");
   if (/\b(hypo|hipoalerg)\w*\b/.test(normalizado)) agregar("hipoalergenico");
-  if (/\b(hairball|bola de pelo)\b/.test(normalizado)) agregar("bola_pelo");
+  if (contieneCondicionBolaPelo(normalizado)) agregar("bola_pelo");
   return resultado;
 }
 
@@ -922,7 +948,9 @@ function saboresProducto(texto = "", sabores = []) {
     ["cordero", /\b(cordero|lamb)\b/],
     ["carne", /\b(carne|beef)\b/],
     ["pavo", /\b(pavo|turkey)\b/],
+    ["conejo", /\b(conejo|rabbit)\b/],
     ["atun", /\b(atun|tuna)\b/],
+    ["pato", /\b(pato|duck)\b/],
   ]
     .filter(([, patron]) => patron.test(normalizado))
     .map(([sabor]) => sabor);
@@ -1135,7 +1163,7 @@ function compatibleConSenales(item, interpretacion, mensaje = "") {
   if (
     señales.especie &&
     especieNombre &&
-    señales.especie !== especieNombre
+    señales.especie !== especieNombre && !admiteEspecie(item.referencia, señales.especie)
   ) {
     return false;
   }
@@ -1233,12 +1261,18 @@ function señalesInterpretadas(interpretacion = null, mensaje = "") {
       producto.condiciones
     ),
     sabores: saboresProducto(texto, producto.sabores),
+    // La disyuncion entre sabores expresa alternativas aceptables, no una mezcla.
+    saboresAlternativos: [mensaje, producto.textoVisible].filter(Boolean).some(valor =>
+      valor.split(/\bo\b|\bu\b/i).some((parte, indice, partes) => indice > 0 &&
+        saboresProducto(partes[indice - 1]).length && saboresProducto(parte).length)),
     formatos: formatosProducto(texto),
   };
 }
 
 function scoreMarcaVisual(item, señales) {
   if (!señales.marca) return null;
+  if (marcaCompatibleConIdentidad(item.marca, item.referencia, señales.marca,
+      tokensDistintivos(señales.textoVisible || ""))) return 1;
   const terminosMarca = tokensDistintivos(señales.marca);
   if (!terminosMarca.length) return null;
   return coincidenciaNombre(terminosMarca, item.marca.marca).score;
@@ -1266,7 +1300,7 @@ function scoreSaborVisual(señales, saboresReferencia) {
   const coincidencias = señales.sabores.filter((sabor) =>
     saboresReferencia.includes(sabor)
   ).length;
-  return coincidencias / señales.sabores.length;
+  return señales.saboresAlternativos ? Number(coincidencias > 0) : coincidencias / señales.sabores.length;
 }
 
 function calcularScoreVisualPonderado({
@@ -1306,7 +1340,7 @@ function calcularScoreVisualPonderado({
   };
 }
 
-function ajustarPorSenales(item, mensaje, interpretacion, clasificacion = {}) {
+function ajustarPorSenales(item, mensaje, interpretacion, clasificacion = {}, variantesObservadas = []) {
   const coincide = presentacionCoincide(
     item.referencia,
     mensaje,
@@ -1343,7 +1377,7 @@ function ajustarPorSenales(item, mensaje, interpretacion, clasificacion = {}) {
     ajuste += señales.categoria === categoriaReferencia ? 0.1 : -0.22;
   }
   if (señales.especie && especieReferencia) {
-    ajuste += señales.especie === especieReferencia ? 0.07 : -0.24;
+    ajuste += admiteEspecie(item.referencia, señales.especie) || señales.especie === especieReferencia ? 0.07 : -0.24;
   }
   señales.condiciones.forEach((condicion) => {
     ajuste += condicionesReferencia.includes(condicion) ? 0.12 : -0.2;
@@ -1361,9 +1395,8 @@ function ajustarPorSenales(item, mensaje, interpretacion, clasificacion = {}) {
   if (!señales.condiciones.length && condicionesReferencia.length) {
     scoreMaximo = Math.min(scoreMaximo, 0.66);
   }
-  if (!señales.formatos.length && formatosReferencia.length) {
-    scoreMaximo = Math.min(scoreMaximo, 0.66);
-  }
+  // Un formato no mencionado no contradice el pedido. Mantener la penalizacion
+  // y comparar alternativas; no bloquear una identidad por un atributo omitido.
   if (señales.etapa && etapa) {
     ajuste += señales.etapa === etapa ? 0.1 : -0.22;
   } else if (señales.etapa && !etapa) {
@@ -1385,7 +1418,7 @@ function ajustarPorSenales(item, mensaje, interpretacion, clasificacion = {}) {
 
   const especieCoincide =
     señales.especie && especieReferencia
-      ? señales.especie === especieReferencia
+      ? admiteEspecie(item.referencia, señales.especie) || señales.especie === especieReferencia
       : null;
   const categoriaCoincide =
     señales.categoria && categoriaReferencia
@@ -1437,11 +1470,29 @@ function ajustarPorSenales(item, mensaje, interpretacion, clasificacion = {}) {
   const coincidenciaComercialExacta = Boolean(
     item.exacta && item.tipoCoincidencia !== "marca"
   );
+  // El empaque puede expresar especie y formato de otra manera que el nombre
+  // del inventario. Exigir todos los atributos y tokens de identidad del SKU,
+  // sin exigir que el inventario repita cada frase visible en el empaque.
+  const observado = interpretacion?.producto?.observado;
+  const textoObservado = observado?.nombre || "";
+  const tokensObservados = tokensIdentidadVisual(textoObservado);
+  const formatoHumedo = /\b(humed[oa]|pouch|pouche|sobre|sachet|salsa)\b/.test(normalizar(textoObservado));
+  const identidadCatalogo = tokensIdentidadVisual(item.referencia.nombre);
+  const identidadRespaldada = identidadCatalogo.every(token => tokensObservados.includes(token) ||
+    (formatoHumedo && /^(pouch|pouche|sobre|sachet)$/.test(token)));
+  const atributosVisualesCompletos = esVision && Number(observado?.confianzaIdentidad) >= 0.85 &&
+    identidadRespaldada && identidadCatalogo.length > 1 &&
+    variantesObservadas.every(token => identidadCatalogo.includes(token)) &&
+    scoreMarcaVisual(item, señales) >= 0.95 && coincide === true &&
+    especieCoincide === true && etapaCoincide === true &&
+    categoriaCoincide !== false && tamanoCoincide !== false &&
+    señales.condiciones.every(condicion => condicionesReferencia.includes(condicion)) &&
+    (!saboresReferencia.length || señales.sabores.every(sabor => saboresReferencia.includes(sabor)));
 
   return {
     ...item,
     scoreBase: item.score,
-    score: coincidenciaComercialExacta
+    score: atributosVisualesCompletos ? Math.max(scoreCombinado, 0.94) : coincidenciaComercialExacta
       ? Math.max(scoreCombinado, 0.9)
       : scoreCombinado,
     scoreVisualPonderado: ponderacionVisual.score,
@@ -1487,6 +1538,21 @@ function filtrarPorSenalesEspecificas(
     );
   }
 
+  // Un sabor observado/solicitado discrimina la referencia antes que una
+  // etapa ausente en el catalogo. No sustituir pollo por otro sabor solo
+  // porque ese otro registro tiene mas atributos completos.
+  if (señales.sabores.length) {
+    const compatibles = filtrados.filter(item => {
+      const sabores = saboresProducto(`${item.referencia.nombre} ${item.referencia.descripcion || ""}`);
+      return !sabores.length || señales.sabores[señales.saboresAlternativos ? "some" : "every"](sabor => sabores.includes(sabor));
+    });
+    const explicitos = compatibles.filter(item => {
+      const sabores = saboresProducto(`${item.referencia.nombre} ${item.referencia.descripcion || ""}`);
+      return señales.sabores[señales.saboresAlternativos ? "some" : "every"](sabor => sabores.includes(sabor));
+    });
+    filtrados = explicitos.length ? explicitos : compatibles;
+  }
+
   [
     ["etapa", "etapaCoincide"],
     ["tamano", "tamanoCoincide"],
@@ -1500,7 +1566,8 @@ function filtrarPorSenalesEspecificas(
     filtrados = filtrados.filter(
       (item) =>
         item[propiedad] === true ||
-        (!existeCoincidenciaEspecificaConPresentacion &&
+        ((clasificacion.requiereVision || !existeCoincidenciaEspecificaConPresentacion ||
+          (item.scoreBase >= DEFAULT_HIGH_THRESHOLD && item.scoreBase >= Math.max(...filtrados.map(c => c.scoreBase)))) &&
           item[propiedad] === null &&
           item.presentacionCoincide === true &&
           item.categoriaCoincide !== false &&
@@ -1633,6 +1700,7 @@ function resumirAlternativa(item) {
       presentaciones.push({
         peso: presentacion.peso,
         precio: presentacion.precio,
+        metadata: presentacion.metadata || {},
         stock:
           typeof presentacion.stock === "boolean" ? presentacion.stock : null,
         referencia: actual.referencia.nombre,
@@ -1666,10 +1734,22 @@ function validarCoincidenciaProducto({
     const producto = interpretacion.producto;
     const nombre = evidenciaIdentidad.nombre;
     const tokensNombre = normalizarIdentidadProducto(nombre).split(/\s+/);
+    // Fabricante, marca y linea pueden distribuirse distinto en el empaque
+    // y en el inventario. Resolver la agrupacion usando sus nombres reales,
+    // sin convertir la etiqueta inicial del modelo en un filtro irrevocable.
+    const identidadObservada = tokensDistintivos(nombre);
+    const marcasObservadas = catalogo.map(marca => ({ marca: marca.marca,
+      tokens: tokensDistintivos(marca.marca) }))
+      .filter(item => item.tokens.length && item.tokens.every(token => identidadObservada.includes(token)))
+      .sort((a, b) => b.tokens.length - a.tokens.length);
+    const marcaRespaldada = marcasObservadas[0] &&
+      (!marcasObservadas[1] || marcasObservadas[0].tokens.length > marcasObservadas[1].tokens.length)
+      ? marcasObservadas[0].marca : producto.marca;
     // Score the observed identity, not the model's proposed catalog mapping.
     // Raw packaging copy remains in the interpretation for audit, never in
     // identity scoring: benefits and slogans are not commercial variants.
     interpretacion = { ...interpretacion, producto: { ...producto,
+      marca: marcaRespaldada,
       referencia: nombre,
       textoVisible: nombre,
       linea: producto.linea && normalizarIdentidadProducto(producto.linea).split(/\s+/)
@@ -1732,7 +1812,10 @@ function validarCoincidenciaProducto({
   const fuenteCodigos = clasificacion.requiereVision
     ? interpretacion?.producto?.observado?.nombre || interpretacion?.producto?.referencia || ""
     : mensaje;
-  const codigosSolicitados = codigosReferencia(fuenteCodigos, interpretacion?.producto?.marca || marcaExacta || "");
+  const prefijo = normalizar(fuenteCodigos).split(/\s+/)[0];
+  const marcasAbreviadas = catalogo.filter(m => normalizar(m.marca).split(/\s+/)[0] === prefijo)
+    .map(m => m.marca).join(" ");
+  const codigosSolicitados = codigosReferencia(fuenteCodigos, interpretacion?.producto?.marca || marcaExacta || marcasAbreviadas);
   if (codigosSolicitados.length && interpretacion?.producto) {
     // Descriptive conditions must not require the catalog to repeat the long
     // label when its exact commercial code is already present.
@@ -1747,6 +1830,7 @@ function validarCoincidenciaProducto({
     (item) =>
       (!marcaExacta ||
       normalizar(item.marca.marca) === marcaExacta ||
+      marcaCompatibleConIdentidad(item.marca, item.referencia, marcaExacta, terminos) ||
       (
         clasificacion.requiereVision &&
         similitudTokenFlexible(item.marca.marca, marcaExacta) >=
@@ -1778,7 +1862,7 @@ function validarCoincidenciaProducto({
           ).length
       )
   );
-  const senalesConsulta = señalesInterpretadas(null, mensajeRazonado);
+  const senalesConsulta = señalesInterpretadas(clasificacion.requiereVision ? interpretacion : null, mensajeRazonado);
   const soloFamilia = Boolean(marcaExacta && !senalesConsulta.especie &&
     !senalesConsulta.etapa && !senalesConsulta.tamano && !senalesConsulta.categoria &&
     !senalesConsulta.condiciones.length && !senalesConsulta.sabores.length &&
@@ -1788,8 +1872,16 @@ function validarCoincidenciaProducto({
     !itemsEvaluados.some(item => normalizar(mensajeRazonado).includes(normalizar(item.referencia.nombre))) &&
     (contextoProducto?.aclaracion || (!senalesConsulta.etapa && !senalesConsulta.condiciones.length &&
       !senalesConsulta.sabores.length && !obtenerPresentacionSolicitada(mensajeRazonado, null))));
-  const lecturaValidable = !clasificacion.requiereVision && (soloFamilia || consultaSinReferencia)
+  const lecturaValidable = !clasificacion.requiereVision &&
+    (soloFamilia || consultaSinReferencia || !consultaIdentidadRespaldada(interpretacion?.producto, mensajeRazonado))
     ? null : interpretacion;
+  const marcaObservada = tokensIdentidadVisual(interpretacion?.producto?.marca || "");
+  const nombreObservado = interpretacion?.producto?.observado?.nombre || "";
+  const saboresObservados = saboresProducto(nombreObservado);
+  const variantesObservadas = clasificacion.requiereVision ? tokensIdentidadVisual(nombreObservado)
+    .filter(token => !marcaObservada.includes(token) && !TERMINOS_ATRIBUTO.has(token) &&
+      !saboresObservados.includes(token) && !["pouch", "pouche", "sobre", "sachet", "lata"].includes(token))
+    .filter(token => itemsEvaluados.some(item => tokensIdentidadVisual(item.referencia.nombre).includes(token))) : [];
   const puntuadosSinFiltrar = itemsEvaluados
     .map((item) =>
       puntuarItem(item, terminos, {
@@ -1801,7 +1893,7 @@ function validarCoincidenciaProducto({
       })
     )
     .map((item) =>
-      ajustarPorSenales(item, mensajeRazonado, lecturaValidable, clasificacion)
+      ajustarPorSenales(item, mensajeRazonado, lecturaValidable, clasificacion, variantesObservadas)
     )
     .filter((item) =>
       compatibleConSenales(item, lecturaValidable, mensajeRazonado)
@@ -1861,9 +1953,22 @@ function validarCoincidenciaProducto({
   const variantesExplicitas = puntuados.filter(item =>
     normalizar(item.referencia.nombre) !== normalizar(item.marca.marca) &&
     ` ${normalizar(mensajeRazonado)} `.includes(` ${normalizar(item.referencia.nombre)} `));
-  if (variantesExplicitas.length) puntuados = puntuados.filter(item =>
-    normalizar(item.referencia.nombre) !== normalizar(item.marca.marca) ||
-    !variantesExplicitas.some(variante => normalizar(variante.marca.marca) === normalizar(item.marca.marca)));
+  if (variantesExplicitas.length) {
+    // El nombre comercial completo prevalece sobre referencias que solo
+    // comparten especie o marca. Si hay nombres anidados, gana el mas completo.
+    const longitud = Math.max(...variantesExplicitas.map(item => normalizar(item.referencia.nombre).length));
+    const exactas = variantesExplicitas.filter(item => normalizar(item.referencia.nombre).length === longitud);
+    puntuados = puntuados.filter(item => exactas.some(exacta => item === exacta || referenciasEquivalentes(item, exacta)));
+  }
+  // Una referencia declarada de venta unitaria puede ser el nombre base de
+  // una familia que también vende cajas. No elegir cajas no solicitadas.
+  const unitarias = puntuados.filter(item => item.referencia.metadata?.venta_por_unidad &&
+    item.especieCoincide !== false && item.presentacionCoincide !== false &&
+    item.score >= DEFAULT_HIGH_THRESHOLD &&
+    normalizar(item.referencia.nombre) === normalizar(interpretacion?.producto?.referencia || '') &&
+    terminos.every(t => TERMINOS_ATRIBUTO.has(t) ||
+      tokensDistintivos(item.referencia.nombre).includes(t)));
+  if (!variantesExplicitas.length && unitarias.length === 1) puntuados = unitarias;
   const gruposPuntuados = agruparReferenciasEquivalentes(puntuados);
   const [primero, segundo] = gruposPuntuados;
   const high = numeroEnv("CATALOG_MATCH_HIGH_THRESHOLD", DEFAULT_HIGH_THRESHOLD);
@@ -1965,7 +2070,7 @@ function validarCoincidenciaProducto({
     normalizarPeso(p.peso) === normalizarPeso(pesoPedido || "")));
   if (pesoPedido && delPeso.length) relevantes = delPeso;
   let aclaracion = null;
-  if (!clasificacion.requiereVision && (marcaExacta || consultaCategoria) &&
+  if ((marcaExacta || consultaCategoria) &&
       (nivel !== "alta" || soloFamilia || consultaSinReferencia || consultaCategoria) && relevantes.length > 1) {
     const dimensiones = [
       ["especie", relevantes.map(item => normalizarEspecie(item.referencia.especie) || especieExplicita(item.referencia.nombre))],
@@ -2082,6 +2187,10 @@ function respuestaValidacionProducto(validacion = {}) {
     return `${apertura}\n\n${opciones}\n\n${cierre}`;
   }
 
+  if (validacion.nivel === "baja" && !validacion.alternativas?.length) {
+    const peso = validacion.presentacionSolicitada ? ` de ${validacion.presentacionSolicitada}` : "";
+    return `No encuentro ${etiquetaConsulta(validacion)}${peso} en el catálogo actual. No la he agregado al pedido. ¿Quieres que revisemos otra referencia?`;
+  }
   const cierre = validacion.requiereVision
     ? "¿Me confirmas la referencia que necesitas?"
     : "¿Me confirmas la marca completa o la presentación para revisarlo mejor?";
@@ -2172,6 +2281,7 @@ module.exports = {
   respuestaValidacionProducto,
   validarCoincidenciaProducto,
   _internals: {
+    marcaCompatibleConIdentidad,
     marcaExactaConsultada,
     distanciaLevenshtein,
     referenciasEquivalentes,

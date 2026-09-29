@@ -320,3 +320,17 @@ test("replace desactiva catalogo anterior antes de importar el nuevo", async () 
     restaurarEnv(envAnterior);
   }
 });
+
+test('corrige especies explicitas y el peso confirmado sin convertir gramos de otros productos', () => {
+  const { especiePorNombre, pesoCorregido } = require('../src/utils/catalogCorrections');
+  for (const nombre of ['FELINE EN', 'COMIDA GATO', 'VACUNA FELINA', 'CAT ADULT']) assert.equal(especiePorNombre(nombre), 'gato');
+  for (const nombre of ['CANINE EN', 'COMIDA PERRO', 'CANINO ADULTO']) assert.equal(especiePorNombre(nombre), 'perro');
+  for (const nombre of ['ROYAL CANIN', 'PARA PERROS Y GATOS', 'CATALOGO']) assert.equal(especiePorNombre(nombre), null);
+  assert.equal(pesoCorregido('PRO PLAN FELINE EN', '1.5g'), '1.5kg');
+  assert.equal(pesoCorregido('SUPLEMENTO FELINE', '1.5g'), '1.5g');
+  const [marca] = normalizarCatalogo([{ marca: 'PRO PLAN', referencias: [{ nombre: 'PRO PLAN FELINE EN',
+    especie: 'perro', presentaciones: [{ peso: '1.5g', precio: 113600 }] }] }], 'productos.json');
+  assert.equal(marca.referencias[0].especie, 'gato');
+  assert.equal(marca.referencias[0].presentaciones[0].peso, '1.5kg');
+  assert.equal(marca.referencias[0].presentaciones[0].precio, 113600);
+});
