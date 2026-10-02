@@ -1,3 +1,4 @@
+const { duracionTexto, mismaSeleccionCotizada, consultaProductoCotizado } = require('../utils/catalogVariants');
 const { precioPorCantidad, datosPrecio, normalizarVentaUnitaria } = require('../utils/catalogCommercialRules');
 const { resolverEvidenciaInterpretacion } = require("./productEvidenceService");
 const { obtenerClienteActual } = require("./clients.service");
@@ -20,7 +21,7 @@ const { construirMemoriaOperativa } = require("./contextBuilder");
 const { modeloInterprete, modeloHumanizador } = require("./modelRouter");
 const { clienteParaLog, logResumenInteraccionIA } = require("./aiUsageLogger");
 const { respuestaParaHistorial } = require("../utils/responseMessages");
-const { normalizar, normalizarPeso, normalizarMarcasCatalogo, formatearPrecio } = require("../utils/text");
+const { normalizar, normalizarPeso, extraerPesoTexto, normalizarMarcasCatalogo, formatearPrecio } = require("../utils/text");
 const {
   aplicarCoincidenciaValidada,
   consultaIdentidadRespaldada,
@@ -51,7 +52,15 @@ function cotizacionSeleccionada(estado) {
   const solicitudes = estado.ultimaSolicitudProductos || [];
   // El foco de busqueda cambia al preguntar por otras presentaciones. La
   // seleccion completa vive en las solicitudes, no en ese foco transitorio.
-  if (!solicitudes.length || !solicitudes.every(item => item.estado === "identificado" &&
+  if (!solicitudes.length) {
+    const consultados = estado.productosConsultados || [];
+    const item = consultados.length === 1 ? consultados[0] : null;
+    if (!item || !item.marca || !item.referencia || !(item.peso || item.presentacion) ||
+        item.precio == null || !Number.isFinite(Number(item.precio)) || Number(item.precio) < 0 ||
+        (item.contextoCreadoEn && Date.now() - Date.parse(item.contextoCreadoEn) > 30 * 60 * 1000)) return [];
+    return [item];
+  }
+  if (!solicitudes.every(item => item.estado === "identificado" &&
       item.accion === "consultar" && item.cotizacion?.length === 1)) return [];
   const items = solicitudes.map(item => item.cotizacion[0]);
   if (!items.every(item => item.marca && item.referencia && (item.peso || item.presentacion) &&
@@ -142,15 +151,35 @@ function continuarSolicitudProducto(decision, estado, mensaje) {
     !contexto.sinCoincidenciaInformada &&
     !(contexto.nivel === "alta" && contexto.presentacion);
   const consultaContextual = construirConsultaProductoContextual(mensaje, contexto);
-  const respondeAtributo = Boolean(contexto.aclaracion && consultaContextual !== mensaje && tokens.length <= 3);
+  const camposAclaracion = {
+    peso_mascota: ['especie', 'presentacion'], presentacion: ['presentacion'],
+    especie: ['especie', 'presentacion'], etapa: ['etapa'], tamano: ['tamano'],
+    sabores: ['sabores'], categoria: ['categoria'], duracion: ['duracion'],
+  };
+  const campos = camposAclaracion[contexto.aclaracion?.campo] || [];
+  const identidad = p => [...new Set(tokensDistintivos([p.marca, p.referencia, p.linea].filter(Boolean).join(' ')))];
+  const anterior = identidad(previa.producto);
+  const nueva = identidad(actual);
+  const mismaIdentidad = anterior.length && nueva.length && anterior.length === nueva.length &&
+    anterior.every(token => nueva.includes(token));
+  const pesoExplicito = extraerPesoTexto(mensaje);
+  const atributos = { ...actual,
+    ...(pesoExplicito ? { presentacion: pesoExplicito } : {}),
+    ...(duracionTexto(mensaje) ? { duracion: duracionTexto(mensaje) } : {}) };
+  // El intérprete resuelve la intención en lenguaje natural. Si conserva la
+  // identidad pendiente y aporta el atributo solicitado, usar esos datos
+  // estructurados; las palabras sociales no son un nombre nuevo de producto.
+  const respuestaSemantica = mismaIdentidad && Number(decision.confianza) >= 0.55 &&
+    campos.some(campo => Array.isArray(atributos[campo]) ? atributos[campo].length : atributos[campo]);
+  const respondeAtributo = Boolean(respuestaSemantica || (contexto.aclaracion && consultaContextual !== mensaje));
   const completa = respondeAtributo || (!tokens.length && actual.presentacion) ||
     (tokens.length > 0 && tokens.length <= 3 && tokens.every(t => conocidos.includes(t)));
   if (!confirma && !completa) return decision;
   const producto = { ...previa.producto };
-  for (const [campo, valor] of Object.entries(actual)) {
+  for (const [campo, valor] of Object.entries(respuestaSemantica ? atributos : actual)) {
     // Una respuesta a especie/tamano/etc. no autoriza sustituir la linea,
     // la etapa ni la referencia por una conjetura nueva del interprete.
-    if (respondeAtributo && campo !== contexto.aclaracion.campo) continue;
+    if (respondeAtributo && !(respuestaSemantica ? campos.includes(campo) : campo === contexto.aclaracion.campo)) continue;
     if (valor != null && (!Array.isArray(valor) || valor.length)) producto[campo] = valor;
   }
   if (respondeAtributo) {
@@ -166,12 +195,16 @@ function continuarSolicitudProducto(decision, estado, mensaje) {
     producto.presentacion = normalizarPeso(pesoLiteral);
     producto.requierePresentacion = false;
   }
-  const identidad = [respondeAtributo ? consultaContextual : (contexto.terminos || []).join(" "),
-    producto.presentacion || contexto.presentacion].filter(Boolean).join(" ");
+  const consultaContinuada = respuestaSemantica
+    ? [...(contexto.terminos?.length ? contexto.terminos : anterior),
+        ...campos.flatMap(campo => atributos[campo] || []),
+        producto.presentacion || contexto.presentacion].filter(Boolean).join(' ')
+    : [respondeAtributo ? consultaContextual : (contexto.terminos || []).join(" "),
+        producto.presentacion || contexto.presentacion].filter(Boolean).join(" ");
   return { ...decision, intencion: previa.intencion, accion: previa.accion,
     producto, productos: [], continuarFlujo: true,
-    consultaCatalogo: { necesaria: true, consulta: identidad },
-    _consultaContinuada: identidad };
+    consultaCatalogo: { necesaria: true, consulta: consultaContinuada },
+    _consultaContinuada: consultaContinuada };
 }
 
 function mencionProductoRespaldada(producto, mensaje, catalogo = []) {
@@ -611,12 +644,13 @@ async function responderEventosEntrantes(eventos) {
     });
     return respuesta;
   }
-  // Una lista de varias lineas reducida a un solo producto requiere una
-  // segunda extraccion semantica, no inferir productos por palabras clave.
+  // Revisar omisiones por cobertura semántica, no por saltos de línea.
+  const contarSolicitudes = lectura => lectura?.productos?.length ||
+    (lectura?.producto && ['marca', 'referencia', 'textoVisible', 'categoria'].some(campo => lectura.producto[campo]) ? 1 : 0);
+  const solicitudesEsperadas = decisionSemantica.solicitudesProductoDetectadas;
   if (!imageUrls.length && decisionSemantica.consultaCatalogo?.necesaria === true &&
       ["agregar", "consultar"].includes(decisionSemantica.accion) &&
-      (decisionSemantica.productos || []).length < 2 &&
-      mensaje.split(/\n+/).filter(linea => linea.trim()).length >= 3) {
+      Number.isInteger(solicitudesEsperadas) && solicitudesEsperadas > contarSolicitudes(decisionSemantica)) {
     const revisionLista = await interpretarMensajeCliente({
       mensaje, estado, catalogo: [], historialReciente: historialSemantico,
       imageUrls, cliente, vertical,
@@ -624,7 +658,21 @@ async function responderEventosEntrantes(eventos) {
         limiteHistorial: historialSemantico.length, decisionHerramientas: true, revisionLista: true },
       model: process.env.OPENAI_ROUTER_MODEL || "gpt-5.4", channelUserId: evento.channelUserId,
     });
-    if (revisionLista?.productos?.length > 1) decisionSemantica = revisionLista;
+    if (revisionLista && contarSolicitudes(revisionLista) >= solicitudesEsperadas) {
+      // Una revisión de cobertura completa productos; no cambia una cotización
+      // en compra ni pierde los datos de entrega ya interpretados.
+      decisionSemantica = { ...decisionSemantica,
+        producto: revisionLista.productos?.length > 1 ? null : revisionLista.producto,
+        productos: revisionLista.productos || [],
+        solicitudesProductoDetectadas: revisionLista.solicitudesProductoDetectadas ?? solicitudesEsperadas,
+        consultaCatalogo: { necesaria: true,
+          consulta: revisionLista.consultaCatalogo?.consulta || decisionSemantica.consultaCatalogo.consulta } };
+    }
+    else {
+      const respuesta = 'No pude separar todos los productos de tu solicitud con seguridad. ¿Puedes confirmar cuáles necesitas?';
+      await guardarConversacionPersistida(evento.channelUserId, estado, { idsEventos, cliente, mensaje, respuesta });
+      return respuesta;
+    }
   }
   decisionSemantica = resolverEvidenciaInterpretacion(decisionSemantica);
   if (!imageUrls.length && vertical.orderLogic.esConfirmacionCierreExplicita?.(mensaje, estado)) {
@@ -655,7 +703,9 @@ async function responderEventosEntrantes(eventos) {
   const datosParaEntrega = !imageUrls.length && !estado.pedidoConfirmado &&
     ["datos_envio", "metodo_pago"].includes(decisionSemantica.intencion) &&
     Boolean(decisionSemantica.entrega?.direccion ||
-      Object.values(decisionSemantica.datosCliente || {}).some(Boolean));
+      Object.values(decisionSemantica.datosCliente || {}).some(Boolean) ||
+      (decisionSemantica.intencion === 'datos_envio' && decisionSemantica.entrega?.tipo === 'domicilio' &&
+        !['consultar', 'consultar_pago'].includes(decisionSemantica.accion)));
   const aceptaCotizacionConEntrega = datosParaEntrega && !estado.carrito?.length && cotizacionCompleta.length > 0;
   const aceptaSeleccion = decisionSemantica.intencion === "confirmacion" &&
     decisionSemantica.accion === "confirmar" && decisionSemantica.confianza >= 0.55 &&
@@ -683,8 +733,7 @@ async function responderEventosEntrantes(eventos) {
       decisionSemantica = { ...decisionSemantica, intencion: "pedido_producto", accion: "agregar",
         _compraDesdeCotizacion: Boolean(aceptaCotizacionConEntrega || (aceptaSeleccion && cotizacionCompleta.length)),
         continuarFlujo: true, producto: solicitados.length === 1 ? solicitados[0] : null, productos: solicitados,
-        consultaCatalogo: { necesaria: true, consulta: solicitados.map(item =>
-          [item.marca, item.referencia, item.presentacion].filter(Boolean).join(" ")).join("; ") } };
+        consultaCatalogo: { necesaria: true, consulta: solicitados.map(consultaProductoCotizado).join("; ") } };
       if (decisionSemantica._compraDesdeCotizacion && solicitados.length === 1) {
         decisionSemantica._consultaContinuada = decisionSemantica.consultaCatalogo.consulta;
       }
@@ -777,9 +826,20 @@ async function responderEventosEntrantes(eventos) {
   // variante del catalogo que el cliente nombro y el modelo omitio.
   const terminosCatalogo = new Set(catalogo.flatMap(m => (m.referencias || [])
     .flatMap(r => tokensDistintivos([r.nombre, ...(r.metadata?.original_names || [])].join(" ")))));
-  const identidadCompleta = consultaIdentidad && tokensDistintivos(fuenteIdentidad)
+  const identidadCompleta = consultaIdentidad &&
+    (!duracionTexto(fuenteIdentidad) || duracionTexto(consultaIdentidad) === duracionTexto(fuenteIdentidad)) &&
+    tokensDistintivos(fuenteIdentidad)
     .filter(t => terminosCatalogo.has(t)).every(t => tokensDistintivos(consultaIdentidad).includes(t));
   let mensajeParaValidar = imageUrls.length ? mensaje : identidadCompleta ? consultaIdentidad : fuenteIdentidad;
+  // Solo una selección persistida autoriza recuperar atributos omitidos al
+  // aceptar una cotización. Una variante explícita nueva prevalece.
+  const cotizacionesAceptables = cotizacionCompleta.length ? cotizacionCompleta
+    : seleccionActual ? [seleccionActual] : [];
+  const recuperarCotizada = solicitud => !imageUrls.length && decisionSemantica.accion === 'agregar' &&
+    !duracionTexto(mensaje) && cotizacionesAceptables.find(item => mismaSeleccionCotizada(solicitud, item));
+  const cotizadaIndividual = recuperarCotizada(decisionSemantica.producto || {});
+  if (cotizadaIndividual) mensajeParaValidar = consultaProductoCotizado(cotizadaIndividual);
+
   const contextoProductoAnterior = clasificacion.accionPendiente ? null : estado.ultimaConsultaProducto || null;
   const corrigeProductoAnterior = esCorreccionProducto(mensaje);
   if (corrigeProductoAnterior) {
@@ -968,8 +1028,9 @@ async function responderEventosEntrantes(eventos) {
   const solicitudesMultiples = decisionSemantica.productos?.length > 1
     ? decisionSemantica.productos : [];
   const resultadosMultiples = await Promise.all(solicitudesMultiples.map(async (solicitud, indice) => {
-    const textoSolicitud = decisionSemantica._compraDesdeCotizacion
-      ? [solicitud.marca, solicitud.referencia, solicitud.presentacion || solicitud.peso].filter(Boolean).join(" ")
+    const cotizada = recuperarCotizada(solicitud);
+    const textoSolicitud = cotizada ? consultaProductoCotizado(cotizada) : decisionSemantica._compraDesdeCotizacion
+      ? consultaProductoCotizado(solicitud)
       : consultaSolicitudProducto(solicitud, mensaje, imageUrls.length > 0);
     let candidatos = catalogoIA.resultadosPorProducto?.[indice]?.catalogo || catalogo;
     // El motor ya conoce los aliases de marca. Conserva ese mismo limite
@@ -981,14 +1042,18 @@ async function responderEventosEntrantes(eventos) {
     if (catalogoIA.resultadosPorProducto?.[indice]?.metadata?.errorBusqueda) {
       return { solicitud, textoSolicitud, candidatos, lectura: null, validacion: null };
     }
-    // La lectura real de la foto ya aporta evidencia suficiente en muchos
-    // casos. Validarla antes de otro mapeo evita que este cambie su identidad.
+    // Validar primero la solicitud original contra los candidatos. Una
+    // coincidencia suficiente no necesita otro mapeo que cambie su identidad.
     const lecturaObservada = { ...decisionSemantica, producto: solicitud, productos: [solicitud] };
-    if ((imageUrls.length && solicitud.observado) || decisionSemantica._compraDesdeCotizacion) {
+    if (!imageUrls.length || solicitud.observado || decisionSemantica._compraDesdeCotizacion || cotizada) {
       const validacion = validarCoincidenciaProducto({ mensaje: textoSolicitud,
         interpretacion: lecturaObservada, catalogo: candidatos, catalogoCandidatos: candidatos,
         clasificacion, contextoProducto: null });
-      if (validacion.nivel === "alta") return { solicitud, textoSolicitud, candidatos,
+      const pesoExplicito = extraerPesoTexto(solicitud.mencionOriginal || solicitud.textoVisible || "");
+      const presentacionLiteralResuelta = pesoExplicito && validacion.coincidencia?.presentaciones?.some(p =>
+        normalizarPeso(p.peso) === normalizarPeso(pesoExplicito));
+      if (validacion.nivel === "alta" && (imageUrls.length || cotizada ||
+          decisionSemantica._compraDesdeCotizacion || presentacionLiteralResuelta)) return { solicitud, textoSolicitud, candidatos,
         lectura: lecturaObservada, validacion };
     }
     let lectura = await interpretarMensajeCliente({
@@ -1032,6 +1097,8 @@ async function responderEventosEntrantes(eventos) {
       lectura.producto.presentacion = "1kg";
       lectura.producto.cantidad = cantidadGranel;
     }
+    const pesoLiteral = extraerPesoTexto(solicitud.mencionOriginal || solicitud.textoVisible || textoSolicitud);
+    if (lectura?.producto && pesoLiteral && !convertirGranel) lectura.producto.pesoTextoOriginal = pesoLiteral;
     const convertirUnidades = normalizarVentaUnitaria(lectura, candidatos, solicitud.mencionOriginal || solicitud.textoVisible || textoSolicitud);
     const referenciaMapeada = lectura?.producto?.referencia;
     const aliasResuelto = marcaSolicitada && solicitud.marca &&
@@ -1045,7 +1112,7 @@ async function responderEventosEntrantes(eventos) {
       : aliasResuelto
       ? [referenciaMapeada, solicitud.especie, solicitud.etapa, solicitud.tamano,
           ...(solicitud.sabores || []), ...(solicitud.condiciones || []),
-          solicitud.presentacion || lectura.producto.presentacion].filter(Boolean).join(" ")
+          solicitud.presentacion || lectura.producto.presentacion, duracionTexto(textoSolicitud)].filter(Boolean).join(" ")
       : textoSolicitud;
     const validacion = validarCoincidenciaProducto({ mensaje: textoValidacion,
       interpretacion: lectura, catalogo: candidatos, catalogoCandidatos: candidatos,
@@ -1089,6 +1156,8 @@ async function responderEventosEntrantes(eventos) {
     );
   }
 
+  const pesoLiteral = extraerPesoTexto(mensaje);
+  if (interpretacionIA?.producto && pesoLiteral) interpretacionIA.producto.pesoTextoOriginal = pesoLiteral;
   const convertirUnidades = normalizarVentaUnitaria(interpretacionIA, catalogoIA.catalogo, mensaje);
   if (convertirUnidades) mensajeParaValidar = `${interpretacionIA.producto.referencia} ${interpretacionIA.producto.presentacion} ${interpretacionIA.producto.especie || ""}`;
 
@@ -1258,6 +1327,7 @@ async function responderEventosEntrantes(eventos) {
         marca: lecturaValidada.producto?.marca,
         referencia: lecturaValidada.producto?.referencia,
         presentacion: lecturaValidada.producto?.presentacion,
+        ...(lecturaValidada.producto?.duracion ? { duracion: lecturaValidada.producto.duracion } : {}),
         cantidad: lecturaValidada.producto?.cantidad || registro.cantidad,
         estado: lecturaValidada.producto?.requierePresentacion || !respuestaProducto ||
           (["agregar", "nuevo_pedido"].includes(lecturaValidada.accion) &&
@@ -1267,6 +1337,10 @@ async function responderEventosEntrantes(eventos) {
                 normalizarPeso(item.peso) === normalizarPeso(lecturaValidada.producto.presentacion))))
           ? "pendiente" : "identificado",
       });
+      // El redactor debe recibir la presentación validada, no el peso corporal
+      // ni la solicitud incompleta que dio origen a esta búsqueda.
+      resultado.solicitud = { ...registro };
+      if (registro.estado === "identificado") registro.pregunta = null;
       if (!lecturaValidada.producto?.requierePresentacion &&
           (lecturaValidada.accion === "consultar" || lecturaValidada.intencion === "consulta_producto")) {
         const coincidencia = resultado.validacion.coincidencia;
@@ -1275,6 +1349,7 @@ async function responderEventosEntrantes(eventos) {
           if (resultado.validacion.presentacionSolicitada &&
             normalizarPeso(presentacion.peso) !== normalizarPeso(resultado.validacion.presentacionSolicitada)) continue;
           const cotizado = { marca: coincidencia.marca,
+            ...(coincidencia.duracion ? { duracion: coincidencia.duracion } : {}),
             referencia: presentacion.referencia || coincidencia.referenciaCatalogo,
             referenciaCatalogo: presentacion.referencia || coincidencia.referenciaCatalogo,
             peso: presentacion.peso, precio: precioPorCantidad(presentacion, lecturaValidada.producto?.cantidad || 1),
@@ -1312,6 +1387,12 @@ async function responderEventosEntrantes(eventos) {
       else anteriores[indice] = { ...anteriores[indice], ...solicitud };
     }
     estado.ultimaSolicitudProductos = anteriores;
+    if (anteriores.length && anteriores.every(item => item.estado === "identificado")) {
+      estado.ultimaConsultaProducto = null;
+      estado.coincidenciasProductoPendientes = null;
+      estado.referenciasPendientes = null;
+      estado.productosPendientes = [];
+    }
     interpretacionIA = { ...decisionSemantica, producto: null, productos: productosValidados };
     estado._interpretacionTurno = { intencion: interpretacionIA.intencion, accion: interpretacionIA.accion,
       producto: null, productos: solicitudesProcesadas };
@@ -1413,6 +1494,12 @@ async function responderEventosEntrantes(eventos) {
         aclaroSolicitudMultiple = true;
         Object.assign(solicitud, producto, { estado: "identificado", pregunta: null,
           accion: interpretacionIA.accion, cotizacion: agregado ? [] : cotizados });
+        if (estado.ultimaSolicitudProductos.every(item => item.estado === "identificado")) {
+          estado.ultimaConsultaProducto = null;
+          estado.coincidenciasProductoPendientes = null;
+          estado.referenciasPendientes = null;
+          estado.productosPendientes = [];
+        }
       }
     }
   }

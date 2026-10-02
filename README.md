@@ -196,3 +196,11 @@ Para revisar y sincronizar únicamente estas reglas desde `productos.json`:
 node scripts/update-catalog-commercial-rules.js CLIENTE MARCA REFERENCIA
 # Añadir --apply para guardar; crea respaldo previo y verifica los cambios.
 ```
+
+Los medicamentos y antiparasitarios con rangos en `presentaciones[].peso`
+(o en el nombre de una referencia cuya presentación se expresa en mg) se
+seleccionan por inclusión del peso de la mascota. Los guiones y decimales se
+conservan. La especie debe estar correctamente clasificada en el catálogo.
+Si falta el peso, no hay cobertura o dos intervalos comparten el límite pedido,
+el motor entrega una aclaración al redactor y no elige una presentación por
+aproximación. El nombre de la marca no interviene en esta regla.

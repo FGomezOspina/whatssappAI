@@ -8,7 +8,7 @@ const { resolverConsultaCatalogo } = require('../src/verticals/petshop/orderLogi
 function cargarStore() {
   const modulo = { exports: {} };
   vm.runInNewContext(fs.readFileSync(require.resolve('../src/conversation/conversationStore'), 'utf8'), {
-    require: () => repository, module: modulo, process, console: { error() {} },
+    require: name => name.includes('learningRepository') ? { capturarAprendizaje: async () => { throw Error('captura caída'); } } : repository, module: modulo, process, console: { error() {} },
   });
   return modulo.exports;
 }

@@ -48,7 +48,7 @@ test('lista parcialmente extraida se revisa, conserva carrito al aclarar y compl
       if (args.clasificacion.revisionLista) { revisiones++; return { ...lectura(solicitudes[0]), productos: solicitudes }; }
       if (args.clasificacion.decisionHerramientas) {
         turno++;
-        return lectura(turno === 3 ? { ...solicitudes[0], referencia: 'CHUNKY CATS GATOS' } : solicitudes[0]);
+        return { ...lectura(turno === 3 ? { ...solicitudes[0], referencia: 'CHUNKY CATS GATOS' } : solicitudes[0]), solicitudesProductoDetectadas: turno === 1 ? 3 : 1 };
       }
       if (turno === 1) return lectura(solicitudes.find(p => args.mensaje.includes(p.marca)) || solicitudes[0]);
       return lectura(turno === 3 ? { ...solicitudes[0], referencia: 'CHUNKY CATS GATOS' } : solicitudes[0]);

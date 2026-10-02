@@ -107,6 +107,7 @@ function coberturaTokens(origen = [], destino = []) {
 }
 
 function referenciasCompatibles(marcaA, referenciaA, marcaB, referenciaB) {
+  if (referenciaA.metadata?.duracion !== referenciaB.metadata?.duracion) return false;
   if (
     referenciaA.especie &&
     referenciaB.especie &&

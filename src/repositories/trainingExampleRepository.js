@@ -22,7 +22,7 @@ function puntuarEjemplo(mensaje, ejemplo) {
 }
 
 function filtroCliente(cliente = null) {
-  return cliente?.id ? `&or=(client_id.is.null,client_id.eq.${cliente.id})` : "";
+  return /^[0-9a-f-]{36}$/i.test(cliente?.id || '') ? `&or=(client_id.is.null,client_id.eq.${cliente.id})` : "&client_id=is.null";
 }
 
 async function obtenerEjemplosEntrenamiento(mensaje, limite = 8, cliente = null) {
@@ -32,11 +32,18 @@ async function obtenerEjemplosEntrenamiento(mensaje, limite = 8, cliente = null)
     const query = `${TRAINING_EXAMPLES_TABLE}?active=eq.true${filtroCliente(
       cliente
     )}&select=intent,customer_message,ideal_response,notes,tags,priority&order=priority.desc,created_at.desc&limit=30`;
-    const ejemplos = (await requestSupabase(query)) || [];
+    const respuestas = await Promise.allSettled([
+      requestSupabase(query),
+      ...(process.env.LEARNING_RETRIEVAL_ENABLED !== 'false' && /^[0-9a-f-]{36}$/i.test(cliente?.id || '')
+        ? [requestSupabase(`${TRAINING_EXAMPLES_TABLE}?active=eq.true&client_id=eq.${cliente.id}&tags=cs.${encodeURIComponent('{learning:v1,learning:approved}')}&select=intent,customer_message,ideal_response,notes,tags,priority&order=updated_at.desc&limit=100`)] : []),
+    ]);
+    const ejemplos = [...new Map(respuestas.filter(r => r.status === 'fulfilled').flatMap(r => r.value || [])
+      .filter(e => !e.tags?.includes('learning:v1') || (process.env.LEARNING_RETRIEVAL_ENABLED !== 'false' && e.tags.includes('learning:approved')))
+      .map(e => [JSON.stringify([e.intent, e.customer_message, e.ideal_response]), e])).values()];
 
     return ejemplos
       .map((ejemplo) => ({ ...ejemplo, puntaje: puntuarEjemplo(mensaje, ejemplo) }))
-      .filter((ejemplo) => ejemplo.puntaje > 0 || ejemplo.priority > 50)
+      .filter((ejemplo) => ejemplo.puntaje > 0 || (!ejemplo.tags?.includes('learning:v1') && ejemplo.priority > 50))
       .sort((a, b) => b.puntaje - a.puntaje || b.priority - a.priority)
       .slice(0, limite)
       .map(({ puntaje, ...ejemplo }) => ejemplo);

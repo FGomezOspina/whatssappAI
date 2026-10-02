@@ -342,7 +342,7 @@ test("texto no cambia una linea base por una submarca comercial no solicitada", 
   ];
 
   const base = validarCoincidenciaProducto({
-    mensaje: "q precio tiene la simparica",
+    mensaje: "q precio tiene la simparica 10-20kg",
     catalogo: catalogoSimparica,
     catalogoCandidatos: catalogoSimparica,
     clasificacion: {
@@ -352,7 +352,7 @@ test("texto no cambia una linea base por una submarca comercial no solicitada", 
     },
   });
   const trio = validarCoincidenciaProducto({
-    mensaje: "q precio tiene la simparica trio",
+    mensaje: "q precio tiene la simparica trio 10-20kg",
     catalogo: catalogoSimparica,
     catalogoCandidatos: catalogoSimparica,
     clasificacion: {

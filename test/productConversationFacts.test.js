@@ -371,3 +371,15 @@ test('dos fotos mantienen respuesta validada si el redactor insiste en cotizar e
   assert.equal(contexto.resultado.resultados[1].pendiente, 'presentacion');
   assert.doesNotMatch(JSON.stringify(contexto), /35900/);
 });
+
+test('redactor no vuelve a preguntar especie que el intérprete ya resolvió', async () => {
+  const solicitudes=[];
+  const redactar=humanizador(['¿Me confirmas si es para perro o gato?', '¿Qué tamaño de raza necesitas?'], solicitudes);
+  const respuesta=await redactar('un bulto rojo de 22.7', '¿Qué tamaño de raza necesitas?', {
+    productoAutonomo:{nivel:'media',aclaracion:{campo:'tamano',valores:['pequeno','grande']},alternativas:[]},
+    clasificacion,estado:{},interpretacionIA:{accion:'agregar',producto:{especie:'perro'}},
+  });
+  assert.equal(solicitudes.length,2);
+  assert.doesNotMatch(respuesta,/perro o gato/);
+  assert.equal(JSON.parse(solicitudes[0].messages[1].content).especieConocida,'perro');
+});

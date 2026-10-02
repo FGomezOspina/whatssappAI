@@ -108,3 +108,44 @@ select
 from public.aivance_clients
 where slug = 'distrifinca';
 ```
+
+## Aprendizaje supervisado desde conversaciones
+
+Al finalizar un turno persistido se capturan solicitudes múltiples, productos pendientes y correcciones detectadas. Se guardan como `active=false` con etiquetas `learning:v1` y `learning:pending`, dentro de la empresa correspondiente. No se copian respuestas del agente, precios, carrito ni el chat completo. El resumen de productos se filtra para retirar contactos y datos de entrega conocidos; la revisión humana debe comprobar también la anonimización antes de aprobar.
+
+La captura es idempotente por empresa y turno: un reintento no sobrescribe una revisión. Si falla Supabase, se conserva la respuesta y el pedido. La captura tiene un tiempo de espera acotado. No hay entrenamiento automático del modelo ni aprobación automática de sus respuestas.
+
+Revisar candidatos de una empresa (usar su UUID de `aivance_clients`):
+
+```bash
+node scripts/review-learning.js list CLIENT_UUID pending
+```
+
+Crear un JSON de revisión con un ejemplo anónimo y el criterio correcto, sin precios ni instrucciones de catálogo permanentes:
+
+```json
+{
+  "customer_message": "Cliente pide tres latas de un producto identificado en el catálogo.",
+  "ideal_response": "Conservar tres unidades. Distinguir el envase del contenido; validar la referencia y las presentaciones actuales antes de cotizar.",
+  "notes": "No confundir cantidad de envases con peso ni interpretar un envase ausente del nombre como incompatibilidad.",
+  "reviewed_by": "operador"
+}
+```
+
+```bash
+node scripts/review-learning.js approve CLIENT_UUID EXAMPLE_UUID revision.json
+node scripts/review-learning.js list CLIENT_UUID approved
+```
+
+Rechazar un candidato o retirar un ejemplo aprobado utiliza un JSON con `{"reason":"Motivo de revisión"}`:
+
+```bash
+node scripts/review-learning.js reject CLIENT_UUID EXAMPLE_UUID motivo.json
+node scripts/review-learning.js revoke CLIENT_UUID EXAMPLE_UUID motivo.json
+```
+
+Las revisiones se limitan a la empresa y detectan cambios simultáneos. Solo ejemplos aprobados, activos y relevantes se recuperan; no se reutilizan datos entre empresas. La recuperación compara palabras entre el mensaje y los ejemplos, sobre una ventana de los 100 aprobados más recientes, además de los ejemplos curados existentes. La revocación se aplica en la siguiente recuperación, sin reiniciar.
+
+Para desactivar solo la captura: `LEARNING_CAPTURE_ENABLED=false`. Para desactivar solo el uso de ejemplos aprendidos: `LEARNING_RETRIEVAL_ENABLED=false`. Reiniciar el servidor al cambiar variables de entorno. Los ejemplos curados anteriores continúan funcionando.
+
+No se necesita una migración nueva si ya existen `training_examples`, su columna `client_id` y el trigger de `updated_at` de las migraciones del proyecto. La herramienta es administrativa por terminal; no expone un endpoint de aprobación a los clientes de WhatsApp.

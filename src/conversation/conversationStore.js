@@ -8,6 +8,7 @@ const {
 } = require("../repositories/supabaseConversationRepository");
 
 const conversaciones = {};
+const { capturarAprendizaje } = require('../repositories/learningRepository');
 
 function claveConversacion(usuario, cliente = null) {
   return `${cliente?.id || cliente?.slug || "default"}:${usuario}`;
@@ -167,6 +168,11 @@ async function guardarConversacionPersistida(usuario, estado, metadatos = {}) {
         await persistirConversacion(usuario, { ...estado, mensajesProcesados }, metadatos);
       }
       estado.mensajesProcesados = mensajesProcesados;
+      try {
+        await capturarAprendizaje(estado, metadatos);
+      } catch {
+        console.error('[Learning] Captura omitida; conversación y pedido conservados.');
+      }
     } catch (error) {
       console.error("Error guardando pedido confirmado en Supabase:", error.message);
       throw error;

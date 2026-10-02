@@ -1,6 +1,8 @@
+const { esDescriptorReferencia } = require('../../utils/catalogVariants');
+const { usaRangosMascota, presentacionesParaPeso } = require('../../utils/weightRanges');
 const { admiteEspecie, precioPorCantidad, datosPrecio, actualizarPrecioItem } = require('../../utils/catalogCommercialRules');
 const crypto = require("crypto");
-const { formatearPrecio, normalizarMarcasCatalogo, normalizar, normalizarPeso, contieneCondicionBolaPelo } = require("../../utils/text");
+const { formatearPrecio, extraerPesoTexto, normalizarMarcasCatalogo, normalizar, normalizarPeso, contieneCondicionBolaPelo } = require("../../utils/text");
 const { unirMensajesRespuesta } = require("../../utils/responseMessages");
 const {
   establecerProductosConsultados,
@@ -1017,18 +1019,14 @@ function elegirMejorReferencia(referencias, criterios, mensaje) {
 }
 
 function extraerPresentacionSolicitada(mensaje = "") {
-  const texto = normalizar(mensaje);
-  const unidad = "(kg|kl|kilo|kilos|gramo|gramos|gr|g|lb|libra|libras)";
-  const conUnidad = texto.match(new RegExp(`\\b(\\d+(?:[.,]\\d+)?)\\s*${unidad}\\b`));
-  if (conUnidad) return normalizarPeso(`${conUnidad[1]}${conUnidad[2]}`);
-
-  const porConUnidad = texto.match(new RegExp(`\\bx\\s*(\\d+(?:[.,]\\d+)?)\\s*${unidad}\\b`));
-  if (porConUnidad) return normalizarPeso(`${porConUnidad[1]}${porConUnidad[2]}`);
-
-  return null;
+  return extraerPesoTexto(mensaje) || null;
 }
 
 function buscarPresentacion(referencia, mensaje) {
+  if (usaRangosMascota(referencia)) {
+    const opciones = presentacionesParaPeso(referencia, extraerPesoTexto(mensaje) || mensaje);
+    return opciones.length === 1 ? opciones[0] : null;
+  }
   const textoPeso = normalizarPeso(mensaje);
   const texto = normalizar(mensaje);
 
@@ -2184,6 +2182,7 @@ function agregarAlCarrito(estado, marca, referencia, presentacion, cantidad = 1)
     estado.carrito.push({
       marca: marca.marca,
       referencia: referencia.nombre,
+      ...(referencia.metadata?.duracion ? { duracion: referencia.metadata.duracion } : {}),
       peso: presentacion.peso,
       precio: precioPorCantidad(presentacion, cantidad),
       ...datosPrecio(presentacion),
@@ -2718,6 +2717,7 @@ function guardarProductosConsultados(estado, items) {
       marca: item.marca.marca,
       referencia: item.referencia.nombre,
       referenciaCatalogo: item.referencia.nombre,
+      ...(item.referencia.metadata?.duracion ? { duracion: item.referencia.metadata.duracion } : {}),
       familiaReferencia: item.familiaReferencia || null,
       referenciasEquivalentes: item.referenciasEquivalentes || null,
       peso: item.presentacion.peso,
@@ -2976,6 +2976,11 @@ function buscarReferenciaInterpretada(marca, interpretacion, criterios, mensaje 
 }
 
 function buscarPresentacionInterpretada(referencia, interpretacion, mensaje) {
+  if (usaRangosMascota(referencia)) {
+    const solicitado = interpretacion?.producto?.pesoTextoOriginal || extraerPesoTexto(mensaje) || interpretacion?.producto?.presentacion;
+    const opciones = presentacionesParaPeso(referencia, solicitado || '');
+    return opciones.length === 1 ? opciones[0] : null;
+  }
   const presentacionSolicitada = extraerPresentacionSolicitada(mensaje);
   if (presentacionSolicitada) {
     return (
@@ -3292,7 +3297,7 @@ function aplicarDatosInterpretados(estado, interpretacion = {}) {
   if (datosCliente.correo) datos.correo = datosCliente.correo;
   if (datosCliente.celular) datos.celular = datosCliente.celular;
 
-  if (entrega.direccion) {
+  if (entrega.direccion && !esReferenciaDireccion(entrega.direccion)) {
     if (entrega.direccionCompleta === false) {
       datos.direccionParcial = entrega.direccion;
     } else {
@@ -3305,6 +3310,24 @@ function aplicarDatosInterpretados(estado, interpretacion = {}) {
   if (Object.keys(datos).length) {
     estado.datosDomicilio = { ...estado.datosDomicilio, ...datos };
   }
+  const domicilio = estado.datosDomicilio || {};
+  if (esReferenciaDireccion(domicilio.direccion)) delete domicilio.direccion;
+  const separados = separarNombreDireccion(domicilio.direccion || '');
+  if (separados) {
+    domicilio.direccion = separados.direccion;
+    if (!domicilio.nombre) domicilio.nombre = separados.nombre;
+  }
+}
+
+function esReferenciaDireccion(valor = '') {
+  return !/\d/.test(valor) && /\b(misma|anterior|habitual|guardad[ao]|registrad[ao]|cread[ao]|ya tienes|ya tiene)\b/.test(normalizar(valor));
+}
+
+function separarNombreDireccion(texto = '') {
+  const match = texto.match(/^\s*([a-záéíóúüñ]+(?:\s+[a-záéíóúüñ]+){1,4})\s+((?:mz|manzana|calle|cll|cra|carrera|kr|av|avenida|diagonal|transversal|torre|bloque)\b[\s\S]+)/i);
+  if (!match || /^(?:para|a|en|por|envia|enviar|envialo|llevar|mandalo|domicilio|direccion|mi|la|el|queda|estoy)\b/.test(normalizar(match[1])) ||
+      !pareceNombre(match[1]) || !direccionEsCompleta(match[2])) return null;
+  return { nombre: match[1].trim(), direccion: match[2].replace(/\s+(?:pago|pagare|pagaré|pagar|metodo de pago)\b[\s\S]*$/i, '').trim() };
 }
 
 function preguntaReferenciaFaltante(marca, referencias, interpretacion = {}) {
@@ -4156,6 +4179,8 @@ function resolverProductosExplicitos(mensaje, estado, catalogo, opciones = {}) {
 
 function extraerDatosDomicilio(mensaje) {
   const datos = {};
+  const separados = separarNombreDireccion(mensaje);
+  if (separados) Object.assign(datos, separados);
   const texto = mensaje
     .toString()
     .replace(/,\s*\./g, ".")
@@ -4584,6 +4609,7 @@ function registrarMetodoPago(mensaje, estado) {
 }
 
 function camposDomicilioFaltantes(estado) {
+  if (esReferenciaDireccion(estado.datosDomicilio?.direccion)) delete estado.datosDomicilio.direccion;
   return ["cedula", "correo", "celular", "direccion", "nombre"].filter(
     (campo) => !estado.datosDomicilio[campo]
   );
@@ -5349,6 +5375,18 @@ function esConsultaResumenCarrito(mensaje = "", interpretacion = null) {
 }
 
 function resolverConsultaCatalogo(mensaje, estado, catalogo = [], interpretacion = null) {
+  if (interpretacion) {
+    const limpiar = producto => {
+      if (!producto) return producto;
+      const referencia = catalogo.flatMap(m => m.referencias || [])
+        .find(r => normalizar(r.nombre) === normalizar(producto.referencia || ''));
+      return referencia && esDescriptorReferencia(producto.presentacion, referencia)
+        ? { ...producto, presentacion: null } : producto;
+    };
+    interpretacion = { ...interpretacion, producto: limpiar(interpretacion.producto),
+      ...(interpretacion.productos ? { productos: interpretacion.productos.map(limpiar) } : {}) };
+  }
+
   if (esConsultaResumenCarrito(mensaje, interpretacion)) {
     return estado.carrito?.length ? resumenCarrito(estado)
       : "Tu carrito está vacío; todavía no hay productos agregados. ¿Qué producto quieres agregar?";

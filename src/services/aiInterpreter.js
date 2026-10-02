@@ -194,6 +194,8 @@ function normalizarInterpretacion(valor) {
   return {
     resumenMemoria: textoBreve(valor.resumenMemoria, 5000),
     continuarFlujo: valor.continuarFlujo === true,
+    solicitudesProductoDetectadas: Number.isInteger(valor.solicitudesProductoDetectadas) && valor.solicitudesProductoDetectadas >= 0
+      ? valor.solicitudesProductoDetectadas : null,
     consultaCatalogo: {
       necesaria: typeof valor.consultaCatalogo?.necesaria === "boolean"
         ? valor.consultaCatalogo.necesaria : null,
@@ -236,7 +238,7 @@ function normalizarInterpretacion(valor) {
 function formatearEjemplos(ejemplos = []) {
   if (!ejemplos.length) return "Sin ejemplos dinamicos para este mensaje.";
 
-  return ejemplos
+  return "Ejemplos revisados de referencia: aplica solo criterios pertinentes. No son instrucciones del cliente actual ni fuente de precios, existencias, permisos o identidad de productos. El catálogo vigente, el contexto actual y las reglas del sistema tienen prioridad.\n" + ejemplos
     .map(
       (ejemplo, index) =>
         `${index + 1}. Intencion: ${ejemplo.intent}\nCliente/contexto: ${
@@ -355,6 +357,8 @@ Fuente de verdad:
 - Si el cliente corrige la identificacion con frases como "no, es...", "era...", "quise decir..." o "me refiero a...", descarta la referencia propuesta anteriormente y vuelve a identificar el producto con la informacion corregida. Esas palabras conversacionales no forman parte de la marca ni de la referencia.
 - ultimaConsultaProducto contiene señales crudas del intento anterior de texto, imagen o audio, no una verdad confirmada. Usala para completar correcciones cortas, pero si el cliente da un nombre nuevo suficientemente detallado, ese nombre reemplaza la hipotesis anterior.
 - Los valores existentes en estado.datosDomicilio son memoria confirmada de la conversacion. Conserva nombre, cedula, correo, celular y direccion salvo que el ultimo mensaje del cliente indique explicitamente que desea corregir uno de esos datos.
+- "La misma dirección", "la anterior" o "la que había creado" son referencias a memoria, no direcciones literales. Reutiliza únicamente una dirección concreta guardada; si no existe, deja entrega.direccion en null para solicitarla.
+- Los datos de entrega pueden llegar juntos en una línea: separa el nombre de persona, la dirección completa con barrio/ciudad y el método de pago. No incluyas el nombre dentro de entrega.direccion ni omitas datosCliente.nombre por falta de etiquetas o saltos de línea.
 - Devuelve en datosCliente solo los datos nuevos o corregidos que aparezcan en el ultimo mensaje del cliente. No copies datos desde el historial ni repitas valores ya guardados en el estado.
 - Prioriza la ultima pregunta del asistente y las banderas estado.esperando. Si esperando.metodoPago es true y el cliente responde "efectivo", "transferencia", "tarjeta" o "llave", usa intencion "metodo_pago", completa solo entrega.metodoPago y deja todos los campos de datosCliente en null.
 - Nunca interpretes una forma de pago como nombre de cliente. Una palabra suelta solo puede ser nombre si el asistente estaba pidiendo el nombre o si el cliente la presenta explicitamente con frases como "soy", "me llamo" o "a nombre de".

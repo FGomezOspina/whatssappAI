@@ -248,7 +248,7 @@
     "referencias": [
       {
         "nombre": "ADVOCATE",
-        "especie": "gato",
+        "especie": "perro",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -6421,25 +6421,22 @@
     "referencias": [
       {
         "nombre": "BRAVECTO",
-        "especie": "ave",
+        "especie": "perro",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
-        "descripcion": "BRAVECTO",
+        "descripcion": "BRAVECTO 3 MESES",
         "imagen": "",
         "requiere_confirmacion": true,
         "metadata": {
           "source": "Productos.pdf",
           "original_names": [
             "BRAVECTO 10-20KG",
-            "BRAVECTO 10-20KG 37DIAS",
             "BRAVECTO 20-40KG",
-            "BRAVECTO 20-40KG 37DIAS",
             "BRAVECTO 4.5-10KG",
-            "BRAVECTO 4.5-10KG 37DIAS",
-            "BRAVECTO 40-56KG",
-            "BRAVECTO 40-56KG 37DIAS"
-          ]
+            "BRAVECTO 40-56KG"
+          ],
+          "duracion": "3 meses"
         },
         "presentaciones": [
           {
@@ -6451,9 +6448,9 @@
               "llave": "198",
               "nombre_original": "BRAVECTO 10-20KG",
               "codigos": [
-                "10101010198",
-                "101010102249"
-              ]
+                "10101010198"
+              ],
+              "duracion": "3 meses"
             }
           },
           {
@@ -6465,9 +6462,9 @@
               "llave": "200",
               "nombre_original": "BRAVECTO 20-40KG",
               "codigos": [
-                "10101010200",
-                "101010102251"
-              ]
+                "10101010200"
+              ],
+              "duracion": "3 meses"
             }
           },
           {
@@ -6479,9 +6476,9 @@
               "llave": "201",
               "nombre_original": "BRAVECTO 4.5-10KG",
               "codigos": [
-                "10101010201",
-                "101010102248"
-              ]
+                "10101010201"
+              ],
+              "duracion": "3 meses"
             }
           },
           {
@@ -6493,40 +6490,68 @@
               "llave": "202",
               "nombre_original": "BRAVECTO 40-56KG",
               "codigos": [
-                "10101010202",
-                "10101010203"
-              ]
+                "10101010202"
+              ],
+              "duracion": "3 meses"
             }
           }
         ]
       },
       {
-        "nombre": "BRAVECTO 2.",
-        "especie": "ave",
+        "nombre": "BRAVECTO 37 DIAS",
+        "especie": "perro",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
-        "descripcion": "BRAVECTO 2.",
+        "descripcion": "BRAVECTO 37 DIAS",
         "imagen": "",
         "requiere_confirmacion": true,
         "metadata": {
           "source": "Productos.pdf",
           "original_names": [
-            "BRAVECTO 2.-4.5KG 37DIAS"
+            "BRAVECTO 2.5-4.5KG 37DIAS",
+            "BRAVECTO 4.5-10KG 37DIAS",
+            "BRAVECTO 10-20KG 37DIAS",
+            "BRAVECTO 20-40KG 37DIAS",
+            "BRAVECTO 40-56KG 37DIAS"
+          ],
+          "duracion": "37 dias",
+          "presentaciones_por_confirmar": [
+            {
+              "peso": "4.5-10kg",
+              "codigo": "101010102248",
+              "nombre_original": "BRAVECTO 4.5-10KG 37DIAS"
+            },
+            {
+              "peso": "10-20kg",
+              "codigo": "101010102249",
+              "nombre_original": "BRAVECTO 10-20KG 37DIAS"
+            },
+            {
+              "peso": "20-40kg",
+              "codigo": "101010102251",
+              "nombre_original": "BRAVECTO 20-40KG 37DIAS"
+            },
+            {
+              "peso": "40-56kg",
+              "codigo": "10101010203",
+              "nombre_original": "BRAVECTO 40-56KG 37DIAS"
+            }
           ]
         },
         "presentaciones": [
           {
-            "peso": "4.5kg",
+            "peso": "2.5-4.5kg",
             "precio": 32000,
             "metadata": {
               "source": "Productos.pdf",
               "codigo": "101010102250",
               "llave": "2250",
-              "nombre_original": "BRAVECTO 2.-4.5KG 37DIAS",
+              "nombre_original": "BRAVECTO 2.5-4.5KG 37DIAS",
               "codigos": [
                 "101010102250"
-              ]
+              ],
+              "duracion": "37 dias"
             }
           }
         ]
@@ -13005,7 +13030,7 @@
       },
       {
         "nombre": "CREDELIO",
-        "especie": "otro",
+        "especie": "perro",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -13092,7 +13117,7 @@
       },
       {
         "nombre": "CREDELIO PLUS 1.4KG A 2.8KG",
-        "especie": "otro",
+        "especie": "perro",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -13123,7 +13148,7 @@
       },
       {
         "nombre": "CREDELIO PLUS 11KG A 22KG",
-        "especie": "otro",
+        "especie": "perro",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -13154,7 +13179,7 @@
       },
       {
         "nombre": "CREDELIO PLUS 2.8KG 5.5KG",
-        "especie": "otro",
+        "especie": "perro",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -13185,7 +13210,7 @@
       },
       {
         "nombre": "CREDELIO PLUS 22KG A 45KG",
-        "especie": "otro",
+        "especie": "perro",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -13216,7 +13241,7 @@
       },
       {
         "nombre": "CREDELIO PLUS 5.5KG A 11KG",
-        "especie": "otro",
+        "especie": "perro",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -26869,7 +26894,7 @@
     "referencias": [
       {
         "nombre": "NEXGARD",
-        "especie": "otro",
+        "especie": "perro",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -26942,7 +26967,7 @@
       },
       {
         "nombre": "NEXGARD COMBO",
-        "especie": "otro",
+        "especie": "gato",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -27004,7 +27029,7 @@
       },
       {
         "nombre": "NEXGARD SPECTRA",
-        "especie": "otro",
+        "especie": "perro",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -37143,7 +37168,7 @@
     "referencias": [
       {
         "nombre": "SIMPARICA",
-        "especie": "otro",
+        "especie": "perro",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -37202,7 +37227,7 @@
       },
       {
         "nombre": "SIMPARICA TRIO",
-        "especie": "otro",
+        "especie": "perro",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,

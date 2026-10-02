@@ -1,0 +1,15 @@
+{
+  "client": "distrifinca",
+  "brand": "BRAVECTO",
+  "variants": [
+    { "from": "BRAVECTO", "to": "BRAVECTO", "duration": "3 meses" },
+    { "from": "BRAVECTO 2.", "to": "BRAVECTO 37 DIAS", "duration": "37 dias" }
+  ],
+  "weightCorrections": { "101010102250": "2.5-4.5kg" },
+  "pendingPrices": [
+    { "peso": "4.5-10kg", "codigo": "101010102248", "nombre_original": "BRAVECTO 4.5-10KG 37DIAS" },
+    { "peso": "10-20kg", "codigo": "101010102249", "nombre_original": "BRAVECTO 10-20KG 37DIAS" },
+    { "peso": "20-40kg", "codigo": "101010102251", "nombre_original": "BRAVECTO 20-40KG 37DIAS" },
+    { "peso": "40-56kg", "codigo": "10101010203", "nombre_original": "BRAVECTO 40-56KG 37DIAS" }
+  ]
+}

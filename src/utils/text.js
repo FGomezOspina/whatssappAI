@@ -96,12 +96,14 @@ function contieneCondicionBolaPelo(texto = "") {
 
 function normalizarPeso(texto = "") {
   // La coma decimal debe conservarse ANTES de quitar puntuacion.
-  const peso = normalizar(textoSeguro(texto).replace(/(\d),(?=\d)/g, "$1."))
+  const peso = normalizar(textoSeguro(texto).replace(/(\d),(?=\d)/g, "$1.")
+    .replace(/(\d+(?:\.\d+)?)\s*(?:kg|kl|kilos?)?\s*(?:[-–—]|a)\s*(?=\d)/gi, "$1rangohasta"))
     .replace(
       /\b(?:x|por)\s*(?=\d+(?:\.\d+)?\s*(?:kg|kl|kr|kilogramos?|kilos?|g|gr|gramos?|lb|libras?)\b)/g,
       ""
     )
     .replace(/\s+/g, "")
+    .replace(/rangohasta/g, "-")
     .replace(/kl/g, "kg")
     .replace(/kr/g, "kg")
     .replace(/kilogramos?|kilos?/g, "kg")
@@ -115,6 +117,14 @@ function normalizarPeso(texto = "") {
   }
 
   return peso;
+}
+
+function extraerPesoTexto(texto = '') {
+  const numero = '\\d+(?:[.,]\\d+)?';
+  const unidad = '(?:kg|kl|kr|kilogramos?|kilos?|gramos?|gr|g|lb|libras?|ml|mg)';
+  const rango = new RegExp(`${numero}\\s*(?:${unidad})?\\s*(?:[-–—]|a)\\s*${numero}\\s*${unidad}\\b`, 'i');
+  const simple = new RegExp(`(?:hasta\\s+)?${numero}\\s*${unidad}\\b`, 'i');
+  return normalizarPeso(textoSeguro(texto).match(rango)?.[0] || textoSeguro(texto).match(simple)?.[0] || '');
 }
 
 // Preserve short commercial identifiers before punctuation/stopword expansion.
@@ -135,6 +145,7 @@ function formatearPrecio(precio) {
 }
 
 module.exports = {
+  extraerPesoTexto,
   contieneCondicionBolaPelo,
   normalizarMarcasCatalogo,
   codigosReferencia,
