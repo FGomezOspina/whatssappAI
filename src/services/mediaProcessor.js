@@ -1,3 +1,4 @@
+const { medir, medirSincrono } = require('./pipelineTelemetry');
 const OpenAI = require("openai");
 const { toFile } = OpenAI;
 
@@ -193,13 +194,13 @@ function construirPromptTranscripcion(catalogo = [], vertical = null) {
 }
 
 async function transcribirConModelo({ buffer, filename, contentType, model, prompt }) {
-  const archivo = await toFile(buffer, filename, { type: contentType });
-  const transcripcion = await openai.audio.transcriptions.create({
+  const archivo = await medir('audio_processing', () => toFile(buffer, filename, { type: contentType }));
+  const transcripcion = await medir('audio_transcription', () => medir('openai_request', () => openai.audio.transcriptions.create({
     file: archivo,
     model,
     language: "es",
     prompt,
-  });
+  }), { kind: "audio_transcription" }), { model });
 
   return transcripcion.text?.trim() || "";
 }
@@ -209,7 +210,7 @@ async function transcribirAudio(media, logger = console, catalogo = [], vertical
   if (!media?.url) throw new Error("El audio recibido no tiene URL");
 
   if (logger?.log) logger.log(`[OpenAI] Enviando audio real a transcripción | ${referenciaSegura(media)}`);
-  const { buffer, contentType } = await descargarArchivo(media.url, logger);
+  const { buffer, contentType } = await medir('audio_download', () => descargarArchivo(media.url, logger));
   const tipo = media.contentType || contentType || "audio/ogg";
   const filename = nombreAudioSeguro(media, tipo);
   const prompt = construirPromptTranscripcion(catalogo, vertical);
@@ -239,9 +240,9 @@ async function transcribirAudio(media, logger = console, catalogo = [], vertical
 }
 
 async function prepararImagen(media, logger = console) {
-  const { buffer, contentType } = await descargarArchivo(media.url, logger);
+  const { buffer, contentType } = await medir('image_download', () => descargarArchivo(media.url, logger));
   const tipo = media.contentType || contentType || "image/jpeg";
-  const dataUrl = `data:${tipo};base64,${buffer.toString("base64")}`;
+  const dataUrl = medirSincrono('image_processing', () => `data:${tipo};base64,${buffer.toString("base64")}`);
 
   if (logger?.log) {
     logger.log(

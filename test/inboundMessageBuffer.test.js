@@ -110,16 +110,16 @@ test("usa ventana segura si la variable de entorno desactiva accidentalmente el 
   }
 });
 
-test('espera 60 segundos desde el ultimo mensaje aunque otro llegue a los 50', t => {
+test('espera 5 segundos desde el ultimo mensaje aunque otro llegue a los 3', t => {
   t.mock.timers.enable({apis:['setTimeout']});
   const lotes=[];
   const buffer=crearBufferMensajesEntrantes({ventanaMs:DEFAULT_BUFFER_WINDOW_MS,alVaciar:eventos=>lotes.push(eventos)});
   t.after(()=>buffer.cerrar());
   buffer.agregar({channelUserId:'cliente-1',text:'Primero'});
-  t.mock.timers.tick(50000);
+  t.mock.timers.tick(3000);
   assert.equal(lotes.length,0);
   buffer.agregar({channelUserId:'cliente-1',text:'Segundo'});
-  t.mock.timers.tick(59999);
+  t.mock.timers.tick(4999);
   assert.equal(lotes.length,0);
   t.mock.timers.tick(1);
   assert.equal(lotes.length,1);

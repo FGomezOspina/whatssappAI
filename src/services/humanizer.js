@@ -1,3 +1,4 @@
+const { medir } = require('./pipelineTelemetry');
 const { precioPorCantidad } = require('../utils/catalogCommercialRules');
 const OpenAI = require("openai");
 const { modeloHumanizador } = require("./modelRouter");
@@ -217,6 +218,10 @@ function debeHumanizarRespuesta(respuestaBase, opciones = {}) {
 }
 
 async function humanizarRespuesta(mensajeCliente, respuestaBase, opciones = {}) {
+  if (opciones.resumenCompacto) {
+    opciones.onUsage?.({ skipped: true, reason: 'resumen_compacto' });
+    return respuestaBase;
+  }
   // Una aclaracion de un item no oculta los productos ya guardados.
   if (opciones.estado?.carrito?.length &&
       opciones.estado.ultimaSolicitudProductos?.some(item => item.estado === "pendiente") &&
@@ -365,9 +370,9 @@ ${promptCliente(opciones.cliente)}
     });
 
     const inicio = Date.now();
-    const completion = await openai.chat.completions.create({
+    const completion = await medir('openai_request', () => openai.chat.completions.create({
       ...parametrosModelo,
-    });
+    }), { kind: "humanizer" });
     const duracionMs = Date.now() - inicio;
 
     logUsoIA({
@@ -474,14 +479,14 @@ No cambies cantidades, presentaciones ni precios. Puedes expresarlos en prosa li
   };
   for (let intento = 0; intento < 2; intento++) {
     const inicio = Date.now();
-    const completion = await openai.chat.completions.create({ model: modelo,
+    const completion = await medir('openai_request', () => openai.chat.completions.create({ model: modelo,
       messages: [{ role: "system", content: prompt }, { role: "user", content: JSON.stringify(contexto) },
         ...(intento ? [
           ...(respuestaAnterior ? [{ role: "assistant", content: respuestaAnterior }] : []),
           { role: "system", content: `Corrige la respuesta anterior. Motivo del rechazo: ${motivoRechazo}. Conserva solo los hechos autorizados. Si la coincidencia esta confirmada, incluye referencia, presentacion y precio unitario validado, ademas de la pregunta operativa pendiente. Corregir una omision no autoriza eliminar los otros datos. Si el resultado es incierto, pide el atributo pendiente mediante una pregunta directa con signos de interrogacion y sin cotizar.` }
         ] : [])],
       ...(!/^gpt-5/i.test(modelo) ? { temperature: 0.55 } : {}),
-    });
+    }), { kind: "product_response" });
     logUsoIA({ etapa: "respuesta_producto", channelUserId: opciones.channelUserId,
       cliente: opciones.cliente, intencion: opciones.clasificacion?.intencion,
       modelo, duracionMs: Date.now() - inicio, usage: completion.usage });

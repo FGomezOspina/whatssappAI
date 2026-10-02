@@ -20,7 +20,14 @@ function presentacionesParaPeso(referencia, peso) {
   const numero = normalizarPeso(peso).match(/^(\d+(?:\.\d+)?)kg$/);
   if (!numero) return [];
   const valor = Number(numero[1]);
-  // Un límite compartido devuelve ambas opciones: no inventar inclusividad.
-  return referencia.presentaciones.filter(p => { const rango = rangoPeso(p.peso) || rangoPeso(extraerPesoTexto(referencia.nombre)); return rango && valor > 0 && valor >= rango.desde && valor <= rango.hasta; });
+  // Los extremos abiertos/cerrados son datos del catálogo, nunca reglas por
+  // marca. Sin esa información un límite compartido sigue siendo ambiguo.
+  return referencia.presentaciones.filter(p => {
+    const rango = rangoPeso(p.peso) || rangoPeso(extraerPesoTexto(referencia.nombre));
+    const limites = p.metadata?.rango_peso || {};
+    return rango && valor > 0 &&
+      (limites.desde_inclusivo === false ? valor > rango.desde : valor >= rango.desde) &&
+      (limites.hasta_inclusivo === false ? valor < rango.hasta : valor <= rango.hasta);
+  });
 }
 module.exports = { rangoPeso, usaRangosMascota, presentacionesParaPeso };

@@ -117,6 +117,23 @@ async function obtenerConversacionPersistida(usuario, cliente = null) {
 }
 
 async function guardarConversacionPersistida(usuario, estado, metadatos = {}) {
+  const ejecucion = require('../services/pipelineTelemetry').contexto?.getStore();
+  if (ejecucion && metadatos.respuesta) {
+    const respuesta = metadatos.respuesta;
+    const turnId = estado._turnoEntrante?.turnId;
+    // Los efectos del motor se guardan una sola vez. El texto del asistente
+    // solo se convierte en historial cuando el transporte confirma su envío.
+    ejecucion.alEnviar = async (textoEnviado = respuesta) => {
+      estado.ultimaPreguntaAsistente = textoEnviado;
+      conversaciones[claveConversacion(usuario, metadatos.cliente)] = estado;
+      if (!supabaseConfigurado()) return;
+      const fila = await persistirConversacion(usuario, estado, { cliente: metadatos.cliente, respuesta: textoEnviado });
+      await guardarMensaje(usuario, 'outbound', textoEnviado, fila?.id || null, metadatos.cliente,
+        turnId ? { eventKey: turnId, turnId } : {});
+    };
+    const { respuesta: omitida, ...sinRespuesta } = metadatos;
+    metadatos = sinRespuesta;
+  }
   conversaciones[claveConversacion(usuario, metadatos.cliente)] = estado;
   if (metadatos.respuesta) estado.ultimaPreguntaAsistente = metadatos.respuesta;
   const soloEntrada = metadatos.fase === "entrada";
@@ -134,6 +151,14 @@ async function guardarConversacionPersistida(usuario, estado, metadatos = {}) {
   }
 
   try {
+    if (!soloEntrada && !metadatos.soloEstado) {
+      // El recibo y el carrito se persisten juntos: un reintento no vuelve a
+      // sumar artículos si falló después el guardado del pedido confirmado.
+      estado.mensajesProcesados = mensajesProcesados;
+      if (estado.pedidoConfirmadoPendienteGuardar && !estado.confirmacionPedidoId) {
+        estado.confirmacionPedidoId = require('node:crypto').randomUUID();
+      }
+    }
     const conversacion = await persistirConversacion(usuario, estado, metadatos);
     const conversationId = conversacion?.id || null;
 

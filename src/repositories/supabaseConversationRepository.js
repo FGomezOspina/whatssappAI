@@ -93,7 +93,7 @@ async function guardarMensaje(usuario, direccion, cuerpo, conversationId = null,
   try {
     return await requestSupabase(`${MESSAGES_TABLE}?on_conflict=id`, {
       method: "POST",
-      headers: { Prefer: "resolution=merge-duplicates,return=representation" },
+      headers: { Prefer: `resolution=${metadata.receiptOnly ? 'ignore' : 'merge'}-duplicates,return=representation` },
       body: JSON.stringify(payload),
     });
   } catch (error) {
@@ -112,6 +112,7 @@ async function buscarMensajesRecientes(usuario, limite = 60, cliente = null, opc
   const limiteSeguro = Math.min(Math.max(Number(limite) || 60, 1), 200);
   const orden = opciones.orden === "asc" ? "asc" : "desc";
   let query = `${MESSAGES_TABLE}?channel_user_id=eq.${encodeURIComponent(usuario)}${filtroCliente(cliente)}&select=id,direction,body,created_at,metadata&order=created_at.${orden},id.${orden}&limit=${limiteSeguro}`;
+  query += '&metadata->>receiptOnly=is.null';
   // Tuple cursors prevent skipping messages with identical timestamps.
   const filtros = [];
   for (const [campo, operador] of [["antes", "lt"], ["despues", "gt"]]) {
@@ -182,5 +183,5 @@ module.exports = {
   guardarConversacion,
   guardarMensaje,
   buscarMensajesRecientes,
-  guardarPedidoConfirmado,
+  guardarPedidoConfirmado: (...args) => require('../services/pipelineTelemetry').medir('tool_save_order', () => guardarPedidoConfirmado(...args)),
 };

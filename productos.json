@@ -26921,7 +26921,10 @@
               "nombre_original": "NEXGARD 10-25 KL",
               "codigos": [
                 "10101011123"
-              ]
+              ],
+              "rango_peso": {
+                "desde_inclusivo": false
+              }
             }
           },
           {

@@ -371,7 +371,15 @@ function dividirTextoWhatsApp(texto = "", maximo = WHATSAPP_TEXT_BODY_MAX_CHARS)
   return partes;
 }
 
-async function enviarTexto({ to, text, phoneNumberId }) {
+async function mostrarEscribiendo({ messageId, phoneNumberId }) {
+  if (!messageId) return;
+  const { apiKey, baseUrl, graphVersion, phoneNumberId: configurado } = obtenerConfiguracion();
+  const client = new WhatsAppClient({ baseUrl, graphVersion, kapsoApiKey: apiKey });
+  return client.messages.markRead({ phoneNumberId: phoneNumberId || configurado,
+    messageId, typingIndicator: { type: 'text' } });
+}
+
+async function enviarTexto({ to, text, phoneNumberId, vigente = () => true, alEnviarParte = () => {} }) {
   const { apiKey, baseUrl, graphVersion, phoneNumberId: phoneNumberIdConfigurado } = obtenerConfiguracion();
   const numeroOrigen = phoneNumberId || phoneNumberIdConfigurado;
 
@@ -389,6 +397,7 @@ async function enviarTexto({ to, text, phoneNumberId }) {
   const respuestas = [];
 
   for (const parte of partes) {
+    if (!vigente()) break;
     respuestas.push(
       await client.messages.sendText({
         phoneNumberId: numeroOrigen,
@@ -396,12 +405,14 @@ async function enviarTexto({ to, text, phoneNumberId }) {
         body: parte,
       })
     );
+    alEnviarParte(parte);
   }
 
   return respuestas.length === 1 ? respuestas[0] : respuestas;
 }
 
 module.exports = {
+  mostrarEscribiendo,
   enviarTexto,
   dividirTextoWhatsApp,
   extraerEventos,

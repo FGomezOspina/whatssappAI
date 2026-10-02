@@ -1996,7 +1996,7 @@ function validarCoincidenciaProducto({
     const identidadPedida = terminos.filter(token => !TERMINOS_ATRIBUTO.has(token));
     const completas = puntuados.filter(item => {
       const nombre = tokensDistintivos(normalizar(item.referencia.nombre));
-      return nombre.length > 1 && nombre.every(token => terminos.includes(token)) &&
+      return nombre.length > 0 && nombre.every(token => terminos.includes(token)) &&
         identidadPedida.every(token => nombre.includes(token));
     });
     if (completas.length) puntuados = puntuados.filter(item => completas.some(completa =>

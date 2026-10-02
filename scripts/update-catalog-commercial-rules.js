@@ -26,9 +26,13 @@ async function actualizar({ client, brand, reference, apply = false, request = r
   const cambios = [{ tabla: refs, anterior, patch: { species: origen.especie, category: origen.categoria, subcategory: origen.subcategoria, metadata } }];
   const presentaciones = await request(`${pres}?reference_id=eq.${anterior.id}`);
   for(const p of origen.presentaciones) {
-    if (!p.metadata?.precios_por_cantidad) continue;
+    const reglas = Object.fromEntries(['precios_por_cantidad', 'rango_peso']
+      .filter(key => p.metadata?.[key] !== undefined).map(key => [key, p.metadata[key]]));
+    if (!Object.keys(reglas).length) continue;
     const previa=one(presentaciones.filter(x=>normalizarPeso(x.weight)===normalizarPeso(p.peso)),'Presentación');
-    cambios.push({tabla:pres,anterior:previa,patch:{price:p.precio,metadata:{...previa.metadata,precios_por_cantidad:p.metadata.precios_por_cantidad}}});
+    cambios.push({tabla:pres,anterior:previa,patch:{
+      ...(reglas.precios_por_cantidad ? { price: p.precio } : {}),
+      metadata:{...previa.metadata,...reglas}}});
   }
   const pendientes = cambios.filter(c=>Object.entries(c.patch).some(([k,v])=>!isDeepStrictEqual(c.anterior[k],v)));
   if (apply && pendientes.length) {

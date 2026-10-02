@@ -82,3 +82,22 @@ test('aclarar la etapa de un alimento también conserva la identidad, sin contar
   assert.equal(r.contexto.productoAutonomo.coincidencia.referencia, marca);
   assert.equal(r.estado.carrito.length, 0);
 });
+
+for (const marca of ['NEXGARD', 'PROTECCIONPRUEBA']) {
+  test(`repetir la referencia base resuelve la eleccion pendiente y el peso: ${marca}`, async () => {
+    const catalogo = JSON.parse(JSON.stringify(require('../productos.json')
+      .filter(m => m.marca === 'NEXGARD')).replaceAll('NEXGARD', marca));
+    const r = await responderAclaracion({ marca, referencia: marca, catalogo,
+      campo: 'referencia', valores: [marca, `${marca} SPECTRA`],
+      mensaje: `${marca.toLowerCase()} 10kg`,
+      producto: { marca, referencia: marca, especie: 'perro', presentacion: '10kg' } });
+    assert.equal(r.contexto.productoAutonomo.nivel, 'alta', r.respuesta);
+    assert.equal(r.contexto.productoAutonomo.coincidencia.referencia, marca);
+    assert.equal(r.contexto.productoAutonomo.presentacionSolicitada, '4-10kg');
+    assert.match(r.respuesta, /42[.,]500/);
+    assert.doesNotMatch(r.respuesta, /SPECTRA/i);
+    assert.equal(r.estado.ultimaConsultaProducto?.aclaracion ?? null, null);
+    assert.equal(r.estado.coincidenciasProductoPendientes, null);
+    assert.equal(r.estado.carrito.length, 0);
+  });
+}

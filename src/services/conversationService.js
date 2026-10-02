@@ -1,3 +1,4 @@
+const { medir, medirSincrono } = require('./pipelineTelemetry');
 const { duracionTexto, mismaSeleccionCotizada, consultaProductoCotizado } = require('../utils/catalogVariants');
 const { precioPorCantidad, datosPrecio, normalizarVentaUnitaria } = require('../utils/catalogCommercialRules');
 const { resolverEvidenciaInterpretacion } = require("./productEvidenceService");
@@ -498,7 +499,7 @@ async function responderEventosEntrantes(eventos) {
     );
   }
   const {
-    resolverConsultaCatalogo,
+    resolverConsultaCatalogo: resolverConsultaCatalogoBase,
     buscarMarca,
     extraerCriterios,
     tieneCriterios,
@@ -511,8 +512,9 @@ async function responderEventosEntrantes(eventos) {
     esSaludo,
     esAgradecimiento,
   } = vertical.orderLogic;
+  const resolverConsultaCatalogo = (...args) => medirSincrono('tool_order_logic', () => resolverConsultaCatalogoBase(...args));
   const { asegurarRespuestaCatalogo } = vertical.productLogic;
-  const estado = await obtenerConversacionPersistida(evento.channelUserId, cliente);
+  const estado = await medir("load_context", () => obtenerConversacionPersistida(evento.channelUserId, cliente));
   const procesados = new Set(estado.mensajesProcesados || []);
   const idsEventos = [];
   eventos = eventos.filter(item => {
@@ -540,7 +542,7 @@ async function responderEventosEntrantes(eventos) {
   let contenidos;
 
   try {
-    contenidos = await Promise.all(
+    const resultadosMedia = await Promise.allSettled(
       eventos.map((item) =>
         procesarMultimedia({
           text: item.text,
@@ -551,6 +553,11 @@ async function responderEventosEntrantes(eventos) {
         })
       )
     );
+    // No liberar la conversación si falla un archivo mientras los demás
+    // siguen descargándose o transcribiéndose en este mismo lote.
+    const falloMedia = resultadosMedia.find(resultado => resultado.status === 'rejected');
+    if (falloMedia) throw falloMedia.reason;
+    contenidos = resultadosMedia.map(resultado => resultado.value);
   } catch (error) {
     console.error("Error procesando multimedia:", error.message);
     const respuesta = "No pude procesar ese archivo. Envíamelo de nuevo o cuéntame por texto qué necesitas.";
@@ -1320,8 +1327,7 @@ async function responderEventosEntrantes(eventos) {
         resultado.candidatos, lecturaValidada);
       // Cada ejecucion puede generar un resumen parcial. Publicar solo el
       // resumen final del estado evita mostrar el carrito a medio construir.
-      const detalle = respuestaProducto?.split("Pedido:")[0].trim();
-      respuestas.push(`${titulo}:\n${detalle || "No pude resolver esta referencia; necesito verificarla."}`);
+      if (!respuestaProducto) respuestas.push(`${titulo}: necesito verificar esta referencia.`);
       siguientePaso = respuestaProducto?.match(/Total: [^\n]+\n\n([\s\S]*)$/)?.[1] || siguientePaso;
       Object.assign(registro, {
         marca: lecturaValidada.producto?.marca,
@@ -1525,6 +1531,7 @@ async function responderEventosEntrantes(eventos) {
   const respuestaHumanizada = debeHumanizar
     ? await humanizarRespuesta(mensaje, respuestaBase, {
         ejemplosEntrenamiento,
+        resumenCompacto: resultadosMultiples.length > 0 || aclaroSolicitudMultiple,
         historialReciente,
         estado,
         interpretacionIA,
@@ -1561,7 +1568,11 @@ async function responderEventosEntrantes(eventos) {
   if (interpretacionIA?.accion === "consultar" && cotizacionConjunto.length) {
     const lineas = cotizacionConjunto.map(item => `- ${item.cantidad || 1} x ${item.referencia} ${item.peso}: ${formatearPrecio(item.precio * (item.cantidad || 1))}`);
     const total = cotizacionConjunto.reduce((suma, item) => suma + item.precio * (item.cantidad || 1), 0);
-    respuesta += `\n\nCotización de productos identificados:\n${lineas.join("\n")}\nTotal cotizado: ${formatearPrecio(total)}`;
+    const pendientes = (estado.ultimaSolicitudProductos || []).filter(item => item.estado === 'pendiente');
+    const aclaraciones = pendientes.map(item => item.pregunta ||
+      `${item.textoVisible || item.referencia || 'Producto pendiente'}: falta confirmar; no está incluido en el total.`);
+    respuesta = [`Cotización:\n${lineas.join("\n")}\nTotal cotizado: ${formatearPrecio(total)}`,
+      ...aclaraciones].join('\n\n');
   }
   const respuestaPersistida = respuestaParaHistorial(respuesta);
 

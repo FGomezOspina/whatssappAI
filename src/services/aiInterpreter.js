@@ -1,3 +1,4 @@
+const { medir } = require('./pipelineTelemetry');
 const { contieneCondicionBolaPelo } = require("../utils/text");
 const { resolverEvidenciaInterpretacion } = require("./productEvidenceService");
 const OpenAI = require("openai");
@@ -556,10 +557,13 @@ JSON exacto:
     }
 
     const inicio = Date.now();
-    const completion = await openai.chat.completions.create(parametrosModelo, {
+    const solicitar = () => openai.chat.completions.create(parametrosModelo, {
       timeout: timeoutInterpretacion(urlsImagen),
       maxRetries: 1,
     });
+    const completion = await medir('openai_request', () => urlsImagen.length
+      ? medir('openai_multimodal', solicitar, { images: urlsImagen.length }) : solicitar(),
+      { kind: clasificacion.decisionHerramientas ? "routing" : "interpretation", images: urlsImagen.length });
     const duracionMs = Date.now() - inicio;
 
     logUsoIA({

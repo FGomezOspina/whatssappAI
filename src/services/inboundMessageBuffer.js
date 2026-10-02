@@ -1,4 +1,4 @@
-const DEFAULT_BUFFER_WINDOW_MS = 60000;
+const DEFAULT_BUFFER_WINDOW_MS = 5000;
 const MIN_CONFIGURED_BUFFER_WINDOW_MS = 1000;
 
 function obtenerVentanaBufferMs() {

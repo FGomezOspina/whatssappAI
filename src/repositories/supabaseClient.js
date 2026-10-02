@@ -1,3 +1,4 @@
+const { medir, hash } = require('../services/pipelineTelemetry');
 function obtenerApiKey() {
   return process.env.SUPABASE_SECRET_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY;
 }
@@ -61,13 +62,13 @@ async function requestSupabase(path, opciones = {}) {
 
   for (let intento = 0; intento <= reintentos; intento += 1) {
     try {
-      const respuesta = await fetchSupabaseConTimeout(url, {
+      const respuesta = await medir('supabase_attempt', () => fetchSupabaseConTimeout(url, {
         ...opciones,
         headers: {
           ...headersSupabase(),
           ...(opciones.headers || {}),
         },
-      });
+      }), { attempt: intento + 1, operation: `${opciones.method || "GET"} ${path.split("?")[0]}` });
 
       if (!respuesta.ok) {
         const detalle = await respuesta.text();
@@ -91,7 +92,17 @@ async function requestSupabase(path, opciones = {}) {
 module.exports = {
   esErrorTransitorioSupabase,
   obtenerApiKey,
-  requestSupabase,
+  requestSupabase: (path, opciones = {}) => {
+    const datos = {
+    operation: `${opciones.method || "GET"} ${path.split("?")[0]}`, queryHash: hash(`${opciones.method || "GET"}:${path}:${opciones.body || ""}`),
+    select: new URLSearchParams(path.split("?")[1] || "").get("select"),
+    };
+    return medir('supabase_request', async () => {
+      const resultado = await requestSupabase(path, opciones);
+      datos.filas = Array.isArray(resultado) ? resultado.length : resultado == null ? 0 : 1;
+      return resultado;
+    }, datos);
+  },
   supabaseConfigurado,
   supabaseUrl,
 };

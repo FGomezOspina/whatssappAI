@@ -1,3 +1,4 @@
+const { envolver } = require('./pipelineTelemetry');
 const { admiteEspecie } = require('../utils/catalogCommercialRules');
 const { _internals: { marcaExactaConsultada, marcaCompatibleConIdentidad, tokensDistintivos, similitudTokenFlexible, distanciaLevenshtein } } = require("./productMatchValidator");
 const { normalizarMarcasCatalogo, normalizar, normalizarPeso } = require("../utils/text");
@@ -519,7 +520,7 @@ async function seleccionarCatalogoParaIA({ catalogo = [], mensaje = "", mensajeO
 }
 
 module.exports = {
-  seleccionarCatalogoParaIA,
+  seleccionarCatalogoParaIA: envolver("tool_product_search", seleccionarCatalogoParaIA),
   seleccionarCatalogoRefinadoVision,
   _internals: {
     combinarCatalogosCandidatos,
