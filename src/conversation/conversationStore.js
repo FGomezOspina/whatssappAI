@@ -116,6 +116,16 @@ async function obtenerConversacionPersistida(usuario, cliente = null) {
   return conversaciones[clave];
 }
 
+function marcarCotizacionesRespondidas(estado, texto) {
+  const { normalizar } = require('../utils/text');
+  const enviado = normalizar(texto);
+  for (const cotizacion of estado.historialProductosConsultados || []) {
+    if (cotizacion.pendienteRespuesta && cotizacion.referencia && enviado.includes(normalizar(cotizacion.referencia))) {
+      cotizacion.pendienteRespuesta = false;
+    }
+  }
+}
+
 async function guardarConversacionPersistida(usuario, estado, metadatos = {}) {
   const ejecucion = require('../services/pipelineTelemetry').contexto?.getStore();
   if (ejecucion && metadatos.respuesta) {
@@ -125,6 +135,7 @@ async function guardarConversacionPersistida(usuario, estado, metadatos = {}) {
     // solo se convierte en historial cuando el transporte confirma su envío.
     ejecucion.alEnviar = async (textoEnviado = respuesta) => {
       estado.ultimaPreguntaAsistente = textoEnviado;
+      marcarCotizacionesRespondidas(estado, textoEnviado);
       conversaciones[claveConversacion(usuario, metadatos.cliente)] = estado;
       if (!supabaseConfigurado()) return;
       const fila = await persistirConversacion(usuario, estado, { cliente: metadatos.cliente, respuesta: textoEnviado });
@@ -135,7 +146,10 @@ async function guardarConversacionPersistida(usuario, estado, metadatos = {}) {
     metadatos = sinRespuesta;
   }
   conversaciones[claveConversacion(usuario, metadatos.cliente)] = estado;
-  if (metadatos.respuesta) estado.ultimaPreguntaAsistente = metadatos.respuesta;
+  if (metadatos.respuesta) {
+    estado.ultimaPreguntaAsistente = metadatos.respuesta;
+    marcarCotizacionesRespondidas(estado, metadatos.respuesta);
+  }
   const soloEntrada = metadatos.fase === "entrada";
   if (soloEntrada) {
     Object.defineProperty(estado, "_turnoEntrante", { configurable: true, writable: true,

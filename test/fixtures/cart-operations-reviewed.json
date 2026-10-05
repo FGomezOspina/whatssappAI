@@ -1,0 +1,1664 @@
+[
+  {
+    "mensaje": "ya no necesito el excellent, solo envíame el resto",
+    "interpretacion": {
+      "resumenMemoria": null,
+      "continuarFlujo": false,
+      "solicitudesProductoDetectadas": null,
+      "consultaCatalogo": {
+        "necesaria": null,
+        "consulta": null
+      },
+      "respuestaConversacional": null,
+      "intencion": "carrito",
+      "accion": "quitar",
+      "confianza": 0.97,
+      "producto": {
+        "marca": "EXCELLENT",
+        "referencia": "EXCELLENT GATO URINARY",
+        "linea": null,
+        "textoVisible": "excellent",
+        "mencionOriginal": null,
+        "categoria": "comida",
+        "subcategoria": "concentrado",
+        "especie": null,
+        "etapa": null,
+        "tamano": null,
+        "sabores": [],
+        "presentacion": "1kg",
+        "condiciones": [],
+        "cantidad": null
+      },
+      "productos": [
+        {
+          "marca": "EXCELLENT",
+          "referencia": "EXCELLENT GATO URINARY",
+          "linea": null,
+          "textoVisible": "excellent",
+          "mencionOriginal": null,
+          "categoria": "comida",
+          "subcategoria": "concentrado",
+          "especie": null,
+          "etapa": null,
+          "tamano": null,
+          "sabores": [],
+          "presentacion": "1kg",
+          "condiciones": [],
+          "cantidad": null
+        }
+      ],
+      "entrega": {
+        "tipo": null,
+        "direccion": null,
+        "direccionCompleta": null,
+        "sector": null,
+        "metodoPago": null,
+        "sede": null
+      },
+      "datosCliente": {
+        "nombre": null,
+        "cedula": null,
+        "correo": null,
+        "celular": null
+      },
+      "carrito": {
+        "operacion": "quitar",
+        "cantidadObjetivo": null,
+        "cantidadDelta": null,
+        "aplicaAlUltimoProducto": false,
+        "razon": "Excluir EXCELLENT y conservar el resto"
+      },
+      "faltanteSugerido": null
+    }
+  },
+  {
+    "mensaje": "Solo no quiero el excellent, envíame el resto",
+    "interpretacion": {
+      "resumenMemoria": null,
+      "continuarFlujo": false,
+      "solicitudesProductoDetectadas": 1,
+      "consultaCatalogo": {
+        "necesaria": null,
+        "consulta": null
+      },
+      "respuestaConversacional": null,
+      "intencion": "pedido_producto",
+      "accion": "quitar",
+      "confianza": 0.96,
+      "producto": {
+        "marca": "EXCELLENT",
+        "referencia": "EXCELLENT GATO URINARY",
+        "linea": null,
+        "textoVisible": "excellent",
+        "mencionOriginal": null,
+        "categoria": "comida",
+        "subcategoria": "concentrado",
+        "especie": "gato",
+        "etapa": null,
+        "tamano": null,
+        "sabores": [],
+        "presentacion": "1kg",
+        "condiciones": [
+          "urinary"
+        ],
+        "cantidad": 1
+      },
+      "productos": [
+        {
+          "marca": "EXCELLENT",
+          "referencia": "EXCELLENT GATO URINARY",
+          "linea": null,
+          "textoVisible": "excellent",
+          "mencionOriginal": null,
+          "categoria": "comida",
+          "subcategoria": "concentrado",
+          "especie": "gato",
+          "etapa": null,
+          "tamano": null,
+          "sabores": [],
+          "presentacion": "1kg",
+          "condiciones": [
+            "urinary"
+          ],
+          "cantidad": 1
+        }
+      ],
+      "entrega": {
+        "tipo": null,
+        "direccion": null,
+        "direccionCompleta": null,
+        "sector": null,
+        "metodoPago": null,
+        "sede": null
+      },
+      "datosCliente": {
+        "nombre": null,
+        "cedula": null,
+        "correo": null,
+        "celular": null
+      },
+      "carrito": {
+        "operacion": "quitar",
+        "cantidadObjetivo": null,
+        "cantidadDelta": null,
+        "aplicaAlUltimoProducto": false,
+        "razon": "Excluir el producto Excellent y conservar el resto"
+      },
+      "faltanteSugerido": null
+    }
+  },
+  {
+    "mensaje": "el Excellent no",
+    "interpretacion": {
+      "resumenMemoria": null,
+      "continuarFlujo": false,
+      "solicitudesProductoDetectadas": 1,
+      "consultaCatalogo": {
+        "necesaria": null,
+        "consulta": null
+      },
+      "respuestaConversacional": null,
+      "intencion": "carrito",
+      "accion": "quitar",
+      "confianza": 0.98,
+      "producto": {
+        "marca": "EXCELLENT",
+        "referencia": "EXCELLENT GATO URINARY",
+        "linea": null,
+        "textoVisible": "Excellent",
+        "mencionOriginal": null,
+        "categoria": "comida",
+        "subcategoria": "concentrado",
+        "especie": "gato",
+        "etapa": null,
+        "tamano": null,
+        "sabores": [],
+        "presentacion": "1kg",
+        "condiciones": [
+          "urinary"
+        ],
+        "cantidad": 1
+      },
+      "productos": [
+        {
+          "marca": "EXCELLENT",
+          "referencia": "EXCELLENT GATO URINARY",
+          "linea": null,
+          "textoVisible": "Excellent",
+          "mencionOriginal": null,
+          "categoria": "comida",
+          "subcategoria": "concentrado",
+          "especie": "gato",
+          "etapa": null,
+          "tamano": null,
+          "sabores": [],
+          "presentacion": "1kg",
+          "condiciones": [
+            "urinary"
+          ],
+          "cantidad": 1
+        }
+      ],
+      "entrega": {
+        "tipo": null,
+        "direccion": null,
+        "direccionCompleta": null,
+        "sector": null,
+        "metodoPago": null,
+        "sede": null
+      },
+      "datosCliente": {
+        "nombre": null,
+        "cedula": null,
+        "correo": null,
+        "celular": null
+      },
+      "carrito": {
+        "operacion": "quitar",
+        "cantidadObjetivo": null,
+        "cantidadDelta": null,
+        "aplicaAlUltimoProducto": false,
+        "razon": null
+      },
+      "faltanteSugerido": null
+    }
+  },
+  {
+    "mensaje": "mándame todo menos el Excellent",
+    "interpretacion": {
+      "resumenMemoria": null,
+      "continuarFlujo": false,
+      "solicitudesProductoDetectadas": null,
+      "consultaCatalogo": {
+        "necesaria": null,
+        "consulta": null
+      },
+      "respuestaConversacional": null,
+      "intencion": "carrito",
+      "accion": "quitar",
+      "confianza": 0.97,
+      "producto": {
+        "marca": "EXCELLENT",
+        "referencia": "EXCELLENT GATO URINARY",
+        "linea": null,
+        "textoVisible": "Excellent",
+        "mencionOriginal": null,
+        "categoria": "comida",
+        "subcategoria": "concentrado",
+        "especie": null,
+        "etapa": null,
+        "tamano": null,
+        "sabores": [],
+        "presentacion": null,
+        "condiciones": [],
+        "cantidad": null
+      },
+      "productos": [
+        {
+          "marca": "EXCELLENT",
+          "referencia": "EXCELLENT GATO URINARY",
+          "linea": null,
+          "textoVisible": "Excellent",
+          "mencionOriginal": null,
+          "categoria": "comida",
+          "subcategoria": "concentrado",
+          "especie": null,
+          "etapa": null,
+          "tamano": null,
+          "sabores": [],
+          "presentacion": "1kg",
+          "condiciones": [],
+          "cantidad": null
+        }
+      ],
+      "entrega": {
+        "tipo": null,
+        "direccion": null,
+        "direccionCompleta": null,
+        "sector": null,
+        "metodoPago": null,
+        "sede": null
+      },
+      "datosCliente": {
+        "nombre": null,
+        "cedula": null,
+        "correo": null,
+        "celular": null
+      },
+      "carrito": {
+        "operacion": "quitar",
+        "cantidadObjetivo": null,
+        "cantidadDelta": null,
+        "aplicaAlUltimoProducto": false,
+        "razon": "Excluir el producto Excellent y conservar el resto del carrito."
+      },
+      "faltanteSugerido": null
+    }
+  },
+  {
+    "mensaje": "del pedido saca la arena",
+    "interpretacion": {
+      "resumenMemoria": null,
+      "continuarFlujo": false,
+      "solicitudesProductoDetectadas": 1,
+      "consultaCatalogo": {
+        "necesaria": null,
+        "consulta": null
+      },
+      "respuestaConversacional": null,
+      "intencion": "carrito",
+      "accion": "quitar",
+      "confianza": 0.99,
+      "producto": {
+        "marca": "ARENA KITTEN TALCO",
+        "referencia": "ARENA KITTEN TALCO",
+        "linea": null,
+        "textoVisible": "arena",
+        "mencionOriginal": null,
+        "categoria": "arena_sustrato",
+        "subcategoria": "arena",
+        "especie": null,
+        "etapa": null,
+        "tamano": null,
+        "sabores": [],
+        "presentacion": null,
+        "condiciones": [],
+        "cantidad": null
+      },
+      "productos": [
+        {
+          "marca": "ARENA KITTEN TALCO",
+          "referencia": "ARENA KITTEN TALCO",
+          "linea": null,
+          "textoVisible": "arena",
+          "mencionOriginal": null,
+          "categoria": "arena_sustrato",
+          "subcategoria": "arena",
+          "especie": null,
+          "etapa": null,
+          "tamano": null,
+          "sabores": [],
+          "presentacion": null,
+          "condiciones": [],
+          "cantidad": null
+        }
+      ],
+      "entrega": {
+        "tipo": null,
+        "direccion": null,
+        "direccionCompleta": null,
+        "sector": null,
+        "metodoPago": null,
+        "sede": null
+      },
+      "datosCliente": {
+        "nombre": null,
+        "cedula": null,
+        "correo": null,
+        "celular": null
+      },
+      "carrito": {
+        "operacion": "quitar",
+        "cantidadObjetivo": null,
+        "cantidadDelta": null,
+        "aplicaAlUltimoProducto": false,
+        "razon": null
+      },
+      "faltanteSugerido": null
+    }
+  },
+  {
+    "mensaje": "deja todo excepto el Excellent",
+    "interpretacion": {
+      "resumenMemoria": null,
+      "continuarFlujo": false,
+      "solicitudesProductoDetectadas": 1,
+      "consultaCatalogo": {
+        "necesaria": null,
+        "consulta": null
+      },
+      "respuestaConversacional": null,
+      "intencion": "carrito",
+      "accion": "quitar",
+      "confianza": 0.98,
+      "producto": {
+        "marca": "EXCELLENT",
+        "referencia": "EXCELLENT GATO URINARY",
+        "linea": null,
+        "textoVisible": "Excellent",
+        "mencionOriginal": null,
+        "categoria": "comida",
+        "subcategoria": "concentrado",
+        "especie": "gato",
+        "etapa": null,
+        "tamano": null,
+        "sabores": [],
+        "presentacion": "1kg",
+        "condiciones": [],
+        "cantidad": null
+      },
+      "productos": [
+        {
+          "marca": "EXCELLENT",
+          "referencia": "EXCELLENT GATO URINARY",
+          "linea": null,
+          "textoVisible": "Excellent",
+          "mencionOriginal": null,
+          "categoria": "comida",
+          "subcategoria": "concentrado",
+          "especie": "gato",
+          "etapa": null,
+          "tamano": null,
+          "sabores": [],
+          "presentacion": "1kg",
+          "condiciones": [],
+          "cantidad": null
+        }
+      ],
+      "entrega": {
+        "tipo": null,
+        "direccion": null,
+        "direccionCompleta": null,
+        "sector": null,
+        "metodoPago": null,
+        "sede": null
+      },
+      "datosCliente": {
+        "nombre": null,
+        "cedula": null,
+        "correo": null,
+        "celular": null
+      },
+      "carrito": {
+        "operacion": "quitar",
+        "cantidadObjetivo": null,
+        "cantidadDelta": null,
+        "aplicaAlUltimoProducto": false,
+        "razon": "Conservar todo excepto el producto Excellent."
+      },
+      "faltanteSugerido": null
+    }
+  },
+  {
+    "mensaje": "ese ya no lo quiero",
+    "interpretacion": {
+      "resumenMemoria": null,
+      "continuarFlujo": false,
+      "solicitudesProductoDetectadas": 1,
+      "consultaCatalogo": {
+        "necesaria": null,
+        "consulta": null
+      },
+      "respuestaConversacional": null,
+      "intencion": "carrito",
+      "accion": "quitar",
+      "confianza": 0.98,
+      "producto": {
+        "marca": "EXCELLENT",
+        "referencia": "EXCELLENT GATO URINARY",
+        "linea": null,
+        "textoVisible": "EXCELLENT GATO URINARY 1kg",
+        "mencionOriginal": null,
+        "categoria": "comida",
+        "subcategoria": "concentrado",
+        "especie": "gato",
+        "etapa": null,
+        "tamano": null,
+        "sabores": [],
+        "presentacion": "1kg",
+        "condiciones": [],
+        "cantidad": 1
+      },
+      "productos": [
+        {
+          "marca": "EXCELLENT",
+          "referencia": "EXCELLENT GATO URINARY",
+          "linea": null,
+          "textoVisible": "EXCELLENT GATO URINARY 1kg",
+          "mencionOriginal": null,
+          "categoria": "comida",
+          "subcategoria": "concentrado",
+          "especie": "gato",
+          "etapa": null,
+          "tamano": null,
+          "sabores": [],
+          "presentacion": "1kg",
+          "condiciones": [],
+          "cantidad": 1
+        }
+      ],
+      "entrega": {
+        "tipo": null,
+        "direccion": null,
+        "direccionCompleta": null,
+        "sector": null,
+        "metodoPago": null,
+        "sede": null
+      },
+      "datosCliente": {
+        "nombre": null,
+        "cedula": null,
+        "correo": null,
+        "celular": null
+      },
+      "carrito": {
+        "operacion": "quitar",
+        "cantidadObjetivo": null,
+        "cantidadDelta": null,
+        "aplicaAlUltimoProducto": true,
+        "razon": null
+      },
+      "faltanteSugerido": null
+    }
+  },
+  {
+    "mensaje": "el segundo no",
+    "interpretacion": {
+      "resumenMemoria": null,
+      "continuarFlujo": false,
+      "solicitudesProductoDetectadas": null,
+      "consultaCatalogo": {
+        "necesaria": null,
+        "consulta": null
+      },
+      "respuestaConversacional": null,
+      "intencion": "carrito",
+      "accion": "quitar",
+      "confianza": 0.96,
+      "producto": {
+        "marca": "EXCELLENT",
+        "referencia": "EXCELLENT GATO URINARY",
+        "linea": null,
+        "textoVisible": "EXCELLENT GATO URINARY 1kg",
+        "mencionOriginal": null,
+        "categoria": "comida",
+        "subcategoria": "concentrado",
+        "especie": "gato",
+        "etapa": null,
+        "tamano": null,
+        "sabores": [],
+        "presentacion": "1kg",
+        "condiciones": [],
+        "cantidad": null
+      },
+      "productos": [
+        {
+          "marca": "EXCELLENT",
+          "referencia": "EXCELLENT GATO URINARY",
+          "linea": null,
+          "textoVisible": "EXCELLENT GATO URINARY 1kg",
+          "mencionOriginal": null,
+          "categoria": "comida",
+          "subcategoria": "concentrado",
+          "especie": "gato",
+          "etapa": null,
+          "tamano": null,
+          "sabores": [],
+          "presentacion": "1kg",
+          "condiciones": [],
+          "cantidad": null
+        }
+      ],
+      "entrega": {
+        "tipo": null,
+        "direccion": null,
+        "direccionCompleta": null,
+        "sector": null,
+        "metodoPago": null,
+        "sede": null
+      },
+      "datosCliente": {
+        "nombre": null,
+        "cedula": null,
+        "correo": null,
+        "celular": null
+      },
+      "carrito": {
+        "operacion": "quitar",
+        "cantidadObjetivo": null,
+        "cantidadDelta": null,
+        "aplicaAlUltimoProducto": false,
+        "razon": "El cliente rechaza el segundo elemento de las opciones vigentes."
+      },
+      "faltanteSugerido": null
+    }
+  },
+  {
+    "mensaje": "solo quiero el Excellent",
+    "interpretacion": {
+      "resumenMemoria": null,
+      "continuarFlujo": false,
+      "solicitudesProductoDetectadas": 1,
+      "consultaCatalogo": {
+        "necesaria": null,
+        "consulta": null
+      },
+      "respuestaConversacional": null,
+      "intencion": "carrito",
+      "accion": "mantener_solo",
+      "confianza": 0.97,
+      "producto": {
+        "marca": "EXCELLENT",
+        "referencia": "EXCELLENT GATO URINARY",
+        "linea": null,
+        "textoVisible": "Excellent",
+        "mencionOriginal": null,
+        "categoria": "comida",
+        "subcategoria": "concentrado",
+        "especie": "gato",
+        "etapa": null,
+        "tamano": null,
+        "sabores": [],
+        "presentacion": "1kg",
+        "condiciones": [
+          "urinary"
+        ],
+        "cantidad": 1
+      },
+      "productos": [
+        {
+          "marca": "EXCELLENT",
+          "referencia": "EXCELLENT GATO URINARY",
+          "linea": null,
+          "textoVisible": "Excellent",
+          "mencionOriginal": null,
+          "categoria": "comida",
+          "subcategoria": "concentrado",
+          "especie": "gato",
+          "etapa": null,
+          "tamano": null,
+          "sabores": [],
+          "presentacion": "1kg",
+          "condiciones": [
+            "urinary"
+          ],
+          "cantidad": 1
+        }
+      ],
+      "entrega": {
+        "tipo": null,
+        "direccion": null,
+        "direccionCompleta": null,
+        "sector": null,
+        "metodoPago": null,
+        "sede": null
+      },
+      "datosCliente": {
+        "nombre": null,
+        "cedula": null,
+        "correo": null,
+        "celular": null
+      },
+      "carrito": {
+        "operacion": "mantener_solo",
+        "cantidadObjetivo": null,
+        "cantidadDelta": null,
+        "aplicaAlUltimoProducto": false,
+        "razon": "El cliente quiere conservar únicamente el producto Excellent y excluir los demás del carrito."
+      },
+      "faltanteSugerido": null
+    }
+  },
+  {
+    "mensaje": "deja únicamente la arena",
+    "interpretacion": {
+      "resumenMemoria": null,
+      "continuarFlujo": false,
+      "solicitudesProductoDetectadas": 1,
+      "consultaCatalogo": {
+        "necesaria": null,
+        "consulta": null
+      },
+      "respuestaConversacional": null,
+      "intencion": "carrito",
+      "accion": "mantener_solo",
+      "confianza": 0.98,
+      "producto": {
+        "marca": "ARENA KITTEN TALCO",
+        "referencia": "ARENA KITTEN TALCO",
+        "linea": null,
+        "textoVisible": "arena",
+        "mencionOriginal": null,
+        "categoria": "arena_sustrato",
+        "subcategoria": "arena",
+        "especie": "gato",
+        "etapa": null,
+        "tamano": null,
+        "sabores": [],
+        "presentacion": "8kg",
+        "condiciones": [],
+        "cantidad": 1
+      },
+      "productos": [
+        {
+          "marca": "ARENA KITTEN TALCO",
+          "referencia": "ARENA KITTEN TALCO",
+          "linea": null,
+          "textoVisible": "arena",
+          "mencionOriginal": null,
+          "categoria": "arena_sustrato",
+          "subcategoria": "arena",
+          "especie": "gato",
+          "etapa": null,
+          "tamano": null,
+          "sabores": [],
+          "presentacion": "8kg",
+          "condiciones": [],
+          "cantidad": 1
+        }
+      ],
+      "entrega": {
+        "tipo": null,
+        "direccion": null,
+        "direccionCompleta": null,
+        "sector": null,
+        "metodoPago": null,
+        "sede": null
+      },
+      "datosCliente": {
+        "nombre": null,
+        "cedula": null,
+        "correo": null,
+        "celular": null
+      },
+      "carrito": {
+        "operacion": "mantener_solo",
+        "cantidadObjetivo": null,
+        "cantidadDelta": null,
+        "aplicaAlUltimoProducto": false,
+        "razon": "El cliente quiere conservar únicamente la arena y excluir los demás productos del carrito."
+      },
+      "faltanteSugerido": null
+    }
+  },
+  {
+    "mensaje": "de esas déjame solo 2",
+    "interpretacion": {
+      "resumenMemoria": null,
+      "continuarFlujo": false,
+      "solicitudesProductoDetectadas": 1,
+      "consultaCatalogo": {
+        "necesaria": null,
+        "consulta": null
+      },
+      "respuestaConversacional": null,
+      "intencion": "carrito",
+      "accion": "modificar_cantidad",
+      "confianza": 0.93,
+      "producto": {
+        "marca": "EXCELLENT",
+        "referencia": "EXCELLENT GATO URINARY",
+        "linea": null,
+        "textoVisible": "EXCELLENT GATO URINARY 1kg",
+        "mencionOriginal": null,
+        "categoria": "comida",
+        "subcategoria": "concentrado",
+        "especie": "gato",
+        "etapa": null,
+        "tamano": null,
+        "sabores": [],
+        "presentacion": "1kg",
+        "condiciones": [
+          "urinary"
+        ],
+        "cantidad": null
+      },
+      "productos": [],
+      "entrega": {
+        "tipo": null,
+        "direccion": null,
+        "direccionCompleta": null,
+        "sector": null,
+        "metodoPago": null,
+        "sede": null
+      },
+      "datosCliente": {
+        "nombre": null,
+        "cedula": null,
+        "correo": null,
+        "celular": null
+      },
+      "carrito": {
+        "operacion": "modificar_cantidad",
+        "cantidadObjetivo": 2,
+        "cantidadDelta": null,
+        "aplicaAlUltimoProducto": true,
+        "razon": "'de esas' refiere a la ultimaSeleccion vigente; 'déjame solo 2' limita las unidades de esa referencia a 2, sin excluir las demás líneas del carrito."
+      },
+      "faltanteSugerido": null
+    }
+  },
+  {
+    "mensaje": "no eran 2, eran 3",
+    "interpretacion": {
+      "resumenMemoria": null,
+      "continuarFlujo": false,
+      "solicitudesProductoDetectadas": null,
+      "consultaCatalogo": {
+        "necesaria": null,
+        "consulta": null
+      },
+      "respuestaConversacional": null,
+      "intencion": "carrito",
+      "accion": "modificar_cantidad",
+      "confianza": 0.98,
+      "producto": {
+        "marca": "EXCELLENT",
+        "referencia": "EXCELLENT GATO URINARY",
+        "linea": null,
+        "textoVisible": "EXCELLENT GATO URINARY 1kg",
+        "mencionOriginal": null,
+        "categoria": "comida",
+        "subcategoria": "concentrado",
+        "especie": "gato",
+        "etapa": null,
+        "tamano": null,
+        "sabores": [],
+        "presentacion": "1kg",
+        "condiciones": [
+          "urinary"
+        ],
+        "cantidad": null
+      },
+      "productos": [],
+      "entrega": {
+        "tipo": null,
+        "direccion": null,
+        "direccionCompleta": null,
+        "sector": null,
+        "metodoPago": null,
+        "sede": null
+      },
+      "datosCliente": {
+        "nombre": null,
+        "cedula": null,
+        "correo": null,
+        "celular": null
+      },
+      "carrito": {
+        "operacion": "modificar_cantidad",
+        "cantidadObjetivo": 3,
+        "cantidadDelta": null,
+        "aplicaAlUltimoProducto": true,
+        "razon": "Corrección de cantidad total de la ultimaSeleccion: no eran 2, eran 3."
+      },
+      "faltanteSugerido": null
+    }
+  },
+  {
+    "mensaje": "mejor dame 4",
+    "interpretacion": {
+      "resumenMemoria": null,
+      "continuarFlujo": false,
+      "solicitudesProductoDetectadas": null,
+      "consultaCatalogo": {
+        "necesaria": null,
+        "consulta": null
+      },
+      "respuestaConversacional": null,
+      "intencion": "carrito",
+      "accion": "modificar_cantidad",
+      "confianza": 0.93,
+      "producto": {
+        "marca": "EXCELLENT",
+        "referencia": "EXCELLENT GATO URINARY",
+        "linea": null,
+        "textoVisible": "EXCELLENT GATO URINARY 1kg",
+        "mencionOriginal": null,
+        "categoria": "comida",
+        "subcategoria": "concentrado",
+        "especie": "gato",
+        "etapa": null,
+        "tamano": null,
+        "sabores": [],
+        "presentacion": "1kg",
+        "condiciones": [
+          "urinary"
+        ],
+        "cantidad": null
+      },
+      "productos": [],
+      "entrega": {
+        "tipo": null,
+        "direccion": null,
+        "direccionCompleta": null,
+        "sector": null,
+        "metodoPago": null,
+        "sede": null
+      },
+      "datosCliente": {
+        "nombre": null,
+        "cedula": null,
+        "correo": null,
+        "celular": null
+      },
+      "carrito": {
+        "operacion": "modificar_cantidad",
+        "cantidadObjetivo": 4,
+        "cantidadDelta": null,
+        "aplicaAlUltimoProducto": true,
+        "razon": "El cliente fija la cantidad total de la ultima seleccion vigente a 4 unidades."
+      },
+      "faltanteSugerido": null
+    }
+  },
+  {
+    "mensaje": "una sola mejor",
+    "interpretacion": {
+      "resumenMemoria": null,
+      "continuarFlujo": false,
+      "solicitudesProductoDetectadas": 1,
+      "consultaCatalogo": {
+        "necesaria": null,
+        "consulta": null
+      },
+      "respuestaConversacional": null,
+      "intencion": "carrito",
+      "accion": "modificar_cantidad",
+      "confianza": 0.95,
+      "producto": {
+        "marca": "EXCELLENT",
+        "referencia": "EXCELLENT GATO URINARY",
+        "linea": null,
+        "textoVisible": "EXCELLENT GATO URINARY 1kg",
+        "mencionOriginal": null,
+        "categoria": "comida",
+        "subcategoria": "concentrado",
+        "especie": "gato",
+        "etapa": null,
+        "tamano": null,
+        "sabores": [],
+        "presentacion": "1kg",
+        "condiciones": [
+          "urinary"
+        ],
+        "cantidad": null
+      },
+      "productos": [
+        {
+          "marca": "EXCELLENT",
+          "referencia": "EXCELLENT GATO URINARY",
+          "linea": null,
+          "textoVisible": "EXCELLENT GATO URINARY 1kg",
+          "mencionOriginal": null,
+          "categoria": "comida",
+          "subcategoria": "concentrado",
+          "especie": "gato",
+          "etapa": null,
+          "tamano": null,
+          "sabores": [],
+          "presentacion": "1kg",
+          "condiciones": [
+            "urinary"
+          ],
+          "cantidad": null
+        }
+      ],
+      "entrega": {
+        "tipo": null,
+        "direccion": null,
+        "direccionCompleta": null,
+        "sector": null,
+        "metodoPago": null,
+        "sede": null
+      },
+      "datosCliente": {
+        "nombre": null,
+        "cedula": null,
+        "correo": null,
+        "celular": null
+      },
+      "carrito": {
+        "operacion": "modificar_cantidad",
+        "cantidadObjetivo": 1,
+        "cantidadDelta": null,
+        "aplicaAlUltimoProducto": true,
+        "razon": "'una sola' fija el total de unidades del producto foco vigente (ultimaSeleccion) en 1; 'mejor' no cambia la operacion ni excluye las otras lineas del carrito."
+      },
+      "faltanteSugerido": null
+    }
+  },
+  {
+    "mensaje": "de la arena quiero dos",
+    "interpretacion": {
+      "resumenMemoria": null,
+      "continuarFlujo": false,
+      "solicitudesProductoDetectadas": null,
+      "consultaCatalogo": {
+        "necesaria": null,
+        "consulta": null
+      },
+      "respuestaConversacional": null,
+      "intencion": "carrito",
+      "accion": "modificar_cantidad",
+      "confianza": 0.93,
+      "producto": {
+        "marca": "ARENA KITTEN TALCO",
+        "referencia": "ARENA KITTEN TALCO",
+        "linea": null,
+        "textoVisible": "la arena",
+        "mencionOriginal": null,
+        "categoria": "arena_sustrato",
+        "subcategoria": "arena",
+        "especie": null,
+        "etapa": null,
+        "tamano": null,
+        "sabores": [],
+        "presentacion": "8kg",
+        "condiciones": [],
+        "cantidad": null
+      },
+      "productos": [],
+      "entrega": {
+        "tipo": null,
+        "direccion": null,
+        "direccionCompleta": null,
+        "sector": null,
+        "metodoPago": null,
+        "sede": null
+      },
+      "datosCliente": {
+        "nombre": null,
+        "cedula": null,
+        "correo": null,
+        "celular": null
+      },
+      "carrito": {
+        "operacion": "modificar_cantidad",
+        "cantidadObjetivo": 2,
+        "cantidadDelta": null,
+        "aplicaAlUltimoProducto": false,
+        "razon": "El cliente fija la cantidad total deseada para la arena ya presente en el carrito; no expresa unidades adicionales."
+      },
+      "faltanteSugerido": null
+    }
+  },
+  {
+    "mensaje": "bájale una a la arena",
+    "interpretacion": {
+      "resumenMemoria": null,
+      "continuarFlujo": false,
+      "solicitudesProductoDetectadas": 1,
+      "consultaCatalogo": {
+        "necesaria": null,
+        "consulta": null
+      },
+      "respuestaConversacional": null,
+      "intencion": "carrito",
+      "accion": "modificar_cantidad",
+      "confianza": 0.97,
+      "producto": {
+        "marca": "ARENA KITTEN TALCO",
+        "referencia": "ARENA KITTEN TALCO",
+        "linea": null,
+        "textoVisible": "la arena",
+        "mencionOriginal": null,
+        "categoria": "arena_sustrato",
+        "subcategoria": "arena",
+        "especie": null,
+        "etapa": null,
+        "tamano": null,
+        "sabores": [],
+        "presentacion": "8kg",
+        "condiciones": [],
+        "cantidad": null
+      },
+      "productos": [
+        {
+          "marca": "ARENA KITTEN TALCO",
+          "referencia": "ARENA KITTEN TALCO",
+          "linea": null,
+          "textoVisible": "la arena",
+          "mencionOriginal": null,
+          "categoria": "arena_sustrato",
+          "subcategoria": "arena",
+          "especie": null,
+          "etapa": null,
+          "tamano": null,
+          "sabores": [],
+          "presentacion": "8kg",
+          "condiciones": [],
+          "cantidad": null
+        }
+      ],
+      "entrega": {
+        "tipo": null,
+        "direccion": null,
+        "direccionCompleta": null,
+        "sector": null,
+        "metodoPago": null,
+        "sede": null
+      },
+      "datosCliente": {
+        "nombre": null,
+        "cedula": null,
+        "correo": null,
+        "celular": null
+      },
+      "carrito": {
+        "operacion": "modificar_cantidad",
+        "cantidadObjetivo": null,
+        "cantidadDelta": -1,
+        "aplicaAlUltimoProducto": false,
+        "razon": "El cliente pide bajar una unidad de la referencia de arena ya existente en el carrito."
+      },
+      "faltanteSugerido": null
+    }
+  },
+  {
+    "mensaje": "agrégale otra de esas",
+    "interpretacion": {
+      "resumenMemoria": null,
+      "continuarFlujo": false,
+      "solicitudesProductoDetectadas": 1,
+      "consultaCatalogo": {
+        "necesaria": null,
+        "consulta": null
+      },
+      "respuestaConversacional": null,
+      "intencion": "pedido_producto",
+      "accion": "agregar",
+      "confianza": 0.95,
+      "producto": {
+        "marca": "EXCELLENT",
+        "referencia": "EXCELLENT GATO URINARY",
+        "linea": null,
+        "textoVisible": "EXCELLENT GATO URINARY 1kg",
+        "mencionOriginal": null,
+        "categoria": "comida",
+        "subcategoria": "concentrado",
+        "especie": "gato",
+        "etapa": null,
+        "tamano": null,
+        "sabores": [],
+        "presentacion": "1kg",
+        "condiciones": [
+          "urinary"
+        ],
+        "cantidad": 1
+      },
+      "productos": [
+        {
+          "marca": "EXCELLENT",
+          "referencia": "EXCELLENT GATO URINARY",
+          "linea": null,
+          "textoVisible": "EXCELLENT GATO URINARY 1kg",
+          "mencionOriginal": null,
+          "categoria": "comida",
+          "subcategoria": "concentrado",
+          "especie": "gato",
+          "etapa": null,
+          "tamano": null,
+          "sabores": [],
+          "presentacion": "1kg",
+          "condiciones": [
+            "urinary"
+          ],
+          "cantidad": 1
+        }
+      ],
+      "entrega": {
+        "tipo": null,
+        "direccion": null,
+        "direccionCompleta": null,
+        "sector": null,
+        "metodoPago": null,
+        "sede": null
+      },
+      "datosCliente": {
+        "nombre": null,
+        "cedula": null,
+        "correo": null,
+        "celular": null
+      },
+      "carrito": {
+        "operacion": "agregar",
+        "cantidadObjetivo": null,
+        "cantidadDelta": 1,
+        "aplicaAlUltimoProducto": true,
+        "razon": "El cliente pide una unidad adicional del producto en foco de ultimaSeleccion."
+      },
+      "faltanteSugerido": null
+    }
+  },
+  {
+    "mensaje": "agrégame otro",
+    "interpretacion": {
+      "resumenMemoria": null,
+      "continuarFlujo": false,
+      "solicitudesProductoDetectadas": 1,
+      "consultaCatalogo": {
+        "necesaria": null,
+        "consulta": null
+      },
+      "respuestaConversacional": null,
+      "intencion": "pedido_producto",
+      "accion": "agregar",
+      "confianza": 0.96,
+      "producto": {
+        "marca": "EXCELLENT",
+        "referencia": "EXCELLENT GATO URINARY",
+        "linea": null,
+        "textoVisible": "EXCELLENT GATO URINARY 1kg",
+        "mencionOriginal": null,
+        "categoria": "comida",
+        "subcategoria": "concentrado",
+        "especie": "gato",
+        "etapa": null,
+        "tamano": null,
+        "sabores": [],
+        "presentacion": "1kg",
+        "condiciones": [],
+        "cantidad": 1
+      },
+      "productos": [
+        {
+          "marca": "EXCELLENT",
+          "referencia": "EXCELLENT GATO URINARY",
+          "linea": null,
+          "textoVisible": "EXCELLENT GATO URINARY 1kg",
+          "mencionOriginal": null,
+          "categoria": "comida",
+          "subcategoria": "concentrado",
+          "especie": "gato",
+          "etapa": null,
+          "tamano": null,
+          "sabores": [],
+          "presentacion": "1kg",
+          "condiciones": [],
+          "cantidad": 1
+        }
+      ],
+      "entrega": {
+        "tipo": null,
+        "direccion": null,
+        "direccionCompleta": null,
+        "sector": null,
+        "metodoPago": null,
+        "sede": null
+      },
+      "datosCliente": {
+        "nombre": null,
+        "cedula": null,
+        "correo": null,
+        "celular": null
+      },
+      "carrito": {
+        "operacion": "agregar",
+        "cantidadObjetivo": null,
+        "cantidadDelta": 1,
+        "aplicaAlUltimoProducto": true,
+        "razon": "El cliente pide una unidad adicional del producto en foco de la ultimaSeleccion."
+      },
+      "faltanteSugerido": null
+    }
+  },
+  {
+    "mensaje": "agrégale dos más",
+    "interpretacion": {
+      "resumenMemoria": null,
+      "continuarFlujo": false,
+      "solicitudesProductoDetectadas": null,
+      "consultaCatalogo": {
+        "necesaria": null,
+        "consulta": null
+      },
+      "respuestaConversacional": null,
+      "intencion": "carrito",
+      "accion": "agregar",
+      "confianza": 0.98,
+      "producto": {
+        "marca": "EXCELLENT",
+        "referencia": "EXCELLENT GATO URINARY",
+        "linea": null,
+        "textoVisible": "EXCELLENT GATO URINARY 1kg",
+        "mencionOriginal": null,
+        "categoria": "comida",
+        "subcategoria": "concentrado",
+        "especie": "gato",
+        "etapa": null,
+        "tamano": null,
+        "sabores": [],
+        "presentacion": "1kg",
+        "condiciones": [
+          "urinary"
+        ],
+        "cantidad": 2
+      },
+      "productos": [
+        {
+          "marca": "EXCELLENT",
+          "referencia": "EXCELLENT GATO URINARY",
+          "linea": null,
+          "textoVisible": "EXCELLENT GATO URINARY 1kg",
+          "mencionOriginal": null,
+          "categoria": "comida",
+          "subcategoria": "concentrado",
+          "especie": "gato",
+          "etapa": null,
+          "tamano": null,
+          "sabores": [],
+          "presentacion": "1kg",
+          "condiciones": [
+            "urinary"
+          ],
+          "cantidad": 2
+        }
+      ],
+      "entrega": {
+        "tipo": null,
+        "direccion": null,
+        "direccionCompleta": null,
+        "sector": null,
+        "metodoPago": null,
+        "sede": null
+      },
+      "datosCliente": {
+        "nombre": null,
+        "cedula": null,
+        "correo": null,
+        "celular": null
+      },
+      "carrito": {
+        "operacion": "agregar",
+        "cantidadObjetivo": null,
+        "cantidadDelta": 2,
+        "aplicaAlUltimoProducto": true,
+        "razon": null
+      },
+      "faltanteSugerido": null
+    }
+  },
+  {
+    "mensaje": "métele otra arena",
+    "interpretacion": {
+      "resumenMemoria": null,
+      "continuarFlujo": false,
+      "solicitudesProductoDetectadas": 1,
+      "consultaCatalogo": {
+        "necesaria": null,
+        "consulta": null
+      },
+      "respuestaConversacional": null,
+      "intencion": "pedido_producto",
+      "accion": "agregar",
+      "confianza": 0.95,
+      "producto": {
+        "marca": "ARENA KITTEN TALCO",
+        "referencia": "ARENA KITTEN TALCO",
+        "linea": null,
+        "textoVisible": "arena",
+        "mencionOriginal": null,
+        "categoria": "arena_sustrato",
+        "subcategoria": "arena",
+        "especie": "gato",
+        "etapa": null,
+        "tamano": null,
+        "sabores": [],
+        "presentacion": "8kg",
+        "condiciones": [],
+        "cantidad": 1
+      },
+      "productos": [
+        {
+          "marca": "ARENA KITTEN TALCO",
+          "referencia": "ARENA KITTEN TALCO",
+          "linea": null,
+          "textoVisible": "arena",
+          "mencionOriginal": null,
+          "categoria": "arena_sustrato",
+          "subcategoria": "arena",
+          "especie": "gato",
+          "etapa": null,
+          "tamano": null,
+          "sabores": [],
+          "presentacion": "8kg",
+          "condiciones": [],
+          "cantidad": 1
+        }
+      ],
+      "entrega": {
+        "tipo": null,
+        "direccion": null,
+        "direccionCompleta": null,
+        "sector": null,
+        "metodoPago": null,
+        "sede": null
+      },
+      "datosCliente": {
+        "nombre": null,
+        "cedula": null,
+        "correo": null,
+        "celular": null
+      },
+      "carrito": {
+        "operacion": "agregar",
+        "cantidadObjetivo": null,
+        "cantidadDelta": 1,
+        "aplicaAlUltimoProducto": false,
+        "razon": "El cliente solicita una unidad adicional de la arena ya presente en el carrito."
+      },
+      "faltanteSugerido": null
+    }
+  },
+  {
+    "mensaje": "también mándame ese",
+    "interpretacion": {
+      "resumenMemoria": null,
+      "continuarFlujo": false,
+      "solicitudesProductoDetectadas": 1,
+      "consultaCatalogo": {
+        "necesaria": null,
+        "consulta": null
+      },
+      "respuestaConversacional": null,
+      "intencion": "pedido_producto",
+      "accion": "agregar",
+      "confianza": 0.93,
+      "producto": {
+        "marca": "EXCELLENT",
+        "referencia": "EXCELLENT GATO URINARY",
+        "linea": null,
+        "textoVisible": "EXCELLENT GATO URINARY 1kg",
+        "mencionOriginal": null,
+        "categoria": "comida",
+        "subcategoria": "concentrado",
+        "especie": "gato",
+        "etapa": null,
+        "tamano": null,
+        "sabores": [],
+        "presentacion": "1kg",
+        "condiciones": [
+          "urinary"
+        ],
+        "cantidad": 1
+      },
+      "productos": [
+        {
+          "marca": "EXCELLENT",
+          "referencia": "EXCELLENT GATO URINARY",
+          "linea": null,
+          "textoVisible": "EXCELLENT GATO URINARY 1kg",
+          "mencionOriginal": null,
+          "categoria": "comida",
+          "subcategoria": "concentrado",
+          "especie": "gato",
+          "etapa": null,
+          "tamano": null,
+          "sabores": [],
+          "presentacion": "1kg",
+          "condiciones": [
+            "urinary"
+          ],
+          "cantidad": 1
+        }
+      ],
+      "entrega": {
+        "tipo": "domicilio",
+        "direccion": null,
+        "direccionCompleta": null,
+        "sector": null,
+        "metodoPago": null,
+        "sede": null
+      },
+      "datosCliente": {
+        "nombre": null,
+        "cedula": null,
+        "correo": null,
+        "celular": null
+      },
+      "carrito": {
+        "operacion": "agregar",
+        "cantidadObjetivo": null,
+        "cantidadDelta": 1,
+        "aplicaAlUltimoProducto": true,
+        "razon": "'ese' refiere a la ultimaSeleccion; 'también mándame' expresa adición de una unidad adicional del mismo producto."
+      },
+      "faltanteSugerido": null
+    }
+  },
+  {
+    "mensaje": "mejor sin las latas",
+    "interpretacion": {
+      "resumenMemoria": null,
+      "continuarFlujo": false,
+      "solicitudesProductoDetectadas": null,
+      "consultaCatalogo": {
+        "necesaria": null,
+        "consulta": null
+      },
+      "respuestaConversacional": null,
+      "intencion": "carrito",
+      "accion": "quitar",
+      "confianza": 0.96,
+      "producto": {
+        "marca": null,
+        "referencia": null,
+        "linea": null,
+        "textoVisible": null,
+        "mencionOriginal": null,
+        "categoria": null,
+        "subcategoria": null,
+        "especie": null,
+        "etapa": null,
+        "tamano": null,
+        "sabores": [],
+        "presentacion": null,
+        "condiciones": [],
+        "cantidad": null
+      },
+      "productos": [
+        {
+          "marca": "VETSOLUTION",
+          "referencia": "VETSOLUTION CAT URINARY",
+          "linea": null,
+          "textoVisible": "3 latas de Vet Solution Urinary",
+          "mencionOriginal": null,
+          "categoria": "comida",
+          "subcategoria": "concentrado",
+          "especie": "gato",
+          "etapa": null,
+          "tamano": null,
+          "sabores": [],
+          "presentacion": "100gr",
+          "condiciones": [
+            "urinary"
+          ],
+          "cantidad": 3
+        },
+        {
+          "marca": "VETSOLUTION",
+          "referencia": "VETSOLUTION CAT GASTROINTES",
+          "linea": null,
+          "textoVisible": "1 lata de Vet Solution Gastro gatos",
+          "mencionOriginal": null,
+          "categoria": "comida",
+          "subcategoria": "concentrado",
+          "especie": "gato",
+          "etapa": null,
+          "tamano": null,
+          "sabores": [],
+          "presentacion": "x100",
+          "condiciones": [
+            "gastro"
+          ],
+          "cantidad": 1
+        }
+      ],
+      "entrega": {
+        "tipo": null,
+        "direccion": null,
+        "direccionCompleta": null,
+        "sector": null,
+        "metodoPago": null,
+        "sede": null
+      },
+      "datosCliente": {
+        "nombre": null,
+        "cedula": null,
+        "correo": null,
+        "celular": null
+      },
+      "carrito": {
+        "operacion": "quitar",
+        "cantidadObjetivo": null,
+        "cantidadDelta": null,
+        "aplicaAlUltimoProducto": false,
+        "razon": "Excluir del carrito las referencias identificadas como latas y conservar el resto."
+      },
+      "faltanteSugerido": null
+    }
+  },
+  {
+    "mensaje": "mándame solo las latas",
+    "interpretacion": {
+      "resumenMemoria": null,
+      "continuarFlujo": false,
+      "solicitudesProductoDetectadas": null,
+      "consultaCatalogo": {
+        "necesaria": null,
+        "consulta": null
+      },
+      "respuestaConversacional": null,
+      "intencion": "carrito",
+      "accion": "mantener_solo",
+      "confianza": 0.97,
+      "producto": {
+        "marca": null,
+        "referencia": null,
+        "linea": null,
+        "textoVisible": null,
+        "mencionOriginal": null,
+        "categoria": null,
+        "subcategoria": null,
+        "especie": null,
+        "etapa": null,
+        "tamano": null,
+        "sabores": [],
+        "presentacion": null,
+        "condiciones": [],
+        "cantidad": null
+      },
+      "productos": [
+        {
+          "marca": "VETSOLUTION",
+          "referencia": "VETSOLUTION CAT URINARY",
+          "linea": null,
+          "textoVisible": "3 latas de Vet Solution Urinary",
+          "mencionOriginal": null,
+          "categoria": "comida",
+          "subcategoria": "concentrado",
+          "especie": "gato",
+          "etapa": null,
+          "tamano": null,
+          "sabores": [],
+          "presentacion": "100gr",
+          "condiciones": [
+            "urinary"
+          ],
+          "cantidad": 3
+        },
+        {
+          "marca": "VETSOLUTION",
+          "referencia": "VETSOLUTION CAT GASTROINTES",
+          "linea": null,
+          "textoVisible": "1 lata de Vet Solution Gastro gatos",
+          "mencionOriginal": null,
+          "categoria": "comida",
+          "subcategoria": "concentrado",
+          "especie": "gato",
+          "etapa": null,
+          "tamano": null,
+          "sabores": [],
+          "presentacion": "x100",
+          "condiciones": [
+            "gastrointestinal"
+          ],
+          "cantidad": 1
+        }
+      ],
+      "entrega": {
+        "tipo": null,
+        "direccion": null,
+        "direccionCompleta": null,
+        "sector": null,
+        "metodoPago": null,
+        "sede": null
+      },
+      "datosCliente": {
+        "nombre": null,
+        "cedula": null,
+        "correo": null,
+        "celular": null
+      },
+      "carrito": {
+        "operacion": "mantener_solo",
+        "cantidadObjetivo": null,
+        "cantidadDelta": null,
+        "aplicaAlUltimoProducto": false,
+        "razon": "El cliente quiere conservar solo las latas del carrito y excluir el concentrado de 1kg y la arena."
+      },
+      "faltanteSugerido": null
+    }
+  }
+]

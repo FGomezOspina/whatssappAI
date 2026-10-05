@@ -1,0 +1,74 @@
+{
+  "consulta": {
+    "mensaje": "ahh perdon tiene arena para gatos de Maiz ??? de esa que la bolsa es verde ??",
+    "producto": {
+      "etapa": null,
+      "linea": null,
+      "marca": null,
+      "accion": "consultar",
+      "tamano": null,
+      "especie": "gato",
+      "sabores": [],
+      "cantidad": null,
+      "categoria": "arena",
+      "referencia": null,
+      "condiciones": [
+        "maiz",
+        "bolsa verde"
+      ],
+      "presentacion": null,
+      "subcategoria": "arena_para_gatos",
+      "textoVisible": "arena para gatos de maiz bolsa verde",
+      "mencionOriginal": null
+    }
+  },
+  "seleccion": {
+    "mensaje": "4 kilos",
+    "propuestaOperacion": {
+      "accion": "agregar",
+      "carrito": {
+        "razon": "Selecciona la presentación x 4kg de la arena consultada previamente para enviarla en el pedido activo.",
+        "operacion": "agregar",
+        "cantidadDelta": 1,
+        "cantidadObjetivo": null,
+        "aplicaAlUltimoProducto": true
+      },
+      "producto": {
+        "etapa": null,
+        "linea": null,
+        "marca": "ARENA MAIZ CAT",
+        "accion": "agregar",
+        "tamano": null,
+        "especie": "gato",
+        "sabores": [],
+        "cantidad": 1,
+        "categoria": "arena_sustrato",
+        "referencia": "ARENA MAIZ CAT",
+        "condiciones": [],
+        "presentacion": "x 4kg",
+        "subcategoria": "arena",
+        "textoVisible": "4 kilos",
+        "mencionOriginal": null
+      },
+      "productos": [
+        {
+          "etapa": null,
+          "linea": null,
+          "marca": "ARENA MAIZ CAT",
+          "accion": "agregar",
+          "tamano": null,
+          "especie": "gato",
+          "sabores": [],
+          "cantidad": 1,
+          "categoria": "arena_sustrato",
+          "referencia": "ARENA MAIZ CAT",
+          "condiciones": [],
+          "presentacion": "x 4kg",
+          "subcategoria": "arena",
+          "textoVisible": "4 kilos",
+          "mencionOriginal": "4 kilos"
+        }
+      ]
+    }
+  }
+}

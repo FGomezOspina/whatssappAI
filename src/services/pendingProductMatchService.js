@@ -1075,6 +1075,8 @@ function historialRepresentaInteraccionProducto(historial = []) {
 
 module.exports = {
   esSenalReferenciaProducto,
+  contextoVigente,
+  indiceOrdinal,
   establecerProductosConsultados,
   guardarCoincidenciasProductoPendientes,
   historialRepresentaInteraccionProducto,

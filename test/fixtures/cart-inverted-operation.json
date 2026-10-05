@@ -1,0 +1,26 @@
+{
+  "turnos": [
+    {
+      "fecha": "2026-10-02T23:21:36.862565+00:00",
+      "mensaje": "ya no necesito el excellent, solo envíame el resto",
+      "interpretacion": {
+        "accion": "mantener_solo", "intencion": "pedido_producto", "productos": [],
+        "producto": { "etapa": null, "linea": null, "marca": "EXCELLENT", "tamano": null,
+          "especie": "gato", "sabores": [], "cantidad": 1, "categoria": "alimento",
+          "referencia": "EXCELLENT GATO URINARY", "condiciones": ["urinary"], "presentacion": "1kg",
+          "subcategoria": null, "textoVisible": "excellent", "mencionOriginal": null }
+      }
+    },
+    {
+      "fecha": "2026-10-02T23:22:45.469888+00:00",
+      "mensaje": "Solo no quiero el excellent, envíame el resto",
+      "interpretacion": {
+        "accion": "mantener_solo", "intencion": "pedido_producto", "productos": [],
+        "producto": { "etapa": null, "linea": null, "marca": null, "tamano": null,
+          "especie": null, "sabores": [], "cantidad": null, "categoria": null,
+          "referencia": null, "condiciones": [], "presentacion": null,
+          "subcategoria": null, "textoVisible": null, "mencionOriginal": null }
+      }
+    }
+  ]
+}

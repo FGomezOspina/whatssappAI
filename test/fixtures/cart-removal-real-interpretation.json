@@ -1,0 +1,27 @@
+{
+  "mensaje": "ya no necesito el excellent, solo envíame el resto",
+  "interpretacion": {
+    "accion": "quitar",
+    "intencion": "pedido_producto",
+    "producto": {
+      "etapa": null, "linea": "Urinary", "marca": "EXCELLENT", "tamano": null,
+      "especie": "gato", "sabores": [], "cantidad": 1, "categoria": "alimento",
+      "referencia": "EXCELLENT GATO URINARY", "condiciones": ["urinary"],
+      "presentacion": "1kg", "subcategoria": null,
+      "textoVisible": "Excellent Urinary gatos 1 kg", "mencionOriginal": null
+    },
+    "productos": [{
+      "etapa": null, "linea": "Urinary", "marca": "EXCELLENT", "tamano": null,
+      "especie": "gato", "sabores": [], "cantidad": 1, "categoria": "alimento",
+      "referencia": "EXCELLENT GATO URINARY", "condiciones": ["urinary"],
+      "presentacion": "1kg", "subcategoria": null,
+      "textoVisible": "Excellent Urinary gatos 1 kg", "mencionOriginal": "el excellent"
+    }]
+  },
+  "carrito": [
+    {"peso":"1kg","marca":"EXCELLENT","precio":34000,"especie":"gato","cantidad":1,"categoria":"comida","referencia":"EXCELLENT GATO URINARY","subcategoria":"concentrado","requiereConfirmacion":false},
+    {"peso":"100gr","marca":"VETSOLUTION","precio":8400,"especie":"gato","cantidad":3,"categoria":"comida","referencia":"VETSOLUTION CAT URINARY","subcategoria":"concentrado","requiereConfirmacion":false},
+    {"peso":"x100","marca":"VETSOLUTION","precio":8400,"especie":"gato","cantidad":1,"categoria":"comida","referencia":"VETSOLUTION CAT GASTROINTES","subcategoria":"concentrado","requiereConfirmacion":false},
+    {"peso":"8kg","marca":"ARENA KITTEN TALCO","precio":23800,"especie":"gato","cantidad":1,"categoria":"arena_sustrato","referencia":"ARENA KITTEN TALCO","subcategoria":"arena","requiereConfirmacion":false}
+  ]
+}

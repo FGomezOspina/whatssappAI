@@ -27,7 +27,7 @@ for (const [marca, corporal, rango] of [['ADVOCATE', '30kg', '25-40kg'], ['CREDE
       '../repositories/trainingExampleRepository': { obtenerEjemplosEntrenamiento: async () => [] },
       './catalogContextService': { seleccionarCatalogoParaIA: async () => ({ catalogo, resultadosPorProducto: solicitudes.map(s => ({ catalogo: catalogo.filter(m => m.marca === s.marca) })), metadata: {} }) },
       './aiInterpreter': { interpretarMensajeCliente: async args => args.clasificacion.decisionHerramientas
-        ? { intencion: comprando ? 'pedido_producto' : 'consulta_producto', accion: comprando ? 'agregar' : 'consultar', consultaCatalogo: { necesaria: true, consulta: solicitudes.map(s => s.textoVisible).join(' y ') }, productos: solicitudes }
+        ? { confianza: 1, intencion: comprando ? 'pedido_producto' : 'consulta_producto', accion: comprando ? 'agregar' : 'consultar', consultaCatalogo: { necesaria: true, consulta: solicitudes.map(s => s.textoVisible).join(' y ') }, productos: solicitudes }
         : { intencion: comprando ? 'pedido_producto' : 'consulta_producto', accion: comprando ? 'agregar' : 'consultar', confianza: 1, producto: solicitudes.find(s => args.mensaje.toLowerCase().includes(s.marca.toLowerCase())) } },
       './humanizer': { humanizarRespuesta: async (_m, base, opciones) => { contexto = opciones; return base; } },
     };

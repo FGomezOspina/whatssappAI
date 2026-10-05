@@ -17397,9 +17397,9 @@
       },
       {
         "nombre": "FELIX CARNE",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
-        "subcategoria": "concentrado",
+        "subcategoria": "comida_humeda",
         "etapa": null,
         "descripcion": "FELIX CARNE",
         "imagen": "",
@@ -17408,7 +17408,11 @@
           "source": "Productos.pdf",
           "original_names": [
             "FELIX CARNE X 85GR"
-          ]
+          ],
+          "aliases": [
+            "FELIX POUCH CARNE"
+          ],
+          "food_format_source": "https://purinalatam.com/purina/es/alimento-humedo/carne"
         },
         "presentaciones": [
           {
@@ -17490,9 +17494,9 @@
       },
       {
         "nombre": "FELIX PACK SURT",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
-        "subcategoria": "concentrado",
+        "subcategoria": "comida_humeda",
         "etapa": null,
         "descripcion": "FELIX PACK SURT",
         "imagen": "",
@@ -17501,7 +17505,11 @@
           "source": "Productos.pdf",
           "original_names": [
             "FELIX PACK SURT 85GR 8UND"
-          ]
+          ],
+          "aliases": [
+            "FELIX SOBRES PACK SURTIDO"
+          ],
+          "food_format_source": "https://www.homecenter.com.co/homecenter-co/product/648934/comida-humeda-felix-pack-surtido-85g-felix/648934/"
         },
         "presentaciones": [
           {
@@ -17614,9 +17622,9 @@
       },
       {
         "nombre": "FELIX SALMON",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
-        "subcategoria": "concentrado",
+        "subcategoria": "comida_humeda",
         "etapa": null,
         "descripcion": "FELIX SALMON",
         "imagen": "",
@@ -17625,7 +17633,11 @@
           "source": "Productos.pdf",
           "original_names": [
             "FELIX SALMON X85GR"
-          ]
+          ],
+          "aliases": [
+            "FELIX POUCH SALMON"
+          ],
+          "food_format_source": "https://purina.com.co/felix/alimento-humedo/salmon"
         },
         "presentaciones": [
           {
@@ -40585,7 +40597,7 @@
         "nombre": "VETSOLUTION CAT GASTROINTES",
         "especie": "gato",
         "categoria": "comida",
-        "subcategoria": "concentrado",
+        "subcategoria": "comida_humeda",
         "etapa": null,
         "descripcion": "VETSOLUTION CAT GASTROINTES",
         "imagen": "",
@@ -40594,7 +40606,8 @@
           "source": "Productos.pdf",
           "original_names": [
             "VETSOLUTION CAT GASTROINTES X100"
-          ]
+          ],
+          "food_format_source": "https://www.monge.it/en/product/gastrointestinal-3/"
         },
         "presentaciones": [
           {
@@ -40678,7 +40691,7 @@
         "nombre": "VETSOLUTION CAT URINARY",
         "especie": "gato",
         "categoria": "comida",
-        "subcategoria": "concentrado",
+        "subcategoria": "comida_humeda",
         "etapa": null,
         "descripcion": "VETSOLUTION CAT URINARY",
         "imagen": "",
@@ -40687,7 +40700,8 @@
           "source": "Productos.pdf",
           "original_names": [
             "VETSOLUTION CAT URINARY 100GR"
-          ]
+          ],
+          "food_format_source": "https://www.monge.it/en/product/urinary-struvite-2/"
         },
         "presentaciones": [
           {

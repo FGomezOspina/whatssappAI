@@ -1,6 +1,7 @@
+const { formatoAlimento } = require('../utils/foodFormat');
 const { envolver } = require('./pipelineTelemetry');
 const { admiteEspecie } = require('../utils/catalogCommercialRules');
-const { _internals: { marcaExactaConsultada, marcaCompatibleConIdentidad, tokensDistintivos, similitudTokenFlexible, distanciaLevenshtein } } = require("./productMatchValidator");
+const { _internals: { marcasExplicitasCompatibles, marcaExactaConsultada, marcaCompatibleConIdentidad, tokensDistintivos, similitudTokenFlexible, distanciaLevenshtein } } = require("./productMatchValidator");
 const { normalizarMarcasCatalogo, normalizar, normalizarPeso } = require("../utils/text");
 const { buscarProductosCatalogoCliente } = require("../repositories/productRepository");
 const {
@@ -150,7 +151,9 @@ function expandirConsulta(texto = "") {
   if (/pulga|garrapata/.test(normalizado)) expansiones.push("antipulgas medicamento");
   if (/snack|premio|galleta/.test(normalizado)) expansiones.push("snack");
   if (/arena|sustrato/.test(normalizado)) expansiones.push("arena sustrato");
-  if (/comida|alimento|concentrado|cuido|purina/.test(normalizado)) {
+  const formato = formatoAlimento(normalizado);
+  if (formato === "comida_humeda") expansiones.push("comida alimento humeda pouch sobre");
+  else if (/comida|alimento|concentrado|cuido|purina/.test(normalizado)) {
     expansiones.push("comida alimento concentrado");
   }
   if (/juguete|pelota|mordedor/.test(normalizado)) expansiones.push("juguete accesorio");
@@ -281,11 +284,12 @@ function seleccionarCatalogoLocal({ catalogo = [], mensaje = "", estado = {}, cl
     };
   }
 
-  const consulta = expandirConsulta(normalizarMarcasCatalogo(textoBusqueda(mensaje, estado), catalogo));
+  const identidadOriginal = normalizarMarcasCatalogo(textoBusqueda(mensaje, estado), catalogo);
+  const consulta = expandirConsulta(identidadOriginal);
   const tokensConsulta = tokens(consulta);
-  const identidadConsulta = tokensDistintivos(consulta);
-  const marcasConsulta = new Set(catalogo
-    .filter(marca => marcaExactaConsultada([marca], identidadConsulta))
+  // Retrieval synonyms may improve recall, but cannot assert a requested brand.
+  const identidadConsulta = normalizar(identidadOriginal).split(/\s+/);
+  const marcasConsulta = new Set(marcasExplicitasCompatibles(catalogo, identidadOriginal)
     .map(marca => normalizar(marca.marca)));
   const items = referenciasCatalogo(catalogo).filter(item =>
     !marcasConsulta.size || marcasConsulta.has(normalizar(item.marca.marca)) ||
@@ -461,10 +465,10 @@ async function seleccionarCatalogoParaIA({ catalogo = [], mensaje = "", mensajeO
       estado,
       clasificacion,
     });
-    const consultaValidada = expandirConsulta(normalizarMarcasCatalogo(expandirConsulta(textoIdentidad), resultado.catalogo));
-    const identidadConsulta = tokensDistintivos(consultaValidada);
-    const marcasConsulta = new Set(resultado.catalogo
-      .filter(marca => marcaExactaConsultada([marca], identidadConsulta))
+    const identidadOriginal = normalizarMarcasCatalogo(textoIdentidad, resultado.catalogo);
+    const consultaValidada = expandirConsulta(identidadOriginal);
+    const identidadConsulta = normalizar(identidadOriginal).split(/\s+/);
+    const marcasConsulta = new Set(marcasExplicitasCompatibles(resultado.catalogo, identidadOriginal)
       .map(marca => normalizar(marca.marca)));
     const catalogoCombinado = combinarCatalogosCandidatos(
       resultadoLocal.catalogo,

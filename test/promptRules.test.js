@@ -39,8 +39,9 @@ test("el prompt compacto interpreta rechazos sin extraer producto", () => {
   });
 
   assert.match(prompt, /vocativos, tono carinoso/i);
-  assert.match(prompt, /no le sirvio/i);
-  assert.match(prompt, /usa intencion rechazo o agradecimiento/i);
+  assert.match(prompt, /sin operacion sobre una seleccion existente/i);
+  assert.match(prompt, /conserva el target y usa quitar/i);
+  assert.match(prompt, /usa rechazo o agradecimiento/i);
   assert.match(prompt, /deja producto sin datos/i);
 });
 

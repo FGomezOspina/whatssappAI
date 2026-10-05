@@ -1,0 +1,149 @@
+[
+  {
+    "mensaje": "ya no necesito el excellent, solo envíame el resto",
+    "accion": "quitar",
+    "target": "excellent",
+    "cotizacion": true
+  },
+  {
+    "mensaje": "Solo no quiero el excellent, envíame el resto",
+    "accion": "quitar",
+    "target": "excellent",
+    "cotizacion": true
+  },
+  {
+    "mensaje": "el Excellent no",
+    "accion": "quitar",
+    "target": "excellent"
+  },
+  {
+    "mensaje": "mándame todo menos el Excellent",
+    "accion": "quitar",
+    "target": "excellent"
+  },
+  {
+    "mensaje": "del pedido saca la arena",
+    "accion": "quitar",
+    "target": "arena"
+  },
+  {
+    "mensaje": "deja todo excepto el Excellent",
+    "accion": "quitar",
+    "target": "excellent"
+  },
+  {
+    "mensaje": "ese ya no lo quiero",
+    "accion": "quitar",
+    "target": "excellent",
+    "contextual": true
+  },
+  {
+    "mensaje": "el segundo no",
+    "accion": "quitar",
+    "target": "excellent",
+    "ordinal": true
+  },
+  {
+    "mensaje": "solo quiero el Excellent",
+    "accion": "mantener_solo",
+    "target": "excellent"
+  },
+  {
+    "mensaje": "deja únicamente la arena",
+    "accion": "mantener_solo",
+    "target": "arena"
+  },
+  {
+    "mensaje": "de esas déjame solo 2",
+    "accion": "modificar_cantidad",
+    "target": "excellent",
+    "cantidadObjetivo": 2,
+    "contextual": true
+  },
+  {
+    "mensaje": "no eran 2, eran 3",
+    "accion": "modificar_cantidad",
+    "target": "excellent",
+    "cantidadObjetivo": 3,
+    "contextual": true,
+    "inicial": 2
+  },
+  {
+    "mensaje": "mejor dame 4",
+    "accion": "modificar_cantidad",
+    "target": "excellent",
+    "cantidadObjetivo": 4,
+    "contextual": true
+  },
+  {
+    "mensaje": "una sola mejor",
+    "accion": "modificar_cantidad",
+    "target": "excellent",
+    "cantidadObjetivo": 1,
+    "contextual": true,
+    "inicial": 3
+  },
+  {
+    "mensaje": "de la arena quiero dos",
+    "accion": "modificar_cantidad",
+    "target": "arena",
+    "cantidadObjetivo": 2
+  },
+  {
+    "mensaje": "bájale una a la arena",
+    "accion": "modificar_cantidad",
+    "target": "arena",
+    "cantidadDelta": -1,
+    "inicial": 3
+  },
+  {
+    "mensaje": "agrégale otra de esas",
+    "accion": "agregar",
+    "target": "excellent",
+    "cantidadDelta": 1,
+    "contextual": true
+  },
+  {
+    "mensaje": "agrégame otro",
+    "accion": "agregar",
+    "target": "excellent",
+    "cantidadDelta": 1,
+    "contextual": true
+  },
+  {
+    "mensaje": "agrégale dos más",
+    "accion": "agregar",
+    "target": "excellent",
+    "cantidadDelta": 2,
+    "contextual": true
+  },
+  {
+    "mensaje": "métele otra arena",
+    "accion": "agregar",
+    "target": "arena",
+    "cantidadDelta": 1
+  },
+  {
+    "mensaje": "también mándame ese",
+    "accion": "agregar",
+    "target": "excellent",
+    "cantidadDelta": 1,
+    "contextual": true
+  },
+  {
+    "mensaje": "mejor sin las latas",
+    "accion": "quitar",
+    "targets": [
+      1,
+      2
+    ]
+  },
+  {
+    "mensaje": "mándame solo las latas",
+    "accion": "mantener_solo",
+    "targets": [
+      1,
+      2
+    ]
+  }
+]

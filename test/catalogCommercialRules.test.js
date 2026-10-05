@@ -50,7 +50,7 @@ test('el carrito recalcula el descuento al sumar, bajar y volver a sumar unidade
   estado=JSON.parse(JSON.stringify(estado));
   resolverConsultaCatalogo('agrega 1 churu de 14gr',estado,catalogo,interpretacion(1));
   assert.equal(estado.carrito.length,1);assert.equal(estado.carrito[0].cantidad,4);assert.equal(estado.carrito[0].precio,3000);assert.match(resumenCarrito(estado),/12\.000/);
-  resolverConsultaCatalogo('deja solo 2 churu',estado,[],interpretacion(2,{carrito:{operacion:'modificar_cantidad',cantidadObjetivo:2,aplicaAlUltimoProducto:true}}));
+  resolverConsultaCatalogo('deja solo 2 churu',estado,[],interpretacion(2,{accion:'modificar_cantidad',carrito:{operacion:'modificar_cantidad',cantidadObjetivo:2,aplicaAlUltimoProducto:true}}));
   assert.equal(estado.carrito[0].precio,3200);assert.match(resumenCarrito(estado),/6\.400/);
   resolverConsultaCatalogo('agrega 3 churu de 14gr',estado,catalogo,interpretacion(3));
   assert.equal(estado.carrito.length,1);assert.equal(estado.carrito[0].cantidad,5);assert.equal(estado.carrito[0].precio,3000);assert.match(resumenCarrito(estado),/15\.000/);

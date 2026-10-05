@@ -1,0 +1,35 @@
+[
+  {
+    "id": "39acdeb4-0bcd-4a3c-aa32-7356b36c8fa7",
+    "name": "FELIX CARNE",
+    "source": "https://purinalatam.com/purina/es/alimento-humedo/carne",
+    "alias": "FELIX POUCH CARNE",
+    "brand": "FELIX"
+  },
+  {
+    "id": "25a502d0-941f-436d-b076-027b89e1c185",
+    "name": "FELIX SALMON",
+    "source": "https://purina.com.co/felix/alimento-humedo/salmon",
+    "alias": "FELIX POUCH SALMON",
+    "brand": "FELIX"
+  },
+  {
+    "id": "0441e42e-78c9-4d7f-94ab-a80926176a3f",
+    "name": "FELIX PACK SURT",
+    "source": "https://www.homecenter.com.co/homecenter-co/product/648934/comida-humeda-felix-pack-surtido-85g-felix/648934/",
+    "alias": "FELIX SOBRES PACK SURTIDO",
+    "brand": "FELIX"
+  },
+  {
+    "id": "0dd2d64e-2769-4b20-9388-97b88c48a72b",
+    "name": "VETSOLUTION CAT GASTROINTES",
+    "source": "https://www.monge.it/en/product/gastrointestinal-3/",
+    "brand": "VETSOLUTION"
+  },
+  {
+    "id": "ad418b0f-17fd-4484-bf06-ca9b7310edd8",
+    "name": "VETSOLUTION CAT URINARY",
+    "source": "https://www.monge.it/en/product/urinary-struvite-2/",
+    "brand": "VETSOLUTION"
+  }
+]

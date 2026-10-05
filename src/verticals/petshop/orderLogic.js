@@ -1,3 +1,4 @@
+const { formatoAlimento } = require('../../utils/foodFormat');
 const { esDescriptorReferencia } = require('../../utils/catalogVariants');
 const { usaRangosMascota, presentacionesParaPeso } = require('../../utils/weightRanges');
 const { admiteEspecie, precioPorCantidad, datosPrecio, actualizarPrecioItem } = require('../../utils/catalogCommercialRules');
@@ -6,6 +7,8 @@ const { formatearPrecio, extraerPesoTexto, normalizarMarcasCatalogo, normalizar,
 const { unirMensajesRespuesta } = require("../../utils/responseMessages");
 const {
   establecerProductosConsultados,
+  contextoVigente,
+  indiceOrdinal,
   reiniciarFocoProducto,
 } = require("../../services/pendingProductMatchService");
 
@@ -480,8 +483,8 @@ function normalizarCategoria(valor = "") {
 
 function normalizarSubcategoria(valor = "") {
   const texto = normalizar(valor);
-  if (contieneAlguno(texto, ["concentrado", "cuido", "purina"])) return "concentrado";
-  if (contieneAlguno(texto, ["comida humeda", "humeda", "humedo", "lata", "sobre", "pouch", "pouche", "sachet"])) return "comida_humeda";
+  const formato = formatoAlimento(texto);
+  if (formato) return formato;
   if (
     contieneAlguno(texto, [
       "antipulgas",
@@ -2286,7 +2289,11 @@ function itemCarritoCoincide(catalogo, itemCarrito, mensaje) {
 }
 
 function operacionCarritoInterpretada(interpretacion = {}) {
-  return interpretacion.carrito?.operacion || interpretacion.accion || null;
+  const accion = interpretacion.accion;
+  const operacion = interpretacion.carrito?.operacion;
+  if (accion === "nuevo_pedido" && operacion === "agregar") return accion;
+  if (accion && operacion && accion !== operacion) return "conflicto";
+  return operacion || accion || null;
 }
 
 function cantidadObjetivoCarrito(interpretacion = {}, mensaje = "") {
@@ -2308,6 +2315,8 @@ function tieneDetalleProductoInterpretado(interpretacion = {}) {
   return Boolean(
     producto.marca ||
       producto.referencia ||
+      producto.categoria ||
+      producto.subcategoria ||
       producto.presentacion ||
       producto.especie ||
       producto.etapa ||
@@ -2339,8 +2348,7 @@ function itemCarritoCoincideInterpretacion(catalogo, itemCarrito, interpretacion
     const itemTexto = normalizar(itemCarrito.referencia);
     const coincideReferencia =
       itemTexto === referenciaTexto ||
-      contieneFrase(itemTexto, referenciaTexto) ||
-      contieneFrase(referenciaTexto, itemTexto);
+      contieneFrase(itemTexto, referenciaTexto);
 
     if (!coincideReferencia) return false;
   }
@@ -2357,31 +2365,66 @@ function itemCarritoCoincideInterpretacion(catalogo, itemCarrito, interpretacion
     if (!presentacion || normalizarPeso(presentacion.peso) !== normalizarPeso(itemCarrito.peso)) return false;
   }
 
-  if (tieneCriterios(criterios)) {
+  // Una linea existente se identifica por su nombre comercial y presentacion.
+  // Los filtros taxonomicos del catalogo solo son necesarios cuando no hay
+  // identidad comercial; no vetan nombres resueltos por metadata auxiliar.
+  if (!producto.marca && !producto.referencia && tieneCriterios(criterios)) {
     tieneDetalle = true;
-    if (!referenciaCatalogo || !referenciaCumple(referenciaCatalogo, criterios)) return false;
+    if (!referenciaCumple(referenciaCatalogo, criterios)) return false;
   }
 
   return tieneDetalle;
 }
 
 function productosCarritoPorInterpretacion(catalogo, estado, interpretacion = {}, mensaje = "", operacion = null) {
-  const coincidencias = estado.carrito.filter((item) =>
-    itemCarritoCoincideInterpretacion(catalogo, item, interpretacion, mensaje)
-  );
+  const objetivos = interpretacion.productos?.length ? interpretacion.productos : [interpretacion.producto || {}];
+  const sinDetalle = objetivos.every(producto => !tieneDetalleProductoInterpretado({ producto }));
+  const identidadExplicita = objetivos.some(producto => [producto?.marca, producto?.referencia]
+    .some(nombre => nombre && contieneFrase(normalizar(mensaje), normalizar(nombre))));
+  const ordinal = identidadExplicita ? -1 : indiceOrdinal(mensaje, Number.MAX_SAFE_INTEGER);
+  if (!sinDetalle && ordinal < 0) {
+    const grupos = objetivos.map(producto => {
+      let candidatos = estado.carrito.filter(item =>
+        itemCarritoCoincideInterpretacion(catalogo, item, { producto }, mensaje));
+      const exactos = producto.referencia ? candidatos.filter(item =>
+        normalizar(item.referencia) === normalizar(producto.referencia)) : [];
+      if (exactos.length) candidatos = exactos;
+      if (candidatos.length <= 1) return candidatos;
 
-  if (coincidencias.length) return coincidencias;
-
-  const aplicaAlUltimo = interpretacion.carrito?.aplicaAlUltimoProducto === true;
-  const sinDetalle = !tieneDetalleProductoInterpretado(interpretacion);
-
-  if (
-    estado.carrito.length &&
-    (sinDetalle && (aplicaAlUltimo || (operacion === "modificar_cantidad" && estado.carrito.length === 1)))
-  ) {
-    return [estado.carrito[estado.carrito.length - 1]];
+      // Los atributos aportan evidencia cuando distinguen candidatos reales.
+      // Evaluar todos sobre el mismo conjunto evita depender del orden de los
+      // campos: evidencias contradictorias no autorizan elegir una linea.
+      const discriminantes = Object.entries(criteriosDesdeProducto(producto)).map(([campo, valor]) =>
+        candidatos.filter(item => referenciaCumple({ ...item, nombre: item.referencia }, { [campo]: valor })))
+        .filter(coincidencias => coincidencias.length > 0 && coincidencias.length < candidatos.length);
+      const resueltos = candidatos.filter(item => discriminantes.every(grupo => grupo.includes(item)));
+      return resueltos.length ? resueltos : Object.assign([], { ambiguo: true });
+    });
+    // Cada target debe resolver UNA linea. Un target parcial no es permiso
+    // para eliminar todas las variantes; varios targets explicitos son atomicos.
+    if (grupos.some(grupo => grupo.ambiguo || grupo.length > 1)) return Object.assign([], { ambiguo: true });
+    return grupos.every(grupo => grupo.length === 1) ? [...new Set(grupos.flat())] : [];
   }
 
+  // Reutilizar el contexto y los ordinales existentes, sin suponer que el
+  // segundo mostrado es el segundo almacenado en el carrito.
+  const contexto = contextoVigente(estado);
+  const opcion = ordinal >= 0 ? contexto?.opciones[ordinal]
+    : contexto?.opciones.length === 1 ? contexto.opciones[0] : null;
+  if (opcion) {
+    const coincidencias = estado.carrito.filter(item => itemCarritoCoincideInterpretacion(catalogo, item, {
+      producto: { marca: opcion.marca, referencia: opcion.referencia,
+        presentacion: contexto.fuente === "ultimaSeleccion"
+          ? estado.ultimaSeleccion.presentacion || estado.ultimaSeleccion.peso || null
+          : opcion.presentaciones?.length === 1 ? opcion.presentaciones[0].peso : null },
+    }));
+    return coincidencias.length === 1 ? coincidencias : [];
+  }
+  if (ordinal >= 0 || contexto?.opciones.length > 1) return [];
+  if (estado.carrito.length === 1 &&
+      (interpretacion.carrito?.aplicaAlUltimoProducto === true || operacion === "modificar_cantidad")) {
+    return [estado.carrito[0]];
+  }
   return [];
 }
 
@@ -2402,72 +2445,119 @@ function actualizarCantidadUltimoContexto(estado, cantidad) {
 }
 
 function resolverOperacionCarritoIA(mensaje, estado, catalogo, interpretacion = null) {
-  if (!interpretacion || interpretacion.confianza < 0.55) return null;
+  if (!interpretacion) return null;
 
-  let operacion = operacionCarritoInterpretada(interpretacion);
-  const cantidadObjetivo = cantidadObjetivoCarrito(interpretacion, mensaje);
-  const tieneDetalleProducto = tieneDetalleProductoInterpretado(interpretacion);
+  const operacion = operacionCarritoInterpretada(interpretacion);
+  if (operacion === "conflicto") return "¿Quieres retirar productos, conservar solo algunos o cambiar cantidades? Necesito aclarar el cambio antes de aplicarlo.";
+  const delta = interpretacion.carrito?.cantidadDelta;
+  const absoluta = interpretacion.carrito?.cantidadObjetivo;
+  const cantidadObjetivo = absoluta ?? interpretacion.producto?.cantidad;
+  const tieneDetalleProducto = (interpretacion.productos?.length ? interpretacion.productos : [interpretacion.producto])
+    .some(producto => tieneDetalleProductoInterpretado({ producto }));
 
-  if (operacion === "mantener_solo" && cantidadObjetivo && !tieneDetalleProducto) {
-    operacion = "modificar_cantidad";
+  if (!["quitar", "mantener_solo", "modificar_cantidad", "agregar"].includes(operacion)) return null;
+  if (operacion === "agregar" && !estado.carrito.length) return null;
+
+  const lineasAntes = [...estado.carrito];
+  const antes = estado.carrito.map(item => ({ ...item }));
+  const registrar = (targetResolved, mutationApplied) => {
+    const resultado = { action: operacion, targetResolved, mutationApplied,
+      catalogLookup: interpretacion.consultaCatalogo?.necesaria === true };
+    Object.defineProperty(estado, "_resultadoOperacionCarrito", { configurable: true, value: resultado });
+    console.log(`[Cart Operation] ${JSON.stringify({ ...resultado,
+      target: (interpretacion.productos?.length ? interpretacion.productos : [interpretacion.producto])
+        .filter(Boolean).map(p => [p.marca, p.referencia, p.categoria].filter(Boolean).join(" ")).join("; ") || "contextual" })}`);
+  };
+  registrar(false, false);
+  if ((["quitar", "mantener_solo"].includes(operacion) && (delta != null || absoluta != null)) ||
+      (operacion === "agregar" && absoluta != null)) {
+    return "¿Quieres cambiar unidades o cambiar los productos incluidos? Necesito aclararlo antes de modificar la selección.";
   }
-
-  if (!["quitar", "mantener_solo", "modificar_cantidad"].includes(operacion)) return null;
-
-  aplicarDatosInterpretados(estado, interpretacion);
-
-  if (operacion === "modificar_cantidad" && !estado.carrito.length) {
-    if (actualizarCantidadUltimoContexto(estado, cantidadObjetivo)) {
-      return `Listo, lo dejo en ${cantidadObjetivo} ${cantidadObjetivo === 1 ? "paquete" : "paquetes"}.\n\nSigamos con el producto que veníamos revisando.`;
+  if (!(interpretacion.confianza >= 0.55)) return "¿Qué producto quieres ajustar y qué cambio necesitas?";
+  if (operacion === "modificar_cantidad" && !estado.carrito.length && !tieneDetalleProducto && cantidadObjetivo) {
+    const anterior = estado.ultimaSeleccion?.cantidad ?? estado.referenciasPendientes?.cantidad;
+    if (delta == null && Number.isInteger(cantidadObjetivo) && cantidadObjetivo > 0 && cantidadObjetivo < 100 && actualizarCantidadUltimoContexto(estado, cantidadObjetivo)) {
+      registrar(true, anterior !== cantidadObjetivo);
+      return `La selección queda en ${cantidadObjetivo} ${cantidadObjetivo === 1 ? "paquete" : "paquetes"}.\n\nSigamos con el producto que veníamos revisando.`;
     }
-
-    return null;
   }
-
-  if (!estado.carrito.length) return null;
+  if (!estado.carrito.length) return "No hay productos en el carrito para ajustar. ¿Qué producto quieres cambiar?";
 
   const coincidencias = productosCarritoPorInterpretacion(catalogo, estado, interpretacion, mensaje, operacion);
-
   if (!coincidencias.length) {
-    if (operacion === "modificar_cantidad" && estado.carrito.length > 1 && !tieneDetalleProducto) {
-      return `${resumenCarrito(estado)}\n\n¿A cuál producto le ajusto la cantidad?`;
-    }
-
-    return `Revisé tu pedido, pero no encontré ese producto en el carrito.\n\n${resumenCarrito(estado)}\n\nDime cuál quieres ajustar y lo dejo bien.`;
+    if (operacion === "agregar" && tieneDetalleProducto && !coincidencias.ambiguo) return null;
+    return tieneDetalleProducto && !coincidencias.ambiguo
+      ? `Revisé tu pedido, pero no encontré ese producto en el carrito.\n\n${resumenCarrito(estado)}\n\nDime cuál quieres ajustar y lo dejo bien.`
+      : `${resumenCarrito(estado)}\n\n¿Cuál producto quieres ajustar? No pude identificar una referencia inequívoca.`;
   }
+  registrar(true, false);
+  // Sincronizar solo las selecciones afectadas: una cotizacion anterior no
+  // puede reintroducir una linea eliminada cuando el carrito quede vacio.
+  const verificar = () => {
+    const cambio = JSON.stringify(antes) !== JSON.stringify(estado.carrito);
+    registrar(true, cambio);
+    if (!cambio) return false;
+    aplicarDatosInterpretados(estado, interpretacion);
+    limpiarFlujoVentaDespuesCambioCarrito(estado);
+    const clave = item => `${item.marca}|${item.referencia}|${normalizarPeso(item.peso || item.presentacion || "")}`;
+    const actuales = new Set(estado.carrito);
+    const sincronizar = items => (items || []).flatMap(item => {
+      let previas = lineasAntes.filter(linea => clave(linea) === clave(item));
+      if (!previas.length) return [item];
+      if (previas.length > 1) {
+        previas = previas.filter(linea => ["especie", "etapa", "tamano", "duracion"].every(campo =>
+          !item[campo] || normalizar(item[campo]) === normalizar(linea[campo] || "")));
+      }
+      // Una copia ambigua se invalida: no debe recuperar una linea excluida.
+      const actual = previas.length === 1 && actuales.has(previas[0]) ? previas[0] : null;
+      return actual ? [{ ...item, cantidad: actual.cantidad, precio: actual.precio }] : [];
+    });
+    estado.productosConsultados = sincronizar(estado.productosConsultados);
+    estado.ultimaSolicitudProductos = (estado.ultimaSolicitudProductos || []).flatMap(item => {
+      if (!item.cotizacion?.length) return [item];
+      const cotizacion = sincronizar(item.cotizacion);
+      return cotizacion.length ? [{ ...item, cotizacion }] : [];
+    });
+    // El foco es transitorio; tras cambiar la seleccion lo determina el nuevo
+    // resumen, no una referencia pendiente a un producto anterior.
+    estado.ultimaSeleccion = null;
+    estado.referenciasPendientes = null;
+    estado.coincidenciasProductoPendientes = null;
+    estado.ultimaConsultaProducto = null;
+    return true;
+  };
 
-  if (operacion === "modificar_cantidad") {
-    if (!cantidadObjetivo) return `${resumenCarrito(estado)}\n\n¿Cuántos paquetes quieres dejar?`;
-
-    coincidencias.forEach((item) => {
-      item.cantidad = cantidadObjetivo;
+  if (operacion === "modificar_cantidad" || operacion === "agregar") {
+    const esDelta = delta != null || operacion === "agregar";
+    const cantidad = delta ?? cantidadObjetivo;
+    const valido = Number.isInteger(cantidad) &&
+      (esDelta ? cantidad !== 0 && Math.abs(cantidad) < 100 : cantidad > 0 && cantidad < 100) &&
+      !(delta != null && absoluta != null) && !(operacion === "agregar" && cantidad < 0);
+    if (!valido) return `${resumenCarrito(estado)}\n\n¿En cuánto debe quedar la cantidad, o cuántas unidades quieres sumar o restar?`;
+    const cantidades = coincidencias.map(item => esDelta ? item.cantidad + cantidad : cantidad);
+    if (cantidades.some(n => !Number.isInteger(n) || n < 0 || n >= 100)) {
+      return `${resumenCarrito(estado)}\n\nEse cambio deja una cantidad fuera de rango. ¿Qué cantidad final necesitas?`;
+    }
+    coincidencias.forEach((item, i) => {
+      item.cantidad = cantidades[i];
       actualizarPrecioItem(item);
     });
-    limpiarFlujoVentaDespuesCambioCarrito(estado);
-
+    estado.carrito = estado.carrito.filter(item => item.cantidad > 0);
+    if (!verificar()) return `Tu pedido ya tiene ese ajuste.\n\n${resumenCarrito(estado)}`;
     return `Listo, ajusté la cantidad.\n\n${resumenCarrito(estado)}\n\n¿Seguimos con la entrega o quieres cambiar algo más?`;
   }
 
   if (operacion === "mantener_solo") {
     estado.carrito = coincidencias;
-    if (cantidadObjetivo) {
-      estado.carrito.forEach((item) => {
-        item.cantidad = cantidadObjetivo;
-      actualizarPrecioItem(item);
-      });
-    }
-    limpiarFlujoVentaDespuesCambioCarrito(estado);
-
+    if (!verificar()) return `Tu pedido ya tiene ese ajuste.\n\n${resumenCarrito(estado)}`;
     return `Listo, dejé el pedido solamente con eso.\n\n${resumenCarrito(estado)}\n\n¿Seguimos con la entrega o quieres cambiar algo más?`;
   }
 
-  const clavesEliminar = new Set(
-    coincidencias.map((item) => `${item.marca}|${item.referencia}|${item.peso}|${item.precio}`)
-  );
-  estado.carrito = estado.carrito.filter(
-    (item) => !clavesEliminar.has(`${item.marca}|${item.referencia}|${item.peso}|${item.precio}`)
-  );
-  limpiarFlujoVentaDespuesCambioCarrito(estado);
+  // Mutar exactamente las lineas resueltas, no todas las que compartan una
+  // clave comercial que omita un atributo discriminante.
+  const lineasEliminar = new Set(coincidencias);
+  estado.carrito = estado.carrito.filter(item => !lineasEliminar.has(item));
+  if (!verificar()) return `No se retiró ningún producto.\n\n${resumenCarrito(estado)}`;
 
   if (!estado.carrito.length) {
     return "Listo, retiré ese producto y el pedido quedó vacío. Dime qué producto quieres pedir y lo armamos de nuevo.";
@@ -3173,7 +3263,7 @@ function resolverConsultaFamiliaEquivalente(estado, catalogo, interpretacion) {
     interpretacion.intencion !== "consulta_producto" ||
     !["consultar", null].includes(interpretacion.accion) ||
     producto.presentacion ||
-    referenciasEquivalentes.length < 2
+    referenciasEquivalentes.length < 1
   ) {
     return null;
   }
@@ -3187,7 +3277,7 @@ function resolverConsultaFamiliaEquivalente(estado, catalogo, interpretacion) {
       )
     )
     .filter(Boolean);
-  if (referencias.length < 2) return null;
+  if (!referencias.length) return null;
 
   const items = referencias.flatMap((referencia) =>
     (referencia.presentaciones || []).map((presentacion) => ({
@@ -3206,7 +3296,9 @@ function resolverConsultaFamiliaEquivalente(estado, catalogo, interpretacion) {
   estado.marca = marca.marca;
   estado.criterios = criteriosDesdeReferencia(referencias[0]);
   estado.referenciasPendientes = null;
-  estado.ultimaSeleccion = null;
+  estado.ultimaSeleccion = referencias.length === 1
+    ? { marca: marca.marca, referencia: referencias[0].nombre, presentacion: null, cantidad: producto.cantidad || 1 }
+    : null;
 
   const vistas = new Set();
   const presentaciones = items
@@ -5375,6 +5467,9 @@ function esConsultaResumenCarrito(mensaje = "", interpretacion = null) {
 }
 
 function resolverConsultaCatalogo(mensaje, estado, catalogo = [], interpretacion = null) {
+  if (["quitar", "mantener_solo", "modificar_cantidad", "conflicto"].includes(operacionCarritoInterpretada(interpretacion || {}))) {
+    return resolverOperacionCarritoIA(mensaje, estado, catalogo, interpretacion);
+  }
   if (interpretacion) {
     const limpiar = producto => {
       if (!producto) return producto;
@@ -5399,6 +5494,12 @@ function resolverConsultaCatalogo(mensaje, estado, catalogo = [], interpretacion
   }
   // Payment support after checkout must not restart checkout or mutate the order.
   const consultaPago = interpretacion?.accion === "consultar_pago";
+  const metodoExplicito = detectarMetodoPago(interpretacion?.entrega?.metodoPago || "") || detectarMetodoPago(mensaje);
+  if (consultaPago && metodoExplicito && metodoExplicito !== "transferencia bancaria") {
+    return resolverConsultaCatalogo(mensaje, estado, catalogo, { ...interpretacion,
+      accion: null, intencion: "metodo_pago", continuarFlujo: true,
+      entrega: { ...interpretacion.entrega, metodoPago: metodoExplicito } });
+  }
   if (estado.pedidoConfirmado && (consultaPago || interpretacion?.intencion === "metodo_pago")) {
     const metodo = detectarMetodoPago(interpretacion?.entrega?.metodoPago || "") ||
       detectarMetodoPago(mensaje) || detectarMetodoPago(estado.metodoPago || "");
@@ -5450,8 +5551,6 @@ function resolverConsultaCatalogo(mensaje, estado, catalogo = [], interpretacion
       iniciarNuevoPedido(estado);
     }
     aplicarDatosInterpretados(estado, interpretacion);
-    const respuestaCarrito = resolverOperacionCarritoIA(mensaje, estado, [], interpretacion);
-    if (respuestaCarrito) return respuestaCarrito;
     if (estado.carrito.length && (interpretacion.entrega?.tipo ||
       interpretacion.intencion === "datos_envio" || interpretacion.intencion === "metodo_pago" ||
       interpretacionConfirma(interpretacion) ||
@@ -5587,9 +5686,6 @@ function resolverConsultaCatalogo(mensaje, estado, catalogo = [], interpretacion
     : resolverConInterpretacionIA(mensaje, estado, catalogo, interpretacionCatalogo);
   if (respuestaIA) return estado.pedidoConfirmado ? respuestaIA : incluirInstruccionesPago(estado, respuestaIA);
 
-  const respuestaOperacionCarritoIA = resolverOperacionCarritoIA(mensaje, estado, catalogo, interpretacion);
-  if (respuestaOperacionCarritoIA) return respuestaOperacionCarritoIA;
-
   const respuestaEntregaCotizacion = resolverEntregaConCotizacionActiva(
     mensaje,
     estado,
@@ -5611,7 +5707,7 @@ function resolverConsultaCatalogo(mensaje, estado, catalogo = [], interpretacion
   const respuestaAlternativa = resolverAlternativaPendiente(mensaje, estado, catalogo);
   if (respuestaAlternativa) return respuestaAlternativa;
 
-  const respuestaCambioCarrito = resolverCambioCarrito(mensaje, estado, catalogo);
+  const respuestaCambioCarrito = interpretacion ? null : resolverCambioCarrito(mensaje, estado, catalogo);
   if (respuestaCambioCarrito) return respuestaCambioCarrito;
 
   const esConsultaDisponibilidadReferencia =
@@ -5958,6 +6054,8 @@ function resolverConsultaCatalogo(mensaje, estado, catalogo = [], interpretacion
 }
 
 module.exports = {
+  operacionCarritoInterpretada,
+  resolverOperacionCarritoIA,
   esConsultaResumenCarrito,
   aplicarDatosInterpretados,
   resumenCarrito,

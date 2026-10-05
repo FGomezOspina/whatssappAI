@@ -5,6 +5,7 @@ const OpenAI = require("openai");
 const { logUsoIA } = require("./aiUsageLogger");
 const {
   construirSolicitudInterprete,
+  INSTRUCCIONES_OPERACION_CARRITO,
   logDiagnosticoContexto,
 } = require("./aiContextOptimizer");
 const { logPayloadOpenAI } = require("./aiContextAuditLogger");
@@ -157,6 +158,7 @@ function normalizarInterpretacion(valor) {
   const textoBreve = (valor, limite) =>
     typeof valor === "string" ? valor.trim().slice(0, limite) || null : null;
   const normalizarProducto = (producto = {}) => ({
+    ...( ["consultar", "agregar", "modificar_cantidad", "quitar", "mantener_solo"].includes(producto.accion) ? { accion: producto.accion } : {}),
     marca: producto.marca || null,
     referencia: producto.referencia || null,
     linea: textoBreve(producto.linea, 120),
@@ -170,7 +172,9 @@ function normalizarInterpretacion(valor) {
     sabores: Array.isArray(producto.sabores) ? producto.sabores : [],
     presentacion: producto.presentacion || null,
     condiciones: Array.isArray(producto.condiciones) ? producto.condiciones : [],
-    cantidad: producto.cantidad || null,
+    cantidad: valor.accion === "agregar" && !(valor.productos?.length > 1) &&
+      Number.isInteger(valor.carrito?.cantidadDelta) && valor.carrito.cantidadDelta > 0
+      ? valor.carrito.cantidadDelta : producto.cantidad || null,
     ...(producto.observado && typeof producto.observado === "object" ? {
       observado: {
         nombre: textoBreve(producto.observado.nombre, 200),
@@ -225,7 +229,8 @@ function normalizarInterpretacion(valor) {
     },
     carrito: {
       operacion: valor.carrito?.operacion || null,
-      cantidadObjetivo: valor.carrito?.cantidadObjetivo || null,
+      cantidadObjetivo: valor.carrito?.cantidadObjetivo ?? null,
+      cantidadDelta: valor.carrito?.cantidadDelta ?? null,
       aplicaAlUltimoProducto:
         typeof valor.carrito?.aplicaAlUltimoProducto === "boolean"
           ? valor.carrito.aplicaAlUltimoProducto
@@ -333,7 +338,7 @@ Fuente de verdad:
 - El cliente escribe en español colombiano y lenguaje comercial local. Entiende expresiones como "cuido", "concentrado", "comida", "purina", "referencia", "manejan esta referencia", "la de la foto", "la bolsa", "bulto", "paquete", "kilo", "kl", "libra", "raza pequeña", "todas las razas" y variantes coloquiales.
 - En WhatsApp colombiano, vocativos, tono carinoso, diminutivos, disculpas, cierres y agradecimientos son tono social; no los conviertas en marca, referencia ni instruccion comercial.
 - Resuelve la intencion por el significado del mensaje y el contexto, no por la presencia de palabras clave. Una solicitud cortes o indirecta de enviar cantidades de un producto puede ser pedido_producto con accion agregar sin decir "comprar". Conserva la cantidad solicitada; distingue preguntas de cotizacion de solicitudes de compra.
-- Interpreta la intencion del turno completo antes de extraer producto. Si el cliente menciona un producto solo para decir que no lo quiere, no le sirvio, no seguira con la compra, ya no le interesa o solo agradece/cierra, usa intencion "rechazo" o "agradecimiento", accion "rechazar" o null, y deja producto/productos sin datos.
+- Una exclusion de productos del carrito o cotizacion usa quitar y conserva los targets excluidos. Solo un rechazo conversacional sin operacion sobre seleccion existente usa rechazo o agradecimiento sin producto.
 - Despues de una cotizacion, no asumas que toda mencion del producto es una compra o nueva busqueda: puede ser comentario, rechazo, cierre o agradecimiento. Solo usa consulta_producto/pedido_producto si pide precio, disponibilidad, alternativas, cantidad, presentacion o agregar.
 - El cliente puede escribir con errores normales de WhatsApp: letras cambiadas, tildes omitidas, palabras pegadas, números metidos accidentalmente entre letras, abreviaturas, duplicación de letras, frases incompletas y autocorrector raro. Corrige mentalmente esos errores antes de decidir intención.
 - No conviertas una palabra deformada por error de dedo en marca o producto si el contexto dice apertura de pedido, saludo, entrega, pago o datos. Si no hay una pista razonable del catálogo, deja producto vacío y conserva la intención humana.
@@ -445,7 +450,7 @@ Razonamiento esperado:
 - Si el cliente dice "me sirve", "esa", "la de 4", "de 4kg", "dale", "listo" y hay ultimaSeleccion o referenciasPendientes, interpreta como confirmacion/aclaracion del contexto pendiente.
 - Si ya se agrego un producto al carrito, no listes otra vez sus presentaciones salvo que el cliente pida explicitamente cambiar de presentacion, precio o disponibilidad.
 - Si el cliente corrige una cantidad ya mencionada o ya agregada ("solo es 1 paquete", "déjalo en 2", "eran dos", "solo uno"), NO es un producto nuevo: es operacion modificar_cantidad.
-- Si el cliente dice que quiere "solo", "solamente" o "únicamente" un producto específico entre varios, es operacion mantener_solo.
+${INSTRUCCIONES_OPERACION_CARRITO}
 - Si el cliente dice que ya no quiere, quite, elimine, saque o retire un producto, es operacion quitar.
 - Si el cliente está aclarando una referencia, tamaño, presentación o cantidad pendiente, conserva el contexto anterior y completa lo que falta; no reinicies la conversación.
 - No uses accion agregar para corregir un producto ya agregado: usa la operacion de carrito correspondiente. Completar la referencia de una compra pendiente que aun no esta agregada conserva accion agregar. Aceptar comprar una cotizacion pendiente tambien usa agregar.
@@ -513,6 +518,7 @@ JSON exacto:
   "carrito": {
     "operacion": "agregar|quitar|mantener_solo|modificar_cantidad|null",
     "cantidadObjetivo": null,
+    "cantidadDelta": null,
     "aplicaAlUltimoProducto": false,
     "razon": "explicacion corta para auditoria interna o null"
   },

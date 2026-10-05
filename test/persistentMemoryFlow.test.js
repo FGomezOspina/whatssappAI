@@ -67,7 +67,7 @@ function baseSimulada(t) {
 function cargarStore() {
   const modulo = { exports: {} };
   vm.runInNewContext(fs.readFileSync(require.resolve('../src/conversation/conversationStore'), 'utf8'), {
-    require: name => name.includes('learningRepository') ? { capturarAprendizaje: async () => {} } : repository, module: modulo, process, console: { error() {} },
+    require: name => name === '../utils/text' ? require('../src/utils/text') : name.includes('learningRepository') ? { capturarAprendizaje: async () => {} } : repository, module: modulo, process, console: { error() {} },
   });
   return modulo.exports;
 }
@@ -237,4 +237,68 @@ test('historial antiguo se resume por paginas cronologicas y el cursor persistid
   const cursor = base.conversaciones.get(`${cliente.id}:usuario`).state.memoriaConversacional.hasta;
   assert.notEqual(cursor.id, cursorAnterior.id);
   assert.equal(base.mensajes.size, 89, 'raw archive plus two turns is preserved');
+});
+
+test('arena del caso real conserva consulta, intención y pedido al recargar Supabase entre turnos', async t => {
+  const base = baseSimulada(t);
+  const cliente = { id: 'arena-memory', vertical: 'petshop' };
+  const usuario = 'arena-test';
+  const catalogo = require('../productos.json');
+  const { normalizarInterpretacion } = require('../src/services/aiInterpreter')._internals;
+  const { seleccionarCatalogoLocal } = require('../src/services/catalogContextService')._internals;
+  const fixture = require('./fixtures/arena-presentation-followup.json');
+  const originales = [
+    { marca: 'DIAMOND', referencia: 'DIAMOND INDOOR CAT', peso: '500gr', cantidad: 2, precio: 19500 },
+    { marca: 'PRO PLAN', referencia: 'PRO PLAN POUCH FELINO ADULT', peso: '85gr', cantidad: 2, precio: 6200 },
+  ];
+  const estado = await cargarStore().obtenerConversacionPersistida(usuario, cliente);
+  Object.assign(estado, { carrito: originales, metodoPago: 'tarjeta', entrega: { tipo: 'domicilio' },
+    datosDomicilio: { direccion: 'Mz 34 Casa 5 Piso 2 El poblado 2' }, esperandoDatosDomicilio: true });
+  await cargarStore().guardarConversacionPersistida(usuario, estado, { cliente });
+  const producto = { ...fixture.consulta.producto, marca: 'ARENA MAIZ CAT', referencia: 'ARENA MAIZ CAT',
+    categoria: 'arena_sustrato', subcategoria: 'arena', condiciones: [] };
+  const turnos = [
+    { mensaje: fixture.consulta.mensaje, decision: { accion: 'consultar', intencion: 'consulta_producto', producto } },
+    { mensaje: '4 kilos', decision: { intencion: 'pedido_producto', ...fixture.seleccion.propuestaOperacion } },
+  ];
+  for (const [indice, turno] of turnos.entries()) {
+    const archivo = require.resolve('../src/services/conversationService');
+    const req = createRequire(archivo);
+    const mocks = {
+      './clients.service': { obtenerClienteActual: async () => cliente },
+      '../conversation/conversationStore': cargarStore(),
+      '../repositories/trainingExampleRepository': { obtenerEjemplosEntrenamiento: async () => [] },
+      './catalogContextService': { seleccionarCatalogoParaIA: async args => seleccionarCatalogoLocal({ ...args, catalogo }) },
+      './aiInterpreter': { interpretarMensajeCliente: async args => {
+        if (indice === 1) {
+          const contexto = JSON.stringify(construirSolicitudInterprete(args).contexto);
+          assert.match(contexto, /ARENA MAIZ CAT/);
+          assert.match(contexto, /tarjeta/);
+          assert.equal(args.estado.ultimaConsultaProducto.solicitudOriginal.accion, 'consultar');
+          assert.match(args.estado.ultimaPreguntaAsistente, /ARENA MAIZ CAT/);
+        }
+        return normalizarInterpretacion({ confianza: 1, consultaCatalogo: { necesaria: true, consulta: turno.mensaje }, ...structuredClone(turno.decision) });
+      } },
+      './humanizer': { humanizarRespuesta: async (_m, respuesta) => respuesta },
+    };
+    const modulo = { exports: {} };
+    vm.runInNewContext(fs.readFileSync(archivo, 'utf8'), { require: n => mocks[n] || req(n), module: modulo, process, console: { log() {}, error() {} } });
+    const respuesta = await modulo.exports.responderEventoEntrante({ channelUserId: usuario, phoneNumberId: 'canal', messageId: `arena-${indice}`, text: turno.mensaje });
+    assert.doesNotMatch(JSON.stringify(respuesta), /no encuentro/i);
+    const recuperado = await cargarStore().obtenerConversacionPersistida(usuario, cliente);
+    assert.deepEqual(recuperado.carrito.slice(0, 2), originales);
+    assert.match(recuperado.metodoPago, /tarjeta/);
+    assert.equal(recuperado.datosDomicilio.direccion, estado.datosDomicilio.direccion);
+    if (indice === 0) {
+      assert.equal(recuperado.carrito.length, 2);
+      assert.equal(recuperado.ultimaSeleccion.referencia, producto.referencia);
+      assert.equal(recuperado.ultimaConsultaProducto.solicitudOriginal.producto.referencia, producto.referencia);
+    } else {
+      assert.equal(recuperado.carrito.length, 3);
+      assert.equal(recuperado.carrito[2].referencia, producto.referencia);
+      assert.equal(recuperado.carrito[2].cantidad, 1);
+      assert.equal(recuperado.carrito.reduce((s, p) => s + p.precio * p.cantidad, 0), 74300);
+    }
+  }
+  assert.ok(base.solicitudes.filter(s => s.url.includes('whatsapp_conversations') && (s.options.method || 'GET') === 'GET').length >= 5);
 });
