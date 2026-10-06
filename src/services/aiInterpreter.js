@@ -453,6 +453,7 @@ Razonamiento esperado:
 ${INSTRUCCIONES_OPERACION_CARRITO}
 - Si el cliente dice que ya no quiere, quite, elimine, saque o retire un producto, es operacion quitar.
 - Si el cliente está aclarando una referencia, tamaño, presentación o cantidad pendiente, conserva el contexto anterior y completa lo que falta; no reinicies la conversación.
+- En mensajes largos o agrupados, conserva todas las solicitudes: compras con sus cantidades, datos de entrega, pago y consultas adicionales. Una pregunta al final no cancela las compras anteriores. Si después responde solo una presentación (por ejemplo "x4kl"), aplica 4 kg al producto de la pregunta pendiente, nunca a una cotización anterior. Cuando está eligiendo esa presentación para su pedido activo, usa agregar para esa referencia; si pregunta su precio, conserva consultar. No cambies las cantidades de las otras referencias ni vuelvas a pedir dirección o pago ya guardados.
 - No uses accion agregar para corregir un producto ya agregado: usa la operacion de carrito correspondiente. Completar la referencia de una compra pendiente que aun no esta agregada conserva accion agregar. Aceptar comprar una cotizacion pendiente tambien usa agregar.
 
 Los ejemplos dinamicos ensenan patrones de conversacion e interpretacion, no politicas operativas vigentes.

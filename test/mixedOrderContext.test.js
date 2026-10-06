@@ -27,6 +27,9 @@ function caso({ conservarLecturaArena = false, catalogoPrueba = catalogo } = {})
     './aiInterpreter': { interpretarMensajeCliente: async args => {
       if (args.clasificacion.decisionHerramientas || args.clasificacion.revisionOperacion) return normalizarInterpretacion(structuredClone(decision));
       revisiones.push(args.mensaje);
+      if (args.mensaje.includes('Solicitud:') && /arena.*ma[ií]z/i.test(args.mensaje)) {
+        return normalizarInterpretacion({ accion: 'consultar', intencion: 'consulta_producto', confianza: 1, producto: arena });
+      }
       if (args.mensaje.includes('arena') && !conservarLecturaArena) return normalizarInterpretacion({ ...decision, accion: 'consultar', producto: arena, productos: [] });
       return normalizarInterpretacion(structuredClone(decision));
     } },
@@ -200,4 +203,35 @@ test('replay de interpretación guardada: descripción sin marca seguida de 4 ki
   assert.equal(item.precio, 22900);
   assert.match(item.peso, /4\s*kg/);
   assert.equal(c.estado().carrito.reduce((s, p) => s + p.precio * p.cantidad, 0), 74300);
+});
+
+for (const respuestaDesviada of [false, true]) test(`ráfaga de compra y arena seguida de x4kl, lectura desviada=${respuestaDesviada}`, async () => {
+  const c = caso({ conservarLecturaArena: true });
+  for (const producto of [diamond, proplan]) {
+    await c.enviar(producto.textoVisible, { accion: 'consultar', intencion: 'consulta_producto', producto });
+    for (const cotizacion of c.estado().historialProductosConsultados) cotizacion.pendienteRespuesta = false;
+  }
+  const descripcion = { accion: 'consultar', categoria: 'arena_sustrato', especie: 'gato',
+    textoVisible: 'arena para gatos de maíz bolsa verde', condiciones: ['maíz', 'bolsa verde'] };
+  const respuesta = await c.enviar('dale me puedes enviar por favor dos de cada uno por favor\ndos diamond y dos pro plan\npara la Mz 34 Casa 5 Piso 2 El poblado 2\nme envias por favor datafono para pago con tarjeta\nahh perdon tiene arena para gatos de Maiz ??? de esa que la bolsa es verde ?', {
+    accion: 'agregar', intencion: 'pedido_producto', carrito: { operacion: 'agregar' },
+    productos: [{ ...diamond, accion: 'agregar', cantidad: 2 }, { ...proplan, accion: 'agregar', cantidad: 2 }, descripcion],
+    entrega: { tipo: 'domicilio', direccion: 'Mz 34 Casa 5 Piso 2 El poblado 2', metodoPago: 'tarjeta' },
+  });
+  assert.match(respuesta, /Total: \$51\.400/);
+  assert.match(respuesta, /cedula|cédula/);
+  assert.match(respuesta, /presentaci[oó]n/i);
+  assert.doesNotMatch(respuesta, /- dirección|- método de pago/);
+  const originales = structuredClone(c.estado().carrito);
+  const siguiente = await c.enviar('x4kl', { accion: 'agregar', intencion: 'pedido_producto', carrito: { operacion: 'agregar' },
+    producto: respuestaDesviada ? { ...proplan, accion: 'agregar', cantidad: 1 } : { ...arena, accion: 'agregar', presentacion: '4kg', cantidad: 1 },
+  });
+  assert.deepEqual(c.estado().carrito.slice(0, 2), originales);
+  assert.equal(c.estado().carrito.length, 3, siguiente);
+  assert.equal(c.estado().carrito[2].referencia, arena.referencia);
+  assert.equal(c.estado().carrito[2].precio, 22900);
+  assert.equal(c.estado().carrito[2].cantidad, 1);
+  assert.match(siguiente, /Total: \$74\.300/);
+  assert.equal(c.estado().datosDomicilio.direccion, 'Mz 34 Casa 5 Piso 2 El poblado 2');
+  assert.match(c.estado().metodoPago, /tarjeta/);
 });

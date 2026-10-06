@@ -165,6 +165,10 @@ function continuarSolicitudProducto(decision, estado, mensaje) {
   const mismaIdentidad = anterior.length && nueva.length && anterior.length === nueva.length &&
     anterior.every(token => nueva.includes(token));
   const pesoExplicito = extraerPesoTexto(mensaje);
+  // Una respuesta que contiene solo peso pertenece a la pregunta activa,
+  // aunque el intérprete haya recuperado otra cotización del historial.
+  const soloPresentacion = Boolean(pesoExplicito &&
+    /^\s*(?:x\s*)?\d+(?:[.,]\d+)?\s*(?:kg|kl|kr|kilogramos?|kilos?|gr|g|gramos?|lb|libras?|ml|mg)\s*[.!?]*\s*$/i.test(mensaje));
   const atributos = { ...actual,
     ...(pesoExplicito ? { presentacion: pesoExplicito } : {}),
     ...(duracionTexto(mensaje) ? { duracion: duracionTexto(mensaje) } : {}) };
@@ -173,7 +177,9 @@ function continuarSolicitudProducto(decision, estado, mensaje) {
   // estructurados; las palabras sociales no son un nombre nuevo de producto.
   const respuestaSemantica = mismaIdentidad && Number(decision.confianza) >= 0.55 &&
     campos.some(campo => Array.isArray(atributos[campo]) ? atributos[campo].length : atributos[campo]);
-  const respondeAtributo = Boolean(respuestaSemantica || (contexto.aclaracion && consultaContextual !== mensaje));
+  const respondeAtributo = Boolean(respuestaSemantica ||
+    (soloPresentacion && contexto.aclaracion?.campo === 'presentacion') ||
+    (contexto.aclaracion && consultaContextual !== mensaje));
   const completa = respondeAtributo || (!tokens.length && actual.presentacion) ||
     (tokens.length > 0 && tokens.length <= 3 && tokens.every(t => conocidos.includes(t)));
   if (!confirma && !completa) return decision;
@@ -185,6 +191,7 @@ function continuarSolicitudProducto(decision, estado, mensaje) {
     if (valor != null && (!Array.isArray(valor) || valor.length)) producto[campo] = valor;
   }
   if (respondeAtributo) {
+    if (contexto.aclaracion.campo === 'presentacion' && pesoExplicito) producto.presentacion = pesoExplicito;
     const elegido = (contexto.aclaracion.valores || []).find(valor =>
       tokensDistintivos(valor).every(token => tokens.includes(token)));
     if (elegido) producto[contexto.aclaracion.campo] = contexto.aclaracion.campo === "sabores" ? [elegido] : elegido;
@@ -711,11 +718,14 @@ async function responderEventosEntrantes(eventos) {
     }
     decisionSemantica = resolverEvidenciaInterpretacion(revision);
   }
+  // Resolver la respuesta pendiente antes de permitir mutaciones del carrito:
+  // una presentación no debe aumentar una referencia anterior por error.
+  if (!imageUrls.length) decisionSemantica = continuarSolicitudProducto(decisionSemantica, estado, mensaje);
   // La accion conserva su objetivo independientemente de la herramienta elegida.
   // Resolver antes de aceptar cotizaciones, confirmar o continuar una busqueda.
   const operacionExistente = vertical.orderLogic.operacionCarritoInterpretada?.(decisionSemantica);
   if (["quitar", "mantener_solo", "modificar_cantidad", "conflicto"].includes(operacionExistente) ||
-      (operacionExistente === "agregar" && !estado.pedidoConfirmado && !(decisionSemantica.productos?.length > 1) &&
+      (operacionExistente === "agregar" && !decisionSemantica._consultaContinuada && !estado.pedidoConfirmado && !(decisionSemantica.productos?.length > 1) &&
         (estado.carrito.length || decisionSemantica.carrito?.cantidadDelta != null))) {
     Object.defineProperty(estado, "_interpretacionTurno", { configurable: true, writable: true,
       value: { intencion: decisionSemantica.intencion, accion: decisionSemantica.accion,
@@ -1436,6 +1446,8 @@ async function responderEventosEntrantes(eventos) {
         ...(lecturaValidada.producto?.duracion ? { duracion: lecturaValidada.producto.duracion } : {}),
         cantidad: lecturaValidada.producto?.cantidad || registro.cantidad,
         estado: lecturaValidada.producto?.requierePresentacion || !respuestaProducto ||
+          (lecturaValidada.accion === 'consultar' && !lecturaValidada.producto?.presentacion &&
+            resultado.validacion.coincidencia?.presentaciones?.length > 1) ||
           (["agregar", "nuevo_pedido"].includes(lecturaValidada.accion) &&
             !estado.carrito.some(item => item.marca === lecturaValidada.producto?.marca &&
               item.referencia === lecturaValidada.producto?.referencia &&
@@ -1512,6 +1524,11 @@ async function responderEventosEntrantes(eventos) {
         ? `${nombre} de ${pendiente.presentacion}` : nombre;
       const resultadoPendiente = resultadosMultiples[solicitudesProcesadas.indexOf(pendiente)];
       recordarConsultaProducto(estado, resultadoPendiente.validacion, clasificacion);
+      if (estado.ultimaConsultaProducto && !pendiente.presentacion &&
+          resultadoPendiente.validacion.nivel === 'alta' && !estado.ultimaConsultaProducto.aclaracion) {
+        estado.ultimaConsultaProducto.aclaracion = { campo: 'presentacion',
+          valores: (resultadoPendiente.validacion.coincidencia?.presentaciones || []).map(p => p.peso) };
+      }
       if (estado.ultimaConsultaProducto) estado.ultimaConsultaProducto.solicitudOriginal = {
         intencion: pendiente.accion === "consultar" ? "consulta_producto" : decisionSemantica.intencion, accion: pendiente.accion, producto: pendiente,
       };
@@ -1540,7 +1557,8 @@ async function responderEventosEntrantes(eventos) {
     if (estado.carrito.length && vertical.orderLogic.resumenCarrito) {
       respuestas.push(vertical.orderLogic.resumenCarrito(estado));
       if (preguntaPendiente) respuestas.push(preguntaPendiente);
-      if (siguientePaso && solicitudesProcesadas.every(item => item.estado === "identificado")) {
+      if (siguientePaso && (solicitudesProcesadas.every(item => item.estado === "identificado") ||
+          /Para completar tu domicilio|me faltan estos datos/i.test(siguientePaso))) {
         respuestas.push(siguientePaso);
       }
     }
