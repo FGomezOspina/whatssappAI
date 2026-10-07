@@ -1334,7 +1334,7 @@
     "referencias": [
       {
         "nombre": "ALPISTE",
-        "especie": "perro",
+        "especie": "aves",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": null,
@@ -1851,7 +1851,7 @@
     "referencias": [
       {
         "nombre": "ARENA BUOS",
-        "especie": "otro",
+        "especie": "gato",
         "categoria": "arena_sustrato",
         "subcategoria": "arena",
         "etapa": null,
@@ -1913,7 +1913,7 @@
       },
       {
         "nombre": "ARENA KING",
-        "especie": "otro",
+        "especie": "gato",
         "categoria": "arena_sustrato",
         "subcategoria": "arena",
         "etapa": null,
@@ -1989,7 +1989,7 @@
       },
       {
         "nombre": "ARENA UNIKAT",
-        "especie": "otro",
+        "especie": "gato",
         "categoria": "arena_sustrato",
         "subcategoria": "arena",
         "etapa": null,
@@ -2028,7 +2028,7 @@
     "referencias": [
       {
         "nombre": "ARENA A GRANEL",
-        "especie": "otro",
+        "especie": "gato",
         "categoria": "arena_sustrato",
         "subcategoria": "arena",
         "etapa": null,
@@ -2067,7 +2067,7 @@
     "referencias": [
       {
         "nombre": "ARENA BUOS CAFE",
-        "especie": "otro",
+        "especie": "gato",
         "categoria": "arena_sustrato",
         "subcategoria": "arena",
         "etapa": null,
@@ -2678,7 +2678,7 @@
     "referencias": [
       {
         "nombre": "ARENA MICHIKO LAVANDA",
-        "especie": "otro",
+        "especie": "gato",
         "categoria": "arena_sustrato",
         "subcategoria": "arena",
         "etapa": null,
@@ -2717,7 +2717,7 @@
     "referencias": [
       {
         "nombre": "ARENA MICHIKO LIMON",
-        "especie": "otro",
+        "especie": "gato",
         "categoria": "arena_sustrato",
         "subcategoria": "arena",
         "etapa": null,
@@ -2795,7 +2795,7 @@
     "referencias": [
       {
         "nombre": "ARENA UNIKAT LAVANDA",
-        "especie": "otro",
+        "especie": "gato",
         "categoria": "arena_sustrato",
         "subcategoria": "arena",
         "etapa": null,
@@ -3688,18 +3688,18 @@
     ]
   },
   {
-    "marca": "B-FE",
+    "marca": "B-FEX",
     "metadata": {
       "source": "Productos.pdf"
     },
     "referencias": [
       {
-        "nombre": "B-FE",
+        "nombre": "B-FEX",
         "especie": "otro",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
-        "descripcion": "B-FE",
+        "descripcion": "B-FEX",
         "imagen": "",
         "requiere_confirmacion": true,
         "metadata": {
@@ -5058,8 +5058,8 @@
       {
         "nombre": "BR POMM BITTES TOCINETA",
         "especie": "perro",
-        "categoria": "comida",
-        "subcategoria": "concentrado",
+        "categoria": "snack",
+        "subcategoria": "premio",
         "etapa": null,
         "descripcion": "BR POMM BITTES TOCINETA",
         "imagen": "",
@@ -5119,7 +5119,7 @@
       },
       {
         "nombre": "BR SNACK BOLA DE PELO",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "snack",
         "subcategoria": "premio",
         "etapa": null,
@@ -6381,18 +6381,18 @@
         ]
       },
       {
-        "nombre": "BR DOG PUPYY CORDERO",
+        "nombre": "BR DOG PUPPY CORDERO",
         "especie": "perro",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "categoria": "comida",
+        "subcategoria": "concentrado",
         "etapa": null,
-        "descripcion": "BR DOG PUPYY CORDERO",
+        "descripcion": "BR DOG PUPPY CORDERO",
         "imagen": "",
         "requiere_confirmacion": true,
         "metadata": {
           "source": "Productos.pdf",
           "original_names": [
-            "BR DOG PUPYY CORDERO X 1KG"
+            "BR DOG PUPPY CORDERO X 1KG"
           ]
         },
         "presentaciones": [
@@ -6403,7 +6403,7 @@
               "source": "Productos.pdf",
               "codigo": "10101010154",
               "llave": "154",
-              "nombre_original": "BR DOG PUPYY CORDERO X 1KG",
+              "nombre_original": "BR DOG PUPPY CORDERO X 1KG",
               "codigos": [
                 "10101010154"
               ]
@@ -6740,8 +6740,8 @@
       {
         "nombre": "CABANOS",
         "especie": "otro",
-        "categoria": "higiene",
-        "subcategoria": "aseo",
+        "categoria": "snack",
+        "subcategoria": "premio",
         "etapa": null,
         "descripcion": "CABANOS",
         "imagen": "",
@@ -6771,8 +6771,8 @@
       {
         "nombre": "CABANOS KILO SURTIDO APRO 140",
         "especie": "otro",
-        "categoria": "higiene",
-        "subcategoria": "aseo",
+        "categoria": "snack",
+        "subcategoria": "premio",
         "etapa": null,
         "descripcion": "CABANOS KILO SURTIDO APRO 140",
         "imagen": "",
@@ -7369,7 +7369,7 @@
     ]
   },
   {
-    "marca": "CAN",
+    "marca": "CAN AMOR",
     "metadata": {
       "source": "Productos.pdf"
     },
@@ -7377,8 +7377,8 @@
       {
         "nombre": "CAN AMOR PERFUME GATO",
         "especie": "gato",
-        "categoria": "comida",
-        "subcategoria": "concentrado",
+        "categoria": "higiene",
+        "subcategoria": "aseo",
         "etapa": null,
         "descripcion": "CAN AMOR PERFUME GATO",
         "imagen": "",
@@ -7407,7 +7407,7 @@
       },
       {
         "nombre": "CAN AMOR BAÑO ESPUMOSO",
-        "especie": "otro",
+        "especie": "gato",
         "categoria": "higiene",
         "subcategoria": "aseo",
         "etapa": null,
@@ -7438,7 +7438,7 @@
       },
       {
         "nombre": "CAN AMOR JABON ANTIPULGAS",
-        "especie": "otro",
+        "especie": "perro",
         "categoria": "higiene",
         "subcategoria": "aseo",
         "etapa": null,
@@ -7469,7 +7469,7 @@
       },
       {
         "nombre": "CAN AMOR JABON DESODORANTE",
-        "especie": "otro",
+        "especie": "perro",
         "categoria": "higiene",
         "subcategoria": "aseo",
         "etapa": null,
@@ -7842,13 +7842,13 @@
     ]
   },
   {
-    "marca": "CANATO",
+    "marca": "CANATOX",
     "metadata": {
       "source": "Productos.pdf"
     },
     "referencias": [
       {
-        "nombre": "CANATO",
+        "nombre": "CANATOX",
         "especie": "otro",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
@@ -8007,7 +8007,7 @@
     ]
   },
   {
-    "marca": "CANISAN",
+    "marca": "CANISAN D",
     "metadata": {
       "source": "Productos.pdf"
     },
@@ -8209,13 +8209,13 @@
     ]
   },
   {
-    "marca": "CANNE",
+    "marca": "CANNEX",
     "metadata": {
       "source": "Productos.pdf"
     },
     "referencias": [
       {
-        "nombre": "CANNE",
+        "nombre": "CANNEX",
         "especie": "otro",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
@@ -8612,7 +8612,7 @@
     ]
   },
   {
-    "marca": "CAT",
+    "marca": "CAT BALANCE",
     "metadata": {
       "source": "Productos.pdf"
     },
@@ -8902,12 +8902,12 @@
         ]
       },
       {
-        "nombre": "CAT CHOW GATITOS *",
+        "nombre": "CAT CHOW GATITOS",
         "especie": "gato",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": "cachorro",
-        "descripcion": "CAT CHOW GATITOS *",
+        "descripcion": "CAT CHOW GATITOS",
         "imagen": "",
         "requiere_confirmacion": false,
         "metadata": {
@@ -9065,12 +9065,12 @@
         ]
       },
       {
-        "nombre": "CAT CHOW VIDA SANA 1.3 PAG",
+        "nombre": "CAT CHOW VIDA SANA",
         "especie": "gato",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": null,
-        "descripcion": "CAT CHOW VIDA SANA 1.3 PAG",
+        "descripcion": "CAT CHOW VIDA SANA",
         "imagen": "",
         "requiere_confirmacion": false,
         "metadata": {
@@ -9479,8 +9479,8 @@
       {
         "nombre": "CHUNKY DELICAT POTE",
         "especie": "gato",
-        "categoria": "accesorio",
-        "subcategoria": "accesorio",
+        "categoria": "comida",
+        "subcategoria": "concentrado",
         "etapa": null,
         "descripcion": "CHUNKY DELICAT POTE",
         "imagen": "",

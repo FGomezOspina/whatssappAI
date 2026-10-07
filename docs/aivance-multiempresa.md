@@ -48,6 +48,7 @@ Scripts:
 - `supabase/005_petshop_product_classification.sql`: clasificacion comercial petshop.
 - `supabase/006_multi_vertical_clients.sql`: alias `business_type`, identificadores alternos de canal y registro inicial de `sanmarcospetsclub`.
 - `supabase/008_conversation_memory.sql`: metadata de mensajes y paginacion de memoria; necesaria para esta version en bases existentes.
+- `supabase/009_catalog_presentation_identity.sql`: después de la 007, incorpora nombres comerciales y descriptores de la metadata de presentaciones al RPC de candidatos. Conserva su contrato y el filtro por cliente. Verificar con `supabase/verify_009_catalog_presentation_identity.sql`, que usa datos sintéticos y termina en rollback.
 
 ## Que Pasa Al Agregar Mas Clientes
 

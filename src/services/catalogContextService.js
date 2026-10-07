@@ -1,4 +1,5 @@
 const { formatoAlimento } = require('../utils/foodFormat');
+const { textoBusquedaReferencia } = require('../utils/catalogSearchDocument');
 const { envolver } = require('./pipelineTelemetry');
 const { admiteEspecie } = require('../utils/catalogCommercialRules');
 const { _internals: { marcasExplicitasCompatibles, marcaExactaConsultada, marcaCompatibleConIdentidad, tokensDistintivos, similitudTokenFlexible, distanciaLevenshtein } } = require("./productMatchValidator");
@@ -179,21 +180,7 @@ function contiene(texto, token) {
 
 function puntuarReferencia({ marca, referencia }, consulta, tokensConsulta) {
   const textoMarca = normalizar(marca.marca || "");
-  const textoReferencia = normalizar(
-    [
-      referencia.nombre,
-      referencia.descripcion,
-      referencia.especie,
-      referencia.categoria,
-      referencia.subcategoria,
-      referencia.etapa,
-      ...(referencia.metadata?.original_names || []),
-      ...(referencia.metadata?.aliases || []),
-      ...(referencia.metadata?.equivalent_references || []),
-      ...(referencia.aliases || []),
-      ...(referencia.presentaciones || []).map((presentacion) => presentacion.peso),
-    ].join(" ")
-  );
+  const textoReferencia = normalizar(textoBusquedaReferencia(referencia));
   const tokensNombre = tokensDistintivos(referencia.nombre || "");
   const tokensMarca = new Set(textoMarca.split(/\s+/));
   const tokensIdentidad = tokensDistintivos(consulta).filter(token => !tokensMarca.has(token));

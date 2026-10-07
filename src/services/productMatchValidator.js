@@ -1,4 +1,5 @@
 const { formatoAlimento, formatoReferencia } = require('../utils/foodFormat');
+const { nombresPresentaciones } = require('../utils/catalogSearchDocument');
 const { resolverLibraComercial } = require('../utils/commercialPresentation');
 const { esDescriptorReferencia, duracionTexto } = require('../utils/catalogVariants');
 const { usaRangosMascota, presentacionesParaPeso } = require('../utils/weightRanges');
@@ -516,6 +517,7 @@ function nombresReferencia(marca, referencia, mensaje = null) {
       : []),
     ...aliases,
     ...palabrasClave,
+    ...nombresPresentaciones(referencia),
   ].filter(Boolean);
 }
 
@@ -648,10 +650,28 @@ function consultaSemanticaRespaldada(mensaje, interpretacion, catalogo) {
 function marcaCompatibleConIdentidad(marca, referencia, marcaConsultada, terminos = []) {
   const raiz = tokensDistintivos(marca.marca);
   const agrupacion = tokensDistintivos(marcaConsultada);
-  if (!raiz.length || !raiz.every(token => agrupacion.includes(token))) return false;
   const nombre = tokensIdentidadVisual(referencia.nombre);
   const identidad = tokensIdentidadVisual(terminos.join(" ")).filter(token => !saboresProducto(token).length);
-  return identidad.length > raiz.length && identidad.every(token => nombre.includes(token));
+  if (raiz.length && raiz.every(token => agrupacion.includes(token)) &&
+      identidad.length > raiz.length && identidad.every(token => nombre.includes(token))) return true;
+  // La marca leída en un empaque puede estar en el nombre de una referencia
+  // almacenada bajo otra agrupación. Exigir evidencia en sus nombres reales;
+  // compartir categoría o especie por sí solo no abre este filtro.
+  const equivale = (a, b) => a === b ||
+    (a.length > 4 && b.length > 4 && (a === `${b}s` || b === `${a}s`)) ||
+    (a.length >= 5 && b.length >= 5 && distanciaLevenshtein(a, b) === 1);
+  const categorias = normalizar([referencia.categoria, referencia.subcategoria].filter(Boolean).join(' '))
+    .replace(/_/g, ' ').split(/\s+/);
+  const auxiliares = token => Boolean(normalizarEspecie(token) || categorias.some(c =>
+    c === token || (token.length > 4 && token === `${c}s`)));
+  const comerciales = tokensIdentidadVisual(marcaConsultada).filter(token => !auxiliares(token));
+  if (!comerciales.length) return false;
+  const pedida = tokensIdentidadVisual(terminos.join(' ')).filter(token => !auxiliares(token));
+  return nombresReferencia(marca, referencia, terminos.join(' ')).slice(1).some(texto => {
+    const registrada = tokensIdentidadVisual(texto);
+    return comerciales.every(t => registrada.some(r => equivale(t, r))) &&
+      pedida.length && pedida.every(t => registrada.some(r => equivale(t, r)));
+  });
 }
 
 function coincidenciaNombre(terminos = [], nombre = "") {
@@ -1197,7 +1217,7 @@ function compatibleConSenales(item, interpretacion, mensaje = "") {
     return false;
   }
 
-  const especieNombre = especieExplicita(item.referencia.nombre);
+  const especieNombre = especieExplicita(item.referencia.nombre) || normalizarEspecie(item.referencia.especie);
   if (
     señales.especie &&
     especieNombre &&
@@ -1912,8 +1932,21 @@ function validarCoincidenciaProducto({
   const formatoSolicitado = categoriaSolicitada && !['comida', 'alimento'].includes(categoriaSolicitada)
     ? null : formatoAlimento(mensajeRazonado);
   const formatoSeco = formatoSolicitado === "concentrado";
+  const marcaPropuesta = interpretacion?.producto?.marca;
+  const marcaLiteralSinGrupo = !clasificacion.requiereVision && !marcaExacta && marcaPropuesta &&
+    !catalogo.some(m => normalizar(m.marca) === normalizar(marcaPropuesta)) &&
+    tokensIdentidadVisual(marcaPropuesta).some(t => !normalizarCategoria(t) && !normalizarEspecie(t) && !TERMINOS_ATRIBUTO.has(t)) &&
+    tokensIdentidadVisual(marcaPropuesta).every(t => tokensIdentidadVisual(mensajeRazonado).includes(t));
+  const marcaSinGrupo = (marcaLiteralSinGrupo ||
+    (clasificacion.requiereVision && !marcaVisualExacta &&
+      Number(interpretacion?.producto?.observado?.confianzaIdentidad) >= 0.85)) && marcaPropuesta;
   const itemsEvaluados = catalogoPlano(catalogo, mensajeRazonado).filter(
     (item) =>
+      // Los atributos comunes no pueden confirmar una marca desconocida.
+      // La identidad debe estar respaldada por la agrupación o sus referencias.
+      (!marcaSinGrupo ||
+        normalizar(item.marca.marca) === normalizar(marcaSinGrupo) ||
+        marcaCompatibleConIdentidad(item.marca, item.referencia, marcaSinGrupo, terminos)) &&
       (!marcaExacta ||
       normalizar(item.marca.marca) === marcaExacta ||
       marcaCompatibleConIdentidad(item.marca, item.referencia, marcaExacta, terminos) ||
