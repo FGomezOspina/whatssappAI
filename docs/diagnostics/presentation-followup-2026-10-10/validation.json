@@ -1,0 +1,23 @@
+{
+  "vision_y_catalogo_reales": {
+    "casos": 4,
+    "pass": 4,
+    "nota": "Imagen inicial seguida de x10kg, x10kg, x10.1kg en turnos separados. Las tres respuestas cotizan únicamente 10.1kg por $178.600."
+  },
+  "focalizadas": {
+    "tests": 153,
+    "pass": 153,
+    "fail": 0
+  },
+  "suite_catalogo_actual": {
+    "tests": 813,
+    "pass": 809,
+    "fail": 4
+  },
+  "suite_catalogo_versionado": {
+    "tests": 813,
+    "pass": 813,
+    "fail": 0
+  },
+  "nota_catalogo": "Los cuatro fallos del catálogo actual (3 Diamond/libra y 1 FELIX) ya existían. Control con catálogo de HEAD mediante preload de require.cache, sin modificar productos.json."
+}

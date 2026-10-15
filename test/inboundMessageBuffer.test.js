@@ -125,3 +125,25 @@ test('espera 5 segundos desde el ultimo mensaje aunque otro llegue a los 3', t =
   assert.equal(lotes.length,1);
   assert.deepEqual(lotes[0].map(e=>e.text),['Primero','Segundo']);
 });
+
+for (const tipo of ['image', 'audio', 'voice']) test(`lote ${tipo} conserva diez mensajes y espera 10s desde el último`, t => {
+  t.mock.timers.enable({ apis: ['setTimeout'] });
+  const lotes = [];
+  const buffer = crearBufferMensajesEntrantes({ ventanaMs: 5000, alVaciar: es => lotes.push(es) });
+  t.after(() => buffer.cerrar());
+  buffer.agregar({ channelUserId: 'A', text: 'Hola' });
+  t.mock.timers.tick(4000);
+  buffer.agregar({ channelUserId: 'A', media: { type: tipo }, messageId: 'media' });
+  for (let i = 0; i < 8; i++) {
+    t.mock.timers.tick(6000);
+    assert.equal(lotes.length, 0);
+    buffer.agregar({ channelUserId: 'A', text: `detalle ${i}` });
+  }
+  buffer.agregar({ channelUserId: 'B', text: 'solo texto' });
+  t.mock.timers.tick(5000);
+  assert.equal(lotes.length, 1); assert.equal(lotes[0][0].channelUserId, 'B');
+  t.mock.timers.tick(4999); assert.equal(lotes.length, 1);
+  t.mock.timers.tick(1); assert.equal(lotes[1].length, 10);
+  buffer.agregar({ channelUserId: 'A', text: 'nuevo turno solo texto' });
+  t.mock.timers.tick(5000); assert.equal(lotes.length, 3);
+});

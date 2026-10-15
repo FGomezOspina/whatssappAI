@@ -39,6 +39,8 @@ function resolverEvidenciaInterpretacion(interpretacion, evidenciaPrevia = null)
       .filter(campo => !producto[campo] && previo?.[campo])
       .map(campo => [campo, previo[campo]])),
     ...(previo?.cantidad != null ? { cantidad: previo.cantidad } : {}),
+    ...(previo?.intencionPresentaciones ? { intencionPresentaciones: previo.intencionPresentaciones } : {}),
+    ...(previo?.mascotas?.length ? { mascotas: previo.mascotas } : {}),
     // The catalog-mapping pass may refine identity, but not rewrite intent.
     ...(previo?.observado ? {
       observado: {

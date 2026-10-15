@@ -65,7 +65,7 @@ La mensajeria esta aislada en `src/providers/kapsoMessagingProvider.js`. La logi
 
 La resolucion de productos se reparte entre `catalogContextService`, `catalogConsolidationService`, `productMatchValidator` y `pendingProductMatchService`. OpenAI propone una interpretacion, pero estos servicios recuperan candidatos, toleran errores de catalogo/OCR, validan la identidad contra el catalogo completo, resuelven consultas por categoria y conservan selecciones pendientes. No existe una excepcion programada para referencias concretas.
 
-Los mensajes consecutivos del mismo cliente se agrupan antes de llamar al agente. Cada mensaje reinicia la espera para recopilar el turno completo. La ventana local se configura con `INBOUND_MESSAGE_BUFFER_MS`; el valor por defecto es `60000` (un minuto de inactividad). Si llega otro mensaje a los 50 segundos, comienza una nueva espera de 60 segundos desde ese último mensaje. El contador es independiente por cliente y canal.
+Los mensajes consecutivos del mismo cliente se agrupan antes de llamar al agente. Los lotes de texto esperan 5 segundos desde el último mensaje (`INBOUND_MESSAGE_BUFFER_MS`, por defecto `5000`). Si el lote incluye imágenes, audio o notas de voz, espera al menos 10 segundos desde el último mensaje, incluso si los siguientes son de texto. Cada mensaje reinicia el contador, independiente por cliente y canal. Si llegan mensajes mientras el agente procesa, se deja terminar esa ejecución y la siguiente conserva sus textos e imágenes como contexto, sin reenviar sus eventos como operaciones nuevas. Al terminar el ciclo, un nuevo lote solo de texto vuelve a la ventana de 5 segundos.
 
 ## Inicio rapido
 

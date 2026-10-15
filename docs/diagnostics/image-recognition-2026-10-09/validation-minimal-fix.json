@@ -1,0 +1,33 @@
+{
+  "focalizadas": {
+    "tests": 128,
+    "pass": 128,
+    "fail": 0,
+    "fallos": []
+  },
+  "catalogo_actual": {
+    "tests": 794,
+    "pass": 790,
+    "fail": 4,
+    "fallos": [
+      "Diamond: libra resuelve 500gr y $19.500 en estado",
+      "Diamond: 1 libra resuelve 500gr y $19.500 en estado",
+      "Diamond: 1lb resuelve 500gr y $19.500 en estado",
+      "FELIX: alimento húmedo no se mezcla con concentrado"
+    ],
+    "nota": "productos.json no se modifica; los cuatro fallos ya existían antes de este parche."
+  },
+  "catalogo_versionado_HEAD": {
+    "tests": 794,
+    "pass": 794,
+    "fail": 0,
+    "fallos": [],
+    "nota": "Mismo código final y mismas pruebas; preload de require.cache con git show HEAD:productos.json, sin escribir sobre el catálogo del workspace."
+  },
+  "vision_real": {
+    "casos": 6,
+    "aprobados": 6,
+    "assertions": "Identidad alta, cotización correcta, dos referencias independientes, sin productos vacíos ni duplicados.",
+    "reporte": "real-after-minimal-fix.json"
+  }
+}

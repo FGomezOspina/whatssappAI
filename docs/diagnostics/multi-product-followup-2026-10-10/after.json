@@ -1,0 +1,3924 @@
+[
+  {
+    "caso": "dos-fotos-inicial",
+    "respuesta": "Cotización:\n- 1 x ARENA KING CAT x 25 kg: $62.900\nTotal cotizado: $62.900\n\n¿Qué presentación necesitas de MAX CAT ADUL FRANGO? Manejamos 1kg, 3kg, 10.1kg.",
+    "trazas": [
+      {
+        "run": "c780b54a-d622-4d33-959c-6f8207c70a06",
+        "etapa": "vision_output",
+        "modelo": "gpt-5.4",
+        "imagenes": [
+          "58d3f5ad6a71a5a1",
+          "969edd5b4036ad31"
+        ],
+        "mensajeHash": "1aec7e3aa7eb8d3d",
+        "estadoHash": "e179e49ce9bf684e",
+        "historialHash": "4f53cda18c2baa0c",
+        "fase": "router",
+        "lectura": {
+          "intencion": "consulta_producto",
+          "accion": "consultar",
+          "producto": {
+            "marca": null,
+            "referencia": null,
+            "linea": null,
+            "categoria": null,
+            "especie": null,
+            "etapa": null,
+            "tamano": null,
+            "sabores": [],
+            "presentacion": null,
+            "cantidad": null,
+            "observado": {
+              "nombre": null,
+              "presentacion": null,
+              "confianzaIdentidad": 0,
+              "confianzaPresentacion": 0
+            },
+            "solicitud": {
+              "presentacionTexto": null,
+              "presentacionContexto": null,
+              "contextoVigente": false,
+              "cantidadTexto": null,
+              "cantidadContexto": null
+            }
+          },
+          "productos": [
+            {
+              "marca": "King Cat",
+              "referencia": null,
+              "linea": null,
+              "categoria": "arena sanitaria",
+              "especie": "gato",
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": null,
+              "cantidad": null,
+              "observado": {
+                "nombre": "KING CAT",
+                "presentacion": "25 kg",
+                "confianzaIdentidad": 0.99,
+                "confianzaPresentacion": 0.99
+              },
+              "solicitud": {
+                "presentacionTexto": null,
+                "presentacionContexto": null,
+                "contextoVigente": false,
+                "cantidadTexto": null,
+                "cantidadContexto": null
+              }
+            },
+            {
+              "marca": "Max",
+              "referencia": null,
+              "linea": "Professional Line",
+              "categoria": "alimento",
+              "especie": "gato",
+              "etapa": "adulto",
+              "tamano": null,
+              "sabores": [
+                "frango & arroz"
+              ],
+              "presentacion": null,
+              "cantidad": null,
+              "observado": {
+                "nombre": "max CAT Professional Line FRANGO & ARROZ adulto",
+                "presentacion": null,
+                "confianzaIdentidad": 0.95,
+                "confianzaPresentacion": 0.15
+              },
+              "solicitud": {
+                "presentacionTexto": null,
+                "presentacionContexto": null,
+                "contextoVigente": false,
+                "cantidadTexto": null,
+                "cantidadContexto": null
+              }
+            }
+          ],
+          "consultaCatalogo": {
+            "necesaria": true,
+            "consulta": "Precio y disponibilidad de arena sanitaria para gatos King Cat 25 kg y alimento para gato Max Cat Professional Line Frango & Arroz adulto; validar cobertura/envio a domicilio para Villanova del campo Bloque 39 apto 202 y si admite pago con tarjeta."
+          }
+        }
+      },
+      {
+        "run": "c780b54a-d622-4d33-959c-6f8207c70a06",
+        "etapa": "producto_interpretado",
+        "modelo": "gpt-5.4",
+        "imagenes": [
+          "58d3f5ad6a71a5a1",
+          "969edd5b4036ad31"
+        ],
+        "mensajeHash": "1aec7e3aa7eb8d3d",
+        "estadoHash": "e179e49ce9bf684e",
+        "historialHash": "4f53cda18c2baa0c",
+        "fase": "router",
+        "lectura": {
+          "intencion": "consulta_producto",
+          "accion": "consultar",
+          "producto": {
+            "marca": null,
+            "referencia": null,
+            "linea": null,
+            "categoria": null,
+            "especie": null,
+            "etapa": null,
+            "tamano": null,
+            "sabores": [],
+            "presentacion": null,
+            "cantidad": null,
+            "observado": {
+              "nombre": null,
+              "presentacion": null,
+              "confianzaIdentidad": 0,
+              "confianzaPresentacion": 0
+            },
+            "solicitud": {
+              "presentacionTexto": null,
+              "presentacionContexto": null,
+              "contextoVigente": false,
+              "cantidadTexto": null,
+              "cantidadContexto": null
+            },
+            "fuentePresentacion": null,
+            "requierePresentacion": true
+          },
+          "productos": [
+            {
+              "marca": "King Cat",
+              "referencia": null,
+              "linea": null,
+              "categoria": "arena sanitaria",
+              "especie": "gato",
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": "25kg",
+              "cantidad": null,
+              "observado": {
+                "nombre": "KING CAT",
+                "presentacion": "25 kg",
+                "confianzaIdentidad": 0.99,
+                "confianzaPresentacion": 0.99
+              },
+              "solicitud": {
+                "presentacionTexto": null,
+                "presentacionContexto": null,
+                "contextoVigente": false,
+                "cantidadTexto": null,
+                "cantidadContexto": null
+              },
+              "fuentePresentacion": "imagen",
+              "requierePresentacion": false
+            },
+            {
+              "marca": "Max",
+              "referencia": null,
+              "linea": "Professional Line",
+              "categoria": "alimento",
+              "especie": "gato",
+              "etapa": "adulto",
+              "tamano": null,
+              "sabores": [
+                "frango & arroz"
+              ],
+              "presentacion": null,
+              "cantidad": null,
+              "observado": {
+                "nombre": "max CAT Professional Line FRANGO & ARROZ adulto",
+                "presentacion": null,
+                "confianzaIdentidad": 0.95,
+                "confianzaPresentacion": 0.15
+              },
+              "solicitud": {
+                "presentacionTexto": null,
+                "presentacionContexto": null,
+                "contextoVigente": false,
+                "cantidadTexto": null,
+                "cantidadContexto": null
+              },
+              "fuentePresentacion": null,
+              "requierePresentacion": true
+            }
+          ],
+          "consultaCatalogo": {
+            "necesaria": true,
+            "consulta": "Precio y disponibilidad de arena sanitaria para gatos King Cat 25 kg y alimento para gato Max Cat Professional Line Frango & Arroz adulto; validar cobertura/envio a domicilio para Villanova del campo Bloque 39 apto 202 y si admite pago con tarjeta."
+          }
+        }
+      },
+      {
+        "run": "c780b54a-d622-4d33-959c-6f8207c70a06",
+        "etapa": "vision_output",
+        "modelo": "gpt-5.4",
+        "imagenes": [
+          "58d3f5ad6a71a5a1"
+        ],
+        "mensajeHash": "1aec7e3aa7eb8d3d",
+        "estadoHash": "e179e49ce9bf684e",
+        "historialHash": "4f53cda18c2baa0c",
+        "fase": "individual",
+        "lectura": {
+          "intencion": "consulta_producto",
+          "accion": "consultar",
+          "producto": {
+            "marca": "King Cat",
+            "referencia": null,
+            "linea": null,
+            "categoria": "arena para gatos",
+            "especie": "gato",
+            "etapa": null,
+            "tamano": null,
+            "sabores": [],
+            "presentacion": null,
+            "cantidad": null,
+            "observado": {
+              "nombre": "KING CAT",
+              "presentacion": "25 Kg",
+              "confianzaIdentidad": 0.99,
+              "confianzaPresentacion": 0.98
+            },
+            "solicitud": {
+              "presentacionTexto": null,
+              "presentacionContexto": null,
+              "contextoVigente": false,
+              "cantidadTexto": null,
+              "cantidadContexto": null
+            }
+          },
+          "productos": [
+            {
+              "marca": "King Cat",
+              "referencia": null,
+              "linea": null,
+              "categoria": "arena para gatos",
+              "especie": "gato",
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": null,
+              "cantidad": null,
+              "observado": {
+                "nombre": "KING CAT",
+                "presentacion": "25 Kg",
+                "confianzaIdentidad": 0.99,
+                "confianzaPresentacion": 0.98
+              },
+              "solicitud": {
+                "presentacionTexto": null,
+                "presentacionContexto": null,
+                "contextoVigente": false,
+                "cantidadTexto": null,
+                "cantidadContexto": null
+              }
+            }
+          ],
+          "consultaCatalogo": {
+            "necesaria": true,
+            "consulta": "precio y disponibilidad de arena sanitaria para gatos King Cat 25 Kg, y si admite pago con tarjeta a domicilio en Villanova del campo"
+          }
+        }
+      },
+      {
+        "run": "c780b54a-d622-4d33-959c-6f8207c70a06",
+        "etapa": "producto_interpretado",
+        "modelo": "gpt-5.4",
+        "imagenes": [
+          "58d3f5ad6a71a5a1"
+        ],
+        "mensajeHash": "1aec7e3aa7eb8d3d",
+        "estadoHash": "e179e49ce9bf684e",
+        "historialHash": "4f53cda18c2baa0c",
+        "fase": "individual",
+        "lectura": {
+          "intencion": "consulta_producto",
+          "accion": "consultar",
+          "producto": {
+            "marca": "King Cat",
+            "referencia": null,
+            "linea": null,
+            "categoria": "arena para gatos",
+            "especie": "gato",
+            "etapa": null,
+            "tamano": null,
+            "sabores": [],
+            "presentacion": "25kg",
+            "cantidad": null,
+            "observado": {
+              "nombre": "KING CAT",
+              "presentacion": "25 Kg",
+              "confianzaIdentidad": 0.99,
+              "confianzaPresentacion": 0.98
+            },
+            "solicitud": {
+              "presentacionTexto": null,
+              "presentacionContexto": null,
+              "contextoVigente": false,
+              "cantidadTexto": null,
+              "cantidadContexto": null
+            },
+            "fuentePresentacion": "imagen",
+            "requierePresentacion": false
+          },
+          "productos": [
+            {
+              "marca": "King Cat",
+              "referencia": null,
+              "linea": null,
+              "categoria": "arena para gatos",
+              "especie": "gato",
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": "25kg",
+              "cantidad": null,
+              "observado": {
+                "nombre": "KING CAT",
+                "presentacion": "25 Kg",
+                "confianzaIdentidad": 0.99,
+                "confianzaPresentacion": 0.98
+              },
+              "solicitud": {
+                "presentacionTexto": null,
+                "presentacionContexto": null,
+                "contextoVigente": false,
+                "cantidadTexto": null,
+                "cantidadContexto": null
+              },
+              "fuentePresentacion": "imagen",
+              "requierePresentacion": false
+            }
+          ],
+          "consultaCatalogo": {
+            "necesaria": true,
+            "consulta": "precio y disponibilidad de arena sanitaria para gatos King Cat 25 Kg, y si admite pago con tarjeta a domicilio en Villanova del campo"
+          }
+        }
+      },
+      {
+        "run": "c780b54a-d622-4d33-959c-6f8207c70a06",
+        "etapa": "vision_output",
+        "modelo": "gpt-5.4",
+        "imagenes": [
+          "969edd5b4036ad31"
+        ],
+        "mensajeHash": "1aec7e3aa7eb8d3d",
+        "estadoHash": "e179e49ce9bf684e",
+        "historialHash": "4f53cda18c2baa0c",
+        "fase": "individual",
+        "lectura": {
+          "intencion": "consulta_producto",
+          "accion": "consultar",
+          "producto": {
+            "marca": "Max",
+            "referencia": null,
+            "linea": "Professional Line",
+            "categoria": "alimento",
+            "especie": "gato",
+            "etapa": "adulto",
+            "tamano": null,
+            "sabores": [
+              "frango & arroz"
+            ],
+            "presentacion": null,
+            "cantidad": null,
+            "observado": {
+              "nombre": "max cat frango & arroz adulto",
+              "presentacion": null,
+              "confianzaIdentidad": 0.98,
+              "confianzaPresentacion": 0.08
+            },
+            "solicitud": {
+              "presentacionTexto": null,
+              "presentacionContexto": null,
+              "contextoVigente": false,
+              "cantidadTexto": null,
+              "cantidadContexto": null
+            }
+          },
+          "productos": [
+            {
+              "marca": "Max",
+              "referencia": null,
+              "linea": "Professional Line",
+              "categoria": "alimento",
+              "especie": "gato",
+              "etapa": "adulto",
+              "tamano": null,
+              "sabores": [
+                "frango & arroz"
+              ],
+              "presentacion": null,
+              "cantidad": null,
+              "observado": {
+                "nombre": "max cat frango & arroz adulto",
+                "presentacion": null,
+                "confianzaIdentidad": 0.98,
+                "confianzaPresentacion": 0.08
+              },
+              "solicitud": {
+                "presentacionTexto": null,
+                "presentacionContexto": null,
+                "contextoVigente": false,
+                "cantidadTexto": null,
+                "cantidadContexto": null
+              }
+            }
+          ],
+          "consultaCatalogo": {
+            "necesaria": true,
+            "consulta": "precio y disponibilidad de Max Cat Professional Line frango & arroz adulto para gato"
+          }
+        }
+      },
+      {
+        "run": "c780b54a-d622-4d33-959c-6f8207c70a06",
+        "etapa": "producto_interpretado",
+        "modelo": "gpt-5.4",
+        "imagenes": [
+          "969edd5b4036ad31"
+        ],
+        "mensajeHash": "1aec7e3aa7eb8d3d",
+        "estadoHash": "e179e49ce9bf684e",
+        "historialHash": "4f53cda18c2baa0c",
+        "fase": "individual",
+        "lectura": {
+          "intencion": "consulta_producto",
+          "accion": "consultar",
+          "producto": {
+            "marca": "Max",
+            "referencia": null,
+            "linea": "Professional Line",
+            "categoria": "alimento",
+            "especie": "gato",
+            "etapa": "adulto",
+            "tamano": null,
+            "sabores": [
+              "frango & arroz"
+            ],
+            "presentacion": null,
+            "cantidad": null,
+            "observado": {
+              "nombre": "max cat frango & arroz adulto",
+              "presentacion": null,
+              "confianzaIdentidad": 0.98,
+              "confianzaPresentacion": 0.08
+            },
+            "solicitud": {
+              "presentacionTexto": null,
+              "presentacionContexto": null,
+              "contextoVigente": false,
+              "cantidadTexto": null,
+              "cantidadContexto": null
+            },
+            "fuentePresentacion": null,
+            "requierePresentacion": true
+          },
+          "productos": [
+            {
+              "marca": "Max",
+              "referencia": null,
+              "linea": "Professional Line",
+              "categoria": "alimento",
+              "especie": "gato",
+              "etapa": "adulto",
+              "tamano": null,
+              "sabores": [
+                "frango & arroz"
+              ],
+              "presentacion": null,
+              "cantidad": null,
+              "observado": {
+                "nombre": "max cat frango & arroz adulto",
+                "presentacion": null,
+                "confianzaIdentidad": 0.98,
+                "confianzaPresentacion": 0.08
+              },
+              "solicitud": {
+                "presentacionTexto": null,
+                "presentacionContexto": null,
+                "contextoVigente": false,
+                "cantidadTexto": null,
+                "cantidadContexto": null
+              },
+              "fuentePresentacion": null,
+              "requierePresentacion": true
+            }
+          ],
+          "consultaCatalogo": {
+            "necesaria": true,
+            "consulta": "precio y disponibilidad de Max Cat Professional Line frango & arroz adulto para gato"
+          }
+        }
+      },
+      {
+        "run": "c780b54a-d622-4d33-959c-6f8207c70a06",
+        "etapa": "revision_imagen",
+        "imagen": "58d3f5ad6a71a5a1",
+        "indice": 0,
+        "resultado": "identificada"
+      },
+      {
+        "run": "c780b54a-d622-4d33-959c-6f8207c70a06",
+        "etapa": "revision_imagen",
+        "imagen": "969edd5b4036ad31",
+        "indice": 1,
+        "resultado": "identificada"
+      },
+      {
+        "run": "c780b54a-d622-4d33-959c-6f8207c70a06",
+        "etapa": "productos_combinados",
+        "lectura": {
+          "intencion": "consulta_producto",
+          "accion": "consultar",
+          "producto": null,
+          "productos": [
+            {
+              "marca": "King Cat",
+              "referencia": null,
+              "linea": null,
+              "categoria": "arena para gatos",
+              "especie": "gato",
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": "25kg",
+              "cantidad": null,
+              "observado": {
+                "nombre": "KING CAT",
+                "presentacion": "25 Kg",
+                "confianzaIdentidad": 0.99,
+                "confianzaPresentacion": 0.98
+              },
+              "solicitud": {
+                "presentacionTexto": null,
+                "presentacionContexto": null,
+                "contextoVigente": false,
+                "cantidadTexto": null,
+                "cantidadContexto": null
+              },
+              "fuentePresentacion": "imagen",
+              "requierePresentacion": false
+            },
+            {
+              "marca": "Max",
+              "referencia": null,
+              "linea": "Professional Line",
+              "categoria": "alimento",
+              "especie": "gato",
+              "etapa": "adulto",
+              "tamano": null,
+              "sabores": [
+                "frango & arroz"
+              ],
+              "presentacion": null,
+              "cantidad": null,
+              "observado": {
+                "nombre": "max cat frango & arroz adulto",
+                "presentacion": null,
+                "confianzaIdentidad": 0.98,
+                "confianzaPresentacion": 0.08
+              },
+              "solicitud": {
+                "presentacionTexto": null,
+                "presentacionContexto": null,
+                "contextoVigente": false,
+                "cantidadTexto": null,
+                "cantidadContexto": null
+              },
+              "fuentePresentacion": null,
+              "requierePresentacion": true
+            }
+          ],
+          "consultaCatalogo": {
+            "necesaria": true,
+            "consulta": "Precio y disponibilidad de arena sanitaria para gatos King Cat 25 kg y alimento para gato Max Cat Professional Line Frango & Arroz adulto; validar cobertura/envio a domicilio para Villanova del campo Bloque 39 apto 202 y si admite pago con tarjeta."
+          }
+        }
+      },
+      {
+        "run": "c780b54a-d622-4d33-959c-6f8207c70a06",
+        "etapa": "busqueda_candidatos",
+        "consulta": "King Cat KING CAT gato 25kg; Max max cat frango & arroz adulto Professional Line gato adulto frango & arroz",
+        "candidatos": [
+          {
+            "marca": "ARENA KING CAT",
+            "referencias": [
+              {
+                "nombre": "ARENA KING CAT",
+                "especie": "gato",
+                "etapa": null,
+                "presentaciones": [
+                  "x 25 kg",
+                  "x 4.5 kg",
+                  "x 8 kg"
+                ]
+              }
+            ]
+          },
+          {
+            "marca": "TASTE OF THE WILD",
+            "referencias": [
+              {
+                "nombre": "TASTE OF THE WILD CAT VERDE",
+                "especie": "gato",
+                "etapa": null,
+                "presentaciones": [
+                  "2.2kg",
+                  "500gr",
+                  "7kg"
+                ]
+              },
+              {
+                "nombre": "TASTE OF THE WILD CAT AMARILLO",
+                "especie": "gato",
+                "etapa": null,
+                "presentaciones": [
+                  "2.2kg",
+                  "500gr",
+                  "7kg"
+                ]
+              }
+            ]
+          },
+          {
+            "marca": "ARENA MAIZ CAT",
+            "referencias": [
+              {
+                "nombre": "ARENA MAIZ CAT",
+                "especie": "gato",
+                "etapa": null,
+                "presentaciones": [
+                  "x 10kg",
+                  "x 15kg",
+                  "x 20kg",
+                  "x 2kg",
+                  "x 4kg"
+                ]
+              }
+            ]
+          },
+          {
+            "marca": "CAT CHOW",
+            "referencias": [
+              {
+                "nombre": "CAT CHOW PESCADO",
+                "especie": "gato",
+                "etapa": null,
+                "presentaciones": [
+                  "8kg",
+                  "x 1.5 kg",
+                  "x 500 gr"
+                ]
+              },
+              {
+                "nombre": "CAT CHOW DELICARNE",
+                "especie": "gato",
+                "etapa": null,
+                "presentaciones": [
+                  "x 1.5 kg",
+                  "x 15 kg",
+                  "x 500 gr"
+                ]
+              },
+              {
+                "nombre": "CAT CHOW VIDA SANA",
+                "especie": "gato",
+                "etapa": null,
+                "presentaciones": [
+                  "x 1",
+                  "x 450 gr",
+                  "x3kg"
+                ]
+              },
+              {
+                "nombre": "CAT CHOW GATITOS *",
+                "especie": "gato",
+                "etapa": "cachorro",
+                "presentaciones": [
+                  "1.5kg",
+                  "500gr"
+                ]
+              }
+            ]
+          },
+          {
+            "marca": "MAX CAT",
+            "referencias": [
+              {
+                "nombre": "MAX CAT ADUL FRANGO",
+                "especie": "gato",
+                "etapa": "adulto",
+                "presentaciones": [
+                  "1kg",
+                  "3kg",
+                  "10.1kg"
+                ]
+              },
+              {
+                "nombre": "MAX CAT CASTRADO",
+                "especie": "gato",
+                "etapa": null,
+                "presentaciones": [
+                  "1kg",
+                  "3kg"
+                ]
+              }
+            ]
+          },
+          {
+            "marca": "BR CAT",
+            "referencias": [
+              {
+                "nombre": "BR CAT ADUL POLLO",
+                "especie": "gato",
+                "etapa": "adulto",
+                "presentaciones": [
+                  "10kg",
+                  "1kg",
+                  "3kg"
+                ]
+              },
+              {
+                "nombre": "BR CAT CASTRADO POLLO",
+                "especie": "gato",
+                "etapa": null,
+                "presentaciones": [
+                  "10kg",
+                  "1kg",
+                  "3kg"
+                ]
+              },
+              {
+                "nombre": "BR CAT GATITO POLLO",
+                "especie": "gato",
+                "etapa": "cachorro",
+                "presentaciones": [
+                  "1kg",
+                  "3kg"
+                ]
+              },
+              {
+                "nombre": "BR CAT GATITOS SALMON",
+                "especie": "gato",
+                "etapa": "cachorro",
+                "presentaciones": [
+                  "1kg",
+                  "x 3kg"
+                ]
+              },
+              {
+                "nombre": "BR CAT SALMON",
+                "especie": "gato",
+                "etapa": null,
+                "presentaciones": [
+                  "x 1 kg",
+                  "x 3kg"
+                ]
+              },
+              {
+                "nombre": "BR CAT SENIOR",
+                "especie": "gato",
+                "etapa": "senior",
+                "presentaciones": [
+                  "x 1kg",
+                  "x 3kg"
+                ]
+              }
+            ]
+          },
+          {
+            "marca": "AGILITY",
+            "referencias": [
+              {
+                "nombre": "AGILITY GATO AD",
+                "especie": "gato",
+                "etapa": "adulto",
+                "presentaciones": [
+                  "1.5kg",
+                  "3kg",
+                  "500gr",
+                  "7kg"
+                ]
+              }
+            ]
+          },
+          {
+            "marca": "DONKAT",
+            "referencias": [
+              {
+                "nombre": "DONKAT GATO",
+                "especie": "gato",
+                "etapa": null,
+                "presentaciones": [
+                  "x 1 kg",
+                  "x 500gr",
+                  "x 7 kg"
+                ]
+              }
+            ]
+          },
+          {
+            "marca": "EXCELLENT",
+            "referencias": [
+              {
+                "nombre": "EXCELLENT GATO ADULT",
+                "especie": "gato",
+                "etapa": "adulto",
+                "presentaciones": [
+                  "1kg",
+                  "3kg",
+                  "7.5kg"
+                ]
+              }
+            ]
+          },
+          {
+            "marca": "NUTRA NUGGETS",
+            "referencias": [
+              {
+                "nombre": "NUTRA NUGGETS MANTEN GATO",
+                "especie": "gato",
+                "etapa": null,
+                "presentaciones": [
+                  "x 1kg",
+                  "x 3 kg",
+                  "x 7.5 kg"
+                ]
+              }
+            ]
+          },
+          {
+            "marca": "ARENA",
+            "referencias": [
+              {
+                "nombre": "ARENA KING",
+                "especie": "otro",
+                "etapa": null,
+                "presentaciones": [
+                  "x 1 kg"
+                ]
+              }
+            ]
+          },
+          {
+            "marca": "CHUNKY",
+            "referencias": [
+              {
+                "nombre": "CHUNKY CATS GATOS",
+                "especie": "gato",
+                "etapa": null,
+                "presentaciones": [
+                  "8kg"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "run": "c780b54a-d622-4d33-959c-6f8207c70a06",
+        "etapa": "matching_filtros",
+        "vision": true,
+        "producto": {
+          "marca": "King Cat",
+          "referencia": "KING CAT",
+          "linea": null,
+          "categoria": "arena para gatos",
+          "especie": "gato",
+          "etapa": null,
+          "tamano": null,
+          "sabores": [],
+          "presentacion": "25kg",
+          "cantidad": null,
+          "observado": {
+            "nombre": "KING CAT",
+            "presentacion": "25 Kg",
+            "confianzaIdentidad": 0.99,
+            "confianzaPresentacion": 0.98
+          },
+          "solicitud": {
+            "presentacionTexto": null,
+            "presentacionContexto": null,
+            "contextoVigente": false,
+            "cantidadTexto": null,
+            "cantidadContexto": null
+          },
+          "fuentePresentacion": "imagen",
+          "requierePresentacion": false
+        },
+        "antes": [
+          {
+            "nombre": "ARENA KING CAT",
+            "score": 0.9,
+            "scoreBase": 1,
+            "peso": true,
+            "especie": true,
+            "etapa": null,
+            "categoria": true
+          },
+          {
+            "nombre": "ARENA KING",
+            "score": 0.43979999999999997,
+            "scoreBase": 0.75,
+            "peso": false,
+            "especie": null,
+            "etapa": null,
+            "categoria": true
+          }
+        ],
+        "despues": [
+          {
+            "nombre": "ARENA KING CAT",
+            "score": 0.9
+          },
+          {
+            "nombre": "ARENA KING",
+            "score": 0.43979999999999997
+          }
+        ]
+      },
+      {
+        "run": "c780b54a-d622-4d33-959c-6f8207c70a06",
+        "etapa": "match_final",
+        "nivel": "alta",
+        "razon": "senales_visuales_convergentes",
+        "presentacion": "25kg",
+        "coincidencia": {
+          "marca": "ARENA KING CAT",
+          "referencia": "ARENA KING CAT",
+          "referenciaCatalogo": "ARENA KING CAT",
+          "referenciasEquivalentes": [
+            "ARENA KING CAT"
+          ],
+          "score": 0.9,
+          "tipoCoincidencia": "referencia",
+          "presentaciones": [
+            {
+              "peso": "x 25 kg",
+              "precio": 62900,
+              "metadata": {
+                "llave": "83",
+                "codigo": "10201010083",
+                "source": "productos.json",
+                "codigos": [
+                  "10201010083"
+                ],
+                "nombre_original": "ARENA KING CAT X 25 KL"
+              },
+              "stock": null,
+              "referencia": "ARENA KING CAT"
+            },
+            {
+              "peso": "x 4.5 kg",
+              "precio": 13300,
+              "metadata": {
+                "llave": "84",
+                "codigo": "10201010084",
+                "source": "productos.json",
+                "codigos": [
+                  "10201010084"
+                ],
+                "nombre_original": "ARENA KING CAT X 4.5 KL"
+              },
+              "stock": null,
+              "referencia": "ARENA KING CAT"
+            },
+            {
+              "peso": "x 8 kg",
+              "precio": 23500,
+              "metadata": {
+                "llave": "85",
+                "codigo": "10201010085",
+                "source": "productos.json",
+                "codigos": [
+                  "10201010085"
+                ],
+                "nombre_original": "ARENA KING CAT X 8 KL"
+              },
+              "stock": null,
+              "referencia": "ARENA KING CAT"
+            }
+          ]
+        },
+        "equivalencia": null
+      },
+      {
+        "run": "c780b54a-d622-4d33-959c-6f8207c70a06",
+        "etapa": "matching_filtros",
+        "vision": true,
+        "producto": {
+          "marca": "MAX CAT",
+          "referencia": "max cat frango & arroz adulto",
+          "linea": null,
+          "categoria": "alimento",
+          "especie": "gato",
+          "etapa": "adulto",
+          "tamano": null,
+          "sabores": [
+            "frango & arroz"
+          ],
+          "presentacion": null,
+          "cantidad": null,
+          "observado": {
+            "nombre": "max cat frango & arroz adulto",
+            "presentacion": null,
+            "confianzaIdentidad": 0.98,
+            "confianzaPresentacion": 0.08
+          },
+          "solicitud": {
+            "presentacionTexto": null,
+            "presentacionContexto": null,
+            "contextoVigente": false,
+            "cantidadTexto": null,
+            "cantidadContexto": null
+          },
+          "fuentePresentacion": null,
+          "requierePresentacion": true
+        },
+        "antes": [
+          {
+            "nombre": "MAX CAT ADUL FRANGO",
+            "score": 1,
+            "scoreBase": 0.8428571428571427,
+            "peso": null,
+            "especie": true,
+            "etapa": true,
+            "categoria": true
+          },
+          {
+            "nombre": "MAX CAT CASTRADO",
+            "score": 0.5358333333333334,
+            "scoreBase": 0.6458333333333334,
+            "peso": null,
+            "especie": true,
+            "etapa": null,
+            "categoria": true
+          }
+        ],
+        "despues": [
+          {
+            "nombre": "MAX CAT ADUL FRANGO",
+            "score": 1
+          }
+        ]
+      },
+      {
+        "run": "c780b54a-d622-4d33-959c-6f8207c70a06",
+        "etapa": "match_final",
+        "nivel": "alta",
+        "razon": "senales_visuales_convergentes",
+        "presentacion": null,
+        "coincidencia": {
+          "marca": "MAX CAT",
+          "referencia": "MAX CAT ADUL FRANGO",
+          "referenciaCatalogo": "MAX CAT ADUL FRANGO",
+          "referenciasEquivalentes": [
+            "MAX CAT ADUL FRANGO"
+          ],
+          "score": 1,
+          "tipoCoincidencia": "referencia",
+          "presentaciones": [
+            {
+              "peso": "1kg",
+              "precio": 27400,
+              "metadata": {
+                "llave": "1036",
+                "codigo": "10301021036",
+                "source": "productos.json",
+                "codigos": [
+                  "10301021036"
+                ],
+                "nombre_original": "MAX CAT ADUL FRANGO 1KL",
+                "source_reference": "MAX CAT ADUL FRANGO"
+              },
+              "stock": null,
+              "referencia": "MAX CAT ADUL FRANGO"
+            },
+            {
+              "peso": "3kg",
+              "precio": 67900,
+              "metadata": {
+                "llave": "1037",
+                "codigo": "10301021037",
+                "source": "productos.json",
+                "codigos": [
+                  "10301021037"
+                ],
+                "nombre_original": "MAX CAT ADUL FRANGO 3KL",
+                "source_reference": "MAX CAT ADUL FRANGO"
+              },
+              "stock": null,
+              "referencia": "MAX CAT ADUL FRANGO"
+            },
+            {
+              "peso": "10.1kg",
+              "precio": 178600,
+              "metadata": {
+                "llave": "1038",
+                "codigo": "10301021038",
+                "source": "productos.json",
+                "codigos": [
+                  "10301021038"
+                ],
+                "nombre_original": "MAX CAT ADULT FRANGO 10.1KG",
+                "source_reference": "MAX CAT ADULT FRANGO"
+              },
+              "stock": null,
+              "referencia": "MAX CAT ADUL FRANGO"
+            }
+          ]
+        },
+        "equivalencia": null
+      }
+    ],
+    "solicitudes": [
+      {
+        "accion": "consultar",
+        "marca": "ARENA KING CAT",
+        "referencia": "ARENA KING CAT",
+        "linea": null,
+        "textoVisible": "arena sanitaria para gatos King Cat",
+        "mencionOriginal": null,
+        "categoria": "arena para gatos",
+        "subcategoria": "arena sanitaria",
+        "especie": "gato",
+        "etapa": null,
+        "tamano": null,
+        "sabores": [],
+        "presentacion": "25kg",
+        "condiciones": [],
+        "cantidad": null,
+        "observado": {
+          "nombre": "KING CAT",
+          "presentacion": "25 Kg",
+          "confianzaIdentidad": 0.99,
+          "confianzaPresentacion": 0.98
+        },
+        "solicitud": {
+          "presentacionTexto": null,
+          "presentacionContexto": null,
+          "contextoVigente": false,
+          "cantidadTexto": null,
+          "cantidadContexto": null
+        },
+        "fuentePresentacion": "imagen",
+        "requierePresentacion": false,
+        "estado": "identificado",
+        "presentacionesDisponibles": [
+          "x 25 kg",
+          "x 4.5 kg",
+          "x 8 kg"
+        ],
+        "contextoCreadoEn": "2026-10-10T19:22:26.348Z",
+        "pregunta": null,
+        "cotizacion": [
+          {
+            "marca": "ARENA KING CAT",
+            "referencia": "ARENA KING CAT",
+            "referenciaCatalogo": "ARENA KING CAT",
+            "peso": "x 25 kg",
+            "precio": 62900,
+            "stock": null,
+            "cantidad": 1,
+            "presentaciones": [
+              {
+                "peso": "x 25 kg",
+                "precio": 62900,
+                "metadata": {
+                  "llave": "83",
+                  "codigo": "10201010083",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10201010083"
+                  ],
+                  "nombre_original": "ARENA KING CAT X 25 KL"
+                },
+                "stock": null,
+                "referencia": "ARENA KING CAT"
+              },
+              {
+                "peso": "x 4.5 kg",
+                "precio": 13300,
+                "metadata": {
+                  "llave": "84",
+                  "codigo": "10201010084",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10201010084"
+                  ],
+                  "nombre_original": "ARENA KING CAT X 4.5 KL"
+                },
+                "stock": null,
+                "referencia": "ARENA KING CAT"
+              },
+              {
+                "peso": "x 8 kg",
+                "precio": 23500,
+                "metadata": {
+                  "llave": "85",
+                  "codigo": "10201010085",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10201010085"
+                  ],
+                  "nombre_original": "ARENA KING CAT X 8 KL"
+                },
+                "stock": null,
+                "referencia": "ARENA KING CAT"
+              }
+            ],
+            "categoria": "arena_sustrato",
+            "subcategoria": "arena",
+            "contextoCreadoEn": "2026-10-10T19:22:26.348Z"
+          }
+        ]
+      },
+      {
+        "accion": "consultar",
+        "marca": "MAX CAT",
+        "referencia": "MAX CAT ADUL FRANGO",
+        "linea": "Professional Line",
+        "textoVisible": "max cat frango & arroz adulto",
+        "mencionOriginal": null,
+        "categoria": "alimento",
+        "subcategoria": "concentrado",
+        "especie": "gato",
+        "etapa": "adulto",
+        "tamano": null,
+        "sabores": [
+          "frango & arroz"
+        ],
+        "presentacion": null,
+        "condiciones": [],
+        "cantidad": null,
+        "observado": {
+          "nombre": "max cat frango & arroz adulto",
+          "presentacion": null,
+          "confianzaIdentidad": 0.98,
+          "confianzaPresentacion": 0.08
+        },
+        "solicitud": {
+          "presentacionTexto": null,
+          "presentacionContexto": null,
+          "contextoVigente": false,
+          "cantidadTexto": null,
+          "cantidadContexto": null
+        },
+        "fuentePresentacion": null,
+        "requierePresentacion": true,
+        "estado": "pendiente",
+        "presentacionesDisponibles": [
+          "1kg",
+          "3kg",
+          "10.1kg"
+        ],
+        "contextoCreadoEn": "2026-10-10T19:22:26.348Z",
+        "pregunta": "¿Qué presentación necesitas de MAX CAT ADUL FRANGO?\n\nPresentaciones disponibles: 1kg, 3kg, 10.1kg."
+      }
+    ],
+    "carrito": [],
+    "productosConsultados": [
+      {
+        "marca": "ARENA KING CAT",
+        "referencia": "ARENA KING CAT",
+        "referenciaCatalogo": "ARENA KING CAT",
+        "peso": "x 25 kg",
+        "precio": 62900,
+        "stock": null,
+        "cantidad": 1,
+        "presentaciones": [
+          {
+            "peso": "x 25 kg",
+            "precio": 62900,
+            "metadata": {
+              "llave": "83",
+              "codigo": "10201010083",
+              "source": "productos.json",
+              "codigos": [
+                "10201010083"
+              ],
+              "nombre_original": "ARENA KING CAT X 25 KL"
+            },
+            "stock": null,
+            "referencia": "ARENA KING CAT"
+          },
+          {
+            "peso": "x 4.5 kg",
+            "precio": 13300,
+            "metadata": {
+              "llave": "84",
+              "codigo": "10201010084",
+              "source": "productos.json",
+              "codigos": [
+                "10201010084"
+              ],
+              "nombre_original": "ARENA KING CAT X 4.5 KL"
+            },
+            "stock": null,
+            "referencia": "ARENA KING CAT"
+          },
+          {
+            "peso": "x 8 kg",
+            "precio": 23500,
+            "metadata": {
+              "llave": "85",
+              "codigo": "10201010085",
+              "source": "productos.json",
+              "codigos": [
+                "10201010085"
+              ],
+              "nombre_original": "ARENA KING CAT X 8 KL"
+            },
+            "stock": null,
+            "referencia": "ARENA KING CAT"
+          }
+        ],
+        "categoria": "arena_sustrato",
+        "subcategoria": "arena",
+        "contextoCreadoEn": "2026-10-10T19:22:26.348Z"
+      }
+    ],
+    "ultimaConsulta": {
+      "terminos": [
+        "max",
+        "cat",
+        "frango",
+        "arroz",
+        "adulto"
+      ],
+      "etiqueta": "max cat frango arroz adulto",
+      "presentacion": null,
+      "fuente": "imagen",
+      "nivel": "alta",
+      "razon": "senales_visuales_convergentes",
+      "aclaracion": {
+        "campo": "presentacion",
+        "valores": [
+          "1kg",
+          "3kg",
+          "10.1kg"
+        ]
+      },
+      "creadoEn": "2026-10-10T19:22:26.348Z",
+      "solicitudOriginal": {
+        "intencion": "consulta_producto",
+        "accion": "consultar",
+        "producto": {
+          "accion": "consultar",
+          "marca": "MAX CAT",
+          "referencia": "MAX CAT ADUL FRANGO",
+          "linea": "Professional Line",
+          "textoVisible": "max cat frango & arroz adulto",
+          "mencionOriginal": null,
+          "categoria": "alimento",
+          "subcategoria": "concentrado",
+          "especie": "gato",
+          "etapa": "adulto",
+          "tamano": null,
+          "sabores": [
+            "frango & arroz"
+          ],
+          "presentacion": null,
+          "condiciones": [],
+          "cantidad": null,
+          "observado": {
+            "nombre": "max cat frango & arroz adulto",
+            "presentacion": null,
+            "confianzaIdentidad": 0.98,
+            "confianzaPresentacion": 0.08
+          },
+          "solicitud": {
+            "presentacionTexto": null,
+            "presentacionContexto": null,
+            "contextoVigente": false,
+            "cantidadTexto": null,
+            "cantidadContexto": null
+          },
+          "fuentePresentacion": null,
+          "requierePresentacion": true,
+          "estado": "pendiente",
+          "presentacionesDisponibles": [
+            "1kg",
+            "3kg",
+            "10.1kg"
+          ],
+          "contextoCreadoEn": "2026-10-10T19:22:26.348Z",
+          "pregunta": "¿Qué presentación necesitas de MAX CAT ADUL FRANGO?\n\nPresentaciones disponibles: 1kg, 3kg, 10.1kg."
+        }
+      }
+    }
+  },
+  {
+    "caso": "dos-fotos-10",
+    "respuesta": "Cotización:\n- 1 x ARENA KING CAT x 25 kg: $62.900\n- 1 x MAX CAT ADUL FRANGO 10.1kg: $178.600\nTotal cotizado: $241.500",
+    "trazas": [
+      {
+        "run": "7c8e9402-f3db-4fca-ae53-8663546f8a82",
+        "etapa": "vision_output",
+        "modelo": "gpt-5.4",
+        "imagenes": [],
+        "mensajeHash": "fba319eafc31f4ee",
+        "estadoHash": "8c3ab4affd493b1c",
+        "historialHash": "843d30339b849354",
+        "fase": "router",
+        "lectura": {
+          "intencion": "consulta_producto",
+          "accion": "consultar",
+          "producto": {
+            "marca": "MAX CAT",
+            "referencia": "MAX CAT ADUL FRANGO",
+            "linea": "Professional Line",
+            "categoria": "alimento",
+            "especie": "gato",
+            "etapa": "adulto",
+            "tamano": null,
+            "sabores": [
+              "frango & arroz"
+            ],
+            "presentacion": "10kg",
+            "cantidad": null
+          },
+          "productos": [
+            {
+              "marca": "MAX CAT",
+              "referencia": "MAX CAT ADUL FRANGO",
+              "linea": "Professional Line",
+              "categoria": "alimento",
+              "especie": "gato",
+              "etapa": "adulto",
+              "tamano": null,
+              "sabores": [
+                "frango & arroz"
+              ],
+              "presentacion": "10kg",
+              "cantidad": null
+            }
+          ],
+          "consultaCatalogo": {
+            "necesaria": true,
+            "consulta": "MAX CAT ADUL FRANGO 10kg gato adulto frango & arroz"
+          }
+        }
+      },
+      {
+        "run": "7c8e9402-f3db-4fca-ae53-8663546f8a82",
+        "etapa": "producto_interpretado",
+        "modelo": "gpt-5.4",
+        "imagenes": [],
+        "mensajeHash": "fba319eafc31f4ee",
+        "estadoHash": "8c3ab4affd493b1c",
+        "historialHash": "843d30339b849354",
+        "fase": "router",
+        "lectura": {
+          "intencion": "consulta_producto",
+          "accion": "consultar",
+          "producto": {
+            "marca": "MAX CAT",
+            "referencia": "MAX CAT ADUL FRANGO",
+            "linea": "Professional Line",
+            "categoria": "alimento",
+            "especie": "gato",
+            "etapa": "adulto",
+            "tamano": null,
+            "sabores": [
+              "frango & arroz"
+            ],
+            "presentacion": "10kg",
+            "cantidad": null
+          },
+          "productos": [
+            {
+              "marca": "MAX CAT",
+              "referencia": "MAX CAT ADUL FRANGO",
+              "linea": "Professional Line",
+              "categoria": "alimento",
+              "especie": "gato",
+              "etapa": "adulto",
+              "tamano": null,
+              "sabores": [
+                "frango & arroz"
+              ],
+              "presentacion": "10kg",
+              "cantidad": null
+            }
+          ],
+          "consultaCatalogo": {
+            "necesaria": true,
+            "consulta": "MAX CAT ADUL FRANGO 10kg gato adulto frango & arroz"
+          }
+        }
+      },
+      {
+        "run": "7c8e9402-f3db-4fca-ae53-8663546f8a82",
+        "etapa": "productos_combinados",
+        "lectura": {
+          "intencion": "consulta_producto",
+          "accion": "consultar",
+          "producto": {
+            "marca": "MAX CAT",
+            "referencia": "MAX CAT ADUL FRANGO",
+            "linea": "Professional Line",
+            "categoria": "alimento",
+            "especie": "gato",
+            "etapa": "adulto",
+            "tamano": null,
+            "sabores": [
+              "frango & arroz"
+            ],
+            "presentacion": "10kg",
+            "cantidad": null
+          },
+          "productos": [
+            {
+              "marca": "MAX CAT",
+              "referencia": "MAX CAT ADUL FRANGO",
+              "linea": "Professional Line",
+              "categoria": "alimento",
+              "especie": "gato",
+              "etapa": "adulto",
+              "tamano": null,
+              "sabores": [
+                "frango & arroz"
+              ],
+              "presentacion": "10kg",
+              "cantidad": null
+            }
+          ],
+          "consultaCatalogo": {
+            "necesaria": true,
+            "consulta": "MAX CAT ADUL FRANGO 10kg gato adulto frango & arroz"
+          }
+        }
+      },
+      {
+        "run": "7c8e9402-f3db-4fca-ae53-8663546f8a82",
+        "etapa": "busqueda_candidatos",
+        "consulta": "MAX CAT MAX CAT ADUL FRANGO 10kg",
+        "candidatos": [
+          {
+            "marca": "MAX CAT",
+            "referencias": [
+              {
+                "nombre": "MAX CAT ADUL FRANGO",
+                "especie": "gato",
+                "etapa": "adulto",
+                "presentaciones": [
+                  "1kg",
+                  "3kg",
+                  "10.1kg"
+                ]
+              },
+              {
+                "nombre": "MAX CAT CASTRADO",
+                "especie": "gato",
+                "etapa": null,
+                "presentaciones": [
+                  "1kg",
+                  "3kg"
+                ]
+              }
+            ]
+          },
+          {
+            "marca": "MAX",
+            "referencias": [
+              {
+                "nombre": "MAX VITA ADUL GATO SABORES FRANCO",
+                "especie": "gato",
+                "etapa": "adulto",
+                "presentaciones": [
+                  "1kg"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "run": "7c8e9402-f3db-4fca-ae53-8663546f8a82",
+        "etapa": "matching_filtros",
+        "vision": false,
+        "producto": null,
+        "antes": [
+          {
+            "nombre": "MAX CAT ADUL FRANGO",
+            "score": 1,
+            "scoreBase": 1,
+            "peso": false,
+            "especie": true,
+            "etapa": true,
+            "categoria": null
+          },
+          {
+            "nombre": "MAX VITA ADUL GATO SABORES FRANCO",
+            "score": 1,
+            "scoreBase": 0.96875,
+            "peso": false,
+            "especie": true,
+            "etapa": true,
+            "categoria": null
+          },
+          {
+            "nombre": "MAX CAT CASTRADO",
+            "score": 0.5177777777777778,
+            "scoreBase": 0.7777777777777778,
+            "peso": false,
+            "especie": true,
+            "etapa": null,
+            "categoria": null
+          }
+        ],
+        "despues": [
+          {
+            "nombre": "MAX CAT ADUL FRANGO",
+            "score": 1
+          }
+        ]
+      },
+      {
+        "run": "7c8e9402-f3db-4fca-ae53-8663546f8a82",
+        "etapa": "match_final",
+        "nivel": "alta",
+        "razon": "nombre_exacto",
+        "presentacion": "10kg",
+        "coincidencia": {
+          "marca": "MAX CAT",
+          "referencia": "MAX CAT ADUL FRANGO",
+          "referenciaCatalogo": "MAX CAT ADUL FRANGO",
+          "referenciasEquivalentes": [
+            "MAX CAT ADUL FRANGO"
+          ],
+          "score": 1,
+          "tipoCoincidencia": "referencia",
+          "presentaciones": [
+            {
+              "peso": "1kg",
+              "precio": 27400,
+              "metadata": {
+                "llave": "1036",
+                "codigo": "10301021036",
+                "source": "productos.json",
+                "codigos": [
+                  "10301021036"
+                ],
+                "nombre_original": "MAX CAT ADUL FRANGO 1KL",
+                "source_reference": "MAX CAT ADUL FRANGO"
+              },
+              "stock": null,
+              "referencia": "MAX CAT ADUL FRANGO"
+            },
+            {
+              "peso": "3kg",
+              "precio": 67900,
+              "metadata": {
+                "llave": "1037",
+                "codigo": "10301021037",
+                "source": "productos.json",
+                "codigos": [
+                  "10301021037"
+                ],
+                "nombre_original": "MAX CAT ADUL FRANGO 3KL",
+                "source_reference": "MAX CAT ADUL FRANGO"
+              },
+              "stock": null,
+              "referencia": "MAX CAT ADUL FRANGO"
+            },
+            {
+              "peso": "10.1kg",
+              "precio": 178600,
+              "metadata": {
+                "llave": "1038",
+                "codigo": "10301021038",
+                "source": "productos.json",
+                "codigos": [
+                  "10301021038"
+                ],
+                "nombre_original": "MAX CAT ADULT FRANGO 10.1KG",
+                "source_reference": "MAX CAT ADULT FRANGO"
+              },
+              "stock": null,
+              "referencia": "MAX CAT ADUL FRANGO"
+            }
+          ]
+        },
+        "equivalencia": "10.1kg"
+      },
+      {
+        "run": "7c8e9402-f3db-4fca-ae53-8663546f8a82",
+        "etapa": "vision_output",
+        "modelo": "gpt-5.2",
+        "imagenes": [],
+        "mensajeHash": "fba319eafc31f4ee",
+        "estadoHash": "8c3ab4affd493b1c",
+        "historialHash": "843d30339b849354",
+        "fase": "mapeo",
+        "lectura": {
+          "intencion": "consulta_producto",
+          "accion": "consultar",
+          "producto": {
+            "marca": "MAX CAT",
+            "referencia": "MAX CAT ADUL FRANGO",
+            "linea": null,
+            "categoria": null,
+            "especie": "gato",
+            "etapa": "adulto",
+            "tamano": null,
+            "sabores": [],
+            "presentacion": null,
+            "cantidad": null
+          },
+          "productos": []
+        }
+      },
+      {
+        "run": "7c8e9402-f3db-4fca-ae53-8663546f8a82",
+        "etapa": "producto_interpretado",
+        "modelo": "gpt-5.2",
+        "imagenes": [],
+        "mensajeHash": "fba319eafc31f4ee",
+        "estadoHash": "8c3ab4affd493b1c",
+        "historialHash": "843d30339b849354",
+        "fase": "mapeo",
+        "lectura": {
+          "intencion": "consulta_producto",
+          "accion": "consultar",
+          "producto": {
+            "marca": "MAX CAT",
+            "referencia": "MAX CAT ADUL FRANGO",
+            "linea": null,
+            "categoria": null,
+            "especie": "gato",
+            "etapa": "adulto",
+            "tamano": null,
+            "sabores": [],
+            "presentacion": null,
+            "cantidad": null
+          },
+          "productos": [],
+          "consultaCatalogo": {
+            "necesaria": null,
+            "consulta": null
+          }
+        }
+      },
+      {
+        "run": "7c8e9402-f3db-4fca-ae53-8663546f8a82",
+        "etapa": "matching_filtros",
+        "vision": false,
+        "producto": {
+          "marca": "MAX CAT",
+          "referencia": "MAX CAT ADUL FRANGO",
+          "linea": "Professional Line",
+          "categoria": null,
+          "especie": "gato",
+          "etapa": "adulto",
+          "tamano": null,
+          "sabores": [],
+          "presentacion": "10kg",
+          "cantidad": null,
+          "observado": {
+            "nombre": "max cat frango & arroz adulto",
+            "presentacion": null,
+            "confianzaIdentidad": 0.98,
+            "confianzaPresentacion": 0.08
+          },
+          "solicitud": {
+            "presentacionTexto": "10kg",
+            "presentacionContexto": null,
+            "contextoVigente": false,
+            "cantidadTexto": null,
+            "cantidadContexto": null
+          },
+          "fuentePresentacion": "texto",
+          "requierePresentacion": false
+        },
+        "antes": [
+          {
+            "nombre": "MAX CAT ADUL FRANGO",
+            "score": 1,
+            "scoreBase": 1,
+            "peso": false,
+            "especie": true,
+            "etapa": true,
+            "categoria": null
+          },
+          {
+            "nombre": "MAX VITA ADUL GATO SABORES FRANCO",
+            "score": 1,
+            "scoreBase": 0.96875,
+            "peso": false,
+            "especie": true,
+            "etapa": true,
+            "categoria": null
+          },
+          {
+            "nombre": "MAX CAT CASTRADO",
+            "score": 0.5177777777777778,
+            "scoreBase": 0.7777777777777778,
+            "peso": false,
+            "especie": true,
+            "etapa": null,
+            "categoria": null
+          }
+        ],
+        "despues": [
+          {
+            "nombre": "MAX CAT ADUL FRANGO",
+            "score": 1
+          }
+        ]
+      },
+      {
+        "run": "7c8e9402-f3db-4fca-ae53-8663546f8a82",
+        "etapa": "match_final",
+        "nivel": "alta",
+        "razon": "nombre_exacto",
+        "presentacion": "10kg",
+        "coincidencia": {
+          "marca": "MAX CAT",
+          "referencia": "MAX CAT ADUL FRANGO",
+          "referenciaCatalogo": "MAX CAT ADUL FRANGO",
+          "referenciasEquivalentes": [
+            "MAX CAT ADUL FRANGO"
+          ],
+          "score": 1,
+          "tipoCoincidencia": "referencia",
+          "presentaciones": [
+            {
+              "peso": "1kg",
+              "precio": 27400,
+              "metadata": {
+                "llave": "1036",
+                "codigo": "10301021036",
+                "source": "productos.json",
+                "codigos": [
+                  "10301021036"
+                ],
+                "nombre_original": "MAX CAT ADUL FRANGO 1KL",
+                "source_reference": "MAX CAT ADUL FRANGO"
+              },
+              "stock": null,
+              "referencia": "MAX CAT ADUL FRANGO"
+            },
+            {
+              "peso": "3kg",
+              "precio": 67900,
+              "metadata": {
+                "llave": "1037",
+                "codigo": "10301021037",
+                "source": "productos.json",
+                "codigos": [
+                  "10301021037"
+                ],
+                "nombre_original": "MAX CAT ADUL FRANGO 3KL",
+                "source_reference": "MAX CAT ADUL FRANGO"
+              },
+              "stock": null,
+              "referencia": "MAX CAT ADUL FRANGO"
+            },
+            {
+              "peso": "10.1kg",
+              "precio": 178600,
+              "metadata": {
+                "llave": "1038",
+                "codigo": "10301021038",
+                "source": "productos.json",
+                "codigos": [
+                  "10301021038"
+                ],
+                "nombre_original": "MAX CAT ADULT FRANGO 10.1KG",
+                "source_reference": "MAX CAT ADULT FRANGO"
+              },
+              "stock": null,
+              "referencia": "MAX CAT ADUL FRANGO"
+            }
+          ]
+        },
+        "equivalencia": "10.1kg"
+      }
+    ],
+    "solicitudes": [
+      {
+        "accion": "consultar",
+        "marca": "ARENA KING CAT",
+        "referencia": "ARENA KING CAT",
+        "linea": null,
+        "textoVisible": "arena sanitaria para gatos King Cat",
+        "mencionOriginal": null,
+        "categoria": "arena para gatos",
+        "subcategoria": "arena sanitaria",
+        "especie": "gato",
+        "etapa": null,
+        "tamano": null,
+        "sabores": [],
+        "presentacion": "25kg",
+        "condiciones": [],
+        "cantidad": null,
+        "observado": {
+          "nombre": "KING CAT",
+          "presentacion": "25 Kg",
+          "confianzaIdentidad": 0.99,
+          "confianzaPresentacion": 0.98
+        },
+        "solicitud": {
+          "presentacionTexto": null,
+          "presentacionContexto": null,
+          "contextoVigente": false,
+          "cantidadTexto": null,
+          "cantidadContexto": null
+        },
+        "fuentePresentacion": "imagen",
+        "requierePresentacion": false,
+        "estado": "identificado",
+        "presentacionesDisponibles": [
+          "x 25 kg",
+          "x 4.5 kg",
+          "x 8 kg"
+        ],
+        "contextoCreadoEn": "2026-10-10T19:22:26.348Z",
+        "pregunta": null,
+        "cotizacion": [
+          {
+            "marca": "ARENA KING CAT",
+            "referencia": "ARENA KING CAT",
+            "referenciaCatalogo": "ARENA KING CAT",
+            "peso": "x 25 kg",
+            "precio": 62900,
+            "stock": null,
+            "cantidad": 1,
+            "presentaciones": [
+              {
+                "peso": "x 25 kg",
+                "precio": 62900,
+                "metadata": {
+                  "llave": "83",
+                  "codigo": "10201010083",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10201010083"
+                  ],
+                  "nombre_original": "ARENA KING CAT X 25 KL"
+                },
+                "stock": null,
+                "referencia": "ARENA KING CAT"
+              },
+              {
+                "peso": "x 4.5 kg",
+                "precio": 13300,
+                "metadata": {
+                  "llave": "84",
+                  "codigo": "10201010084",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10201010084"
+                  ],
+                  "nombre_original": "ARENA KING CAT X 4.5 KL"
+                },
+                "stock": null,
+                "referencia": "ARENA KING CAT"
+              },
+              {
+                "peso": "x 8 kg",
+                "precio": 23500,
+                "metadata": {
+                  "llave": "85",
+                  "codigo": "10201010085",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10201010085"
+                  ],
+                  "nombre_original": "ARENA KING CAT X 8 KL"
+                },
+                "stock": null,
+                "referencia": "ARENA KING CAT"
+              }
+            ],
+            "categoria": "arena_sustrato",
+            "subcategoria": "arena",
+            "contextoCreadoEn": "2026-10-10T19:22:26.348Z"
+          }
+        ]
+      },
+      {
+        "accion": "consultar",
+        "marca": "MAX CAT",
+        "referencia": "MAX CAT ADUL FRANGO",
+        "linea": "Professional Line",
+        "textoVisible": "x10kg",
+        "mencionOriginal": null,
+        "categoria": null,
+        "subcategoria": null,
+        "especie": "gato",
+        "etapa": "adulto",
+        "tamano": null,
+        "sabores": [],
+        "presentacion": "10.1kg",
+        "condiciones": [],
+        "cantidad": null,
+        "observado": {
+          "nombre": "max cat frango & arroz adulto",
+          "presentacion": null,
+          "confianzaIdentidad": 0.98,
+          "confianzaPresentacion": 0.08
+        },
+        "solicitud": {
+          "presentacionTexto": "10kg",
+          "presentacionContexto": null,
+          "contextoVigente": false,
+          "cantidadTexto": null,
+          "cantidadContexto": null
+        },
+        "fuentePresentacion": "texto",
+        "requierePresentacion": false,
+        "estado": "identificado",
+        "presentacionesDisponibles": [
+          "1kg",
+          "3kg",
+          "10.1kg"
+        ],
+        "contextoCreadoEn": "2026-10-10T19:22:26.348Z",
+        "pregunta": null,
+        "pesoTextoOriginal": "10kg",
+        "duracion": null,
+        "coincidenciaVisualValidada": false,
+        "nombreFamilia": "MAX CAT ADUL FRANGO",
+        "referenciasEquivalentes": [
+          "MAX CAT ADUL FRANGO"
+        ],
+        "presentacionesEquivalentes": [
+          {
+            "peso": "1kg",
+            "precio": 27400,
+            "metadata": {
+              "llave": "1036",
+              "codigo": "10301021036",
+              "source": "productos.json",
+              "codigos": [
+                "10301021036"
+              ],
+              "nombre_original": "MAX CAT ADUL FRANGO 1KL",
+              "source_reference": "MAX CAT ADUL FRANGO"
+            },
+            "stock": null,
+            "referencia": "MAX CAT ADUL FRANGO"
+          },
+          {
+            "peso": "3kg",
+            "precio": 67900,
+            "metadata": {
+              "llave": "1037",
+              "codigo": "10301021037",
+              "source": "productos.json",
+              "codigos": [
+                "10301021037"
+              ],
+              "nombre_original": "MAX CAT ADUL FRANGO 3KL",
+              "source_reference": "MAX CAT ADUL FRANGO"
+            },
+            "stock": null,
+            "referencia": "MAX CAT ADUL FRANGO"
+          },
+          {
+            "peso": "10.1kg",
+            "precio": 178600,
+            "metadata": {
+              "llave": "1038",
+              "codigo": "10301021038",
+              "source": "productos.json",
+              "codigos": [
+                "10301021038"
+              ],
+              "nombre_original": "MAX CAT ADULT FRANGO 10.1KG",
+              "source_reference": "MAX CAT ADULT FRANGO"
+            },
+            "stock": null,
+            "referencia": "MAX CAT ADUL FRANGO"
+          }
+        ],
+        "cotizacion": [
+          {
+            "marca": "MAX CAT",
+            "referencia": "MAX CAT ADUL FRANGO",
+            "referenciaCatalogo": "MAX CAT ADUL FRANGO",
+            "familiaReferencia": "MAX CAT ADUL FRANGO",
+            "referenciasEquivalentes": [
+              "MAX CAT ADUL FRANGO"
+            ],
+            "peso": "10.1kg",
+            "precio": 178600,
+            "stock": null,
+            "presentaciones": [
+              {
+                "peso": "1kg",
+                "precio": 27400,
+                "metadata": {
+                  "llave": "1036",
+                  "codigo": "10301021036",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10301021036"
+                  ],
+                  "nombre_original": "MAX CAT ADUL FRANGO 1KL",
+                  "source_reference": "MAX CAT ADUL FRANGO"
+                },
+                "stock": null,
+                "referenciaCatalogo": "MAX CAT ADUL FRANGO"
+              },
+              {
+                "peso": "3kg",
+                "precio": 67900,
+                "metadata": {
+                  "llave": "1037",
+                  "codigo": "10301021037",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10301021037"
+                  ],
+                  "nombre_original": "MAX CAT ADUL FRANGO 3KL",
+                  "source_reference": "MAX CAT ADUL FRANGO"
+                },
+                "stock": null,
+                "referenciaCatalogo": "MAX CAT ADUL FRANGO"
+              },
+              {
+                "peso": "10.1kg",
+                "precio": 178600,
+                "metadata": {
+                  "llave": "1038",
+                  "codigo": "10301021038",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10301021038"
+                  ],
+                  "nombre_original": "MAX CAT ADULT FRANGO 10.1KG",
+                  "source_reference": "MAX CAT ADULT FRANGO"
+                },
+                "stock": null,
+                "referenciaCatalogo": "MAX CAT ADUL FRANGO"
+              }
+            ],
+            "cantidad": 1,
+            "categoria": "comida",
+            "subcategoria": "concentrado",
+            "contextoCreadoEn": "2026-10-10T19:22:35.583Z"
+          }
+        ]
+      }
+    ],
+    "carrito": [],
+    "productosConsultados": [
+      {
+        "marca": "ARENA KING CAT",
+        "referencia": "ARENA KING CAT",
+        "referenciaCatalogo": "ARENA KING CAT",
+        "peso": "x 25 kg",
+        "precio": 62900,
+        "stock": null,
+        "cantidad": 1,
+        "presentaciones": [
+          {
+            "peso": "x 25 kg",
+            "precio": 62900,
+            "metadata": {
+              "llave": "83",
+              "codigo": "10201010083",
+              "source": "productos.json",
+              "codigos": [
+                "10201010083"
+              ],
+              "nombre_original": "ARENA KING CAT X 25 KL"
+            },
+            "stock": null,
+            "referencia": "ARENA KING CAT"
+          },
+          {
+            "peso": "x 4.5 kg",
+            "precio": 13300,
+            "metadata": {
+              "llave": "84",
+              "codigo": "10201010084",
+              "source": "productos.json",
+              "codigos": [
+                "10201010084"
+              ],
+              "nombre_original": "ARENA KING CAT X 4.5 KL"
+            },
+            "stock": null,
+            "referencia": "ARENA KING CAT"
+          },
+          {
+            "peso": "x 8 kg",
+            "precio": 23500,
+            "metadata": {
+              "llave": "85",
+              "codigo": "10201010085",
+              "source": "productos.json",
+              "codigos": [
+                "10201010085"
+              ],
+              "nombre_original": "ARENA KING CAT X 8 KL"
+            },
+            "stock": null,
+            "referencia": "ARENA KING CAT"
+          }
+        ],
+        "categoria": "arena_sustrato",
+        "subcategoria": "arena",
+        "contextoCreadoEn": "2026-10-10T19:22:26.348Z"
+      },
+      {
+        "marca": "MAX CAT",
+        "referencia": "MAX CAT ADUL FRANGO",
+        "referenciaCatalogo": "MAX CAT ADUL FRANGO",
+        "familiaReferencia": "MAX CAT ADUL FRANGO",
+        "referenciasEquivalentes": [
+          "MAX CAT ADUL FRANGO"
+        ],
+        "peso": "10.1kg",
+        "precio": 178600,
+        "stock": null,
+        "presentaciones": [
+          {
+            "peso": "1kg",
+            "precio": 27400,
+            "metadata": {
+              "llave": "1036",
+              "codigo": "10301021036",
+              "source": "productos.json",
+              "codigos": [
+                "10301021036"
+              ],
+              "nombre_original": "MAX CAT ADUL FRANGO 1KL",
+              "source_reference": "MAX CAT ADUL FRANGO"
+            },
+            "stock": null,
+            "referenciaCatalogo": "MAX CAT ADUL FRANGO"
+          },
+          {
+            "peso": "3kg",
+            "precio": 67900,
+            "metadata": {
+              "llave": "1037",
+              "codigo": "10301021037",
+              "source": "productos.json",
+              "codigos": [
+                "10301021037"
+              ],
+              "nombre_original": "MAX CAT ADUL FRANGO 3KL",
+              "source_reference": "MAX CAT ADUL FRANGO"
+            },
+            "stock": null,
+            "referenciaCatalogo": "MAX CAT ADUL FRANGO"
+          },
+          {
+            "peso": "10.1kg",
+            "precio": 178600,
+            "metadata": {
+              "llave": "1038",
+              "codigo": "10301021038",
+              "source": "productos.json",
+              "codigos": [
+                "10301021038"
+              ],
+              "nombre_original": "MAX CAT ADULT FRANGO 10.1KG",
+              "source_reference": "MAX CAT ADULT FRANGO"
+            },
+            "stock": null,
+            "referenciaCatalogo": "MAX CAT ADUL FRANGO"
+          }
+        ],
+        "cantidad": 1,
+        "categoria": "comida",
+        "subcategoria": "concentrado",
+        "contextoCreadoEn": "2026-10-10T19:22:35.583Z"
+      }
+    ],
+    "ultimaConsulta": {
+      "terminos": [
+        "max",
+        "cat",
+        "adulto",
+        "frango"
+      ],
+      "etiqueta": "max cat adulto frango",
+      "presentacion": "10.1kg",
+      "fuente": "texto",
+      "nivel": "alta",
+      "razon": "nombre_exacto",
+      "aclaracion": null,
+      "creadoEn": "2026-10-10T19:22:35.577Z",
+      "solicitudOriginal": {
+        "intencion": "consulta_producto",
+        "accion": "consultar",
+        "producto": {
+          "accion": "consultar",
+          "marca": "MAX CAT",
+          "referencia": "MAX CAT ADUL FRANGO",
+          "linea": "Professional Line",
+          "textoVisible": "x10kg",
+          "mencionOriginal": null,
+          "categoria": null,
+          "subcategoria": null,
+          "especie": "gato",
+          "etapa": "adulto",
+          "tamano": null,
+          "sabores": [],
+          "presentacion": "10.1kg",
+          "condiciones": [],
+          "cantidad": null,
+          "observado": {
+            "nombre": "max cat frango & arroz adulto",
+            "presentacion": null,
+            "confianzaIdentidad": 0.98,
+            "confianzaPresentacion": 0.08
+          },
+          "solicitud": {
+            "presentacionTexto": "10kg",
+            "presentacionContexto": null,
+            "contextoVigente": false,
+            "cantidadTexto": null,
+            "cantidadContexto": null
+          },
+          "fuentePresentacion": "texto",
+          "requierePresentacion": false,
+          "pesoTextoOriginal": "10kg",
+          "duracion": null,
+          "coincidenciaVisualValidada": false,
+          "nombreFamilia": "MAX CAT ADUL FRANGO",
+          "referenciasEquivalentes": [
+            "MAX CAT ADUL FRANGO"
+          ],
+          "presentacionesEquivalentes": [
+            {
+              "peso": "1kg",
+              "precio": 27400,
+              "metadata": {
+                "llave": "1036",
+                "codigo": "10301021036",
+                "source": "productos.json",
+                "codigos": [
+                  "10301021036"
+                ],
+                "nombre_original": "MAX CAT ADUL FRANGO 1KL",
+                "source_reference": "MAX CAT ADUL FRANGO"
+              },
+              "stock": null,
+              "referencia": "MAX CAT ADUL FRANGO"
+            },
+            {
+              "peso": "3kg",
+              "precio": 67900,
+              "metadata": {
+                "llave": "1037",
+                "codigo": "10301021037",
+                "source": "productos.json",
+                "codigos": [
+                  "10301021037"
+                ],
+                "nombre_original": "MAX CAT ADUL FRANGO 3KL",
+                "source_reference": "MAX CAT ADUL FRANGO"
+              },
+              "stock": null,
+              "referencia": "MAX CAT ADUL FRANGO"
+            },
+            {
+              "peso": "10.1kg",
+              "precio": 178600,
+              "metadata": {
+                "llave": "1038",
+                "codigo": "10301021038",
+                "source": "productos.json",
+                "codigos": [
+                  "10301021038"
+                ],
+                "nombre_original": "MAX CAT ADULT FRANGO 10.1KG",
+                "source_reference": "MAX CAT ADULT FRANGO"
+              },
+              "stock": null,
+              "referencia": "MAX CAT ADUL FRANGO"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "caso": "dos-fotos-10-repetido",
+    "respuesta": "Cotización:\n- 1 x ARENA KING CAT x 25 kg: $62.900\n- 1 x MAX CAT ADUL FRANGO 10.1kg: $178.600\nTotal cotizado: $241.500",
+    "trazas": [
+      {
+        "run": "6d812fa4-bc80-4f89-bb7d-e7c9f469724d",
+        "etapa": "vision_output",
+        "modelo": "gpt-5.4",
+        "imagenes": [],
+        "mensajeHash": "fba319eafc31f4ee",
+        "estadoHash": "f4fa01b01fca6de2",
+        "historialHash": "893fb81bd7fdb5f1",
+        "fase": "router",
+        "lectura": {
+          "intencion": "consulta_producto",
+          "accion": "consultar",
+          "producto": {
+            "marca": "MAX CAT",
+            "referencia": "MAX CAT ADUL FRANGO",
+            "linea": "Professional Line",
+            "categoria": "comida",
+            "especie": "gato",
+            "etapa": "adulto",
+            "tamano": null,
+            "sabores": [],
+            "presentacion": "10.1kg",
+            "cantidad": null
+          },
+          "productos": [
+            {
+              "marca": "MAX CAT",
+              "referencia": "MAX CAT ADUL FRANGO",
+              "linea": "Professional Line",
+              "categoria": "comida",
+              "especie": "gato",
+              "etapa": "adulto",
+              "tamano": null,
+              "sabores": [],
+              "presentacion": "10.1kg",
+              "cantidad": null
+            }
+          ],
+          "consultaCatalogo": {
+            "necesaria": false,
+            "consulta": null
+          }
+        }
+      },
+      {
+        "run": "6d812fa4-bc80-4f89-bb7d-e7c9f469724d",
+        "etapa": "producto_interpretado",
+        "modelo": "gpt-5.4",
+        "imagenes": [],
+        "mensajeHash": "fba319eafc31f4ee",
+        "estadoHash": "f4fa01b01fca6de2",
+        "historialHash": "893fb81bd7fdb5f1",
+        "fase": "router",
+        "lectura": {
+          "intencion": "consulta_producto",
+          "accion": "consultar",
+          "producto": {
+            "marca": "MAX CAT",
+            "referencia": "MAX CAT ADUL FRANGO",
+            "linea": "Professional Line",
+            "categoria": "comida",
+            "especie": "gato",
+            "etapa": "adulto",
+            "tamano": null,
+            "sabores": [],
+            "presentacion": "10.1kg",
+            "cantidad": null
+          },
+          "productos": [
+            {
+              "marca": "MAX CAT",
+              "referencia": "MAX CAT ADUL FRANGO",
+              "linea": "Professional Line",
+              "categoria": "comida",
+              "especie": "gato",
+              "etapa": "adulto",
+              "tamano": null,
+              "sabores": [],
+              "presentacion": "10.1kg",
+              "cantidad": null
+            }
+          ],
+          "consultaCatalogo": {
+            "necesaria": false,
+            "consulta": null
+          }
+        }
+      },
+      {
+        "run": "6d812fa4-bc80-4f89-bb7d-e7c9f469724d",
+        "etapa": "productos_combinados",
+        "lectura": {
+          "intencion": "consulta_producto",
+          "accion": "consultar",
+          "producto": {
+            "marca": "MAX CAT",
+            "referencia": "MAX CAT ADUL FRANGO",
+            "linea": "Professional Line",
+            "categoria": "comida",
+            "especie": "gato",
+            "etapa": "adulto",
+            "tamano": null,
+            "sabores": [],
+            "presentacion": "10.1kg",
+            "cantidad": null
+          },
+          "productos": [
+            {
+              "marca": "MAX CAT",
+              "referencia": "MAX CAT ADUL FRANGO",
+              "linea": "Professional Line",
+              "categoria": "comida",
+              "especie": "gato",
+              "etapa": "adulto",
+              "tamano": null,
+              "sabores": [],
+              "presentacion": "10.1kg",
+              "cantidad": null
+            }
+          ],
+          "consultaCatalogo": {
+            "necesaria": false,
+            "consulta": null
+          }
+        }
+      },
+      {
+        "run": "6d812fa4-bc80-4f89-bb7d-e7c9f469724d",
+        "etapa": "busqueda_candidatos",
+        "consulta": "MAX CAT MAX CAT ADUL FRANGO 10kg",
+        "candidatos": [
+          {
+            "marca": "MAX CAT",
+            "referencias": [
+              {
+                "nombre": "MAX CAT ADUL FRANGO",
+                "especie": "gato",
+                "etapa": "adulto",
+                "presentaciones": [
+                  "1kg",
+                  "3kg",
+                  "10.1kg"
+                ]
+              },
+              {
+                "nombre": "MAX CAT CASTRADO",
+                "especie": "gato",
+                "etapa": null,
+                "presentaciones": [
+                  "1kg",
+                  "3kg"
+                ]
+              }
+            ]
+          },
+          {
+            "marca": "MAX",
+            "referencias": [
+              {
+                "nombre": "MAX VITA ADUL GATO SABORES FRANCO",
+                "especie": "gato",
+                "etapa": "adulto",
+                "presentaciones": [
+                  "1kg"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "run": "6d812fa4-bc80-4f89-bb7d-e7c9f469724d",
+        "etapa": "matching_filtros",
+        "vision": false,
+        "producto": null,
+        "antes": [
+          {
+            "nombre": "MAX CAT ADUL FRANGO",
+            "score": 1,
+            "scoreBase": 1,
+            "peso": false,
+            "especie": true,
+            "etapa": true,
+            "categoria": null
+          },
+          {
+            "nombre": "MAX VITA ADUL GATO SABORES FRANCO",
+            "score": 1,
+            "scoreBase": 0.96875,
+            "peso": false,
+            "especie": true,
+            "etapa": true,
+            "categoria": null
+          },
+          {
+            "nombre": "MAX CAT CASTRADO",
+            "score": 0.5177777777777778,
+            "scoreBase": 0.7777777777777778,
+            "peso": false,
+            "especie": true,
+            "etapa": null,
+            "categoria": null
+          }
+        ],
+        "despues": [
+          {
+            "nombre": "MAX CAT ADUL FRANGO",
+            "score": 1
+          }
+        ]
+      },
+      {
+        "run": "6d812fa4-bc80-4f89-bb7d-e7c9f469724d",
+        "etapa": "match_final",
+        "nivel": "alta",
+        "razon": "nombre_exacto",
+        "presentacion": "10kg",
+        "coincidencia": {
+          "marca": "MAX CAT",
+          "referencia": "MAX CAT ADUL FRANGO",
+          "referenciaCatalogo": "MAX CAT ADUL FRANGO",
+          "referenciasEquivalentes": [
+            "MAX CAT ADUL FRANGO"
+          ],
+          "score": 1,
+          "tipoCoincidencia": "referencia",
+          "presentaciones": [
+            {
+              "peso": "1kg",
+              "precio": 27400,
+              "metadata": {
+                "llave": "1036",
+                "codigo": "10301021036",
+                "source": "productos.json",
+                "codigos": [
+                  "10301021036"
+                ],
+                "nombre_original": "MAX CAT ADUL FRANGO 1KL",
+                "source_reference": "MAX CAT ADUL FRANGO"
+              },
+              "stock": null,
+              "referencia": "MAX CAT ADUL FRANGO"
+            },
+            {
+              "peso": "3kg",
+              "precio": 67900,
+              "metadata": {
+                "llave": "1037",
+                "codigo": "10301021037",
+                "source": "productos.json",
+                "codigos": [
+                  "10301021037"
+                ],
+                "nombre_original": "MAX CAT ADUL FRANGO 3KL",
+                "source_reference": "MAX CAT ADUL FRANGO"
+              },
+              "stock": null,
+              "referencia": "MAX CAT ADUL FRANGO"
+            },
+            {
+              "peso": "10.1kg",
+              "precio": 178600,
+              "metadata": {
+                "llave": "1038",
+                "codigo": "10301021038",
+                "source": "productos.json",
+                "codigos": [
+                  "10301021038"
+                ],
+                "nombre_original": "MAX CAT ADULT FRANGO 10.1KG",
+                "source_reference": "MAX CAT ADULT FRANGO"
+              },
+              "stock": null,
+              "referencia": "MAX CAT ADUL FRANGO"
+            }
+          ]
+        },
+        "equivalencia": "10.1kg"
+      },
+      {
+        "run": "6d812fa4-bc80-4f89-bb7d-e7c9f469724d",
+        "etapa": "vision_output",
+        "modelo": "gpt-5.2",
+        "imagenes": [],
+        "mensajeHash": "fba319eafc31f4ee",
+        "estadoHash": "f4fa01b01fca6de2",
+        "historialHash": "893fb81bd7fdb5f1",
+        "fase": "mapeo",
+        "lectura": {
+          "intencion": "consulta_producto",
+          "accion": "consultar",
+          "producto": {
+            "marca": "MAX CAT",
+            "referencia": "MAX CAT ADUL FRANGO",
+            "linea": null,
+            "categoria": "comida",
+            "especie": "gato",
+            "etapa": "adulto",
+            "tamano": null,
+            "sabores": [],
+            "presentacion": "10kg",
+            "cantidad": null
+          },
+          "productos": []
+        }
+      },
+      {
+        "run": "6d812fa4-bc80-4f89-bb7d-e7c9f469724d",
+        "etapa": "producto_interpretado",
+        "modelo": "gpt-5.2",
+        "imagenes": [],
+        "mensajeHash": "fba319eafc31f4ee",
+        "estadoHash": "f4fa01b01fca6de2",
+        "historialHash": "893fb81bd7fdb5f1",
+        "fase": "mapeo",
+        "lectura": {
+          "intencion": "consulta_producto",
+          "accion": "consultar",
+          "producto": {
+            "marca": "MAX CAT",
+            "referencia": "MAX CAT ADUL FRANGO",
+            "linea": null,
+            "categoria": "comida",
+            "especie": "gato",
+            "etapa": "adulto",
+            "tamano": null,
+            "sabores": [],
+            "presentacion": "10kg",
+            "cantidad": null
+          },
+          "productos": [],
+          "consultaCatalogo": {
+            "necesaria": null,
+            "consulta": null
+          }
+        }
+      },
+      {
+        "run": "6d812fa4-bc80-4f89-bb7d-e7c9f469724d",
+        "etapa": "matching_filtros",
+        "vision": false,
+        "producto": {
+          "marca": "MAX CAT",
+          "referencia": "MAX CAT ADUL FRANGO",
+          "linea": "Professional Line",
+          "categoria": "comida",
+          "especie": "gato",
+          "etapa": "adulto",
+          "tamano": null,
+          "sabores": [],
+          "presentacion": "10kg",
+          "cantidad": null,
+          "observado": {
+            "nombre": "max cat frango & arroz adulto",
+            "presentacion": null,
+            "confianzaIdentidad": 0.98,
+            "confianzaPresentacion": 0.08
+          },
+          "solicitud": {
+            "presentacionTexto": "10kg",
+            "presentacionContexto": null,
+            "contextoVigente": false,
+            "cantidadTexto": null,
+            "cantidadContexto": null
+          },
+          "fuentePresentacion": "texto",
+          "requierePresentacion": false
+        },
+        "antes": [
+          {
+            "nombre": "MAX CAT ADUL FRANGO",
+            "score": 1,
+            "scoreBase": 1,
+            "peso": false,
+            "especie": true,
+            "etapa": true,
+            "categoria": null
+          },
+          {
+            "nombre": "MAX VITA ADUL GATO SABORES FRANCO",
+            "score": 1,
+            "scoreBase": 0.96875,
+            "peso": false,
+            "especie": true,
+            "etapa": true,
+            "categoria": null
+          },
+          {
+            "nombre": "MAX CAT CASTRADO",
+            "score": 0.5177777777777778,
+            "scoreBase": 0.7777777777777778,
+            "peso": false,
+            "especie": true,
+            "etapa": null,
+            "categoria": null
+          }
+        ],
+        "despues": [
+          {
+            "nombre": "MAX CAT ADUL FRANGO",
+            "score": 1
+          }
+        ]
+      },
+      {
+        "run": "6d812fa4-bc80-4f89-bb7d-e7c9f469724d",
+        "etapa": "match_final",
+        "nivel": "alta",
+        "razon": "nombre_exacto",
+        "presentacion": "10kg",
+        "coincidencia": {
+          "marca": "MAX CAT",
+          "referencia": "MAX CAT ADUL FRANGO",
+          "referenciaCatalogo": "MAX CAT ADUL FRANGO",
+          "referenciasEquivalentes": [
+            "MAX CAT ADUL FRANGO"
+          ],
+          "score": 1,
+          "tipoCoincidencia": "referencia",
+          "presentaciones": [
+            {
+              "peso": "1kg",
+              "precio": 27400,
+              "metadata": {
+                "llave": "1036",
+                "codigo": "10301021036",
+                "source": "productos.json",
+                "codigos": [
+                  "10301021036"
+                ],
+                "nombre_original": "MAX CAT ADUL FRANGO 1KL",
+                "source_reference": "MAX CAT ADUL FRANGO"
+              },
+              "stock": null,
+              "referencia": "MAX CAT ADUL FRANGO"
+            },
+            {
+              "peso": "3kg",
+              "precio": 67900,
+              "metadata": {
+                "llave": "1037",
+                "codigo": "10301021037",
+                "source": "productos.json",
+                "codigos": [
+                  "10301021037"
+                ],
+                "nombre_original": "MAX CAT ADUL FRANGO 3KL",
+                "source_reference": "MAX CAT ADUL FRANGO"
+              },
+              "stock": null,
+              "referencia": "MAX CAT ADUL FRANGO"
+            },
+            {
+              "peso": "10.1kg",
+              "precio": 178600,
+              "metadata": {
+                "llave": "1038",
+                "codigo": "10301021038",
+                "source": "productos.json",
+                "codigos": [
+                  "10301021038"
+                ],
+                "nombre_original": "MAX CAT ADULT FRANGO 10.1KG",
+                "source_reference": "MAX CAT ADULT FRANGO"
+              },
+              "stock": null,
+              "referencia": "MAX CAT ADUL FRANGO"
+            }
+          ]
+        },
+        "equivalencia": "10.1kg"
+      }
+    ],
+    "solicitudes": [
+      {
+        "accion": "consultar",
+        "marca": "ARENA KING CAT",
+        "referencia": "ARENA KING CAT",
+        "linea": null,
+        "textoVisible": "arena sanitaria para gatos King Cat",
+        "mencionOriginal": null,
+        "categoria": "arena para gatos",
+        "subcategoria": "arena sanitaria",
+        "especie": "gato",
+        "etapa": null,
+        "tamano": null,
+        "sabores": [],
+        "presentacion": "25kg",
+        "condiciones": [],
+        "cantidad": null,
+        "observado": {
+          "nombre": "KING CAT",
+          "presentacion": "25 Kg",
+          "confianzaIdentidad": 0.99,
+          "confianzaPresentacion": 0.98
+        },
+        "solicitud": {
+          "presentacionTexto": null,
+          "presentacionContexto": null,
+          "contextoVigente": false,
+          "cantidadTexto": null,
+          "cantidadContexto": null
+        },
+        "fuentePresentacion": "imagen",
+        "requierePresentacion": false,
+        "estado": "identificado",
+        "presentacionesDisponibles": [
+          "x 25 kg",
+          "x 4.5 kg",
+          "x 8 kg"
+        ],
+        "contextoCreadoEn": "2026-10-10T19:22:26.348Z",
+        "pregunta": null,
+        "cotizacion": [
+          {
+            "marca": "ARENA KING CAT",
+            "referencia": "ARENA KING CAT",
+            "referenciaCatalogo": "ARENA KING CAT",
+            "peso": "x 25 kg",
+            "precio": 62900,
+            "stock": null,
+            "cantidad": 1,
+            "presentaciones": [
+              {
+                "peso": "x 25 kg",
+                "precio": 62900,
+                "metadata": {
+                  "llave": "83",
+                  "codigo": "10201010083",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10201010083"
+                  ],
+                  "nombre_original": "ARENA KING CAT X 25 KL"
+                },
+                "stock": null,
+                "referencia": "ARENA KING CAT"
+              },
+              {
+                "peso": "x 4.5 kg",
+                "precio": 13300,
+                "metadata": {
+                  "llave": "84",
+                  "codigo": "10201010084",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10201010084"
+                  ],
+                  "nombre_original": "ARENA KING CAT X 4.5 KL"
+                },
+                "stock": null,
+                "referencia": "ARENA KING CAT"
+              },
+              {
+                "peso": "x 8 kg",
+                "precio": 23500,
+                "metadata": {
+                  "llave": "85",
+                  "codigo": "10201010085",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10201010085"
+                  ],
+                  "nombre_original": "ARENA KING CAT X 8 KL"
+                },
+                "stock": null,
+                "referencia": "ARENA KING CAT"
+              }
+            ],
+            "categoria": "arena_sustrato",
+            "subcategoria": "arena",
+            "contextoCreadoEn": "2026-10-10T19:22:26.348Z"
+          }
+        ]
+      },
+      {
+        "accion": "consultar",
+        "marca": "MAX CAT",
+        "referencia": "MAX CAT ADUL FRANGO",
+        "linea": "Professional Line",
+        "textoVisible": "x10kg",
+        "mencionOriginal": null,
+        "categoria": "comida",
+        "subcategoria": "concentrado",
+        "especie": "gato",
+        "etapa": "adulto",
+        "tamano": null,
+        "sabores": [],
+        "presentacion": "10.1kg",
+        "condiciones": [],
+        "cantidad": null,
+        "observado": {
+          "nombre": "max cat frango & arroz adulto",
+          "presentacion": null,
+          "confianzaIdentidad": 0.98,
+          "confianzaPresentacion": 0.08
+        },
+        "solicitud": {
+          "presentacionTexto": "10kg",
+          "presentacionContexto": null,
+          "contextoVigente": false,
+          "cantidadTexto": null,
+          "cantidadContexto": null
+        },
+        "fuentePresentacion": "texto",
+        "requierePresentacion": false,
+        "estado": "identificado",
+        "presentacionesDisponibles": [
+          "1kg",
+          "3kg",
+          "10.1kg"
+        ],
+        "contextoCreadoEn": "2026-10-10T19:22:26.348Z",
+        "pregunta": null,
+        "pesoTextoOriginal": "10kg",
+        "duracion": null,
+        "coincidenciaVisualValidada": false,
+        "nombreFamilia": "MAX CAT ADUL FRANGO",
+        "referenciasEquivalentes": [
+          "MAX CAT ADUL FRANGO"
+        ],
+        "presentacionesEquivalentes": [
+          {
+            "peso": "1kg",
+            "precio": 27400,
+            "metadata": {
+              "llave": "1036",
+              "codigo": "10301021036",
+              "source": "productos.json",
+              "codigos": [
+                "10301021036"
+              ],
+              "nombre_original": "MAX CAT ADUL FRANGO 1KL",
+              "source_reference": "MAX CAT ADUL FRANGO"
+            },
+            "stock": null,
+            "referencia": "MAX CAT ADUL FRANGO"
+          },
+          {
+            "peso": "3kg",
+            "precio": 67900,
+            "metadata": {
+              "llave": "1037",
+              "codigo": "10301021037",
+              "source": "productos.json",
+              "codigos": [
+                "10301021037"
+              ],
+              "nombre_original": "MAX CAT ADUL FRANGO 3KL",
+              "source_reference": "MAX CAT ADUL FRANGO"
+            },
+            "stock": null,
+            "referencia": "MAX CAT ADUL FRANGO"
+          },
+          {
+            "peso": "10.1kg",
+            "precio": 178600,
+            "metadata": {
+              "llave": "1038",
+              "codigo": "10301021038",
+              "source": "productos.json",
+              "codigos": [
+                "10301021038"
+              ],
+              "nombre_original": "MAX CAT ADULT FRANGO 10.1KG",
+              "source_reference": "MAX CAT ADULT FRANGO"
+            },
+            "stock": null,
+            "referencia": "MAX CAT ADUL FRANGO"
+          }
+        ],
+        "cotizacion": [
+          {
+            "marca": "MAX CAT",
+            "referencia": "MAX CAT ADUL FRANGO",
+            "referenciaCatalogo": "MAX CAT ADUL FRANGO",
+            "familiaReferencia": "MAX CAT ADUL FRANGO",
+            "referenciasEquivalentes": [
+              "MAX CAT ADUL FRANGO"
+            ],
+            "peso": "10.1kg",
+            "precio": 178600,
+            "stock": null,
+            "presentaciones": [
+              {
+                "peso": "1kg",
+                "precio": 27400,
+                "metadata": {
+                  "llave": "1036",
+                  "codigo": "10301021036",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10301021036"
+                  ],
+                  "nombre_original": "MAX CAT ADUL FRANGO 1KL",
+                  "source_reference": "MAX CAT ADUL FRANGO"
+                },
+                "stock": null,
+                "referenciaCatalogo": "MAX CAT ADUL FRANGO"
+              },
+              {
+                "peso": "3kg",
+                "precio": 67900,
+                "metadata": {
+                  "llave": "1037",
+                  "codigo": "10301021037",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10301021037"
+                  ],
+                  "nombre_original": "MAX CAT ADUL FRANGO 3KL",
+                  "source_reference": "MAX CAT ADUL FRANGO"
+                },
+                "stock": null,
+                "referenciaCatalogo": "MAX CAT ADUL FRANGO"
+              },
+              {
+                "peso": "10.1kg",
+                "precio": 178600,
+                "metadata": {
+                  "llave": "1038",
+                  "codigo": "10301021038",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10301021038"
+                  ],
+                  "nombre_original": "MAX CAT ADULT FRANGO 10.1KG",
+                  "source_reference": "MAX CAT ADULT FRANGO"
+                },
+                "stock": null,
+                "referenciaCatalogo": "MAX CAT ADUL FRANGO"
+              }
+            ],
+            "cantidad": 1,
+            "categoria": "comida",
+            "subcategoria": "concentrado",
+            "contextoCreadoEn": "2026-10-10T19:22:45.928Z"
+          }
+        ]
+      }
+    ],
+    "carrito": [],
+    "productosConsultados": [
+      {
+        "marca": "ARENA KING CAT",
+        "referencia": "ARENA KING CAT",
+        "referenciaCatalogo": "ARENA KING CAT",
+        "peso": "x 25 kg",
+        "precio": 62900,
+        "stock": null,
+        "cantidad": 1,
+        "presentaciones": [
+          {
+            "peso": "x 25 kg",
+            "precio": 62900,
+            "metadata": {
+              "llave": "83",
+              "codigo": "10201010083",
+              "source": "productos.json",
+              "codigos": [
+                "10201010083"
+              ],
+              "nombre_original": "ARENA KING CAT X 25 KL"
+            },
+            "stock": null,
+            "referencia": "ARENA KING CAT"
+          },
+          {
+            "peso": "x 4.5 kg",
+            "precio": 13300,
+            "metadata": {
+              "llave": "84",
+              "codigo": "10201010084",
+              "source": "productos.json",
+              "codigos": [
+                "10201010084"
+              ],
+              "nombre_original": "ARENA KING CAT X 4.5 KL"
+            },
+            "stock": null,
+            "referencia": "ARENA KING CAT"
+          },
+          {
+            "peso": "x 8 kg",
+            "precio": 23500,
+            "metadata": {
+              "llave": "85",
+              "codigo": "10201010085",
+              "source": "productos.json",
+              "codigos": [
+                "10201010085"
+              ],
+              "nombre_original": "ARENA KING CAT X 8 KL"
+            },
+            "stock": null,
+            "referencia": "ARENA KING CAT"
+          }
+        ],
+        "categoria": "arena_sustrato",
+        "subcategoria": "arena",
+        "contextoCreadoEn": "2026-10-10T19:22:26.348Z"
+      },
+      {
+        "marca": "MAX CAT",
+        "referencia": "MAX CAT ADUL FRANGO",
+        "referenciaCatalogo": "MAX CAT ADUL FRANGO",
+        "familiaReferencia": "MAX CAT ADUL FRANGO",
+        "referenciasEquivalentes": [
+          "MAX CAT ADUL FRANGO"
+        ],
+        "peso": "10.1kg",
+        "precio": 178600,
+        "stock": null,
+        "presentaciones": [
+          {
+            "peso": "1kg",
+            "precio": 27400,
+            "metadata": {
+              "llave": "1036",
+              "codigo": "10301021036",
+              "source": "productos.json",
+              "codigos": [
+                "10301021036"
+              ],
+              "nombre_original": "MAX CAT ADUL FRANGO 1KL",
+              "source_reference": "MAX CAT ADUL FRANGO"
+            },
+            "stock": null,
+            "referenciaCatalogo": "MAX CAT ADUL FRANGO"
+          },
+          {
+            "peso": "3kg",
+            "precio": 67900,
+            "metadata": {
+              "llave": "1037",
+              "codigo": "10301021037",
+              "source": "productos.json",
+              "codigos": [
+                "10301021037"
+              ],
+              "nombre_original": "MAX CAT ADUL FRANGO 3KL",
+              "source_reference": "MAX CAT ADUL FRANGO"
+            },
+            "stock": null,
+            "referenciaCatalogo": "MAX CAT ADUL FRANGO"
+          },
+          {
+            "peso": "10.1kg",
+            "precio": 178600,
+            "metadata": {
+              "llave": "1038",
+              "codigo": "10301021038",
+              "source": "productos.json",
+              "codigos": [
+                "10301021038"
+              ],
+              "nombre_original": "MAX CAT ADULT FRANGO 10.1KG",
+              "source_reference": "MAX CAT ADULT FRANGO"
+            },
+            "stock": null,
+            "referenciaCatalogo": "MAX CAT ADUL FRANGO"
+          }
+        ],
+        "cantidad": 1,
+        "categoria": "comida",
+        "subcategoria": "concentrado",
+        "contextoCreadoEn": "2026-10-10T19:22:45.928Z"
+      }
+    ],
+    "ultimaConsulta": {
+      "terminos": [
+        "max",
+        "cat",
+        "adulto",
+        "frango"
+      ],
+      "etiqueta": "max cat adulto frango",
+      "presentacion": "10.1kg",
+      "fuente": "texto",
+      "nivel": "alta",
+      "razon": "nombre_exacto",
+      "aclaracion": null,
+      "creadoEn": "2026-10-10T19:22:45.926Z",
+      "solicitudOriginal": {
+        "intencion": "consulta_producto",
+        "accion": "consultar",
+        "producto": {
+          "accion": "consultar",
+          "marca": "MAX CAT",
+          "referencia": "MAX CAT ADUL FRANGO",
+          "linea": "Professional Line",
+          "textoVisible": "x10kg",
+          "mencionOriginal": null,
+          "categoria": "comida",
+          "subcategoria": "concentrado",
+          "especie": "gato",
+          "etapa": "adulto",
+          "tamano": null,
+          "sabores": [],
+          "presentacion": "10.1kg",
+          "condiciones": [],
+          "cantidad": null,
+          "observado": {
+            "nombre": "max cat frango & arroz adulto",
+            "presentacion": null,
+            "confianzaIdentidad": 0.98,
+            "confianzaPresentacion": 0.08
+          },
+          "solicitud": {
+            "presentacionTexto": "10kg",
+            "presentacionContexto": null,
+            "contextoVigente": false,
+            "cantidadTexto": null,
+            "cantidadContexto": null
+          },
+          "fuentePresentacion": "texto",
+          "requierePresentacion": false,
+          "pesoTextoOriginal": "10kg",
+          "duracion": null,
+          "coincidenciaVisualValidada": false,
+          "nombreFamilia": "MAX CAT ADUL FRANGO",
+          "referenciasEquivalentes": [
+            "MAX CAT ADUL FRANGO"
+          ],
+          "presentacionesEquivalentes": [
+            {
+              "peso": "1kg",
+              "precio": 27400,
+              "metadata": {
+                "llave": "1036",
+                "codigo": "10301021036",
+                "source": "productos.json",
+                "codigos": [
+                  "10301021036"
+                ],
+                "nombre_original": "MAX CAT ADUL FRANGO 1KL",
+                "source_reference": "MAX CAT ADUL FRANGO"
+              },
+              "stock": null,
+              "referencia": "MAX CAT ADUL FRANGO"
+            },
+            {
+              "peso": "3kg",
+              "precio": 67900,
+              "metadata": {
+                "llave": "1037",
+                "codigo": "10301021037",
+                "source": "productos.json",
+                "codigos": [
+                  "10301021037"
+                ],
+                "nombre_original": "MAX CAT ADUL FRANGO 3KL",
+                "source_reference": "MAX CAT ADUL FRANGO"
+              },
+              "stock": null,
+              "referencia": "MAX CAT ADUL FRANGO"
+            },
+            {
+              "peso": "10.1kg",
+              "precio": 178600,
+              "metadata": {
+                "llave": "1038",
+                "codigo": "10301021038",
+                "source": "productos.json",
+                "codigos": [
+                  "10301021038"
+                ],
+                "nombre_original": "MAX CAT ADULT FRANGO 10.1KG",
+                "source_reference": "MAX CAT ADULT FRANGO"
+              },
+              "stock": null,
+              "referencia": "MAX CAT ADUL FRANGO"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "caso": "dos-fotos-envio",
+    "respuesta": "Pedido:\n- 1 x ARENA KING CAT x 25 kg: $62.900\n- 1 x MAX CAT ADUL FRANGO 10.1kg: $178.600\nTotal: $241.500\n\nPara completar tu domicilio, compárteme estos datos:\n- cedula\n- correo\n- celular",
+    "trazas": [
+      {
+        "run": "6ad42914-c420-49f0-800b-bccc028df880",
+        "etapa": "vision_output",
+        "modelo": "gpt-5.4",
+        "imagenes": [],
+        "mensajeHash": "989787698b91d7ad",
+        "estadoHash": "799bea6757f775d3",
+        "historialHash": "8c01de93dee8e231",
+        "fase": "router",
+        "lectura": {
+          "intencion": "pedido_producto",
+          "accion": "agregar",
+          "producto": {
+            "marca": null,
+            "referencia": null,
+            "linea": null,
+            "categoria": null,
+            "especie": null,
+            "etapa": null,
+            "tamano": null,
+            "sabores": [],
+            "presentacion": null,
+            "cantidad": null
+          },
+          "productos": [
+            {
+              "marca": "ARENA KING CAT",
+              "referencia": "ARENA KING CAT",
+              "linea": null,
+              "categoria": "arena para gatos",
+              "especie": "gato",
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": "25kg",
+              "cantidad": 1
+            },
+            {
+              "marca": "MAX CAT",
+              "referencia": "MAX CAT ADUL FRANGO",
+              "linea": "Professional Line",
+              "categoria": "comida",
+              "especie": "gato",
+              "etapa": "adulto",
+              "tamano": null,
+              "sabores": [],
+              "presentacion": "10.1kg",
+              "cantidad": 1
+            }
+          ],
+          "consultaCatalogo": {
+            "necesaria": false,
+            "consulta": null
+          }
+        }
+      },
+      {
+        "run": "6ad42914-c420-49f0-800b-bccc028df880",
+        "etapa": "producto_interpretado",
+        "modelo": "gpt-5.4",
+        "imagenes": [],
+        "mensajeHash": "989787698b91d7ad",
+        "estadoHash": "799bea6757f775d3",
+        "historialHash": "8c01de93dee8e231",
+        "fase": "router",
+        "lectura": {
+          "intencion": "pedido_producto",
+          "accion": "agregar",
+          "producto": {
+            "marca": null,
+            "referencia": null,
+            "linea": null,
+            "categoria": null,
+            "especie": null,
+            "etapa": null,
+            "tamano": null,
+            "sabores": [],
+            "presentacion": null,
+            "cantidad": null
+          },
+          "productos": [
+            {
+              "marca": "ARENA KING CAT",
+              "referencia": "ARENA KING CAT",
+              "linea": null,
+              "categoria": "arena para gatos",
+              "especie": "gato",
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": "25kg",
+              "cantidad": 1
+            },
+            {
+              "marca": "MAX CAT",
+              "referencia": "MAX CAT ADUL FRANGO",
+              "linea": "Professional Line",
+              "categoria": "comida",
+              "especie": "gato",
+              "etapa": "adulto",
+              "tamano": null,
+              "sabores": [],
+              "presentacion": "10.1kg",
+              "cantidad": 1
+            }
+          ],
+          "consultaCatalogo": {
+            "necesaria": false,
+            "consulta": null
+          }
+        }
+      },
+      {
+        "run": "6ad42914-c420-49f0-800b-bccc028df880",
+        "etapa": "productos_combinados",
+        "lectura": {
+          "intencion": "pedido_producto",
+          "accion": "agregar",
+          "producto": {
+            "marca": null,
+            "referencia": null,
+            "linea": null,
+            "categoria": null,
+            "especie": null,
+            "etapa": null,
+            "tamano": null,
+            "sabores": [],
+            "presentacion": null,
+            "cantidad": null
+          },
+          "productos": [
+            {
+              "marca": "ARENA KING CAT",
+              "referencia": "ARENA KING CAT",
+              "linea": null,
+              "categoria": "arena para gatos",
+              "especie": "gato",
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": "25kg",
+              "cantidad": 1
+            },
+            {
+              "marca": "MAX CAT",
+              "referencia": "MAX CAT ADUL FRANGO",
+              "linea": "Professional Line",
+              "categoria": "comida",
+              "especie": "gato",
+              "etapa": "adulto",
+              "tamano": null,
+              "sabores": [],
+              "presentacion": "10.1kg",
+              "cantidad": 1
+            }
+          ],
+          "consultaCatalogo": {
+            "necesaria": false,
+            "consulta": null
+          }
+        }
+      },
+      {
+        "run": "6ad42914-c420-49f0-800b-bccc028df880",
+        "etapa": "busqueda_candidatos",
+        "consulta": "ARENA KING CAT ARENA KING CAT x 25 kg; MAX CAT MAX CAT ADUL FRANGO 10.1kg",
+        "candidatos": [
+          {
+            "marca": "ARENA",
+            "referencias": [
+              {
+                "nombre": "ARENA KING",
+                "especie": "otro",
+                "etapa": null,
+                "presentaciones": [
+                  "x 1 kg"
+                ]
+              }
+            ]
+          },
+          {
+            "marca": "ARENA KING CAT",
+            "referencias": [
+              {
+                "nombre": "ARENA KING CAT",
+                "especie": "gato",
+                "etapa": null,
+                "presentaciones": [
+                  "x 25 kg",
+                  "x 4.5 kg",
+                  "x 8 kg"
+                ]
+              }
+            ]
+          },
+          {
+            "marca": "MAX CAT",
+            "referencias": [
+              {
+                "nombre": "MAX CAT ADUL FRANGO",
+                "especie": "gato",
+                "etapa": "adulto",
+                "presentaciones": [
+                  "1kg",
+                  "3kg",
+                  "10.1kg"
+                ]
+              },
+              {
+                "nombre": "MAX CAT CASTRADO",
+                "especie": "gato",
+                "etapa": null,
+                "presentaciones": [
+                  "1kg",
+                  "3kg"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "run": "6ad42914-c420-49f0-800b-bccc028df880",
+        "etapa": "matching_filtros",
+        "vision": false,
+        "producto": null,
+        "antes": [
+          {
+            "nombre": "ARENA KING CAT",
+            "score": 0.7433333333333334,
+            "scoreBase": 0.5833333333333334,
+            "peso": true,
+            "especie": true,
+            "etapa": null,
+            "categoria": true
+          }
+        ],
+        "despues": [
+          {
+            "nombre": "ARENA KING CAT",
+            "score": 0.7433333333333334
+          }
+        ]
+      },
+      {
+        "run": "6ad42914-c420-49f0-800b-bccc028df880",
+        "etapa": "match_final",
+        "nivel": "media",
+        "razon": "similitud_media",
+        "presentacion": "25kg",
+        "coincidencia": null,
+        "equivalencia": null
+      },
+      {
+        "run": "6ad42914-c420-49f0-800b-bccc028df880",
+        "etapa": "matching_filtros",
+        "vision": false,
+        "producto": {
+          "marca": "MAX CAT",
+          "referencia": "MAX CAT ADUL FRANGO",
+          "categoria": "comida",
+          "presentacion": "10.1kg",
+          "cantidad": 1
+        },
+        "antes": [
+          {
+            "nombre": "MAX CAT ADUL FRANGO",
+            "score": 1,
+            "scoreBase": 1,
+            "peso": true,
+            "especie": true,
+            "etapa": true,
+            "categoria": true
+          },
+          {
+            "nombre": "MAX CAT CASTRADO",
+            "score": 0.6177777777777778,
+            "scoreBase": 0.7777777777777778,
+            "peso": false,
+            "especie": true,
+            "etapa": null,
+            "categoria": true
+          }
+        ],
+        "despues": [
+          {
+            "nombre": "MAX CAT ADUL FRANGO",
+            "score": 1
+          }
+        ]
+      },
+      {
+        "run": "6ad42914-c420-49f0-800b-bccc028df880",
+        "etapa": "match_final",
+        "nivel": "alta",
+        "razon": "nombre_exacto",
+        "presentacion": "10.1kg",
+        "coincidencia": {
+          "marca": "MAX CAT",
+          "referencia": "MAX CAT ADUL FRANGO",
+          "referenciaCatalogo": "MAX CAT ADUL FRANGO",
+          "referenciasEquivalentes": [
+            "MAX CAT ADUL FRANGO"
+          ],
+          "score": 1,
+          "tipoCoincidencia": "referencia",
+          "presentaciones": [
+            {
+              "peso": "1kg",
+              "precio": 27400,
+              "metadata": {
+                "llave": "1036",
+                "codigo": "10301021036",
+                "source": "productos.json",
+                "codigos": [
+                  "10301021036"
+                ],
+                "nombre_original": "MAX CAT ADUL FRANGO 1KL",
+                "source_reference": "MAX CAT ADUL FRANGO"
+              },
+              "stock": null,
+              "referencia": "MAX CAT ADUL FRANGO"
+            },
+            {
+              "peso": "3kg",
+              "precio": 67900,
+              "metadata": {
+                "llave": "1037",
+                "codigo": "10301021037",
+                "source": "productos.json",
+                "codigos": [
+                  "10301021037"
+                ],
+                "nombre_original": "MAX CAT ADUL FRANGO 3KL",
+                "source_reference": "MAX CAT ADUL FRANGO"
+              },
+              "stock": null,
+              "referencia": "MAX CAT ADUL FRANGO"
+            },
+            {
+              "peso": "10.1kg",
+              "precio": 178600,
+              "metadata": {
+                "llave": "1038",
+                "codigo": "10301021038",
+                "source": "productos.json",
+                "codigos": [
+                  "10301021038"
+                ],
+                "nombre_original": "MAX CAT ADULT FRANGO 10.1KG",
+                "source_reference": "MAX CAT ADULT FRANGO"
+              },
+              "stock": null,
+              "referencia": "MAX CAT ADUL FRANGO"
+            }
+          ]
+        },
+        "equivalencia": null
+      }
+    ],
+    "solicitudes": [
+      {
+        "marca": "ARENA KING CAT",
+        "referencia": "ARENA KING CAT",
+        "referenciaCatalogo": "ARENA KING CAT",
+        "peso": "x 25 kg",
+        "precio": 62900,
+        "stock": null,
+        "cantidad": 1,
+        "presentaciones": [
+          {
+            "peso": "x 25 kg",
+            "precio": 62900,
+            "metadata": {
+              "llave": "83",
+              "codigo": "10201010083",
+              "source": "productos.json",
+              "codigos": [
+                "10201010083"
+              ],
+              "nombre_original": "ARENA KING CAT X 25 KL"
+            },
+            "stock": null,
+            "referencia": "ARENA KING CAT"
+          },
+          {
+            "peso": "x 4.5 kg",
+            "precio": 13300,
+            "metadata": {
+              "llave": "84",
+              "codigo": "10201010084",
+              "source": "productos.json",
+              "codigos": [
+                "10201010084"
+              ],
+              "nombre_original": "ARENA KING CAT X 4.5 KL"
+            },
+            "stock": null,
+            "referencia": "ARENA KING CAT"
+          },
+          {
+            "peso": "x 8 kg",
+            "precio": 23500,
+            "metadata": {
+              "llave": "85",
+              "codigo": "10201010085",
+              "source": "productos.json",
+              "codigos": [
+                "10201010085"
+              ],
+              "nombre_original": "ARENA KING CAT X 8 KL"
+            },
+            "stock": null,
+            "referencia": "ARENA KING CAT"
+          }
+        ],
+        "categoria": "arena_sustrato",
+        "subcategoria": "arena",
+        "contextoCreadoEn": "2026-10-10T19:22:54.467Z",
+        "presentacion": "25kg",
+        "accion": "agregar",
+        "estado": "identificado",
+        "presentacionesDisponibles": [
+          "x 25 kg"
+        ],
+        "pregunta": null
+      },
+      {
+        "marca": "MAX CAT",
+        "referencia": "MAX CAT ADUL FRANGO",
+        "referenciaCatalogo": "MAX CAT ADUL FRANGO",
+        "familiaReferencia": "MAX CAT ADUL FRANGO",
+        "referenciasEquivalentes": [
+          "MAX CAT ADUL FRANGO"
+        ],
+        "peso": "10.1kg",
+        "precio": 178600,
+        "stock": null,
+        "presentaciones": [
+          {
+            "peso": "1kg",
+            "precio": 27400,
+            "metadata": {
+              "llave": "1036",
+              "codigo": "10301021036",
+              "source": "productos.json",
+              "codigos": [
+                "10301021036"
+              ],
+              "nombre_original": "MAX CAT ADUL FRANGO 1KL",
+              "source_reference": "MAX CAT ADUL FRANGO"
+            },
+            "stock": null,
+            "referenciaCatalogo": "MAX CAT ADUL FRANGO"
+          },
+          {
+            "peso": "3kg",
+            "precio": 67900,
+            "metadata": {
+              "llave": "1037",
+              "codigo": "10301021037",
+              "source": "productos.json",
+              "codigos": [
+                "10301021037"
+              ],
+              "nombre_original": "MAX CAT ADUL FRANGO 3KL",
+              "source_reference": "MAX CAT ADUL FRANGO"
+            },
+            "stock": null,
+            "referenciaCatalogo": "MAX CAT ADUL FRANGO"
+          },
+          {
+            "peso": "10.1kg",
+            "precio": 178600,
+            "metadata": {
+              "llave": "1038",
+              "codigo": "10301021038",
+              "source": "productos.json",
+              "codigos": [
+                "10301021038"
+              ],
+              "nombre_original": "MAX CAT ADULT FRANGO 10.1KG",
+              "source_reference": "MAX CAT ADULT FRANGO"
+            },
+            "stock": null,
+            "referenciaCatalogo": "MAX CAT ADUL FRANGO"
+          }
+        ],
+        "cantidad": 1,
+        "categoria": "comida",
+        "subcategoria": "concentrado",
+        "contextoCreadoEn": "2026-10-10T19:22:54.469Z",
+        "presentacion": "10.1kg",
+        "accion": "agregar",
+        "estado": "identificado",
+        "presentacionesDisponibles": [
+          "1kg",
+          "3kg",
+          "10.1kg"
+        ],
+        "pregunta": null
+      }
+    ],
+    "carrito": [
+      {
+        "marca": "ARENA KING CAT",
+        "referencia": "ARENA KING CAT",
+        "peso": "x 25 kg",
+        "precio": 62900,
+        "cantidad": 1,
+        "categoria": "arena_sustrato",
+        "subcategoria": "arena",
+        "especie": "gato",
+        "requiereConfirmacion": false
+      },
+      {
+        "marca": "MAX CAT",
+        "referencia": "MAX CAT ADUL FRANGO",
+        "peso": "10.1kg",
+        "precio": 178600,
+        "cantidad": 1,
+        "categoria": "comida",
+        "subcategoria": "concentrado",
+        "especie": "gato",
+        "requiereConfirmacion": false
+      }
+    ],
+    "productosConsultados": [],
+    "ultimaConsulta": null
+  }
+]

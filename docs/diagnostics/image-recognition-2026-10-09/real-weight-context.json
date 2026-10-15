@@ -1,0 +1,1246 @@
+[
+  {
+    "caso": "imagen-con-peso",
+    "respuesta": "No encuentro MAX CAT FRANGO ARROZ ADULTO de 10kg en el catálogo actual. No la he agregado al pedido. ¿Quieres que revisemos otra referencia?",
+    "trazas": [
+      {
+        "run": "51886a01-0686-41f7-b878-ced708f5949d",
+        "etapa": "vision_output",
+        "modelo": "gpt-5.4",
+        "imagenes": [
+          "969edd5b4036ad31"
+        ],
+        "mensajeHash": "8d68c05b64a58c4b",
+        "estadoHash": "e179e49ce9bf684e",
+        "historialHash": "4f53cda18c2baa0c",
+        "fase": "router",
+        "lectura": {
+          "intencion": "consulta_producto",
+          "accion": "consultar",
+          "producto": {
+            "marca": "Max",
+            "referencia": null,
+            "linea": "Professional Line",
+            "categoria": "alimento",
+            "especie": "gato",
+            "etapa": "adulto",
+            "tamano": null,
+            "sabores": [],
+            "presentacion": "10kg",
+            "cantidad": null,
+            "observado": {
+              "nombre": "max CAT FRANGO & ARROZ adulto",
+              "presentacion": null,
+              "confianzaIdentidad": 0.95,
+              "confianzaPresentacion": 0.08
+            },
+            "solicitud": {
+              "presentacionTexto": "10kg",
+              "presentacionContexto": null,
+              "contextoVigente": false,
+              "cantidadTexto": null,
+              "cantidadContexto": null
+            }
+          },
+          "productos": [
+            {
+              "marca": "Max",
+              "referencia": null,
+              "linea": "Professional Line",
+              "categoria": "alimento",
+              "especie": "gato",
+              "etapa": "adulto",
+              "tamano": null,
+              "sabores": [],
+              "presentacion": "10kg",
+              "cantidad": null,
+              "observado": {
+                "nombre": "max CAT FRANGO & ARROZ adulto",
+                "presentacion": null,
+                "confianzaIdentidad": 0.95,
+                "confianzaPresentacion": 0.08
+              },
+              "solicitud": {
+                "presentacionTexto": "10kg",
+                "presentacionContexto": null,
+                "contextoVigente": false,
+                "cantidadTexto": null,
+                "cantidadContexto": null
+              }
+            }
+          ],
+          "consultaCatalogo": {
+            "necesaria": true,
+            "consulta": "alimento para gato Max Cat Professional Line adulto 10kg frango & arroz"
+          }
+        }
+      },
+      {
+        "run": "51886a01-0686-41f7-b878-ced708f5949d",
+        "etapa": "producto_interpretado",
+        "modelo": "gpt-5.4",
+        "imagenes": [
+          "969edd5b4036ad31"
+        ],
+        "mensajeHash": "8d68c05b64a58c4b",
+        "estadoHash": "e179e49ce9bf684e",
+        "historialHash": "4f53cda18c2baa0c",
+        "fase": "router",
+        "lectura": {
+          "intencion": "consulta_producto",
+          "accion": "consultar",
+          "producto": {
+            "marca": "Max",
+            "referencia": null,
+            "linea": "Professional Line",
+            "categoria": "alimento",
+            "especie": "gato",
+            "etapa": "adulto",
+            "tamano": null,
+            "sabores": [],
+            "presentacion": "10kg",
+            "cantidad": null,
+            "observado": {
+              "nombre": "max CAT FRANGO & ARROZ adulto",
+              "presentacion": null,
+              "confianzaIdentidad": 0.95,
+              "confianzaPresentacion": 0.08
+            },
+            "solicitud": {
+              "presentacionTexto": "10kg",
+              "presentacionContexto": null,
+              "contextoVigente": false,
+              "cantidadTexto": null,
+              "cantidadContexto": null
+            },
+            "requierePresentacion": false
+          },
+          "productos": [
+            {
+              "marca": "Max",
+              "referencia": null,
+              "linea": "Professional Line",
+              "categoria": "alimento",
+              "especie": "gato",
+              "etapa": "adulto",
+              "tamano": null,
+              "sabores": [],
+              "presentacion": "10kg",
+              "cantidad": null,
+              "observado": {
+                "nombre": "max CAT FRANGO & ARROZ adulto",
+                "presentacion": null,
+                "confianzaIdentidad": 0.95,
+                "confianzaPresentacion": 0.08
+              },
+              "solicitud": {
+                "presentacionTexto": "10kg",
+                "presentacionContexto": null,
+                "contextoVigente": false,
+                "cantidadTexto": null,
+                "cantidadContexto": null
+              },
+              "requierePresentacion": false
+            }
+          ],
+          "consultaCatalogo": {
+            "necesaria": true,
+            "consulta": "alimento para gato Max Cat Professional Line adulto 10kg frango & arroz"
+          }
+        }
+      },
+      {
+        "run": "51886a01-0686-41f7-b878-ced708f5949d",
+        "etapa": "productos_combinados",
+        "lectura": {
+          "intencion": "consulta_producto",
+          "accion": "consultar",
+          "producto": {
+            "marca": "Max",
+            "referencia": null,
+            "linea": "Professional Line",
+            "categoria": "alimento",
+            "especie": "gato",
+            "etapa": "adulto",
+            "tamano": null,
+            "sabores": [],
+            "presentacion": "10kg",
+            "cantidad": null,
+            "observado": {
+              "nombre": "max CAT FRANGO & ARROZ adulto",
+              "presentacion": null,
+              "confianzaIdentidad": 0.95,
+              "confianzaPresentacion": 0.08
+            },
+            "solicitud": {
+              "presentacionTexto": "10kg",
+              "presentacionContexto": null,
+              "contextoVigente": false,
+              "cantidadTexto": null,
+              "cantidadContexto": null
+            },
+            "requierePresentacion": false
+          },
+          "productos": [
+            {
+              "marca": "Max",
+              "referencia": null,
+              "linea": "Professional Line",
+              "categoria": "alimento",
+              "especie": "gato",
+              "etapa": "adulto",
+              "tamano": null,
+              "sabores": [],
+              "presentacion": "10kg",
+              "cantidad": null,
+              "observado": {
+                "nombre": "max CAT FRANGO & ARROZ adulto",
+                "presentacion": null,
+                "confianzaIdentidad": 0.95,
+                "confianzaPresentacion": 0.08
+              },
+              "solicitud": {
+                "presentacionTexto": "10kg",
+                "presentacionContexto": null,
+                "contextoVigente": false,
+                "cantidadTexto": null,
+                "cantidadContexto": null
+              },
+              "requierePresentacion": false
+            }
+          ],
+          "consultaCatalogo": {
+            "necesaria": true,
+            "consulta": "alimento para gato Max Cat Professional Line adulto 10kg frango & arroz"
+          }
+        }
+      },
+      {
+        "run": "51886a01-0686-41f7-b878-ced708f5949d",
+        "etapa": "busqueda_candidatos",
+        "consulta": "Max max CAT FRANGO & ARROZ adulto Professional Line gato adulto 10kg",
+        "candidatos": [
+          {
+            "marca": "MAX CAT",
+            "referencias": [
+              {
+                "nombre": "MAX CAT ADUL FRANGO",
+                "especie": "gato",
+                "etapa": "adulto",
+                "presentaciones": [
+                  "1kg",
+                  "3kg",
+                  "10.1kg"
+                ]
+              },
+              {
+                "nombre": "MAX CAT CASTRADO",
+                "especie": "gato",
+                "etapa": null,
+                "presentaciones": [
+                  "1kg",
+                  "3kg"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "run": "51886a01-0686-41f7-b878-ced708f5949d",
+        "etapa": "vision_output",
+        "modelo": "gpt-4.1",
+        "imagenes": [
+          "969edd5b4036ad31"
+        ],
+        "mensajeHash": "8d68c05b64a58c4b",
+        "estadoHash": "e179e49ce9bf684e",
+        "historialHash": "4f53cda18c2baa0c",
+        "fase": "mapeo",
+        "lectura": {
+          "intencion": "consulta_producto",
+          "accion": "consultar",
+          "producto": {
+            "marca": "MAX CAT",
+            "referencia": null,
+            "linea": null,
+            "categoria": "comida",
+            "especie": "gato",
+            "etapa": "adulto",
+            "tamano": null,
+            "sabores": [
+              "frango",
+              "arroz",
+              "pollo",
+              "rice"
+            ],
+            "presentacion": "10kg",
+            "cantidad": null,
+            "observado": {
+              "nombre": "MAX CAT FRANGO & ARROZ adulto",
+              "presentacion": null,
+              "confianzaIdentidad": 0.98,
+              "confianzaPresentacion": 0.2
+            },
+            "solicitud": {
+              "presentacionTexto": "10kg",
+              "presentacionContexto": null,
+              "contextoVigente": false,
+              "cantidadTexto": null,
+              "cantidadContexto": null
+            }
+          },
+          "productos": []
+        }
+      },
+      {
+        "run": "51886a01-0686-41f7-b878-ced708f5949d",
+        "etapa": "producto_interpretado",
+        "modelo": "gpt-4.1",
+        "imagenes": [
+          "969edd5b4036ad31"
+        ],
+        "mensajeHash": "8d68c05b64a58c4b",
+        "estadoHash": "e179e49ce9bf684e",
+        "historialHash": "4f53cda18c2baa0c",
+        "fase": "mapeo",
+        "lectura": {
+          "intencion": "consulta_producto",
+          "accion": "consultar",
+          "producto": {
+            "marca": "MAX CAT",
+            "referencia": null,
+            "linea": null,
+            "categoria": "comida",
+            "especie": "gato",
+            "etapa": "adulto",
+            "tamano": null,
+            "sabores": [
+              "frango",
+              "arroz",
+              "pollo",
+              "rice"
+            ],
+            "presentacion": "10kg",
+            "cantidad": null,
+            "observado": {
+              "nombre": "MAX CAT FRANGO & ARROZ adulto",
+              "presentacion": null,
+              "confianzaIdentidad": 0.98,
+              "confianzaPresentacion": 0.2
+            },
+            "solicitud": {
+              "presentacionTexto": "10kg",
+              "presentacionContexto": null,
+              "contextoVigente": false,
+              "cantidadTexto": null,
+              "cantidadContexto": null
+            },
+            "requierePresentacion": false
+          },
+          "productos": [],
+          "consultaCatalogo": {
+            "necesaria": null,
+            "consulta": null
+          }
+        }
+      },
+      {
+        "run": "51886a01-0686-41f7-b878-ced708f5949d",
+        "etapa": "matching_filtros",
+        "vision": true,
+        "producto": {
+          "marca": "MAX CAT",
+          "referencia": "MAX CAT FRANGO & ARROZ adulto",
+          "linea": null,
+          "categoria": "comida",
+          "especie": "gato",
+          "etapa": "adulto",
+          "tamano": null,
+          "sabores": [
+            "frango",
+            "arroz",
+            "pollo",
+            "rice"
+          ],
+          "presentacion": "10kg",
+          "cantidad": null,
+          "observado": {
+            "nombre": "MAX CAT FRANGO & ARROZ adulto",
+            "presentacion": null,
+            "confianzaIdentidad": 0.98,
+            "confianzaPresentacion": 0.2
+          },
+          "solicitud": {
+            "presentacionTexto": "10kg",
+            "presentacionContexto": null,
+            "contextoVigente": false,
+            "cantidadTexto": null,
+            "cantidadContexto": null
+          },
+          "requierePresentacion": false
+        },
+        "antes": [
+          {
+            "nombre": "MAX CAT ADUL FRANGO",
+            "score": 0.6678571428571427,
+            "scoreBase": 0.8428571428571427,
+            "peso": false,
+            "especie": true,
+            "etapa": true,
+            "categoria": true
+          },
+          {
+            "nombre": "MAX CAT CASTRADO",
+            "score": 0.33318333333333333,
+            "scoreBase": 0.6458333333333334,
+            "peso": false,
+            "especie": true,
+            "etapa": null,
+            "categoria": true
+          }
+        ],
+        "despues": [
+          {
+            "nombre": "MAX CAT ADUL FRANGO",
+            "score": 0.6678571428571427
+          }
+        ]
+      },
+      {
+        "run": "51886a01-0686-41f7-b878-ced708f5949d",
+        "etapa": "match_final",
+        "nivel": "baja",
+        "razon": "sin_coincidencia_confiable",
+        "presentacion": "10kg",
+        "coincidencia": null,
+        "equivalencia": null
+      },
+      {
+        "run": "51886a01-0686-41f7-b878-ced708f5949d",
+        "etapa": "vision_output",
+        "modelo": "gpt-4.1",
+        "imagenes": [
+          "969edd5b4036ad31"
+        ],
+        "mensajeHash": "8d68c05b64a58c4b",
+        "estadoHash": "e179e49ce9bf684e",
+        "historialHash": "4f53cda18c2baa0c",
+        "fase": "mapeo",
+        "lectura": {
+          "intencion": "consulta_producto",
+          "accion": "consultar",
+          "producto": {
+            "marca": "MAX CAT",
+            "referencia": "MAX CAT ADUL FRANGO",
+            "linea": null,
+            "categoria": "comida",
+            "especie": "gato",
+            "etapa": "adulto",
+            "tamano": null,
+            "sabores": [
+              "frango",
+              "arroz"
+            ],
+            "presentacion": "10kg",
+            "cantidad": null,
+            "observado": {
+              "nombre": "MAX CAT FRANGO & ARROZ adulto",
+              "presentacion": null,
+              "confianzaIdentidad": 1,
+              "confianzaPresentacion": 0
+            },
+            "solicitud": {
+              "presentacionTexto": "10kg",
+              "presentacionContexto": null,
+              "contextoVigente": false,
+              "cantidadTexto": null,
+              "cantidadContexto": null
+            }
+          },
+          "productos": []
+        }
+      },
+      {
+        "run": "51886a01-0686-41f7-b878-ced708f5949d",
+        "etapa": "producto_interpretado",
+        "modelo": "gpt-4.1",
+        "imagenes": [
+          "969edd5b4036ad31"
+        ],
+        "mensajeHash": "8d68c05b64a58c4b",
+        "estadoHash": "e179e49ce9bf684e",
+        "historialHash": "4f53cda18c2baa0c",
+        "fase": "mapeo",
+        "lectura": {
+          "intencion": "consulta_producto",
+          "accion": "consultar",
+          "producto": {
+            "marca": "MAX CAT",
+            "referencia": "MAX CAT ADUL FRANGO",
+            "linea": null,
+            "categoria": "comida",
+            "especie": "gato",
+            "etapa": "adulto",
+            "tamano": null,
+            "sabores": [
+              "frango",
+              "arroz"
+            ],
+            "presentacion": "10kg",
+            "cantidad": null,
+            "observado": {
+              "nombre": "MAX CAT FRANGO & ARROZ adulto",
+              "presentacion": null,
+              "confianzaIdentidad": 1,
+              "confianzaPresentacion": 0
+            },
+            "solicitud": {
+              "presentacionTexto": "10kg",
+              "presentacionContexto": null,
+              "contextoVigente": false,
+              "cantidadTexto": null,
+              "cantidadContexto": null
+            },
+            "requierePresentacion": false
+          },
+          "productos": [],
+          "consultaCatalogo": {
+            "necesaria": null,
+            "consulta": null
+          }
+        }
+      },
+      {
+        "run": "51886a01-0686-41f7-b878-ced708f5949d",
+        "etapa": "matching_filtros",
+        "vision": true,
+        "producto": {
+          "marca": "MAX CAT",
+          "referencia": "MAX CAT FRANGO & ARROZ adulto",
+          "linea": null,
+          "categoria": "comida",
+          "especie": "gato",
+          "etapa": "adulto",
+          "tamano": null,
+          "sabores": [
+            "frango",
+            "arroz"
+          ],
+          "presentacion": "10kg",
+          "cantidad": null,
+          "observado": {
+            "nombre": "MAX CAT FRANGO & ARROZ adulto",
+            "presentacion": null,
+            "confianzaIdentidad": 1,
+            "confianzaPresentacion": 0.08
+          },
+          "solicitud": {
+            "presentacionTexto": "10kg",
+            "presentacionContexto": null,
+            "contextoVigente": false,
+            "cantidadTexto": null,
+            "cantidadContexto": null
+          },
+          "requierePresentacion": false
+        },
+        "antes": [
+          {
+            "nombre": "MAX CAT ADUL FRANGO",
+            "score": 0.6678571428571427,
+            "scoreBase": 0.8428571428571427,
+            "peso": false,
+            "especie": true,
+            "etapa": true,
+            "categoria": true
+          },
+          {
+            "nombre": "MAX CAT CASTRADO",
+            "score": 0.33318333333333333,
+            "scoreBase": 0.6458333333333334,
+            "peso": false,
+            "especie": true,
+            "etapa": null,
+            "categoria": true
+          }
+        ],
+        "despues": [
+          {
+            "nombre": "MAX CAT ADUL FRANGO",
+            "score": 0.6678571428571427
+          }
+        ]
+      },
+      {
+        "run": "51886a01-0686-41f7-b878-ced708f5949d",
+        "etapa": "match_final",
+        "nivel": "baja",
+        "razon": "sin_coincidencia_confiable",
+        "presentacion": "10kg",
+        "coincidencia": null,
+        "equivalencia": null
+      }
+    ],
+    "solicitudes": [],
+    "ultimaConsulta": {
+      "terminos": [
+        "max",
+        "cat",
+        "frango",
+        "arroz",
+        "adulto"
+      ],
+      "etiqueta": "max cat frango arroz adulto",
+      "presentacion": "10kg",
+      "fuente": "imagen",
+      "nivel": "baja",
+      "razon": "sin_coincidencia_confiable",
+      "aclaracion": null,
+      "creadoEn": "2026-10-09T18:59:01.892Z",
+      "solicitudOriginal": {
+        "intencion": "consulta_producto",
+        "accion": "consultar",
+        "producto": {
+          "accion": "consultar",
+          "marca": "MAX CAT",
+          "referencia": null,
+          "linea": "Professional Line",
+          "textoVisible": "MAX CAT FRANGO & ARROZ adulto",
+          "mencionOriginal": null,
+          "categoria": "comida",
+          "subcategoria": "concentrado",
+          "especie": "gato",
+          "etapa": "adulto",
+          "tamano": null,
+          "sabores": [
+            "frango",
+            "arroz",
+            "pollo",
+            "rice"
+          ],
+          "presentacion": "10kg",
+          "condiciones": [],
+          "cantidad": null,
+          "observado": {
+            "nombre": "MAX CAT FRANGO & ARROZ adulto",
+            "presentacion": null,
+            "confianzaIdentidad": 0.98,
+            "confianzaPresentacion": 0.2
+          },
+          "solicitud": {
+            "presentacionTexto": "10kg",
+            "presentacionContexto": null,
+            "contextoVigente": false,
+            "cantidadTexto": null,
+            "cantidadContexto": null
+          },
+          "fuentePresentacion": "texto",
+          "requierePresentacion": false,
+          "pesoTextoOriginal": "10kg"
+        },
+        "entrega": {
+          "tipo": null,
+          "direccion": null,
+          "direccionCompleta": null,
+          "sector": null,
+          "metodoPago": null,
+          "sede": null
+        }
+      },
+      "sinCoincidenciaInformada": true
+    }
+  },
+  {
+    "caso": "reenviada-tras-peso",
+    "respuesta": ": no pude procesar esta solicitud por un problema temporal.",
+    "trazas": [
+      {
+        "run": "e59cfc73-77f8-4887-bcec-cfdd82027207",
+        "etapa": "vision_output",
+        "modelo": "gpt-5.4",
+        "imagenes": [
+          "969edd5b4036ad31"
+        ],
+        "mensajeHash": "de1e23169d0ffe0f",
+        "estadoHash": "250c8dc38704fc22",
+        "historialHash": "0b7830229d208e5f",
+        "fase": "router",
+        "lectura": {
+          "intencion": "otro",
+          "accion": null,
+          "producto": {
+            "marca": null,
+            "referencia": null,
+            "linea": null,
+            "categoria": null,
+            "especie": null,
+            "etapa": null,
+            "tamano": null,
+            "sabores": [],
+            "presentacion": null,
+            "cantidad": null,
+            "observado": {
+              "nombre": null,
+              "presentacion": null,
+              "confianzaIdentidad": 0,
+              "confianzaPresentacion": 0
+            },
+            "solicitud": {
+              "presentacionTexto": null,
+              "presentacionContexto": null,
+              "contextoVigente": false,
+              "cantidadTexto": null,
+              "cantidadContexto": null
+            }
+          },
+          "productos": [],
+          "consultaCatalogo": {
+            "necesaria": false,
+            "consulta": null
+          }
+        }
+      },
+      {
+        "run": "e59cfc73-77f8-4887-bcec-cfdd82027207",
+        "etapa": "producto_interpretado",
+        "modelo": "gpt-5.4",
+        "imagenes": [
+          "969edd5b4036ad31"
+        ],
+        "mensajeHash": "de1e23169d0ffe0f",
+        "estadoHash": "250c8dc38704fc22",
+        "historialHash": "0b7830229d208e5f",
+        "fase": "router",
+        "lectura": {
+          "intencion": "otro",
+          "accion": null,
+          "producto": {
+            "marca": null,
+            "referencia": null,
+            "linea": null,
+            "categoria": null,
+            "especie": null,
+            "etapa": null,
+            "tamano": null,
+            "sabores": [],
+            "presentacion": null,
+            "cantidad": null,
+            "observado": {
+              "nombre": null,
+              "presentacion": null,
+              "confianzaIdentidad": 0,
+              "confianzaPresentacion": 0
+            },
+            "solicitud": {
+              "presentacionTexto": null,
+              "presentacionContexto": null,
+              "contextoVigente": false,
+              "cantidadTexto": null,
+              "cantidadContexto": null
+            },
+            "requierePresentacion": true
+          },
+          "productos": [],
+          "consultaCatalogo": {
+            "necesaria": false,
+            "consulta": null
+          }
+        }
+      },
+      {
+        "run": "e59cfc73-77f8-4887-bcec-cfdd82027207",
+        "etapa": "vision_output",
+        "modelo": "gpt-5.4",
+        "imagenes": [
+          "969edd5b4036ad31"
+        ],
+        "mensajeHash": "de1e23169d0ffe0f",
+        "estadoHash": "250c8dc38704fc22",
+        "historialHash": "0b7830229d208e5f",
+        "fase": "individual",
+        "lectura": {
+          "intencion": "otro",
+          "accion": null,
+          "producto": {
+            "marca": "MAX CAT",
+            "referencia": null,
+            "linea": "Professional Line",
+            "categoria": "comida",
+            "especie": "gato",
+            "etapa": "adulto",
+            "tamano": null,
+            "sabores": [
+              "frango",
+              "arroz"
+            ],
+            "presentacion": "10kg",
+            "cantidad": null,
+            "observado": {
+              "nombre": "MAX CAT FRANGO & ARROZ adulto",
+              "presentacion": null,
+              "confianzaIdentidad": 0.99,
+              "confianzaPresentacion": 0.18
+            },
+            "solicitud": {
+              "presentacionTexto": null,
+              "presentacionContexto": "10kg",
+              "contextoVigente": true,
+              "cantidadTexto": null,
+              "cantidadContexto": null
+            }
+          },
+          "productos": [],
+          "consultaCatalogo": {
+            "necesaria": false,
+            "consulta": null
+          }
+        }
+      },
+      {
+        "run": "e59cfc73-77f8-4887-bcec-cfdd82027207",
+        "etapa": "producto_interpretado",
+        "modelo": "gpt-5.4",
+        "imagenes": [
+          "969edd5b4036ad31"
+        ],
+        "mensajeHash": "de1e23169d0ffe0f",
+        "estadoHash": "250c8dc38704fc22",
+        "historialHash": "0b7830229d208e5f",
+        "fase": "individual",
+        "lectura": {
+          "intencion": "otro",
+          "accion": null,
+          "producto": {
+            "marca": "MAX CAT",
+            "referencia": null,
+            "linea": "Professional Line",
+            "categoria": "comida",
+            "especie": "gato",
+            "etapa": "adulto",
+            "tamano": null,
+            "sabores": [
+              "frango",
+              "arroz"
+            ],
+            "presentacion": "10kg",
+            "cantidad": null,
+            "observado": {
+              "nombre": "MAX CAT FRANGO & ARROZ adulto",
+              "presentacion": null,
+              "confianzaIdentidad": 0.99,
+              "confianzaPresentacion": 0.18
+            },
+            "solicitud": {
+              "presentacionTexto": null,
+              "presentacionContexto": "10kg",
+              "contextoVigente": true,
+              "cantidadTexto": null,
+              "cantidadContexto": null
+            },
+            "requierePresentacion": false
+          },
+          "productos": [],
+          "consultaCatalogo": {
+            "necesaria": false,
+            "consulta": null
+          }
+        }
+      },
+      {
+        "run": "e59cfc73-77f8-4887-bcec-cfdd82027207",
+        "etapa": "productos_combinados",
+        "lectura": {
+          "intencion": "consulta_producto",
+          "accion": "consultar",
+          "producto": null,
+          "productos": [
+            {
+              "marca": null,
+              "referencia": null,
+              "linea": null,
+              "categoria": null,
+              "especie": null,
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": null,
+              "cantidad": null,
+              "observado": {
+                "nombre": null,
+                "presentacion": null,
+                "confianzaIdentidad": 0,
+                "confianzaPresentacion": 0
+              },
+              "solicitud": {
+                "presentacionTexto": null,
+                "presentacionContexto": null,
+                "contextoVigente": false,
+                "cantidadTexto": null,
+                "cantidadContexto": null
+              },
+              "requierePresentacion": true
+            },
+            {
+              "marca": "MAX CAT",
+              "referencia": null,
+              "linea": "Professional Line",
+              "categoria": "comida",
+              "especie": "gato",
+              "etapa": "adulto",
+              "tamano": null,
+              "sabores": [
+                "frango",
+                "arroz"
+              ],
+              "presentacion": "10kg",
+              "cantidad": null,
+              "observado": {
+                "nombre": "MAX CAT FRANGO & ARROZ adulto",
+                "presentacion": null,
+                "confianzaIdentidad": 0.99,
+                "confianzaPresentacion": 0.18
+              },
+              "solicitud": {
+                "presentacionTexto": null,
+                "presentacionContexto": "10kg",
+                "contextoVigente": true,
+                "cantidadTexto": null,
+                "cantidadContexto": null
+              },
+              "requierePresentacion": false
+            }
+          ],
+          "consultaCatalogo": {
+            "necesaria": false,
+            "consulta": null
+          }
+        }
+      },
+      {
+        "run": "e59cfc73-77f8-4887-bcec-cfdd82027207",
+        "etapa": "busqueda_candidatos",
+        "consulta": "MAX CAT MAX CAT FRANGO & ARROZ adulto Professional Line gato adulto frango arroz 10kg",
+        "candidatos": [
+          {
+            "marca": "MAX CAT",
+            "referencias": [
+              {
+                "nombre": "MAX CAT ADUL FRANGO",
+                "especie": "gato",
+                "etapa": "adulto",
+                "presentaciones": [
+                  "1kg",
+                  "3kg",
+                  "10.1kg"
+                ]
+              },
+              {
+                "nombre": "MAX CAT CASTRADO",
+                "especie": "gato",
+                "etapa": null,
+                "presentaciones": [
+                  "1kg",
+                  "3kg"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "run": "e59cfc73-77f8-4887-bcec-cfdd82027207",
+        "etapa": "matching_filtros",
+        "vision": true,
+        "producto": {
+          "marca": "MAX CAT",
+          "referencia": "MAX CAT FRANGO & ARROZ adulto",
+          "linea": null,
+          "categoria": "comida",
+          "especie": "gato",
+          "etapa": "adulto",
+          "tamano": null,
+          "sabores": [
+            "frango",
+            "arroz"
+          ],
+          "presentacion": "10kg",
+          "cantidad": null,
+          "observado": {
+            "nombre": "MAX CAT FRANGO & ARROZ adulto",
+            "presentacion": null,
+            "confianzaIdentidad": 0.99,
+            "confianzaPresentacion": 0.18
+          },
+          "solicitud": {
+            "presentacionTexto": null,
+            "presentacionContexto": "10kg",
+            "contextoVigente": true,
+            "cantidadTexto": null,
+            "cantidadContexto": null
+          },
+          "requierePresentacion": false
+        },
+        "antes": [
+          {
+            "nombre": "MAX CAT ADUL FRANGO",
+            "score": 0.6678571428571427,
+            "scoreBase": 0.8428571428571427,
+            "peso": false,
+            "especie": true,
+            "etapa": true,
+            "categoria": true
+          },
+          {
+            "nombre": "MAX CAT CASTRADO",
+            "score": 0.33318333333333333,
+            "scoreBase": 0.6458333333333334,
+            "peso": false,
+            "especie": true,
+            "etapa": null,
+            "categoria": true
+          }
+        ],
+        "despues": [
+          {
+            "nombre": "MAX CAT ADUL FRANGO",
+            "score": 0.6678571428571427
+          }
+        ]
+      },
+      {
+        "run": "e59cfc73-77f8-4887-bcec-cfdd82027207",
+        "etapa": "match_final",
+        "nivel": "baja",
+        "razon": "sin_coincidencia_confiable",
+        "presentacion": "10kg",
+        "coincidencia": null,
+        "equivalencia": null
+      },
+      {
+        "run": "e59cfc73-77f8-4887-bcec-cfdd82027207",
+        "etapa": "vision_output",
+        "modelo": "gpt-4.1",
+        "imagenes": [],
+        "mensajeHash": "397f149c22eacf8f",
+        "estadoHash": "be49f57ea134523c",
+        "historialHash": "4f53cda18c2baa0c",
+        "fase": "mapeo",
+        "lectura": {
+          "intencion": "consulta_producto",
+          "accion": "consultar",
+          "producto": {
+            "marca": "MAX CAT",
+            "referencia": null,
+            "linea": "FRANGO & ARROZ adulto",
+            "categoria": "comida",
+            "especie": "gato",
+            "etapa": "adulto",
+            "tamano": null,
+            "sabores": [
+              "frango",
+              "arroz"
+            ],
+            "presentacion": "10kg",
+            "cantidad": null,
+            "observado": {
+              "nombre": "MAX CAT FRANGO & ARROZ adulto",
+              "presentacion": null,
+              "confianzaIdentidad": 0.99,
+              "confianzaPresentacion": 0.18
+            },
+            "solicitud": {
+              "presentacionTexto": "10kg",
+              "presentacionContexto": null,
+              "contextoVigente": false,
+              "cantidadTexto": null,
+              "cantidadContexto": null
+            }
+          },
+          "productos": []
+        }
+      },
+      {
+        "run": "e59cfc73-77f8-4887-bcec-cfdd82027207",
+        "etapa": "producto_interpretado",
+        "modelo": "gpt-4.1",
+        "imagenes": [],
+        "mensajeHash": "397f149c22eacf8f",
+        "estadoHash": "be49f57ea134523c",
+        "historialHash": "4f53cda18c2baa0c",
+        "fase": "mapeo",
+        "lectura": {
+          "intencion": "consulta_producto",
+          "accion": "consultar",
+          "producto": {
+            "marca": "MAX CAT",
+            "referencia": null,
+            "linea": "FRANGO & ARROZ adulto",
+            "categoria": "comida",
+            "especie": "gato",
+            "etapa": "adulto",
+            "tamano": null,
+            "sabores": [
+              "frango",
+              "arroz"
+            ],
+            "presentacion": "10kg",
+            "cantidad": null
+          },
+          "productos": [],
+          "consultaCatalogo": {
+            "necesaria": null,
+            "consulta": null
+          }
+        }
+      },
+      {
+        "run": "e59cfc73-77f8-4887-bcec-cfdd82027207",
+        "etapa": "matching_filtros",
+        "vision": true,
+        "producto": {
+          "marca": "MAX CAT",
+          "referencia": "MAX CAT FRANGO & ARROZ adulto",
+          "linea": "FRANGO & ARROZ adulto",
+          "categoria": null,
+          "especie": "gato",
+          "etapa": "adulto",
+          "tamano": null,
+          "sabores": [
+            "frango",
+            "arroz"
+          ],
+          "presentacion": "10kg",
+          "cantidad": null,
+          "observado": {
+            "nombre": "MAX CAT FRANGO & ARROZ adulto",
+            "presentacion": null,
+            "confianzaIdentidad": 0.99,
+            "confianzaPresentacion": 0.18
+          },
+          "solicitud": {
+            "presentacionTexto": null,
+            "presentacionContexto": "10kg",
+            "contextoVigente": true,
+            "cantidadTexto": null,
+            "cantidadContexto": null
+          },
+          "requierePresentacion": false
+        },
+        "antes": [
+          {
+            "nombre": "MAX CAT ADUL FRANGO",
+            "score": 0.6956071428571429,
+            "scoreBase": 0.8428571428571427,
+            "peso": false,
+            "especie": true,
+            "etapa": true,
+            "categoria": null
+          },
+          {
+            "nombre": "MAX CAT CASTRADO",
+            "score": 0.31928333333333325,
+            "scoreBase": 0.6458333333333334,
+            "peso": false,
+            "especie": true,
+            "etapa": null,
+            "categoria": null
+          }
+        ],
+        "despues": [
+          {
+            "nombre": "MAX CAT ADUL FRANGO",
+            "score": 0.6956071428571429
+          }
+        ]
+      },
+      {
+        "run": "e59cfc73-77f8-4887-bcec-cfdd82027207",
+        "etapa": "match_final",
+        "nivel": "media",
+        "razon": "similitud_media",
+        "presentacion": "10kg",
+        "coincidencia": null,
+        "equivalencia": null
+      }
+    ],
+    "solicitudes": [
+      {
+        "marca": null,
+        "referencia": null,
+        "linea": null,
+        "textoVisible": null,
+        "mencionOriginal": null,
+        "categoria": null,
+        "subcategoria": null,
+        "especie": null,
+        "etapa": null,
+        "tamano": null,
+        "sabores": [],
+        "presentacion": null,
+        "condiciones": [],
+        "cantidad": null,
+        "observado": {
+          "nombre": null,
+          "presentacion": null,
+          "confianzaIdentidad": 0,
+          "confianzaPresentacion": 0
+        },
+        "solicitud": {
+          "presentacionTexto": null,
+          "presentacionContexto": null,
+          "contextoVigente": false,
+          "cantidadTexto": null,
+          "cantidadContexto": null
+        },
+        "fuentePresentacion": null,
+        "requierePresentacion": true,
+        "accion": "consultar",
+        "estado": "pendiente",
+        "presentacionesDisponibles": [],
+        "pregunta": "¿De qué marca necesitas el producto pendiente?"
+      },
+      {
+        "marca": "MAX CAT",
+        "referencia": null,
+        "linea": "Professional Line",
+        "textoVisible": "MAX CAT FRANGO & ARROZ adulto",
+        "mencionOriginal": null,
+        "categoria": "comida",
+        "subcategoria": "concentrado",
+        "especie": "gato",
+        "etapa": "adulto",
+        "tamano": null,
+        "sabores": [
+          "frango",
+          "arroz"
+        ],
+        "presentacion": "10kg",
+        "condiciones": [],
+        "cantidad": null,
+        "observado": {
+          "nombre": "MAX CAT FRANGO & ARROZ adulto",
+          "presentacion": null,
+          "confianzaIdentidad": 0.99,
+          "confianzaPresentacion": 0.18
+        },
+        "solicitud": {
+          "presentacionTexto": null,
+          "presentacionContexto": "10kg",
+          "contextoVigente": true,
+          "cantidadTexto": null,
+          "cantidadContexto": null
+        },
+        "fuentePresentacion": "contexto",
+        "requierePresentacion": false,
+        "accion": "consultar",
+        "estado": "pendiente",
+        "presentacionesDisponibles": [
+          "1kg",
+          "3kg",
+          "10.1kg"
+        ]
+      }
+    ],
+    "ultimaConsulta": null
+  }
+]

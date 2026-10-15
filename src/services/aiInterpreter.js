@@ -171,6 +171,8 @@ function normalizarInterpretacion(valor) {
     tamano: producto.tamano || null,
     sabores: Array.isArray(producto.sabores) ? producto.sabores : [],
     presentacion: producto.presentacion || null,
+    intencionPresentaciones: ['todas', 'especifica'].includes(producto.intencionPresentaciones) ? producto.intencionPresentaciones : null,
+    mascotas: require('./presentationSelectionService').normalizarMascotas(producto.mascotas),
     condiciones: Array.isArray(producto.condiciones) ? producto.condiciones : [],
     cantidad: valor.accion === "agregar" && !(valor.productos?.length > 1) &&
       Number.isInteger(valor.carrito?.cantidadDelta) && valor.carrito.cantidadDelta > 0
@@ -408,6 +410,7 @@ Vision de empaques:
 - En imagenes, no rellenes etapa o tamano con valores genericos por costumbre. Usa tamano "todas" solamente si el empaque dice todas las razas/all breeds/all sizes o si esa frase forma parte de la referencia exacta del catalogo. Usa etapa "adulto" o "cachorro" solamente si esta visible o si la referencia exacta lo contiene. Si ya encontraste una referencia exacta por marca + linea/condicion + especie + presentacion, deja null cualquier criterio no visible para no filtrar mal el catalogo.
 - Busca el peso/presentacion en zonas pequenas del empaque: esquinas inferiores, laterales, textos como "peso neto", "contenido neto", "kg", "g", "kl", "kilos". Si puedes leer numero y unidad con confianza razonable, normalizalo como presentacion exacta del catalogo: 2000g -> 2kg, 1000g -> 1kg, 4000g -> 4kg. Si el peso esta oculto o ilegible, deja presentacion null.
 - Si el empaque trae marca, etapa y tamano/raza claros pero el peso es dificil de ver, no rechaces la referencia; devuelve marca/referencia/criterios y solo deja presentacion null cuando de verdad no puedas leer el peso.
+- Una foto de producto en una consulta comercial autoriza consultar el catálogo: no respondas "¿te cotizo?" o "¿reviso disponibilidad?" antes de buscar. Conserva cada producto de todas las imágenes en productos[], con su propia identidad y peso; dos fotos del mismo empaque no implican dos unidades. Si falta el peso de uno, conserva su identidad y procesa los demás. No cambies una variante adulta por esterilizada/castrada cuando la foto identifica la variante adulta.
 - Si el empaque trae sabor visible pero el catalogo no tiene una referencia separada por ese sabor, ignora el sabor para elegir la referencia por etapa y tamano. Patron general: "Adultos + Pollo/Carne + para todas las razas" debe mapear a la referencia adulta de todas las razas de esa marca si existe y no hay una referencia adulta mas especifica por sabor.
 - Si el empaque muestra "para todas las razas", esa pista gana sobre la foto de un perro pequeño, mediano o grande; no lo conviertas en "razas pequeñas" solo por la imagen del perro.
 - Si una imagen muestra un producto y el cliente pregunta "manejan esta referencia", "tienen esta", "la venden" o similar, usa intencion "consulta_producto" y accion "consultar". No agregues al carrito hasta que el cliente confirme compra.
@@ -586,7 +589,13 @@ JSON exacto:
       audios: clasificacion?.requiereAudio ? 1 : 0,
     });
 
-    let interpretacion = normalizarInterpretacion(JSON.parse(completion.choices[0].message.content));
+    const salidaOriginal = JSON.parse(completion.choices[0].message.content);
+    const auditoria = require('./productRecognitionTrace');
+    const traza = { modelo: model, imagenes: urlsImagen.map(auditoria.huella), mensajeHash: auditoria.huella(mensaje),
+      estadoHash: auditoria.huella(estado), historialHash: auditoria.huella(historialReciente),
+      fase: clasificacion.revisionImagenIndividual ? 'individual' : clasificacion.decisionHerramientas ? 'router' : 'mapeo' };
+    auditoria.trazar('vision_output', { ...traza, lectura: auditoria.lectura(salidaOriginal) });
+    let interpretacion = normalizarInterpretacion(salidaOriginal);
     if (usaVision && interpretacion) {
       // Missing evidence is unknown, not permission to use a catalog size.
       const asegurar = producto => ({ ...producto, observado: producto?.observado || {
@@ -613,9 +622,14 @@ JSON exacto:
         enumerable: false,
       });
     }
+    auditoria.trazar('producto_interpretado', { ...traza, lectura: auditoria.lectura(interpretacion) });
     return interpretacion;
   } catch (error) {
     const urlsImagen = [...imageUrls, imageUrl].filter(Boolean);
+    const auditoria = require('./productRecognitionTrace');
+    auditoria.trazar('vision_error', { imagenes: urlsImagen.map(auditoria.huella), modelo: modelOverride || null,
+      fase: clasificacion.revisionImagenIndividual ? 'individual' : clasificacion.decisionHerramientas ? 'router' : 'mapeo',
+      tipo: error.name, codigo: error.code || error.cause?.code || null });
     const contexto = urlsImagen.length ? "imagen" : "texto";
     console.warn(`[OpenAI] No se pudo interpretar ${contexto}; interpretacion no disponible | error=${error.message}`);
     return null;

@@ -1,6 +1,7 @@
 const { formatoAlimento } = require('../../utils/foodFormat');
 const { esDescriptorReferencia } = require('../../utils/catalogVariants');
 const { usaRangosMascota, presentacionesParaPeso } = require('../../utils/weightRanges');
+const { cotizarPresentaciones, formatearCotizaciones, preguntasPeso } = require('../../services/presentationSelectionService');
 const { admiteEspecie, precioPorCantidad, datosPrecio, actualizarPrecioItem } = require('../../utils/catalogCommercialRules');
 const crypto = require("crypto");
 const { formatearPrecio, extraerPesoTexto, normalizarMarcasCatalogo, normalizar, normalizarPeso, contieneCondicionBolaPelo } = require("../../utils/text");
@@ -1030,6 +1031,9 @@ function buscarPresentacion(referencia, mensaje) {
     const opciones = presentacionesParaPeso(referencia, extraerPesoTexto(mensaje) || mensaje);
     return opciones.length === 1 ? opciones[0] : null;
   }
+  const pesoExplicito = extraerPesoTexto(mensaje);
+  if (pesoExplicito) return referencia.presentaciones.find(p =>
+    normalizarPeso(p.peso) === pesoExplicito) || null;
   const textoPeso = normalizarPeso(mensaje);
   const texto = normalizar(mensaje);
 
@@ -3184,6 +3188,20 @@ function resolverAgregarConsultadosIA(estado, catalogo, interpretacion) {
 
   if (!seleccionados.length) return null;
 
+  // Una ficha con varios tamaños es una lista de alternativas, no un pedido
+  // de una unidad de cada tamaño. Resolver cada selección antes de mutar.
+  const ambiguos = productos.length ? productos.map(producto => seleccionados.filter(item =>
+    (!producto.marca || normalizar(producto.marca) === normalizar(item.marca)) &&
+    (!producto.referencia || contieneFrase(normalizar(item.referencia), producto.referencia)) &&
+    (!producto.presentacion || normalizarPeso(producto.presentacion) === normalizarPeso(item.peso)))) : [seleccionados];
+  const alternativas = ambiguos.find(items => items.length > 1 &&
+    new Set(items.map(item => normalizarPeso(item.peso))).size > 1 &&
+    new Set(items.map(item => normalizar(item.marca))).size === 1 &&
+    new Set(items.map(item => normalizar(item.familiaReferencia || item.referencia))).size === 1);
+  if (alternativas) {
+    return `¿Qué presentación necesitas de ${alternativas[0].referencia}?\n\nPresentaciones disponibles: ${[...new Set(alternativas.map(item => item.peso))].join(', ')}.`;
+  }
+
   const agregados = [];
   seleccionados.forEach((item) => {
     const marca = buscarMarcaPorNombre(catalogo, item.marca);
@@ -3333,17 +3351,49 @@ function resolverPresentacionValidadaIA(estado, catalogo, interpretacion, mensaj
       presentacion?.referencia &&
       normalizarPeso(presentacion.peso || "") === solicitada
   );
-  if (!equivalente) return null;
+  if (!equivalente) {
+    // La familia validada puede estar distribuida en varios registros del
+    // inventario. Ofrecer todos sus tamaños reales, sin sustituir el solicitado.
+    if (!producto.presentacionesEquivalentes.length) return null;
+    const nombres = producto.referenciasEquivalentes || [producto.referencia];
+    const familia = buscarMarcaPorNombre(catalogo, producto.marca)?.referencias.filter(r =>
+      nombres.some(nombre => normalizar(nombre) === normalizar(r.nombre))) || [];
+    const disponibles = [...new Map(familia.flatMap(r => (r.presentaciones || []).map(p => ({ ...p, referencia: r.nombre }))).map(p => [normalizarPeso(p.peso), p])).values()];
+    if (!disponibles.length) return null;
+    const medida = valor => {
+      const m = normalizarPeso(valor).match(/^(\d+(?:\.\d+)?)\s*(kg|gr|g)$/);
+      return m ? Number(m[1]) * (m[2] === 'kg' ? 1000 : 1) : null;
+    };
+    const peso = medida(solicitada);
+    const cercanas = peso ? disponibles.filter(p => {
+      const candidato = medida(p.peso);
+      return candidato && Math.abs(candidato - peso) / peso <= 0.02;
+    }) : [];
+    if (cercanas.length !== 1 && nombres.length <= 1) return null;
+    estado.ultimaSeleccion = { marca: producto.marca, referencia: producto.referencia,
+      presentacion: null, cantidad: producto.cantidad || 1 };
+    if (cercanas.length === 1) {
+      const opcion = cercanas[0];
+      estado.alternativaPresentacionPendiente = { marca: producto.marca, referencia: opcion.referencia,
+        presentacion: opcion.peso, cantidad: producto.cantidad || 1, accion: interpretacion.accion,
+        creadoEn: new Date().toISOString() };
+      return `La presentación disponible de ${opcion.referencia} es de ${opcion.peso}, por ${formatearPrecio(precioPorCantidad(opcion, producto.cantidad || 1))}. ¿Te sirve esa?`;
+    }
+    return `En ${producto.nombreFamilia || producto.referencia} no tengo presentación de ${producto.presentacion}.\n\nPresentaciones disponibles:\n${disponibles.map(p =>
+      `- ${p.peso}: ${formatearPrecio(precioPorCantidad(p, producto.cantidad || 1))}`).join('\n')}\n\n¿Cuál presentación te sirve?`;
+  }
 
   const marca = buscarMarcaPorNombre(catalogo, producto.marca);
   if (!marca) return null;
   const referencia = (marca.referencias || []).find(
     (item) => normalizar(item.nombre) === normalizar(equivalente.referencia) &&
-      buscarPresentacion(item, equivalente.peso || producto.presentacion)
+      item.presentaciones.some(p => normalizarPeso(p.peso) === solicitada)
   );
   if (!referencia) return null;
   if (!productoSoportaLineaReferencia(producto, referencia, mensaje)) return null;
-  const presentacion = buscarPresentacion(referencia, equivalente.peso || producto.presentacion);
+  // El matching ya eligió un peso exacto del catálogo. No volver a resolverlo
+  // por subcadenas: "1kg" también aparece dentro de "10.1kg".
+  const presentacion = referencia.presentaciones.find(p => normalizarPeso(p.peso) === solicitada);
   if (!presentacion) return null;
 
   const cantidad = cantidadInterpretada(interpretacion, "");
@@ -5570,6 +5620,26 @@ function resolverConsultaCatalogo(mensaje, estado, catalogo = [], interpretacion
     return interpretacion.respuestaConversacional || null;
   }
   const productoValidado = interpretacion?.producto;
+  if (productoTieneCoincidenciaValidada(productoValidado) && productoValidado.seleccionPresentaciones &&
+      (interpretacion.accion === 'consultar' || interpretacion.intencion === 'consulta_producto' ||
+        productoValidado.seleccionPresentaciones.tipo === 'alternativas')) {
+    const plan = productoValidado.seleccionPresentaciones;
+    const items = cotizarPresentaciones({ marca: productoValidado.marca,
+      duracion: productoValidado.duracion,
+      referenciaCatalogo: productoValidado.referencia, presentaciones: productoValidado.presentacionesEquivalentes },
+    plan, productoValidado.cantidad || 1);
+    establecerProductosConsultados(estado, items);
+    estado.marca = productoValidado.marca;
+    estado.referenciasPendientes = null;
+    estado.coincidenciasProductoPendientes = null;
+    estado.ultimaSeleccion = plan.tipo === 'alternativas' ? {
+      marca: productoValidado.marca, referencia: productoValidado.referencia, duracion: productoValidado.duracion,
+      presentacion: null, cantidad: productoValidado.cantidad || 1,
+    } : null;
+    return [items.length ? `Presentaciones y precios unitarios:\n${formatearCotizaciones(items)}`
+      : plan.tipo === 'alternativas' ? `No hay presentaciones disponibles de ${productoValidado.referencia}.` : '', preguntasPeso(plan),
+      interpretacion.accion === 'agregar' && plan.tipo === 'alternativas' ? '¿Cuál presentación quieres agregar al pedido?' : ''].filter(Boolean).join('\n\n');
+  }
   if (productoValidado?.coincidenciaVisualValidada) {
     const nombres = productoValidado.referenciasEquivalentes || [productoValidado.referencia];
     catalogo = catalogo.filter(marca => normalizar(marca.marca) === normalizar(productoValidado.marca))
@@ -5580,7 +5650,11 @@ function resolverConsultaCatalogo(mensaje, estado, catalogo = [], interpretacion
       estado.referenciasPendientes = null;
       estado.ultimaSeleccion = { marca: productoValidado.marca, referencia: productoValidado.referencia,
         presentacion: null, cantidad: productoValidado.cantidad || 1 };
-      return `¿Qué presentación necesitas de ${productoValidado.referencia}?`;
+      const presentaciones = [...new Map(catalogo.flatMap(m => m.referencias)
+        .flatMap(r => r.presentaciones || []).filter(p => p.peso)
+        .map(p => [normalizarPeso(p.peso), p.peso])).values()];
+      return `¿Qué presentación necesitas de ${productoValidado.referencia}?` +
+        (presentaciones.length ? `\n\nPresentaciones disponibles: ${presentaciones.join(', ')}.` : '');
     }
   }
   const marcaEnMensaje = buscarMarca(catalogo, mensaje);

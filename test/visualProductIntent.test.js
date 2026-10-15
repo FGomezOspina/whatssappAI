@@ -88,15 +88,15 @@ test('imagen completa cotiza solo la identidad y presentacion exactas', async ()
   assert.equal(estado.productosConsultados.length, 1);
 });
 
-test('peso ilegible no cotiza ni infiere la unica presentacion disponible', async () => {
+test('peso ilegible muestra precio de las presentaciones sin inferir una seleccion', async () => {
   const { respuesta, estado } = await conversar(producto({
     observado: { nombre: 'NUTRIVA ADULTO', presentacion: '6kg', confianzaIdentidad: 0.98, confianzaPresentacion: 0.2 },
   }), undefined, { catalogo: [{ marca: 'NUTRIVA', referencias: [{ ...catalogo[0].referencias[0], presentaciones: [catalogo[0].referencias[0].presentaciones[0]] }] }] });
-  assert.match(respuesta, /Qué presentación necesitas/);
-  assert.doesNotMatch(respuesta, /\$|31\.000|58\.000/);
+  assert.match(respuesta, /3kg: \$31\.000/);
+  assert.doesNotMatch(respuesta, /58\.000|Qué presentación necesitas/);
   assert.equal(estado.ultimaSeleccion.referencia, 'NUTRIVA ADULTO');
   assert.equal(estado.ultimaSeleccion.presentacion, null);
-  assert.equal(estado.productosConsultados.length, 0);
+  assert.equal(estado.productosConsultados.length, 1);
 });
 
 test('contexto vigente gana a la imagen; contexto de otro producto se descarta', async () => {
@@ -138,7 +138,8 @@ test('aclarar presentacion tras foto ilegible conserva consulta sin agregar al c
   const { respuesta, respuestaContinuacion, estado } = await conversar(producto({
     observado: { nombre: 'NUTRIVA ADULTO', presentacion: null, confianzaIdentidad: 0.98, confianzaPresentacion: 0 },
   }), undefined, { continuacion: 'de 3kg' });
-  assert.doesNotMatch(respuesta, /\$/);
+  assert.match(respuesta, /31\.000/);
+  assert.match(respuesta, /58\.000/);
   assert.match(respuestaContinuacion, /31\.000/);
   assert.equal(estado.carrito.length, 0);
 });
@@ -219,7 +220,8 @@ test('mapeo del modelo y publicidad no sustituyen la identidad observada por otr
     observado: { nombre: 'NUTRIVA ORIGINAL ADULTOS', presentacion: null, confianzaIdentidad: 0.96, confianzaPresentacion: 0.05 } });
   const resultado = await conversar(lectura, 'Que precio tiene', { catalogo: catalogoAlias });
   assert.match(resultado.respuesta, /presentaci[oó]n|peso/i);
-  assert.doesNotMatch(resultado.respuesta, /VITALITY|99\.000|31\.000/);
+  assert.doesNotMatch(resultado.respuesta, /VITALITY|99\.000/);
+  assert.match(resultado.respuesta, /31\.000/);
   assert.match(resultado.respuesta, /CROQUETAS/);
 });
 

@@ -12,6 +12,25 @@ function pendiente() {
     terminos: ['nutriprueba', 'cachorro', 'grande'], etiqueta: 'NUTRIPRUEBA cachorro grande',
     solicitudOriginal: { intencion: 'pedido_producto', accion: 'agregar', producto } } };
 }
+
+for (const observado of [null, { nombre: 'NUTRIPRUEBA CACH RG', presentacion: null,
+  confianzaIdentidad: .99, confianzaPresentacion: 0 }]) {
+  for (const [mensaje, peso] of [['x10kg', '10kg'], ['x10.1kg', '10.1kg'], ['x10,1kl', '10.1kg'],
+    ['10kg', '10kg'], ['por 10kg', '10kg'], ['x3kg', '3kg']]) {
+    test(`aclaración ${mensaje} conserva el peso completo, previo visual=${Boolean(observado)}`, () => {
+      const estado = pendiente();
+      estado.ultimaConsultaProducto.nivel = 'alta';
+      estado.ultimaConsultaProducto.aclaracion = { campo: 'presentacion', valores: ['1kg', '3kg', '10.1kg'] };
+      estado.ultimaConsultaProducto.solicitudOriginal.producto = { ...producto, observado, solicitud: {} };
+      const r = continuarSolicitudProducto({ accion: 'agregar', intencion: 'pedido_producto', confianza: .99,
+        producto: { presentacion: peso } }, estado, mensaje);
+      assert.equal(r.producto.presentacion, peso);
+      if (observado) assert.equal(r.producto.solicitud.presentacionTexto, peso);
+      assert.equal(resolverEvidenciaInterpretacion(r).producto.presentacion, peso);
+      assert.match(r._consultaContinuada, new RegExp(peso.replace('.', '\\.')));
+    });
+  }
+}
 test('peso y confirmacion completan la solicitud pendiente sin borrar sus atributos', () => {
   let estado = pendiente();
   for (const mensaje of ['De un 1.5kg', 'De 1.5 kilos', 'De 1.5']) {
@@ -39,6 +58,21 @@ test('no reutiliza identidad para un producto distinto, contexto vencido ni conf
   assert.equal(continuarSolicitudProducto(si, estado, 'si'), si);
   estado.ultimaConsultaProducto.creadoEn = '2000-01-01';
   assert.equal(continuarSolicitudProducto(si, estado, 'si'), si);
+});
+
+test('peso aislado responde la pregunta activa aunque el router devuelva toda la lista o una intención conversacional', () => {
+  for (const intencion of ['consulta_producto', 'conversacion']) {
+    const estado = pendiente();
+    estado.ultimaConsultaProducto.aclaracion = { campo: 'presentacion', valores: ['1kg', '3kg', '10.1kg'] };
+    const decision = { intencion, accion: 'consultar', producto: null,
+      productos: [{ marca: 'OTRA', referencia: 'OTRA ARENA', presentacion: '25kg' }, { ...producto, presentacion: null }] };
+    const r = continuarSolicitudProducto(decision, estado, 'x10kg');
+    assert.equal(r.productos.length, 0);
+    assert.equal(r.producto.referencia, producto.referencia);
+    assert.equal(r.producto.presentacion, '10kg');
+    estado.ultimaConsultaProducto.creadoEn = '2000-01-01';
+    assert.equal(continuarSolicitudProducto(decision, estado, 'x10kg'), decision);
+  }
 });
 test('producto existente pasa de peso faltante a carrito aunque router no solicite buscar', async () => {
   let estado = crearEstadoInicial();

@@ -1404,6 +1404,19 @@ function ajustarPorSenales(item, mensaje, interpretacion, clasificacion = {}, va
     mensaje,
     interpretacion
   );
+  const esVision = Boolean(clasificacion.requiereVision);
+  const observado = interpretacion?.producto?.observado;
+  // El peso solicitado resuelve la presentación después de identificar la
+  // referencia. Solo el peso visible puede aportar evidencia a la identidad.
+  const pesoIdentidad = esVision && observado
+    ? (Number(observado.confianzaPresentacion) >= 0.85 ? observado.presentacion : null)
+    : obtenerPresentacionSolicitada(mensaje, interpretacion);
+  const coincideIdentidadExacta = esVision && observado
+    ? presentacionCoincide(item.referencia, '', { producto: { observado, presentacion: pesoIdentidad } })
+    : coincide;
+  const coincideIdentidad = esVision && coincideIdentidadExacta === false &&
+    resolverPresentacionAproximada(item.referencia, pesoIdentidad)
+    ? true : coincideIdentidadExacta;
   const señales = señalesInterpretadas(interpretacion, mensaje);
   const categoriaReferencia = normalizarCategoria(item.referencia.categoria);
   const especieReferencia = especieExplicita(item.referencia.nombre) ||
@@ -1419,13 +1432,12 @@ function ajustarPorSenales(item, mensaje, interpretacion, clasificacion = {}, va
   );
   const etapa = etapaReferencia(item.referencia);
   const tamano = tamanoReferencia(item.referencia);
-  const esVision = Boolean(clasificacion.requiereVision);
   let ajuste =
-    coincide === true
+    coincideIdentidad === true
       ? esVision
         ? 0.12
         : 0.05
-      : coincide === false
+      : coincideIdentidad === false
         ? esVision
           ? -0.28
           : -0.05
@@ -1465,13 +1477,13 @@ function ajustarPorSenales(item, mensaje, interpretacion, clasificacion = {}, va
   if (señales.tamano && tamano) {
     ajuste += señales.tamano === tamano ? 0.14 : -0.24;
   } else if (señales.tamano && !tamano) {
-    ajuste += esVision && coincide === true ? 0 : -0.12;
+    ajuste += esVision && coincideIdentidad === true ? 0 : -0.12;
   }
 
   if (esVision && pideLineaBaseOriginal(interpretacion, mensaje)) {
     if (referenciaTieneLineaNoBase(item.referencia)) {
       ajuste -= 0.28;
-    } else if (coincide === true) {
+    } else if (coincideIdentidad === true) {
       ajuste += 0.38;
     }
   }
@@ -1496,13 +1508,13 @@ function ajustarPorSenales(item, mensaje, interpretacion, clasificacion = {}, va
   const ponderacionVisual = calcularScoreVisualPonderado({
     item,
     señales,
-    presentacionCoincide: coincide,
+    presentacionCoincide: coincideIdentidad,
     especieCoincide,
     condicionesReferencia,
     saboresReferencia,
   });
   const senalesFuertesCoincidentes = [
-    coincide === true,
+    coincideIdentidad === true,
     categoriaCoincide === true,
     especieCoincide === true,
     etapaCoincide === true,
@@ -1533,7 +1545,6 @@ function ajustarPorSenales(item, mensaje, interpretacion, clasificacion = {}, va
   // El empaque puede expresar especie y formato de otra manera que el nombre
   // del inventario. Exigir todos los atributos y tokens de identidad del SKU,
   // sin exigir que el inventario repita cada frase visible en el empaque.
-  const observado = interpretacion?.producto?.observado;
   const textoObservado = observado?.nombre || "";
   const tokensObservados = tokensIdentidadVisual(textoObservado);
   const formatoHumedo = /\b(humed[oa]|pouch|pouche|sobre|sachet|salsa)\b/.test(normalizar(textoObservado));
@@ -1543,7 +1554,7 @@ function ajustarPorSenales(item, mensaje, interpretacion, clasificacion = {}, va
   const atributosVisualesCompletos = esVision && Number(observado?.confianzaIdentidad) >= 0.85 &&
     identidadRespaldada && identidadCatalogo.length > 1 &&
     variantesObservadas.every(token => identidadCatalogo.includes(token)) &&
-    scoreMarcaVisual(item, señales) >= 0.95 && coincide === true &&
+    scoreMarcaVisual(item, señales) >= 0.95 && coincideIdentidad === true &&
     especieCoincide === true && etapaCoincide === true &&
     categoriaCoincide !== false && tamanoCoincide !== false &&
     señales.condiciones.every(condicion => condicionesReferencia.includes(condicion)) &&
@@ -1702,6 +1713,22 @@ function presentacionCoincide(referencia, mensaje, interpretacion) {
   return (referencia.presentaciones || []).some(
     (presentacion) => normalizarPeso(presentacion.peso) === solicitada
   );
+}
+
+function resolverPresentacionAproximada(referencia, solicitada) {
+  if (!referencia || usaRangosMascota(referencia)) return null;
+  const gramos = valor => {
+    const m = normalizarPeso(valor || '').match(/^(\d+(?:\.\d+)?)\s*(kg|g|gr)$/);
+    return m ? Number(m[1]) * (m[2] === 'kg' ? 1000 : 1) : null;
+  };
+  const pesoSolicitado = gramos(solicitada);
+  if (!pesoSolicitado || (referencia.presentaciones || []).some(p =>
+    normalizarPeso(p.peso) === normalizarPeso(solicitada))) return null;
+  const cercanas = (referencia.presentaciones || []).filter(p => {
+    const peso = gramos(p.peso);
+    return peso && Math.abs(peso - pesoSolicitado) / pesoSolicitado <= 0.02;
+  });
+  return cercanas.length === 1 ? cercanas[0] : null;
 }
 
 function consultaTraeDetalleAdicional(terminos = [], marcaExacta = null) {
@@ -2104,6 +2131,11 @@ function validarCoincidenciaProducto({
       tokensDistintivos(item.referencia.nombre).includes(t)));
   if (!variantesExplicitas.length && unitarias.length === 1) puntuados = unitarias;
   const gruposPuntuados = agruparReferenciasEquivalentes(puntuados);
+  require('./productRecognitionTrace').trazar('matching_filtros', { vision: Boolean(clasificacion.requiereVision),
+    producto: require('./productRecognitionTrace').producto(interpretacion?.producto),
+    antes: puntuadosSinFiltrar.map(p => ({ nombre: p.referencia.nombre, score: p.score, scoreBase: p.scoreBase,
+      peso: p.presentacionCoincide, especie: p.especieCoincide, etapa: p.etapaCoincide, categoria: p.categoriaCoincide })),
+    despues: puntuados.map(p => ({ nombre: p.referencia.nombre, score: p.score })) });
   const [primero, segundo] = gruposPuntuados;
   const high = numeroEnv("CATALOG_MATCH_HIGH_THRESHOLD", DEFAULT_HIGH_THRESHOLD);
   const medium = numeroEnv("CATALOG_MATCH_MEDIUM_THRESHOLD", DEFAULT_MEDIUM_THRESHOLD);
@@ -2257,6 +2289,9 @@ function validarCoincidenciaProducto({
     pesoSeleccionado || interpretacion?.producto?.presentacion ||
       normalizar(mensajeRazonado).match(/\b(?:de\s+)(libra)\b/)?.[1] || '', referenciaRangos);
   if (libraComercial) pesoSeleccionado = normalizarPeso(libraComercial.peso);
+  // Preserve the identity already resolved above. Downstream presentation
+  // policy may resolve body weights without rerunning or changing recognition.
+  const identidadAntesDePresentacion = nivel === 'alta' && primero ? resumirAlternativa(primero) : null;
   let pesoMascota = null;
   if (nivel === 'alta' && referenciaRangos && usaRangosMascota(referenciaRangos)) {
     pesoMascota = pesoSeleccionado;
@@ -2274,11 +2309,19 @@ function validarCoincidenciaProducto({
     aclaracion = { campo: 'peso_mascota', valores: [], requiereEspecie: !senalesConsulta.especie };
   }
 
+  const coincidenciaValidada = nivel === 'alta' && primero ? resumirAlternativa(primero) : null;
+  // Pesos de empaque expresados aproximadamente, nunca rangos/dosis. La
+  // identidad ya debe estar validada y la opción cercana debe ser única.
+  const aproximada = !pesoMascota && !aclaracion
+    ? resolverPresentacionAproximada(coincidenciaValidada, pesoSeleccionado) : null;
+  require('./productRecognitionTrace').trazar('match_final', { nivel, razon, presentacion: pesoSeleccionado,
+    coincidencia: coincidenciaValidada, equivalencia: aproximada?.peso || null });
   return {
     nivel,
     razon,
     aclaracion,
     pesoMascotaSolicitado: pesoMascota,
+    identidadAntesDePresentacion,
     especieConocida: senalesConsulta.especie || null,
     terminos: duracionSolicitada ? [...terminos, ...duracionSolicitada.split(" ")] : terminos,
     etiqueta: (
@@ -2290,11 +2333,12 @@ function validarCoincidenciaProducto({
     diferencia: Number(diferencia.toFixed(3)),
     usaInterpretacion,
     marcaExacta,
-    presentacionValida,
+    presentacionValida: aproximada ? true : presentacionValida,
     requiereVision: Boolean(clasificacion.requiereVision),
-    presentacionSolicitada: pesoSeleccionado,
+    presentacionSolicitada: aproximada?.peso || pesoSeleccionado,
+    ...(aproximada ? { equivalenciaPresentacion: { solicitada: pesoSeleccionado, catalogo: aproximada.peso } } : {}),
     ...(libraComercial ? { equivalenciaPresentacion: { solicitada: 'libra', catalogo: libraComercial.peso } } : {}),
-    coincidencia: nivel === "alta" && primero ? resumirAlternativa(primero) : null,
+    coincidencia: coincidenciaValidada,
     alternativas: (aclaracion ? agruparReferenciasEquivalentes(relevantes) : gruposPuntuados)
       .filter((item) => aclaracion || (item.score >= medium &&
         (!clasificacion.requiereVision || item.score >= (primero?.score || 0) - margin)))
@@ -2335,6 +2379,7 @@ function respuestaValidacionProducto(validacion = {}) {
           : validacion.aclaracion.requiereEspecie ? '¿Es para perro o gato y cuánto pesa?' : '¿Cuánto pesa tu mascota?',
       precio: `El precio de esa presentación de ${opciones} está pendiente de confirmar; aún no puedo cotizarla.`,
       duracion: `¿Lo necesitas de ${opciones}?`,
+      presentacion: `¿Qué presentación necesitas? Manejamos ${opciones}.`,
       referencia: `¿Cuál referencia necesitas: ${opciones}?`,
       especie: `¿Buscas para ${opciones}?`,
       categoria: `¿Qué tipo de producto buscas: ${opciones}?`,
@@ -2348,11 +2393,11 @@ function respuestaValidacionProducto(validacion = {}) {
   if (validacion.nivel === "media" && validacion.alternativas?.length) {
     const opciones = validacion.alternativas
       .map((item) => {
-        const presentaciones = (validacion.requiereVision ? [] : item.presentaciones || [])
+        const presentaciones = (item.presentaciones || [])
           .filter((presentacion) => presentacion.precio !== null && presentacion.precio !== undefined)
           .map(
             (presentacion) =>
-              `${presentacion.peso}: ${formatearPrecio(presentacion.precio)}`
+              validacion.requiereVision ? presentacion.peso : `${presentacion.peso}: ${formatearPrecio(presentacion.precio)}`
           )
           .join(", ");
         return `- ${item.referencia}${
@@ -2409,6 +2454,7 @@ function aplicarCoincidenciaValidada(interpretacion, validacion) {
     coincidenciaVisualValidada: Boolean(validacion.requiereVision),
     requierePresentacion: Boolean(validacion.requiereVision && !validacion.presentacionSolicitada),
   };
+  productoValidado.requierePresentacion = Boolean(validacion.requiereVision && !productoValidado.presentacion);
 
   const permiteReferenciaValidada =
     coincidencia.tipoCoincidencia !== "marca" ||

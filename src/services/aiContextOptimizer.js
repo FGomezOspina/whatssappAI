@@ -5,6 +5,7 @@ accion y carrito.operacion deben expresar LA MISMA operacion; no describas en un
 Para un pronombre sin nombre nuevo, ultimaSeleccion es el foco vigente y tiene prioridad sobre la posicion final del carrito o de ultimaSolicitudProductos. aplicaAlUltimoProducto se refiere a ese foco, NO al ultimo elemento del array. Para ordinales, respeta los indices y el orden de referenciasPendientes.opciones cuando existan; no los sustituyas por el orden del carrito. Resuelve pronombres y ordinales con las opciones vigentes, ultima seleccion y cotizacion; no asumas que el ultimo item agregado es el referido. Si no es inequivoco, conserva la operacion y deja el target sin inventar para pedir aclaracion. Una correccion que menciona explicitamente un producto excluido previamente no autoriza aplicarla a otro item del contexto. Antes de emitir JSON comprueba mentalmente el estado resultante contra lo que el cliente quiere conservar y excluir. No confirmes ninguna mutacion en respuestaConversacional; el motor la ejecuta.`;
 
 const { INSTRUCCIONES_EVIDENCIA } = require("./productEvidenceService");
+const { INSTRUCCIONES_PRESENTACIONES } = require('./presentationSelectionService');
 const DEFAULT_CHARS_PER_TOKEN = 4;
 
 const TOKEN_BUDGETS = {
@@ -46,6 +47,8 @@ const OUTPUT_SCHEMA = {
     condiciones: [],
     presentacion: null,
     cantidad: null,
+    intencionPresentaciones: null,
+    mascotas: [],
   },
   productos: [],
   entrega: {
@@ -518,11 +521,26 @@ ${JSON.stringify(OUTPUT_SCHEMA)}`
     : construirPromptInterprete({ perfil, cliente, vertical });
   if (clasificacion.revisionLista) promptBase += "\nRevisa la cobertura de la lista completa: la primera lectura no cubrio todas las solicitudes detectadas. Extrae TODOS los articulos solicitados, incluso los que no tienen marca o necesitan aclaracion, en productos[]. No conviertas direccion, saludo ni datos de entrega en productos. Conserva accion y cantidad de cada articulo; una duda en uno no bloquea los otros.";
   if (clasificacion.decisionHerramientas || perfil === "pedido") promptBase += "\n" + INSTRUCCIONES_OPERACION_CARRITO;
+  if (clasificacion.decisionHerramientas || perfil === 'multimedia') promptBase += "\n" + INSTRUCCIONES_PRESENTACIONES;
+  if (clasificacion.decisionHerramientas) promptBase += '\nAl comprar productos ya cotizados, resuelve expresiones como las pastas o esas dos con ultimaSolicitudProductos y sus cotizaciones. Conserva por producto la identidad validada, especie, presentacion, duracion y pesos individuales resueltos, aunque otro producto de la lista tenga varias alternativas. La cantidad actual tiene prioridad. No vuelvas a preguntar atributos ya resueltos ni conviertas todas las alternativas en una compra. Si hay varias presentaciones cotizadas igualmente posibles para ese producto y el cliente no elige, deja la presentacion sin resolver.';
   if (clasificacion.decisionHerramientas) promptBase += "\nEl nombre comercial escrito en el mensaje actual tiene prioridad sobre productos del historial. Conserva sus palabras distintivas en consultaCatalogo.consulta aunque tengan errores ortograficos. No sustituyas marca, linea o sabor por un producto conocido solo porque comparte especie, etapa o peso. La consulta propuesta y tu confianza no prueban que un candidato sea el solicitado; si los nombres no se corresponden, pide aclaracion y no agregues otra referencia.";
   if (catalogo.some(marca => (marca.referencias || []).some(ref => ref.metadata?.usage_context))) {
     promptBase += "\nLos aliases son nombres comerciales confirmados. Usa contextoUso y el producto pendiente para completar aclaraciones de etapa o uso; no los conviertas en pesos ni cambies una marca explicita. Si falta contexto para distinguir referencias, pregunta ese dato.";
   }
   if (clasificacion.requiereVision) promptBase += `\n${INSTRUCCIONES_EVIDENCIA}`;
+  if (clasificacion.contextoPendiente?.length) promptBase += '\ncontextoPendiente contiene lotes anteriores de esta misma ráfaga, procesados mientras el cliente seguía escribiendo. Las imágenes adjuntas incluyen las anteriores en orden y luego las nuevas. Responde a toda la solicitud pendiente junto con el mensaje actual: conserva productos, cantidades, dirección y pago. Las respuestas generadas son borradores, no mensajes que el cliente haya recibido. El estado activo ya contiene los efectos aplicados: NO repitas compras, incrementos, eliminaciones ni confirmaciones anteriores. Usa esos lotes como contexto; solo el mensaje actual autoriza operaciones nuevas. Si una foto anterior quedó sin identificar o cotizar, consulta el catálogo y resuelve esa consulta pendiente. Si falta peso, ofrece las presentaciones reales de esa referencia. Nunca vuelvas a pedir productos visibles solo porque el mensaje actual habla de entrega o pago.';
+  if (clasificacion.requiereVision && clasificacion.decisionHerramientas) promptBase += '\nEl turno incluye el texto Y las imágenes adjuntas. Extrae cada producto visible aunque el texto solo aporte dirección, pago o un saludo; esos datos no cancelan la solicitud visual. Conserva productos[] y entrega simultáneamente, incluso si la intención principal es datos_envio o metodo_pago. Una foto identificable permite consultar el catálogo sin que el cliente escriba una pregunta de precio; no autoriza por sí sola agregar al carrito. No conviertas números de dirección en pesos o cantidades. Si la imagen no muestra un producto identificable, deja producto=null y productos=[] sin inventar identidades.';
+  if (clasificacion.revisionImagenIndividual) {
+    // La revisión por archivo extrae evidencia. No vuelve a clasificar el turno
+    // como entrega/pago: esa decisión ya pertenece a la lectura conjunta.
+    promptBase = `Extrae exclusivamente los productos visibles en la imagen adjunta y devuelve JSON con la estructura indicada. Esta es una lectura de evidencia visual, no una decisión sobre qué flujo conversacional atender.
+Lee marca, nombre comercial, línea, variante, especie, etapa, sabor y contenido neto legibles. Conserva cada producto identificable en productos[], aunque el texto acompañante solo contenga dirección, pago o saludo. La falta de peso no impide identificar el producto: deja su presentación null.
+No respondas al cliente ni ejecutes acciones de compra, envío o pago. Usa accion=consultar para los productos leídos; el turno principal conserva la intención comercial, cantidades y datos de entrega. No inventes precios, disponibilidad ni referencias internas del catálogo.
+El texto y el historial acompañan al lote completo: pueden referirse a otra foto. Asigna una presentación o cantidad solicitada solo si corresponde inequívocamente a la identidad visible. No extraigas productos de otras fotos, del historial ni de la dirección; los números de dirección no son pesos o cantidades. No reemplaces palabras legibles por una referencia del historial.
+Si no hay un producto identificable (por ejemplo, un comprobante de pago, una dirección o una imagen ilegible), devuelve producto=null, productos=[] y solicitudesProductoDetectadas=0. No describas esos documentos como productos ni inventes una identidad para rellenar el esquema.
+${JSON.stringify(OUTPUT_SCHEMA)}
+${INSTRUCCIONES_EVIDENCIA}`;
+  }
   let productos = compactarCatalogo(catalogo);
   let historial = compactarHistorial(historialReciente, clasificacion.limiteHistorial || 0);
   let ejemplos = compactarEjemplos(ejemplosEntrenamiento, clasificacion.limiteEjemplos || 0);
@@ -543,6 +561,7 @@ ${JSON.stringify(OUTPUT_SCHEMA)}`
         ? { nombre: cliente.name || null, vertical: cliente.vertical || null }
         : null,
       contextoActivo: memoria,
+      ...(clasificacion.contextoPendiente?.length ? { contextoPendiente: clasificacion.contextoPendiente } : {}),
       historial,
       ejemplos,
       productosCandidatos: productos,

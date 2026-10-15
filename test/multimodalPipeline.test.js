@@ -16,9 +16,9 @@ function load(path, mocks, extra = {}) {
   return module.exports;
 }
 function gate() { let resolve; const promise = new Promise(r => { resolve = r; }); return { promise, resolve }; }
-function setup(t, { blocked, failMedia, blockedDownload } = {}) {
+function setup(t, { blocked, failMedia, blockedDownload, ventanaMultimediaMs = 5000 } = {}) {
   t.mock.timers.enable({ apis: ['setTimeout', 'setInterval', 'Date'], now: 1000 });
-  const states = new Map(), messages = new Map(), calls = [], sent = [], typed = [], downloads = [], transcripts = [], summaries = [];
+  const states = new Map(), messages = new Map(), calls = [], revisiones = [], sent = [], typed = [], downloads = [], transcripts = [], summaries = [];
   let active = 0, maximum = 0, runs = 0;
   t.mock.method(global, 'fetch', async url => {
     downloads.push(url);
@@ -50,14 +50,15 @@ function setup(t, { blocked, failMedia, blockedDownload } = {}) {
     '../conversation/conversationStore': store,
     './mediaProcessor': media,
     './aiInterpreter': { interpretarMensajeCliente: async args => {
-      calls.push(args);
-      if (blocked && calls.length === 1) await blocked.promise;
+      if (args.clasificacion.revisionImagenIndividual) revisiones.push(args);
+      else calls.push(args);
+      if (blocked && calls.length === 1 && !args.clasificacion.revisionImagenIndividual) await blocked.promise;
       return { intencion: 'conversacion', accion: 'conversar', consultaCatalogo: { necesaria: false }, respuestaConversacional: `Respuesta ${calls.length}` };
     } },
     './humanizer': { humanizarRespuesta: async (_m, response) => response },
   });
-  const c = crearCoordinador({ ventanaMs: 5000,
-    procesar: async events => { active++; maximum = Math.max(maximum, active); runs++; try { return await service.responderEventosEntrantes(events); } finally { active--; } },
+  const c = crearCoordinador({ ventanaMs: 5000, ventanaMultimediaMs,
+    procesar: async (events, opciones) => { active++; maximum = Math.max(maximum, active); runs++; try { return await service.responderEventosEntrantes(events, opciones); } finally { active--; } },
     enviar: async e => sent.push(e), typing: async e => typed.push(e), onSummary: s => summaries.push(s),
   });
   t.after(() => c.cerrar());
@@ -68,7 +69,7 @@ function setup(t, { blocked, failMedia, blockedDownload } = {}) {
     else message[type] = { id: `file-${id}`, url: `https://media.example/${id}.${type === 'image' ? 'jpg' : 'ogg'}` };
     return extraerEventos({ event: 'whatsapp.message.received', phone_number_id: 'channel', message })[0];
   }
-  return { c, calls, sent, typed, downloads, transcripts, summaries, messages, event,
+  return { c, calls, revisiones, sent, typed, downloads, transcripts, summaries, messages, event,
     receive: async (...args) => { const e = event(...args); await c.recibir(e); return e; },
     tick: async ms => { t.mock.timers.tick(ms); await settle(); },
     get maximum() { return maximum; }, get runs() { return runs; },
@@ -82,6 +83,7 @@ for (const types of [ ['text'], ['image'], ['audio'], ['text','image'], ['image'
     await x.tick(1);
     assert.equal(x.runs, 1); assert.equal(x.sent.length, 1); assert.equal(x.typed.length, 1); assert.equal(x.maximum, 1);
     assert.equal(x.calls.length, 1);
+    assert.equal(x.revisiones.length, types.filter(t => t === 'image').length);
     assert.equal(x.calls[0].imageUrls.length, types.filter(t => t === 'image').length);
     if (types.includes('text')) assert.match(x.calls[0].mensaje, /Necesito este producto/);
     if (types.includes('audio') || types.includes('voice')) assert.match(x.calls[0].mensaje, /Detalles hablados/);
@@ -113,6 +115,8 @@ for (const type of ['audio', 'image']) test(`${type} ya procesado en un ciclo ob
   blocked.resolve(); await settle();
   assert.equal(x.downloads.length, 1); assert.equal(x.transcripts.length, type === 'audio' ? 1 : 0); assert.equal(x.sent.length, 1);
   assert.ok(x.calls[1].historialReciente.some(m => m.metadata.tipo === type && m.metadata.interpretacion));
+  assert.equal(x.calls[1].clasificacion.contextoPendiente.length, 1);
+  if (type === 'image') assert.deepEqual(Array.from(x.calls[1].imageUrls), Array.from(x.calls[0].imageUrls));
   if (type === 'audio') assert.ok(x.calls[1].historialReciente.some(m => /Detalles hablados/.test(m.metadata.transcripcion || '')));
 });
 test('dos clientes multimedia independientes', async t => {
@@ -137,4 +141,30 @@ test('un fallo de imagen espera el audio pendiente del mismo lote antes de liber
   blockedDownload.resolve(); await settle();
   assert.equal(x.runs, 2); assert.equal(x.maximum, 1); assert.equal(x.sent.length, 1);
   assert.equal(x.transcripts.length, 1); assert.equal(x.c.estados.size, 0);
+});
+
+test('coordinador con ventana multimedia de 10s entrega diez eventos juntos al agente', async t => {
+ const x = setup(t, { ventanaMultimediaMs: 10000 });
+ await x.receive('image');
+ for (const tipo of ['image', 'audio', 'text', 'text', 'text', 'text', 'text', 'text', 'text']) {
+   await x.tick(6000); assert.equal(x.runs, 0); await x.receive(tipo);
+ }
+ await x.tick(9999); assert.equal(x.runs, 0);
+ await x.tick(1); assert.equal(x.runs, 1);
+ assert.equal(x.calls[0].imageUrls.length, 2);
+ assert.match(x.calls[0].mensaje, /Detalles hablados/);
+ assert.equal(x.downloads.length, 3);
+ assert.equal(x.sent.length, 1);
+});
+
+test('texto que llega durante visión conserva ventana de 10s y las fotos anteriores', async t => {
+ const blocked = gate(), x = setup(t, { blocked, ventanaMultimediaMs: 10000 });
+ await x.receive('image'); await x.tick(10000); assert.equal(x.runs, 1);
+ await x.receive('text'); await x.tick(5000);
+ blocked.resolve(); await settle(); assert.equal(x.runs, 1);
+ await x.tick(4999); assert.equal(x.runs, 1);
+ await x.tick(1); assert.equal(x.runs, 2);
+ assert.equal(x.calls[1].imageUrls.length, 1);
+ assert.equal(x.downloads.length, 1);
+ assert.equal(x.sent.length, 1);
 });

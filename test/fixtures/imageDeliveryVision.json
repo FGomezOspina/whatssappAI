@@ -1,0 +1,412 @@
+{
+  "source": "Lecturas reales del 2026-10-11; empaques comerciales, dirección ficticia y estado vacío. Sin datos de clientes.",
+  "joint": {
+    "resumenMemoria": null,
+    "continuarFlujo": true,
+    "solicitudesProductoDetectadas": 2,
+    "consultaCatalogo": {
+      "necesaria": true,
+      "consulta": "King Cat arena sanitaria para gatos 25 Kg; Max Cat Professional Line frango & arroz adulto"
+    },
+    "respuestaConversacional": null,
+    "intencion": "metodo_pago",
+    "accion": "consultar_pago",
+    "confianza": 0.92,
+    "producto": {
+      "marca": null,
+      "referencia": null,
+      "linea": null,
+      "textoVisible": null,
+      "mencionOriginal": null,
+      "categoria": null,
+      "subcategoria": null,
+      "especie": null,
+      "etapa": null,
+      "tamano": null,
+      "sabores": [],
+      "presentacion": null,
+      "condiciones": [],
+      "cantidad": null,
+      "observado": {
+        "nombre": null,
+        "presentacion": null,
+        "confianzaIdentidad": 0,
+        "confianzaPresentacion": 0
+      },
+      "solicitud": {
+        "presentacionTexto": null,
+        "presentacionContexto": null,
+        "contextoVigente": false,
+        "cantidadTexto": null,
+        "cantidadContexto": null
+      },
+      "fuentePresentacion": null,
+      "requierePresentacion": true
+    },
+    "productos": [
+      {
+        "accion": "consultar",
+        "marca": "King Cat",
+        "referencia": null,
+        "linea": null,
+        "textoVisible": "arena sanitaria para gatos King Cat",
+        "mencionOriginal": null,
+        "categoria": "arena sanitaria",
+        "subcategoria": null,
+        "especie": "gato",
+        "etapa": null,
+        "tamano": null,
+        "sabores": [],
+        "presentacion": "25kg",
+        "condiciones": [],
+        "cantidad": null,
+        "observado": {
+          "nombre": "KING CAT",
+          "presentacion": "25 Kg",
+          "confianzaIdentidad": 0.98,
+          "confianzaPresentacion": 0.99
+        },
+        "solicitud": {
+          "presentacionTexto": null,
+          "presentacionContexto": null,
+          "contextoVigente": false,
+          "cantidadTexto": null,
+          "cantidadContexto": null
+        },
+        "fuentePresentacion": "imagen",
+        "requierePresentacion": false
+      },
+      {
+        "accion": "consultar",
+        "marca": "Max Cat",
+        "referencia": null,
+        "linea": "Professional Line",
+        "textoVisible": "max cat frango & arroz adulto",
+        "mencionOriginal": null,
+        "categoria": "alimento",
+        "subcategoria": null,
+        "especie": "gato",
+        "etapa": "adulto",
+        "tamano": null,
+        "sabores": [
+          "frango & arroz"
+        ],
+        "presentacion": null,
+        "condiciones": [],
+        "cantidad": null,
+        "observado": {
+          "nombre": "max CAT Professional Line FRANGO & ARROZ adulto",
+          "presentacion": null,
+          "confianzaIdentidad": 0.97,
+          "confianzaPresentacion": 0.08
+        },
+        "solicitud": {
+          "presentacionTexto": null,
+          "presentacionContexto": null,
+          "contextoVigente": false,
+          "cantidadTexto": null,
+          "cantidadContexto": null
+        },
+        "fuentePresentacion": null,
+        "requierePresentacion": true
+      }
+    ],
+    "entrega": {
+      "tipo": "domicilio",
+      "direccion": "Bloque 1 apto 101",
+      "direccionCompleta": null,
+      "sector": null,
+      "metodoPago": "tarjeta",
+      "sede": null
+    },
+    "datosCliente": {
+      "nombre": null,
+      "cedula": null,
+      "correo": null,
+      "celular": null
+    },
+    "carrito": {
+      "operacion": null,
+      "cantidadObjetivo": null,
+      "cantidadDelta": null,
+      "aplicaAlUltimoProducto": null,
+      "razon": null
+    },
+    "faltanteSugerido": null
+  },
+  "omittedJoint": {
+    "resumenMemoria": null,
+    "continuarFlujo": true,
+    "solicitudesProductoDetectadas": 0,
+    "consultaCatalogo": {
+      "necesaria": false,
+      "consulta": null
+    },
+    "respuestaConversacional": "Claro, ¿me compartes por favor la dirección completa y los datos faltantes para el domicilio? Puedes pagar con tarjeta al recibir.",
+    "intencion": "metodo_pago",
+    "accion": "consultar_pago",
+    "confianza": 0.95,
+    "producto": {
+      "marca": null,
+      "referencia": null,
+      "linea": null,
+      "textoVisible": null,
+      "mencionOriginal": null,
+      "categoria": null,
+      "subcategoria": null,
+      "especie": null,
+      "etapa": null,
+      "tamano": null,
+      "sabores": [],
+      "presentacion": null,
+      "condiciones": [],
+      "cantidad": null,
+      "observado": {
+        "nombre": null,
+        "presentacion": null,
+        "confianzaIdentidad": 0,
+        "confianzaPresentacion": 0
+      },
+      "solicitud": {
+        "presentacionTexto": null,
+        "presentacionContexto": null,
+        "contextoVigente": false,
+        "cantidadTexto": null,
+        "cantidadContexto": null
+      },
+      "fuentePresentacion": null,
+      "requierePresentacion": true
+    },
+    "productos": [],
+    "entrega": {
+      "tipo": "domicilio",
+      "direccion": "Para Bloque 1 apto 101",
+      "direccionCompleta": null,
+      "sector": null,
+      "metodoPago": "tarjeta",
+      "sede": null
+    },
+    "datosCliente": {
+      "nombre": null,
+      "cedula": null,
+      "correo": null,
+      "celular": null
+    },
+    "carrito": {
+      "operacion": null,
+      "cantidadObjetivo": null,
+      "cantidadDelta": null,
+      "aplicaAlUltimoProducto": null,
+      "razon": null
+    },
+    "faltanteSugerido": null
+  },
+  "first": {
+    "resumenMemoria": null,
+    "continuarFlujo": false,
+    "solicitudesProductoDetectadas": 1,
+    "consultaCatalogo": {
+      "necesaria": null,
+      "consulta": null
+    },
+    "respuestaConversacional": null,
+    "intencion": "metodo_pago",
+    "accion": "consultar",
+    "confianza": 0.97,
+    "producto": {
+      "accion": "consultar",
+      "marca": "Total",
+      "referencia": null,
+      "linea": "Professional Line",
+      "textoVisible": "max CAT FRANGO & ARROZ adulto",
+      "mencionOriginal": null,
+      "categoria": "alimento",
+      "subcategoria": "concentrado",
+      "especie": "gato",
+      "etapa": "adulto",
+      "tamano": null,
+      "sabores": [
+        "frango",
+        "arroz"
+      ],
+      "presentacion": null,
+      "condiciones": [],
+      "cantidad": null,
+      "observado": {
+        "nombre": "max CAT FRANGO & ARROZ adulto",
+        "presentacion": null,
+        "confianzaIdentidad": 0.97,
+        "confianzaPresentacion": 0.08
+      },
+      "solicitud": {
+        "presentacionTexto": null,
+        "presentacionContexto": null,
+        "contextoVigente": false,
+        "cantidadTexto": null,
+        "cantidadContexto": null
+      },
+      "fuentePresentacion": null,
+      "requierePresentacion": true
+    },
+    "productos": [
+      {
+        "accion": "consultar",
+        "marca": "Total",
+        "referencia": null,
+        "linea": "Professional Line",
+        "textoVisible": "max CAT FRANGO & ARROZ adulto",
+        "mencionOriginal": null,
+        "categoria": "alimento",
+        "subcategoria": "concentrado",
+        "especie": "gato",
+        "etapa": "adulto",
+        "tamano": null,
+        "sabores": [
+          "frango",
+          "arroz"
+        ],
+        "presentacion": null,
+        "condiciones": [],
+        "cantidad": null,
+        "observado": {
+          "nombre": "max CAT FRANGO & ARROZ adulto",
+          "presentacion": null,
+          "confianzaIdentidad": 0.97,
+          "confianzaPresentacion": 0.08
+        },
+        "solicitud": {
+          "presentacionTexto": null,
+          "presentacionContexto": null,
+          "contextoVigente": false,
+          "cantidadTexto": null,
+          "cantidadContexto": null
+        },
+        "fuentePresentacion": null,
+        "requierePresentacion": true
+      }
+    ],
+    "entrega": {
+      "tipo": null,
+      "direccion": "Bloque 1 apto 101",
+      "direccionCompleta": null,
+      "sector": null,
+      "metodoPago": "tarjeta",
+      "sede": null
+    },
+    "datosCliente": {
+      "nombre": null,
+      "cedula": null,
+      "correo": null,
+      "celular": null
+    },
+    "carrito": {
+      "operacion": null,
+      "cantidadObjetivo": null,
+      "cantidadDelta": null,
+      "aplicaAlUltimoProducto": null,
+      "razon": null
+    },
+    "faltanteSugerido": null
+  },
+  "second": {
+    "resumenMemoria": null,
+    "continuarFlujo": false,
+    "solicitudesProductoDetectadas": 1,
+    "consultaCatalogo": {
+      "necesaria": null,
+      "consulta": null
+    },
+    "respuestaConversacional": null,
+    "intencion": "metodo_pago",
+    "accion": "consultar",
+    "confianza": 0.97,
+    "producto": {
+      "accion": "consultar",
+      "marca": "King Cat",
+      "referencia": null,
+      "linea": null,
+      "textoVisible": "ARENA SANITARIA PARA GATOS KING CAT 25 Kg",
+      "mencionOriginal": null,
+      "categoria": "arena sanitaria",
+      "subcategoria": "arena para gatos",
+      "especie": "gato",
+      "etapa": null,
+      "tamano": null,
+      "sabores": [],
+      "presentacion": "25kg",
+      "condiciones": [],
+      "cantidad": null,
+      "observado": {
+        "nombre": "KING CAT",
+        "presentacion": "25 Kg",
+        "confianzaIdentidad": 0.99,
+        "confianzaPresentacion": 0.99
+      },
+      "solicitud": {
+        "presentacionTexto": null,
+        "presentacionContexto": null,
+        "contextoVigente": false,
+        "cantidadTexto": null,
+        "cantidadContexto": null
+      },
+      "fuentePresentacion": "imagen",
+      "requierePresentacion": false
+    },
+    "productos": [
+      {
+        "accion": "consultar",
+        "marca": "King Cat",
+        "referencia": null,
+        "linea": null,
+        "textoVisible": "ARENA SANITARIA PARA GATOS KING CAT 25 Kg",
+        "mencionOriginal": null,
+        "categoria": "arena sanitaria",
+        "subcategoria": "arena para gatos",
+        "especie": "gato",
+        "etapa": null,
+        "tamano": null,
+        "sabores": [],
+        "presentacion": "25kg",
+        "condiciones": [],
+        "cantidad": null,
+        "observado": {
+          "nombre": "KING CAT",
+          "presentacion": "25 Kg",
+          "confianzaIdentidad": 0.99,
+          "confianzaPresentacion": 0.99
+        },
+        "solicitud": {
+          "presentacionTexto": null,
+          "presentacionContexto": null,
+          "contextoVigente": false,
+          "cantidadTexto": null,
+          "cantidadContexto": null
+        },
+        "fuentePresentacion": "imagen",
+        "requierePresentacion": false
+      }
+    ],
+    "entrega": {
+      "tipo": null,
+      "direccion": "Bloque 1 apto 101",
+      "direccionCompleta": null,
+      "sector": null,
+      "metodoPago": "tarjeta",
+      "sede": null
+    },
+    "datosCliente": {
+      "nombre": null,
+      "cedula": null,
+      "correo": null,
+      "celular": null
+    },
+    "carrito": {
+      "operacion": null,
+      "cantidadObjetivo": null,
+      "cantidadDelta": null,
+      "aplicaAlUltimoProducto": null,
+      "razon": null
+    },
+    "faltanteSugerido": null
+  }
+}

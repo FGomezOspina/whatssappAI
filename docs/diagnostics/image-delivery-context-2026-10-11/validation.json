@@ -1,0 +1,106 @@
+{
+  "focused": {
+    "tests": 165,
+    "pass": 165,
+    "fail": 0
+  },
+  "workingCatalog": {
+    "tests": 823,
+    "pass": 819,
+    "fail": 4
+  },
+  "versionedCatalog": {
+    "tests": 823,
+    "pass": 823,
+    "fail": 0
+  },
+  "realVision": [
+    {
+      "version": "before",
+      "case": "joint",
+      "intention": "metodo_pago",
+      "products": []
+    },
+    {
+      "version": "before",
+      "case": "first",
+      "intention": "metodo_pago",
+      "products": []
+    },
+    {
+      "version": "before",
+      "case": "second",
+      "intention": "pedido_producto",
+      "products": [
+        {
+          "name": "KING CAT",
+          "visibleWeight": "25 Kg"
+        }
+      ]
+    },
+    {
+      "version": "before",
+      "case": "first-repeated",
+      "intention": "pedido_producto",
+      "products": [
+        {
+          "name": "max CAT FRANGO & ARROZ adulto",
+          "visibleWeight": null
+        }
+      ]
+    },
+    {
+      "version": "after",
+      "case": "joint",
+      "intention": "metodo_pago",
+      "products": [
+        {
+          "name": "KING CAT",
+          "visibleWeight": "25 Kg"
+        },
+        {
+          "name": "max CAT Professional Line FRANGO & ARROZ adulto",
+          "visibleWeight": null
+        }
+      ]
+    },
+    {
+      "version": "after",
+      "case": "first",
+      "intention": "metodo_pago",
+      "products": [
+        {
+          "name": "max CAT FRANGO & ARROZ adulto",
+          "visibleWeight": null
+        }
+      ]
+    },
+    {
+      "version": "after",
+      "case": "second",
+      "intention": "metodo_pago",
+      "products": [
+        {
+          "name": "KING CAT",
+          "visibleWeight": "25 Kg"
+        }
+      ]
+    },
+    {
+      "version": "after",
+      "case": "first-repeated",
+      "intention": "metodo_pago",
+      "products": [
+        {
+          "name": "max CAT FRANGO & ARROZ adulto",
+          "visibleWeight": null
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Texto externo sintético y solo empaques: no se reenvió la dirección real.",
+    "Extracción externa real; integración de respuestas reales con catálogo local y persistencia simulada.",
+    "No se enviaron mensajes de WhatsApp ni se modificó el catálogo o pedidos reales."
+  ]
+}

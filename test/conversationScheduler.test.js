@@ -7,9 +7,9 @@ const gate = () => { let resolve,reject;const promise=new Promise((r,j)=>{resolv
 function preparar(t, opts={}) {
  t.mock.timers.enable({apis:['setTimeout','setInterval','Date'],now:1000});
  const batches=[],sent=[],typed=[],stats=[];
- const c=crearCoordinador({ventanaMs:5000,procesar:async es=>{batches.push(es.map(e=>e.messageId));return opts.procesar?opts.procesar(es):es.map(e=>e.text).join(' ');},
+ const c=crearCoordinador({ventanaMs:5000,procesar:async (es,opciones)=>{batches.push(es.map(e=>e.messageId));return opts.procesar?opts.procesar(es,opciones):es.map(e=>e.text).join(' ');},
  enviar:async e=>{if(opts.enviar)await opts.enviar(e);sent.push(e.text);}, typing:async e=>{typed.push(e.messageId);if(opts.typing)await opts.typing(e);}, guardarEntrada:opts.guardarEntrada,
- dividir:r=>r?[r]:[],onSummary:s=>stats.push(s)});
+ dividir:opts.dividir || (r=>r?[r]:[]),onSummary:s=>stats.push(s)});
  let id=0;const recibir=(text,user='A',msg)=>c.recibir({channelUserId:user,phoneNumberId:'canal',recipientId:user,messageId:msg||String(++id),text});
  const tick=async ms=>{t.mock.timers.tick(ms);await micro();};
  t.after(()=>c.cerrar());return {c,batches,sent,typed,stats,recibir,tick};
@@ -69,4 +69,47 @@ test('nuevo mensaje entre partes impide enviar las restantes',async t=>{
 test('persistencia inmediata fallida no ejecuta agente y permite reintentar el evento',async t=>{
  let first=true;const x=preparar(t,{guardarEntrada:async()=>{if(first){first=false;throw Error('Supabase');}}});
  await assert.rejects(x.recibir('one','A','m1'));await x.tick(5000);assert.equal(x.batches.length,0);await x.recibir('one','A','m1');await x.tick(5000);assert.equal(x.sent.length,1);
+});
+
+test('conserva fotos y textos de todos los lotes sin respuesta, sin reproducir operaciones', async t => {
+ const gates = [gate(), gate()]; const contextos = []; let run = 0, compras = 0;
+ const x = preparar(t, { procesar: async (es, opciones) => {
+   contextos.push(structuredClone(opciones.contextoPendiente));
+   if (es.some(e => e.text === 'foto y compra')) compras++;
+   contexto.getStore().contenidosEntrantes = es.map(e => ({ text: e.text, imageUrl: e.text === 'foto y compra' ? 'data:image/jpeg;base64,fixture' : null }));
+   const i = run++; if (gates[i]) await gates[i].promise;
+   return 'respuesta ' + i;
+ }});
+ await x.recibir('foto y compra'); await x.tick(4999); assert.equal(run, 0); await x.tick(1);
+ await x.recibir('dirección'); await x.tick(5000); gates[0].resolve(); await micro();
+ assert.equal(run, 2); assert.equal(contextos[1][0].contenidos[0].imageUrl, 'data:image/jpeg;base64,fixture');
+ await x.recibir('tarjeta'); await x.tick(5000); gates[1].resolve(); await micro();
+ assert.deepEqual(contextos[2].map(l => l.contenidos[0].text), ['foto y compra', 'dirección']);
+ assert.deepEqual(x.batches, [['1'], ['2'], ['3']]); assert.equal(compras, 1);
+ assert.deepEqual(x.sent, ['respuesta 2']);
+ await x.recibir('otro turno'); await x.tick(5000); assert.deepEqual(contextos[3], []);
+});
+
+for (const vacia of ['', '  \n ', undefined, '[[AIVANCE_MESSAGE_BREAK]]']) test(`respuesta vacía genera respaldo y persiste lo enviado: ${JSON.stringify(vacia)}`, async t => {
+ const saved = [];
+ const x = preparar(t, { dividir: require('../src/utils/responseMessages').dividirRespuestaMensajes,
+   procesar: async () => { contexto.getStore().alEnviar = async text => saved.push(text); return vacia; } });
+ await x.recibir('dos fotos'); await x.tick(5000);
+ assert.equal(x.sent.length, 1);
+ assert.match(x.sent[0], /No pude completar la respuesta/);
+ assert.deepEqual(saved, x.sent);
+ assert.equal(x.stats[0].grupos.kapso_send.llamadas, 1);
+});
+test('null suprime deliberadamente la respuesta de un evento ya procesado', async t => {
+ const x = preparar(t, { procesar: async () => null });
+ await x.recibir('duplicado'); await x.tick(5000);
+ assert.deepEqual(x.sent, []);
+ assert.equal(x.c.estados.size, 0);
+});
+test('respuesta vacía obsoleta no envía respaldo antes del turno vigente', async t => {
+ const g = gate(); let runs = 0;
+ const x = preparar(t, { procesar: async () => { if (++runs === 1) { await g.promise; return ''; } return 'respuesta vigente'; } });
+ await x.recibir('fotos'); await x.tick(5000);
+ await x.recibir('aclaración'); await x.tick(5000); g.resolve(); await micro();
+ assert.deepEqual(x.sent, ['respuesta vigente']);
 });

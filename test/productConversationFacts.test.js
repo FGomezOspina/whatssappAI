@@ -80,15 +80,15 @@ test('coincidencia incierta pregunta un atributo sin precios ni plantilla como r
   assert.doesNotMatch(JSON.stringify(contexto), /103000|103\.000|opción cercana/);
 });
 
-test('rechaza precios inventados y no publica la ficha del motor si ambas redacciones fallan', async () => {
+test('rechaza precios inventados y devuelve el precio verificado si ambas redacciones fallan', async () => {
   const solicitudes = [];
   const redactar = humanizador(['NUTRIPRUEBA 30kg cuesta $9.000.', 'NUTRIPRUEBA 30kg cuesta $8.000.'], solicitudes);
   const productos = catalogo();
   const hechos = validarCoincidenciaProducto({ mensaje: 'NUTRIPRUEBA 30kg', catalogo: productos,
     catalogoCandidatos: productos, clasificacion });
-  await assert.rejects(redactar('NUTRIPRUEBA 30kg', 'Precio: $103.000', {
+  assert.equal(await redactar('NUTRIPRUEBA 30kg', 'Precio: $103.000', {
     productoAutonomo: hechos, estado: {}, clasificacion,
-  }), /fiel a los hechos/);
+  }), 'Precio: $103.000');
   assert.equal(solicitudes.length, 2);
 });
 
@@ -233,9 +233,9 @@ test('precios COP equivalentes pasan y un importe distinto sigue rechazado', asy
       }), buena);
   }
   const redactar = humanizador(Array(2).fill('PRO PLAN FELINE EN de 1.5kg a 113.601 pesos. ¿Avanzamos?'), []);
-  await assert.rejects(redactar('Dos paquetes', 'Precio: $113.600. ¿Avanzamos?', {
+  assert.equal(await redactar('Dos paquetes', 'Precio: $113.600. ¿Avanzamos?', {
     productoAutonomo: hechos, estado: {},
-  }), /precio_no_autorizado/);
+  }), 'Precio: $113.600. ¿Avanzamos?');
 });
 
 test('compra interpretada conserva dos unidades sin exigir palabra clave ni elegir presentacion unica', () => {
@@ -382,4 +382,17 @@ test('redactor no vuelve a preguntar especie que el intérprete ya resolvió', a
   assert.equal(solicitudes.length,2);
   assert.doesNotMatch(respuesta,/perro o gato/);
   assert.equal(JSON.parse(solicitudes[0].messages[1].content).especieConocida,'perro');
+});
+
+test('autoriza precio de la presentación validada aunque el texto operativo no lo incluya', async () => {
+ const solicitudes = [];
+ const esperada = 'PRUEBA ADULTO de 10.1kg cuesta $178.600. ¿Te la envío?';
+ const redactar = humanizador([esperada], solicitudes);
+ const respuesta = await redactar('10.1kg', 'Ya seleccionaste la presentación.', {
+   productoAutonomo: { nivel: 'alta', coincidencia: {
+     marca: 'PRUEBA', referencia: 'PRUEBA ADULTO', presentaciones: [
+       { peso: '1kg', precio: 27400 }, { peso: '10.1kg', precio: 178600 },
+     ] } }, estado: {}, interpretacionIA: { accion: 'consultar', producto: { presentacion: '10.1kg' } },
+ });
+ assert.equal(respuesta, esperada); assert.equal(solicitudes.length, 1);
 });

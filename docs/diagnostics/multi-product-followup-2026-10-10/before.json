@@ -1,0 +1,615 @@
+[
+  {
+    "caso": "dos-fotos-inicial",
+    "respuesta": "No pude identificar el producto de la imagen 1. ¿Puedes reenviar esa foto o escribir su nombre?\n\nNo pude identificar el producto de la imagen 2. ¿Puedes reenviar esa foto o escribir su nombre?",
+    "trazas": [
+      {
+        "run": "2dff479f-5331-4b86-bb26-20fa8b751cc5",
+        "etapa": "vision_output",
+        "modelo": "gpt-5.4",
+        "imagenes": [
+          "58d3f5ad6a71a5a1",
+          "969edd5b4036ad31"
+        ],
+        "mensajeHash": "848d8333aa1118fc",
+        "estadoHash": "e179e49ce9bf684e",
+        "historialHash": "4f53cda18c2baa0c",
+        "fase": "router",
+        "lectura": {
+          "intencion": "datos_envio",
+          "accion": null,
+          "producto": {
+            "marca": null,
+            "referencia": null,
+            "linea": null,
+            "categoria": null,
+            "especie": null,
+            "etapa": null,
+            "tamano": null,
+            "sabores": [],
+            "presentacion": null,
+            "cantidad": null,
+            "observado": {
+              "nombre": null,
+              "presentacion": null,
+              "confianzaIdentidad": 0,
+              "confianzaPresentacion": 0
+            },
+            "solicitud": {
+              "presentacionTexto": null,
+              "presentacionContexto": null,
+              "contextoVigente": false,
+              "cantidadTexto": null,
+              "cantidadContexto": null
+            }
+          },
+          "productos": [],
+          "consultaCatalogo": {
+            "necesaria": false,
+            "consulta": null
+          }
+        }
+      },
+      {
+        "run": "2dff479f-5331-4b86-bb26-20fa8b751cc5",
+        "etapa": "producto_interpretado",
+        "modelo": "gpt-5.4",
+        "imagenes": [
+          "58d3f5ad6a71a5a1",
+          "969edd5b4036ad31"
+        ],
+        "mensajeHash": "848d8333aa1118fc",
+        "estadoHash": "e179e49ce9bf684e",
+        "historialHash": "4f53cda18c2baa0c",
+        "fase": "router",
+        "lectura": {
+          "intencion": "datos_envio",
+          "accion": null,
+          "producto": {
+            "marca": null,
+            "referencia": null,
+            "linea": null,
+            "categoria": null,
+            "especie": null,
+            "etapa": null,
+            "tamano": null,
+            "sabores": [],
+            "presentacion": null,
+            "cantidad": null,
+            "observado": {
+              "nombre": null,
+              "presentacion": null,
+              "confianzaIdentidad": 0,
+              "confianzaPresentacion": 0
+            },
+            "solicitud": {
+              "presentacionTexto": null,
+              "presentacionContexto": null,
+              "contextoVigente": false,
+              "cantidadTexto": null,
+              "cantidadContexto": null
+            },
+            "fuentePresentacion": null,
+            "requierePresentacion": true
+          },
+          "productos": [],
+          "consultaCatalogo": {
+            "necesaria": false,
+            "consulta": null
+          }
+        }
+      },
+      {
+        "run": "2dff479f-5331-4b86-bb26-20fa8b751cc5",
+        "etapa": "vision_output",
+        "modelo": "gpt-5.4",
+        "imagenes": [
+          "969edd5b4036ad31"
+        ],
+        "mensajeHash": "848d8333aa1118fc",
+        "estadoHash": "e179e49ce9bf684e",
+        "historialHash": "4f53cda18c2baa0c",
+        "fase": "individual",
+        "lectura": {
+          "intencion": "datos_envio",
+          "accion": null,
+          "producto": {
+            "marca": null,
+            "referencia": null,
+            "linea": null,
+            "categoria": null,
+            "especie": null,
+            "etapa": null,
+            "tamano": null,
+            "sabores": [],
+            "presentacion": null,
+            "cantidad": null,
+            "observado": {
+              "nombre": null,
+              "presentacion": null,
+              "confianzaIdentidad": 0,
+              "confianzaPresentacion": 0
+            },
+            "solicitud": {
+              "presentacionTexto": null,
+              "presentacionContexto": null,
+              "contextoVigente": false,
+              "cantidadTexto": null,
+              "cantidadContexto": null
+            }
+          },
+          "productos": [],
+          "consultaCatalogo": {
+            "necesaria": false,
+            "consulta": null
+          }
+        }
+      },
+      {
+        "run": "2dff479f-5331-4b86-bb26-20fa8b751cc5",
+        "etapa": "producto_interpretado",
+        "modelo": "gpt-5.4",
+        "imagenes": [
+          "969edd5b4036ad31"
+        ],
+        "mensajeHash": "848d8333aa1118fc",
+        "estadoHash": "e179e49ce9bf684e",
+        "historialHash": "4f53cda18c2baa0c",
+        "fase": "individual",
+        "lectura": {
+          "intencion": "datos_envio",
+          "accion": null,
+          "producto": {
+            "marca": null,
+            "referencia": null,
+            "linea": null,
+            "categoria": null,
+            "especie": null,
+            "etapa": null,
+            "tamano": null,
+            "sabores": [],
+            "presentacion": null,
+            "cantidad": null,
+            "observado": {
+              "nombre": null,
+              "presentacion": null,
+              "confianzaIdentidad": 0,
+              "confianzaPresentacion": 0
+            },
+            "solicitud": {
+              "presentacionTexto": null,
+              "presentacionContexto": null,
+              "contextoVigente": false,
+              "cantidadTexto": null,
+              "cantidadContexto": null
+            },
+            "fuentePresentacion": null,
+            "requierePresentacion": true
+          },
+          "productos": [],
+          "consultaCatalogo": {
+            "necesaria": false,
+            "consulta": null
+          }
+        }
+      },
+      {
+        "run": "2dff479f-5331-4b86-bb26-20fa8b751cc5",
+        "etapa": "vision_output",
+        "modelo": "gpt-5.4",
+        "imagenes": [
+          "58d3f5ad6a71a5a1"
+        ],
+        "mensajeHash": "848d8333aa1118fc",
+        "estadoHash": "e179e49ce9bf684e",
+        "historialHash": "4f53cda18c2baa0c",
+        "fase": "individual",
+        "lectura": {
+          "intencion": "datos_envio",
+          "accion": null,
+          "producto": {
+            "marca": null,
+            "referencia": null,
+            "linea": null,
+            "categoria": null,
+            "especie": null,
+            "etapa": null,
+            "tamano": null,
+            "sabores": [],
+            "presentacion": null,
+            "cantidad": null,
+            "observado": {
+              "nombre": null,
+              "presentacion": null,
+              "confianzaIdentidad": 0,
+              "confianzaPresentacion": 0
+            },
+            "solicitud": {
+              "presentacionTexto": null,
+              "presentacionContexto": null,
+              "contextoVigente": false,
+              "cantidadTexto": null,
+              "cantidadContexto": null
+            }
+          },
+          "productos": [],
+          "consultaCatalogo": {
+            "necesaria": false,
+            "consulta": null
+          }
+        }
+      },
+      {
+        "run": "2dff479f-5331-4b86-bb26-20fa8b751cc5",
+        "etapa": "producto_interpretado",
+        "modelo": "gpt-5.4",
+        "imagenes": [
+          "58d3f5ad6a71a5a1"
+        ],
+        "mensajeHash": "848d8333aa1118fc",
+        "estadoHash": "e179e49ce9bf684e",
+        "historialHash": "4f53cda18c2baa0c",
+        "fase": "individual",
+        "lectura": {
+          "intencion": "datos_envio",
+          "accion": null,
+          "producto": {
+            "marca": null,
+            "referencia": null,
+            "linea": null,
+            "categoria": null,
+            "especie": null,
+            "etapa": null,
+            "tamano": null,
+            "sabores": [],
+            "presentacion": null,
+            "cantidad": null,
+            "observado": {
+              "nombre": null,
+              "presentacion": null,
+              "confianzaIdentidad": 0,
+              "confianzaPresentacion": 0
+            },
+            "solicitud": {
+              "presentacionTexto": null,
+              "presentacionContexto": null,
+              "contextoVigente": false,
+              "cantidadTexto": null,
+              "cantidadContexto": null
+            },
+            "fuentePresentacion": null,
+            "requierePresentacion": true
+          },
+          "productos": [],
+          "consultaCatalogo": {
+            "necesaria": false,
+            "consulta": null
+          }
+        }
+      },
+      {
+        "run": "2dff479f-5331-4b86-bb26-20fa8b751cc5",
+        "etapa": "revision_imagen",
+        "imagen": "58d3f5ad6a71a5a1",
+        "indice": 0,
+        "resultado": "sin_producto"
+      },
+      {
+        "run": "2dff479f-5331-4b86-bb26-20fa8b751cc5",
+        "etapa": "revision_imagen",
+        "imagen": "969edd5b4036ad31",
+        "indice": 1,
+        "resultado": "sin_producto"
+      },
+      {
+        "run": "2dff479f-5331-4b86-bb26-20fa8b751cc5",
+        "etapa": "productos_combinados",
+        "lectura": {
+          "intencion": "conversacion",
+          "accion": "conversar",
+          "producto": null,
+          "productos": [],
+          "consultaCatalogo": {
+            "necesaria": false,
+            "consulta": null
+          }
+        }
+      }
+    ],
+    "solicitudes": [],
+    "carrito": [],
+    "productosConsultados": [],
+    "ultimaConsulta": null
+  },
+  {
+    "caso": "dos-fotos-10",
+    "respuesta": "Perfecto, ¿de cuál producto es el de 10kg?",
+    "trazas": [
+      {
+        "run": "d0c8ba1d-1b71-4733-9b71-85d30eb1b162",
+        "etapa": "vision_output",
+        "modelo": "gpt-5.4",
+        "imagenes": [],
+        "mensajeHash": "fba319eafc31f4ee",
+        "estadoHash": "4d69a1183f9bb527",
+        "historialHash": "abbc4d70f8ba9db9",
+        "fase": "router",
+        "lectura": {
+          "intencion": "otro",
+          "accion": null,
+          "producto": {
+            "marca": null,
+            "referencia": null,
+            "linea": null,
+            "categoria": null,
+            "especie": null,
+            "etapa": null,
+            "tamano": "10kg",
+            "sabores": [],
+            "presentacion": "10kg",
+            "cantidad": null
+          },
+          "productos": [],
+          "consultaCatalogo": {
+            "necesaria": false,
+            "consulta": null
+          }
+        }
+      },
+      {
+        "run": "d0c8ba1d-1b71-4733-9b71-85d30eb1b162",
+        "etapa": "producto_interpretado",
+        "modelo": "gpt-5.4",
+        "imagenes": [],
+        "mensajeHash": "fba319eafc31f4ee",
+        "estadoHash": "4d69a1183f9bb527",
+        "historialHash": "abbc4d70f8ba9db9",
+        "fase": "router",
+        "lectura": {
+          "intencion": "otro",
+          "accion": null,
+          "producto": {
+            "marca": null,
+            "referencia": null,
+            "linea": null,
+            "categoria": null,
+            "especie": null,
+            "etapa": null,
+            "tamano": "10kg",
+            "sabores": [],
+            "presentacion": "10kg",
+            "cantidad": null
+          },
+          "productos": [],
+          "consultaCatalogo": {
+            "necesaria": false,
+            "consulta": null
+          }
+        }
+      },
+      {
+        "run": "d0c8ba1d-1b71-4733-9b71-85d30eb1b162",
+        "etapa": "productos_combinados",
+        "lectura": {
+          "intencion": "otro",
+          "accion": null,
+          "producto": {
+            "marca": null,
+            "referencia": null,
+            "linea": null,
+            "categoria": null,
+            "especie": null,
+            "etapa": null,
+            "tamano": "10kg",
+            "sabores": [],
+            "presentacion": "10kg",
+            "cantidad": null
+          },
+          "productos": [],
+          "consultaCatalogo": {
+            "necesaria": false,
+            "consulta": null
+          }
+        }
+      }
+    ],
+    "solicitudes": [],
+    "carrito": [],
+    "productosConsultados": [],
+    "ultimaConsulta": null
+  },
+  {
+    "caso": "dos-fotos-10-repetido",
+    "respuesta": "Claro, ¿de qué producto lo quieres en 10kg?",
+    "trazas": [
+      {
+        "run": "fe724279-0880-4753-95dd-9c2f6d80e0c8",
+        "etapa": "vision_output",
+        "modelo": "gpt-5.4",
+        "imagenes": [],
+        "mensajeHash": "fba319eafc31f4ee",
+        "estadoHash": "dafcbf0fee7b6008",
+        "historialHash": "35c5977e475dcaa5",
+        "fase": "router",
+        "lectura": {
+          "intencion": "otro",
+          "accion": null,
+          "producto": {
+            "marca": null,
+            "referencia": null,
+            "linea": null,
+            "categoria": null,
+            "especie": null,
+            "etapa": null,
+            "tamano": null,
+            "sabores": [],
+            "presentacion": "10kg",
+            "cantidad": null
+          },
+          "productos": [],
+          "consultaCatalogo": {
+            "necesaria": false,
+            "consulta": null
+          }
+        }
+      },
+      {
+        "run": "fe724279-0880-4753-95dd-9c2f6d80e0c8",
+        "etapa": "producto_interpretado",
+        "modelo": "gpt-5.4",
+        "imagenes": [],
+        "mensajeHash": "fba319eafc31f4ee",
+        "estadoHash": "dafcbf0fee7b6008",
+        "historialHash": "35c5977e475dcaa5",
+        "fase": "router",
+        "lectura": {
+          "intencion": "otro",
+          "accion": null,
+          "producto": {
+            "marca": null,
+            "referencia": null,
+            "linea": null,
+            "categoria": null,
+            "especie": null,
+            "etapa": null,
+            "tamano": null,
+            "sabores": [],
+            "presentacion": "10kg",
+            "cantidad": null
+          },
+          "productos": [],
+          "consultaCatalogo": {
+            "necesaria": false,
+            "consulta": null
+          }
+        }
+      },
+      {
+        "run": "fe724279-0880-4753-95dd-9c2f6d80e0c8",
+        "etapa": "productos_combinados",
+        "lectura": {
+          "intencion": "otro",
+          "accion": null,
+          "producto": {
+            "marca": null,
+            "referencia": null,
+            "linea": null,
+            "categoria": null,
+            "especie": null,
+            "etapa": null,
+            "tamano": null,
+            "sabores": [],
+            "presentacion": "10kg",
+            "cantidad": null
+          },
+          "productos": [],
+          "consultaCatalogo": {
+            "necesaria": false,
+            "consulta": null
+          }
+        }
+      }
+    ],
+    "solicitudes": [],
+    "carrito": [],
+    "productosConsultados": [],
+    "ultimaConsulta": null
+  },
+  {
+    "caso": "dos-fotos-envio",
+    "respuesta": "¡Con gusto! ¿De cuál producto lo quieres en 10kg para enviártelo?",
+    "trazas": [
+      {
+        "run": "3dce7424-d096-46ab-9925-e2b08eabe1ce",
+        "etapa": "vision_output",
+        "modelo": "gpt-5.4",
+        "imagenes": [],
+        "mensajeHash": "989787698b91d7ad",
+        "estadoHash": "b5c9cf9860e63554",
+        "historialHash": "dac88e0cb52e01ca",
+        "fase": "router",
+        "lectura": {
+          "intencion": "otro",
+          "accion": null,
+          "producto": {
+            "marca": null,
+            "referencia": null,
+            "linea": null,
+            "categoria": null,
+            "especie": null,
+            "etapa": null,
+            "tamano": "10kg",
+            "sabores": [],
+            "presentacion": "10kg",
+            "cantidad": null
+          },
+          "productos": [],
+          "consultaCatalogo": {
+            "necesaria": false,
+            "consulta": null
+          }
+        }
+      },
+      {
+        "run": "3dce7424-d096-46ab-9925-e2b08eabe1ce",
+        "etapa": "producto_interpretado",
+        "modelo": "gpt-5.4",
+        "imagenes": [],
+        "mensajeHash": "989787698b91d7ad",
+        "estadoHash": "b5c9cf9860e63554",
+        "historialHash": "dac88e0cb52e01ca",
+        "fase": "router",
+        "lectura": {
+          "intencion": "otro",
+          "accion": null,
+          "producto": {
+            "marca": null,
+            "referencia": null,
+            "linea": null,
+            "categoria": null,
+            "especie": null,
+            "etapa": null,
+            "tamano": "10kg",
+            "sabores": [],
+            "presentacion": "10kg",
+            "cantidad": null
+          },
+          "productos": [],
+          "consultaCatalogo": {
+            "necesaria": false,
+            "consulta": null
+          }
+        }
+      },
+      {
+        "run": "3dce7424-d096-46ab-9925-e2b08eabe1ce",
+        "etapa": "productos_combinados",
+        "lectura": {
+          "intencion": "otro",
+          "accion": null,
+          "producto": {
+            "marca": null,
+            "referencia": null,
+            "linea": null,
+            "categoria": null,
+            "especie": null,
+            "etapa": null,
+            "tamano": "10kg",
+            "sabores": [],
+            "presentacion": "10kg",
+            "cantidad": null
+          },
+          "productos": [],
+          "consultaCatalogo": {
+            "necesaria": false,
+            "consulta": null
+          }
+        }
+      }
+    ],
+    "solicitudes": [],
+    "carrito": [],
+    "productosConsultados": [],
+    "ultimaConsulta": null
+  }
+]

@@ -64,10 +64,15 @@ test('dos fotos cotizan el humedo y luego agrega tres por descriptor mostrando e
     '../conversation/conversationStore': { obtenerConversacionPersistida: async () => estado, obtenerHistorialRecientePersistido: async () => [],
       guardarConversacionPersistida: async (_id, nuevo) => { estado = JSON.parse(JSON.stringify(nuevo)); } },
     '../repositories/trainingExampleRepository': { obtenerEjemplosEntrenamiento: async () => [] },
-    './mediaProcessor': { procesarMultimedia: async evento => (turno === 0 ? { text: 'Tienen estos 2 productos', imageUrl: 'data:image/png;base64,one' } : { text: evento.text }) },
+    './mediaProcessor': { procesarMultimedia: async evento => (turno === 0 ? { text: 'Tienen estos 2 productos', imageUrl: evento.text ? 'data:image/png;base64,one' : 'data:image/png;base64,two' } : { text: evento.text }) },
     './catalogContextService': { seleccionarCatalogoParaIA: async () => ({ catalogo, metadata: {} }), seleccionarCatalogoRefinadoVision: () => ({ catalogo: [], metadata: {} }) },
     './humanizer': { humanizarRespuesta: async (_m, base) => base },
     './aiInterpreter': { interpretarMensajeCliente: async args => {
+      if (args.clasificacion.revisionImagenIndividual) return {
+        intencion: 'consulta_producto', accion: 'consultar', confianza: .98,
+        producto: structuredClone(productos[args.imageUrls[0].endsWith('one') ? 0 : 1]),
+        consultaCatalogo: { necesaria: true, consulta: 'producto de la foto' },
+      };
       if (args.clasificacion.decisionHerramientas) turno++;
       if (turno === 1) {
         const base = { intencion: 'consulta_producto', accion: 'consultar', confianza: .98, consultaCatalogo: { necesaria: true, consulta: 'dos productos' } };

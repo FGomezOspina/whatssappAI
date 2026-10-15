@@ -1,4 +1,5 @@
 const DEFAULT_BUFFER_WINDOW_MS = 5000;
+const DEFAULT_MEDIA_BUFFER_WINDOW_MS = 10000;
 const MIN_CONFIGURED_BUFFER_WINDOW_MS = 1000;
 
 function obtenerVentanaBufferMs() {
@@ -8,7 +9,7 @@ function obtenerVentanaBufferMs() {
     : DEFAULT_BUFFER_WINDOW_MS;
 }
 
-function crearBufferMensajesEntrantes({ alVaciar, ventanaMs = obtenerVentanaBufferMs() }) {
+function crearBufferMensajesEntrantes({ alVaciar, ventanaMs = obtenerVentanaBufferMs(), ventanaMultimediaMs = DEFAULT_MEDIA_BUFFER_WINDOW_MS }) {
   const pendientesPorCliente = new Map();
 
   function claveEvento(evento = {}) {
@@ -29,11 +30,12 @@ function crearBufferMensajesEntrantes({ alVaciar, ventanaMs = obtenerVentanaBuff
 
   function agregar(evento) {
     const key = claveEvento(evento);
-    const pendiente = pendientesPorCliente.get(key) || { eventos: [], timeout: null };
+    const pendiente = pendientesPorCliente.get(key) || { eventos: [], timeout: null, multimedia: false };
     if (pendiente.timeout) clearTimeout(pendiente.timeout);
 
     pendiente.eventos.push(evento);
-    pendiente.timeout = setTimeout(() => vaciar(key), ventanaMs);
+    pendiente.multimedia ||= evento._loteMultimedia || [evento.messageType, evento.media?.type].some(tipo => ['image', 'audio', 'voice'].includes(tipo));
+    pendiente.timeout = setTimeout(() => vaciar(key), pendiente.multimedia ? Math.max(ventanaMs, ventanaMultimediaMs) : ventanaMs);
     pendientesPorCliente.set(key, pendiente);
   }
 
@@ -51,6 +53,7 @@ function crearBufferMensajesEntrantes({ alVaciar, ventanaMs = obtenerVentanaBuff
 
 module.exports = {
   DEFAULT_BUFFER_WINDOW_MS,
+  DEFAULT_MEDIA_BUFFER_WINDOW_MS,
   crearBufferMensajesEntrantes,
   obtenerVentanaBufferMs,
 };

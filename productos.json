@@ -9480,7 +9480,7 @@
         "nombre": "CHUNKY DELICAT POTE",
         "especie": "gato",
         "categoria": "comida",
-        "subcategoria": "concentrado",
+        "subcategoria": "comida_humeda",
         "etapa": null,
         "descripcion": "CHUNKY DELICAT POTE",
         "imagen": "",
@@ -9510,8 +9510,8 @@
       {
         "nombre": "CHUNKY DELIDOG POTE",
         "especie": "perro",
-        "categoria": "accesorio",
-        "subcategoria": "accesorio",
+        "categoria": "comida",
+        "subcategoria": "comida_humeda",
         "etapa": null,
         "descripcion": "CHUNKY DELIDOG POTE",
         "imagen": "",
@@ -10203,7 +10203,7 @@
         "nombre": "CHUNKY DELICAT",
         "especie": "gato",
         "categoria": "comida",
-        "subcategoria": "concentrado",
+        "subcategoria": "comida_humeda",
         "etapa": null,
         "descripcion": "CHUNKY DELICAT",
         "imagen": "",
@@ -10245,12 +10245,12 @@
         ]
       },
       {
-        "nombre": "CHUNKY DELICAT PAG",
+        "nombre": "CHUNKY DELICAT",
         "especie": "gato",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": null,
-        "descripcion": "CHUNKY DELICAT PAG",
+        "descripcion": "CHUNKY DELICAT",
         "imagen": "",
         "requiere_confirmacion": false,
         "metadata": {
@@ -10414,18 +10414,18 @@
         ]
       },
       {
-        "nombre": "CHUNKY DELIDOG MIX C",
+        "nombre": "CHUNKY DELIDOG MIX",
         "especie": "perro",
-        "categoria": "comida",
-        "subcategoria": "concentrado",
+        "categoria": "snack",
+        "subcategoria": "premio",
         "etapa": null,
-        "descripcion": "CHUNKY DELIDOG MIX C",
+        "descripcion": "CHUNKY DELIDOG MIX",
         "imagen": "",
         "requiere_confirmacion": false,
         "metadata": {
           "source": "Productos.pdf",
           "original_names": [
-            "CHUNKY DELIDOG MIX C 280G"
+            "CHUNKY DELIDOG MIX 280G"
           ]
         },
         "presentaciones": [
@@ -10436,7 +10436,7 @@
               "source": "Productos.pdf",
               "codigo": "10501010387",
               "llave": "387",
-              "nombre_original": "CHUNKY DELIDOG MIX C 280G",
+              "nombre_original": "CHUNKY DELIDOG MIX 280G",
               "codigos": [
                 "10501010387"
               ]
@@ -10790,8 +10790,8 @@
       {
         "nombre": "CHURU BITES BOLSA 8UND",
         "especie": "otro",
-        "categoria": "accesorio",
-        "subcategoria": "accesorio",
+        "categoria": "snack",
+        "subcategoria": "premio",
         "etapa": null,
         "descripcion": "CHURU BITES BOLSA 8UND",
         "imagen": "",
@@ -10822,7 +10822,7 @@
         "nombre": "CHURU",
         "especie": "perro y gato",
         "categoria": "snack",
-        "subcategoria": "snack",
+        "subcategoria": "premio",
         "etapa": null,
         "descripcion": "CHURU",
         "imagen": "",
@@ -10957,8 +10957,8 @@
       {
         "nombre": "CHURU DOG ROLL",
         "especie": "perro",
-        "categoria": "comida",
-        "subcategoria": "concentrado",
+        "categoria": "snack",
+        "subcategoria": "premio",
         "etapa": null,
         "descripcion": "CHURU DOG ROLL",
         "imagen": "",
@@ -10988,8 +10988,8 @@
       {
         "nombre": "CHURU FUN BITES CAT",
         "especie": "gato",
-        "categoria": "comida",
-        "subcategoria": "concentrado",
+        "categoria": "snack",
+        "subcategoria": "premio",
         "etapa": null,
         "descripcion": "CHURU FUN BITES CAT",
         "imagen": "",
@@ -11151,8 +11151,8 @@
       {
         "nombre": "CHURUS SKIN",
         "especie": "perro",
-        "categoria": "comida",
-        "subcategoria": "concentrado",
+        "categoria": "snack",
+        "subcategoria": "premio",
         "etapa": null,
         "descripcion": "CHURUS SKIN",
         "imagen": "",
@@ -11898,7 +11898,7 @@
       },
       {
         "nombre": "COLLAR SERESTO PERROS Y GATOS",
-        "especie": "gato",
+        "especie": "perro y gato",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -12410,9 +12410,9 @@
       },
       {
         "nombre": "COMEDERO ANTIREFLUJO HUESO PQÑ PERRO",
-        "especie": "perro",
-        "categoria": "snack",
-        "subcategoria": "premio",
+        "especie": "otro",
+        "categoria": "accesorio",
+        "subcategoria": "accesorio",
         "etapa": null,
         "descripcion": "COMEDERO ANTIREFLUJO HUESO PQÑ PERRO",
         "imagen": "",
@@ -12567,8 +12567,8 @@
       {
         "nombre": "COQUITOS",
         "especie": "perro",
-        "categoria": "comida",
-        "subcategoria": "concentrado",
+        "categoria": "snack",
+        "subcategoria": "premio",
         "etapa": null,
         "descripcion": "COQUITOS",
         "imagen": "",
@@ -12598,8 +12598,8 @@
       {
         "nombre": "COQUITOS X KL 140 APROX",
         "especie": "perro",
-        "categoria": "comida",
-        "subcategoria": "concentrado",
+        "categoria": "snack",
+        "subcategoria": "premio",
         "etapa": null,
         "descripcion": "COQUITOS X KL 140 APROX",
         "imagen": "",
@@ -12947,8 +12947,8 @@
       {
         "nombre": "COUNTRY VALUE PERRO",
         "especie": "perro",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "categoria": "comida",
+        "subcategoria": "concentrado",
         "etapa": null,
         "descripcion": "COUNTRY VALUE PERRO",
         "imagen": "",
@@ -13319,7 +13319,7 @@
     "referencias": [
       {
         "nombre": "CUCHUCO",
-        "especie": "perro",
+        "especie": "ave",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": null,
@@ -13350,9 +13350,9 @@
       },
       {
         "nombre": "CUCHUCO",
-        "especie": "otro",
-        "categoria": "higiene",
-        "subcategoria": "aseo",
+        "especie": "ave",
+        "categoria": "comida",
+        "subcategoria": "concentrado",
         "etapa": null,
         "descripcion": "CUCHUCO",
         "imagen": "",
@@ -13544,8 +13544,8 @@
       {
         "nombre": "DENTAXTIX PEDIGREE PAG 2 LLEVE 3",
         "especie": "perro",
-        "categoria": "comida",
-        "subcategoria": "concentrado",
+        "categoria": "snack",
+        "subcategoria": "premio",
         "etapa": null,
         "descripcion": "DENTAXTIX PEDIGREE PAG 2 LLEVE 3",
         "imagen": "",
@@ -13843,18 +13843,18 @@
     },
     "referencias": [
       {
-        "nombre": "DIAMOND INDOOR",
-        "especie": "perro",
+        "nombre": "DIAMOND INDOOR CAT",
+        "especie": "gato",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": null,
-        "descripcion": "DIAMOND INDOOR",
+        "descripcion": "DIAMOND INDOOR CAT",
         "imagen": "",
         "requiere_confirmacion": false,
         "metadata": {
           "source": "Productos.pdf",
           "original_names": [
-            "DIAMOND INDOOR 2.72KG"
+            "DIAMOND INDOOR CAT 2.72KG"
           ]
         },
         "presentaciones": [
@@ -13865,7 +13865,7 @@
               "source": "Productos.pdf",
               "codigo": "103010201816",
               "llave": "1816",
-              "nombre_original": "DIAMOND INDOOR 2.72KG",
+              "nombre_original": "DIAMOND INDOOR CAT 2.72KG",
               "codigos": [
                 "103010201816"
               ]
@@ -13905,18 +13905,18 @@
         ]
       },
       {
-        "nombre": "DIAMOND KITTEN",
+        "nombre": "DIAMOND KITTEN CAT",
         "especie": "gato",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "categoria": "comida",
+        "subcategoria": "concentrado",
         "etapa": "cachorro",
-        "descripcion": "DIAMOND KITTEN",
+        "descripcion": "DIAMOND KITTEN CAT",
         "imagen": "",
         "requiere_confirmacion": true,
         "metadata": {
           "source": "Productos.pdf",
           "original_names": [
-            "DIAMOND KITTEN 500GR"
+            "DIAMOND KITTEN CAT 500GR"
           ]
         },
         "presentaciones": [
@@ -13927,7 +13927,7 @@
               "source": "Productos.pdf",
               "codigo": "10101010554",
               "llave": "554",
-              "nombre_original": "DIAMOND KITTEN 500GR",
+              "nombre_original": "DIAMOND KITTEN CAT 500GR",
               "codigos": [
                 "10101010554"
               ]
@@ -13938,8 +13938,8 @@
       {
         "nombre": "DIAMOND KITTEN CAT",
         "especie": "gato",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "categoria": "comida",
+        "subcategoria": "concentrado",
         "etapa": "cachorro",
         "descripcion": "DIAMOND KITTEN CAT",
         "imagen": "",
@@ -14017,7 +14017,7 @@
         "nombre": "DOG CHOW",
         "especie": "perro",
         "categoria": "comida",
-        "subcategoria": "concentrado",
+        "subcategoria": "comida_humeda",
         "etapa": null,
         "descripcion": "DOG CHOW",
         "imagen": "",
@@ -17134,7 +17134,7 @@
     "referencias": [
       {
         "nombre": "FANCY FEAST",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": null,
@@ -17166,18 +17166,18 @@
     ]
   },
   {
-    "marca": "FELI",
+    "marca": "FELIX",
     "metadata": {
       "source": "Productos.pdf"
     },
     "referencias": [
       {
-        "nombre": "FELI",
-        "especie": "perro",
+        "nombre": "FELIX",
+        "especie": "gato",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": null,
-        "descripcion": "FELI",
+        "descripcion": "FELIX",
         "imagen": "",
         "requiere_confirmacion": false,
         "metadata": {
@@ -17334,12 +17334,12 @@
     },
     "referencias": [
       {
-        "nombre": "FELIX MEGAMI",
+        "nombre": "FELIX MEGAMIX",
         "especie": "otro",
         "categoria": "accesorio",
         "subcategoria": "accesorio",
         "etapa": null,
-        "descripcion": "FELIX MEGAMI",
+        "descripcion": "FELIX MEGAMIX",
         "imagen": "",
         "requiere_confirmacion": false,
         "metadata": {

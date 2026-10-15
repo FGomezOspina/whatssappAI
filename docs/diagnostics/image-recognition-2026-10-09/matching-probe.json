@@ -1,0 +1,139 @@
+[
+  {
+    "vision": false,
+    "peso": null,
+    "nombre": "MAX CAT FRANGO ARROZ ADULTO",
+    "nivel": "alta",
+    "razon": "senales_convergentes",
+    "score": 1,
+    "referencia": "MAX CAT ADUL FRANGO",
+    "alternativas": [
+      "MAX CAT ADUL FRANGO"
+    ]
+  },
+  {
+    "vision": false,
+    "peso": null,
+    "nombre": "MAX CAT PROFESSIONAL LINE FRANGO ARROZ ADULTO",
+    "nivel": "alta",
+    "razon": "senales_convergentes",
+    "score": 0.843,
+    "referencia": "MAX CAT ADUL FRANGO",
+    "alternativas": [
+      "MAX CAT ADUL FRANGO"
+    ]
+  },
+  {
+    "vision": false,
+    "peso": "10kg",
+    "nombre": "MAX CAT FRANGO ARROZ ADULTO",
+    "nivel": "alta",
+    "razon": "senales_convergentes",
+    "score": 0.963,
+    "referencia": "MAX CAT ADUL FRANGO",
+    "alternativas": [
+      "MAX CAT ADUL FRANGO"
+    ]
+  },
+  {
+    "vision": false,
+    "peso": "10kg",
+    "nombre": "MAX CAT PROFESSIONAL LINE FRANGO ARROZ ADULTO",
+    "nivel": "media",
+    "razon": "similitud_media",
+    "score": 0.793,
+    "alternativas": [
+      "MAX CAT ADUL FRANGO"
+    ]
+  },
+  {
+    "vision": false,
+    "peso": "10.1kg",
+    "nombre": "MAX CAT FRANGO ARROZ ADULTO",
+    "nivel": "alta",
+    "razon": "senales_convergentes",
+    "score": 1,
+    "referencia": "MAX CAT ADUL FRANGO",
+    "alternativas": [
+      "MAX CAT ADUL FRANGO"
+    ]
+  },
+  {
+    "vision": false,
+    "peso": "10.1kg",
+    "nombre": "MAX CAT PROFESSIONAL LINE FRANGO ARROZ ADULTO",
+    "nivel": "alta",
+    "razon": "senales_convergentes",
+    "score": 0.893,
+    "referencia": "MAX CAT ADUL FRANGO",
+    "alternativas": [
+      "MAX CAT ADUL FRANGO"
+    ]
+  },
+  {
+    "vision": true,
+    "peso": null,
+    "nombre": "MAX CAT FRANGO ARROZ ADULTO",
+    "nivel": "alta",
+    "razon": "senales_visuales_convergentes",
+    "score": 1,
+    "referencia": "MAX CAT ADUL FRANGO",
+    "alternativas": [
+      "MAX CAT ADUL FRANGO"
+    ]
+  },
+  {
+    "vision": true,
+    "peso": null,
+    "nombre": "MAX CAT PROFESSIONAL LINE FRANGO ARROZ ADULTO",
+    "nivel": "alta",
+    "razon": "senales_visuales_convergentes",
+    "score": 0.943,
+    "referencia": "MAX CAT ADUL FRANGO",
+    "alternativas": [
+      "MAX CAT ADUL FRANGO"
+    ]
+  },
+  {
+    "vision": true,
+    "peso": "10kg",
+    "nombre": "MAX CAT FRANGO ARROZ ADULTO",
+    "nivel": "baja",
+    "razon": "sin_coincidencia_confiable",
+    "score": 0.668,
+    "alternativas": []
+  },
+  {
+    "vision": true,
+    "peso": "10kg",
+    "nombre": "MAX CAT PROFESSIONAL LINE FRANGO ARROZ ADULTO",
+    "nivel": "baja",
+    "razon": "sin_coincidencia_confiable",
+    "score": 0.57,
+    "alternativas": []
+  },
+  {
+    "vision": true,
+    "peso": "10.1kg",
+    "nombre": "MAX CAT FRANGO ARROZ ADULTO",
+    "nivel": "alta",
+    "razon": "senales_visuales_convergentes",
+    "score": 0.94,
+    "referencia": "MAX CAT ADUL FRANGO",
+    "alternativas": [
+      "MAX CAT ADUL FRANGO"
+    ]
+  },
+  {
+    "vision": true,
+    "peso": "10.1kg",
+    "nombre": "MAX CAT PROFESSIONAL LINE FRANGO ARROZ ADULTO",
+    "nivel": "alta",
+    "razon": "senales_visuales_convergentes",
+    "score": 0.94,
+    "referencia": "MAX CAT ADUL FRANGO",
+    "alternativas": [
+      "MAX CAT ADUL FRANGO"
+    ]
+  }
+]

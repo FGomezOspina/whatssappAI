@@ -3,9 +3,9 @@ const { contexto, crearContexto, medir, registrar, resumen, hash } = require('./
 const claveConversacion = e => [e.phoneNumberId || e.workspaceId || e.integrationId || 'canal-desconocido', e.channelUserId || 'usuario-desconocido'].join(':');
 // El buffer conserva sus timers. Aquí se agrupan los lotes que vencen mientras
 // una ejecución está activa, sin reproducir mensajes con efectos ya aplicados.
-function crearCoordinador({ procesar, enviar, typing = async () => {}, guardarEntrada = async () => {}, dividir = x => x ? [x] : [], ventanaMs, bufferFactory = crearBufferMensajesEntrantes, onSummary = () => {} }) {
+function crearCoordinador({ procesar, enviar, typing = async () => {}, guardarEntrada = async () => {}, dividir = x => x ? [x] : [], ventanaMs, ventanaMultimediaMs, bufferFactory = crearBufferMensajesEntrantes, onSummary = () => {} }) {
   const estados = new Map(), recibidos = new Map();
-  const buffer = bufferFactory({ ventanaMs, alVaciar: listo });
+  const buffer = bufferFactory({ ventanaMs, ventanaMultimediaMs, alVaciar: listo });
   function log(s, texto) { console.log(`[CONVERSATION][conversation:${hash(s.key)}][run:${s.run || '-'}] ${texto}`); }
   function listo(eventos) {
     const key = claveConversacion(eventos[0]), s = estados.get(key);
@@ -46,10 +46,26 @@ function crearCoordinador({ procesar, enviar, typing = async () => {}, guardarEn
         // El typing no retrasa ni bloquea el motor. No cancelar requests.
         void mostrar();
         renovacion = setInterval(() => void mostrar(), 20000); renovacion.unref?.();
-        const respuesta = await medir('agent_processing', () => procesar(eventos));
+        const respuesta = await medir('agent_processing', () => procesar(eventos, { contextoPendiente: s.contextoPendiente }));
+        // La siguiente ejecución recibe evidencia del lote anterior, nunca sus
+        // eventos como operaciones nuevas. Así conserva fotos sin repetir writes.
+        s.contextoPendiente.push({
+          contenidos: ctx.contenidosEntrantes || eventos.map(e => ({ text: e.text || '', imageUrl: null })),
+          respuestaGenerada: respuesta,
+        });
         const vigente = () => s.version === version;
         if (!vigente()) { log(s, 'Generated response discarded (stale)'); return; }
-        for (const text of dividir(respuesta)) {
+        // null es el contrato del motor para eventos ya procesados.
+        if (respuesta === null) { registrar('response_skipped', { reason: 'already_processed' }); return; }
+        let partes = dividir(respuesta).filter(text => typeof text === 'string' && text.trim());
+        const respaldo = !partes.length;
+        if (respaldo) {
+          registrar('response_empty', { ok: false, fallback: true });
+          partes = ['No pude completar la respuesta a tu solicitud. ¿Me confirmas qué productos y presentaciones necesitas?'];
+          s.contextoPendiente[s.contextoPendiente.length - 1].respuestaGenerada = partes[0];
+        }
+        registrar('response_prepared', { parts: partes.length, chars: partes.reduce((n, text) => n + text.length, 0), fallback: respaldo });
+        for (const text of partes) {
           if (!vigente()) { log(s, 'Remaining response discarded (stale)'); return; }
           const antes = enviados.length;
           await medir('kapso_send', () => enviar({ to: actual.recipientId, phoneNumberId: actual.phoneNumberId, text, vigente,
@@ -57,6 +73,7 @@ function crearCoordinador({ procesar, enviar, typing = async () => {}, guardarEn
           // Compatibilidad con transportes que entregan el texto en una llamada.
           if (enviados.length === antes && vigente()) enviados.push(text);
         }
+        registrar('response_send_completed', { parts: enviados.length });
       } catch (error) {
         log(s, `Processing failed (${error.name || 'Error'}); lock released`);
         // No reejecutar operaciones a ciegas ni reintentar envíos ambiguos.
@@ -82,7 +99,9 @@ function crearCoordinador({ procesar, enviar, typing = async () => {}, guardarEn
     const key = claveConversacion(evento), id = evento.idempotencyKey || evento.messageId;
     const receiptKey = id ? `${key}:${id}` : null;
     if (receiptKey && recibidos.has(receiptKey)) return recibidos.get(receiptKey);
-    const s = estados.get(key) || { key, version: 0, activo: false, enBuffer: 0, listos: [] };
+    const s = estados.get(key) || { key, version: 0, activo: false, enBuffer: 0, listos: [], contextoPendiente: [] };
+    s.multimedia ||= [evento.messageType, evento.media?.type].some(tipo => ['image', 'audio', 'voice'].includes(tipo));
+    Object.defineProperty(evento, '_loteMultimedia', { value: Boolean(s.multimedia), configurable: true });
     estados.set(key, s); s.version++; s.enBuffer++;
     if (s.activo) log(s, 'New inbound message received while processing; run became stale');
     const ctx = crearContexto(key);

@@ -218,6 +218,20 @@ function debeHumanizarRespuesta(respuestaBase, opciones = {}) {
 }
 
 async function humanizarRespuesta(mensajeCliente, respuestaBase, opciones = {}) {
+  if (opciones.interpretacionIA?.accion === 'consultar' &&
+      (opciones.productoAutonomo?.seleccionPresentaciones ||
+        opciones.productoAutonomo?.resultados?.some(r => r.seleccionPresentaciones))) {
+    // The quote already groups catalog SKUs and associates individual pets.
+    // Keep this binding and avoid turning alternatives into a purchase total.
+    opciones.onUsage?.({ skipped: true, reason: 'presentaciones_cotizadas' });
+    return respuestaBase;
+  }
+  if (opciones.estado?.alternativaPresentacionPendiente && typeof respuestaBase === 'string' &&
+      respuestaBase.includes(opciones.estado.alternativaPresentacionPendiente.presentacion)) return respuestaBase;
+  // La elección pendiente conserva todas las presentaciones del catálogo;
+  // el redactor no puede omitir opciones ni seleccionar una por el cliente.
+  if (opciones.interpretacionIA?.producto?.coincidenciaVisualValidada &&
+      opciones.interpretacionIA.producto.requierePresentacion) return respuestaBase;
   if (opciones.resumenCompacto) {
     opciones.onUsage?.({ skipped: true, reason: 'resumen_compacto' });
     return respuestaBase;
@@ -424,8 +438,9 @@ async function redactarRespuestaProducto(mensaje, respuestaOperativa, opciones) 
     const { metadata, ...presentacion } = p;
     return { ...presentacion, precio: item ? item.precio : precioPorCantidad(p, cantidad) };
   };
+  const pesoSeleccionado = hechos.presentacionSolicitada || opciones.interpretacionIA?.producto?.presentacion;
   const presentaciones = (coincidencia?.presentaciones || []).filter(p =>
-    !hechos.presentacionSolicitada || normalizarPeso(p.peso) === normalizarPeso(hechos.presentacionSolicitada))
+    !pesoSeleccionado || normalizarPeso(p.peso) === normalizarPeso(pesoSeleccionado))
     .map(p => precioVigente(p, coincidencia, cantidadSolicitada));
   const cotizacionCantidad = !incierto && opciones.interpretacionIA?.accion === "consultar" &&
     presentaciones.length === 1 && Number.isInteger(cantidadSolicitada) && cantidadSolicitada > 1
@@ -467,7 +482,7 @@ Si falta peso_mascota, la marca ya esta identificada: pregunta de forma natural 
 Si la identidad es incierta o no hay coincidencia, haz una pregunta breve que aporte el dato que falta para identificarla. Usa los atributos que distinguen candidatos; no vuelvas a pedir peso o marca ya expresados. Incluye las opciones concretas de la aclaracion (etapas o nombres de referencias compatibles); no preguntes simplemente por la referencia exacta. Conserva el peso solicitado y no sugieras categorias ni formatos distintos. Nunca pidas al cliente el precio del catalogo: la aclaracion debe resolver la identidad del producto, no pedirle datos comerciales de la tienda. No cotices candidatos inciertos, no los declares disponibles y no ofrezcas comprar otra referencia como si fuera la solicitada.
 Si el cliente cuenta una experiencia junto con su consulta, puedes reconocerla brevemente antes de responder; no conviertas productos del relato en solicitudes actuales. Ajusta el detalle a su necesidad, sin repetir sus palabras ni usar una apertura fija.
 Conserva las acciones realmente realizadas por el motor. Una consulta de precio no agrega al carrito. No confirmes un pedido si solo se agrego un producto. Respeta el siguiente paso operativo sin repetir preguntas resueltas. Mantén todas las solicitudes cuando hay varios productos. Distingue coincidencia de accion realizada: solo di que un articulo quedo agregado si figura en carrito. Los resultados pendientes requieren una pregunta concreta usando el atributo que falta y los datos ya solicitados; no pidas otra vez referencia y presentacion cuando una de ellas ya se conoce. No omitas los productos identificados por atender una aclaracion.
-Un resultado con nivel alta y pendiente presentacion ya tiene identidad confirmada: nombra su referencia validada y pregunta solo el peso. No preguntes cual de los productos busca si solicito ambos. Los precios no incluidos no estan autorizados para cotizar.
+Un resultado con nivel alta y pendiente presentacion ya tiene identidad confirmada: nombra su referencia validada y pregunta solo el peso, enumerando todas las presentaciones disponibles de esa referencia incluidas en los hechos. No anuncies "no se agregó al pedido" ni "falta confirmar la referencia" cuando solo falta elegir presentación. No preguntes cual de los productos busca si solicito ambos. Los precios no incluidos no estan autorizados para cotizar.
 Si preguntaPendiente contiene una pregunta, el sistema la muestra despues del resumen: no la repitas ni inventes otras preguntas; explica brevemente que productos quedaron agregados y cual esta pendiente.
 Solo si el cliente pregunta por domicilio, responde tambien: el precio del producto no es un total con envio. Si los hechos no incluyen una tarifa validada, indica que falta verificar ese costo, sin inventar tarifas, cobertura ni plazos. No inventes cuentas ni datos de pago.
 Si cotizacionCantidad existe, indica el precio por unidad y el total de las unidades solicitadas. Esto es una cotizacion, no una adicion al carrito. No deduzcas unidades ni dosis de pautas de administracion.
@@ -502,6 +517,9 @@ No cambies cantidades, presentaciones ni precios. Puedes expresarlos en prosa li
     }
     const precios = extraerPrecios(respuesta);
     const permitidos = new Set(extraerPrecios(respuestaOperativa || ""));
+    if (!incierto) for (const p of presentaciones) {
+      if (Number.isFinite(Number(p.precio))) permitidos.add(Number(p.precio));
+    }
     if (cotizacionCantidad) permitidos.add(cotizacionCantidad.total);
     // El contexto incluye el carrito completo. Sus precios y total tambien
     // son hechos validados aunque el resumen se adjunte fuera del redactor.
@@ -566,7 +584,8 @@ No cambies cantidades, presentaciones ni precios. Puedes expresarlos en prosa li
       (opciones.interpretacionIA?.carrito?.operacion === "modificar_cantidad" ||
        opciones.interpretacionIA?.accion === "modificar_cantidad")) return respuestaOperativa;
   // Una cotizacion invalida sigue sin autorizar publicar importes incorrectos.
-  throw new Error(`No se obtuvo una respuesta de producto fiel a los hechos validados: ${motivoRechazo}`);
+  if (!incierto && respuestaOperativa) return respuestaOperativa;
+  return respuestaValidacionProducto(hechos);
 }
 
 module.exports = {

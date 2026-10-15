@@ -1,0 +1,66 @@
+{
+  "date": "2026-10-10",
+  "focused": {
+    "total": 159,
+    "passed": 159,
+    "failed": 0
+  },
+  "fullWithWorkingCatalog": {
+    "total": 817,
+    "passed": 813,
+    "failed": 4,
+    "failures": "Tres regresiones Diamond libra y una FELIX preexistentes en productos.json local."
+  },
+  "fullWithHeadCatalogTestOnly": {
+    "total": 817,
+    "passed": 817,
+    "failed": 0
+  },
+  "realServiceContinuation": {
+    "cases": 4,
+    "assertionsPassed": true,
+    "whatsappSent": false,
+    "productionStateWritten": false,
+    "humanizer": "stub que conserva respuesta base",
+    "results": [
+      {
+        "case": "dos-fotos-inicial",
+        "response": "Cotización:\n- 1 x ARENA KING CAT x 25 kg: $62.900\nTotal cotizado: $62.900\n\n¿Qué presentación necesitas de MAX CAT ADUL FRANGO? Manejamos 1kg, 3kg, 10.1kg.",
+        "cart": []
+      },
+      {
+        "case": "dos-fotos-10",
+        "response": "Cotización:\n- 1 x ARENA KING CAT x 25 kg: $62.900\n- 1 x MAX CAT ADUL FRANGO 10.1kg: $178.600\nTotal cotizado: $241.500",
+        "cart": []
+      },
+      {
+        "case": "dos-fotos-10-repetido",
+        "response": "Cotización:\n- 1 x ARENA KING CAT x 25 kg: $62.900\n- 1 x MAX CAT ADUL FRANGO 10.1kg: $178.600\nTotal cotizado: $241.500",
+        "cart": []
+      },
+      {
+        "case": "dos-fotos-envio",
+        "response": "Pedido:\n- 1 x ARENA KING CAT x 25 kg: $62.900\n- 1 x MAX CAT ADUL FRANGO 10.1kg: $178.600\nTotal: $241.500\n\nPara completar tu domicilio, compárteme estos datos:\n- cedula\n- correo\n- celular",
+        "cart": [
+          {
+            "marca": "ARENA KING CAT",
+            "peso": "x 25 kg",
+            "cantidad": 1,
+            "precio": 62900
+          },
+          {
+            "marca": "MAX CAT",
+            "peso": "10.1kg",
+            "cantidad": 1,
+            "precio": 178600
+          }
+        ]
+      }
+    ]
+  },
+  "limits": [
+    "before.json y after.json no son una comparación con entrada idéntica: after añade una pregunta explícita de precio.",
+    "La primera ejecución con solo texto de entrega/pago omitió productos en visión; este defecto de reconocimiento inicial no se corrige aquí.",
+    "Las pruebas offline reproducen el fallo de continuación cuando el router devuelve dos productos."
+  ]
+}
