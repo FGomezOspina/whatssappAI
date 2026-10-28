@@ -199,8 +199,17 @@ function normalizarInterpretacion(valor) {
   const productoPrincipal = normalizarProducto(valor.producto || productos[0] || {});
 
   return {
+    derivacionHumana: {
+      necesaria: valor.derivacionHumana?.necesaria === true &&
+        ['criterio_veterinario', 'solicitud_asesor'].includes(valor.derivacionHumana?.motivo),
+      motivo: ['criterio_veterinario', 'solicitud_asesor'].includes(valor.derivacionHumana?.motivo)
+        ? valor.derivacionHumana.motivo : null,
+    },
+    seguimientoProducto: ['nueva', 'aclaracion', 'sin_resolver'].includes(valor.seguimientoProducto)
+      ? valor.seguimientoProducto : null,
     resumenMemoria: textoBreve(valor.resumenMemoria, 5000),
     continuarFlujo: valor.continuarFlujo === true,
+    compraContextual: ['conjunto', 'foco', 'anterior'].includes(valor.compraContextual) ? valor.compraContextual : null,
     solicitudesProductoDetectadas: Number.isInteger(valor.solicitudesProductoDetectadas) && valor.solicitudesProductoDetectadas >= 0
       ? valor.solicitudesProductoDetectadas : null,
     consultaCatalogo: {

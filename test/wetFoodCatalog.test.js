@@ -1,6 +1,6 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const catalogo = require('../productos.json');
+const catalogo = require('../src/repositories/productRepository').cargarProductos();
 const { formatoAlimento, formatoReferencia } = require('../src/utils/foodFormat');
 const { _internals: { expandirConsulta } } = require('../src/services/catalogContextService');
 const { extraerCriterios, resolverConsultaCatalogo } = require('../src/verticals/petshop/orderLogic');
@@ -58,7 +58,7 @@ for (const [marca, especie, texto] of [
   const { resultado, familia } = buscar(texto, marca, { especie });
   assert.ok(resultado.alternativas.length > 0);
   for (const candidato of resultado.alternativas) {
-    const referencia = familia[0].referencias.find(r => r.nombre === candidato.referenciaCatalogo);
+    const referencia = familia.flatMap(m => m.referencias).find(r => r.nombre === candidato.referenciaCatalogo);
     assert.equal(formatoReferencia(referencia), 'comida_humeda');
     assert.equal(referencia.especie, especie);
   }

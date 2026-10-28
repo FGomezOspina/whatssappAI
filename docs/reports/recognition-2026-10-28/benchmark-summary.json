@@ -1,0 +1,21 @@
+{
+  "liveLatency": {
+    "before": {
+      "medianMs": 683.1439165000002,
+      "p95Ms": 1046.4215000000004,
+      "httpRequests": 131
+    },
+    "after": {
+      "medianMs": 671.1276670000007,
+      "p95Ms": 1068.2779169999994,
+      "httpRequests": 131
+    }
+  },
+  "modelSixTrials": {
+    "cases": 6,
+    "medianMs": 13208.935291499998,
+    "minMs": 11021.476208,
+    "maxMs": 16408.935917,
+    "modelCalls": 18
+  }
+}

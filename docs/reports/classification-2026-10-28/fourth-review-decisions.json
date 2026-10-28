@@ -1,0 +1,411 @@
+[
+  {
+    "keys": "47:0",
+    "patch": {
+      "especie": "bovino",
+      "categoria": "medicamento",
+      "subcategoria": "antipulgas"
+    },
+    "reason": "Bañol 20.8% de California: amitraz 20.8%, frasco 20 mL, indicado exclusivamente para bovinos en esta ficha. No se confunde con Bañol EC canino.",
+    "source": "https://californiasaludanimal.com/portafolio/ganaderia-banol-208/",
+    "clear": true
+  },
+  {
+    "keys": "53:0 53:2",
+    "patch": {
+      "especie": "perro y gato",
+      "categoria": "medicamento",
+      "subcategoria": "antipulgas"
+    },
+    "reason": "Fichas suministradas por Bayer: Bolfo polvo 100 g y shampoo 100 mL son ectoparasiticidas caninos/felinos; coinciden forma y presentación.",
+    "source": "https://www.soydelcampo.com/vademecum/veterinario/BOLFO-POLVO/producto.php?id=380 ; https://www.soydelcampo.com/vademecum/veterinario/BOLFO-SHAMPOO/producto.php?id=381",
+    "clear": true
+  },
+  {
+    "keys": "80:1 80:2",
+    "patch": {
+      "categoria": "medicamento",
+      "subcategoria": "medicamento",
+      "especie": "perro"
+    },
+    "reason": "Cardio B+E 10/80 y 5/40: ficha colombiana especifica perros. Cardio B sin espironolactona es otra referencia y no se extrapola.",
+    "source": "https://californiasaludanimal.com/portafolio/mascotas-cardio-b-e/",
+    "clear": true
+  },
+  {
+    "keys": "77:0",
+    "patch": {
+      "especie": "perro y gato",
+      "categoria": "suplemento",
+      "subcategoria": "suplemento"
+    },
+    "reason": "Canplusvit 120 mL, registro 5361 DB: indicaciones del fabricante incluyen perros y gatos aunque encabezado enumera solo caninos. Multivitamínico mineral de uso nutricional.",
+    "source": "https://www.soydelcampo.com/vademecum/veterinario/CANPLUSVIT/producto.php?id=2449",
+    "clear": true
+  },
+  {
+    "keys": "200:0",
+    "patch": {
+      "especie": "otro",
+      "metadata.especies": [
+        "perro",
+        "gato",
+        "equino"
+      ],
+      "categoria": "higiene",
+      "subcategoria": "aseo"
+    },
+    "reason": "Virbac Colombia declara jabón Clorhexin para caninos, felinos y equinos, limpieza/desinfección del pelaje. No se extrapola a spray ni shampoo.",
+    "source": "https://co.virbac.com/home/find-a-product/pagecontent/encontrar-un-producto/clorhexin-jabon.html",
+    "clear": true
+  },
+  {
+    "keys": "329:0",
+    "patch": {
+      "categoria": "medicamento",
+      "subcategoria": "medicamento",
+      "especie": "otro",
+      "metadata.especies": [
+        "perro",
+        "gato",
+        "equino",
+        "bovino",
+        "porcino",
+        "caprino",
+        "ovino",
+        "mular",
+        "asnal",
+        "bufalino"
+      ]
+    },
+    "reason": "SedanPET tableta: lista explícita de especies en ficha Proconvet. Se transcribe la lista de destino; no se afirma eficacia de sus indicaciones homeopáticas.",
+    "source": "https://proconvet.com/producto/sedanpet/",
+    "clear": true
+  },
+  {
+    "keys": "352:0",
+    "patch": {
+      "categoria": "medicamento",
+      "subcategoria": "medicamento",
+      "especie": "otro",
+      "metadata.especies": [
+        "perro",
+        "gato",
+        "porcino",
+        "ave"
+      ]
+    },
+    "reason": "Sutrim suspensión 30 mL: ficha Virbac enumera caninos, felinos, porcinos y aves para la misma formulación oral.",
+    "source": "https://co.virbac.com/products/sutrim",
+    "clear": true
+  },
+  {
+    "keys": "334:1",
+    "patch": {
+      "especie": "perro y gato",
+      "categoria": "higiene",
+      "subcategoria": "aseo"
+    },
+    "reason": "Ficha Basic Farm: el frasco de 250 mL se identifica expresamente Perro y Gato; las presentaciones mayores son genéricas. No se extiende al envase local una lista más amplia.",
+    "source": "https://basicfarm.com/wp-content/uploads/2022/08/ficha-tecnica-champu-aloe-vera-ceramidas.pdf",
+    "clear": true
+  },
+  {
+    "keys": "263:0",
+    "patch": {
+      "categoria": "medicamento",
+      "subcategoria": "medicamento",
+      "especie": "otro",
+      "metadata.especies": [
+        "perro",
+        "gato",
+        "equino"
+      ]
+    },
+    "reason": "Ocuflox colirio: prospecto de Brouwer enumera caninos, felinos y equinos. Forma ocular única identificada, no se usa la indicación de otro antibiótico.",
+    "source": "https://brouwer.com.ar/wp-content/uploads/2017/01/Ocuflox-1012-02D.pdf",
+    "clear": true
+  },
+  {
+    "keys": "270:0",
+    "patch": {
+      "categoria": "medicamento",
+      "subcategoria": "medicamento",
+      "especie": "perro y gato"
+    },
+    "reason": "Opter solución ótica de Brouwer: prospecto explícito para caninos y felinos.",
+    "source": "https://brouwer.com.ar/wp-content/uploads/2017/01/Opter-797-02D.pdf",
+    "clear": true
+  },
+  {
+    "keys": "267:0",
+    "patch": {
+      "categoria": "medicamento",
+      "subcategoria": "medicamento",
+      "especie": "perro y gato"
+    },
+    "reason": "Ojux V colirio: ficha oficial identifica perros y gatos; no se convierte la frase genérica demás animales domésticos en especies adicionales no enumeradas.",
+    "source": "https://californiasaludanimal.com/portafolio/mascotas-ojux-v/",
+    "clear": true
+  },
+  {
+    "keys": "234:1",
+    "patch": {
+      "especie": "perro y gato",
+      "categoria": "suplemento",
+      "subcategoria": "suplemento"
+    },
+    "reason": "Mirrapel Senior 120 mL: ficha suministrada por Comandina identifica suplemento nutricional para perros y gatos, presentación exacta.",
+    "source": "https://www.soydelcampo.com/vademecum/veterinario/MIRRAPEL-SENIOR/producto.php?id=7054",
+    "clear": true
+  },
+  {
+    "keys": "316:4",
+    "patch": {
+      "especie": "perro y gato",
+      "categoria": "medicamento",
+      "subcategoria": "antipulgas"
+    },
+    "reason": "Revolution 6%, presentación hasta 2.5 kg: prospecto Zoetis enumera caninos y felinos. No se traslada a la referencia 316:0 sin concentración, que podría corresponder a Plus.",
+    "source": "https://www.zoetis.com.br/global-assets/private/revolution-6.pdf",
+    "clear": true
+  },
+  {
+    "keys": "343:1",
+    "patch": {
+      "especie": "gato",
+      "categoria": "snack",
+      "subcategoria": "premio"
+    },
+    "reason": "Premio Nuggets Hairball Control 75 g: responsable comercial GestoAgro lo clasifica como snack complementario felino; formato exacto.",
+    "source": "https://gestoagro.net/productos/cats/premio-nuggets-hairball-control-bola-de-pelos",
+    "clear": true
+  },
+  {
+    "keys": "245:0",
+    "patch": {
+      "categoria": "medicamento",
+      "subcategoria": "medicamento",
+      "especie": "otro",
+      "metadata.especies": [
+        "perro",
+        "gato",
+        "equino",
+        "bovino"
+      ]
+    },
+    "reason": "NaturPROC gel oral: ficha oficial enumera perros, gatos, caballos y bovinos. No se confunde con NaturPROC Spray de composición y destinos distintos.",
+    "source": "https://proconvet.com/producto/naturproc/",
+    "clear": true
+  },
+  {
+    "keys": "334:13",
+    "patch": {
+      "categoria": "medicamento",
+      "subcategoria": "medicamento",
+      "especie": "otro",
+      "metadata.especies": [
+        "perro",
+        "gato",
+        "equino"
+      ]
+    },
+    "reason": "MiclorPROC champú: ficha oficial enumera perros, gatos y caballos, y uso dermatológico medicado.",
+    "source": "https://proconvet.com/producto/miclorproc/",
+    "clear": true
+  },
+  {
+    "keys": "334:14",
+    "patch": {
+      "categoria": "medicamento",
+      "subcategoria": "medicamento",
+      "especie": "perro y gato"
+    },
+    "reason": "PeroxyPROC champú: ficha oficial indica perros y gatos y tratamiento dermatológico; no es higiene ordinaria.",
+    "source": "https://proconvet.com/producto/peroxyproc/",
+    "clear": true
+  },
+  {
+    "keys": "341:0",
+    "patch": {
+      "especie": "ave",
+      "categoria": "comida",
+      "subcategoria": "concentrado"
+    },
+    "reason": "El nombre local SINSONTES Y TUR y la presentación de alimento seco de aves permiten confirmar clasificación actual. No se necesita adivinar la expansión comercial de TUR para clasificar especie; no se añaden afirmaciones nutricionales.",
+    "source": "productos.before.json:341:0",
+    "clear": true
+  },
+  {
+    "keys": "219:6",
+    "patch": {
+      "especie": "gato",
+      "categoria": "comida",
+      "subcategoria": "concentrado"
+    },
+    "reason": "Solla identifica Lucky Cuidado Urinario 2 kg como alimento felino. La variante urinaria no se hereda de Lucky canino.",
+    "source": "https://sollamascotas.com/lucky-gatos/",
+    "clear": true
+  },
+  {
+    "keys": "334:8",
+    "patch": {
+      "especie": "otro",
+      "categoria": "higiene",
+      "subcategoria": "aseo",
+      "metadata.especies": [
+        "perro",
+        "gato",
+        "equino"
+      ]
+    },
+    "reason": "Clorhexin shampoo 240 mL: ficha colombiana enumera caninos, felinos y equinos; limpieza del pelaje con clorhexidina 0.5%.",
+    "source": "https://co.virbac.com/home/find-a-product/pagecontent/encontrar-un-producto/clorhexin-shampoo.html",
+    "clear": true
+  },
+  {
+    "keys": "97:0",
+    "patch": {
+      "metadata.especies": [
+        "perro",
+        "gato",
+        "equino"
+      ]
+    },
+    "documented_other": true,
+    "reason": "Clorhexin spray 120 mL: destino general todas las especies en ficha; se registran las tres especies individualizadas en la ficha (perro, gato, equino), sin inventar un comodín universal.",
+    "source": "https://co.virbac.com/home/find-a-product/pagecontent/encontrar-un-producto/clorhexin-spray.html",
+    "clear": true
+  },
+  {
+    "keys": "216:0",
+    "patch": {
+      "especie": "perro y gato",
+      "categoria": "higiene",
+      "subcategoria": "aseo"
+    },
+    "reason": "Lintodent Gel Dental 50 g: Novalfarm declara mantenimiento de higiene oral en perros y gatos. No se traslada al enjuague de 60 mL.",
+    "source": "https://www.novalfarm.com.co/productos/detalle/lintodent-gel-dental-5c8",
+    "clear": true
+  },
+  {
+    "keys": "271:2",
+    "patch": {
+      "especie": "perro y gato",
+      "categoria": "higiene",
+      "subcategoria": "aseo"
+    },
+    "reason": "Orenda solución ótica 100 mL: Basic Farm identifica limpiador ceruminolítico para perros y gatos. La crema Orenda es otra forma y no recibe esta decisión.",
+    "source": "https://basicfarm.com/project/orenda-solucion-otica/",
+    "clear": true
+  },
+  {
+    "keys": "244:8",
+    "patch": {
+      "especie": "perro"
+    },
+    "reason": "Digestar Fibra caja de 12 sobres: página del responsable indica específicamente perros. Se preserva categoría de producto para tránsito intestinal y no se extrapola a jaleas de otra línea.",
+    "source": "https://petsandcats.com.co/catalogo/producto-natural-para-la-salud-y-bienestar-de-tu-perro-p-c-digestar-fibra-caja-con-12-sobres/",
+    "clear": true
+  },
+  {
+    "keys": "244:5 244:12",
+    "patch": {
+      "especie": "perro",
+      "categoria": "otro",
+      "subcategoria": null
+    },
+    "reason": "Aquí Sí Can y No Muerda 240 mL son sprays de adiestramiento canino, no medicamentos. Taxonomía actual sin categoría adiestramiento: otro conserva la naturaleza no farmacológica sin crear enum nuevo.",
+    "source": "https://petsandcats.com.co/catalogo/producto-natural-de-adiestramiento-aqui-si-can-spray-de-adiestramiento-de-240-ml/ ; https://petsandcats.com.co/catalogo/producto-natural-de-adiestramiento-no-muerda-spray-de-adiestramiento-de-240-ml/",
+    "clear": true
+  },
+  {
+    "keys": "241:0 243:0",
+    "patch": {
+      "categoria": "suplemento",
+      "subcategoria": "suplemento"
+    },
+    "reason": "Mungos Multivit y Mobility son suplementos; el fabricante vende versiones felinas y caninas. Sin versión ni envase en el SKU no se asigna especie.",
+    "source": "https://mungos.co/categoria-producto/suplementosyvitaminas/",
+    "pending": [
+      {
+        "field": "especie",
+        "missing": "Indicar si el envase Mungos Multivit/Mobility de este código dice Cats/Gatos o Dogs/Perros y cuántas unidades contiene; ambas líneas existen y unidad no las distingue."
+      }
+    ],
+    "clear": true
+  },
+  {
+    "keys": "121:0",
+    "patch": {
+      "metadata.especies": [
+        "perro",
+        "gato",
+        "equino"
+      ]
+    },
+    "reason": "Dermacure emulsión dérmica 50 g: ficha Basic Farm describe la misma presentación y enumera caninos, equinos y gatos.",
+    "source": "https://basicfarm.com/project/dermacure/",
+    "clear": true
+  },
+  {
+    "keys": "73:0",
+    "patch": {
+      "metadata.especies": [
+        "perro",
+        "gato",
+        "ave"
+      ]
+    },
+    "reason": "Canatox solución oral: ficha del fabricante enumera caninos, gatos y aves ornamentales y ambos goteros, 20 y 60 mL. No se extrapolan composición ni dosis de Canatox NF.",
+    "source": "https://basicfarm.com/project/canatox-solucion-oral/",
+    "clear": true
+  },
+  {
+    "keys": "360:0",
+    "patch": {
+      "especie": "perro y gato"
+    },
+    "reason": "Tobramax gotas: Labyes declara el colirio para perros y gatos. Se corrige solo destino, sin transferir dosis ni cambiar presentación local.",
+    "source": "https://labyes.com/pt-br/produtos/tobramax/",
+    "clear": true
+  },
+  {
+    "keys": "366:0",
+    "patch": {
+      "especie": "perro y gato"
+    },
+    "reason": "Trihepat solución: portafolio global Labyes identifica perros y gatos. Se conserva medicamento porque la clasificación regulatoria como suplemento varía según mercado; no se importa categoría de Brasil.",
+    "source": "https://labyes.com/en/products/trihepat-2/",
+    "clear": true
+  },
+  {
+    "keys": "252:0",
+    "patch": {
+      "especie": "perro y gato",
+      "categoria": "medicamento",
+      "subcategoria": "desparasitante"
+    },
+    "reason": "Vicar identifica Novacan T oral con uso en caninos y felinos. Se usa la sección explícita USO EN, distinta del encabezado resumido canino; no se confunde con Novacan Cachorro.",
+    "source": "https://vicar.com.co/veterinaria/producto/novacan-t/",
+    "clear": true
+  },
+  {
+    "keys": "64:0 65:0",
+    "patch": {
+      "especie": "perro"
+    },
+    "reason": "Thyro-Tabs Canine: prospecto Lloyd enumera tabletas 0.2, 0.3, 0.4, 0.5, 0.7 y 0.8 mg incluidas en C-THYRO-TABS. Destino canino de esta línea; no se traslada a levotiroxina genérica.",
+    "source": "https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=38005382-289a-4293-b58e-b1cda8bc2288",
+    "clear": true
+  },
+  {
+    "keys": "356:0",
+    "patch": {
+      "especie": "perro y gato"
+    },
+    "reason": "Tears solución oftálmica: portafolio Labyes declara perros y gatos. Se corrige destino de la referencia, sin alterar volumen, composición ni dosis.",
+    "source": "https://labyes.com/pt-br/produtos/tears/",
+    "clear": true
+  }
+]

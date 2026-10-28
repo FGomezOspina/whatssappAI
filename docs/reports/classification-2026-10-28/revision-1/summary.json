@@ -1,0 +1,23 @@
+{
+  "local_brands": 392,
+  "local_references": 1121,
+  "local_presentations": 1397,
+  "remote_references": 1127,
+  "remote_presentations": 1423,
+  "local_changed_references": 184,
+  "local_changed_fields": 298,
+  "remote_planned_references": 202,
+  "remote_planned_fields": 338,
+  "pending_references": 580,
+  "pending_questions": 587,
+  "bound_references": 1116,
+  "protected_fields_unchanged": true,
+  "supabase_applied": false,
+  "before_sha256": "05ff7c8cb9e080946b2e53c8448aac2f774413dee6955c3c1a886066e220be6c",
+  "local_field_changes": {
+    "subcategoria": 99,
+    "especie": 84,
+    "etapa": 28,
+    "categoria": 87
+  }
+}

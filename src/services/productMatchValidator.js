@@ -394,6 +394,16 @@ function tokensIdentidadVisual(texto = "") {
   ];
 }
 
+// Identity vocabulary comes from the catalog, not a list of packaging words
+// to delete. Separate measurements syntactically and retain commercial names
+// such as PLUS even when other lexical heuristics consider them generic.
+function atributosIdentidadVisual(texto = "") {
+  return [...new Set(normalizarIdentidadProducto(texto)
+    .replace(/\b(?:x|por)?\s*\d+(?:\.\d+)?\s*(?:kg|kl|kr|kilos?|kilogramos?|g|gr|gramos?|lb|libras?|ml|mg|l|litros?|cm|mm|unidad|unidades)\b/g, ' ')
+    .split(/\s+/).filter(token => token.length > 1 && !/^\d+(?:\.\d+)?$/.test(token))
+    .map(tokenIdentidadVisual))];
+}
+
 function tokensDistintivos(texto = "", opciones = {}) {
   const codigosExplicitos = new Set((texto.match(/\b[A-Z]{2,5}\b/g) || []).map(normalizar));
   let textoNormalizado = normalizarIdentidadProducto(texto);
@@ -1546,16 +1556,21 @@ function ajustarPorSenales(item, mensaje, interpretacion, clasificacion = {}, va
   // del inventario. Exigir todos los atributos y tokens de identidad del SKU,
   // sin exigir que el inventario repita cada frase visible en el empaque.
   const textoObservado = observado?.nombre || "";
-  const tokensObservados = tokensIdentidadVisual(textoObservado);
+  const tokensObservados = atributosIdentidadVisual(textoObservado);
   const formatoHumedo = /\b(humed[oa]|pouch|pouche|sobre|sachet|salsa)\b/.test(normalizar(textoObservado));
-  const identidadCatalogo = tokensIdentidadVisual(item.referencia.nombre);
+  const identidadCatalogo = atributosIdentidadVisual(item.referencia.nombre);
   const identidadRespaldada = identidadCatalogo.every(token => tokensObservados.includes(token) ||
     (formatoHumedo && /^(pouch|pouche|sobre|sachet)$/.test(token)));
   const atributosVisualesCompletos = esVision && Number(observado?.confianzaIdentidad) >= 0.85 &&
     identidadRespaldada && identidadCatalogo.length > 1 &&
     variantesObservadas.every(token => identidadCatalogo.includes(token)) &&
-    scoreMarcaVisual(item, señales) >= 0.95 && coincideIdentidad === true &&
-    especieCoincide === true && etapaCoincide === true &&
+    scoreMarcaVisual(item, señales) >= 0.95 && coincideIdentidad !== false &&
+    (ponderacionVisual.componentes.linea === null || ponderacionVisual.componentes.linea >= 0.95) &&
+    // Missing metadata is not a contradiction (e.g. litter has no life stage).
+    // Identity is covered from catalog -> observation, while variants that
+    // distinguish competing catalog entries must also be covered in reverse.
+    // Packaging prose outside that vocabulary cannot dilute this evidence.
+    especieCoincide !== false && etapaCoincide !== false &&
     categoriaCoincide !== false && tamanoCoincide !== false &&
     señales.condiciones.every(condicion => condicionesReferencia.includes(condicion)) &&
     (!saboresReferencia.length || señales.sabores.every(sabor => saboresReferencia.includes(sabor)));
@@ -1812,6 +1827,9 @@ function validarCoincidenciaProducto({
   interpretacion = null,
   contextoProducto = null,
 } = {}) {
+  if (!clasificacion.requiereVision) {
+    mensaje = require('../utils/catalogDeclaredCodes').resolverCodigoDeclarado(mensaje, catalogo);
+  }
   interpretacion = resolverEvidenciaInterpretacion(interpretacion);
   const evidenciaIdentidad = interpretacion?.producto?.observado;
   if (clasificacion.requiereVision && evidenciaIdentidad?.nombre &&
@@ -2026,10 +2044,10 @@ function validarCoincidenciaProducto({
   const marcaObservada = tokensIdentidadVisual(interpretacion?.producto?.marca || "");
   const nombreObservado = interpretacion?.producto?.observado?.nombre || "";
   const saboresObservados = saboresProducto(nombreObservado);
-  const variantesObservadas = clasificacion.requiereVision ? tokensIdentidadVisual(nombreObservado)
+  const variantesObservadas = clasificacion.requiereVision ? atributosIdentidadVisual(nombreObservado)
     .filter(token => !marcaObservada.includes(token) && !TERMINOS_ATRIBUTO.has(token) &&
       !saboresObservados.includes(token) && !["pouch", "pouche", "sobre", "sachet", "lata"].includes(token))
-    .filter(token => itemsEvaluados.some(item => tokensIdentidadVisual(item.referencia.nombre).includes(token))) : [];
+    .filter(token => itemsEvaluados.some(item => atributosIdentidadVisual(item.referencia.nombre).includes(token))) : [];
   const puntuadosSinFiltrar = itemsEvaluados
     .map((item) =>
       puntuarItem(item, terminos, {
@@ -2422,7 +2440,7 @@ function respuestaValidacionProducto(validacion = {}) {
 
   if (validacion.nivel === "baja" && !validacion.alternativas?.length) {
     const peso = validacion.presentacionSolicitada ? ` de ${validacion.presentacionSolicitada}` : "";
-    return `No encuentro ${etiquetaConsulta(validacion)}${peso} en el catálogo actual. No la he agregado al pedido. ¿Quieres que revisemos otra referencia?`;
+    return `No encuentro ${etiquetaConsulta(validacion)}${peso} en el catálogo actual. No la he agregado al pedido. ¿Puedes confirmar el nombre completo y la presentación para revisarlo?`;
   }
   const cierre = validacion.requiereVision
     ? "¿Me confirmas la referencia que necesitas?"

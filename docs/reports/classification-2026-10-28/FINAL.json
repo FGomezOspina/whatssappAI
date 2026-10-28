@@ -1,0 +1,37 @@
+{
+  "version": "clasificacion-20261028-r4",
+  "status": "LOTE_SEGURO_LISTO_CON_PENDIENTES_DOCUMENTADOS",
+  "updated_at": "2026-10-28T18:37:31.371253+00:00",
+  "catalog_sha256": "23bb6afd7c5541e6f2659d02d9ca44171b0591b62fa365b4bc15cbfd9d78bd6b",
+  "sql_sha256": "121c83be502cf89f88d3c75449ddfbaa5b3d51e729376a789ada144ad601e555",
+  "local_changes": 346,
+  "local_changed_fields": 555,
+  "remote_proposed": 374,
+  "remote_proposed_fields": 606,
+  "supabase_applied": false,
+  "pending_references": 220,
+  "pending_questions": 224,
+  "consolidation_256": {
+    "requiere_dato_o_decision": 220,
+    "corregida_con_evidencia": 35,
+    "datos_existentes_correctos": 1
+  },
+  "pending_primary_groups": {
+    "identidad_o_presentacion": 91,
+    "etiqueta_del_stock": 99,
+    "divergencia_sin_identidad": 13,
+    "modelo_por_presentacion": 4,
+    "limite_taxonomia": 3,
+    "declaracion_nutricional": 7,
+    "identidad_remota_ausente": 3
+  },
+  "full_tests_passed": 921,
+  "sql_scenarios_passed": 13,
+  "strict_filter_checks": 546,
+  "quote_checks": 3,
+  "remote_read_at": "2026-10-28T18:27:08.504Z",
+  "remote_snapshot_unchanged": true,
+  "protected_fields_unchanged": true,
+  "safe_sql": "apply-supabase.sql",
+  "rollback": "Guardar celda rollback_sql producida por ejecución; contiene estado posterior real y guardas."
+}

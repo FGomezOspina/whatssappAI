@@ -1,0 +1,1 @@
+{"engine":"PGlite 0.5.13 PostgreSQL WASM","schema":"actual project table definitions","migration":"applied to ephemeral memory only","verification":"passed","rollback":true}

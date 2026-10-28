@@ -1,0 +1,1102 @@
+{
+  "4:15": {
+    "reason": "La referencia es una promoción; el número PAG/LLEV no identifica todas las unidades ni debe convertirse en peso. La presentación local contiene unidad o litros derivados de la promoción.",
+    "required": "Envase o factura que indique línea, especie, formato y peso de cada unidad de la promoción. No cambiar promoción/peso sin alcance separado.",
+    "kind": "identidad_o_presentacion"
+  },
+  "295:2": {
+    "reason": "La referencia es una promoción; el número PAG/LLEV no identifica todas las unidades ni debe convertirse en peso. La presentación local contiene unidad o litros derivados de la promoción.",
+    "required": "Envase o factura que indique línea, especie, formato y peso de cada unidad de la promoción. No cambiar promoción/peso sin alcance separado.",
+    "kind": "identidad_o_presentacion"
+  },
+  "390:1": {
+    "reason": "La referencia es una promoción; el número PAG/LLEV no identifica todas las unidades ni debe convertirse en peso. La presentación local contiene unidad o litros derivados de la promoción.",
+    "required": "Envase o factura que indique línea, especie, formato y peso de cada unidad de la promoción. No cambiar promoción/peso sin alcance separado.",
+    "kind": "identidad_o_presentacion"
+  },
+  "11:0": {
+    "reason": "El nombre está abreviado o difiere del candidato comercial localizado (Amox C/Azimelox/Gerioox/Posatex/Spled Dog). Una similitud fonética no prueba que sea la misma referencia.",
+    "required": "Nombre íntegro, fabricante y concentración del envase asociados al código local; confirmar la equivalencia comercial antes de asignar especies.",
+    "kind": "identidad_o_presentacion"
+  },
+  "42:0": {
+    "reason": "El nombre está abreviado o difiere del candidato comercial localizado (Amox C/Azimelox/Gerioox/Posatex/Spled Dog). Una similitud fonética no prueba que sea la misma referencia.",
+    "required": "Nombre íntegro, fabricante y concentración del envase asociados al código local; confirmar la equivalencia comercial antes de asignar especies.",
+    "kind": "identidad_o_presentacion"
+  },
+  "178:0": {
+    "reason": "El nombre está abreviado o difiere del candidato comercial localizado (Amox C/Azimelox/Gerioox/Posatex/Spled Dog). Una similitud fonética no prueba que sea la misma referencia.",
+    "required": "Nombre íntegro, fabricante y concentración del envase asociados al código local; confirmar la equivalencia comercial antes de asignar especies.",
+    "kind": "identidad_o_presentacion"
+  },
+  "294:0": {
+    "reason": "El nombre está abreviado o difiere del candidato comercial localizado (Amox C/Azimelox/Gerioox/Posatex/Spled Dog). Una similitud fonética no prueba que sea la misma referencia.",
+    "required": "Nombre íntegro, fabricante y concentración del envase asociados al código local; confirmar la equivalencia comercial antes de asignar especies.",
+    "kind": "identidad_o_presentacion"
+  },
+  "346:0": {
+    "reason": "El nombre está abreviado o difiere del candidato comercial localizado (Amox C/Azimelox/Gerioox/Posatex/Spled Dog). Una similitud fonética no prueba que sea la misma referencia.",
+    "required": "Nombre íntegro, fabricante y concentración del envase asociados al código local; confirmar la equivalencia comercial antes de asignar especies.",
+    "kind": "identidad_o_presentacion"
+  },
+  "12:0": {
+    "reason": "Las consultas archivadas no establecen una ficha primaria de la misma forma y presentación con destino por especie verificable. El código interno no incluye registro ni fabricante inequívoco; no se deduce destino a partir del beneficio o ingrediente.",
+    "required": "Etiqueta del producto de ese código con fabricante/registro, forma farmacéutica y especies de destino. Especificar concentración cuando la etiqueta la tenga.",
+    "kind": "etiqueta_del_stock"
+  },
+  "36:0": {
+    "reason": "Las consultas archivadas no establecen una ficha primaria de la misma forma y presentación con destino por especie verificable. El código interno no incluye registro ni fabricante inequívoco; no se deduce destino a partir del beneficio o ingrediente.",
+    "required": "Etiqueta del producto de ese código con fabricante/registro, forma farmacéutica y especies de destino. Especificar concentración cuando la etiqueta la tenga.",
+    "kind": "etiqueta_del_stock"
+  },
+  "44:0": {
+    "reason": "Las consultas archivadas no establecen una ficha primaria de la misma forma y presentación con destino por especie verificable. El código interno no incluye registro ni fabricante inequívoco; no se deduce destino a partir del beneficio o ingrediente.",
+    "required": "Etiqueta del producto de ese código con fabricante/registro, forma farmacéutica y especies de destino. Especificar concentración cuando la etiqueta la tenga.",
+    "kind": "etiqueta_del_stock"
+  },
+  "91:0": {
+    "reason": "Las consultas archivadas no establecen una ficha primaria de la misma forma y presentación con destino por especie verificable. El código interno no incluye registro ni fabricante inequívoco; no se deduce destino a partir del beneficio o ingrediente.",
+    "required": "Etiqueta del producto de ese código con fabricante/registro, forma farmacéutica y especies de destino. Especificar concentración cuando la etiqueta la tenga.",
+    "kind": "etiqueta_del_stock"
+  },
+  "92:0": {
+    "reason": "Las consultas archivadas no establecen una ficha primaria de la misma forma y presentación con destino por especie verificable. El código interno no incluye registro ni fabricante inequívoco; no se deduce destino a partir del beneficio o ingrediente.",
+    "required": "Etiqueta del producto de ese código con fabricante/registro, forma farmacéutica y especies de destino. Especificar concentración cuando la etiqueta la tenga.",
+    "kind": "etiqueta_del_stock"
+  },
+  "98:0": {
+    "reason": "Las consultas archivadas no establecen una ficha primaria de la misma forma y presentación con destino por especie verificable. El código interno no incluye registro ni fabricante inequívoco; no se deduce destino a partir del beneficio o ingrediente.",
+    "required": "Etiqueta del producto de ese código con fabricante/registro, forma farmacéutica y especies de destino. Especificar concentración cuando la etiqueta la tenga.",
+    "kind": "etiqueta_del_stock"
+  },
+  "122:0": {
+    "reason": "Las consultas archivadas no establecen una ficha primaria de la misma forma y presentación con destino por especie verificable. El código interno no incluye registro ni fabricante inequívoco; no se deduce destino a partir del beneficio o ingrediente.",
+    "required": "Etiqueta del producto de ese código con fabricante/registro, forma farmacéutica y especies de destino. Especificar concentración cuando la etiqueta la tenga.",
+    "kind": "etiqueta_del_stock"
+  },
+  "150:0": {
+    "reason": "Las consultas archivadas no establecen una ficha primaria de la misma forma y presentación con destino por especie verificable. El código interno no incluye registro ni fabricante inequívoco; no se deduce destino a partir del beneficio o ingrediente.",
+    "required": "Etiqueta del producto de ese código con fabricante/registro, forma farmacéutica y especies de destino. Especificar concentración cuando la etiqueta la tenga.",
+    "kind": "etiqueta_del_stock"
+  },
+  "185:0": {
+    "reason": "Las consultas archivadas no establecen una ficha primaria de la misma forma y presentación con destino por especie verificable. El código interno no incluye registro ni fabricante inequívoco; no se deduce destino a partir del beneficio o ingrediente.",
+    "required": "Etiqueta del producto de ese código con fabricante/registro, forma farmacéutica y especies de destino. Especificar concentración cuando la etiqueta la tenga.",
+    "kind": "etiqueta_del_stock"
+  },
+  "189:0": {
+    "reason": "Las consultas archivadas no establecen una ficha primaria de la misma forma y presentación con destino por especie verificable. El código interno no incluye registro ni fabricante inequívoco; no se deduce destino a partir del beneficio o ingrediente.",
+    "required": "Etiqueta del producto de ese código con fabricante/registro, forma farmacéutica y especies de destino. Especificar concentración cuando la etiqueta la tenga.",
+    "kind": "etiqueta_del_stock"
+  },
+  "199:0": {
+    "reason": "Las consultas archivadas no establecen una ficha primaria de la misma forma y presentación con destino por especie verificable. El código interno no incluye registro ni fabricante inequívoco; no se deduce destino a partir del beneficio o ingrediente.",
+    "required": "Etiqueta del producto de ese código con fabricante/registro, forma farmacéutica y especies de destino. Especificar concentración cuando la etiqueta la tenga.",
+    "kind": "etiqueta_del_stock"
+  },
+  "199:1": {
+    "reason": "Las consultas archivadas no establecen una ficha primaria de la misma forma y presentación con destino por especie verificable. El código interno no incluye registro ni fabricante inequívoco; no se deduce destino a partir del beneficio o ingrediente.",
+    "required": "Etiqueta del producto de ese código con fabricante/registro, forma farmacéutica y especies de destino. Especificar concentración cuando la etiqueta la tenga.",
+    "kind": "etiqueta_del_stock"
+  },
+  "205:0": {
+    "reason": "Las consultas archivadas no establecen una ficha primaria de la misma forma y presentación con destino por especie verificable. El código interno no incluye registro ni fabricante inequívoco; no se deduce destino a partir del beneficio o ingrediente.",
+    "required": "Etiqueta del producto de ese código con fabricante/registro, forma farmacéutica y especies de destino. Especificar concentración cuando la etiqueta la tenga.",
+    "kind": "etiqueta_del_stock"
+  },
+  "221:0": {
+    "reason": "Las consultas archivadas no establecen una ficha primaria de la misma forma y presentación con destino por especie verificable. El código interno no incluye registro ni fabricante inequívoco; no se deduce destino a partir del beneficio o ingrediente.",
+    "required": "Etiqueta del producto de ese código con fabricante/registro, forma farmacéutica y especies de destino. Especificar concentración cuando la etiqueta la tenga.",
+    "kind": "etiqueta_del_stock"
+  },
+  "247:0": {
+    "reason": "Las consultas archivadas no establecen una ficha primaria de la misma forma y presentación con destino por especie verificable. El código interno no incluye registro ni fabricante inequívoco; no se deduce destino a partir del beneficio o ingrediente.",
+    "required": "Etiqueta del producto de ese código con fabricante/registro, forma farmacéutica y especies de destino. Especificar concentración cuando la etiqueta la tenga.",
+    "kind": "etiqueta_del_stock"
+  },
+  "250:0": {
+    "reason": "Las consultas archivadas no establecen una ficha primaria de la misma forma y presentación con destino por especie verificable. El código interno no incluye registro ni fabricante inequívoco; no se deduce destino a partir del beneficio o ingrediente.",
+    "required": "Etiqueta del producto de ese código con fabricante/registro, forma farmacéutica y especies de destino. Especificar concentración cuando la etiqueta la tenga.",
+    "kind": "etiqueta_del_stock"
+  },
+  "313:0": {
+    "reason": "Las consultas archivadas no establecen una ficha primaria de la misma forma y presentación con destino por especie verificable. El código interno no incluye registro ni fabricante inequívoco; no se deduce destino a partir del beneficio o ingrediente.",
+    "required": "Etiqueta del producto de ese código con fabricante/registro, forma farmacéutica y especies de destino. Especificar concentración cuando la etiqueta la tenga.",
+    "kind": "etiqueta_del_stock"
+  },
+  "313:1": {
+    "reason": "Las consultas archivadas no establecen una ficha primaria de la misma forma y presentación con destino por especie verificable. El código interno no incluye registro ni fabricante inequívoco; no se deduce destino a partir del beneficio o ingrediente.",
+    "required": "Etiqueta del producto de ese código con fabricante/registro, forma farmacéutica y especies de destino. Especificar concentración cuando la etiqueta la tenga.",
+    "kind": "etiqueta_del_stock"
+  },
+  "314:0": {
+    "reason": "Las consultas archivadas no establecen una ficha primaria de la misma forma y presentación con destino por especie verificable. El código interno no incluye registro ni fabricante inequívoco; no se deduce destino a partir del beneficio o ingrediente.",
+    "required": "Etiqueta del producto de ese código con fabricante/registro, forma farmacéutica y especies de destino. Especificar concentración cuando la etiqueta la tenga.",
+    "kind": "etiqueta_del_stock"
+  },
+  "315:0": {
+    "reason": "Las consultas archivadas no establecen una ficha primaria de la misma forma y presentación con destino por especie verificable. El código interno no incluye registro ni fabricante inequívoco; no se deduce destino a partir del beneficio o ingrediente.",
+    "required": "Etiqueta del producto de ese código con fabricante/registro, forma farmacéutica y especies de destino. Especificar concentración cuando la etiqueta la tenga.",
+    "kind": "etiqueta_del_stock"
+  },
+  "327:0": {
+    "reason": "Las consultas archivadas no establecen una ficha primaria de la misma forma y presentación con destino por especie verificable. El código interno no incluye registro ni fabricante inequívoco; no se deduce destino a partir del beneficio o ingrediente.",
+    "required": "Etiqueta del producto de ese código con fabricante/registro, forma farmacéutica y especies de destino. Especificar concentración cuando la etiqueta la tenga.",
+    "kind": "etiqueta_del_stock"
+  },
+  "332:0": {
+    "reason": "Las consultas archivadas no establecen una ficha primaria de la misma forma y presentación con destino por especie verificable. El código interno no incluye registro ni fabricante inequívoco; no se deduce destino a partir del beneficio o ingrediente.",
+    "required": "Etiqueta del producto de ese código con fabricante/registro, forma farmacéutica y especies de destino. Especificar concentración cuando la etiqueta la tenga.",
+    "kind": "etiqueta_del_stock"
+  },
+  "332:1": {
+    "reason": "Las consultas archivadas no establecen una ficha primaria de la misma forma y presentación con destino por especie verificable. El código interno no incluye registro ni fabricante inequívoco; no se deduce destino a partir del beneficio o ingrediente.",
+    "required": "Etiqueta del producto de ese código con fabricante/registro, forma farmacéutica y especies de destino. Especificar concentración cuando la etiqueta la tenga.",
+    "kind": "etiqueta_del_stock"
+  },
+  "351:0": {
+    "reason": "Las consultas archivadas no establecen una ficha primaria de la misma forma y presentación con destino por especie verificable. El código interno no incluye registro ni fabricante inequívoco; no se deduce destino a partir del beneficio o ingrediente.",
+    "required": "Etiqueta del producto de ese código con fabricante/registro, forma farmacéutica y especies de destino. Especificar concentración cuando la etiqueta la tenga.",
+    "kind": "etiqueta_del_stock"
+  },
+  "384:0": {
+    "reason": "Las consultas archivadas no establecen una ficha primaria de la misma forma y presentación con destino por especie verificable. El código interno no incluye registro ni fabricante inequívoco; no se deduce destino a partir del beneficio o ingrediente.",
+    "required": "Etiqueta del producto de ese código con fabricante/registro, forma farmacéutica y especies de destino. Especificar concentración cuando la etiqueta la tenga.",
+    "kind": "etiqueta_del_stock"
+  },
+  "17:0": {
+    "reason": "Local indica arena felina y Supabase otro. La ficha King Cat encontrada es manzana 4.5 kg, distinta del granel de 1 kg; BUOS/granel no tiene envase original enlazado. No se impone el valor local al remoto por prioridad arbitraria.",
+    "required": "Marca y envase de origen del granel/BUOS/King, o confirmación del responsable de catálogo de que el SKU es arena sanitaria felina.",
+    "kind": "divergencia_sin_identidad"
+  },
+  "17:2": {
+    "reason": "Local indica arena felina y Supabase otro. La ficha King Cat encontrada es manzana 4.5 kg, distinta del granel de 1 kg; BUOS/granel no tiene envase original enlazado. No se impone el valor local al remoto por prioridad arbitraria.",
+    "required": "Marca y envase de origen del granel/BUOS/King, o confirmación del responsable de catálogo de que el SKU es arena sanitaria felina.",
+    "kind": "divergencia_sin_identidad"
+  },
+  "18:0": {
+    "reason": "Local indica arena felina y Supabase otro. La ficha King Cat encontrada es manzana 4.5 kg, distinta del granel de 1 kg; BUOS/granel no tiene envase original enlazado. No se impone el valor local al remoto por prioridad arbitraria.",
+    "required": "Marca y envase de origen del granel/BUOS/King, o confirmación del responsable de catálogo de que el SKU es arena sanitaria felina.",
+    "kind": "divergencia_sin_identidad"
+  },
+  "19:0": {
+    "reason": "Local indica arena felina y Supabase otro. La ficha King Cat encontrada es manzana 4.5 kg, distinta del granel de 1 kg; BUOS/granel no tiene envase original enlazado. No se impone el valor local al remoto por prioridad arbitraria.",
+    "required": "Marca y envase de origen del granel/BUOS/King, o confirmación del responsable de catálogo de que el SKU es arena sanitaria felina.",
+    "kind": "divergencia_sin_identidad"
+  },
+  "38:0": {
+    "reason": "Se localizó Artrin y Artrin Plus de Brouwer; el SKU dice ARTRIN PRO sin fórmula. No es posible elegir entre variantes con ese sufijo.",
+    "required": "Envase o registro que confirme si PRO es Artrin, Artrin Plus u otra formulación.",
+    "kind": "identidad_o_presentacion"
+  },
+  "39:0": {
+    "reason": "Jabón y jabón sábila/Vetriderm no se vincularon a un prospecto primario de la fórmula local. No se transfiere indicación de un shampoo ni de otra formulación insecticida.",
+    "required": "Foto o ficha de la barra exacta con composición, registro y especies; distinguir jabón normal, sábila y Vetriderm.",
+    "kind": "etiqueta_del_stock"
+  },
+  "39:1": {
+    "reason": "Jabón y jabón sábila/Vetriderm no se vincularon a un prospecto primario de la fórmula local. No se transfiere indicación de un shampoo ni de otra formulación insecticida.",
+    "required": "Foto o ficha de la barra exacta con composición, registro y especies; distinguir jabón normal, sábila y Vetriderm.",
+    "kind": "etiqueta_del_stock"
+  },
+  "200:1": {
+    "reason": "Jabón y jabón sábila/Vetriderm no se vincularon a un prospecto primario de la fórmula local. No se transfiere indicación de un shampoo ni de otra formulación insecticida.",
+    "required": "Foto o ficha de la barra exacta con composición, registro y especies; distinguir jabón normal, sábila y Vetriderm.",
+    "kind": "etiqueta_del_stock"
+  },
+  "46:0": {
+    "reason": "Baytril reúne 150 mg canino y 50 mg canino/felino bajo una especie por referencia. La información de especie está resuelta, pero asignar ambas a la referencia completa incluiría indebidamente la variante 150 mg.",
+    "required": "Decisión para separar la entidad por concentración/especie preservando IDs y relaciones, fuera del alcance de corrección de campos.",
+    "kind": "modelo_por_presentacion"
+  },
+  "48:0": {
+    "reason": "Conejo es lagomorfo; la taxonomía operativa existente lo agrupa comercialmente como roedor. No es una duda sobre el animal.",
+    "required": "Decidir en tarea separada si se amplía el soporte de especie lagomorfo/conejo en esquema y consumidores.",
+    "kind": "limite_taxonomia"
+  },
+  "159:0": {
+    "reason": "Conejo es lagomorfo; la taxonomía operativa existente lo agrupa comercialmente como roedor. No es una duda sobre el animal.",
+    "required": "Decidir en tarea separada si se amplía el soporte de especie lagomorfo/conejo en esquema y consumidores.",
+    "kind": "limite_taxonomia"
+  },
+  "171:0": {
+    "reason": "Conejo es lagomorfo; la taxonomía operativa existente lo agrupa comercialmente como roedor. No es una duda sobre el animal.",
+    "required": "Decidir en tarea separada si se amplía el soporte de especie lagomorfo/conejo en esquema y consumidores.",
+    "kind": "limite_taxonomia"
+  },
+  "49:0": {
+    "reason": "Las abreviaturas BHI/BIH/BIHOV y las variantes CANAV, THC, FREE, NEP-VET, SYLIYM no aportan registro o composición verificable. No se extiende la indicación de una fórmula a toda la línea.",
+    "required": "Catálogo del proveedor o etiquetas de cada variante BHI/BIH con nombre íntegro, composición, concentración, forma y especies.",
+    "kind": "etiqueta_del_stock"
+  },
+  "49:1": {
+    "reason": "Las abreviaturas BHI/BIH/BIHOV y las variantes CANAV, THC, FREE, NEP-VET, SYLIYM no aportan registro o composición verificable. No se extiende la indicación de una fórmula a toda la línea.",
+    "required": "Catálogo del proveedor o etiquetas de cada variante BHI/BIH con nombre íntegro, composición, concentración, forma y especies.",
+    "kind": "etiqueta_del_stock"
+  },
+  "49:2": {
+    "reason": "Las abreviaturas BHI/BIH/BIHOV y las variantes CANAV, THC, FREE, NEP-VET, SYLIYM no aportan registro o composición verificable. No se extiende la indicación de una fórmula a toda la línea.",
+    "required": "Catálogo del proveedor o etiquetas de cada variante BHI/BIH con nombre íntegro, composición, concentración, forma y especies.",
+    "kind": "etiqueta_del_stock"
+  },
+  "49:3": {
+    "reason": "Las abreviaturas BHI/BIH/BIHOV y las variantes CANAV, THC, FREE, NEP-VET, SYLIYM no aportan registro o composición verificable. No se extiende la indicación de una fórmula a toda la línea.",
+    "required": "Catálogo del proveedor o etiquetas de cada variante BHI/BIH con nombre íntegro, composición, concentración, forma y especies.",
+    "kind": "etiqueta_del_stock"
+  },
+  "49:4": {
+    "reason": "Las abreviaturas BHI/BIH/BIHOV y las variantes CANAV, THC, FREE, NEP-VET, SYLIYM no aportan registro o composición verificable. No se extiende la indicación de una fórmula a toda la línea.",
+    "required": "Catálogo del proveedor o etiquetas de cada variante BHI/BIH con nombre íntegro, composición, concentración, forma y especies.",
+    "kind": "etiqueta_del_stock"
+  },
+  "49:5": {
+    "reason": "Las abreviaturas BHI/BIH/BIHOV y las variantes CANAV, THC, FREE, NEP-VET, SYLIYM no aportan registro o composición verificable. No se extiende la indicación de una fórmula a toda la línea.",
+    "required": "Catálogo del proveedor o etiquetas de cada variante BHI/BIH con nombre íntegro, composición, concentración, forma y especies.",
+    "kind": "etiqueta_del_stock"
+  },
+  "50:0": {
+    "reason": "Las abreviaturas BHI/BIH/BIHOV y las variantes CANAV, THC, FREE, NEP-VET, SYLIYM no aportan registro o composición verificable. No se extiende la indicación de una fórmula a toda la línea.",
+    "required": "Catálogo del proveedor o etiquetas de cada variante BHI/BIH con nombre íntegro, composición, concentración, forma y especies.",
+    "kind": "etiqueta_del_stock"
+  },
+  "50:1": {
+    "reason": "Las abreviaturas BHI/BIH/BIHOV y las variantes CANAV, THC, FREE, NEP-VET, SYLIYM no aportan registro o composición verificable. No se extiende la indicación de una fórmula a toda la línea.",
+    "required": "Catálogo del proveedor o etiquetas de cada variante BHI/BIH con nombre íntegro, composición, concentración, forma y especies.",
+    "kind": "etiqueta_del_stock"
+  },
+  "50:2": {
+    "reason": "Las abreviaturas BHI/BIH/BIHOV y las variantes CANAV, THC, FREE, NEP-VET, SYLIYM no aportan registro o composición verificable. No se extiende la indicación de una fórmula a toda la línea.",
+    "required": "Catálogo del proveedor o etiquetas de cada variante BHI/BIH con nombre íntegro, composición, concentración, forma y especies.",
+    "kind": "etiqueta_del_stock"
+  },
+  "52:0": {
+    "reason": "Comercios describen Bismopet con varios destinos, incluyendo terneros y potros, pero la evidencia no incluye etiqueta primaria verificable de ambos frascos locales. La etiqueta de comercio no basta para excluir o incluir especies.",
+    "required": "Ficha del fabricante o registro de Bismopet suspensión 120 y 240 mL que confirme especies autorizadas.",
+    "kind": "etiqueta_del_stock"
+  },
+  "53:1": {
+    "reason": "La ficha suministrada por Bayer verificada corresponde a polvo 100 g. No se identifica si el sobre 20 g local es presentación registrada o fraccionamiento, ni su composición.",
+    "required": "Etiqueta de Bolfo polvo sobre 20 g y confirmación de origen/formulación; no se extrapola desde el frasco 100 g.",
+    "kind": "identidad_o_presentacion"
+  },
+  "59:1": {
+    "reason": "La referencia abreviada BR POMM BITTES TOCINETA no enlaza inequívocamente con Pop’n Bites; la página candidata presenta inconsistencias de sabor. Local snack y remoto comida siguen divergentes.",
+    "required": "EAN/envase que confirme Pop’n Bites tocinetas 85 g y su condición de premio.",
+    "kind": "divergencia_sin_identidad"
+  },
+  "66:0": {
+    "reason": "Cabanos y Coquitos son nombres genéricos sin proveedor o composición. Hay diferencias previas snack/comida/higiene; no se identifica el envase origen de las unidades sueltas.",
+    "required": "Proveedor, etiqueta del paquete origen y confirmación de si es premio complementario; para Cabanos también especies de destino.",
+    "kind": "divergencia_sin_identidad"
+  },
+  "66:1": {
+    "reason": "Cabanos y Coquitos son nombres genéricos sin proveedor o composición. Hay diferencias previas snack/comida/higiene; no se identifica el envase origen de las unidades sueltas.",
+    "required": "Proveedor, etiqueta del paquete origen y confirmación de si es premio complementario; para Cabanos también especies de destino.",
+    "kind": "divergencia_sin_identidad"
+  },
+  "105:0": {
+    "reason": "Cabanos y Coquitos son nombres genéricos sin proveedor o composición. Hay diferencias previas snack/comida/higiene; no se identifica el envase origen de las unidades sueltas.",
+    "required": "Proveedor, etiqueta del paquete origen y confirmación de si es premio complementario; para Cabanos también especies de destino.",
+    "kind": "divergencia_sin_identidad"
+  },
+  "105:1": {
+    "reason": "Cabanos y Coquitos son nombres genéricos sin proveedor o composición. Hay diferencias previas snack/comida/higiene; no se identifica el envase origen de las unidades sueltas.",
+    "required": "Proveedor, etiqueta del paquete origen y confirmación de si es premio complementario; para Cabanos también especies de destino.",
+    "kind": "divergencia_sin_identidad"
+  },
+  "67:0": {
+    "reason": "Cacahuate, girasol, maíz, mixtura y semillas no identifican una fórmula animal completa. Semillas en sobres podría ser siembra. El nombre no justifica alimento concentrado exclusivo de perro.",
+    "required": "Confirmar uso comercial (materia prima alimentaria, mezcla para aves/roedores o siembra), composición de mixtura y envase/proveedor; sin esto no se asigna especie ni fórmula.",
+    "kind": "identidad_o_presentacion"
+  },
+  "182:0": {
+    "reason": "Cacahuate, girasol, maíz, mixtura y semillas no identifican una fórmula animal completa. Semillas en sobres podría ser siembra. El nombre no justifica alimento concentrado exclusivo de perro.",
+    "required": "Confirmar uso comercial (materia prima alimentaria, mezcla para aves/roedores o siembra), composición de mixtura y envase/proveedor; sin esto no se asigna especie ni fórmula.",
+    "kind": "identidad_o_presentacion"
+  },
+  "220:0": {
+    "reason": "Cacahuate, girasol, maíz, mixtura y semillas no identifican una fórmula animal completa. Semillas en sobres podría ser siembra. El nombre no justifica alimento concentrado exclusivo de perro.",
+    "required": "Confirmar uso comercial (materia prima alimentaria, mezcla para aves/roedores o siembra), composición de mixtura y envase/proveedor; sin esto no se asigna especie ni fórmula.",
+    "kind": "identidad_o_presentacion"
+  },
+  "236:0": {
+    "reason": "Cacahuate, girasol, maíz, mixtura y semillas no identifican una fórmula animal completa. Semillas en sobres podría ser siembra. El nombre no justifica alimento concentrado exclusivo de perro.",
+    "required": "Confirmar uso comercial (materia prima alimentaria, mezcla para aves/roedores o siembra), composición de mixtura y envase/proveedor; sin esto no se asigna especie ni fórmula.",
+    "kind": "identidad_o_presentacion"
+  },
+  "331:0": {
+    "reason": "Cacahuate, girasol, maíz, mixtura y semillas no identifican una fórmula animal completa. Semillas en sobres podría ser siembra. El nombre no justifica alimento concentrado exclusivo de perro.",
+    "required": "Confirmar uso comercial (materia prima alimentaria, mezcla para aves/roedores o siembra), composición de mixtura y envase/proveedor; sin esto no se asigna especie ni fórmula.",
+    "kind": "identidad_o_presentacion"
+  },
+  "72:7": {
+    "reason": "La búsqueda encontró shampoo CanAmor árbol de té 230 mL, con destinos discordantes entre comercios; el SKU es 30 cc. No hay etiqueta de la presentación local verificada.",
+    "required": "Etiqueta del sachet 30 cc que indique especie y nombre completo de la fórmula.",
+    "kind": "etiqueta_del_stock"
+  },
+  "78:0": {
+    "reason": "Cantaxantin Canto y Color son variantes distintas; las presentaciones localizadas no verifican el envase 300 g local. No se deduce especie a partir del pigmento ni del nombre Canto.",
+    "required": "Fabricante/registro y etiqueta de Canto y Color 300 g; confirmar si es alimento complementario para aves o suplemento.",
+    "kind": "identidad_o_presentacion"
+  },
+  "78:1": {
+    "reason": "Cantaxantin Canto y Color son variantes distintas; las presentaciones localizadas no verifican el envase 300 g local. No se deduce especie a partir del pigmento ni del nombre Canto.",
+    "required": "Fabricante/registro y etiqueta de Canto y Color 300 g; confirmar si es alimento complementario para aves o suplemento.",
+    "kind": "identidad_o_presentacion"
+  },
+  "84:0": {
+    "reason": "Se registra principio activo o nombre genérico sin fabricante/registro/forma suficiente. La misma molécula puede tener destinos, formulaciones y autorizaciones distintos.",
+    "required": "Fabricante, concentración, forma farmacéutica, registro y especies de cada envase; no basta indicar cefalexina/itraconazol/levotiroxina/medroxiprogesterona/meloxicam/piperazina/prednisolona.",
+    "kind": "etiqueta_del_stock"
+  },
+  "198:0": {
+    "reason": "Se registra principio activo o nombre genérico sin fabricante/registro/forma suficiente. La misma molécula puede tener destinos, formulaciones y autorizaciones distintos.",
+    "required": "Fabricante, concentración, forma farmacéutica, registro y especies de cada envase; no basta indicar cefalexina/itraconazol/levotiroxina/medroxiprogesterona/meloxicam/piperazina/prednisolona.",
+    "kind": "etiqueta_del_stock"
+  },
+  "213:0": {
+    "reason": "Se registra principio activo o nombre genérico sin fabricante/registro/forma suficiente. La misma molécula puede tener destinos, formulaciones y autorizaciones distintos.",
+    "required": "Fabricante, concentración, forma farmacéutica, registro y especies de cada envase; no basta indicar cefalexina/itraconazol/levotiroxina/medroxiprogesterona/meloxicam/piperazina/prednisolona.",
+    "kind": "etiqueta_del_stock"
+  },
+  "225:0": {
+    "reason": "Se registra principio activo o nombre genérico sin fabricante/registro/forma suficiente. La misma molécula puede tener destinos, formulaciones y autorizaciones distintos.",
+    "required": "Fabricante, concentración, forma farmacéutica, registro y especies de cada envase; no basta indicar cefalexina/itraconazol/levotiroxina/medroxiprogesterona/meloxicam/piperazina/prednisolona.",
+    "kind": "etiqueta_del_stock"
+  },
+  "226:0": {
+    "reason": "Se registra principio activo o nombre genérico sin fabricante/registro/forma suficiente. La misma molécula puede tener destinos, formulaciones y autorizaciones distintos.",
+    "required": "Fabricante, concentración, forma farmacéutica, registro y especies de cada envase; no basta indicar cefalexina/itraconazol/levotiroxina/medroxiprogesterona/meloxicam/piperazina/prednisolona.",
+    "kind": "etiqueta_del_stock"
+  },
+  "227:0": {
+    "reason": "Se registra principio activo o nombre genérico sin fabricante/registro/forma suficiente. La misma molécula puede tener destinos, formulaciones y autorizaciones distintos.",
+    "required": "Fabricante, concentración, forma farmacéutica, registro y especies de cada envase; no basta indicar cefalexina/itraconazol/levotiroxina/medroxiprogesterona/meloxicam/piperazina/prednisolona.",
+    "kind": "etiqueta_del_stock"
+  },
+  "292:0": {
+    "reason": "Se registra principio activo o nombre genérico sin fabricante/registro/forma suficiente. La misma molécula puede tener destinos, formulaciones y autorizaciones distintos.",
+    "required": "Fabricante, concentración, forma farmacéutica, registro y especies de cada envase; no basta indicar cefalexina/itraconazol/levotiroxina/medroxiprogesterona/meloxicam/piperazina/prednisolona.",
+    "kind": "etiqueta_del_stock"
+  },
+  "296:0": {
+    "reason": "Se registra principio activo o nombre genérico sin fabricante/registro/forma suficiente. La misma molécula puede tener destinos, formulaciones y autorizaciones distintos.",
+    "required": "Fabricante, concentración, forma farmacéutica, registro y especies de cada envase; no basta indicar cefalexina/itraconazol/levotiroxina/medroxiprogesterona/meloxicam/piperazina/prednisolona.",
+    "kind": "etiqueta_del_stock"
+  },
+  "85:0": {
+    "reason": "Cefamax cefalexina 250 mg no quedó enlazado a una ficha primaria del producto local. No se usa Cefalexina 500 mg Holliday como sustituto de evidencia.",
+    "required": "Fabricante y prospecto de Cefamax 250 mg con especies de destino.",
+    "kind": "etiqueta_del_stock"
+  },
+  "88:12": {
+    "reason": "CHUNKY CHUROS 13 g puede ser una abreviatura de snack cremoso; no está identificado en las fichas exactas revisadas. No se equipara al concentrado Chunky.",
+    "required": "Foto/EAN y denominación íntegra del tubo de 13 g; confirmar especie y si es premio.",
+    "kind": "identidad_o_presentacion"
+  },
+  "88:15": {
+    "reason": "Italcol confirma Delicaprichos Gato 75 g y humedad 10%, pero la página consultada no explicita completo frente a complementario; una tabla de suministro no basta para resolver comida frente a snack.",
+    "required": "Declaración nutricional del empaque: alimento completo o complementario/premio. Especie felina ya confirmada.",
+    "kind": "declaracion_nutricional"
+  },
+  "89:0": {
+    "reason": "Churu tiene líneas Cat y Dog. Número de tubos y sabores no identifican de forma exclusiva la especie; MEDICADO tampoco identifica fórmula o indicación.",
+    "required": "Etiqueta Cat/Dog y EAN de cada bolsa/bombonera; para Medicado identificar nombre completo de la variante.",
+    "kind": "identidad_o_presentacion"
+  },
+  "89:2": {
+    "reason": "Churu tiene líneas Cat y Dog. Número de tubos y sabores no identifican de forma exclusiva la especie; MEDICADO tampoco identifica fórmula o indicación.",
+    "required": "Etiqueta Cat/Dog y EAN de cada bolsa/bombonera; para Medicado identificar nombre completo de la variante.",
+    "kind": "identidad_o_presentacion"
+  },
+  "89:3": {
+    "reason": "Churu tiene líneas Cat y Dog. Número de tubos y sabores no identifican de forma exclusiva la especie; MEDICADO tampoco identifica fórmula o indicación.",
+    "required": "Etiqueta Cat/Dog y EAN de cada bolsa/bombonera; para Medicado identificar nombre completo de la variante.",
+    "kind": "identidad_o_presentacion"
+  },
+  "89:8": {
+    "reason": "Churu tiene líneas Cat y Dog. Número de tubos y sabores no identifican de forma exclusiva la especie; MEDICADO tampoco identifica fórmula o indicación.",
+    "required": "Etiqueta Cat/Dog y EAN de cada bolsa/bombonera; para Medicado identificar nombre completo de la variante.",
+    "kind": "identidad_o_presentacion"
+  },
+  "89:10": {
+    "reason": "Churu tiene líneas Cat y Dog. Número de tubos y sabores no identifican de forma exclusiva la especie; MEDICADO tampoco identifica fórmula o indicación.",
+    "required": "Etiqueta Cat/Dog y EAN de cada bolsa/bombonera; para Medicado identificar nombre completo de la variante.",
+    "kind": "identidad_o_presentacion"
+  },
+  "99:9": {
+    "reason": "Seresto tiene variantes para gatos, perros pequeños y perros grandes; el SKU dice perros y gatos sin talla, mientras remoto dice gato. No se extiende un destino de una longitud/formulación a todas.",
+    "required": "Longitud, concentración/EAN y etiqueta del collar asociado al código. Si agrupa variantes, separar requiere tarea adicional.",
+    "kind": "divergencia_sin_identidad"
+  },
+  "100:0": {
+    "reason": "Hello Kitty es una denominación/licencia que no acredita fabricante ni uso veterinario de la colonia. No se deduce aplicación animal por el nombre del personaje.",
+    "required": "Etiqueta de colonia 80 mL con fabricante y destinatario; confirmar si es perfume para animal o producto de uso humano/ambiental.",
+    "kind": "identidad_o_presentacion"
+  },
+  "112:1": {
+    "reason": "Country Value Perro 3 kg está localmente como alimento y remotamente como medicamento; no se consiguió ficha exacta primaria de la referencia para sobrescribir la divergencia.",
+    "required": "Envase/factura del fabricante con nombre completo, formato y confirmación de alimento seco.",
+    "kind": "divergencia_sin_identidad"
+  },
+  "113:0": {
+    "reason": "No existe vínculo uno-a-uno por código con el tenant Distrifinca. La clasificación no justifica actualizar otra referencia por parecido.",
+    "required": "UUID correcto del catálogo Distrifinca o confirmación de referencia aún no importada.",
+    "kind": "identidad_remota_ausente"
+  },
+  "115:0": {
+    "reason": "No existe vínculo uno-a-uno por código con el tenant Distrifinca. La clasificación no justifica actualizar otra referencia por parecido.",
+    "required": "UUID correcto del catálogo Distrifinca o confirmación de referencia aún no importada.",
+    "kind": "identidad_remota_ausente"
+  },
+  "202:0": {
+    "reason": "No existe vínculo uno-a-uno por código con el tenant Distrifinca. La clasificación no justifica actualizar otra referencia por parecido.",
+    "required": "UUID correcto del catálogo Distrifinca o confirmación de referencia aún no importada.",
+    "kind": "identidad_remota_ausente"
+  },
+  "115:1": {
+    "reason": "Cuchuco local para aves/comida diverge de otro/higiene remoto. El granel carece de proveedor/formulación para justificar destino exclusivo.",
+    "required": "Envase origen y uso comercial del cuchuco de 1 kg; confirmar si es materia prima o alimento para aves antes de sincronizar.",
+    "kind": "divergencia_sin_identidad"
+  },
+  "116:0": {
+    "reason": "Chalver identifica Cutamycon loción y crema VF, pero la información consultada usa animales o mascotas sin una lista de especies suficiente para la referencia. No se toman categorías del menú de la web como indicación.",
+    "required": "Prospecto/registro local de loción 50/100 mL y crema VF 35 g con especies de destino explícitas.",
+    "kind": "etiqueta_del_stock"
+  },
+  "116:1": {
+    "reason": "Chalver identifica Cutamycon loción y crema VF, pero la información consultada usa animales o mascotas sin una lista de especies suficiente para la referencia. No se toman categorías del menú de la web como indicación.",
+    "required": "Prospecto/registro local de loción 50/100 mL y crema VF 35 g con especies de destino explícitas.",
+    "kind": "etiqueta_del_stock"
+  },
+  "120:0": {
+    "reason": "Michiko tiene sustratos, deodorizantes y kits; el código 462 y el kit 140 g no enlazan a ficha exacta de contenido/uso. Un kit para cultivar hierba no es necesariamente arena ni alimento preparado.",
+    "required": "Contenido e instrucciones del kit 140 g y deodorizante 462; confirmar especie objetivo y naturaleza del producto.",
+    "kind": "identidad_o_presentacion"
+  },
+  "207:1": {
+    "reason": "Michiko tiene sustratos, deodorizantes y kits; el código 462 y el kit 140 g no enlazan a ficha exacta de contenido/uso. Un kit para cultivar hierba no es necesariamente arena ni alimento preparado.",
+    "required": "Contenido e instrucciones del kit 140 g y deodorizante 462; confirmar especie objetivo y naturaleza del producto.",
+    "kind": "identidad_o_presentacion"
+  },
+  "126:0": {
+    "reason": "Himalaya identifica Digyton Drops 30 mL, pero la página obtenida no declara especies; menciones de gatos y perros en reseñas de clientes no son evidencia del fabricante.",
+    "required": "Etiqueta/registro del frasco 30 mL con especies de destino.",
+    "kind": "etiqueta_del_stock"
+  },
+  "127:0": {
+    "reason": "Dog Chow x100 no dice unidad ni formato. El nombre de marca no decide húmedo frente a seco; local y remoto discrepan solo en subcategoría.",
+    "required": "Envase/EAN que confirme que x100 significa pouch de 100 g y no otro formato.",
+    "kind": "divergencia_sin_identidad"
+  },
+  "131:1": {
+    "reason": "Donkat Cremoso está anunciado como snack en comercios, pero no hay etiqueta primaria exacta vinculada al pack de cuatro y unidad. La especie gato ya está establecida.",
+    "required": "Declaración del fabricante: complemento/snack o alimento completo, y peso de cada tubo; se propone snack pendiente de esa confirmación.",
+    "kind": "declaracion_nutricional"
+  },
+  "131:2": {
+    "reason": "Donkat Cremoso está anunciado como snack en comercios, pero no hay etiqueta primaria exacta vinculada al pack de cuatro y unidad. La especie gato ya está establecida.",
+    "required": "Declaración del fabricante: complemento/snack o alimento completo, y peso de cada tubo; se propone snack pendiente de esa confirmación.",
+    "kind": "declaracion_nutricional"
+  },
+  "132:0": {
+    "reason": "Doxican antiguo y actual muestran diferencias de destinatarios; el SKU dice 100 und, que no confirma concentración ni versión del registro.",
+    "required": "Envase que indique concentración, unidades reales y registro vigente; confirmar etiqueta canina o canina/felina.",
+    "kind": "identidad_o_presentacion"
+  },
+  "136:0": {
+    "reason": "Electrozoo sobre no incluye gramos ni fabricante/registro; no se puede transferir la indicación de otro electrolito con composición diferente.",
+    "required": "Etiqueta del sobre con fabricante, peso, composición y especies.",
+    "kind": "etiqueta_del_stock"
+  },
+  "139:0": {
+    "reason": "Vetnil presenta Enterex 8 g para producción/equinos y Enterex Pet para perros/gatos. El SKU no distingue registro o línea; se evita formar una unión de etiquetas de distintos mercados.",
+    "required": "Etiqueta colombiana del sobre 8 g, importador y registro que identifique Pet frente a línea de producción.",
+    "kind": "identidad_o_presentacion"
+  },
+  "141:0": {
+    "reason": "Enzimax tableta remite a un folleto Holliday de México compuesto por imágenes; el contenido recuperado no permitió verificar destino/registro del stock colombiano.",
+    "required": "Foto del envase o prospecto legible de Enzimax con fabricante, concentración y especies.",
+    "kind": "etiqueta_del_stock"
+  },
+  "144:0": {
+    "reason": "Esencias y Específico son descripciones genéricas; no identifican fórmula, fabricante ni uso corporal/ambiental.",
+    "required": "Nombre comercial íntegro, composición, fabricante y uso indicado en la etiqueta de gotas/spray/Específico.",
+    "kind": "identidad_o_presentacion"
+  },
+  "144:1": {
+    "reason": "Esencias y Específico son descripciones genéricas; no identifican fórmula, fabricante ni uso corporal/ambiental.",
+    "required": "Nombre comercial íntegro, composición, fabricante y uso indicado en la etiqueta de gotas/spray/Específico.",
+    "kind": "identidad_o_presentacion"
+  },
+  "145:0": {
+    "reason": "Esencias y Específico son descripciones genéricas; no identifican fórmula, fabricante ni uso corporal/ambiental.",
+    "required": "Nombre comercial íntegro, composición, fabricante y uso indicado en la etiqueta de gotas/spray/Específico.",
+    "kind": "identidad_o_presentacion"
+  },
+  "147:2": {
+    "reason": "La línea abreviada existe para más de una especie: Excellent Fórmula, Royal Exigent, Taste con pato y Virbac Weight 1. El tamaño no decide por sí solo especie ni receta.",
+    "required": "Nombre completo y etiqueta Dog/Cat. En Taste: Wetlands o Lowland Creek; en Virbac: W1 Dog o Cat; en Royal: Mini Exigent o fórmula felina.",
+    "kind": "identidad_o_presentacion"
+  },
+  "321:5": {
+    "reason": "La línea abreviada existe para más de una especie: Excellent Fórmula, Royal Exigent, Taste con pato y Virbac Weight 1. El tamaño no decide por sí solo especie ni receta.",
+    "required": "Nombre completo y etiqueta Dog/Cat. En Taste: Wetlands o Lowland Creek; en Virbac: W1 Dog o Cat; en Royal: Mini Exigent o fórmula felina.",
+    "kind": "identidad_o_presentacion"
+  },
+  "354:3": {
+    "reason": "La línea abreviada existe para más de una especie: Excellent Fórmula, Royal Exigent, Taste con pato y Virbac Weight 1. El tamaño no decide por sí solo especie ni receta.",
+    "required": "Nombre completo y etiqueta Dog/Cat. En Taste: Wetlands o Lowland Creek; en Virbac: W1 Dog o Cat; en Royal: Mini Exigent o fórmula felina.",
+    "kind": "identidad_o_presentacion"
+  },
+  "381:17": {
+    "reason": "La línea abreviada existe para más de una especie: Excellent Fórmula, Royal Exigent, Taste con pato y Virbac Weight 1. El tamaño no decide por sí solo especie ni receta.",
+    "required": "Nombre completo y etiqueta Dog/Cat. En Taste: Wetlands o Lowland Creek; en Virbac: W1 Dog o Cat; en Royal: Mini Exigent o fórmula felina.",
+    "kind": "identidad_o_presentacion"
+  },
+  "154:0": {
+    "reason": "Félix reúne 85 g y 500 g bajo una subcategoría única; podrían ser húmedo y seco. La especie gato es clara, el formato por presentación no.",
+    "required": "Etiqueta de cada presentación. Si son húmedo y seco, autorizar separación de referencias en tarea distinta; no modificar peso ni agrupamiento aquí.",
+    "kind": "modelo_por_presentacion"
+  },
+  "156:0": {
+    "reason": "Feliway es felino, pero el SKU 20 mL no identifica modalidad ni variante. Clasificación como medicamento requiere revisar si es producto de feromonas ambiental y su presentación exacta.",
+    "required": "Nombre completo (Classic/Optimum/Friends), formato (spray/recambio) y registro/etiqueta; decidir categoría ambiental dentro de taxonomía existente.",
+    "kind": "identidad_o_presentacion"
+  },
+  "162:0": {
+    "reason": "Fiprostar puede confundirse con productos de fipronil de uso agrícola y veterinario; la pipeta y el spray son formulaciones distintas.",
+    "required": "Fabricante, registro y composición de Fiprostar 20–40 kg y spray 60 mL. No trasladar especie por ingrediente.",
+    "kind": "etiqueta_del_stock"
+  },
+  "162:2": {
+    "reason": "Fiprostar puede confundirse con productos de fipronil de uso agrícola y veterinario; la pipeta y el spray son formulaciones distintas.",
+    "required": "Fabricante, registro y composición de Fiprostar 20–40 kg y spray 60 mL. No trasladar especie por ingrediente.",
+    "kind": "etiqueta_del_stock"
+  },
+  "163:0": {
+    "reason": "Fitovete crema, gel y shampoo se registran por separado. La evidencia consultada no aporta lista verificable de especies de cada forma y de todos los volúmenes locales.",
+    "required": "Prospecto Euroetika/fabricante de crema/gel 15 g y shampoo 30/120/250 mL que enumere destinos; no basta una ficha de una sola forma.",
+    "kind": "etiqueta_del_stock"
+  },
+  "163:1": {
+    "reason": "Fitovete crema, gel y shampoo se registran por separado. La evidencia consultada no aporta lista verificable de especies de cada forma y de todos los volúmenes locales.",
+    "required": "Prospecto Euroetika/fabricante de crema/gel 15 g y shampoo 30/120/250 mL que enumere destinos; no basta una ficha de una sola forma.",
+    "kind": "etiqueta_del_stock"
+  },
+  "334:10": {
+    "reason": "Fitovete crema, gel y shampoo se registran por separado. La evidencia consultada no aporta lista verificable de especies de cada forma y de todos los volúmenes locales.",
+    "required": "Prospecto Euroetika/fabricante de crema/gel 15 g y shampoo 30/120/250 mL que enumere destinos; no basta una ficha de una sola forma.",
+    "kind": "etiqueta_del_stock"
+  },
+  "165:0": {
+    "reason": "Floralac local dice sobre 25 g; fichas encontradas de otras presentaciones no identifican ese sobre.",
+    "required": "Fabricante, registro y etiqueta de Floralac 25 g.",
+    "kind": "identidad_o_presentacion"
+  },
+  "175:1": {
+    "reason": "Mantequilla de maní para perro, salchicha y sticks no indican si son premios o alimento completo. No se convierte automáticamente en concentrado por ser comestible.",
+    "required": "Composición/etiqueta y declaración de alimento completo frente a complemento/premio; proveedor de unidades sueltas.",
+    "kind": "declaracion_nutricional"
+  },
+  "325:0": {
+    "reason": "Mantequilla de maní para perro, salchicha y sticks no indican si son premios o alimento completo. No se convierte automáticamente en concentrado por ser comestible.",
+    "required": "Composición/etiqueta y declaración de alimento completo frente a complemento/premio; proveedor de unidades sueltas.",
+    "kind": "declaracion_nutricional"
+  },
+  "347:0": {
+    "reason": "Mantequilla de maní para perro, salchicha y sticks no indican si son premios o alimento completo. No se convierte automáticamente en concentrado por ser comestible.",
+    "required": "Composición/etiqueta y declaración de alimento completo frente a complemento/premio; proveedor de unidades sueltas.",
+    "kind": "declaracion_nutricional"
+  },
+  "190:0": {
+    "reason": "Heel comercializa presentaciones humanas y ad us. vet. El nombre y cantidad local no distinguen registro veterinario; no se asignan perro/gato a toda la marca.",
+    "required": "Envase y registro exacto de cada Heel, indicando ad us. vet., concentración y especies; incluir ampollas y comprimidos.",
+    "kind": "identidad_o_presentacion"
+  },
+  "190:1": {
+    "reason": "Heel comercializa presentaciones humanas y ad us. vet. El nombre y cantidad local no distinguen registro veterinario; no se asignan perro/gato a toda la marca.",
+    "required": "Envase y registro exacto de cada Heel, indicando ad us. vet., concentración y especies; incluir ampollas y comprimidos.",
+    "kind": "identidad_o_presentacion"
+  },
+  "190:2": {
+    "reason": "Heel comercializa presentaciones humanas y ad us. vet. El nombre y cantidad local no distinguen registro veterinario; no se asignan perro/gato a toda la marca.",
+    "required": "Envase y registro exacto de cada Heel, indicando ad us. vet., concentración y especies; incluir ampollas y comprimidos.",
+    "kind": "identidad_o_presentacion"
+  },
+  "190:3": {
+    "reason": "Heel comercializa presentaciones humanas y ad us. vet. El nombre y cantidad local no distinguen registro veterinario; no se asignan perro/gato a toda la marca.",
+    "required": "Envase y registro exacto de cada Heel, indicando ad us. vet., concentración y especies; incluir ampollas y comprimidos.",
+    "kind": "identidad_o_presentacion"
+  },
+  "190:4": {
+    "reason": "Heel comercializa presentaciones humanas y ad us. vet. El nombre y cantidad local no distinguen registro veterinario; no se asignan perro/gato a toda la marca.",
+    "required": "Envase y registro exacto de cada Heel, indicando ad us. vet., concentración y especies; incluir ampollas y comprimidos.",
+    "kind": "identidad_o_presentacion"
+  },
+  "191:0": {
+    "reason": "Heel comercializa presentaciones humanas y ad us. vet. El nombre y cantidad local no distinguen registro veterinario; no se asignan perro/gato a toda la marca.",
+    "required": "Envase y registro exacto de cada Heel, indicando ad us. vet., concentración y especies; incluir ampollas y comprimidos.",
+    "kind": "identidad_o_presentacion"
+  },
+  "391:0": {
+    "reason": "Heel comercializa presentaciones humanas y ad us. vet. El nombre y cantidad local no distinguen registro veterinario; no se asignan perro/gato a toda la marca.",
+    "required": "Envase y registro exacto de cada Heel, indicando ad us. vet., concentración y especies; incluir ampollas y comprimidos.",
+    "kind": "identidad_o_presentacion"
+  },
+  "197:0": {
+    "reason": "Inmunair gotero 20 mL no coincide con la presentación avícola de Inmunair 17.5 encontrada.",
+    "required": "Etiqueta del gotero 20 mL, fabricante y concentración; confirmar si es fraccionamiento o fórmula diferente.",
+    "kind": "identidad_o_presentacion"
+  },
+  "210:0": {
+    "reason": "La ficha localizada de Laxa-Form no devolvió declaración verificable de especie; la recuperación directa terminó en 429. No se infiere gato solo por eliminación de bolas de pelo.",
+    "required": "Etiqueta Invet de Laxa-Form tubo 70 g con especies; no basta nombre de la función.",
+    "kind": "etiqueta_del_stock"
+  },
+  "214:0": {
+    "reason": "Las fichas LHA consultadas confirman línea veterinaria pero no una lista completa de especies; Circul-V además mezcla título viales y descripción granulado. Accesos posteriores a Digest-V y Ostymus terminaron en timeout. No se convierte línea veterinaria en perro/gato universal.",
+    "required": "Listado de especies del registro/etiqueta de cada LHA y forma exacta (granulado, gotas, viales, solución). Para Biotika confirmar si el nombre corresponde a la fórmula de 3 g.",
+    "kind": "etiqueta_del_stock"
+  },
+  "214:1": {
+    "reason": "Las fichas LHA consultadas confirman línea veterinaria pero no una lista completa de especies; Circul-V además mezcla título viales y descripción granulado. Accesos posteriores a Digest-V y Ostymus terminaron en timeout. No se convierte línea veterinaria en perro/gato universal.",
+    "required": "Listado de especies del registro/etiqueta de cada LHA y forma exacta (granulado, gotas, viales, solución). Para Biotika confirmar si el nombre corresponde a la fórmula de 3 g.",
+    "kind": "etiqueta_del_stock"
+  },
+  "214:2": {
+    "reason": "Las fichas LHA consultadas confirman línea veterinaria pero no una lista completa de especies; Circul-V además mezcla título viales y descripción granulado. Accesos posteriores a Digest-V y Ostymus terminaron en timeout. No se convierte línea veterinaria en perro/gato universal.",
+    "required": "Listado de especies del registro/etiqueta de cada LHA y forma exacta (granulado, gotas, viales, solución). Para Biotika confirmar si el nombre corresponde a la fórmula de 3 g.",
+    "kind": "etiqueta_del_stock"
+  },
+  "214:3": {
+    "reason": "Las fichas LHA consultadas confirman línea veterinaria pero no una lista completa de especies; Circul-V además mezcla título viales y descripción granulado. Accesos posteriores a Digest-V y Ostymus terminaron en timeout. No se convierte línea veterinaria en perro/gato universal.",
+    "required": "Listado de especies del registro/etiqueta de cada LHA y forma exacta (granulado, gotas, viales, solución). Para Biotika confirmar si el nombre corresponde a la fórmula de 3 g.",
+    "kind": "etiqueta_del_stock"
+  },
+  "214:4": {
+    "reason": "Las fichas LHA consultadas confirman línea veterinaria pero no una lista completa de especies; Circul-V además mezcla título viales y descripción granulado. Accesos posteriores a Digest-V y Ostymus terminaron en timeout. No se convierte línea veterinaria en perro/gato universal.",
+    "required": "Listado de especies del registro/etiqueta de cada LHA y forma exacta (granulado, gotas, viales, solución). Para Biotika confirmar si el nombre corresponde a la fórmula de 3 g.",
+    "kind": "etiqueta_del_stock"
+  },
+  "214:5": {
+    "reason": "Las fichas LHA consultadas confirman línea veterinaria pero no una lista completa de especies; Circul-V además mezcla título viales y descripción granulado. Accesos posteriores a Digest-V y Ostymus terminaron en timeout. No se convierte línea veterinaria en perro/gato universal.",
+    "required": "Listado de especies del registro/etiqueta de cada LHA y forma exacta (granulado, gotas, viales, solución). Para Biotika confirmar si el nombre corresponde a la fórmula de 3 g.",
+    "kind": "etiqueta_del_stock"
+  },
+  "214:6": {
+    "reason": "Las fichas LHA consultadas confirman línea veterinaria pero no una lista completa de especies; Circul-V además mezcla título viales y descripción granulado. Accesos posteriores a Digest-V y Ostymus terminaron en timeout. No se convierte línea veterinaria en perro/gato universal.",
+    "required": "Listado de especies del registro/etiqueta de cada LHA y forma exacta (granulado, gotas, viales, solución). Para Biotika confirmar si el nombre corresponde a la fórmula de 3 g.",
+    "kind": "etiqueta_del_stock"
+  },
+  "214:7": {
+    "reason": "Las fichas LHA consultadas confirman línea veterinaria pero no una lista completa de especies; Circul-V además mezcla título viales y descripción granulado. Accesos posteriores a Digest-V y Ostymus terminaron en timeout. No se convierte línea veterinaria en perro/gato universal.",
+    "required": "Listado de especies del registro/etiqueta de cada LHA y forma exacta (granulado, gotas, viales, solución). Para Biotika confirmar si el nombre corresponde a la fórmula de 3 g.",
+    "kind": "etiqueta_del_stock"
+  },
+  "214:8": {
+    "reason": "Las fichas LHA consultadas confirman línea veterinaria pero no una lista completa de especies; Circul-V además mezcla título viales y descripción granulado. Accesos posteriores a Digest-V y Ostymus terminaron en timeout. No se convierte línea veterinaria en perro/gato universal.",
+    "required": "Listado de especies del registro/etiqueta de cada LHA y forma exacta (granulado, gotas, viales, solución). Para Biotika confirmar si el nombre corresponde a la fórmula de 3 g.",
+    "kind": "etiqueta_del_stock"
+  },
+  "214:9": {
+    "reason": "Las fichas LHA consultadas confirman línea veterinaria pero no una lista completa de especies; Circul-V además mezcla título viales y descripción granulado. Accesos posteriores a Digest-V y Ostymus terminaron en timeout. No se convierte línea veterinaria en perro/gato universal.",
+    "required": "Listado de especies del registro/etiqueta de cada LHA y forma exacta (granulado, gotas, viales, solución). Para Biotika confirmar si el nombre corresponde a la fórmula de 3 g.",
+    "kind": "etiqueta_del_stock"
+  },
+  "214:10": {
+    "reason": "Las fichas LHA consultadas confirman línea veterinaria pero no una lista completa de especies; Circul-V además mezcla título viales y descripción granulado. Accesos posteriores a Digest-V y Ostymus terminaron en timeout. No se convierte línea veterinaria en perro/gato universal.",
+    "required": "Listado de especies del registro/etiqueta de cada LHA y forma exacta (granulado, gotas, viales, solución). Para Biotika confirmar si el nombre corresponde a la fórmula de 3 g.",
+    "kind": "etiqueta_del_stock"
+  },
+  "214:11": {
+    "reason": "Las fichas LHA consultadas confirman línea veterinaria pero no una lista completa de especies; Circul-V además mezcla título viales y descripción granulado. Accesos posteriores a Digest-V y Ostymus terminaron en timeout. No se convierte línea veterinaria en perro/gato universal.",
+    "required": "Listado de especies del registro/etiqueta de cada LHA y forma exacta (granulado, gotas, viales, solución). Para Biotika confirmar si el nombre corresponde a la fórmula de 3 g.",
+    "kind": "etiqueta_del_stock"
+  },
+  "214:12": {
+    "reason": "Las fichas LHA consultadas confirman línea veterinaria pero no una lista completa de especies; Circul-V además mezcla título viales y descripción granulado. Accesos posteriores a Digest-V y Ostymus terminaron en timeout. No se convierte línea veterinaria en perro/gato universal.",
+    "required": "Listado de especies del registro/etiqueta de cada LHA y forma exacta (granulado, gotas, viales, solución). Para Biotika confirmar si el nombre corresponde a la fórmula de 3 g.",
+    "kind": "etiqueta_del_stock"
+  },
+  "214:13": {
+    "reason": "Las fichas LHA consultadas confirman línea veterinaria pero no una lista completa de especies; Circul-V además mezcla título viales y descripción granulado. Accesos posteriores a Digest-V y Ostymus terminaron en timeout. No se convierte línea veterinaria en perro/gato universal.",
+    "required": "Listado de especies del registro/etiqueta de cada LHA y forma exacta (granulado, gotas, viales, solución). Para Biotika confirmar si el nombre corresponde a la fórmula de 3 g.",
+    "kind": "etiqueta_del_stock"
+  },
+  "214:14": {
+    "reason": "Las fichas LHA consultadas confirman línea veterinaria pero no una lista completa de especies; Circul-V además mezcla título viales y descripción granulado. Accesos posteriores a Digest-V y Ostymus terminaron en timeout. No se convierte línea veterinaria en perro/gato universal.",
+    "required": "Listado de especies del registro/etiqueta de cada LHA y forma exacta (granulado, gotas, viales, solución). Para Biotika confirmar si el nombre corresponde a la fórmula de 3 g.",
+    "kind": "etiqueta_del_stock"
+  },
+  "216:1": {
+    "reason": "Lintodent Gel 50 g sí tiene ficha exacta; enjuague local de 60 mL no quedó cubierto por ella y no debe heredar su composición/destino.",
+    "required": "Etiqueta del enjuague 60 mL con especies y formulación.",
+    "kind": "etiqueta_del_stock"
+  },
+  "217:0": {
+    "reason": "LIV52 Vet líquido local dice 10 mL; la ficha primaria localizada declara 110 mL. No se corrige un peso/volumen protegido ni se asume fraccionamiento.",
+    "required": "Confirmar volumen físico 10 o 110 mL y etiqueta; corregir volumen necesitaría alcance separado.",
+    "kind": "identidad_o_presentacion"
+  },
+  "218:0": {
+    "reason": "Loros y Hámster 3 kg agrupa dos destinatarios; no existe evidencia de que sea una misma fórmula apta para ambos.",
+    "required": "Envase de la mezcla y especies declaradas; confirmar si realmente agrupa dos productos distintos.",
+    "kind": "modelo_por_presentacion"
+  },
+  "229:0": {
+    "reason": "Meloxiproc 10 mL no especifica concentración; el fabricante tiene formulaciones distintas.",
+    "required": "Concentración y vía del envase (p. ej. 0.15% oral frente a otra), registro y especie; no inferir por volumen.",
+    "kind": "identidad_o_presentacion"
+  },
+  "231:0": {
+    "reason": "Michiko Gato x4 y Michiko unidad no indican si son tubos cremosos, bolsas de alimento o un multipack. La marca también vende arenas.",
+    "required": "EAN/etiqueta de x4 y unidad, peso y declaración de completo o complementario; no trasladar clasificación de Michiko seco 500 g/8 kg.",
+    "kind": "identidad_o_presentacion"
+  },
+  "231:9": {
+    "reason": "Michiko Gato x4 y Michiko unidad no indican si son tubos cremosos, bolsas de alimento o un multipack. La marca también vende arenas.",
+    "required": "EAN/etiqueta de x4 y unidad, peso y declaración de completo o complementario; no trasladar clasificación de Michiko seco 500 g/8 kg.",
+    "kind": "identidad_o_presentacion"
+  },
+  "234:3": {
+    "reason": "Mirrapel Oleoso/Polvo tienen evidencia comercial de suplemento, pero la ficha primaria exacta verificada fue Senior 120 mL; no se copia composición o destino de Senior.",
+    "required": "Ficha Comandina o etiqueta de Oleoso 120 mL y polvo 300 g con especies y declaración nutricional.",
+    "kind": "etiqueta_del_stock"
+  },
+  "234:4": {
+    "reason": "Mirrapel Oleoso/Polvo tienen evidencia comercial de suplemento, pero la ficha primaria exacta verificada fue Senior 120 mL; no se copia composición o destino de Senior.",
+    "required": "Ficha Comandina o etiqueta de Oleoso 120 mL y polvo 300 g con especies y declaración nutricional.",
+    "kind": "etiqueta_del_stock"
+  },
+  "240:0": {
+    "reason": "MR GATTO SALMON 1.5 kg no quedó identificado en una fuente primaria exacta. Las búsquedas devuelven marcas distintas como Miglior Gatto; no se consideran equivalentes.",
+    "required": "Fabricante y fotografía/EAN de MR GATTO, confirmando especie y forma seca.",
+    "kind": "identidad_o_presentacion"
+  },
+  "241:0": {
+    "reason": "Mungos Multivit/Mobility son suplementos; el fabricante presenta versiones Cats y Dogs. Unidad sin etiqueta no distingue estas versiones.",
+    "required": "Confirmar Cats/Gatos o Dogs/Perros en envase y número de unidades; categoría suplemento ya corregida.",
+    "kind": "identidad_o_presentacion"
+  },
+  "243:0": {
+    "reason": "Mungos Multivit/Mobility son suplementos; el fabricante presenta versiones Cats y Dogs. Unidad sin etiqueta no distingue estas versiones.",
+    "required": "Confirmar Cats/Gatos o Dogs/Perros en envase y número de unidades; categoría suplemento ya corregida.",
+    "kind": "identidad_o_presentacion"
+  },
+  "244:2": {
+    "reason": "Natural Freshly/Pets and Cats tiene distintas variantes de jaleas, esencias, sprays y limpiadores. El título abreviado local no identifica la fórmula exacta o destinatarios; navegar a una categoría perro/gato no prueba la aptitud de todos sus productos.",
+    "required": "Nombre de línea y etiqueta por código (Bucocare, limpiador oído, Antiestrés, Bola de Pelo, Derma Clean, esencia, jalea, Pelo Lindo, perfume, Spray Easy), con especies, formato y composición.",
+    "kind": "identidad_o_presentacion"
+  },
+  "244:3": {
+    "reason": "Natural Freshly/Pets and Cats tiene distintas variantes de jaleas, esencias, sprays y limpiadores. El título abreviado local no identifica la fórmula exacta o destinatarios; navegar a una categoría perro/gato no prueba la aptitud de todos sus productos.",
+    "required": "Nombre de línea y etiqueta por código (Bucocare, limpiador oído, Antiestrés, Bola de Pelo, Derma Clean, esencia, jalea, Pelo Lindo, perfume, Spray Easy), con especies, formato y composición.",
+    "kind": "identidad_o_presentacion"
+  },
+  "244:4": {
+    "reason": "Natural Freshly/Pets and Cats tiene distintas variantes de jaleas, esencias, sprays y limpiadores. El título abreviado local no identifica la fórmula exacta o destinatarios; navegar a una categoría perro/gato no prueba la aptitud de todos sus productos.",
+    "required": "Nombre de línea y etiqueta por código (Bucocare, limpiador oído, Antiestrés, Bola de Pelo, Derma Clean, esencia, jalea, Pelo Lindo, perfume, Spray Easy), con especies, formato y composición.",
+    "kind": "identidad_o_presentacion"
+  },
+  "244:6": {
+    "reason": "Natural Freshly/Pets and Cats tiene distintas variantes de jaleas, esencias, sprays y limpiadores. El título abreviado local no identifica la fórmula exacta o destinatarios; navegar a una categoría perro/gato no prueba la aptitud de todos sus productos.",
+    "required": "Nombre de línea y etiqueta por código (Bucocare, limpiador oído, Antiestrés, Bola de Pelo, Derma Clean, esencia, jalea, Pelo Lindo, perfume, Spray Easy), con especies, formato y composición.",
+    "kind": "identidad_o_presentacion"
+  },
+  "244:7": {
+    "reason": "Natural Freshly/Pets and Cats tiene distintas variantes de jaleas, esencias, sprays y limpiadores. El título abreviado local no identifica la fórmula exacta o destinatarios; navegar a una categoría perro/gato no prueba la aptitud de todos sus productos.",
+    "required": "Nombre de línea y etiqueta por código (Bucocare, limpiador oído, Antiestrés, Bola de Pelo, Derma Clean, esencia, jalea, Pelo Lindo, perfume, Spray Easy), con especies, formato y composición.",
+    "kind": "identidad_o_presentacion"
+  },
+  "244:9": {
+    "reason": "Natural Freshly/Pets and Cats tiene distintas variantes de jaleas, esencias, sprays y limpiadores. El título abreviado local no identifica la fórmula exacta o destinatarios; navegar a una categoría perro/gato no prueba la aptitud de todos sus productos.",
+    "required": "Nombre de línea y etiqueta por código (Bucocare, limpiador oído, Antiestrés, Bola de Pelo, Derma Clean, esencia, jalea, Pelo Lindo, perfume, Spray Easy), con especies, formato y composición.",
+    "kind": "identidad_o_presentacion"
+  },
+  "244:10": {
+    "reason": "Natural Freshly/Pets and Cats tiene distintas variantes de jaleas, esencias, sprays y limpiadores. El título abreviado local no identifica la fórmula exacta o destinatarios; navegar a una categoría perro/gato no prueba la aptitud de todos sus productos.",
+    "required": "Nombre de línea y etiqueta por código (Bucocare, limpiador oído, Antiestrés, Bola de Pelo, Derma Clean, esencia, jalea, Pelo Lindo, perfume, Spray Easy), con especies, formato y composición.",
+    "kind": "identidad_o_presentacion"
+  },
+  "244:14": {
+    "reason": "Natural Freshly/Pets and Cats tiene distintas variantes de jaleas, esencias, sprays y limpiadores. El título abreviado local no identifica la fórmula exacta o destinatarios; navegar a una categoría perro/gato no prueba la aptitud de todos sus productos.",
+    "required": "Nombre de línea y etiqueta por código (Bucocare, limpiador oído, Antiestrés, Bola de Pelo, Derma Clean, esencia, jalea, Pelo Lindo, perfume, Spray Easy), con especies, formato y composición.",
+    "kind": "identidad_o_presentacion"
+  },
+  "244:15": {
+    "reason": "Natural Freshly/Pets and Cats tiene distintas variantes de jaleas, esencias, sprays y limpiadores. El título abreviado local no identifica la fórmula exacta o destinatarios; navegar a una categoría perro/gato no prueba la aptitud de todos sus productos.",
+    "required": "Nombre de línea y etiqueta por código (Bucocare, limpiador oído, Antiestrés, Bola de Pelo, Derma Clean, esencia, jalea, Pelo Lindo, perfume, Spray Easy), con especies, formato y composición.",
+    "kind": "identidad_o_presentacion"
+  },
+  "244:16": {
+    "reason": "Natural Freshly/Pets and Cats tiene distintas variantes de jaleas, esencias, sprays y limpiadores. El título abreviado local no identifica la fórmula exacta o destinatarios; navegar a una categoría perro/gato no prueba la aptitud de todos sus productos.",
+    "required": "Nombre de línea y etiqueta por código (Bucocare, limpiador oído, Antiestrés, Bola de Pelo, Derma Clean, esencia, jalea, Pelo Lindo, perfume, Spray Easy), con especies, formato y composición.",
+    "kind": "identidad_o_presentacion"
+  },
+  "246:0": {
+    "reason": "Nefrotec sin sufijo no confirma si es Nefrotec DS ni presentación regional.",
+    "required": "Envase/registro, nombre completo y especies autorizadas; no extrapolar de Nefrotec DS.",
+    "kind": "identidad_o_presentacion"
+  },
+  "249:0": {
+    "reason": "Nicilan agrupa 50 y 500 mg; la especie puede variar por concentración del registro. No se aplica una especie única por marca.",
+    "required": "Prospecto de ambas concentraciones. Si destinos difieren, separar referencia requiere ampliar alcance.",
+    "kind": "modelo_por_presentacion"
+  },
+  "265:0": {
+    "reason": "Proconvet publica Oftaproc Colirio, pero el catálogo distingue E y M; esas letras no se vinculan inequívocamente con composición y registro en la ficha obtenida.",
+    "required": "Etiqueta de Oftaproc E y M 10 mL con principio activo y registro; no copiar ficha del colirio sin sufijo.",
+    "kind": "identidad_o_presentacion"
+  },
+  "265:1": {
+    "reason": "Proconvet publica Oftaproc Colirio, pero el catálogo distingue E y M; esas letras no se vinculan inequívocamente con composición y registro en la ficha obtenida.",
+    "required": "Etiqueta de Oftaproc E y M 10 mL con principio activo y registro; no copiar ficha del colirio sin sufijo.",
+    "kind": "identidad_o_presentacion"
+  },
+  "269:0": {
+    "reason": "La ficha Biozoo One mexicana es canina, pero ONE tableta sin fabricante ni concentración no prueba que sea esa formulación.",
+    "required": "Confirmar Biozoo One, composición y registro del envase vendido por unidad antes de usar la ficha mexicana.",
+    "kind": "identidad_o_presentacion"
+  },
+  "271:0": {
+    "reason": "Basic Farm identifica Orenda crema dérmica, pero la descripción recuperada no enumera especies. La ficha ótica no se extrapola a la crema.",
+    "required": "Lista de especies de etiqueta/registro de Orenda crema 30 g.",
+    "kind": "etiqueta_del_stock"
+  },
+  "273:0": {
+    "reason": "Otiflex puede corresponder a Otiflex C medicado o limpiador. La referencia local omite C y el formato 25 mL por sí solo no confirma el registro.",
+    "required": "Envase y nombre completo Otiflex C o Limpiador, con formulación y especies.",
+    "kind": "identidad_o_presentacion"
+  },
+  "280:0": {
+    "reason": "PANZER SOBRE está como comida húmeda canina, pero Panzer también nombra herbicida. Nombre y sobre sin gramos no permiten elegir entidad; no se convierte en herbicida por coincidencia de nombre.",
+    "required": "Foto de frente/reverso o registro del sobre; confirmar primero si es producto agrícola o alimento. Caso prioritario por posible colisión de identidad.",
+    "kind": "identidad_o_presentacion"
+  },
+  "282:1": {
+    "reason": "Pañitos difieren en marca, fórmula, perfume y antibacterial. No se asume que toda toallita sea apta para ambas especies; Basic Din incluye usos de desinfección distintos del aseo animal.",
+    "required": "Etiqueta de Basic x100, Esencial 50, Petys 10/50/80, antibacterial 40, lavanda 50 y Tommy 10 con uso corporal y especies.",
+    "kind": "etiqueta_del_stock"
+  },
+  "282:2": {
+    "reason": "Pañitos difieren en marca, fórmula, perfume y antibacterial. No se asume que toda toallita sea apta para ambas especies; Basic Din incluye usos de desinfección distintos del aseo animal.",
+    "required": "Etiqueta de Basic x100, Esencial 50, Petys 10/50/80, antibacterial 40, lavanda 50 y Tommy 10 con uso corporal y especies.",
+    "kind": "etiqueta_del_stock"
+  },
+  "282:3": {
+    "reason": "Pañitos difieren en marca, fórmula, perfume y antibacterial. No se asume que toda toallita sea apta para ambas especies; Basic Din incluye usos de desinfección distintos del aseo animal.",
+    "required": "Etiqueta de Basic x100, Esencial 50, Petys 10/50/80, antibacterial 40, lavanda 50 y Tommy 10 con uso corporal y especies.",
+    "kind": "etiqueta_del_stock"
+  },
+  "282:4": {
+    "reason": "Pañitos difieren en marca, fórmula, perfume y antibacterial. No se asume que toda toallita sea apta para ambas especies; Basic Din incluye usos de desinfección distintos del aseo animal.",
+    "required": "Etiqueta de Basic x100, Esencial 50, Petys 10/50/80, antibacterial 40, lavanda 50 y Tommy 10 con uso corporal y especies.",
+    "kind": "etiqueta_del_stock"
+  },
+  "282:5": {
+    "reason": "Pañitos difieren en marca, fórmula, perfume y antibacterial. No se asume que toda toallita sea apta para ambas especies; Basic Din incluye usos de desinfección distintos del aseo animal.",
+    "required": "Etiqueta de Basic x100, Esencial 50, Petys 10/50/80, antibacterial 40, lavanda 50 y Tommy 10 con uso corporal y especies.",
+    "kind": "etiqueta_del_stock"
+  },
+  "282:6": {
+    "reason": "Pañitos difieren en marca, fórmula, perfume y antibacterial. No se asume que toda toallita sea apta para ambas especies; Basic Din incluye usos de desinfección distintos del aseo animal.",
+    "required": "Etiqueta de Basic x100, Esencial 50, Petys 10/50/80, antibacterial 40, lavanda 50 y Tommy 10 con uso corporal y especies.",
+    "kind": "etiqueta_del_stock"
+  },
+  "287:0": {
+    "reason": "Pet Milk aparece en presentaciones 100/250/500 g que no coinciden plenamente con la línea Vetnil encontrada. No se sabe si es sustituto lácteo, suplemento ni qué fabricante corresponde.",
+    "required": "Fabricante y etiquetas de los tres tamaños; para 287:0 además UUID exacto o confirmar no importado.",
+    "kind": "identidad_o_presentacion"
+  },
+  "287:2": {
+    "reason": "Pet Milk aparece en presentaciones 100/250/500 g que no coinciden plenamente con la línea Vetnil encontrada. No se sabe si es sustituto lácteo, suplemento ni qué fabricante corresponde.",
+    "required": "Fabricante y etiquetas de los tres tamaños; para 287:0 además UUID exacto o confirmar no importado.",
+    "kind": "identidad_o_presentacion"
+  },
+  "287:1": {
+    "reason": "Pet Drops 5 mL es nombre genérico sin principio activo, fabricante o uso ocular/ótico/oral.",
+    "required": "Envase y composición, vía y especies.",
+    "kind": "identidad_o_presentacion"
+  },
+  "289:0": {
+    "reason": "Pezosan local dice crema 30 mg; la fuente describe Pezosan-N ungüento 30 g. No se asume equivalencia de formulación ni se corrige unidad protegida.",
+    "required": "Etiqueta que confirme N/NF, crema frente a ungüento y 30 g frente a 30 mg.",
+    "kind": "identidad_o_presentacion"
+  },
+  "291:1": {
+    "reason": "Pimocard 10 no incluye unidad de concentración o fabricante verificado por código. Los comercios no reemplazan prospecto local.",
+    "required": "Etiqueta/registro de Pimocard 10 mg para validar destino canino.",
+    "kind": "etiqueta_del_stock"
+  },
+  "293:1": {
+    "reason": "Alfa 3 crema tiene ficha para bovinos/equinos/porcinos/caprinos/ovinos/caninos, pero el SKU mezcla Pomada Alfa 3 cicatrizante 30 mL; Pomada Alfa es producto distinto. No se reasigna por similitud.",
+    "required": "Confirmar si es Alfa 3 crema o Pomada Alfa y el envase/registro exacto; no transferir la especie felina de una fórmula a otra.",
+    "kind": "identidad_o_presentacion"
+  },
+  "297:0": {
+    "reason": "Predni-Zoo verificado es de 20 mg; local dice 5 mg. No se extrapola desde otra concentración para declarar resuelta la identidad.",
+    "required": "Etiqueta/registro de Predni-Zoo 5 mg con especies.",
+    "kind": "identidad_o_presentacion"
+  },
+  "300:0": {
+    "reason": "Promocalier sin sufijo no distingue L de 43; existen fichas diferentes y 20 mL no basta para diferenciarlas.",
+    "required": "Sufijo, composición y registro del frasco de 20 mL.",
+    "kind": "identidad_o_presentacion"
+  },
+  "302:1": {
+    "reason": "Comercios atribuyen Puloff a Servinsumos con pipetas caninas de esos volúmenes, pero no se obtuvo la etiqueta primaria exacta que confirme esas variantes.",
+    "required": "Ficha Servinsumos o etiqueta 0.67/1.34/2.68 mL con rango de peso y especie. No usar la pipeta felina de 0.5 mL como evidencia.",
+    "kind": "etiqueta_del_stock"
+  },
+  "302:2": {
+    "reason": "Comercios atribuyen Puloff a Servinsumos con pipetas caninas de esos volúmenes, pero no se obtuvo la etiqueta primaria exacta que confirme esas variantes.",
+    "required": "Ficha Servinsumos o etiqueta 0.67/1.34/2.68 mL con rango de peso y especie. No usar la pipeta felina de 0.5 mL como evidencia.",
+    "kind": "etiqueta_del_stock"
+  },
+  "302:3": {
+    "reason": "Comercios atribuyen Puloff a Servinsumos con pipetas caninas de esos volúmenes, pero no se obtuvo la etiqueta primaria exacta que confirme esas variantes.",
+    "required": "Ficha Servinsumos o etiqueta 0.67/1.34/2.68 mL con rango de peso y especie. No usar la pipeta felina de 0.5 mL como evidencia.",
+    "kind": "etiqueta_del_stock"
+  },
+  "306:0": {
+    "reason": "La ficha colombiana disponible de Quinodiar Mascotas declara 60 mL; el SKU es suspensión 30 mL.",
+    "required": "Etiqueta del frasco 30 mL que confirme nombre completo, formulación y especies.",
+    "kind": "identidad_o_presentacion"
+  },
+  "311:1": {
+    "reason": "PetPrime anuncia formulaciones para Cats y versiones anteriores; la venta por unidad de Renal/UT Balance no identifica la etiqueta origen.",
+    "required": "Nombre completo, versión Cats/Dogs, fabricante y foto del frasco origen de las unidades.",
+    "kind": "identidad_o_presentacion"
+  },
+  "372:0": {
+    "reason": "PetPrime anuncia formulaciones para Cats y versiones anteriores; la venta por unidad de Renal/UT Balance no identifica la etiqueta origen.",
+    "required": "Nombre completo, versión Cats/Dogs, fabricante y foto del frasco origen de las unidades.",
+    "kind": "identidad_o_presentacion"
+  },
+  "316:0": {
+    "reason": "Revolution 0.25 mL y rango 1.2–2.5 kg no distinguen Revolution simple de Revolution Plus felino. Solo la referencia separada 6% rosada quedó resuelta.",
+    "required": "Concentración y palabra Plus/selamectina en etiqueta del SKU 316:0.",
+    "kind": "identidad_o_presentacion"
+  },
+  "321:0": {
+    "reason": "Royal Beauty puede confundirse con Intense Beauty felino; Puppy Lats no identifica producto íntegro. Los 150 g encontrados en tablas de ración no prueban tamaño del envase.",
+    "required": "Foto/EAN de Beauty 150 g y Puppy Lats 150 g; nombre íntegro y confirmar lata/bandeja húmeda.",
+    "kind": "identidad_o_presentacion"
+  },
+  "321:16": {
+    "reason": "Royal Beauty puede confundirse con Intense Beauty felino; Puppy Lats no identifica producto íntegro. Los 150 g encontrados en tablas de ración no prueban tamaño del envase.",
+    "required": "Foto/EAN de Beauty 150 g y Puppy Lats 150 g; nombre íntegro y confirmar lata/bandeja húmeda.",
+    "kind": "identidad_o_presentacion"
+  },
+  "326:0": {
+    "reason": "Saniderm local registra 40 g y ficha recuperada 40 mL; no se confirma la misma presentación regional.",
+    "required": "Etiqueta y registro del envase, corroborando unidad y especies; no corregir g/mL fuera de alcance.",
+    "kind": "identidad_o_presentacion"
+  },
+  "334:3": {
+    "reason": "Bonny Argan, Pet Life y Sunshine no se vinculan con una ficha primaria exacta de fórmula y especies; no se deduce perro/gato por ser shampoo de tienda veterinaria.",
+    "required": "Fabricante, línea completa y especies del shampoo de cada envase.",
+    "kind": "etiqueta_del_stock"
+  },
+  "334:15": {
+    "reason": "Bonny Argan, Pet Life y Sunshine no se vinculan con una ficha primaria exacta de fórmula y especies; no se deduce perro/gato por ser shampoo de tienda veterinaria.",
+    "required": "Fabricante, línea completa y especies del shampoo de cada envase.",
+    "kind": "etiqueta_del_stock"
+  },
+  "334:20": {
+    "reason": "Bonny Argan, Pet Life y Sunshine no se vinculan con una ficha primaria exacta de fórmula y especies; no se deduce perro/gato por ser shampoo de tienda veterinaria.",
+    "required": "Fabricante, línea completa y especies del shampoo de cada envase.",
+    "kind": "etiqueta_del_stock"
+  },
+  "334:5": {
+    "reason": "Canis y Felis funciona como nombre comercial; Clorhexina, K-Zol y Medicado son fórmulas distintas. No basta traducir el nombre de marca a perro/gato.",
+    "required": "Ficha Novalfarm exacta de cada fórmula/volumen con especies y condición medicada o higiene.",
+    "kind": "etiqueta_del_stock"
+  },
+  "334:6": {
+    "reason": "Canis y Felis funciona como nombre comercial; Clorhexina, K-Zol y Medicado son fórmulas distintas. No basta traducir el nombre de marca a perro/gato.",
+    "required": "Ficha Novalfarm exacta de cada fórmula/volumen con especies y condición medicada o higiene.",
+    "kind": "etiqueta_del_stock"
+  },
+  "334:7": {
+    "reason": "Canis y Felis funciona como nombre comercial; Clorhexina, K-Zol y Medicado son fórmulas distintas. No basta traducir el nombre de marca a perro/gato.",
+    "required": "Ficha Novalfarm exacta de cada fórmula/volumen con especies y condición medicada o higiene.",
+    "kind": "etiqueta_del_stock"
+  },
+  "334:16": {
+    "reason": "Petys Insecticida 235 mL puede ser denominación antigua del repelente; no se identifica principio activo/registro, y repelente no equivale a insecticida farmacológico.",
+    "required": "Etiqueta Petys 235 mL con especie y declaración repelente/insecticida.",
+    "kind": "identidad_o_presentacion"
+  },
+  "334:18": {
+    "reason": "Sebolytic SIS local y Sebolytic actual no se vinculan por composición; la página colombiana actual declara perros, otras versiones no deben suponerse equivalentes.",
+    "required": "Etiqueta SIS 250 mL y composición/registro para distinguir formulación antigua de la actual.",
+    "kind": "identidad_o_presentacion"
+  },
+  "334:19": {
+    "reason": "La ficha primaria Sulficure recuperada supera el tamaño permitido por la herramienta y no se pudo extraer su declaración de especies. No se infiere por el nombre sulfuroso.",
+    "required": "Etiqueta o ficha legible del shampoo Sulficure 250 mL con destinos y uso medicado.",
+    "kind": "etiqueta_del_stock"
+  },
+  "337:0": {
+    "reason": "7 Vidas identificado en fabricantes tiene otras presentaciones; 1.5 kg no enlaza con envase exacto y existen marcas homónimas en otros países.",
+    "required": "Fabricante y envase/EAN de Siete Vidas 1.5 kg para confirmar especie y formato.",
+    "kind": "identidad_o_presentacion"
+  },
+  "339:0": {
+    "reason": "Singap 20 mL omite concentración; existen Singap de producción y Singap Perros con formulaciones diferentes.",
+    "required": "Concentración (p. ej. 20.8% o variante canina), nombre completo y registro.",
+    "kind": "identidad_o_presentacion"
+  },
+  "343:0": {
+    "reason": "Fruitables presenta snacks felinos de 2.5 oz y caninos de otros formatos; el catálogo indica 70 g sin sabor ni línea. Un redondeo de peso no prueba la versión.",
+    "required": "Envase Cat/Dog, sabor y EAN del snack 70 g.",
+    "kind": "identidad_o_presentacion"
+  },
+  "344:1": {
+    "reason": "Meow Mi 85 g sugiere producto felino pero no se identificó fabricante/fórmula con evidencia primaria; el sonido comercial no sustituye etiqueta.",
+    "required": "Fabricante, etiqueta y declaración de snack felino.",
+    "kind": "identidad_o_presentacion"
+  },
+  "349:0": {
+    "reason": "Stomorgyl se registra como 2 mg y 10 mg, mientras los números 2/10 pueden ser nombres de presentación. La ficha exacta de ambas no quedó verificada para el stock.",
+    "required": "Envases de Stomorgyl 2 y 10, registro y especies; no reinterpretar números como dosis.",
+    "kind": "identidad_o_presentacion"
+  },
+  "355:4": {
+    "reason": "Taste of the Wild lata 156 g coincide aproximadamente con 5.5 oz felino, pero no incluye receta/EAN y el peso por sí solo no acredita especie.",
+    "required": "Nombre de receta y foto Dog/Cat de la lata 156 g.",
+    "kind": "identidad_o_presentacion"
+  },
+  "369:0": {
+    "reason": "Ungüento 100 no confirma que sea Ungüento No.100 ERMA; el número podría ser nombre comercial o cantidad y local x120 no indica unidad.",
+    "required": "Fabricante y etiqueta del envase 120, indicando fórmula y especies.",
+    "kind": "identidad_o_presentacion"
+  },
+  "374:0": {
+    "reason": "Leucemia, quíntuple y séxtuple no identifican composición/fabricante; Rabisin tiene registros por mercado y múltiples especies. No se asigna especie a partir del número de valencias.",
+    "required": "Nombre comercial, laboratorio, registro y valencias de cada vacuna; en Rabisin aportar ficha local de especies autorizadas.",
+    "kind": "etiqueta_del_stock"
+  },
+  "374:2": {
+    "reason": "Leucemia, quíntuple y séxtuple no identifican composición/fabricante; Rabisin tiene registros por mercado y múltiples especies. No se asigna especie a partir del número de valencias.",
+    "required": "Nombre comercial, laboratorio, registro y valencias de cada vacuna; en Rabisin aportar ficha local de especies autorizadas.",
+    "kind": "etiqueta_del_stock"
+  },
+  "374:3": {
+    "reason": "Leucemia, quíntuple y séxtuple no identifican composición/fabricante; Rabisin tiene registros por mercado y múltiples especies. No se asigna especie a partir del número de valencias.",
+    "required": "Nombre comercial, laboratorio, registro y valencias de cada vacuna; en Rabisin aportar ficha local de especies autorizadas.",
+    "kind": "etiqueta_del_stock"
+  },
+  "374:4": {
+    "reason": "Leucemia, quíntuple y séxtuple no identifican composición/fabricante; Rabisin tiene registros por mercado y múltiples especies. No se asigna especie a partir del número de valencias.",
+    "required": "Nombre comercial, laboratorio, registro y valencias de cada vacuna; en Rabisin aportar ficha local de especies autorizadas.",
+    "kind": "etiqueta_del_stock"
+  },
+  "385:0": {
+    "reason": "Vita Pichones ya indica aves, pero se clasifica accesorio sin composición. El nombre sugiere suplemento y no prueba su naturaleza.",
+    "required": "Fabricante/etiqueta de 125 g que confirme alimento complementario o suplemento frente a otro producto.",
+    "kind": "declaracion_nutricional"
+  }
+}

@@ -109,11 +109,10 @@ test('no agrega otros productos cotizados que no fueron solicitados', () => {
   assert.equal(decision.productos.length, 0);
 });
 
-test('no hereda una presentacion ambigua, vencida o incompatible', () => {
+test('no hereda una presentacion ambigua o incompatible', () => {
   const casos = [
     [memoria({ cotizacion: [...memoria().ultimaSolicitudProductos[0].cotizacion,
       { marca: 'ALFA', referencia: 'ALFA ORIGINAL', peso: '10-25kg', precio: 55000 }] }), { marca: 'ALFA' }],
-    [memoria({ contextoCreadoEn: '2020-01-01' }), { marca: 'ALFA' }],
     [memoria(), { marca: 'ALFA', referencia: 'ALFA OTRA' }],
     [memoria(), { marca: 'ALFA', especie: 'gato' }],
     [memoria(), { marca: 'ALFA', presentacion: '10-25kg' }],
@@ -123,6 +122,11 @@ test('no hereda una presentacion ambigua, vencida o incompatible', () => {
     const decision = comprar(producto);
     assert.equal(completarCompraDesdeCotizaciones(decision, estado), decision);
   }
+});
+
+test('la identidad cotizada no caduca por tiempo transcurrido', () => {
+  const decision = completarCompraDesdeCotizaciones(comprar({ marca: 'ALFA' }), memoria({ contextoCreadoEn: '2020-01-01' }));
+  assert.equal(decision.producto.presentacion, '4-10kg');
 });
 
 test('una consulta y una exclusion no se convierten en compra desde cotizacion', () => {

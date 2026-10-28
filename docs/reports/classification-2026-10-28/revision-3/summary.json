@@ -1,0 +1,33 @@
+{
+  "local_brands": 392,
+  "local_references": 1121,
+  "local_presentations": 1397,
+  "remote_references": 1127,
+  "remote_presentations": 1423,
+  "local_changed_references": 309,
+  "local_changed_fields": 494,
+  "remote_planned_references": 337,
+  "remote_planned_fields": 545,
+  "pending_references": 256,
+  "pending_questions": 260,
+  "bound_references": 1116,
+  "protected_fields_unchanged": true,
+  "supabase_applied": false,
+  "references_with_optional_or_taxonomy_notes": 207,
+  "references_with_external_evidence": 240,
+  "pending_by_cause": {
+    "variante_o_clasificacion_ambigua": 51,
+    "destino_no_documentado": 188,
+    "divergencia_local_remota": 13,
+    "limite_taxonomia": 3,
+    "identidad_remota_ausente": 5
+  },
+  "before_sha256": "05ff7c8cb9e080946b2e53c8448aac2f774413dee6955c3c1a886066e220be6c",
+  "local_field_changes": {
+    "especie": 181,
+    "subcategoria": 153,
+    "etapa": 28,
+    "metadata.especies": 16,
+    "categoria": 116
+  }
+}

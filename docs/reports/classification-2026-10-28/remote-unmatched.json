@@ -1,0 +1,813 @@
+[
+  {
+    "id": "3115d88f-8cf0-4711-b646-580658d7d5fa",
+    "brand_id": "e90686e2-d295-4e8f-bf17-2efde71b4175",
+    "name": "Cachorros Mini y Pequeño",
+    "species": "perro",
+    "description": "Para cachorros pequeños",
+    "image_url": "https://...",
+    "active": false,
+    "sort_order": 3,
+    "metadata": {
+      "source": "productos.json"
+    },
+    "created_at": "2026-06-03T18:39:52.082863+00:00",
+    "updated_at": "2026-06-04T20:00:00.338765+00:00",
+    "category": "comida",
+    "subcategory": "concentrado",
+    "life_stage": "cachorro",
+    "requires_confirmation": false,
+    "catalog_brands": {
+      "id": "e90686e2-d295-4e8f-bf17-2efde71b4175",
+      "name": "Dog Chow",
+      "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+    },
+    "catalog_presentations": [
+      {
+        "id": "7b9a4b94-c9c1-401b-903a-64a448f16f25",
+        "price": 20000,
+        "stock": true,
+        "active": false,
+        "weight": "1kg",
+        "currency": "COP",
+        "metadata": {
+          "source": "productos.json"
+        },
+        "created_at": "2026-06-03T18:39:52.269146+00:00",
+        "sort_order": 0,
+        "updated_at": "2026-06-04T20:00:00.055288+00:00",
+        "reference_id": "3115d88f-8cf0-4711-b646-580658d7d5fa"
+      },
+      {
+        "id": "92cc42cb-45e7-448d-9522-601509ad38db",
+        "price": 38000,
+        "stock": true,
+        "active": false,
+        "weight": "2kg",
+        "currency": "COP",
+        "metadata": {
+          "source": "productos.json"
+        },
+        "created_at": "2026-06-03T18:39:52.460329+00:00",
+        "sort_order": 1,
+        "updated_at": "2026-06-04T20:00:00.055288+00:00",
+        "reference_id": "3115d88f-8cf0-4711-b646-580658d7d5fa"
+      },
+      {
+        "id": "318744e8-fdd8-4454-b2b2-b07adf937771",
+        "price": 70000,
+        "stock": true,
+        "active": false,
+        "weight": "4kg",
+        "currency": "COP",
+        "metadata": {
+          "source": "productos.json"
+        },
+        "created_at": "2026-06-03T18:39:52.648971+00:00",
+        "sort_order": 2,
+        "updated_at": "2026-06-04T20:00:00.055288+00:00",
+        "reference_id": "3115d88f-8cf0-4711-b646-580658d7d5fa"
+      },
+      {
+        "id": "6ae0be05-dfe7-45ce-ab41-ebad081e9221",
+        "price": 320000,
+        "stock": true,
+        "active": false,
+        "weight": "22.7kg",
+        "currency": "COP",
+        "metadata": {
+          "source": "productos.json"
+        },
+        "created_at": "2026-06-03T18:39:52.838589+00:00",
+        "sort_order": 3,
+        "updated_at": "2026-06-04T20:00:00.055288+00:00",
+        "reference_id": "3115d88f-8cf0-4711-b646-580658d7d5fa"
+      }
+    ]
+  },
+  {
+    "id": "405456eb-ae2c-4b34-9ce2-cbf2808180e0",
+    "brand_id": "6f65f579-761b-47d4-9cad-f0adfd00bab8",
+    "name": "Gatito",
+    "species": "gato",
+    "description": "Alimento para gatito bebe",
+    "image_url": "https://...",
+    "active": false,
+    "sort_order": 6,
+    "metadata": {
+      "source": "productos.json"
+    },
+    "created_at": "2026-06-03T18:40:00.922283+00:00",
+    "updated_at": "2026-06-04T20:00:00.338765+00:00",
+    "category": "comida",
+    "subcategory": "concentrado",
+    "life_stage": "cachorro",
+    "requires_confirmation": false,
+    "catalog_brands": {
+      "id": "6f65f579-761b-47d4-9cad-f0adfd00bab8",
+      "name": "Chunky",
+      "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+    },
+    "catalog_presentations": [
+      {
+        "id": "1f7d6fe5-5274-4e99-b915-ccfdab917426",
+        "price": 290000,
+        "stock": true,
+        "active": false,
+        "weight": "1kg",
+        "currency": "COP",
+        "metadata": {
+          "source": "productos.json"
+        },
+        "created_at": "2026-06-03T18:40:01.27277+00:00",
+        "sort_order": 0,
+        "updated_at": "2026-06-04T20:00:00.055288+00:00",
+        "reference_id": "405456eb-ae2c-4b34-9ce2-cbf2808180e0"
+      }
+    ]
+  },
+  {
+    "id": "493c5ece-8563-4f17-970d-cc1d69eea432",
+    "brand_id": "6f65f579-761b-47d4-9cad-f0adfd00bab8",
+    "name": "Adulto Razas Pequeñas",
+    "species": "perro",
+    "description": "Alimento para perros adultos de razas pequeñas",
+    "image_url": "https://...",
+    "active": false,
+    "sort_order": 0,
+    "metadata": {
+      "source": "productos.json"
+    },
+    "created_at": "2026-06-03T18:39:53.21256+00:00",
+    "updated_at": "2026-06-04T20:00:00.338765+00:00",
+    "category": "comida",
+    "subcategory": "concentrado",
+    "life_stage": "adulto",
+    "requires_confirmation": false,
+    "catalog_brands": {
+      "id": "6f65f579-761b-47d4-9cad-f0adfd00bab8",
+      "name": "Chunky",
+      "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+    },
+    "catalog_presentations": [
+      {
+        "id": "f19efcd6-f89b-4273-9f15-dad49f5eaa40",
+        "price": 18000,
+        "stock": true,
+        "active": false,
+        "weight": "1kg",
+        "currency": "COP",
+        "metadata": {
+          "source": "productos.json"
+        },
+        "created_at": "2026-06-03T18:39:53.401623+00:00",
+        "sort_order": 0,
+        "updated_at": "2026-06-04T20:00:00.055288+00:00",
+        "reference_id": "493c5ece-8563-4f17-970d-cc1d69eea432"
+      },
+      {
+        "id": "3ccb817b-371d-43a5-891b-a0f6657663aa",
+        "price": 34000,
+        "stock": true,
+        "active": false,
+        "weight": "2kg",
+        "currency": "COP",
+        "metadata": {
+          "source": "productos.json"
+        },
+        "created_at": "2026-06-03T18:39:53.569194+00:00",
+        "sort_order": 1,
+        "updated_at": "2026-06-04T20:00:00.055288+00:00",
+        "reference_id": "493c5ece-8563-4f17-970d-cc1d69eea432"
+      },
+      {
+        "id": "91dd6eea-2a04-49e7-b033-45ab285be230",
+        "price": 65000,
+        "stock": true,
+        "active": false,
+        "weight": "4kg",
+        "currency": "COP",
+        "metadata": {
+          "source": "productos.json"
+        },
+        "created_at": "2026-06-03T18:39:53.767737+00:00",
+        "sort_order": 2,
+        "updated_at": "2026-06-04T20:00:00.055288+00:00",
+        "reference_id": "493c5ece-8563-4f17-970d-cc1d69eea432"
+      },
+      {
+        "id": "4b7af576-7447-416d-97a2-b48f51f4248e",
+        "price": 280000,
+        "stock": true,
+        "active": false,
+        "weight": "20kg",
+        "currency": "COP",
+        "metadata": {
+          "source": "productos.json"
+        },
+        "created_at": "2026-06-03T18:39:53.968982+00:00",
+        "sort_order": 3,
+        "updated_at": "2026-06-04T20:00:00.055288+00:00",
+        "reference_id": "493c5ece-8563-4f17-970d-cc1d69eea432"
+      }
+    ]
+  },
+  {
+    "id": "59b02fd4-07e7-4b8f-a0d6-a6eb951315fd",
+    "brand_id": "6f65f579-761b-47d4-9cad-f0adfd00bab8",
+    "name": "Adulto Mayores",
+    "species": "perro",
+    "description": "Alimento para perros senior, enfocado en digestión y articulaciones",
+    "image_url": "https://...",
+    "active": false,
+    "sort_order": 5,
+    "metadata": {
+      "source": "productos.json"
+    },
+    "created_at": "2026-06-03T18:39:59.36256+00:00",
+    "updated_at": "2026-06-04T20:00:00.338765+00:00",
+    "category": "comida",
+    "subcategory": "concentrado",
+    "life_stage": "senior",
+    "requires_confirmation": false,
+    "catalog_brands": {
+      "id": "6f65f579-761b-47d4-9cad-f0adfd00bab8",
+      "name": "Chunky",
+      "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+    },
+    "catalog_presentations": [
+      {
+        "id": "6f14f860-7958-46e6-ac7f-7905aee512a7",
+        "price": 20000,
+        "stock": true,
+        "active": false,
+        "weight": "1kg",
+        "currency": "COP",
+        "metadata": {
+          "source": "productos.json"
+        },
+        "created_at": "2026-06-03T18:39:59.621605+00:00",
+        "sort_order": 0,
+        "updated_at": "2026-06-04T20:00:00.055288+00:00",
+        "reference_id": "59b02fd4-07e7-4b8f-a0d6-a6eb951315fd"
+      },
+      {
+        "id": "1135f2fb-c86e-4369-b11a-c068ea3c894a",
+        "price": 300000,
+        "stock": true,
+        "active": false,
+        "weight": "20kg",
+        "currency": "COP",
+        "metadata": {
+          "source": "productos.json"
+        },
+        "created_at": "2026-06-03T18:40:00.413822+00:00",
+        "sort_order": 3,
+        "updated_at": "2026-06-04T20:00:00.055288+00:00",
+        "reference_id": "59b02fd4-07e7-4b8f-a0d6-a6eb951315fd"
+      }
+    ]
+  },
+  {
+    "id": "6498a0cc-d100-437d-832e-470126e685b3",
+    "brand_id": "6f65f579-761b-47d4-9cad-f0adfd00bab8",
+    "name": "Cachorro Cordero y Salmón",
+    "species": "perro",
+    "description": "Alimento premium para cachorros con proteína de cordero y salmón",
+    "image_url": "https://...",
+    "active": false,
+    "sort_order": 3,
+    "metadata": {
+      "source": "productos.json"
+    },
+    "created_at": "2026-06-03T18:39:56.90564+00:00",
+    "updated_at": "2026-06-04T20:00:00.338765+00:00",
+    "category": "comida",
+    "subcategory": "concentrado",
+    "life_stage": "cachorro",
+    "requires_confirmation": false,
+    "catalog_brands": {
+      "id": "6f65f579-761b-47d4-9cad-f0adfd00bab8",
+      "name": "Chunky",
+      "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+    },
+    "catalog_presentations": [
+      {
+        "id": "191d1db8-ea39-42e1-960c-6d3f7a0c4e77",
+        "price": 21000,
+        "stock": true,
+        "active": false,
+        "weight": "1kg",
+        "currency": "COP",
+        "metadata": {
+          "source": "productos.json"
+        },
+        "created_at": "2026-06-03T18:39:57.109628+00:00",
+        "sort_order": 0,
+        "updated_at": "2026-06-04T20:00:00.055288+00:00",
+        "reference_id": "6498a0cc-d100-437d-832e-470126e685b3"
+      },
+      {
+        "id": "7c134a90-de16-480d-95de-4fc76a5efa0f",
+        "price": 40000,
+        "stock": true,
+        "active": false,
+        "weight": "2kg",
+        "currency": "COP",
+        "metadata": {
+          "source": "productos.json"
+        },
+        "created_at": "2026-06-03T18:39:57.295796+00:00",
+        "sort_order": 1,
+        "updated_at": "2026-06-04T20:00:00.055288+00:00",
+        "reference_id": "6498a0cc-d100-437d-832e-470126e685b3"
+      },
+      {
+        "id": "6f141988-93eb-4b10-8b2f-07e7f33e42ea",
+        "price": 72000,
+        "stock": true,
+        "active": false,
+        "weight": "4kg",
+        "currency": "COP",
+        "metadata": {
+          "source": "productos.json"
+        },
+        "created_at": "2026-06-03T18:39:57.511901+00:00",
+        "sort_order": 2,
+        "updated_at": "2026-06-04T20:00:00.055288+00:00",
+        "reference_id": "6498a0cc-d100-437d-832e-470126e685b3"
+      }
+    ]
+  },
+  {
+    "id": "9c17ed01-ee93-434f-ab20-6bb82286640a",
+    "brand_id": "6f65f579-761b-47d4-9cad-f0adfd00bab8",
+    "name": "Cachorro Pollo",
+    "species": "perro",
+    "description": "Alimento para cachorros sabor pollo",
+    "image_url": "https://...",
+    "active": false,
+    "sort_order": 2,
+    "metadata": {
+      "source": "productos.json"
+    },
+    "created_at": "2026-06-03T18:39:55.584426+00:00",
+    "updated_at": "2026-06-04T20:00:00.338765+00:00",
+    "category": "comida",
+    "subcategory": "concentrado",
+    "life_stage": "cachorro",
+    "requires_confirmation": false,
+    "catalog_brands": {
+      "id": "6f65f579-761b-47d4-9cad-f0adfd00bab8",
+      "name": "Chunky",
+      "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+    },
+    "catalog_presentations": [
+      {
+        "id": "5a282d1e-ee9d-4f43-9ddc-50e1e089e09b",
+        "price": 19000,
+        "stock": true,
+        "active": false,
+        "weight": "1kg",
+        "currency": "COP",
+        "metadata": {
+          "source": "productos.json"
+        },
+        "created_at": "2026-06-03T18:39:55.85709+00:00",
+        "sort_order": 0,
+        "updated_at": "2026-06-04T20:00:00.055288+00:00",
+        "reference_id": "9c17ed01-ee93-434f-ab20-6bb82286640a"
+      },
+      {
+        "id": "fff67666-9bc9-4dbe-ac50-53458da569c7",
+        "price": 36000,
+        "stock": true,
+        "active": false,
+        "weight": "2kg",
+        "currency": "COP",
+        "metadata": {
+          "source": "productos.json"
+        },
+        "created_at": "2026-06-03T18:39:56.234237+00:00",
+        "sort_order": 1,
+        "updated_at": "2026-06-04T20:00:00.055288+00:00",
+        "reference_id": "9c17ed01-ee93-434f-ab20-6bb82286640a"
+      },
+      {
+        "id": "3094ae10-99d2-4e1d-a341-e6bd5e6430b8",
+        "price": 68000,
+        "stock": true,
+        "active": false,
+        "weight": "4kg",
+        "currency": "COP",
+        "metadata": {
+          "source": "productos.json"
+        },
+        "created_at": "2026-06-03T18:39:56.486652+00:00",
+        "sort_order": 2,
+        "updated_at": "2026-06-04T20:00:00.055288+00:00",
+        "reference_id": "9c17ed01-ee93-434f-ab20-6bb82286640a"
+      },
+      {
+        "id": "c3151c2a-aacc-4f5a-bcc1-ddde22aadb25",
+        "price": 290000,
+        "stock": true,
+        "active": false,
+        "weight": "20kg",
+        "currency": "COP",
+        "metadata": {
+          "source": "productos.json"
+        },
+        "created_at": "2026-06-03T18:39:56.692467+00:00",
+        "sort_order": 3,
+        "updated_at": "2026-06-04T20:00:00.055288+00:00",
+        "reference_id": "9c17ed01-ee93-434f-ab20-6bb82286640a"
+      }
+    ]
+  },
+  {
+    "id": "afa5b094-6bc1-4ba7-a661-da031ff186ef",
+    "brand_id": "e90686e2-d295-4e8f-bf17-2efde71b4175",
+    "name": "Adulto Mini y Pequeño",
+    "species": "perro",
+    "description": "Para perros pequeños",
+    "image_url": "https://...",
+    "active": false,
+    "sort_order": 1,
+    "metadata": {
+      "source": "productos.json"
+    },
+    "created_at": "2026-06-03T18:39:50.115885+00:00",
+    "updated_at": "2026-06-04T20:00:00.338765+00:00",
+    "category": "comida",
+    "subcategory": "concentrado",
+    "life_stage": "adulto",
+    "requires_confirmation": false,
+    "catalog_brands": {
+      "id": "e90686e2-d295-4e8f-bf17-2efde71b4175",
+      "name": "Dog Chow",
+      "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+    },
+    "catalog_presentations": [
+      {
+        "id": "c8440e5b-33f8-4c66-b103-49dbe42f571e",
+        "price": 19000,
+        "stock": true,
+        "active": false,
+        "weight": "1kg",
+        "currency": "COP",
+        "metadata": {
+          "source": "productos.json"
+        },
+        "created_at": "2026-06-03T18:39:50.316123+00:00",
+        "sort_order": 0,
+        "updated_at": "2026-06-04T20:00:00.055288+00:00",
+        "reference_id": "afa5b094-6bc1-4ba7-a661-da031ff186ef"
+      },
+      {
+        "id": "3fc29bef-1aa9-4af6-8dd6-b975856de8b6",
+        "price": 68000,
+        "stock": true,
+        "active": false,
+        "weight": "4kg",
+        "currency": "COP",
+        "metadata": {
+          "source": "productos.json"
+        },
+        "created_at": "2026-06-03T18:39:50.796651+00:00",
+        "sort_order": 2,
+        "updated_at": "2026-06-04T20:00:00.055288+00:00",
+        "reference_id": "afa5b094-6bc1-4ba7-a661-da031ff186ef"
+      },
+      {
+        "id": "bde065e7-e959-4465-b426-03963859167c",
+        "price": 310000,
+        "stock": true,
+        "active": false,
+        "weight": "22.7kg",
+        "currency": "COP",
+        "metadata": {
+          "source": "productos.json"
+        },
+        "created_at": "2026-06-03T18:39:50.990067+00:00",
+        "sort_order": 3,
+        "updated_at": "2026-06-04T20:00:00.055288+00:00",
+        "reference_id": "afa5b094-6bc1-4ba7-a661-da031ff186ef"
+      }
+    ]
+  },
+  {
+    "id": "d99e6e37-760a-4fa5-92af-578b9d743b99",
+    "brand_id": "6f65f579-761b-47d4-9cad-f0adfd00bab8",
+    "name": "Adulto Todas las Razas",
+    "species": "perro",
+    "description": "Alimento completo para perros adultos de cualquier tamaño",
+    "image_url": "https://...",
+    "active": false,
+    "sort_order": 1,
+    "metadata": {
+      "source": "productos.json"
+    },
+    "created_at": "2026-06-03T18:39:54.221894+00:00",
+    "updated_at": "2026-06-04T20:00:00.338765+00:00",
+    "category": "comida",
+    "subcategory": "concentrado",
+    "life_stage": "adulto",
+    "requires_confirmation": false,
+    "catalog_brands": {
+      "id": "6f65f579-761b-47d4-9cad-f0adfd00bab8",
+      "name": "Chunky",
+      "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+    },
+    "catalog_presentations": [
+      {
+        "id": "74a90ada-0254-47b8-9514-5157dc23182f",
+        "price": 17000,
+        "stock": true,
+        "active": false,
+        "weight": "1kg",
+        "currency": "COP",
+        "metadata": {
+          "source": "productos.json"
+        },
+        "created_at": "2026-06-03T18:39:54.508888+00:00",
+        "sort_order": 0,
+        "updated_at": "2026-06-04T20:00:00.055288+00:00",
+        "reference_id": "d99e6e37-760a-4fa5-92af-578b9d743b99"
+      },
+      {
+        "id": "be495143-d397-4d91-a75e-2b51ebff6049",
+        "price": 32000,
+        "stock": true,
+        "active": false,
+        "weight": "2kg",
+        "currency": "COP",
+        "metadata": {
+          "source": "productos.json"
+        },
+        "created_at": "2026-06-03T18:39:54.770542+00:00",
+        "sort_order": 1,
+        "updated_at": "2026-06-04T20:00:00.055288+00:00",
+        "reference_id": "d99e6e37-760a-4fa5-92af-578b9d743b99"
+      },
+      {
+        "id": "bb443c6d-b49b-4db5-a208-c30320e11897",
+        "price": 62000,
+        "stock": true,
+        "active": false,
+        "weight": "4kg",
+        "currency": "COP",
+        "metadata": {
+          "source": "productos.json"
+        },
+        "created_at": "2026-06-03T18:39:55.005036+00:00",
+        "sort_order": 2,
+        "updated_at": "2026-06-04T20:00:00.055288+00:00",
+        "reference_id": "d99e6e37-760a-4fa5-92af-578b9d743b99"
+      }
+    ]
+  },
+  {
+    "id": "de46e1a6-e53b-4313-9bdb-2fd00025f29a",
+    "brand_id": "e90686e2-d295-4e8f-bf17-2efde71b4175",
+    "name": "Adulto Mediano y Grande",
+    "species": "perro",
+    "description": "Para perros adultos medianos y grandes",
+    "image_url": "https://...",
+    "active": false,
+    "sort_order": 0,
+    "metadata": {
+      "source": "productos.json"
+    },
+    "created_at": "2026-06-03T18:39:49.26864+00:00",
+    "updated_at": "2026-06-04T20:00:00.338765+00:00",
+    "category": "comida",
+    "subcategory": "concentrado",
+    "life_stage": "adulto",
+    "requires_confirmation": false,
+    "catalog_brands": {
+      "id": "e90686e2-d295-4e8f-bf17-2efde71b4175",
+      "name": "Dog Chow",
+      "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+    },
+    "catalog_presentations": [
+      {
+        "id": "16f8128a-8eae-4079-af2f-7cb74fd5beee",
+        "price": 20000,
+        "stock": true,
+        "active": false,
+        "weight": "1kg",
+        "currency": "COP",
+        "metadata": {
+          "source": "productos.json"
+        },
+        "created_at": "2026-06-03T18:39:49.440804+00:00",
+        "sort_order": 0,
+        "updated_at": "2026-06-04T20:00:00.055288+00:00",
+        "reference_id": "de46e1a6-e53b-4313-9bdb-2fd00025f29a"
+      },
+      {
+        "id": "df7c682f-0e1f-4cc9-a89f-a4f2ffea5018",
+        "price": 38000,
+        "stock": true,
+        "active": false,
+        "weight": "2kg",
+        "currency": "COP",
+        "metadata": {
+          "source": "productos.json"
+        },
+        "created_at": "2026-06-03T18:39:49.611889+00:00",
+        "sort_order": 1,
+        "updated_at": "2026-06-04T20:00:00.055288+00:00",
+        "reference_id": "de46e1a6-e53b-4313-9bdb-2fd00025f29a"
+      },
+      {
+        "id": "6b8924f5-913f-48b5-bff9-b9d40de18dc5",
+        "price": 70000,
+        "stock": true,
+        "active": false,
+        "weight": "4kg",
+        "currency": "COP",
+        "metadata": {
+          "source": "productos.json"
+        },
+        "created_at": "2026-06-03T18:39:49.795815+00:00",
+        "sort_order": 2,
+        "updated_at": "2026-06-04T20:00:00.055288+00:00",
+        "reference_id": "de46e1a6-e53b-4313-9bdb-2fd00025f29a"
+      }
+    ]
+  },
+  {
+    "id": "f1f46add-2c88-4522-8719-84285eed7846",
+    "brand_id": "6f65f579-761b-47d4-9cad-f0adfd00bab8",
+    "name": "Adulto Salmón y Cordero",
+    "species": "perro",
+    "description": "Alimento premium para perros adultos con proteína de salmón y cordero",
+    "image_url": "https://...",
+    "active": false,
+    "sort_order": 4,
+    "metadata": {
+      "source": "productos.json"
+    },
+    "created_at": "2026-06-03T18:39:57.997675+00:00",
+    "updated_at": "2026-06-04T20:00:00.338765+00:00",
+    "category": "comida",
+    "subcategory": "concentrado",
+    "life_stage": "adulto",
+    "requires_confirmation": false,
+    "catalog_brands": {
+      "id": "6f65f579-761b-47d4-9cad-f0adfd00bab8",
+      "name": "Chunky",
+      "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+    },
+    "catalog_presentations": [
+      {
+        "id": "ac057e5f-8eba-4361-848d-3668bae9b43c",
+        "price": 22000,
+        "stock": true,
+        "active": false,
+        "weight": "1kg",
+        "currency": "COP",
+        "metadata": {
+          "source": "productos.json"
+        },
+        "created_at": "2026-06-03T18:39:58.303938+00:00",
+        "sort_order": 0,
+        "updated_at": "2026-06-04T20:00:00.055288+00:00",
+        "reference_id": "f1f46add-2c88-4522-8719-84285eed7846"
+      },
+      {
+        "id": "48e1c2bf-eb1a-4f7e-97e9-dda935f0badc",
+        "price": 42000,
+        "stock": true,
+        "active": false,
+        "weight": "2kg",
+        "currency": "COP",
+        "metadata": {
+          "source": "productos.json"
+        },
+        "created_at": "2026-06-03T18:39:58.558787+00:00",
+        "sort_order": 1,
+        "updated_at": "2026-06-04T20:00:00.055288+00:00",
+        "reference_id": "f1f46add-2c88-4522-8719-84285eed7846"
+      },
+      {
+        "id": "820e02bd-1f61-460d-bf77-9d7eacdce7de",
+        "price": 75000,
+        "stock": true,
+        "active": false,
+        "weight": "4kg",
+        "currency": "COP",
+        "metadata": {
+          "source": "productos.json"
+        },
+        "created_at": "2026-06-03T18:39:58.817727+00:00",
+        "sort_order": 2,
+        "updated_at": "2026-06-04T20:00:00.055288+00:00",
+        "reference_id": "f1f46add-2c88-4522-8719-84285eed7846"
+      },
+      {
+        "id": "1740ad91-a8a6-43c4-a536-4dbe3b17c494",
+        "price": 320000,
+        "stock": true,
+        "active": false,
+        "weight": "20kg",
+        "currency": "COP",
+        "metadata": {
+          "source": "productos.json"
+        },
+        "created_at": "2026-06-03T18:39:59.04563+00:00",
+        "sort_order": 3,
+        "updated_at": "2026-06-04T20:00:00.055288+00:00",
+        "reference_id": "f1f46add-2c88-4522-8719-84285eed7846"
+      }
+    ]
+  },
+  {
+    "id": "fb9d6f04-46f0-407a-b406-a14d91488544",
+    "brand_id": "e90686e2-d295-4e8f-bf17-2efde71b4175",
+    "name": "Cachorros Mediano y Grande",
+    "species": "perro",
+    "description": "Para cachorros medianos y grandes",
+    "image_url": "https://...",
+    "active": false,
+    "sort_order": 2,
+    "metadata": {
+      "source": "productos.json"
+    },
+    "created_at": "2026-06-03T18:39:51.171041+00:00",
+    "updated_at": "2026-06-04T20:00:00.338765+00:00",
+    "category": "comida",
+    "subcategory": "concentrado",
+    "life_stage": "cachorro",
+    "requires_confirmation": false,
+    "catalog_brands": {
+      "id": "e90686e2-d295-4e8f-bf17-2efde71b4175",
+      "name": "Dog Chow",
+      "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+    },
+    "catalog_presentations": [
+      {
+        "id": "ed709f2e-baad-4d38-9bd9-2e60cc785970",
+        "price": 21000,
+        "stock": true,
+        "active": false,
+        "weight": "1kg",
+        "currency": "COP",
+        "metadata": {
+          "source": "productos.json"
+        },
+        "created_at": "2026-06-03T18:39:51.345085+00:00",
+        "sort_order": 0,
+        "updated_at": "2026-06-04T20:00:00.055288+00:00",
+        "reference_id": "fb9d6f04-46f0-407a-b406-a14d91488544"
+      },
+      {
+        "id": "902a36d6-793b-4572-9d60-94167ce93a86",
+        "price": 40000,
+        "stock": true,
+        "active": false,
+        "weight": "2kg",
+        "currency": "COP",
+        "metadata": {
+          "source": "productos.json"
+        },
+        "created_at": "2026-06-03T18:39:51.529421+00:00",
+        "sort_order": 1,
+        "updated_at": "2026-06-04T20:00:00.055288+00:00",
+        "reference_id": "fb9d6f04-46f0-407a-b406-a14d91488544"
+      },
+      {
+        "id": "70fb7dff-508b-4740-b395-f6e9f86e9d1c",
+        "price": 72000,
+        "stock": true,
+        "active": false,
+        "weight": "4kg",
+        "currency": "COP",
+        "metadata": {
+          "source": "productos.json"
+        },
+        "created_at": "2026-06-03T18:39:51.724285+00:00",
+        "sort_order": 2,
+        "updated_at": "2026-06-04T20:00:00.055288+00:00",
+        "reference_id": "fb9d6f04-46f0-407a-b406-a14d91488544"
+      },
+      {
+        "id": "77ec6c25-726c-4fe0-b77e-24e18f394195",
+        "price": 330000,
+        "stock": true,
+        "active": false,
+        "weight": "22.7kg",
+        "currency": "COP",
+        "metadata": {
+          "source": "productos.json"
+        },
+        "created_at": "2026-06-03T18:39:51.923298+00:00",
+        "sort_order": 3,
+        "updated_at": "2026-06-04T20:00:00.055288+00:00",
+        "reference_id": "fb9d6f04-46f0-407a-b406-a14d91488544"
+      }
+    ]
+  }
+]

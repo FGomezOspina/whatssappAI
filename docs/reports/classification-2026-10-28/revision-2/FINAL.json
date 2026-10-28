@@ -1,0 +1,22 @@
+{
+  "version": "clasificacion-20261028-r2",
+  "status": "FINAL_VALIDADA_NO_APLICADA",
+  "sql_sha256": "82d3bfe477940bba8dbd91ae2bc7a7f0af7ad4c44444f058698e34ee32696e16",
+  "local_sha256": "f900048df4a642dba88b1da6fcd382e6789ccb28ba2a489f0583807664ee6e40",
+  "remote_recheck": {
+    "checked_at": "2026-10-28T16:56:29.332Z",
+    "tenant": {
+      "id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+      "slug": "distrifinca"
+    },
+    "read_only": true,
+    "remote_references": 1127,
+    "changed_ids": [],
+    "missing_ids": [],
+    "unchanged": true,
+    "supabase_applied": false
+  },
+  "test_pass": 921,
+  "sql_scenarios_pass": 11,
+  "supabase_applied": false
+}

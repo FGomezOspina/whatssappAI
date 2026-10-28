@@ -113,3 +113,11 @@ test('respuesta vacía obsoleta no envía respaldo antes del turno vigente', asy
  await x.recibir('aclaración'); await x.tick(5000); g.resolve(); await micro();
  assert.deepEqual(x.sent, ['respuesta vigente']);
 });
+test('handoff durante ejecución: descarta respuesta obsoleta y buffer posterior no responde',async t=>{
+ const g=gate();let pausa=false,runs=0;
+ const x=preparar(t,{procesar:async()=>{runs++;if(pausa)return null;await g.promise;pausa=true;return 'Pendiente de asesor';}});
+ await x.recibir('consulta clínica');await x.tick(5000);
+ await x.recibir('otro dato');await x.tick(5000);g.resolve();await micro();
+ assert.equal(runs,2);assert.deepEqual(x.sent,[]);
+ await x.recibir('hola');await x.tick(5000);assert.deepEqual(x.sent,[]);assert.equal(x.c.estados.size,0);
+});

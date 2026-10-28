@@ -1,0 +1,14 @@
+PASS apply: 374 exact references, all other fields/references/presentations/other tenant unchanged
+PASS second execution refuses without partial writes
+PASS generated rollback restores original classifications
+PASS guard: concurrent category aborts entire batch
+PASS guard: concurrent timestamp only aborts entire batch
+PASS guard: concurrent name aborts entire batch
+PASS guard: concurrent metadata aborts entire batch
+PASS guard: wrong tenant aborts entire batch
+PASS guard: missing reference aborts entire batch
+PASS guard: changed price aborts entire batch
+PASS guard: new presentation aborts entire batch
+PASS rollback rejects concurrent edits
+PASS protected metadata keys cannot be changed even by a tampered plan
+13 SQL integration scenarios passed. Production unchanged.

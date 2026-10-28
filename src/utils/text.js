@@ -5,6 +5,10 @@ function textoSeguro(valor = "") {
 function expandirAbreviaturasProducto(texto = "") {
   return textoSeguro(texto)
     .toString()
+    // Stage abbreviations before an explicit breed-size descriptor. Keep
+    // ordinary prepositions ("a domicilio") and commercial codes untouched.
+    .replace(/\ba[.]?\s+(?=razas?\s+(?:peque[nñ][oa]s?|grandes?|median[oa]s?)\b)/gi, "adulto ")
+    .replace(/\bc[.]?\s+(?=razas?\s+(?:peque[nñ][oa]s?|grandes?|median[oa]s?)\b)/gi, "cachorro ")
     .replace(/\bdog\s+chow\s+a(?=\s+\d|\s*$)/gi, "dog chow adulto")
     .replace(/\ba[\s.,-]*r[\s.,-]*g\b/gi, "adulto raza grande")
     .replace(/\ba[\s.,-]*m[\s.,-]*g\b/gi, "adulto raza grande")

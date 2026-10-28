@@ -1,0 +1,1512 @@
+{
+  "source": "Pruebas del usuario en Kapso, leídas el 2026-10-28; catálogo Supabase vigente; las respuestas del bot no son ground truth",
+  "cases": [
+    {
+      "id": "C07-M9-0",
+      "chat": "C07",
+      "message": "M9",
+      "sourceHash": "ed5c1a65f44f97fc2ae020147d415cb1d8d58d2c30852f4093a27bd302676830",
+      "query": "cat show delimix adultos de 10 kg",
+      "split": "development",
+      "expectedReference": "CAT CHOW DELIMIX",
+      "expectation": "identity",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "evidence": "Literal sandbox message span + current Supabase reference and presentations. Bot response excluded.",
+      "provenance": "Caso de prueba del usuario en Kapso (confirmado por el usuario); no tráfico comercial",
+      "catalogEvidence": [
+        {
+          "referenceId": "7c2a19ad-f9e4-44eb-8cc8-be747f7b457c",
+          "brand": "CAT CHOW",
+          "name": "CAT CHOW DELIMIX",
+          "species": "gato",
+          "category": "comida",
+          "presentations": [
+            "x 10 kg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C21-M7-1",
+      "chat": "C21",
+      "message": "M7",
+      "sourceHash": "c9162607252b7adf57c4fda1de04b73dac6f98c322e1e26f4ffc617c2b1d03e5",
+      "query": "Fofi cat tofu",
+      "split": "development",
+      "expectedReference": "ARENA FOFICAT TOFU",
+      "expectation": "identity",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "evidence": "Literal sandbox message span + current Supabase reference and presentations. Bot response excluded.",
+      "provenance": "Caso de prueba del usuario en Kapso (confirmado por el usuario); no tráfico comercial",
+      "catalogEvidence": [
+        {
+          "referenceId": "9badf1b1-b2a0-48a2-bd78-f4b2dfa2feb8",
+          "brand": "ARENA FOFICAT TOFU",
+          "name": "ARENA FOFICAT TOFU",
+          "species": "gato",
+          "category": "arena_sustrato",
+          "presentations": [
+            "2.5kg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C22-M20-2",
+      "chat": "C22",
+      "message": "M20",
+      "sourceHash": "822db45ceadc196353dd1eec906eaf496536b9c91505aa82d305b9402871e41c",
+      "query": "dog chow a raza pequeña 2kl",
+      "split": "development",
+      "expectedReference": null,
+      "expectation": "presentation_unverified",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "evidence": "Requested identity or presentation is not verified by current catalog; do not infer equivalence.",
+      "provenance": "Caso de prueba del usuario en Kapso (confirmado por el usuario); no tráfico comercial",
+      "catalogEvidence": [
+        {
+          "referenceId": "02916b95-e8b6-492e-99f3-e97760a12007",
+          "brand": "DOG CHOW",
+          "name": "DOG CHOW POUCHE CARNE",
+          "species": "perro",
+          "presentations": [
+            "100 gr"
+          ]
+        },
+        {
+          "referenceId": "0552e1d4-e6a7-48b9-ae5f-07637ae82179",
+          "brand": "DOG CHOW",
+          "name": "DOG CHOW POUCH PAG",
+          "species": "perro",
+          "presentations": [
+            "6l"
+          ]
+        },
+        {
+          "referenceId": "094d088d-f04c-43fb-ab40-8ef2b8b18c7f",
+          "brand": "DOG CHOW",
+          "name": "DOG CHOW ADULRMG",
+          "species": "perro",
+          "presentations": [
+            "22.7kg"
+          ]
+        },
+        {
+          "referenceId": "0d894a04-b243-4e9e-a8b7-dd29e2283243",
+          "brand": "DOG CHOW",
+          "name": "DOG CHOW C RMG *",
+          "species": "perro",
+          "presentations": [
+            "2kg"
+          ]
+        },
+        {
+          "referenceId": "112c03de-9bcd-465d-91b9-46848f9c8572",
+          "brand": "DOG CHOW",
+          "name": "DOG CHOW A.R.P A GRANEL",
+          "species": "perro",
+          "presentations": [
+            "unidad"
+          ]
+        },
+        {
+          "referenceId": "1bc3e0d3-b2b5-4848-b8ec-ef8a18949ea1",
+          "brand": "DOG CHOW",
+          "name": "DOG CHOW C RP",
+          "species": "perro",
+          "presentations": [
+            "x 2 kg",
+            "x 475",
+            "x 8 kg",
+            "x 1kg"
+          ]
+        },
+        {
+          "referenceId": "1cd14970-8c05-4c50-b48b-4c47066caf33",
+          "brand": "DOG CHOW",
+          "name": "DOG CHOW C RMG",
+          "species": "perro",
+          "presentations": [
+            "x1kg",
+            "x 8 kg"
+          ]
+        },
+        {
+          "referenceId": "2acd9c2d-e128-4f56-9e80-ceaf2b067289",
+          "brand": "DOG CHOW",
+          "name": "DOG CHOW ADUL TODOS LOS TAMAÑOS 475",
+          "species": "perro",
+          "presentations": [
+            "unidad"
+          ]
+        },
+        {
+          "referenceId": "312b2fae-b636-40c8-ac9a-20f92576eea2",
+          "brand": "DOG CHOW",
+          "name": "DOG CHOW C RMG *475",
+          "species": "perro",
+          "presentations": [
+            "unidad"
+          ]
+        },
+        {
+          "referenceId": "464ed0bc-e095-4713-abb9-e8d1535e190e",
+          "brand": "DOG CHOW",
+          "name": "DOG CHOW SINCO LONGEVIDAD",
+          "species": "perro",
+          "presentations": [
+            "2kg"
+          ]
+        },
+        {
+          "referenceId": "473a9bab-0fc6-4d66-b5c4-9707c4a2884c",
+          "brand": "DOG CHOW",
+          "name": "DOG CHOW POUCHE CACH",
+          "species": "perro",
+          "presentations": [
+            "x 100 gr"
+          ]
+        },
+        {
+          "referenceId": "4c64d4be-7137-48ac-87ae-ae50364a0ef4",
+          "brand": "DOG CHOW",
+          "name": "DOG CHOW CONTROL DE PESO",
+          "species": "perro",
+          "presentations": [
+            "x 2 kg"
+          ]
+        },
+        {
+          "referenceId": "5c5f7606-9628-46f9-911e-76ce164dab8c",
+          "brand": "DOG CHOW",
+          "name": "DOG CHOW CONTROL PESO SINCOL",
+          "species": "perro",
+          "presentations": [
+            "x 8 kg"
+          ]
+        },
+        {
+          "referenceId": "7d088364-2c58-474b-aa47-e2d9dc0b810d",
+          "brand": "DOG CHOW",
+          "name": "DOG CHOW",
+          "species": "perro",
+          "presentations": [
+            "x100"
+          ]
+        },
+        {
+          "referenceId": "97fa87c2-259d-43f9-a42e-09b57872d810",
+          "brand": "DOG CHOW",
+          "name": "DOG CHOW A RMG",
+          "species": "perro",
+          "presentations": [
+            "x 475",
+            "x 4 kg",
+            "x 2 kg"
+          ]
+        },
+        {
+          "referenceId": "af7869a8-8f00-4920-9586-d8d345e71471",
+          "brand": "DOG CHOW",
+          "name": "DOG CHOW A.M.G A GRANEL",
+          "species": "perro",
+          "presentations": [
+            "unidad"
+          ]
+        },
+        {
+          "referenceId": "b15749f9-b0f5-4963-bedb-eb455f4ee982",
+          "brand": "DOG CHOW",
+          "name": "DOG CHOW ADUL RMG PAG 19.7 LLEV",
+          "species": "perro",
+          "presentations": [
+            "22.7kg"
+          ]
+        },
+        {
+          "referenceId": "f2825bef-752b-49d8-9446-71128f6d8247",
+          "brand": "DOG CHOW",
+          "name": "DOG CHOW ADUL TODOS LOS TAMAÑOS",
+          "species": "perro",
+          "presentations": [
+            "4kg",
+            "2kg",
+            "1kg",
+            "22.7kg",
+            "8kg"
+          ]
+        }
+      ],
+      "negativeEvidence": "Complete tenant catalog reviewed; these are related candidates, not approved equivalents. Missing brand/variant cannot be proven globally absent from this current catalog snapshot alone."
+    },
+    {
+      "id": "C01-M1-3",
+      "chat": "C01",
+      "message": "M1",
+      "sourceHash": "5930a4f2408de6d3de4d255f4156a89e83918f79c5d5a13f63dbdaa8d566e755",
+      "query": "10kg de arena de maíz",
+      "split": "evaluation",
+      "expectedReference": "ARENA MAIZ CAT",
+      "expectation": "identity",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "evidence": "Literal sandbox message span + current Supabase reference and presentations. Bot response excluded.",
+      "provenance": "Caso de prueba del usuario en Kapso (confirmado por el usuario); no tráfico comercial",
+      "catalogEvidence": [
+        {
+          "referenceId": "906dcade-aa4e-4c7b-b652-978353832387",
+          "brand": "ARENA MAIZ CAT",
+          "name": "ARENA MAIZ CAT",
+          "species": "gato",
+          "category": "arena_sustrato",
+          "presentations": [
+            "x 4kg",
+            "x 15kg",
+            "x 2kg",
+            "x 20kg",
+            "x 10kg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C01-M1-4",
+      "chat": "C01",
+      "message": "M1",
+      "sourceHash": "5930a4f2408de6d3de4d255f4156a89e83918f79c5d5a13f63dbdaa8d566e755",
+      "query": "un kilo de Cat show reempacado",
+      "split": "evaluation",
+      "expectedReference": null,
+      "expectation": "ambiguous",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "evidence": "Insufficient identity or multiple current catalog variants; do not choose automatically.",
+      "provenance": "Caso de prueba del usuario en Kapso (confirmado por el usuario); no tráfico comercial",
+      "catalogEvidence": [
+        {
+          "referenceId": "0e8a30fa-253f-4110-935f-dd1f0b2d91fa",
+          "brand": "CAT CHOW",
+          "name": "CAT CHOW GATITOS *",
+          "species": "gato",
+          "presentations": [
+            "1.5kg",
+            "500gr"
+          ]
+        },
+        {
+          "referenceId": "166c983e-a49a-42fc-94df-2a6dd0fe4f6a",
+          "brand": "CAT CHOW",
+          "name": "CAT CHOW CARNE",
+          "species": "gato",
+          "presentations": [
+            "x 15kg"
+          ]
+        },
+        {
+          "referenceId": "4bc0d61e-f309-4fd2-80e0-3a7a8ab55bb2",
+          "brand": "CAT CHOW",
+          "name": "CAT CHOW PESCADO",
+          "species": "gato",
+          "presentations": [
+            "x 500 gr",
+            "8kg",
+            "x 1.5 kg"
+          ]
+        },
+        {
+          "referenceId": "5d377638-db18-493f-9639-dea831ad100d",
+          "brand": "CAT CHOW",
+          "name": "CAT CHOW A GRANEL",
+          "species": "gato",
+          "presentations": [
+            "unidad"
+          ]
+        },
+        {
+          "referenceId": "72b2a17f-92fe-4a4a-a1fd-7e442849bb23",
+          "brand": "CAT CHOW",
+          "name": "CAT CHOW GATITOS",
+          "species": "gato",
+          "presentations": [
+            "x 8"
+          ]
+        },
+        {
+          "referenceId": "7c2a19ad-f9e4-44eb-8cc8-be747f7b457c",
+          "brand": "CAT CHOW",
+          "name": "CAT CHOW DELIMIX",
+          "species": "gato",
+          "presentations": [
+            "x 10 kg"
+          ]
+        },
+        {
+          "referenceId": "8b2c7eab-462c-4265-9440-72fbb3ecf3d7",
+          "brand": "CAT CHOW",
+          "name": "CAT CHOW ESTERELIZADO",
+          "species": "gato",
+          "presentations": [
+            "x 500gr"
+          ]
+        },
+        {
+          "referenceId": "a9c84c8b-ed3a-44bf-be59-3095f8f73efa",
+          "brand": "CAT CHOW",
+          "name": "CAT CHOW DELICARNE",
+          "species": "gato",
+          "presentations": [
+            "x 15 kg",
+            "x 1.5 kg",
+            "x 500 gr"
+          ]
+        },
+        {
+          "referenceId": "c27c5a7e-2bf4-40c4-88c6-59096210fe4e",
+          "brand": "CAT CHOW",
+          "name": "CAT CHOW VIDA SANA",
+          "species": "gato",
+          "presentations": [
+            "x 1",
+            "x 450 gr",
+            "x3kg"
+          ]
+        },
+        {
+          "referenceId": "eeaba178-da68-4f65-8d5b-790f6d77f8d6",
+          "brand": "CAT CHOW",
+          "name": "CAT CHOW VIDA SANA 1.3 PAG",
+          "species": "gato",
+          "presentations": [
+            "1 l"
+          ]
+        },
+        {
+          "referenceId": "f2417954-3ec0-4fdb-a0b3-fbd04fccb120",
+          "brand": "CAT CHOW",
+          "name": "CAT CHOW ESTERILIZADOS",
+          "species": "gato",
+          "presentations": [
+            "x 1.5kg"
+          ]
+        }
+      ],
+      "negativeEvidence": "Complete tenant catalog reviewed; these are related candidates, not approved equivalents. Missing brand/variant cannot be proven globally absent from this current catalog snapshot alone."
+    },
+    {
+      "id": "C01-M1-5",
+      "chat": "C01",
+      "message": "M1",
+      "sourceHash": "5930a4f2408de6d3de4d255f4156a89e83918f79c5d5a13f63dbdaa8d566e755",
+      "query": "cuatro sobres de comida siete vidas para gatos",
+      "split": "evaluation",
+      "expectedReference": null,
+      "expectation": "catalog_conflict",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "evidence": "Requested identity or presentation is not verified by current catalog; do not infer equivalence.",
+      "provenance": "Caso de prueba del usuario en Kapso (confirmado por el usuario); no tráfico comercial",
+      "catalogEvidence": [
+        {
+          "referenceId": "4741d3cc-55da-408f-92cc-fd82280cae51",
+          "brand": "SIETE",
+          "name": "SIETE VIDAS",
+          "species": "perro",
+          "presentations": [
+            "1.5kg"
+          ]
+        }
+      ],
+      "negativeEvidence": "Complete tenant catalog reviewed; these are related candidates, not approved equivalents. Missing brand/variant cannot be proven globally absent from this current catalog snapshot alone."
+    },
+    {
+      "id": "C04-M1-6",
+      "chat": "C04",
+      "message": "M1",
+      "sourceHash": "ffa5c7754f0a44af8b21349cab2330eda27a9492790094801575279b99e0ba8b",
+      "query": "Una bolsa de 3 kilos de Br for Cats bola de pelos",
+      "split": "evaluation",
+      "expectedReference": "BR CAT ADUL BOLA PELO",
+      "expectation": "identity",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "evidence": "Literal sandbox message span + current Supabase reference and presentations. Bot response excluded.",
+      "provenance": "Caso de prueba del usuario en Kapso (confirmado por el usuario); no tráfico comercial",
+      "catalogEvidence": [
+        {
+          "referenceId": "33feda53-d630-4b34-9929-d25f70c5893d",
+          "brand": "BR CAT",
+          "name": "BR CAT ADUL BOLA PELO",
+          "species": "gato",
+          "category": "comida",
+          "presentations": [
+            "x 1kg",
+            "x 3kg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C04-M12-7",
+      "chat": "C04",
+      "message": "M12",
+      "sourceHash": "1d90f2688559c1e5a58c13141099b15d2286c359657d87a3199f70ff6d6a7166",
+      "query": "Chuncky salmón y cordero gatos 8 kg",
+      "split": "evaluation",
+      "expectedReference": "CHUNKY GATOS SALMON CORDERO",
+      "expectation": "identity",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "evidence": "Literal sandbox message span + current Supabase reference and presentations. Bot response excluded.",
+      "provenance": "Caso de prueba del usuario en Kapso (confirmado por el usuario); no tráfico comercial",
+      "catalogEvidence": [
+        {
+          "referenceId": "4527e126-bc8a-4b26-8872-b0fd54c6cd27",
+          "brand": "CHUNKY",
+          "name": "CHUNKY GATOS SALMON CORDERO",
+          "species": "gato",
+          "category": "comida",
+          "presentations": [
+            "x 1.5kg",
+            "500g",
+            "x 8kg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C04-M24-8",
+      "chat": "C04",
+      "message": "M24",
+      "sourceHash": "b3c19c5fc360c2963a96a5697d759e6dcb5477e93b3df540dbae1a8011ebb2bf",
+      "query": "cutamycon x50ml",
+      "split": "evaluation",
+      "expectedReference": "CUTAMYCON SPRAY",
+      "expectation": "identity",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "evidence": "Literal sandbox message span + current Supabase reference and presentations. Bot response excluded.",
+      "provenance": "Caso de prueba del usuario en Kapso (confirmado por el usuario); no tráfico comercial",
+      "catalogEvidence": [
+        {
+          "referenceId": "41e9bcdc-36d2-4483-aeeb-bfef339c0c1c",
+          "brand": "CUTAMYCON",
+          "name": "CUTAMYCON SPRAY",
+          "species": "otro",
+          "category": "medicamento",
+          "presentations": [
+            "50ml",
+            "100ml"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C04-M85-9",
+      "chat": "C04",
+      "message": "M85",
+      "sourceHash": "44b1152e5acf2065d4fcef0a8ff148bb14ed4797180267e93b99f0575d664be8",
+      "query": "1 kg Excellent Urinary gatos",
+      "split": "evaluation",
+      "expectedReference": "EXCELLENT GATO URINARY",
+      "expectation": "identity",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "evidence": "Literal sandbox message span + current Supabase reference and presentations. Bot response excluded.",
+      "provenance": "Caso de prueba del usuario en Kapso (confirmado por el usuario); no tráfico comercial",
+      "catalogEvidence": [
+        {
+          "referenceId": "875e487b-64ab-4294-84f1-026f7a456550",
+          "brand": "EXCELLENT",
+          "name": "EXCELLENT GATO URINARY",
+          "species": "gato",
+          "category": "comida",
+          "presentations": [
+            "1kg",
+            "7.5kg",
+            "x 3kg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C04-M85-10",
+      "chat": "C04",
+      "message": "M85",
+      "sourceHash": "44b1152e5acf2065d4fcef0a8ff148bb14ed4797180267e93b99f0575d664be8",
+      "query": "3 latas de Vet Solution Urinary",
+      "split": "evaluation",
+      "expectedReference": "VETSOLUTION CAT URINARY",
+      "expectation": "identity",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "evidence": "Literal sandbox message span + current Supabase reference and presentations. Bot response excluded.",
+      "provenance": "Caso de prueba del usuario en Kapso (confirmado por el usuario); no tráfico comercial",
+      "catalogEvidence": [
+        {
+          "referenceId": "ad418b0f-17fd-4484-bf06-ca9b7310edd8",
+          "brand": "VETSOLUTION",
+          "name": "VETSOLUTION CAT URINARY",
+          "species": "gato",
+          "category": "comida",
+          "presentations": [
+            "100gr"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C04-M85-11",
+      "chat": "C04",
+      "message": "M85",
+      "sourceHash": "44b1152e5acf2065d4fcef0a8ff148bb14ed4797180267e93b99f0575d664be8",
+      "query": "1 lata de Vet Solution Gastro gatos",
+      "split": "evaluation",
+      "expectedReference": "VETSOLUTION CAT GASTROINTES",
+      "expectation": "identity",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "evidence": "Literal sandbox message span + current Supabase reference and presentations. Bot response excluded.",
+      "provenance": "Caso de prueba del usuario en Kapso (confirmado por el usuario); no tráfico comercial",
+      "catalogEvidence": [
+        {
+          "referenceId": "0dd2d64e-2769-4b20-9388-97b88c48a72b",
+          "brand": "VETSOLUTION",
+          "name": "VETSOLUTION CAT GASTROINTES",
+          "species": "gato",
+          "category": "comida",
+          "presentations": [
+            "x100"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C04-M85-12",
+      "chat": "C04",
+      "message": "M85",
+      "sourceHash": "44b1152e5acf2065d4fcef0a8ff148bb14ed4797180267e93b99f0575d664be8",
+      "query": "1 Arena x 8 kg Kitten talco",
+      "split": "evaluation",
+      "expectedReference": "ARENA KITTEN TALCO",
+      "expectation": "identity",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "evidence": "Literal sandbox message span + current Supabase reference and presentations. Bot response excluded.",
+      "provenance": "Caso de prueba del usuario en Kapso (confirmado por el usuario); no tráfico comercial",
+      "catalogEvidence": [
+        {
+          "referenceId": "60386af0-f266-462d-96e5-330d609d3c0e",
+          "brand": "ARENA KITTEN TALCO",
+          "name": "ARENA KITTEN TALCO",
+          "species": "gato",
+          "category": "arena_sustrato",
+          "presentations": [
+            "8kg",
+            "25kg",
+            "4 kg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C04-M205-13",
+      "chat": "C04",
+      "message": "M205",
+      "sourceHash": "d499ee603ed33d333e29485642f7438ad67b2c7e8578bb9a9c8ba86e1863332b",
+      "query": "Y tienes comida húmeda Purina pro plan para gatos adultos ?",
+      "split": "evaluation",
+      "expectedReference": "PRO PLAN POUCH FELINO ADULT",
+      "expectation": "identity",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "evidence": "Literal sandbox message span + current Supabase reference and presentations. Bot response excluded.",
+      "provenance": "Caso de prueba del usuario en Kapso (confirmado por el usuario); no tráfico comercial",
+      "catalogEvidence": [
+        {
+          "referenceId": "86fcfc4b-da28-4eb8-a4cb-59ef793e721e",
+          "brand": "PRO PLAN",
+          "name": "PRO PLAN POUCH FELINO ADULT",
+          "species": "gato",
+          "category": "comida",
+          "presentations": [
+            "85gr"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C04-M203-14",
+      "chat": "C04",
+      "message": "M203",
+      "sourceHash": "758df72668cbaf2c95c0caf3520638d335ea45969b2123555b93a91b51e3a1eb",
+      "query": "Tiene díamond naturals indoor cat de libra ?",
+      "split": "evaluation",
+      "expectedReference": "DIAMOND INDOOR CAT",
+      "expectation": "identity",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "evidence": "Literal sandbox message span + current Supabase reference and presentations. Bot response excluded.",
+      "provenance": "Caso de prueba del usuario en Kapso (confirmado por el usuario); no tráfico comercial",
+      "catalogEvidence": [
+        {
+          "referenceId": "1224f0d0-b4db-494b-8200-56c6e0dad19f",
+          "brand": "DIAMOND",
+          "name": "DIAMOND INDOOR CAT",
+          "species": "gato",
+          "category": "comida",
+          "presentations": [
+            "500gr"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C05-M15-15",
+      "chat": "C05",
+      "message": "M15",
+      "sourceHash": "6b471c7851f226e94dd678a89ed372f37cd469aba5f4d873951d6dfc069afe42",
+      "query": "Hola necesito un Ringo del rojo",
+      "split": "evaluation",
+      "expectedReference": null,
+      "expectation": "ambiguous",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "evidence": "Insufficient identity or multiple current catalog variants; do not choose automatically.",
+      "provenance": "Caso de prueba del usuario en Kapso (confirmado por el usuario); no tráfico comercial",
+      "catalogEvidence": [
+        {
+          "referenceId": "0526a689-0dc5-4f60-a236-dbad91432a93",
+          "brand": "RINGO",
+          "name": "RINGO CACHORRO",
+          "species": "perro",
+          "presentations": [
+            "2kg",
+            "15kg",
+            "1kg",
+            "30kg"
+          ]
+        },
+        {
+          "referenceId": "09383a17-8bdc-422d-b0a3-fc4ac1c568ba",
+          "brand": "RINGO",
+          "name": "RINGO ADUL",
+          "species": "perro",
+          "presentations": [
+            "x 4kg"
+          ]
+        },
+        {
+          "referenceId": "53d58eee-ec9a-4e0e-b3ec-d20837039ca5",
+          "brand": "RINGO",
+          "name": "RINGO PREMIUM CACHO",
+          "species": "perro",
+          "presentations": [
+            "x 2 kg"
+          ]
+        },
+        {
+          "referenceId": "647d1d11-18a4-4379-b9e2-7a1340e6cede",
+          "brand": "RINGO",
+          "name": "RINGO CREMA DE MANI",
+          "species": "perro",
+          "presentations": [
+            "30gr"
+          ]
+        },
+        {
+          "referenceId": "78cdf197-d40b-4158-b6db-1f9db613f643",
+          "brand": "RINGO",
+          "name": "RINGO CROQUETAS",
+          "species": "perro",
+          "presentations": [
+            "2kg",
+            "1kg",
+            "30kg"
+          ]
+        },
+        {
+          "referenceId": "7f40b822-5296-4c65-bed7-40db8ca26fdf",
+          "brand": "RINGO",
+          "name": "RINGO VITALITY ADUL",
+          "species": "perro",
+          "presentations": [
+            "x 2 kg"
+          ]
+        },
+        {
+          "referenceId": "7f9b8157-7394-4792-b085-88111d643afc",
+          "brand": "RINGO",
+          "name": "RINGO PREMIUN PRO",
+          "species": "perro",
+          "presentations": [
+            "4kg"
+          ]
+        },
+        {
+          "referenceId": "8f520997-4daf-4e8e-8c8a-4a78218af4a8",
+          "brand": "RINGO",
+          "name": "RINGO CROQUETA",
+          "species": "perro",
+          "presentations": [
+            "x 20"
+          ]
+        },
+        {
+          "referenceId": "9e43d4d2-c4d3-4049-817e-7f210c1fd88e",
+          "brand": "RINGO",
+          "name": "RINGO PREMIUM",
+          "species": "perro",
+          "presentations": [
+            "20kg",
+            "30kg",
+            "2kg",
+            "1kg"
+          ]
+        },
+        {
+          "referenceId": "c24e9349-8eb0-43cf-9dd6-6bfc7e2e3ee6",
+          "brand": "RINGO",
+          "name": "RINGO PREMIUM CACHORRO",
+          "species": "perro",
+          "presentations": [
+            "x 30 kg",
+            "x 15 kg"
+          ]
+        },
+        {
+          "referenceId": "d5fe44d2-93ee-4baf-8e44-fd83df3be00f",
+          "brand": "RINGO",
+          "name": "RINGO VITALITY ADULTO",
+          "species": "perro",
+          "presentations": [
+            "x 10 kg"
+          ]
+        },
+        {
+          "referenceId": "33987f80-55d7-4d1a-b3d5-7991e9c6c413",
+          "brand": "MIRRINGO",
+          "name": "MIRRINGO +PRO",
+          "species": "gato",
+          "presentations": [
+            "x 0.5 kg"
+          ]
+        },
+        {
+          "referenceId": "466d365f-12a8-41c1-8398-4794739688ab",
+          "brand": "MIRRINGO",
+          "name": "MIRRINGO GATITO",
+          "species": "gato",
+          "presentations": [
+            "x 500gr",
+            "x 1kg"
+          ]
+        },
+        {
+          "referenceId": "a32d492c-78d3-4fb5-822f-127fc50bf191",
+          "brand": "MIRRINGO",
+          "name": "MIRRINGO + PRO",
+          "species": "gato",
+          "presentations": [
+            "x 8kg",
+            "x 1kg"
+          ]
+        },
+        {
+          "referenceId": "b5d34609-b7b2-4b60-b82b-49e120410348",
+          "brand": "MIRRINGO",
+          "name": "MIRRINGO",
+          "species": "gato",
+          "presentations": [
+            "500 gr",
+            "1kg",
+            "x 8 kg"
+          ]
+        }
+      ],
+      "negativeEvidence": "Complete tenant catalog reviewed; these are related candidates, not approved equivalents. Missing brand/variant cannot be proven globally absent from this current catalog snapshot alone."
+    },
+    {
+      "id": "C05-M18-16",
+      "chat": "C05",
+      "message": "M18",
+      "sourceHash": "d33d01f172f832df19f39d62720768cf8941e216b20066e1a8dc5cedfd597a10",
+      "query": "Ringo croquetas",
+      "split": "evaluation",
+      "expectedReference": "RINGO CROQUETAS",
+      "expectation": "identity",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "evidence": "Literal sandbox message span + current Supabase reference and presentations. Bot response excluded.",
+      "provenance": "Caso de prueba del usuario en Kapso (confirmado por el usuario); no tráfico comercial",
+      "catalogEvidence": [
+        {
+          "referenceId": "78cdf197-d40b-4158-b6db-1f9db613f643",
+          "brand": "RINGO",
+          "name": "RINGO CROQUETAS",
+          "species": "perro",
+          "category": "comida",
+          "presentations": [
+            "2kg",
+            "1kg",
+            "30kg",
+            "x 4kg",
+            "20kg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C05-M29-17",
+      "chat": "C05",
+      "message": "M29",
+      "sourceHash": "1aa386d2e4826e532ca036c29156edbe388fac2ca798a9378a00039f7e2d6ca7",
+      "query": "Maneja hills lata ad",
+      "split": "development",
+      "expectedReference": "HILLS CAN Y FEL LATA A/D",
+      "expectation": "identity",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "evidence": "Literal sandbox message span + current Supabase reference and presentations. Bot response excluded.",
+      "provenance": "Caso de prueba del usuario en Kapso (confirmado por el usuario); no tráfico comercial",
+      "catalogEvidence": [
+        {
+          "referenceId": "e58e20d2-d749-4f57-9f1e-ff085c0561af",
+          "brand": "HILLS",
+          "name": "HILLS CAN Y FEL LATA A/D",
+          "species": "perro",
+          "category": "comida",
+          "presentations": [
+            "5.5oz"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C05-M32-18",
+      "chat": "C05",
+      "message": "M32",
+      "sourceHash": "80de3834cfe4031ad3c65b7b0580a70ed51dd86b832af21e480e99b51af6429b",
+      "query": "Maneja Chunky adulto mayores",
+      "split": "evaluation",
+      "expectedReference": "CHUNKY ADUL MAYORES",
+      "expectation": "identity",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "evidence": "Current Supabase contains two senior references differing only in abbreviated name and presentation. Request specifies no size; either reference family is valid, size still requires confirmation.",
+      "provenance": "Caso de prueba del usuario en Kapso (confirmado por el usuario); no tráfico comercial",
+      "catalogEvidence": [
+        {
+          "referenceId": "b1f93911-f261-4819-abd4-ed5fa3a9d9a9",
+          "brand": "CHUNKY",
+          "name": "CHUNKY ADUL MAYORES",
+          "species": "perro",
+          "category": "comida",
+          "presentations": [
+            "x 12kg",
+            "x 1.5 kg"
+          ]
+        },
+        {
+          "referenceId": "d22f6a58-0b81-470b-85a9-8d325d3a176f",
+          "name": "CHUNKY ADULTOS MAYORES",
+          "species": "perro",
+          "presentations": [
+            "x 1.5 kg"
+          ]
+        }
+      ],
+      "acceptedReferences": [
+        "CHUNKY ADUL MAYORES",
+        "CHUNKY ADULTOS MAYORES"
+      ]
+    },
+    {
+      "id": "C08-M25-19",
+      "chat": "C08",
+      "message": "M25",
+      "sourceHash": "b4e95e144ec13643e3613e2b8d4936a2418741a20256cac04b6fe1c22733e5a7",
+      "query": "Quiero un agility gol cachorros razas grandes",
+      "split": "evaluation",
+      "expectedReference": "AGILITY GRAND CACH",
+      "expectation": "identity",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "evidence": "Literal sandbox message span + current Supabase reference and presentations. Bot response excluded.",
+      "provenance": "Caso de prueba del usuario en Kapso (confirmado por el usuario); no tráfico comercial",
+      "catalogEvidence": [
+        {
+          "referenceId": "4128b96d-b89a-4189-a9f3-cac359cd35e4",
+          "brand": "AGILITY",
+          "name": "AGILITY GRAND CACH",
+          "species": "perro",
+          "category": "comida",
+          "presentations": [
+            "1.5kg",
+            "15kg",
+            "3kg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C09-M129-20",
+      "chat": "C09",
+      "message": "M129",
+      "sourceHash": "65e10469b93e23c65cd096e6149b54431ae55a7b8a06cac53be670cfbb409c18",
+      "query": "freemiau lavanda 10kg",
+      "split": "evaluation",
+      "expectedReference": "FREEMIAU LAVANDA",
+      "expectation": "identity",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "evidence": "Literal sandbox message span + current Supabase reference and presentations. Bot response excluded.",
+      "provenance": "Caso de prueba del usuario en Kapso (confirmado por el usuario); no tráfico comercial",
+      "catalogEvidence": [
+        {
+          "referenceId": "9aea18f6-d3a2-469a-b8ec-0a6c9d8d36a4",
+          "brand": "FREEMIAU",
+          "name": "FREEMIAU LAVANDA",
+          "species": "gato",
+          "category": "arena_sustrato",
+          "presentations": [
+            "x 10 kg",
+            "4.5kg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C09-M131-21",
+      "chat": "C09",
+      "message": "M131",
+      "sourceHash": "b7ca792f00db23735a1377301bd3576dce42f264b9ce8e28eedacf441d3c05f8",
+      "query": "y el br cordero 10kg",
+      "split": "evaluation",
+      "expectedReference": "BR CORDERO",
+      "expectation": "identity",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "evidence": "Literal sandbox message span + current Supabase reference and presentations. Bot response excluded.",
+      "provenance": "Caso de prueba del usuario en Kapso (confirmado por el usuario); no tráfico comercial",
+      "catalogEvidence": [
+        {
+          "referenceId": "d91373fb-8114-4ef6-addf-0e3f067f5329",
+          "brand": "BR",
+          "name": "BR CORDERO",
+          "species": "perro",
+          "category": "comida",
+          "presentations": [
+            "x 10kg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C09-M123-22",
+      "chat": "C09",
+      "message": "M123",
+      "sourceHash": "493e34f49d342cdd839167c256c6e16a0c4ddafe2a67a275d92fe46dd8f0603f",
+      "query": "me gustaría agregar una arena maíz 20kl",
+      "split": "evaluation",
+      "expectedReference": "ARENA MAIZ CAT",
+      "expectation": "identity",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "evidence": "Literal sandbox message span + current Supabase reference and presentations. Bot response excluded.",
+      "provenance": "Caso de prueba del usuario en Kapso (confirmado por el usuario); no tráfico comercial",
+      "catalogEvidence": [
+        {
+          "referenceId": "906dcade-aa4e-4c7b-b652-978353832387",
+          "brand": "ARENA MAIZ CAT",
+          "name": "ARENA MAIZ CAT",
+          "species": "gato",
+          "category": "arena_sustrato",
+          "presentations": [
+            "x 4kg",
+            "x 15kg",
+            "x 2kg",
+            "x 20kg",
+            "x 10kg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C10-M3-23",
+      "chat": "C10",
+      "message": "M3",
+      "sourceHash": "714e5f9d517bfe7a94b4daa305ad0274df2349d2f34405d63097b62675ba9577",
+      "query": "Nutriss de 30kg de carne 🤗",
+      "split": "evaluation",
+      "expectedReference": "NUTRISS CARNE",
+      "expectation": "identity",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "evidence": "Literal sandbox message span + current Supabase reference and presentations. Bot response excluded.",
+      "provenance": "Caso de prueba del usuario en Kapso (confirmado por el usuario); no tráfico comercial",
+      "catalogEvidence": [
+        {
+          "referenceId": "1d7b416a-911a-4196-b3c3-9ffe03b18a5d",
+          "brand": "NUTRISS",
+          "name": "NUTRISS CARNE",
+          "species": "perro",
+          "category": "comida",
+          "presentations": [
+            "20kg",
+            "1kg",
+            "30kg",
+            "2kg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C14-M37-24",
+      "chat": "C14",
+      "message": "M37",
+      "sourceHash": "9e773860fb8796a28a976774cd1a44e7e075d558f9b3bffbebbf455d29b916a8",
+      "query": "Qué precio tiene el proplan para gatos EN?",
+      "split": "evaluation",
+      "expectedReference": null,
+      "expectation": "ambiguous",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "evidence": "Insufficient identity or multiple current catalog variants; do not choose automatically.",
+      "provenance": "Caso de prueba del usuario en Kapso (confirmado por el usuario); no tráfico comercial",
+      "catalogEvidence": [
+        {
+          "referenceId": "eb5593d6-22be-497a-ab26-7b87c1320a9a",
+          "brand": "PRO PLAN",
+          "name": "PRO PLAN FELINE EN",
+          "species": "gato",
+          "presentations": [
+            "1.5kg"
+          ]
+        },
+        {
+          "referenceId": "fcbd03b4-360e-4a76-98a5-33e460188eb0",
+          "brand": "PRO PLAN",
+          "name": "PRO PLAN FELINE LATA EN",
+          "species": "gato",
+          "presentations": [
+            "unidad"
+          ]
+        }
+      ],
+      "negativeEvidence": "Complete tenant catalog reviewed; these are related candidates, not approved equivalents. Missing brand/variant cannot be proven globally absent from this current catalog snapshot alone."
+    },
+    {
+      "id": "C17-M6-25",
+      "chat": "C17",
+      "message": "M6",
+      "sourceHash": "9e9c8012ad5af91dd5168564cf6ad764a608de543b2b0e156fe0ea7ba4a01b07",
+      "query": "y agility para grandes cachorros?",
+      "split": "evaluation",
+      "expectedReference": "AGILITY GRAND CACH",
+      "expectation": "identity",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "evidence": "Literal sandbox message span + current Supabase reference and presentations. Bot response excluded.",
+      "provenance": "Caso de prueba del usuario en Kapso (confirmado por el usuario); no tráfico comercial",
+      "catalogEvidence": [
+        {
+          "referenceId": "4128b96d-b89a-4189-a9f3-cac359cd35e4",
+          "brand": "AGILITY",
+          "name": "AGILITY GRAND CACH",
+          "species": "perro",
+          "category": "comida",
+          "presentations": [
+            "1.5kg",
+            "15kg",
+            "3kg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C18-M4-26",
+      "chat": "C18",
+      "message": "M4",
+      "sourceHash": "825d44f61d2b8a961d3fd41b937b6e2c33c8930a8637d1da678e85ef9e8bb793",
+      "query": "cuido vivance vitality de 10 Kg",
+      "split": "evaluation",
+      "expectedReference": null,
+      "expectation": "unverified_identity",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "evidence": "Requested identity or presentation is not verified by current catalog; do not infer equivalence.",
+      "provenance": "Caso de prueba del usuario en Kapso (confirmado por el usuario); no tráfico comercial",
+      "catalogEvidence": [
+        {
+          "referenceId": "0526a689-0dc5-4f60-a236-dbad91432a93",
+          "brand": "RINGO",
+          "name": "RINGO CACHORRO",
+          "species": "perro",
+          "presentations": [
+            "2kg",
+            "15kg",
+            "1kg",
+            "30kg"
+          ]
+        },
+        {
+          "referenceId": "09383a17-8bdc-422d-b0a3-fc4ac1c568ba",
+          "brand": "RINGO",
+          "name": "RINGO ADUL",
+          "species": "perro",
+          "presentations": [
+            "x 4kg"
+          ]
+        },
+        {
+          "referenceId": "53d58eee-ec9a-4e0e-b3ec-d20837039ca5",
+          "brand": "RINGO",
+          "name": "RINGO PREMIUM CACHO",
+          "species": "perro",
+          "presentations": [
+            "x 2 kg"
+          ]
+        },
+        {
+          "referenceId": "647d1d11-18a4-4379-b9e2-7a1340e6cede",
+          "brand": "RINGO",
+          "name": "RINGO CREMA DE MANI",
+          "species": "perro",
+          "presentations": [
+            "30gr"
+          ]
+        },
+        {
+          "referenceId": "78cdf197-d40b-4158-b6db-1f9db613f643",
+          "brand": "RINGO",
+          "name": "RINGO CROQUETAS",
+          "species": "perro",
+          "presentations": [
+            "2kg",
+            "1kg",
+            "30kg"
+          ]
+        },
+        {
+          "referenceId": "7f40b822-5296-4c65-bed7-40db8ca26fdf",
+          "brand": "RINGO",
+          "name": "RINGO VITALITY ADUL",
+          "species": "perro",
+          "presentations": [
+            "x 2 kg"
+          ]
+        },
+        {
+          "referenceId": "7f9b8157-7394-4792-b085-88111d643afc",
+          "brand": "RINGO",
+          "name": "RINGO PREMIUN PRO",
+          "species": "perro",
+          "presentations": [
+            "4kg"
+          ]
+        },
+        {
+          "referenceId": "8f520997-4daf-4e8e-8c8a-4a78218af4a8",
+          "brand": "RINGO",
+          "name": "RINGO CROQUETA",
+          "species": "perro",
+          "presentations": [
+            "x 20"
+          ]
+        },
+        {
+          "referenceId": "9e43d4d2-c4d3-4049-817e-7f210c1fd88e",
+          "brand": "RINGO",
+          "name": "RINGO PREMIUM",
+          "species": "perro",
+          "presentations": [
+            "20kg",
+            "30kg",
+            "2kg",
+            "1kg"
+          ]
+        },
+        {
+          "referenceId": "c24e9349-8eb0-43cf-9dd6-6bfc7e2e3ee6",
+          "brand": "RINGO",
+          "name": "RINGO PREMIUM CACHORRO",
+          "species": "perro",
+          "presentations": [
+            "x 30 kg",
+            "x 15 kg"
+          ]
+        },
+        {
+          "referenceId": "d5fe44d2-93ee-4baf-8e44-fd83df3be00f",
+          "brand": "RINGO",
+          "name": "RINGO VITALITY ADULTO",
+          "species": "perro",
+          "presentations": [
+            "x 10 kg"
+          ]
+        },
+        {
+          "referenceId": "33987f80-55d7-4d1a-b3d5-7991e9c6c413",
+          "brand": "MIRRINGO",
+          "name": "MIRRINGO +PRO",
+          "species": "gato",
+          "presentations": [
+            "x 0.5 kg"
+          ]
+        },
+        {
+          "referenceId": "466d365f-12a8-41c1-8398-4794739688ab",
+          "brand": "MIRRINGO",
+          "name": "MIRRINGO GATITO",
+          "species": "gato",
+          "presentations": [
+            "x 500gr",
+            "x 1kg"
+          ]
+        },
+        {
+          "referenceId": "a32d492c-78d3-4fb5-822f-127fc50bf191",
+          "brand": "MIRRINGO",
+          "name": "MIRRINGO + PRO",
+          "species": "gato",
+          "presentations": [
+            "x 8kg",
+            "x 1kg"
+          ]
+        },
+        {
+          "referenceId": "b5d34609-b7b2-4b60-b82b-49e120410348",
+          "brand": "MIRRINGO",
+          "name": "MIRRINGO",
+          "species": "gato",
+          "presentations": [
+            "500 gr",
+            "1kg",
+            "x 8 kg"
+          ]
+        }
+      ],
+      "negativeEvidence": "Complete tenant catalog reviewed; these are related candidates, not approved equivalents. Missing brand/variant cannot be proven globally absent from this current catalog snapshot alone."
+    },
+    {
+      "id": "C18-M23-27",
+      "chat": "C18",
+      "message": "M23",
+      "sourceHash": "402345ca809e72ce11098a6dd659fc33caf3d390cfc66dac878c066a33832fef",
+      "query": "BR pollo 3 kg Castrado",
+      "split": "evaluation",
+      "expectedReference": "BR CAT CASTRADO POLLO",
+      "expectation": "identity",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "evidence": "Literal sandbox message span + current Supabase reference and presentations. Bot response excluded.",
+      "provenance": "Caso de prueba del usuario en Kapso (confirmado por el usuario); no tráfico comercial",
+      "catalogEvidence": [
+        {
+          "referenceId": "771ede7f-75a9-4366-8b43-3edfff0545b0",
+          "brand": "BR CAT",
+          "name": "BR CAT CASTRADO POLLO",
+          "species": "gato",
+          "category": "comida",
+          "presentations": [
+            "10kg",
+            "3kg",
+            "1kg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C20-M14-28",
+      "chat": "C20",
+      "message": "M14",
+      "sourceHash": "194389494080b445c7b90605b34a69bd104b9058bf685fe0928229cf0bd14d18",
+      "query": "que precio tienen Ringo croquetas x20kl?",
+      "split": "evaluation",
+      "expectedReference": "RINGO CROQUETAS",
+      "expectation": "identity",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "evidence": "Literal sandbox message span + current Supabase reference and presentations. Bot response excluded.",
+      "provenance": "Caso de prueba del usuario en Kapso (confirmado por el usuario); no tráfico comercial",
+      "catalogEvidence": [
+        {
+          "referenceId": "78cdf197-d40b-4158-b6db-1f9db613f643",
+          "brand": "RINGO",
+          "name": "RINGO CROQUETAS",
+          "species": "perro",
+          "category": "comida",
+          "presentations": [
+            "2kg",
+            "1kg",
+            "30kg",
+            "x 4kg",
+            "20kg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C24-M4-29",
+      "chat": "C24",
+      "message": "M4",
+      "sourceHash": "4826025e64a5b95894c95139bcac8356ca54a603f9df652bc5627f2c451d7054",
+      "query": "Que precio tienen el cuido Purina dog chow a r pequeña de 4kl?",
+      "split": "evaluation",
+      "expectedReference": null,
+      "expectation": "presentation_unverified",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "evidence": "Requested identity or presentation is not verified by current catalog; do not infer equivalence.",
+      "provenance": "Caso de prueba del usuario en Kapso (confirmado por el usuario); no tráfico comercial",
+      "catalogEvidence": [
+        {
+          "referenceId": "02916b95-e8b6-492e-99f3-e97760a12007",
+          "brand": "DOG CHOW",
+          "name": "DOG CHOW POUCHE CARNE",
+          "species": "perro",
+          "presentations": [
+            "100 gr"
+          ]
+        },
+        {
+          "referenceId": "0552e1d4-e6a7-48b9-ae5f-07637ae82179",
+          "brand": "DOG CHOW",
+          "name": "DOG CHOW POUCH PAG",
+          "species": "perro",
+          "presentations": [
+            "6l"
+          ]
+        },
+        {
+          "referenceId": "094d088d-f04c-43fb-ab40-8ef2b8b18c7f",
+          "brand": "DOG CHOW",
+          "name": "DOG CHOW ADULRMG",
+          "species": "perro",
+          "presentations": [
+            "22.7kg"
+          ]
+        },
+        {
+          "referenceId": "0d894a04-b243-4e9e-a8b7-dd29e2283243",
+          "brand": "DOG CHOW",
+          "name": "DOG CHOW C RMG *",
+          "species": "perro",
+          "presentations": [
+            "2kg"
+          ]
+        },
+        {
+          "referenceId": "112c03de-9bcd-465d-91b9-46848f9c8572",
+          "brand": "DOG CHOW",
+          "name": "DOG CHOW A.R.P A GRANEL",
+          "species": "perro",
+          "presentations": [
+            "unidad"
+          ]
+        },
+        {
+          "referenceId": "1bc3e0d3-b2b5-4848-b8ec-ef8a18949ea1",
+          "brand": "DOG CHOW",
+          "name": "DOG CHOW C RP",
+          "species": "perro",
+          "presentations": [
+            "x 2 kg",
+            "x 475",
+            "x 8 kg",
+            "x 1kg"
+          ]
+        },
+        {
+          "referenceId": "1cd14970-8c05-4c50-b48b-4c47066caf33",
+          "brand": "DOG CHOW",
+          "name": "DOG CHOW C RMG",
+          "species": "perro",
+          "presentations": [
+            "x1kg",
+            "x 8 kg"
+          ]
+        },
+        {
+          "referenceId": "2acd9c2d-e128-4f56-9e80-ceaf2b067289",
+          "brand": "DOG CHOW",
+          "name": "DOG CHOW ADUL TODOS LOS TAMAÑOS 475",
+          "species": "perro",
+          "presentations": [
+            "unidad"
+          ]
+        },
+        {
+          "referenceId": "312b2fae-b636-40c8-ac9a-20f92576eea2",
+          "brand": "DOG CHOW",
+          "name": "DOG CHOW C RMG *475",
+          "species": "perro",
+          "presentations": [
+            "unidad"
+          ]
+        },
+        {
+          "referenceId": "464ed0bc-e095-4713-abb9-e8d1535e190e",
+          "brand": "DOG CHOW",
+          "name": "DOG CHOW SINCO LONGEVIDAD",
+          "species": "perro",
+          "presentations": [
+            "2kg"
+          ]
+        },
+        {
+          "referenceId": "473a9bab-0fc6-4d66-b5c4-9707c4a2884c",
+          "brand": "DOG CHOW",
+          "name": "DOG CHOW POUCHE CACH",
+          "species": "perro",
+          "presentations": [
+            "x 100 gr"
+          ]
+        },
+        {
+          "referenceId": "4c64d4be-7137-48ac-87ae-ae50364a0ef4",
+          "brand": "DOG CHOW",
+          "name": "DOG CHOW CONTROL DE PESO",
+          "species": "perro",
+          "presentations": [
+            "x 2 kg"
+          ]
+        },
+        {
+          "referenceId": "5c5f7606-9628-46f9-911e-76ce164dab8c",
+          "brand": "DOG CHOW",
+          "name": "DOG CHOW CONTROL PESO SINCOL",
+          "species": "perro",
+          "presentations": [
+            "x 8 kg"
+          ]
+        },
+        {
+          "referenceId": "7d088364-2c58-474b-aa47-e2d9dc0b810d",
+          "brand": "DOG CHOW",
+          "name": "DOG CHOW",
+          "species": "perro",
+          "presentations": [
+            "x100"
+          ]
+        },
+        {
+          "referenceId": "97fa87c2-259d-43f9-a42e-09b57872d810",
+          "brand": "DOG CHOW",
+          "name": "DOG CHOW A RMG",
+          "species": "perro",
+          "presentations": [
+            "x 475",
+            "x 4 kg",
+            "x 2 kg"
+          ]
+        },
+        {
+          "referenceId": "af7869a8-8f00-4920-9586-d8d345e71471",
+          "brand": "DOG CHOW",
+          "name": "DOG CHOW A.M.G A GRANEL",
+          "species": "perro",
+          "presentations": [
+            "unidad"
+          ]
+        },
+        {
+          "referenceId": "b15749f9-b0f5-4963-bedb-eb455f4ee982",
+          "brand": "DOG CHOW",
+          "name": "DOG CHOW ADUL RMG PAG 19.7 LLEV",
+          "species": "perro",
+          "presentations": [
+            "22.7kg"
+          ]
+        },
+        {
+          "referenceId": "f2825bef-752b-49d8-9446-71128f6d8247",
+          "brand": "DOG CHOW",
+          "name": "DOG CHOW ADUL TODOS LOS TAMAÑOS",
+          "species": "perro",
+          "presentations": [
+            "4kg",
+            "2kg",
+            "1kg",
+            "22.7kg",
+            "8kg"
+          ]
+        }
+      ],
+      "negativeEvidence": "Complete tenant catalog reviewed; these are related candidates, not approved equivalents. Missing brand/variant cannot be proven globally absent from this current catalog snapshot alone."
+    }
+  ]
+}

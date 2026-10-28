@@ -1,0 +1,408 @@
+{
+  "source": "User test conversations on Kapso; not commercial traffic",
+  "retrieval": {
+    "conversations": 24,
+    "messagePages": 34,
+    "messages": 1885,
+    "complete": true
+  },
+  "review": "Whole chat collection retrieved; textual patterns reviewed; 30 distinct product spans independently catalog-contrasted. Media binaries not reprocessed and not counted as recognition labels. No bot answer used as ground truth.",
+  "chats": [
+    {
+      "chat": "C01",
+      "messages": 46,
+      "directions": {
+        "inbound": 28,
+        "outbound": 18
+      },
+      "types": {
+        "text": 41,
+        "image": 5
+      },
+      "earliest": "2026-10-13T15:13:17.000Z",
+      "latest": "2026-10-14T19:41:19.000Z",
+      "goldCases": [
+        "C01-M1-3",
+        "C01-M1-4",
+        "C01-M1-5"
+      ]
+    },
+    {
+      "chat": "C02",
+      "messages": 47,
+      "directions": {
+        "inbound": 31,
+        "outbound": 16
+      },
+      "types": {
+        "text": 37,
+        "image": 10
+      },
+      "earliest": "2026-10-10T18:59:29.000Z",
+      "latest": "2026-10-11T06:01:31.000Z",
+      "goldCases": []
+    },
+    {
+      "chat": "C03",
+      "messages": 68,
+      "directions": {
+        "inbound": 49,
+        "outbound": 19
+      },
+      "types": {
+        "text": 49,
+        "image": 19
+      },
+      "earliest": "2026-10-08T15:31:55.000Z",
+      "latest": "2026-10-08T21:37:59.000Z",
+      "goldCases": []
+    },
+    {
+      "chat": "C04",
+      "messages": 435,
+      "directions": {
+        "inbound": 267,
+        "outbound": 168
+      },
+      "types": {
+        "text": 427,
+        "image": 8
+      },
+      "earliest": "2026-09-28T19:54:03.000Z",
+      "latest": "2026-10-06T19:40:27.000Z",
+      "goldCases": [
+        "C04-M1-6",
+        "C04-M12-7",
+        "C04-M24-8",
+        "C04-M85-9",
+        "C04-M85-10",
+        "C04-M85-11",
+        "C04-M85-12",
+        "C04-M205-13",
+        "C04-M203-14"
+      ]
+    },
+    {
+      "chat": "C05",
+      "messages": 46,
+      "directions": {
+        "inbound": 25,
+        "outbound": 21
+      },
+      "types": {
+        "text": 45,
+        "image": 1
+      },
+      "earliest": "2026-10-01T20:44:04.000Z",
+      "latest": "2026-10-02T18:31:01.000Z",
+      "goldCases": [
+        "C05-M15-15",
+        "C05-M18-16",
+        "C05-M29-17",
+        "C05-M32-18"
+      ]
+    },
+    {
+      "chat": "C06",
+      "messages": 3,
+      "directions": {
+        "inbound": 2,
+        "outbound": 1
+      },
+      "types": {
+        "text": 3
+      },
+      "earliest": "2026-09-27T16:37:56.000Z",
+      "latest": "2026-09-27T16:41:10.000Z",
+      "goldCases": []
+    },
+    {
+      "chat": "C07",
+      "messages": 146,
+      "directions": {
+        "inbound": 80,
+        "outbound": 66
+      },
+      "types": {
+        "text": 134,
+        "image": 12
+      },
+      "earliest": "2026-09-21T15:29:29.000Z",
+      "latest": "2026-09-25T22:26:01.000Z",
+      "goldCases": [
+        "C07-M9-0"
+      ]
+    },
+    {
+      "chat": "C08",
+      "messages": 59,
+      "directions": {
+        "inbound": 30,
+        "outbound": 29
+      },
+      "types": {
+        "text": 59
+      },
+      "earliest": "2026-09-23T18:23:02.000Z",
+      "latest": "2026-09-24T19:31:26.000Z",
+      "goldCases": [
+        "C08-M25-19"
+      ]
+    },
+    {
+      "chat": "C09",
+      "messages": 142,
+      "directions": {
+        "inbound": 71,
+        "outbound": 71
+      },
+      "types": {
+        "text": 142
+      },
+      "earliest": "2026-09-18T13:59:43.000Z",
+      "latest": "2026-09-19T21:03:58.000Z",
+      "goldCases": [
+        "C09-M129-20",
+        "C09-M131-21",
+        "C09-M123-22"
+      ]
+    },
+    {
+      "chat": "C10",
+      "messages": 77,
+      "directions": {
+        "inbound": 40,
+        "outbound": 37
+      },
+      "types": {
+        "text": 77
+      },
+      "earliest": "2026-09-15T23:44:50.000Z",
+      "latest": "2026-09-16T05:01:00.000Z",
+      "goldCases": [
+        "C10-M3-23"
+      ]
+    },
+    {
+      "chat": "C11",
+      "messages": 2,
+      "directions": {
+        "inbound": 1,
+        "outbound": 1
+      },
+      "types": {
+        "image": 1,
+        "text": 1
+      },
+      "earliest": "2026-09-14T18:49:37.000Z",
+      "latest": "2026-09-14T18:50:28.000Z",
+      "goldCases": []
+    },
+    {
+      "chat": "C12",
+      "messages": 26,
+      "directions": {
+        "inbound": 14,
+        "outbound": 12
+      },
+      "types": {
+        "text": 26
+      },
+      "earliest": "2026-09-12T20:19:29.000Z",
+      "latest": "2026-09-12T20:35:32.000Z",
+      "goldCases": []
+    },
+    {
+      "chat": "C13",
+      "messages": 14,
+      "directions": {
+        "inbound": 7,
+        "outbound": 7
+      },
+      "types": {
+        "image": 6,
+        "text": 8
+      },
+      "earliest": "2026-09-12T19:54:51.000Z",
+      "latest": "2026-09-12T20:17:05.000Z",
+      "goldCases": []
+    },
+    {
+      "chat": "C14",
+      "messages": 93,
+      "directions": {
+        "inbound": 47,
+        "outbound": 46
+      },
+      "types": {
+        "text": 80,
+        "image": 13
+      },
+      "earliest": "2026-09-08T16:03:51.000Z",
+      "latest": "2026-09-10T22:02:28.000Z",
+      "goldCases": [
+        "C14-M37-24"
+      ]
+    },
+    {
+      "chat": "C15",
+      "messages": 6,
+      "directions": {
+        "inbound": 3,
+        "outbound": 3
+      },
+      "types": {
+        "text": 5,
+        "image": 1
+      },
+      "earliest": "2026-09-09T21:13:14.000Z",
+      "latest": "2026-09-09T21:16:21.000Z",
+      "goldCases": []
+    },
+    {
+      "chat": "C16",
+      "messages": 41,
+      "directions": {
+        "inbound": 21,
+        "outbound": 20
+      },
+      "types": {
+        "text": 41
+      },
+      "earliest": "2026-09-08T19:17:26.000Z",
+      "latest": "2026-09-08T19:36:37.000Z",
+      "goldCases": []
+    },
+    {
+      "chat": "C17",
+      "messages": 7,
+      "directions": {
+        "inbound": 4,
+        "outbound": 3
+      },
+      "types": {
+        "text": 7
+      },
+      "earliest": "2026-09-03T22:00:19.000Z",
+      "latest": "2026-09-04T16:35:18.000Z",
+      "goldCases": [
+        "C17-M6-25"
+      ]
+    },
+    {
+      "chat": "C18",
+      "messages": 83,
+      "directions": {
+        "inbound": 39,
+        "outbound": 44
+      },
+      "types": {
+        "text": 81,
+        "image": 2
+      },
+      "earliest": "2026-06-28T17:50:54.000Z",
+      "latest": "2026-06-29T03:27:34.000Z",
+      "goldCases": [
+        "C18-M4-26",
+        "C18-M23-27"
+      ]
+    },
+    {
+      "chat": "C19",
+      "messages": 7,
+      "directions": {
+        "inbound": 5,
+        "outbound": 2
+      },
+      "types": {
+        "text": 7
+      },
+      "earliest": "2026-06-16T00:26:53.000Z",
+      "latest": "2026-06-16T02:03:27.000Z",
+      "goldCases": []
+    },
+    {
+      "chat": "C20",
+      "messages": 32,
+      "directions": {
+        "inbound": 14,
+        "outbound": 18
+      },
+      "types": {
+        "image": 7,
+        "text": 25
+      },
+      "earliest": "2026-06-12T00:56:05.000Z",
+      "latest": "2026-06-12T02:03:29.000Z",
+      "goldCases": [
+        "C20-M14-28"
+      ]
+    },
+    {
+      "chat": "C21",
+      "messages": 17,
+      "directions": {
+        "inbound": 8,
+        "outbound": 9
+      },
+      "types": {
+        "text": 15,
+        "image": 2
+      },
+      "earliest": "2026-06-10T03:15:17.000Z",
+      "latest": "2026-06-10T03:53:46.000Z",
+      "goldCases": [
+        "C21-M7-1"
+      ]
+    },
+    {
+      "chat": "C22",
+      "messages": 464,
+      "directions": {
+        "inbound": 239,
+        "outbound": 225
+      },
+      "types": {
+        "text": 400,
+        "image": 45,
+        "audio": 19
+      },
+      "earliest": "2026-06-02T02:39:12.000Z",
+      "latest": "2026-06-07T23:21:39.000Z",
+      "goldCases": [
+        "C22-M20-2"
+      ]
+    },
+    {
+      "chat": "C23",
+      "messages": 2,
+      "directions": {
+        "inbound": 1,
+        "outbound": 1
+      },
+      "types": {
+        "text": 2
+      },
+      "earliest": "2026-06-02T21:25:02.000Z",
+      "latest": "2026-06-02T21:25:23.000Z",
+      "goldCases": []
+    },
+    {
+      "chat": "C24",
+      "messages": 22,
+      "directions": {
+        "inbound": 12,
+        "outbound": 10
+      },
+      "types": {
+        "button": 1,
+        "text": 21
+      },
+      "earliest": "2026-05-30T20:50:17.000Z",
+      "latest": "2026-05-30T21:50:39.000Z",
+      "goldCases": [
+        "C24-M4-29"
+      ]
+    }
+  ]
+}

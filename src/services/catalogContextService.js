@@ -1,4 +1,6 @@
 const { formatoAlimento } = require('../utils/foodFormat');
+const { crearRankingIdentidad } = require('./catalogIdentityRanking');
+const { buscarIdentidadesVerificadas } = require('../repositories/productIdentityEvidenceRepository');
 const { textoBusquedaReferencia } = require('../utils/catalogSearchDocument');
 const { envolver } = require('./pipelineTelemetry');
 const { admiteEspecie } = require('../utils/catalogCommercialRules');
@@ -282,11 +284,12 @@ function seleccionarCatalogoLocal({ catalogo = [], mensaje = "", estado = {}, cl
     !marcasConsulta.size || marcasConsulta.has(normalizar(item.marca.marca)) ||
     [...marcasConsulta].some(marca => marcaCompatibleConIdentidad(item.marca, item.referencia, marca, identidadConsulta))
   );
+  const informacionIdentidad = crearRankingIdentidad(items, identidadOriginal);
   const conPuntaje = items
     .map((item, index) => ({
       ...item,
       index,
-      puntos: puntuarReferencia(item, consulta, tokensConsulta),
+      puntos: puntuarReferencia(item, consulta, tokensConsulta) + informacionIdentidad[index],
     }))
     .filter((item) => item.puntos > 0)
     .sort((a, b) => b.puntos - a.puntos || a.index - b.index);
@@ -431,10 +434,15 @@ async function seleccionarCatalogoParaIA({ catalogo = [], mensaje = "", mensajeO
     const unidas = palabras.slice(0, -1).map((palabra, i) =>
       /^[a-z]{2,}$/.test(palabra) && /^[a-z]{2,}$/.test(palabras[i + 1]) ? palabra + palabras[i + 1] : "").filter(Boolean);
     if (unidas.length) consultasBusqueda.push(unidas.join(" "));
+    const evidenciaPromesa = !clasificacion.requiereVision
+      ? buscarIdentidadesVerificadas(cliente, textoIdentidad) : Promise.resolve([]);
     const respuestasBusqueda = await Promise.allSettled(consultasBusqueda.map(consulta =>
       buscarProductosCatalogoCliente(cliente, { query: consulta, limit: limite, recuperarMarcaAproximada: consulta === identidadCorta })
     ));
     const recuperados = respuestasBusqueda.filter(item => item.status === "fulfilled").map(item => item.value);
+    const evidenciaVerificada = await evidenciaPromesa;
+    if (evidenciaVerificada.length) recuperados.unshift({ catalogo: evidenciaVerificada,
+      metadata: { estrategia: 'supabase_evidencia_verificada' } });
     if (!recuperados.length) throw respuestasBusqueda[0].reason;
     const resultado = { ...recuperados[0], catalogo: recuperados.reduce((acumulado, actual) =>
       combinarCatalogosCandidatos(acumulado, actual.catalogo, limite * consultasBusqueda.length), []) };

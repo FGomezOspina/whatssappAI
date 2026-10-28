@@ -1,0 +1,15 @@
+Diagnóstico previo a cambios de implementación — 2026-10-28
+Repositorio original: /Users/gomez/Documents/WhatsappVELTIA; copia de trabajo con cambios previos conservados.
+Arquitectura: Kapso → buffer/cola por conversación → persistencia entrante → decisión semántica → catalogContextService (RPC FTS/trigram, consultas paralelas y ranking local, top 8 texto) → productMatchValidator → motor petshop → humanización → persistencia. La búsqueda actual recibe catalogo=[]; no dispone del catálogo completo como fallback en esa ruta. Un fallo de recuperación no puede arreglarse solamente en el validador.
+Aprendizaje existente: training_examples captura pendientes, correcciones y múltiples productos inactivos. Revisión humana activa ejemplos narrativos; no existe contrato de identidad ligado a ID de referencia, prueba fuente y versión de catálogo. Una aprobación reemplaza notes de origen. No se permite inferir equivalencias de respuestas del bot.
+Evidencia leída: 24 conversaciones Kapso, 1885 mensajes, 34 páginas de mensajes; lista de conversaciones 1 página sin siguiente. Fechas 2026-05-30 a 2026-10-14. Se observan numerosas repeticiones de escenarios, posiblemente pruebas. No extrapolar a tráfico comercial.
+Supabase: GET aivance_clients con credenciales existentes falla ENOTFOUND para el dominio configurado, también fuera del sandbox; supabase.com y api.kapso.ai sí resuelven. No hay lectura vigente de catálogo ni chats de Supabase. productos.json es snapshot local, no verdad actual/histórica certificada.
+Línea base npm test: 896 tests, 892 pass, 4 fail (Diamond libra/1 libra/1lb, FELIX húmedo). No se modifica implementación antes de esta línea base.
+Reproducciones actuales contra snapshot local:
+- cat show delimix adultos de 10 kg: top 8 local excluye CAT CHOW DELIMIX; validación de candidatos media; catálogo completo alta CAT CHOW DELIMIX. Puntos BR WILD CAT ADULT 76 vs CAT CHOW DELIMIX 64: tokens comunes superan identidad distintiva.
+- Fofi cat tofu: top 8 local excluye ARENA FOFICAT TOFU; validación baja; catálogo completo alta. Puntos ADVANCE CAT RENAL 38 vs ARENA FOFICAT TOFU 18: fragmentación de marca y término distintivo insuficientemente ponderado.
+- dog chow a raza pequeña 2kl: candidato final alta DOG CHOW C RP (cachorro). expandirAbreviaturasProducto contempla a.r.p pero no a raza pequeña; se pierde etapa adulto.
+- siete vidas para gatos en sobres: snapshot registra SIETE VIDAS especie perro, 1.5kg. No afirmar falso negativo ni equivalencia sin cotejo productivo.
+- ROYAL CANIN REGULAR FIT: snapshot registra ROYAL FIT bajo ROYAL y especie perro. Discrepancia de datos que exige revisión, no forzar match.
+- Casos históricos Agility, Mirringo, Max, Stomorgyl y Pro Plan ya resuelven en código actual; no adjudicar mejoras antiguas al nuevo cambio.
+Intervención acotada: ranking informativo derivado del catálogo, abreviaturas de etapa generales, contrato separado de evidencia supervisada con procedencia y versión. Sin modificar mensajes, audio, imágenes, carrito, cotizaciones, debounce ni concurrencia. No aplicar migraciones ni escribir producción.

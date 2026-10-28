@@ -1,0 +1,1429 @@
+{
+  "mode": "live Supabase retrieval + deterministic validator; sandbox message spans; no LLM or message sending",
+  "capturedAt": "2026-10-28T15:26:58.646Z",
+  "rows": [
+    {
+      "id": "C07-M9-0",
+      "split": "development",
+      "expected": "CAT CHOW DELIMIX",
+      "before": {
+        "selected": "CAT CHOW DELIMIX",
+        "level": "alta",
+        "reason": "senales_convergentes",
+        "presentationValid": true,
+        "outcome": "correct_identity",
+        "retrieved": true,
+        "retrievalMs": 951.6200839999999,
+        "validationMs": 29.930916000000025,
+        "totalMs": 981.5509999999999,
+        "requests": 3,
+        "error": false,
+        "candidateNames": [
+          "CAT CHOW DELIMIX",
+          "CAT CHOW DELICARNE",
+          "BR CAT ADUL POLLO",
+          "CHUNKY ADULTO",
+          "CHUNKY ADULTO RP",
+          "ARENA MAIZ CAT"
+        ]
+      },
+      "after": {
+        "selected": "CAT CHOW DELIMIX",
+        "level": "alta",
+        "reason": "senales_convergentes",
+        "presentationValid": true,
+        "outcome": "correct_identity",
+        "retrieved": true,
+        "retrievalMs": 620.687666,
+        "validationMs": 29.202291999999943,
+        "totalMs": 649.889958,
+        "requests": 3,
+        "error": false,
+        "candidateNames": [
+          "CAT CHOW DELIMIX",
+          "CAT CHOW DELICARNE",
+          "BR CAT ADUL POLLO",
+          "CHUNKY ADULTO",
+          "CHUNKY ADULTO RP",
+          "ARENA MAIZ CAT"
+        ]
+      }
+    },
+    {
+      "id": "C21-M7-1",
+      "split": "development",
+      "expected": "ARENA FOFICAT TOFU",
+      "after": {
+        "selected": "ARENA FOFICAT TOFU",
+        "level": "alta",
+        "reason": "senales_convergentes",
+        "presentationValid": null,
+        "outcome": "correct_identity",
+        "retrieved": true,
+        "retrievalMs": 550.7410839999998,
+        "validationMs": 26.769958000000315,
+        "totalMs": 577.5110420000001,
+        "requests": 3,
+        "error": false,
+        "candidateNames": [
+          "ARENA FOFICAT TOFU",
+          "ARENA MAIZ CAT",
+          "ARENA KING CAT",
+          "CAT CHOW PESCADO",
+          "CAT CHOW DELICARNE",
+          "CAT CHOW VIDA SANA",
+          "BR CAT ADUL POLLO",
+          "BR CAT CASTRADO POLLO"
+        ]
+      },
+      "before": {
+        "selected": "ARENA FOFICAT TOFU",
+        "level": "alta",
+        "reason": "senales_convergentes",
+        "presentationValid": null,
+        "outcome": "correct_identity",
+        "retrieved": true,
+        "retrievalMs": 500.5604589999998,
+        "validationMs": 25.33600000000024,
+        "totalMs": 525.896459,
+        "requests": 3,
+        "error": false,
+        "candidateNames": [
+          "ARENA MAIZ CAT",
+          "ARENA FOFICAT TOFU",
+          "ARENA KING CAT",
+          "CAT CHOW PESCADO",
+          "CAT CHOW DELICARNE",
+          "CAT CHOW VIDA SANA",
+          "BR CAT ADUL POLLO",
+          "BR CAT CASTRADO POLLO"
+        ]
+      }
+    },
+    {
+      "id": "C22-M20-2",
+      "split": "development",
+      "expected": null,
+      "before": {
+        "selected": "DOG CHOW C RP",
+        "level": "alta",
+        "reason": "nombre_exacto",
+        "presentationValid": true,
+        "outcome": "unexpected_confirmation",
+        "retrieved": null,
+        "retrievalMs": 599.7277920000001,
+        "validationMs": 24.075624999999945,
+        "totalMs": 623.8034170000001,
+        "requests": 3,
+        "error": false,
+        "candidateNames": [
+          "DOG CHOW C RP",
+          "DOG CHOW A.R.P A GRANEL",
+          "DOG CHOW",
+          "DOG CHOW C RMG",
+          "DOG CHOW ADUL TODOS LOS TAMAÑOS",
+          "DOG CHOW A RMG",
+          "DOG CHOW C RMG *475"
+        ]
+      },
+      "after": {
+        "selected": null,
+        "level": "baja",
+        "reason": "sin_coincidencia_confiable",
+        "presentationValid": false,
+        "outcome": "requires_confirmation",
+        "retrieved": null,
+        "retrievalMs": 502.992334,
+        "validationMs": 34.10516599999983,
+        "totalMs": 537.0974999999999,
+        "requests": 3,
+        "error": false,
+        "candidateNames": [
+          "DOG CHOW C RP",
+          "DOG CHOW ADUL TODOS LOS TAMAÑOS",
+          "DOG CHOW ADUL RMG PAG 19.7 LLEV",
+          "DOG CHOW A RMG",
+          "DOG CHOW C RMG",
+          "DOG CHOW ADULRMG"
+        ]
+      }
+    },
+    {
+      "id": "C01-M1-3",
+      "split": "evaluation",
+      "expected": "ARENA MAIZ CAT",
+      "after": {
+        "selected": "ARENA MAIZ CAT",
+        "level": "alta",
+        "reason": "marca_y_presentacion",
+        "presentationValid": true,
+        "outcome": "correct_identity",
+        "retrieved": true,
+        "retrievalMs": 575.8901670000005,
+        "validationMs": 1.126166000000012,
+        "totalMs": 577.0163330000005,
+        "requests": 3,
+        "error": false,
+        "candidateNames": [
+          "MAIZ",
+          "ARENA MAIZ CAT",
+          "ARENA MIRRINGO",
+          "ARENA KING CAT",
+          "ARENA KITTEN ORIGINAL",
+          "ARENA KITTEN TALCO",
+          "ARENA KITTEN CAFE",
+          "ARENA KITTEN LIMON"
+        ]
+      },
+      "before": {
+        "selected": "ARENA MAIZ CAT",
+        "level": "alta",
+        "reason": "marca_y_presentacion",
+        "presentationValid": true,
+        "outcome": "correct_identity",
+        "retrieved": true,
+        "retrievalMs": 507.05375000000004,
+        "validationMs": 1.0259169999999358,
+        "totalMs": 508.079667,
+        "requests": 3,
+        "error": false,
+        "candidateNames": [
+          "MAIZ",
+          "ARENA MIRRINGO",
+          "ARENA MAIZ CAT",
+          "ARENA KING CAT",
+          "ARENA KITTEN ORIGINAL",
+          "ARENA KITTEN TALCO",
+          "ARENA KITTEN CAFE",
+          "ARENA KITTEN LIMON"
+        ]
+      }
+    },
+    {
+      "id": "C01-M1-4",
+      "split": "evaluation",
+      "expected": null,
+      "before": {
+        "selected": null,
+        "level": "media",
+        "reason": "ambigua",
+        "presentationValid": null,
+        "outcome": "requires_confirmation",
+        "retrieved": null,
+        "retrievalMs": 479.42575000000033,
+        "validationMs": 24.374041999999463,
+        "totalMs": 503.7997919999998,
+        "requests": 3,
+        "error": false,
+        "candidateNames": [
+          "RENAL BALANCE CAT UND",
+          "CABANOS KILO SURTIDO APRO 140",
+          "CAT CHOW DELICARNE",
+          "CAT CHOW PESCADO",
+          "CAT CHOW DELIMIX",
+          "CAT CHOW VIDA SANA",
+          "ARENA MAIZ CAT"
+        ]
+      },
+      "after": {
+        "selected": null,
+        "level": "media",
+        "reason": "ambigua",
+        "presentationValid": null,
+        "outcome": "requires_confirmation",
+        "retrieved": null,
+        "retrievalMs": 475.69787499999984,
+        "validationMs": 24.794541999999637,
+        "totalMs": 500.4924169999995,
+        "requests": 3,
+        "error": false,
+        "candidateNames": [
+          "CABANOS KILO SURTIDO APRO 140",
+          "RENAL BALANCE CAT UND",
+          "CAT CHOW DELICARNE",
+          "CAT CHOW PESCADO",
+          "CAT CHOW DELIMIX",
+          "CAT CHOW VIDA SANA",
+          "ARENA MAIZ CAT"
+        ]
+      }
+    },
+    {
+      "id": "C01-M1-5",
+      "split": "evaluation",
+      "expected": null,
+      "after": {
+        "selected": null,
+        "level": "baja",
+        "reason": "sin_coincidencia_confiable",
+        "presentationValid": null,
+        "outcome": "requires_confirmation",
+        "retrieved": null,
+        "retrievalMs": 711.6632919999993,
+        "validationMs": 0.3543330000002243,
+        "totalMs": 712.0176249999995,
+        "requests": 5,
+        "error": false,
+        "candidateNames": [
+          "SIETE VIDAS"
+        ]
+      },
+      "before": {
+        "selected": null,
+        "level": "baja",
+        "reason": "sin_coincidencia_confiable",
+        "presentationValid": null,
+        "outcome": "requires_confirmation",
+        "retrieved": null,
+        "retrievalMs": 664.1990830000004,
+        "validationMs": 0.25541700000030687,
+        "totalMs": 664.4545000000007,
+        "requests": 5,
+        "error": false,
+        "candidateNames": [
+          "SIETE VIDAS"
+        ]
+      }
+    },
+    {
+      "id": "C04-M1-6",
+      "split": "evaluation",
+      "expected": "BR CAT ADUL BOLA PELO",
+      "before": {
+        "selected": "BR CAT ADUL BOLA PELO",
+        "level": "alta",
+        "reason": "nombre_exacto",
+        "presentationValid": true,
+        "outcome": "correct_identity",
+        "retrieved": true,
+        "retrievalMs": 689.9139580000001,
+        "validationMs": 9.85491699999966,
+        "totalMs": 699.7688749999998,
+        "requests": 4,
+        "error": false,
+        "candidateNames": [
+          "BR CAT ADUL BOLA PELO",
+          "BR CAT ADUL POLLO",
+          "BR CAT CASTRADO POLLO",
+          "BR SNACK BOLA DE PELO",
+          "BOMBONERA BR GATO BOLA PELO"
+        ]
+      },
+      "after": {
+        "selected": "BR CAT ADUL BOLA PELO",
+        "level": "alta",
+        "reason": "nombre_exacto",
+        "presentationValid": true,
+        "outcome": "correct_identity",
+        "retrieved": true,
+        "retrievalMs": 552.3729590000003,
+        "validationMs": 9.852541000000201,
+        "totalMs": 562.2255000000005,
+        "requests": 4,
+        "error": false,
+        "candidateNames": [
+          "BR CAT ADUL BOLA PELO",
+          "BR CAT ADUL POLLO",
+          "BR CAT CASTRADO POLLO",
+          "BR SNACK BOLA DE PELO",
+          "BOMBONERA BR GATO BOLA PELO"
+        ]
+      }
+    },
+    {
+      "id": "C04-M12-7",
+      "split": "evaluation",
+      "expected": "CHUNKY GATOS SALMON CORDERO",
+      "after": {
+        "selected": "CHUNKY GATOS SALMON CORDERO",
+        "level": "alta",
+        "reason": "senales_convergentes",
+        "presentationValid": true,
+        "outcome": "correct_identity",
+        "retrieved": true,
+        "retrievalMs": 1041.3528750000005,
+        "validationMs": 26.92504199999894,
+        "totalMs": 1068.2779169999994,
+        "requests": 6,
+        "error": false,
+        "candidateNames": [
+          "CHUNKY GATOS SALMON CORDERO",
+          "CHUNKY GATOS POLLO",
+          "CHUNKY CORDERO ADULTO",
+          "CHUNKY CORDERO CACHORRO",
+          "CHUNKY CATS",
+          "EQUILIBRIO GATO SALMON",
+          "BR CAT SALMON",
+          "VIRBAC CAT ADULT SALMON"
+        ]
+      },
+      "before": {
+        "selected": "CHUNKY GATOS SALMON CORDERO",
+        "level": "alta",
+        "reason": "senales_convergentes",
+        "presentationValid": true,
+        "outcome": "correct_identity",
+        "retrieved": true,
+        "retrievalMs": 1021.2067080000015,
+        "validationMs": 25.21479199999885,
+        "totalMs": 1046.4215000000004,
+        "requests": 6,
+        "error": false,
+        "candidateNames": [
+          "CHUNKY GATOS SALMON CORDERO",
+          "CHUNKY GATOS POLLO",
+          "CHUNKY CORDERO ADULTO",
+          "CHUNKY CORDERO CACHORRO",
+          "CHUNKY CATS",
+          "EQUILIBRIO GATO SALMON",
+          "BR CAT SALMON",
+          "VIRBAC CAT ADULT SALMON"
+        ]
+      }
+    },
+    {
+      "id": "C04-M24-8",
+      "split": "evaluation",
+      "expected": "CUTAMYCON SPRAY",
+      "before": {
+        "selected": "CUTAMYCON SPRAY",
+        "level": "alta",
+        "reason": "marca_y_presentacion",
+        "presentationValid": true,
+        "outcome": "correct_identity",
+        "retrieved": true,
+        "retrievalMs": 616.8862079999999,
+        "validationMs": 0.6287089999987074,
+        "totalMs": 617.5149169999986,
+        "requests": 3,
+        "error": false,
+        "candidateNames": [
+          "CUTAMYCON SPRAY",
+          "CUTAMYCON VF CREMA"
+        ]
+      },
+      "after": {
+        "selected": "CUTAMYCON SPRAY",
+        "level": "alta",
+        "reason": "marca_y_presentacion",
+        "presentationValid": true,
+        "outcome": "correct_identity",
+        "retrieved": true,
+        "retrievalMs": 505.62995800000135,
+        "validationMs": 0.7122499999986758,
+        "totalMs": 506.342208,
+        "requests": 3,
+        "error": false,
+        "candidateNames": [
+          "CUTAMYCON SPRAY",
+          "CUTAMYCON VF CREMA"
+        ]
+      }
+    },
+    {
+      "id": "C04-M85-9",
+      "split": "evaluation",
+      "expected": "EXCELLENT GATO URINARY",
+      "after": {
+        "selected": "EXCELLENT GATO URINARY",
+        "level": "alta",
+        "reason": "nombre_exacto",
+        "presentationValid": true,
+        "outcome": "correct_identity",
+        "retrieved": true,
+        "retrievalMs": 678.132916999999,
+        "validationMs": 13.292500000001382,
+        "totalMs": 691.4254170000004,
+        "requests": 5,
+        "error": false,
+        "candidateNames": [
+          "EXCELLENT GATO URINARY",
+          "EXCELLENT GATO ADULT",
+          "EXCELLENT KITTEN",
+          "EXCELLENT SKIN",
+          "EXCELLENT FORMULA",
+          "EXCELLENT ADULT RMG",
+          "EXCELLENT ESTERILIZED",
+          "EXCELLENT ADULT SMALL"
+        ]
+      },
+      "before": {
+        "selected": "EXCELLENT GATO URINARY",
+        "level": "alta",
+        "reason": "nombre_exacto",
+        "presentationValid": true,
+        "outcome": "correct_identity",
+        "retrieved": true,
+        "retrievalMs": 741.0895839999994,
+        "validationMs": 12.237916000000041,
+        "totalMs": 753.3274999999994,
+        "requests": 5,
+        "error": false,
+        "candidateNames": [
+          "EXCELLENT GATO URINARY",
+          "EXCELLENT GATO ADULT",
+          "EXCELLENT KITTEN",
+          "EXCELLENT SKIN",
+          "EXCELLENT FORMULA",
+          "EXCELLENT ADULT RMG",
+          "EXCELLENT ESTERILIZED",
+          "EXCELLENT ADULT SMALL"
+        ]
+      }
+    },
+    {
+      "id": "C04-M85-10",
+      "split": "evaluation",
+      "expected": "VETSOLUTION CAT URINARY",
+      "before": {
+        "selected": "VETSOLUTION CAT URINARY",
+        "level": "alta",
+        "reason": "nombre_exacto",
+        "presentationValid": null,
+        "outcome": "correct_identity",
+        "retrieved": true,
+        "retrievalMs": 664.599209,
+        "validationMs": 1.977415999999721,
+        "totalMs": 666.5766249999997,
+        "requests": 5,
+        "error": false,
+        "candidateNames": [
+          "VETSOLUTION CAT URINARY",
+          "VETSOLUTION CAT GASTROINTES",
+          "VETSOLUTION CAT RENAL",
+          "VETSOLUTION CANINE RENAL",
+          "VETSOLUTION CAT RECOVERY",
+          "VETSOLUTION DOG RECOVERY"
+        ]
+      },
+      "after": {
+        "selected": "VETSOLUTION CAT URINARY",
+        "level": "alta",
+        "reason": "nombre_exacto",
+        "presentationValid": null,
+        "outcome": "correct_identity",
+        "retrieved": true,
+        "retrievalMs": 894.7980000000007,
+        "validationMs": 2.282375000000684,
+        "totalMs": 897.0803750000014,
+        "requests": 5,
+        "error": false,
+        "candidateNames": [
+          "VETSOLUTION CAT URINARY",
+          "VETSOLUTION CAT GASTROINTES",
+          "VETSOLUTION CAT RENAL",
+          "VETSOLUTION CANINE RENAL",
+          "VETSOLUTION CAT RECOVERY",
+          "VETSOLUTION DOG RECOVERY"
+        ]
+      }
+    },
+    {
+      "id": "C04-M85-11",
+      "split": "evaluation",
+      "expected": "VETSOLUTION CAT GASTROINTES",
+      "after": {
+        "selected": "VETSOLUTION CAT GASTROINTES",
+        "level": "alta",
+        "reason": "nombre_exacto",
+        "presentationValid": null,
+        "outcome": "correct_identity",
+        "retrieved": true,
+        "retrievalMs": 667.4169170000005,
+        "validationMs": 8.420749999999316,
+        "totalMs": 675.8376669999998,
+        "requests": 5,
+        "error": false,
+        "candidateNames": [
+          "VETSOLUTION CAT GASTROINTES",
+          "VETSOLUTION CAT URINARY",
+          "VETSOLUTION CAT RENAL",
+          "VETSOLUTION CAT RECOVERY",
+          "VETSOLUTION CANINE RENAL",
+          "VETSOLUTION DOG RECOVERY",
+          "VETSOLUCION GASTROISTESTINAL DOG"
+        ]
+      },
+      "before": {
+        "selected": "VETSOLUTION CAT GASTROINTES",
+        "level": "alta",
+        "reason": "nombre_exacto",
+        "presentationValid": null,
+        "outcome": "correct_identity",
+        "retrieved": true,
+        "retrievalMs": 667.2560000000012,
+        "validationMs": 6.938000000000102,
+        "totalMs": 674.1940000000013,
+        "requests": 5,
+        "error": false,
+        "candidateNames": [
+          "VETSOLUTION CAT GASTROINTES",
+          "VETSOLUTION CAT URINARY",
+          "VETSOLUTION CAT RENAL",
+          "VETSOLUTION CAT RECOVERY",
+          "VETSOLUTION CANINE RENAL",
+          "VETSOLUTION DOG RECOVERY",
+          "VETSOLUCION GASTROISTESTINAL DOG"
+        ]
+      }
+    },
+    {
+      "id": "C04-M85-12",
+      "split": "evaluation",
+      "expected": "ARENA KITTEN TALCO",
+      "before": {
+        "selected": "ARENA KITTEN TALCO",
+        "level": "alta",
+        "reason": "marca_y_presentacion",
+        "presentationValid": true,
+        "outcome": "correct_identity",
+        "retrieved": true,
+        "retrievalMs": 528.7363330000007,
+        "validationMs": 1.8709170000001905,
+        "totalMs": 530.6072500000009,
+        "requests": 4,
+        "error": false,
+        "candidateNames": [
+          "ARENA KITTEN TALCO"
+        ]
+      },
+      "after": {
+        "selected": "ARENA KITTEN TALCO",
+        "level": "alta",
+        "reason": "marca_y_presentacion",
+        "presentationValid": true,
+        "outcome": "correct_identity",
+        "retrieved": true,
+        "retrievalMs": 487.9674589999995,
+        "validationMs": 1.4956249999995634,
+        "totalMs": 489.46308399999907,
+        "requests": 4,
+        "error": false,
+        "candidateNames": [
+          "ARENA KITTEN TALCO"
+        ]
+      }
+    },
+    {
+      "id": "C04-M205-13",
+      "split": "evaluation",
+      "expected": "PRO PLAN POUCH FELINO ADULT",
+      "after": {
+        "selected": "PRO PLAN POUCH FELINO ADULT",
+        "level": "alta",
+        "reason": "senales_convergentes",
+        "presentationValid": null,
+        "outcome": "correct_identity",
+        "retrieved": true,
+        "retrievalMs": 791.2849999999999,
+        "validationMs": 30.181250000001455,
+        "totalMs": 821.4662500000013,
+        "requests": 5,
+        "error": false,
+        "candidateNames": [
+          "PRO PLAN POUCH FELINO ADULT",
+          "PRO PLAN POUCH CANINO ADULT",
+          "PRO PLAN POUCH FELINO ESTERELIZADOS",
+          "PRO PLAN POUCH FELINO KITTEN",
+          "PRO PLAN GATO ADULT",
+          "PRO PLAN ADULT SMALL",
+          "PRO PLAN ADULT SMALL EXIGENT",
+          "PRO PLAN FELINE LATA NF"
+        ]
+      },
+      "before": {
+        "selected": "PRO PLAN POUCH FELINO ADULT",
+        "level": "alta",
+        "reason": "senales_convergentes",
+        "presentationValid": null,
+        "outcome": "correct_identity",
+        "retrieved": true,
+        "retrievalMs": 734.8301250000004,
+        "validationMs": 30.081749999997555,
+        "totalMs": 764.911874999998,
+        "requests": 5,
+        "error": false,
+        "candidateNames": [
+          "PRO PLAN POUCH FELINO ADULT",
+          "PRO PLAN POUCH CANINO ADULT",
+          "PRO PLAN POUCH FELINO ESTERELIZADOS",
+          "PRO PLAN POUCH FELINO KITTEN",
+          "PRO PLAN GATO ADULT",
+          "PRO PLAN ADULT SMALL",
+          "PRO PLAN ADULT SMALL EXIGENT",
+          "PRO PLAN FELINE LATA NF"
+        ]
+      }
+    },
+    {
+      "id": "C04-M203-14",
+      "split": "evaluation",
+      "expected": "DIAMOND INDOOR CAT",
+      "before": {
+        "selected": "DIAMOND INDOOR CAT",
+        "level": "alta",
+        "reason": "senales_convergentes",
+        "presentationValid": null,
+        "outcome": "correct_identity",
+        "retrieved": true,
+        "retrievalMs": 757.0265829999989,
+        "validationMs": 12.541832999999315,
+        "totalMs": 769.5684159999983,
+        "requests": 5,
+        "error": false,
+        "candidateNames": [
+          "DIAMOND INDOOR CAT",
+          "DIAMOND INDOOR",
+          "DIAMOND KITTEN CAT",
+          "DIAMOND KITTEN"
+        ]
+      },
+      "after": {
+        "selected": "DIAMOND INDOOR CAT",
+        "level": "alta",
+        "reason": "senales_convergentes",
+        "presentationValid": null,
+        "outcome": "correct_identity",
+        "retrieved": true,
+        "retrievalMs": 690.3069170000017,
+        "validationMs": 20.562957999998616,
+        "totalMs": 710.8698750000003,
+        "requests": 5,
+        "error": false,
+        "candidateNames": [
+          "DIAMOND INDOOR CAT",
+          "DIAMOND INDOOR",
+          "DIAMOND KITTEN CAT",
+          "DIAMOND KITTEN"
+        ]
+      }
+    },
+    {
+      "id": "C05-M15-15",
+      "split": "evaluation",
+      "expected": null,
+      "after": {
+        "selected": null,
+        "level": "media",
+        "reason": "ambigua",
+        "presentationValid": null,
+        "outcome": "requires_confirmation",
+        "retrieved": null,
+        "retrievalMs": 530.6292499999981,
+        "validationMs": 24.87670799999978,
+        "totalMs": 555.5059579999979,
+        "requests": 4,
+        "error": false,
+        "candidateNames": [
+          "RINGO CROQUETAS",
+          "RINGO PREMIUM",
+          "RINGO CACHORRO",
+          "RINGO PREMIUM CACHORRO",
+          "RINGO PREMIUN PRO",
+          "RINGO CREMA DE MANI"
+        ]
+      },
+      "before": {
+        "selected": null,
+        "level": "media",
+        "reason": "ambigua",
+        "presentationValid": null,
+        "outcome": "requires_confirmation",
+        "retrieved": null,
+        "retrievalMs": 612.5292499999996,
+        "validationMs": 12.277291000002151,
+        "totalMs": 624.8065410000017,
+        "requests": 4,
+        "error": false,
+        "candidateNames": [
+          "RINGO CROQUETAS",
+          "RINGO PREMIUM",
+          "RINGO CACHORRO",
+          "RINGO PREMIUM CACHORRO",
+          "RINGO PREMIUN PRO",
+          "RINGO CREMA DE MANI"
+        ]
+      }
+    },
+    {
+      "id": "C05-M18-16",
+      "split": "evaluation",
+      "expected": "RINGO CROQUETAS",
+      "before": {
+        "selected": "RINGO CROQUETAS",
+        "level": "alta",
+        "reason": "nombre_exacto",
+        "presentationValid": null,
+        "outcome": "correct_identity",
+        "retrieved": true,
+        "retrievalMs": 722.6103750000002,
+        "validationMs": 23.59654099999898,
+        "totalMs": 746.2069159999992,
+        "requests": 5,
+        "error": false,
+        "candidateNames": [
+          "RINGO CROQUETAS",
+          "RINGO CACHORRO",
+          "RINGO PREMIUM",
+          "RINGO PREMIUM CACHORRO",
+          "RINGO CREMA DE MANI",
+          "RINGO PREMIUN PRO"
+        ]
+      },
+      "after": {
+        "selected": "RINGO CROQUETAS",
+        "level": "alta",
+        "reason": "nombre_exacto",
+        "presentationValid": null,
+        "outcome": "correct_identity",
+        "retrieved": true,
+        "retrievalMs": 715.3981249999997,
+        "validationMs": 23.440542000000278,
+        "totalMs": 738.838667,
+        "requests": 5,
+        "error": false,
+        "candidateNames": [
+          "RINGO CROQUETAS",
+          "RINGO CACHORRO",
+          "RINGO PREMIUM",
+          "RINGO PREMIUM CACHORRO",
+          "RINGO CREMA DE MANI",
+          "RINGO PREMIUN PRO"
+        ]
+      }
+    },
+    {
+      "id": "C05-M29-17",
+      "split": "development",
+      "expected": "HILLS CAN Y FEL LATA A/D",
+      "after": {
+        "selected": "HILLS CAN Y FEL LATA A/D",
+        "level": "alta",
+        "reason": "nombre_exacto",
+        "presentationValid": null,
+        "outcome": "correct_identity",
+        "retrieved": true,
+        "retrievalMs": 602.7759579999984,
+        "validationMs": 2.056917000001704,
+        "totalMs": 604.8328750000001,
+        "requests": 5,
+        "error": false,
+        "candidateNames": [
+          "HILLS CAN LATA I/D",
+          "HILLS CAN LATA K/D",
+          "HILLS FEL LATA C/D",
+          "HILLS CAN Y FEL LATA A/D",
+          "HILLS FEL LATA I/D",
+          "HILLS FEL LATA K/D",
+          "HILLS CAN I/D",
+          "HILLS CAN K/D"
+        ]
+      },
+      "before": {
+        "selected": null,
+        "level": "baja",
+        "reason": "sin_coincidencia_confiable",
+        "presentationValid": null,
+        "outcome": "missed_identity",
+        "retrieved": true,
+        "retrievalMs": 731.2649160000001,
+        "validationMs": 20.489166999999725,
+        "totalMs": 751.7540829999998,
+        "requests": 5,
+        "error": false,
+        "candidateNames": [
+          "HILLS CAN LATA I/D",
+          "HILLS CAN LATA K/D",
+          "HILLS FEL LATA C/D",
+          "HILLS CAN Y FEL LATA A/D",
+          "HILLS FEL LATA I/D",
+          "HILLS FEL LATA K/D",
+          "HILLS CAN I/D",
+          "HILLS CAN K/D"
+        ]
+      }
+    },
+    {
+      "id": "C05-M32-18",
+      "split": "evaluation",
+      "expected": "CHUNKY ADUL MAYORES",
+      "before": {
+        "selected": "CHUNKY ADULTOS MAYORES",
+        "level": "alta",
+        "reason": "nombre_exacto",
+        "presentationValid": null,
+        "outcome": "correct_identity",
+        "retrieved": true,
+        "retrievalMs": 695.5044170000001,
+        "validationMs": 35.87825000000157,
+        "totalMs": 731.3826670000017,
+        "requests": 5,
+        "error": false,
+        "candidateNames": [
+          "CHUNKY ADULTOS MAYORES",
+          "CHUNKY ADULTO",
+          "CHUNKY ADULTO RP",
+          "CHUNKY CORDERO ADULTO",
+          "CHUNKY ADULT GRANEL X KG",
+          "CHUNKY CACHORRO",
+          "CHUNKY GATOS POLLO",
+          "CHUNKY CATS"
+        ]
+      },
+      "after": {
+        "selected": "CHUNKY ADULTOS MAYORES",
+        "level": "alta",
+        "reason": "nombre_exacto",
+        "presentationValid": null,
+        "outcome": "correct_identity",
+        "retrieved": true,
+        "retrievalMs": 703.0223750000005,
+        "validationMs": 35.99895900000047,
+        "totalMs": 739.0213340000009,
+        "requests": 5,
+        "error": false,
+        "candidateNames": [
+          "CHUNKY ADULTOS MAYORES",
+          "CHUNKY ADULTO",
+          "CHUNKY ADULTO RP",
+          "CHUNKY CORDERO ADULTO",
+          "CHUNKY ADULT GRANEL X KG",
+          "CHUNKY CACHORRO",
+          "CHUNKY GATOS POLLO",
+          "CHUNKY CATS"
+        ]
+      }
+    },
+    {
+      "id": "C08-M25-19",
+      "split": "evaluation",
+      "expected": "AGILITY GRAND CACH",
+      "after": {
+        "selected": "AGILITY GRAND CACH",
+        "level": "alta",
+        "reason": "senales_convergentes",
+        "presentationValid": null,
+        "outcome": "correct_identity",
+        "retrieved": true,
+        "retrievalMs": 665.0191249999989,
+        "validationMs": 45.42625000000044,
+        "totalMs": 710.4453749999993,
+        "requests": 5,
+        "error": false,
+        "candidateNames": [
+          "AGILITY GRAND CACH",
+          "AGILITY PEQ CACH",
+          "AGILITY GRAND ADUL",
+          "AGILITY POUCH CACH",
+          "AGILITY GRAND ADUL PIEL",
+          "AGILITY GATO AD",
+          "AGILITY GATITO",
+          "AGILITY PEQ ADUL"
+        ]
+      },
+      "before": {
+        "selected": "AGILITY GRAND CACH",
+        "level": "alta",
+        "reason": "senales_convergentes",
+        "presentationValid": null,
+        "outcome": "correct_identity",
+        "retrieved": true,
+        "retrievalMs": 669.8317920000009,
+        "validationMs": 45.42608299999847,
+        "totalMs": 715.2578749999993,
+        "requests": 5,
+        "error": false,
+        "candidateNames": [
+          "AGILITY GRAND CACH",
+          "AGILITY PEQ CACH",
+          "AGILITY GRAND ADUL",
+          "AGILITY POUCH CACH",
+          "AGILITY GRAND ADUL PIEL",
+          "AGILITY GATO AD",
+          "AGILITY GATITO",
+          "AGILITY PEQ ADUL"
+        ]
+      }
+    },
+    {
+      "id": "C09-M129-20",
+      "split": "evaluation",
+      "expected": "FREEMIAU LAVANDA",
+      "before": {
+        "selected": "FREEMIAU LAVANDA",
+        "level": "alta",
+        "reason": "nombre_exacto",
+        "presentationValid": true,
+        "outcome": "correct_identity",
+        "retrieved": true,
+        "retrievalMs": 655.3624170000003,
+        "validationMs": 9.354833000001236,
+        "totalMs": 664.7172500000015,
+        "requests": 4,
+        "error": false,
+        "candidateNames": [
+          "FREEMIAU LAVANDA",
+          "FREEMIAU",
+          "FREEMIAU CITRICA"
+        ]
+      },
+      "after": {
+        "selected": "FREEMIAU LAVANDA",
+        "level": "alta",
+        "reason": "nombre_exacto",
+        "presentationValid": true,
+        "outcome": "correct_identity",
+        "retrieved": true,
+        "retrievalMs": 749.3873330000024,
+        "validationMs": 8.979333999999653,
+        "totalMs": 758.366667000002,
+        "requests": 4,
+        "error": false,
+        "candidateNames": [
+          "FREEMIAU LAVANDA",
+          "FREEMIAU",
+          "FREEMIAU CITRICA"
+        ]
+      }
+    },
+    {
+      "id": "C09-M131-21",
+      "split": "evaluation",
+      "expected": "BR CORDERO",
+      "after": {
+        "selected": "BR CORDERO",
+        "level": "alta",
+        "reason": "nombre_exacto",
+        "presentationValid": true,
+        "outcome": "correct_identity",
+        "retrieved": true,
+        "retrievalMs": 573.9589169999999,
+        "validationMs": 4.062417000001005,
+        "totalMs": 578.0213340000009,
+        "requests": 4,
+        "error": false,
+        "candidateNames": [
+          "BR CORDERO",
+          "BR DOG CORDERO",
+          "BR DOG ADUL CORDERO",
+          "BR DOG PUPYY CORDERO",
+          "CHUNKY CORDERO ADULTO",
+          "CHUNKY GATOS SALMON CORDERO",
+          "CHUNKY CORDERO CACHORRO",
+          "NUTRA NUGGETS CORDERO"
+        ]
+      },
+      "before": {
+        "selected": "BR CORDERO",
+        "level": "alta",
+        "reason": "nombre_exacto",
+        "presentationValid": true,
+        "outcome": "correct_identity",
+        "retrieved": true,
+        "retrievalMs": 502.6654589999998,
+        "validationMs": 4.014875000000757,
+        "totalMs": 506.6803340000006,
+        "requests": 4,
+        "error": false,
+        "candidateNames": [
+          "BR CORDERO",
+          "BR DOG CORDERO",
+          "BR DOG ADUL CORDERO",
+          "BR DOG PUPYY CORDERO",
+          "CHUNKY CORDERO ADULTO",
+          "CHUNKY GATOS SALMON CORDERO",
+          "CHUNKY CORDERO CACHORRO",
+          "NUTRA NUGGETS CORDERO"
+        ]
+      }
+    },
+    {
+      "id": "C09-M123-22",
+      "split": "evaluation",
+      "expected": "ARENA MAIZ CAT",
+      "before": {
+        "selected": null,
+        "level": "media",
+        "reason": "similitud_media",
+        "presentationValid": true,
+        "outcome": "missed_identity",
+        "retrieved": true,
+        "retrievalMs": 664.3243750000001,
+        "validationMs": 27.76945799999885,
+        "totalMs": 692.093832999999,
+        "requests": 4,
+        "error": false,
+        "candidateNames": [
+          "ARENA MIRRINGO",
+          "ARENA MAIZ CAT",
+          "ARENA KING CAT",
+          "ARENA KITTEN ORIGINAL",
+          "ARENA KITTEN TALCO",
+          "ARENA KITTEN CAFE",
+          "ARENA KITTEN LIMON",
+          "TRAILLA Y ARENA GATOS FLORAL M"
+        ]
+      },
+      "after": {
+        "selected": null,
+        "level": "media",
+        "reason": "similitud_media",
+        "presentationValid": true,
+        "outcome": "missed_identity",
+        "retrieved": true,
+        "retrievalMs": 595.5762920000016,
+        "validationMs": 30.859291999997367,
+        "totalMs": 626.4355839999989,
+        "requests": 4,
+        "error": false,
+        "candidateNames": [
+          "ARENA MAIZ CAT",
+          "ARENA MIRRINGO",
+          "ARENA KING CAT",
+          "ARENA KITTEN ORIGINAL",
+          "ARENA KITTEN TALCO",
+          "ARENA KITTEN CAFE",
+          "ARENA KITTEN LIMON",
+          "TRAILLA Y ARENA GATOS FLORAL M"
+        ]
+      }
+    },
+    {
+      "id": "C10-M3-23",
+      "split": "evaluation",
+      "expected": "NUTRISS CARNE",
+      "after": {
+        "selected": "NUTRISS CARNE",
+        "level": "alta",
+        "reason": "nombre_exacto",
+        "presentationValid": true,
+        "outcome": "correct_identity",
+        "retrieved": true,
+        "retrievalMs": 733.7154589999991,
+        "validationMs": 15.83116599999994,
+        "totalMs": 749.546624999999,
+        "requests": 5,
+        "error": false,
+        "candidateNames": [
+          "NUTRISS CARNE",
+          "NUTRISS POLLO",
+          "NUTRISS CACHORRO",
+          "NUTRISS NAT ADUL POLLO",
+          "NUTRIS ADUL CARNE"
+        ]
+      },
+      "before": {
+        "selected": "NUTRISS CARNE",
+        "level": "alta",
+        "reason": "nombre_exacto",
+        "presentationValid": true,
+        "outcome": "correct_identity",
+        "retrieved": true,
+        "retrievalMs": 752.7357909999992,
+        "validationMs": 14.97137500000099,
+        "totalMs": 767.7071660000001,
+        "requests": 5,
+        "error": false,
+        "candidateNames": [
+          "NUTRISS CARNE",
+          "NUTRISS POLLO",
+          "NUTRISS CACHORRO",
+          "NUTRISS NAT ADUL POLLO",
+          "NUTRIS ADUL CARNE"
+        ]
+      }
+    },
+    {
+      "id": "C14-M37-24",
+      "split": "evaluation",
+      "expected": null,
+      "before": {
+        "selected": null,
+        "level": "media",
+        "reason": "ambigua",
+        "presentationValid": null,
+        "outcome": "requires_confirmation",
+        "retrieved": null,
+        "retrievalMs": 1266.955334000002,
+        "validationMs": 3.034749999998894,
+        "totalMs": 1269.990084000001,
+        "requests": 6,
+        "error": false,
+        "candidateNames": [
+          "PRO PLAN FELINE EN",
+          "PRO PLAN FELINE LATA EN",
+          "PRO PLAN GATO STERILIZED",
+          "PRO PLAN CANINE HA",
+          "PRO PLAN CANINE OM",
+          "PRO PLAN PUPPY SMALL",
+          "PRO PLAN ADULT SMALL",
+          "PRO PLAN ADULT SMALL EXIGENT"
+        ]
+      },
+      "after": {
+        "selected": null,
+        "level": "media",
+        "reason": "ambigua",
+        "presentationValid": null,
+        "outcome": "requires_confirmation",
+        "retrieved": null,
+        "retrievalMs": 1075.8349589999998,
+        "validationMs": 3.0047909999993863,
+        "totalMs": 1078.8397499999992,
+        "requests": 6,
+        "error": false,
+        "candidateNames": [
+          "PRO PLAN FELINE EN",
+          "PRO PLAN FELINE LATA EN",
+          "PRO PLAN GATO STERILIZED",
+          "PRO PLAN CANINE HA",
+          "PRO PLAN CANINE OM",
+          "PRO PLAN PUPPY SMALL",
+          "PRO PLAN ADULT SMALL",
+          "PRO PLAN ADULT SMALL EXIGENT"
+        ]
+      }
+    },
+    {
+      "id": "C17-M6-25",
+      "split": "evaluation",
+      "expected": "AGILITY GRAND CACH",
+      "after": {
+        "selected": "AGILITY GRAND CACH",
+        "level": "alta",
+        "reason": "nombre_exacto",
+        "presentationValid": null,
+        "outcome": "correct_identity",
+        "retrieved": true,
+        "retrievalMs": 643.7278750000041,
+        "validationMs": 33.07329099999333,
+        "totalMs": 676.8011659999975,
+        "requests": 5,
+        "error": false,
+        "candidateNames": [
+          "AGILITY GRAND CACH",
+          "AGILITY GRAND ADUL",
+          "AGILITY GRAND ADUL PIEL",
+          "AGILITY PEQ CACH",
+          "AGILITY POUCH CACH",
+          "AGILITY GATO AD",
+          "AGILITY GATITO",
+          "AGILITY PEQ ADUL"
+        ]
+      },
+      "before": {
+        "selected": "AGILITY GRAND CACH",
+        "level": "alta",
+        "reason": "nombre_exacto",
+        "presentationValid": null,
+        "outcome": "correct_identity",
+        "retrieved": true,
+        "retrievalMs": 766.044167,
+        "validationMs": 32.26312500000495,
+        "totalMs": 798.307292000005,
+        "requests": 5,
+        "error": false,
+        "candidateNames": [
+          "AGILITY GRAND CACH",
+          "AGILITY GRAND ADUL",
+          "AGILITY GRAND ADUL PIEL",
+          "AGILITY PEQ CACH",
+          "AGILITY POUCH CACH",
+          "AGILITY GATO AD",
+          "AGILITY GATITO",
+          "AGILITY PEQ ADUL"
+        ]
+      }
+    },
+    {
+      "id": "C18-M4-26",
+      "split": "evaluation",
+      "expected": null,
+      "before": {
+        "selected": null,
+        "level": "media",
+        "reason": "similitud_media",
+        "presentationValid": true,
+        "outcome": "requires_confirmation",
+        "retrieved": null,
+        "retrievalMs": 631.0477919999976,
+        "validationMs": 17.08137500000157,
+        "totalMs": 648.1291669999991,
+        "requests": 4,
+        "error": false,
+        "candidateNames": [
+          "RINGO VITALITY ADULTO",
+          "CAT CHOW DELICARNE",
+          "CAT CHOW DELIMIX",
+          "FINCA POLLO CAMP LEV"
+        ]
+      },
+      "after": {
+        "selected": null,
+        "level": "media",
+        "reason": "similitud_media",
+        "presentationValid": true,
+        "outcome": "requires_confirmation",
+        "retrieved": null,
+        "retrievalMs": 532.5865829999966,
+        "validationMs": 16.79149999999936,
+        "totalMs": 549.378082999996,
+        "requests": 4,
+        "error": false,
+        "candidateNames": [
+          "RINGO VITALITY ADULTO",
+          "CAT CHOW DELICARNE",
+          "CAT CHOW DELIMIX",
+          "FINCA POLLO CAMP LEV"
+        ]
+      }
+    },
+    {
+      "id": "C18-M23-27",
+      "split": "evaluation",
+      "expected": "BR CAT CASTRADO POLLO",
+      "after": {
+        "selected": "BR CAT CASTRADO POLLO",
+        "level": "alta",
+        "reason": "nombre_exacto",
+        "presentationValid": true,
+        "outcome": "correct_identity",
+        "retrieved": true,
+        "retrievalMs": 637.9487080000035,
+        "validationMs": 28.468958999997994,
+        "totalMs": 666.4176670000015,
+        "requests": 4,
+        "error": false,
+        "candidateNames": [
+          "BR CAT CASTRADO POLLO",
+          "BR CAT SALMON CASTRADO",
+          "BR CAT ADUL POLLO",
+          "BR CAT GATITO POLLO",
+          "FINCA POLLO CAMP ENG",
+          "FINCA POLLO CAMP LEV",
+          "NUTRISS POLLO",
+          "CHUNKY GATOS POLLO"
+        ]
+      },
+      "before": {
+        "selected": "BR CAT CASTRADO POLLO",
+        "level": "alta",
+        "reason": "nombre_exacto",
+        "presentationValid": true,
+        "outcome": "correct_identity",
+        "retrieved": true,
+        "retrievalMs": 554.4345829999947,
+        "validationMs": 28.91558300000179,
+        "totalMs": 583.3501659999965,
+        "requests": 4,
+        "error": false,
+        "candidateNames": [
+          "BR CAT CASTRADO POLLO",
+          "BR CAT ADUL POLLO",
+          "BR CAT SALMON CASTRADO",
+          "BR CAT GATITO POLLO",
+          "FINCA POLLO CAMP ENG",
+          "FINCA POLLO CAMP LEV",
+          "NUTRISS POLLO",
+          "CHUNKY GATOS POLLO"
+        ]
+      }
+    },
+    {
+      "id": "C20-M14-28",
+      "split": "evaluation",
+      "expected": "RINGO CROQUETAS",
+      "before": {
+        "selected": "RINGO CROQUETAS",
+        "level": "alta",
+        "reason": "nombre_exacto",
+        "presentationValid": true,
+        "outcome": "correct_identity",
+        "retrieved": true,
+        "retrievalMs": 701.9159170000057,
+        "validationMs": 19.298707999994804,
+        "totalMs": 721.2146250000005,
+        "requests": 5,
+        "error": false,
+        "candidateNames": [
+          "RINGO CROQUETAS",
+          "RINGO PREMIUM",
+          "RINGO CACHORRO",
+          "RINGO PREMIUM CACHORRO",
+          "RINGO PREMIUN PRO",
+          "RINGO CREMA DE MANI"
+        ]
+      },
+      "after": {
+        "selected": "RINGO CROQUETAS",
+        "level": "alta",
+        "reason": "nombre_exacto",
+        "presentationValid": true,
+        "outcome": "correct_identity",
+        "retrieved": true,
+        "retrievalMs": 604.8001670000012,
+        "validationMs": 17.805500000002212,
+        "totalMs": 622.6056670000035,
+        "requests": 5,
+        "error": false,
+        "candidateNames": [
+          "RINGO CROQUETAS",
+          "RINGO PREMIUM",
+          "RINGO CACHORRO",
+          "RINGO PREMIUM CACHORRO",
+          "RINGO PREMIUN PRO",
+          "RINGO CREMA DE MANI"
+        ]
+      }
+    },
+    {
+      "id": "C24-M4-29",
+      "split": "evaluation",
+      "expected": null,
+      "after": {
+        "selected": null,
+        "level": "media",
+        "reason": "atributo_faltante",
+        "presentationValid": false,
+        "outcome": "requires_confirmation",
+        "retrieved": null,
+        "retrievalMs": 636.9852079999982,
+        "validationMs": 54.699124999999185,
+        "totalMs": 691.6843329999974,
+        "requests": 4,
+        "error": false,
+        "candidateNames": [
+          "DOG CHOW",
+          "DOG CHOW C RP",
+          "DOG CHOW A.R.P A GRANEL",
+          "DOG CHOW ADUL TODOS LOS TAMAÑOS",
+          "DOG CHOW CONTROL DE PESO",
+          "DOG CHOW A RMG",
+          "DOG CHOW C RMG"
+        ]
+      },
+      "before": {
+        "selected": null,
+        "level": "media",
+        "reason": "atributo_faltante",
+        "presentationValid": false,
+        "outcome": "requires_confirmation",
+        "retrieved": null,
+        "retrievalMs": 547.8323749999981,
+        "validationMs": 51.784374999995634,
+        "totalMs": 599.6167499999938,
+        "requests": 4,
+        "error": false,
+        "candidateNames": [
+          "DOG CHOW C RP",
+          "DOG CHOW A.R.P A GRANEL",
+          "DOG CHOW",
+          "DOG CHOW ADUL TODOS LOS TAMAÑOS",
+          "DOG CHOW CONTROL DE PESO",
+          "DOG CHOW A RMG",
+          "DOG CHOW C RMG"
+        ]
+      }
+    }
+  ]
+}

@@ -16,6 +16,8 @@ function extraerClienteDesdeEstado(estado) {
 }
 
 function estadoCliente(estado) {
+  if (estado.atencionHumana?.estado === "pendiente") return "pendiente_asesor";
+  if (estado.atencionHumana?.estado === "en_atencion") return "en_atencion_humana";
   if (estado.pedidoConfirmado) return "pedido_confirmado";
   if (estado.esperandoDatosDomicilio) return "esperando_datos_domicilio";
   if (estado.esperandoMetodoPago) return "esperando_metodo_pago";

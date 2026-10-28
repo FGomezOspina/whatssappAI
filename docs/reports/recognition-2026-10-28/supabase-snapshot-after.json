@@ -1,0 +1,1248 @@
+{
+  "mode": "offline local retrieval + validator; catalog gold status recorded per case; not end-to-end production accuracy",
+  "catalogSha256": "8497b112239aed558116ca20f32197f9289c900940af65e9673be6f39ebf6de6",
+  "total": {
+    "cases": 30,
+    "identifiable": 23,
+    "correct": 22,
+    "missed": 1,
+    "wrong": 0,
+    "requiresConfirmation": 7,
+    "retrievalMisses": 0
+  },
+  "development": {
+    "cases": 4,
+    "identifiable": 3,
+    "correct": 3,
+    "missed": 0,
+    "wrong": 0,
+    "requiresConfirmation": 1,
+    "retrievalMisses": 0
+  },
+  "evaluation": {
+    "cases": 26,
+    "identifiable": 20,
+    "correct": 19,
+    "missed": 1,
+    "wrong": 0,
+    "requiresConfirmation": 6,
+    "retrievalMisses": 0
+  },
+  "latency": {
+    "retrievalMs": {
+      "median": 35.518499999999676,
+      "p95": 77.22645799999918
+    },
+    "validationMs": {
+      "median": 12.449667000000773,
+      "p95": 41.49587500000007
+    },
+    "totalMs": {
+      "median": 47.48866700000053,
+      "p95": 89.92829200000051
+    }
+  },
+  "responseLatency": "not measured: requires live Supabase and model; no outgoing messages sent",
+  "rows": [
+    {
+      "id": "C07-M9-0",
+      "split": "development",
+      "expected": "CAT CHOW DELIMIX",
+      "expectation": "identity",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "outcome": "correct_identity",
+      "retrieved": true,
+      "level": "alta",
+      "reason": "senales_convergentes",
+      "selected": "CAT CHOW DELIMIX",
+      "presentationValid": true,
+      "samples": [
+        {
+          "retrievalMs": 56.870292000000006,
+          "validationMs": 29.80504099999999,
+          "totalMs": 86.675333
+        },
+        {
+          "retrievalMs": 55.905583000000036,
+          "validationMs": 29.99449999999996,
+          "totalMs": 85.900083
+        },
+        {
+          "retrievalMs": 56.26695799999999,
+          "validationMs": 29.31345799999997,
+          "totalMs": 85.58041599999996
+        },
+        {
+          "retrievalMs": 56.28762499999999,
+          "validationMs": 29.366709000000014,
+          "totalMs": 85.654334
+        },
+        {
+          "retrievalMs": 55.61699999999996,
+          "validationMs": 29.64995900000008,
+          "totalMs": 85.26695900000004
+        }
+      ]
+    },
+    {
+      "id": "C21-M7-1",
+      "split": "development",
+      "expected": "ARENA FOFICAT TOFU",
+      "expectation": "identity",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "outcome": "correct_identity",
+      "retrieved": true,
+      "level": "alta",
+      "reason": "senales_convergentes",
+      "selected": "ARENA FOFICAT TOFU",
+      "presentationValid": null,
+      "samples": [
+        {
+          "retrievalMs": 28.548209000000043,
+          "validationMs": 17.844040999999947,
+          "totalMs": 46.39224999999999
+        },
+        {
+          "retrievalMs": 28.848250000000007,
+          "validationMs": 21.637417000000028,
+          "totalMs": 50.485667000000035
+        },
+        {
+          "retrievalMs": 29.034332999999947,
+          "validationMs": 18.335375,
+          "totalMs": 47.369707999999946
+        },
+        {
+          "retrievalMs": 28.383290999999986,
+          "validationMs": 17.772499999999923,
+          "totalMs": 46.15579099999991
+        },
+        {
+          "retrievalMs": 28.256541999999968,
+          "validationMs": 18.039250000000038,
+          "totalMs": 46.295792000000006
+        }
+      ]
+    },
+    {
+      "id": "C22-M20-2",
+      "split": "development",
+      "expected": null,
+      "expectation": "presentation_unverified",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "outcome": "requires_confirmation",
+      "retrieved": null,
+      "level": "alta",
+      "reason": "nombre_exacto",
+      "selected": "DOG CHOW A.R.P A GRANEL",
+      "presentationValid": false,
+      "samples": [
+        {
+          "retrievalMs": 35.05783399999996,
+          "validationMs": 41.48791600000004,
+          "totalMs": 76.54575
+        },
+        {
+          "retrievalMs": 34.46312499999999,
+          "validationMs": 41.564833000000135,
+          "totalMs": 76.02795800000013
+        },
+        {
+          "retrievalMs": 34.229917000000114,
+          "validationMs": 41.52624999999989,
+          "totalMs": 75.756167
+        },
+        {
+          "retrievalMs": 33.563249999999925,
+          "validationMs": 41.01950000000011,
+          "totalMs": 74.58275000000003
+        },
+        {
+          "retrievalMs": 33.58487500000001,
+          "validationMs": 41.49587500000007,
+          "totalMs": 75.08075000000008
+        }
+      ]
+    },
+    {
+      "id": "C01-M1-3",
+      "split": "evaluation",
+      "expected": "ARENA MAIZ CAT",
+      "expectation": "identity",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "outcome": "correct_identity",
+      "retrieved": true,
+      "level": "alta",
+      "reason": "marca_y_presentacion",
+      "selected": "ARENA MAIZ CAT",
+      "presentationValid": true,
+      "samples": [
+        {
+          "retrievalMs": 47.56458299999986,
+          "validationMs": 0.9919999999999618,
+          "totalMs": 48.55658299999982
+        },
+        {
+          "retrievalMs": 47.68012499999986,
+          "validationMs": 0.8706660000000284,
+          "totalMs": 48.55079099999989
+        },
+        {
+          "retrievalMs": 47.49891700000012,
+          "validationMs": 0.816332999999986,
+          "totalMs": 48.315250000000106
+        },
+        {
+          "retrievalMs": 49.05479199999991,
+          "validationMs": 0.8267920000000686,
+          "totalMs": 49.881583999999975
+        },
+        {
+          "retrievalMs": 47.27591700000016,
+          "validationMs": 0.8625409999999647,
+          "totalMs": 48.13845800000013
+        }
+      ]
+    },
+    {
+      "id": "C01-M1-4",
+      "split": "evaluation",
+      "expected": null,
+      "expectation": "ambiguous",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "outcome": "requires_confirmation",
+      "retrieved": null,
+      "level": "baja",
+      "reason": "sin_coincidencia_confiable",
+      "selected": null,
+      "presentationValid": null,
+      "samples": [
+        {
+          "retrievalMs": 44.136999999999944,
+          "validationMs": 23.189375000000155,
+          "totalMs": 67.3263750000001
+        },
+        {
+          "retrievalMs": 43.910167,
+          "validationMs": 23.17837499999996,
+          "totalMs": 67.08854199999996
+        },
+        {
+          "retrievalMs": 45.35354100000018,
+          "validationMs": 23.46349999999984,
+          "totalMs": 68.81704100000002
+        },
+        {
+          "retrievalMs": 43.959375000000136,
+          "validationMs": 23.959457999999813,
+          "totalMs": 67.91883299999995
+        },
+        {
+          "retrievalMs": 43.93179200000009,
+          "validationMs": 23.249874999999975,
+          "totalMs": 67.18166700000006
+        }
+      ]
+    },
+    {
+      "id": "C01-M1-5",
+      "split": "evaluation",
+      "expected": null,
+      "expectation": "catalog_conflict",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "outcome": "requires_confirmation",
+      "retrieved": null,
+      "level": "baja",
+      "reason": "sin_coincidencia_confiable",
+      "selected": null,
+      "presentationValid": null,
+      "samples": [
+        {
+          "retrievalMs": 38.858999999999924,
+          "validationMs": 0.21725000000014916,
+          "totalMs": 39.07625000000007
+        },
+        {
+          "retrievalMs": 39.15387499999997,
+          "validationMs": 0.22950000000037107,
+          "totalMs": 39.38337500000034
+        },
+        {
+          "retrievalMs": 39.50691700000016,
+          "validationMs": 0.1983749999999418,
+          "totalMs": 39.7052920000001
+        },
+        {
+          "retrievalMs": 38.63004100000035,
+          "validationMs": 0.18620899999996254,
+          "totalMs": 38.81625000000031
+        },
+        {
+          "retrievalMs": 38.83054099999981,
+          "validationMs": 0.18779200000017227,
+          "totalMs": 39.018332999999984
+        }
+      ]
+    },
+    {
+      "id": "C04-M1-6",
+      "split": "evaluation",
+      "expected": "BR CAT ADUL BOLA PELO",
+      "expectation": "identity",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "outcome": "correct_identity",
+      "retrieved": true,
+      "level": "alta",
+      "reason": "nombre_exacto",
+      "selected": "BR CAT ADUL BOLA PELO",
+      "presentationValid": true,
+      "samples": [
+        {
+          "retrievalMs": 35.18104099999982,
+          "validationMs": 16.993584000000283,
+          "totalMs": 52.174625000000106
+        },
+        {
+          "retrievalMs": 35.384915999999976,
+          "validationMs": 16.84354200000007,
+          "totalMs": 52.228458000000046
+        },
+        {
+          "retrievalMs": 35.13795800000025,
+          "validationMs": 17.10129199999983,
+          "totalMs": 52.239250000000084
+        },
+        {
+          "retrievalMs": 35.406958999999915,
+          "validationMs": 16.968291000000136,
+          "totalMs": 52.37525000000005
+        },
+        {
+          "retrievalMs": 34.88258399999995,
+          "validationMs": 16.784833000000162,
+          "totalMs": 51.667417000000114
+        }
+      ]
+    },
+    {
+      "id": "C04-M12-7",
+      "split": "evaluation",
+      "expected": "CHUNKY GATOS SALMON CORDERO",
+      "expectation": "identity",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "outcome": "correct_identity",
+      "retrieved": true,
+      "level": "alta",
+      "reason": "senales_convergentes",
+      "selected": "CHUNKY GATOS SALMON CORDERO",
+      "presentationValid": true,
+      "samples": [
+        {
+          "retrievalMs": 79.84379200000012,
+          "validationMs": 26.14929099999972,
+          "totalMs": 105.99308299999984
+        },
+        {
+          "retrievalMs": 79.55195800000001,
+          "validationMs": 25.967167000000245,
+          "totalMs": 105.51912500000026
+        },
+        {
+          "retrievalMs": 80.30695800000012,
+          "validationMs": 25.746625000000222,
+          "totalMs": 106.05358300000034
+        },
+        {
+          "retrievalMs": 79.25283300000001,
+          "validationMs": 25.610125000000153,
+          "totalMs": 104.86295800000016
+        },
+        {
+          "retrievalMs": 79.44687499999964,
+          "validationMs": 25.927209000000403,
+          "totalMs": 105.37408400000004
+        }
+      ]
+    },
+    {
+      "id": "C04-M24-8",
+      "split": "evaluation",
+      "expected": "CUTAMYCON SPRAY",
+      "expectation": "identity",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "outcome": "correct_identity",
+      "retrieved": true,
+      "level": "alta",
+      "reason": "marca_y_presentacion",
+      "selected": "CUTAMYCON SPRAY",
+      "presentationValid": true,
+      "samples": [
+        {
+          "retrievalMs": 31.479041000000052,
+          "validationMs": 0.5764169999997648,
+          "totalMs": 32.05545799999982
+        },
+        {
+          "retrievalMs": 31.112291999999798,
+          "validationMs": 0.5625,
+          "totalMs": 31.674791999999798
+        },
+        {
+          "retrievalMs": 31.604624999999942,
+          "validationMs": 0.5283340000000862,
+          "totalMs": 32.13295900000003
+        },
+        {
+          "retrievalMs": 31.40604200000007,
+          "validationMs": 0.5231659999999465,
+          "totalMs": 31.929208000000017
+        },
+        {
+          "retrievalMs": 31.254167000000052,
+          "validationMs": 0.5198749999999563,
+          "totalMs": 31.77404200000001
+        }
+      ]
+    },
+    {
+      "id": "C04-M85-9",
+      "split": "evaluation",
+      "expected": "EXCELLENT GATO URINARY",
+      "expectation": "identity",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "outcome": "correct_identity",
+      "retrieved": true,
+      "level": "alta",
+      "reason": "nombre_exacto",
+      "selected": "EXCELLENT GATO URINARY",
+      "presentationValid": true,
+      "samples": [
+        {
+          "retrievalMs": 35.7643750000002,
+          "validationMs": 14.904207999999926,
+          "totalMs": 50.668583000000126
+        },
+        {
+          "retrievalMs": 35.87604099999999,
+          "validationMs": 15.018500000000131,
+          "totalMs": 50.89454100000012
+        },
+        {
+          "retrievalMs": 35.518499999999676,
+          "validationMs": 14.89829200000031,
+          "totalMs": 50.41679199999999
+        },
+        {
+          "retrievalMs": 35.789124999999785,
+          "validationMs": 14.760291999999936,
+          "totalMs": 50.54941699999972
+        },
+        {
+          "retrievalMs": 35.90195799999992,
+          "validationMs": 14.834374999999909,
+          "totalMs": 50.73633299999983
+        }
+      ]
+    },
+    {
+      "id": "C04-M85-10",
+      "split": "evaluation",
+      "expected": "VETSOLUTION CAT URINARY",
+      "expectation": "identity",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "outcome": "correct_identity",
+      "retrieved": true,
+      "level": "alta",
+      "reason": "nombre_exacto",
+      "selected": "VETSOLUTION CAT URINARY",
+      "presentationValid": null,
+      "samples": [
+        {
+          "retrievalMs": 35.20454199999995,
+          "validationMs": 1.9244159999998374,
+          "totalMs": 37.128957999999784
+        },
+        {
+          "retrievalMs": 35.10541599999988,
+          "validationMs": 1.9120840000000499,
+          "totalMs": 37.01749999999993
+        },
+        {
+          "retrievalMs": 35.2744160000002,
+          "validationMs": 1.9474589999999807,
+          "totalMs": 37.22187500000018
+        },
+        {
+          "retrievalMs": 35.15279099999998,
+          "validationMs": 2.0701249999997344,
+          "totalMs": 37.222915999999714
+        },
+        {
+          "retrievalMs": 35.19741699999986,
+          "validationMs": 1.8710000000000946,
+          "totalMs": 37.068416999999954
+        }
+      ]
+    },
+    {
+      "id": "C04-M85-11",
+      "split": "evaluation",
+      "expected": "VETSOLUTION CAT GASTROINTES",
+      "expectation": "identity",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "outcome": "correct_identity",
+      "retrieved": true,
+      "level": "alta",
+      "reason": "nombre_exacto",
+      "selected": "VETSOLUTION CAT GASTROINTES",
+      "presentationValid": null,
+      "samples": [
+        {
+          "retrievalMs": 37.26354200000014,
+          "validationMs": 3.6688749999998436,
+          "totalMs": 40.93241699999999
+        },
+        {
+          "retrievalMs": 37.15670799999998,
+          "validationMs": 3.675832999999784,
+          "totalMs": 40.832540999999765
+        },
+        {
+          "retrievalMs": 36.809792000000016,
+          "validationMs": 3.8837909999997464,
+          "totalMs": 40.69358299999976
+        },
+        {
+          "retrievalMs": 36.969540999999936,
+          "validationMs": 3.674666999999772,
+          "totalMs": 40.64420799999971
+        },
+        {
+          "retrievalMs": 36.97804099999939,
+          "validationMs": 3.7295420000000377,
+          "totalMs": 40.70758299999943
+        }
+      ]
+    },
+    {
+      "id": "C04-M85-12",
+      "split": "evaluation",
+      "expected": "ARENA KITTEN TALCO",
+      "expectation": "identity",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "outcome": "correct_identity",
+      "retrieved": true,
+      "level": "alta",
+      "reason": "marca_y_presentacion",
+      "selected": "ARENA KITTEN TALCO",
+      "presentationValid": true,
+      "samples": [
+        {
+          "retrievalMs": 34.62983299999996,
+          "validationMs": 0.4782500000001164,
+          "totalMs": 35.10808300000008
+        },
+        {
+          "retrievalMs": 35.15754199999992,
+          "validationMs": 0.48666600000069593,
+          "totalMs": 35.64420800000062
+        },
+        {
+          "retrievalMs": 35.61187500000051,
+          "validationMs": 0.4887079999998605,
+          "totalMs": 36.10058300000037
+        },
+        {
+          "retrievalMs": 34.88529100000051,
+          "validationMs": 0.4876249999997526,
+          "totalMs": 35.37291600000026
+        },
+        {
+          "retrievalMs": 34.77183299999979,
+          "validationMs": 0.4698340000004464,
+          "totalMs": 35.241667000000234
+        }
+      ]
+    },
+    {
+      "id": "C04-M205-13",
+      "split": "evaluation",
+      "expected": "PRO PLAN POUCH FELINO ADULT",
+      "expectation": "identity",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "outcome": "correct_identity",
+      "retrieved": true,
+      "level": "alta",
+      "reason": "senales_convergentes",
+      "selected": "PRO PLAN POUCH FELINO ADULT",
+      "presentationValid": null,
+      "samples": [
+        {
+          "retrievalMs": 38.1294170000001,
+          "validationMs": 16.135290999999597,
+          "totalMs": 54.2647079999997
+        },
+        {
+          "retrievalMs": 37.811249999999745,
+          "validationMs": 16.046916000000238,
+          "totalMs": 53.85816599999998
+        },
+        {
+          "retrievalMs": 37.77466600000025,
+          "validationMs": 16.288499999999658,
+          "totalMs": 54.06316599999991
+        },
+        {
+          "retrievalMs": 38.02958300000046,
+          "validationMs": 15.859333000000333,
+          "totalMs": 53.88891600000079
+        },
+        {
+          "retrievalMs": 37.8090830000001,
+          "validationMs": 16.09008300000005,
+          "totalMs": 53.89916600000015
+        }
+      ]
+    },
+    {
+      "id": "C04-M203-14",
+      "split": "evaluation",
+      "expected": "DIAMOND INDOOR CAT",
+      "expectation": "identity",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "outcome": "correct_identity",
+      "retrieved": true,
+      "level": "alta",
+      "reason": "senales_convergentes",
+      "selected": "DIAMOND INDOOR CAT",
+      "presentationValid": null,
+      "samples": [
+        {
+          "retrievalMs": 39.238916000000245,
+          "validationMs": 8.21862499999952,
+          "totalMs": 47.457540999999765
+        },
+        {
+          "retrievalMs": 39.70458299999973,
+          "validationMs": 7.961083000000144,
+          "totalMs": 47.665665999999874
+        },
+        {
+          "retrievalMs": 39.3769999999995,
+          "validationMs": 7.986582999999882,
+          "totalMs": 47.36358299999938
+        },
+        {
+          "retrievalMs": 39.066375000000335,
+          "validationMs": 8.181499999999687,
+          "totalMs": 47.24787500000002
+        },
+        {
+          "retrievalMs": 39.09979099999964,
+          "validationMs": 8.253999999999905,
+          "totalMs": 47.353790999999546
+        }
+      ]
+    },
+    {
+      "id": "C05-M15-15",
+      "split": "evaluation",
+      "expected": null,
+      "expectation": "ambiguous",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "outcome": "requires_confirmation",
+      "retrieved": null,
+      "level": "media",
+      "reason": "atributo_faltante",
+      "selected": null,
+      "presentationValid": null,
+      "samples": [
+        {
+          "retrievalMs": 32.78633300000001,
+          "validationMs": 14.184709000000112,
+          "totalMs": 46.971042000000125
+        },
+        {
+          "retrievalMs": 33.17637500000001,
+          "validationMs": 14.369959000000563,
+          "totalMs": 47.54633400000057
+        },
+        {
+          "retrievalMs": 33.067833000000064,
+          "validationMs": 14.420834000000468,
+          "totalMs": 47.48866700000053
+        },
+        {
+          "retrievalMs": 33.12695799999983,
+          "validationMs": 14.36645899999985,
+          "totalMs": 47.49341699999968
+        },
+        {
+          "retrievalMs": 33.21350000000075,
+          "validationMs": 14.478332999999111,
+          "totalMs": 47.69183299999986
+        }
+      ]
+    },
+    {
+      "id": "C05-M18-16",
+      "split": "evaluation",
+      "expected": "RINGO CROQUETAS",
+      "expectation": "identity",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "outcome": "correct_identity",
+      "retrieved": true,
+      "level": "alta",
+      "reason": "nombre_exacto",
+      "selected": "RINGO CROQUETAS",
+      "presentationValid": null,
+      "samples": [
+        {
+          "retrievalMs": 32.389666000000034,
+          "validationMs": 12.326374999999643,
+          "totalMs": 44.71604099999968
+        },
+        {
+          "retrievalMs": 32.146875000000364,
+          "validationMs": 12.473707999999533,
+          "totalMs": 44.6205829999999
+        },
+        {
+          "retrievalMs": 32.031707999999526,
+          "validationMs": 12.432416999999987,
+          "totalMs": 44.46412499999951
+        },
+        {
+          "retrievalMs": 32.045750000000226,
+          "validationMs": 12.3446670000003,
+          "totalMs": 44.390417000000525
+        },
+        {
+          "retrievalMs": 32.059416999999485,
+          "validationMs": 12.449667000000773,
+          "totalMs": 44.50908400000026
+        }
+      ]
+    },
+    {
+      "id": "C05-M29-17",
+      "split": "development",
+      "expected": "HILLS CAN Y FEL LATA A/D",
+      "expectation": "identity",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "outcome": "correct_identity",
+      "retrieved": true,
+      "level": "alta",
+      "reason": "nombre_exacto",
+      "selected": "HILLS CAN Y FEL LATA A/D",
+      "presentationValid": null,
+      "samples": [
+        {
+          "retrievalMs": 31.690875000000233,
+          "validationMs": 0.5210829999996349,
+          "totalMs": 32.21195799999987
+        },
+        {
+          "retrievalMs": 31.85712500000045,
+          "validationMs": 0.5233330000000933,
+          "totalMs": 32.380458000000544
+        },
+        {
+          "retrievalMs": 31.910165999999663,
+          "validationMs": 0.5280000000002474,
+          "totalMs": 32.43816599999991
+        },
+        {
+          "retrievalMs": 31.81633299999976,
+          "validationMs": 0.5646249999999782,
+          "totalMs": 32.38095799999974
+        },
+        {
+          "retrievalMs": 34.7660420000002,
+          "validationMs": 0.5180829999999332,
+          "totalMs": 35.28412500000013
+        }
+      ]
+    },
+    {
+      "id": "C05-M32-18",
+      "split": "evaluation",
+      "expected": "CHUNKY ADUL MAYORES",
+      "expectation": "identity",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "outcome": "correct_identity",
+      "retrieved": true,
+      "level": "alta",
+      "reason": "nombre_exacto",
+      "selected": "CHUNKY ADUL MAYORES",
+      "presentationValid": null,
+      "samples": [
+        {
+          "retrievalMs": 33.80658399999993,
+          "validationMs": 20.201583000000028,
+          "totalMs": 54.00816699999996
+        },
+        {
+          "retrievalMs": 33.82604100000026,
+          "validationMs": 19.784834000000046,
+          "totalMs": 53.610875000000306
+        },
+        {
+          "retrievalMs": 33.19133300000067,
+          "validationMs": 20.087916999999834,
+          "totalMs": 53.2792500000005
+        },
+        {
+          "retrievalMs": 33.65712499999972,
+          "validationMs": 19.92462499999965,
+          "totalMs": 53.581749999999374
+        },
+        {
+          "retrievalMs": 35.22395899999992,
+          "validationMs": 20.77545800000007,
+          "totalMs": 55.999416999999994
+        }
+      ]
+    },
+    {
+      "id": "C08-M25-19",
+      "split": "evaluation",
+      "expected": "AGILITY GRAND CACH",
+      "expectation": "identity",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "outcome": "correct_identity",
+      "retrieved": true,
+      "level": "alta",
+      "reason": "senales_convergentes",
+      "selected": "AGILITY GRAND CACH",
+      "presentationValid": null,
+      "samples": [
+        {
+          "retrievalMs": 39.0537919999997,
+          "validationMs": 27.759125000000495,
+          "totalMs": 66.8129170000002
+        },
+        {
+          "retrievalMs": 38.87187499999982,
+          "validationMs": 27.695541999999477,
+          "totalMs": 66.5674169999993
+        },
+        {
+          "retrievalMs": 39.3574579999995,
+          "validationMs": 27.903833000000304,
+          "totalMs": 67.2612909999998
+        },
+        {
+          "retrievalMs": 39.74762499999997,
+          "validationMs": 27.558624999999665,
+          "totalMs": 67.30624999999964
+        },
+        {
+          "retrievalMs": 39.040250000000015,
+          "validationMs": 28.048249999999825,
+          "totalMs": 67.08849999999984
+        }
+      ]
+    },
+    {
+      "id": "C09-M129-20",
+      "split": "evaluation",
+      "expected": "FREEMIAU LAVANDA",
+      "expectation": "identity",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "outcome": "correct_identity",
+      "retrieved": true,
+      "level": "alta",
+      "reason": "nombre_exacto",
+      "selected": "FREEMIAU LAVANDA",
+      "presentationValid": true,
+      "samples": [
+        {
+          "retrievalMs": 33.209334000000126,
+          "validationMs": 2.8171659999998155,
+          "totalMs": 36.02649999999994
+        },
+        {
+          "retrievalMs": 33.16920899999968,
+          "validationMs": 2.827957999999853,
+          "totalMs": 35.997166999999536
+        },
+        {
+          "retrievalMs": 33.09283400000004,
+          "validationMs": 2.902082999999948,
+          "totalMs": 35.99491699999999
+        },
+        {
+          "retrievalMs": 33.01558399999976,
+          "validationMs": 2.832666000000245,
+          "totalMs": 35.84825000000001
+        },
+        {
+          "retrievalMs": 32.98616700000002,
+          "validationMs": 2.7368329999999332,
+          "totalMs": 35.722999999999956
+        }
+      ]
+    },
+    {
+      "id": "C09-M131-21",
+      "split": "evaluation",
+      "expected": "BR CORDERO",
+      "expectation": "identity",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "outcome": "correct_identity",
+      "retrieved": true,
+      "level": "alta",
+      "reason": "nombre_exacto",
+      "selected": "BR CORDERO",
+      "presentationValid": true,
+      "samples": [
+        {
+          "retrievalMs": 41.332416000000194,
+          "validationMs": 1.4497089999995296,
+          "totalMs": 42.78212499999972
+        },
+        {
+          "retrievalMs": 41.65549999999985,
+          "validationMs": 1.3797919999997248,
+          "totalMs": 43.03529199999957
+        },
+        {
+          "retrievalMs": 41.422874999999294,
+          "validationMs": 1.3433330000007118,
+          "totalMs": 42.766208000000006
+        },
+        {
+          "retrievalMs": 40.93987500000003,
+          "validationMs": 1.3705829999998969,
+          "totalMs": 42.310457999999926
+        },
+        {
+          "retrievalMs": 40.85120800000004,
+          "validationMs": 1.4034169999995356,
+          "totalMs": 42.25462499999958
+        }
+      ]
+    },
+    {
+      "id": "C09-M123-22",
+      "split": "evaluation",
+      "expected": "ARENA MAIZ CAT",
+      "expectation": "identity",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "outcome": "missed_identity",
+      "retrieved": true,
+      "level": "baja",
+      "reason": "sin_coincidencia_confiable",
+      "selected": null,
+      "presentationValid": null,
+      "samples": [
+        {
+          "retrievalMs": 63.53645800000049,
+          "validationMs": 1.2139589999997042,
+          "totalMs": 64.7504170000002
+        },
+        {
+          "retrievalMs": 63.362082999999984,
+          "validationMs": 1.243916999999783,
+          "totalMs": 64.60599999999977
+        },
+        {
+          "retrievalMs": 64.30000000000018,
+          "validationMs": 1.2142080000003261,
+          "totalMs": 65.51420800000051
+        },
+        {
+          "retrievalMs": 63.685332999999446,
+          "validationMs": 1.2174580000000788,
+          "totalMs": 64.90279099999952
+        },
+        {
+          "retrievalMs": 64.81404199999997,
+          "validationMs": 1.2620829999996204,
+          "totalMs": 66.07612499999959
+        }
+      ]
+    },
+    {
+      "id": "C10-M3-23",
+      "split": "evaluation",
+      "expected": "NUTRISS CARNE",
+      "expectation": "identity",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "outcome": "correct_identity",
+      "retrieved": true,
+      "level": "alta",
+      "reason": "nombre_exacto",
+      "selected": "NUTRISS CARNE",
+      "presentationValid": true,
+      "samples": [
+        {
+          "retrievalMs": 33.74720799999977,
+          "validationMs": 5.829834000000119,
+          "totalMs": 39.57704199999989
+        },
+        {
+          "retrievalMs": 34.94225000000006,
+          "validationMs": 5.846332999999504,
+          "totalMs": 40.78858299999956
+        },
+        {
+          "retrievalMs": 33.67433299999993,
+          "validationMs": 6.001833000000261,
+          "totalMs": 39.676166000000194
+        },
+        {
+          "retrievalMs": 33.51787499999955,
+          "validationMs": 5.750082999999904,
+          "totalMs": 39.26795799999945
+        },
+        {
+          "retrievalMs": 34.02466699999968,
+          "validationMs": 5.92462500000056,
+          "totalMs": 39.94929200000024
+        }
+      ]
+    },
+    {
+      "id": "C14-M37-24",
+      "split": "evaluation",
+      "expected": null,
+      "expectation": "ambiguous",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "outcome": "requires_confirmation",
+      "retrieved": null,
+      "level": "baja",
+      "reason": "sin_coincidencia_confiable",
+      "selected": null,
+      "presentationValid": null,
+      "samples": [
+        {
+          "retrievalMs": 30.905832999999802,
+          "validationMs": 0.19787500000074942,
+          "totalMs": 31.10370800000055
+        },
+        {
+          "retrievalMs": 31.170625000000655,
+          "validationMs": 0.2124999999996362,
+          "totalMs": 31.38312500000029
+        },
+        {
+          "retrievalMs": 31.392624999999498,
+          "validationMs": 0.218166999999994,
+          "totalMs": 31.610791999999492
+        },
+        {
+          "retrievalMs": 31.09400000000005,
+          "validationMs": 0.21908299999995506,
+          "totalMs": 31.313083000000006
+        },
+        {
+          "retrievalMs": 30.939041999999972,
+          "validationMs": 0.2055000000000291,
+          "totalMs": 31.144542
+        }
+      ]
+    },
+    {
+      "id": "C17-M6-25",
+      "split": "evaluation",
+      "expected": "AGILITY GRAND CACH",
+      "expectation": "identity",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "outcome": "correct_identity",
+      "retrieved": true,
+      "level": "alta",
+      "reason": "nombre_exacto",
+      "selected": "AGILITY GRAND CACH",
+      "presentationValid": null,
+      "samples": [
+        {
+          "retrievalMs": 37.17262500000015,
+          "validationMs": 17.08625000000029,
+          "totalMs": 54.258875000000444
+        },
+        {
+          "retrievalMs": 37.70849999999973,
+          "validationMs": 17.035125000000335,
+          "totalMs": 54.743625000000065
+        },
+        {
+          "retrievalMs": 36.74554199999966,
+          "validationMs": 17.0747080000001,
+          "totalMs": 53.82024999999976
+        },
+        {
+          "retrievalMs": 36.91004200000043,
+          "validationMs": 16.81366699999944,
+          "totalMs": 53.72370899999987
+        },
+        {
+          "retrievalMs": 36.796166999999514,
+          "validationMs": 16.986541999999645,
+          "totalMs": 53.78270899999916
+        }
+      ]
+    },
+    {
+      "id": "C18-M4-26",
+      "split": "evaluation",
+      "expected": null,
+      "expectation": "unverified_identity",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "outcome": "requires_confirmation",
+      "retrieved": null,
+      "level": "media",
+      "reason": "similitud_media",
+      "selected": null,
+      "presentationValid": true,
+      "samples": [
+        {
+          "retrievalMs": 76.14145800000006,
+          "validationMs": 12.83179200000086,
+          "totalMs": 88.97325000000092
+        },
+        {
+          "retrievalMs": 77.40170799999942,
+          "validationMs": 12.526584000001094,
+          "totalMs": 89.92829200000051
+        },
+        {
+          "retrievalMs": 77.52408300000025,
+          "validationMs": 13.007917000000816,
+          "totalMs": 90.53200000000106
+        },
+        {
+          "retrievalMs": 76.81633399999919,
+          "validationMs": 13.006999999999607,
+          "totalMs": 89.8233339999988
+        },
+        {
+          "retrievalMs": 77.22645799999918,
+          "validationMs": 12.781084000000192,
+          "totalMs": 90.00754199999938
+        }
+      ]
+    },
+    {
+      "id": "C18-M23-27",
+      "split": "evaluation",
+      "expected": "BR CAT CASTRADO POLLO",
+      "expectation": "identity",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "outcome": "correct_identity",
+      "retrieved": true,
+      "level": "alta",
+      "reason": "nombre_exacto",
+      "selected": "BR CAT CASTRADO POLLO",
+      "presentationValid": true,
+      "samples": [
+        {
+          "retrievalMs": 30.99566699999923,
+          "validationMs": 11.94024999999965,
+          "totalMs": 42.93591699999888
+        },
+        {
+          "retrievalMs": 31.11083300000064,
+          "validationMs": 12.250500000000102,
+          "totalMs": 43.36133300000074
+        },
+        {
+          "retrievalMs": 30.997125000001688,
+          "validationMs": 12.163624999999229,
+          "totalMs": 43.16075000000092
+        },
+        {
+          "retrievalMs": 30.862292000001617,
+          "validationMs": 11.324124999999185,
+          "totalMs": 42.1864170000008
+        },
+        {
+          "retrievalMs": 30.97633400000086,
+          "validationMs": 11.735124999999243,
+          "totalMs": 42.711459000000104
+        }
+      ]
+    },
+    {
+      "id": "C20-M14-28",
+      "split": "evaluation",
+      "expected": "RINGO CROQUETAS",
+      "expectation": "identity",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "outcome": "correct_identity",
+      "retrieved": true,
+      "level": "alta",
+      "reason": "nombre_exacto",
+      "selected": "RINGO CROQUETAS",
+      "presentationValid": true,
+      "samples": [
+        {
+          "retrievalMs": 33.925624999999854,
+          "validationMs": 12.588958000000275,
+          "totalMs": 46.51458300000013
+        },
+        {
+          "retrievalMs": 33.914166999999,
+          "validationMs": 12.409041000000798,
+          "totalMs": 46.323207999999795
+        },
+        {
+          "retrievalMs": 34.00875000000087,
+          "validationMs": 12.688916999999492,
+          "totalMs": 46.697667000000365
+        },
+        {
+          "retrievalMs": 33.959915999999794,
+          "validationMs": 12.751541999999972,
+          "totalMs": 46.711457999999766
+        },
+        {
+          "retrievalMs": 33.83629199999996,
+          "validationMs": 12.602332999998907,
+          "totalMs": 46.438624999998865
+        }
+      ]
+    },
+    {
+      "id": "C24-M4-29",
+      "split": "evaluation",
+      "expected": null,
+      "expectation": "presentation_unverified",
+      "goldStatus": "current_supabase_catalog_2026-10-28",
+      "outcome": "requires_confirmation",
+      "retrieved": null,
+      "level": "media",
+      "reason": "atributo_faltante",
+      "selected": null,
+      "presentationValid": false,
+      "samples": [
+        {
+          "retrievalMs": 37.090541999999914,
+          "validationMs": 43.227999999999156,
+          "totalMs": 80.31854199999907
+        },
+        {
+          "retrievalMs": 37.37570799999958,
+          "validationMs": 42.23212500000045,
+          "totalMs": 79.60783300000003
+        },
+        {
+          "retrievalMs": 37.045500000000175,
+          "validationMs": 43.77470800000083,
+          "totalMs": 80.820208000001
+        },
+        {
+          "retrievalMs": 36.980374999999185,
+          "validationMs": 42.39316599999984,
+          "totalMs": 79.37354099999902
+        },
+        {
+          "retrievalMs": 36.881124999999884,
+          "validationMs": 43.39375000000109,
+          "totalMs": 80.27487500000097
+        }
+      ]
+    }
+  ]
+}

@@ -1,8 +1,10 @@
+const { atencionHumanaActiva, motivoDerivacion, prepararDerivacion, registrarAclaracion } = require('./humanHandoffService');
 const { medir, medirSincrono, contexto } = require('./pipelineTelemetry');
 const { duracionTexto, mismaSeleccionCotizada, consultaProductoCotizado } = require('../utils/catalogVariants');
 const { precioPorCantidad, datosPrecio, normalizarVentaUnitaria } = require('../utils/catalogCommercialRules');
 const { resolverEvidenciaInterpretacion } = require("./productEvidenceService");
 const { completarCompraDesdeCotizaciones } = require('./quotedPurchaseService');
+const { recordarSeleccion, sincronizarSelecciones, actualizarSeleccionCotizada, resolverCompraContextual } = require('./activeProductSelectionService');
 const { resolverPresentacionesIdentificadas, cotizarPresentaciones, agruparCotizaciones,
   formatearCotizaciones, preguntasPeso } = require('./presentationSelectionService');
 const { obtenerClienteActual } = require("./clients.service");
@@ -10,7 +12,7 @@ const { obtenerVerticalCliente } = require("../verticals");
 const {
   obtenerConversacionPersistida,
   obtenerHistorialRecientePersistido,
-  guardarConversacionPersistida,
+  guardarConversacionPersistida: persistirConversacion,
 } = require("../conversation/conversationStore");
 const { obtenerEjemplosEntrenamiento } = require("../repositories/trainingExampleRepository");
 const { interpretarMensajeCliente } = require("./aiInterpreter");
@@ -46,6 +48,11 @@ const {
   logContextoProducto,
   logContextoRecuperado,
 } = require("./aiContextAuditLogger");
+
+async function guardarConversacionPersistida(usuario, estado, metadatos) {
+  sincronizarSelecciones(estado);
+  return persistirConversacion(usuario, estado, metadatos);
+}
 
 function consultaProductoVisual(producto) {
   return [producto.marca, producto.observado?.nombre, producto.referencia, producto.linea,
@@ -410,6 +417,14 @@ function recordarConsultaProducto(estado, validacion, clasificacion = null) {
   };
 }
 
+async function derivarAtencionHumana({ evento, cliente, estado, idsEventos, motivo }) {
+  const respuesta = prepararDerivacion(estado, motivo);
+  estado.mensajesProcesados = [...new Set([...(estado.mensajesProcesados || []), ...idsEventos])].slice(-256);
+  // Persist the queue before returning a promise of human assistance. No order or learning side effects.
+  await guardarConversacionPersistida(evento.channelUserId, estado, { cliente, idsEventos, respuesta, soloEstado: true });
+  return respuesta;
+}
+
 async function responderValidacionNoConfiable({
   evento,
   idsEventos = [],
@@ -420,6 +435,9 @@ async function responderValidacionNoConfiable({
   clasificacion = null,
   interpretacion = null,
 }) {
+  if (registrarAclaracion(estado, { mensaje, decision: interpretacion, validacion })) {
+    return derivarAtencionHumana({ evento, cliente, estado, idsEventos, motivo: 'producto_no_resuelto' });
+  }
   registrarValidacionProducto(evento, validacion);
   recordarConsultaProducto(estado, validacion, clasificacion);
   guardarCoincidenciasProductoPendientes(estado, validacion, {
@@ -545,6 +563,7 @@ async function responderEventosEntrantes(eventos, { contextoPendiente = [] } = {
   const resolverConsultaCatalogo = (...args) => medirSincrono('tool_order_logic', () => resolverConsultaCatalogoBase(...args));
   const { asegurarRespuestaCatalogo } = vertical.productLogic;
   const estado = await medir("load_context", () => obtenerConversacionPersistida(evento.channelUserId, cliente));
+  sincronizarSelecciones(estado);
   const procesados = new Set(estado.mensajesProcesados || []);
   const idsEventos = [];
   eventos = eventos.filter(item => {
@@ -567,6 +586,12 @@ async function responderEventosEntrantes(eventos, { contextoPendiente = [] } = {
     fase: "entrada", cliente, idsEventos, eventos,
     mensaje: eventos.map(item => item.text || `[${item.messageType || item.media?.type || "archivo"}]`).join("\n"),
   });
+
+  if (atencionHumanaActiva(estado)) {
+    estado.mensajesProcesados = [...new Set([...(estado.mensajesProcesados || []), ...idsEventos])].slice(-256);
+    await guardarConversacionPersistida(evento.channelUserId, estado, { cliente, idsEventos, soloEstado: true });
+    return null;
+  }
 
   let catalogo = [];
   let contenidos;
@@ -692,6 +717,12 @@ async function responderEventosEntrantes(eventos, { contextoPendiente = [] } = {
       idsEventos, cliente, mensaje, respuesta,
     });
     return respuesta;
+  }
+  const derivacion = motivoDerivacion(decisionSemantica);
+  if (derivacion) return derivarAtencionHumana({ evento, cliente, estado, idsEventos, motivo: derivacion });
+  if (estado.aclaracionIdentidad && decisionSemantica.seguimientoProducto === 'sin_resolver' &&
+      decisionSemantica.consultaCatalogo?.necesaria === false) {
+    return derivarAtencionHumana({ evento, cliente, estado, idsEventos, motivo: 'producto_no_resuelto' });
   }
   // Revisar omisiones por cobertura semántica, no por saltos de línea.
   const tieneEvidencia = producto => producto &&
@@ -838,10 +869,13 @@ async function responderEventosEntrantes(eventos, { contextoPendiente = [] } = {
   let propuestaOperacion = null;
   // Aceptar el envío compra las cantidades cotizadas; no es sumar unidades
   // sobre una copia de la cotización, aunque el router proponga cantidadDelta.
-  const textoAceptacionEnvio = normalizar(mensaje).replace(/\bpor favor\b/g, '').replace(/[.!?,¿¡]/g, '').replace(/\s+/g, ' ').trim();
-  const cotizacionParaEnvio = !imageUrls.length && !estado.carrito.length && !estado.pedidoConfirmado &&
-    /^(?:si )?(?:me )?(?:lo|los|la|las) (?:envias|envia|envies|mandas|manda|mandes)$/.test(textoAceptacionEnvio)
-    ? cotizacionSeleccionada(estado) : [];
+  const compraContextual = !imageUrls.length ? resolverCompraContextual(mensaje, decisionSemantica, estado) : null;
+  const cotizacionParaEnvio = compraContextual || [];
+  if (compraContextual && !compraContextual.length) {
+    decisionSemantica = { ...decisionSemantica, accion: 'responder', intencion: 'datos_envio',
+      productos: [], producto: null, carrito: {}, continuarFlujo: true,
+      consultaCatalogo: { necesaria: false, consulta: null } };
+  }
   if (cotizacionParaEnvio.length) {
     // Conservar el orden de las solicitudes que ya interpretó el router.
     const ordenSolicitud = p => (decisionSemantica.productos || []).findIndex(s =>
@@ -918,7 +952,13 @@ async function responderEventosEntrantes(eventos, { contextoPendiente = [] } = {
         carrito: decisionSemantica.carrito, propuestaOperacion } });
     const consultaAnterior = decisionSemantica.consultaCatalogo;
     decisionSemantica.consultaCatalogo = { necesaria: false, consulta: null };
-    const cotizacion = !estado.carrito.length ? cotizacionSeleccionada(estado) : [];
+    const corrigeSeleccion = ['quitar', 'mantener_solo', 'modificar_cantidad'].includes(operacionExistente);
+    const cotizadosActivos = corrigeSeleccion ? (estado.seleccionesProducto || [])
+      .filter(p => p.estado === 'cotizado').flatMap(p => p.cotizacion || []) : [];
+    const carritoOriginal = [...estado.carrito];
+    const cotizacion = cotizadosActivos.length
+      ? [...carritoOriginal, ...cotizadosActivos.filter(p => !carritoOriginal.some(c => mismaSeleccionCotizada(p, c)))]
+      : !estado.carrito.length ? cotizacionSeleccionada(estado) : [];
     // Cotizar no es comprar: ejecutar el mismo motor sobre una copia de la
     // seleccion cotizada y conservar solo sus cambios de contexto, no un carrito.
     const estadoOperacion = cotizacion.length
@@ -928,6 +968,9 @@ async function responderEventosEntrantes(eventos, { contextoPendiente = [] } = {
     if (respuesta != null) {
       if (cotizacion.length) {
         if (estadoOperacion._resultadoOperacionCarrito?.mutationApplied) {
+          actualizarSeleccionCotizada(estado, cotizacion, estadoOperacion.carrito);
+          if (carritoOriginal.length) estado.carrito = estadoOperacion.carrito.filter(p =>
+            carritoOriginal.some(c => mismaSeleccionCotizada(p, c)));
           for (const campo of ["ultimaSolicitudProductos", "productosConsultados", "ultimaSeleccion",
             "referenciasPendientes", "coincidenciasProductoPendientes", "ultimaConsultaProducto"]) {
             estado[campo] = estadoOperacion[campo];
@@ -1129,6 +1172,7 @@ async function responderEventosEntrantes(eventos, { contextoPendiente = [] } = {
     .flatMap(item => (item.presentaciones || []).map(p => ({ ...item, ...p,
       referencia: p.referenciaCatalogo || item.referencia, presentacion: p.peso })));
   const cotizacionesAceptables = [...new Map([
+    ...(estado.seleccionesProducto || []).filter(p => ['cotizado', 'seleccionado'].includes(p.estado)).flatMap(p => p.cotizacion || []),
     ...recientes, ...(estado.ultimaSolicitudProductos || []).flatMap(s => s.cotizacion || []),
     ...cotizacionCompleta, ...(seleccionActual ? [seleccionActual] : [])
   ].map(item => [`${item.marca}:${item.referencia}:${normalizarPeso(item.peso || item.presentacion)}`, item])).values()];
@@ -1433,7 +1477,8 @@ async function responderEventosEntrantes(eventos, { contextoPendiente = [] } = {
   }));
 
   let interpretacionIA =
-    decisionSemantica._alternativaConfirmada || decisionSemantica._seleccionPesoUnico ? decisionSemantica :
+    decisionSemantica._alternativaConfirmada || decisionSemantica._seleccionPesoUnico ||
+      decisionSemantica._compraDesdeCotizacion ? decisionSemantica :
     !solicitudesMultiples.length && clasificacion.requiereOpenAI && !omitirInterpretePorConsultaExploratoria
     ? await interpretarMensajeCliente({
         mensaje,
@@ -1560,6 +1605,12 @@ async function responderEventosEntrantes(eventos, { contextoPendiente = [] } = {
       mensaje: resultado.solicitud.mencionOriginal || resultado.solicitud.textoVisible || mensaje,
       catalogo: resultado.candidatos, estado });
   }
+  const multiplesSinResolver = resultadosMultiples.filter(r =>
+    ['media', 'baja'].includes(r.validacion?.nivel) && !r.solicitud?._imagenErrorTecnico);
+  if (multiplesSinResolver.length && registrarAclaracion(estado, { mensaje, decision: decisionSemantica,
+    validacion: multiplesSinResolver[0].validacion })) {
+    return derivarAtencionHumana({ evento, cliente, estado, idsEventos, motivo: 'producto_no_resuelto' });
+  }
   if (["media", "baja"].includes(validacionFinal.nivel)) {
     return responderValidacionNoConfiable({
       evento,
@@ -1568,11 +1619,12 @@ async function responderEventosEntrantes(eventos, { contextoPendiente = [] } = {
       estado,
       mensaje,
       validacion: validacionFinal,
-      interpretacion: interpretacionIA || decisionSemantica,
+      interpretacion: { ...(interpretacionIA || decisionSemantica), seguimientoProducto: decisionSemantica.seguimientoProducto },
       clasificacion,
     });
   }
   if (validacionFinal.nivel === "alta") {
+    if (!multiplesSinResolver.length) estado.aclaracionIdentidad = null;
     registrarValidacionProducto(evento, validacionFinal);
     recordarConsultaProducto(estado, validacionFinal, clasificacion);
     // Persist the catalog identity that was actually shown to the customer,
@@ -1908,6 +1960,14 @@ async function responderEventosEntrantes(eventos, { contextoPendiente = [] } = {
   for (const v of cotizacionesValidadas) {
     if (v?.nivel !== 'alta' || !v.coincidencia) continue;
     const c = v.coincidencia;
+    const solicitud = resultadosMultiples.find(r => r.validacion === v)?.solicitud || interpretacionIA.producto || {};
+    const cotizacion = v.seleccionPresentaciones
+      ? cotizarPresentaciones(c, v.seleccionPresentaciones, solicitud.cantidad || 1)
+      : c.presentaciones.filter(p => !v.presentacionSolicitada || normalizarPeso(p.peso) === normalizarPeso(v.presentacionSolicitada))
+        .map(p => ({ ...p, marca: c.marca, referencia: p.referencia || c.referenciaCatalogo || c.referencia,
+          cantidad: solicitud.cantidad || 1, duracion: c.duracion }));
+    recordarSeleccion(estado, { ...solicitud, marca: c.marca, referencia: c.referenciaCatalogo || c.referencia,
+      duracion: c.duracion, cotizacion, seleccionPresentaciones: v.seleccionPresentaciones });
     registrarProductosConsultados(estado, [{ marca: c.marca, referencia: c.referenciaCatalogo || c.referencia,
       presentaciones: v.seleccionPresentaciones?.grupos || c.presentaciones.filter(p => !v.presentacionSolicitada ||
         normalizarPeso(p.peso) === normalizarPeso(v.presentacionSolicitada)) }]);

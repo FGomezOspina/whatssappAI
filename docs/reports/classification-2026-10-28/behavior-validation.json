@@ -1,0 +1,16 @@
+{
+  "strict_filter_checks": 546,
+  "quote_checks": 3,
+  "metadata_survives_local_rest_rpc": true,
+  "unknown_or_aggregated_not_declared_multispecies": true,
+  "production_writes": 0,
+  "preexisting_limitations": [
+    {
+      "case": "PAÑOLETA por nombre para gato",
+      "direct_quote_returned": true,
+      "original_backup_quote_returned": true,
+      "meaning": "La ruta directa por nombre puede cotizar aunque no exista especie documentada. La clasificación no garantiza un bloqueo clínico/compatibilidad anatómica.",
+      "response": "Sí, esa presentación está disponible:\n- PAÑOLETA MASCOTAS ECO unidad: $13.000"
+    }
+  ]
+}

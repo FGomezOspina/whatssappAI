@@ -7,7 +7,7 @@
     "referencias": [
       {
         "nombre": "ACIFLUX SUSPENSION",
-        "especie": "otro",
+        "especie": "perro y gato",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -38,7 +38,7 @@
       },
       {
         "nombre": "ACIFLUX TAB",
-        "especie": "otro",
+        "especie": "perro y gato",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -170,7 +170,7 @@
       },
       {
         "nombre": "ADVANCE URINAY",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": null,
@@ -348,7 +348,7 @@
         "nombre": "AGILITY EN GATO",
         "especie": "gato",
         "categoria": "comida",
-        "subcategoria": "concentrado",
+        "subcategoria": "comida_humeda",
         "etapa": null,
         "descripcion": "AGILITY EN GATO",
         "imagen": "",
@@ -408,7 +408,7 @@
       },
       {
         "nombre": "AGILITY ESTERILIZADOS",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": null,
@@ -950,7 +950,7 @@
         "especie": "perro",
         "categoria": "comida",
         "subcategoria": "concentrado",
-        "etapa": null,
+        "etapa": "cachorro",
         "descripcion": "AGILITY PEQ CACH",
         "imagen": "",
         "requiere_confirmacion": false,
@@ -1057,7 +1057,7 @@
         "especie": "perro",
         "categoria": "comida",
         "subcategoria": "comida_humeda",
-        "etapa": null,
+        "etapa": "cachorro",
         "descripcion": "AGILITY POUCH CACH",
         "imagen": "",
         "requiere_confirmacion": false,
@@ -1197,6 +1197,15 @@
           "source": "Productos.pdf",
           "original_names": [
             "ALAPIEL 35GR"
+          ],
+          "especies": [
+            "bovino",
+            "equino",
+            "porcino",
+            "caprino",
+            "ovino",
+            "perro",
+            "gato"
           ]
         },
         "presentaciones": [
@@ -1295,7 +1304,7 @@
     "referencias": [
       {
         "nombre": "ALERNEX",
-        "especie": "otro",
+        "especie": "perro y gato",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -1334,7 +1343,7 @@
     "referencias": [
       {
         "nombre": "ALPISTE",
-        "especie": "aves",
+        "especie": "ave",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": null,
@@ -1412,9 +1421,9 @@
     "referencias": [
       {
         "nombre": "AMIGO CALCIO",
-        "especie": "otro",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "especie": "perro y gato",
+        "categoria": "suplemento",
+        "subcategoria": "suplemento",
         "etapa": null,
         "descripcion": "AMIGO CALCIO",
         "imagen": "",
@@ -1506,8 +1515,8 @@
       {
         "nombre": "AMIGO PUPPY",
         "especie": "perro",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "categoria": "suplemento",
+        "subcategoria": "suplemento",
         "etapa": "cachorro",
         "descripcion": "AMIGO PUPPY",
         "imagen": "",
@@ -1537,8 +1546,8 @@
       {
         "nombre": "AMIGO RENAL GATO",
         "especie": "gato",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "categoria": "suplemento",
+        "subcategoria": "suplemento",
         "etapa": null,
         "descripcion": "AMIGO RENAL GATO",
         "imagen": "",
@@ -1678,6 +1687,13 @@
           "source": "Productos.pdf",
           "original_names": [
             "ANKOFEN TAB"
+          ],
+          "especies": [
+            "bovino",
+            "perro",
+            "equino",
+            "porcino",
+            "gato"
           ]
         },
         "presentaciones": [
@@ -1706,7 +1722,7 @@
     "referencias": [
       {
         "nombre": "APETIL",
-        "especie": "otro",
+        "especie": "perro y gato",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -1745,7 +1761,7 @@
     "referencias": [
       {
         "nombre": "APOQUEL",
-        "especie": "otro",
+        "especie": "perro",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -1812,7 +1828,7 @@
     "referencias": [
       {
         "nombre": "AQUADENT",
-        "especie": "otro",
+        "especie": "perro y gato",
         "categoria": "higiene",
         "subcategoria": "aseo",
         "etapa": null,
@@ -2145,7 +2161,7 @@
     "referencias": [
       {
         "nombre": "ARENA FRESH STEP",
-        "especie": "otro",
+        "especie": "gato",
         "categoria": "arena_sustrato",
         "subcategoria": "arena",
         "etapa": null,
@@ -2293,7 +2309,7 @@
         "especie": "gato",
         "categoria": "arena_sustrato",
         "subcategoria": "arena",
-        "etapa": "cachorro",
+        "etapa": null,
         "descripcion": "ARENA KITTEN CAFE",
         "imagen": "",
         "requiere_confirmacion": false,
@@ -2346,7 +2362,7 @@
         "especie": "gato",
         "categoria": "arena_sustrato",
         "subcategoria": "arena",
-        "etapa": "cachorro",
+        "etapa": null,
         "descripcion": "ARENA KITTEN LAVANDA",
         "imagen": "",
         "requiere_confirmacion": false,
@@ -2399,7 +2415,7 @@
         "especie": "gato",
         "categoria": "arena_sustrato",
         "subcategoria": "arena",
-        "etapa": "cachorro",
+        "etapa": null,
         "descripcion": "ARENA KITTEN LIMON",
         "imagen": "",
         "requiere_confirmacion": false,
@@ -2452,7 +2468,7 @@
         "especie": "gato",
         "categoria": "arena_sustrato",
         "subcategoria": "arena",
-        "etapa": "cachorro",
+        "etapa": null,
         "descripcion": "ARENA KITTEN ORIGINAL",
         "imagen": "",
         "requiere_confirmacion": false,
@@ -2519,7 +2535,7 @@
         "especie": "gato",
         "categoria": "arena_sustrato",
         "subcategoria": "arena",
-        "etapa": "cachorro",
+        "etapa": null,
         "descripcion": "ARENA KITTEN TALCO",
         "imagen": "",
         "requiere_confirmacion": false,
@@ -3416,9 +3432,9 @@
     "referencias": [
       {
         "nombre": "ARTRIBALANCE",
-        "especie": "otro",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "especie": "perro y gato",
+        "categoria": "suplemento",
+        "subcategoria": "suplemento",
         "etapa": null,
         "descripcion": "ARTRIBALANCE",
         "imagen": "",
@@ -3564,9 +3580,9 @@
     "referencias": [
       {
         "nombre": "ATIVI",
-        "especie": "otro",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "especie": "perro y gato",
+        "categoria": "suplemento",
+        "subcategoria": "suplemento",
         "etapa": null,
         "descripcion": "ATIVI",
         "imagen": "",
@@ -3695,7 +3711,7 @@
     "referencias": [
       {
         "nombre": "B-FEX",
-        "especie": "otro",
+        "especie": "perro y gato",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -3785,6 +3801,13 @@
           "original_names": [
             "BAXIDIN X 60 ML",
             "BAXIDIN X120 ML"
+          ],
+          "especies": [
+            "perro",
+            "gato",
+            "bovino",
+            "equino",
+            "porcino"
           ]
         },
         "presentaciones": [
@@ -3879,9 +3902,9 @@
     "referencias": [
       {
         "nombre": "BAÑOL 20.8%",
-        "especie": "otro",
-        "categoria": "higiene",
-        "subcategoria": "aseo",
+        "especie": "bovino",
+        "categoria": "medicamento",
+        "subcategoria": "antipulgas",
         "etapa": null,
         "descripcion": "BAÑOL 20.8%",
         "imagen": "",
@@ -4314,9 +4337,9 @@
     "referencias": [
       {
         "nombre": "BIOCANIS JERINGA",
-        "especie": "otro",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "especie": "perro y gato",
+        "categoria": "suplemento",
+        "subcategoria": "suplemento",
         "etapa": null,
         "descripcion": "BIOCANIS JERINGA",
         "imagen": "",
@@ -4406,9 +4429,9 @@
     "referencias": [
       {
         "nombre": "BOLFO POLVO",
-        "especie": "otro",
-        "categoria": "higiene",
-        "subcategoria": "aseo",
+        "especie": "perro y gato",
+        "categoria": "medicamento",
+        "subcategoria": "antipulgas",
         "etapa": null,
         "descripcion": "BOLFO POLVO",
         "imagen": "",
@@ -4468,9 +4491,9 @@
       },
       {
         "nombre": "BOLFO SHAMPOO",
-        "especie": "otro",
-        "categoria": "higiene",
-        "subcategoria": "aseo",
+        "especie": "perro y gato",
+        "categoria": "medicamento",
+        "subcategoria": "antipulgas",
         "etapa": null,
         "descripcion": "BOLFO SHAMPOO",
         "imagen": "",
@@ -5274,7 +5297,7 @@
       },
       {
         "nombre": "BR SNACK EQUILIBRIO",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "snack",
         "subcategoria": "premio",
         "etapa": null,
@@ -5305,7 +5328,7 @@
       },
       {
         "nombre": "BR SNACK URINARY",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "snack",
         "subcategoria": "premio",
         "etapa": null,
@@ -5765,7 +5788,7 @@
         "nombre": "BR CAT PATE",
         "especie": "gato",
         "categoria": "comida",
-        "subcategoria": "concentrado",
+        "subcategoria": "comida_humeda",
         "etapa": null,
         "descripcion": "BR CAT PATE",
         "imagen": "",
@@ -5930,8 +5953,8 @@
       {
         "nombre": "BR CAT SOFTY WEIGTH",
         "especie": "gato",
-        "categoria": "comida",
-        "subcategoria": "concentrado",
+        "categoria": "snack",
+        "subcategoria": "premio",
         "etapa": null,
         "descripcion": "BR CAT SOFTY WEIGTH",
         "imagen": "",
@@ -6121,8 +6144,8 @@
       {
         "nombre": "BR DOG ADUL CORDERO",
         "especie": "perro",
-        "categoria": "accesorio",
-        "subcategoria": "accesorio",
+        "categoria": "comida",
+        "subcategoria": "concentrado",
         "etapa": "adulto",
         "descripcion": "BR DOG ADUL CORDERO",
         "imagen": "",
@@ -6184,7 +6207,7 @@
         "nombre": "BR DOG PATE",
         "especie": "perro",
         "categoria": "comida",
-        "subcategoria": "concentrado",
+        "subcategoria": "comida_humeda",
         "etapa": null,
         "descripcion": "BR DOG PATE",
         "imagen": "",
@@ -6385,7 +6408,7 @@
         "especie": "perro",
         "categoria": "comida",
         "subcategoria": "concentrado",
-        "etapa": null,
+        "etapa": "cachorro",
         "descripcion": "BR DOG PUPPY CORDERO",
         "imagen": "",
         "requiere_confirmacion": true,
@@ -6566,7 +6589,7 @@
     "referencias": [
       {
         "nombre": "BRILLO CLEAN EYES",
-        "especie": "otro",
+        "especie": "perro y gato",
         "categoria": "higiene",
         "subcategoria": "aseo",
         "etapa": null,
@@ -6605,7 +6628,7 @@
     "referencias": [
       {
         "nombre": "C-THYRO TABS",
-        "especie": "otro",
+        "especie": "perro",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -6700,7 +6723,7 @@
     "referencias": [
       {
         "nombre": "C-THYRO-TABS",
-        "especie": "otro",
+        "especie": "perro",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -6980,9 +7003,9 @@
     "referencias": [
       {
         "nombre": "CALMUROFEL CAP",
-        "especie": "otro",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "especie": "gato",
+        "categoria": "suplemento",
+        "subcategoria": "suplemento",
         "etapa": null,
         "descripcion": "CALMUROFEL CAP",
         "imagen": "",
@@ -7407,7 +7430,7 @@
       },
       {
         "nombre": "CAN AMOR BAÑO ESPUMOSO",
-        "especie": "gato",
+        "especie": "perro",
         "categoria": "higiene",
         "subcategoria": "aseo",
         "etapa": null,
@@ -7439,8 +7462,8 @@
       {
         "nombre": "CAN AMOR JABON ANTIPULGAS",
         "especie": "perro",
-        "categoria": "higiene",
-        "subcategoria": "aseo",
+        "categoria": "medicamento",
+        "subcategoria": "antipulgas",
         "etapa": null,
         "descripcion": "CAN AMOR JABON ANTIPULGAS",
         "imagen": "",
@@ -7531,9 +7554,9 @@
       },
       {
         "nombre": "CAN AMOR SHAMPOO ANTIPUL",
-        "especie": "otro",
-        "categoria": "higiene",
-        "subcategoria": "aseo",
+        "especie": "perro",
+        "categoria": "medicamento",
+        "subcategoria": "antipulgas",
         "etapa": null,
         "descripcion": "CAN AMOR SHAMPOO ANTIPUL",
         "imagen": "",
@@ -7562,9 +7585,9 @@
       },
       {
         "nombre": "CAN AMOR SHAMPOO ANTPUL",
-        "especie": "otro",
-        "categoria": "higiene",
-        "subcategoria": "aseo",
+        "especie": "perro",
+        "categoria": "medicamento",
+        "subcategoria": "antipulgas",
         "etapa": null,
         "descripcion": "CAN AMOR SHAMPOO ANTPUL",
         "imagen": "",
@@ -7624,7 +7647,7 @@
       },
       {
         "nombre": "CAN AMOR SHAMPOO PELO LARGO",
-        "especie": "otro",
+        "especie": "perro",
         "categoria": "higiene",
         "subcategoria": "aseo",
         "etapa": null,
@@ -7655,7 +7678,7 @@
       },
       {
         "nombre": "CAN AMOR SHAMPOO PELO OSCURO",
-        "especie": "otro",
+        "especie": "perro",
         "categoria": "higiene",
         "subcategoria": "aseo",
         "etapa": null,
@@ -7686,7 +7709,7 @@
       },
       {
         "nombre": "CAN AMOR SHAMPOO PIEL",
-        "especie": "otro",
+        "especie": "perro",
         "categoria": "higiene",
         "subcategoria": "aseo",
         "etapa": null,
@@ -7717,7 +7740,7 @@
       },
       {
         "nombre": "CAN AMOR SHAMPOO RINSE",
-        "especie": "otro",
+        "especie": "perro",
         "categoria": "higiene",
         "subcategoria": "aseo",
         "etapa": null,
@@ -7810,9 +7833,9 @@
       },
       {
         "nombre": "CAN AMOR TALCO INSECT",
-        "especie": "otro",
-        "categoria": "higiene",
-        "subcategoria": "aseo",
+        "especie": "perro",
+        "categoria": "medicamento",
+        "subcategoria": "antipulgas",
         "etapa": null,
         "descripcion": "CAN AMOR TALCO INSECT",
         "imagen": "",
@@ -7861,6 +7884,11 @@
           "original_names": [
             "CANATOX 20ML",
             "CANATOX 60ML"
+          ],
+          "especies": [
+            "perro",
+            "gato",
+            "ave"
           ]
         },
         "presentaciones": [
@@ -7902,9 +7930,9 @@
     "referencias": [
       {
         "nombre": "CANIPETS",
-        "especie": "otro",
+        "especie": "perro y gato",
         "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "subcategoria": "desparasitante",
         "etapa": null,
         "descripcion": "CANIPETS",
         "imagen": "",
@@ -8014,9 +8042,9 @@
     "referencias": [
       {
         "nombre": "CANISAN D",
-        "especie": "otro",
+        "especie": "perro y gato",
         "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "subcategoria": "desparasitante",
         "etapa": null,
         "descripcion": "CANISAN D",
         "imagen": "",
@@ -8073,9 +8101,9 @@
       },
       {
         "nombre": "CANISAN F",
-        "especie": "otro",
+        "especie": "perro y gato",
         "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "subcategoria": "desparasitante",
         "etapa": null,
         "descripcion": "CANISAN F",
         "imagen": "",
@@ -8177,9 +8205,9 @@
       },
       {
         "nombre": "CANISAN TABLETAS",
-        "especie": "otro",
+        "especie": "perro y gato",
         "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "subcategoria": "desparasitante",
         "etapa": null,
         "descripcion": "CANISAN TABLETAS",
         "imagen": "",
@@ -8216,9 +8244,9 @@
     "referencias": [
       {
         "nombre": "CANNEX",
-        "especie": "otro",
+        "especie": "perro",
         "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "subcategoria": "desparasitante",
         "etapa": null,
         "descripcion": "CANNE",
         "imagen": "",
@@ -8269,9 +8297,9 @@
     "referencias": [
       {
         "nombre": "CANPLUSVIT",
-        "especie": "otro",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "especie": "perro y gato",
+        "categoria": "suplemento",
+        "subcategoria": "suplemento",
         "etapa": null,
         "descripcion": "CANPLUSVIT",
         "imagen": "",
@@ -8378,7 +8406,7 @@
     "referencias": [
       {
         "nombre": "CARDIAL",
-        "especie": "otro",
+        "especie": "perro",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -8409,7 +8437,7 @@
       },
       {
         "nombre": "CARDIAL B/2.5",
-        "especie": "otro",
+        "especie": "perro",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -8440,7 +8468,7 @@
       },
       {
         "nombre": "CARDIAL B/5",
-        "especie": "otro",
+        "especie": "perro",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -8479,7 +8507,7 @@
     "referencias": [
       {
         "nombre": "CARDIO B",
-        "especie": "otro",
+        "especie": "perro y gato",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -8510,7 +8538,7 @@
       },
       {
         "nombre": "CARDIO B+E 10",
-        "especie": "otro",
+        "especie": "perro",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -8541,7 +8569,7 @@
       },
       {
         "nombre": "CARDIO B+E 5/40",
-        "especie": "otro",
+        "especie": "perro",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -9439,9 +9467,9 @@
     "referencias": [
       {
         "nombre": "CERULINE",
-        "especie": "otro",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "especie": "perro y gato",
+        "categoria": "higiene",
+        "subcategoria": "aseo",
         "etapa": null,
         "descripcion": "CERULINE",
         "imagen": "",
@@ -9543,7 +9571,7 @@
         "especie": "perro",
         "categoria": "comida",
         "subcategoria": "concentrado",
-        "etapa": "adulto",
+        "etapa": "senior",
         "descripcion": "CHUNKY ADUL MAYORES",
         "imagen": "",
         "requiere_confirmacion": false,
@@ -9765,7 +9793,7 @@
         "especie": "perro",
         "categoria": "comida",
         "subcategoria": "concentrado",
-        "etapa": "adulto",
+        "etapa": "senior",
         "descripcion": "CHUNKY ADULTOS MAYORES",
         "imagen": "",
         "requiere_confirmacion": false,
@@ -9796,7 +9824,7 @@
         "especie": "perro",
         "categoria": "comida",
         "subcategoria": "concentrado",
-        "etapa": null,
+        "etapa": "cachorro",
         "descripcion": "CHUNKY CACH RP",
         "imagen": "",
         "requiere_confirmacion": false,
@@ -10171,8 +10199,8 @@
       {
         "nombre": "CHUNKY DELICAPRICHOS PERRO",
         "especie": "perro",
-        "categoria": "comida",
-        "subcategoria": "concentrado",
+        "categoria": "snack",
+        "subcategoria": "premio",
         "etapa": null,
         "descripcion": "CHUNKY DELICAPRICHOS PERRO",
         "imagen": "",
@@ -10248,7 +10276,7 @@
         "nombre": "CHUNKY DELICAT",
         "especie": "gato",
         "categoria": "comida",
-        "subcategoria": "concentrado",
+        "subcategoria": "comida_humeda",
         "etapa": null,
         "descripcion": "CHUNKY DELICAT",
         "imagen": "",
@@ -10279,7 +10307,7 @@
         "nombre": "CHUNKY DELIDOG",
         "especie": "perro",
         "categoria": "comida",
-        "subcategoria": "concentrado",
+        "subcategoria": "comida_humeda",
         "etapa": null,
         "descripcion": "CHUNKY DELIDOG",
         "imagen": "",
@@ -10323,8 +10351,8 @@
       {
         "nombre": "CHUNKY DELIDOG BONE",
         "especie": "perro",
-        "categoria": "comida",
-        "subcategoria": "concentrado",
+        "categoria": "snack",
+        "subcategoria": "premio",
         "etapa": null,
         "descripcion": "CHUNKY DELIDOG BONE",
         "imagen": "",
@@ -10355,7 +10383,7 @@
         "nombre": "CHUNKY DELIDOG CARNE",
         "especie": "perro",
         "categoria": "comida",
-        "subcategoria": "concentrado",
+        "subcategoria": "comida_humeda",
         "etapa": null,
         "descripcion": "CHUNKY DELIDOG CARNE",
         "imagen": "",
@@ -10385,8 +10413,8 @@
       {
         "nombre": "CHUNKY DELIDOG DENT",
         "especie": "perro",
-        "categoria": "comida",
-        "subcategoria": "concentrado",
+        "categoria": "snack",
+        "subcategoria": "premio",
         "etapa": null,
         "descripcion": "CHUNKY DELIDOG DENT",
         "imagen": "",
@@ -10510,7 +10538,7 @@
         "nombre": "CHUNKY ESTOFADO RES",
         "especie": "perro",
         "categoria": "comida",
-        "subcategoria": "concentrado",
+        "subcategoria": "comida_humeda",
         "etapa": null,
         "descripcion": "CHUNKY ESTOFADO RES",
         "imagen": "",
@@ -10539,10 +10567,10 @@
       },
       {
         "nombre": "CHUNKY GATICOS POLLO",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
         "subcategoria": "concentrado",
-        "etapa": null,
+        "etapa": "cachorro",
         "descripcion": "CHUNKY GATICOS POLLO",
         "imagen": "",
         "requiere_confirmacion": false,
@@ -10752,7 +10780,7 @@
         "nombre": "CHUNKY MENU CAT NAT",
         "especie": "gato",
         "categoria": "comida",
-        "subcategoria": "concentrado",
+        "subcategoria": "comida_humeda",
         "etapa": null,
         "descripcion": "CHUNKY MENU CAT NAT",
         "imagen": "",
@@ -10864,8 +10892,8 @@
       {
         "nombre": "CHURU 20TUBES",
         "especie": "perro",
-        "categoria": "comida",
-        "subcategoria": "concentrado",
+        "categoria": "snack",
+        "subcategoria": "premio",
         "etapa": null,
         "descripcion": "CHURU 20TUBES",
         "imagen": "",
@@ -10895,8 +10923,8 @@
       {
         "nombre": "CHURU 40TUBES",
         "especie": "perro",
-        "categoria": "comida",
-        "subcategoria": "concentrado",
+        "categoria": "snack",
+        "subcategoria": "premio",
         "etapa": null,
         "descripcion": "CHURU 40TUBES",
         "imagen": "",
@@ -10926,8 +10954,8 @@
       {
         "nombre": "CHURU CAT 10 UND",
         "especie": "gato",
-        "categoria": "comida",
-        "subcategoria": "concentrado",
+        "categoria": "snack",
+        "subcategoria": "premio",
         "etapa": null,
         "descripcion": "CHURU CAT 10 UND",
         "imagen": "",
@@ -11019,8 +11047,8 @@
       {
         "nombre": "CHURU FUN BITES DOG",
         "especie": "perro",
-        "categoria": "comida",
-        "subcategoria": "concentrado",
+        "categoria": "snack",
+        "subcategoria": "premio",
         "etapa": null,
         "descripcion": "CHURU FUN BITES DOG",
         "imagen": "",
@@ -11050,8 +11078,8 @@
       {
         "nombre": "CHURU MEDICADO",
         "especie": "perro",
-        "categoria": "comida",
-        "subcategoria": "concentrado",
+        "categoria": "snack",
+        "subcategoria": "premio",
         "etapa": null,
         "descripcion": "CHURU MEDICADO",
         "imagen": "",
@@ -11081,8 +11109,8 @@
       {
         "nombre": "CHURU ROOLL CAT SAP",
         "especie": "gato",
-        "categoria": "comida",
-        "subcategoria": "concentrado",
+        "categoria": "snack",
+        "subcategoria": "premio",
         "etapa": null,
         "descripcion": "CHURU ROOLL CAT SAP",
         "imagen": "",
@@ -11150,7 +11178,7 @@
     "referencias": [
       {
         "nombre": "CHURUS SKIN",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "snack",
         "subcategoria": "premio",
         "etapa": null,
@@ -11376,7 +11404,7 @@
     "referencias": [
       {
         "nombre": "CIPROVET",
-        "especie": "otro",
+        "especie": "perro y gato",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -11415,9 +11443,9 @@
     "referencias": [
       {
         "nombre": "CLORDENT",
-        "especie": "otro",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "especie": "perro y gato",
+        "categoria": "higiene",
+        "subcategoria": "aseo",
         "etapa": null,
         "descripcion": "CLORDENT",
         "imagen": "",
@@ -11465,6 +11493,11 @@
           "source": "Productos.pdf",
           "original_names": [
             "CLORHEXIN SPRAY 120ML"
+          ],
+          "especies": [
+            "perro",
+            "gato",
+            "equino"
           ]
         },
         "presentaciones": [
@@ -11836,7 +11869,7 @@
       },
       {
         "nombre": "COLLAR PEZ L",
-        "especie": "pez",
+        "especie": "otro",
         "categoria": "accesorio",
         "subcategoria": "accesorio",
         "etapa": null,
@@ -12380,8 +12413,8 @@
       {
         "nombre": "COMEDERO Y BEBEDERO PORTABLE L",
         "especie": "otro",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "categoria": "accesorio",
+        "subcategoria": "accesorio",
         "etapa": null,
         "descripcion": "COMEDERO Y BEBEDERO PORTABLE L",
         "imagen": "",
@@ -12410,7 +12443,7 @@
       },
       {
         "nombre": "COMEDERO ANTIREFLUJO HUESO PQÑ PERRO",
-        "especie": "otro",
+        "especie": "perro",
         "categoria": "accesorio",
         "subcategoria": "accesorio",
         "etapa": null,
@@ -12450,8 +12483,8 @@
       {
         "nombre": "COMPLELAND B12 O",
         "especie": "otro",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "categoria": "suplemento",
+        "subcategoria": "suplemento",
         "etapa": null,
         "descripcion": "COMPLELAND B12 O",
         "imagen": "",
@@ -12460,6 +12493,13 @@
           "source": "Productos.pdf",
           "original_names": [
             "COMPLELAND B12 O100ML"
+          ],
+          "especies": [
+            "bovino",
+            "perro",
+            "equino",
+            "gato",
+            "ave"
           ]
         },
         "presentaciones": [
@@ -12488,9 +12528,9 @@
     "referencias": [
       {
         "nombre": "CONDROMAX PET",
-        "especie": "otro",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "especie": "perro y gato",
+        "categoria": "suplemento",
+        "subcategoria": "suplemento",
         "etapa": null,
         "descripcion": "CONDROMAX PET",
         "imagen": "",
@@ -12528,8 +12568,8 @@
       {
         "nombre": "CONSULTA VETERINARIA",
         "especie": "otro",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "categoria": "otro",
+        "subcategoria": null,
         "etapa": null,
         "descripcion": "CONSULTA VETERINARIA",
         "imagen": "",
@@ -12785,8 +12825,8 @@
       {
         "nombre": "CORTA UÑAS L",
         "especie": "otro",
-        "categoria": "accesorio",
-        "subcategoria": "accesorio",
+        "categoria": "higiene",
+        "subcategoria": "aseo",
         "etapa": null,
         "descripcion": "CORTA UÑAS L",
         "imagen": "",
@@ -12824,8 +12864,8 @@
       {
         "nombre": "CORTAUÑAS TIJERA",
         "especie": "otro",
-        "categoria": "accesorio",
-        "subcategoria": "accesorio",
+        "categoria": "higiene",
+        "subcategoria": "aseo",
         "etapa": null,
         "descripcion": "CORTAUÑAS TIJERA",
         "imagen": "",
@@ -12862,7 +12902,7 @@
     "referencias": [
       {
         "nombre": "CORTAVANCE",
-        "especie": "otro",
+        "especie": "perro",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -12986,8 +13026,8 @@
       {
         "nombre": "CREDELIO",
         "especie": "gato",
-        "categoria": "accesorio",
-        "subcategoria": "accesorio",
+        "categoria": "medicamento",
+        "subcategoria": "antipulgas",
         "etapa": null,
         "descripcion": "CREDELIO",
         "imagen": "",
@@ -13594,6 +13634,11 @@
           "original_names": [
             "DENTY-FARM 30GR",
             "DENTY-FARM 80GR"
+          ],
+          "especies": [
+            "perro",
+            "gato",
+            "equino"
           ]
         },
         "presentaciones": [
@@ -13685,6 +13730,11 @@
           "source": "Productos.pdf",
           "original_names": [
             "DERMACURE EMULSION 50GR"
+          ],
+          "especies": [
+            "perro",
+            "gato",
+            "equino"
           ]
         },
         "presentaciones": [
@@ -13764,6 +13814,13 @@
           "original_names": [
             "DERMOSYN 100ML",
             "DERMOSYN 50ML"
+          ],
+          "especies": [
+            "perro",
+            "gato",
+            "equino",
+            "porcino",
+            "bovino"
           ]
         },
         "presentaciones": [
@@ -13805,7 +13862,7 @@
     "referencias": [
       {
         "nombre": "DESCENSOR",
-        "especie": "otro",
+        "especie": "perro y gato",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -14395,7 +14452,7 @@
         "especie": "perro",
         "categoria": "comida",
         "subcategoria": "comida_humeda",
-        "etapa": null,
+        "etapa": "cachorro",
         "descripcion": "DOG CHOW POUCHE CACH",
         "imagen": "",
         "requiere_confirmacion": false,
@@ -14486,8 +14543,8 @@
       {
         "nombre": "DOG CHOW A RMG",
         "especie": "perro",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "categoria": "comida",
+        "subcategoria": "concentrado",
         "etapa": null,
         "descripcion": "DOG CHOW A RMG",
         "imagen": "",
@@ -14545,8 +14602,8 @@
       {
         "nombre": "DOG CHOW ADUL RMG PAG 19.7 LLEV",
         "especie": "perro",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "categoria": "comida",
+        "subcategoria": "concentrado",
         "etapa": "adulto",
         "descripcion": "DOG CHOW ADUL RMG PAG 19.7 LLEV",
         "imagen": "",
@@ -14574,18 +14631,18 @@
         ]
       },
       {
-        "nombre": "DOG CHOW ADULRMG",
+        "nombre": "DOG CHOW ADUL RMG",
         "especie": "perro",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
-        "etapa": null,
-        "descripcion": "DOG CHOW ADULRMG",
+        "categoria": "comida",
+        "subcategoria": "concentrado",
+        "etapa": "adulto",
+        "descripcion": "DOG CHOW ADUL RMG",
         "imagen": "",
         "requiere_confirmacion": true,
         "metadata": {
           "source": "Productos.pdf",
           "original_names": [
-            "DOG CHOW ADULRMG 22.7KG"
+            "DOG CHOW ADUL RMG 22.7KG"
           ]
         },
         "presentaciones": [
@@ -14607,8 +14664,8 @@
       {
         "nombre": "DOG CHOW C RMG",
         "especie": "perro",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "categoria": "comida",
+        "subcategoria": "concentrado",
         "etapa": null,
         "descripcion": "DOG CHOW C RMG",
         "imagen": "",
@@ -14650,12 +14707,12 @@
         ]
       },
       {
-        "nombre": "DOG CHOW C RMG *",
+        "nombre": "DOG CHOW C RMG",
         "especie": "perro",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "categoria": "comida",
+        "subcategoria": "concentrado",
         "etapa": null,
-        "descripcion": "DOG CHOW C RMG *",
+        "descripcion": "DOG CHOW C RMG",
         "imagen": "",
         "requiere_confirmacion": true,
         "metadata": {
@@ -14681,12 +14738,12 @@
         ]
       },
       {
-        "nombre": "DOG CHOW C RMG *475",
+        "nombre": "DOG CHOW C RMG",
         "especie": "perro",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "categoria": "comida",
+        "subcategoria": "concentrado",
         "etapa": null,
-        "descripcion": "DOG CHOW C RMG *475",
+        "descripcion": "DOG CHOW C RMG",
         "imagen": "",
         "requiere_confirmacion": true,
         "metadata": {
@@ -14714,18 +14771,18 @@
     ]
   },
   {
-    "marca": "DOGG",
+    "marca": "DOGG MAX",
     "metadata": {
       "source": "Productos.pdf"
     },
     "referencias": [
       {
-        "nombre": "DOGG MA",
+        "nombre": "DOGG MAX",
         "especie": "perro",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
-        "descripcion": "DOGG MA",
+        "descripcion": "DOGG MAX",
         "imagen": "",
         "requiere_confirmacion": true,
         "metadata": {
@@ -14808,7 +14865,7 @@
         "especie": "perro",
         "categoria": "comida",
         "subcategoria": "concentrado",
-        "etapa": null,
+        "etapa": "cachorro",
         "descripcion": "DOGOURMET CACHO",
         "imagen": "",
         "requiere_confirmacion": false,
@@ -14867,7 +14924,7 @@
         "especie": "perro",
         "categoria": "comida",
         "subcategoria": "concentrado",
-        "etapa": null,
+        "etapa": "cachorro",
         "descripcion": "DOGOURMET CACHO TRIC",
         "imagen": "",
         "requiere_confirmacion": false,
@@ -15223,7 +15280,7 @@
     "referencias": [
       {
         "nombre": "DONKAT ADULTOS",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": "adulto",
@@ -15254,7 +15311,7 @@
       },
       {
         "nombre": "DONKAT CREMOSO",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": null,
@@ -15285,7 +15342,7 @@
       },
       {
         "nombre": "DONKAT CREMOSO X UND",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": null,
@@ -15481,7 +15538,7 @@
     "referencias": [
       {
         "nombre": "DOXIFIG SUSP",
-        "especie": "otro",
+        "especie": "perro y gato",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -15520,9 +15577,9 @@
     "referencias": [
       {
         "nombre": "DRONTAL PS",
-        "especie": "otro",
+        "especie": "perro",
         "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "subcategoria": "desparasitante",
         "etapa": null,
         "descripcion": "DRONTAL PS",
         "imagen": "",
@@ -15573,7 +15630,7 @@
     "referencias": [
       {
         "nombre": "EASOTIC",
-        "especie": "otro",
+        "especie": "perro",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -15653,7 +15710,7 @@
         "nombre": "ENDOGAR 2.5 X UND",
         "especie": "perro",
         "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "subcategoria": "desparasitante",
         "etapa": null,
         "descripcion": "ENDOGAR 2.5 X UND",
         "imagen": "",
@@ -15692,7 +15749,7 @@
         "nombre": "ENDOGARD 10 X UND",
         "especie": "perro",
         "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "subcategoria": "desparasitante",
         "etapa": null,
         "descripcion": "ENDOGARD 10 X UND",
         "imagen": "",
@@ -15723,7 +15780,7 @@
         "nombre": "ENDOGARD 30 X UND",
         "especie": "perro",
         "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "subcategoria": "desparasitante",
         "etapa": null,
         "descripcion": "ENDOGARD 30 X UND",
         "imagen": "",
@@ -15799,9 +15856,9 @@
     "referencias": [
       {
         "nombre": "ENTERO CHORONIC",
-        "especie": "otro",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "especie": "perro y gato",
+        "categoria": "suplemento",
+        "subcategoria": "suplemento",
         "etapa": null,
         "descripcion": "ENTERO CHORONIC",
         "imagen": "",
@@ -15877,9 +15934,9 @@
     "referencias": [
       {
         "nombre": "EPIOTIC",
-        "especie": "otro",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "especie": "perro y gato",
+        "categoria": "higiene",
+        "subcategoria": "aseo",
         "etapa": null,
         "descripcion": "EPIOTIC",
         "imagen": "",
@@ -16116,9 +16173,9 @@
       },
       {
         "nombre": "EQUILIBRIO ADUL RPEQ LIGHT",
-        "especie": "otro",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "especie": "perro",
+        "categoria": "comida",
+        "subcategoria": "concentrado",
         "etapa": "adulto",
         "descripcion": "EQUILIBRIO ADUL RPEQ LIGHT",
         "imagen": "",
@@ -16306,7 +16363,7 @@
     "referencias": [
       {
         "nombre": "ESPUMA BUCAL IBASA",
-        "especie": "otro",
+        "especie": "perro y gato",
         "categoria": "higiene",
         "subcategoria": "aseo",
         "etapa": null,
@@ -16376,7 +16433,7 @@
       },
       {
         "nombre": "EXCELLENT ESTERILIZED",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": null,
@@ -16590,9 +16647,9 @@
       },
       {
         "nombre": "EXCELLENT ADULT RMG",
-        "especie": "otro",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "especie": "perro",
+        "categoria": "comida",
+        "subcategoria": "concentrado",
         "etapa": "adulto",
         "descripcion": "EXCELLENT ADULT RMG",
         "imagen": "",
@@ -17057,8 +17114,8 @@
       {
         "nombre": "FAJA M(DE",
         "especie": "otro",
-        "categoria": "higiene",
-        "subcategoria": "aseo",
+        "categoria": "accesorio",
+        "subcategoria": "accesorio",
         "etapa": null,
         "descripcion": "FAJA M(DE",
         "imagen": "",
@@ -17136,7 +17193,7 @@
         "nombre": "FANCY FEAST",
         "especie": "gato",
         "categoria": "comida",
-        "subcategoria": "concentrado",
+        "subcategoria": "comida_humeda",
         "etapa": null,
         "descripcion": "FANCY FEAST",
         "imagen": "",
@@ -17226,9 +17283,9 @@
     "referencias": [
       {
         "nombre": "FELINNEX PASTA",
-        "especie": "otro",
+        "especie": "gato",
         "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "subcategoria": "desparasitante",
         "etapa": null,
         "descripcion": "FELINNEX PASTA",
         "imagen": "",
@@ -17265,7 +17322,7 @@
     "referencias": [
       {
         "nombre": "FELIWAY",
-        "especie": "otro",
+        "especie": "gato",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -17296,9 +17353,9 @@
       },
       {
         "nombre": "FELIWAY SPRAY",
-        "especie": "otro",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "especie": "gato",
+        "categoria": "otro",
+        "subcategoria": null,
         "etapa": null,
         "descripcion": "FELIWAY SPRAY",
         "imagen": "",
@@ -17335,9 +17392,9 @@
     "referencias": [
       {
         "nombre": "FELIX MEGAMIX",
-        "especie": "otro",
-        "categoria": "accesorio",
-        "subcategoria": "accesorio",
+        "especie": "gato",
+        "categoria": "comida",
+        "subcategoria": "concentrado",
         "etapa": null,
         "descripcion": "FELIX MEGAMIX",
         "imagen": "",
@@ -17366,7 +17423,7 @@
       },
       {
         "nombre": "FELIX 3 PROTEINAS",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": null,
@@ -17432,9 +17489,9 @@
       },
       {
         "nombre": "FELIX FILETE PESC ATUN",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
-        "subcategoria": "concentrado",
+        "subcategoria": "comida_humeda",
         "etapa": null,
         "descripcion": "FELIX FILETE PESC ATUN",
         "imagen": "",
@@ -17463,7 +17520,7 @@
       },
       {
         "nombre": "FELIX MIX 7 PROTEINAS",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": null,
@@ -17529,9 +17586,9 @@
       },
       {
         "nombre": "FELIX PATE PAVO MENU",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
-        "subcategoria": "concentrado",
+        "subcategoria": "comida_humeda",
         "etapa": null,
         "descripcion": "FELIX PATE PAVO MENU",
         "imagen": "",
@@ -17560,9 +17617,9 @@
       },
       {
         "nombre": "FELIX PATE PESC ATUN",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
-        "subcategoria": "concentrado",
+        "subcategoria": "comida_humeda",
         "etapa": null,
         "descripcion": "FELIX PATE PESC ATUN",
         "imagen": "",
@@ -17591,9 +17648,9 @@
       },
       {
         "nombre": "FELIX PATE SALMON",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
-        "subcategoria": "concentrado",
+        "subcategoria": "comida_humeda",
         "etapa": null,
         "descripcion": "FELIX PATE SALMON",
         "imagen": "",
@@ -17657,7 +17714,7 @@
       },
       {
         "nombre": "FELIX TRIPLE",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": null,
@@ -17977,8 +18034,8 @@
       {
         "nombre": "FINCU GEL",
         "especie": "otro",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "categoria": "otro",
+        "subcategoria": null,
         "etapa": null,
         "descripcion": "FINCU GEL",
         "imagen": "",
@@ -18016,8 +18073,8 @@
       {
         "nombre": "FINCUC TARR0",
         "especie": "otro",
-        "categoria": "accesorio",
-        "subcategoria": "accesorio",
+        "categoria": "otro",
+        "subcategoria": null,
         "etapa": null,
         "descripcion": "FINCUC TARR0",
         "imagen": "",
@@ -18046,9 +18103,9 @@
       },
       {
         "nombre": "FINCUC GEL EN JERINGA",
-        "especie": "perro",
-        "categoria": "comida",
-        "subcategoria": "concentrado",
+        "especie": "otro",
+        "categoria": "otro",
+        "subcategoria": null,
         "etapa": null,
         "descripcion": "FINCUC GEL EN JERINGA",
         "imagen": "",
@@ -18078,8 +18135,8 @@
       {
         "nombre": "FINCUC SPRAY",
         "especie": "otro",
-        "categoria": "higiene",
-        "subcategoria": "aseo",
+        "categoria": "otro",
+        "subcategoria": null,
         "etapa": null,
         "descripcion": "FINCUC SPRAY",
         "imagen": "",
@@ -18288,8 +18345,8 @@
       {
         "nombre": "FLETES",
         "especie": "otro",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "categoria": "otro",
+        "subcategoria": null,
         "etapa": null,
         "descripcion": "FLETES",
         "imagen": "",
@@ -18366,8 +18423,8 @@
       {
         "nombre": "FORTIFLOR FELINE",
         "especie": "gato",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "categoria": "suplemento",
+        "subcategoria": "suplemento",
         "etapa": null,
         "descripcion": "FORTIFLOR FELINE",
         "imagen": "",
@@ -18405,8 +18462,8 @@
       {
         "nombre": "FORTIFLORA CANINE",
         "especie": "perro",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "categoria": "suplemento",
+        "subcategoria": "suplemento",
         "etapa": null,
         "descripcion": "FORTIFLORA CANINE",
         "imagen": "",
@@ -18687,9 +18744,9 @@
     "referencias": [
       {
         "nombre": "GALGOCAL 200",
-        "especie": "otro",
+        "especie": "perro y gato",
         "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "subcategoria": "desparasitante",
         "etapa": null,
         "descripcion": "GALGOCAL 200",
         "imagen": "",
@@ -18718,9 +18775,9 @@
       },
       {
         "nombre": "GALGOCAL 600",
-        "especie": "otro",
+        "especie": "perro y gato",
         "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "subcategoria": "desparasitante",
         "etapa": null,
         "descripcion": "GALGOCAL 600",
         "imagen": "",
@@ -19018,7 +19075,7 @@
     "referencias": [
       {
         "nombre": "GALLIPRANT",
-        "especie": "otro",
+        "especie": "perro",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -19071,7 +19128,7 @@
     "referencias": [
       {
         "nombre": "GATSY A GRANEL",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": null,
@@ -19102,7 +19159,7 @@
       },
       {
         "nombre": "GATSY CARNE",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": null,
@@ -19133,7 +19190,7 @@
       },
       {
         "nombre": "GATSY CARNE X 17 PAG",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": null,
@@ -19164,7 +19221,7 @@
       },
       {
         "nombre": "GATSY PESCADO",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": null,
@@ -19209,7 +19266,7 @@
       },
       {
         "nombre": "GATSY PESCADO PAG 15 LLLE",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": null,
@@ -19249,8 +19306,8 @@
       {
         "nombre": "GEL DIENTES GATO 2ONZ",
         "especie": "gato",
-        "categoria": "comida",
-        "subcategoria": "concentrado",
+        "categoria": "higiene",
+        "subcategoria": "aseo",
         "etapa": null,
         "descripcion": "GEL DIENTES GATO 2ONZ",
         "imagen": "",
@@ -19320,7 +19377,7 @@
         "nombre": "GEMON DOG ADUL",
         "especie": "perro",
         "categoria": "comida",
-        "subcategoria": "concentrado",
+        "subcategoria": "comida_humeda",
         "etapa": "adulto",
         "descripcion": "GEMON DOG ADUL",
         "imagen": "",
@@ -19357,7 +19414,7 @@
     "referencias": [
       {
         "nombre": "GENTAX OTICO",
-        "especie": "otro",
+        "especie": "perro",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -19435,7 +19492,7 @@
     "referencias": [
       {
         "nombre": "GIMNACIO 2 RASCADORES",
-        "especie": "otro",
+        "especie": "gato",
         "categoria": "juguete",
         "subcategoria": "juguete",
         "etapa": null,
@@ -19474,9 +19531,9 @@
     "referencias": [
       {
         "nombre": "GIMNACIOS PEQUEÑOS ESPALDAR",
-        "especie": "otro",
-        "categoria": "accesorio",
-        "subcategoria": "accesorio",
+        "especie": "gato",
+        "categoria": "juguete",
+        "subcategoria": "juguete",
         "etapa": null,
         "descripcion": "GIMNACIOS PEQUEÑOS ESPALDAR",
         "imagen": "",
@@ -19513,9 +19570,9 @@
     "referencias": [
       {
         "nombre": "GIMNASIO PEQ TUNEL",
-        "especie": "otro",
-        "categoria": "accesorio",
-        "subcategoria": "accesorio",
+        "especie": "gato",
+        "categoria": "juguete",
+        "subcategoria": "juguete",
         "etapa": null,
         "descripcion": "GIMNASIO PEQ TUNEL",
         "imagen": "",
@@ -19544,9 +19601,9 @@
       },
       {
         "nombre": "GIMNASIO FELPA 3 NIVELES",
-        "especie": "perro",
-        "categoria": "comida",
-        "subcategoria": "concentrado",
+        "especie": "gato",
+        "categoria": "juguete",
+        "subcategoria": "juguete",
         "etapa": null,
         "descripcion": "GIMNASIO FELPA 3 NIVELES",
         "imagen": "",
@@ -19575,9 +19632,9 @@
       },
       {
         "nombre": "GIMNASIO KITTY CLIMB-UP",
-        "especie": "perro",
-        "categoria": "comida",
-        "subcategoria": "concentrado",
+        "especie": "gato",
+        "categoria": "juguete",
+        "subcategoria": "juguete",
         "etapa": null,
         "descripcion": "GIMNASIO KITTY CLIMB-UP",
         "imagen": "",
@@ -19682,8 +19739,8 @@
       {
         "nombre": "GLICOPAN PET",
         "especie": "otro",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "categoria": "suplemento",
+        "subcategoria": "suplemento",
         "etapa": null,
         "descripcion": "GLICOPAN PET",
         "imagen": "",
@@ -19721,8 +19778,8 @@
       {
         "nombre": "GOLOSINAS",
         "especie": "perro",
-        "categoria": "comida",
-        "subcategoria": "concentrado",
+        "categoria": "snack",
+        "subcategoria": "premio",
         "etapa": null,
         "descripcion": "GOLOSINAS",
         "imagen": "",
@@ -19780,8 +19837,8 @@
       {
         "nombre": "GOLOSINAS 1500",
         "especie": "perro",
-        "categoria": "comida",
-        "subcategoria": "concentrado",
+        "categoria": "snack",
+        "subcategoria": "premio",
         "etapa": null,
         "descripcion": "GOLOSINAS 1500",
         "imagen": "",
@@ -19903,8 +19960,8 @@
       {
         "nombre": "GUANTE PARA CEPILLAR Y MASAJE",
         "especie": "otro",
-        "categoria": "accesorio",
-        "subcategoria": "accesorio",
+        "categoria": "higiene",
+        "subcategoria": "aseo",
         "etapa": null,
         "descripcion": "GUANTE PARA CEPILLAR Y MASAJE",
         "imagen": "",
@@ -20022,6 +20079,14 @@
           "source": "Productos.pdf",
           "original_names": [
             "GUSANTROL CREMA X 60 GR"
+          ],
+          "especies": [
+            "bovino",
+            "perro",
+            "equino",
+            "caprino",
+            "ovino",
+            "porcino"
           ]
         },
         "presentaciones": [
@@ -20292,8 +20357,8 @@
       {
         "nombre": "HEMOLITAN PET",
         "especie": "otro",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "categoria": "suplemento",
+        "subcategoria": "suplemento",
         "etapa": null,
         "descripcion": "HEMOLITAN PET",
         "imagen": "",
@@ -20355,6 +20420,11 @@
           "source": "Productos.pdf",
           "original_names": [
             "HIALURINA GOTAS ML"
+          ],
+          "especies": [
+            "perro",
+            "gato",
+            "equino"
           ]
         },
         "presentaciones": [
@@ -20448,7 +20518,7 @@
         "especie": "perro",
         "categoria": "comida",
         "subcategoria": "concentrado",
-        "etapa": "adulto",
+        "etapa": "senior",
         "descripcion": "HILLS ADULT SMALL PAWS +7",
         "imagen": "",
         "requiere_confirmacion": false,
@@ -20645,7 +20715,7 @@
       },
       {
         "nombre": "HILLS CAN Y FEL LATA A/D",
-        "especie": "perro",
+        "especie": "perro y gato",
         "categoria": "comida",
         "subcategoria": "comida_humeda",
         "etapa": null,
@@ -20676,7 +20746,7 @@
       },
       {
         "nombre": "HILLS FEL ADULT HAIRBALL",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": "adulto",
@@ -20707,7 +20777,7 @@
       },
       {
         "nombre": "HILLS FEL C/D",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": null,
@@ -20738,7 +20808,7 @@
       },
       {
         "nombre": "HILLS FEL I/D",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": null,
@@ -20769,7 +20839,7 @@
       },
       {
         "nombre": "HILLS FEL LATA C/D",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
         "subcategoria": "comida_humeda",
         "etapa": null,
@@ -20800,7 +20870,7 @@
       },
       {
         "nombre": "HILLS FEL LATA I/D",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
         "subcategoria": "comida_humeda",
         "etapa": null,
@@ -20831,7 +20901,7 @@
       },
       {
         "nombre": "HILLS FEL LATA K/D",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
         "subcategoria": "comida_humeda",
         "etapa": null,
@@ -20893,10 +20963,10 @@
       },
       {
         "nombre": "HILLS HAIRBALL CONTROL ADULT 7+",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
         "subcategoria": "concentrado",
-        "etapa": "adulto",
+        "etapa": "senior",
         "descripcion": "HILLS HAIRBALL CONTROL ADULT 7+",
         "imagen": "",
         "requiere_confirmacion": false,
@@ -20925,8 +20995,8 @@
       {
         "nombre": "HILLS ADULT DOG METABOLIC",
         "especie": "perro",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "categoria": "comida",
+        "subcategoria": "concentrado",
         "etapa": "adulto",
         "descripcion": "HILLS ADULT DOG METABOLIC",
         "imagen": "",
@@ -20956,8 +21026,8 @@
       {
         "nombre": "HILLS METABOLIC CAT",
         "especie": "gato",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "categoria": "comida",
+        "subcategoria": "concentrado",
         "etapa": null,
         "descripcion": "HILLS METABOLIC CAT",
         "imagen": "",
@@ -21242,9 +21312,9 @@
       },
       {
         "nombre": "HUACAL BRISTOL S",
-        "especie": "perro",
-        "categoria": "comida",
-        "subcategoria": "concentrado",
+        "especie": "otro",
+        "categoria": "accesorio",
+        "subcategoria": "accesorio",
         "etapa": null,
         "descripcion": "HUACAL BRISTOL S",
         "imagen": "",
@@ -21273,9 +21343,9 @@
       },
       {
         "nombre": "HUACAL BRISTOL XL",
-        "especie": "perro",
-        "categoria": "comida",
-        "subcategoria": "concentrado",
+        "especie": "otro",
+        "categoria": "accesorio",
+        "subcategoria": "accesorio",
         "etapa": null,
         "descripcion": "HUACAL BRISTOL XL",
         "imagen": "",
@@ -21304,9 +21374,9 @@
       },
       {
         "nombre": "HUACAL MASCOTAS",
-        "especie": "perro",
-        "categoria": "comida",
-        "subcategoria": "concentrado",
+        "especie": "otro",
+        "categoria": "accesorio",
+        "subcategoria": "accesorio",
         "etapa": null,
         "descripcion": "HUACAL MASCOTAS",
         "imagen": "",
@@ -21335,9 +21405,9 @@
       },
       {
         "nombre": "HUACAL MEDELLIN PEQUEÑO",
-        "especie": "perro",
-        "categoria": "comida",
-        "subcategoria": "concentrado",
+        "especie": "otro",
+        "categoria": "accesorio",
+        "subcategoria": "accesorio",
         "etapa": null,
         "descripcion": "HUACAL MEDELLIN PEQUEÑO",
         "imagen": "",
@@ -21684,8 +21754,8 @@
       {
         "nombre": "ITRACONAZOL",
         "especie": "otro",
-        "categoria": "accesorio",
-        "subcategoria": "accesorio",
+        "categoria": "medicamento",
+        "subcategoria": "medicamento",
         "etapa": null,
         "descripcion": "ITRACONAZOL",
         "imagen": "",
@@ -21803,6 +21873,11 @@
           "source": "Productos.pdf",
           "original_names": [
             "JABON CLORHEXIN"
+          ],
+          "especies": [
+            "perro",
+            "gato",
+            "equino"
           ]
         },
         "presentaciones": [
@@ -21992,8 +22067,8 @@
       {
         "nombre": "JERINGA",
         "especie": "otro",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "categoria": "accesorio",
+        "subcategoria": "accesorio",
         "etapa": null,
         "descripcion": "JERINGA",
         "imagen": "",
@@ -22434,8 +22509,8 @@
       {
         "nombre": "JUGUETE HUESO CHILLON",
         "especie": "perro",
-        "categoria": "snack",
-        "subcategoria": "premio",
+        "categoria": "juguete",
+        "subcategoria": "juguete",
         "etapa": null,
         "descripcion": "JUGUETE HUESO CHILLON",
         "imagen": "",
@@ -22581,9 +22656,9 @@
     "referencias": [
       {
         "nombre": "KILTIX GRAN 66CM",
-        "especie": "otro",
+        "especie": "perro",
         "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "subcategoria": "antipulgas",
         "etapa": null,
         "descripcion": "KILTIX GRAN 66CM",
         "imagen": "",
@@ -22729,9 +22804,9 @@
     "referencias": [
       {
         "nombre": "KLERAT SOBRE",
-        "especie": "perro",
-        "categoria": "comida",
-        "subcategoria": "comida_humeda",
+        "especie": "otro",
+        "categoria": "otro",
+        "subcategoria": null,
         "etapa": null,
         "descripcion": "KLERAT SOBRE",
         "imagen": "",
@@ -23439,9 +23514,9 @@
     "referencias": [
       {
         "nombre": "LIMP HIDRAT 100NL",
-        "especie": "otro",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "especie": "perro y gato",
+        "categoria": "higiene",
+        "subcategoria": "aseo",
         "etapa": null,
         "descripcion": "LIMP HIDRAT 100NL",
         "imagen": "",
@@ -23478,7 +23553,7 @@
     "referencias": [
       {
         "nombre": "LINTODENT GEL DENTAL",
-        "especie": "otro",
+        "especie": "perro y gato",
         "categoria": "higiene",
         "subcategoria": "aseo",
         "etapa": null,
@@ -23510,8 +23585,8 @@
       {
         "nombre": "LINTODENT ENJUAGUE BUCAL",
         "especie": "otro",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "categoria": "higiene",
+        "subcategoria": "aseo",
         "etapa": null,
         "descripcion": "LINTODENT ENJUAGUE BUCAL",
         "imagen": "",
@@ -23812,7 +23887,7 @@
       },
       {
         "nombre": "LUCKY URINARY",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": null,
@@ -23971,7 +24046,7 @@
     "referencias": [
       {
         "nombre": "MARBOQUIN",
-        "especie": "otro",
+        "especie": "perro y gato",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -24103,7 +24178,7 @@
         "especie": "perro",
         "categoria": "comida",
         "subcategoria": "concentrado",
-        "etapa": null,
+        "etapa": "senior",
         "descripcion": "MAX MATURE +7",
         "imagen": "",
         "requiere_confirmacion": false,
@@ -24523,7 +24598,7 @@
     "referencias": [
       {
         "nombre": "MELOXIPET",
-        "especie": "otro",
+        "especie": "perro y gato",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -24601,7 +24676,7 @@
     "referencias": [
       {
         "nombre": "METRONID",
-        "especie": "otro",
+        "especie": "perro y gato",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -24685,9 +24760,9 @@
       },
       {
         "nombre": "MICHIKO NATURAL CREAMY",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
-        "subcategoria": "concentrado",
+        "subcategoria": "comida_humeda",
         "etapa": null,
         "descripcion": "MICHIKO NATURAL CREAMY",
         "imagen": "",
@@ -24716,9 +24791,9 @@
       },
       {
         "nombre": "MICHIKO VET ANTIINFLAMACIO",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
-        "subcategoria": "concentrado",
+        "subcategoria": "comida_humeda",
         "etapa": null,
         "descripcion": "MICHIKO VET ANTIINFLAMACIO",
         "imagen": "",
@@ -24747,9 +24822,9 @@
       },
       {
         "nombre": "MICHIKO VET CAVIDAD ORAL",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
-        "subcategoria": "concentrado",
+        "subcategoria": "comida_humeda",
         "etapa": null,
         "descripcion": "MICHIKO VET CAVIDAD ORAL",
         "imagen": "",
@@ -24778,9 +24853,9 @@
       },
       {
         "nombre": "MICHIKO VET EMBARAZO POS",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
-        "subcategoria": "concentrado",
+        "subcategoria": "comida_humeda",
         "etapa": null,
         "descripcion": "MICHIKO VET EMBARAZO POS",
         "imagen": "",
@@ -24811,7 +24886,7 @@
         "nombre": "MICHIKO VET GATITOS",
         "especie": "gato",
         "categoria": "comida",
-        "subcategoria": "concentrado",
+        "subcategoria": "comida_humeda",
         "etapa": "cachorro",
         "descripcion": "MICHIKO VET GATITOS",
         "imagen": "",
@@ -24842,8 +24917,8 @@
         "nombre": "MICHIKO VET GATO MAYOR 14R 4 SACHETS",
         "especie": "gato",
         "categoria": "comida",
-        "subcategoria": "concentrado",
-        "etapa": null,
+        "subcategoria": "comida_humeda",
+        "etapa": "senior",
         "descripcion": "MICHIKO VET GATO MAYOR 14R 4 SACHETS",
         "imagen": "",
         "requiere_confirmacion": false,
@@ -24871,9 +24946,9 @@
       },
       {
         "nombre": "MICHIKO VET MANCHAS LAGRIMAS",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
-        "subcategoria": "concentrado",
+        "subcategoria": "comida_humeda",
         "etapa": null,
         "descripcion": "MICHIKO VET MANCHAS LAGRIMAS",
         "imagen": "",
@@ -24902,9 +24977,9 @@
       },
       {
         "nombre": "MICHIKO VET PIEL Y PELAJE",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
-        "subcategoria": "concentrado",
+        "subcategoria": "comida_humeda",
         "etapa": null,
         "descripcion": "MICHIKO VET PIEL Y PELAJE",
         "imagen": "",
@@ -24964,9 +25039,9 @@
       },
       {
         "nombre": "MICHIKO VET SALUD HUESOS Y ARTICULACIONES",
-        "especie": "perro",
-        "categoria": "snack",
-        "subcategoria": "premio",
+        "especie": "gato",
+        "categoria": "comida",
+        "subcategoria": "comida_humeda",
         "etapa": null,
         "descripcion": "MICHIKO VET SALUD HUESOS Y ARTICULACIONES",
         "imagen": "",
@@ -25003,7 +25078,7 @@
     "referencias": [
       {
         "nombre": "MIKOMAX TABLETAS",
-        "especie": "otro",
+        "especie": "perro y gato",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -25042,9 +25117,9 @@
     "referencias": [
       {
         "nombre": "MILPRO 16MG",
-        "especie": "otro",
+        "especie": "gato",
         "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "subcategoria": "desparasitante",
         "etapa": null,
         "descripcion": "MILPRO 16MG",
         "imagen": "",
@@ -25075,7 +25150,7 @@
         "nombre": "MILPRO KITTEN 4MG",
         "especie": "gato",
         "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "subcategoria": "desparasitante",
         "etapa": "cachorro",
         "descripcion": "MILPRO KITTEN 4MG",
         "imagen": "",
@@ -25143,9 +25218,9 @@
       },
       {
         "nombre": "MIRRAPEL SENIOR",
-        "especie": "otro",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "especie": "perro y gato",
+        "categoria": "suplemento",
+        "subcategoria": "suplemento",
         "etapa": "senior",
         "descripcion": "MIRRAPEL SENIOR",
         "imagen": "",
@@ -25502,7 +25577,7 @@
     "referencias": [
       {
         "nombre": "MOMETAX UNGUENTO OTICO",
-        "especie": "otro",
+        "especie": "perro",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -25541,7 +25616,7 @@
     "referencias": [
       {
         "nombre": "MONELLO BOLAS DE PELOS",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": null,
@@ -25637,7 +25712,7 @@
         "especie": "gato",
         "categoria": "comida",
         "subcategoria": "concentrado",
-        "etapa": null,
+        "etapa": "cachorro",
         "descripcion": "MONELLO CAT FILHOTES",
         "imagen": "",
         "requiere_confirmacion": false,
@@ -25713,7 +25788,7 @@
         "especie": "perro",
         "categoria": "comida",
         "subcategoria": "concentrado",
-        "etapa": null,
+        "etapa": "cachorro",
         "descripcion": "MONELLO DOG FILHOTES",
         "imagen": "",
         "requiere_confirmacion": false,
@@ -25744,7 +25819,7 @@
         "especie": "perro",
         "categoria": "comida",
         "subcategoria": "concentrado",
-        "etapa": null,
+        "etapa": "cachorro",
         "descripcion": "MONELLO DOG PUPYY",
         "imagen": "",
         "requiere_confirmacion": false,
@@ -26107,8 +26182,8 @@
       {
         "nombre": "MUNGOS MULTI-VIT + VITAMINAS MINERALES",
         "especie": "otro",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "categoria": "suplemento",
+        "subcategoria": "suplemento",
         "etapa": null,
         "descripcion": "MUNGOS MULTI-VIT + VITAMINAS MINERALES",
         "imagen": "",
@@ -26145,9 +26220,9 @@
     "referencias": [
       {
         "nombre": "MUNGOSVITAL + PROBIOTIC",
-        "especie": "otro",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "especie": "perro",
+        "categoria": "suplemento",
+        "subcategoria": "suplemento",
         "etapa": null,
         "descripcion": "MUNGOSVITAL + PROBIOTIC",
         "imagen": "",
@@ -26185,8 +26260,8 @@
       {
         "nombre": "MUNGOSVITAL+MOBILITY",
         "especie": "otro",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "categoria": "suplemento",
+        "subcategoria": "suplemento",
         "etapa": null,
         "descripcion": "MUNGOSVITAL+MOBILITY",
         "imagen": "",
@@ -26378,9 +26453,9 @@
       },
       {
         "nombre": "NATURAL FRESHLY AQUI SI CAN",
-        "especie": "otro",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "especie": "perro",
+        "categoria": "otro",
+        "subcategoria": null,
         "etapa": null,
         "descripcion": "NATURAL FRESHLY AQUI SI CAN",
         "imagen": "",
@@ -26471,7 +26546,7 @@
       },
       {
         "nombre": "NATURAL FRESHLY DIGESTAR FIBRA",
-        "especie": "otro",
+        "especie": "perro",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -26564,9 +26639,9 @@
       },
       {
         "nombre": "NATURAL FRESHLY MIELTERTOS",
-        "especie": "otro",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "especie": "perro y gato",
+        "categoria": "suplemento",
+        "subcategoria": "suplemento",
         "etapa": null,
         "descripcion": "NATURAL FRESHLY MIELTERTOS",
         "imagen": "",
@@ -26595,9 +26670,9 @@
       },
       {
         "nombre": "NATURAL FRESHLY NO MUERDA",
-        "especie": "otro",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "especie": "perro",
+        "categoria": "otro",
+        "subcategoria": null,
         "etapa": null,
         "descripcion": "NATURAL FRESHLY NO MUERDA",
         "imagen": "",
@@ -26626,9 +26701,9 @@
       },
       {
         "nombre": "NATURAL FRESHLY OMEGA 3-6-9 2X1",
-        "especie": "otro",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "especie": "perro y gato",
+        "categoria": "suplemento",
+        "subcategoria": "suplemento",
         "etapa": null,
         "descripcion": "NATURAL FRESHLY OMEGA 3-6-9 2X1",
         "imagen": "",
@@ -26689,8 +26764,8 @@
       {
         "nombre": "NATURAL FRESHLY PERFUME",
         "especie": "otro",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "categoria": "higiene",
+        "subcategoria": "aseo",
         "etapa": null,
         "descripcion": "NATURAL FRESHLY PERFUME",
         "imagen": "",
@@ -26750,9 +26825,9 @@
       },
       {
         "nombre": "NATURAL FRESHLY UROVITAL 50",
-        "especie": "otro",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "especie": "perro",
+        "categoria": "suplemento",
+        "subcategoria": "suplemento",
         "etapa": null,
         "descripcion": "NATURAL FRESHLY UROVITAL 50",
         "imagen": "",
@@ -26800,6 +26875,12 @@
           "source": "Productos.pdf",
           "original_names": [
             "NATURPROC GEL"
+          ],
+          "especies": [
+            "perro",
+            "gato",
+            "equino",
+            "bovino"
           ]
         },
         "presentaciones": [
@@ -27248,7 +27329,7 @@
       },
       {
         "nombre": "NOVABRONCOL PETS",
-        "especie": "otro",
+        "especie": "perro y gato",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -27287,9 +27368,9 @@
     "referencias": [
       {
         "nombre": "NOVACAN T",
-        "especie": "otro",
+        "especie": "perro y gato",
         "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "subcategoria": "desparasitante",
         "etapa": null,
         "descripcion": "NOVACAN T",
         "imagen": "",
@@ -27341,8 +27422,8 @@
       {
         "nombre": "NUPEC DENTAL CARE",
         "especie": "perro",
-        "categoria": "comida",
-        "subcategoria": "concentrado",
+        "categoria": "snack",
+        "subcategoria": "premio",
         "etapa": null,
         "descripcion": "NUPEC DENTAL CARE",
         "imagen": "",
@@ -27372,8 +27453,8 @@
       {
         "nombre": "NUPEC DIGESTIVE CARE",
         "especie": "perro",
-        "categoria": "comida",
-        "subcategoria": "concentrado",
+        "categoria": "snack",
+        "subcategoria": "premio",
         "etapa": null,
         "descripcion": "NUPEC DIGESTIVE CARE",
         "imagen": "",
@@ -27403,8 +27484,8 @@
       {
         "nombre": "NUPEC RELA",
         "especie": "perro",
-        "categoria": "comida",
-        "subcategoria": "concentrado",
+        "categoria": "snack",
+        "subcategoria": "premio",
         "etapa": null,
         "descripcion": "NUPEC RELA",
         "imagen": "",
@@ -27792,7 +27873,7 @@
         "especie": "perro",
         "categoria": "comida",
         "subcategoria": "concentrado",
-        "etapa": null,
+        "etapa": "cachorro",
         "descripcion": "NUTRECAN CACHO",
         "imagen": "",
         "requiere_confirmacion": false,
@@ -27865,7 +27946,7 @@
         "especie": "perro",
         "categoria": "comida",
         "subcategoria": "concentrado",
-        "etapa": null,
+        "etapa": "cachorro",
         "descripcion": "NUTRECAN CACHO RP",
         "imagen": "",
         "requiere_confirmacion": false,
@@ -28132,9 +28213,9 @@
       },
       {
         "nombre": "NUTRECAN ADULTO RMG",
-        "especie": "otro",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "especie": "perro",
+        "categoria": "comida",
+        "subcategoria": "concentrado",
         "etapa": "adulto",
         "descripcion": "NUTRECAN ADULTO RMG",
         "imagen": "",
@@ -28191,9 +28272,9 @@
       },
       {
         "nombre": "NUTRECAN AMG GRANEL",
-        "especie": "otro",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "especie": "perro",
+        "categoria": "comida",
+        "subcategoria": "concentrado",
         "etapa": null,
         "descripcion": "NUTRECAN AMG GRANEL",
         "imagen": "",
@@ -28421,9 +28502,9 @@
     "referencias": [
       {
         "nombre": "NUTRI-GEL",
-        "especie": "otro",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "especie": "perro y gato",
+        "categoria": "suplemento",
+        "subcategoria": "suplemento",
         "etapa": null,
         "descripcion": "NUTRI-GEL",
         "imagen": "",
@@ -28461,8 +28542,8 @@
       {
         "nombre": "NUTRIBAR",
         "especie": "perro",
-        "categoria": "comida",
-        "subcategoria": "concentrado",
+        "categoria": "snack",
+        "subcategoria": "premio",
         "etapa": null,
         "descripcion": "NUTRIBAR",
         "imagen": "",
@@ -28492,8 +28573,8 @@
       {
         "nombre": "NUTRIBAR X UNIAD",
         "especie": "perro",
-        "categoria": "comida",
-        "subcategoria": "concentrado",
+        "categoria": "snack",
+        "subcategoria": "premio",
         "etapa": null,
         "descripcion": "NUTRIBAR X UNIAD",
         "imagen": "",
@@ -28866,6 +28947,11 @@
           "source": "Productos.pdf",
           "original_names": [
             "OCUFLOX COLIRIO"
+          ],
+          "especies": [
+            "perro",
+            "gato",
+            "equino"
           ]
         },
         "presentaciones": [
@@ -28894,7 +28980,7 @@
     "referencias": [
       {
         "nombre": "OFTALMOSYN",
-        "especie": "otro",
+        "especie": "perro y gato",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -29003,7 +29089,7 @@
     "referencias": [
       {
         "nombre": "OHMAIGAT CASEROS",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": null,
@@ -29163,7 +29249,7 @@
       },
       {
         "nombre": "OHMAIGAT GRANEL",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": null,
@@ -29194,7 +29280,7 @@
       },
       {
         "nombre": "OHMAIGAT INQUIETOS",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": null,
@@ -29267,7 +29353,7 @@
       },
       {
         "nombre": "OHMAIGAT SEDENTA",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": null,
@@ -29312,7 +29398,7 @@
       },
       {
         "nombre": "OHMAIGAT SEDENTA 1.5",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": null,
@@ -29343,7 +29429,7 @@
       },
       {
         "nombre": "OHMAIGAT SEDENTA 500",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": null,
@@ -29382,7 +29468,7 @@
     "referencias": [
       {
         "nombre": "OJUX-V COLIRIO",
-        "especie": "otro",
+        "especie": "perro y gato",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -29421,9 +29507,9 @@
     "referencias": [
       {
         "nombre": "OL-TRANS",
-        "especie": "otro",
-        "categoria": "higiene",
-        "subcategoria": "aseo",
+        "especie": "perro y gato",
+        "categoria": "suplemento",
+        "subcategoria": "suplemento",
         "etapa": null,
         "descripcion": "OL-TRANS",
         "imagen": "",
@@ -29499,7 +29585,7 @@
     "referencias": [
       {
         "nombre": "OPTER",
-        "especie": "otro",
+        "especie": "perro y gato",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -29569,9 +29655,9 @@
       },
       {
         "nombre": "ORENDA PAW BALSAMO",
-        "especie": "otro",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "especie": "perro",
+        "categoria": "higiene",
+        "subcategoria": "aseo",
         "etapa": null,
         "descripcion": "ORENDA PAW BALSAMO",
         "imagen": "",
@@ -29600,9 +29686,9 @@
       },
       {
         "nombre": "ORENDA SOLUCION OTICA",
-        "especie": "otro",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "especie": "perro y gato",
+        "categoria": "higiene",
+        "subcategoria": "aseo",
         "etapa": null,
         "descripcion": "ORENDA SOLUCION OTICA",
         "imagen": "",
@@ -29640,8 +29726,8 @@
       {
         "nombre": "ORGANEW POLVO",
         "especie": "otro",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "categoria": "suplemento",
+        "subcategoria": "suplemento",
         "etapa": null,
         "descripcion": "ORGANEW POLVO",
         "imagen": "",
@@ -29671,18 +29757,18 @@
     ]
   },
   {
-    "marca": "OTIFLE",
+    "marca": "OTIFLEx",
     "metadata": {
       "source": "Productos.pdf"
     },
     "referencias": [
       {
-        "nombre": "OTIFLE",
+        "nombre": "OTIFLEX",
         "especie": "otro",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
-        "descripcion": "OTIFLE",
+        "descripcion": "OTIFLEX",
         "imagen": "",
         "requiere_confirmacion": true,
         "metadata": {
@@ -29728,6 +29814,11 @@
           "source": "Productos.pdf",
           "original_names": [
             "OTIVET FORTE 10ML"
+          ],
+          "especies": [
+            "perro",
+            "equino",
+            "gato"
           ]
         },
         "presentaciones": [
@@ -29756,7 +29847,7 @@
     "referencias": [
       {
         "nombre": "OTOCURE GOTAS",
-        "especie": "otro",
+        "especie": "perro y gato",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -29795,7 +29886,7 @@
     "referencias": [
       {
         "nombre": "OTOFARM",
-        "especie": "otro",
+        "especie": "perro y gato",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -29834,9 +29925,9 @@
     "referencias": [
       {
         "nombre": "OXIMED ACONDICIONADOR",
-        "especie": "perro",
-        "categoria": "comida",
-        "subcategoria": "concentrado",
+        "especie": "perro y gato",
+        "categoria": "higiene",
+        "subcategoria": "aseo",
         "etapa": null,
         "descripcion": "OXIMED ACONDICIONADOR",
         "imagen": "",
@@ -29865,9 +29956,9 @@
       },
       {
         "nombre": "OXIMED SPRAY",
-        "especie": "perro",
-        "categoria": "comida",
-        "subcategoria": "concentrado",
+        "especie": "perro y gato",
+        "categoria": "higiene",
+        "subcategoria": "aseo",
         "etapa": null,
         "descripcion": "OXIMED SPRAY",
         "imagen": "",
@@ -29974,7 +30065,7 @@
     "referencias": [
       {
         "nombre": "PANOLOG",
-        "especie": "otro",
+        "especie": "perro y gato",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -30053,8 +30144,8 @@
       {
         "nombre": "PAÑAL L",
         "especie": "otro",
-        "categoria": "accesorio",
-        "subcategoria": "accesorio",
+        "categoria": "higiene",
+        "subcategoria": "aseo",
         "etapa": null,
         "descripcion": "PAÑAL L",
         "imagen": "",
@@ -30084,8 +30175,8 @@
       {
         "nombre": "PAÑAL M",
         "especie": "otro",
-        "categoria": "accesorio",
-        "subcategoria": "accesorio",
+        "categoria": "higiene",
+        "subcategoria": "aseo",
         "etapa": null,
         "descripcion": "PAÑAL M",
         "imagen": "",
@@ -30115,8 +30206,8 @@
       {
         "nombre": "PAÑAL S",
         "especie": "otro",
-        "categoria": "accesorio",
-        "subcategoria": "accesorio",
+        "categoria": "higiene",
+        "subcategoria": "aseo",
         "etapa": null,
         "descripcion": "PAÑAL S",
         "imagen": "",
@@ -30146,8 +30237,8 @@
       {
         "nombre": "PAÑAL XL",
         "especie": "otro",
-        "categoria": "accesorio",
-        "subcategoria": "accesorio",
+        "categoria": "higiene",
+        "subcategoria": "aseo",
         "etapa": null,
         "descripcion": "PAÑAL XL",
         "imagen": "",
@@ -30177,8 +30268,8 @@
       {
         "nombre": "PAÑAL XS",
         "especie": "otro",
-        "categoria": "accesorio",
-        "subcategoria": "accesorio",
+        "categoria": "higiene",
+        "subcategoria": "aseo",
         "etapa": null,
         "descripcion": "PAÑAL XS",
         "imagen": "",
@@ -30208,8 +30299,8 @@
       {
         "nombre": "PAÑAL XXS",
         "especie": "otro",
-        "categoria": "accesorio",
-        "subcategoria": "accesorio",
+        "categoria": "higiene",
+        "subcategoria": "aseo",
         "etapa": null,
         "descripcion": "PAÑAL XXS",
         "imagen": "",
@@ -30246,7 +30337,7 @@
     "referencias": [
       {
         "nombre": "PAÑITOS CAN AMOR",
-        "especie": "otro",
+        "especie": "perro y gato",
         "categoria": "higiene",
         "subcategoria": "aseo",
         "etapa": null,
@@ -30499,9 +30590,9 @@
     "referencias": [
       {
         "nombre": "PAÑOLETA MASCOTAS ECO",
-        "especie": "perro",
-        "categoria": "comida",
-        "subcategoria": "concentrado",
+        "especie": "otro",
+        "categoria": "accesorio",
+        "subcategoria": "accesorio",
         "etapa": null,
         "descripcion": "PAÑOLETA MASCOTAS ECO",
         "imagen": "",
@@ -30530,9 +30621,9 @@
       },
       {
         "nombre": "PAÑOLETA MASCOTAS PREMIUM",
-        "especie": "perro",
-        "categoria": "comida",
-        "subcategoria": "concentrado",
+        "especie": "otro",
+        "categoria": "accesorio",
+        "subcategoria": "accesorio",
         "etapa": null,
         "descripcion": "PAÑOLETA MASCOTAS PREMIUM",
         "imagen": "",
@@ -31082,8 +31173,8 @@
       {
         "nombre": "PERNIL CARNAZA",
         "especie": "perro",
-        "categoria": "comida",
-        "subcategoria": "concentrado",
+        "categoria": "snack",
+        "subcategoria": "premio",
         "etapa": null,
         "descripcion": "PERNIL CARNAZA",
         "imagen": "",
@@ -31113,8 +31204,8 @@
       {
         "nombre": "PERNIL POLLO CARNAZA",
         "especie": "perro",
-        "categoria": "comida",
-        "subcategoria": "concentrado",
+        "categoria": "snack",
+        "subcategoria": "premio",
         "etapa": null,
         "descripcion": "PERNIL POLLO CARNAZA",
         "imagen": "",
@@ -31305,7 +31396,7 @@
     "referencias": [
       {
         "nombre": "PEZOSAN CREMA",
-        "especie": "pez",
+        "especie": "otro",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -31375,7 +31466,7 @@
       },
       {
         "nombre": "PIEL Y PELO PERRRO",
-        "especie": "otro",
+        "especie": "perro",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -31414,7 +31505,7 @@
     "referencias": [
       {
         "nombre": "PIMOCARD 1.25",
-        "especie": "otro",
+        "especie": "perro",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -31476,7 +31567,7 @@
       },
       {
         "nombre": "PIMOCARD 2.5",
-        "especie": "otro",
+        "especie": "perro",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -31507,7 +31598,7 @@
       },
       {
         "nombre": "PIMOCARD 5",
-        "especie": "otro",
+        "especie": "perro",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -31598,6 +31689,15 @@
             "POMADA ALFA 350GR ANTIFLOGISTICO",
             "POMADA ALFA X 220 GR ANTIFLOGISTICO",
             "POMADA ALFA X 60 GR ANTIGLOGISTICO"
+          ],
+          "especies": [
+            "bovino",
+            "ovino",
+            "caprino",
+            "porcino",
+            "equino",
+            "perro",
+            "gato"
           ]
         },
         "presentaciones": [
@@ -31932,7 +32032,7 @@
     "referencias": [
       {
         "nombre": "PREVICO",
-        "especie": "otro",
+        "especie": "perro",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -32799,7 +32899,7 @@
       },
       {
         "nombre": "PRO PLAN LATA CN",
-        "especie": "perro",
+        "especie": "perro y gato",
         "categoria": "comida",
         "subcategoria": "comida_humeda",
         "etapa": null,
@@ -33077,9 +33177,9 @@
     "referencias": [
       {
         "nombre": "PULFEN",
-        "especie": "otro",
+        "especie": "perro y gato",
         "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "subcategoria": "antipulgas",
         "etapa": null,
         "descripcion": "PULFEN",
         "imagen": "",
@@ -33422,7 +33522,7 @@
     "referencias": [
       {
         "nombre": "QUERCETOL",
-        "especie": "otro",
+        "especie": "perro y gato",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -33475,7 +33575,7 @@
     "referencias": [
       {
         "nombre": "QUINOCALF",
-        "especie": "otro",
+        "especie": "perro y gato",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -33567,7 +33667,7 @@
     "referencias": [
       {
         "nombre": "RASCADOR",
-        "especie": "otro",
+        "especie": "gato",
         "categoria": "juguete",
         "subcategoria": "juguete",
         "etapa": null,
@@ -33598,7 +33698,7 @@
       },
       {
         "nombre": "RASCADOR ESQUINERO",
-        "especie": "otro",
+        "especie": "gato",
         "categoria": "juguete",
         "subcategoria": "juguete",
         "etapa": null,
@@ -33668,9 +33768,9 @@
     "referencias": [
       {
         "nombre": "RATION",
-        "especie": "perro",
-        "categoria": "comida",
-        "subcategoria": "concentrado",
+        "especie": "otro",
+        "categoria": "otro",
+        "subcategoria": null,
         "etapa": null,
         "descripcion": "RATION",
         "imagen": "",
@@ -33917,7 +34017,7 @@
     "referencias": [
       {
         "nombre": "REPTOMIN TORTUGAS",
-        "especie": "perro",
+        "especie": "otro",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": null,
@@ -34135,7 +34235,7 @@
       },
       {
         "nombre": "REVOLUTION 12% CAFE",
-        "especie": "otro",
+        "especie": "perro",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -34166,7 +34266,7 @@
       },
       {
         "nombre": "REVOLUTION 12% LILA",
-        "especie": "otro",
+        "especie": "perro",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -34228,9 +34328,9 @@
       },
       {
         "nombre": "REVOLUTION 6% ROSADO MENOR A",
-        "especie": "otro",
+        "especie": "perro y gato",
         "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "subcategoria": "antipulgas",
         "etapa": null,
         "descripcion": "REVOLUTION 6% ROSADO MENOR A",
         "imagen": "",
@@ -34598,7 +34698,7 @@
         "especie": "perro",
         "categoria": "comida",
         "subcategoria": "concentrado",
-        "etapa": null,
+        "etapa": "cachorro",
         "descripcion": "RINGO PREMIUM CACHO",
         "imagen": "",
         "requiere_confirmacion": false,
@@ -34772,9 +34872,9 @@
     "referencias": [
       {
         "nombre": "RODILLERAS PET",
-        "especie": "perro",
-        "categoria": "comida",
-        "subcategoria": "concentrado",
+        "especie": "otro",
+        "categoria": "accesorio",
+        "subcategoria": "accesorio",
         "etapa": null,
         "descripcion": "RODILLERAS PET",
         "imagen": "",
@@ -34811,9 +34911,9 @@
     "referencias": [
       {
         "nombre": "RONDEL",
-        "especie": "otro",
+        "especie": "perro y gato",
         "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "subcategoria": "desparasitante",
         "etapa": null,
         "descripcion": "RONDEL",
         "imagen": "",
@@ -34954,7 +35054,7 @@
       },
       {
         "nombre": "ROYAL FIT",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": null,
@@ -34987,7 +35087,7 @@
         "nombre": "ROYAL HEPATIC",
         "especie": "perro",
         "categoria": "comida",
-        "subcategoria": "concentrado",
+        "subcategoria": "comida_humeda",
         "etapa": null,
         "descripcion": "ROYAL HEPATIC",
         "imagen": "",
@@ -35182,7 +35282,7 @@
         "especie": "perro",
         "categoria": "comida",
         "subcategoria": "concentrado",
-        "etapa": null,
+        "etapa": "cachorro",
         "descripcion": "ROYAL CANIN DOG PUPY INDOOR",
         "imagen": "",
         "requiere_confirmacion": false,
@@ -35274,7 +35374,7 @@
         "nombre": "ROYAL CANIN INDOOR",
         "especie": "gato",
         "categoria": "comida",
-        "subcategoria": "concentrado",
+        "subcategoria": "comida_humeda",
         "etapa": null,
         "descripcion": "ROYAL CANIN INDOOR",
         "imagen": "",
@@ -35337,7 +35437,7 @@
         "especie": "gato",
         "categoria": "comida",
         "subcategoria": "comida_humeda",
-        "etapa": null,
+        "etapa": "cachorro",
         "descripcion": "ROYAL CANIN LATA BABY CAT TROCITOS",
         "imagen": "",
         "requiere_confirmacion": false,
@@ -35458,7 +35558,7 @@
       },
       {
         "nombre": "ROYAL CANIN PERSIAN ADULT",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": "adulto",
@@ -35582,7 +35682,7 @@
       },
       {
         "nombre": "ROYAL CANIN STERILIDED",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": null,
@@ -35613,7 +35713,7 @@
       },
       {
         "nombre": "ROYAL CANIN URINARY S/O",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": null,
@@ -35644,9 +35744,9 @@
       },
       {
         "nombre": "ROYAL CANIN URINAY",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
-        "subcategoria": "concentrado",
+        "subcategoria": "comida_humeda",
         "etapa": null,
         "descripcion": "ROYAL CANIN URINAY",
         "imagen": "",
@@ -35759,9 +35859,9 @@
     "referencias": [
       {
         "nombre": "ROYALADULT INSTINCTIVE",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
-        "subcategoria": "concentrado",
+        "subcategoria": "comida_humeda",
         "etapa": "adulto",
         "descripcion": "ROYALADULT INSTINCTIVE",
         "imagen": "",
@@ -36055,9 +36155,9 @@
     "referencias": [
       {
         "nombre": "SANUCH SOBRE",
-        "especie": "perro",
-        "categoria": "comida",
-        "subcategoria": "comida_humeda",
+        "especie": "otro",
+        "categoria": "medicamento",
+        "subcategoria": "desparasitante",
         "etapa": null,
         "descripcion": "SANUCH SOBRE",
         "imagen": "",
@@ -36066,6 +36166,13 @@
           "source": "Productos.pdf",
           "original_names": [
             "SANUCH SOBRE X 15 GR"
+          ],
+          "especies": [
+            "bovino",
+            "caprino",
+            "ovino",
+            "porcino",
+            "equino"
           ]
         },
         "presentaciones": [
@@ -36105,6 +36212,18 @@
           "source": "Productos.pdf",
           "original_names": [
             "SEDANPET TAB"
+          ],
+          "especies": [
+            "perro",
+            "gato",
+            "equino",
+            "bovino",
+            "porcino",
+            "caprino",
+            "ovino",
+            "mular",
+            "asnal",
+            "bufalino"
           ]
         },
         "presentaciones": [
@@ -36133,7 +36252,7 @@
     "referencias": [
       {
         "nombre": "SEDOLAX GOTERO",
-        "especie": "otro",
+        "especie": "perro y gato",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -36320,7 +36439,7 @@
     "referencias": [
       {
         "nombre": "SHAMPOO ALLERMYL SIS",
-        "especie": "otro",
+        "especie": "perro",
         "categoria": "higiene",
         "subcategoria": "aseo",
         "etapa": null,
@@ -36351,7 +36470,7 @@
       },
       {
         "nombre": "SHAMPOO BASIC-PET ALOE VERA Y CERA",
-        "especie": "otro",
+        "especie": "perro y gato",
         "categoria": "higiene",
         "subcategoria": "aseo",
         "etapa": null,
@@ -36394,6 +36513,11 @@
           "original_names": [
             "SHAMPOO BAXIDIN CERAMIDAS 100ML",
             "SHAMPOO BAXIDIN CERAMIDAS 250ML4%"
+          ],
+          "especies": [
+            "perro",
+            "gato",
+            "equino"
           ]
         },
         "presentaciones": [
@@ -36458,7 +36582,7 @@
       },
       {
         "nombre": "SHAMPOO BRILLO SOBRE",
-        "especie": "otro",
+        "especie": "perro y gato",
         "categoria": "higiene",
         "subcategoria": "aseo",
         "etapa": null,
@@ -36593,6 +36717,11 @@
           "source": "Productos.pdf",
           "original_names": [
             "SHAMPOO CLORHEXIN 240ML 2%"
+          ],
+          "especies": [
+            "perro",
+            "gato",
+            "equino"
           ]
         },
         "presentaciones": [
@@ -36613,7 +36742,7 @@
       },
       {
         "nombre": "SHAMPOO CLORHEXIN 3.0",
-        "especie": "otro",
+        "especie": "perro y gato",
         "categoria": "higiene",
         "subcategoria": "aseo",
         "etapa": null,
@@ -36703,7 +36832,7 @@
       },
       {
         "nombre": "SHAMPOO KERACLEEN",
-        "especie": "otro",
+        "especie": "perro",
         "categoria": "higiene",
         "subcategoria": "aseo",
         "etapa": null,
@@ -36734,7 +36863,7 @@
       },
       {
         "nombre": "SHAMPOO KETOCLEAN",
-        "especie": "otro",
+        "especie": "perro y gato",
         "categoria": "higiene",
         "subcategoria": "aseo",
         "etapa": null,
@@ -36766,8 +36895,8 @@
       {
         "nombre": "SHAMPOO MICLORPROC",
         "especie": "otro",
-        "categoria": "higiene",
-        "subcategoria": "aseo",
+        "categoria": "medicamento",
+        "subcategoria": "medicamento",
         "etapa": null,
         "descripcion": "SHAMPOO MICLORPROC",
         "imagen": "",
@@ -36776,6 +36905,11 @@
           "source": "Productos.pdf",
           "original_names": [
             "SHAMPOO MICLORPROC 125ML"
+          ],
+          "especies": [
+            "perro",
+            "gato",
+            "equino"
           ]
         },
         "presentaciones": [
@@ -36796,9 +36930,9 @@
       },
       {
         "nombre": "SHAMPOO PEROXYPROC",
-        "especie": "otro",
-        "categoria": "higiene",
-        "subcategoria": "aseo",
+        "especie": "perro y gato",
+        "categoria": "medicamento",
+        "subcategoria": "medicamento",
         "etapa": null,
         "descripcion": "SHAMPOO PEROXYPROC",
         "imagen": "",
@@ -36903,7 +37037,7 @@
       },
       {
         "nombre": "SHAMPOO SEBOCALM",
-        "especie": "otro",
+        "especie": "perro y gato",
         "categoria": "higiene",
         "subcategoria": "aseo",
         "etapa": null,
@@ -37376,9 +37510,9 @@
     "referencias": [
       {
         "nombre": "SINRAT SOBRE",
-        "especie": "perro",
-        "categoria": "comida",
-        "subcategoria": "comida_humeda",
+        "especie": "otro",
+        "categoria": "otro",
+        "subcategoria": null,
         "etapa": null,
         "descripcion": "SINRAT SOBRE",
         "imagen": "",
@@ -37415,7 +37549,7 @@
     "referencias": [
       {
         "nombre": "SINSONTES Y TUR",
-        "especie": "perro",
+        "especie": "ave",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": null,
@@ -37524,7 +37658,7 @@
       },
       {
         "nombre": "SNACK PREMIO HAIRBALL",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "snack",
         "subcategoria": "premio",
         "etapa": null,
@@ -37727,8 +37861,8 @@
       {
         "nombre": "SNAKS SOBRE MICHIKO SEMANARIO",
         "especie": "perro",
-        "categoria": "comida",
-        "subcategoria": "comida_humeda",
+        "categoria": "snack",
+        "subcategoria": "premio",
         "etapa": null,
         "descripcion": "SNAKS SOBRE MICHIKO SEMANARIO",
         "imagen": "",
@@ -37843,7 +37977,7 @@
     "referencias": [
       {
         "nombre": "STOMIZOL",
-        "especie": "otro",
+        "especie": "perro y gato",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -37946,6 +38080,13 @@
           "source": "Productos.pdf",
           "original_names": [
             "STREPTOLAND 20 GR"
+          ],
+          "especies": [
+            "bovino",
+            "equino",
+            "porcino",
+            "ovino",
+            "perro"
           ]
         },
         "presentaciones": [
@@ -38024,6 +38165,12 @@
           "source": "Productos.pdf",
           "original_names": [
             "SUTRIM SUSP X 30ML"
+          ],
+          "especies": [
+            "perro",
+            "gato",
+            "porcino",
+            "ave"
           ]
         },
         "presentaciones": [
@@ -38053,8 +38200,8 @@
       {
         "nombre": "TAPETE PETYS EXTRA GRANDE 30",
         "especie": "otro",
-        "categoria": "accesorio",
-        "subcategoria": "accesorio",
+        "categoria": "higiene",
+        "subcategoria": "aseo",
         "etapa": null,
         "descripcion": "TAPETE PETYS EXTRA GRANDE 30",
         "imagen": "",
@@ -38216,8 +38363,8 @@
       {
         "nombre": "TASTE PACIFIC PUPPY",
         "especie": "perro",
-        "categoria": "accesorio",
-        "subcategoria": "accesorio",
+        "categoria": "comida",
+        "subcategoria": "concentrado",
         "etapa": "cachorro",
         "descripcion": "TASTE PACIFIC PUPPY",
         "imagen": "",
@@ -38248,7 +38395,7 @@
         "nombre": "TASTE HUMEDO PERRO",
         "especie": "perro",
         "categoria": "comida",
-        "subcategoria": "concentrado",
+        "subcategoria": "comida_humeda",
         "etapa": null,
         "descripcion": "TASTE HUMEDO PERRO",
         "imagen": "",
@@ -38611,7 +38758,7 @@
     "referencias": [
       {
         "nombre": "TEARS FCO",
-        "especie": "otro",
+        "especie": "perro y gato",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -38650,9 +38797,9 @@
     "referencias": [
       {
         "nombre": "TEMPTATIONS",
-        "especie": "perro",
-        "categoria": "comida",
-        "subcategoria": "concentrado",
+        "especie": "gato",
+        "categoria": "snack",
+        "subcategoria": "premio",
         "etapa": null,
         "descripcion": "TEMPTATIONS",
         "imagen": "",
@@ -38742,7 +38889,7 @@
     "referencias": [
       {
         "nombre": "TETRA COLOR",
-        "especie": "perro",
+        "especie": "pez",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": null,
@@ -38773,9 +38920,9 @@
       },
       {
         "nombre": "TETRA COLOR LATA",
-        "especie": "perro",
+        "especie": "pez",
         "categoria": "comida",
-        "subcategoria": "comida_humeda",
+        "subcategoria": "concentrado",
         "etapa": null,
         "descripcion": "TETRA COLOR LATA",
         "imagen": "",
@@ -38812,7 +38959,7 @@
     "referencias": [
       {
         "nombre": "TOBRAMAX GOTAS",
-        "especie": "otro",
+        "especie": "perro y gato",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -39721,8 +39868,8 @@
       {
         "nombre": "TRAILLA Y ARENA GATOS FLORAL M",
         "especie": "gato",
-        "categoria": "arena_sustrato",
-        "subcategoria": "arena",
+        "categoria": "accesorio",
+        "subcategoria": "accesorio",
         "etapa": null,
         "descripcion": "TRAILLA Y ARENA GATOS FLORAL M",
         "imagen": "",
@@ -39759,7 +39906,7 @@
     "referencias": [
       {
         "nombre": "TRIHEPAT",
-        "especie": "otro",
+        "especie": "perro y gato",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -39798,7 +39945,7 @@
     "referencias": [
       {
         "nombre": "TUSIVET SUSPENSION",
-        "especie": "otro",
+        "especie": "perro y gato",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -39848,6 +39995,15 @@
           "source": "Productos.pdf",
           "original_names": [
             "UBREVET 30GR"
+          ],
+          "especies": [
+            "bovino",
+            "perro",
+            "equino",
+            "caprino",
+            "ovino",
+            "porcino",
+            "gato"
           ]
         },
         "presentaciones": [
@@ -39915,7 +40071,7 @@
     "referencias": [
       {
         "nombre": "UNIDOL",
-        "especie": "otro",
+        "especie": "perro",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -39955,8 +40111,8 @@
       {
         "nombre": "URANOTEST LEUCEMIA/VIH FELINO",
         "especie": "gato",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "categoria": "accesorio",
+        "subcategoria": "accesorio",
         "etapa": null,
         "descripcion": "URANOTEST LEUCEMIA/VIH FELINO",
         "imagen": "",
@@ -40046,6 +40202,16 @@
             "VACOL POMADA 390 GR",
             "VACOL POMADA 60 GR",
             "VACOL POMADA X 200 GR"
+          ],
+          "especies": [
+            "bovino",
+            "perro",
+            "equino",
+            "caprino",
+            "ovino",
+            "porcino",
+            "gato",
+            "ave"
           ]
         },
         "presentaciones": [
@@ -40114,7 +40280,7 @@
       {
         "nombre": "VACUNA LEUCEMIA",
         "especie": "otro",
-        "categoria": "vacuna",
+        "categoria": "medicamento",
         "subcategoria": "biologico",
         "etapa": null,
         "descripcion": "VACUNA LEUCEMIA",
@@ -40145,7 +40311,7 @@
       {
         "nombre": "VACUNA PUPPY",
         "especie": "perro",
-        "categoria": "vacuna",
+        "categoria": "medicamento",
         "subcategoria": "biologico",
         "etapa": "cachorro",
         "descripcion": "VACUNA PUPPY",
@@ -40176,7 +40342,7 @@
       {
         "nombre": "VACUNA QUINTUPLE",
         "especie": "otro",
-        "categoria": "vacuna",
+        "categoria": "medicamento",
         "subcategoria": "biologico",
         "etapa": null,
         "descripcion": "VACUNA QUINTUPLE",
@@ -40207,7 +40373,7 @@
       {
         "nombre": "VACUNA RABISIN",
         "especie": "otro",
-        "categoria": "vacuna",
+        "categoria": "medicamento",
         "subcategoria": "biologico",
         "etapa": null,
         "descripcion": "VACUNA RABISIN",
@@ -40238,7 +40404,7 @@
       {
         "nombre": "VACUNA SEXTUPLE",
         "especie": "otro",
-        "categoria": "vacuna",
+        "categoria": "medicamento",
         "subcategoria": "biologico",
         "etapa": null,
         "descripcion": "VACUNA SEXTUPLE",
@@ -40269,7 +40435,7 @@
       {
         "nombre": "VACUNA TRIPLE FELINA",
         "especie": "gato",
-        "categoria": "vacuna",
+        "categoria": "medicamento",
         "subcategoria": "biologico",
         "etapa": null,
         "descripcion": "VACUNA TRIPLE FELINA",
@@ -40300,7 +40466,7 @@
       {
         "nombre": "VACUNA TRIPLE FELINA + LEUCEMIA",
         "especie": "gato",
-        "categoria": "vacuna",
+        "categoria": "medicamento",
         "subcategoria": "biologico",
         "etapa": null,
         "descripcion": "VACUNA TRIPLE FELINA + LEUCEMIA",
@@ -40331,7 +40497,7 @@
       {
         "nombre": "VACUNA TRIPLE FELINA + RABIA",
         "especie": "gato",
-        "categoria": "vacuna",
+        "categoria": "medicamento",
         "subcategoria": "biologico",
         "etapa": null,
         "descripcion": "VACUNA TRIPLE FELINA + RABIA",
@@ -40409,8 +40575,8 @@
       {
         "nombre": "VENDA FUN FLEX COLORES 10",
         "especie": "otro",
-        "categoria": "medicamento",
-        "subcategoria": "medicamento",
+        "categoria": "accesorio",
+        "subcategoria": "accesorio",
         "etapa": null,
         "descripcion": "VENDA FUN FLEX COLORES 10",
         "imagen": "",
@@ -40458,6 +40624,12 @@
           "source": "Productos.pdf",
           "original_names": [
             "VERDEMINT 50GR"
+          ],
+          "especies": [
+            "bovino",
+            "perro",
+            "ovino",
+            "porcino"
           ]
         },
         "presentaciones": [
@@ -40486,7 +40658,7 @@
     "referencias": [
       {
         "nombre": "VETMEDIN",
-        "especie": "otro",
+        "especie": "perro",
         "categoria": "medicamento",
         "subcategoria": "medicamento",
         "etapa": null,
@@ -40526,8 +40698,8 @@
       {
         "nombre": "VETSOLUCION GASTROISTESTINAL DOG",
         "especie": "perro",
-        "categoria": "accesorio",
-        "subcategoria": "accesorio",
+        "categoria": "comida",
+        "subcategoria": "comida_humeda",
         "etapa": null,
         "descripcion": "VETSOLUCION GASTROISTESTINAL DOG",
         "imagen": "",
@@ -40566,7 +40738,7 @@
         "nombre": "VETSOLUTION CANINE RENAL",
         "especie": "perro",
         "categoria": "comida",
-        "subcategoria": "concentrado",
+        "subcategoria": "comida_humeda",
         "etapa": null,
         "descripcion": "VETSOLUTION CANINE RENAL",
         "imagen": "",
@@ -40629,7 +40801,7 @@
         "nombre": "VETSOLUTION CAT RECOVERY",
         "especie": "gato",
         "categoria": "comida",
-        "subcategoria": "concentrado",
+        "subcategoria": "comida_humeda",
         "etapa": null,
         "descripcion": "VETSOLUTION CAT RECOVERY",
         "imagen": "",
@@ -40660,7 +40832,7 @@
         "nombre": "VETSOLUTION CAT RENAL",
         "especie": "gato",
         "categoria": "comida",
-        "subcategoria": "concentrado",
+        "subcategoria": "comida_humeda",
         "etapa": null,
         "descripcion": "VETSOLUTION CAT RENAL",
         "imagen": "",
@@ -40723,7 +40895,7 @@
         "nombre": "VETSOLUTION DOG RECOVERY",
         "especie": "perro",
         "categoria": "comida",
-        "subcategoria": "concentrado",
+        "subcategoria": "comida_humeda",
         "etapa": null,
         "descripcion": "VETSOLUTION DOG RECOVERY",
         "imagen": "",
@@ -41208,7 +41380,7 @@
       },
       {
         "nombre": "VIRBAC KIDNEY JOINT 2",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": null,
@@ -41270,7 +41442,7 @@
       },
       {
         "nombre": "VIRBAC UROLOGY 2",
-        "especie": "perro",
+        "especie": "gato",
         "categoria": "comida",
         "subcategoria": "concentrado",
         "etapa": null,
@@ -41457,7 +41629,7 @@
     "referencias": [
       {
         "nombre": "VITA PICHONES",
-        "especie": "otro",
+        "especie": "ave",
         "categoria": "accesorio",
         "subcategoria": "accesorio",
         "etapa": null,

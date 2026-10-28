@@ -6,14 +6,15 @@ const { consultaProductoCotizado, duracionSeleccionada } = require('../utils/cat
 function completarCompraDesdeCotizaciones(decision, estado) {
   if (!decision || estado.pedidoConfirmado ||
       ['quitar', 'mantener_solo', 'modificar_cantidad', 'conflicto'].includes(decision.carrito?.operacion)) return decision;
-  const solicitudes = estado.ultimaSolicitudProductos || [];
+  const solicitudes = estado.seleccionesProducto
+    ? estado.seleccionesProducto.filter(p => ['cotizado', 'pendiente'].includes(p.estado)).map(p => ({ ...p, accion: 'consultar' }))
+    : estado.ultimaSolicitudProductos || [];
   let recuperadas = 0;
   const completar = producto => {
     if (!producto || (producto.accion || decision.accion) !== 'agregar' ||
         !(producto.marca || producto.referencia)) return producto;
     const opciones = solicitudes.flatMap(previa => {
-      if (previa.accion !== 'consultar' || !previa.cotizacion?.length ||
-          (previa.contextoCreadoEn && Date.now() - Date.parse(previa.contextoCreadoEn) > 30 * 60 * 1000)) return [];
+      if (previa.accion !== 'consultar' || !previa.cotizacion?.length) return [];
       const marca = normalizar(previa.marca);
       const nombres = [previa.referencia, ...(previa.referenciasEquivalentes || []),
         ...previa.cotizacion.map(p => p.referencia)].map(normalizar);

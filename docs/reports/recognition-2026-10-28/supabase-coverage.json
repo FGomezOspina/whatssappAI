@@ -1,0 +1,45 @@
+{
+  "capturedAt": "2026-10-28T14:53:58.347Z",
+  "tables": {
+    "catalog_brands": {
+      "rows": 394,
+      "pages": 1,
+      "total": 394,
+      "filter": "client_id=eq.[tenant]",
+      "complete": true
+    },
+    "catalog_references": {
+      "rows": 1127,
+      "pages": 10,
+      "complete": true,
+      "batches": 10
+    },
+    "catalog_presentations": {
+      "rows": 1423,
+      "pages": 29,
+      "complete": true,
+      "batches": 29
+    },
+    "whatsapp_messages": {
+      "rows": 5,
+      "pages": 1,
+      "total": 5,
+      "filter": "client_id=eq.[tenant]",
+      "complete": true
+    },
+    "whatsapp_conversations": {
+      "rows": 1,
+      "pages": 1,
+      "total": 1,
+      "filter": "client_id=eq.[tenant]",
+      "complete": true
+    },
+    "training_examples": {
+      "rows": 56,
+      "pages": 1,
+      "total": 56,
+      "filter": "client_id=eq.[tenant]",
+      "complete": true
+    }
+  }
+}

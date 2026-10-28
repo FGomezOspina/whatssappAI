@@ -1,0 +1,278 @@
+{
+  "version": "clasificacion-20261028-r4",
+  "checked_at": "2026-10-28T20:13:23.367Z",
+  "read_only": true,
+  "production_writes": 0,
+  "status": "APLICADO_COMPLETO_VERIFICADO",
+  "tenant": {
+    "id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+    "slug": "distrifinca"
+  },
+  "sql_hash_matches_manifest": true,
+  "pagination": [
+    {
+      "scope": "references",
+      "offset": 0,
+      "rows": 500,
+      "total": 1127,
+      "content_range": "0-499/1127"
+    },
+    {
+      "scope": "references",
+      "offset": 500,
+      "rows": 500,
+      "total": 1127,
+      "content_range": "500-999/1127"
+    },
+    {
+      "scope": "references",
+      "offset": 1000,
+      "rows": 127,
+      "total": 1127,
+      "content_range": "1000-1126/1127"
+    },
+    {
+      "scope": "presentations",
+      "offset": 0,
+      "rows": 500,
+      "total": 1423,
+      "content_range": "0-499/1423"
+    },
+    {
+      "scope": "presentations",
+      "offset": 500,
+      "rows": 500,
+      "total": 1423,
+      "content_range": "500-999/1423"
+    },
+    {
+      "scope": "presentations",
+      "offset": 1000,
+      "rows": 423,
+      "total": 1423,
+      "content_range": "1000-1422/1423"
+    },
+    {
+      "scope": "brands",
+      "offset": 0,
+      "rows": 394,
+      "total": 394,
+      "content_range": "0-393/394"
+    },
+    {
+      "scope": "references_confirmation",
+      "offset": 0,
+      "rows": 500,
+      "total": 1127,
+      "content_range": "0-499/1127"
+    },
+    {
+      "scope": "references_confirmation",
+      "offset": 500,
+      "rows": 500,
+      "total": 1127,
+      "content_range": "500-999/1127"
+    },
+    {
+      "scope": "references_confirmation",
+      "offset": 1000,
+      "rows": 127,
+      "total": 1127,
+      "content_range": "1000-1126/1127"
+    },
+    {
+      "scope": "presentations_confirmation",
+      "offset": 0,
+      "rows": 500,
+      "total": 1423,
+      "content_range": "0-499/1423"
+    },
+    {
+      "scope": "presentations_confirmation",
+      "offset": 500,
+      "rows": 500,
+      "total": 1423,
+      "content_range": "500-999/1423"
+    },
+    {
+      "scope": "presentations_confirmation",
+      "offset": 1000,
+      "rows": 423,
+      "total": 1423,
+      "content_range": "1000-1422/1423"
+    },
+    {
+      "scope": "brands_confirmation",
+      "offset": 0,
+      "rows": 394,
+      "total": 394,
+      "content_range": "0-393/394"
+    }
+  ],
+  "stable_across_two_complete_passes": true,
+  "remote_references": 1127,
+  "backup_references": 1127,
+  "planned_references": 374,
+  "matched_references": 374,
+  "planned_fields": 606,
+  "matched_fields": 606,
+  "protected_fields_unchanged": true,
+  "presentations_checked": 1423,
+  "presentations_unchanged": true,
+  "outside_batch_references_checked": 753,
+  "outside_batch_unchanged": true,
+  "brands_checked": 394,
+  "brand_mismatches": [],
+  "brands_without_baseline": [],
+  "metadata_updates_checked": 26,
+  "metadata_updates_matched": 26,
+  "planned_timestamp_changes": 374,
+  "updated_at_values": [
+    "2026-10-28T19:19:44.350025+00:00"
+  ],
+  "expected_field_mismatches": [],
+  "protected_mismatches": [],
+  "outside_batch_mismatches": [],
+  "presentation_mismatches": [],
+  "added_references": [],
+  "missing_references": [],
+  "examples": [
+    {
+      "local_key": "0:0",
+      "id": "e82371a2-5719-474f-9fca-520c60158fa8",
+      "name": "ACIFLUX SUSPENSION",
+      "species": "perro y gato",
+      "category": "medicamento",
+      "subcategory": "medicamento",
+      "life_stage": null,
+      "declared_species": null,
+      "expected_matches": true
+    },
+    {
+      "local_key": "53:0",
+      "id": "0bd46bbb-a749-49ed-9f3f-5bc3e8a125c5",
+      "name": "BOLFO POLVO",
+      "species": "perro y gato",
+      "category": "medicamento",
+      "subcategory": "antipulgas",
+      "life_stage": null,
+      "declared_species": null,
+      "expected_matches": true
+    },
+    {
+      "local_key": "64:0",
+      "id": "77f30d40-da9b-4fff-972f-cdf9a742337b",
+      "name": "C-THYRO TABS",
+      "species": "perro",
+      "category": "medicamento",
+      "subcategory": "medicamento",
+      "life_stage": null,
+      "declared_species": null,
+      "expected_matches": true
+    },
+    {
+      "local_key": "97:0",
+      "id": "a03afb3f-bec8-41fe-8cba-45426376a834",
+      "name": "CLORHEXIN SPRAY",
+      "species": "otro",
+      "category": "medicamento",
+      "subcategory": "medicamento",
+      "life_stage": null,
+      "declared_species": [
+        "perro",
+        "gato",
+        "equino"
+      ],
+      "expected_matches": true
+    },
+    {
+      "local_key": "238:0",
+      "id": "5a368bd3-dd1c-4587-958d-98f1020c5c7f",
+      "name": "MONELLO BOLAS DE PELOS",
+      "species": "gato",
+      "category": "comida",
+      "subcategory": "concentrado",
+      "life_stage": null,
+      "declared_species": null,
+      "expected_matches": true
+    },
+    {
+      "local_key": "238:3",
+      "id": "07c854c3-f469-4d39-acff-e7ccfecc4574",
+      "name": "MONELLO CAT FILHOTES",
+      "species": "gato",
+      "category": "comida",
+      "subcategory": "concentrado",
+      "life_stage": "cachorro",
+      "declared_species": null,
+      "expected_matches": true
+    },
+    {
+      "local_key": "238:5",
+      "id": "19abcd28-2d86-4bf0-aeb1-42c4cb902c84",
+      "name": "MONELLO DOG FILHOTES",
+      "species": "perro",
+      "category": "comida",
+      "subcategory": "concentrado",
+      "life_stage": "cachorro",
+      "declared_species": null,
+      "expected_matches": true
+    },
+    {
+      "local_key": "238:6",
+      "id": "531dda80-314c-4095-aaac-057b92681c06",
+      "name": "MONELLO DOG PUPYY",
+      "species": "perro",
+      "category": "comida",
+      "subcategory": "concentrado",
+      "life_stage": "cachorro",
+      "declared_species": null,
+      "expected_matches": true
+    },
+    {
+      "local_key": "283:0",
+      "id": "3ac9e12c-efee-4518-9965-d4d8d0e9fc1b",
+      "name": "PAÑOLETA MASCOTAS ECO",
+      "species": "otro",
+      "category": "accesorio",
+      "subcategory": "accesorio",
+      "life_stage": null,
+      "declared_species": null,
+      "expected_matches": true
+    },
+    {
+      "local_key": "283:1",
+      "id": "80a37bbc-6a1d-4c8a-8a73-fd0a4cb93902",
+      "name": "PAÑOLETA MASCOTAS PREMIUM",
+      "species": "otro",
+      "category": "accesorio",
+      "subcategory": "accesorio",
+      "life_stage": null,
+      "declared_species": null,
+      "expected_matches": true
+    },
+    {
+      "local_key": "329:0",
+      "id": "15c305b5-f010-4f26-b0ee-3cd993a90f4d",
+      "name": "SEDANPET",
+      "species": "otro",
+      "category": "medicamento",
+      "subcategory": "medicamento",
+      "life_stage": null,
+      "declared_species": [
+        "perro",
+        "gato",
+        "equino",
+        "bovino",
+        "porcino",
+        "caprino",
+        "ovino",
+        "mular",
+        "asnal",
+        "bufalino"
+      ],
+      "expected_matches": true
+    }
+  ],
+  "limits": "Paginated REST read, not a database transaction. Two identical complete passes over references, presentations and brands. Only Distrifinca tenant read."
+}

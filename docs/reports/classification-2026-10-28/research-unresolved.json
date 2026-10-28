@@ -1,0 +1,92 @@
+[
+  {
+    "keys": "38:0",
+    "finding": "Artrin Pro no coincide inequívocamente con Artrin/Artrin Plus; no extrapolar especie.",
+    "source": "https://brouwer.com.ar/productos/artrin/"
+  },
+  {
+    "keys": "64:0 65:0",
+    "finding": "C-THYRO-TABS no identifica fabricante. Aparecen Thyro-Tabs de Lloyd, pero no se demuestra identidad exacta.",
+    "source": "https://northamerica.covetrus.com/search?q=THYRO"
+  },
+  {
+    "keys": "51:0 52:0",
+    "finding": "Búsqueda de Biocanis/Bismopet no aportó ficha primaria verificable del SKU y presentación.",
+    "source": "consulta web: Biocanis Bismopet laboratorio"
+  },
+  {
+    "keys": "73:0",
+    "finding": "Canatox tiene versiones H/NF; falta versión y etiqueta del SKU local.",
+    "source": "https://basicfarm.com/"
+  },
+  {
+    "keys": "155:0",
+    "finding": "Felinnex se encontró en tabletas; el catálogo dice pasta. No intercambiar formulaciones.",
+    "source": "https://www.soydelcampo.com/vademecum/veterinario/FELINNEX/producto.php?id=7073"
+  },
+  {
+    "keys": "206:0",
+    "finding": "No se recuperó ficha primaria exacta del collar 66 cm en Colombia.",
+    "source": "https://my.elanco.com/"
+  },
+  {
+    "keys": "291:1",
+    "finding": "Folleto verificado cubre 1.25/2.5/5, no la presentación local 10.",
+    "source": "https://holliday-scott.com/file/im/20170615095611Folleto%20Pimocard.pdf"
+  },
+  {
+    "keys": "316:0 316:4",
+    "finding": "0.25 ml por sí solo admite distinta concentración. Ficha USA consultada; PDF colombiano escaneado descargado, extracción/OCR no disponible. Se requiere etiqueta local 6% rosado.",
+    "source": "https://www2.zoetis.com.co/content/_assets/PDFs/Portafolios-2022/PORTAFOLIO-CA-2024.pdf"
+  },
+  {
+    "keys": "321:0",
+    "finding": "Beauty tiene líneas felina/canina y seca/húmeda; presentación local150g no quedó verificada en fuente primaria.",
+    "source": "https://www.royalcanin.com/sg/cats/products/retail-products/n01-beauty-2536 ; https://www.royalcanin.com/ca/dogs/products/retail-products/adult-beauty-4301"
+  },
+  {
+    "keys": "321:16",
+    "finding": "Puppy Lats150g: no se recuperó ficha primaria que resuelva nombre incompleto/presentación.",
+    "source": "consulta web: Royal Canin Puppy 150 g Wet"
+  },
+  {
+    "keys": "337:0",
+    "finding": "Sitio primario 7vidas.co devuelve502; fuente indexada actual usa otras presentaciones, falta variante exacta1.5kg.",
+    "source": "https://7vidas.co/productos/"
+  },
+  {
+    "keys": "217:0",
+    "finding": "Liv52 Vet10ml no quedó identificado entre las formulaciones/formatos del fabricante.",
+    "source": "https://researchpapers.himalayawellness.in/"
+  },
+  {
+    "keys": "207:1 120:0",
+    "finding": "Kit de siembra y desodorizante Michiko: búsqueda en sitios primarios no aportó ficha del SKU140g/462.",
+    "source": "https://gestoagro.net/"
+  },
+  {
+    "keys": "154:0",
+    "finding": "Félix local agrupa85g y500g: fuente85g húmedo, no demuestra mismo formato de500g. No se cambia toda referencia.",
+    "source": "https://purina.com.co/felix/alimento-humedo/carne"
+  },
+  {
+    "keys": "88:15",
+    "finding": "Ficha oficial75g confirma gato y humedad10%, no aclara de modo suficiente uso como premio frente a alimento diario.",
+    "source": "https://www.italcolmascotas.com/chunky-delicaprichos-gato/"
+  },
+  {
+    "keys": "88:19",
+    "finding": "Delidog genérico agrupa156g y400g sin nombre de variante; se verificaron potes156/310 y estofado400, faltan identidad exacta para ese agrupamiento.",
+    "source": "https://www.italcolmascotas.com/chunky-delidog-pollo-pote/"
+  },
+  {
+    "keys": "112:1",
+    "finding": "No se recuperó ficha primaria inequívoca Country Value de esta referencia; no se copia local hacia remoto por semejanza.",
+    "source": "https://www.diamondpet.com/"
+  },
+  {
+    "keys": "228:0",
+    "finding": "Ficha Meloxipet0.15% consultada; nombre local10ml no declara concentración.",
+    "source": "https://carvalcorp.com/soluciones-productos/meloxipet/"
+  }
+]

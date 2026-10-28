@@ -1,0 +1,70 @@
+{
+  "at_utc": "2026-10-28T17:38:02.540707+00:00",
+  "status": "CHECKPOINT_PARCIAL_R3_NO_EJECUTAR_SQL",
+  "r3_decision_items": 77,
+  "r3_decision_references": 80,
+  "r2_pending_references": 367,
+  "r3_decisions_in_r2_pending": 80,
+  "r3_source_attempt_files": 503,
+  "r3_references_with_keyed_source_attempt": 349,
+  "r2_pending_without_keyed_r3_attempt": [
+    "1:3",
+    "4:10",
+    "48:0",
+    "110:0",
+    "113:0",
+    "115:0",
+    "143:6",
+    "159:0",
+    "171:0",
+    "202:0",
+    "281:0",
+    "281:1",
+    "281:2",
+    "281:3",
+    "281:4",
+    "281:5",
+    "320:2",
+    "381:14"
+  ],
+  "failed_search_responses": [
+    "evidence/r3-confirm-26.json"
+  ],
+  "projected": {
+    "local_brands": 392,
+    "local_references": 1121,
+    "local_presentations": 1397,
+    "remote_references": 1127,
+    "remote_presentations": 1423,
+    "local_changed_references": 279,
+    "local_changed_fields": 445,
+    "remote_planned_references": 299,
+    "remote_planned_fields": 487,
+    "pending_references": 280,
+    "pending_questions": 285,
+    "bound_references": 1116,
+    "protected_fields_unchanged": true,
+    "supabase_applied": false,
+    "references_with_optional_or_taxonomy_notes": 204,
+    "references_with_external_evidence": 217,
+    "pending_by_cause": {
+      "variante_o_clasificacion_ambigua": 52,
+      "destino_no_documentado": 202,
+      "divergencia_local_remota": 23,
+      "limite_taxonomia": 3,
+      "identidad_remota_ausente": 5
+    },
+    "before_sha256": "05ff7c8cb9e080946b2e53c8448aac2f774413dee6955c3c1a886066e220be6c",
+    "local_field_changes": {
+      "especie": 167,
+      "subcategoria": 143,
+      "etapa": 28,
+      "categoria": 107
+    }
+  },
+  "catalog_is_r2_unchanged": true,
+  "catalog_sha256": "f900048df4a642dba88b1da6fcd382e6789ccb28ba2a489f0583807664ee6e40",
+  "supabase_writes_attempted": false,
+  "running_processes": [],
+  "next": "Revisar resultados primarios ya guardados, consolidar decisiones pendientes, registrar razones concretas de casos no resueltos, aplicar candidato local y validar suite/SQL/estado remoto antes de entregar SQL final."
+}

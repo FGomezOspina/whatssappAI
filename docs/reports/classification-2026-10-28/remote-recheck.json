@@ -1,0 +1,13 @@
+{
+  "checked_at": "2026-10-28T18:27:08.504Z",
+  "tenant": {
+    "id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+    "slug": "distrifinca"
+  },
+  "read_only": true,
+  "remote_references": 1127,
+  "changed_ids": [],
+  "missing_ids": [],
+  "unchanged": true,
+  "supabase_applied": false
+}

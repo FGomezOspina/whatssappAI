@@ -1,0 +1,1120 @@
+[
+  {
+    "keys": "1:3",
+    "patch": {
+      "especie": "gato",
+      "categoria": "comida",
+      "subcategoria": "concentrado"
+    },
+    "reason": "Advance Urinary felino enumera 1.5 kg; la línea canina oficial enumera 3 y 12 kg. Coinciden línea y presentación exacta local.",
+    "source": "https://www.advance-affinity.com/en/cat/food-cat/veterinary-diets-urinary-1000457.html",
+    "clear": true
+  },
+  {
+    "keys": "4:10",
+    "patch": {
+      "especie": "perro",
+      "categoria": "comida",
+      "subcategoria": "concentrado"
+    },
+    "reason": "Ficha oficial Obesos: tabla de suministro para perros, humedad 12%, presentaciones 1.5 y 7 kg. Confirma clasificación local existente.",
+    "source": "https://www.italcolmascotas.com/agility-gold-cuidado-especial-obesos/",
+    "clear": true
+  },
+  {
+    "keys": "143:6",
+    "patch": {
+      "especie": "perro",
+      "categoria": "comida",
+      "subcategoria": "concentrado"
+    },
+    "reason": "Light Small Breeds de Equilibrio es alimento completo canino adulto y se presenta en 2 kg; no medicamento. Resultado indexado del fabricante, apertura directa 403.",
+    "source": "https://www.equilibrio-petfood.com/produtos-para-caes/equilibrio-black-en/light-small-breeds/",
+    "clear": true
+  },
+  {
+    "keys": "381:14",
+    "patch": {
+      "especie": "gato",
+      "categoria": "comida",
+      "subcategoria": "concentrado"
+    },
+    "reason": "Ficha Virbac CAT KJ2 Kidney & Joint: croquetas para gatos, 1.5 y 3 kg. No extrapola a KJ1/KJ3 ni a renal canino.",
+    "source": "https://pro-fr.virbac.com/home/produits/nutrition/cat-kj2.html",
+    "clear": true
+  },
+  {
+    "keys": "320:2",
+    "patch": {
+      "especie": "perro",
+      "categoria": "comida",
+      "subcategoria": "comida_humeda"
+    },
+    "reason": "Ficha Royal Canin Canine Hepatic Loaf enumera lata de 390 g y alimento húmedo canino.",
+    "source": "https://www.royalcanin.com/ca/dogs/products/vet-products/hepatic-loaf-4022",
+    "clear": true
+  },
+  {
+    "keys": "299:24",
+    "patch": {
+      "especie": "perro y gato",
+      "categoria": "comida",
+      "subcategoria": "comida_humeda"
+    },
+    "reason": "CN Convalescence en lata es alimento para perros y gatos; identidad de línea y forma explícita, sin modificar peso local unidad ni agregar una concentración.",
+    "source": "https://purina.com.co/proplan/veterinary-diets/perros/convalescence",
+    "clear": true
+  },
+  {
+    "keys": "328:0",
+    "patch": {
+      "especie": "otro",
+      "categoria": "medicamento",
+      "subcategoria": "desparasitante",
+      "metadata.especies": [
+        "bovino",
+        "caprino",
+        "ovino",
+        "porcino",
+        "equino"
+      ]
+    },
+    "reason": "Sanuch SP 15 g es antiparasitario en polvo soluble; no comida húmeda. Fabricante documenta bovinos, caprinos, ovinos, porcinos y equinos, conjunto que no se representa con una sola especie permitida. Se conserva especie plana otro y se añade la lista explícita metadata.especies ya admitida por cargador y filtros; no es aptitud universal.",
+    "source": "https://californiasaludanimal.com/portafolio/ganaderia-sanuch-sp/ ; https://californiasaludanimal.com/portafolio/mascotas-sanuch-sp/",
+    "clear": true,
+    "documented_other": true
+  },
+  {
+    "keys": "51:0",
+    "patch": {
+      "especie": "perro y gato",
+      "categoria": "suplemento",
+      "subcategoria": "suplemento"
+    },
+    "reason": "Fabricante identifica el producto como suplemento para perros y gatos; presentación oral correspondiente, Ativi 40 mg explícito. No se modifican dosis ni presentación.",
+    "source": "https://www.ourofinopet.com/produtos/suplementos/biocanis/",
+    "clear": true
+  },
+  {
+    "keys": "103:0",
+    "patch": {
+      "especie": "perro y gato",
+      "categoria": "suplemento",
+      "subcategoria": "suplemento"
+    },
+    "reason": "Fabricante identifica el producto como suplemento para perros y gatos; presentación oral correspondiente, Ativi 40 mg explícito. No se modifican dosis ni presentación.",
+    "source": "https://www.ourofinopet.com/produtos/suplementos/condromax-pet/",
+    "clear": true
+  },
+  {
+    "keys": "40:0",
+    "patch": {
+      "especie": "perro y gato",
+      "categoria": "suplemento",
+      "subcategoria": "suplemento"
+    },
+    "reason": "Fabricante identifica el producto como suplemento para perros y gatos; presentación oral correspondiente, Ativi 40 mg explícito. No se modifican dosis ni presentación.",
+    "source": "https://www.ourofinopet.com/produtos/suplementos/ativi/",
+    "clear": true
+  },
+  {
+    "keys": "215:0",
+    "patch": {
+      "especie": "perro y gato",
+      "categoria": "higiene",
+      "subcategoria": "aseo"
+    },
+    "reason": "Limp & Hidrat es solución de limpieza rutinaria auricular para perros y gatos. La lectura 100NL se preserva; no se inventa volumen.",
+    "source": "https://www.ourofinopet.com/produtos/cuidados/limp-hidrat/",
+    "clear": true
+  },
+  {
+    "keys": "264:0",
+    "patch": {
+      "especie": "perro y gato"
+    },
+    "reason": "Ficha colombiana Oftalmosyn: solución ótico-oftálmica para perros y gatos, gotero 10 ml.",
+    "source": "https://co.virbac.com/products/oticos/oftalmosyn",
+    "clear": true
+  },
+  {
+    "keys": "330:0",
+    "patch": {
+      "especie": "perro y gato"
+    },
+    "reason": "Sedolax Vet gotas orales 10 ml: fabricante declara ambas especies.",
+    "source": "https://californiasaludanimal.com/portafolio/mascotas-sedolax-vet/",
+    "clear": true
+  },
+  {
+    "keys": "381:16",
+    "patch": {
+      "especie": "gato",
+      "categoria": "comida",
+      "subcategoria": "concentrado"
+    },
+    "reason": "U2 Urology es dieta felina seca; fabricante enumera bolsa 3 kg. No se confunde con U1 canino.",
+    "source": "https://uk.virbac.com/products/urology-cat-food-u2-treats-struvite-oxalate-crystals",
+    "clear": true
+  },
+  {
+    "keys": "321:17",
+    "patch": {
+      "especie": "gato",
+      "categoria": "comida",
+      "subcategoria": "concentrado"
+    },
+    "reason": "Sterilised 37 y Kitten Sterilised de 400 g son secos felinos. La clasificación común está resuelta sin inventar etapa ni completar nombre a una variante concreta.",
+    "source": "https://www.royalcanin.com/sg/cats/products/retail-products/sterilised-37-2537 ; https://www.royalcanin.com/ie/cats/products/retail-products/kitten-sterilised-2562",
+    "clear": true
+  },
+  {
+    "keys": "321:19",
+    "patch": {
+      "especie": "gato",
+      "categoria": "comida",
+      "subcategoria": "comida_humeda"
+    },
+    "reason": "Urinary Care y Urinary S/O de 85 g son húmedos felinos. Resuelve clasificación común; no atribuye línea terapéutica específica al nombre incompleto.",
+    "source": "https://www.royalcanin.com/sg/cats/products/retail-products/urinary-care-gravy-4157 ; https://www.royalcanin.com/mt/cats/products/vet-products/urinary-so-1254",
+    "clear": true
+  },
+  {
+    "keys": "357:0",
+    "patch": {
+      "especie": "gato",
+      "categoria": "snack",
+      "subcategoria": "premio"
+    },
+    "reason": "Temptations Classic/MixUps en 3 oz y 6.3 oz corresponden a bolsas comerciales 85/180 g de premios. No se completa sabor. Se distingue del alimento seco completo de la misma marca.",
+    "source": "https://www.temptationstreats.com/products/treats/rockin-lobster-flavor ; https://www.temptationstreats.com/products/treats/mixups-backyard-cookout",
+    "clear": true
+  },
+  {
+    "keys": "170:0",
+    "patch": {
+      "especie": "perro y gato",
+      "categoria": "medicamento",
+      "subcategoria": "desparasitante"
+    },
+    "reason": "Galgocal 200 tabletas: antiparasitario interno para perros y gatos.",
+    "source": "https://californiasaludanimal.com/portafolio/mascotas-galgocal-200/",
+    "clear": true
+  },
+  {
+    "keys": "170:1",
+    "patch": {
+      "especie": "perro y gato",
+      "categoria": "medicamento",
+      "subcategoria": "desparasitante"
+    },
+    "reason": "Galgocal 600 tabletas: antiparasitario interno para perros y gatos.",
+    "source": "https://californiasaludanimal.com/portafolio/mascotas-galgocal-600/",
+    "clear": true
+  },
+  {
+    "keys": "232:0",
+    "patch": {
+      "especie": "perro y gato"
+    },
+    "reason": "Mikomax tabletas se indica en perros y gatos; unidad no se convierte en concentración.",
+    "source": "https://californiasaludanimal.com/portafolio/mascotas-mikomax/",
+    "clear": true
+  },
+  {
+    "keys": "124:0",
+    "patch": {
+      "especie": "perro y gato"
+    },
+    "reason": "Descensor 200 mg tabletas: ambas especies explícitas.",
+    "source": "https://californiasaludanimal.com/portafolio/mascotas-descensor/",
+    "clear": true
+  },
+  {
+    "keys": "222:0",
+    "patch": {
+      "especie": "perro y gato"
+    },
+    "reason": "Marboquin tabletas 5, 25 y 50 mg documentadas para perros y gatos; no extrapola a inyectable 10% de ganado.",
+    "source": "https://californiasaludanimal.com/portafolio/mascotas-marboquin-50/",
+    "clear": true
+  },
+  {
+    "keys": "80:0",
+    "patch": {
+      "especie": "perro y gato"
+    },
+    "reason": "Cardio B 5 mg: perros y gatos expresos.",
+    "source": "https://californiasaludanimal.com/portafolio/mascotas-cardio-b/",
+    "clear": true
+  },
+  {
+    "keys": "305:0",
+    "patch": {
+      "especie": "perro y gato"
+    },
+    "reason": "Quinocalf tabletas 25 y 50 mg: perros y gatos expresos.",
+    "source": "https://californiasaludanimal.com/portafolio/mascotas-quinocalf/",
+    "clear": true
+  },
+  {
+    "keys": "133:0",
+    "patch": {
+      "especie": "perro y gato"
+    },
+    "reason": "Doxifig solución oral: apartado Species for which it is recommended declara Dogs and cats; no son especies inferidas del menú.",
+    "source": "https://figa.com.co/en/product/doxifig/",
+    "clear": true
+  },
+  {
+    "keys": "193:0",
+    "patch": {
+      "especie": "otro",
+      "metadata.especies": [
+        "perro",
+        "gato",
+        "equino"
+      ]
+    },
+    "reason": "Hialurina colirio: fabricante declara caninos, felinos y equinos. Se documenta multiespecie; otro no es desconocimiento ni comodín del filtro. Se conserva especie plana otro y se añade la lista explícita metadata.especies ya admitida por cargador y filtros; no es aptitud universal.",
+    "source": "https://brouwer.com.ar/productos/hialurina/",
+    "clear": true,
+    "documented_other": true
+  },
+  {
+    "keys": "242:0",
+    "patch": {
+      "especie": "perro",
+      "categoria": "suplemento",
+      "subcategoria": "suplemento"
+    },
+    "reason": "Mungos Vital+ Probiotic es suplemento alimenticio para perros; no medicamento.",
+    "source": "https://mungos.co/producto/probioticos-para-perros/",
+    "clear": true
+  },
+  {
+    "keys": "123:0",
+    "patch": {
+      "especie": "otro",
+      "metadata.especies": [
+        "perro",
+        "gato",
+        "equino",
+        "porcino",
+        "bovino"
+      ]
+    },
+    "reason": "Dermosyn 50/100 ml: Virbac Colombia declara caninos, felinos, equinos, porcinos y bovinos. Multiespecie documentada no reducible a perro y gato. Se conserva especie plana otro y se añade la lista explícita metadata.especies ya admitida por cargador y filtros; no es aptitud universal.",
+    "source": "https://co.virbac.com/products/problemas-dermatologicos/dermosyn",
+    "clear": true,
+    "documented_other": true
+  },
+  {
+    "keys": "319:0",
+    "patch": {
+      "especie": "perro y gato",
+      "categoria": "medicamento",
+      "subcategoria": "desparasitante"
+    },
+    "reason": "Rondel es antiparasitario interno para perros y gatos; ficha del fabricante.",
+    "source": "https://co.virbac.com/products/antiparasitarios-internos/rondel",
+    "clear": true
+  },
+  {
+    "keys": "95:0",
+    "patch": {
+      "especie": "perro y gato"
+    },
+    "reason": "Ciprovet: ficha oficial enumera Cats y Dogs para este colirio.",
+    "source": "https://labyes.com/en/products/ciprovet/",
+    "clear": true
+  },
+  {
+    "keys": "334:17",
+    "patch": {
+      "especie": "perro y gato"
+    },
+    "reason": "Sebocalm 250 ml: shampoo para perros y gatos, fabricante colombiano.",
+    "source": "https://co.virbac.com/products/higiene-y-dermatologia/sebocalm",
+    "clear": true
+  },
+  {
+    "keys": "334:0",
+    "patch": {
+      "especie": "perro"
+    },
+    "reason": "Allermyl SIS: ficha colombiana indica perros. No se extrapola desde variantes extranjeras que mencionan gatos.",
+    "source": "https://co.virbac.com/products/problemas-dermatologicos/allermyl",
+    "clear": true
+  },
+  {
+    "keys": "72:1",
+    "patch": {
+      "especie": "perro"
+    },
+    "reason": "CanAmor Baño Espumoso 200 ml es repelente de baño para perros; corrige gato.",
+    "source": "https://canamor.com/producto/repelente-bano-espumoso/",
+    "clear": true
+  },
+  {
+    "keys": "72:14",
+    "patch": {
+      "especie": "perro",
+      "categoria": "medicamento",
+      "subcategoria": "antipulgas"
+    },
+    "reason": "Talco insecticida CanAmor 100 g D-Fenotrina: producto contra parásitos externos para perros, no aseo ordinario.",
+    "source": "https://canamor.com/producto/talco-insecticida/",
+    "clear": true
+  },
+  {
+    "keys": "275:0",
+    "patch": {
+      "especie": "perro y gato"
+    },
+    "reason": "Otocure: ficha Basic Farm declara solución ótica para perros y gatos.",
+    "source": "https://basicfarm.com/project/otocure/",
+    "clear": true
+  },
+  {
+    "keys": "119:0",
+    "patch": {
+      "especie": "otro",
+      "metadata.especies": [
+        "perro",
+        "gato",
+        "equino"
+      ]
+    },
+    "reason": "Denty Farm crema dental para perros, gatos y caballos según fabricante; multiespecie documentada. Se conserva especie plana otro y se añade la lista explícita metadata.especies ya admitida por cargador y filtros; no es aptitud universal.",
+    "source": "https://basicfarm.com/blog/importancia-salud-oral-animales/",
+    "clear": true,
+    "documented_other": true
+  },
+  {
+    "keys": "271:1",
+    "patch": {
+      "especie": "perro",
+      "categoria": "higiene",
+      "subcategoria": "aseo"
+    },
+    "reason": "Orenda Paw es bálsamo humectante de almohadillas/callosidades de perros; cuidado externo, no medicamento.",
+    "source": "https://basicfarm.com/project/orenda-paw/?et_portfolio=",
+    "clear": true
+  },
+  {
+    "keys": "334:2",
+    "patch": {
+      "especie": "otro",
+      "metadata.especies": [
+        "perro",
+        "gato",
+        "equino"
+      ]
+    },
+    "reason": "Baxidin champú está declarado por fabricante para perros, gatos y caballos; no atribuir exclusividad. Se conserva especie plana otro y se añade la lista explícita metadata.especies ya admitida por cargador y filtros; no es aptitud universal.",
+    "source": "https://basicfarm.com/project/baxidin-champu/",
+    "clear": true,
+    "documented_other": true
+  },
+  {
+    "keys": "45:0",
+    "patch": {
+      "especie": "otro",
+      "metadata.especies": [
+        "perro",
+        "gato",
+        "bovino",
+        "equino",
+        "porcino"
+      ]
+    },
+    "reason": "Baxidin solución antiséptica: fabricante documenta perros, gatos, bovinos, equinos y porcinos. Se conserva especie plana otro y se añade la lista explícita metadata.especies ya admitida por cargador y filtros; no es aptitud universal.",
+    "source": "https://basicfarm.com/blog/enfermedades-zoonoticas-transmitidas-por-mascotas/",
+    "clear": true,
+    "documented_other": true
+  },
+  {
+    "keys": "160:0 161:0 161:1 161:2",
+    "patch": {},
+    "reason": "Control ambiental de cucarachas Fincuc. Categoría otro ya excluye alimento/medicamento; el esquema no tiene subcategoría de insecticida ambiental. Subcategoría nula es válida. Diferencia gel/spray no cambia esta clasificación y se conserva el nombre comercial.",
+    "source": "https://www.fincuc.com/about.html",
+    "clear": true,
+    "documented_other": true
+  },
+  {
+    "keys": "5:0",
+    "patch": {
+      "especie": "otro",
+      "metadata.especies": [
+        "bovino",
+        "equino",
+        "porcino",
+        "caprino",
+        "ovino",
+        "perro",
+        "gato"
+      ]
+    },
+    "reason": "Ficha del fabricante/importador publicada en Soy del Campo: Alapiel dermatológico está declarado para bovinos, equinos, porcinos, caprinos, ovinos, caninos y felinos. Se conserva especie plana otro y se añade la lista explícita metadata.especies ya admitida por cargador y filtros; no es aptitud universal.",
+    "source": "https://www.soydelcampo.com/vademecum/veterinario/ALAPIEL/producto.php?id=6782",
+    "clear": true,
+    "documented_other": true
+  },
+  {
+    "keys": "13:0",
+    "patch": {
+      "especie": "otro",
+      "metadata.especies": [
+        "bovino",
+        "perro",
+        "equino",
+        "porcino",
+        "gato"
+      ]
+    },
+    "reason": "Ficha del fabricante/importador publicada en Soy del Campo: Ankofen Tabletas declara bovinos, caninos, equinos, porcinos y gatos; no se reduce a ambas mascotas. Se conserva especie plana otro y se añade la lista explícita metadata.especies ya admitida por cargador y filtros; no es aptitud universal.",
+    "source": "https://www.soydelcampo.com/vademecum/veterinario/ANKOFEN-TABLETAS/producto.php?id=6909",
+    "clear": true,
+    "documented_other": true
+  },
+  {
+    "keys": "14:0",
+    "patch": {
+      "especie": "perro y gato"
+    },
+    "reason": "Ficha del fabricante/importador publicada en Soy del Campo: Apetil declara ambas especies.",
+    "source": "https://www.soydelcampo.com/vademecum/veterinario/APETIL/producto.php?id=1837",
+    "clear": true
+  },
+  {
+    "keys": "79:0",
+    "patch": {
+      "especie": "perro"
+    },
+    "reason": "Ficha del fabricante/importador publicada en Soy del Campo: Cardial declara perros; no se completa la concentración ausente.",
+    "source": "https://www.soydelcampo.com/vademecum/veterinario/CARDIAL/producto.php?id=1847",
+    "clear": true
+  },
+  {
+    "keys": "177:0",
+    "patch": {
+      "especie": "perro"
+    },
+    "reason": "Ficha del fabricante/importador publicada en Soy del Campo: Gentax ótico está indicado en perros; no se extiende a gatos por la composición.",
+    "source": "https://www.soydelcampo.com/vademecum/veterinario/GENTAX-OTICO/producto.php?id=2349",
+    "clear": true
+  },
+  {
+    "keys": "188:0",
+    "patch": {
+      "especie": "otro",
+      "metadata.especies": [
+        "bovino",
+        "perro",
+        "equino",
+        "caprino",
+        "ovino",
+        "porcino"
+      ]
+    },
+    "reason": "Ficha del fabricante/importador publicada en Soy del Campo: Gusantrol NF ungüento está indicado en bovinos, caninos, equinos, caprinos, ovinos y porcinos. La forma tópica local crema no es un desparasitante oral. Se conserva especie plana otro y se añade la lista explícita metadata.especies ya admitida por cargador y filtros; no es aptitud universal.",
+    "source": "https://www.soydelcampo.com/vademecum/veterinario/GUSANTROL-NF-UNGUENTO/producto.php?id=3145",
+    "clear": true,
+    "documented_other": true
+  },
+  {
+    "keys": "228:0",
+    "patch": {
+      "especie": "perro y gato"
+    },
+    "reason": "Ficha del fabricante/importador publicada en Soy del Campo: Meloxipet oral 1.5 mg/ml declara perros y gatos; se preserva envase de 10 ml.",
+    "source": "https://www.soydelcampo.com/vademecum/veterinario/MELOXIPET/producto.php?id=6957",
+    "clear": true
+  },
+  {
+    "keys": "230:0",
+    "patch": {
+      "especie": "perro y gato"
+    },
+    "reason": "Ficha del fabricante/importador publicada en Soy del Campo: Metronid oral declara ambas especies.",
+    "source": "https://soydelcampo.com/vademecum/veterinario/METRONID/producto.php?id=6937",
+    "clear": true
+  },
+  {
+    "keys": "237:0",
+    "patch": {
+      "especie": "perro"
+    },
+    "reason": "Ficha del fabricante/importador publicada en Soy del Campo: Mometax ótico declara perros; contradice vendedores que agregan gatos.",
+    "source": "https://www.soydelcampo.com/vademecum/veterinario/MOMETAX/producto.php?id=6761",
+    "clear": true
+  },
+  {
+    "keys": "251:1",
+    "patch": {
+      "especie": "perro y gato"
+    },
+    "reason": "Ficha del fabricante/importador publicada en Soy del Campo: Novabroncol Pets declara caninos y gatos; no se extrapola desde Novabroncol ganadero.",
+    "source": "https://www.soydelcampo.com/vademecum/veterinario/NOVABRONCOL-PETS/producto.php?id=6949",
+    "clear": true
+  },
+  {
+    "keys": "74:0",
+    "patch": {
+      "especie": "perro y gato",
+      "categoria": "medicamento",
+      "subcategoria": "desparasitante"
+    },
+    "reason": "Ficha del fabricante/importador publicada en Soy del Campo: Canipets antihelmíntico oral declara ambas especies.",
+    "source": "https://www.soydelcampo.com/vademecum/veterinario/CANIPETS/producto.php?id=2549",
+    "clear": true
+  },
+  {
+    "keys": "76:0",
+    "patch": {
+      "especie": "perro",
+      "categoria": "medicamento",
+      "subcategoria": "desparasitante"
+    },
+    "reason": "Ficha del fabricante/importador publicada en Soy del Campo: Cannex suspensión antihelmíntica para perros; la línea Cachorros también canina.",
+    "source": "https://www.soydelcampo.com/vademecum/veterinario/CANNEX/producto.php?id=7022",
+    "clear": true
+  },
+  {
+    "keys": "87:0",
+    "patch": {
+      "especie": "perro y gato",
+      "categoria": "higiene",
+      "subcategoria": "aseo"
+    },
+    "reason": "Ficha del fabricante/importador publicada en Soy del Campo: Ceruline limpiador auricular para perros y gatos. La ficha histórica muestra 100 ml; envase local 120 ml protegido, especie y función de línea inequívocas.",
+    "source": "https://www.soydelcampo.com/vademecum/veterinario/CERULINE/producto.php?id=2332",
+    "clear": true
+  },
+  {
+    "keys": "102:0",
+    "patch": {
+      "especie": "otro",
+      "categoria": "suplemento",
+      "subcategoria": "suplemento",
+      "metadata.especies": [
+        "bovino",
+        "perro",
+        "equino",
+        "gato",
+        "ave"
+      ]
+    },
+    "reason": "Ficha del fabricante/importador publicada en Soy del Campo: Compleland B12 ORAL suplemento vitamínico para bovinos, caninos, equinos, felinos y aves; no extrapola a presentación inyectable. Se conserva especie plana otro y se añade la lista explícita metadata.especies ya admitida por cargador y filtros; no es aptitud universal.",
+    "source": "https://www.soydelcampo.com/vademecum/veterinario/COMPLELAND-B12-ORAL/producto.php?id=4238",
+    "clear": true,
+    "documented_other": true
+  },
+  {
+    "keys": "274:0",
+    "patch": {
+      "especie": "otro",
+      "metadata.especies": [
+        "perro",
+        "equino",
+        "gato"
+      ]
+    },
+    "reason": "Ficha del fabricante/importador publicada en Soy del Campo: Otivet Forte incluye caninos, equinos y felinos. Se conserva especie plana otro y se añade la lista explícita metadata.especies ya admitida por cargador y filtros; no es aptitud universal.",
+    "source": "https://soydelcampo.com/vademecum/veterinario/OTIVET-FORTE/producto.php?id=7030",
+    "clear": true,
+    "documented_other": true
+  },
+  {
+    "keys": "276:0",
+    "patch": {
+      "especie": "perro y gato"
+    },
+    "reason": "Ficha del fabricante/importador publicada en Soy del Campo: Otofarm gotero 12 ml declara ambas especies.",
+    "source": "https://www.soydelcampo.com/vademecum/veterinario/OTOFARM/producto.php?id=332",
+    "clear": true
+  },
+  {
+    "keys": "279:0",
+    "patch": {
+      "especie": "perro y gato"
+    },
+    "reason": "Ficha del fabricante/importador publicada en Soy del Campo: Panolog pomada declara ambas especies; forma y línea coincidentes.",
+    "source": "https://www.soydelcampo.com/vademecum/veterinario/PANOLOG-POMADA/producto.php?id=4971",
+    "clear": true
+  },
+  {
+    "keys": "298:0",
+    "patch": {
+      "especie": "perro"
+    },
+    "reason": "Ficha del fabricante/importador publicada en Soy del Campo: Previcox 57 y 227 mg son tabletas caninas; no se cambia nombre PREVICO.",
+    "source": "https://www.soydelcampo.com/vademecum/veterinario/PREVICOX/producto.php?id=7109",
+    "clear": true
+  },
+  {
+    "keys": "304:0",
+    "patch": {
+      "especie": "perro y gato"
+    },
+    "reason": "Ficha del fabricante/importador publicada en Soy del Campo: Quercetol Vet 70 y 100 tabletas declara ambas especies; no se usa ficha inyectable.",
+    "source": "https://soydelcampo.com/vademecum/veterinario/QUERCETOL-VET-70-100/producto.php?id=7071",
+    "clear": true
+  },
+  {
+    "keys": "334:4",
+    "patch": {
+      "especie": "perro y gato"
+    },
+    "reason": "Ficha del fabricante/importador publicada en Soy del Campo: Brillo Shampoo declara ambas especies.",
+    "source": "https://www.soydelcampo.com/vademecum/veterinario/BRILLO-SHAMPOO/producto.php?id=3645",
+    "clear": true
+  },
+  {
+    "keys": "334:11",
+    "patch": {
+      "especie": "perro"
+    },
+    "reason": "Ficha del fabricante/importador publicada en Soy del Campo: Keracleen 240 ml tiene indicación exclusiva canina en la ficha.",
+    "source": "https://www.soydelcampo.com/vademecum/veterinario/KERACLEEN/producto.php?id=2361",
+    "clear": true
+  },
+  {
+    "keys": "334:12",
+    "patch": {
+      "especie": "perro y gato"
+    },
+    "reason": "Ficha del fabricante/importador publicada en Soy del Campo: Ketoclean champú declara ambas especies.",
+    "source": "https://www.soydelcampo.com/vademecum/veterinario/KETOCLEAN/producto.php?id=6869",
+    "clear": true
+  },
+  {
+    "keys": "348:0",
+    "patch": {
+      "especie": "perro y gato"
+    },
+    "reason": "Ficha del fabricante/importador publicada en Soy del Campo: Stomizol 20 declara ambas especies; no se corrige la unidad mg del catálogo.",
+    "source": "https://soydelcampo.com/vademecum/veterinario/STOMIZOL-20/producto.php?id=7036",
+    "clear": true
+  },
+  {
+    "keys": "350:0",
+    "patch": {
+      "especie": "otro",
+      "metadata.especies": [
+        "bovino",
+        "equino",
+        "porcino",
+        "ovino",
+        "perro"
+      ]
+    },
+    "reason": "Ficha del fabricante/importador publicada en Soy del Campo: Streptoland Oral está indicado en terneros, potros, cerdos, borregos y caninos. Se conserva especie plana otro y se añade la lista explícita metadata.especies ya admitida por cargador y filtros; no es aptitud universal.",
+    "source": "https://soydelcampo.com/vademecum/veterinario/STREPTOLAND-ORAL/producto.php?id=4285",
+    "clear": true,
+    "documented_other": true
+  },
+  {
+    "keys": "367:0",
+    "patch": {
+      "especie": "perro y gato"
+    },
+    "reason": "Ficha del fabricante/importador publicada en Soy del Campo: Tusivet Jarabe 120 ml declara ambas especies.",
+    "source": "https://www.soydelcampo.com/vademecum/veterinario/TUSIVET-JARABE/producto.php?id=5336",
+    "clear": true
+  },
+  {
+    "keys": "368:0",
+    "patch": {
+      "especie": "otro",
+      "metadata.especies": [
+        "bovino",
+        "perro",
+        "equino",
+        "caprino",
+        "ovino",
+        "porcino",
+        "gato"
+      ]
+    },
+    "reason": "Ficha del fabricante/importador publicada en Soy del Campo: Ubrevet ungüento declara bovinos, perros, equinos, caprinos, ovinos, porcinos y gatos. Se conserva especie plana otro y se añade la lista explícita metadata.especies ya admitida por cargador y filtros; no es aptitud universal.",
+    "source": "https://www.soydelcampo.com/vademecum/veterinario/UBREVET/producto.php?id=2075",
+    "clear": true,
+    "documented_other": true
+  },
+  {
+    "keys": "370:0",
+    "patch": {
+      "especie": "perro"
+    },
+    "reason": "Ficha del fabricante/importador publicada en Soy del Campo: Unidol 100 mg con carprofeno: especie canina.",
+    "source": "https://new.soydelcampo.com/vademecum/veterinario/UNIDOL-50-100/producto.php?id=7041",
+    "clear": true
+  },
+  {
+    "keys": "373:0",
+    "patch": {
+      "especie": "otro",
+      "metadata.especies": [
+        "bovino",
+        "perro",
+        "equino",
+        "caprino",
+        "ovino",
+        "porcino",
+        "gato",
+        "ave"
+      ]
+    },
+    "reason": "Ficha del fabricante/importador publicada en Soy del Campo: Vacol pomada incluye múltiples especies de producción, aves, perros y gatos. No se usa una sola mascota. Se conserva especie plana otro y se añade la lista explícita metadata.especies ya admitida por cargador y filtros; no es aptitud universal.",
+    "source": "https://soydelcampo.com/vademecum/veterinario/VACOL-POMADA/producto.php?id=4701",
+    "clear": true,
+    "documented_other": true
+  },
+  {
+    "keys": "377:0",
+    "patch": {
+      "especie": "otro",
+      "metadata.especies": [
+        "bovino",
+        "perro",
+        "ovino",
+        "porcino"
+      ]
+    },
+    "reason": "Ficha del fabricante/importador publicada en Soy del Campo: Verdemint declara bovinos, caninos, ovinos y porcinos; no se infiere gato por uso tópico. Se conserva especie plana otro y se añade la lista explícita metadata.especies ya admitida por cargador y filtros; no es aptitud universal.",
+    "source": "https://soydelcampo.com/vademecum/veterinario/VERDEMINT/producto.php?id=3345",
+    "clear": true,
+    "documented_other": true
+  },
+  {
+    "keys": "301:0",
+    "patch": {
+      "especie": "perro y gato",
+      "categoria": "medicamento",
+      "subcategoria": "antipulgas"
+    },
+    "reason": "Ficha del fabricante/importador publicada en Soy del Campo: Pulfen Spot On incluye perros y gatos; ficha enumera exactamente 1 y 3.2 ml.",
+    "source": "https://www.soydelcampo.com/vademecum/veterinario/PULFEN-SPOT-ON/producto.php?id=3335",
+    "clear": true
+  },
+  {
+    "keys": "268:0",
+    "patch": {
+      "especie": "perro y gato",
+      "categoria": "suplemento",
+      "subcategoria": "suplemento"
+    },
+    "reason": "Ficha del fabricante/importador publicada en Soy del Campo: OLTRANS es nutracéutico oral en polvo 80/800 g, no un producto de aseo.",
+    "source": "https://soydelcampo.com/vademecum/veterinario/OLTRANS/producto.php?id=1881",
+    "clear": true
+  },
+  {
+    "keys": "98:1",
+    "patch": {
+      "especie": "otro"
+    },
+    "reason": "Ficha oficial Colirio ZOO: todas las especies; se documenta alcance amplio sin reducir a perro/gato.",
+    "source": "https://laboratorioszoo.com.co/fichas/colirio-zoo.pdf",
+    "clear": true,
+    "documented_other": true
+  },
+  {
+    "keys": "293:0",
+    "patch": {
+      "especie": "otro",
+      "metadata.especies": [
+        "bovino",
+        "ovino",
+        "caprino",
+        "porcino",
+        "equino",
+        "perro",
+        "gato"
+      ]
+    },
+    "reason": "Pomada Alfa tiene especies bovina, ovina, caprina, porcina, equina, canina y felina en ficha oficial. Se conserva especie plana otro y se añade la lista explícita metadata.especies ya admitida por cargador y filtros; no es aptitud universal.",
+    "source": "https://laboratorioszoo.com.co/productos/pomada-alfa",
+    "clear": true,
+    "documented_other": true
+  },
+  {
+    "keys": "155:0",
+    "patch": {
+      "especie": "gato",
+      "categoria": "medicamento",
+      "subcategoria": "desparasitante"
+    },
+    "reason": "Felinnex está indicado en gatos. La palabra comercial PASTA y presentación unidad no permiten afirmar una forma distinta; se conserva texto y no se completa concentración. Clasificación de especie y antihelmíntico sí documentada.",
+    "source": "https://www.soydelcampo.com/vademecum/veterinario/FELINNEX/producto.php?id=7073",
+    "clear": true
+  },
+  {
+    "keys": "75:3",
+    "patch": {
+      "especie": "perro y gato",
+      "categoria": "medicamento",
+      "subcategoria": "desparasitante"
+    },
+    "reason": "Canisan Tabletas masticables: antihelmíntico oral para ambas especies según fabricante.",
+    "source": "https://www.laboratoriosprovet.com/producto/canisan-tabletas/",
+    "clear": true
+  },
+  {
+    "keys": "146:0",
+    "patch": {
+      "especie": "perro y gato"
+    },
+    "reason": "Espuma Bucal IBASA 50 ml para perros y gatos, presentación exacta del fabricante.",
+    "source": "https://www.ibasa.com.br/espuma-bucal-caes-gatos-ibasa-50ml",
+    "clear": true
+  },
+  {
+    "keys": "321:18",
+    "patch": {
+      "especie": "gato",
+      "categoria": "comida",
+      "subcategoria": "concentrado"
+    },
+    "reason": "Royal Canin Urinary S/O 400 g corresponde a alimento seco felino en ficha oficial.",
+    "source": "https://www.royalcanin.com/ph/cats/products/vet-products/urinary-so-3901",
+    "clear": true
+  },
+  {
+    "keys": "308:0",
+    "patch": {
+      "especie": "otro",
+      "categoria": "otro",
+      "subcategoria": null
+    },
+    "reason": "Publicación oficial de Chalver identifica Ration Pellets como rodenticida anticoagulante, con caja de sobres de 20 g. No es alimento para perros; tratamiento ambiental fuera de categorías de mascotas.",
+    "source": "https://www.facebook.com/chalversaludanimal/posts/ration-pellets-pellets-rodenticida-anticoagulantelisto-para-su-usoreg-ica-no7884/2223732361216468/",
+    "clear": true,
+    "documented_other": true
+  },
+  {
+    "keys": "46:0",
+    "patch": {},
+    "reason": "La referencia agrupa Baytril tabletas de 150 mg (caninos) y de 50 mg (caninos y gatos). La especie se encuentra documentada por presentación, pero el campo plano y metadata.especies se aplican a toda la referencia. No se propaga gato a 150 mg.",
+    "source": "https://www.soydelcampo.com/vademecum/veterinario/BAYTRIL-TABLETAS-150-mg/producto.php?id=375 ; https://www.soydelcampo.com/vademecum/veterinario/BAYTRIL-TABLETAS-50mg/producto.php?id=374",
+    "clear": true,
+    "documented_other": true,
+    "pending": [
+      {
+        "field": "modelo_por_presentacion",
+        "missing": "Separar la referencia Baytril en entidades por especie/concentración (150 mg canino y 50 mg canino/felino), preservando identificadores de presentación y relaciones. Requiere ampliar alcance; no falta información de especie. No se modifica el agrupamiento ni las presentaciones en esta tarea."
+      }
+    ]
+  },
+  {
+    "keys": "7:0",
+    "patch": {
+      "especie": "perro y gato"
+    },
+    "reason": "Alernex tabletas: la ficha suministrada por Laboratorios ZOO declara caninos y felinos; no se extrapola a otra forma.",
+    "source": "https://www.soydelcampo.com/vademecum/veterinario/ALERNEX/producto.php?id=4336",
+    "clear": true
+  },
+  {
+    "keys": "17:4 33:0",
+    "patch": {
+      "especie": "gato",
+      "categoria": "arena_sustrato",
+      "subcategoria": "arena"
+    },
+    "reason": "Polar documenta arena sanitaria Unikat para gatos y las bolsas de 4 y 18 kg exactas; no es alimento.",
+    "source": "https://empresaspolar.com.co/nuestras-marcas/unikat-colombia/",
+    "clear": true
+  },
+  {
+    "keys": "37:0",
+    "patch": {
+      "especie": "perro y gato",
+      "categoria": "suplemento",
+      "subcategoria": "suplemento"
+    },
+    "reason": "Artri Balance tabletas: la ficha de Pet Prime / Sumimascotas declara suplemento para perros y gatos. No se confunde con Artri Tabs nuggets.",
+    "source": "https://sumimascotas.com/tienda/artri-balance/",
+    "clear": true
+  },
+  {
+    "keys": "244:13",
+    "patch": {
+      "especie": "perro y gato",
+      "categoria": "suplemento",
+      "subcategoria": "suplemento"
+    },
+    "reason": "Las dos fichas del fabricante para Omega 3-6-9 2x1 de 50 capsulas describen el mismo suplemento para perros y gatos.",
+    "source": "https://petsandcats.com.co/catalogo/producto-natural-para-la-salud-y-bienestar-de-tu-perro-p-c-omega-3-6-9-2x1-frasco-con-50-capsulas/ ; https://petsandcats.com.co/catalogo/producto-natural-para-la-salud-y-bienestar-de-tu-gato-p-c-omega-3-6-9-2x1-frasco-con-50-capsulas/",
+    "clear": true
+  },
+  {
+    "keys": "244:17",
+    "patch": {
+      "especie": "perro",
+      "categoria": "suplemento",
+      "subcategoria": "suplemento"
+    },
+    "reason": "Urovital 50 Vitacrunch: ficha de Natural Freshly identifica suplemento nutricional de vitaminas y minerales para perros; no se toma la jalea Urovital como equivalente.",
+    "source": "https://petsandcats.com.co/catalogo/producto-natural-para-la-salud-y-bienestar-de-tu-perro-p-c-urovital-50-vitacrunch/",
+    "clear": true
+  },
+  {
+    "keys": "244:11",
+    "patch": {
+      "especie": "perro y gato",
+      "categoria": "suplemento",
+      "subcategoria": "suplemento"
+    },
+    "reason": "Mieltertos suspension mascotas 180 ml aparece en las fichas canina y felina del fabricante como suplemento alimenticio; se retira la categoria medicamento.",
+    "source": "https://petsandcats.com.co/catalogo/producto-natural-para-la-salud-y-bienestar-de-tu-gato-p-c-mieltertos-suspension-mascotas-x-180-ml/ ; https://petsandcats.com.co/",
+    "clear": true
+  },
+  {
+    "keys": "206:0",
+    "patch": {
+      "especie": "perro",
+      "categoria": "medicamento",
+      "subcategoria": "antipulgas"
+    },
+    "reason": "Ficha de Kiltix identifica collar para perros grandes de 66 cm exactos y control de parasitos externos; no se incluye gato.",
+    "source": "https://www.soydelcampo.com/vademecum/veterinario/KILTIX/producto.php?id=410",
+    "clear": true
+  },
+  {
+    "keys": "88:17",
+    "patch": {
+      "especie": "gato",
+      "categoria": "comida",
+      "subcategoria": "comida_humeda"
+    },
+    "reason": "Delicat de 156 g en pote y de 80 g en sobre son alimento humedo felino en las fichas de Italcol. Sabor ausente no impide determinar esta clasificacion comun; no se inventa sabor.",
+    "source": "https://www.italcolmascotas.com/chunky-delicat-pollo-pote/ ; https://www.italcolmascotas.com/chunky-delicat-trozos-de-pollo/",
+    "clear": true
+  },
+  {
+    "keys": "88:19",
+    "patch": {
+      "especie": "perro",
+      "categoria": "comida",
+      "subcategoria": "comida_humeda"
+    },
+    "reason": "Delidog de 156 g en pote y de 400 g en lata pertenecen a alimentos humedos caninos del fabricante. No se confunden con Delidog Bone/Dent/Mix, que son snacks.",
+    "source": "https://www.italcolmascotas.com/chunky-perros/ ; https://www.italcolmascotas.com/page/7/?search= ; https://www.italcolmascotas.com/page/4/?search=",
+    "clear": true
+  },
+  {
+    "keys": "88:18",
+    "patch": {
+      "especie": "gato",
+      "categoria": "comida",
+      "subcategoria": "comida_humeda"
+    },
+    "reason": "El nombre fuente CHUNKY DELICAT PAG 3 LLEV 4 identifica promocion de Delicat, alimento humedo felino. No se interpreta 3 LLEV como tres litros. La presentacion 3 l es un defecto protegido fuera del alcance: se conserva y se informa para correccion separada; no cambia categoria/especie.",
+    "source": "productos.json: metadata.original_names y nombre_original de codigo 104010102017; https://www.italcolmascotas.com/chunky-delicat-trozos-de-pollo/",
+    "clear": true,
+    "protected_data_findings": [
+      "Codigo 104010102017: peso 3 l proviene de PAG 3 LLEV 4; confirmar peso unitario y mecanica del paquete antes de corregir presentacion."
+    ]
+  },
+  {
+    "keys": "72:2",
+    "patch": {
+      "especie": "perro",
+      "categoria": "medicamento",
+      "subcategoria": "antipulgas"
+    },
+    "reason": "Jabon insecticida CanAmor: fabricante documenta control de parasitos externos en perros. No se clasifica como aseo ordinario ni se agrega gato.",
+    "source": "https://canamor.com/producto/jabon-insecticida/",
+    "clear": true
+  },
+  {
+    "keys": "72:3",
+    "patch": {
+      "especie": "perro",
+      "categoria": "higiene",
+      "subcategoria": "aseo"
+    },
+    "reason": "Jabon desodorante CanAmor de 90 g: ficha canina de higiene exacta, distinto del jabon insecticida.",
+    "source": "https://canamor.com/producto/jabon-desodorante-90-g/",
+    "clear": true
+  },
+  {
+    "keys": "72:5 72:6",
+    "patch": {
+      "especie": "perro",
+      "categoria": "medicamento",
+      "subcategoria": "antipulgas"
+    },
+    "reason": "Shampoo insecticida CanAmor se identifica en la linea del fabricante para perros. La funcion antiparasitaria externa justifica subcategoria antipulgas, sin alterar formato ni ingredientes.",
+    "source": "https://canamor.com/categoria-producto/perros/limpieza/",
+    "clear": true
+  },
+  {
+    "keys": "72:8 72:11",
+    "patch": {
+      "especie": "perro",
+      "categoria": "higiene",
+      "subcategoria": "aseo"
+    },
+    "reason": "Pelo Largo y Rinse de 230 ml corresponden al shampoo canino de pelo largo del fabricante. Clasificacion de higiene; no alimento ni medicamento.",
+    "source": "https://canamor.com/producto/shampoo-pelo-largo/",
+    "clear": true
+  },
+  {
+    "keys": "72:9",
+    "patch": {
+      "especie": "perro",
+      "categoria": "higiene",
+      "subcategoria": "aseo"
+    },
+    "reason": "Shampoo CanAmor Pelo Oscuro: ficha explicita para perros; higiene externa.",
+    "source": "https://canamor.com/producto/shampoo-pelo-oscuro/",
+    "clear": true
+  },
+  {
+    "keys": "72:10",
+    "patch": {
+      "especie": "perro",
+      "categoria": "higiene",
+      "subcategoria": "aseo"
+    },
+    "reason": "Shampoo Piel de CanAmor de 30 ml corresponde a linea Piel Sensible para perros publicada junto a las presentaciones del fabricante; no se extiende a shampoo felino de arbol de te.",
+    "source": "https://canamor.com/producto/shampoo-piel-sensible-2/ ; https://canamor.com/categoria-producto/perros/limpieza/page/2/",
+    "clear": true
+  },
+  {
+    "keys": "282:0",
+    "patch": {
+      "especie": "perro y gato",
+      "categoria": "higiene",
+      "subcategoria": "aseo"
+    },
+    "reason": "Ficha CanAmor Panitos Humedos de 50 unidades declara perros y gatos y confirma gatitos en preguntas de uso.",
+    "source": "https://canamor.com/producto/panitos-humedos/",
+    "clear": true
+  },
+  {
+    "keys": "30:0 31:0",
+    "patch": {
+      "especie": "gato",
+      "categoria": "arena_sustrato",
+      "subcategoria": "arena"
+    },
+    "reason": "Mundo Michiko identifica su linea de arenas sanitarias como higiene felina. Lavanda/limon son variantes aromaticas: no cambian especie ni categoria; no se modifica peso ni aroma.",
+    "source": "https://www.mundomichiko.com/nuestros-productos/ ; https://www.mundomichiko.com/",
+    "clear": true
+  },
+  {
+    "keys": "118:0",
+    "patch": {
+      "especie": "perro",
+      "categoria": "snack",
+      "subcategoria": "premio"
+    },
+    "reason": "Dentastix de Pedigree es premio dental canino. La promocion PAG 2 LLEVE 3 y el error ortografico DENTAXTIX no convierten el producto en alimento completo ni afectan su clasificacion; se conservan ambos textos.",
+    "source": "https://www.pedigree.com/dog-treats/dentastix-oral-care-dog-treats",
+    "clear": true
+  }
+]

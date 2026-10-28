@@ -1,0 +1,10 @@
+{
+  "version": "clasificacion-20261028-r3",
+  "status": "EN_REVISION_NO_EJECUTAR",
+  "updated_at": "2026-10-28T18:02:29.141049+00:00",
+  "catalog_sha256": "31a8a4e12dabaa669ef492b3ea19187e4dc11e31e6b7a0c9942a6c5a20877f47",
+  "local_changes": 309,
+  "remote_proposed": 337,
+  "supabase_applied": false,
+  "pending_references": 256
+}

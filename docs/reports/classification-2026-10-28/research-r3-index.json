@@ -1,0 +1,4115 @@
+[
+  {
+    "file": "evidence/r3-100-0.json",
+    "keys": [
+      "100:0"
+    ],
+    "query": "\"COLONIA HELLO KITTY\" fabricante veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-102-0.json",
+    "keys": [
+      "102:0"
+    ],
+    "query": "\"COMPLELAND B12 O\" fabricante veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-103-0.json",
+    "keys": [
+      "103:0"
+    ],
+    "query": "CONDROMAX PET",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-105-0.json",
+    "keys": [
+      "105:0"
+    ],
+    "query": "COQUITOS fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-105-1.json",
+    "keys": [
+      "105:1"
+    ],
+    "query": "COQUITOS X KL 140 APROX fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-11-0.json",
+    "keys": [
+      "11:0"
+    ],
+    "query": "Amox C veterinario fabricante",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-112-1.json",
+    "keys": [
+      "112:1"
+    ],
+    "query": "COUNTRY VALUE PERRO fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-115-1.json",
+    "keys": [
+      "115:1"
+    ],
+    "query": "CUCHUCO fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-116-0.json",
+    "keys": [
+      "116:0"
+    ],
+    "query": "CUTAMYCON SPRAY",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-116-1.json",
+    "keys": [
+      "116:1"
+    ],
+    "query": "CUTAMYCON VF CREMA",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-118-0-targeted.json",
+    "keys": [
+      "118:0"
+    ],
+    "query": {
+      "q": "dentastix 47.1",
+      "domains": [
+        "pedigree.com.co",
+        "pedigree.com"
+      ]
+    },
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-119-0.json",
+    "keys": [
+      "119:0"
+    ],
+    "query": "DENTY-FARM",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-12-0.json",
+    "keys": [
+      "12:0"
+    ],
+    "query": "Animol 15 30 g fabricante",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-120-0_207-1_30-0_31-0-targeted.json",
+    "keys": [
+      "120:0",
+      "207:1",
+      "30:0",
+      "31:0"
+    ],
+    "query": {
+      "q": "Michiko arena kit siembra desodorizante",
+      "domains": [
+        "gestoagro.net"
+      ]
+    },
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-121-0.json",
+    "keys": [
+      "121:0"
+    ],
+    "query": "DERMACURE EMULSION",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-122-0.json",
+    "keys": [
+      "122:0"
+    ],
+    "query": "DERMOBEST SPRAY",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-123-0.json",
+    "keys": [
+      "123:0"
+    ],
+    "query": "DERMOSYN",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-124-0.json",
+    "keys": [
+      "124:0"
+    ],
+    "query": "DESCENSOR",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-126-0.json",
+    "keys": [
+      "126:0"
+    ],
+    "query": "DIGYTON GOTAS",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-127-0.json",
+    "keys": [
+      "127:0"
+    ],
+    "query": "DOG CHOW fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-13-0.json",
+    "keys": [
+      "13:0"
+    ],
+    "query": "Ankofen tabletas fabricante",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-131-1_131-2.json",
+    "keys": [
+      "131:1",
+      "131:2"
+    ],
+    "query": "Donkat cremoso fabricante Polar premio snack",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-132-0.json",
+    "keys": [
+      "132:0"
+    ],
+    "query": "DOXICAN",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-133-0.json",
+    "keys": [
+      "133:0"
+    ],
+    "query": "DOXIFIG SUSP",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-136-0.json",
+    "keys": [
+      "136:0"
+    ],
+    "query": "ELECTROZOO SOBRE",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-139-0.json",
+    "keys": [
+      "139:0"
+    ],
+    "query": "ENTEREX CARBON ACTIVADO",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-14-0.json",
+    "keys": [
+      "14:0"
+    ],
+    "query": "Apetil veterinario fabricante",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-141-0.json",
+    "keys": [
+      "141:0"
+    ],
+    "query": "ENZIMAX",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-144-0.json",
+    "keys": [
+      "144:0"
+    ],
+    "query": "ESENCIAS GOTAS",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-144-1.json",
+    "keys": [
+      "144:1"
+    ],
+    "query": "ESENCIAS SPRAY",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-145-0.json",
+    "keys": [
+      "145:0"
+    ],
+    "query": "ESPECIFICO",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-146-0.json",
+    "keys": [
+      "146:0"
+    ],
+    "query": "ESPUMA BUCAL IBASA",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-147-2.json",
+    "keys": [
+      "147:2"
+    ],
+    "query": "EXCELLENT FORMULA fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-150-0.json",
+    "keys": [
+      "150:0"
+    ],
+    "query": "EXTALOE EAR LIMPIADOR",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-154-0.json",
+    "keys": [
+      "154:0"
+    ],
+    "query": "FELIX fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-155-0.json",
+    "keys": [
+      "155:0"
+    ],
+    "query": "FELINNEX PASTA",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-156-0.json",
+    "keys": [
+      "156:0"
+    ],
+    "query": "FELIWAY fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-160-0.json",
+    "keys": [
+      "160:0"
+    ],
+    "query": "FINCU GEL fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-161-0.json",
+    "keys": [
+      "161:0"
+    ],
+    "query": "FINCUC TARR0 fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-161-1.json",
+    "keys": [
+      "161:1"
+    ],
+    "query": "FINCUC GEL EN JERINGA fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-161-2.json",
+    "keys": [
+      "161:2"
+    ],
+    "query": "FINCUC SPRAY fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-162-0.json",
+    "keys": [
+      "162:0"
+    ],
+    "query": "FIPROSTAR",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-162-2.json",
+    "keys": [
+      "162:2"
+    ],
+    "query": "FIPROSTAR SPARY",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-163-0.json",
+    "keys": [
+      "163:0"
+    ],
+    "query": "FITOVETE",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-163-1.json",
+    "keys": [
+      "163:1"
+    ],
+    "query": "FITOVETE GEL",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-165-0.json",
+    "keys": [
+      "165:0"
+    ],
+    "query": "FLORALAC SOBRE",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-17-0.json",
+    "keys": [
+      "17:0"
+    ],
+    "query": "ARENA BUOS fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-17-2.json",
+    "keys": [
+      "17:2"
+    ],
+    "query": "ARENA KING fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-17-4.json",
+    "keys": [
+      "17:4"
+    ],
+    "query": "ARENA UNIKAT fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-170-0.json",
+    "keys": [
+      "170:0"
+    ],
+    "query": "GALGOCAL 200",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-170-1.json",
+    "keys": [
+      "170:1"
+    ],
+    "query": "GALGOCAL 600",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-175-1.json",
+    "keys": [
+      "175:1"
+    ],
+    "query": "GEL MANTEQUILLA MANI PERRO 2ONZ fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-177-0.json",
+    "keys": [
+      "177:0"
+    ],
+    "query": "GENTAX OTICO",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-178-0.json",
+    "keys": [
+      "178:0"
+    ],
+    "query": "GERIOO",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-18-0.json",
+    "keys": [
+      "18:0"
+    ],
+    "query": "ARENA A GRANEL fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-182-0.json",
+    "keys": [
+      "182:0"
+    ],
+    "query": "GIRASOL fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-185-0.json",
+    "keys": [
+      "185:0"
+    ],
+    "query": "GRADUAL",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-188-0.json",
+    "keys": [
+      "188:0"
+    ],
+    "query": "GUSANTROL CREMA veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-189-0.json",
+    "keys": [
+      "189:0"
+    ],
+    "query": "Hairball Enzyme 50g fabricante gatos",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-19-0.json",
+    "keys": [
+      "19:0"
+    ],
+    "query": "ARENA BUOS CAFE fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-190-0.json",
+    "keys": [
+      "190:0"
+    ],
+    "query": "HEEL COENZYME COMP veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-190-1.json",
+    "keys": [
+      "190:1"
+    ],
+    "query": "HEEL ENGYSTOL UND veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-190-2.json",
+    "keys": [
+      "190:2"
+    ],
+    "query": "HEEL GASTRICUMEEL veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-190-3.json",
+    "keys": [
+      "190:3"
+    ],
+    "query": "HEEL SOLIDAGO veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-190-4.json",
+    "keys": [
+      "190:4"
+    ],
+    "query": "HEEL TRAUMELL UND veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-191-0.json",
+    "keys": [
+      "191:0"
+    ],
+    "query": "HELL 177 UBICHINON AMPOLLA veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-193-0.json",
+    "keys": [
+      "193:0"
+    ],
+    "query": "HIALURINA GOTAS ML veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-197-0.json",
+    "keys": [
+      "197:0"
+    ],
+    "query": "INMUNAIR GOTERO veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-198-0.json",
+    "keys": [
+      "198:0"
+    ],
+    "query": "ITRACONAZOL veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-199-0.json",
+    "keys": [
+      "199:0"
+    ],
+    "query": "IXER veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-199-1.json",
+    "keys": [
+      "199:1"
+    ],
+    "query": "IXER veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-200-0.json",
+    "keys": [
+      "200:0"
+    ],
+    "query": "JABON CLORHEXIN veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-200-1.json",
+    "keys": [
+      "200:1"
+    ],
+    "query": "JABON VETRIDERM veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-205-0.json",
+    "keys": [
+      "205:0"
+    ],
+    "query": "KETOBLAN veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-206-0.json",
+    "keys": [
+      "206:0"
+    ],
+    "query": "KILTIX GRAN 66CM veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-210-0.json",
+    "keys": [
+      "210:0"
+    ],
+    "query": "LAXA-FORM TUBO veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-213-0.json",
+    "keys": [
+      "213:0"
+    ],
+    "query": "LEVOTIROXINA veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-214-0.json",
+    "keys": [
+      "214:0"
+    ],
+    "query": "LHA BIOTIKA veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-214-1.json",
+    "keys": [
+      "214:1"
+    ],
+    "query": "LHA CIRCUL-V veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-214-10.json",
+    "keys": [
+      "214:10"
+    ],
+    "query": "LHA OSTYMUS-VLHA veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-214-11.json",
+    "keys": [
+      "214:11"
+    ],
+    "query": "LHA RINOM veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-214-12.json",
+    "keys": [
+      "214:12"
+    ],
+    "query": "LHA RINOM-V veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-214-13.json",
+    "keys": [
+      "214:13"
+    ],
+    "query": "LHA SOLEPOL veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-214-14.json",
+    "keys": [
+      "214:14"
+    ],
+    "query": "LHA TRARNIC-V veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-214-2.json",
+    "keys": [
+      "214:2"
+    ],
+    "query": "LHA DIGEST-V veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-214-3.json",
+    "keys": [
+      "214:3"
+    ],
+    "query": "LHA DIGEST-VGOTAS veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-214-4.json",
+    "keys": [
+      "214:4"
+    ],
+    "query": "LHA INMUL-V veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-214-5.json",
+    "keys": [
+      "214:5"
+    ],
+    "query": "LHA INMUL-V GOTAS veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-214-6.json",
+    "keys": [
+      "214:6"
+    ],
+    "query": "LHA METRISMAST veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-214-7.json",
+    "keys": [
+      "214:7"
+    ],
+    "query": "LHA NEUMO-V veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-214-8.json",
+    "keys": [
+      "214:8"
+    ],
+    "query": "LHA OCUL-V SOLUCION veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-214-9.json",
+    "keys": [
+      "214:9"
+    ],
+    "query": "LHA OSTYMUS veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-215-0.json",
+    "keys": [
+      "215:0"
+    ],
+    "query": "LIMP HIDRAT 100NL veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-216-0.json",
+    "keys": [
+      "216:0"
+    ],
+    "query": "LINTODENT GEL DENTAL veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-216-1.json",
+    "keys": [
+      "216:1"
+    ],
+    "query": "LINTODENT ENJUAGUE BUCAL veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-217-0.json",
+    "keys": [
+      "217:0"
+    ],
+    "query": "LIV52 VET. LUQUIDO fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-218-0.json",
+    "keys": [
+      "218:0"
+    ],
+    "query": "LOROS Y HAMSTER fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-219-6.json",
+    "keys": [
+      "219:6"
+    ],
+    "query": "Lucky Urinary 2 kg fabricante gato",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-220-0.json",
+    "keys": [
+      "220:0"
+    ],
+    "query": "MAIZ fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-221-0.json",
+    "keys": [
+      "221:0"
+    ],
+    "query": "MAMITOLINA veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-222-0.json",
+    "keys": [
+      "222:0"
+    ],
+    "query": "MARBOQUIN veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-225-0.json",
+    "keys": [
+      "225:0"
+    ],
+    "query": "MEDROXIPROGESTERONA veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-226-0.json",
+    "keys": [
+      "226:0"
+    ],
+    "query": "MELOXICAM veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-227-0.json",
+    "keys": [
+      "227:0"
+    ],
+    "query": "MELOXIMA veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-228-0.json",
+    "keys": [
+      "228:0"
+    ],
+    "query": "MELOXIPET veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-229-0.json",
+    "keys": [
+      "229:0"
+    ],
+    "query": "MELOXIPROC veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-230-0.json",
+    "keys": [
+      "230:0"
+    ],
+    "query": "METRONID veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-231-0.json",
+    "keys": [
+      "231:0"
+    ],
+    "query": "MICHIKO GATO fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-231-9.json",
+    "keys": [
+      "231:9"
+    ],
+    "query": "MICHIKO X UND fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-232-0.json",
+    "keys": [
+      "232:0"
+    ],
+    "query": "MIKOMAX TABLETAS veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-234-1.json",
+    "keys": [
+      "234:1"
+    ],
+    "query": "MIRRAPEL SENIOR veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-234-3.json",
+    "keys": [
+      "234:3"
+    ],
+    "query": "MIRRAPEL OLEOSO veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-234-4.json",
+    "keys": [
+      "234:4"
+    ],
+    "query": "MIRRAPEL POLVO veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-236-0.json",
+    "keys": [
+      "236:0"
+    ],
+    "query": "MIXTURA fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-237-0.json",
+    "keys": [
+      "237:0"
+    ],
+    "query": "MOMETAX UNGUENTO OTICO veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-240-0.json",
+    "keys": [
+      "240:0"
+    ],
+    "query": "Mr Gatto salmon 1.5 kg fabricante",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-241-0.json",
+    "keys": [
+      "241:0"
+    ],
+    "query": "MUNGOS MULTI-VIT + VITAMINAS MINERALES veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-242-0.json",
+    "keys": [
+      "242:0"
+    ],
+    "query": "MUNGOSVITAL + PROBIOTIC veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-243-0.json",
+    "keys": [
+      "243:0"
+    ],
+    "query": "MUNGOSVITAL+MOBILITY veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-244-10.json",
+    "keys": [
+      "244:10"
+    ],
+    "query": "NATURAL FRESHLY JALEA TUBO veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-244-11.json",
+    "keys": [
+      "244:11"
+    ],
+    "query": "NATURAL FRESHLY MIELTERTOS veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-244-12.json",
+    "keys": [
+      "244:12"
+    ],
+    "query": "NATURAL FRESHLY NO MUERDA veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-244-13.json",
+    "keys": [
+      "244:13"
+    ],
+    "query": "NATURAL FRESHLY OMEGA 3-6-9 2X1 veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-244-14.json",
+    "keys": [
+      "244:14"
+    ],
+    "query": "NATURAL FRESHLY PELO LINDO veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-244-15.json",
+    "keys": [
+      "244:15"
+    ],
+    "query": "NATURAL FRESHLY PERFUME veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-244-16.json",
+    "keys": [
+      "244:16"
+    ],
+    "query": "NATURAL FRESHLY SPRAY EASY veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-244-17.json",
+    "keys": [
+      "244:17"
+    ],
+    "query": "NATURAL FRESHLY UROVITAL 50 veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-244-2.json",
+    "keys": [
+      "244:2"
+    ],
+    "query": "NATURAL FRESHLY ENJUAGUE BUCAL veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-244-3.json",
+    "keys": [
+      "244:3"
+    ],
+    "query": "NATURAL FRESHY LIMPIADOR OIDOS veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-244-4.json",
+    "keys": [
+      "244:4"
+    ],
+    "query": "NATURAL FRESHLY ANTI ESTRES veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-244-5.json",
+    "keys": [
+      "244:5"
+    ],
+    "query": "NATURAL FRESHLY AQUI SI CAN veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-244-6.json",
+    "keys": [
+      "244:6"
+    ],
+    "query": "NATURAL FRESHLY BOLA DE PELO JALEA veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-244-7.json",
+    "keys": [
+      "244:7"
+    ],
+    "query": "NATURAL FRESHLY DERMA CLEAN BALSAMO veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-244-8.json",
+    "keys": [
+      "244:8"
+    ],
+    "query": "NATURAL FRESHLY DIGESTAR FIBRA veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-244-9.json",
+    "keys": [
+      "244:9"
+    ],
+    "query": "NATURAL FRESHLY ESENCIAS veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-245-0.json",
+    "keys": [
+      "245:0"
+    ],
+    "query": "NATURPROC GEL veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-246-0.json",
+    "keys": [
+      "246:0"
+    ],
+    "query": "NEFROTEC veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-247-0.json",
+    "keys": [
+      "247:0"
+    ],
+    "query": "NEO PLE veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-249-0.json",
+    "keys": [
+      "249:0"
+    ],
+    "query": "NICILAN veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-250-0.json",
+    "keys": [
+      "250:0"
+    ],
+    "query": "NOVAABISMOL veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-251-1.json",
+    "keys": [
+      "251:1"
+    ],
+    "query": "NOVABRONCOL PETS veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-252-0.json",
+    "keys": [
+      "252:0"
+    ],
+    "query": "NOVACAN T veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-263-0.json",
+    "keys": [
+      "263:0"
+    ],
+    "query": "OCUFLOX COLIRIO veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-264-0.json",
+    "keys": [
+      "264:0"
+    ],
+    "query": "OFTALMOSYN veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-265-0.json",
+    "keys": [
+      "265:0"
+    ],
+    "query": "OFTAPROC E veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-265-1.json",
+    "keys": [
+      "265:1"
+    ],
+    "query": "OFTAPROC M veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-267-0.json",
+    "keys": [
+      "267:0"
+    ],
+    "query": "OJUX-V COLIRIO veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-268-0.json",
+    "keys": [
+      "268:0"
+    ],
+    "query": "OL-TRANS veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-269-0.json",
+    "keys": [
+      "269:0"
+    ],
+    "query": "ONE veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-270-0.json",
+    "keys": [
+      "270:0"
+    ],
+    "query": "OPTER veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-271-0.json",
+    "keys": [
+      "271:0"
+    ],
+    "query": "ORENDA CREMA veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-271-1.json",
+    "keys": [
+      "271:1"
+    ],
+    "query": "ORENDA PAW BALSAMO veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-271-2.json",
+    "keys": [
+      "271:2"
+    ],
+    "query": "ORENDA SOLUCION OTICA veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-273-0.json",
+    "keys": [
+      "273:0"
+    ],
+    "query": "OTIFLEX veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-274-0.json",
+    "keys": [
+      "274:0"
+    ],
+    "query": "OTIVET FORTE veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-275-0.json",
+    "keys": [
+      "275:0"
+    ],
+    "query": "OTOCURE GOTAS veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-276-0.json",
+    "keys": [
+      "276:0"
+    ],
+    "query": "OTOFARM veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-279-0.json",
+    "keys": [
+      "279:0"
+    ],
+    "query": "PANOLOG veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-280-0.json",
+    "keys": [
+      "280:0"
+    ],
+    "query": "Panzer sobre mascotas fabricante",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-282-0.json",
+    "keys": [
+      "282:0"
+    ],
+    "query": "PAÑITOS CAN AMOR veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-282-1.json",
+    "keys": [
+      "282:1"
+    ],
+    "query": "PAÑITOS HUMEDOS BASIC veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-282-2.json",
+    "keys": [
+      "282:2"
+    ],
+    "query": "PAÑITOS LIMPIEZA ESENCIAL 50UNID veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-282-3.json",
+    "keys": [
+      "282:3"
+    ],
+    "query": "PAÑITOS PETYS veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-282-4.json",
+    "keys": [
+      "282:4"
+    ],
+    "query": "PAÑITOS PETYS ANTIBACTERIAL veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-282-5.json",
+    "keys": [
+      "282:5"
+    ],
+    "query": "PAÑITOS PETYS LAVANDA veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-282-6.json",
+    "keys": [
+      "282:6"
+    ],
+    "query": "PAÑITOS TOMMY PETS veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-287-0_287-2.json",
+    "keys": [
+      "287:0",
+      "287:2"
+    ],
+    "query": "Pet Milk 100 250 500 gramos fabricante",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-287-1.json",
+    "keys": [
+      "287:1"
+    ],
+    "query": "PET DROPS veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-289-0.json",
+    "keys": [
+      "289:0"
+    ],
+    "query": "PEZOSAN CREMA veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-291-1.json",
+    "keys": [
+      "291:1"
+    ],
+    "query": "PIMOCARD 10 veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-292-0.json",
+    "keys": [
+      "292:0"
+    ],
+    "query": "PIPERAZINA UND veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-293-0.json",
+    "keys": [
+      "293:0"
+    ],
+    "query": "POMADA ALFA veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-293-1.json",
+    "keys": [
+      "293:1"
+    ],
+    "query": "Pomada Alfa 3 cicatrizante 30 ml fabricante",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-294-0.json",
+    "keys": [
+      "294:0"
+    ],
+    "query": "POSATE veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-295-2.json",
+    "keys": [
+      "295:2"
+    ],
+    "query": "POUCH OPTIMUN PAG fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-296-0.json",
+    "keys": [
+      "296:0"
+    ],
+    "query": "PREDNISOLONA veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-297-0.json",
+    "keys": [
+      "297:0"
+    ],
+    "query": "PREDNIZOO veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-298-0.json",
+    "keys": [
+      "298:0"
+    ],
+    "query": "PREVICO veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-299-24.json",
+    "keys": [
+      "299:24"
+    ],
+    "query": "Pro Plan CN lata fabricante perro gato",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-300-0.json",
+    "keys": [
+      "300:0"
+    ],
+    "query": "PROMOCALIER veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-301-0.json",
+    "keys": [
+      "301:0"
+    ],
+    "query": "PULFEN veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-302-1.json",
+    "keys": [
+      "302:1"
+    ],
+    "query": "PULOFF 0.67ML veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-302-2.json",
+    "keys": [
+      "302:2"
+    ],
+    "query": "PULOFF 1.34ML veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-302-3.json",
+    "keys": [
+      "302:3"
+    ],
+    "query": "PULOFF 2.68ML veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-304-0.json",
+    "keys": [
+      "304:0"
+    ],
+    "query": "QUERCETOL veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-305-0.json",
+    "keys": [
+      "305:0"
+    ],
+    "query": "QUINOCALF veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-306-0.json",
+    "keys": [
+      "306:0"
+    ],
+    "query": "QUINODIAR SUSP veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-308-0.json",
+    "keys": [
+      "308:0"
+    ],
+    "query": "Ration 20 gr mascotas fabricante",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-311-1.json",
+    "keys": [
+      "311:1"
+    ],
+    "query": "RENAL BALANCE UND veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-313-0.json",
+    "keys": [
+      "313:0"
+    ],
+    "query": "RESTADERM CREMA veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-313-1.json",
+    "keys": [
+      "313:1"
+    ],
+    "query": "RESTADERM SPRAY veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-314-0.json",
+    "keys": [
+      "314:0"
+    ],
+    "query": "REUTOPIC veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-315-0.json",
+    "keys": [
+      "315:0"
+    ],
+    "query": "REVITALICE MORA-AZUL veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-316-0.json",
+    "keys": [
+      "316:0"
+    ],
+    "query": "REVOLUTION 0.25ML veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-316-4.json",
+    "keys": [
+      "316:4"
+    ],
+    "query": "REVOLUTION 6% ROSADO MENOR A veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-319-0.json",
+    "keys": [
+      "319:0"
+    ],
+    "query": "RONDEL veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-321-0.json",
+    "keys": [
+      "321:0"
+    ],
+    "query": "ROYAL CANIN BEAUTY fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-321-16.json",
+    "keys": [
+      "321:16"
+    ],
+    "query": "ROYAL CANIN PUPPY LATS fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-321-5_321-17_321-18_321-19-targeted.json",
+    "keys": [
+      "321:5",
+      "321:17",
+      "321:18",
+      "321:19"
+    ],
+    "query": {
+      "q": "Exigent 3 kg sterilised urinary 400 g 85 g",
+      "domains": [
+        "royalcanin.com"
+      ]
+    },
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-325-0.json",
+    "keys": [
+      "325:0"
+    ],
+    "query": "SALCHICHA fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-326-0.json",
+    "keys": [
+      "326:0"
+    ],
+    "query": "SANIDERM veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-327-0.json",
+    "keys": [
+      "327:0"
+    ],
+    "query": "SANIX AH veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-328-0.json",
+    "keys": [
+      "328:0"
+    ],
+    "query": "Sanuch sobre 15 gr alimento fabricante",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-329-0.json",
+    "keys": [
+      "329:0"
+    ],
+    "query": "SEDANPET veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-33-0.json",
+    "keys": [
+      "33:0"
+    ],
+    "query": "ARENA UNIKAT LAVANDA fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-330-0.json",
+    "keys": [
+      "330:0"
+    ],
+    "query": "SEDOLAX GOTERO veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-331-0.json",
+    "keys": [
+      "331:0"
+    ],
+    "query": "SEMILLAS SOBRES fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-332-0.json",
+    "keys": [
+      "332:0"
+    ],
+    "query": "SEPTIDERM veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-332-1.json",
+    "keys": [
+      "332:1"
+    ],
+    "query": "SEPTIDERM E veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-334-0.json",
+    "keys": [
+      "334:0"
+    ],
+    "query": "SHAMPOO ALLERMYL SIS veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-334-1.json",
+    "keys": [
+      "334:1"
+    ],
+    "query": "SHAMPOO BASIC-PET ALOE VERA Y CERA veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-334-10.json",
+    "keys": [
+      "334:10"
+    ],
+    "query": "SHAMPOO FITOVETE veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-334-11.json",
+    "keys": [
+      "334:11"
+    ],
+    "query": "SHAMPOO KERACLEEN veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-334-12.json",
+    "keys": [
+      "334:12"
+    ],
+    "query": "SHAMPOO KETOCLEAN veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-334-13.json",
+    "keys": [
+      "334:13"
+    ],
+    "query": "SHAMPOO MICLORPROC veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-334-14.json",
+    "keys": [
+      "334:14"
+    ],
+    "query": "SHAMPOO PEROXYPROC veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-334-15.json",
+    "keys": [
+      "334:15"
+    ],
+    "query": "SHAMPOO PET LIFE veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-334-16.json",
+    "keys": [
+      "334:16"
+    ],
+    "query": "SHAMPOO PETYS INSECTICIDA veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-334-17.json",
+    "keys": [
+      "334:17"
+    ],
+    "query": "SHAMPOO SEBOCALM veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-334-18.json",
+    "keys": [
+      "334:18"
+    ],
+    "query": "SHAMPOO SEBOLYTIC SIS veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-334-19.json",
+    "keys": [
+      "334:19"
+    ],
+    "query": "SHAMPOO SULFICURE veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-334-2.json",
+    "keys": [
+      "334:2"
+    ],
+    "query": "SHAMPOO BAXIDIN CERAMIDAS veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-334-20.json",
+    "keys": [
+      "334:20"
+    ],
+    "query": "SHAMPOO SUNSHINE veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-334-3.json",
+    "keys": [
+      "334:3"
+    ],
+    "query": "SHAMPOO BONNY ARGAN veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-334-4.json",
+    "keys": [
+      "334:4"
+    ],
+    "query": "SHAMPOO BRILLO SOBRE veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-334-5.json",
+    "keys": [
+      "334:5"
+    ],
+    "query": "SHAMPOO CANIS Y FELIS CLORHEXINA veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-334-6.json",
+    "keys": [
+      "334:6"
+    ],
+    "query": "SHAMPOO CANIS Y FELIS K-ZOL veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-334-7.json",
+    "keys": [
+      "334:7"
+    ],
+    "query": "SHAMPOO CANIS Y FELIS MEDICADO veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-334-8.json",
+    "keys": [
+      "334:8"
+    ],
+    "query": "SHAMPOO CLORHEXIN veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-337-0.json",
+    "keys": [
+      "337:0"
+    ],
+    "query": "SIETE VIDAS fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-339-0.json",
+    "keys": [
+      "339:0"
+    ],
+    "query": "SINGAP veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-341-0.json",
+    "keys": [
+      "341:0"
+    ],
+    "query": "SINSONTES Y TUR fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-343-0-targeted.json",
+    "keys": [
+      "343:0"
+    ],
+    "query": {
+      "q": "Fruitables 70g cat treats",
+      "domains": [
+        "fruitablespet.com"
+      ]
+    },
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-343-1.json",
+    "keys": [
+      "343:1"
+    ],
+    "query": "SNACK PREMIO HAIRBALL fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-344-1.json",
+    "keys": [
+      "344:1"
+    ],
+    "query": "Meow Mi snacks 85g fabricante",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-346-0.json",
+    "keys": [
+      "346:0"
+    ],
+    "query": "Spled Dog 5 ml fabricante",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-347-0.json",
+    "keys": [
+      "347:0"
+    ],
+    "query": "STICKS SABORES fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-348-0.json",
+    "keys": [
+      "348:0"
+    ],
+    "query": "STOMIZOL veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-349-0.json",
+    "keys": [
+      "349:0"
+    ],
+    "query": "STOMORGYL veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-350-0.json",
+    "keys": [
+      "350:0"
+    ],
+    "query": "STREPTOLAND veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-351-0.json",
+    "keys": [
+      "351:0"
+    ],
+    "query": "SUPERENERGY veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-352-0.json",
+    "keys": [
+      "352:0"
+    ],
+    "query": "SUTRIM SUSP veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-354-3.json",
+    "keys": [
+      "354:3"
+    ],
+    "query": "TASTE PATO fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-355-4-targeted.json",
+    "keys": [
+      "355:4"
+    ],
+    "query": {
+      "q": "canned 5.5 oz 156 cats",
+      "domains": [
+        "tasteofthewildpetfood.com"
+      ]
+    },
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-356-0.json",
+    "keys": [
+      "356:0"
+    ],
+    "query": "TEARS FCO veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-357-0-targeted.json",
+    "keys": [
+      "357:0"
+    ],
+    "query": {
+      "q": "treats 85 g 180 g",
+      "domains": [
+        "temptationstreats.com",
+        "temptationsbrand.com"
+      ]
+    },
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-36-0.json",
+    "keys": [
+      "36:0"
+    ],
+    "query": "Artri tabs veterinario fabricante",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-360-0.json",
+    "keys": [
+      "360:0"
+    ],
+    "query": "TOBRAMAX GOTAS veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-366-0.json",
+    "keys": [
+      "366:0"
+    ],
+    "query": "TRIHEPAT veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-367-0.json",
+    "keys": [
+      "367:0"
+    ],
+    "query": "TUSIVET SUSPENSION veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-368-0.json",
+    "keys": [
+      "368:0"
+    ],
+    "query": "UBREVET veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-369-0.json",
+    "keys": [
+      "369:0"
+    ],
+    "query": "UNGUENTO 100 veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-37-0.json",
+    "keys": [
+      "37:0"
+    ],
+    "query": "Artribalance tabletas fabricante",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-370-0.json",
+    "keys": [
+      "370:0"
+    ],
+    "query": "UNIDOL veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-372-0.json",
+    "keys": [
+      "372:0"
+    ],
+    "query": "UT BALANCE UND veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-373-0.json",
+    "keys": [
+      "373:0"
+    ],
+    "query": "VACOL POMADA veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-374-0.json",
+    "keys": [
+      "374:0"
+    ],
+    "query": "VACUNA LEUCEMIA veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-374-2.json",
+    "keys": [
+      "374:2"
+    ],
+    "query": "VACUNA QUINTUPLE veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-374-3.json",
+    "keys": [
+      "374:3"
+    ],
+    "query": "VACUNA RABISIN veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-374-4.json",
+    "keys": [
+      "374:4"
+    ],
+    "query": "VACUNA SEXTUPLE veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-377-0.json",
+    "keys": [
+      "377:0"
+    ],
+    "query": "VERDEMINT veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-38-0.json",
+    "keys": [
+      "38:0"
+    ],
+    "query": "ARTRIN PRO veterinario fabricante especies ficha",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-381-16_381-17-targeted.json",
+    "keys": [
+      "381:16",
+      "381:17"
+    ],
+    "query": {
+      "q": "urology 2 weight 1 3 kg dog cat",
+      "domains": [
+        "virbac.com"
+      ]
+    },
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-384-0.json",
+    "keys": [
+      "384:0"
+    ],
+    "query": "VISIVET GOTERO veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-385-0.json",
+    "keys": [
+      "385:0"
+    ],
+    "query": "VITA PICHONES fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-39-0.json",
+    "keys": [
+      "39:0"
+    ],
+    "query": "ASUNTOL JABON veterinario fabricante especies ficha",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-39-1.json",
+    "keys": [
+      "39:1"
+    ],
+    "query": "ASUNTOL SABILA veterinario fabricante especies ficha",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-390-1.json",
+    "keys": [
+      "390:1"
+    ],
+    "query": "WHISKAS PAG fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-391-0.json",
+    "keys": [
+      "391:0"
+    ],
+    "query": "ZEEL veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-4-15.json",
+    "keys": [
+      "4:15"
+    ],
+    "query": "AGILITY POUCH *100 PAG 3*4 fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-40-0.json",
+    "keys": [
+      "40:0"
+    ],
+    "query": "Ativi 40 mg fabricante",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-42-0.json",
+    "keys": [
+      "42:0"
+    ],
+    "query": "Azimelo 50 200 mg fabricante",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-44-0.json",
+    "keys": [
+      "44:0"
+    ],
+    "query": "BARKFRESH veterinario fabricante especies ficha",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-45-0.json",
+    "keys": [
+      "45:0"
+    ],
+    "query": "Baxidin 60 120 ml fabricante",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-46-0.json",
+    "keys": [
+      "46:0"
+    ],
+    "query": "BAYTRIL veterinario fabricante especies ficha",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-47-0.json",
+    "keys": [
+      "47:0"
+    ],
+    "query": "Bañol 20.8% 20ml fabricante",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-49-0.json",
+    "keys": [
+      "49:0"
+    ],
+    "query": "BHI CANAV GOTAS veterinario fabricante especies ficha",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-49-1.json",
+    "keys": [
+      "49:1"
+    ],
+    "query": "BHI CANAV THC veterinario fabricante especies ficha",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-49-2.json",
+    "keys": [
+      "49:2"
+    ],
+    "query": "BHI COFAGIA veterinario fabricante especies ficha",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-49-3.json",
+    "keys": [
+      "49:3"
+    ],
+    "query": "BHI NEP-VET veterinario fabricante especies ficha",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-49-4.json",
+    "keys": [
+      "49:4"
+    ],
+    "query": "BHI NEUROBIHOV CAP veterinario fabricante especies ficha",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-49-5.json",
+    "keys": [
+      "49:5"
+    ],
+    "query": "BHI SYLIYM veterinario fabricante especies ficha",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-5-0.json",
+    "keys": [
+      "5:0"
+    ],
+    "query": "Alapiel 35g laboratorio ficha",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-50-0.json",
+    "keys": [
+      "50:0"
+    ],
+    "query": "BIH CANAV PLUS FREE veterinario fabricante especies ficha",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-50-1.json",
+    "keys": [
+      "50:1"
+    ],
+    "query": "BIH GASTROPRAZOL veterinario fabricante especies ficha",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-50-2.json",
+    "keys": [
+      "50:2"
+    ],
+    "query": "BIH NEP-VET BIHOV veterinario fabricante especies ficha",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-51-0.json",
+    "keys": [
+      "51:0"
+    ],
+    "query": "BIOCANIS JERINGA veterinario fabricante especies ficha",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-52-0.json",
+    "keys": [
+      "52:0"
+    ],
+    "query": "BISMOPET veterinario fabricante especies ficha",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-53-0.json",
+    "keys": [
+      "53:0"
+    ],
+    "query": "BOLFO POLVO veterinario fabricante especies ficha",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-53-1.json",
+    "keys": [
+      "53:1"
+    ],
+    "query": "BOLFO POLVO SOBRE veterinario fabricante especies ficha",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-53-2.json",
+    "keys": [
+      "53:2"
+    ],
+    "query": "BOLFO SHAMPOO veterinario fabricante especies ficha",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-59-1-targeted.json",
+    "keys": [
+      "59:1"
+    ],
+    "query": {
+      "q": "pop bites tocineta",
+      "domains": [
+        "gestoagro.net"
+      ]
+    },
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-64-0.json",
+    "keys": [
+      "64:0"
+    ],
+    "query": "C-THYRO TABS veterinario fabricante especies ficha",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-65-0.json",
+    "keys": [
+      "65:0"
+    ],
+    "query": "C-THYRO-TABS veterinario fabricante especies ficha",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-66-0.json",
+    "keys": [
+      "66:0"
+    ],
+    "query": "CABANOS fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-66-1.json",
+    "keys": [
+      "66:1"
+    ],
+    "query": "CABANOS KILO SURTIDO APRO 140 fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-67-0.json",
+    "keys": [
+      "67:0"
+    ],
+    "query": "CACAHUATE fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-7-0.json",
+    "keys": [
+      "7:0"
+    ],
+    "query": "Alernex tabletas fabricante",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-72-1.json",
+    "keys": [
+      "72:1"
+    ],
+    "query": "CAN AMOR BAÑO ESPUMOSO fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-72-10.json",
+    "keys": [
+      "72:10"
+    ],
+    "query": "\"CANAMOR SHAMPOO PIEL\" fabricante veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-72-11.json",
+    "keys": [
+      "72:11"
+    ],
+    "query": "\"CANAMOR SHAMPOO RINSE\" fabricante veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-72-14.json",
+    "keys": [
+      "72:14"
+    ],
+    "query": "\"CANAMOR TALCO INSECT\" fabricante veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-72-2.json",
+    "keys": [
+      "72:2"
+    ],
+    "query": "CAN AMOR JABON ANTIPULGAS fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-72-3.json",
+    "keys": [
+      "72:3"
+    ],
+    "query": "CAN AMOR JABON DESODORANTE fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-72-5.json",
+    "keys": [
+      "72:5"
+    ],
+    "query": "CAN AMOR SHAMPOO ANTIPUL veterinario fabricante especies ficha",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-72-6.json",
+    "keys": [
+      "72:6"
+    ],
+    "query": "CAN AMOR SHAMPOO ANTPUL veterinario fabricante especies ficha",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-72-7.json",
+    "keys": [
+      "72:7"
+    ],
+    "query": "CAN AMOR SHAMPOO ARBOL DE TE veterinario fabricante especies ficha",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-72-8.json",
+    "keys": [
+      "72:8"
+    ],
+    "query": "CAN AMOR SHAMPOO PELO LARGO veterinario fabricante especies ficha",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-72-9.json",
+    "keys": [
+      "72:9"
+    ],
+    "query": "\"CANAMOR SHAMPOO PELO OSCURO\" fabricante veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-73-0.json",
+    "keys": [
+      "73:0"
+    ],
+    "query": "\"CANATOX\" fabricante veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-74-0.json",
+    "keys": [
+      "74:0"
+    ],
+    "query": "\"CANIPETS\" fabricante veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-75-3.json",
+    "keys": [
+      "75:3"
+    ],
+    "query": "\"CANISAN TABLETAS\" fabricante veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-76-0.json",
+    "keys": [
+      "76:0"
+    ],
+    "query": "\"CANNEX\" fabricante veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-77-0.json",
+    "keys": [
+      "77:0"
+    ],
+    "query": "\"CANPLUSVIT\" fabricante veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-78-0.json",
+    "keys": [
+      "78:0"
+    ],
+    "query": "CANTAXANTIN CANTO fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-78-1.json",
+    "keys": [
+      "78:1"
+    ],
+    "query": "CANTAXANTIN COLOR fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-79-0.json",
+    "keys": [
+      "79:0"
+    ],
+    "query": "\"CARDIAL\" fabricante veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-80-0.json",
+    "keys": [
+      "80:0"
+    ],
+    "query": "\"CARDIO B\" fabricante veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-80-1.json",
+    "keys": [
+      "80:1"
+    ],
+    "query": "\"CARDIO B+E 10\" fabricante veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-80-2.json",
+    "keys": [
+      "80:2"
+    ],
+    "query": "\"CARDIO B+E 5/40\" fabricante veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-84-0.json",
+    "keys": [
+      "84:0"
+    ],
+    "query": "\"CEFALEXINA\" fabricante veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-85-0.json",
+    "keys": [
+      "85:0"
+    ],
+    "query": "\"CEFAMAX CEFALEXINA\" fabricante veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-87-0.json",
+    "keys": [
+      "87:0"
+    ],
+    "query": "\"CERULINE\" fabricante veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-88-12.json",
+    "keys": [
+      "88:12"
+    ],
+    "query": "CHUNKY CHUROS fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-88-15.json",
+    "keys": [
+      "88:15"
+    ],
+    "query": "CHUNKY DELICAPRICHOS GATO fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-88-17_88-18_88-19-targeted.json",
+    "keys": [
+      "88:17",
+      "88:18",
+      "88:19"
+    ],
+    "query": {
+      "q": "delicat delidog 156 80 400",
+      "domains": [
+        "italcolmascotas.com"
+      ]
+    },
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-89-0.json",
+    "keys": [
+      "89:0"
+    ],
+    "query": "\"CHURU BITES BOLSA 8UND\" fabricante veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-89-10.json",
+    "keys": [
+      "89:10"
+    ],
+    "query": "CHURU BOMBONERA fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-89-2.json",
+    "keys": [
+      "89:2"
+    ],
+    "query": "CHURU 20TUBES fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-89-3.json",
+    "keys": [
+      "89:3"
+    ],
+    "query": "CHURU 40TUBES fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-89-8.json",
+    "keys": [
+      "89:8"
+    ],
+    "query": "CHURU MEDICADO fabricante ficha producto Colombia",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-91-0.json",
+    "keys": [
+      "91:0"
+    ],
+    "query": "\"CICANDUL\" fabricante veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-92-0.json",
+    "keys": [
+      "92:0"
+    ],
+    "query": "\"CICLORAC\" fabricante veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-95-0.json",
+    "keys": [
+      "95:0"
+    ],
+    "query": "\"CIPROVET\" fabricante veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-97-0.json",
+    "keys": [
+      "97:0"
+    ],
+    "query": "\"CLORHEXIN SPRAY\" fabricante veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-98-0.json",
+    "keys": [
+      "98:0"
+    ],
+    "query": "\"COLIRIO VM\" fabricante veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-98-1.json",
+    "keys": [
+      "98:1"
+    ],
+    "query": "\"COLIRIO ZOO\" fabricante veterinario",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-99-9-targeted.json",
+    "keys": [
+      "99:9"
+    ],
+    "query": {
+      "q": "Seresto perros gatos 38 collar",
+      "domains": [
+        "elanco.com"
+      ]
+    },
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-confirm-0.json",
+    "keys": [
+      "51:0"
+    ],
+    "query": "site:ourofinopet.com/produtos/suplementos/biocanis \"gatos\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-confirm-1.json",
+    "keys": [
+      "103:0"
+    ],
+    "query": "site:ourofinopet.com \"Condromax Pet\" \"gatos\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-confirm-10.json",
+    "keys": [
+      "321:19"
+    ],
+    "query": "site:royalcanin.com \"Urinary\" \"85\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-confirm-11.json",
+    "keys": [
+      "321:0"
+    ],
+    "query": "site:royalcanin.com \"adult-beauty-4301\" \"150\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-confirm-12.json",
+    "keys": [
+      "321:5"
+    ],
+    "query": "site:royalcanin.com \"mini-exigent\" \"3 kg\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-confirm-13.json",
+    "keys": [
+      "321:16"
+    ],
+    "query": "site:royalcanin.com \"Puppy\" \"150 g\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-confirm-14.json",
+    "keys": [
+      "357:0"
+    ],
+    "query": "site:temptationstreats.com \"treats\" \"6.3\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-confirm-15.json",
+    "keys": [
+      "155:0"
+    ],
+    "query": "\"Felinnex\" site:kyrovet.com",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-confirm-16.json",
+    "keys": [
+      "170:0",
+      "170:1"
+    ],
+    "query": "site:californiasaludanimal.com \"Galgocal\" \"gatos\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-confirm-17.json",
+    "keys": [
+      "232:0"
+    ],
+    "query": "site:californiasaludanimal.com \"Mikomax\" \"gatos\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-confirm-18.json",
+    "keys": [
+      "124:0"
+    ],
+    "query": "site:californiasaludanimal.com \"Descensor\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-confirm-19.json",
+    "keys": [
+      "222:0"
+    ],
+    "query": "site:californiasaludanimal.com \"Marboquin\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-confirm-2.json",
+    "keys": [
+      "40:0"
+    ],
+    "query": "site:ourofinopet.com \"Ativi\" \"gatos\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-confirm-20.json",
+    "keys": [
+      "80:0",
+      "80:1",
+      "80:2"
+    ],
+    "query": "site:californiasaludanimal.com \"Cardio\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-confirm-21.json",
+    "keys": [
+      "305:0"
+    ],
+    "query": "site:californiasaludanimal.com \"Quinocalf\" \"gatos\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-confirm-22.json",
+    "keys": [
+      "133:0"
+    ],
+    "query": "site:figa.com.co \"Doxifig\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-confirm-23.json",
+    "keys": [
+      "193:0"
+    ],
+    "query": "site:brouwer.com.ar \"Hialurina\" \"gatos\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-confirm-24.json",
+    "keys": [
+      "263:0"
+    ],
+    "query": "site:brouwer.com.ar \"Ocuflox\" \"gatos\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-confirm-25.json",
+    "keys": [
+      "242:0"
+    ],
+    "query": "site:mungos.co \"Probiotic\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-confirm-26.json",
+    "keys": [
+      "241:0"
+    ],
+    "query": "site:mungos.co \"Multi-vit\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-confirm-27.json",
+    "keys": [
+      "243:0"
+    ],
+    "query": "site:mungos.co \"Mobility\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-confirm-28.json",
+    "keys": [
+      "352:0"
+    ],
+    "query": "site:co.virbac.com \"Sutrim\" \"30\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-confirm-29.json",
+    "keys": [
+      "334:17"
+    ],
+    "query": "site:co.virbac.com \"Sebocalm\" \"gatos\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-confirm-3.json",
+    "keys": [
+      "215:0"
+    ],
+    "query": "site:ourofinopet.com \"Limp & Hidrat\" \"gatos\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-confirm-30.json",
+    "keys": [
+      "334:18"
+    ],
+    "query": "site:co.virbac.com \"Sebolytic\" \"gatos\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-confirm-31.json",
+    "keys": [
+      "123:0"
+    ],
+    "query": "site:co.virbac.com \"Dermosyn\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-confirm-32.json",
+    "keys": [
+      "319:0"
+    ],
+    "query": "site:co.virbac.com \"Rondel\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-confirm-33.json",
+    "keys": [
+      "334:0"
+    ],
+    "query": "site:co.virbac.com \"Allermyl\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-confirm-34.json",
+    "keys": [
+      "95:0"
+    ],
+    "query": "site:labyes.com \"Ciprovet\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-confirm-35.json",
+    "keys": [
+      "374:3"
+    ],
+    "query": "site:boehringer-ingelheim.com \"Rabisin\" \"cats\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-confirm-36.json",
+    "keys": [
+      "314:0"
+    ],
+    "query": "site:zinereopharma.com \"Reutopic\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-confirm-4.json",
+    "keys": [
+      "72:1",
+      "72:5",
+      "72:6",
+      "72:7",
+      "72:8",
+      "72:9",
+      "72:10",
+      "72:11",
+      "72:14"
+    ],
+    "query": "site:canamor.com/producto \"perros\" \"shampoo\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-confirm-5.json",
+    "keys": [
+      "264:0"
+    ],
+    "query": "site:co.virbac.com \"OFTALMOSYN\" \"10\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-confirm-6.json",
+    "keys": [
+      "330:0"
+    ],
+    "query": "site:californiasaludanimal.com \"Sedolax\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-confirm-7.json",
+    "keys": [
+      "381:16"
+    ],
+    "query": "site:uk.virbac.com \"Urology\" \"U2\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-confirm-8.json",
+    "keys": [
+      "321:17"
+    ],
+    "query": "site:royalcanin.com \"Sterilised\" \"400\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-confirm-9.json",
+    "keys": [
+      "321:18"
+    ],
+    "query": "site:royalcanin.com \"Urinary S/O\" \"400\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-food-0.json",
+    "keys": [
+      "17:4",
+      "33:0"
+    ],
+    "query": "site:empresaspolar.com Unikat",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-food-1.json",
+    "keys": [
+      "30:0",
+      "31:0",
+      "120:0",
+      "207:1"
+    ],
+    "query": "site:gestoagro.net Michiko",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-food-10.json",
+    "keys": [
+      "321:0"
+    ],
+    "query": "\"Royal\" \"Beauty\" \"150g\" site:royalcanin.com",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-food-11.json",
+    "keys": [
+      "321:16"
+    ],
+    "query": "\"Royal\" \"Puppy\" \"150g\" site:royalcanin.com",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-food-12.json",
+    "keys": [
+      "343:0"
+    ],
+    "query": "site:fruitablespet.com \"cat\" \"2.5\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-food-13.json",
+    "keys": [
+      "344:1"
+    ],
+    "query": "\"Meow Mi\" \"85\" fabricante",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-food-14.json",
+    "keys": [
+      "343:1"
+    ],
+    "query": "\"Premio Hairball\" \"75\" fabricante",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-food-15.json",
+    "keys": [
+      "354:3"
+    ],
+    "query": "site:tasteofthewildpetfood.com \"duck\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-food-16.json",
+    "keys": [
+      "355:4"
+    ],
+    "query": "site:tasteofthewildpetfood.com \"5.5\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-food-17.json",
+    "keys": [
+      "381:17"
+    ],
+    "query": "site:co.virbac.com \"WEIGHT 1\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-food-18.json",
+    "keys": [
+      "325:0"
+    ],
+    "query": "\"salchicha\" \"1 kg\" \"mascotas\" fabricante",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-food-19.json",
+    "keys": [
+      "308:0"
+    ],
+    "query": "\"Ration\" \"20\" \"rodenticida\" fabricante",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-food-2.json",
+    "keys": [
+      "231:0",
+      "231:9"
+    ],
+    "query": "\"Michiko\" \"suplemento\" site:mundomichiko.com",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-food-20.json",
+    "keys": [
+      "280:0"
+    ],
+    "query": "\"Panzer\" \"sobre\" fabricante",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-food-21.json",
+    "keys": [
+      "337:0"
+    ],
+    "query": "\"Siete vidas\" \"1.5\" alimento fabricante",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-food-22.json",
+    "keys": [
+      "385:0"
+    ],
+    "query": "\"Vita Pichones\" \"125\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-food-23.json",
+    "keys": [
+      "78:0",
+      "78:1"
+    ],
+    "query": "\"Cantaxantin\" \"300\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-food-24.json",
+    "keys": [
+      "341:0"
+    ],
+    "query": "\"Sinsontes\" \"300\" fabricante",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-food-25.json",
+    "keys": [
+      "390:1"
+    ],
+    "query": "\"Whiskas\" \"pague 5\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-food-3.json",
+    "keys": [
+      "88:12"
+    ],
+    "query": "\"Chunky\" \"Churos\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-food-4.json",
+    "keys": [
+      "88:15"
+    ],
+    "query": "site:italcolmascotas.com \"Delicaprichos\" \"gatos\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-food-5.json",
+    "keys": [
+      "88:17",
+      "88:18"
+    ],
+    "query": "site:italcolmascotas.com \"Delicat\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-food-6.json",
+    "keys": [
+      "88:19"
+    ],
+    "query": "site:italcolmascotas.com \"Delidog\" \"156\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-food-7.json",
+    "keys": [
+      "131:1",
+      "131:2"
+    ],
+    "query": "\"Donkat Cremoso\" fabricante",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-food-8.json",
+    "keys": [
+      "219:6"
+    ],
+    "query": "\"Lucky\" \"Urinary\" site:solla.com",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-food-9.json",
+    "keys": [
+      "240:0"
+    ],
+    "query": "\"Mr Gatto\" \"Salmon\" fabricante",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label-102-0.json",
+    "keys": [
+      "102:0"
+    ],
+    "query": "site:soydelcampo.com \"COMPLELAND B12\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label-116-0.json",
+    "keys": [
+      "116:0"
+    ],
+    "query": "site:soydelcampo.com \"CUTAMYCON SPRAY\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label-116-1.json",
+    "keys": [
+      "116:1"
+    ],
+    "query": "site:soydelcampo.com \"CUTAMYCON VF\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label-12-0.json",
+    "keys": [
+      "12:0"
+    ],
+    "query": "site:soydelcampo.com \"ANIMOL\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label-13-0.json",
+    "keys": [
+      "13:0"
+    ],
+    "query": "site:soydelcampo.com \"ANKOFEN TABLETAS\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label-136-0.json",
+    "keys": [
+      "136:0"
+    ],
+    "query": "site:soydelcampo.com \"ELECTROZOO\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label-14-0.json",
+    "keys": [
+      "14:0"
+    ],
+    "query": "site:soydelcampo.com \"APETIL\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label-141-0.json",
+    "keys": [
+      "141:0"
+    ],
+    "query": "site:soydelcampo.com \"ENZIMAX\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label-150-0.json",
+    "keys": [
+      "150:0"
+    ],
+    "query": "site:soydelcampo.com \"EXTALOE EAR\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label-162-0.json",
+    "keys": [
+      "162:0"
+    ],
+    "query": "site:soydelcampo.com \"FIPROSTAR\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label-165-0.json",
+    "keys": [
+      "165:0"
+    ],
+    "query": "site:soydelcampo.com \"FLORALAC\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label-177-0.json",
+    "keys": [
+      "177:0"
+    ],
+    "query": "site:soydelcampo.com \"GENTAX OTICO\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label-178-0.json",
+    "keys": [
+      "178:0"
+    ],
+    "query": "site:soydelcampo.com \"GERIOOX\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label-188-0.json",
+    "keys": [
+      "188:0"
+    ],
+    "query": "site:soydelcampo.com \"GUSANTROL\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label-197-0.json",
+    "keys": [
+      "197:0"
+    ],
+    "query": "site:soydelcampo.com \"INMUNAIR\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label-205-0.json",
+    "keys": [
+      "205:0"
+    ],
+    "query": "site:soydelcampo.com \"KETOBLAN\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label-210-0.json",
+    "keys": [
+      "210:0"
+    ],
+    "query": "site:soydelcampo.com \"LAXA FORM\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label-221-0.json",
+    "keys": [
+      "221:0"
+    ],
+    "query": "site:soydelcampo.com \"MAMITOLINA\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label-225-0.json",
+    "keys": [
+      "225:0"
+    ],
+    "query": "site:soydelcampo.com \"MEDROXIPROGESTERONA\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label-228-0.json",
+    "keys": [
+      "228:0"
+    ],
+    "query": "site:soydelcampo.com \"MELOXIPET\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label-229-0.json",
+    "keys": [
+      "229:0"
+    ],
+    "query": "site:soydelcampo.com \"MELOXIPROC\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label-230-0.json",
+    "keys": [
+      "230:0"
+    ],
+    "query": "site:soydelcampo.com \"METRONID\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label-237-0.json",
+    "keys": [
+      "237:0"
+    ],
+    "query": "site:soydelcampo.com \"MOMETAX\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label-249-0.json",
+    "keys": [
+      "249:0"
+    ],
+    "query": "site:soydelcampo.com \"NICILAN\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label-250-0.json",
+    "keys": [
+      "250:0"
+    ],
+    "query": "site:soydelcampo.com \"NOVABISMOL\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label-251-1.json",
+    "keys": [
+      "251:1"
+    ],
+    "query": "site:soydelcampo.com \"NOVABRONCOL PETS\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label-252-0.json",
+    "keys": [
+      "252:0"
+    ],
+    "query": "site:soydelcampo.com \"NOVACAN T\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label-265-0.json",
+    "keys": [
+      "265:0"
+    ],
+    "query": "site:soydelcampo.com \"OFTAPROC E\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label-265-1.json",
+    "keys": [
+      "265:1"
+    ],
+    "query": "site:soydelcampo.com \"OFTAPROC M\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label-36-0.json",
+    "keys": [
+      "36:0"
+    ],
+    "query": "site:soydelcampo.com \"ARTRI TABS\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label-37-0.json",
+    "keys": [
+      "37:0"
+    ],
+    "query": "site:soydelcampo.com \"ARTRIBALANCE\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label-38-0.json",
+    "keys": [
+      "38:0"
+    ],
+    "query": "site:soydelcampo.com \"ARTRIN PRO\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label-42-0.json",
+    "keys": [
+      "42:0"
+    ],
+    "query": "site:soydelcampo.com \"AZIMELO\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label-46-0.json",
+    "keys": [
+      "46:0"
+    ],
+    "query": "site:soydelcampo.com \"BAYTRIL TABLETAS\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label-5-0.json",
+    "keys": [
+      "5:0"
+    ],
+    "query": "site:soydelcampo.com \"ALAPIEL\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label-52-0.json",
+    "keys": [
+      "52:0"
+    ],
+    "query": "site:soydelcampo.com \"BISMOPET\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label-73-0.json",
+    "keys": [
+      "73:0"
+    ],
+    "query": "site:soydelcampo.com \"CANATOX\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label-74-0.json",
+    "keys": [
+      "74:0"
+    ],
+    "query": "site:soydelcampo.com \"CANIPETS\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label-76-0.json",
+    "keys": [
+      "76:0"
+    ],
+    "query": "site:soydelcampo.com \"CANNEX\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label-79-0.json",
+    "keys": [
+      "79:0"
+    ],
+    "query": "site:soydelcampo.com \"CARDIAL\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label-85-0.json",
+    "keys": [
+      "85:0"
+    ],
+    "query": "site:soydelcampo.com \"CEFAMAX\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label-87-0.json",
+    "keys": [
+      "87:0"
+    ],
+    "query": "site:soydelcampo.com \"CERULINE\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label-91-0.json",
+    "keys": [
+      "91:0"
+    ],
+    "query": "site:soydelcampo.com \"CICANDUL\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label-92-0.json",
+    "keys": [
+      "92:0"
+    ],
+    "query": "site:soydelcampo.com \"CICLORAC\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label-98-0.json",
+    "keys": [
+      "98:0"
+    ],
+    "query": "site:soydelcampo.com \"COLIRIO VM\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label2-268-0.json",
+    "keys": [
+      "268:0"
+    ],
+    "query": "site:soydelcampo.com \"OL TRANS\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label2-269-0.json",
+    "keys": [
+      "269:0"
+    ],
+    "query": "site:soydelcampo.com \"ONE\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label2-270-0.json",
+    "keys": [
+      "270:0"
+    ],
+    "query": "site:soydelcampo.com \"OPTER\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label2-273-0.json",
+    "keys": [
+      "273:0"
+    ],
+    "query": "site:soydelcampo.com \"OTIFLEX\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label2-274-0.json",
+    "keys": [
+      "274:0"
+    ],
+    "query": "site:soydelcampo.com \"OTIVET FORTE\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label2-276-0.json",
+    "keys": [
+      "276:0"
+    ],
+    "query": "site:soydelcampo.com \"OTOFARM\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label2-279-0.json",
+    "keys": [
+      "279:0"
+    ],
+    "query": "site:soydelcampo.com \"PANOLOG\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label2-287-1.json",
+    "keys": [
+      "287:1"
+    ],
+    "query": "site:soydelcampo.com \"PET DROPS\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label2-291-1.json",
+    "keys": [
+      "291:1"
+    ],
+    "query": "site:soydelcampo.com \"PIMOCARD\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label2-298-0.json",
+    "keys": [
+      "298:0"
+    ],
+    "query": "site:soydelcampo.com \"PREVICOX\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label2-300-0.json",
+    "keys": [
+      "300:0"
+    ],
+    "query": "site:soydelcampo.com \"PROMOCALIER\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label2-301-0.json",
+    "keys": [
+      "301:0"
+    ],
+    "query": "site:soydelcampo.com \"PULFEN\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label2-302-1_302-2_302-3.json",
+    "keys": [
+      "302:1",
+      "302:2",
+      "302:3"
+    ],
+    "query": "site:soydelcampo.com \"PULOFF\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label2-304-0.json",
+    "keys": [
+      "304:0"
+    ],
+    "query": "site:soydelcampo.com \"QUERCETOL\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label2-306-0.json",
+    "keys": [
+      "306:0"
+    ],
+    "query": "site:soydelcampo.com \"QUINODIAR\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label2-313-0_313-1.json",
+    "keys": [
+      "313:0",
+      "313:1"
+    ],
+    "query": "site:soydelcampo.com \"RESTADERM\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label2-315-0.json",
+    "keys": [
+      "315:0"
+    ],
+    "query": "site:soydelcampo.com \"REVITALICE\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label2-316-4.json",
+    "keys": [
+      "316:4"
+    ],
+    "query": "site:soydelcampo.com \"REVOLUTION 6%\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label2-326-0.json",
+    "keys": [
+      "326:0"
+    ],
+    "query": "site:soydelcampo.com \"SANIDERM\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label2-327-0.json",
+    "keys": [
+      "327:0"
+    ],
+    "query": "site:soydelcampo.com \"SANIX AH\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label2-329-0.json",
+    "keys": [
+      "329:0"
+    ],
+    "query": "site:soydelcampo.com \"SEDANPET\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label2-332-0_332-1.json",
+    "keys": [
+      "332:0",
+      "332:1"
+    ],
+    "query": "site:soydelcampo.com \"SEPTIDERM\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label2-334-11.json",
+    "keys": [
+      "334:11"
+    ],
+    "query": "site:soydelcampo.com \"KERACLEEN\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label2-334-12.json",
+    "keys": [
+      "334:12"
+    ],
+    "query": "site:soydelcampo.com \"KETOCLEAN\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label2-334-13.json",
+    "keys": [
+      "334:13"
+    ],
+    "query": "site:soydelcampo.com \"MICLORPROC\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label2-334-14.json",
+    "keys": [
+      "334:14"
+    ],
+    "query": "site:soydelcampo.com \"PEROXYPROC\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label2-334-4.json",
+    "keys": [
+      "334:4"
+    ],
+    "query": "site:soydelcampo.com \"BRILLO SHAMPOO\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label2-334-5_334-7.json",
+    "keys": [
+      "334:5",
+      "334:7"
+    ],
+    "query": "site:soydelcampo.com \"CANIS FELIS\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label2-339-0.json",
+    "keys": [
+      "339:0"
+    ],
+    "query": "site:soydelcampo.com \"SINGAP\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label2-348-0.json",
+    "keys": [
+      "348:0"
+    ],
+    "query": "site:soydelcampo.com \"STOMIZOL\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label2-349-0.json",
+    "keys": [
+      "349:0"
+    ],
+    "query": "site:soydelcampo.com \"STOMORGYL\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label2-350-0.json",
+    "keys": [
+      "350:0"
+    ],
+    "query": "site:soydelcampo.com \"STREPTOLAND\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label2-351-0.json",
+    "keys": [
+      "351:0"
+    ],
+    "query": "site:soydelcampo.com \"SUPERENERGY\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label2-356-0.json",
+    "keys": [
+      "356:0"
+    ],
+    "query": "site:soydelcampo.com \"TEARS\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label2-360-0.json",
+    "keys": [
+      "360:0"
+    ],
+    "query": "site:soydelcampo.com \"TOBRAMAX\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label2-366-0.json",
+    "keys": [
+      "366:0"
+    ],
+    "query": "site:soydelcampo.com \"TRIHEPAT\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label2-367-0.json",
+    "keys": [
+      "367:0"
+    ],
+    "query": "site:soydelcampo.com \"TUSIVET\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label2-368-0.json",
+    "keys": [
+      "368:0"
+    ],
+    "query": "site:soydelcampo.com \"UBREVET\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label2-369-0.json",
+    "keys": [
+      "369:0"
+    ],
+    "query": "site:soydelcampo.com \"UNGUENTO 100\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label2-370-0.json",
+    "keys": [
+      "370:0"
+    ],
+    "query": "site:soydelcampo.com \"UNIDOL\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label2-373-0.json",
+    "keys": [
+      "373:0"
+    ],
+    "query": "site:soydelcampo.com \"VACOL\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label2-377-0.json",
+    "keys": [
+      "377:0"
+    ],
+    "query": "site:soydelcampo.com \"VERDEMINT\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-label2-384-0.json",
+    "keys": [
+      "384:0"
+    ],
+    "query": "site:soydelcampo.com \"VISIVET\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-spec-0.json",
+    "keys": [
+      "7:0"
+    ],
+    "query": "site:laboratorioszoo.com.co \"Alernex\" \"gatos\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-spec-1.json",
+    "keys": [
+      "98:1"
+    ],
+    "query": "site:laboratorioszoo.com.co \"Colirio\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-spec-10.json",
+    "keys": [
+      "246:0"
+    ],
+    "query": "site:himalayawellness.in \"Nefrotec\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-spec-11.json",
+    "keys": [
+      "217:0"
+    ],
+    "query": "site:himalayawellness.in \"Liv.52\" \"vet\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-spec-12.json",
+    "keys": [
+      "287:0",
+      "287:2"
+    ],
+    "query": "site:vetnil.com.br \"Pet Milk\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-spec-13.json",
+    "keys": [
+      "139:0"
+    ],
+    "query": "site:vetnil.com.br \"Enterex\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-spec-2.json",
+    "keys": [
+      "293:0",
+      "293:1"
+    ],
+    "query": "site:laboratorioszoo.com.co \"Alfa\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-spec-3.json",
+    "keys": [
+      "297:0"
+    ],
+    "query": "site:laboratorioszoo.com.co \"Predni\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-spec-4.json",
+    "keys": [
+      "75:3"
+    ],
+    "query": "site:laboratoriosprovet.com \"Canisan\" \"tabletas\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-spec-5.json",
+    "keys": [
+      "132:0"
+    ],
+    "query": "site:laboratoriosprovet.com \"Doxican\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-spec-6.json",
+    "keys": [
+      "77:0"
+    ],
+    "query": "\"Canplusvit\" fabricante",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-spec-7.json",
+    "keys": [
+      "13:0"
+    ],
+    "query": "\"Ankofen\" \"tabletas\" fabricante",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-spec-8.json",
+    "keys": [
+      "146:0"
+    ],
+    "query": "site:ibasa.com.br \"Espuma\"",
+    "source_attempt": true
+  },
+  {
+    "file": "evidence/r3-spec-9.json",
+    "keys": [
+      "126:0"
+    ],
+    "query": "site:himalayawellness.in \"Digyton\"",
+    "source_attempt": true
+  }
+]

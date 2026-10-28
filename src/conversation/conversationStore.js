@@ -16,6 +16,8 @@ function claveConversacion(usuario, cliente = null) {
 
 function crearEstadoInicial() {
   return {
+    atencionHumana: null,
+    aclaracionIdentidad: null,
     mensajesProcesados: [],
     ultimaPreguntaAsistente: null,
     memoriaConversacional: null,

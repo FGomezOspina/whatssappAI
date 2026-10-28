@@ -31,6 +31,7 @@ const OUTPUT_SCHEMA = {
   accion:
     "agregar|consultar|consultar_pago|nuevo_pedido|repetir_pedido|confirmar|rechazar|quitar|mantener_solo|modificar_cantidad|null",
   confianza: 0,
+  compraContextual: null,
   solicitudesProductoDetectadas: null,
   producto: {
     accion: null,
@@ -179,6 +180,7 @@ function compactarEstado(estado = {}, perfil = "simple") {
     criterios: estado.criterios || {},
     ultimaSeleccion: estado.ultimaSeleccion || null,
     ultimaSolicitudProductos: estado.pedidoConfirmado ? [] : (estado.ultimaSolicitudProductos || []),
+    seleccionesProducto: estado.seleccionesProducto || [],
     referenciasPendientes: estado.referenciasPendientes
       ? {
           marca: estado.referenciasPendientes.marca,
@@ -499,6 +501,7 @@ Una aclaracion de la solicitudOriginal pendiente conserva su accion (agregar o c
 Una respuesta de cualquier longitud puede completar la ultimaPreguntaAsistente, incluso con explicaciones, cortesias o anecdotas. Reconstruye el producto desde la seleccion pendiente, las interpretaciones multimedia del historial y la memoria persistente; formula la consulta con producto y atributo nuevo. La expiracion de candidatos temporales no borra la conversacion. No vuelvas a preguntar un producto que ya esta en ese contexto.
 Habla como quien atiende una tienda, con una pregunta comercial corta. No menciones IA, OCR, vision, analisis ni que estas identificando, viendo o distinguiendo una imagen.
 Anade continuarFlujo: boolean (true solo si el mensaje solicita avanzar o modificar una operacion del estado actual; tener un carrito no basta), consultaCatalogo: {necesaria: boolean, consulta: string|null} y respuestaConversacional: string|null.
+Anade compraContextual: conjunto|foco|anterior|null, solo para aceptar comprar selecciones ya trabajadas. Resuelve semanticamente los pronombres: me los envias, mandame esos, quiero los dos, agregalos o enviame esos productos aceptan el conjunto vigente; lo, ese o esa se refieren al foco, y el anterior a la seleccion anterior cuando sea inequivoca. No son ordenes de sumar unidades a lo ya agregado. Usa seleccionesProducto completo y la memoria historica, sin caducidad por numero de mensajes. cotizado significa identidad y presentacion resueltas; pendiente requiere aclaracion, seleccionado ya esta en el carrito, confirmado pertenece a un pedido cerrado y descartado no debe reintroducirse. Una mencion, un candidato encontrado o varias presentaciones ofrecidas no autorizan comprar todas las alternativas. Si el cliente delimita un subconjunto o cambia cantidades, devuelve sus productos/operacion concreta y compraContextual=null.
 Busca solo cuando exista una necesidad real de informacion de productos, marcas, categorias o recomendaciones. Formula una consulta concreta con los atributos solicitados, resolviendo referencias al contexto. No copies todo el historial ni productos residuales. Una solicitud de servicio, iniciar una compra sin producto, conversacion social o una duda sin objeto identificable no justifican consultar productos.
 Antes de pedir datos personales o de entrega, comprueba si ya existe una compra o producto definido; si no existe, pregunta que desea pedir. Las unidades de peso o volumen corresponden a presentacion, no al tamano del animal.
 Si hay un pedido activo y el cliente pregunta por domicilio o solicita coordinarlo, usa intencion=datos_envio, entrega.tipo=domicilio y continuarFlujo=true para que el motor pida juntos todos los datos pendientes: nombre, cedula, celular, correo, direccion completa y metodo de pago. No redactes preguntas individuales por direccion, luego pago, luego celular o nombre. Extrae todos los datos que entregue en un mensaje o lote, conserva los conocidos y deja al motor solicitar juntos solo los faltantes. No confirmes envio ni pedido al recibir una direccion. Una pregunta general sobre domicilios sin compra definida no autoriza agregar productos al carrito ni pedir datos personales.
@@ -520,6 +523,11 @@ Una marca, referencia parcial o categoria reconocible basta para consultar el ca
 ${JSON.stringify(OUTPUT_SCHEMA)}`
     : construirPromptInterprete({ perfil, cliente, vertical });
   if (clasificacion.revisionLista) promptBase += "\nRevisa la cobertura de la lista completa: la primera lectura no cubrio todas las solicitudes detectadas. Extrae TODOS los articulos solicitados, incluso los que no tienen marca o necesitan aclaracion, en productos[]. No conviertas direccion, saludo ni datos de entrega en productos. Conserva accion y cantidad de cada articulo; una duda en uno no bloquea los otros.";
+  if (clasificacion.decisionHerramientas) promptBase += `
+Añade derivacionHumana: {necesaria:boolean,motivo:criterio_veterinario|solicitud_asesor|null} y seguimientoProducto:nueva|aclaracion|sin_resolver|null.
+Intenciones y atención humana: interpreta el turno completo y el contexto, no palabras aisladas. Un saludo junto con un producto conserva la consulta comercial. Saludos, agradecimientos y conversación general sin solicitud comercial no requieren catálogo ni cotización. Las recomendaciones generales deben basarse en atributos comprobables del catálogo; no inventes beneficios clínicos ni características.
+Si se pide diagnóstico, tratamiento, dosis, formulación o elección de medicamento/dieta por síntomas o una condición clínica que requiere criterio veterinario, usa derivacionHumana={necesaria:true,motivo:"criterio_veterinario"}, sin formular consejos clínicos ni ejecutar carrito. Preguntar precio/disponibilidad de un medicamento o dieta ya nombrados es una solicitud comercial y NO basta para derivar por criterio veterinario. Una solicitud explícita de persona/asesor usa motivo solicitud_asesor. No prometas una asignación: el motor gestiona la cola.
+No declares inexistencia basándote en memoria. Para producto desconocido consulta catálogo y usa contexto o una pregunta útil (nombre, marca, foto o presentación). seguimientoProducto indica nueva para otra solicitud, aclaracion cuando responde a nuestra pregunta sobre el producto pendiente y sin_resolver cuando insiste en esa solicitud sin poder precisarla. Una aclaración fallida se escala por el motor, nunca se sustituye por otro producto. Estado de aclaración vigente: ${JSON.stringify(estado.aclaracionIdentidad || null)}.`;
   if (clasificacion.decisionHerramientas || perfil === "pedido") promptBase += "\n" + INSTRUCCIONES_OPERACION_CARRITO;
   if (clasificacion.decisionHerramientas || perfil === 'multimedia') promptBase += "\n" + INSTRUCCIONES_PRESENTACIONES;
   if (clasificacion.decisionHerramientas) promptBase += '\nAl comprar productos ya cotizados, resuelve expresiones como las pastas o esas dos con ultimaSolicitudProductos y sus cotizaciones. Conserva por producto la identidad validada, especie, presentacion, duracion y pesos individuales resueltos, aunque otro producto de la lista tenga varias alternativas. La cantidad actual tiene prioridad. No vuelvas a preguntar atributos ya resueltos ni conviertas todas las alternativas en una compra. Si hay varias presentaciones cotizadas igualmente posibles para ese producto y el cliente no elige, deja la presentacion sin resolver.';

@@ -1,0 +1,1121 @@
+0:0	ACIFLUX SUSPENSION	otro|medicamento|medicamento|None	50ml
+0:1	ACIFLUX TAB	otro|medicamento|medicamento|None	500mg
+1:0	ADVANCE CAT RENAL	gato|comida|concentrado|None	1.5kg
+1:1	ADVANCE CAT URINARY	gato|comida|concentrado|None	3kg
+1:2	ADVANCE DOG ATOPIC MINI	perro|comida|concentrado|None	1.5kg
+1:3	ADVANCE URINAY	perro|comida|concentrado|None	1.5kg
+2:0	ADVANTAGE GATO	gato|medicamento|medicamento|None	4kg
+3:0	ADVOCATE	perro|medicamento|medicamento|None	10-25kg,25-40kg
+3:1	ADVOCATE GATO	gato|medicamento|medicamento|None	4-8kg,hasta 4kg
+4:0	AGILITY EN GATO	gato|comida|concentrado|None	140gr
+4:1	AGILITY EN LATA PERRO	perro|comida|comida_humeda|None	360gr
+4:2	AGILITY ESTERILIZADOS	perro|comida|concentrado|None	3kg
+4:3	AGILITY GATITO	gato|comida|concentrado|cachorro	1.5kg,3kg,500gr
+4:4	AGILITY GATO AD	gato|comida|concentrado|adulto	1.5kg,3kg,500gr,7kg
+4:5	AGILITY GATO ESTERILIZADO	gato|comida|concentrado|None	1.5kg
+4:6	AGILITY GRAN ADUL	perro|comida|concentrado|adulto	15kg
+4:7	AGILITY GRAND ADUL	perro|comida|concentrado|adulto	1.5kg,3kg
+4:8	AGILITY GRAND ADUL PIEL	perro|comida|concentrado|adulto	8kg
+4:9	AGILITY GRAND CACH	perro|comida|concentrado|cachorro	1.5kg,3kg,15kg
+4:10	AGILITY OBESOS	perro|comida|concentrado|None	1.5kg,7kg
+4:11	AGILITY PED ADUL	perro|comida|concentrado|adulto	500gr
+4:12	AGILITY PEQ ADUL	perro|comida|concentrado|adulto	1.5kg,3kg,7kg
+4:13	AGILITY PEQ ADUL PIEL	perro|comida|concentrado|adulto	1.5kg,3kg,8kg
+4:14	AGILITY PEQ CACH	perro|comida|concentrado|None	1.5kg,3kg
+4:15	AGILITY POUCH *100 PAG 3*4	perro|comida|comida_humeda|None	unidad
+4:16	AGILITY POUCH ADUL	perro|comida|comida_humeda|adulto	100gr
+4:17	AGILITY POUCH CACH	perro|comida|comida_humeda|None	100gr
+4:18	AGILITY CAT PREMIOS	gato|snack|premio|None	75gr
+4:19	AGILITY PERROS PREMIO	perro|snack|premio|None	x 150gr
+4:20	AGILITY SNAKS PREMIO	perro|snack|premio|None	250gr
+5:0	ALAPIEL	otro|medicamento|medicamento|None	35gr
+6:0	ALBONDIGAS DOGO DOG	perro|comida|concentrado|None	x 150gr
+6:1	ALBONDIGAS DOGO PERRO	perro|comida|concentrado|None	50gr
+7:0	ALERNEX	otro|medicamento|medicamento|None	tableta
+8:0	ALPISTE	aves|comida|concentrado|None	400gr
+9:0	ALPO ADUL	perro|comida|concentrado|adulto	x 2kg
+10:0	AMIGO CALCIO	otro|medicamento|medicamento|None	tableta
+10:1	AMIGO GATO	gato|medicamento|medicamento|None	tableta
+10:2	AMIGO PERRO	perro|medicamento|medicamento|None	tableta
+10:3	AMIGO PUPPY	perro|medicamento|medicamento|cachorro	tableta
+10:4	AMIGO RENAL GATO	gato|medicamento|medicamento|None	tableta
+11:0	AMOX C	otro|medicamento|medicamento|None	unidad
+12:0	ANIMOL	otro|medicamento|medicamento|None	x 15gr,x 30gr
+13:0	ANKOFEN	otro|medicamento|medicamento|None	tableta
+14:0	APETIL	otro|medicamento|medicamento|None	unidad
+15:0	APOQUEL	otro|medicamento|medicamento|None	16mg,3.6mg,5.4mg
+16:0	AQUADENT	otro|higiene|aseo|None	250ml
+17:0	ARENA BUOS	gato|arena_sustrato|arena|None	8kg
+17:1	ARENA FOFICAT	gato|arena_sustrato|arena|None	5kg
+17:2	ARENA KING	gato|arena_sustrato|arena|None	x 1 kg
+17:3	ARENA MIRRINGO	gato|arena_sustrato|arena|None	x 10 kg,x 5 kg
+17:4	ARENA UNIKAT	gato|arena_sustrato|arena|None	x 4kg
+18:0	ARENA A GRANEL	gato|arena_sustrato|arena|None	x 1kg
+19:0	ARENA BUOS CAFE	gato|arena_sustrato|arena|None	x 25kg
+20:0	ARENA FOFICAT TOFU	gato|arena_sustrato|arena|None	2.5kg
+21:0	ARENA FRESH STEP	otro|arena_sustrato|arena|None	25l
+22:0	ARENA HAMSTER X KL	roedor|arena_sustrato|arena|None	unidad
+23:0	ARENA KING CAT	gato|arena_sustrato|arena|None	x 25 kg,x 4.5 kg,x 8 kg
+24:0	ARENA KITTEN CAFE	gato|arena_sustrato|arena|cachorro	x 4kg,x 8kg
+25:0	ARENA KITTEN LAVANDA	gato|arena_sustrato|arena|cachorro	4kg,8kg
+26:0	ARENA KITTEN LIMON	gato|arena_sustrato|arena|cachorro	4kg,8kg
+27:0	ARENA KITTEN ORIGINAL	gato|arena_sustrato|arena|cachorro	25kg,4kg,8kg
+28:0	ARENA KITTEN TALCO	gato|arena_sustrato|arena|cachorro	25kg,4 kg,8kg
+29:0	ARENA MAIZ CAT	gato|arena_sustrato|arena|None	x 10kg,x 15kg,x 20kg,x 2kg,x 4kg
+30:0	ARENA MICHIKO LAVANDA	gato|arena_sustrato|arena|None	x 2.5kg
+31:0	ARENA MICHIKO LIMON	gato|arena_sustrato|arena|None	4.5kg
+32:0	ARENA SEPI CAT	gato|arena_sustrato|arena|None	4.8 kg
+33:0	ARENA UNIKAT LAVANDA	gato|arena_sustrato|arena|None	x 18kg
+34:0	ARENERA ABIERTA ALTA SEMICERRADA	otro|accesorio|accesorio|None	unidad
+34:1	ARENERA ABIERTA ALTA SEMICERRADA L	otro|accesorio|accesorio|None	unidad
+34:2	ARENERA CUADRADO LUZ UV	otro|accesorio|accesorio|None	unidad
+34:3	ARENERA CUBIERTA GRANDE CON ESPACIO FILTRO	otro|accesorio|accesorio|None	unidad
+34:4	ARENERA SENCILLA	otro|accesorio|accesorio|None	unidad
+35:0	ARNES 2.5CM PARA MASCOTAS	otro|accesorio|accesorio|None	unidad
+35:1	ARNES ANTITIRONES L	otro|accesorio|accesorio|None	unidad
+35:2	ARNES ANTITIRONES M	otro|accesorio|accesorio|None	unidad
+35:3	ARNES ANTITIRONES S	otro|accesorio|accesorio|None	unidad
+35:4	ARNES ANTITIRONES XL	otro|accesorio|accesorio|None	unidad
+35:5	ARNES ANTITIRONES XS	otro|accesorio|accesorio|None	unidad
+35:6	ARNES ANTITIRONES XXL	otro|accesorio|accesorio|None	unidad
+35:7	ARNES GATO ESTRELLA L	gato|accesorio|accesorio|None	unidad
+35:8	ARNES GATO ESTRELLA S	gato|accesorio|accesorio|None	unidad
+35:9	ARNES MULTISCOLOR CASCABEL L	otro|accesorio|accesorio|None	unidad
+35:10	ARNES Y TRADILLA COLOR DESGRADADO M-S	otro|accesorio|accesorio|None	unidad
+35:11	ARNES Y TRAILLA ANTITIRONES	otro|accesorio|accesorio|None	unidad
+36:0	ARTRI-TABS	otro|medicamento|medicamento|None	unidad
+37:0	ARTRIBALANCE	otro|medicamento|medicamento|None	tableta
+38:0	ARTRIN PRO	otro|medicamento|medicamento|None	unidad
+39:0	ASUNTOL JABON	otro|higiene|aseo|None	unidad
+39:1	ASUNTOL SABILA	otro|higiene|aseo|None	unidad
+40:0	ATIVI	otro|medicamento|medicamento|None	40mg
+41:0	AVENA	ave|comida|concentrado|None	300gr
+42:0	AZIMELO	otro|medicamento|medicamento|None	x 200mg,x 50mg
+43:0	B-FEX	otro|medicamento|medicamento|None	x 60ml
+44:0	BARKFRESH	otro|medicamento|medicamento|None	515kg
+45:0	BAXIDIN	otro|medicamento|medicamento|None	x 60 ml,x120 ml
+46:0	BAYTRIL	otro|medicamento|medicamento|None	150mg,50mg
+47:0	BAÑOL 20.8%	otro|higiene|aseo|None	20ml
+48:0	BEBEDERO HAMSTER, CONEJO MINI	roedor|accesorio|accesorio|None	unidad
+48:1	BEBEDERO HUACAL	otro|accesorio|accesorio|None	unidad
+48:2	BEBEDERO PAJARO GR	ave|accesorio|accesorio|None	unidad
+49:0	BHI CANAV GOTAS	otro|medicamento|medicamento|None	30ml
+49:1	BHI CANAV THC	otro|medicamento|medicamento|None	35mg
+49:2	BHI COFAGIA	otro|medicamento|medicamento|None	x 60
+49:3	BHI NEP-VET	otro|medicamento|medicamento|None	100ml
+49:4	BHI NEUROBIHOV CAP	otro|medicamento|medicamento|None	unidad
+49:5	BHI SYLIYM	otro|medicamento|medicamento|None	x 60
+50:0	BIH CANAV PLUS FREE	otro|medicamento|medicamento|None	unidad
+50:1	BIH GASTROPRAZOL	otro|medicamento|medicamento|None	x 30ml
+50:2	BIH NEP-VET BIHOV	otro|medicamento|medicamento|None	x 60
+51:0	BIOCANIS JERINGA	otro|medicamento|medicamento|None	14g
+52:0	BISMOPET	otro|medicamento|medicamento|None	120ml,240ml
+53:0	BOLFO POLVO	otro|higiene|aseo|None	100gr
+53:1	BOLFO POLVO SOBRE	otro|higiene|aseo|None	20gr
+53:2	BOLFO SHAMPOO	otro|higiene|aseo|None	100ml
+54:0	BOLSA POPIS	otro|accesorio|accesorio|None	x 3 und,x 6 und
+54:1	BOLSA POPIS X UND	otro|accesorio|accesorio|None	unidad
+55:0	BOLSAS 8 ROLLOS BIODEGRADLE	otro|accesorio|accesorio|None	unidad
+56:0	BOLSO DISEÑO BASICO T-L	otro|accesorio|accesorio|None	unidad
+56:1	BOLSO DISEÑO BASICO T-M	otro|accesorio|accesorio|None	unidad
+56:2	BOLSO MEDIANO X MEDELLIN	otro|accesorio|accesorio|None	unidad
+57:0	BOMBONERA BR GATO BOLA PELO	gato|snack|premio|None	350gr
+57:1	BOMBONERA BR GATO EQUIL	gato|snack|premio|None	350gr
+58:0	BOZAL CAUCHO # 3 #2	otro|accesorio|accesorio|None	unidad
+58:1	BOZAL CAUCHO # 4-5	otro|accesorio|accesorio|None	unidad
+58:2	BOZAL CAUCHO #1	otro|accesorio|accesorio|None	unidad
+58:3	BOZAL PLASTICO #7	otro|accesorio|accesorio|None	unidad
+58:4	BOZAL REGILLA	otro|accesorio|accesorio|None	unidad
+58:5	BOZAL TIPO CANASTILLA ACERO INOXIDABLE M-L	otro|accesorio|accesorio|None	unidad
+58:6	BOZAL TIPO CANASTILLA ACERO INOXIDABLE XL	otro|accesorio|accesorio|None	unidad
+59:0	BR CORDERO	perro|comida|concentrado|None	x 10kg
+59:1	BR POMM BITTES TOCINETA	perro|snack|premio|None	85gr
+59:2	BR WILD CAT ADULT	gato|comida|concentrado|adulto	x 1kg
+59:3	BR SNACK BOLA DE PELO	gato|snack|premio|None	60gr
+59:4	BR SNACK CAT SOFTY KITTEN	gato|snack|premio|cachorro	100gr
+59:5	BR SNACK CAT SOFTY SKIN COAT	gato|snack|premio|None	100gr
+59:6	BR SNACK CATNIP	gato|snack|premio|None	x 60 gr
+59:7	BR SNACK DOG HERBAL	perro|snack|premio|None	200gr
+59:8	BR SNACK EQUILIBRIO	perro|snack|premio|None	60gr
+59:9	BR SNACK URINARY	perro|snack|premio|None	100gr
+60:0	BR CAT ADUL BOLA PELO	gato|comida|concentrado|adulto	x 1kg,x 3kg
+60:1	BR CAT ADUL CASTR PAVO	gato|comida|concentrado|adulto	x 1kg,x 3kg
+60:2	BR CAT ADUL CASTRA ATUN	gato|comida|concentrado|adulto	x 1kg,x3kg
+60:3	BR CAT ADUL CASTRA SALMON	gato|comida|concentrado|adulto	x10kg
+60:4	BR CAT ADUL POLLO	gato|comida|concentrado|adulto	10kg,1kg,3kg
+60:5	BR CAT ADULT CASTR CONEJO	gato|comida|concentrado|adulto	x 1kg,x 3kg
+60:6	BR CAT CASTRADO POLLO	gato|comida|concentrado|None	10kg,1kg,3kg
+60:7	BR CAT GATITO POLLO	gato|comida|concentrado|cachorro	1kg,3kg
+60:8	BR CAT GATITOS SALMON	gato|comida|concentrado|cachorro	1kg,x 3kg
+60:9	BR CAT PATE	gato|comida|concentrado|None	x 100gr
+60:10	BR CAT SALMON	gato|comida|concentrado|None	x 1 kg,x 3kg
+60:11	BR CAT SALMON CASTRADO	gato|comida|concentrado|None	x 1kg,x 3kg
+60:12	BR CAT SENIOR	gato|comida|concentrado|senior	x 1kg,x 3kg
+60:13	BR CAT SOFTY WEIGTH	gato|comida|concentrado|None	100gr
+60:14	BR CAT VET HEPATIC	gato|comida|concentrado|None	x 1.5kg,x500gr
+60:15	BR CAT VET URINARY	gato|comida|concentrado|None	1.5kg,x500gr
+60:16	BR CAT WILD ADUL SALMON	gato|comida|concentrado|adulto	x 3kg
+60:17	BR CAT WILD KITTEN	gato|comida|concentrado|cachorro	x 3kg
+61:0	BR DOG ADUL CORDERO	perro|accesorio|accesorio|adulto	3kg
+61:1	BR DOG CORDERO	perro|comida|concentrado|None	1kg
+61:2	BR DOG PATE	perro|comida|concentrado|None	x 150gr
+61:3	BR DOG PUPPY RAZA PEQ	perro|comida|concentrado|cachorro	1kg
+61:4	BR DOG VET CASTRO	perro|comida|concentrado|None	x 2kg
+61:5	BR DOG VET GASTRO	perro|comida|concentrado|None	x500gr
+61:6	BR DOG VET HEPATIC	perro|comida|concentrado|None	x500gr
+61:7	BR DOG VET RENAL	perro|comida|concentrado|None	x 2kg,x500gr
+61:8	BR DOG PUPPY CORDERO	perro|comida|concentrado|None	x 1kg
+62:0	BRAVECTO	perro|medicamento|medicamento|None	10-20kg,20-40kg,4.5-10kg,40-56kg
+62:1	BRAVECTO 37 DIAS	perro|medicamento|medicamento|None	2.5-4.5kg
+63:0	BRILLO CLEAN EYES	otro|higiene|aseo|None	120ml
+64:0	C-THYRO TABS	otro|medicamento|medicamento|None	0.2mg,0.3mg,0.4mg,0.7mg,0.8mg
+65:0	C-THYRO-TABS	otro|medicamento|medicamento|None	0.5mg
+66:0	CABANOS	otro|snack|premio|None	12 unidades
+66:1	CABANOS KILO SURTIDO APRO 140	otro|snack|premio|None	unidad
+67:0	CACAHUATE	perro|comida|concentrado|None	x 1 kg
+68:0	CADENA #12	otro|accesorio|accesorio|None	unidad
+68:1	CADENA #14	otro|accesorio|accesorio|None	unidad
+68:2	CADENA FINCA #10	otro|accesorio|accesorio|None	unidad
+68:3	CADENA FINCA #8	otro|accesorio|accesorio|None	unidad
+69:0	CALMUROFEL CAP	otro|medicamento|medicamento|None	unidad
+70:0	CALSYN	otro|medicamento|medicamento|None	120ml
+71:0	CAMA COJIN BASICO L-M	otro|accesorio|accesorio|None	unidad
+71:1	CAMA COLCHONETA L	otro|accesorio|accesorio|None	unidad
+71:2	CAMA COLCHONETA S	otro|accesorio|accesorio|None	unidad
+71:3	CAMA COLCHONETA XL	otro|accesorio|accesorio|None	unidad
+71:4	CAMA DONA BASICA M 50 *50*15C	otro|accesorio|accesorio|None	unidad
+71:5	CAMA DONA BASICA S-40*40*15C	otro|accesorio|accesorio|None	unidad
+71:6	CAMA MOBILCAT MULTIFUNCIONAL	gato|accesorio|accesorio|None	unidad
+71:7	CAMA PEQ MEDELLIN	otro|accesorio|accesorio|None	unidad
+71:8	CAMA REDONDA MEDIANA MEDELLIN	otro|accesorio|accesorio|None	unidad
+71:9	CAMA TALLA S	otro|accesorio|accesorio|None	unidad
+72:0	CAN AMOR PERFUME GATO	gato|higiene|aseo|None	x120ml
+72:1	CAN AMOR BAÑO ESPUMOSO	gato|higiene|aseo|None	200ml
+72:2	CAN AMOR JABON ANTIPULGAS	perro|higiene|aseo|None	unidad
+72:3	CAN AMOR JABON DESODORANTE	perro|higiene|aseo|None	x 90g
+72:4	CAN AMOR PERFUME CANINO	perro|higiene|aseo|None	x120ml
+72:5	CAN AMOR SHAMPOO ANTIPUL	otro|higiene|aseo|None	x 30 ml
+72:6	CAN AMOR SHAMPOO ANTPUL	otro|higiene|aseo|None	230ml
+72:7	CAN AMOR SHAMPOO ARBOL DE TE	otro|higiene|aseo|None	30cc
+72:8	CAN AMOR SHAMPOO PELO LARGO	otro|higiene|aseo|None	x230
+72:9	CAN AMOR SHAMPOO PELO OSCURO	otro|higiene|aseo|None	x 230cc
+72:10	CAN AMOR SHAMPOO PIEL	otro|higiene|aseo|None	30ml
+72:11	CAN AMOR SHAMPOO RINSE	otro|higiene|aseo|None	x 230
+72:12	CAN AMOR TALCO DESODO GATO	gato|higiene|aseo|None	x 100gr
+72:13	CAN AMOR TALCO DESODO PERRO	perro|higiene|aseo|None	x 100gr
+72:14	CAN AMOR TALCO INSECT	otro|higiene|aseo|None	x 100gr
+73:0	CANATOX	otro|medicamento|medicamento|None	x 20ml,x 60ml
+74:0	CANIPETS	otro|medicamento|medicamento|None	10ml,2ml,5ml
+74:1	CANIPETS PUPPY	perro|medicamento|medicamento|cachorro	2ml,5ml
+75:0	CANISAN D	otro|medicamento|medicamento|None	10 ml,2.5ml,5 ml
+75:1	CANISAN F	otro|medicamento|medicamento|None	10ml,2.5ml,5ml
+75:2	CANISAN PUPPY	perro|medicamento|medicamento|cachorro	2.5ml,5ml
+75:3	CANISAN TABLETAS	otro|medicamento|medicamento|None	unidad
+76:0	CANNEX	otro|medicamento|medicamento|None	x 10ml,x 5ml
+77:0	CANPLUSVIT	otro|medicamento|medicamento|None	120ml
+78:0	CANTAXANTIN CANTO	perro|comida|concentrado|None	300 gr
+78:1	CANTAXANTIN COLOR	perro|comida|concentrado|None	300 gr
+79:0	CARDIAL	otro|medicamento|medicamento|None	unidad
+79:1	CARDIAL B/2.5	otro|medicamento|medicamento|None	unidad
+79:2	CARDIAL B/5	otro|medicamento|medicamento|None	unidad
+80:0	CARDIO B	otro|medicamento|medicamento|None	5mg
+80:1	CARDIO B+E 10	otro|medicamento|medicamento|None	80mg
+80:2	CARDIO B+E 5/40	otro|medicamento|medicamento|None	unidad
+81:0	CARGADOR ESTILO BEBE M	otro|accesorio|accesorio|None	unidad
+82:0	CAT BALANCE	gato|medicamento|medicamento|None	unidad
+83:0	CAT CHOW A GRANEL	gato|comida|concentrado|None	unidad
+83:1	CAT CHOW CARNE	gato|comida|concentrado|None	x 15kg
+83:2	CAT CHOW DELICARNE	gato|comida|concentrado|None	x 1.5 kg,x 15 kg,x 500 gr
+83:3	CAT CHOW DELIMIX	gato|comida|concentrado|None	x 10 kg
+83:4	CAT CHOW ESTERELIZADO	gato|comida|concentrado|None	x 500gr
+83:5	CAT CHOW ESTERILIZADOS	gato|comida|concentrado|None	x 1.5kg
+83:6	CAT CHOW GATITOS	gato|comida|concentrado|cachorro	x 8
+83:7	CAT CHOW GATITOS	gato|comida|concentrado|cachorro	1.5kg,500gr
+83:8	CAT CHOW PESCADO	gato|comida|concentrado|None	8kg,x 1.5 kg,x 500 gr
+83:9	CAT CHOW VIDA SANA	gato|comida|concentrado|None	x 1,x 450 gr,x3kg
+83:10	CAT CHOW VIDA SANA	gato|comida|concentrado|None	1 l
+84:0	CEFALEXINA	otro|medicamento|medicamento|None	500mg
+85:0	CEFAMAX CEFALEXINA	otro|medicamento|medicamento|None	250mg
+86:0	CEPILLO CARDADOR O MADERA DOBLE	otro|higiene|aseo|None	unidad
+86:1	CEPILLO CON DISPENSADOR DE ESENCIAS	otro|higiene|aseo|None	unidad
+86:2	CEPILLO DEDO	otro|higiene|aseo|None	unidad
+86:3	CEPILLO DESLANADOR	otro|higiene|aseo|None	unidad
+86:4	CEPILLO MASCOTA	otro|higiene|aseo|None	unidad
+86:5	CEPILLO MASCOTA HL15414	otro|higiene|aseo|None	unidad
+86:6	CEPILLO MASCOTA MADERA O PASTEL	otro|higiene|aseo|None	unidad
+86:7	CEPILLO PEINE BOTON EXPULSADOR	otro|higiene|aseo|None	unidad
+87:0	CERULINE	otro|medicamento|medicamento|None	120ml
+88:0	CHUNKY DELICAT POTE	gato|comida|comida_humeda|None	x 156gr
+88:1	CHUNKY DELIDOG POTE	perro|comida|comida_humeda|None	x 156gr
+88:2	CHUNKY ADUL MAYORES	perro|comida|concentrado|adulto	x 12kg
+88:3	CHUNKY ADULT GRANEL X KG	perro|comida|concentrado|adulto	unidad
+88:4	CHUNKY ADULTO	perro|comida|concentrado|adulto	x 2 kg,x 25 kg,x 4 kg,x 500,x 9 kg
+88:5	CHUNKY ADULTO RP	perro|comida|concentrado|adulto	x 1.5 kg,x 4 kg,x 500,x 8 kg
+88:6	CHUNKY ADULTOS MAYORES	perro|comida|concentrado|adulto	x 1.5 kg
+88:7	CHUNKY CACH RP	perro|comida|concentrado|None	x 1.5kg
+88:8	CHUNKY CACHORRO	perro|comida|concentrado|cachorro	x 2 kg,x 4kg,x 500,x 9 kg
+88:9	CHUNKY CACHORROS	perro|comida|concentrado|cachorro	x 18 kg,x 1kg
+88:10	CHUNKY CATS	gato|comida|concentrado|None	500gr,x 18 kg
+88:11	CHUNKY CATS GATOS	gato|comida|concentrado|None	8kg
+88:12	CHUNKY CHUROS	perro|comida|concentrado|None	13gr
+88:13	CHUNKY CORDERO ADULTO	perro|comida|concentrado|adulto	x 1,x 12,x 4 kg
+88:14	CHUNKY CORDERO CACHORRO	perro|comida|concentrado|cachorro	x 1
+88:15	CHUNKY DELICAPRICHOS GATO	gato|comida|concentrado|None	x 75 gr
+88:16	CHUNKY DELICAPRICHOS PERRO	perro|comida|concentrado|None	x 160 gr
+88:17	CHUNKY DELICAT	gato|comida|comida_humeda|None	156gr,x 80gr
+88:18	CHUNKY DELICAT	gato|comida|comida_humeda|None	3 l
+88:19	CHUNKY DELIDOG	perro|snack|premio|None	156gr,x 400gr
+88:20	CHUNKY DELIDOG BONE	perro|comida|concentrado|None	170gr
+88:21	CHUNKY DELIDOG CARNE	perro|comida|comida_humeda|None	250gr
+88:22	CHUNKY DELIDOG DENT	perro|snack|premio|None	150gr
+88:23	CHUNKY DELIDOG MIX	perro|snack|premio|None	280g
+88:24	CHUNKY DELIDOG POUCH	perro|comida|comida_humeda|None	x 100gr
+88:25	CHUNKY DELIGO POUCH PAG	perro|comida|comida_humeda|None	3 l
+88:26	CHUNKY ESTOFADO RES	perro|comida|comida_humeda|None	x 400gr
+88:27	CHUNKY GATICOS POLLO	gato|comida|concentrado|None	x 1,x 500
+88:28	CHUNKY GATITOS	gato|comida|concentrado|cachorro	x 8kg
+88:29	CHUNKY GATOS POLLO	gato|comida|concentrado|None	x 1.5 kg,x 8kg,x500g
+88:30	CHUNKY GATOS SALMON CORDERO	gato|comida|concentrado|None	x 1.5kg,x 500
+88:31	CHUNKY GATOS SALMON Y CORD	gato|comida|concentrado|None	x 8kg
+88:32	CHUNKY MENU CAT NAT	gato|comida|concentrado|None	200gr
+89:0	CHURU BITES BOLSA 8UND	otro|snack|premio|None	12gr
+89:1	CHURU	perro y gato|snack|premio|None	14gr
+89:2	CHURU 20TUBES	perro|comida|concentrado|None	x 14gr
+89:3	CHURU 40TUBES	perro|comida|concentrado|None	x 14gr
+89:4	CHURU CAT 10 UND	gato|comida|concentrado|None	x 14g
+89:5	CHURU DOG ROLL	perro|snack|premio|None	96 gr
+89:6	CHURU FUN BITES CAT	gato|snack|premio|None	x 3und
+89:7	CHURU FUN BITES DOG	perro|comida|concentrado|None	6und
+89:8	CHURU MEDICADO	perro|comida|concentrado|None	unidad
+89:9	CHURU ROOLL CAT SAP	gato|comida|concentrado|None	40gr
+89:10	CHURU BOMBONERA	perro|snack|premio|None	50und
+90:0	CHURUS SKIN	perro|snack|premio|None	x14gr
+91:0	CICANDUL	otro|medicamento|medicamento|None	35gr
+92:0	CICLORAC	otro|medicamento|medicamento|None	x 120ml
+93:0	CIPACAN CARNE	perro|comida|concentrado|None	x 800
+93:1	CIPACAN POLLO	perro|comida|concentrado|None	x 800 gr
+94:0	CIPACAT	gato|comida|concentrado|None	500gr
+95:0	CIPROVET	otro|medicamento|medicamento|None	unidad
+96:0	CLORDENT	otro|medicamento|medicamento|None	120ml
+97:0	CLORHEXIN SPRAY	otro|medicamento|medicamento|None	120ml
+98:0	COLIRIO VM	otro|medicamento|medicamento|None	10ml
+98:1	COLIRIO ZOO	otro|medicamento|medicamento|None	10 ml
+99:0	COLLAR CADENA CON PLACA	otro|accesorio|accesorio|None	unidad
+99:1	COLLAR CON SONAJERO EDG-146	otro|accesorio|accesorio|None	unidad
+99:2	COLLAR ISABELINO	otro|accesorio|accesorio|None	x 10,x 15,x 21,x 26,x 8
+99:3	COLLAR ISABELINO TIPO ALMOHADA L	otro|accesorio|accesorio|None	unidad
+99:4	COLLAR ISABELINO TIPO ALMOHADA M	otro|accesorio|accesorio|None	unidad
+99:5	COLLAR ISABELINO TIPO ALMOHADA S	otro|accesorio|accesorio|None	unidad
+99:6	COLLAR ISABELINO TIPO ALMOHADA XL	otro|accesorio|accesorio|None	unidad
+99:7	COLLAR PEZ L	pez|accesorio|accesorio|None	unidad
+99:8	COLLAR SERESTO PERRO MED Y GRAN	perro|medicamento|medicamento|None	unidad
+99:9	COLLAR SERESTO PERROS Y GATOS	perro y gato|medicamento|medicamento|None	unidad
+100:0	COLONIA HELLO KITTY	otro|higiene|aseo|None	80ml
+101:0	COMEDERO ALTO L	otro|accesorio|accesorio|None	unidad
+101:1	COMEDERO ALTO M	otro|accesorio|accesorio|None	unidad
+101:2	COMEDERO ALTO S	otro|accesorio|accesorio|None	unidad
+101:3	COMEDERO ALTO XS	otro|accesorio|accesorio|None	unidad
+101:4	COMEDERO ANTIHORMIGAS PQÑ	otro|accesorio|accesorio|None	unidad
+101:5	COMEDERO ECONOMICO	otro|accesorio|accesorio|None	unidad
+101:6	COMEDERO EN ACERO 16CM	otro|accesorio|accesorio|None	unidad
+101:7	COMEDERO EN ACERO 18CM	otro|accesorio|accesorio|None	unidad
+101:8	COMEDERO EN ACERO 22CM	otro|accesorio|accesorio|None	unidad
+101:9	COMEDERO EN ACERO 26CM	otro|accesorio|accesorio|None	unidad
+101:10	COMEDERO EN ACERO 30CM	otro|accesorio|accesorio|None	unidad
+101:11	COMEDERO EN ACERO HUESITOS 15CM	otro|accesorio|accesorio|None	unidad
+101:12	COMEDERO EN ACERO HUESITOS 22CM	otro|accesorio|accesorio|None	unidad
+101:13	COMEDERO Y BEBEDERO PORTABLE L	otro|medicamento|medicamento|None	unidad
+101:14	COMEDERO ANTIREFLUJO HUESO PQÑ PERRO	otro|accesorio|accesorio|None	unidad
+102:0	COMPLELAND B12 O	otro|medicamento|medicamento|None	100ml
+103:0	CONDROMAX PET	otro|medicamento|medicamento|None	tableta
+104:0	CONSULTA VETERINARIA	otro|medicamento|medicamento|None	unidad
+105:0	COQUITOS	perro|snack|premio|None	x 12 und
+105:1	COQUITOS X KL 140 APROX	perro|snack|premio|None	unidad
+106:0	CORRAL PLEGABLE	otro|accesorio|accesorio|None	unidad
+107:0	CORREA CWXQ1242	otro|accesorio|accesorio|None	unidad
+108:0	CORREAS 4000	otro|accesorio|accesorio|None	unidad
+108:1	CORREAS ECONOMICAS	otro|accesorio|accesorio|None	unidad
+109:0	CORTA UÑAS L	otro|accesorio|accesorio|None	unidad
+110:0	CORTAUÑAS TIJERA	otro|accesorio|accesorio|None	unidad
+111:0	CORTAVANCE	otro|medicamento|medicamento|None	76ml
+112:0	COUNTRY GATOS	gato|comida|concentrado|None	x 2 kg,x 500 gr
+112:1	COUNTRY VALUE PERRO	perro|comida|concentrado|None	x3kg
+113:0	CREDELIO	gato|accesorio|accesorio|None	0.5-2.0kg,2.0-8.0kg
+113:1	CREDELIO	perro|medicamento|medicamento|None	1.3-2.5kg,11-22 kg,2.5-5.5kg,22-45kg,5-11kg
+113:2	CREDELIO PLUS 1.4KG A 2.8KG	perro|medicamento|medicamento|None	56.25mg
+113:3	CREDELIO PLUS 11KG A 22KG	perro|medicamento|medicamento|None	450mg
+113:4	CREDELIO PLUS 2.8KG 5.5KG	perro|medicamento|medicamento|None	112.5mg
+113:5	CREDELIO PLUS 22KG A 45KG	perro|medicamento|medicamento|None	900mg
+113:6	CREDELIO PLUS 5.5KG A 11KG	perro|medicamento|medicamento|None	225mg
+114:0	CRIOLLO SANCOCHO	perro|comida|concentrado|None	x2kg
+115:0	CUCHUCO	ave|comida|concentrado|None	50 kg
+115:1	CUCHUCO	ave|comida|concentrado|None	1 kg
+116:0	CUTAMYCON SPRAY	otro|medicamento|medicamento|None	100ml,50ml
+116:1	CUTAMYCON VF CREMA	otro|medicamento|medicamento|None	35gr
+117:0	DENTASTIX 2X8	perro|comida|concentrado|None	x109gr
+117:1	DENTASTIX PEDIGREE	perro|comida|concentrado|None	15.7gr
+118:0	DENTAXTIX PEDIGREE PAG 2 LLEVE 3	perro|snack|premio|None	47.1gr
+119:0	DENTY-FARM	otro|higiene|aseo|None	30gr,80gr
+120:0	DEODORIZANTE ARENA MICHIKO 462	otro|arena_sustrato|arena|None	unidad
+121:0	DERMACURE EMULSION	otro|medicamento|medicamento|None	50gr
+122:0	DERMOBEST SPRAY	otro|medicamento|medicamento|None	30ml
+123:0	DERMOSYN	otro|medicamento|medicamento|None	100ml,50ml
+124:0	DESCENSOR	otro|medicamento|medicamento|None	200mg
+125:0	DIAMOND INDOOR CAT	gato|comida|concentrado|None	2.72kg
+125:1	DIAMOND INDOOR CAT	gato|comida|concentrado|None	500gr
+125:2	DIAMOND KITTEN CAT	gato|comida|concentrado|cachorro	500gr
+125:3	DIAMOND KITTEN CAT	gato|comida|concentrado|cachorro	2.7kg
+126:0	DIGYTON GOTAS	otro|medicamento|medicamento|None	30 ml
+127:0	DOG CHOW	perro|comida|comida_humeda|None	x100
+127:1	DOG CHOW A.M.G A GRANEL	perro|comida|concentrado|None	unidad
+127:2	DOG CHOW A.R.P A GRANEL	perro|comida|concentrado|None	unidad
+127:3	DOG CHOW ADUL TODOS LOS TAMAÑOS	perro|comida|concentrado|adulto	1kg,22.7kg,2kg,4kg,8kg
+127:4	DOG CHOW ADUL TODOS LOS TAMAÑOS 475	perro|comida|concentrado|adulto	unidad
+127:5	DOG CHOW C RP	perro|comida|concentrado|None	x 1kg,x 2 kg,x 475,x 8 kg
+127:6	DOG CHOW CONTROL DE PESO	perro|comida|concentrado|None	x 2 kg
+127:7	DOG CHOW CONTROL PESO SINCOL	perro|comida|concentrado|None	x 8 kg
+127:8	DOG CHOW POUCH PAG	perro|comida|comida_humeda|None	6l
+127:9	DOG CHOW POUCHE CACH	perro|comida|comida_humeda|None	x 100 gr
+127:10	DOG CHOW POUCHE CARNE	perro|comida|comida_humeda|None	100 gr
+127:11	DOG CHOW SINCO LONGEVIDAD	perro|comida|concentrado|None	2kg
+127:12	DOG CHOW A RMG	perro|comida|concentrado|None	x 2 kg,x 4 kg,x 475
+127:13	DOG CHOW ADUL RMG PAG 19.7 LLEV	perro|comida|concentrado|adulto	22.7kg
+127:14	DOG CHOW ADUL RMG	perro|comida|concentrado|None	22.7kg
+127:15	DOG CHOW C RMG	perro|comida|concentrado|None	x 8 kg,x1kg
+127:16	DOG CHOW C RMG	perro|comida|concentrado|None	2kg
+127:17	DOG CHOW C RMG	perro|comida|concentrado|None	unidad
+128:0	DOGG MAX	perro|medicamento|medicamento|None	x 10 ml,x 5ml
+129:0	DOGOURMET A GRANEL	perro|comida|concentrado|None	x 1kg
+129:1	DOGOURMET CACHO	perro|comida|concentrado|None	x 1kg,x 2kg,x 350
+129:2	DOGOURMET CACHO TRIC	perro|comida|concentrado|None	2 kg
+129:3	DOGOURMET CARNE	perro|comida|concentrado|None	x 2kg,x 350,x 4 kg,x 8 kg
+129:4	DOGOURMET PARRILLA	perro|comida|concentrado|None	x 1 kg,x 2 kg,x 25 kg,x 350
+129:5	DOGOURMET PAVO POLLO	perro|comida|concentrado|None	2 kg,350 gr,8 kg
+129:6	DOGOURMET SALMON	perro|comida|concentrado|None	x 8kg
+130:0	DONKAN	perro|comida|concentrado|None	x 12,x 22
+130:1	DONKAN ADULTO	perro|comida|concentrado|adulto	x 800 gr
+131:0	DONKAT ADULTOS	perro|comida|concentrado|adulto	16kg
+131:1	DONKAT CREMOSO	perro|comida|concentrado|None	x 4und
+131:2	DONKAT CREMOSO X UND	perro|comida|concentrado|None	unidad
+131:3	DONKAT GATITO	gato|comida|concentrado|cachorro	x 1 kg,x 500 gr,x 7 kg
+131:4	DONKAT GATO	gato|comida|concentrado|None	x 1 kg,x 500gr,x 7 kg
+132:0	DOXICAN	otro|medicamento|medicamento|None	100 und
+133:0	DOXIFIG SUSP	otro|medicamento|medicamento|None	30ml
+134:0	DRONTAL PS	otro|medicamento|medicamento|None	10 kg,35 kg
+135:0	EASOTIC	otro|medicamento|medicamento|None	10ml
+136:0	ELECTROZOO SOBRE	otro|medicamento|medicamento|None	unidad
+137:0	ENDOGAR 2.5 X UND	perro|medicamento|medicamento|None	unidad
+138:0	ENDOGARD 10 X UND	perro|medicamento|medicamento|None	unidad
+138:1	ENDOGARD 30 X UND	perro|medicamento|medicamento|None	unidad
+139:0	ENTEREX CARBON ACTIVADO	otro|medicamento|medicamento|None	8g
+140:0	ENTERO CHORONIC	otro|medicamento|medicamento|None	4gr
+141:0	ENZIMAX	otro|medicamento|medicamento|None	tableta
+142:0	EPIOTIC	otro|medicamento|medicamento|None	100 ml
+143:0	EQUILIBRIO ADULT RPEQ	perro|comida|concentrado|adulto	2 kg,500gr
+143:1	EQUILIBRIO GATO ADULT	gato|comida|concentrado|adulto	500gr
+143:2	EQUILIBRIO GATO LIGHT	gato|comida|concentrado|None	1.5kg
+143:3	EQUILIBRIO GATO PELOS LONGOS	gato|comida|concentrado|None	1.5kg
+143:4	EQUILIBRIO GATO SALMON	gato|comida|concentrado|None	1.5 kg
+143:5	EQUILIBRIO GATO UR	gato|comida|concentrado|None	2 kg
+143:6	EQUILIBRIO ADUL RPEQ LIGHT	otro|medicamento|medicamento|adulto	2kg
+144:0	ESENCIAS GOTAS	otro|medicamento|medicamento|None	30ml
+144:1	ESENCIAS SPRAY	otro|medicamento|medicamento|None	250ml
+145:0	ESPECIFICO	otro|higiene|aseo|None	120 ml,330ml,470 ml,60 ml
+146:0	ESPUMA BUCAL IBASA	otro|higiene|aseo|None	x 50ml
+147:0	EXCELLENT ADULT SMALL	perro|comida|concentrado|adulto	3kg
+147:1	EXCELLENT ESTERILIZED	perro|comida|concentrado|None	1kg
+147:2	EXCELLENT FORMULA	perro|comida|concentrado|None	3kg
+147:3	EXCELLENT GATO ADULT	gato|comida|concentrado|adulto	1kg,3kg,7.5kg
+147:4	EXCELLENT GATO URINARY	gato|comida|concentrado|None	1kg
+147:5	EXCELLENT KITTEN	gato|comida|concentrado|cachorro	1kg
+147:6	EXCELLENT SKIN	perro|comida|concentrado|None	3kg
+147:7	EXCELLENT ADULT RMG	otro|medicamento|medicamento|adulto	3kg
+148:0	EXCELLET GATO UNINARY	gato|comida|concentrado|None	7.5kg
+149:0	EXCELLLET GATO URINARY	gato|comida|concentrado|None	x 3kg
+150:0	EXTALOE EAR LIMPIADOR	otro|higiene|aseo|None	30ml
+151:0	FAJA MINI (HASTA	otro|accesorio|accesorio|None	1 a 2kg
+151:1	FAJA ML (DE	otro|accesorio|accesorio|None	11 a 14kg
+151:2	FAJA POST TALLA 2XL	otro|accesorio|accesorio|None	unidad
+151:3	FAJA POST TALLA L	otro|accesorio|accesorio|None	unidad
+151:4	FAJA POST TALLA M PERRO	perro|accesorio|accesorio|None	unidad
+151:5	FAJA POST TALLA XL	otro|accesorio|accesorio|None	unidad
+151:6	FAJA XL (DE	otro|accesorio|accesorio|None	18 a 22kg
+151:7	FAJA XS (DE	otro|accesorio|accesorio|None	3 a 5kg
+151:8	FAJA XXL (DE	otro|accesorio|accesorio|None	22 a 25kg
+151:9	FAJA XXS (DE	otro|accesorio|accesorio|None	2 a 3kg
+151:10	FAJA M(DE	otro|higiene|aseo|None	8 a 11kg
+152:0	FAJAS S(DE	otro|accesorio|accesorio|None	5 a 8kg
+153:0	FANCY FEAST	gato|comida|concentrado|None	85gr
+154:0	FELIX	gato|comida|concentrado|None	x 85gr,x500 gr
+155:0	FELINNEX PASTA	otro|medicamento|medicamento|None	unidad
+156:0	FELIWAY	otro|medicamento|medicamento|None	20ml
+156:1	FELIWAY SPRAY	otro|medicamento|medicamento|None	60ml
+157:0	FELIX MEGAMIX	otro|accesorio|accesorio|None	x 10kg
+157:1	FELIX 3 PROTEINAS	perro|comida|concentrado|None	1.5kg
+157:2	FELIX CARNE	gato|comida|comida_humeda|None	x 85gr
+157:3	FELIX FILETE PESC ATUN	perro|comida|concentrado|None	156gr
+157:4	FELIX MIX 7 PROTEINAS	perro|comida|concentrado|None	1.5kg
+157:5	FELIX PACK SURT	gato|comida|comida_humeda|None	85gr
+157:6	FELIX PATE PAVO MENU	perro|comida|concentrado|None	156gr
+157:7	FELIX PATE PESC ATUN	perro|comida|concentrado|None	156gr
+157:8	FELIX PATE SALMON	perro|comida|concentrado|None	x 156gr
+157:9	FELIX SALMON	gato|comida|comida_humeda|None	x85gr
+157:10	FELIX TRIPLE	perro|comida|concentrado|None	x 200gr
+158:0	FILPO	perro|comida|concentrado|None	10kg,30 kg
+158:1	FILPO GATOS	gato|comida|concentrado|None	x500 gr,x8 kg
+159:0	FINCA CONEJOS	roedor|comida|concentrado|None	1 kg
+159:1	FINCA HUEVO QUEBRADA	ave|comida|concentrado|None	1 kg
+159:2	FINCA POLLO CAMP ENG	ave|comida|concentrado|None	1 kg
+159:3	FINCA POLLO CAMP LEV	ave|comida|concentrado|None	1kg
+160:0	FINCU GEL	otro|medicamento|medicamento|None	90gr
+161:0	FINCUC TARR0	otro|accesorio|accesorio|None	unidad
+161:1	FINCUC GEL EN JERINGA	perro|comida|concentrado|None	unidad
+161:2	FINCUC SPRAY	otro|higiene|aseo|None	unidad
+162:0	FIPROSTAR	otro|medicamento|medicamento|None	20-40 kg
+162:1	FIPROSTAR PERRO 0.10KG	perro|medicamento|medicamento|None	0.67ml
+162:2	FIPROSTAR SPARY	otro|medicamento|medicamento|None	60ml
+163:0	FITOVETE	otro|medicamento|medicamento|None	15g
+163:1	FITOVETE GEL	otro|medicamento|medicamento|None	x 15gr
+164:0	FLETES	otro|medicamento|medicamento|None	unidad
+165:0	FLORALAC SOBRE	otro|medicamento|medicamento|None	25gr
+166:0	FORTIFLOR FELINE	gato|medicamento|medicamento|None	unidad
+167:0	FORTIFLORA CANINE	perro|medicamento|medicamento|None	unidad
+168:0	FREEMIAU	gato|arena_sustrato|arena|None	4.5 kg,x 10kg
+168:1	FREEMIAU CITRICA	gato|arena_sustrato|arena|None	x 4 kg,x 7 kg
+168:2	FREEMIAU LAVANDA	gato|arena_sustrato|arena|None	x 10 kg,x 4
+169:0	FUENTE A CON TAPETE	otro|accesorio|accesorio|None	unidad
+169:1	FUENTE CON SENSOR DE MOVIMENTO	otro|accesorio|accesorio|None	unidad
+169:2	FUENTE GATOS	gato|accesorio|accesorio|None	unidad
+170:0	GALGOCAL 200	otro|medicamento|medicamento|None	unidad
+170:1	GALGOCAL 600	otro|medicamento|medicamento|None	unidad
+171:0	GALLETA CONEJOS	roedor|snack|premio|None	100 gr
+172:0	GALLETAS ADORE CAT	gato|snack|premio|None	x 80
+172:1	GALLETAS ADORE DOG	perro|snack|premio|None	x80gr
+172:2	GALLETAS BEGGIN	perro|snack|premio|None	170gr
+172:3	GALLETAS PUPPY TREATS	perro|snack|premio|cachorro	x 1kg,x 200gr
+172:4	GALLETAS SANDWICH	perro|snack|premio|None	x 200gr,x350gr
+172:5	GALLETAS SANDWICH X KL	perro|snack|premio|None	unidad
+173:0	GALLIPRANT	otro|medicamento|medicamento|None	x 20mg,x 60mg
+174:0	GATSY A GRANEL	perro|comida|concentrado|None	unidad
+174:1	GATSY CARNE	perro|comida|concentrado|None	500gr
+174:2	GATSY CARNE X 17 PAG	perro|comida|concentrado|None	15 l
+174:3	GATSY PESCADO	perro|comida|concentrado|None	1.5 kg,500gr
+174:4	GATSY PESCADO PAG 15 LLLE	perro|comida|concentrado|None	17kg
+175:0	GEL DIENTES GATO 2ONZ	gato|comida|concentrado|None	unidad
+175:1	GEL MANTEQUILLA MANI PERRO 2ONZ	perro|comida|concentrado|None	unidad
+176:0	GEMON DOG ADUL	perro|comida|concentrado|adulto	150gr
+177:0	GENTAX OTICO	otro|medicamento|medicamento|None	x 15 gr
+178:0	GERIOO	otro|medicamento|medicamento|None	30 comp
+179:0	GIMNACIO 2 RASCADORES	otro|juguete|juguete|None	unidad
+180:0	GIMNACIOS PEQUEÑOS ESPALDAR	otro|accesorio|accesorio|None	unidad
+181:0	GIMNASIO PEQ TUNEL	otro|accesorio|accesorio|None	unidad
+181:1	GIMNASIO FELPA 3 NIVELES	perro|comida|concentrado|None	unidad
+181:2	GIMNASIO KITTY CLIMB-UP	perro|comida|concentrado|None	unidad
+182:0	GIRASOL	perro|comida|concentrado|None	200 gr,x 20kg,x 500gr
+183:0	GLICOPAN PET	otro|medicamento|medicamento|None	30ml
+184:0	GOLOSINAS	perro|comida|concentrado|None	x100,x1000,x200
+184:1	GOLOSINAS 1500	perro|comida|concentrado|None	unidad
+185:0	GRADUAL	otro|medicamento|medicamento|None	x 180gr,x 300gr
+185:1	GRADUAL GATOS	gato|medicamento|medicamento|None	x 100 gr
+186:0	GUANTE PARA CEPILLAR Y MASAJE	otro|accesorio|accesorio|None	unidad
+186:1	GUANTE PREMIUM	otro|accesorio|accesorio|None	unidad
+187:0	GUAYAQUIL	otro|accesorio|accesorio|None	unidad
+188:0	GUSANTROL CREMA	otro|medicamento|medicamento|None	x 60 gr
+189:0	HAIRBALL ENZIME	otro|accesorio|accesorio|None	50gr
+190:0	HEEL COENZYME COMP	otro|medicamento|medicamento|None	x5
+190:1	HEEL ENGYSTOL UND	otro|medicamento|medicamento|None	tableta
+190:2	HEEL GASTRICUMEEL	otro|medicamento|medicamento|None	50comp
+190:3	HEEL SOLIDAGO	otro|medicamento|medicamento|None	x2ml
+190:4	HEEL TRAUMELL UND	otro|medicamento|medicamento|None	unidad
+191:0	HELL 177 UBICHINON AMPOLLA	otro|medicamento|medicamento|None	unidad
+192:0	HEMOLITAN PET	otro|medicamento|medicamento|None	30ml,60ml
+193:0	HIALURINA GOTAS ML	otro|medicamento|medicamento|None	unidad
+194:0	HILLS ADUL SMALL BITES	perro|comida|concentrado|adulto	2.2kg
+194:1	HILLS ADULT SMALL PAWS	perro|comida|concentrado|adulto	2kg
+194:2	HILLS ADULT SMALL PAWS +7	perro|comida|concentrado|adulto	2kg
+194:3	HILLS ADULT SMALL PAWS CORDERO	perro|comida|concentrado|adulto	2kg
+194:4	HILLS CAN I/D	perro|comida|concentrado|None	1.5kg
+194:5	HILLS CAN K/D	perro|comida|concentrado|None	1.5kg
+194:6	HILLS CAN LATA I/D	perro|comida|comida_humeda|None	13oz,5.5oz
+194:7	HILLS CAN LATA K/D	perro|comida|comida_humeda|None	unidad
+194:8	HILLS CAN Y FEL LATA A/D	perro|comida|comida_humeda|None	5.5oz
+194:9	HILLS FEL ADULT HAIRBALL	perro|comida|concentrado|adulto	1.5kg
+194:10	HILLS FEL C/D	perro|comida|concentrado|None	1.8kg
+194:11	HILLS FEL I/D	perro|comida|concentrado|None	1.8kg
+194:12	HILLS FEL LATA C/D	perro|comida|comida_humeda|None	5.5oz
+194:13	HILLS FEL LATA I/D	perro|comida|comida_humeda|None	5.5oz
+194:14	HILLS FEL LATA K/D	perro|comida|comida_humeda|None	5.5oz
+194:15	HILLS FELINO PERFECT WEIGHT	gato|comida|concentrado|None	1.36kg
+194:16	HILLS HAIRBALL CONTROL ADULT 7+	perro|comida|concentrado|adulto	1.58kg
+194:17	HILLS ADULT DOG METABOLIC	perro|medicamento|medicamento|adulto	1.5kg
+194:18	HILLS METABOLIC CAT	gato|medicamento|medicamento|None	1.81kg
+195:0	HUACAL BASICO M	otro|accesorio|accesorio|None	unidad
+195:1	HUACAL BRISTOL L	otro|accesorio|accesorio|None	unidad
+195:2	HUACAL BRISTOL M	otro|accesorio|accesorio|None	unidad
+195:3	HUACAL GRANDE 80X56	otro|accesorio|accesorio|None	x59
+195:4	HUACAL MEDELLIN GRANDE	otro|accesorio|accesorio|None	unidad
+195:5	HUACAL MEDELLIN MEDIANO	otro|accesorio|accesorio|None	unidad
+195:6	HUACAL PEQ 50X34	otro|accesorio|accesorio|None	x32
+195:7	HUACAL SENCILLO S	otro|accesorio|accesorio|None	unidad
+195:8	HUACAL BRISTOL S	perro|comida|concentrado|None	unidad
+195:9	HUACAL BRISTOL XL	perro|comida|concentrado|None	unidad
+195:10	HUACAL MASCOTAS	perro|comida|concentrado|None	unidad
+195:11	HUACAL MEDELLIN PEQUEÑO	perro|comida|concentrado|None	unidad
+196:0	HUESO 10-11	perro|snack|premio|None	unidad
+196:1	HUESO 15-17	perro|snack|premio|None	unidad
+196:2	HUESO 2-3	perro|snack|premio|None	x1kg,unidad
+196:3	HUESO 3-4	perro|snack|premio|None	unidad
+196:4	HUESO 4-5	perro|snack|premio|None	unidad
+196:5	HUESO 5-6	perro|snack|premio|None	unidad
+196:6	HUESO 6-7	perro|snack|premio|None	unidad
+196:7	HUESO 8-9	perro|snack|premio|None	unidad
+197:0	INMUNAIR GOTERO	otro|medicamento|medicamento|None	20ml
+198:0	ITRACONAZOL	otro|accesorio|accesorio|None	unidad
+199:0	IXER	otro|higiene|aseo|None	60ml
+199:1	IXER	otro|medicamento|medicamento|None	120ml
+200:0	JABON CLORHEXIN	otro|higiene|aseo|None	unidad
+200:1	JABON VETRIDERM	otro|higiene|aseo|None	unidad
+201:0	JAULA GATO MIAULOFT 2 NIVEL	gato|accesorio|accesorio|None	unidad
+201:1	JAULA GATO MIAULOFT 3 NIVEL	gato|accesorio|accesorio|None	unidad
+202:0	JERINGA	otro|accesorio|accesorio|None	10ml,2ml,5ml
+202:1	JERINGA	otro|medicamento|medicamento|None	3ml
+203:0	JUGUETE 24	otro|juguete|juguete|None	x180
+203:1	JUGUETE ALGODON	otro|juguete|juguete|None	unidad
+203:2	JUGUETE LAZO PELOTA S	otro|juguete|juguete|None	unidad
+203:3	JUGUETE MASCOTAS	otro|juguete|juguete|None	unidad
+203:4	JUGUETE MASCOTAS EDG-175	otro|juguete|juguete|None	unidad
+203:5	JUGUETE ORUGA MOVIMIENTO	otro|juguete|juguete|None	unidad
+203:6	JUGUETE PARA MOSCOTA MO-P05 M0-P04	otro|juguete|juguete|None	unidad
+203:7	JUGUETE PELOTA CHILLON	otro|juguete|juguete|None	unidad
+203:8	JUGUETE PELOTA CHILLONA	otro|juguete|juguete|None	unidad
+203:9	JUGUETE PELOTA MACIZA GRANDE	otro|juguete|juguete|None	unidad
+203:10	JUGUETE POLLO CON SONIDO 17CM	otro|juguete|juguete|None	unidad
+203:11	JUGUETE POLLO CON SONIDO 31CM	otro|juguete|juguete|None	unidad
+203:12	JUGUETE POLLO CON SONIDO 39CM	otro|juguete|juguete|None	unidad
+203:13	JUGUETE HUESO CHILLON	perro|snack|premio|None	unidad
+204:0	JUGUETES 7 COLORES 5CM 7CM	otro|juguete|juguete|None	unidad
+204:1	JUGUETES ECONOMICOS #2	otro|juguete|juguete|None	unidad
+205:0	KETOBLAN	otro|medicamento|medicamento|None	50mg
+206:0	KILTIX GRAN 66CM	otro|medicamento|medicamento|None	unidad
+207:0	KIT CEPILLO Y PEINE S	otro|higiene|aseo|None	unidad
+207:1	KIT DE SIEMBRA MICHIKO	otro|medicamento|medicamento|None	x 140gr
+208:0	KITEKAT POUCH	perro|comida|comida_humeda|None	x 70gr
+209:0	KLERAT SOBRE	perro|comida|comida_humeda|None	50gr
+210:0	LAXA-FORM TUBO	otro|medicamento|medicamento|None	x 70
+211:0	LAZO MASCOTAS 2CM FINA	otro|accesorio|accesorio|None	unidad
+212:0	LAZZO ANTIMORDIDA	otro|accesorio|accesorio|None	unidad
+213:0	LEVOTIROXINA	otro|medicamento|medicamento|None	0.4mg,0.8mg
+214:0	LHA BIOTIKA	otro|medicamento|medicamento|None	3gr
+214:1	LHA CIRCUL-V	otro|medicamento|medicamento|None	x 100gr
+214:2	LHA DIGEST-V	otro|medicamento|medicamento|None	200gr,x100gr
+214:3	LHA DIGEST-VGOTAS	otro|medicamento|medicamento|None	unidad
+214:4	LHA INMUL-V	otro|medicamento|medicamento|None	x100gr,x200gr
+214:5	LHA INMUL-V GOTAS	otro|medicamento|medicamento|None	unidad
+214:6	LHA METRISMAST	otro|medicamento|medicamento|None	x 10ml
+214:7	LHA NEUMO-V	otro|medicamento|medicamento|None	x 200gr
+214:8	LHA OCUL-V SOLUCION	otro|medicamento|medicamento|None	unidad
+214:9	LHA OSTYMUS	otro|medicamento|medicamento|None	x 200gr
+214:10	LHA OSTYMUS-VLHA	otro|medicamento|medicamento|None	x 100gr
+214:11	LHA RINOM	otro|medicamento|medicamento|None	x200gr
+214:12	LHA RINOM-V	otro|medicamento|medicamento|None	x100gr
+214:13	LHA SOLEPOL	otro|medicamento|medicamento|None	x 360ml
+214:14	LHA TRARNIC-V	otro|medicamento|medicamento|None	200gr
+215:0	LIMP HIDRAT 100NL	otro|medicamento|medicamento|None	unidad
+216:0	LINTODENT GEL DENTAL	otro|higiene|aseo|None	x 50gr
+216:1	LINTODENT ENJUAGUE BUCAL	otro|medicamento|medicamento|None	60ml
+217:0	LIV52 VET. LUQUIDO	otro|accesorio|accesorio|None	x 10ml
+218:0	LOROS Y HAMSTER	roedor|comida|concentrado|None	3 kg
+219:0	LUCKY CAT CASTRADO	gato|comida|concentrado|None	500gr
+219:1	LUCKY CAT URINARIO	gato|comida|concentrado|None	x 500gr
+219:2	LUCKY CONTROL PESO	perro|comida|concentrado|None	x 2kg
+219:3	LUCKY CUIADADO ARTICULAR	perro|comida|concentrado|None	2kg
+219:4	LUCKY CUIDADO DE PIEL KG	perro|comida|concentrado|None	unidad
+219:5	LUCKY CUIDADO DIGESTIVO	perro|comida|concentrado|None	2kg
+219:6	LUCKY URINARY	perro|comida|concentrado|None	x 2kg
+220:0	MAIZ	perro|comida|concentrado|None	1 kg,50 kg
+221:0	MAMITOLINA	otro|medicamento|medicamento|None	x 20 gr,x 250 gr,x 60 gr
+222:0	MARBOQUIN	otro|medicamento|medicamento|None	25mg,50mg,5mg
+223:0	MAX ADULT LIGHT	perro|comida|concentrado|adulto	2kg
+223:1	MAX ADULT RPEQ PERFORM POLLO	perro|comida|concentrado|adulto	2kg
+223:2	MAX MATURE +7	perro|comida|concentrado|None	2kg
+223:3	MAX VITA ADUL GATO SABORES FRANCO	gato|comida|concentrado|adulto	1kg
+223:4	MAX VITA ADULT RP	perro|comida|concentrado|adulto	x 1kg
+223:5	MAX VITA GATO ADUL SABORES DEL MAR	gato|comida|concentrado|adulto	x 3kg
+223:6	MAX VITA GATO CASTRADO	gato|comida|concentrado|None	x 3kg
+224:0	MAX CAT ADUL FRANGO	gato|comida|concentrado|adulto	1kg,3kg
+224:1	MAX CAT ADULT FRANGO	gato|comida|concentrado|adulto	10.1kg
+224:2	MAX CAT CASTRADO	gato|comida|concentrado|None	1kg,3kg
+225:0	MEDROXIPROGESTERONA	otro|medicamento|medicamento|None	unidad
+226:0	MELOXICAM	otro|medicamento|medicamento|None	2mg
+227:0	MELOXIMA	otro|medicamento|medicamento|None	x 1mg,x 3mg
+228:0	MELOXIPET	otro|medicamento|medicamento|None	10ml
+229:0	MELOXIPROC	otro|medicamento|medicamento|None	10 ml
+230:0	METRONID	otro|medicamento|medicamento|None	x 15ml,x 50ml
+231:0	MICHIKO GATO	gato|comida|concentrado|None	x 4
+231:1	MICHIKO NATURAL CREAMY	perro|comida|concentrado|None	100gr
+231:2	MICHIKO VET ANTIINFLAMACIO	perro|comida|concentrado|None	14gr
+231:3	MICHIKO VET CAVIDAD ORAL	perro|comida|concentrado|None	14gr
+231:4	MICHIKO VET EMBARAZO POS	perro|comida|concentrado|None	14gr
+231:5	MICHIKO VET GATITOS	gato|comida|concentrado|cachorro	x 14gr
+231:6	MICHIKO VET GATO MAYOR 14R 4 SACHETS	gato|comida|concentrado|None	unidad
+231:7	MICHIKO VET MANCHAS LAGRIMAS	perro|comida|concentrado|None	14gr
+231:8	MICHIKO VET PIEL Y PELAJE	perro|comida|concentrado|None	14gr
+231:9	MICHIKO X UND	perro|comida|concentrado|None	unidad
+231:10	MICHIKO VET SALUD HUESOS Y ARTICULACIONES	perro|snack|premio|None	14gr
+232:0	MIKOMAX TABLETAS	otro|medicamento|medicamento|None	unidad
+233:0	MILPRO 16MG	otro|medicamento|medicamento|None	2-8kg
+233:1	MILPRO KITTEN 4MG	gato|medicamento|medicamento|cachorro	hasta 2kg
+234:0	MIRRAPEL CACHORROS 120MNL	perro|medicamento|medicamento|cachorro	unidad
+234:1	MIRRAPEL SENIOR	otro|medicamento|medicamento|senior	x 120ml
+234:2	MIRRAPEL GATOS	gato|suplemento|suplemento|None	120ml
+234:3	MIRRAPEL OLEOSO	otro|suplemento|suplemento|None	120ml
+234:4	MIRRAPEL POLVO	otro|suplemento|suplemento|None	300gr
+235:0	MIRRINGO	gato|comida|concentrado|None	1kg,500 gr,x 8 kg
+235:1	MIRRINGO + PRO	gato|comida|concentrado|None	x 1kg,x 8kg
+235:2	MIRRINGO +PRO	gato|comida|concentrado|None	x 0.5 kg
+235:3	MIRRINGO GATITO	gato|comida|concentrado|cachorro	x 1kg,x 500gr
+236:0	MIXTURA	perro|comida|concentrado|None	x 500gr
+237:0	MOMETAX UNGUENTO OTICO	otro|medicamento|medicamento|None	unidad
+238:0	MONELLO BOLAS DE PELOS	perro|comida|concentrado|None	1kg
+238:1	MONELLO CAT CASTRADO	gato|comida|concentrado|None	x 10kg
+238:2	MONELLO CAT CASTRADOS	gato|comida|concentrado|None	x 1 kg
+238:3	MONELLO CAT FILHOTES	gato|comida|concentrado|None	x 1 kg
+238:4	MONELLO CAT SALMON	gato|comida|concentrado|None	x 1kg,x 7 kg
+238:5	MONELLO DOG FILHOTES	perro|comida|concentrado|None	x 1kg
+238:6	MONELLO DOG PUPYY	perro|comida|concentrado|None	7kg
+238:7	MONELLO DOG RP ADULTO	perro|comida|concentrado|adulto	x1 kg
+238:8	MONELLO DOG RZ PEQ	perro|comida|concentrado|None	7kg
+238:9	MONELLO DOG TRADICIONAL	perro|comida|concentrado|None	7kg
+238:10	MONELLO SELECT ADUL R:MED GRANDE	perro|comida|concentrado|adulto	2kg
+239:0	MORRAL CAPSULA CABIN	otro|accesorio|accesorio|None	unidad
+239:1	MORRAL CON CAPSULA PEQUEÑA	otro|accesorio|accesorio|None	unidad
+239:2	MORRAL HELLO CAT	gato|accesorio|accesorio|None	unidad
+239:3	MORRAL TRANSPARENTE	otro|accesorio|accesorio|None	unidad
+239:4	MORRAL TRANSPARENTE CON CAP	otro|accesorio|accesorio|None	unidad
+240:0	MR GATTO SALMON	perro|comida|concentrado|None	x 1.5kg
+241:0	MUNGOS MULTI-VIT + VITAMINAS MINERALES	otro|medicamento|medicamento|None	unidad
+242:0	MUNGOSVITAL + PROBIOTIC	otro|medicamento|medicamento|None	unidad
+243:0	MUNGOSVITAL+MOBILITY	otro|medicamento|medicamento|None	unidad
+244:0	NATURAL FRESHLY BAÑO SECO GATO	gato|higiene|aseo|None	x200
+244:1	NATURAL FRESHLY BAÑO SECO PERRO	perro|higiene|aseo|None	x200
+244:2	NATURAL FRESHLY ENJUAGUE BUCAL	otro|higiene|aseo|None	x 60gr
+244:3	NATURAL FRESHY LIMPIADOR OIDOS	otro|higiene|aseo|None	60gr
+244:4	NATURAL FRESHLY ANTI ESTRES	otro|medicamento|medicamento|None	x240ml
+244:5	NATURAL FRESHLY AQUI SI CAN	otro|medicamento|medicamento|None	x 240 ml
+244:6	NATURAL FRESHLY BOLA DE PELO JALEA	otro|medicamento|medicamento|None	x 30g
+244:7	NATURAL FRESHLY DERMA CLEAN BALSAMO	otro|medicamento|medicamento|None	x 56gr
+244:8	NATURAL FRESHLY DIGESTAR FIBRA	otro|medicamento|medicamento|None	12 sobres
+244:9	NATURAL FRESHLY ESENCIAS	otro|medicamento|medicamento|None	x 25 ml
+244:10	NATURAL FRESHLY JALEA TUBO	otro|medicamento|medicamento|None	x 30gr
+244:11	NATURAL FRESHLY MIELTERTOS	otro|medicamento|medicamento|None	180 ml
+244:12	NATURAL FRESHLY NO MUERDA	otro|medicamento|medicamento|None	x 240ml
+244:13	NATURAL FRESHLY OMEGA 3-6-9 2X1	otro|medicamento|medicamento|None	50 caps
+244:14	NATURAL FRESHLY PELO LINDO	otro|medicamento|medicamento|None	180gr
+244:15	NATURAL FRESHLY PERFUME	otro|medicamento|medicamento|None	unidad
+244:16	NATURAL FRESHLY SPRAY EASY	otro|medicamento|medicamento|None	240ml
+244:17	NATURAL FRESHLY UROVITAL 50	otro|medicamento|medicamento|None	unidad
+245:0	NATURPROC GEL	otro|medicamento|medicamento|None	unidad
+246:0	NEFROTEC	otro|medicamento|medicamento|None	tableta
+247:0	NEO PLE	otro|medicamento|medicamento|None	x 120ml
+248:0	NEXGARD	perro|medicamento|medicamento|None	10-25 kg,2-4 kg,25-50 kg,4-10 kg
+248:1	NEXGARD COMBO	gato|medicamento|medicamento|None	2.5-7.5kg
+248:2	NEXGARD COMBO GATO	gato|medicamento|medicamento|None	2.5kg
+248:3	NEXGARD SPECTRA	perro|medicamento|medicamento|None	15-30 kg,3.5-7.5 kg,30-60 kg,7.5-15 kg
+249:0	NICILAN	otro|medicamento|medicamento|None	500 mg,50mg
+250:0	NOVAABISMOL	otro|medicamento|medicamento|None	120ml
+251:0	NOVABRONCOL AVES	ave|medicamento|medicamento|None	120ml
+251:1	NOVABRONCOL PETS	otro|medicamento|medicamento|None	120ml
+252:0	NOVACAN T	otro|medicamento|medicamento|None	x 10 ml,x 2.5 ml
+253:0	NUPEC DENTAL CARE	perro|comida|concentrado|None	180gr
+253:1	NUPEC DIGESTIVE CARE	perro|comida|concentrado|None	180gr
+253:2	NUPEC RELA	perro|comida|concentrado|None	x 180gr
+253:3	NUPEC TREATS JOINT CARE	perro|snack|premio|None	180gr
+254:0	NUTRA NUGETS SENIOR	perro|comida|concentrado|senior	x 15kg
+255:0	NUTRA NUGGETS CORDERO	perro|comida|concentrado|None	1kg,3kg
+255:1	NUTRA NUGGETS LITE SENIOR	perro|comida|concentrado|senior	3kg,x 1kg
+255:2	NUTRA NUGGETS MANTEN GATO	gato|comida|concentrado|None	x 1kg,x 3 kg,x 7.5 kg
+255:3	NUTRA NUGGETS MANTEN PERRO	perro|comida|concentrado|None	7.5kg
+256:0	NUTRECAN ADULTO RP	perro|comida|concentrado|adulto	2 kg,8 kg,800 gr
+256:1	NUTRECAN ATLETA SALMON	perro|comida|concentrado|None	x 2kg
+256:2	NUTRECAN CACHO	perro|comida|concentrado|None	x 15kg,x 2 kg,x 4 kg,x 500gr
+256:3	NUTRECAN CACHO RP	perro|comida|concentrado|None	x 800 gr
+256:4	NUTRECAN CROQUE	perro|comida|concentrado|None	15kg,2kg,800gr,x 25kg
+256:5	NUTRECAN LIGHT	perro|comida|concentrado|None	x 2 kg,x 8 kg,x 800
+256:6	NUTRECAN PAVO	perro|comida|concentrado|None	x 800gr
+256:7	NUTRECAN SALMON Y QUESO	perro|comida|concentrado|None	x8kg
+256:8	NUTRECAN SENIOR	perro|comida|concentrado|senior	x 2 kg,x 8
+256:9	NUTRECAN ADULTO RMG	otro|medicamento|medicamento|adulto	800 gr,x 2kg,x 8
+256:10	NUTRECAN AMG GRANEL	otro|medicamento|medicamento|None	x 1kg
+257:0	NUTRECAT HOME	gato|comida|concentrado|None	x 1.5 kg,x 500gr,x 8 kg
+257:1	NUTRECAT LATA	gato|comida|comida_humeda|None	x 85 gr
+257:2	NUTRECAT LIBERTY	gato|comida|concentrado|None	x500gr
+257:3	NUTRECAT SALMON	gato|comida|concentrado|None	x1.5kg
+257:4	NUTRECAT TILAPIA	gato|comida|concentrado|None	x500
+258:0	NUTRI-GEL	otro|medicamento|medicamento|None	120.5g
+259:0	NUTRIBAR	perro|comida|concentrado|None	150gr
+259:1	NUTRIBAR X UNIAD	perro|comida|concentrado|None	unidad
+260:0	NUTRIPEZ	pez|comida|concentrado|None	20 gr
+261:0	NUTRIS ADUL CARNE	perro|comida|concentrado|adulto	x 8kg
+261:1	NUTRIS GATO	gato|comida|concentrado|None	x 500gr
+262:0	NUTRISS CACHORRO	perro|comida|concentrado|cachorro	1kg,2kg
+262:1	NUTRISS CARNE	perro|comida|concentrado|None	1kg,20kg,2kg,30kg
+262:2	NUTRISS NAT ADUL POLLO	perro|comida|concentrado|adulto	x2kg
+262:3	NUTRISS POLLO	perro|comida|concentrado|None	1kg,30kg,x 2 kg
+263:0	OCUFLOX COLIRIO	otro|medicamento|medicamento|None	unidad
+264:0	OFTALMOSYN	otro|medicamento|medicamento|None	10ml
+265:0	OFTAPROC E	otro|medicamento|medicamento|None	10ml
+265:1	OFTAPROC M	otro|medicamento|medicamento|None	x 10 ml
+266:0	OHMAIGAT CASEROS	perro|comida|concentrado|None	16kg,x 200 gr,x 500 gr,x1.5 kg,x8 kg
+266:1	OHMAIGAT GATITOS	gato|comida|concentrado|cachorro	x 1.5 kg,x 200 gr,x 500 gr,x 8 kg
+266:2	OHMAIGAT GRANEL	perro|comida|concentrado|None	x 1kg
+266:3	OHMAIGAT INQUIETOS	perro|comida|concentrado|None	x 1,x 200 gr,x 500 gr,x 8 kg
+266:4	OHMAIGAT SEDENTA	perro|comida|concentrado|None	200 gr,8 kg
+266:5	OHMAIGAT SEDENTA 1.5	perro|comida|concentrado|None	unidad
+266:6	OHMAIGAT SEDENTA 500	perro|comida|concentrado|None	unidad
+267:0	OJUX-V COLIRIO	otro|medicamento|medicamento|None	unidad
+268:0	OL-TRANS	otro|higiene|aseo|None	x 80 gr
+269:0	ONE	otro|medicamento|medicamento|None	tableta
+270:0	OPTER	otro|medicamento|medicamento|None	unidad
+271:0	ORENDA CREMA	otro|medicamento|medicamento|None	x 30 gr
+271:1	ORENDA PAW BALSAMO	otro|medicamento|medicamento|None	60gr
+271:2	ORENDA SOLUCION OTICA	otro|medicamento|medicamento|None	x 100 ml
+272:0	ORGANEW POLVO	otro|medicamento|medicamento|None	100g
+273:0	OTIFLEX	otro|medicamento|medicamento|None	x 25ml
+274:0	OTIVET FORTE	otro|medicamento|medicamento|None	10ml
+275:0	OTOCURE GOTAS	otro|medicamento|medicamento|None	unidad
+276:0	OTOFARM	otro|medicamento|medicamento|None	x 12 ml
+277:0	OXIMED ACONDICIONADOR	perro|comida|concentrado|None	591.4ml
+277:1	OXIMED SPRAY	perro|comida|concentrado|None	236ml
+278:0	PALA CARA DE GATO	gato|accesorio|accesorio|None	unidad
+278:1	PALA PREMIUM GATO	gato|accesorio|accesorio|None	unidad
+279:0	PANOLOG	otro|medicamento|medicamento|None	15ml
+280:0	PANZER SOBRE	perro|comida|comida_humeda|None	unidad
+281:0	PAÑAL L	otro|accesorio|accesorio|None	x 12und
+281:1	PAÑAL M	otro|accesorio|accesorio|None	x 12und
+281:2	PAÑAL S	otro|accesorio|accesorio|None	x 12
+281:3	PAÑAL XL	otro|accesorio|accesorio|None	x12
+281:4	PAÑAL XS	otro|accesorio|accesorio|None	x 12
+281:5	PAÑAL XXS	otro|accesorio|accesorio|None	x 12
+282:0	PAÑITOS CAN AMOR	otro|higiene|aseo|None	50und
+282:1	PAÑITOS HUMEDOS BASIC	otro|higiene|aseo|None	x100
+282:2	PAÑITOS LIMPIEZA ESENCIAL 50UNID	otro|higiene|aseo|None	unidad
+282:3	PAÑITOS PETYS	otro|higiene|aseo|None	x 80,x10,x50
+282:4	PAÑITOS PETYS ANTIBACTERIAL	otro|higiene|aseo|None	x40
+282:5	PAÑITOS PETYS LAVANDA	otro|higiene|aseo|None	x 50
+282:6	PAÑITOS TOMMY PETS	otro|higiene|aseo|None	10und
+283:0	PAÑOLETA MASCOTAS ECO	perro|comida|concentrado|None	unidad
+283:1	PAÑOLETA MASCOTAS PREMIUM	perro|comida|concentrado|None	unidad
+284:0	PECHERA ABSORCION IMPACTOS AMORTIGUACION M-L	otro|accesorio|accesorio|None	unidad
+284:1	PECHERA ABSORCION IMPACTOS AMORTIGUACION S	otro|accesorio|accesorio|None	unidad
+284:2	PECHERA ABSORCION IMPACTOS AMORTIGUACION XL	otro|accesorio|accesorio|None	unidad
+284:3	PECHERA ARNES GIYOOM S - M	otro|accesorio|accesorio|None	unidad
+284:4	PECHERA CON ABSORCION IMPACTOS EXTRA L	otro|accesorio|accesorio|None	unidad
+284:5	PECHERA CON TRADILLA REFLECTIVA MANGO M-S	otro|accesorio|accesorio|None	unidad
+284:6	PECHERA CON TRAILLA REFLECTIVA MANGO L-XL	otro|accesorio|accesorio|None	unidad
+284:7	PECHERA HARNES RALLAS M	otro|accesorio|accesorio|None	unidad
+284:8	PECHERA TRADILLA SENCILLA L-XL	otro|accesorio|accesorio|None	unidad
+284:9	PECHERA TRADILLA SENCILLA S	otro|accesorio|accesorio|None	unidad
+284:10	PECHERA Y CORREA PREMIUM M-L	otro|accesorio|accesorio|None	unidad
+284:11	PECHERA Y CORREA PREMIUN S-XS	otro|accesorio|accesorio|None	unidad
+285:0	PED ADUL R.P A GRANEL	perro|comida|concentrado|adulto	unidad
+285:1	PED ADULT RP	perro|comida|concentrado|adulto	x 20 kg
+285:2	PED POUCHE	perro|comida|comida_humeda|None	7und
+285:3	PED POUCHE ADUL RP POLLO	perro|comida|comida_humeda|adulto	x 100 gr
+286:0	PERNIL CARNAZA	perro|comida|concentrado|None	14und
+286:1	PERNIL POLLO CARNAZA	perro|comida|concentrado|None	unidad
+287:0	PET MILK	perro|comida|concentrado|None	x 100 gr,x 250 gr
+287:1	PET DROPS	otro|medicamento|medicamento|None	5ml
+287:2	PET MILK	otro|medicamento|medicamento|None	500gr
+288:0	PEZONIL	pez|comida|concentrado|None	20gr
+289:0	PEZOSAN CREMA	pez|medicamento|medicamento|None	x 30 mg
+290:0	PIEL Y PELO GATOS	gato|medicamento|medicamento|None	100gr
+290:1	PIEL Y PELO PERRRO	otro|medicamento|medicamento|None	200gr
+291:0	PIMOCARD 1.25	otro|medicamento|medicamento|None	unidad
+291:1	PIMOCARD 10	otro|medicamento|medicamento|None	unidad
+291:2	PIMOCARD 2.5	otro|medicamento|medicamento|None	unidad
+291:3	PIMOCARD 5	otro|medicamento|medicamento|None	unidad
+292:0	PIPERAZINA UND	otro|medicamento|medicamento|None	unidad
+293:0	POMADA ALFA	otro|medicamento|medicamento|None	350gr,x 220 gr,x 60 gr
+293:1	POMADA ALFA 3 CICATRIZANTE	gato|medicamento|medicamento|None	30ml
+294:0	POSATE	otro|medicamento|medicamento|None	x 8.8ml
+295:0	POUCH CARE CAT PLAISIR	gato|comida|comida_humeda|None	85gr
+295:1	POUCH CARE DOG PLAISER	perro|comida|comida_humeda|None	100gr
+295:2	POUCH OPTIMUN PAG	perro|comida|comida_humeda|None	3 l
+295:3	POUCH OPTIMUS GATO	gato|comida|comida_humeda|None	85 gr
+296:0	PREDNISOLONA	otro|medicamento|medicamento|None	20mg
+297:0	PREDNIZOO	otro|medicamento|medicamento|None	5mg
+298:0	PREVICO	otro|medicamento|medicamento|None	x 227mg,x 57mg
+299:0	PRO PLAN ADULT SMALL	perro|comida|concentrado|adulto	1kg,3 kg
+299:1	PRO PLAN ADULT SMALL EXIGENT	perro|comida|concentrado|adulto	1kg,3kg
+299:2	PRO PLAN ADULT SMALL SENSITIVE SKIN	perro|comida|concentrado|adulto	3kg
+299:3	PRO PLAN CANINE EN	perro|comida|concentrado|None	2kg
+299:4	PRO PLAN CANINE HA	perro|comida|concentrado|None	2.7kg,7.5kg
+299:5	PRO PLAN CANINE LATA EN	perro|comida|comida_humeda|None	unidad
+299:6	PRO PLAN CANINE LATA NF	perro|comida|comida_humeda|None	unidad
+299:7	PRO PLAN CANINE LATA OM	perro|comida|comida_humeda|None	unidad
+299:8	PRO PLAN CANINE LATA UR	perro|comida|comida_humeda|None	unidad
+299:9	PRO PLAN CANINE NF	perro|comida|concentrado|None	2kg
+299:10	PRO PLAN CANINE OM	perro|comida|concentrado|None	18l,2kg
+299:11	PRO PLAN CANINE UR	perro|comida|concentrado|None	2kg
+299:12	PRO PLAN CAT URINARY	gato|comida|concentrado|None	1.5kg
+299:13	PRO PLAN FELINE EN	gato|comida|concentrado|None	1.5kg
+299:14	PRO PLAN FELINE LATA EN	gato|comida|comida_humeda|None	unidad
+299:15	PRO PLAN FELINE LATA NF	gato|comida|comida_humeda|None	unidad
+299:16	PRO PLAN FELINE LATA UR	gato|comida|comida_humeda|None	unidad
+299:17	PRO PLAN FELINE NF EARLY CARE	gato|comida|concentrado|None	1.43kg
+299:18	PRO PLAN FELINE OM	gato|comida|concentrado|None	1.5kg
+299:19	PRO PLAN FELINE UR	gato|comida|concentrado|None	1.5kg
+299:20	PRO PLAN GATO ADULT	gato|comida|concentrado|adulto	3kg
+299:21	PRO PLAN GATO NF RENAL	gato|comida|concentrado|None	1.5kg
+299:22	PRO PLAN GATO STERILIZED	gato|comida|concentrado|None	1kg,3kg
+299:23	PRO PLAN GATO URINARY	gato|comida|concentrado|None	3kg
+299:24	PRO PLAN LATA CN	perro|comida|comida_humeda|None	unidad
+299:25	PRO PLAN POUCH CANINO ADULT	perro|comida|comida_humeda|adulto	100gr
+299:26	PRO PLAN POUCH FELINO ADULT	gato|comida|comida_humeda|adulto	85gr
+299:27	PRO PLAN POUCH FELINO ESTERELIZADOS	gato|comida|comida_humeda|None	85gr
+299:28	PRO PLAN POUCH FELINO KITTEN	gato|comida|comida_humeda|cachorro	85gr
+299:29	PRO PLAN PUPPY SMALL	perro|comida|concentrado|cachorro	1 kg,3kg
+299:30	PRO PLAN SENSITIVE SKIN	perro|comida|concentrado|None	1kg
+300:0	PROMOCALIER	otro|medicamento|medicamento|None	x 20 ml
+301:0	PULFEN	otro|medicamento|medicamento|None	1ml,3.2ml
+302:0	PULOFF	gato|medicamento|medicamento|None	0.5ml
+302:1	PULOFF 0.67ML	otro|medicamento|medicamento|None	2-10kg
+302:2	PULOFF 1.34ML	otro|medicamento|medicamento|None	11-20kg
+302:3	PULOFF 2.68ML	otro|medicamento|medicamento|None	21-40kg
+303:0	Q-IDA CAN ADULTO	perro|comida|concentrado|adulto	1kg,x 15 kg,x 30 kg
+303:1	Q-IDA CAT *	gato|comida|concentrado|None	8kg
+303:2	Q-IDA CAT *500	gato|comida|concentrado|None	unidad
+303:3	Q-IDA CAT A GRANEL	gato|comida|concentrado|None	unidad
+304:0	QUERCETOL	otro|medicamento|medicamento|None	100mg,70mg
+305:0	QUINOCALF	otro|medicamento|medicamento|None	25mg,50mg
+306:0	QUINODIAR SUSP	otro|medicamento|medicamento|None	30ml
+307:0	RASCADOR	otro|juguete|juguete|None	unidad
+307:1	RASCADOR ESQUINERO	otro|juguete|juguete|None	unidad
+307:2	RASCADOR REDONDO GATOS	gato|juguete|juguete|None	unidad
+308:0	RATION	perro|comida|concentrado|None	20 gr
+309:0	RATON X UND	otro|accesorio|accesorio|None	unidad
+310:0	RECARGA BOMBONERA DELIDOG BONE	perro|snack|premio|None	1kg
+310:1	RECARGA BOMBONERA DELIDOG DENT KG	perro|snack|premio|None	unidad
+310:2	RECARGA BOMBONERA DELIDOG MIX KG	perro|snack|premio|None	unidad
+311:0	RENAL BALANCE CAT UND	gato|medicamento|medicamento|None	unidad
+311:1	RENAL BALANCE UND	otro|medicamento|medicamento|None	unidad
+312:0	REPTOMIN TORTUGAS	perro|comida|concentrado|None	x 10 gr
+313:0	RESTADERM CREMA	otro|medicamento|medicamento|None	unidad
+313:1	RESTADERM SPRAY	otro|medicamento|medicamento|None	100ml
+314:0	REUTOPIC	otro|medicamento|medicamento|None	100ml
+315:0	REVITALICE MORA-AZUL	otro|medicamento|medicamento|None	500ml
+316:0	REVOLUTION 0.25ML	otro|medicamento|medicamento|None	1.2 a 2.5kg
+316:1	REVOLUTION 12% CAFE	otro|medicamento|medicamento|None	5-10kg
+316:2	REVOLUTION 12% LILA	otro|medicamento|medicamento|None	2.5-5kg
+316:3	REVOLUTION 6% AZUL GATO	gato|medicamento|medicamento|None	2.5-7kg
+316:4	REVOLUTION 6% ROSADO MENOR A	otro|medicamento|medicamento|None	2.5kg
+317:0	RINGO ADUL	perro|comida|concentrado|adulto	x 4kg
+317:1	RINGO CACHORRO	perro|comida|concentrado|cachorro	15kg,1kg,2kg,30kg
+317:2	RINGO CREMA DE MANI	perro|comida|concentrado|None	30gr
+317:3	RINGO CROQUETA	perro|comida|concentrado|None	x 20
+317:4	RINGO CROQUETAS	perro|comida|concentrado|None	1kg,2kg,30kg
+317:5	RINGO PREMIUM	perro|comida|concentrado|None	1kg,20kg,2kg,30kg
+317:6	RINGO PREMIUM CACHO	perro|comida|concentrado|None	x 2 kg
+317:7	RINGO PREMIUM CACHORRO	perro|comida|concentrado|cachorro	x 15 kg,x 30 kg
+317:8	RINGO PREMIUN PRO	perro|comida|concentrado|None	4kg
+317:9	RINGO VITALITY ADUL	perro|comida|concentrado|adulto	x 2 kg
+317:10	RINGO VITALITY ADULTO	perro|comida|concentrado|adulto	x 10 kg
+318:0	RODILLERAS PET	perro|comida|concentrado|None	unidad
+319:0	RONDEL	otro|medicamento|medicamento|None	10ml,2ml,5ml
+319:1	RONDEL PUPPY	perro|medicamento|medicamento|cachorro	2ml,x 5ml
+320:0	ROYAL DACHSHUND LATA	perro|comida|comida_humeda|None	85gr
+320:1	ROYAL FIT	perro|comida|concentrado|None	400gr
+320:2	ROYAL HEPATIC	perro|comida|concentrado|None	390gr
+320:3	ROYAL POMERANIAN LATA	perro|comida|comida_humeda|None	0.85gr
+321:0	ROYAL CANIN BEAUTY	perro|comida|concentrado|None	150g
+321:1	ROYAL CANIN CAT GASTROINTESTINAL	gato|comida|concentrado|None	2kg
+321:2	ROYAL CANIN CAT RENAL	gato|comida|concentrado|None	2kg
+321:3	ROYAL CANIN DOG LATA GASTRO	perro|comida|comida_humeda|None	385gr
+321:4	ROYAL CANIN DOG PUPY INDOOR	perro|comida|concentrado|None	1.5kg
+321:5	ROYAL CANIN EXIGENT	perro|comida|concentrado|None	3kg
+321:6	ROYAL CANIN FELINE STERILIZED	gato|comida|concentrado|None	2kg
+321:7	ROYAL CANIN INDOOR	gato|comida|concentrado|None	85g
+321:8	ROYAL CANIN KITTEN	gato|comida|concentrado|cachorro	400gr
+321:9	ROYAL CANIN LATA BABY CAT TROCITOS	gato|comida|comida_humeda|None	unidad
+321:10	ROYAL CANIN LATA KITTEN LOAF	gato|comida|comida_humeda|cachorro	unidad
+321:11	ROYAL CANIN MINI ADULT	perro|comida|concentrado|adulto	2kg
+321:12	ROYAL CANIN MINI EXIGENT	perro|comida|concentrado|None	unidad
+321:13	ROYAL CANIN PERSIAN ADULT	perro|comida|concentrado|adulto	2kg
+321:14	ROYAL CANIN PERSIAN KITTEN	gato|comida|concentrado|cachorro	2kg
+321:15	ROYAL CANIN POMERANIAN ADULT	perro|comida|concentrado|adulto	1.5kg
+321:16	ROYAL CANIN PUPPY LATS	perro|comida|concentrado|cachorro	x150gr
+321:17	ROYAL CANIN STERILIDED	perro|comida|concentrado|None	400gr
+321:18	ROYAL CANIN URINARY S/O	perro|comida|concentrado|None	400gr
+321:19	ROYAL CANIN URINAY	perro|comida|concentrado|None	85gr
+321:20	ROYAL CANIN URINAY CAT S/O	gato|comida|concentrado|None	1.5kg
+321:21	ROYAL CANIN YORKSHIRE ADULT	perro|comida|concentrado|adulto	1.1kg,4.5kg
+322:0	ROYALADULT INSTINCTIVE	perro|comida|concentrado|adulto	85g
+323:0	ROYALCANIN CALM CAT	gato|comida|concentrado|None	2kg
+323:1	ROYALCANIN GASTROINTESTINAL PERRO	perro|comida|concentrado|None	2kg
+323:2	ROYALCANIN HEPATIC CAT	gato|comida|concentrado|None	2kg
+324:0	ROYALSHIH TZU LATA 0.85	perro|comida|comida_humeda|None	unidad
+325:0	SALCHICHA	perro|comida|concentrado|None	x 1 kg
+326:0	SANIDERM	otro|medicamento|medicamento|None	x 40 gr
+327:0	SANIX AH	otro|medicamento|medicamento|None	120ml
+328:0	SANUCH SOBRE	perro|comida|comida_humeda|None	x 15 gr
+329:0	SEDANPET	otro|medicamento|medicamento|None	tableta
+330:0	SEDOLAX GOTERO	otro|medicamento|medicamento|None	10 ml
+331:0	SEMILLAS SOBRES	perro|comida|comida_humeda|None	unidad
+332:0	SEPTIDERM	otro|medicamento|medicamento|None	x 120ml
+332:1	SEPTIDERM E	otro|medicamento|medicamento|None	x 50 ml
+333:0	SET COMEDERO Y BEBEDERO CUTE CAT	gato|accesorio|accesorio|None	unidad
+334:0	SHAMPOO ALLERMYL SIS	otro|higiene|aseo|None	250ml
+334:1	SHAMPOO BASIC-PET ALOE VERA Y CERA	otro|higiene|aseo|None	250ml
+334:2	SHAMPOO BAXIDIN CERAMIDAS	otro|higiene|aseo|None	100ml,250ml
+334:3	SHAMPOO BONNY ARGAN	otro|higiene|aseo|None	x 240ml
+334:4	SHAMPOO BRILLO SOBRE	otro|higiene|aseo|None	unidad
+334:5	SHAMPOO CANIS Y FELIS CLORHEXINA	otro|higiene|aseo|None	30ml
+334:6	SHAMPOO CANIS Y FELIS K-ZOL	otro|higiene|aseo|None	200ml
+334:7	SHAMPOO CANIS Y FELIS MEDICADO	otro|higiene|aseo|None	200ml
+334:8	SHAMPOO CLORHEXIN	otro|higiene|aseo|None	240ml
+334:9	SHAMPOO CLORHEXIN 3.0	otro|higiene|aseo|None	250ml
+334:10	SHAMPOO FITOVETE	otro|higiene|aseo|None	120ml,250ml,30ml
+334:11	SHAMPOO KERACLEEN	otro|higiene|aseo|None	240ml
+334:12	SHAMPOO KETOCLEAN	otro|higiene|aseo|None	250ml
+334:13	SHAMPOO MICLORPROC	otro|higiene|aseo|None	125ml
+334:14	SHAMPOO PEROXYPROC	otro|higiene|aseo|None	125ml,250ml
+334:15	SHAMPOO PET LIFE	otro|higiene|aseo|None	250ml
+334:16	SHAMPOO PETYS INSECTICIDA	otro|higiene|aseo|None	x 235ml
+334:17	SHAMPOO SEBOCALM	otro|higiene|aseo|None	250ml
+334:18	SHAMPOO SEBOLYTIC SIS	otro|higiene|aseo|None	250ml
+334:19	SHAMPOO SULFICURE	otro|higiene|aseo|None	x 250ml
+334:20	SHAMPOO SUNSHINE	otro|higiene|aseo|None	x 120ml
+335:0	SHEBA POUCH GATO	gato|comida|comida_humeda|None	x 85 gr
+336:0	SHED X DOG GRANDE	perro|medicamento|medicamento|None	16oz
+336:1	SHED X DOG PEQ	perro|medicamento|medicamento|None	8oz
+337:0	SIETE VIDAS	perro|comida|concentrado|None	1.5kg
+338:0	SIMPARICA	perro|medicamento|medicamento|None	10-20 kg,20-40 kg,5-10 kg
+338:1	SIMPARICA TRIO	perro|medicamento|medicamento|None	10-20 kg,2.5-5 kg,20-40 kg,40-60 kg,5-10 kg
+339:0	SINGAP	otro|medicamento|medicamento|None	20ml
+340:0	SINRAT SOBRE	perro|comida|comida_humeda|None	20gr
+341:0	SINSONTES Y TUR	perro|comida|concentrado|None	300 gr
+342:0	SMARTBONES BOMBONERA	perro|snack|premio|None	x 45und
+343:0	SNACK FRUITABLES	perro|snack|premio|None	x70g
+343:1	SNACK PREMIO HAIRBALL	perro|snack|premio|None	75gr
+343:2	SNACK TOMMY CAT DENTAL	gato|snack|premio|None	75gr
+343:3	SNACK TOMMY CAT SENSITIVE	gato|snack|premio|None	75gr
+343:4	SNACK TOMMY CAT SKIN COT	gato|snack|premio|None	75gr
+344:0	SNACKS DESHIDRATADO CALABAZA	perro|snack|premio|None	unidad
+344:1	SNACKS MEOW MI	perro|snack|premio|None	x 85gr
+345:0	SNAKS SOBRE MICHIKO SEMANARIO	perro|comida|comida_humeda|None	x7und
+346:0	SPLED DOG	perro|accesorio|accesorio|None	5ml
+347:0	STICKS SABORES	perro|comida|concentrado|None	5gr
+348:0	STOMIZOL	otro|medicamento|medicamento|None	20mg
+349:0	STOMORGYL	otro|medicamento|medicamento|None	10mg,2mg
+350:0	STREPTOLAND	otro|medicamento|medicamento|None	20 gr
+351:0	SUPERENERGY	otro|medicamento|medicamento|None	125ml
+352:0	SUTRIM SUSP	otro|medicamento|medicamento|None	x 30ml
+353:0	TAPETE PETYS EXTRA GRANDE 30	otro|accesorio|accesorio|None	unidad
+353:1	TAPETE PETYS	otro|higiene|aseo|None	x 12
+353:2	TAPETE PETYS MEDIANO	otro|higiene|aseo|None	x 12
+353:3	TAPETE PETYS PQÑ	otro|higiene|aseo|None	x 12
+353:4	TAPETE X UND	otro|higiene|aseo|None	unidad
+354:0	TASTE PACIFIC PUPPY	perro|accesorio|accesorio|cachorro	28l
+354:1	TASTE HUMEDO PERRO	perro|comida|concentrado|None	390gr
+354:2	TASTE LOWLAND PATO FELINE 14B	gato|comida|concentrado|None	unidad
+354:3	TASTE PATO	perro|comida|concentrado|None	x 500gr
+355:0	TASTE OF THE WILD	perro|comida|concentrado|None	14l
+355:1	TASTE OF THE WILD ADULT PERRO	perro|comida|concentrado|adulto	1kg,2.2kg
+355:2	TASTE OF THE WILD CAT AMARILLO	gato|comida|concentrado|None	2.2kg,500gr,7kg
+355:3	TASTE OF THE WILD CAT VERDE	gato|comida|concentrado|None	2.2kg,500gr,7kg
+355:4	TASTE OF THE WILD LATA	perro|comida|comida_humeda|None	156gr
+355:5	TASTE OF THE WILD PATO FELINE	gato|comida|concentrado|None	2.72kg
+356:0	TEARS FCO	otro|medicamento|medicamento|None	8ml
+357:0	TEMPTATIONS	perro|comida|concentrado|None	85g,x 180gr
+358:0	TETERO L	otro|accesorio|accesorio|None	unidad
+359:0	TETRA COLOR	perro|comida|concentrado|None	x 10 gr
+359:1	TETRA COLOR LATA	perro|comida|comida_humeda|None	unidad
+360:0	TOBRAMAX GOTAS	otro|medicamento|medicamento|None	unidad
+361:0	TOMMY CATS CASTRADO	gato|comida|concentrado|None	1kg
+361:1	TOMMY POUCH CAT	gato|comida|comida_humeda|None	100gr
+361:2	TOMMY POUCH PERRO	perro|comida|comida_humeda|None	100gr
+362:0	TOPIN COLA PEQ	otro|accesorio|accesorio|None	unidad
+363:0	TOTAL GATOS	gato|medicamento|medicamento|None	2und
+363:1	TOTAL PERRO CHICO	perro|medicamento|medicamento|None	2und
+363:2	TOTAL PERRO GRANDE	perro|medicamento|medicamento|None	3und
+363:3	TOTAL PERRO MEDIANO	perro|medicamento|medicamento|None	2und
+364:0	TRADILLA REFLECTIVA MULTICOLOR	otro|accesorio|accesorio|None	unidad
+365:0	TRAILLA AHOGO GRANDE	otro|accesorio|accesorio|None	unidad
+365:1	TRAILLA ANTITIRON COLOR PASTEL	otro|accesorio|accesorio|None	unidad
+365:2	TRAILLA COLLAR TACTICO ANTITIRONES	otro|accesorio|accesorio|None	unidad
+365:3	TRAILLA CON ARNES MANGO DE GOMA M	otro|accesorio|accesorio|None	unidad
+365:4	TRAILLA CON ARNES MANGO DE GOMA S	otro|accesorio|accesorio|None	unidad
+365:5	TRAILLA CON LAZO M	otro|accesorio|accesorio|None	unidad
+365:6	TRAILLA CON LAZO XL	otro|accesorio|accesorio|None	unidad
+365:7	TRAILLA ECONOMICAS	otro|accesorio|accesorio|None	unidad
+365:8	TRAILLA ESTILO PARACAIDAS L	otro|accesorio|accesorio|None	unidad
+365:9	TRAILLA ESTILO PARACAIDAS M	otro|accesorio|accesorio|None	unidad
+365:10	TRAILLA ESTILO PARACAIDAS XL	otro|accesorio|accesorio|None	unidad
+365:11	TRAILLA IMITACION CUERO S	otro|accesorio|accesorio|None	unidad
+365:12	TRAILLA PEQUEÑA ECONMICA	otro|accesorio|accesorio|None	unidad
+365:13	TRAILLA REFLECTIVA CON RESORTE	otro|accesorio|accesorio|None	unidad
+365:14	TRAILLA TRENZADA	otro|accesorio|accesorio|None	unidad
+365:15	TRAILLA Y ARNES GATOS FLORAL S	gato|accesorio|accesorio|None	unidad
+365:16	TRAILLA Y ARNES L-XL	otro|accesorio|accesorio|None	unidad
+365:17	TRAILLA Y ARNES M	otro|accesorio|accesorio|None	unidad
+365:18	TRAILLA Y ARENA GATOS FLORAL M	gato|arena_sustrato|arena|None	unidad
+366:0	TRIHEPAT	otro|medicamento|medicamento|None	100ml
+367:0	TUSIVET SUSPENSION	otro|medicamento|medicamento|None	120ml
+368:0	UBREVET	otro|medicamento|medicamento|None	30gr
+369:0	UNGUENTO 100	otro|medicamento|medicamento|None	x 120
+370:0	UNIDOL	otro|medicamento|medicamento|None	100mg
+371:0	URANOTEST LEUCEMIA/VIH FELINO	gato|medicamento|medicamento|None	unidad
+372:0	UT BALANCE UND	otro|medicamento|medicamento|None	unidad
+373:0	VACOL POMADA	otro|medicamento|medicamento|None	20 gr,390 gr,60 gr,x 200 gr
+374:0	VACUNA LEUCEMIA	otro|vacuna|biologico|None	unidad
+374:1	VACUNA PUPPY	perro|vacuna|biologico|cachorro	unidad
+374:2	VACUNA QUINTUPLE	otro|vacuna|biologico|None	unidad
+374:3	VACUNA RABISIN	otro|vacuna|biologico|None	unidad
+374:4	VACUNA SEXTUPLE	otro|vacuna|biologico|None	unidad
+374:5	VACUNA TRIPLE FELINA	gato|vacuna|biologico|None	unidad
+374:6	VACUNA TRIPLE FELINA + LEUCEMIA	gato|vacuna|biologico|None	unidad
+374:7	VACUNA TRIPLE FELINA + RABIA	gato|vacuna|biologico|None	unidad
+375:0	VARA PARA GATO	gato|accesorio|accesorio|None	unidad
+376:0	VENDA FUN FLEX COLORES 10	otro|medicamento|medicamento|None	x450
+377:0	VERDEMINT	otro|medicamento|medicamento|None	50gr
+378:0	VETMEDIN	otro|medicamento|medicamento|None	5mg
+379:0	VETSOLUCION GASTROISTESTINAL DOG	perro|accesorio|accesorio|None	150gr
+380:0	VETSOLUTION CANINE RENAL	perro|comida|concentrado|None	150gr
+380:1	VETSOLUTION CAT GASTROINTES	gato|comida|comida_humeda|None	x100
+380:2	VETSOLUTION CAT RECOVERY	gato|comida|concentrado|None	100gr
+380:3	VETSOLUTION CAT RENAL	gato|comida|concentrado|None	x100gr
+380:4	VETSOLUTION CAT URINARY	gato|comida|comida_humeda|None	100gr
+380:5	VETSOLUTION DOG RECOVERY	perro|comida|concentrado|None	x 150g
+381:0	VIRBAC ADUL CAT	gato|comida|concentrado|adulto	x 7kg
+381:1	VIRBAC ADULT SMALL	perro|comida|concentrado|adulto	1.5kg
+381:2	VIRBAC CAT ADULT	gato|comida|concentrado|adulto	1.5kg
+381:3	VIRBAC CAT ADULT SALMON	gato|comida|concentrado|adulto	1.5kg,3kg
+381:4	VIRBAC CAT GASTRO 1	gato|comida|concentrado|None	x 1.5kg
+381:5	VIRBAC CAT UROLOGY 1	gato|comida|concentrado|None	x 1.5kg
+381:6	VIRBAC CAT UROLOGY 2	gato|comida|concentrado|None	x 1.5kg
+381:7	VIRBAC CAT UROLOGY 3	gato|comida|concentrado|None	x 1.5kg
+381:8	VIRBAC CAT WEIGHT 2	gato|comida|concentrado|None	3kg
+381:9	VIRBAC CAT WEIGHT DIABETES 1	gato|comida|concentrado|None	x 3kg
+381:10	VIRBAC CAT WEIGTH 2	gato|comida|concentrado|None	1.5kg
+381:11	VIRBAC DOG DIGESTIVE	perro|comida|concentrado|None	x 3kg
+381:12	VIRBAC DOG SENIOR	perro|comida|concentrado|senior	1.5kg
+381:13	VIRBAC DOG WIGHT2	perro|comida|concentrado|None	3kg
+381:14	VIRBAC KIDNEY JOINT 2	perro|comida|concentrado|None	x3kg
+381:15	VIRBAC SENIOR CAT	gato|comida|concentrado|senior	1.5kg
+381:16	VIRBAC UROLOGY 2	perro|comida|concentrado|None	3kg
+381:17	VIRBAC WEIGHT 1	perro|comida|concentrado|None	3kg
+382:0	VIRCAC CAT WEIGTH 1	gato|comida|concentrado|None	x 1.5kg
+383:0	VIRVAC ADUL CAT	gato|comida|concentrado|adulto	x 3kg
+384:0	VISIVET GOTERO	otro|medicamento|medicamento|None	x 10ml
+385:0	VITA PICHONES	otro|accesorio|accesorio|None	125gr
+385:1	VITA HAMSTERS	roedor|comida|concentrado|None	300 gr
+386:0	VITACANARIO CANTO Y COLOR	ave|comida|concentrado|None	300 gr
+387:0	VITAGRANO MIJO ROJO -BLANCO	ave|comida|concentrado|None	200gr
+387:1	VITAGRANO MOSTAZA	ave|comida|concentrado|None	300gr
+388:0	VITAPERICO	ave|comida|concentrado|None	300 gr
+389:0	VITAVET C	ave|medicamento|medicamento|None	30ml
+390:0	WHISKAS CARNE	gato|comida|concentrado|None	x 500 gr
+390:1	WHISKAS PAG	gato|comida|concentrado|None	5 l
+390:2	WHISKAS POUCH ADULTO POLLO	gato|comida|comida_humeda|adulto	85gr
+390:3	WHISKAS SOBRES ECONO PACK	gato|comida|comida_humeda|None	x4
+391:0	ZEEL	otro|medicamento|medicamento|None	100 comp

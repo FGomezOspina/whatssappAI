@@ -4,6 +4,7 @@ const { normalizarPeso } = require("../utils/text");
 // never fill a missing requested size. Quantity counts packages, not net weight.
 const INSTRUCCIONES_EVIDENCIA = `Si hay imagen, separa lo observado de lo solicitado en cada producto.
 Amplia cada producto con observado: {nombre: string|null, presentacion: string|null, confianzaIdentidad: number, confianzaPresentacion: number} y solicitud: {presentacionTexto: string|null, presentacionContexto: string|null, contextoVigente: boolean, cantidadTexto: number|null, cantidadContexto: number|null}.
+Separa semanticamente la identidad del texto descriptivo: completa marca, referencia/linea/modelo, variante, categoria, especie y presentacion solo con evidencia visible. Marca, modelo, variante y contenido neto identifican la referencia; especie o categoria desambiguan cuando correspondan. Beneficios, slogans y frases de uso no son variantes comerciales. No exijas que el nombre del catalogo repita literalmente la descripcion del empaque ni suprimas una linea o variante real porque parezca una palabra comercial generica.
 observado.nombre contiene solo el nombre y variante legibles, incluidos sabor/proteina y condicion (por ejemplo esterilizado) cuando esten visibles, sin claims ni peso; conserva literalmente todo codigo comercial impreso, incluidas siglas cortas y barras, aunque tambien aparezca su descripcion larga. Codigo y descripcion son atributos distintos: no expandas ni sustituyas el codigo por su significado. Una referencia descriptiva sin el codigo no equivale a la referencia codificada. observado.presentacion contiene el contenido neto visible o null. Puntua por separado confianzaIdentidad y confianzaPresentacion entre 0 y 1; no deduzcas peso del tamano de la bolsa ni del catalogo.
 Lee el contenido neto ampliando la zona de la etiqueta y conserva su separador decimal: 1,5 kg y 1.5 kg equivalen; ninguno significa 15 kg. Distingue el peso neto de porcentajes nutricionales, dosis y peso del animal. Si el punto o la coma no son legibles, observado.presentacion=null y confianzaPresentacion baja; no elijas un peso por parecerse a una presentacion del catalogo. Un peso leido en la foto pertenece a observado, nunca a solicitud.presentacionTexto.
 solicitud.presentacionTexto y cantidadTexto contienen solo lo que pide explicitamente el cliente en este turno; distingue contenido del empaque, numero de paquetes, peso de la mascota y dosis. Una mencion negada o descriptiva del empaque no es una solicitud.
@@ -41,6 +42,7 @@ function resolverEvidenciaInterpretacion(interpretacion, evidenciaPrevia = null)
     ...(previo?.cantidad != null ? { cantidad: previo.cantidad } : {}),
     ...(previo?.intencionPresentaciones ? { intencionPresentaciones: previo.intencionPresentaciones } : {}),
     ...(previo?.mascotas?.length ? { mascotas: previo.mascotas } : {}),
+    ...(previo?.accion || evidenciaPrevia?.accion ? { accion: previo?.accion || evidenciaPrevia.accion } : {}),
     // The catalog-mapping pass may refine identity, but not rewrite intent.
     ...(previo?.observado ? {
       observado: {
@@ -60,8 +62,7 @@ function resolverEvidenciaInterpretacion(interpretacion, evidenciaPrevia = null)
     ...(evidenciaPrevia ? {
       ...(evidenciaPrevia.intencion ? { intencion: evidenciaPrevia.intencion } : {}),
       ...(evidenciaPrevia.accion ? { accion: evidenciaPrevia.accion } : {}),
-      carrito: { ...interpretacion.carrito, ...Object.fromEntries(
-        Object.entries(evidenciaPrevia.carrito || {}).filter(([, valor]) => valor != null)) },
+      carrito: { ...(evidenciaPrevia.carrito || {}) },
       entrega: { ...interpretacion.entrega, ...Object.fromEntries(
         Object.entries(evidenciaPrevia.entrega || {}).filter(([, valor]) => valor != null)) },
       datosCliente: { ...interpretacion.datosCliente, ...Object.fromEntries(

@@ -54,6 +54,91 @@ function escenario({ omitir = true, compra = false, falloImagen = false, omitirT
   vm.runInNewContext(fs.readFileSync(archivo, 'utf8'), { module: modulo, require: n => mocks[n] || req(n), process, console: { log() {}, error() {} } });
   return { estado: () => estado, consultas, llamadas, trazas, enviar: async (eventos, opciones) => respuestaParaHistorial(await modulo.exports.responderEventosEntrantes(eventos.map(e => ({ channelUserId: 'test', ...e, media: e.imageUrl ? { type: 'image', url: e.imageUrl } : null })), opciones)) };
 }
+
+for (const aceptacion of ['me los envías', 'mándame esos', 'quiero los dos', 'agrégalos', 'envíame esos productos']) {
+  test(`fotos sucesivas con texto adicional → carrito parcial → ${aceptacion}`, async () => {
+    const datos = [
+      { marca: 'KING CAT', referencias: [{ nombre: 'ARENA KING CAT X 25 KG', presentaciones: [{ peso: '25kg', precio: 62900 }] }] },
+      { marca: 'MAX CAT', referencias: [{ nombre: 'MAX CAT ADUL FRANGO', especie: 'gato', categoria: 'comida',
+        presentaciones: [{ peso: '10.1kg', precio: 178600 }] }] },
+    ];
+    const arenaLeida = { marca: 'KING CAT', referencia: 'ARENA SANITARIA PARA GATOS KING CAT 25 Kg',
+      observado: { nombre: 'ARENA SANITARIA PARA GATOS KING CAT 25 Kg', presentacion: '25kg', confianzaIdentidad: .99, confianzaPresentacion: .99 } };
+    const maxLeido = { marca: 'MAX CAT', referencia: 'Alimento completo para gatos adultos MAX CAT Premium FRANGO 10.1 KG',
+      observado: { nombre: 'Alimento completo para gatos adultos MAX CAT Premium FRANGO 10.1 KG',
+        presentacion: '10.1kg', confianzaIdentidad: .99, confianzaPresentacion: .99 } };
+    const c = escenario({ catalogoDatos: datos, router: args => {
+      if (args.imageUrls?.length) return { accion: 'consultar', intencion: 'consulta_producto', confianza: .99,
+        producto: structuredClone(args.imageUrls[0].includes('max') ? maxLeido : arenaLeida), consultaCatalogo: { necesaria: true } };
+      if (args.mensaje.includes('Solo el max')) return { accion: 'agregar', intencion: 'pedido_producto', confianza: 1,
+        producto: { marca: 'MAX CAT', referencia: 'MAX CAT ADUL FRANGO', presentacion: '10.1kg', cantidad: 1 },
+        consultaCatalogo: { necesaria: true, consulta: 'MAX CAT ADUL FRANGO 10.1kg' } };
+      return { accion: 'responder', intencion: 'otro', consultaCatalogo: { necesaria: false }, respuestaConversacional: 'Con gusto.' };
+    } });
+    const r1 = await c.enviar([{ imageUrl: 'fixture:arena' }]);
+    assert.match(r1, /62\.900/);
+    const r2 = await c.enviar([{ imageUrl: 'fixture:max' }]);
+    assert.match(r2, /178\.600/);
+    assert.doesNotMatch(r1 + r2, /nombre completo/);
+    assert.equal(c.estado().seleccionesProducto.length, 2);
+    await c.enviar([{ text: 'Solo el max de 10.1kg por ahora' }]);
+    assert.equal(c.estado().carrito.length, 1);
+    // Simulate a long pause and many unrelated turns without replaying a model.
+    for (const p of c.estado().seleccionesProducto) p.contextoCreadoEn = '2020-01-01';
+    for (let i = 0; i < 65; i++) await c.enviar([{ text: 'Gracias por la información' }]);
+    const compra = await c.enviar([{ text: aceptacion }]);
+    assert.equal(c.estado().carrito.length, 2, compra);
+    assert.equal(c.estado().carrito.reduce((s, p) => s + p.precio * p.cantidad, 0), 241500);
+    assert.ok(c.estado().carrito.every(p => p.cantidad === 1));
+    await c.enviar([{ text: aceptacion }]);
+    assert.equal(c.estado().carrito.length, 2);
+    assert.ok(c.estado().carrito.every(p => p.cantidad === 1));
+  });
+}
+
+test('dos fotos cotizadas con nombres descriptivos → aceptación conjunta desde carrito vacío', async () => {
+  const c = escenario({ router: args => {
+    if (!args.imageUrls?.length) return { accion: 'responder', consultaCatalogo: { necesaria: false } };
+    const p = structuredClone(args.imageUrls[0].includes('max') ? max : arena);
+    p.observado.nombre = args.imageUrls[0].includes('max')
+      ? 'Alimento completo para gatos adultos MAX CAT FRANGO ARROZ 10.1kg'
+      : 'ARENA SANITARIA PARA GATOS KING CAT 25 Kg';
+    p.observado.presentacion = args.imageUrls[0].includes('max') ? '10.1kg' : '25kg';
+    p.observado.confianzaPresentacion = .99;
+    return { accion: 'consultar', intencion: 'consulta_producto', confianza: .99, producto: p, consultaCatalogo: { necesaria: true } };
+  } });
+  await c.enviar([{ imageUrl: 'fixture:arena' }]);
+  await c.enviar([{ imageUrl: 'fixture:max' }]);
+  const respuesta = await c.enviar([{ text: 'me los envías' }]);
+  assert.equal(c.estado().carrito.length, 2, respuesta);
+  assert.match(respuesta, /241\.500/);
+});
+
+test('descartar una cotización con otro producto en carrito no la recupera al pedir el conjunto', async () => {
+  const c = escenario({ router: args => {
+    if (args.imageUrls?.length) {
+      const p = structuredClone(args.imageUrls[0].includes('max') ? max : arena);
+      if (p.marca === 'MAX CAT') Object.assign(p.observado, { presentacion: '10.1kg', confianzaPresentacion: .99 });
+      return { accion: 'consultar', intencion: 'consulta_producto', confianza: 1, producto: p, consultaCatalogo: { necesaria: true } };
+    }
+    if (args.mensaje.includes('Descarta')) return { accion: 'quitar', intencion: 'pedido_producto', confianza: 1,
+      carrito: { operacion: 'quitar' }, producto: { marca: 'ARENA KING CAT', referencia: 'ARENA KING CAT', presentacion: '25kg' },
+      consultaCatalogo: { necesaria: false } };
+    if (args.mensaje.includes('el max')) return { accion: 'agregar', intencion: 'pedido_producto', confianza: 1,
+      producto: { marca: 'MAX CAT', referencia: 'MAX CAT ADUL FRANGO', presentacion: '10.1kg' },
+      consultaCatalogo: { necesaria: true, consulta: 'MAX CAT ADUL FRANGO 10.1kg' } };
+    return { accion: 'responder', consultaCatalogo: { necesaria: false } };
+  } });
+  await c.enviar([{ imageUrl: 'fixture:arena' }]);
+  await c.enviar([{ imageUrl: 'fixture:max' }]);
+  await c.enviar([{ text: 'Agrega el max de 10.1kg' }]);
+  assert.equal(c.estado().carrito.length, 1);
+  await c.enviar([{ text: 'Descarta la arena king cat de 25kg' }]);
+  assert.equal(c.estado().seleccionesProducto.find(p => p.marca === 'ARENA KING CAT').estado, 'descartado');
+  await c.enviar([{ text: 'me los envías' }]);
+  assert.equal(c.estado().carrito.length, 1);
+  assert.equal(c.estado().carrito[0].cantidad, 1);
+});
 test('dos imágenes: recupera producto omitido y cotiza sin pedir permiso para buscar', async () => {
   const c = escenario();
   const respuesta = await c.enviar([{ imageUrl: 'fixture:max' }, { imageUrl: 'fixture:arena' }]);

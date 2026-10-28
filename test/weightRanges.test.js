@@ -48,7 +48,8 @@ test('el descriptor extraído por la IA no se interpreta como peso ni elimina la
 test('la selección de rangos utiliza las presentaciones de distintas familias del catálogo',()=>{
  const catalogo=require('../productos.json');
  for(const [marca,peso,rango] of [['BRAVECTO','18kg','10-20kg'],['CREDELIO','18kg','11-22kg'],['NEXGARD','23kg','10-25kg'],['SIMPARICA','28kg','20-40kg']]){
-  const ref=catalogo.find(m=>m.marca===marca).referencias.find(r=>r.nombre===marca && r.categoria==='medicamento');
+  // Credelio felino también es medicamento; estos rangos corresponden a perros.
+  const ref=catalogo.find(m=>m.marca===marca).referencias.find(r=>r.nombre===marca && r.categoria==='medicamento' && r.especie==='perro');
   const opciones=presentacionesParaPeso(ref,peso);
   assert.equal(opciones.length,1);assert.equal(normalizarPeso(opciones[0].peso),rango);
  }

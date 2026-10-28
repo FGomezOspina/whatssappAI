@@ -1,0 +1,237 @@
+[
+  {
+    "keys": "111:0",
+    "patch": {
+      "especie": "perro"
+    },
+    "reason": "Cortavance está identificado para perros en la ficha oficial.",
+    "source": "https://co.virbac.com/products/problemas-dermatologicos/cortavance-spray-procesos-piel",
+    "clear": true
+  },
+  {
+    "keys": "16:0",
+    "patch": {
+      "especie": "perro y gato"
+    },
+    "reason": "Aquadent 250 ml: higiene oral para ambas especies.",
+    "source": "https://co.virbac.com/home/gatos/higiene-bucodental.html",
+    "clear": true
+  },
+  {
+    "keys": "96:0",
+    "patch": {
+      "especie": "perro y gato",
+      "categoria": "higiene",
+      "subcategoria": "aseo"
+    },
+    "reason": "Clordent 120 ml: solución de higiene bucal canina y felina.",
+    "source": "https://co.virbac.com/products/higiene-y-dermatologia/clordent",
+    "clear": true
+  },
+  {
+    "keys": "258:0",
+    "patch": {
+      "especie": "perro y gato",
+      "categoria": "suplemento",
+      "subcategoria": "suplemento"
+    },
+    "reason": "Nutri-Gel es suplemento alimenticio para perros y gatos.",
+    "source": "https://co.virbac.com/products/suplementos-nutricionales/nutrigel",
+    "clear": true
+  },
+  {
+    "keys": "79:1 79:2 291:0 291:2 291:3",
+    "patch": {
+      "especie": "perro"
+    },
+    "reason": "Etiquetas y folleto de Cardial B 2.5/5 y Pimocard 1.25/2.5/5 dicen comprimidos para perros. No se extrapola a Pimocard 10.",
+    "source": "https://holliday-scott.com/file/im/20170615095611Folleto%20Pimocard.pdf",
+    "clear": true
+  },
+  {
+    "keys": "316:1 316:2",
+    "patch": {
+      "especie": "perro"
+    },
+    "reason": "Revolution 12% café/lila: concentración 120 mg/ml y variante canina en tabla del fabricante.",
+    "source": "https://www.zoetisus.com/content/_assets/docs/vmips/package-inserts/revolution-puppies-and-kittens-prescribing-information.pdf",
+    "clear": true
+  },
+  {
+    "keys": "334:9",
+    "patch": {
+      "especie": "perro y gato"
+    },
+    "reason": "Clorhexin 3.0 Spherulites documentado para perros y gatos.",
+    "source": "https://co.virbac.com/products/problemas-dermatologicos/clorhexin-30",
+    "clear": true
+  },
+  {
+    "keys": "238:0",
+    "patch": {
+      "especie": "gato"
+    },
+    "reason": "Monello Adultos Bolas de Pelo es alimento seco felino; no se confunde con Bites snack de 80 g.",
+    "source": "https://www.nutrire.ind.br/es/produto/monello-premium-especial-gatos-adultos-bolas-de-pelos-es",
+    "clear": true
+  },
+  {
+    "keys": "379:0",
+    "patch": {
+      "categoria": "comida",
+      "subcategoria": "comida_humeda"
+    },
+    "reason": "Vetsolution Gastrointestinal Canine 150 g es alimento húmedo dietético, no accesorio.",
+    "source": "https://www.monge.it/en/product/gastrointestinal-2/",
+    "clear": true
+  },
+  {
+    "keys": "380:0",
+    "patch": {
+      "categoria": "comida",
+      "subcategoria": "comida_humeda"
+    },
+    "reason": "Renal/Oxalate canino 150 g corresponde al formato húmedo.",
+    "source": "https://www.monge.it/en/product/renal-and-oxalate/",
+    "clear": true
+  },
+  {
+    "keys": "380:3",
+    "patch": {
+      "categoria": "comida",
+      "subcategoria": "comida_humeda"
+    },
+    "reason": "Renal/Oxalate felino 100 g corresponde al formato húmedo.",
+    "source": "https://www.monge.it/wp-content/uploads/2019/06/Monge-VetSolution-Renal-and-Oxalate-Feline_WET.pdf",
+    "clear": true
+  },
+  {
+    "keys": "59:3",
+    "patch": {
+      "especie": "gato"
+    },
+    "reason": "BR Control Bolas de Pelo aparece en la sección de snacks felinos; corrige divergencia remota canina.",
+    "source": "https://www.gestoagro.net/productos/cats/snacks-br-for-cat",
+    "clear": true
+  },
+  {
+    "keys": "59:8",
+    "patch": {
+      "especie": "gato"
+    },
+    "reason": "BR Nuggets Equilibrio 60 g es premio para gatos.",
+    "source": "https://www.gestoagro.net/productos/cats/br-for-cat-nuggets-equilibrio",
+    "clear": true
+  },
+  {
+    "keys": "59:9",
+    "patch": {
+      "especie": "gato"
+    },
+    "reason": "BR Softy Urinary Support 100 g es snack felino; no se confunde con Vet Urinary seco de otra presentación.",
+    "source": "https://www.gestoagro.net/productos/cats/br-for-cat-softy-urinary-support",
+    "clear": true
+  },
+  {
+    "keys": "60:13",
+    "patch": {
+      "categoria": "snack",
+      "subcategoria": "premio"
+    },
+    "reason": "BR Softy Weight 100 g se comercializa como snack complementario, no concentrado.",
+    "source": "https://www.gestoagro.net/productos/cats/br-for-cat-softy-weight-support",
+    "clear": true
+  },
+  {
+    "keys": "231:1",
+    "patch": {
+      "especie": "gato",
+      "categoria": "comida",
+      "subcategoria": "comida_humeda"
+    },
+    "reason": "Natural Creamy 100 g pertenece a la sección de alimentos húmedos felinos y su etiqueta muestra el formato exacto. No afirma alimento completo.",
+    "source": "https://gestoagro.net/productos/cats/michiko-natural-creamy",
+    "clear": true
+  },
+  {
+    "keys": "231:2 231:3 231:4 231:5 231:6 231:7 231:8 231:10",
+    "patch": {
+      "especie": "gato",
+      "categoria": "comida",
+      "subcategoria": "comida_humeda"
+    },
+    "reason": "Variantes exactas Michiko Vet clasificadas por responsable comercial como alimentos húmedos felinos; etiquetas verificadas. No se deducen indicaciones clínicas ni que sean alimento completo.",
+    "source": "https://gestoagro.net/productos/cats/alimento-humedo-michiko-vet-sachets",
+    "clear": true
+  },
+  {
+    "keys": "0:0 0:1",
+    "patch": {
+      "especie": "perro y gato"
+    },
+    "reason": "Aciflux suspensión y tabletas: ambas especies expresamente indicadas por Carval.",
+    "source": "https://carvalcorp.com/soluciones-productos/aciflux/",
+    "clear": true
+  },
+  {
+    "keys": "43:0",
+    "patch": {
+      "especie": "perro y gato"
+    },
+    "reason": "B-FEX 60 ml es el antibiótico canino/felino de la ficha exacta.",
+    "source": "https://carvalcorp.com/soluciones-productos/b-fex/",
+    "clear": true
+  },
+  {
+    "keys": "134:0",
+    "patch": {
+      "especie": "perro",
+      "categoria": "medicamento",
+      "subcategoria": "desparasitante"
+    },
+    "reason": "Drontal PS Saborizado corresponde a perros; no a la variante Drontal Gatos.",
+    "source": "https://mimascotayyo.elanco.com/co/nuestros-productos/drontal/drontal-perros",
+    "clear": true
+  },
+  {
+    "keys": "259:0 259:1",
+    "patch": {
+      "categoria": "snack",
+      "subcategoria": "premio"
+    },
+    "reason": "Nutri-bar 150 g y barra individual se declaran premios caninos.",
+    "source": "https://www.italcolmascotas.com/chunky-menu-natural-nutri-bar/ ; https://www.italcolmascotas.com/menu-natural-nutribar-individual/",
+    "clear": true
+  },
+  {
+    "keys": "321:7",
+    "patch": {
+      "categoria": "comida",
+      "subcategoria": "comida_humeda"
+    },
+    "reason": "Royal Indoor felino 85 g es húmedo; el formato de bolsa seca no corresponde a esta presentación.",
+    "source": "https://www.royalcanin.com/mt/cats/products/retail-products/indoor-sterilized-morsels-in-gravy-1278",
+    "clear": true
+  },
+  {
+    "keys": "153:0",
+    "patch": {
+      "especie": "gato",
+      "categoria": "comida",
+      "subcategoria": "comida_humeda"
+    },
+    "reason": "Catálogo oficial de Fancy Feast: las presentaciones de 85 g corresponden a platos húmedos felinos; no se infiere sabor específico.",
+    "source": "https://purina.com.co/fancy-feast/productos",
+    "clear": true
+  },
+  {
+    "keys": "88:32",
+    "patch": {
+      "categoria": "comida",
+      "subcategoria": "comida_humeda"
+    },
+    "reason": "Menú Natural Barra Gatos de 200 g es alimento húmedo; no concentrado seco.",
+    "source": "https://www.italcolmascotas.com/chunky-menu-natural-barra-gatos-salmon/",
+    "clear": true
+  }
+]
