@@ -11,10 +11,11 @@ function iniciar(error) {
   const app = { listen: (_port, callback) => callback(error) };
   const cargar = (name) => name === "dotenv"
     ? { config() {} }
-    : { crearApp: () => app };
+    : name === './src/app' ? { crearApp: () => app } : require(name);
   cargar.main = modulo;
   vm.runInNewContext(fs.readFileSync(require.resolve("../server"), "utf8"), {
     require: cargar, module: modulo, process: proceso,
+    __filename: require.resolve('../server'), __dirname: require('node:path').dirname(require.resolve('../server')),
     console: { log: (message) => logs.push(message), error: (message) => errores.push(message) },
   });
   return { logs, errores, proceso };
@@ -32,4 +33,5 @@ test("anuncia el servidor solamente cuando escucha correctamente", () => {
   assert.equal(resultado.proceso.exitCode, undefined);
   assert.deepEqual(resultado.errores, []);
   assert.match(resultado.logs[0], /puerto 3000/);
+  assert.match(resultado.logs[1], /"sourceHash":"[a-f0-9]{64}"/);
 });

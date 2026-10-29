@@ -23,6 +23,7 @@ function crearCoordinador({ procesar, enviar, typing = async () => {}, guardarEn
     s.run = ctx.run;
     s.promesa = contexto.run(ctx, async () => {
       let renovacion;
+      let etapa = 'inbound_persistence';
       const enviados = [];
       try {
         log(s, 'Processing started');
@@ -32,7 +33,10 @@ function crearCoordinador({ procesar, enviar, typing = async () => {}, guardarEn
         registrar('processing_queue_wait', { ms: Date.now() - ultimo._bufferVacioEn });
         const entradas = await Promise.allSettled(eventos.map(e => e._entradaGuardada));
         eventos = eventos.filter((_e, i) => entradas[i].status === 'fulfilled');
-        if (!eventos.length) { registrar('inbound_persistence_failed'); return; }
+        if (!eventos.length) {
+          ctx.resultado = { status: 'failed', stage: etapa, confirmedParts: 0 };
+          registrar('inbound_persistence_failed'); return;
+        }
         ctx.mediciones.push(...eventos.flatMap(e => e._entradaMetricas || []));
         const actual = eventos[eventos.length-1];
         let mostrando = false;
@@ -46,7 +50,9 @@ function crearCoordinador({ procesar, enviar, typing = async () => {}, guardarEn
         // El typing no retrasa ni bloquea el motor. No cancelar requests.
         void mostrar();
         renovacion = setInterval(() => void mostrar(), 20000); renovacion.unref?.();
+        etapa = 'agent_processing';
         const respuesta = await medir('agent_processing', () => procesar(eventos, { contextoPendiente: s.contextoPendiente }));
+        etapa = 'response_preparation';
         // La siguiente ejecución recibe evidencia del lote anterior, nunca sus
         // eventos como operaciones nuevas. Así conserva fotos sin repetir writes.
         s.contextoPendiente.push({
@@ -54,9 +60,14 @@ function crearCoordinador({ procesar, enviar, typing = async () => {}, guardarEn
           respuestaGenerada: respuesta,
         });
         const vigente = () => s.version === version;
-        if (!vigente()) { log(s, 'Generated response discarded (stale)'); return; }
-        // null es el contrato del motor para eventos ya procesados.
-        if (respuesta === null) { registrar('response_skipped', { reason: 'already_processed' }); return; }
+        if (!vigente()) { ctx.resultado = { status: 'superseded', confirmedParts: 0 }; log(s, 'Generated response discarded (stale)'); return; }
+        // null también representa una pausa humana persistida. No confundirla
+        // con duplicados ni fallos de generación/envío.
+        if (respuesta === null) {
+          ctx.resultado = { status: 'skipped', ...(ctx.omisionRespuesta || { reason: 'unspecified' }) };
+          registrar('response_skipped', ctx.resultado);
+          return;
+        }
         let partes = dividir(respuesta).filter(text => typeof text === 'string' && text.trim());
         const respaldo = !partes.length;
         if (respaldo) {
@@ -66,16 +77,25 @@ function crearCoordinador({ procesar, enviar, typing = async () => {}, guardarEn
         }
         registrar('response_prepared', { parts: partes.length, chars: partes.reduce((n, text) => n + text.length, 0), fallback: respaldo });
         for (const text of partes) {
-          if (!vigente()) { log(s, 'Remaining response discarded (stale)'); return; }
+          if (!vigente()) { ctx.resultado = { status: 'superseded', confirmedParts: enviados.length }; log(s, 'Remaining response discarded (stale)'); return; }
           const antes = enviados.length;
+          etapa = 'kapso_send';
           await medir('kapso_send', () => enviar({ to: actual.recipientId, phoneNumberId: actual.phoneNumberId, text, vigente,
             alEnviarParte: parte => enviados.push(parte) }));
           // Compatibilidad con transportes que entregan el texto en una llamada.
           if (enviados.length === antes && vigente()) enviados.push(text);
         }
         registrar('response_send_completed', { parts: enviados.length });
+        ctx.resultado = { status: 'sent', parts: enviados.length };
       } catch (error) {
-        log(s, `Processing failed (${error.name || 'Error'}); lock released`);
+        // No imprimir cuerpos HTTP, mensajes del cliente ni credenciales.
+        // Identificar la etapa sin exponer el error crudo.
+        ctx.resultado = { status: 'failed',
+          stage: etapa,
+          errorType: ['Error', 'TypeError', 'RangeError', 'SyntaxError', 'AbortError', 'TimeoutError', 'APIError', 'APIConnectionError', 'APIConnectionTimeoutError'].includes(error?.name) ? error.name : 'Error',
+          confirmedParts: enviados.length };
+        registrar('processing_failed', ctx.resultado);
+        log(s, 'Processing failed; lock released');
         // No reejecutar operaciones a ciegas ni reintentar envíos ambiguos.
         // Los recibos persistidos del motor protegen los efectos ya aplicados.
         for (const e of eventos) recibidos.delete(e._receiptKey);
@@ -85,7 +105,11 @@ function crearCoordinador({ procesar, enviar, typing = async () => {}, guardarEn
         // transporte ya confirmó, nunca el resto descartado.
         if (enviados.length && ctx.alEnviar) {
           try { await medir('save_response', () => ctx.alEnviar(enviados.join('\n\n'))); }
-          catch { log(s, 'Response persistence failed; lock released'); }
+          catch {
+            ctx.resultado = { status: 'failed', stage: 'save_response', confirmedParts: enviados.length };
+            registrar('response_persistence_failed', ctx.resultado);
+            log(s, 'Response persistence failed; lock released');
+          }
         }
         const datos = resumen(ctx);
         s.activo = false; s.run = null;
@@ -106,7 +130,7 @@ function crearCoordinador({ procesar, enviar, typing = async () => {}, guardarEn
     if (s.activo) log(s, 'New inbound message received while processing; run became stale');
     const ctx = crearContexto(key);
     const guardado = contexto.run(ctx, () => {
-      registrar('webhook_received');
+      registrar('webhook_received', { messageHash: id ? hash(id) : null });
       return medir('save_inbound_message', () => guardarEntrada(evento));
     });
     // Observar rechazo inmediatamente; el procesamiento también lo comprobará.

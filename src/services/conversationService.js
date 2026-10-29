@@ -1,4 +1,9 @@
-const { atencionHumanaActiva, motivoDerivacion, prepararDerivacion, registrarAclaracion } = require('./humanHandoffService');
+const { pausaAutomaticaActiva, permiteSolicitudComercialMixta, agregarAvisoClinico,
+  motivoDerivacion, prepararDerivacion, registrarAclaracion,
+  reanudarPendienteComercial, respuestaIncertidumbreComercial } = require('./humanHandoffService');
+// Alcance por turno, también cuando se invoca el motor fuera del scheduler.
+// El mismo aviso acompaña la respuesta devuelta y la que se persiste.
+const contextoRespuesta = new (require('node:async_hooks').AsyncLocalStorage)();
 const { medir, medirSincrono, contexto } = require('./pipelineTelemetry');
 const { duracionTexto, mismaSeleccionCotizada, consultaProductoCotizado } = require('../utils/catalogVariants');
 const { precioPorCantidad, datosPrecio, normalizarVentaUnitaria } = require('../utils/catalogCommercialRules');
@@ -51,6 +56,8 @@ const {
 
 async function guardarConversacionPersistida(usuario, estado, metadatos) {
   sincronizarSelecciones(estado);
+  if (metadatos.respuesta) metadatos = { ...metadatos,
+    respuesta: agregarAvisoClinico(metadatos.respuesta, contextoRespuesta.getStore()?.avisoClinico) };
   return persistirConversacion(usuario, estado, metadatos);
 }
 
@@ -152,8 +159,11 @@ function consultaSolicitudProducto(producto = {}, mensaje = "", visual = false) 
 // Completar un atributo de una solicitud pendiente conserva la identidad cruda
 // y la operacion del cliente. Nunca convierte una conjetura en producto validado.
 function continuarSolicitudProducto(decision, estado, mensaje) {
+  if (decision._consultaContinuada || decision.seguimientoProducto === 'nueva') return decision;
   const contexto = estado.ultimaConsultaProducto;
-  const previa = contexto?.solicitudOriginal;
+  const original = contexto?.solicitudOriginal;
+  const previa = contexto?.nivel === 'alta' || !original?.producto ? original : { ...original, producto: require('./productRequestContext')
+    .solicitudRespaldada(original.producto, contexto.terminos) };
   const vigente = contexto?.creadoEn && Date.now() - Date.parse(contexto.creadoEn) < 30 * 60 * 1000;
   const pesoExplicito = extraerPesoTexto(mensaje);
   const soloPresentacion = Boolean(pesoExplicito &&
@@ -174,13 +184,15 @@ function continuarSolicitudProducto(decision, estado, mensaje) {
     peso_mascota: ['especie', 'presentacion'], presentacion: ['presentacion'],
     especie: ['especie', 'presentacion'], etapa: ['etapa'], tamano: ['tamano'],
     sabores: ['sabores'], categoria: ['categoria'], duracion: ['duracion'],
+    marca: ['marca'], referencia: ['referencia'], linea: ['linea'],
+    cantidad: ['cantidad'], condiciones: ['condiciones'],
   };
   const campos = camposAclaracion[contexto.aclaracion?.campo] || [];
-  const identidad = p => [...new Set(tokensDistintivos([p.marca, p.referencia, p.linea].filter(Boolean).join(' ')))];
-  const anterior = identidad(previa.producto);
-  const nueva = identidad(actual);
-  const mismaIdentidad = anterior.length && nueva.length && anterior.length === nueva.length &&
-    anterior.every(token => nueva.includes(token));
+  // The semantic router may restate an attribute inside the commercial name.
+  // Compare only the remaining identity; never learn an alias from that restatement.
+  const { identidadCompatibleAlAclarar } = require('./productRequestContext');
+  const mismaIdentidad = identidadCompatibleAlAclarar(previa.producto, actual, campos,
+    decision.seguimientoProducto === 'aclaracion');
   // Una respuesta que contiene solo peso pertenece a la pregunta activa,
   // aunque el intérprete haya recuperado otra cotización del historial.
   const atributos = { ...actual,
@@ -191,7 +203,12 @@ function continuarSolicitudProducto(decision, estado, mensaje) {
   // estructurados; las palabras sociales no son un nombre nuevo de producto.
   const respuestaSemantica = mismaIdentidad && Number(decision.confianza) >= 0.55 &&
     campos.some(campo => Array.isArray(atributos[campo]) ? atributos[campo].length : atributos[campo]);
-  const respondeAtributo = Boolean(respuestaSemantica ||
+  // A semantic clarification can describe a format or distinguish an option
+  // without repeating its catalog name. Preserve the pending identity and use
+  // the actual answer as additional retrieval evidence in that case.
+  const aclaracionDescriptiva = decision.seguimientoProducto === 'aclaracion' &&
+    mismaIdentidad && Boolean(contexto.aclaracion) && Number(decision.confianza) >= 0.55;
+  const respondeAtributo = Boolean(respuestaSemantica || aclaracionDescriptiva ||
     (soloPresentacion && contexto.aclaracion?.campo === 'presentacion') ||
     (contexto.aclaracion && consultaContextual !== mensaje));
   const completa = respondePesoActivo || respondeAtributo || (!tokens.length && actual.presentacion) ||
@@ -222,17 +239,17 @@ function continuarSolicitudProducto(decision, estado, mensaje) {
     producto.presentacion = pesoExplicito;
     producto.requierePresentacion = false;
   }
-  if (pesoExplicito && respondePesoActivo) {
+  if (pesoExplicito && (respondePesoActivo ||
+      respondeAtributo && contexto.aclaracion?.campo === 'presentacion')) {
     producto.intencionPresentaciones = 'especifica';
     delete producto.seleccionPresentaciones;
   }
   const identidadValidada = contexto.nivel === "alta" && previa.producto.marca && previa.producto.referencia;
   const consultaContinuada = identidadValidada
     ? consultaProductoCotizado({ ...producto, referencia: previa.producto.referencia, marca: previa.producto.marca })
-    : respuestaSemantica
-    ? [...(contexto.terminos?.length ? contexto.terminos : anterior),
-        ...campos.flatMap(campo => atributos[campo] || []),
-        producto.presentacion || contexto.presentacion].filter(Boolean).join(' ')
+    : respuestaSemantica || aclaracionDescriptiva
+    ? [require('./productRequestContext').consultaEstructurada(producto),
+        aclaracionDescriptiva && !respuestaSemantica ? mensaje : null].filter(Boolean).join(' ')
     : [respondeAtributo ? consultaContextual : (contexto.terminos || []).join(" "),
         producto.presentacion || contexto.presentacion].filter(Boolean).join(" ");
   // Completing an uncertain lookup preserves its purpose. Selecting an already
@@ -242,7 +259,29 @@ function continuarSolicitudProducto(decision, estado, mensaje) {
     accion: compraSeleccionValidada ? decision.accion : previa.accion,
     producto, productos: [], continuarFlujo: true,
     consultaCatalogo: { necesaria: true, consulta: consultaContinuada },
+    _aclaracionAtributo: respondeAtributo,
     _consultaContinuada: consultaContinuada };
+}
+
+// A newer message can arrive before the preceding answer is delivered. The
+// router sees those pending contents, but retrieval must use the same evidence
+// instead of reducing a weight-only reply to an independent product search.
+function continuarConsultaDeLote(decision, contenidosAnteriores, mensaje) {
+  if (decision._consultaContinuada || decision.seguimientoProducto !== 'aclaracion' ||
+      decision.accion !== 'consultar' || decision.productos?.length > 1 ||
+      !contenidosAnteriores.length || Number(decision.confianza) < 0.55) return decision;
+  const evidencia = [...contenidosAnteriores.map(c => c.text || ''), mensaje].join(' ');
+  const { solicitudRespaldada, consultaEstructurada } = require('./productRequestContext');
+  const producto = solicitudRespaldada(decision.producto, tokensDistintivos(evidencia));
+  if (!producto.marca || !producto.referencia) return decision;
+  if (extraerPesoTexto(mensaje)) {
+    producto.presentacion = extraerPesoTexto(mensaje);
+    producto.intencionPresentaciones = 'especifica';
+    delete producto.seleccionPresentaciones;
+  }
+  const consulta = consultaEstructurada(producto);
+  return { ...decision, producto, productos: [], _consultaContinuada: consulta,
+    _aclaracionAtributo: true, consultaCatalogo: { necesaria: true, consulta } };
 }
 
 function mencionProductoRespaldada(producto, mensaje, catalogo = []) {
@@ -435,9 +474,7 @@ async function responderValidacionNoConfiable({
   clasificacion = null,
   interpretacion = null,
 }) {
-  if (registrarAclaracion(estado, { mensaje, decision: interpretacion, validacion })) {
-    return derivarAtencionHumana({ evento, cliente, estado, idsEventos, motivo: 'producto_no_resuelto' });
-  }
+  const sinProgreso = registrarAclaracion(estado, { mensaje, decision: interpretacion, validacion });
   registrarValidacionProducto(evento, validacion);
   recordarConsultaProducto(estado, validacion, clasificacion);
   guardarCoincidenciasProductoPendientes(estado, validacion, {
@@ -451,13 +488,14 @@ async function responderValidacionNoConfiable({
   if (interpretacion && estado.ultimaConsultaProducto) {
     estado.ultimaConsultaProducto.solicitudOriginal = {
       intencion: interpretacion.intencion, accion: interpretacion.accion,
-      producto: interpretacion.producto, entrega: interpretacion.entrega,
+      producto: require('./productRequestContext').solicitudRespaldada(interpretacion.producto, validacion.terminos), entrega: interpretacion.entrega,
     };
     obtenerVerticalCliente(cliente).orderLogic.aplicarDatosInterpretados?.(estado, interpretacion);
   }
   if (estado.ultimaConsultaProducto) estado.ultimaConsultaProducto.sinCoincidenciaInformada =
     validacion.nivel === "baja" && !validacion.aclaracion && !validacion.alternativas?.length;
-  let respuestaBase = respuestaValidacionProducto(validacion);
+  let respuestaBase = sinProgreso && !validacion.aclaracion
+    ? respuestaIncertidumbreComercial() : respuestaValidacionProducto(validacion);
   if (estado.carrito?.length) {
     respuestaBase += `\n\n${obtenerVerticalCliente(cliente).orderLogic.resumenCarrito(estado)}`;
   }
@@ -530,7 +568,7 @@ function interpretacionFueraDeProducto(interpretacion = null) {
   return !tieneProductoInterpretado(interpretacion);
 }
 
-async function responderEventosEntrantes(eventos, { contextoPendiente = [] } = {}) {
+async function procesarEventosEntrantes(eventos, { contextoPendiente = [] } = {}) {
   if (!eventos.length) throw new Error("No hay eventos entrantes para procesar");
 
   const evento = eventos[0];
@@ -579,6 +617,8 @@ async function responderEventosEntrantes(eventos, { contextoPendiente = [] } = {
     if (estado.pedidoConfirmadoPendienteGuardar) {
       await guardarConversacionPersistida(evento.channelUserId, estado, { cliente });
     }
+    const ejecucion = contexto.getStore();
+    if (ejecucion) ejecucion.omisionRespuesta = { reason: 'already_processed' };
     return null;
   }
 
@@ -587,9 +627,16 @@ async function responderEventosEntrantes(eventos, { contextoPendiente = [] } = {
     mensaje: eventos.map(item => item.text || `[${item.messageType || item.media?.type || "archivo"}]`).join("\n"),
   });
 
-  if (atencionHumanaActiva(estado)) {
+  reanudarPendienteComercial(estado);
+  if (pausaAutomaticaActiva(estado)) {
     estado.mensajesProcesados = [...new Set([...(estado.mensajesProcesados || []), ...idsEventos])].slice(-256);
     await guardarConversacionPersistida(evento.channelUserId, estado, { cliente, idsEventos, soloEstado: true });
+    const ejecucion = contexto.getStore();
+    if (ejecucion) ejecucion.omisionRespuesta = {
+      reason: 'human_handoff',
+      handoffState: estado.atencionHumana.estado,
+      handoffReason: estado.atencionHumana.motivo,
+    };
     return null;
   }
 
@@ -719,10 +766,24 @@ async function responderEventosEntrantes(eventos, { contextoPendiente = [] } = {
     return respuesta;
   }
   const derivacion = motivoDerivacion(decisionSemantica);
-  if (derivacion) return derivarAtencionHumana({ evento, cliente, estado, idsEventos, motivo: derivacion });
+  if (derivacion) {
+    if (!permiteSolicitudComercialMixta(decisionSemantica)) {
+      return derivarAtencionHumana({ evento, cliente, estado, idsEventos, motivo: derivacion });
+    }
+    // La parte comercial procede por el motor habitual; nunca convierte la
+    // consulta clínica en una recomendación, ni cierra su derivación.
+    prepararDerivacion(estado, derivacion);
+    await guardarConversacionPersistida(evento.channelUserId, estado, { cliente, soloEstado: true });
+    contextoRespuesta.getStore().avisoClinico = true;
+  }
   if (estado.aclaracionIdentidad && decisionSemantica.seguimientoProducto === 'sin_resolver' &&
       decisionSemantica.consultaCatalogo?.necesaria === false) {
-    return derivarAtencionHumana({ evento, cliente, estado, idsEventos, motivo: 'producto_no_resuelto' });
+    decisionSemantica = continuarSolicitudProducto(decisionSemantica, estado, mensaje);
+    if (!decisionSemantica._consultaContinuada) {
+      const respuesta = respuestaIncertidumbreComercial();
+      await guardarConversacionPersistida(evento.channelUserId, estado, { cliente, idsEventos, mensaje, respuesta });
+      return respuesta;
+    }
   }
   // Revisar omisiones por cobertura semántica, no por saltos de línea.
   const tieneEvidencia = producto => producto &&
@@ -915,7 +976,10 @@ async function responderEventosEntrantes(eventos, { contextoPendiente = [] } = {
   }
   // Resolver la respuesta pendiente antes de permitir mutaciones del carrito:
   // una presentación no debe aumentar una referencia anterior por error.
-  if (!imageUrls.length) decisionSemantica = continuarSolicitudProducto(decisionSemantica, estado, mensaje);
+  if (!imageUrls.length) {
+    decisionSemantica = continuarConsultaDeLote(decisionSemantica, anteriores, mensaje);
+    decisionSemantica = continuarSolicitudProducto(decisionSemantica, estado, mensaje);
+  }
   const alternativaPeso = estado.alternativaPresentacionPendiente;
   if (!imageUrls.length && alternativaPeso && Date.now() - Date.parse(alternativaPeso.creadoEn) < 30 * 60 * 1000 &&
       /^(?:si|si esa|si ese|si esa referencia|si esa presentacion|dale|esa|esa misma|correcto|perfecto|me sirve)[.! ]*$/.test(normalizar(mensaje))) {
@@ -989,6 +1053,7 @@ async function responderEventosEntrantes(eventos, { contextoPendiente = [] } = {
     }
     decisionSemantica.consultaCatalogo = consultaAnterior;
   }
+  const datosCierreActualizados = vertical.orderLogic.registrarDatosCierre?.(mensaje, estado, decisionSemantica) || false;
   if (!imageUrls.length && vertical.orderLogic.esConfirmacionCierreExplicita?.(mensaje, estado)) {
     // A complete, explicit checkout reply remains a confirmation when buffered
     // with thanks; historical payment/product fields are not new instructions.
@@ -1090,7 +1155,7 @@ async function responderEventosEntrantes(eventos, { contextoPendiente = [] } = {
     const respuestaConversacional = decisionSemantica?.respuestaConversacional ||
       "¿Puedes contarme un poco más sobre lo que necesitas?";
     // El motor existente conserva la autoridad sobre las transiciones y pedidos.
-    const operacionPendiente = datosParaEntrega || (estado.carrito?.length > 0 &&
+    const operacionPendiente = datosCierreActualizados || datosParaEntrega || (estado.carrito?.length > 0 &&
       ((!estado.pedidoConfirmado && ["datos_envio", "metodo_pago"].includes(decisionSemantica?.intencion)) ||
         decisionSemantica?.intencion === "confirmacion" ||
         (!estado.pedidoConfirmado && (Object.values(decisionSemantica?.datosCliente || {}).some(Boolean) ||
@@ -1131,6 +1196,7 @@ async function responderEventosEntrantes(eventos, { contextoPendiente = [] } = {
     consultas: (decisionSemantica.productos || []).map(producto =>
       consultaSolicitudProducto(producto, mensaje, imageUrls.length > 0)),
     clasificacion, cliente,
+    solicitud: decisionSemantica.productos?.length > 1 ? null : decisionSemantica.producto,
   });
   if (catalogoIA.metadata?.errorBusqueda) {
     const respuesta = "No pude consultar el catálogo por un problema temporal. Aún no puedo confirmar el precio o la disponibilidad; por favor, inténtalo nuevamente.";
@@ -1607,10 +1673,8 @@ async function responderEventosEntrantes(eventos, { contextoPendiente = [] } = {
   }
   const multiplesSinResolver = resultadosMultiples.filter(r =>
     ['media', 'baja'].includes(r.validacion?.nivel) && !r.solicitud?._imagenErrorTecnico);
-  if (multiplesSinResolver.length && registrarAclaracion(estado, { mensaje, decision: decisionSemantica,
-    validacion: multiplesSinResolver[0].validacion })) {
-    return derivarAtencionHumana({ evento, cliente, estado, idsEventos, motivo: 'producto_no_resuelto' });
-  }
+  if (multiplesSinResolver.length) registrarAclaracion(estado, { mensaje, decision: decisionSemantica,
+    validacion: multiplesSinResolver[0].validacion });
   if (["media", "baja"].includes(validacionFinal.nivel)) {
     return responderValidacionNoConfiable({
       evento,
@@ -1895,6 +1959,7 @@ async function responderEventosEntrantes(eventos, { contextoPendiente = [] } = {
     respuestaBase = resolverConsultaCatalogo(
       clasificacion.requiereVision && interpretacionIA?.producto?.observado
         ? consultaProductoVisual(interpretacionIA.producto)
+        : decisionSemantica._aclaracionAtributo ? mensajeParaValidar
         : continuaAclaracion ? mensajeProductoRazonado : mensajeParaValidar,
       estado, catalogo, interpretacionIA);
   }
@@ -2061,12 +2126,19 @@ async function responderEventosEntrantes(eventos, { contextoPendiente = [] } = {
   return respuesta;
 }
 
+async function responderEventosEntrantes(eventos, opciones = {}) {
+  return contextoRespuesta.run({ avisoClinico: false }, async () => {
+    const respuesta = await procesarEventosEntrantes(eventos, opciones);
+    return agregarAvisoClinico(respuesta, contextoRespuesta.getStore().avisoClinico);
+  });
+}
+
 async function responderEventoEntrante(evento) {
   return responderEventosEntrantes([evento]);
 }
 
 module.exports = {
-  _internals: { consultaSolicitudProducto, continuarSolicitudProducto, mencionProductoRespaldada, resolverReferenciaDescriptiva },
+  _internals: { consultaSolicitudProducto, continuarSolicitudProducto, continuarConsultaDeLote, mencionProductoRespaldada, resolverReferenciaDescriptiva },
   responderEventoEntrante,
   responderEventosEntrantes,
 };

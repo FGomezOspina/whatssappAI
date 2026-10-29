@@ -181,7 +181,7 @@ function esRespuestaOperativaProtegida(respuestaBase = "") {
     respuestaBase.includes("Para completar tu domicilio, compárteme estos datos:") ||
     respuestaBase.includes("Datos de domicilio:") ||
     respuestaBase.includes("Tu carrito está vacío;") ||
-      respuestaBase.includes("Datos de facturación y domicilio:") ||
+      /Datos de facturación(?: electrónica)? y domicilio:|Datos de domicilio:/.test(respuestaBase) ||
       /deseas agregar algo m[aá]s o finalizamos el pedido as[ií]/i.test(respuestaBase) ||
       respuestaBase.includes("ahorros bancolombia:") ||
       /est[aá] todo correcto para confirmar el pedido/i.test(respuestaBase) ||

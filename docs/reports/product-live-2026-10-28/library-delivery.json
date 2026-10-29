@@ -1,0 +1,12 @@
+{
+  "library_file_id": "libfile_eb819aa887988191800d56f74f8cc1fe",
+  "file_id": "file_000000003b5081fdb544a86ef3c0d7ca",
+  "file_name": "INFORME.md",
+  "current_version_number": 1,
+  "file_size_bytes": 41013,
+  "version_reason": "Fe de erratas del 29 de octubre de 2026: procedencia Kapso, separación de training_examples y corrección de conteos; resultados E2E conservados.",
+  "local_path": "/Users/gomez/Documents/WhatsappVELTIA/docs/reports/product-live-2026-10-28/INFORME.md",
+  "upload_status": "succeeded",
+  "local_identity_metadata": "applied and verified by bundled helper",
+  "download_url": "https://chatgpt.com/api/library/files/libfile_eb819aa887988191800d56f74f8cc1fe/download"
+}

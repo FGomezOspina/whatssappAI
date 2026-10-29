@@ -37,6 +37,7 @@ function crearEstadoInicial() {
     pedidoConfirmado: false,
     ultimoPedidoConfirmado: null,
     datosDomicilio: {},
+    facturacionElectronica: false,
     entrega: {
       tipo: null,
       sede: null,

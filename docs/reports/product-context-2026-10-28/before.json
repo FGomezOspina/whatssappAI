@@ -1,0 +1,1894 @@
+{
+  "summary": {
+    "fixture": "Supabase snapshot 2026-10-28; no live LLM",
+    "cases": 206,
+    "recalled": 199,
+    "selected": 186,
+    "correctSelections": 186,
+    "falseSelections": 0,
+    "clarifications": 11,
+    "continuations": 5,
+    "p50ms": 40.77991699999984,
+    "p95ms": 77.45520800000008
+  },
+  "outcomes": [
+    {
+      "kind": "exact",
+      "query": "ACIFLUX SUSPENSION",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 49.90137500000001
+    },
+    {
+      "kind": "weight",
+      "query": "ACIFLUX SUSPENSION 50ml",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 35.602125
+    },
+    {
+      "kind": "exact",
+      "query": "AGILITY ESTERILIZADOS",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 46.67795799999999
+    },
+    {
+      "kind": "weight",
+      "query": "AGILITY ESTERILIZADOS 3kg",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 47.999375000000015
+    },
+    {
+      "kind": "exact",
+      "query": "AGILITY POUCH ADUL",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 65.750167
+    },
+    {
+      "kind": "weight",
+      "query": "AGILITY POUCH ADUL 100gr",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 66.10458399999999
+    },
+    {
+      "kind": "exact",
+      "query": "ALPO ADUL",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 25.87099999999998
+    },
+    {
+      "kind": "weight",
+      "query": "ALPO ADUL x 2kg",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 27.124000000000024
+    },
+    {
+      "kind": "exact",
+      "query": "AQUADENT",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 31.259375000000034
+    },
+    {
+      "kind": "weight",
+      "query": "AQUADENT 250ml",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 31.584249999999997
+    },
+    {
+      "kind": "exact",
+      "query": "ARENA KING CAT",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 29.303874999999948
+    },
+    {
+      "kind": "weight",
+      "query": "ARENA KING CAT x 25 kg",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 30.261334000000033
+    },
+    {
+      "kind": "exact",
+      "query": "ARENERA ABIERTA ALTA SEMICERRADA",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 45.86566600000003
+    },
+    {
+      "kind": "weight",
+      "query": "ARENERA ABIERTA ALTA SEMICERRADA unidad",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 51.700500000000034
+    },
+    {
+      "kind": "exact",
+      "query": "ARNES Y TRAILLA ANTITIRONES",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 69.137292
+    },
+    {
+      "kind": "weight",
+      "query": "ARNES Y TRAILLA ANTITIRONES unidad",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 75.97779100000002
+    },
+    {
+      "kind": "exact",
+      "query": "BAXIDIN",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 30.631500000000074
+    },
+    {
+      "kind": "weight",
+      "query": "BAXIDIN x 60 ml",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 30.700208999999973
+    },
+    {
+      "kind": "exact",
+      "query": "BHI SYLIYM",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 32.14633399999991
+    },
+    {
+      "kind": "weight",
+      "query": "BHI SYLIYM x 60",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 33.554040999999984
+    },
+    {
+      "kind": "exact",
+      "query": "BOLSAS 8 ROLLOS BIODEGRADLE",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 56.535999999999945
+    },
+    {
+      "kind": "weight",
+      "query": "BOLSAS 8 ROLLOS BIODEGRADLE unidad",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 80.85558399999991
+    },
+    {
+      "kind": "exact",
+      "query": "BOZAL TIPO CANASTILLA ACERO INOXIDABLE XL",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 40.77991699999984
+    },
+    {
+      "kind": "weight",
+      "query": "BOZAL TIPO CANASTILLA ACERO INOXIDABLE XL unidad",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 46.47408399999995
+    },
+    {
+      "kind": "exact",
+      "query": "BR CAT ADUL BOLA PELO",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 55.10520799999995
+    },
+    {
+      "kind": "weight",
+      "query": "BR CAT ADUL BOLA PELO x 1kg",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 55.1474589999998
+    },
+    {
+      "kind": "exact",
+      "query": "BR CAT SALMON CASTRADO",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 53.16979100000003
+    },
+    {
+      "kind": "weight",
+      "query": "BR CAT SALMON CASTRADO x 1kg",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 53.64087500000005
+    },
+    {
+      "kind": "exact",
+      "query": "BR DOG VET CASTRO",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 49.53345899999999
+    },
+    {
+      "kind": "weight",
+      "query": "BR DOG VET CASTRO x 2kg",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 51.19724999999994
+    },
+    {
+      "kind": "exact",
+      "query": "CACAHUATE",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 30.648292000000083
+    },
+    {
+      "kind": "weight",
+      "query": "CACAHUATE x 1 kg",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 32.221291000000065
+    },
+    {
+      "kind": "exact",
+      "query": "CAMA DONA BASICA S-40*40*15C",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 57.13891699999999
+    },
+    {
+      "kind": "weight",
+      "query": "CAMA DONA BASICA S-40*40*15C unidad",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 77.45520800000008
+    },
+    {
+      "kind": "exact",
+      "query": "CAN AMOR SHAMPOO ARBOL DE TE",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 33.65258399999993
+    },
+    {
+      "kind": "weight",
+      "query": "CAN AMOR SHAMPOO ARBOL DE TE 30cc",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 37.03470799999991
+    },
+    {
+      "kind": "exact",
+      "query": "CANISAN D",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 32.04466600000001
+    },
+    {
+      "kind": "weight",
+      "query": "CANISAN D 10 ml",
+      "recall": true,
+      "selected": false,
+      "correct": false,
+      "clarification": true,
+      "ms": 33.057207999999946
+    },
+    {
+      "kind": "exact",
+      "query": "CARDIO B",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 30.88387499999999
+    },
+    {
+      "kind": "weight",
+      "query": "CARDIO B 5mg",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 30.871124999999893
+    },
+    {
+      "kind": "exact",
+      "query": "CAT CHOW PESCADO",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 48.70254099999988
+    },
+    {
+      "kind": "weight",
+      "query": "CAT CHOW PESCADO 8kg",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 49.563915999999836
+    },
+    {
+      "kind": "exact",
+      "query": "CEPILLO MASCOTA MADERA O PASTEL",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 51.51454100000001
+    },
+    {
+      "kind": "weight",
+      "query": "CEPILLO MASCOTA MADERA O PASTEL unidad",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 58.18083299999989
+    },
+    {
+      "kind": "exact",
+      "query": "CHUNKY CATS",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 42.8859580000003
+    },
+    {
+      "kind": "weight",
+      "query": "CHUNKY CATS 500gr",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 43.96508400000039
+    },
+    {
+      "kind": "exact",
+      "query": "CHUNKY DELIDOG CARNE",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 48.51479199999994
+    },
+    {
+      "kind": "weight",
+      "query": "CHUNKY DELIDOG CARNE 250gr",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 48.47704199999998
+    },
+    {
+      "kind": "exact",
+      "query": "CHURU",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 30.900958000000173
+    },
+    {
+      "kind": "weight",
+      "query": "CHURU 14gr",
+      "recall": true,
+      "selected": false,
+      "correct": false,
+      "clarification": true,
+      "ms": 32.01304100000016
+    },
+    {
+      "kind": "exact",
+      "query": "CICLORAC",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 30.96120800000017
+    },
+    {
+      "kind": "weight",
+      "query": "CICLORAC x 120ml",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 31.923041000000012
+    },
+    {
+      "kind": "exact",
+      "query": "COLLAR ISABELINO",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 60.51954100000012
+    },
+    {
+      "kind": "weight",
+      "query": "COLLAR ISABELINO x 10",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 61.376124999999774
+    },
+    {
+      "kind": "exact",
+      "query": "COMEDERO ANTIHORMIGAS PQÑ",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 57.74024999999983
+    },
+    {
+      "kind": "weight",
+      "query": "COMEDERO ANTIHORMIGAS PQÑ unidad",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 73.65145800000028
+    },
+    {
+      "kind": "exact",
+      "query": "COQUITOS",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 30.43237500000032
+    },
+    {
+      "kind": "weight",
+      "query": "COQUITOS x 12 und",
+      "recall": true,
+      "selected": false,
+      "correct": false,
+      "clarification": true,
+      "ms": 34.84370799999988
+    },
+    {
+      "kind": "exact",
+      "query": "CREDELIO",
+      "recall": true,
+      "selected": false,
+      "correct": false,
+      "clarification": true,
+      "ms": 31.12833300000011
+    },
+    {
+      "kind": "weight",
+      "query": "CREDELIO 1.3-2.5kg",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 32.36200000000008
+    },
+    {
+      "kind": "exact",
+      "query": "DEODORIZANTE ARENA MICHIKO 462",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 34.16750000000002
+    },
+    {
+      "kind": "weight",
+      "query": "DEODORIZANTE ARENA MICHIKO 462 unidad",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 34.72687500000029
+    },
+    {
+      "kind": "exact",
+      "query": "DOG CHOW A.M.G A GRANEL",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 84.54691599999978
+    },
+    {
+      "kind": "weight",
+      "query": "DOG CHOW A.M.G A GRANEL unidad",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 96.71754199999987
+    },
+    {
+      "kind": "exact",
+      "query": "DOG CHOW ADUL RMG PAG 19.7 LLEV",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 87.67083400000001
+    },
+    {
+      "kind": "weight",
+      "query": "DOG CHOW ADUL RMG PAG 19.7 LLEV 22.7kg",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 88.95249999999987
+    },
+    {
+      "kind": "exact",
+      "query": "DOGOURMET SALMON",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 43.953125
+    },
+    {
+      "kind": "weight",
+      "query": "DOGOURMET SALMON x 8kg",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 44.18845800000008
+    },
+    {
+      "kind": "exact",
+      "query": "EASOTIC",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 30.316208000000188
+    },
+    {
+      "kind": "weight",
+      "query": "EASOTIC 10ml",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 30.884708000000046
+    },
+    {
+      "kind": "exact",
+      "query": "EQUILIBRIO GATO LIGHT",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 45.95616599999994
+    },
+    {
+      "kind": "weight",
+      "query": "EQUILIBRIO GATO LIGHT 1.5kg",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 47.600499999999556
+    },
+    {
+      "kind": "exact",
+      "query": "EXCELLENT FORMULA",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 44.863582999999835
+    },
+    {
+      "kind": "weight",
+      "query": "EXCELLENT FORMULA 3kg",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 44.938624999999774
+    },
+    {
+      "kind": "exact",
+      "query": "FAJA POST TALLA M PERRO",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 44.60116700000026
+    },
+    {
+      "kind": "weight",
+      "query": "FAJA POST TALLA M PERRO unidad",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 50.93962499999998
+    },
+    {
+      "kind": "exact",
+      "query": "FELIWAY",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 30.431583000000046
+    },
+    {
+      "kind": "weight",
+      "query": "FELIWAY 20ml",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 31.269291000000067
+    },
+    {
+      "kind": "exact",
+      "query": "FELIX SALMON",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 39.420208
+    },
+    {
+      "kind": "weight",
+      "query": "FELIX SALMON x85gr",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 39.93879199999992
+    },
+    {
+      "kind": "exact",
+      "query": "FINCUC SPRAY",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 33.52766700000029
+    },
+    {
+      "kind": "weight",
+      "query": "FINCUC SPRAY unidad",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 37.750332999999955
+    },
+    {
+      "kind": "exact",
+      "query": "FREEMIAU CITRICA",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 35.218374999999924
+    },
+    {
+      "kind": "weight",
+      "query": "FREEMIAU CITRICA x 4 kg",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 36.01212499999974
+    },
+    {
+      "kind": "exact",
+      "query": "GALLETAS PUPPY TREATS",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 42.70558399999982
+    },
+    {
+      "kind": "weight",
+      "query": "GALLETAS PUPPY TREATS x 1kg",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 43.790500000000065
+    },
+    {
+      "kind": "exact",
+      "query": "GEMON DOG ADUL",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 32.39466600000014
+    },
+    {
+      "kind": "weight",
+      "query": "GEMON DOG ADUL 150gr",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 32.63483299999962
+    },
+    {
+      "kind": "exact",
+      "query": "GOLOSINAS 1500",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 32.1709579999997
+    },
+    {
+      "kind": "weight",
+      "query": "GOLOSINAS 1500 unidad",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 32.081290999999965
+    },
+    {
+      "kind": "exact",
+      "query": "HEEL SOLIDAGO",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 32.373999999999796
+    },
+    {
+      "kind": "weight",
+      "query": "HEEL SOLIDAGO x2ml",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 32.4312089999994
+    },
+    {
+      "kind": "exact",
+      "query": "HILLS CAN LATA K/D",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 35.45783299999948
+    },
+    {
+      "kind": "weight",
+      "query": "HILLS CAN LATA K/D unidad",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 39.635291999999936
+    },
+    {
+      "kind": "exact",
+      "query": "HILLS METABOLIC CAT",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 49.92029099999945
+    },
+    {
+      "kind": "weight",
+      "query": "HILLS METABOLIC CAT 1.81kg",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 50.197667000000365
+    },
+    {
+      "kind": "exact",
+      "query": "HUESO 10-11",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 31.862333000000035
+    },
+    {
+      "kind": "weight",
+      "query": "HUESO 10-11 unidad",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 32.25108399999954
+    },
+    {
+      "kind": "exact",
+      "query": "JABON CLORHEXIN",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 59.13000000000011
+    },
+    {
+      "kind": "weight",
+      "query": "JABON CLORHEXIN unidad",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 64.47087499999998
+    },
+    {
+      "kind": "exact",
+      "query": "JUGUETE PELOTA CHILLON",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 67.2446660000005
+    },
+    {
+      "kind": "weight",
+      "query": "JUGUETE PELOTA CHILLON unidad",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 83.20933400000013
+    },
+    {
+      "kind": "exact",
+      "query": "KLERAT SOBRE",
+      "recall": true,
+      "selected": false,
+      "correct": false,
+      "clarification": false,
+      "ms": 31.467791000000034
+    },
+    {
+      "kind": "weight",
+      "query": "KLERAT SOBRE 50gr",
+      "recall": true,
+      "selected": false,
+      "correct": false,
+      "clarification": false,
+      "ms": 32.65124999999989
+    },
+    {
+      "kind": "exact",
+      "query": "LHA METRISMAST",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 34.61916700000074
+    },
+    {
+      "kind": "weight",
+      "query": "LHA METRISMAST x 10ml",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 35.7740419999991
+    },
+    {
+      "kind": "exact",
+      "query": "LINTODENT ENJUAGUE BUCAL",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 37.14470900000015
+    },
+    {
+      "kind": "weight",
+      "query": "LINTODENT ENJUAGUE BUCAL 60ml",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 37.93662500000028
+    },
+    {
+      "kind": "exact",
+      "query": "MAMITOLINA",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 31.14166699999987
+    },
+    {
+      "kind": "weight",
+      "query": "MAMITOLINA x 20 gr",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 31.89887499999986
+    },
+    {
+      "kind": "exact",
+      "query": "MEDROXIPROGESTERONA",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 34.225249999999505
+    },
+    {
+      "kind": "weight",
+      "query": "MEDROXIPROGESTERONA unidad",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 36.62962499999958
+    },
+    {
+      "kind": "exact",
+      "query": "MICHIKO VET GATITOS",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 50.851582999999664
+    },
+    {
+      "kind": "weight",
+      "query": "MICHIKO VET GATITOS x 14gr",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 51.66020899999967
+    },
+    {
+      "kind": "exact",
+      "query": "MIRRAPEL GATOS",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 36.545499999999265
+    },
+    {
+      "kind": "weight",
+      "query": "MIRRAPEL GATOS 120ml",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 36.535791000000245
+    },
+    {
+      "kind": "exact",
+      "query": "MONELLO CAT SALMON",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 50.847749999999905
+    },
+    {
+      "kind": "weight",
+      "query": "MONELLO CAT SALMON x 1kg",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 51.322291999999834
+    },
+    {
+      "kind": "exact",
+      "query": "MORRAL TRANSPARENTE CON CAP",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 42.17595799999981
+    },
+    {
+      "kind": "weight",
+      "query": "MORRAL TRANSPARENTE CON CAP unidad",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 46.94908300000043
+    },
+    {
+      "kind": "exact",
+      "query": "NATURAL FRESHLY BOLA DE PELO JALEA",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 61.85170900000048
+    },
+    {
+      "kind": "weight",
+      "query": "NATURAL FRESHLY BOLA DE PELO JALEA x 30g",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 62.42974999999933
+    },
+    {
+      "kind": "exact",
+      "query": "NATURAL FRESHLY UROVITAL 50",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 51.13883299999998
+    },
+    {
+      "kind": "weight",
+      "query": "NATURAL FRESHLY UROVITAL 50 unidad",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 50.63616699999966
+    },
+    {
+      "kind": "exact",
+      "query": "NOVABRONCOL PETS",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 35.28387500000008
+    },
+    {
+      "kind": "weight",
+      "query": "NOVABRONCOL PETS 120ml",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 35.48962500000016
+    },
+    {
+      "kind": "exact",
+      "query": "NUTRECAN ADULTO RP",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 39.73633299999983
+    },
+    {
+      "kind": "weight",
+      "query": "NUTRECAN ADULTO RP 2 kg",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 39.98820799999976
+    },
+    {
+      "kind": "exact",
+      "query": "NUTRECAT HOME",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 36.714874999999665
+    },
+    {
+      "kind": "weight",
+      "query": "NUTRECAT HOME x 1.5 kg",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 37.446625000000495
+    },
+    {
+      "kind": "exact",
+      "query": "NUTRISS CACHORRO",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 37.058749999999236
+    },
+    {
+      "kind": "weight",
+      "query": "NUTRISS CACHORRO 1kg",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 38.41016599999966
+    },
+    {
+      "kind": "exact",
+      "query": "OHMAIGAT INQUIETOS",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 42.23791700000038
+    },
+    {
+      "kind": "weight",
+      "query": "OHMAIGAT INQUIETOS x 1",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 43.473666999999296
+    },
+    {
+      "kind": "exact",
+      "query": "ORGANEW POLVO",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 32.71695799999998
+    },
+    {
+      "kind": "weight",
+      "query": "ORGANEW POLVO 100g",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 32.59825000000001
+    },
+    {
+      "kind": "exact",
+      "query": "PAÑAL L",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 30.824333999999908
+    },
+    {
+      "kind": "weight",
+      "query": "PAÑAL L x 12und",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 36.419832999999926
+    },
+    {
+      "kind": "exact",
+      "query": "PAÑITOS PETYS LAVANDA",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 46.586083000000144
+    },
+    {
+      "kind": "weight",
+      "query": "PAÑITOS PETYS LAVANDA x 50",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 46.01020799999969
+    },
+    {
+      "kind": "exact",
+      "query": "PECHERA TRADILLA SENCILLA L-XL",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 76.0990410000004
+    },
+    {
+      "kind": "weight",
+      "query": "PECHERA TRADILLA SENCILLA L-XL unidad",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 84.44404199999917
+    },
+    {
+      "kind": "exact",
+      "query": "PET DROPS",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 30.652541999999812
+    },
+    {
+      "kind": "weight",
+      "query": "PET DROPS 5ml",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 29.284999999999854
+    },
+    {
+      "kind": "exact",
+      "query": "POMADA ALFA 3 CICATRIZANTE",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 37.95274999999947
+    },
+    {
+      "kind": "weight",
+      "query": "POMADA ALFA 3 CICATRIZANTE 30ml",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 38.28212500000063
+    },
+    {
+      "kind": "exact",
+      "query": "PRO PLAN ADULT SMALL SENSITIVE SKIN",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 62.39908299999934
+    },
+    {
+      "kind": "weight",
+      "query": "PRO PLAN ADULT SMALL SENSITIVE SKIN 3kg",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 62.72508300000027
+    },
+    {
+      "kind": "exact",
+      "query": "PRO PLAN FELINE EN",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 29.156833999999435
+    },
+    {
+      "kind": "weight",
+      "query": "PRO PLAN FELINE EN 1.5kg",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 29.33195799999976
+    },
+    {
+      "kind": "exact",
+      "query": "PRO PLAN LATA CN",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 30.979833000000326
+    },
+    {
+      "kind": "weight",
+      "query": "PRO PLAN LATA CN unidad",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 34.96729099999993
+    },
+    {
+      "kind": "exact",
+      "query": "PULOFF 1.34ML",
+      "recall": true,
+      "selected": false,
+      "correct": false,
+      "clarification": true,
+      "ms": 31.26837500000056
+    },
+    {
+      "kind": "weight",
+      "query": "PULOFF 1.34ML 11-20kg",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 31.224334000000454
+    },
+    {
+      "kind": "exact",
+      "query": "RASCADOR REDONDO GATOS",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 36.49545799999942
+    },
+    {
+      "kind": "weight",
+      "query": "RASCADOR REDONDO GATOS unidad",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 39.631209000000126
+    },
+    {
+      "kind": "exact",
+      "query": "REUTOPIC",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 30.454917000000023
+    },
+    {
+      "kind": "weight",
+      "query": "REUTOPIC 100ml",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 31.529333000000406
+    },
+    {
+      "kind": "exact",
+      "query": "RINGO PREMIUM CACHORRO",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 47.09187500000007
+    },
+    {
+      "kind": "weight",
+      "query": "RINGO PREMIUM CACHORRO x 15 kg",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 47.39904200000001
+    },
+    {
+      "kind": "exact",
+      "query": "ROYAL CANIN CAT GASTROINTESTINAL",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 55.63395800000035
+    },
+    {
+      "kind": "weight",
+      "query": "ROYAL CANIN CAT GASTROINTESTINAL 2kg",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 56.228916999999456
+    },
+    {
+      "kind": "exact",
+      "query": "ROYAL CANIN MINI EXIGENT",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 55.3227909999996
+    },
+    {
+      "kind": "weight",
+      "query": "ROYAL CANIN MINI EXIGENT unidad",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 63.526042000000416
+    },
+    {
+      "kind": "exact",
+      "query": "ROYALCANIN CALM CAT",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 38.86829200000011
+    },
+    {
+      "kind": "weight",
+      "query": "ROYALCANIN CALM CAT 2kg",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 38.97541600000022
+    },
+    {
+      "kind": "exact",
+      "query": "SEPTIDERM",
+      "recall": true,
+      "selected": false,
+      "correct": false,
+      "clarification": true,
+      "ms": 31.0048340000003
+    },
+    {
+      "kind": "weight",
+      "query": "SEPTIDERM x 120ml",
+      "recall": true,
+      "selected": false,
+      "correct": false,
+      "clarification": true,
+      "ms": 31.704999999999927
+    },
+    {
+      "kind": "exact",
+      "query": "SHAMPOO CLORHEXIN",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 60.16474999999991
+    },
+    {
+      "kind": "weight",
+      "query": "SHAMPOO CLORHEXIN 240ml",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 58.35179100000005
+    },
+    {
+      "kind": "exact",
+      "query": "SHAMPOO SULFICURE",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 62.35816700000032
+    },
+    {
+      "kind": "weight",
+      "query": "SHAMPOO SULFICURE x 250ml",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 64.24324999999953
+    },
+    {
+      "kind": "exact",
+      "query": "SMARTBONES BOMBONERA",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 61.923375000000306
+    },
+    {
+      "kind": "weight",
+      "query": "SMARTBONES BOMBONERA x 45und",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 68.05191699999978
+    },
+    {
+      "kind": "exact",
+      "query": "STOMIZOL",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 30.092875000000276
+    },
+    {
+      "kind": "weight",
+      "query": "STOMIZOL 20mg",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 31.173249999999825
+    },
+    {
+      "kind": "exact",
+      "query": "TASTE HUMEDO PERRO",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 34.73162499999944
+    },
+    {
+      "kind": "weight",
+      "query": "TASTE HUMEDO PERRO 390gr",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 35.39695900000061
+    },
+    {
+      "kind": "exact",
+      "query": "TETERO L",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 30.729083000000173
+    },
+    {
+      "kind": "weight",
+      "query": "TETERO L unidad",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 33.30395799999951
+    },
+    {
+      "kind": "exact",
+      "query": "TOTAL PERRO MEDIANO",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 37.5101250000007
+    },
+    {
+      "kind": "weight",
+      "query": "TOTAL PERRO MEDIANO 2und",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 42.46179099999972
+    },
+    {
+      "kind": "exact",
+      "query": "TRAILLA IMITACION CUERO S",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 50.36604099999931
+    },
+    {
+      "kind": "weight",
+      "query": "TRAILLA IMITACION CUERO S unidad",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 58.227208999999675
+    },
+    {
+      "kind": "exact",
+      "query": "UNGUENTO 100",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 32.508332999999766
+    },
+    {
+      "kind": "weight",
+      "query": "UNGUENTO 100 x 120",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 33.01116699999875
+    },
+    {
+      "kind": "exact",
+      "query": "VACUNA TRIPLE FELINA + LEUCEMIA",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 47.413791999999376
+    },
+    {
+      "kind": "weight",
+      "query": "VACUNA TRIPLE FELINA + LEUCEMIA unidad",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 53.26249999999891
+    },
+    {
+      "kind": "exact",
+      "query": "VETSOLUTION CAT URINARY",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 44.44783400000051
+    },
+    {
+      "kind": "weight",
+      "query": "VETSOLUTION CAT URINARY 100gr",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 45.163666000000376
+    },
+    {
+      "kind": "exact",
+      "query": "VIRBAC DOG WIGHT2",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 52.067542000000685
+    },
+    {
+      "kind": "weight",
+      "query": "VIRBAC DOG WIGHT2 3kg",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 52.72587500000009
+    },
+    {
+      "kind": "exact",
+      "query": "VITAPERICO",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 31.014791999999943
+    },
+    {
+      "kind": "weight",
+      "query": "VITAPERICO 300 gr",
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "ms": 31.427874999999403
+    },
+    {
+      "kind": "continuation",
+      "query": "Para perrito",
+      "continued": false,
+      "recall": false,
+      "selected": false,
+      "correct": false,
+      "clarification": false,
+      "reason": "sin_coincidencia_confiable",
+      "ms": 42.39479199999914
+    },
+    {
+      "kind": "continuation",
+      "query": "pro plan ur Es para un perro",
+      "continued": true,
+      "recall": true,
+      "selected": false,
+      "correct": false,
+      "clarification": true,
+      "reason": "ambigua",
+      "ms": 47.84754199999952
+    },
+    {
+      "kind": "continuation",
+      "query": "La especie que falta es perro",
+      "continued": false,
+      "recall": false,
+      "selected": false,
+      "correct": false,
+      "clarification": false,
+      "reason": "sin_coincidencia_confiable",
+      "ms": 83.13949999999932
+    },
+    {
+      "kind": "continuation",
+      "query": "pro plan ur Para gatito",
+      "continued": true,
+      "recall": true,
+      "selected": false,
+      "correct": false,
+      "clarification": true,
+      "reason": "atributo_faltante",
+      "ms": 50.41858300000058
+    },
+    {
+      "kind": "continuation",
+      "query": "pro plan ur Es para un gato",
+      "continued": true,
+      "recall": true,
+      "selected": false,
+      "correct": false,
+      "clarification": true,
+      "reason": "ambigua",
+      "ms": 44.68391700000029
+    },
+    {
+      "kind": "continuation",
+      "query": "La especie que falta es gato",
+      "continued": false,
+      "recall": false,
+      "selected": false,
+      "correct": false,
+      "clarification": false,
+      "reason": "ambigua",
+      "ms": 68.95733300000029
+    },
+    {
+      "kind": "continuation",
+      "query": "Para perrito",
+      "continued": false,
+      "recall": false,
+      "selected": false,
+      "correct": false,
+      "clarification": false,
+      "reason": "sin_coincidencia_confiable",
+      "ms": 40.94245799999953
+    },
+    {
+      "kind": "continuation",
+      "query": "pro plan nf Es para un perro",
+      "continued": true,
+      "recall": true,
+      "selected": false,
+      "correct": false,
+      "clarification": true,
+      "reason": "ambigua",
+      "ms": 49.34558300000026
+    },
+    {
+      "kind": "continuation",
+      "query": "La especie que falta es perro",
+      "continued": false,
+      "recall": false,
+      "selected": false,
+      "correct": false,
+      "clarification": false,
+      "reason": "sin_coincidencia_confiable",
+      "ms": 81.61458400000083
+    },
+    {
+      "kind": "continuation",
+      "query": "Para perrito",
+      "continued": false,
+      "recall": false,
+      "selected": false,
+      "correct": false,
+      "clarification": false,
+      "reason": "sin_coincidencia_confiable",
+      "ms": 40.930333000000246
+    },
+    {
+      "kind": "continuation",
+      "query": "royalcanin gastrointestinal Es para un perro",
+      "continued": true,
+      "recall": true,
+      "selected": true,
+      "correct": true,
+      "clarification": false,
+      "reason": "nombre_exacto",
+      "ms": 40.72795900000165
+    },
+    {
+      "kind": "continuation",
+      "query": "La especie que falta es perro",
+      "continued": false,
+      "recall": false,
+      "selected": false,
+      "correct": false,
+      "clarification": false,
+      "reason": "sin_coincidencia_confiable",
+      "ms": 83.00779200000034
+    }
+  ]
+}

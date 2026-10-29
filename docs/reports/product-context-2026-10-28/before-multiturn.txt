@@ -1,0 +1,29 @@
+[AI Usage Summary] cliente=tenant-a | usuario=anon | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+✖ real UR: pregunta especie, recupera variantes caninas, confirma concentrado, conserva carrito (78.317208ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 163.783917
+
+✖ failing tests:
+
+test at test/productRecoveryContext.test.js:44:1
+✖ real UR: pregunta especie, recupera variantes caninas, confirma concentrado, conserva carrito (78.317208ms)
+  AssertionError [ERR_ASSERTION]: The input was expected to not match the regular expression /pendiente de un asesor/. Input:
+  
+  'Dejo tu consulta pendiente de un asesor para que pueda ayudarte a confirmar la referencia. Conservo lo que hemos conversado.'
+  
+      at TestContext.<anonymous> (/Users/gomez/Documents/WhatsappVELTIA/test/productRecoveryContext.test.js:51:9)
+      at async Test.run (node:internal/test_runner/test:1208:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Dejo tu consulta pendiente de un asesor para que pueda ayudarte a confirmar la referencia. Conservo lo que hemos conversado.',
+    expected: /pendiente de un asesor/,
+    operator: 'doesNotMatch',
+    diff: 'simple'
+  }

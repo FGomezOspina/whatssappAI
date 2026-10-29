@@ -121,3 +121,65 @@ test('handoff durante ejecución: descarta respuesta obsoleta y buffer posterior
  assert.equal(runs,2);assert.deepEqual(x.sent,[]);
  await x.recibir('hola');await x.tick(5000);assert.deepEqual(x.sent,[]);assert.equal(x.c.estados.size,0);
 });
+
+test('resumen distingue pausa humana de duplicado sin fabricar respuesta', async t => {
+ const x = preparar(t, { procesar: async () => {
+   contexto.getStore().omisionRespuesta = { reason: 'human_handoff', handoffState: 'pendiente', handoffReason: 'criterio_veterinario' };
+   return null;
+ } });
+ await x.recibir('consulta comercial', 'A', 'incident'); await x.tick(5000);
+ assert.deepEqual(x.sent, []);
+ assert.deepEqual(x.stats[0].outcome, { status: 'skipped', reason: 'human_handoff', handoffState: 'pendiente', handoffReason: 'criterio_veterinario' });
+ await x.recibir('consulta comercial', 'A', 'incident'); await x.tick(5000);
+ assert.equal(x.batches.length, 1); assert.equal(x.c.estados.size, 0);
+});
+
+for (const stage of ['OpenAI', 'Supabase', 'Kapso']) test(`fallo ${stage} con mensajes esperando libera lock y conserva siguiente lote una sola vez`, async t => {
+ const g = gate(); let first = true;
+ const fail = async () => { if (first) { first = false; await g.promise; throw Error(stage); } };
+ const x = preparar(t, stage === 'Kapso' ? { enviar: fail } : { procesar: async es => { await fail(); return es.map(e => e.text).join(' '); } });
+ await x.recibir('primero', 'A', 'm1'); await x.tick(5000);
+ await x.recibir('segundo', 'A', 'm2'); await x.recibir('tercero', 'A', 'm3');
+ await x.recibir('segundo', 'A', 'm2'); await x.tick(5000);
+ g.resolve(); await micro();
+ assert.deepEqual(x.batches, [['m1'], ['m2', 'm3']]);
+ assert.deepEqual(x.sent, ['segundo tercero']);
+ assert.equal(x.stats[0].outcome.status, 'failed');
+ assert.equal(x.stats[0].outcome.stage, stage === 'Kapso' ? 'kapso_send' : 'agent_processing');
+ assert.equal(x.stats[1].outcome.status, 'sent');
+ assert.equal(x.c.estados.size, 0);
+});
+
+test('envío de resultado incierto no se reintenta ciegamente ni queda lock activo', async t => {
+ let attempts = 0;
+ const x = preparar(t, { enviar: async () => { attempts++; throw Error('timeout after remote accept'); } });
+ await x.recibir('consulta', 'A', 'ambiguous'); await x.tick(5000); await x.tick(60000);
+ assert.equal(attempts, 1); assert.equal(x.c.estados.size, 0);
+ assert.equal(x.stats[0].outcome.status, 'failed');
+ assert.equal(x.stats[0].outcome.confirmedParts, 0);
+});
+
+test('fallo al guardar respuesta confirmada registra etapa y no repite envío', async t => {
+ const x = preparar(t, { procesar: async () => {
+   contexto.getStore().alEnviar = async () => { throw Error('Supabase'); };
+   return 'respuesta enviada';
+ } });
+ await x.recibir('consulta', 'A', 'save-failure'); await x.tick(5000);
+ await x.recibir('consulta', 'A', 'save-failure'); await x.tick(5000);
+ assert.deepEqual(x.sent, ['respuesta enviada']);
+ assert.deepEqual(x.stats[0].outcome, { status: 'failed', stage: 'save_response', confirmedParts: 1 });
+ assert.equal(x.c.estados.size, 0);
+});
+
+test('error al preparar respuesta no se confunde con typing previo ni expone error crudo', async t => {
+ const logs = []; t.mock.method(console, 'log', line => logs.push(line));
+ const x = preparar(t, {
+   typing: async () => { throw Error('typing'); },
+   dividir: () => { const error = Error('credential-fixture-private'); error.name = 'credential-fixture-private'; throw error; },
+ });
+ await x.recibir('consulta'); await x.tick(5000);
+ assert.equal(x.stats[0].outcome.stage, 'response_preparation');
+ assert.equal(x.stats[0].outcome.errorType, 'Error');
+ assert.ok(logs.every(line => !line.includes('credential-fixture-private')));
+ assert.deepEqual(x.sent, []); assert.equal(x.c.estados.size, 0);
+});

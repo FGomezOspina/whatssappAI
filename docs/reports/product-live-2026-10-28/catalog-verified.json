@@ -1,0 +1,633 @@
+{
+  "at": "2026-10-29T00:08:08.283Z",
+  "data": [
+    {
+      "id": "7b9666f2-4887-40e1-904d-0a70e26b6785",
+      "brand_id": "593776a0-df25-475c-8f1d-e64287b7ed32",
+      "name": "AGILITY EN LATA PERRO",
+      "species": "perro",
+      "subcategory": "comida_humeda",
+      "life_stage": null,
+      "brand": "AGILITY",
+      "presentations": [
+        {
+          "reference_id": "7b9666f2-4887-40e1-904d-0a70e26b6785",
+          "weight": "360gr",
+          "price": 16800,
+          "stock": null
+        }
+      ]
+    },
+    {
+      "id": "2c26a2b8-fc1c-4739-828a-fa65c491ac28",
+      "brand_id": "593776a0-df25-475c-8f1d-e64287b7ed32",
+      "name": "AGILITY GATITO",
+      "species": "gato",
+      "subcategory": "concentrado",
+      "life_stage": "cachorro",
+      "brand": "AGILITY",
+      "presentations": [
+        {
+          "reference_id": "2c26a2b8-fc1c-4739-828a-fa65c491ac28",
+          "weight": "1.5kg",
+          "price": 45700,
+          "stock": null
+        },
+        {
+          "reference_id": "2c26a2b8-fc1c-4739-828a-fa65c491ac28",
+          "weight": "500gr",
+          "price": 16900,
+          "stock": null
+        },
+        {
+          "reference_id": "2c26a2b8-fc1c-4739-828a-fa65c491ac28",
+          "weight": "3kg",
+          "price": 86700,
+          "stock": null
+        }
+      ]
+    },
+    {
+      "id": "cce8eb88-4915-4a8e-980f-035489b7bbaa",
+      "brand_id": "593776a0-df25-475c-8f1d-e64287b7ed32",
+      "name": "AGILITY GATO AD",
+      "species": "gato",
+      "subcategory": "concentrado",
+      "life_stage": "adulto",
+      "brand": "AGILITY",
+      "presentations": [
+        {
+          "reference_id": "cce8eb88-4915-4a8e-980f-035489b7bbaa",
+          "weight": "1.5kg",
+          "price": 41000,
+          "stock": null
+        },
+        {
+          "reference_id": "cce8eb88-4915-4a8e-980f-035489b7bbaa",
+          "weight": "3kg",
+          "price": 78000,
+          "stock": null
+        },
+        {
+          "reference_id": "cce8eb88-4915-4a8e-980f-035489b7bbaa",
+          "weight": "500gr",
+          "price": 14300,
+          "stock": null
+        },
+        {
+          "reference_id": "cce8eb88-4915-4a8e-980f-035489b7bbaa",
+          "weight": "7kg",
+          "price": 164000,
+          "stock": null
+        }
+      ]
+    },
+    {
+      "id": "95186a15-c23b-4809-84a7-289d4bf74b2a",
+      "brand_id": "593776a0-df25-475c-8f1d-e64287b7ed32",
+      "name": "AGILITY GATO ESTERILIZADO",
+      "species": "gato",
+      "subcategory": "concentrado",
+      "life_stage": null,
+      "brand": "AGILITY",
+      "presentations": [
+        {
+          "reference_id": "95186a15-c23b-4809-84a7-289d4bf74b2a",
+          "weight": "1.5kg",
+          "price": 43600,
+          "stock": null
+        }
+      ]
+    },
+    {
+      "id": "45e6e44b-0312-4f3f-9761-0e384331e7a7",
+      "brand_id": "593776a0-df25-475c-8f1d-e64287b7ed32",
+      "name": "AGILITY GRAN ADUL",
+      "species": "perro",
+      "subcategory": "concentrado",
+      "life_stage": "adulto",
+      "brand": "AGILITY",
+      "presentations": [
+        {
+          "reference_id": "45e6e44b-0312-4f3f-9761-0e384331e7a7",
+          "weight": "15kg",
+          "price": 278900,
+          "stock": null
+        }
+      ]
+    },
+    {
+      "id": "a1c83764-e0ee-4910-8e1d-ccc5734778f9",
+      "brand_id": "593776a0-df25-475c-8f1d-e64287b7ed32",
+      "name": "AGILITY GRAND ADUL",
+      "species": "perro",
+      "subcategory": "concentrado",
+      "life_stage": "adulto",
+      "brand": "AGILITY",
+      "presentations": [
+        {
+          "reference_id": "a1c83764-e0ee-4910-8e1d-ccc5734778f9",
+          "weight": "1.5kg",
+          "price": 30500,
+          "stock": null
+        },
+        {
+          "reference_id": "a1c83764-e0ee-4910-8e1d-ccc5734778f9",
+          "weight": "3kg",
+          "price": 59800,
+          "stock": null
+        }
+      ]
+    },
+    {
+      "id": "d8696d07-88f1-42a5-9025-4c393b40dd9a",
+      "brand_id": "593776a0-df25-475c-8f1d-e64287b7ed32",
+      "name": "AGILITY GRAND ADUL PIEL",
+      "species": "perro",
+      "subcategory": "concentrado",
+      "life_stage": "adulto",
+      "brand": "AGILITY",
+      "presentations": [
+        {
+          "reference_id": "d8696d07-88f1-42a5-9025-4c393b40dd9a",
+          "weight": "8kg",
+          "price": 162500,
+          "stock": null
+        }
+      ]
+    },
+    {
+      "id": "67c997ae-00ae-4abf-bc45-2621e77ae846",
+      "brand_id": "593776a0-df25-475c-8f1d-e64287b7ed32",
+      "name": "AGILITY OBESOS",
+      "species": "perro",
+      "subcategory": "concentrado",
+      "life_stage": null,
+      "brand": "AGILITY",
+      "presentations": [
+        {
+          "reference_id": "67c997ae-00ae-4abf-bc45-2621e77ae846",
+          "weight": "1.5kg",
+          "price": 38900,
+          "stock": null
+        },
+        {
+          "reference_id": "67c997ae-00ae-4abf-bc45-2621e77ae846",
+          "weight": "7kg",
+          "price": 133900,
+          "stock": null
+        }
+      ]
+    },
+    {
+      "id": "9982aea4-2e3a-4e52-9093-afd04d328524",
+      "brand_id": "593776a0-df25-475c-8f1d-e64287b7ed32",
+      "name": "AGILITY PED ADUL",
+      "species": "perro",
+      "subcategory": "concentrado",
+      "life_stage": "adulto",
+      "brand": "AGILITY",
+      "presentations": [
+        {
+          "reference_id": "9982aea4-2e3a-4e52-9093-afd04d328524",
+          "weight": "500gr",
+          "price": 13900,
+          "stock": null
+        }
+      ]
+    },
+    {
+      "id": "e87e2b5c-8d75-4917-9e3c-8215dc49ca6e",
+      "brand_id": "593776a0-df25-475c-8f1d-e64287b7ed32",
+      "name": "AGILITY PEQ ADUL",
+      "species": "perro",
+      "subcategory": "concentrado",
+      "life_stage": "adulto",
+      "brand": "AGILITY",
+      "presentations": [
+        {
+          "reference_id": "e87e2b5c-8d75-4917-9e3c-8215dc49ca6e",
+          "weight": "1.5kg",
+          "price": 37300,
+          "stock": null
+        },
+        {
+          "reference_id": "e87e2b5c-8d75-4917-9e3c-8215dc49ca6e",
+          "weight": "3kg",
+          "price": 68900,
+          "stock": null
+        },
+        {
+          "reference_id": "e87e2b5c-8d75-4917-9e3c-8215dc49ca6e",
+          "weight": "7kg",
+          "price": 147900,
+          "stock": null
+        }
+      ]
+    },
+    {
+      "id": "ffc426e4-907f-4bc2-a6e0-1c07b4109b70",
+      "brand_id": "593776a0-df25-475c-8f1d-e64287b7ed32",
+      "name": "AGILITY PEQ ADUL PIEL",
+      "species": "perro",
+      "subcategory": "concentrado",
+      "life_stage": "adulto",
+      "brand": "AGILITY",
+      "presentations": [
+        {
+          "reference_id": "ffc426e4-907f-4bc2-a6e0-1c07b4109b70",
+          "weight": "1.5kg",
+          "price": 39500,
+          "stock": null
+        },
+        {
+          "reference_id": "ffc426e4-907f-4bc2-a6e0-1c07b4109b70",
+          "weight": "3kg",
+          "price": 75900,
+          "stock": null
+        },
+        {
+          "reference_id": "ffc426e4-907f-4bc2-a6e0-1c07b4109b70",
+          "weight": "8kg",
+          "price": 168000,
+          "stock": null
+        }
+      ]
+    },
+    {
+      "id": "53f3d36b-441e-4d44-825f-618e06779d39",
+      "brand_id": "593776a0-df25-475c-8f1d-e64287b7ed32",
+      "name": "AGILITY POUCH *100 PAG 3*4",
+      "species": "perro",
+      "subcategory": "comida_humeda",
+      "life_stage": null,
+      "brand": "AGILITY",
+      "presentations": [
+        {
+          "reference_id": "53f3d36b-441e-4d44-825f-618e06779d39",
+          "weight": "unidad",
+          "price": 12800,
+          "stock": null
+        }
+      ]
+    },
+    {
+      "id": "ba1cc66f-ee23-4bde-ac49-1c42b8ef69f0",
+      "brand_id": "593776a0-df25-475c-8f1d-e64287b7ed32",
+      "name": "AGILITY POUCH ADUL",
+      "species": "perro",
+      "subcategory": "comida_humeda",
+      "life_stage": "adulto",
+      "brand": "AGILITY",
+      "presentations": [
+        {
+          "reference_id": "ba1cc66f-ee23-4bde-ac49-1c42b8ef69f0",
+          "weight": "100gr",
+          "price": 4200,
+          "stock": null
+        }
+      ]
+    },
+    {
+      "id": "d55a84c2-fc6e-415c-8560-48e97fa8d09b",
+      "brand_id": "593776a0-df25-475c-8f1d-e64287b7ed32",
+      "name": "AGILITY CAT PREMIOS",
+      "species": "gato",
+      "subcategory": "premio",
+      "life_stage": null,
+      "brand": "AGILITY",
+      "presentations": [
+        {
+          "reference_id": "d55a84c2-fc6e-415c-8560-48e97fa8d09b",
+          "weight": "75gr",
+          "price": 7800,
+          "stock": null
+        }
+      ]
+    },
+    {
+      "id": "e7563d91-15d7-49b5-b343-d8f3d1166341",
+      "brand_id": "593776a0-df25-475c-8f1d-e64287b7ed32",
+      "name": "AGILITY PERROS PREMIO",
+      "species": "perro",
+      "subcategory": "premio",
+      "life_stage": null,
+      "brand": "AGILITY",
+      "presentations": [
+        {
+          "reference_id": "e7563d91-15d7-49b5-b343-d8f3d1166341",
+          "weight": "x 150gr",
+          "price": 9900,
+          "stock": null
+        }
+      ]
+    },
+    {
+      "id": "24eff518-2ad4-485e-88e5-edde61550e18",
+      "brand_id": "593776a0-df25-475c-8f1d-e64287b7ed32",
+      "name": "AGILITY SNAKS PREMIO",
+      "species": "perro",
+      "subcategory": "premio",
+      "life_stage": null,
+      "brand": "AGILITY",
+      "presentations": [
+        {
+          "reference_id": "24eff518-2ad4-485e-88e5-edde61550e18",
+          "weight": "250gr",
+          "price": 18400,
+          "stock": null
+        }
+      ]
+    },
+    {
+      "id": "1224f0d0-b4db-494b-8200-56c6e0dad19f",
+      "brand_id": "92dbb137-08cd-4968-9529-6213b0330078",
+      "name": "DIAMOND INDOOR CAT",
+      "species": "gato",
+      "subcategory": "concentrado",
+      "life_stage": null,
+      "brand": "DIAMOND",
+      "presentations": [
+        {
+          "reference_id": "1224f0d0-b4db-494b-8200-56c6e0dad19f",
+          "weight": "500gr",
+          "price": 19500,
+          "stock": null
+        }
+      ]
+    },
+    {
+      "id": "38fbf049-d4c4-43c4-aef2-a8da499d11fa",
+      "brand_id": "41ec8da4-b3f0-4527-a921-5c905c811397",
+      "name": "PRO PLAN CANINE LATA UR",
+      "species": "perro",
+      "subcategory": "comida_humeda",
+      "life_stage": null,
+      "brand": "PRO PLAN",
+      "presentations": [
+        {
+          "reference_id": "38fbf049-d4c4-43c4-aef2-a8da499d11fa",
+          "weight": "unidad",
+          "price": 28600,
+          "stock": null
+        }
+      ]
+    },
+    {
+      "id": "900230bf-4cf5-4522-afb6-739f0275909f",
+      "brand_id": "41ec8da4-b3f0-4527-a921-5c905c811397",
+      "name": "PRO PLAN CANINE UR",
+      "species": "perro",
+      "subcategory": "concentrado",
+      "life_stage": null,
+      "brand": "PRO PLAN",
+      "presentations": [
+        {
+          "reference_id": "900230bf-4cf5-4522-afb6-739f0275909f",
+          "weight": "2kg",
+          "price": 122000,
+          "stock": null
+        }
+      ]
+    },
+    {
+      "id": "c7bd39ca-5555-4f3f-a143-89720a5d49f5",
+      "brand_id": "41ec8da4-b3f0-4527-a921-5c905c811397",
+      "name": "PRO PLAN FELINE UR",
+      "species": "gato",
+      "subcategory": "concentrado",
+      "life_stage": null,
+      "brand": "PRO PLAN",
+      "presentations": [
+        {
+          "reference_id": "c7bd39ca-5555-4f3f-a143-89720a5d49f5",
+          "weight": "1.5kg",
+          "price": 113600,
+          "stock": null
+        }
+      ]
+    },
+    {
+      "id": "1b2baa12-4c7e-44ae-bf38-7679ba6de3af",
+      "brand_id": "71f6a67d-928d-4fd2-b46b-604780d2f64d",
+      "name": "ROYAL CANIN CAT GASTROINTESTINAL",
+      "species": "gato",
+      "subcategory": "concentrado",
+      "life_stage": null,
+      "brand": "ROYAL CANIN",
+      "presentations": [
+        {
+          "reference_id": "1b2baa12-4c7e-44ae-bf38-7679ba6de3af",
+          "weight": "2kg",
+          "price": 159600,
+          "stock": null
+        }
+      ]
+    },
+    {
+      "id": "8e4abc47-4a11-4dc6-bfcb-2f85a851145f",
+      "brand_id": "71f6a67d-928d-4fd2-b46b-604780d2f64d",
+      "name": "ROYAL CANIN DOG LATA GASTRO",
+      "species": "perro",
+      "subcategory": "comida_humeda",
+      "life_stage": null,
+      "brand": "ROYAL CANIN",
+      "presentations": [
+        {
+          "reference_id": "8e4abc47-4a11-4dc6-bfcb-2f85a851145f",
+          "weight": "385gr",
+          "price": 28600,
+          "stock": null
+        }
+      ]
+    },
+    {
+      "id": "2765c462-c1bf-43cf-babc-0750dd39caa0",
+      "brand_id": "8acf06ea-b7f7-4ba8-95e9-aafde8a02236",
+      "name": "ROYALCANIN GASTROINTESTINAL PERRO",
+      "species": "perro",
+      "subcategory": "concentrado",
+      "life_stage": null,
+      "brand": "ROYALCANIN",
+      "presentations": [
+        {
+          "reference_id": "2765c462-c1bf-43cf-babc-0750dd39caa0",
+          "weight": "2kg",
+          "price": 129000,
+          "stock": null
+        }
+      ]
+    },
+    {
+      "id": "b5c9fa23-c9e3-4d1f-9770-ab6056de66c6",
+      "brand_id": "593776a0-df25-475c-8f1d-e64287b7ed32",
+      "name": "AGILITY EN GATO",
+      "species": "gato",
+      "subcategory": "comida_humeda",
+      "life_stage": null,
+      "brand": "AGILITY",
+      "presentations": [
+        {
+          "reference_id": "b5c9fa23-c9e3-4d1f-9770-ab6056de66c6",
+          "weight": "140gr",
+          "price": 9600,
+          "stock": null
+        }
+      ]
+    },
+    {
+      "id": "4d75980f-c69e-4fc1-bd00-3f1a9d7160ec",
+      "brand_id": "41ec8da4-b3f0-4527-a921-5c905c811397",
+      "name": "PRO PLAN FELINE LATA UR",
+      "species": "gato",
+      "subcategory": "comida_humeda",
+      "life_stage": null,
+      "brand": "PRO PLAN",
+      "presentations": [
+        {
+          "reference_id": "4d75980f-c69e-4fc1-bd00-3f1a9d7160ec",
+          "weight": "unidad",
+          "price": 16700,
+          "stock": null
+        }
+      ]
+    },
+    {
+      "id": "4128b96d-b89a-4189-a9f3-cac359cd35e4",
+      "brand_id": "593776a0-df25-475c-8f1d-e64287b7ed32",
+      "name": "AGILITY GRAND CACH",
+      "species": "perro",
+      "subcategory": "concentrado",
+      "life_stage": "cachorro",
+      "brand": "AGILITY",
+      "presentations": [
+        {
+          "reference_id": "4128b96d-b89a-4189-a9f3-cac359cd35e4",
+          "weight": "3kg",
+          "price": 65400,
+          "stock": null
+        },
+        {
+          "reference_id": "4128b96d-b89a-4189-a9f3-cac359cd35e4",
+          "weight": "15kg",
+          "price": 299900,
+          "stock": null
+        },
+        {
+          "reference_id": "4128b96d-b89a-4189-a9f3-cac359cd35e4",
+          "weight": "1.5kg",
+          "price": 33700,
+          "stock": null
+        }
+      ]
+    },
+    {
+      "id": "5c1b4964-fccf-4b99-9f21-5dde9d04a994",
+      "brand_id": "593776a0-df25-475c-8f1d-e64287b7ed32",
+      "name": "AGILITY ESTERILIZADOS",
+      "species": "gato",
+      "subcategory": "concentrado",
+      "life_stage": null,
+      "brand": "AGILITY",
+      "presentations": [
+        {
+          "reference_id": "5c1b4964-fccf-4b99-9f21-5dde9d04a994",
+          "weight": "3kg",
+          "price": 76000,
+          "stock": null
+        }
+      ]
+    },
+    {
+      "id": "0cd6f7c2-0186-4bc3-ae7e-88d8fcd47c52",
+      "brand_id": "593776a0-df25-475c-8f1d-e64287b7ed32",
+      "name": "AGILITY PEQ CACH",
+      "species": "perro",
+      "subcategory": "concentrado",
+      "life_stage": "cachorro",
+      "brand": "AGILITY",
+      "presentations": [
+        {
+          "reference_id": "0cd6f7c2-0186-4bc3-ae7e-88d8fcd47c52",
+          "weight": "1.5kg",
+          "price": 36000,
+          "stock": null
+        },
+        {
+          "reference_id": "0cd6f7c2-0186-4bc3-ae7e-88d8fcd47c52",
+          "weight": "3kg",
+          "price": 69800,
+          "stock": null
+        }
+      ]
+    },
+    {
+      "id": "439a4c7c-f395-42f8-88b2-d85e8aa14087",
+      "brand_id": "593776a0-df25-475c-8f1d-e64287b7ed32",
+      "name": "AGILITY POUCH CACH",
+      "species": "perro",
+      "subcategory": "comida_humeda",
+      "life_stage": "cachorro",
+      "brand": "AGILITY",
+      "presentations": [
+        {
+          "reference_id": "439a4c7c-f395-42f8-88b2-d85e8aa14087",
+          "weight": "100gr",
+          "price": 4700,
+          "stock": null
+        }
+      ]
+    },
+    {
+      "id": "d5672c11-9e41-4aae-b5ee-a487e91eaea1",
+      "brand_id": "92dbb137-08cd-4968-9529-6213b0330078",
+      "name": "DIAMOND INDOOR",
+      "species": "gato",
+      "subcategory": "concentrado",
+      "life_stage": null,
+      "brand": "DIAMOND",
+      "presentations": [
+        {
+          "reference_id": "d5672c11-9e41-4aae-b5ee-a487e91eaea1",
+          "weight": "2.72kg",
+          "price": 86500,
+          "stock": null
+        }
+      ]
+    },
+    {
+      "id": "0d77eee6-42be-4b38-8fb0-3259d67007be",
+      "brand_id": "71f6a67d-928d-4fd2-b46b-604780d2f64d",
+      "name": "ROYAL CANIN DOG PUPY INDOOR",
+      "species": "perro",
+      "subcategory": "concentrado",
+      "life_stage": "cachorro",
+      "brand": "ROYAL CANIN",
+      "presentations": [
+        {
+          "reference_id": "0d77eee6-42be-4b38-8fb0-3259d67007be",
+          "weight": "1.5kg",
+          "price": 91800,
+          "stock": null
+        }
+      ]
+    },
+    {
+      "id": "740aac9b-c7b5-44cd-81a5-ccdc956ab212",
+      "brand_id": "71f6a67d-928d-4fd2-b46b-604780d2f64d",
+      "name": "ROYAL CANIN INDOOR",
+      "species": "gato",
+      "subcategory": "comida_humeda",
+      "life_stage": null,
+      "brand": "ROYAL CANIN",
+      "presentations": [
+        {
+          "reference_id": "740aac9b-c7b5-44cd-81a5-ccdc956ab212",
+          "weight": "85g",
+          "price": 9500,
+          "stock": null
+        }
+      ]
+    }
+  ]
+}

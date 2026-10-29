@@ -71,7 +71,7 @@ test('el selector no intercepta una accion operativa aunque quede una cotizacion
 test('resumen, confirmacion semantica y repeticion conservan un solo pedido por empresa', async () => {
   const estado = { ...crearEstadoInicial(), carrito: [{ marca: 'MARCA TEST', referencia: 'SNACK TEST', peso: '75gr', precio: 7800, cantidad: 1 }],
     entrega: { tipo: 'domicilio' }, metodoPago: 'efectivo', esperandoDatosDomicilio: true,
-    datosDomicilio: { nombre: 'Cliente Prueba', cedula: '000000', celular: '0000000000', correo: 'prueba@example.com', direccion: 'Calle de prueba 1' },
+    datosDomicilio: { nombre: 'Cliente Prueba', cedula: '000000', celular: '3000000000', correo: 'prueba@example.com', direccion: 'Calle de prueba 1' },
     productosConsultados: [{ marca: 'MARCA TEST', referencia: 'SNACK TEST', peso: '75gr', precio: 7800 }],
     ultimaConsultaProducto: { terminos: ['marca', 'test'], aclaracion: { campo: 'especie', valores: ['perro', 'gato'] }, creadoEn: new Date().toISOString() },
   };
@@ -139,7 +139,7 @@ test('resumen, confirmacion semantica y repeticion conservan un solo pedido por 
 test('respuesta no resuelta mantiene la confirmacion y permite corregir datos semanticamente', () => {
   const estado = { ...crearEstadoInicial(), esperandoConfirmacionPedido: true, confirmacionPedidoId: 'estable',
     carrito: [{ marca: 'Prueba', referencia: 'Producto', peso: '1kg', precio: 1000, cantidad: 1 }],
-    datosDomicilio: { nombre: 'Anterior', cedula: '0000', celular: '0000', correo: 'prueba@example.com', direccion: 'Calle de prueba 1' }, metodoPago: 'efectivo', entrega: { tipo: 'domicilio' } };
+    datosDomicilio: { nombre: 'Cliente Anterior', cedula: '0000', celular: '3000000000', correo: 'prueba@example.com', direccion: 'Calle de prueba 1' }, metodoPago: 'efectivo', entrega: { tipo: 'domicilio' } };
   const noResuelta = resolverConsultaCatalogo('...', estado, [], null);
   assert.match(noResuelta, /finalizamos el pedido/);
   assert.equal(estado.esperandoConfirmacionPedido, true);
@@ -153,10 +153,10 @@ test('respuesta no resuelta mantiene la confirmacion y permite corregir datos se
 });
 
 test('cierre detalla datos, conserva contexto ante pregunta y finaliza semanticamente al dejarlo asi', () => {
-  let estado = { ...crearEstadoInicial(), esperandoDatosDomicilio: true,
+  let estado = { ...crearEstadoInicial(), facturacionElectronica: true, esperandoDatosDomicilio: true,
     carrito: [{ marca: 'Prueba', referencia: 'Producto', peso: '2kg', precio: 28000, cantidad: 1 }],
     entrega: { tipo: 'domicilio' }, metodoPago: 'efectivo',
-    datosDomicilio: { nombre: 'Cliente Prueba', cedula: '123', correo: 'cliente@example.com', celular: '3000000000', direccion: 'Municipio Barrio Mz 1 Casa 10' } };
+    datosDomicilio: { nombre: 'Cliente Prueba', cedula: '123456789', correo: 'cliente@example.com', celular: '3000000000', direccion: 'Municipio Barrio Mz 1 Casa 10' } };
   const resumen = resolverConsultaCatalogo('Cliente Prueba', estado, [], { intencion: 'datos_envio', confianza: 0.99 });
   for (const dato of Object.values(estado.datosDomicilio)) assert.ok(resumen.includes(dato));
   assert.match(resumen, /28\.000/);

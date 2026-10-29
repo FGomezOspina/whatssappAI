@@ -1,0 +1,213 @@
+{
+  "capturedAt": "2026-10-28T23:56:51.178Z",
+  "conversationId": "228bd3dc-1096-4625-ae76-81b62be26efb",
+  "state": {
+    "atencionHumana": {
+      "estado": "pendiente",
+      "motivo": "producto_no_resuelto",
+      "solicitadaEn": "2026-10-28T22:44:20.992Z"
+    },
+    "ultimaConsultaProducto": {
+      "nivel": "media",
+      "razon": "atributo_faltante",
+      "fuente": "texto",
+      "creadoEn": "2026-10-28T22:43:41.544Z",
+      "etiqueta": "premium plan ur",
+      "terminos": [
+        "premium",
+        "plan",
+        "ur"
+      ],
+      "aclaracion": {
+        "campo": "especie",
+        "valores": [
+          "perro",
+          "gato"
+        ]
+      },
+      "presentacion": null,
+      "solicitudOriginal": {
+        "accion": "consultar",
+        "producto": {
+          "etapa": null,
+          "linea": null,
+          "marca": "PRO PLAN",
+          "accion": "consultar",
+          "tamano": null,
+          "especie": null,
+          "sabores": [],
+          "cantidad": null,
+          "mascotas": [],
+          "categoria": "comida",
+          "referencia": "PRO PLAN UR",
+          "condiciones": [
+            "urinario",
+            "problemas urinarios"
+          ],
+          "presentacion": null,
+          "subcategoria": null,
+          "textoVisible": "pro plan ur",
+          "mencionOriginal": null,
+          "intencionPresentaciones": null
+        },
+        "intencion": "consulta_producto"
+      },
+      "sinCoincidenciaInformada": false
+    },
+    "carrito": [
+      {
+        "peso": "x 1 kg",
+        "marca": "BR CAT",
+        "precio": 30500,
+        "especie": "gato",
+        "cantidad": 1,
+        "categoria": "comida",
+        "referencia": "BR CAT SALMON",
+        "subcategoria": "concentrado",
+        "requiereConfirmacion": false
+      },
+      {
+        "peso": "8kg",
+        "marca": "ARENA KITTEN LAVANDA",
+        "precio": 23800,
+        "especie": "gato",
+        "cantidad": 1,
+        "categoria": "arena_sustrato",
+        "referencia": "ARENA KITTEN LAVANDA",
+        "subcategoria": "arena",
+        "requiereConfirmacion": false
+      }
+    ]
+  },
+  "messages": [
+    {
+      "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSOTVBMDY2MzMwOTYzOTRBOEM3AA==",
+      "text": "Dejo tu consulta pendiente de un asesor para que pueda ayudarte a confirmar la referencia. Conservo lo que hemos conversado.",
+      "timestamp": "1793227462",
+      "direction": "outbound",
+      "status": "sent"
+    },
+    {
+      "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDdEMDEyMzczM0FDRTdFOTUxNgA=",
+      "text": "para perrito",
+      "timestamp": "1793227434",
+      "direction": "inbound",
+      "status": "read"
+    },
+    {
+      "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSNjQ0RDdFQjJDMzBFMDhDMTMzAA==",
+      "text": "¿Es para perro o para gato? Así te digo cuál Pro Plan UR te cuesta 🙂\n\nPedido:\n- 1 x BR CAT SALMON x 1 kg: $30.500\n- 1 x ARENA KITTEN LAVANDA 8kg: $23.800\nTotal: $54.300",
+      "timestamp": "1793227424",
+      "direction": "outbound",
+      "status": "sent"
+    },
+    {
+      "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEQ2MUExRUI3RDgyODMzRjU1QgA=",
+      "text": "y el tiene problemas urinarios, me recomendaron pro plan ur, cuanto cuesta?",
+      "timestamp": "1793227395",
+      "direction": "inbound",
+      "status": "read"
+    }
+  ],
+  "router": [
+    {
+      "id": "23301f0b-3e07-8ac0-5a22-a319c502fcc1",
+      "text": "para perrito",
+      "interpretacion": {
+        "accion": "consultar",
+        "carrito": {
+          "razon": null,
+          "operacion": null,
+          "cantidadDelta": null,
+          "cantidadObjetivo": null,
+          "aplicaAlUltimoProducto": null
+        },
+        "producto": {
+          "etapa": null,
+          "linea": null,
+          "marca": "PRO PLAN",
+          "accion": "consultar",
+          "tamano": null,
+          "especie": "perro",
+          "sabores": [],
+          "cantidad": null,
+          "mascotas": [],
+          "categoria": "comida",
+          "referencia": "PRO PLAN UR",
+          "condiciones": [
+            "urinario",
+            "problemas urinarios"
+          ],
+          "presentacion": null,
+          "subcategoria": null,
+          "textoVisible": "pro plan ur",
+          "mencionOriginal": null,
+          "intencionPresentaciones": null
+        },
+        "intencion": "consulta_producto",
+        "productos": [],
+        "propuestaOperacion": null
+      }
+    },
+    {
+      "id": "6e4fe73e-e0d5-3b89-1ef3-78f3259d4b30",
+      "text": "y el tiene problemas urinarios, me recomendaron pro plan ur, cuanto cuesta?",
+      "interpretacion": {
+        "accion": "consultar",
+        "carrito": {
+          "razon": null,
+          "operacion": null,
+          "cantidadDelta": null,
+          "cantidadObjetivo": null,
+          "aplicaAlUltimoProducto": null
+        },
+        "producto": {
+          "etapa": null,
+          "linea": null,
+          "marca": "PRO PLAN",
+          "accion": "consultar",
+          "tamano": null,
+          "especie": null,
+          "sabores": [],
+          "cantidad": null,
+          "mascotas": [],
+          "categoria": "alimento",
+          "referencia": "UR",
+          "condiciones": [
+            "problemas urinarios"
+          ],
+          "presentacion": null,
+          "subcategoria": null,
+          "textoVisible": "pro plan ur",
+          "mencionOriginal": null,
+          "intencionPresentaciones": null
+        },
+        "intencion": "consulta_producto",
+        "productos": [
+          {
+            "etapa": null,
+            "linea": null,
+            "marca": "PRO PLAN",
+            "accion": "consultar",
+            "tamano": null,
+            "especie": null,
+            "sabores": [],
+            "cantidad": null,
+            "mascotas": [],
+            "categoria": "alimento",
+            "referencia": "UR",
+            "condiciones": [
+              "problemas urinarios"
+            ],
+            "presentacion": null,
+            "subcategoria": null,
+            "textoVisible": "pro plan ur",
+            "mencionOriginal": "pro plan ur",
+            "intencionPresentaciones": null
+          }
+        ],
+        "propuestaOperacion": null
+      }
+    }
+  ]
+}

@@ -1,3 +1,4 @@
+const { REGLA_DATOS_CIERRE } = require('../verticals/petshop/checkoutData');
 const { medir } = require('./pipelineTelemetry');
 const { contieneCondicionBolaPelo } = require("../utils/text");
 const { resolverEvidenciaInterpretacion } = require("./productEvidenceService");
@@ -135,6 +136,7 @@ function resumenEstado(estado = {}) {
     pedidoConfirmado: Boolean(estado.pedidoConfirmado),
     ultimoPedidoConfirmado: estado.ultimoPedidoConfirmado || null,
     datosDomicilio: estado.datosDomicilio || {},
+    facturacionElectronica: estado.facturacionElectronica === true,
     entrega: estado.entrega || {},
     metodoPago: estado.metodoPago || null,
     esperando: {
@@ -199,6 +201,7 @@ function normalizarInterpretacion(valor) {
   const productoPrincipal = normalizarProducto(valor.producto || productos[0] || {});
 
   return {
+    solicitudComercialIndependiente: valor.solicitudComercialIndependiente === true,
     derivacionHumana: {
       necesaria: valor.derivacionHumana?.necesaria === true &&
         ['criterio_veterinario', 'solicitud_asesor'].includes(valor.derivacionHumana?.motivo),
@@ -231,6 +234,10 @@ function normalizarInterpretacion(valor) {
       sector: valor.entrega?.sector || null,
       metodoPago: valor.entrega?.metodoPago || null,
       sede: valor.entrega?.sede || null,
+    },
+    facturacion: {
+      electronica: typeof valor.facturacion?.electronica === 'boolean' ? valor.facturacion.electronica : null,
+      evidencia: typeof valor.facturacion?.evidencia === 'string' ? valor.facturacion.evidencia : null,
     },
     datosCliente: {
       nombre: valor.datosCliente?.nombre || null,
@@ -373,6 +380,7 @@ Fuente de verdad:
 - No conviertas una aclaracion corta en un pedido nuevo si responde a una pregunta pendiente. Ejemplo: si se esperaba presentacion y el cliente dice "4 kilos", completa presentacion; si se esperaba metodo de pago y dice "efectivo", completa pago.
 - Si el cliente corrige la identificacion con frases como "no, es...", "era...", "quise decir..." o "me refiero a...", descarta la referencia propuesta anteriormente y vuelve a identificar el producto con la informacion corregida. Esas palabras conversacionales no forman parte de la marca ni de la referencia.
 - ultimaConsultaProducto contiene señales crudas del intento anterior de texto, imagen o audio, no una verdad confirmada. Usala para completar correcciones cortas, pero si el cliente da un nombre nuevo suficientemente detallado, ese nombre reemplaza la hipotesis anterior.
+${REGLA_DATOS_CIERRE}
 - Los valores existentes en estado.datosDomicilio son memoria confirmada de la conversacion. Conserva nombre, cedula, correo, celular y direccion salvo que el ultimo mensaje del cliente indique explicitamente que desea corregir uno de esos datos.
 - "La misma dirección", "la anterior" o "la que había creado" son referencias a memoria, no direcciones literales. Reutiliza únicamente una dirección concreta guardada; si no existe, deja entrega.direccion en null para solicitarla.
 - Los datos de entrega pueden llegar juntos en una línea: separa el nombre de persona, la dirección completa con barrio/ciudad y el método de pago. No incluyas el nombre dentro de entrega.direccion ni omitas datosCliente.nombre por falta de etiquetas o saltos de línea.
@@ -519,9 +527,10 @@ JSON exacto:
     "direccion": "direccion exacta si existe o null",
     "direccionCompleta": true,
     "sector": "barrio/sector si solo hay referencia parcial o null",
-    "metodoPago": "efectivo|transferencia bancaria|tarjeta debito o credito|null",
+    "metodoPago": "efectivo|transferencia bancaria|tarjeta debito o credito|llave Bre-B|null",
     "sede": null
   },
+  "facturacion": { "electronica": null, "evidencia": null },
   "datosCliente": {
     "nombre": null,
     "cedula": null,

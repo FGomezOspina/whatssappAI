@@ -61,6 +61,7 @@ async function requestSupabase(path, opciones = {}) {
   let ultimoError = null;
 
   for (let intento = 0; intento <= reintentos; intento += 1) {
+    if (opciones.signal?.aborted) throw ultimoError || new Error("Supabase request aborted");
     try {
       const respuesta = await medir('supabase_attempt', () => fetchSupabaseConTimeout(url, {
         ...opciones,
@@ -80,7 +81,7 @@ async function requestSupabase(path, opciones = {}) {
       return texto ? JSON.parse(texto) : null;
     } catch (error) {
       ultimoError = error;
-      if (!esErrorTransitorioSupabase(error) || intento >= reintentos) break;
+      if (opciones.signal?.aborted || !esErrorTransitorioSupabase(error) || intento >= reintentos) break;
 
       await esperar(esperaBase * (intento + 1));
     }

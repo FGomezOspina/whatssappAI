@@ -24,7 +24,8 @@ test('nombre dirección y pago en una línea se conservan aunque el modelo omita
     assert.equal(s.datosDomicilio.direccion,'Mz 1 cs 19 sakabuma Dosquebradas');
     assert.equal(s.metodoPago,'transferencia bancaria');
     assert.doesNotMatch(respuesta, /- nombre|- direccion/);
-    for(const campo of ['cedula','correo','celular']) assert.ok(respuesta.includes(`- ${campo}`));
+    assert.doesNotMatch(respuesta, /- cedula|- correo/);
+    for(const campo of ['celular']) assert.ok(respuesta.includes(`- ${campo}`));
   }
 });
 test('la normalización recupera el nombre atrapado en dirección sin reemplazar un nombre confirmado', () => {

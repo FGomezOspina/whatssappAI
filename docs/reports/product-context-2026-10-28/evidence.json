@@ -1,0 +1,497 @@
+{
+  "capturedAt": "2026-10-28T22:12:38.312Z",
+  "kapso": [
+    {
+      "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSRTZERjMwMTg0NTA4OTExQUQ5AA==",
+      "text": "Dejo tu consulta pendiente de un asesor para que pueda ayudarte a confirmar la referencia. Conservo lo que hemos conversado.",
+      "timestamp": "2026-10-28T21:58:13.000Z",
+      "direction": "outbound",
+      "status": "sent"
+    },
+    {
+      "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDA2NUM2NkQ2MUU0NzMwNDJBNgA=",
+      "text": "Para perrito",
+      "timestamp": "2026-10-28T21:57:46.000Z",
+      "direction": "inbound",
+      "status": "read"
+    },
+    {
+      "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSQTdFMTBCNEY3RjE0QkYxRUFFAA==",
+      "text": "¿Es para perro o gato? Con eso te confirmo el Pro Plan UR que te sirve y su precio 😊\n\nPedido:\n- 1 x BR CAT SALMON x 1 kg: $30.500\n- 1 x ARENA KITTEN LAVANDA 8kg: $23.800\nTotal: $54.300",
+      "timestamp": "2026-10-28T21:52:09.000Z",
+      "direction": "outbound",
+      "status": "sent"
+    },
+    {
+      "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMERBNkM0RkQ2QzA3MkEzQTM5QgA=",
+      "text": "y el tiene problemas urinarios, me recomendaron pro plan ur, cuanto cuesta?",
+      "timestamp": "2026-10-28T21:51:41.000Z",
+      "direction": "inbound",
+      "status": "read"
+    }
+  ],
+  "states": [
+    {
+      "id": "fc490e3d-1b59-4146-b0bc-7c7ef7f1e0a7",
+      "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+      "status": "pendiente_asesor",
+      "updated_at": "2026-10-28T21:58:13.876125+00:00",
+      "state": {
+        "atencionHumana": {
+          "estado": "pendiente",
+          "motivo": "producto_no_resuelto",
+          "solicitadaEn": "2026-10-28T21:58:12.138Z"
+        },
+        "aclaracionIdentidad": {
+          "campo": null,
+          "consulta": "para perrito",
+          "intentos": 2
+        },
+        "ultimaConsultaProducto": {
+          "nivel": "media",
+          "razon": "atributo_faltante",
+          "fuente": "texto",
+          "creadoEn": "2026-10-28T21:52:06.594Z",
+          "etiqueta": "premium plan ur",
+          "terminos": [
+            "premium",
+            "plan",
+            "ur"
+          ],
+          "aclaracion": {
+            "campo": "especie",
+            "valores": [
+              "perro",
+              "gato"
+            ]
+          },
+          "presentacion": null,
+          "solicitudOriginal": {
+            "accion": "consultar",
+            "producto": {
+              "etapa": null,
+              "linea": null,
+              "marca": "PRO PLAN",
+              "accion": "consultar",
+              "tamano": null,
+              "especie": null,
+              "sabores": [],
+              "cantidad": null,
+              "mascotas": [],
+              "categoria": "alimento",
+              "referencia": "UR",
+              "condiciones": [
+                "urinario"
+              ],
+              "presentacion": null,
+              "subcategoria": null,
+              "textoVisible": "Pro Plan UR",
+              "mencionOriginal": null,
+              "intencionPresentaciones": null
+            },
+            "intencion": "consulta_producto"
+          },
+          "sinCoincidenciaInformada": false
+        },
+        "coincidenciasProductoPendientes": {
+          "consulta": "premium plan ur",
+          "creadoEn": "2026-10-28T21:52:06.594Z",
+          "expiraEn": "2026-10-28T22:12:06.594Z",
+          "opciones": [
+            {
+              "marca": "PRO PLAN",
+              "indice": 1,
+              "referencia": "PRO PLAN CANINE UR",
+              "presentaciones": [
+                {
+                  "peso": "2kg",
+                  "stock": null,
+                  "precio": 122000,
+                  "referencia": "PRO PLAN CANINE UR"
+                }
+              ],
+              "referenciaCatalogo": "PRO PLAN CANINE UR",
+              "referenciasEquivalentes": [
+                "PRO PLAN CANINE UR"
+              ]
+            },
+            {
+              "marca": "PRO PLAN",
+              "indice": 2,
+              "referencia": "PRO PLAN FELINE UR",
+              "presentaciones": [
+                {
+                  "peso": "1.5kg",
+                  "stock": null,
+                  "precio": 113600,
+                  "referencia": "PRO PLAN FELINE UR"
+                }
+              ],
+              "referenciaCatalogo": "PRO PLAN FELINE UR",
+              "referenciasEquivalentes": [
+                "PRO PLAN FELINE UR"
+              ]
+            },
+            {
+              "marca": "PRO PLAN",
+              "indice": 3,
+              "referencia": "PRO PLAN CANINE HA",
+              "presentaciones": [
+                {
+                  "peso": "2.7kg",
+                  "stock": null,
+                  "precio": 178000,
+                  "referencia": "PRO PLAN CANINE HA"
+                },
+                {
+                  "peso": "7.5kg",
+                  "stock": null,
+                  "precio": 375000,
+                  "referencia": "PRO PLAN CANINE HA"
+                }
+              ],
+              "referenciaCatalogo": "PRO PLAN CANINE HA",
+              "referenciasEquivalentes": [
+                "PRO PLAN CANINE HA"
+              ]
+            },
+            {
+              "marca": "PRO PLAN",
+              "indice": 4,
+              "referencia": "PRO PLAN CANINE OM",
+              "presentaciones": [
+                {
+                  "peso": "18l",
+                  "stock": null,
+                  "precio": 359800,
+                  "referencia": "PRO PLAN CANINE OM"
+                },
+                {
+                  "peso": "2kg",
+                  "stock": null,
+                  "precio": 122000,
+                  "referencia": "PRO PLAN CANINE OM"
+                }
+              ],
+              "referenciaCatalogo": "PRO PLAN CANINE OM",
+              "referenciasEquivalentes": [
+                "PRO PLAN CANINE OM"
+              ]
+            },
+            {
+              "marca": "PRO PLAN",
+              "indice": 5,
+              "referencia": "PRO PLAN CANINE LATA UR",
+              "presentaciones": [
+                {
+                  "peso": "unidad",
+                  "stock": null,
+                  "precio": 28600,
+                  "referencia": "PRO PLAN CANINE LATA UR"
+                }
+              ],
+              "referenciaCatalogo": "PRO PLAN CANINE LATA UR",
+              "referenciasEquivalentes": [
+                "PRO PLAN CANINE LATA UR"
+              ]
+            },
+            {
+              "marca": "PRO PLAN",
+              "indice": 6,
+              "referencia": "PRO PLAN FELINE LATA UR",
+              "presentaciones": [
+                {
+                  "peso": "unidad",
+                  "stock": null,
+                  "precio": 16700,
+                  "referencia": "PRO PLAN FELINE LATA UR"
+                }
+              ],
+              "referenciaCatalogo": "PRO PLAN FELINE LATA UR",
+              "referenciasEquivalentes": [
+                "PRO PLAN FELINE LATA UR"
+              ]
+            },
+            {
+              "marca": "PRO PLAN",
+              "indice": 7,
+              "referencia": "PRO PLAN GATO URINARY",
+              "presentaciones": [
+                {
+                  "peso": "1.5kg",
+                  "stock": null,
+                  "precio": 122000,
+                  "referencia": "PRO PLAN CAT URINARY"
+                },
+                {
+                  "peso": "3kg",
+                  "stock": null,
+                  "precio": 192900,
+                  "referencia": "PRO PLAN GATO URINARY"
+                }
+              ],
+              "referenciaCatalogo": "PRO PLAN CAT URINARY",
+              "referenciasEquivalentes": [
+                "PRO PLAN CAT URINARY",
+                "PRO PLAN GATO URINARY"
+              ]
+            }
+          ],
+          "tipoIntencion": "consulta_producto",
+          "turnoCreacion": 1,
+          "turnosRestantes": 3,
+          "intencionOriginal": "y el tiene problemas urinarios, me recomendaron pro plan ur, cuanto cuesta?",
+          "contextoProductoId": "1793224326594-1"
+        },
+        "carrito": [
+          {
+            "peso": "x 1 kg",
+            "marca": "BR CAT",
+            "precio": 30500,
+            "especie": "gato",
+            "cantidad": 1,
+            "categoria": "comida",
+            "referencia": "BR CAT SALMON",
+            "subcategoria": "concentrado",
+            "requiereConfirmacion": false
+          },
+          {
+            "peso": "8kg",
+            "marca": "ARENA KITTEN LAVANDA",
+            "precio": 23800,
+            "especie": "gato",
+            "cantidad": 1,
+            "categoria": "arena_sustrato",
+            "referencia": "ARENA KITTEN LAVANDA",
+            "subcategoria": "arena",
+            "requiereConfirmacion": false
+          }
+        ]
+      },
+      "last_message": "Para perrito",
+      "last_response": "Dejo tu consulta pendiente de un asesor para que pueda ayudarte a confirmar la referencia. Conservo lo que hemos conversado."
+    }
+  ],
+  "messages": [
+    {
+      "id": "8587087d-dcb3-01e2-7190-2151cf27da5f",
+      "direction": "outbound",
+      "body": "Dejo tu consulta pendiente de un asesor para que pueda ayudarte a confirmar la referencia. Conservo lo que hemos conversado.",
+      "created_at": "2026-10-28T21:58:14.059426+00:00",
+      "metadata": {
+        "interpretacion": null
+      }
+    },
+    {
+      "id": "76feec8a-4e31-e6aa-8eac-dad620b26e13",
+      "direction": "inbound",
+      "body": "Para perrito",
+      "created_at": "2026-10-28T21:57:54.951743+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "producto": {
+            "etapa": null,
+            "linea": null,
+            "marca": "PRO PLAN",
+            "accion": "consultar",
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "mascotas": [
+              {
+                "nombre": "Mascota 1",
+                "pesoKg": null
+              }
+            ],
+            "categoria": "alimento",
+            "referencia": "CANINE UR",
+            "condiciones": [
+              "urinario"
+            ],
+            "presentacion": null,
+            "subcategoria": null,
+            "textoVisible": "Para perrito",
+            "mencionOriginal": null,
+            "intencionPresentaciones": null
+          },
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": null,
+              "linea": null,
+              "marca": "PRO PLAN",
+              "accion": "consultar",
+              "tamano": null,
+              "especie": "perro",
+              "sabores": [],
+              "cantidad": null,
+              "mascotas": [
+                {
+                  "nombre": "Mascota 1",
+                  "pesoKg": null
+                }
+              ],
+              "categoria": "alimento",
+              "referencia": "CANINE UR",
+              "condiciones": [
+                "urinario"
+              ],
+              "presentacion": null,
+              "subcategoria": null,
+              "textoVisible": "Para perrito",
+              "mencionOriginal": null,
+              "intencionPresentaciones": null
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "6792dfb4-789e-7bd5-243d-4fb8c645e25d",
+      "direction": "outbound",
+      "body": "¿Es para perro o gato? Con eso te confirmo el Pro Plan UR que te sirve y su precio 😊\n\nPedido:\n- 1 x BR CAT SALMON x 1 kg: $30.500\n- 1 x ARENA KITTEN LAVANDA 8kg: $23.800\nTotal: $54.300",
+      "created_at": "2026-10-28T21:52:10.074812+00:00",
+      "metadata": {
+        "interpretacion": null
+      }
+    },
+    {
+      "id": "6eda31e5-9432-4234-a7f4-e71a47dc8692",
+      "direction": "inbound",
+      "body": "y el tiene problemas urinarios, me recomendaron pro plan ur, cuanto cuesta?",
+      "created_at": "2026-10-28T21:51:47.857267+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "producto": {
+            "etapa": null,
+            "linea": null,
+            "marca": "Pro Plan",
+            "accion": "consultar",
+            "tamano": null,
+            "especie": null,
+            "sabores": [],
+            "cantidad": null,
+            "mascotas": [],
+            "categoria": "alimento",
+            "referencia": "UR",
+            "condiciones": [
+              "problemas urinarios"
+            ],
+            "presentacion": null,
+            "subcategoria": null,
+            "textoVisible": "pro plan ur",
+            "mencionOriginal": null,
+            "intencionPresentaciones": null
+          },
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": null,
+              "linea": null,
+              "marca": "Pro Plan",
+              "accion": "consultar",
+              "tamano": null,
+              "especie": null,
+              "sabores": [],
+              "cantidad": null,
+              "mascotas": [],
+              "categoria": "alimento",
+              "referencia": "UR",
+              "condiciones": [
+                "problemas urinarios"
+              ],
+              "presentacion": null,
+              "subcategoria": null,
+              "textoVisible": "pro plan ur",
+              "mencionOriginal": "pro plan ur",
+              "intencionPresentaciones": null
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "refs": [
+    {
+      "id": "38fbf049-d4c4-43c4-aef2-a8da499d11fa",
+      "brand_id": "41ec8da4-b3f0-4527-a921-5c905c811397",
+      "name": "PRO PLAN CANINE LATA UR",
+      "species": "perro",
+      "category": "comida",
+      "metadata": {
+        "source": "productos.json",
+        "original_names": [
+          "PRO PLAN CANINE LATA UR"
+        ]
+      }
+    },
+    {
+      "id": "900230bf-4cf5-4522-afb6-739f0275909f",
+      "brand_id": "41ec8da4-b3f0-4527-a921-5c905c811397",
+      "name": "PRO PLAN CANINE UR",
+      "species": "perro",
+      "category": "comida",
+      "metadata": {
+        "source": "productos.json",
+        "original_names": [
+          "PRO PLAN CANINE UR 2KG"
+        ]
+      }
+    },
+    {
+      "id": "63c5bf10-2b32-4ea4-883e-bdbcdde1ae33",
+      "brand_id": "41ec8da4-b3f0-4527-a921-5c905c811397",
+      "name": "PRO PLAN CAT URINARY",
+      "species": "gato",
+      "category": "comida",
+      "metadata": {
+        "source": "productos.json",
+        "original_names": [
+          "PRO PLAN CAT URINARY 1.5KG"
+        ]
+      }
+    },
+    {
+      "id": "d5384457-bd1a-4a95-ba05-b54cf1cc1994",
+      "brand_id": "41ec8da4-b3f0-4527-a921-5c905c811397",
+      "name": "PRO PLAN GATO URINARY",
+      "species": "gato",
+      "category": "comida",
+      "metadata": {
+        "source": "productos.json",
+        "original_names": [
+          "PRO PLAN GATO URINARY 3KG"
+        ]
+      }
+    },
+    {
+      "id": "c7bd39ca-5555-4f3f-a143-89720a5d49f5",
+      "brand_id": "41ec8da4-b3f0-4527-a921-5c905c811397",
+      "name": "PRO PLAN FELINE UR",
+      "species": "gato",
+      "category": "comida",
+      "metadata": {
+        "source": "productos.json",
+        "original_names": [
+          "PRO PLAN FELINE UR 1.5KG"
+        ]
+      }
+    },
+    {
+      "id": "4d75980f-c69e-4fc1-bd00-3f1a9d7160ec",
+      "brand_id": "41ec8da4-b3f0-4527-a921-5c905c811397",
+      "name": "PRO PLAN FELINE LATA UR",
+      "species": "gato",
+      "category": "comida",
+      "metadata": {
+        "source": "productos.json",
+        "original_names": [
+          "PRO PLAN FELINE LATA UR"
+        ]
+      }
+    }
+  ]
+}

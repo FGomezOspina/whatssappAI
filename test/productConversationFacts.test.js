@@ -140,8 +140,8 @@ test('mensaje con direccion y transferencia valida la consulta de producto separ
   assert.match(mensajes[0], /@luzg5604/);
   assert.doesNotMatch(mensajes[0], /NUTRIPRUEBA/);
   assert.match(mensajes[1], /^El NUTRIPRUEBA de 30 kg cuesta/);
-  assert.match(mensajes[1], /cedula/);
-  assert.match(mensajes[1], /correo/);
+  assert.doesNotMatch(mensajes[1], /cedula/);
+  assert.doesNotMatch(mensajes[1], /correo/);
   assert.match(mensajes[1], /celular/);
   assert.match(mensajes[1], /nombre/);
   assert.doesNotMatch(mensajes[1], /opción exacta|Datos para transferencia|- direccion|- método de pago/);

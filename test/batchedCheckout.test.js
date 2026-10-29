@@ -27,7 +27,7 @@ const lote = `Nombre: ${datosCliente.nombre}\nCédula: ${datosCliente.cedula}\nC
 
 test('domicilio pide todos los pendientes y al recibir el lote muestra resumen antes de confirmar', () => {
   const estado = pedido();
-  const primera = turno(estado, 'Tienen domicilio');
+  const primera = turno(estado, 'Tienen domicilio, necesito factura electrónica');
   assert.doesNotMatch(primera, /en un solo mensaje/i);
   for (const campo of ['nombre', 'cedula', 'celular', 'correo', 'direccion completa', 'método de pago']) {
     assert.ok(primera.includes(`- ${campo}`), campo);
@@ -48,7 +48,7 @@ test('domicilio pide todos los pendientes y al recibir el lote muestra resumen a
 
 test('respuesta parcial conserva datos y pide juntos solo los faltantes tras recargar estado', () => {
   let estado = pedido();
-  turno(estado, 'Quiero domicilio');
+  turno(estado, 'Quiero domicilio con factura electrónica');
   turno(estado, 'Dirección: Calle 10 # 20-30\nContra entrega', {
     entrega: { tipo: 'domicilio', direccion, metodoPago: 'efectivo' },
   });
@@ -105,7 +105,8 @@ test('consignacion con y sin tilde envia las cuentas y llave una vez y conserva 
     assert.doesNotMatch(respuesta, /- método de pago|en un solo mensaje/i);
     const siguiente = turno(estado, 'Nombre: Cliente Prueba');
     assert.doesNotMatch(siguiente, /07300007105|127200128222|@luzg5604|- nombre/);
-    assert.match(siguiente, /- correo/);
+    assert.match(siguiente, /- celular/);
+    assert.doesNotMatch(siguiente, /- correo|- cedula/);
   }
 });
 
@@ -175,7 +176,7 @@ test('router con pedido activo delega datos al motor y el humanizador no fragmen
   });
   const evento = { channelUserId: 'usuario-test', phoneNumberId: 'canal-test' };
   const respuesta = await modulo.exports.responderEventoEntrante({ ...evento, text: 'Tienen domicilio', messageId: 'inicio' });
-  for (const campo of ['nombre', 'cedula', 'celular', 'correo', 'direccion completa', 'método de pago']) {
+  for (const campo of ['nombre', 'celular', 'direccion completa', 'método de pago']) {
     assert.ok(respuesta.includes(`- ${campo}`), campo);
   }
   lectura = decision({ datosCliente, entrega: { tipo: 'domicilio', direccion, metodoPago: 'efectivo' }, respuestaConversacional: '¿Finalizamos?' });
@@ -281,7 +282,7 @@ test('cuentas durante pedido incompleto se acompanian solo de los datos faltante
     intencion: 'metodo_pago', accion: 'consultar_pago', entrega: {},
   });
   assert.match(respuesta, /07300007105/);
-  for (const campo of ['nombre', 'cedula', 'correo', 'celular']) assert.ok(respuesta.includes(`- ${campo}`));
+  for (const campo of ['nombre', 'celular']) assert.ok(respuesta.includes(`- ${campo}`));
   assert.doesNotMatch(respuesta, /- direccion completa|- método de pago|finalizamos el pedido/);
   assert.equal(estado.esperandoDatosDomicilio, true);
   assert.equal(estado.pedidoConfirmado, false);

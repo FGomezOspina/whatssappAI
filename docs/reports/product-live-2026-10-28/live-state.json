@@ -1,0 +1,125 @@
+{
+  "at": "2026-10-29T00:23:50.118439+00:00",
+  "status": "pendiente_asesor",
+  "cart": [
+    {
+      "peso": "x 1 kg",
+      "marca": "BR CAT",
+      "precio": 30500,
+      "especie": "gato",
+      "cantidad": 1,
+      "categoria": "comida",
+      "referencia": "BR CAT SALMON",
+      "subcategoria": "concentrado",
+      "requiereConfirmacion": false
+    },
+    {
+      "peso": "8kg",
+      "marca": "ARENA KITTEN LAVANDA",
+      "precio": 23800,
+      "especie": "gato",
+      "cantidad": 1,
+      "categoria": "arena_sustrato",
+      "referencia": "ARENA KITTEN LAVANDA",
+      "subcategoria": "arena",
+      "requiereConfirmacion": false
+    }
+  ],
+  "handoff": {
+    "estado": "pendiente",
+    "motivo": "criterio_veterinario",
+    "solicitadaEn": "2026-10-29T00:06:11.205Z"
+  },
+  "pending": {
+    "nivel": "alta",
+    "razon": "nombre_exacto",
+    "fuente": "texto",
+    "creadoEn": "2026-10-29T00:23:48.054Z",
+    "etiqueta": "premium plan canine ur perro",
+    "terminos": [
+      "premium",
+      "plan",
+      "canine",
+      "ur",
+      "perro"
+    ],
+    "aclaracion": {
+      "campo": "presentacion",
+      "valores": [
+        "2kg"
+      ]
+    },
+    "presentacion": null,
+    "solicitudOriginal": {
+      "accion": "consultar",
+      "producto": {
+        "etapa": null,
+        "linea": null,
+        "marca": "PRO PLAN",
+        "accion": "consultar",
+        "tamano": null,
+        "especie": "perro",
+        "sabores": [],
+        "cantidad": null,
+        "duracion": null,
+        "mascotas": [],
+        "categoria": "comida",
+        "referencia": "PRO PLAN CANINE UR",
+        "condiciones": [
+          "urinario"
+        ],
+        "presentacion": null,
+        "subcategoria": "concentrado",
+        "textoVisible": "el concentrado",
+        "nombreFamilia": "PRO PLAN CANINE UR",
+        "mencionOriginal": null,
+        "requierePresentacion": false,
+        "intencionPresentaciones": "todas",
+        "referenciasEquivalentes": [
+          "PRO PLAN CANINE UR"
+        ],
+        "seleccionPresentaciones": {
+          "tipo": "alternativas",
+          "grupos": [
+            {
+              "peso": "2kg",
+              "stock": null,
+              "precio": 122000,
+              "mascotas": [],
+              "metadata": {
+                "llave": "1387",
+                "codigo": "10301011387",
+                "source": "productos.json",
+                "codigos": [
+                  "10301011387"
+                ],
+                "nombre_original": "PRO PLAN CANINE UR 2KG"
+              },
+              "referencia": "PRO PLAN CANINE UR"
+            }
+          ],
+          "pendientes": []
+        },
+        "coincidenciaVisualValidada": false,
+        "presentacionesEquivalentes": [
+          {
+            "peso": "2kg",
+            "stock": null,
+            "precio": 122000,
+            "metadata": {
+              "llave": "1387",
+              "codigo": "10301011387",
+              "source": "productos.json",
+              "codigos": [
+                "10301011387"
+              ],
+              "nombre_original": "PRO PLAN CANINE UR 2KG"
+            },
+            "referencia": "PRO PLAN CANINE UR"
+          }
+        ]
+      },
+      "intencion": "consulta_producto"
+    }
+  }
+}

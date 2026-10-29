@@ -105,7 +105,7 @@ function construirCatalogo({ marcas = [], referencias = [], presentaciones = [] 
     metadata: marca.metadata || {},
     referencias: (referenciasPorMarca.get(marca.id) || []).map((referencia) => ({
       nombre: referencia.name,
-      especie: referencia.species || "perro",
+      especie: referencia.species || null,
       categoria: referencia.category || null,
       subcategoria: referencia.subcategory || null,
       etapa: referencia.life_stage || null,
@@ -139,7 +139,7 @@ function construirCatalogoDesdeBusqueda(filas = []) {
     const presentaciones = Array.isArray(fila.presentations) ? fila.presentations : [];
     marcas.get(nombreMarca).referencias.push({
       nombre: fila.reference_name,
-      especie: fila.species || "perro",
+      especie: fila.species || null,
       categoria: fila.category || null,
       subcategoria: fila.subcategory || null,
       etapa: fila.life_stage || null,
@@ -193,6 +193,7 @@ async function buscarProductosCatalogoCliente(cliente = null, opciones = {}) {
   let filas =
     (await requestSupabase(`rpc/${CATALOG_SEARCH_RPC}`, {
       method: "POST",
+      signal: opciones.signal,
       body: JSON.stringify({
         p_client_id: clienteActual.id,
         p_query: query,
@@ -203,14 +204,15 @@ async function buscarProductosCatalogoCliente(cliente = null, opciones = {}) {
   // La similitud del RPC usa todo el documento y puede diluir una errata
   // de marca. Comparar nombres cortos del mismo cliente recupera candidatos,
   // sin confirmar variantes ni consultar catálogos de otras empresas.
-  if (opciones.recuperarMarcaAproximada && /^[a-z]{5,}$/i.test(normalizar(query))) {
-    const marcas = await requestSupabase(`${BRANDS_TABLE}?client_id=eq.${clienteActual.id}&active=eq.true&select=name&order=name&limit=1000`);
+  if (opciones.recuperarMarcaAproximada && /^[a-z]{5,}$/i.test(normalizar(query)) &&
+      !filas.some(fila => normalizar(fila.brand_name) === normalizar(query))) {
+    const marcas = await requestSupabase(`${BRANDS_TABLE}?client_id=eq.${clienteActual.id}&active=eq.true&select=name&order=name&limit=1000`, { signal: opciones.signal });
     const token = normalizar(query);
     const exacta = marcas.some(m => normalizar(m.name) === token);
     const cercanas = exacta ? [] : marcas.filter(m => distanciaDamerauLevenshtein(normalizar(m.name), token) === 1);
     if (cercanas.length > 0 && cercanas.length <= 3) {
       const resultados = await Promise.all(cercanas.map(m => requestSupabase(`rpc/${CATALOG_SEARCH_RPC}`, {
-        method: 'POST', body: JSON.stringify({p_client_id: clienteActual.id, p_query: m.name, p_limit: limit}),
+        method: 'POST', signal: opciones.signal, body: JSON.stringify({p_client_id: clienteActual.id, p_query: m.name, p_limit: limit}),
       })));
       const unicas = new Map([...resultados.flat(), ...filas].map(f => [f.reference_id, f]));
       filas = [...unicas.values()];

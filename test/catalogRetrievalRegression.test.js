@@ -52,7 +52,7 @@ test('recuperación remota completa: resultados RPC mezclados no desplazan la ma
     } : req(name),
   });
   const resultado = await modulo.exports.seleccionarCatalogoParaIA({ mensaje, mensajeOriginal: mensaje, clasificacion, cliente: { id: 'fixture' } });
-  assert.ok(consultas.some(q => q.includes('pouch')));
+  assert.equal(consultas.length, 1, 'a validated literal result needs no synonym round trip');
   comprobarConsulta(resultado.catalogo);
 });
 

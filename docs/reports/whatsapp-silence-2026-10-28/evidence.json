@@ -1,0 +1,313 @@
+{
+  "capturedAt": "2026-10-28T21:29:04.829Z",
+  "messageId": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDYyMEQ0NzgxNkFGNEI0NUMyQwA=",
+  "messageHash": "63c992f5c2f2",
+  "conversationHash": "bd27f3a287d6",
+  "channelUser": "***4163",
+  "kapso": [
+    {
+      "timestamp": "2026-10-28T21:14:14.000Z",
+      "direction": "inbound",
+      "status": "read",
+      "messageHash": "63c992f5c2f2",
+      "text": "y el tiene problemas urinarios, me recomendaron pro plan ur, cuanto cuesta?"
+    },
+    {
+      "timestamp": "2026-10-28T21:08:48.000Z",
+      "direction": "outbound",
+      "status": "sent",
+      "messageHash": "2bd209170e79",
+      "text": "Para orientarte sobre diagnóstico o tratamiento se necesita criterio veterinario. Dejo tu consulta pendiente de un asesor para que te ayude con la orientación especializada."
+    },
+    {
+      "timestamp": "2026-10-28T21:08:26.000Z",
+      "direction": "inbound",
+      "status": "read",
+      "messageHash": "2d8c785cbd18",
+      "text": "Tengo un perrito de 8 anos y se rasca mucho, que le podría dar?"
+    }
+  ],
+  "ngrok": [
+    {
+      "requestId": "airt_3LL8bcJ7Xjmu8mnN5leEpZ4cyoL",
+      "start": "2026-10-28T16:14:19-05:00",
+      "status": "200 OK",
+      "durationNs": 1955336166,
+      "messageHash": "63c992f5c2f2",
+      "bufferKapsoMs": 5000
+    }
+  ],
+  "supabase": [
+    {
+      "conversationId": "a0416702-6b1e-4c4d-862e-805030e3036c",
+      "tenantHash": "dbad8ca0444c",
+      "status": "pendiente_asesor",
+      "updated_at": "2026-10-28T21:14:25.882334+00:00",
+      "last_message": "y el tiene problemas urinarios, me recomendaron pro plan ur, cuanto cuesta?",
+      "last_response": "Para orientarte sobre diagnóstico o tratamiento se necesita criterio veterinario. Dejo tu consulta pendiente de un asesor para que te ayude con la orientación especializada.",
+      "handoff": {
+        "estado": "pendiente",
+        "motivo": "criterio_veterinario",
+        "solicitadaEn": "2026-10-28T21:08:46.570Z"
+      },
+      "processed": true,
+      "cartCount": 2
+    }
+  ],
+  "messages": [
+    {
+      "id": "97cd7d3d-8b7e-ee9f-05e6-50953cf09ba9",
+      "direction": "inbound",
+      "created_at": "2026-10-28T21:14:21.792356+00:00",
+      "body": "y el tiene problemas urinarios, me recomendaron pro plan ur, cuanto cuesta?",
+      "metadataKeys": [
+        "tipo",
+        "indice",
+        "turnId",
+        "mediaId",
+        "eventKey",
+        "transcripcion",
+        "interpretacion",
+        "alcanceInterpretacion"
+      ],
+      "eventKeyHash": "47b6565982a1"
+    },
+    {
+      "id": "bcfa6ad7-ab91-a00c-b9a4-c79fdefa1fee",
+      "direction": "outbound",
+      "created_at": "2026-10-28T21:08:49.584783+00:00",
+      "body": "Para orientarte sobre diagnóstico o tratamiento se necesita criterio veterinario. Dejo tu consulta pendiente de un asesor para que te ayude con la orientación especializada.",
+      "metadataKeys": [
+        "turnId",
+        "eventKey"
+      ],
+      "eventKeyHash": "cf7958903c87"
+    },
+    {
+      "id": "75467f0c-5867-9e7c-abf3-8b3c75731458",
+      "direction": "inbound",
+      "created_at": "2026-10-28T21:08:35.448522+00:00",
+      "body": "Tengo un perrito de 8 anos y se rasca mucho, que le podría dar?",
+      "metadataKeys": [
+        "tipo",
+        "indice",
+        "turnId",
+        "mediaId",
+        "eventKey",
+        "transcripcion",
+        "interpretacion",
+        "alcanceInterpretacion"
+      ],
+      "eventKeyHash": "dd1e129aa70c"
+    },
+    {
+      "id": "fd21d979-1935-e69e-e67f-accd3f63edd6",
+      "direction": "outbound",
+      "created_at": "2026-10-28T21:02:14.010393+00:00",
+      "body": "Sí, CALSYN en 120ml cuesta $29.000. ¿Cuál te interesa?",
+      "metadataKeys": [
+        "turnId",
+        "eventKey"
+      ],
+      "eventKeyHash": "e981dd8dd06c"
+    }
+  ],
+  "webhook_deliveries": {
+    "httpStatus": 200,
+    "keys": [
+      "data",
+      "paging"
+    ],
+    "entries": [
+      {
+        "id": "b2ef3806-f016-4418-bb33-15c2901b0be6",
+        "created_at": "2026-10-28T18:14:19-03:00",
+        "status": "delivered",
+        "response_status": 200,
+        "attempt_count": 1,
+        "delivered_at": "2026-10-28T18:14:21-03:00",
+        "hasError": false,
+        "event": "whatsapp.message.received"
+      },
+      {
+        "id": "cb1c210f-0668-49b8-a367-ba8bee2b39e4",
+        "created_at": "2026-10-28T18:08:32-03:00",
+        "status": "delivered",
+        "response_status": 200,
+        "attempt_count": 1,
+        "delivered_at": "2026-10-28T18:08:35-03:00",
+        "hasError": false,
+        "event": "whatsapp.message.received"
+      },
+      {
+        "id": "bfc1912b-a561-4492-9eac-b992702aa231",
+        "created_at": "2026-10-28T18:01:48-03:00",
+        "status": "delivered",
+        "response_status": 200,
+        "attempt_count": 1,
+        "delivered_at": "2026-10-28T18:01:51-03:00",
+        "hasError": false,
+        "event": "whatsapp.message.received"
+      },
+      {
+        "id": "cf22d083-ad9f-4331-85ae-c2ab3795b03e",
+        "created_at": "2026-10-28T17:53:53-03:00",
+        "status": "delivered",
+        "response_status": 200,
+        "attempt_count": 1,
+        "delivered_at": "2026-10-28T17:53:55-03:00",
+        "hasError": false,
+        "event": "whatsapp.message.received"
+      },
+      {
+        "id": "38bd691e-062b-406c-936b-cfd680e80992",
+        "created_at": "2026-10-28T17:29:55-03:00",
+        "status": "delivered",
+        "response_status": 200,
+        "attempt_count": 1,
+        "delivered_at": "2026-10-28T17:29:57-03:00",
+        "hasError": false,
+        "event": "whatsapp.message.received"
+      },
+      {
+        "id": "e155d9d5-42b8-4a4b-b6c4-264fd7bd8fc5",
+        "created_at": "2026-10-28T17:28:45-03:00",
+        "status": "delivered",
+        "response_status": 200,
+        "attempt_count": 1,
+        "delivered_at": "2026-10-28T17:28:47-03:00",
+        "hasError": false,
+        "event": "whatsapp.message.received"
+      },
+      {
+        "id": "d667a749-7b9b-465b-8e99-744afacac336",
+        "created_at": "2026-10-28T17:27:21-03:00",
+        "status": "delivered",
+        "response_status": 200,
+        "attempt_count": 1,
+        "delivered_at": "2026-10-28T17:27:22-03:00",
+        "hasError": false,
+        "event": "whatsapp.message.received"
+      },
+      {
+        "id": "2145fa66-6bbf-4932-84c6-bb375d0f69cf",
+        "created_at": "2026-10-28T17:27:15-03:00",
+        "status": "delivered",
+        "response_status": 200,
+        "attempt_count": 1,
+        "delivered_at": "2026-10-28T17:27:18-03:00",
+        "hasError": false,
+        "event": "whatsapp.message.received"
+      },
+      {
+        "id": "f477d834-e46a-43bf-8bb5-4c75cddc58f0",
+        "created_at": "2026-10-28T11:51:09-03:00",
+        "status": "delivered",
+        "response_status": 200,
+        "attempt_count": 1,
+        "delivered_at": "2026-10-28T11:51:11-03:00",
+        "hasError": false,
+        "event": "whatsapp.message.received"
+      },
+      {
+        "id": "02d2b6a8-c9b1-4795-a1f0-a225a8c0c022",
+        "created_at": "2026-10-28T11:49:57-03:00",
+        "status": "delivered",
+        "response_status": 200,
+        "attempt_count": 1,
+        "delivered_at": "2026-10-28T11:50:00-03:00",
+        "hasError": false,
+        "event": "whatsapp.message.received"
+      }
+    ]
+  },
+  "api_logs": {
+    "httpStatus": 200,
+    "keys": [
+      "data",
+      "paging"
+    ],
+    "entries": [
+      {
+        "id": "aafc317b-3d99-4b1a-a87a-7fcdd1d0544d",
+        "created_at": "2026-10-28T21:29:04.381097Z",
+        "response_status": 200,
+        "endpoint": "/platform/v1/whatsapp/messages",
+        "http_method": "GET",
+        "hasError": false
+      },
+      {
+        "id": "8325cc6b-47b6-4a1c-8c2f-b4e9e178d149",
+        "created_at": "2026-10-28T21:28:38.532088Z",
+        "response_status": 200,
+        "endpoint": "/platform/v1/api_logs",
+        "http_method": "GET",
+        "hasError": false
+      },
+      {
+        "id": "6d255027-0a26-46fc-a28f-b32654280d12",
+        "created_at": "2026-10-28T21:28:37.980484Z",
+        "response_status": 200,
+        "endpoint": "/platform/v1/webhook_deliveries",
+        "http_method": "GET",
+        "hasError": false
+      },
+      {
+        "id": "57d851c5-935b-4943-985e-e0fe065a6c36",
+        "created_at": "2026-10-28T21:28:36.699253Z",
+        "response_status": 200,
+        "endpoint": "/platform/v1/whatsapp/messages",
+        "http_method": "GET",
+        "hasError": false
+      },
+      {
+        "id": "395124ea-3dc0-4d3c-adaf-0e4f48c5a9bf",
+        "created_at": "2026-10-28T21:25:02.392914Z",
+        "response_status": 200,
+        "endpoint": "/platform/v1/whatsapp/messages",
+        "http_method": "GET",
+        "hasError": false
+      },
+      {
+        "id": "a7b049f0-6e8f-4809-880e-b914b0d2e7b2",
+        "created_at": "2026-10-28T21:14:25.649453Z",
+        "response_status": 200,
+        "endpoint": "/meta/whatsapp/v24.0/597907523413541/messages",
+        "http_method": "POST",
+        "hasError": false
+      },
+      {
+        "id": "7d1bd169-7f9e-4d87-a6ee-fe531caf8c14",
+        "created_at": "2026-10-28T21:08:48.949491Z",
+        "response_status": 200,
+        "endpoint": "/meta/whatsapp/v24.0/597907523413541/messages",
+        "http_method": "POST",
+        "hasError": false
+      },
+      {
+        "id": "47d6bc33-6f17-4bed-99e7-533d86436cf1",
+        "created_at": "2026-10-28T21:08:38.907708Z",
+        "response_status": 200,
+        "endpoint": "/meta/whatsapp/v24.0/597907523413541/messages",
+        "http_method": "POST",
+        "hasError": false
+      },
+      {
+        "id": "7fb0d6fe-912b-4970-976b-2788a368a09e",
+        "created_at": "2026-10-28T21:02:13.389678Z",
+        "response_status": 200,
+        "endpoint": "/meta/whatsapp/v24.0/597907523413541/messages",
+        "http_method": "POST",
+        "hasError": false
+      },
+      {
+        "id": "17802a04-564c-48c5-bf7a-c386d12a0276",
+        "created_at": "2026-10-28T21:01:54.993775Z",
+        "response_status": 200,
+        "endpoint": "/meta/whatsapp/v24.0/597907523413541/messages",
+        "http_method": "POST",
+        "hasError": false
+      }
+    ]
+  }
+}

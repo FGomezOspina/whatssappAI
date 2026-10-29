@@ -1,0 +1,532 @@
+const { formatoAlimento } = require('../utils/foodFormat');
+const { crearRankingIdentidad } = require('./catalogIdentityRanking');
+const { buscarIdentidadesVerificadas } = require('../repositories/productIdentityEvidenceRepository');
+const { textoBusquedaReferencia } = require('../utils/catalogSearchDocument');
+const { envolver } = require('./pipelineTelemetry');
+const { admiteEspecie } = require('../utils/catalogCommercialRules');
+const { _internals: { marcasExplicitasCompatibles, marcaExactaConsultada, marcaCompatibleConIdentidad, tokensDistintivos, similitudTokenFlexible, distanciaLevenshtein } } = require("./productMatchValidator");
+const { normalizarMarcasCatalogo, normalizar, normalizarPeso } = require("../utils/text");
+const { buscarProductosCatalogoCliente } = require("../repositories/productRepository");
+const {
+  esSenalReferenciaProducto,
+} = require("./pendingProductMatchService");
+
+const DEFAULT_TEXT_REFERENCE_LIMIT = 8;
+const DEFAULT_VISION_REFERENCE_LIMIT = 20;
+const MAX_REFERENCE_LIMIT = 20;
+const TOKENS_CONVERSACIONALES = new Set(
+  [
+    "buen",
+    "buena",
+    "buenas",
+    "bueno",
+    "buenos",
+    "chao",
+    "catalogo",
+    "catalogos",
+    "calle",
+    "carrera",
+    "cra",
+    "cl",
+    "cual",
+    "cuales",
+    "dia",
+    "dias",
+    "de",
+    "del",
+    "direccion",
+    "dir",
+    "domicilio",
+    "gracia",
+    "gracias",
+    "hago",
+    "hacer",
+    "pedir",
+    "pedido",
+    "pedidos",
+    "hola",
+    "el",
+    "en",
+    "es",
+    "efectivo",
+    "me",
+    "noche",
+    "noches",
+    "para",
+    "pagar",
+    "pago",
+    "por",
+    "favor",
+    "porfa",
+    "pregunta",
+    "preguntar",
+    "que",
+    "tarde",
+    "tardes",
+    "te",
+    "tiene",
+    "tienes",
+    "tienen",
+    "maneja",
+    "manejan",
+    "manejas",
+    "manejamos",
+    "manejo",
+    "quiero",
+    "kg",
+    "kl",
+    "kilo",
+    "kilos",
+    "gr",
+    "g",
+    "gramos",
+    "la",
+    "las",
+    "los",
+    "un",
+    "una",
+    "avenida",
+    "av",
+    "barrio",
+    "bodega",
+    "local",
+    "torre",
+    "apartamento",
+    "apto",
+    "transferencia",
+  ].map(normalizar)
+);
+
+function referenciasCatalogo(catalogo = []) {
+  return catalogo.flatMap((marca) =>
+    (marca.referencias || []).map((referencia) => ({
+      marca,
+      referencia,
+    }))
+  );
+}
+
+function limiteReferencias(clasificacion = {}) {
+  const variable = clasificacion.requiereVision
+    ? process.env.VISION_CATALOG_CONTEXT_MAX_REFERENCES
+    : process.env.CATALOG_CONTEXT_MAX_REFERENCES;
+  const defecto = clasificacion.requiereVision ? DEFAULT_VISION_REFERENCE_LIMIT : DEFAULT_TEXT_REFERENCE_LIMIT;
+  const valor = Number(variable || defecto);
+  return Math.max(0, Math.min(valor, MAX_REFERENCE_LIMIT));
+}
+
+function textoBusqueda(mensaje = "", estado = {}) {
+  if (mensaje.trim() && !esSenalReferenciaProducto(mensaje)) {
+    return mensaje;
+  }
+
+  const partes = [
+    mensaje,
+    estado.marca,
+    estado.ultimaSeleccion?.marca,
+    estado.ultimaSeleccion?.referencia,
+    estado.referenciasPendientes?.marca,
+    estado.referenciasPendientes?.texto,
+    JSON.stringify(estado.criterios || {}),
+  ];
+
+  return partes.filter(Boolean).join(" ");
+}
+
+function expandirConsulta(texto = "") {
+  const normalizado = normalizar(texto)
+    .replace(/\b(?:a\s+)?domicilio\b.*$/g, " ")
+    .replace(/\b(?:la\s+)?direcci(?:o|0)n(?:\s+es)?\b.*$/g, " ")
+    .replace(/\b(?:para\s+)?pagar\b.*$/g, " ")
+    .trim();
+  const expansiones = [normalizado];
+
+  if (/dog\s*chow|dogchow|doc\s*chow|dog\s*show/.test(normalizado)) expansiones.push("dog chow");
+  if (/brabecto|bravecto/.test(normalizado)) expansiones.push("bravecto");
+  if (/\b(pro|premium|premiun)\b/.test(normalizado)) expansiones.push("premium pro premiun");
+  if (/\b(pequeno|pequena|pequenos|pequenas|mini)\b/.test(normalizado)) {
+    expansiones.push("rp raza pequena");
+  }
+  if (/\b(grande|grandes|mediano|mediana|medianos|medianas)\b/.test(normalizado)) {
+    expansiones.push("rg rmg raza grande");
+  }
+  if (/purg|desparas|parasito|antiparas/.test(normalizado)) expansiones.push("desparasitante medicamento");
+  if (/pulga|garrapata/.test(normalizado)) expansiones.push("antipulgas medicamento");
+  if (/snack|premio|galleta/.test(normalizado)) expansiones.push("snack");
+  if (/arena|sustrato/.test(normalizado)) expansiones.push("arena sustrato");
+  const formato = formatoAlimento(normalizado);
+  if (formato === "comida_humeda") expansiones.push("comida alimento humeda pouch sobre");
+  else if (/comida|alimento|concentrado|cuido|purina/.test(normalizado)) {
+    expansiones.push("comida alimento concentrado");
+  }
+  if (/juguete|pelota|mordedor/.test(normalizado)) expansiones.push("juguete accesorio");
+
+  return normalizar(expansiones.join(" "));
+}
+
+function tokens(texto = "") {
+  return expandirConsulta(texto)
+    .split(/\s+/)
+    .filter((token) => token.length > 1 && !TOKENS_CONVERSACIONALES.has(token))
+    .filter((token) => !/^\d+(?:\.\d+)?$/.test(token));
+}
+
+function contiene(texto, token) {
+  const tokenNormalizado = normalizar(token);
+  if (!tokenNormalizado) return false;
+  if (!/\s/.test(tokenNormalizado)) {
+    return ` ${texto} `.includes(` ${tokenNormalizado} `);
+  }
+  return texto.includes(tokenNormalizado);
+}
+
+function puntuarReferencia({ marca, referencia }, consulta, tokensConsulta) {
+  const textoMarca = normalizar(marca.marca || "");
+  const textoReferencia = normalizar(textoBusquedaReferencia(referencia));
+  const tokensNombre = tokensDistintivos(referencia.nombre || "");
+  const tokensMarca = new Set(textoMarca.split(/\s+/));
+  const tokensIdentidad = tokensDistintivos(consulta).filter(token => !tokensMarca.has(token));
+  const textoCompleto = `${textoMarca} ${textoReferencia}`;
+  let puntos = 0;
+
+  // Los nombres comerciales declarados deben entrar al contexto antes que
+  // referencias que solo comparten un peso o una categoria generica.
+  const aliases = [...(referencia.aliases || []), ...(referencia.metadata?.aliases || [])];
+  if (aliases.some(alias => contiene(consulta, alias))) puntos += 100;
+  if (textoMarca && contiene(consulta, textoMarca)) puntos += 40;
+  if (normalizar(referencia.nombre || "") && contiene(consulta, normalizar(referencia.nombre))) puntos += 60;
+
+  tokensConsulta.forEach((token) => {
+    if (contiene(textoMarca, token)) puntos += 10;
+    if (contiene(textoReferencia, token)) puntos += token.length <= 2 ? 4 : 8;
+  });
+
+  // El nombre pedido pesa mas que compartir marca, especie o presentacion.
+  // Recuperar una errata de una letra permite validarla despues; no confirma
+  // por si sola la identidad ni permite sustituir variantes comerciales.
+  for (const token of tokensIdentidad) {
+    if (tokensNombre.some(nombre => nombre === token ||
+      (nombre.length >= 5 && token.length >= 5 && (similitudTokenFlexible(nombre, token) >= 0.94 || distanciaLevenshtein(nombre, token) === 1)))) puntos += 30;
+  }
+  const nombreCorto = normalizar(referencia.nombre || '');
+  if (/^[a-z]{5,}$/.test(nombreCorto) && tokensConsulta.some(t => distanciaLevenshtein(t, nombreCorto) === 1)) puntos += 60;
+  const pesoConsulta = normalizarPeso(consulta);
+  if (pesoConsulta) {
+    const coincidePeso = (referencia.presentaciones || []).some((presentacion) =>
+      normalizarPeso(presentacion.peso).includes(pesoConsulta)
+    );
+    if (coincidePeso) puntos += 6;
+  }
+
+  if (consulta.includes("gato") && admiteEspecie(referencia, "gato")) puntos += 10;
+  if (consulta.includes("perro") && admiteEspecie(referencia, "perro")) puntos += 10;
+  if (consulta.includes("desparasitante") && referencia.subcategoria === "desparasitante") puntos += 20;
+  if (consulta.includes("antipulgas") && referencia.subcategoria === "antipulgas") puntos += 20;
+
+  return puntos;
+}
+
+function agruparCatalogo(items = []) {
+  const grupos = new Map();
+  items.forEach(({ marca, referencia }) => {
+    const nombre = marca.marca;
+    if (!grupos.has(nombre)) {
+      grupos.set(nombre, { ...marca, referencias: [] });
+    }
+    grupos.get(nombre).referencias.push(referencia);
+  });
+  return Array.from(grupos.values());
+}
+
+function combinarCatalogosCandidatos(
+  catalogoLocal = [],
+  catalogoRemoto = [],
+  limite = MAX_REFERENCE_LIMIT
+) {
+  const locales = referenciasCatalogo(catalogoLocal);
+  const remotos = referenciasCatalogo(catalogoRemoto);
+  const candidatos = [
+    ...locales.slice(0, Math.min(5, limite)),
+    ...remotos,
+    ...locales.slice(Math.min(5, limite)),
+  ];
+  const vistos = new Set();
+  const seleccionados = candidatos.filter(({ marca, referencia }) => {
+    const clave = `${normalizar(marca.marca)}::${normalizar(
+      referencia.nombre
+    )}`;
+    if (vistos.has(clave)) return false;
+    vistos.add(clave);
+    return true;
+  });
+  return agruparCatalogo(seleccionados.slice(0, limite));
+}
+
+function seleccionarCatalogoLocal({ catalogo = [], mensaje = "", estado = {}, clasificacion = {} } = {}) {
+  const totalReferencias = referenciasCatalogo(catalogo).length;
+  const limite = limiteReferencias(clasificacion);
+
+  if (!limite) {
+    return {
+      catalogo: [],
+      metadata: { totalReferencias, referenciasEnviadas: 0, limite, estrategia: "sin_catalogo" },
+    };
+  }
+
+  const identidadOriginal = normalizarMarcasCatalogo(textoBusqueda(mensaje, estado), catalogo);
+  const consulta = expandirConsulta(identidadOriginal);
+  const tokensConsulta = tokens(consulta);
+  // Retrieval synonyms may improve recall, but cannot assert a requested brand.
+  const identidadConsulta = normalizar(identidadOriginal).split(/\s+/);
+  const marcasConsulta = new Set(marcasExplicitasCompatibles(catalogo, identidadOriginal)
+    .map(marca => normalizar(marca.marca)));
+  const items = referenciasCatalogo(catalogo).filter(item =>
+    !marcasConsulta.size || marcasConsulta.has(normalizar(item.marca.marca)) ||
+    [...marcasConsulta].some(marca => marcaCompatibleConIdentidad(item.marca, item.referencia, marca, identidadConsulta))
+  );
+  const informacionIdentidad = crearRankingIdentidad(items, identidadOriginal);
+  const conPuntaje = items
+    .map((item, index) => ({
+      ...item,
+      index,
+      puntos: puntuarReferencia(item, consulta, tokensConsulta) + informacionIdentidad[index],
+    }))
+    .filter((item) => item.puntos > 0)
+    .sort((a, b) => b.puntos - a.puntos || a.index - b.index);
+
+  let seleccionados = conPuntaje.slice(0, limite);
+  let estrategia = "candidatos_keyword";
+
+  if (!seleccionados.length && clasificacion.requiereBusquedaProducto) {
+    estrategia = "sin_coincidencias";
+  }
+
+  if (!clasificacion.requiereBusquedaProducto && !clasificacion.requiereVision) {
+    seleccionados = [];
+    estrategia = "sin_busqueda";
+  }
+
+  return {
+    catalogo: agruparCatalogo(seleccionados),
+    metadata: {
+      totalReferencias,
+      referenciasEnviadas: seleccionados.length,
+      limite,
+      estrategia,
+      semanticaPreparada: process.env.CATALOG_SEARCH_STRATEGY === "semantic",
+    },
+  };
+}
+
+function consultaProductoInterpretado(interpretacion = {}) {
+  const producto =
+    interpretacion.producto ||
+    (interpretacion.productos?.length === 1
+      ? interpretacion.productos[0]
+      : {});
+  return [
+    producto.marca,
+    producto.referencia,
+    producto.linea,
+    producto.textoVisible,
+    producto.especie,
+    producto.etapa,
+    producto.tamano,
+    producto.presentacion,
+    ...(producto.condiciones || []),
+    ...(producto.sabores || []),
+  ]
+    .filter(Boolean)
+    .join(" ");
+}
+
+function seleccionarCatalogoRefinadoVision({
+  catalogo = [],
+  interpretacion = null,
+  clasificacion = {},
+} = {}) {
+  const consulta = consultaProductoInterpretado(interpretacion || {});
+  if (!consulta) {
+    return {
+      catalogo: [],
+      metadata: {
+        totalReferencias: referenciasCatalogo(catalogo).length,
+        referenciasEnviadas: 0,
+        limite: limiteReferencias({ ...clasificacion, requiereVision: true }),
+        estrategia: "vision_sin_entidad",
+      },
+    };
+  }
+
+  const resultado = seleccionarCatalogoLocal({
+    catalogo,
+    mensaje: consulta,
+    estado: {},
+    clasificacion: {
+      ...clasificacion,
+      requiereVision: true,
+      requiereBusquedaProducto: true,
+    },
+  });
+  return {
+    ...resultado,
+    metadata: {
+      ...resultado.metadata,
+      estrategia: "vision_refinada_por_entidad",
+      query: normalizar(consulta),
+    },
+  };
+}
+
+function debeBuscarEnSupabase(clasificacion = {}) {
+  if (!clasificacion.requiereBusquedaProducto && !clasificacion.requiereVision) return false;
+  return process.env.CATALOG_SEARCH_BACKEND !== "local";
+}
+
+function logBusquedaCatalogo({ cliente, query, metadata, fallback = false, error = null }) {
+  if (process.env.CATALOG_SEARCH_LOGS === "false") return;
+
+  console.log(
+    `[Catalog Search] cliente=${cliente?.slug || cliente?.id || "sin_cliente"} | tipo=${
+      metadata?.estrategia || "desconocida"
+    } | fallback=${fallback ? "si" : "no"} | resultados=${
+      metadata?.referenciasEnviadas ?? 0
+    } | duracionMs=${metadata?.duracionMs ?? 0} | query="${query}"${error ? ` | error=${error.message}` : ""}`
+  );
+}
+
+async function seleccionarCatalogoParaIA({ catalogo = [], mensaje = "", mensajeOriginal = "", consultas = [], estado = {}, clasificacion = {}, cliente = null } = {}) {
+  if (consultas.length > 1) {
+    const resultados = await Promise.all(consultas.map(consulta =>
+      seleccionarCatalogoParaIA({ catalogo, mensaje: consulta, mensajeOriginal: consulta, estado: {}, clasificacion, cliente })
+    ));
+    const combinado = resultados.reduce((acumulado, resultado) =>
+      combinarCatalogosCandidatos(acumulado, resultado.catalogo, 64), []);
+    return { catalogo: combinado, resultadosPorProducto: resultados, metadata: {
+      estrategia: "consultas_por_producto", referenciasEnviadas: referenciasCatalogo(combinado).length,
+      consultas: resultados.map(resultado => resultado.metadata),
+    } };
+  }
+  const limite = limiteReferencias(clasificacion);
+  const textoIdentidad = !clasificacion.requiereVision && mensajeOriginal && !(esSenalReferenciaProducto(mensajeOriginal) && tokensDistintivos(mensajeOriginal).length <= 1) && tokensDistintivos(mensajeOriginal).length ? mensajeOriginal : mensaje;
+  const query = expandirConsulta(textoBusqueda(mensaje, estado));
+
+  if (!debeBuscarEnSupabase(clasificacion)) {
+    const resultadoLocal = seleccionarCatalogoLocal({ catalogo, mensaje: textoIdentidad, estado, clasificacion });
+    logBusquedaCatalogo({ cliente, query, metadata: resultadoLocal.metadata, fallback: false });
+    return resultadoLocal;
+  }
+
+  try {
+    const consultasBusqueda = [...new Set([query,
+      clasificacion.requiereVision && mensaje.trim(),
+      !clasificacion.requiereVision && mensajeOriginal && expandirConsulta(mensajeOriginal),
+      // FTS con diccionario simple conserva siglas, pero necesita ambas formas
+      // para recuperar una referencia escrita en singular o plural.
+      expandirConsulta((clasificacion.requiereVision ? mensaje : mensajeOriginal || mensaje).replace(/\b([a-záéíóúñ]{4,})s\b/gi, "$1")),
+    ].filter(Boolean))];
+    // Una errata comercial se diluye en consultas largas con sabor/especie.
+    // Recuperar además el primer término distintivo; validar luego la variante.
+    const identidadCorta = tokensDistintivos(mensaje).find(t => t.length >= 4 &&
+      !/^(?:paquetes?|paquetitos?|bolsas?|tubitos?|tubos?|unidades?|gatos?|perros?|comida|alimento|snack|salmon|atun)$/.test(t));
+    if (identidadCorta && !consultasBusqueda.includes(identidadCorta)) consultasBusqueda.push(identidadCorta);
+    const palabras = normalizar(mensaje).split(/\s+/);
+    const unidas = palabras.slice(0, -1).map((palabra, i) =>
+      /^[a-z]{2,}$/.test(palabra) && /^[a-z]{2,}$/.test(palabras[i + 1]) ? palabra + palabras[i + 1] : "").filter(Boolean);
+    if (unidas.length) consultasBusqueda.push(unidas.join(" "));
+    const evidenciaPromesa = !clasificacion.requiereVision
+      ? buscarIdentidadesVerificadas(cliente, textoIdentidad) : Promise.resolve([]);
+    const respuestasBusqueda = await Promise.allSettled(consultasBusqueda.map(consulta =>
+      buscarProductosCatalogoCliente(cliente, { query: consulta, limit: limite, recuperarMarcaAproximada: consulta === identidadCorta })
+    ));
+    const recuperados = respuestasBusqueda.filter(item => item.status === "fulfilled").map(item => item.value);
+    const evidenciaVerificada = await evidenciaPromesa;
+    if (evidenciaVerificada.length) recuperados.unshift({ catalogo: evidenciaVerificada,
+      metadata: { estrategia: 'supabase_evidencia_verificada' } });
+    if (!recuperados.length) throw respuestasBusqueda[0].reason;
+    const resultado = { ...recuperados[0], catalogo: recuperados.reduce((acumulado, actual) =>
+      combinarCatalogosCandidatos(acumulado, actual.catalogo, limite * consultasBusqueda.length), []) };
+    // El texto adjunto puede ser solo "este producto". La identidad visual o
+    // contextual ya resuelta es la consulta; no descartarla por el pie de foto.
+    const ordenOriginal = !clasificacion.requiereVision && mensajeOriginal
+      ? seleccionarCatalogoLocal({ catalogo: resultado.catalogo, mensaje: mensajeOriginal, estado: {}, clasificacion })
+      : null;
+    const candidatosOrdenados = ordenOriginal?.catalogo.length ? ordenOriginal
+      : seleccionarCatalogoLocal({ catalogo: resultado.catalogo, mensaje, estado: {}, clasificacion });
+    resultado.catalogo = candidatosOrdenados.catalogo;
+    const resultadoLocal = seleccionarCatalogoLocal({
+      catalogo,
+      mensaje: textoIdentidad,
+      estado,
+      clasificacion,
+    });
+    const identidadOriginal = normalizarMarcasCatalogo(textoIdentidad, resultado.catalogo);
+    const consultaValidada = expandirConsulta(identidadOriginal);
+    const identidadConsulta = normalizar(identidadOriginal).split(/\s+/);
+    const marcasConsulta = new Set(marcasExplicitasCompatibles(resultado.catalogo, identidadOriginal)
+      .map(marca => normalizar(marca.marca)));
+    const catalogoCombinado = combinarCatalogosCandidatos(
+      resultadoLocal.catalogo,
+      resultado.catalogo.map(marca => ({
+        ...marca,
+        referencias: marca.referencias.filter(referencia =>
+          clasificacion.requiereVision || puntuarReferencia({ marca, referencia }, consultaValidada, tokens(consultaValidada)) > 0
+        ),
+      })).filter(marca =>
+        !marcasConsulta.size || marcasConsulta.has(normalizar(marca.marca)) ||
+        marca.referencias.some(referencia => [...marcasConsulta].some(consultada =>
+          marcaCompatibleConIdentidad(marca, referencia, consultada, identidadConsulta)))
+      ),
+      limite
+    );
+    const referenciasCombinadas = referenciasCatalogo(catalogoCombinado).length;
+    const metadata = {
+      totalReferencias: referenciasCatalogo(catalogo).length,
+      limite,
+      semanticaPreparada: process.env.CATALOG_SEARCH_STRATEGY === "semantic",
+      ...resultado.metadata,
+      estrategia: resultado.metadata.estrategia || "supabase_fts",
+      estrategiaExtendida: "supabase_fts_mas_fuzzy_local",
+      referenciasEnviadas: referenciasCombinadas,
+      candidatosFuzzyLocales: Math.min(
+        5,
+        resultadoLocal.metadata.referenciasEnviadas || 0
+      ),
+    };
+
+    logBusquedaCatalogo({ cliente, query, metadata, fallback: false });
+
+    return {
+      catalogo: catalogoCombinado,
+      metadata,
+    };
+  } catch (error) {
+    const resultadoLocal = seleccionarCatalogoLocal({ catalogo, mensaje: textoIdentidad, estado, clasificacion });
+    const metadata = {
+      ...resultadoLocal.metadata,
+      estrategia: `fallback_${resultadoLocal.metadata.estrategia}`,
+      fallbackReason: error.message,
+      errorBusqueda: resultadoLocal.catalogo.length === 0,
+      query,
+    };
+    logBusquedaCatalogo({ cliente, query, metadata, fallback: true, error });
+
+    return {
+      catalogo: resultadoLocal.catalogo,
+      metadata,
+    };
+  }
+}
+
+module.exports = {
+  seleccionarCatalogoParaIA: envolver("tool_product_search", seleccionarCatalogoParaIA),
+  seleccionarCatalogoRefinadoVision,
+  _internals: {
+    combinarCatalogosCandidatos,
+    consultaProductoInterpretado,
+    expandirConsulta,
+    puntuarReferencia,
+    seleccionarCatalogoLocal,
+    textoBusqueda,
+  },
+};

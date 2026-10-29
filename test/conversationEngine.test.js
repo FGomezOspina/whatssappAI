@@ -2382,8 +2382,8 @@ test("un lote incompleto pide solamente los datos de envio faltantes", () => {
 
   const respuesta = resolverConsultaCatalogo(mensaje, estado, catalogo, interpretacionIA);
 
-  assert.match(respuesta, /- cedula/);
-  assert.match(respuesta, /- correo/);
+  assert.doesNotMatch(respuesta, /- cedula/);
+  assert.doesNotMatch(respuesta, /- correo/);
   assert.match(respuesta, /- celular/);
   assert.doesNotMatch(respuesta, /- nombre/);
   assert.doesNotMatch(respuesta, /- direccion completa/);

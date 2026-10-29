@@ -1,0 +1,17 @@
+{
+  "at": "2026-10-29T00:29:57.071Z",
+  "command": "96737 Wed Oct 28 19:17:39 2026     /usr/local/bin/node server.js",
+  "cwdMatches": true,
+  "listeningPidMatches": true,
+  "sourceHash": "4fe0d67186c7de7a1f172b0589b1ec48d3da9bbcc762824d422f149c2e1f7c20",
+  "loadedMatchesDisk": true,
+  "unchangedSinceFinal": true,
+  "health": {
+    "ok": true,
+    "provider": "kapso"
+  },
+  "totalProcessingFailures": 0,
+  "summaries": 23,
+  "lastRun": "87788011-afb9-4df5-abc5-9533faccc411",
+  "logModifiedAt": "2026-10-29T00:24:30.750Z"
+}

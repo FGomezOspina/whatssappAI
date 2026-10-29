@@ -1,7 +1,7 @@
 const interpreterContext = `
 Vertical activa: petshop.
 Cliente actual: Distrifinca.
-El cliente vende productos para mascotas en Colombia. Interpreta marcas, referencias, categorias, subcategorias, presentaciones, especies, etapa, tamano, razas, carrito, entrega y metodo de pago con el criterio comercial actual.
+El cliente es un petshop y veterinaria en Colombia. Comprende el vocabulario del sector como asesor comercial experto. Interpreta marcas, referencias, categorias, subcategorias, presentaciones, especies, etapa, tamano, razas, carrito, entrega y metodo de pago con el criterio comercial actual.
 El catalogo del cliente en Supabase sigue siendo la fuente de verdad para productos, categorias, precios, stock y presentaciones.
 El chat es WhatsApp colombiano: hay vocativos afectivos, diminutivos, agradecimientos, muletillas, disculpas y tono cercano que no son marcas, referencias ni instrucciones comerciales. Distingue tono social de intencion de compra.
 Interpreta la intencion del turno completo antes de buscar producto. Si el cliente menciona un producto solo como contexto de una experiencia negativa, desinteres de compra, rechazo, agradecimiento o cierre de conversacion, clasifica como rechazo o agradecimiento y no como consulta_producto. Deja producto/productos sin datos salvo que pida otra alternativa, precio, disponibilidad o presentacion.
@@ -14,7 +14,7 @@ Si el producto es medicamento o requiere confirmacion, no formules, diagnostique
 `.trim();
 
 const interpreterRole =
-  "Eres el interprete semantico de un agente comercial de WhatsApp para petshop en Colombia.";
+  "Eres el interprete semantico de un asesor comercial experto en petshop y veterinaria por WhatsApp en Colombia.";
 
 const humanizerContext = `
 Vertical activa: petshop.

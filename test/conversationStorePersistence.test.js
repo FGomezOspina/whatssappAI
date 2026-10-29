@@ -13,7 +13,7 @@ function cargarStore() {
   return modulo.exports;
 }
 
-test('Supabase conserva etapa, clave y recibos tras reiniciar, con aislamiento por client_id', async t => {
+for (const electronica of [false, true]) test(`Supabase conserva variante ${electronica}, etapa, clave y recibos tras reiniciar, con aislamiento por client_id`, async t => {
   const anteriores = { SUPABASE_URL: process.env.SUPABASE_URL, SUPABASE_SECRET_KEY: process.env.SUPABASE_SECRET_KEY };
   process.env.SUPABASE_URL = 'https://database.example';
   process.env.SUPABASE_SECRET_KEY = 'test-secret';
@@ -50,13 +50,16 @@ test('Supabase conserva etapa, clave y recibos tras reiniciar, con aislamiento p
   Object.assign(a, {
     carrito: [{ marca: 'Prueba', referencia: 'Producto', peso: '1kg', precio: 1000, cantidad: 1 }],
     entrega: { tipo: 'domicilio' }, metodoPago: 'efectivo', esperandoDatosDomicilio: true,
-    datosDomicilio: { nombre: 'Prueba', cedula: '0000', celular: '0000', correo: 'prueba@example.com', direccion: 'Calle de prueba 1' },
+    facturacionElectronica: electronica,
+    datosDomicilio: { nombre: 'Cliente Prueba', celular: '3000000000', direccion: 'Calle de prueba 1',
+      ...(electronica ? { cedula: '900000001-1', correo: 'prueba@example.com' } : {}) },
   });
   resolverConsultaCatalogo('datos completos', a, [], { intencion: 'datos_envio' });
   const key = a.confirmacionPedidoId;
   await store.guardarConversacionPersistida('usuario', a, { cliente: empresaA, idsEventos: ['canal:datos'] });
   store = cargarStore();
   const recuperado = await store.obtenerConversacionPersistida('usuario', empresaA);
+  assert.equal(recuperado.facturacionElectronica, electronica);
   assert.equal(recuperado.esperandoConfirmacionPedido, true);
   assert.equal(recuperado.confirmacionPedidoId, key);
   assert.ok(recuperado.mensajesProcesados.includes('canal:datos'));
@@ -73,7 +76,16 @@ test('Supabase conserva etapa, clave y recibos tras reiniciar, con aislamiento p
   confirmado.pedidoConfirmadoPendienteGuardar = true;
   await store.guardarConversacionPersistida('usuario', confirmado, { cliente: empresaA });
   assert.equal(pedidos.size, 1);
+  const snapshot = [...pedidos.values()][0].order_snapshot;
+  assert.equal(snapshot.facturacionElectronica, electronica);
+  assert.deepEqual(snapshot.datosDomicilio, JSON.parse(JSON.stringify(confirmado.datosDomicilio)));
+  if (!electronica) {
+    const customer = conversaciones.get('a:usuario').customer;
+    assert.equal(customer.cedula, null); assert.equal(customer.correo, null);
+  }
   const otro = await store.obtenerConversacionPersistida('usuario', empresaB);
+  assert.equal(otro.facturacionElectronica, false);
+  assert.deepEqual(Object.keys(otro.datosDomicilio), []);
   assert.equal(otro.pedidoConfirmado, false);
   assert.equal(otro.mensajesProcesados.length, 0);
 });

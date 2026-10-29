@@ -159,6 +159,7 @@ async function guardarPedidoConfirmado(usuario, conversationId, estado, cliente 
       datosDomicilio: estado.datosDomicilio,
       entrega: estado.entrega,
       metodoPago: estado.metodoPago,
+      facturacionElectronica: estado.facturacionElectronica === true,
     },
     total,
     status: "confirmado",

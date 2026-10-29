@@ -2535,6 +2535,7 @@ module.exports = {
   respuestaValidacionProducto,
   validarCoincidenciaProducto,
   _internals: {
+    normalizarAtributoIdentidad: tokenIdentidadVisual,
     consultaSemanticaRespaldada,
     marcasExplicitasCompatibles,
     marcaCompatibleConIdentidad,

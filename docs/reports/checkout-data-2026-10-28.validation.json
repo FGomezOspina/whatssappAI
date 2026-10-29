@@ -1,0 +1,22 @@
+{
+  "baseline": {
+    "tests": 921,
+    "pass": 921,
+    "fail": 0,
+    "duration_ms": 6958.339125
+  },
+  "final": {
+    "tests": 941,
+    "pass": 941,
+    "fail": 0,
+    "duration_ms": 6993.587417
+  },
+  "new_checkout_tests": 19,
+  "supabase_verification": {
+    "live": "GET OpenAPI schema only",
+    "writes": "mocked fetch; real repository/store",
+    "migration_required_by_current_schema": false
+  },
+  "protected_diff": "clean",
+  "deployed": false
+}

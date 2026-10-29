@@ -1,0 +1,39 @@
+{
+  "at": "2026-10-29T00:25:19.068Z",
+  "runtime": {
+    "pid": 96737,
+    "cwd": "/Users/gomez/Documents/WhatsappVELTIA",
+    "startedAt": "2026-10-29T00:17:39.408Z",
+    "sourceHash": "4fe0d67186c7de7a1f172b0589b1ec48d3da9bbcc762824d422f149c2e1f7c20"
+  },
+  "loadedMatchesDisk": true,
+  "tests": 998,
+  "testsFailed": 0,
+  "inbound": 22,
+  "outbound": 20,
+  "responseGroups": 20,
+  "unansweredAtEnd": 0,
+  "cartUnchanged": true,
+  "processingFailures": 0,
+  "superseded": 2,
+  "skipped": [
+    "already_processed"
+  ],
+  "openaiRequests": 70,
+  "latency": {
+    "serverWithBuffer": {
+      "n": 20,
+      "min": 13908,
+      "p50": 25480,
+      "p95": 37356,
+      "max": 39847
+    },
+    "providerInputToOutput": {
+      "n": 20,
+      "min": 19000,
+      "p50": 31000,
+      "p95": 44000,
+      "max": 46000
+    }
+  }
+}

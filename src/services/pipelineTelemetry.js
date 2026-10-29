@@ -39,7 +39,8 @@ function resumen(ctx) {
   const sql = ctx.mediciones.filter(m => m.etapa === 'supabase_request');
   const repetidas = new Map();
   for (const m of sql) repetidas.set(m.queryHash, (repetidas.get(m.queryHash) || 0) + 1);
-  const resultado = { grupos, supabaseTop3: [...sql].sort((a,b) => b.ms-a.ms).slice(0,3),
+  const resultado = { ...(ctx.resultado ? { outcome: ctx.resultado } : {}),
+    grupos, supabaseTop3: [...sql].sort((a,b) => b.ms-a.ms).slice(0,3),
     consultasRepetidas: [...repetidas].filter(([, n]) => n > 1),
     totalConBufferMs: Date.now()-ctx.recibido, totalProcesamientoMs: Date.now()-ctx.inicio };
   registrar('summary', resultado); return resultado;

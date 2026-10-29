@@ -219,7 +219,7 @@ for (const respuestaDesviada of [false, true]) test(`ráfaga de compra y arena s
     entrega: { tipo: 'domicilio', direccion: 'Mz 34 Casa 5 Piso 2 El poblado 2', metodoPago: 'tarjeta' },
   });
   assert.match(respuesta, /Total: \$51\.400/);
-  assert.match(respuesta, /cedula|cédula/);
+  assert.doesNotMatch(respuesta, /cedula|cédula/);
   assert.match(respuesta, /presentaci[oó]n/i);
   assert.doesNotMatch(respuesta, /- dirección|- método de pago/);
   const originales = structuredClone(c.estado().carrito);

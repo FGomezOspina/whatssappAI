@@ -391,15 +391,18 @@ function logBusquedaCatalogo({ cliente, query, metadata, fallback = false, error
       metadata?.estrategia || "desconocida"
     } | fallback=${fallback ? "si" : "no"} | resultados=${
       metadata?.referenciasEnviadas ?? 0
-    } | duracionMs=${metadata?.duracionMs ?? 0} | query="${query}"${error ? ` | error=${error.message}` : ""}`
+    } | duracionMs=${metadata?.duracionRecuperacionMs ?? metadata?.duracionMs ?? 0} | intentos=${metadata?.consultasEjecutadas ?? 1} | identidad=${metadata?.evaluacion?.estado || 'sin_evaluar'} | query="${query}"${error ? ` | error=${error.message}` : ""}`
   );
 }
 
-async function seleccionarCatalogoParaIA({ catalogo = [], mensaje = "", mensajeOriginal = "", consultas = [], estado = {}, clasificacion = {}, cliente = null } = {}) {
+async function seleccionarCatalogoParaIA({ catalogo = [], mensaje = "", mensajeOriginal = "", consultas = [], estado = {}, clasificacion = {}, cliente = null, solicitud = null } = {}) {
   if (consultas.length > 1) {
-    const resultados = await Promise.all(consultas.map(consulta =>
+    const unicas = [...new Set(consultas)];
+    const recuperadas = await Promise.all(unicas.map(consulta =>
       seleccionarCatalogoParaIA({ catalogo, mensaje: consulta, mensajeOriginal: consulta, estado: {}, clasificacion, cliente })
     ));
+    const porConsulta = new Map(unicas.map((consulta, i) => [consulta, recuperadas[i]]));
+    const resultados = consultas.map(consulta => porConsulta.get(consulta));
     const combinado = resultados.reduce((acumulado, resultado) =>
       combinarCatalogosCandidatos(acumulado, resultado.catalogo, 64), []);
     return { catalogo: combinado, resultadosPorProducto: resultados, metadata: {
@@ -436,16 +439,22 @@ async function seleccionarCatalogoParaIA({ catalogo = [], mensaje = "", mensajeO
     if (unidas.length) consultasBusqueda.push(unidas.join(" "));
     const evidenciaPromesa = !clasificacion.requiereVision
       ? buscarIdentidadesVerificadas(cliente, textoIdentidad) : Promise.resolve([]);
-    const respuestasBusqueda = await Promise.allSettled(consultasBusqueda.map(consulta =>
-      buscarProductosCatalogoCliente(cliente, { query: consulta, limit: limite, recuperarMarcaAproximada: consulta === identidadCorta })
-    ));
-    const recuperados = respuestasBusqueda.filter(item => item.status === "fulfilled").map(item => item.value);
+    const { planRecuperacion, recuperarConLimites } = require('./catalogRecoveryPlan');
+    const plan = planRecuperacion({literal: textoIdentidad, consulta: query, solicitud,
+      variantes: consultasBusqueda.map(consulta => ({query:consulta,
+        recuperarMarcaAproximada:consulta===identidadCorta}))});
+    const recuperacion = await recuperarConLimites({plan,mensaje:textoIdentidad,solicitud,
+      timeoutMs:process.env.CATALOG_RECOVERY_TIMEOUT_MS,
+      buscar:(paso,signal)=>buscarProductosCatalogoCliente(cliente,{query:paso.query,
+        limit:MAX_REFERENCE_LIMIT,recuperarMarcaAproximada:paso.recuperarMarcaAproximada,signal}),
+      combinar:(a,b)=>combinarCatalogosCandidatos(a,b,MAX_REFERENCE_LIMIT*6)});
+    const recuperados = recuperacion.respuestas;
     const evidenciaVerificada = await evidenciaPromesa;
     if (evidenciaVerificada.length) recuperados.unshift({ catalogo: evidenciaVerificada,
       metadata: { estrategia: 'supabase_evidencia_verificada' } });
-    if (!recuperados.length) throw respuestasBusqueda[0].reason;
+    if (!recuperados.length) throw new Error('Catalog search unavailable within recovery budget');
     const resultado = { ...recuperados[0], catalogo: recuperados.reduce((acumulado, actual) =>
-      combinarCatalogosCandidatos(acumulado, actual.catalogo, limite * consultasBusqueda.length), []) };
+      combinarCatalogosCandidatos(acumulado, actual.catalogo, MAX_REFERENCE_LIMIT * 6), []) };
     // El texto adjunto puede ser solo "este producto". La identidad visual o
     // contextual ya resuelta es la consulta; no descartarla por el pie de foto.
     const ordenOriginal = !clasificacion.requiereVision && mensajeOriginal
@@ -485,9 +494,11 @@ async function seleccionarCatalogoParaIA({ catalogo = [], mensaje = "", mensajeO
       limite,
       semanticaPreparada: process.env.CATALOG_SEARCH_STRATEGY === "semantic",
       ...resultado.metadata,
+      ...recuperacion.metadata,
       estrategia: resultado.metadata.estrategia || "supabase_fts",
       estrategiaExtendida: "supabase_fts_mas_fuzzy_local",
       referenciasEnviadas: referenciasCombinadas,
+      errorBusqueda: recuperacion.metadata.recuperacionIncompleta && recuperacion.metadata.evaluacion.estado === "sin_coincidencia_confiable",
       candidatosFuzzyLocales: Math.min(
         5,
         resultadoLocal.metadata.referenciasEnviadas || 0

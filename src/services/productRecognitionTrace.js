@@ -10,7 +10,9 @@ function producto(p) {
 }
 function lectura(v) {
   return v && { intencion: v.intencion, accion: v.accion, producto: producto(v.producto), productos: v.productos?.map(producto),
-    consultaCatalogo: v.consultaCatalogo };
+    consultaCatalogo: v.consultaCatalogo, seguimientoProducto: v.seguimientoProducto,
+    confianza: v.confianza, derivacionHumana: v.derivacionHumana,
+    solicitudComercialIndependiente: v.solicitudComercialIndependiente };
 }
 function trazar(etapa, datos) {
   if (process.env.PRODUCT_RECOGNITION_TRACE !== 'true') return;

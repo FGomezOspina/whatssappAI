@@ -1,0 +1,795 @@
+{
+  "capturedAt": "2026-10-28T22:29:38.945Z",
+  "rows": [
+    {
+      "round": 0,
+      "version": "before",
+      "mensaje": "PRO PLAN CANINE UR perro",
+      "ms": 1710.705083,
+      "queries": 3,
+      "queriesText": [
+        "pro plan canine ur perro premium pro premiun",
+        "premium",
+        "proplan plancanine canineur urperro"
+      ],
+      "nivel": "alta",
+      "reason": "nombre_exacto",
+      "match": "PRO PLAN CANINE UR",
+      "clarification": null,
+      "candidates": [
+        "PRO PLAN CANINE UR",
+        "PRO PLAN CANINE LATA UR",
+        "PRO PLAN CANINE HA",
+        "PRO PLAN CANINE OM",
+        "PRO PLAN CANINE EN",
+        "PRO PLAN CANINE NF",
+        "PRO PLAN CANINE LATA EN",
+        "PRO PLAN CANINE LATA NF"
+      ],
+      "error": false
+    },
+    {
+      "round": 0,
+      "version": "after",
+      "mensaje": "PRO PLAN CANINE UR perro",
+      "ms": 592.1817920000001,
+      "queries": 1,
+      "queriesText": [
+        "pro plan canine ur perro"
+      ],
+      "nivel": "alta",
+      "reason": "nombre_exacto",
+      "match": "PRO PLAN CANINE UR",
+      "clarification": null,
+      "candidates": [
+        "PRO PLAN CANINE UR",
+        "PRO PLAN CANINE LATA UR",
+        "PRO PLAN CANINE HA",
+        "PRO PLAN CANINE OM",
+        "PRO PLAN CANINE EN",
+        "PRO PLAN CANINE NF",
+        "PRO PLAN CANINE LATA EN",
+        "PRO PLAN CANINE LATA NF"
+      ],
+      "error": false
+    },
+    {
+      "round": 0,
+      "version": "before",
+      "mensaje": "PRO PLAN UR",
+      "ms": 740.6965829999999,
+      "queries": 3,
+      "queriesText": [
+        "pro plan ur premium pro premiun",
+        "premium",
+        "proplan planur"
+      ],
+      "nivel": "media",
+      "reason": "atributo_faltante",
+      "match": null,
+      "clarification": {
+        "campo": "especie",
+        "valores": [
+          "perro",
+          "gato"
+        ]
+      },
+      "candidates": [
+        "PRO PLAN CANINE UR",
+        "PRO PLAN FELINE UR",
+        "PRO PLAN CANINE LATA UR",
+        "PRO PLAN FELINE LATA UR",
+        "PRO PLAN CAT URINARY",
+        "PRO PLAN GATO URINARY",
+        "PRO PLAN CANINE HA",
+        "PRO PLAN CANINE OM"
+      ],
+      "error": false
+    },
+    {
+      "round": 0,
+      "version": "after",
+      "mensaje": "PRO PLAN UR",
+      "ms": 553.3352500000001,
+      "queries": 1,
+      "queriesText": [
+        "pro plan ur"
+      ],
+      "nivel": "media",
+      "reason": "atributo_faltante",
+      "match": null,
+      "clarification": {
+        "campo": "especie",
+        "valores": [
+          "perro",
+          "gato"
+        ]
+      },
+      "candidates": [
+        "PRO PLAN CANINE UR",
+        "PRO PLAN FELINE UR",
+        "PRO PLAN CANINE LATA UR",
+        "PRO PLAN FELINE LATA UR",
+        "PRO PLAN CAT URINARY",
+        "PRO PLAN GATO URINARY",
+        "PRO PLAN CANINE HA",
+        "PRO PLAN CANINE OM"
+      ],
+      "error": false
+    },
+    {
+      "round": 0,
+      "version": "before",
+      "mensaje": "PRO PLAN UR perro",
+      "ms": 21214.580542,
+      "queries": 3,
+      "queriesText": [
+        "pro plan ur perro premium pro premiun",
+        "premium",
+        "proplan planur urperro"
+      ],
+      "nivel": "media",
+      "reason": "ambigua",
+      "match": null,
+      "clarification": {
+        "campo": "referencia",
+        "valores": [
+          "PRO PLAN CANINE UR",
+          "PRO PLAN CANINE LATA UR"
+        ]
+      },
+      "candidates": [
+        "PRO PLAN CANINE UR",
+        "PRO PLAN CANINE LATA UR",
+        "PRO PLAN FELINE UR",
+        "PRO PLAN FELINE LATA UR",
+        "PRO PLAN CANINE HA",
+        "PRO PLAN CANINE OM",
+        "PRO PLAN PUPPY SMALL",
+        "PRO PLAN LATA CN"
+      ],
+      "error": false
+    },
+    {
+      "round": 0,
+      "version": "after",
+      "mensaje": "PRO PLAN UR perro",
+      "ms": 568.8473749999976,
+      "queries": 1,
+      "queriesText": [
+        "pro plan ur perro"
+      ],
+      "nivel": "media",
+      "reason": "ambigua",
+      "match": null,
+      "clarification": {
+        "campo": "referencia",
+        "valores": [
+          "PRO PLAN CANINE UR",
+          "PRO PLAN CANINE LATA UR"
+        ]
+      },
+      "candidates": [
+        "PRO PLAN CANINE UR",
+        "PRO PLAN CANINE LATA UR",
+        "PRO PLAN FELINE UR",
+        "PRO PLAN FELINE LATA UR",
+        "PRO PLAN CANINE HA",
+        "PRO PLAN CANINE OM",
+        "PRO PLAN PUPPY SMALL",
+        "PRO PLAN ADULT SMALL"
+      ],
+      "error": false
+    },
+    {
+      "round": 0,
+      "version": "before",
+      "mensaje": "ROYALCANIN GASTROINTESTINAL perro",
+      "ms": 721.3006249999999,
+      "queries": 3,
+      "queriesText": [
+        "royalcanin gastrointestinal perro",
+        "royalcanin",
+        "royalcaningastrointestinal gastrointestinalperro"
+      ],
+      "nivel": "alta",
+      "reason": "nombre_exacto",
+      "match": "ROYALCANIN GASTROINTESTINAL PERRO",
+      "clarification": null,
+      "candidates": [
+        "ROYALCANIN GASTROINTESTINAL PERRO",
+        "ROYALCANIN CALM CAT",
+        "ROYALCANIN HEPATIC CAT"
+      ],
+      "error": false
+    },
+    {
+      "round": 0,
+      "version": "after",
+      "mensaje": "ROYALCANIN GASTROINTESTINAL perro",
+      "ms": 513.096125,
+      "queries": 1,
+      "queriesText": [
+        "royalcanin gastrointestinal perro"
+      ],
+      "nivel": "alta",
+      "reason": "nombre_exacto",
+      "match": "ROYALCANIN GASTROINTESTINAL PERRO",
+      "clarification": null,
+      "candidates": [
+        "ROYALCANIN GASTROINTESTINAL PERRO",
+        "ROYALCANIN CALM CAT",
+        "ROYALCANIN HEPATIC CAT"
+      ],
+      "error": false
+    },
+    {
+      "round": 0,
+      "version": "before",
+      "mensaje": "DIAMOND INDOOR CAT 500gr",
+      "ms": 998.5607920000002,
+      "queries": 3,
+      "queriesText": [
+        "diamond indoor cat 500gr",
+        "diamond",
+        "diamondindoor indoorcat"
+      ],
+      "nivel": "alta",
+      "reason": "nombre_exacto",
+      "match": "DIAMOND INDOOR CAT",
+      "clarification": null,
+      "candidates": [
+        "DIAMOND INDOOR CAT",
+        "DIAMOND INDOOR",
+        "DIAMOND KITTEN CAT",
+        "DIAMOND KITTEN"
+      ],
+      "error": false
+    },
+    {
+      "round": 0,
+      "version": "after",
+      "mensaje": "DIAMOND INDOOR CAT 500gr",
+      "ms": 484.536417000003,
+      "queries": 1,
+      "queriesText": [
+        "diamond indoor cat 500gr"
+      ],
+      "nivel": "alta",
+      "reason": "nombre_exacto",
+      "match": "DIAMOND INDOOR CAT",
+      "clarification": null,
+      "candidates": [
+        "DIAMOND INDOOR CAT",
+        "DIAMOND INDOOR",
+        "DIAMOND KITTEN CAT",
+        "DIAMOND KITTEN"
+      ],
+      "error": false
+    },
+    {
+      "round": 0,
+      "version": "before",
+      "mensaje": "BRABECTO",
+      "ms": 1297.874458000002,
+      "queries": 2,
+      "queriesText": [
+        "brabecto bravecto",
+        "brabecto"
+      ],
+      "nivel": "media",
+      "reason": "ambigua",
+      "match": null,
+      "clarification": null,
+      "candidates": [
+        "BRAVECTO",
+        "BRAVECTO 37 DIAS"
+      ],
+      "error": false
+    },
+    {
+      "round": 0,
+      "version": "after",
+      "mensaje": "BRABECTO",
+      "ms": 1702.4850000000006,
+      "queries": 2,
+      "queriesText": [
+        "brabecto",
+        "brabecto bravecto"
+      ],
+      "nivel": "media",
+      "reason": "ambigua",
+      "match": null,
+      "clarification": null,
+      "candidates": [
+        "BRAVECTO",
+        "BRAVECTO 37 DIAS"
+      ],
+      "error": false
+    },
+    {
+      "round": 0,
+      "version": "before",
+      "mensaje": "NEXGARD SPECRA",
+      "ms": 544.5992079999996,
+      "queries": 3,
+      "queriesText": [
+        "nexgard specra",
+        "nexgard",
+        "nexgardspecra"
+      ],
+      "nivel": "media",
+      "reason": "falta_peso_mascota",
+      "match": null,
+      "clarification": {
+        "campo": "peso_mascota",
+        "valores": [],
+        "requiereEspecie": true
+      },
+      "candidates": [
+        "NEXGARD",
+        "NEXGARD SPECTRA",
+        "NEXGARD COMBO",
+        "NEXGARD COMBO GATO"
+      ],
+      "error": false
+    },
+    {
+      "round": 0,
+      "version": "after",
+      "mensaje": "NEXGARD SPECRA",
+      "ms": 457.98370799999975,
+      "queries": 1,
+      "queriesText": [
+        "nexgard specra"
+      ],
+      "nivel": "media",
+      "reason": "falta_peso_mascota",
+      "match": null,
+      "clarification": {
+        "campo": "peso_mascota",
+        "valores": [],
+        "requiereEspecie": true
+      },
+      "candidates": [
+        "NEXGARD",
+        "NEXGARD SPECTRA",
+        "NEXGARD COMBO",
+        "NEXGARD COMBO GATO"
+      ],
+      "error": false
+    },
+    {
+      "round": 0,
+      "version": "before",
+      "mensaje": "NOVA REFERENCIA INEXISTENTE ZXQ900",
+      "ms": 921.5820840000015,
+      "queries": 3,
+      "queriesText": [
+        "nova referencia inexistente zxq900",
+        "nova",
+        "novareferencia referenciainexistente"
+      ],
+      "nivel": "baja",
+      "reason": "sin_coincidencia_confiable",
+      "match": null,
+      "clarification": null,
+      "candidates": [],
+      "error": false
+    },
+    {
+      "round": 0,
+      "version": "after",
+      "mensaje": "NOVA REFERENCIA INEXISTENTE ZXQ900",
+      "ms": 2111.126457999999,
+      "queries": 4,
+      "queriesText": [
+        "nova referencia inexistente zxq900",
+        "nova zxq900",
+        "nova",
+        "novareferencia referenciainexistente"
+      ],
+      "nivel": "baja",
+      "reason": "sin_coincidencia_confiable",
+      "match": null,
+      "clarification": null,
+      "candidates": [],
+      "error": false
+    },
+    {
+      "round": 1,
+      "version": "after",
+      "mensaje": "PRO PLAN CANINE UR perro",
+      "ms": 584.1897920000047,
+      "queries": 1,
+      "queriesText": [
+        "pro plan canine ur perro"
+      ],
+      "nivel": "alta",
+      "reason": "nombre_exacto",
+      "match": "PRO PLAN CANINE UR",
+      "clarification": null,
+      "candidates": [
+        "PRO PLAN CANINE UR",
+        "PRO PLAN CANINE LATA UR",
+        "PRO PLAN CANINE HA",
+        "PRO PLAN CANINE OM",
+        "PRO PLAN CANINE EN",
+        "PRO PLAN CANINE NF",
+        "PRO PLAN CANINE LATA EN",
+        "PRO PLAN CANINE LATA NF"
+      ],
+      "error": false
+    },
+    {
+      "round": 1,
+      "version": "before",
+      "mensaje": "PRO PLAN CANINE UR perro",
+      "ms": 823.064916000003,
+      "queries": 3,
+      "queriesText": [
+        "pro plan canine ur perro premium pro premiun",
+        "premium",
+        "proplan plancanine canineur urperro"
+      ],
+      "nivel": "alta",
+      "reason": "nombre_exacto",
+      "match": "PRO PLAN CANINE UR",
+      "clarification": null,
+      "candidates": [
+        "PRO PLAN CANINE UR",
+        "PRO PLAN CANINE LATA UR",
+        "PRO PLAN CANINE HA",
+        "PRO PLAN CANINE OM",
+        "PRO PLAN CANINE EN",
+        "PRO PLAN CANINE NF",
+        "PRO PLAN CANINE LATA EN",
+        "PRO PLAN CANINE LATA NF"
+      ],
+      "error": false
+    },
+    {
+      "round": 1,
+      "version": "after",
+      "mensaje": "PRO PLAN UR",
+      "ms": 670.1432080000013,
+      "queries": 1,
+      "queriesText": [
+        "pro plan ur"
+      ],
+      "nivel": "media",
+      "reason": "atributo_faltante",
+      "match": null,
+      "clarification": {
+        "campo": "especie",
+        "valores": [
+          "perro",
+          "gato"
+        ]
+      },
+      "candidates": [
+        "PRO PLAN CANINE UR",
+        "PRO PLAN FELINE UR",
+        "PRO PLAN CANINE LATA UR",
+        "PRO PLAN FELINE LATA UR",
+        "PRO PLAN CAT URINARY",
+        "PRO PLAN GATO URINARY",
+        "PRO PLAN CANINE HA",
+        "PRO PLAN CANINE OM"
+      ],
+      "error": false
+    },
+    {
+      "round": 1,
+      "version": "before",
+      "mensaje": "PRO PLAN UR",
+      "ms": 799.1854170000006,
+      "queries": 3,
+      "queriesText": [
+        "pro plan ur premium pro premiun",
+        "premium",
+        "proplan planur"
+      ],
+      "nivel": "media",
+      "reason": "atributo_faltante",
+      "match": null,
+      "clarification": {
+        "campo": "especie",
+        "valores": [
+          "perro",
+          "gato"
+        ]
+      },
+      "candidates": [
+        "PRO PLAN CANINE UR",
+        "PRO PLAN FELINE UR",
+        "PRO PLAN CANINE LATA UR",
+        "PRO PLAN FELINE LATA UR",
+        "PRO PLAN CAT URINARY",
+        "PRO PLAN GATO URINARY",
+        "PRO PLAN CANINE HA",
+        "PRO PLAN CANINE OM"
+      ],
+      "error": false
+    },
+    {
+      "round": 1,
+      "version": "after",
+      "mensaje": "PRO PLAN UR perro",
+      "ms": 580.9397909999971,
+      "queries": 1,
+      "queriesText": [
+        "pro plan ur perro"
+      ],
+      "nivel": "media",
+      "reason": "ambigua",
+      "match": null,
+      "clarification": {
+        "campo": "referencia",
+        "valores": [
+          "PRO PLAN CANINE UR",
+          "PRO PLAN CANINE LATA UR"
+        ]
+      },
+      "candidates": [
+        "PRO PLAN CANINE UR",
+        "PRO PLAN CANINE LATA UR",
+        "PRO PLAN FELINE UR",
+        "PRO PLAN FELINE LATA UR",
+        "PRO PLAN CANINE HA",
+        "PRO PLAN CANINE OM",
+        "PRO PLAN PUPPY SMALL",
+        "PRO PLAN ADULT SMALL"
+      ],
+      "error": false
+    },
+    {
+      "round": 1,
+      "version": "before",
+      "mensaje": "PRO PLAN UR perro",
+      "ms": 812.0613329999978,
+      "queries": 3,
+      "queriesText": [
+        "pro plan ur perro premium pro premiun",
+        "premium",
+        "proplan planur urperro"
+      ],
+      "nivel": "media",
+      "reason": "ambigua",
+      "match": null,
+      "clarification": {
+        "campo": "referencia",
+        "valores": [
+          "PRO PLAN CANINE UR",
+          "PRO PLAN CANINE LATA UR"
+        ]
+      },
+      "candidates": [
+        "PRO PLAN CANINE UR",
+        "PRO PLAN CANINE LATA UR",
+        "PRO PLAN FELINE UR",
+        "PRO PLAN FELINE LATA UR",
+        "PRO PLAN CANINE HA",
+        "PRO PLAN CANINE OM",
+        "PRO PLAN PUPPY SMALL",
+        "PRO PLAN LATA CN"
+      ],
+      "error": false
+    },
+    {
+      "round": 1,
+      "version": "after",
+      "mensaje": "ROYALCANIN GASTROINTESTINAL perro",
+      "ms": 483.1994169999962,
+      "queries": 1,
+      "queriesText": [
+        "royalcanin gastrointestinal perro"
+      ],
+      "nivel": "alta",
+      "reason": "nombre_exacto",
+      "match": "ROYALCANIN GASTROINTESTINAL PERRO",
+      "clarification": null,
+      "candidates": [
+        "ROYALCANIN GASTROINTESTINAL PERRO",
+        "ROYALCANIN CALM CAT",
+        "ROYALCANIN HEPATIC CAT"
+      ],
+      "error": false
+    },
+    {
+      "round": 1,
+      "version": "before",
+      "mensaje": "ROYALCANIN GASTROINTESTINAL perro",
+      "ms": 590.6097080000036,
+      "queries": 3,
+      "queriesText": [
+        "royalcanin gastrointestinal perro",
+        "royalcanin",
+        "royalcaningastrointestinal gastrointestinalperro"
+      ],
+      "nivel": "alta",
+      "reason": "nombre_exacto",
+      "match": "ROYALCANIN GASTROINTESTINAL PERRO",
+      "clarification": null,
+      "candidates": [
+        "ROYALCANIN GASTROINTESTINAL PERRO",
+        "ROYALCANIN CALM CAT",
+        "ROYALCANIN HEPATIC CAT"
+      ],
+      "error": false
+    },
+    {
+      "round": 1,
+      "version": "after",
+      "mensaje": "DIAMOND INDOOR CAT 500gr",
+      "ms": 456.828416999997,
+      "queries": 1,
+      "queriesText": [
+        "diamond indoor cat 500gr"
+      ],
+      "nivel": "alta",
+      "reason": "nombre_exacto",
+      "match": "DIAMOND INDOOR CAT",
+      "clarification": null,
+      "candidates": [
+        "DIAMOND INDOOR CAT",
+        "DIAMOND INDOOR",
+        "DIAMOND KITTEN CAT",
+        "DIAMOND KITTEN"
+      ],
+      "error": false
+    },
+    {
+      "round": 1,
+      "version": "before",
+      "mensaje": "DIAMOND INDOOR CAT 500gr",
+      "ms": 571.0470840000053,
+      "queries": 3,
+      "queriesText": [
+        "diamond indoor cat 500gr",
+        "diamond",
+        "diamondindoor indoorcat"
+      ],
+      "nivel": "alta",
+      "reason": "nombre_exacto",
+      "match": "DIAMOND INDOOR CAT",
+      "clarification": null,
+      "candidates": [
+        "DIAMOND INDOOR CAT",
+        "DIAMOND INDOOR",
+        "DIAMOND KITTEN CAT",
+        "DIAMOND KITTEN"
+      ],
+      "error": false
+    },
+    {
+      "round": 1,
+      "version": "after",
+      "mensaje": "BRABECTO",
+      "ms": 2018.804167000002,
+      "queries": 2,
+      "queriesText": [
+        "brabecto",
+        "brabecto bravecto"
+      ],
+      "nivel": "media",
+      "reason": "ambigua",
+      "match": null,
+      "clarification": null,
+      "candidates": [
+        "BRAVECTO",
+        "BRAVECTO 37 DIAS"
+      ],
+      "error": false
+    },
+    {
+      "round": 1,
+      "version": "before",
+      "mensaje": "BRABECTO",
+      "ms": 963.6570829999982,
+      "queries": 2,
+      "queriesText": [
+        "brabecto bravecto",
+        "brabecto"
+      ],
+      "nivel": "media",
+      "reason": "ambigua",
+      "match": null,
+      "clarification": null,
+      "candidates": [
+        "BRAVECTO",
+        "BRAVECTO 37 DIAS"
+      ],
+      "error": false
+    },
+    {
+      "round": 1,
+      "version": "after",
+      "mensaje": "NEXGARD SPECRA",
+      "ms": 365.2976669999989,
+      "queries": 1,
+      "queriesText": [
+        "nexgard specra"
+      ],
+      "nivel": "media",
+      "reason": "falta_peso_mascota",
+      "match": null,
+      "clarification": {
+        "campo": "peso_mascota",
+        "valores": [],
+        "requiereEspecie": true
+      },
+      "candidates": [
+        "NEXGARD",
+        "NEXGARD SPECTRA",
+        "NEXGARD COMBO",
+        "NEXGARD COMBO GATO"
+      ],
+      "error": false
+    },
+    {
+      "round": 1,
+      "version": "before",
+      "mensaje": "NEXGARD SPECRA",
+      "ms": 457.5139999999956,
+      "queries": 3,
+      "queriesText": [
+        "nexgard specra",
+        "nexgard",
+        "nexgardspecra"
+      ],
+      "nivel": "media",
+      "reason": "falta_peso_mascota",
+      "match": null,
+      "clarification": {
+        "campo": "peso_mascota",
+        "valores": [],
+        "requiereEspecie": true
+      },
+      "candidates": [
+        "NEXGARD",
+        "NEXGARD SPECTRA",
+        "NEXGARD COMBO",
+        "NEXGARD COMBO GATO"
+      ],
+      "error": false
+    },
+    {
+      "round": 1,
+      "version": "after",
+      "mensaje": "NOVA REFERENCIA INEXISTENTE ZXQ900",
+      "ms": 1473.8814169999969,
+      "queries": 4,
+      "queriesText": [
+        "nova referencia inexistente zxq900",
+        "nova zxq900",
+        "nova",
+        "novareferencia referenciainexistente"
+      ],
+      "nivel": "baja",
+      "reason": "sin_coincidencia_confiable",
+      "match": null,
+      "clarification": null,
+      "candidates": [],
+      "error": false
+    },
+    {
+      "round": 1,
+      "version": "before",
+      "mensaje": "NOVA REFERENCIA INEXISTENTE ZXQ900",
+      "ms": 479.3197500000024,
+      "queries": 3,
+      "queriesText": [
+        "nova referencia inexistente zxq900",
+        "nova",
+        "novareferencia referenciainexistente"
+      ],
+      "nivel": "baja",
+      "reason": "sin_coincidencia_confiable",
+      "match": null,
+      "clarification": null,
+      "candidates": [],
+      "error": false
+    }
+  ]
+}
