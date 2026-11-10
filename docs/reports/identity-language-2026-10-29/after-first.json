@@ -1,0 +1,511 @@
+{
+  "capturedAt": "2026-10-29T22:01:18.109Z",
+  "mode": "real models and read-only Supabase; in-memory state; not WhatsApp E2E",
+  "label": "after-first",
+  "rows": [
+    {
+      "case": "typo-tone",
+      "text": "Solo quiero consultar precio de diamon indor para gato, el de medio kilo",
+      "response": "Te confirmo, esa referencia la manejamos: DIAMOND INDOOR CAT 500gr por $19.500. Las existencias están por confirmar. 🐱",
+      "ms": 13551,
+      "decisions": [
+        {
+          "router": true,
+          "decision": {
+            "recomendaciones": [],
+            "preguntaRecomendacion": null,
+            "solicitudComercialIndependiente": true,
+            "derivacionHumana": {
+              "necesaria": false,
+              "motivo": null
+            },
+            "seguimientoProducto": "nueva",
+            "recursosAclaracion": {},
+            "resumenMemoria": null,
+            "continuarFlujo": false,
+            "compraContextual": null,
+            "solicitudesProductoDetectadas": 1,
+            "consultaCatalogo": {
+              "tipo": "referencia",
+              "presupuestoMaximo": null,
+              "necesaria": true,
+              "consulta": "Diamond Indoor para gato 500 g precio"
+            },
+            "respuestaConversacional": null,
+            "intencion": "consulta_producto",
+            "accion": "consultar",
+            "confianza": 0.97,
+            "producto": {
+              "accion": "consultar",
+              "marca": "Diamond",
+              "referencia": "diamon indor",
+              "linea": null,
+              "textoVisible": "diamon indor para gato, el de medio kilo",
+              "mencionOriginal": "diamon indor para gato, el de medio kilo",
+              "categoria": "comida",
+              "subcategoria": "concentrado",
+              "especie": "gato",
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": "medio kilo",
+              "intencionPresentaciones": "especifica",
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": 1
+            },
+            "productos": [
+              {
+                "accion": "consultar",
+                "marca": "Diamond",
+                "referencia": "diamon indor",
+                "linea": null,
+                "textoVisible": "diamon indor para gato, el de medio kilo",
+                "mencionOriginal": "diamon indor para gato, el de medio kilo",
+                "categoria": "comida",
+                "subcategoria": "concentrado",
+                "especie": "gato",
+                "etapa": null,
+                "tamano": null,
+                "sabores": [],
+                "presentacion": "medio kilo",
+                "intencionPresentaciones": "especifica",
+                "mascotas": [],
+                "condiciones": [],
+                "cantidad": 1
+              }
+            ],
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            },
+            "facturacion": {
+              "electronica": null,
+              "evidencia": null
+            },
+            "datosCliente": {
+              "nombre": null,
+              "cedula": null,
+              "correo": null,
+              "celular": null
+            },
+            "carrito": {
+              "operacion": null,
+              "cantidadObjetivo": null,
+              "cantidadDelta": null,
+              "aplicaAlUltimoProducto": null,
+              "razon": null
+            },
+            "faltanteSugerido": null
+          }
+        },
+        {
+          "router": false,
+          "decision": {
+            "recomendaciones": [],
+            "preguntaRecomendacion": null,
+            "solicitudComercialIndependiente": false,
+            "derivacionHumana": {
+              "necesaria": false,
+              "motivo": null
+            },
+            "seguimientoProducto": null,
+            "recursosAclaracion": {
+              "fotoDisponible": null,
+              "masDatosDisponibles": null
+            },
+            "resumenMemoria": null,
+            "continuarFlujo": false,
+            "compraContextual": null,
+            "solicitudesProductoDetectadas": null,
+            "consultaCatalogo": {
+              "tipo": null,
+              "presupuestoMaximo": null,
+              "necesaria": null,
+              "consulta": null
+            },
+            "respuestaConversacional": null,
+            "intencion": "consulta_producto",
+            "accion": "consultar",
+            "confianza": 0.93,
+            "producto": {
+              "accion": "consultar",
+              "marca": "DIAMOND",
+              "referencia": "DIAMOND INDOOR CAT",
+              "linea": "INDOOR",
+              "textoVisible": "diamon indor para gato, el de medio kilo",
+              "mencionOriginal": null,
+              "categoria": "comida",
+              "subcategoria": "concentrado",
+              "especie": "gato",
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": "500gr",
+              "intencionPresentaciones": null,
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": null
+            },
+            "productos": [],
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            },
+            "facturacion": {
+              "electronica": null,
+              "evidencia": null
+            },
+            "datosCliente": {
+              "nombre": null,
+              "cedula": null,
+              "correo": null,
+              "celular": null
+            },
+            "carrito": {
+              "operacion": null,
+              "cantidadObjetivo": null,
+              "cantidadDelta": null,
+              "aplicaAlUltimoProducto": null,
+              "razon": null
+            },
+            "faltanteSugerido": null
+          }
+        }
+      ],
+      "requests": [
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 6742,
+          "status": 200,
+          "model": "gpt-5.4-2026-03-05",
+          "output": "{\n  \"intencion\": \"consulta_producto\",\n  \"accion\": \"consultar\",\n  \"confianza\": 0.97,\n  \"compraContextual\": null,\n  \"solicitudesProductoDetectadas\": 1,\n  \"producto\": {\n    \"accion\": \"consultar\",\n    \"marca\": \"Diamond\",\n    \"referencia\": \"diamon indor\",\n    \"linea\": null,\n    \"textoVisible\": \"diamon indor para gato, el de medio kilo\",\n    \"categoria\": \"comida\",\n    \"subcategoria\": \"concentrado\",\n    \"especie\": \"gato\",\n    \"etapa\": null,\n    \"tamano\": null,\n    \"sabores\": [],\n    \"condiciones\": [],\n    \"presentacion\": \"medio kilo\",\n    \"cantidad\": 1,\n    \"intencionPresentaciones\": \"especifica\",\n    \"mascotas\": [],\n    \"mencionOriginal\": \"diamon indor para gato, el de medio kilo\"\n  },\n  \"productos\": [\n    {\n      \"accion\": \"consultar\",\n      \"marca\": \"Diamond\",\n      \"referencia\": \"diamon indor\",\n      \"linea\": null,\n      \"textoVisible\": \"diamon indor para gato, el de medio kilo\",\n      \"categoria\": \"comida\",\n      \"subcategoria\": \"concentrado\",\n      \"especie\": \"gato\",\n      \"etapa\": null,\n      \"tamano\": null,\n      \"sabores\": [],\n      \"condiciones\": [],\n      \"presentacion\": \"medio kilo\",\n      \"cantidad\": 1,\n      \"intencionPresentaciones\": \"especifica\",\n      \"mascotas\": [],\n      \"mencionOriginal\": \"diamon indor para gato, el de medio kilo\"\n    }\n  ],\n  \"entrega\": {\n    \"tipo\": null,\n    \"direccion\": null,\n    \"direccionCompleta\": null,\n    \"sector\": null,\n    \"metodoPago\": null,\n    \"sede\": null\n  },\n  \"facturacion\": {\n    \"electronica\": null,\n    \"evidencia\": null\n  },\n  \"datosCliente\": {\n    \"nombre\": null,\n    \"cedula\": null,\n    \"correo\": null,\n    \"celular\": null\n  },\n  \"carrito\": {\n    \"operacion\": null,\n    \"cantidadObjetivo\": null,\n    \"cantidadDelta\": null,\n    \"aplicaAlUltimoProducto\": null,\n    \"razon\": null\n  },\n  \"faltanteSugerido\": null,\n  \"recursosAclaracion\": {\n    \"fotoDisponible\": null,\n    \"masDatosDisponibles\": null\n  },\n  \"consultaCatalogo\": {\n    \"necesaria\": true,\n    \"consulta\": \"Diamond Indoor para gato 500 g precio\",\n    \"tipo\": \"referencia\",\n    \"presupuestoMaximo\": null\n  },\n  \"respuestaConversacional\": null,\n  \"derivacionHumana\": {\n    \"necesaria\": false,\n    \"motivo\": null\n  },\n  \"solicitudComercialIndependiente\": true,\n  \"seguimientoProducto\": \"nueva\"\n}",
+          "usage": {
+            "prompt_tokens": 6574,
+            "completion_tokens": 688,
+            "total_tokens": 7262,
+            "prompt_tokens_details": {
+              "cached_tokens": 4864,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "supabase",
+          "method": "POST",
+          "path": "/rest/v1/rpc/search_catalog_products",
+          "ms": 512,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "POST",
+          "path": "/rest/v1/rpc/search_catalog_products",
+          "ms": 459,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "GET",
+          "path": "/rest/v1/training_examples",
+          "ms": 191,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "GET",
+          "path": "/rest/v1/training_examples",
+          "ms": 310,
+          "status": 200
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 4046,
+          "status": 200,
+          "model": "gpt-5.2-2025-12-11",
+          "output": "{\"intencion\":\"consulta_producto\",\"accion\":\"consultar\",\"confianza\":0.93,\"compraContextual\":null,\"solicitudesProductoDetectadas\":[\"precio DIAMOND INDOOR CAT 500gr para gato\"],\"producto\":{\"accion\":\"consultar\",\"marca\":\"DIAMOND\",\"referencia\":\"DIAMOND INDOOR CAT\",\"linea\":\"INDOOR\",\"textoVisible\":\"diamon indor para gato, el de medio kilo\",\"categoria\":\"comida\",\"subcategoria\":\"concentrado\",\"especie\":\"gato\",\"etapa\":null,\"tamano\":null,\"sabores\":[],\"condiciones\":[],\"presentacion\":\"500gr\",\"cantidad\":null,\"intencionPresentaciones\":\"precio\",\"mascotas\":[]},\"productos\":[],\"entrega\":{\"tipo\":null,\"direccion\":null,\"direccionCompleta\":null,\"sector\":null,\"metodoPago\":null,\"sede\":null},\"facturacion\":{\"electronica\":null,\"evidencia\":null},\"datosCliente\":{\"nombre\":null,\"cedula\":null,\"correo\":null,\"celular\":null},\"carrito\":{\"operacion\":null,\"cantidadObjetivo\":null,\"cantidadDelta\":null,\"aplicaAlUltimoProducto\":null,\"razon\":null},\"faltanteSugerido\":null}",
+          "usage": {
+            "prompt_tokens": 3358,
+            "completion_tokens": 271,
+            "total_tokens": 3629,
+            "prompt_tokens_details": {
+              "cached_tokens": 2688,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 1318,
+          "status": 200,
+          "model": "gpt-5.4-mini-2026-03-17",
+          "output": "Te confirmo, esa referencia la manejamos: DIAMOND INDOOR CAT 500gr por $19.500. Las existencias están por confirmar. 🐱",
+          "usage": {
+            "prompt_tokens": 1891,
+            "completion_tokens": 39,
+            "total_tokens": 1930,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        }
+      ],
+      "cartUnchanged": true,
+      "state": {
+        "criterios": {
+          "especie": "gato",
+          "categoria": "comida",
+          "subcategoria": "concentrado"
+        },
+        "atencionHumana": null,
+        "ultimaConsultaProducto": {
+          "terminos": [
+            "diamond",
+            "indoor",
+            "gato"
+          ],
+          "etiqueta": "diamon indor gato",
+          "presentacion": "500g",
+          "fuente": "texto",
+          "nivel": "alta",
+          "razon": "nombre_exacto",
+          "aclaracion": null,
+          "creadoEn": "2026-10-29T22:01:30.337Z",
+          "solicitudOriginal": {
+            "intencion": "consulta_producto",
+            "accion": "consultar",
+            "producto": {
+              "accion": "consultar",
+              "marca": "DIAMOND",
+              "referencia": "DIAMOND INDOOR CAT",
+              "linea": "INDOOR",
+              "textoVisible": "diamon indor para gato, el de medio kilo",
+              "mencionOriginal": null,
+              "categoria": "comida",
+              "subcategoria": "concentrado",
+              "especie": "gato",
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": "500g",
+              "intencionPresentaciones": "especifica",
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": 1,
+              "duracion": null,
+              "coincidenciaVisualValidada": false,
+              "requierePresentacion": false,
+              "nombreFamilia": "DIAMOND INDOOR CAT",
+              "referenciasEquivalentes": [
+                "DIAMOND INDOOR CAT",
+                "DIAMOND INDOOR"
+              ],
+              "presentacionesEquivalentes": [
+                {
+                  "peso": "500gr",
+                  "precio": 19500,
+                  "metadata": {
+                    "llave": "553",
+                    "codigo": "10301020553",
+                    "source": "productos.json",
+                    "codigos": [
+                      "10301020553"
+                    ],
+                    "nombre_original": "DIAMOND INDOOR CAT 500GR"
+                  },
+                  "stock": null,
+                  "referencia": "DIAMOND INDOOR CAT"
+                },
+                {
+                  "peso": "2.72kg",
+                  "precio": 86500,
+                  "metadata": {
+                    "llave": "1816",
+                    "codigo": "103010201816",
+                    "source": "productos.json",
+                    "codigos": [
+                      "103010201816"
+                    ],
+                    "nombre_original": "DIAMOND INDOOR 2.72KG"
+                  },
+                  "stock": null,
+                  "referencia": "DIAMOND INDOOR"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "requests": [
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/client_channels",
+      "ms": 647,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/aivance_clients",
+      "ms": 208,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/aivance_clients",
+      "ms": 284,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/client_delivery_rules",
+      "ms": 201,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/client_prompts",
+      "ms": 217,
+      "status": 200
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 6742,
+      "status": 200,
+      "model": "gpt-5.4-2026-03-05",
+      "output": "{\n  \"intencion\": \"consulta_producto\",\n  \"accion\": \"consultar\",\n  \"confianza\": 0.97,\n  \"compraContextual\": null,\n  \"solicitudesProductoDetectadas\": 1,\n  \"producto\": {\n    \"accion\": \"consultar\",\n    \"marca\": \"Diamond\",\n    \"referencia\": \"diamon indor\",\n    \"linea\": null,\n    \"textoVisible\": \"diamon indor para gato, el de medio kilo\",\n    \"categoria\": \"comida\",\n    \"subcategoria\": \"concentrado\",\n    \"especie\": \"gato\",\n    \"etapa\": null,\n    \"tamano\": null,\n    \"sabores\": [],\n    \"condiciones\": [],\n    \"presentacion\": \"medio kilo\",\n    \"cantidad\": 1,\n    \"intencionPresentaciones\": \"especifica\",\n    \"mascotas\": [],\n    \"mencionOriginal\": \"diamon indor para gato, el de medio kilo\"\n  },\n  \"productos\": [\n    {\n      \"accion\": \"consultar\",\n      \"marca\": \"Diamond\",\n      \"referencia\": \"diamon indor\",\n      \"linea\": null,\n      \"textoVisible\": \"diamon indor para gato, el de medio kilo\",\n      \"categoria\": \"comida\",\n      \"subcategoria\": \"concentrado\",\n      \"especie\": \"gato\",\n      \"etapa\": null,\n      \"tamano\": null,\n      \"sabores\": [],\n      \"condiciones\": [],\n      \"presentacion\": \"medio kilo\",\n      \"cantidad\": 1,\n      \"intencionPresentaciones\": \"especifica\",\n      \"mascotas\": [],\n      \"mencionOriginal\": \"diamon indor para gato, el de medio kilo\"\n    }\n  ],\n  \"entrega\": {\n    \"tipo\": null,\n    \"direccion\": null,\n    \"direccionCompleta\": null,\n    \"sector\": null,\n    \"metodoPago\": null,\n    \"sede\": null\n  },\n  \"facturacion\": {\n    \"electronica\": null,\n    \"evidencia\": null\n  },\n  \"datosCliente\": {\n    \"nombre\": null,\n    \"cedula\": null,\n    \"correo\": null,\n    \"celular\": null\n  },\n  \"carrito\": {\n    \"operacion\": null,\n    \"cantidadObjetivo\": null,\n    \"cantidadDelta\": null,\n    \"aplicaAlUltimoProducto\": null,\n    \"razon\": null\n  },\n  \"faltanteSugerido\": null,\n  \"recursosAclaracion\": {\n    \"fotoDisponible\": null,\n    \"masDatosDisponibles\": null\n  },\n  \"consultaCatalogo\": {\n    \"necesaria\": true,\n    \"consulta\": \"Diamond Indoor para gato 500 g precio\",\n    \"tipo\": \"referencia\",\n    \"presupuestoMaximo\": null\n  },\n  \"respuestaConversacional\": null,\n  \"derivacionHumana\": {\n    \"necesaria\": false,\n    \"motivo\": null\n  },\n  \"solicitudComercialIndependiente\": true,\n  \"seguimientoProducto\": \"nueva\"\n}",
+      "usage": {
+        "prompt_tokens": 6574,
+        "completion_tokens": 688,
+        "total_tokens": 7262,
+        "prompt_tokens_details": {
+          "cached_tokens": 4864,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "supabase",
+      "method": "POST",
+      "path": "/rest/v1/rpc/search_catalog_products",
+      "ms": 512,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "POST",
+      "path": "/rest/v1/rpc/search_catalog_products",
+      "ms": 459,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/training_examples",
+      "ms": 191,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/training_examples",
+      "ms": 310,
+      "status": 200
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 4046,
+      "status": 200,
+      "model": "gpt-5.2-2025-12-11",
+      "output": "{\"intencion\":\"consulta_producto\",\"accion\":\"consultar\",\"confianza\":0.93,\"compraContextual\":null,\"solicitudesProductoDetectadas\":[\"precio DIAMOND INDOOR CAT 500gr para gato\"],\"producto\":{\"accion\":\"consultar\",\"marca\":\"DIAMOND\",\"referencia\":\"DIAMOND INDOOR CAT\",\"linea\":\"INDOOR\",\"textoVisible\":\"diamon indor para gato, el de medio kilo\",\"categoria\":\"comida\",\"subcategoria\":\"concentrado\",\"especie\":\"gato\",\"etapa\":null,\"tamano\":null,\"sabores\":[],\"condiciones\":[],\"presentacion\":\"500gr\",\"cantidad\":null,\"intencionPresentaciones\":\"precio\",\"mascotas\":[]},\"productos\":[],\"entrega\":{\"tipo\":null,\"direccion\":null,\"direccionCompleta\":null,\"sector\":null,\"metodoPago\":null,\"sede\":null},\"facturacion\":{\"electronica\":null,\"evidencia\":null},\"datosCliente\":{\"nombre\":null,\"cedula\":null,\"correo\":null,\"celular\":null},\"carrito\":{\"operacion\":null,\"cantidadObjetivo\":null,\"cantidadDelta\":null,\"aplicaAlUltimoProducto\":null,\"razon\":null},\"faltanteSugerido\":null}",
+      "usage": {
+        "prompt_tokens": 3358,
+        "completion_tokens": 271,
+        "total_tokens": 3629,
+        "prompt_tokens_details": {
+          "cached_tokens": 2688,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 1318,
+      "status": 200,
+      "model": "gpt-5.4-mini-2026-03-17",
+      "output": "Te confirmo, esa referencia la manejamos: DIAMOND INDOOR CAT 500gr por $19.500. Las existencias están por confirmar. 🐱",
+      "usage": {
+        "prompt_tokens": 1891,
+        "completion_tokens": 39,
+        "total_tokens": 1930,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    }
+  ]
+}

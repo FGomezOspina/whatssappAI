@@ -1,0 +1,184 @@
+[
+  {
+    "file": "sandbox-runtime-resume.log",
+    "usage": [
+      {
+        "stage": "interprete",
+        "model": "gpt-5.2",
+        "ms": 19476,
+        "tokens": 3026
+      },
+      {
+        "stage": "interprete",
+        "model": "gpt-5.4",
+        "ms": 8064,
+        "tokens": 21973
+      },
+      {
+        "stage": "interprete",
+        "model": "gpt-5.2",
+        "ms": 3897,
+        "tokens": 10854
+      },
+      {
+        "stage": "interprete",
+        "model": "gpt-5.2",
+        "ms": 5429,
+        "tokens": 11077
+      },
+      {
+        "stage": "interprete",
+        "model": "gpt-5.2",
+        "ms": 5601,
+        "tokens": 10961
+      }
+    ],
+    "calls": 5,
+    "tokens": 57891,
+    "summary": [
+      {
+        "outcome": {
+          "status": "sent",
+          "parts": 1
+        },
+        "groups": {
+          "inbound_buffer": {
+            "llamadas": 1,
+            "ms": 5026
+          },
+          "supabase_attempt": {
+            "llamadas": 28,
+            "ms": 10290.8
+          },
+          "supabase_request": {
+            "llamadas": 28,
+            "ms": 10436.6
+          },
+          "save_inbound_message": {
+            "llamadas": 1,
+            "ms": 1388.04
+          },
+          "load_context": {
+            "llamadas": 1,
+            "ms": 259.73
+          },
+          "kapso_typing_mark_read": {
+            "llamadas": 3,
+            "ms": 5832.24
+          },
+          "openai_request": {
+            "llamadas": 5,
+            "ms": 42466.73
+          },
+          "tool_product_search": {
+            "llamadas": 1,
+            "ms": 1454.39
+          },
+          "tool_order_logic": {
+            "llamadas": 3,
+            "ms": 9.3
+          },
+          "tool_save_order": {
+            "llamadas": 1,
+            "ms": 0.28
+          },
+          "agent_processing": {
+            "llamadas": 1,
+            "ms": 39275.09
+          },
+          "kapso_send": {
+            "llamadas": 1,
+            "ms": 1618.04
+          },
+          "save_response": {
+            "llamadas": 1,
+            "ms": 537.71
+          }
+        },
+        "totalWithBufferMs": 46462,
+        "totalProcessingMs": 41436
+      }
+    ]
+  },
+  {
+    "file": "sandbox-runtime-list-fix.log",
+    "usage": [
+      {
+        "stage": "interprete",
+        "model": "gpt-5.2",
+        "ms": 13443,
+        "tokens": 4892
+      },
+      {
+        "stage": "interprete",
+        "model": "gpt-5.4",
+        "ms": 10480,
+        "tokens": 21688
+      },
+      {
+        "stage": "humanizador",
+        "model": "gpt-5.4-mini",
+        "ms": 1031,
+        "tokens": 726
+      }
+    ],
+    "calls": 3,
+    "tokens": 27306,
+    "summary": [
+      {
+        "outcome": {
+          "status": "sent",
+          "parts": 1
+        },
+        "groups": {
+          "inbound_buffer": {
+            "llamadas": 1,
+            "ms": 5025
+          },
+          "supabase_attempt": {
+            "llamadas": 23,
+            "ms": 9577.03
+          },
+          "supabase_request": {
+            "llamadas": 23,
+            "ms": 9773.13
+          },
+          "save_inbound_message": {
+            "llamadas": 1,
+            "ms": 2558.34
+          },
+          "load_context": {
+            "llamadas": 1,
+            "ms": 297.73
+          },
+          "kapso_typing_mark_read": {
+            "llamadas": 2,
+            "ms": 1622.17
+          },
+          "openai_request": {
+            "llamadas": 3,
+            "ms": 24952.35
+          },
+          "tool_save_order": {
+            "llamadas": 1,
+            "ms": 0.23
+          },
+          "agent_processing": {
+            "llamadas": 1,
+            "ms": 31072.72
+          },
+          "kapso_send": {
+            "llamadas": 1,
+            "ms": 1074.61
+          },
+          "save_response": {
+            "llamadas": 1,
+            "ms": 598.06
+          }
+        },
+        "totalWithBufferMs": 37777,
+        "totalProcessingMs": 32752
+      }
+    ]
+  }
+]

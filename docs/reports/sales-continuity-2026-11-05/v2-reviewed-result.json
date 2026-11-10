@@ -1,0 +1,140 @@
+{
+  "status": "completed_once",
+  "review": "v2-payload-review.json",
+  "turns": [
+    {
+      "index": 0,
+      "response": "Listo, te quedó agregado 1 ARENA MAIZ CAT x 20kg por $98.000 😊\n\nPedido:\n- 1 x ARENA MAIZ CAT x 20kg: $98.000\nTotal: $98.000\n\n¿Quieres agregar algo más o avanzamos con la entrega?",
+      "cart": [
+        {
+          "marca": "ARENA MAIZ CAT",
+          "referencia": "ARENA MAIZ CAT",
+          "peso": "x 20kg",
+          "precio": 98000,
+          "cantidad": 1,
+          "categoria": "arena_sustrato",
+          "subcategoria": "arena",
+          "especie": "gato",
+          "requiereConfirmacion": false
+        }
+      ],
+      "confirmed": false,
+      "awaitingConfirmation": false,
+      "ms": 9903.570458,
+      "classification": [
+        {
+          "router": true,
+          "intention": "datos_envio",
+          "action": null
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "response": "Pedido:\n- 1 x ARENA MAIZ CAT x 20kg: $98.000\nTotal: $98.000\n\nDatos de domicilio:\n- Dirección: Mz 8 casa 22 Conjunto Prueba, Sector de prueba\n- Nombre: Cliente Prueba\n- Celular: 3000000000\n- Método de pago: efectivo\n\n¿Deseas agregar algo más o finalizamos el pedido así?",
+      "cart": [
+        {
+          "marca": "ARENA MAIZ CAT",
+          "referencia": "ARENA MAIZ CAT",
+          "peso": "x 20kg",
+          "precio": 98000,
+          "cantidad": 1,
+          "categoria": "arena_sustrato",
+          "subcategoria": "arena",
+          "especie": "gato",
+          "requiereConfirmacion": false
+        }
+      ],
+      "confirmed": false,
+      "awaitingConfirmation": true,
+      "ms": 6753.710375000001,
+      "classification": [
+        {
+          "router": true,
+          "intention": "datos_envio",
+          "action": null
+        }
+      ]
+    }
+  ],
+  "calls": 3,
+  "tokens": 16962,
+  "models": [
+    "gpt-5.4",
+    "gpt-5.4-mini"
+  ],
+  "cost": null,
+  "privacyChecks": [
+    {
+      "sha256": "cbff22d3c206f942e0726e4468c8ca5307a9fc2397a12a85896e4dc3ccb6e9cf",
+      "model": "gpt-5.4",
+      "topLevelFields": [
+        "model",
+        "response_format",
+        "messages"
+      ],
+      "roles": [
+        "system",
+        "user"
+      ],
+      "contentCharacters": 34044,
+      "emails": [],
+      "longNumbers": [],
+      "privateSourceMatch": false,
+      "credentialMatch": false,
+      "media": false
+    },
+    {
+      "sha256": "15b23a9138bc9065ad09fb946f9db2afe40093f8eda2610040bdae513dad5731",
+      "model": "gpt-5.4-mini",
+      "topLevelFields": [
+        "model",
+        "messages"
+      ],
+      "roles": [
+        "system",
+        "user"
+      ],
+      "contentCharacters": 7161,
+      "emails": [],
+      "longNumbers": [],
+      "privateSourceMatch": false,
+      "credentialMatch": false,
+      "media": false
+    },
+    {
+      "sha256": "aa48aa21e90f75089a4330fbb152209021dd373cc3900ab6bd285b6267a5671a",
+      "model": "gpt-5.4",
+      "topLevelFields": [
+        "model",
+        "response_format",
+        "messages"
+      ],
+      "roles": [
+        "system",
+        "user"
+      ],
+      "contentCharacters": 34710,
+      "emails": [],
+      "longNumbers": [
+        "3000000000"
+      ],
+      "privateSourceMatch": false,
+      "credentialMatch": false,
+      "media": false
+    }
+  ],
+  "tests": {
+    "passed": 1180,
+    "failed": 0,
+    "ms": 8705.710334
+  },
+  "effects": {
+    "whatsappMessages": 0,
+    "realOrders": 0,
+    "supabaseWrites": 0,
+    "restarts": 0,
+    "deploys": 0
+  },
+  "scope": "Existing service and OpenAI, frozen local catalogue, reconstructed quote state and product-only history; all customer details synthetic, no final acceptance sent."
+}

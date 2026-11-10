@@ -1,0 +1,201 @@
+✔ food form and container remain distinct; weight and bags imply neither (2.312625ms)
+✔ requested dry food, pouch and can exclude each other even at shared weights (26.351875ms)
+✔ shared identity without food form asks a useful clarification (6.251875ms)
+✔ wet food without container retains both can and pouch (5.403375ms)
+✔ weight clarification inherits verified container and never turns it into dry (8.476917ms)
+✔ explicit format corrections replace old format and clear inherited pack (4.689917ms)
+✔ another named product or expired context does not inherit container (0.469417ms)
+✔ insufficient catalog format stays unverified (2.260542ms)
+✔ verified image evidence supplies format; explicit text can correct pictured container (1.7265ms)
+✔ contradictory formats require clarification even with one catalog option (5.42225ms)
+✔ semantic compression and brand-weight shortcut cannot erase requested container (3.646958ms)
+✔ normalized visual attributes and conversation state survive format correction without mutating old evidence (43.243791ms)
+✔ medicine sachets do not become wet food when interpreter category is absent (0.670791ms)
+✔ asking available sizes cannot promote an unverified food format (1.177625ms)
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[Cart Operation] {"action":"quitar","targetResolved":false,"mutationApplied":false,"catalogLookup":false,"target":"ARENA KING CAT ARENA KING CAT"}
+[Cart Operation] {"action":"quitar","targetResolved":true,"mutationApplied":false,"catalogLookup":false,"target":"ARENA KING CAT ARENA KING CAT"}
+[Cart Operation] {"action":"quitar","targetResolved":true,"mutationApplied":true,"catalogLookup":false,"target":"ARENA KING CAT ARENA KING CAT"}
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[PERF][conversation:6ec6b4516338][run:9c67c1c8-6f4f-490e-bc90-83c46dd98c0e] {"etapa":"webhook_received","messageHash":"5feceb66ffc8"}
+[PERF][conversation:6ec6b4516338][run:9c67c1c8-6f4f-490e-bc90-83c46dd98c0e] {"etapa":"save_inbound_message","numero":1,"ms":0.03,"ok":true}
+[PERF][conversation:6ec6b4516338][run:ae020dbf-aa36-4aaa-8d1b-d05923936ad6] {"etapa":"webhook_received","messageHash":"6b86b273ff34"}
+[PERF][conversation:6ec6b4516338][run:ae020dbf-aa36-4aaa-8d1b-d05923936ad6] {"etapa":"save_inbound_message","numero":1,"ms":0.01,"ok":true}
+[CONVERSATION][conversation:6ec6b4516338][run:6c9a4918-fad6-4b7e-9386-31646e5d76db] Processing started
+[PERF][conversation:6ec6b4516338][run:6c9a4918-fad6-4b7e-9386-31646e5d76db] {"etapa":"inbound_buffer","ms":0,"ok":true}
+[PERF][conversation:6ec6b4516338][run:6c9a4918-fad6-4b7e-9386-31646e5d76db] {"etapa":"processing_queue_wait","ms":0}
+[PERF][conversation:6ec6b4516338][run:6c9a4918-fad6-4b7e-9386-31646e5d76db] {"etapa":"kapso_typing_mark_read","numero":1,"ms":0.06,"ok":true}
+[PERF][conversation:6ec6b4516338][run:6c9a4918-fad6-4b7e-9386-31646e5d76db] {"etapa":"load_context","numero":1,"ms":0,"ok":true}
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[PERF][conversation:6ec6b4516338][run:6c9a4918-fad6-4b7e-9386-31646e5d76db] {"etapa":"agent_processing","numero":1,"ms":2.21,"ok":true}
+[PERF][conversation:6ec6b4516338][run:6c9a4918-fad6-4b7e-9386-31646e5d76db] {"etapa":"response_prepared","parts":1,"chars":149,"fallback":false}
+[PERF][conversation:6ec6b4516338][run:6c9a4918-fad6-4b7e-9386-31646e5d76db] {"etapa":"kapso_send","numero":1,"ms":0.03,"ok":true}
+[PERF][conversation:6ec6b4516338][run:6c9a4918-fad6-4b7e-9386-31646e5d76db] {"etapa":"response_send_completed","parts":1}
+[PERF][conversation:6ec6b4516338][run:6c9a4918-fad6-4b7e-9386-31646e5d76db] {"etapa":"summary","outcome":{"status":"sent","parts":1},"grupos":{"inbound_buffer":{"llamadas":1,"ms":0},"save_inbound_message":{"llamadas":2,"ms":0.04},"kapso_typing_mark_read":{"llamadas":1,"ms":0.06},"load_context":{"llamadas":1,"ms":0},"agent_processing":{"llamadas":1,"ms":2.21},"kapso_send":{"llamadas":1,"ms":0.03}},"supabaseTop3":[],"consultasRepetidas":[],"totalConBufferMs":3,"totalProcesamientoMs":2}
+[PERF][conversation:6ec6b4516338][run:62ec7ba9-3750-48f4-84cd-9a3a34cb4cf9] {"etapa":"webhook_received","messageHash":"5feceb66ffc8"}
+[PERF][conversation:6ec6b4516338][run:62ec7ba9-3750-48f4-84cd-9a3a34cb4cf9] {"etapa":"save_inbound_message","numero":1,"ms":0.01,"ok":true}
+[PERF][conversation:6ec6b4516338][run:57f14e9b-6280-4c5a-b52d-1f79b8b91ab1] {"etapa":"webhook_received","messageHash":"6b86b273ff34"}
+[PERF][conversation:6ec6b4516338][run:57f14e9b-6280-4c5a-b52d-1f79b8b91ab1] {"etapa":"save_inbound_message","numero":1,"ms":0.01,"ok":true}
+[CONVERSATION][conversation:6ec6b4516338][run:0ca10279-127b-496d-8b7f-96c328362f7b] Processing started
+[PERF][conversation:6ec6b4516338][run:0ca10279-127b-496d-8b7f-96c328362f7b] {"etapa":"inbound_buffer","ms":0,"ok":true}
+[PERF][conversation:6ec6b4516338][run:0ca10279-127b-496d-8b7f-96c328362f7b] {"etapa":"processing_queue_wait","ms":0}
+[PERF][conversation:6ec6b4516338][run:0ca10279-127b-496d-8b7f-96c328362f7b] {"etapa":"kapso_typing_mark_read","numero":1,"ms":0.03,"ok":true}
+[PERF][conversation:6ec6b4516338][run:0ca10279-127b-496d-8b7f-96c328362f7b] {"etapa":"load_context","numero":1,"ms":0,"ok":true}
+[PERF][conversation:6ec6b4516338][run:0ca10279-127b-496d-8b7f-96c328362f7b] {"etapa":"tool_order_logic","ms":0.17,"ok":true}
+[PERF][conversation:6ec6b4516338][run:0ca10279-127b-496d-8b7f-96c328362f7b] {"etapa":"tool_order_logic","ms":0.53,"ok":true}
+[AI Usage Summary] cliente=images-test | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[PERF][conversation:6ec6b4516338][run:0ca10279-127b-496d-8b7f-96c328362f7b] {"etapa":"agent_processing","numero":1,"ms":13.12,"ok":true}
+[PERF][conversation:6ec6b4516338][run:0ca10279-127b-496d-8b7f-96c328362f7b] {"etapa":"response_prepared","parts":1,"chars":179,"fallback":false}
+[PERF][conversation:6ec6b4516338][run:0ca10279-127b-496d-8b7f-96c328362f7b] {"etapa":"kapso_send","numero":1,"ms":0,"ok":true}
+[PERF][conversation:6ec6b4516338][run:0ca10279-127b-496d-8b7f-96c328362f7b] {"etapa":"response_send_completed","parts":1}
+[PERF][conversation:6ec6b4516338][run:0ca10279-127b-496d-8b7f-96c328362f7b] {"etapa":"summary","outcome":{"status":"sent","parts":1},"grupos":{"inbound_buffer":{"llamadas":1,"ms":0},"save_inbound_message":{"llamadas":2,"ms":0.02},"kapso_typing_mark_read":{"llamadas":1,"ms":0.03},"load_context":{"llamadas":1,"ms":0},"tool_order_logic":{"llamadas":2,"ms":0.7},"agent_processing":{"llamadas":1,"ms":13.12},"kapso_send":{"llamadas":1,"ms":0}},"supabaseTop3":[],"consultasRepetidas":[],"totalConBufferMs":13,"totalProcesamientoMs":13}
+✔ fotos sucesivas con texto adicional → carrito parcial → me los envías (136.169666ms)
+✔ fotos sucesivas con texto adicional → carrito parcial → mándame esos (54.834958ms)
+✔ fotos sucesivas con texto adicional → carrito parcial → quiero los dos (50.546333ms)
+✔ fotos sucesivas con texto adicional → carrito parcial → agrégalos (50.564083ms)
+✔ fotos sucesivas con texto adicional → carrito parcial → envíame esos productos (51.998875ms)
+✔ dos fotos cotizadas con nombres descriptivos → aceptación conjunta desde carrito vacío (61.01775ms)
+✔ descartar una cotización con otro producto en carrito no la recupera al pedir el conjunto (39.63175ms)
+✔ dos imágenes: recupera producto omitido y cotiza sin pedir permiso para buscar (15.474292ms)
+✔ fotos con datos_envio: lectura individual recupera referencias y conserva entrega (15.100125ms)
+✔ fotos con metodo_pago: lectura individual recupera referencias y conserva entrega (15.262375ms)
+✔ lecturas reales con dirección/pago llegan al catálogo: omisión conjunta=false (15.799458ms)
+✔ lecturas reales con dirección/pago llegan al catálogo: omisión conjunta=true (15.141875ms)
+✔ consulta visual única identificada ejecuta catálogo aunque router sugiera preguntar (3.984792ms)
+✔ compra mixta conserva identidad de la foto y ofrece el peso real de la familia (30.475709ms)
+✔ dos fotos del mismo producto no duplican la cantidad (4.802ms)
+✔ fallo de una lectura mantiene cotización válida e informa la imagen pendiente (3.066959ms)
+✔ peso aproximado resuelve la referencia equivalente de 10.1 kg (4.758292ms)
+✔ familia ficticia NUBELIA: alternativas completas y precios vigentes (2.065042ms)
+✔ familia ficticia VERDANIA: alternativas completas y precios vigentes (1.416125ms)
+✔ imagen sin peso ofrece exclusivamente las presentaciones de la referencia ficticia A (1.854791ms)
+✔ imagen sin peso ofrece exclusivamente las presentaciones de la referencia ficticia B (1.008833ms)
+✔ imagen sin peso ofrece exclusivamente las presentaciones de la referencia ficticia C (0.898041ms)
+✔ fotos de lote descartado acompañan dirección y pago sin convertirse en eventos nuevos (16.536125ms)
+✔ alternativas consultadas sin peso elegido nunca se agregan todas al carrito (1.193833ms)
+✔ seleccionar un peso entre alternativas agrega únicamente ese tamaño una vez (0.723ms)
+✔ un peso solicitado no compra la lista propuesta y confirmar identidad no suma unidades (4.795917ms)
+✔ dos entidades de arena no cuentan como cobertura de dos imágenes diferentes (19.4495ms)
+✔ peso cercano en NUBELIA solicita confirmar solo la alternativa, sin agregar (0.552958ms)
+✔ peso cercano en VERDANIA solicita confirmar solo la alternativa, sin agregar (0.354167ms)
+✔ 10kl conserva solicitud y sí acepta exclusivamente la alternativa 10.1kg (4.347792ms)
+✔ fallo de revisión individual no crea foto ilegible si la lectura conjunta la identificó (14.306583ms)
+✔ peso explícito posterior a imagen no conserva requierePresentacion cuando ya está elegido (10.599416ms)
+✔ error técnico true: no se presenta como foto ilegible (3.424209ms)
+✔ lectura válida sobrevive revisión fallida true (13.811208ms)
+✔ error técnico null: no se presenta como foto ilegible (2.971167ms)
+✔ lectura válida sobrevive revisión fallida null (14.400084ms)
+✔ revisión exitosa sin producto se diferencia de error técnico (3.0755ms)
+✔ no hay productos vacíos en productos_combinados: varias=false (21.514291ms)
+✔ no hay productos vacíos en productos_combinados: varias=true (14.802792ms)
+✔ una sola imagen con producto válido y objeto vacío no crea una segunda solicitud (22.753708ms)
+✔ la línea comercial en un campo separado no duplica la lectura de la misma referencia (14.002ms)
+✔ imagen única sin lectura útil: técnico=false (1.035208ms)
+✔ imagen única sin lectura útil: técnico=true (0.762875ms)
+✔ peso aproximado solo si es único: 1kg/10.1kg para 10kg (0.61125ms)
+✔ peso aproximado solo si es único: 10kg/10.1kg para 10kg (0.429084ms)
+✔ peso aproximado solo si es único: 10.05kg/10.1kg para 10kg (0.392209ms)
+✔ peso aproximado solo si es único: 1kg/12kg para 10kg (0.378417ms)
+✔ dos imágenes sin coincidencias validadas responden con aclaración, compra=false (2.513125ms)
+✔ dos imágenes sin coincidencias validadas responden con aclaración, compra=true (2.077417ms)
+✔ dos imágenes llegan al transporte: catálogo con 0 marcas (5.047375ms)
+✔ dos imágenes llegan al transporte: catálogo con 2 marcas (13.922958ms)
+[AI Usage Summary] cliente=prueba-multiple | usuario=synthetic | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=prueba-multiple | usuario=synthetic | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=prueba-multiple | usuario=synthetic | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=prueba-multiple | usuario=synthetic | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=prueba-multiple | usuario=synthetic | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=prueba-multiple | usuario=synthetic | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=prueba-multiple | usuario=synthetic | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage] etapa=respuesta_producto | cliente=sin_cliente | usuario=desconocido | intencion=null | modelo=gpt-5.4-mini | productosEnviados=n/a | imagenes=0 | audios=0 | duracionMs=0 | tokensPrompt=0 | tokensCompletion=0 | tokensTotal=0
+✔ pedido multiple conserva accion, cantidades, pendientes y carrito al recargar entre turnos (69.342834ms)
+✔ cotizacion multiple conserva cantidades sin convertir la consulta en compra (11.267459ms)
+✔ pedido multiple con domicilio conserva el siguiente paso del flujo existente (7.339417ms)
+✔ memoria compacta conserva asociacion original de cantidades en correcciones elipticas (7.57975ms)
+✔ fallo de un producto no descarta los otros y conserva la solicitud pendiente (7.637584ms)
+✔ redaccion conserva completo el resumen calculado incluso con aclaraciones pendientes (1.100666ms)
+✔ aclaracion conserva operacion del router y no duplica ni uniforma cantidades existentes (9.437166ms)
+✔ pregunta de un producto incierto muestra el carrito guardado sin reescribirlo (1.425625ms)
+[AI Usage Summary] cliente=multi-continuidad | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[Cart Operation] {"action":"agregar","targetResolved":false,"mutationApplied":false,"catalogLookup":false,"target":"CHUNKY CHUNKY CATS GATOS"}
+[AI Usage Summary] cliente=multi-continuidad | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=multi-continuidad | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=real-list | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+✔ nombre comercial completo no exige sabor ni se confunde con gatitos (194.181042ms)
+✔ lista parcialmente extraida se revisa, conserva carrito al aclarar y completa sin duplicar (358.501666ms)
+✔ atributos de la lista real validan BR y arena sin repetir sus nombres comerciales (109.413959ms)
+✔ lista real agrega BR y arena antes de aclarar Chunky sin inferir una marca de arena (100.270625ms)
+[AI Usage Summary] cliente=coverage-fixture | usuario=coverage-test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=coverage-fixture | usuario=coverage-test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+✔ original three-reference request reports unavailable pack alongside both quotes (624.66925ms)
+✔ two unresolved products from one image each receive an explicit outcome (3.480166ms)
+✔ commercial slash codes are case independent without treating ordinary lowercase words as codes (0.384792ms)
+✔ original visual extraction with uncertain food form retains both same-code formats (72.664625ms)
+✔ synthetic explicit dry-food clarification preserves the exact lowercase commercial code (68.529625ms)
+✔ una presentación no disponible conserva identidad al corregir solo peso, sin menú pendiente (14.085875ms)
+✔ no recupera identidad para marca distinta, nueva consulta, contexto vencido o formato incompatible (0.715375ms)
+✔ la corrección larga de peso conserva también una referencia validada en una consulta (0.182083ms)
+✔ marcas con espacios distintos permiten hallar la línea, sin inventar presentación ni cruzar especie/formato (9.396541ms)
+✔ consulta cambia formato por contexto; cantidad posterior conserva el formato y peso (0.371334ms)
+✔ redactor no puede asociar el peso solicitado a un candidato que solo registra otro peso (0.261917ms)
+✔ segmentación literal no pierde atributos aportados en mensajes consecutivos (0.19725ms)
+✔ anáfora explícita sobrevive a etiqueta nueva del router sin aceptar otra identidad (0.266292ms)
+✔ corrección contextual puede omitir marca sin perder la línea ni aceptar otra (0.934959ms)
+ℹ tests 91
+ℹ suites 0
+ℹ pass 91
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 852.819542

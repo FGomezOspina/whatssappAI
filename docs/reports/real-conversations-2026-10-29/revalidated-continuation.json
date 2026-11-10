@@ -1,0 +1,118 @@
+{
+  "mode": "Local candidate retrieval + identity validator; not model, media perception, cart or WhatsApp E2E accuracy",
+  "normalizationAblated": false,
+  "fixtureSha256": "34786de60ca048d09f2d1667ecf861f2a5e5deeaa0d72547ce3d8cd834329f6c",
+  "catalogSha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+  "total": {
+    "correct": 1,
+    "missed": 0,
+    "false_positive": 0,
+    "safe_abstention": 3,
+    "not_evaluable": 1
+  },
+  "development": {
+    "correct": 0,
+    "missed": 0,
+    "false_positive": 0,
+    "safe_abstention": 0,
+    "not_evaluable": 0
+  },
+  "evaluation": {
+    "correct": 1,
+    "missed": 0,
+    "false_positive": 0,
+    "safe_abstention": 3,
+    "not_evaluable": 1
+  },
+  "latencyLocalMs": {
+    "median": 69.37233300000014,
+    "p95": 82.97733299999999
+  },
+  "rows": [
+    {
+      "id": "C11-01",
+      "chat": "C11",
+      "split": "evaluation",
+      "outcome": "not_evaluable",
+      "reason": "Only an image visible. Full pixels not recovered. An unsent Meta AI suggestion refers to payment; it is not evidence of image contents and is not used to label or identify a product. Export dialog exposes date options only, no media option; cancelled without exporting."
+    },
+    {
+      "id": "C12-01",
+      "chat": "C12",
+      "split": "evaluation",
+      "gold": "ambiguous",
+      "scope": "text",
+      "direction": "inbound",
+      "expectedReference": null,
+      "outcome": "safe_abstention",
+      "selected": null,
+      "level": "no_aplica",
+      "weight": null,
+      "reason": "consulta_categoria",
+      "samplesMs": [
+        82.97733299999999,
+        79.73541599999999,
+        81.948667
+      ]
+    },
+    {
+      "id": "C12-02",
+      "chat": "C12",
+      "split": "evaluation",
+      "gold": "confirmed_identity",
+      "scope": "manually_reconstructed_episode",
+      "direction": "inbound",
+      "expectedReference": "ARENA KITTEN TALCO",
+      "outcome": "correct",
+      "selected": "ARENA KITTEN TALCO",
+      "level": "alta",
+      "weight": "25kg",
+      "presentationValid": true,
+      "reason": "senales_convergentes",
+      "samplesMs": [
+        51.29179199999999,
+        50.17179200000004,
+        48.60450000000003
+      ]
+    },
+    {
+      "id": "C14-01",
+      "chat": "C14",
+      "split": "evaluation",
+      "gold": "ambiguous",
+      "scope": "text_span",
+      "direction": "inbound",
+      "expectedReference": null,
+      "outcome": "safe_abstention",
+      "selected": null,
+      "level": "media",
+      "weight": "20kg",
+      "reason": "falta_duracion",
+      "samplesMs": [
+        42.074957999999924,
+        39.452,
+        37.92674999999997
+      ]
+    },
+    {
+      "id": "C14-02",
+      "chat": "C14",
+      "split": "evaluation",
+      "gold": "unresolved",
+      "scope": "text_span",
+      "direction": "inbound",
+      "expectedReference": null,
+      "outcome": "safe_abstention",
+      "selected": null,
+      "level": "baja",
+      "weight": "8kg",
+      "presentationValid": true,
+      "reason": "variante_sin_respaldo",
+      "samplesMs": [
+        71.088209,
+        69.80045799999994,
+        69.37233300000014
+      ]
+    }
+  ]
+}

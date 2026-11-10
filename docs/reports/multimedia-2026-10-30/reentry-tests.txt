@@ -1,0 +1,33 @@
+[AI Usage Summary] cliente=coverage-fixture | usuario=coverage-test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=coverage-fixture | usuario=coverage-test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=coverage-fixture | usuario=coverage-test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=coverage-fixture | usuario=coverage-test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=coverage-fixture | usuario=coverage-test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=coverage-fixture | usuario=coverage-test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+✔ original three-reference request reports unavailable pack alongside both quotes (547.694209ms)
+✔ two unresolved products from one image each receive an explicit outcome (3.149084ms)
+✔ commercial slash codes are case independent without treating ordinary lowercase words as codes (0.344541ms)
+✔ original visual extraction with uncertain food form retains both same-code formats (66.469666ms)
+✔ synthetic structured code separates packaging descriptors and preserves food form (61.75125ms)
+✔ a protected code does not approve an undeclared commercial variant; vision=false (2.225834ms)
+✔ a protected code does not approve an undeclared commercial variant; vision=true (1.437042ms)
+✔ an unresolved visual identity survives the narrower ranking terms during clarification (0.209916ms)
+✔ synthetic held-out slash code a/b cannot drift to the other line or wet format (0.757625ms)
+✔ synthetic held-out slash code x/y cannot drift to the other line or wet format (0.734334ms)
+✔ catalog-based punctuation normalization does not turn arbitrary words into another brand (0.061709ms)
+✔ synthetic consecutive-message variant preserves three references and per-item quantities (468.999959ms)
+✔ original persisted image extraction cannot turn an inferred dog species into a cat SKU (229.903666ms)
+✔ synthetic audio transcript plus text preserves all references; no real audio perception claimed (475.913959ms)
+✔ synthetic uncertain transcription remains a clarification alongside a known product (131.663291ms)
+✔ returning to an earlier quote retains its protected code and re-queries without cached prices (2.080834ms)
+✔ re-entry respects code, variant, species, format, explicit new request and expiry (0.358958ms)
+✔ brand-only clarification cannot select between two previously quoted references (0.090834ms)
+✔ actual saved failing router/state recovers C/D after Advance at the original episode time (2.399208ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2036.203417

@@ -1,0 +1,2465 @@
+{
+  "capturedAt": "2026-11-05T16:35:34.970Z",
+  "messages": [
+    {
+      "id": "b9193bfd-cc90-d16e-a9e5-4d0263d61f24",
+      "channel_user_id": "573158994163",
+      "body": "Arena de maíz cat de 20 kg",
+      "direction": "inbound",
+      "created_at": "2026-11-05T16:22:44.021159+00:00",
+      "metadata": {
+        "tipo": "text",
+        "indice": 0,
+        "turnId": "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEFBNzFGRjA3MEREQjRGNEU2NwA=",
+        "mediaId": null,
+        "eventKey": "597907523413541:597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEFBNzFGRjA3MEREQjRGNEU2NwA=",
+        "transcripcion": "Arena de maíz cat de 20 kg",
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": null,
+            "marca": "ARENA MAIZ CAT",
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": "gato",
+            "sabores": [],
+            "cantidad": null,
+            "duracion": null,
+            "mascotas": [],
+            "categoria": "arena_sustrato",
+            "referencia": "ARENA MAIZ CAT",
+            "condiciones": [],
+            "presentacion": "20kg",
+            "subcategoria": "arena",
+            "textoVisible": "Arena de maíz cat de 20 kg",
+            "nombreFamilia": "ARENA MAIZ CAT",
+            "mencionOriginal": null,
+            "pesoTextoOriginal": "20kg",
+            "requierePresentacion": false,
+            "intencionPresentaciones": "especifica",
+            "referenciasEquivalentes": [
+              "ARENA MAIZ CAT"
+            ],
+            "coincidenciaVisualValidada": false,
+            "presentacionesEquivalentes": [
+              {
+                "peso": "x 20kg",
+                "stock": null,
+                "precio": 98000,
+                "metadata": {
+                  "llave": "1856",
+                  "codigo": "110010101856",
+                  "source": "productos.json",
+                  "codigos": [
+                    "110010101856"
+                  ],
+                  "nombre_original": "ARENA MAIZ CAT X 20KG"
+                },
+                "referencia": "ARENA MAIZ CAT"
+              }
+            ]
+          },
+          "intencion": "consulta_producto",
+          "productos": [],
+          "propuestaOperacion": null
+        },
+        "alcanceInterpretacion": "turno"
+      }
+    },
+    {
+      "id": "29a914a7-0774-75fa-584f-332d89dbbad7",
+      "channel_user_id": "573158994163",
+      "body": "Sí, esa es ARENA MAIZ CAT x 20kg y vale $98.000. Las existencias están por confirmar. 🐱",
+      "direction": "outbound",
+      "created_at": "2026-11-05T16:23:06.020017+00:00",
+      "metadata": {
+        "turnId": "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEFBNzFGRjA3MEREQjRGNEU2NwA=",
+        "eventKey": "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEFBNzFGRjA3MEREQjRGNEU2NwA="
+      }
+    }
+  ],
+  "threads": [
+    {
+      "user": "573158994163",
+      "messages": [
+        {
+          "id": "e53d82c7-c1cb-1fd5-c0c1-67c33117445e",
+          "body": "dame una recomendación para comprar un iPhone",
+          "direction": "inbound",
+          "created_at": "2026-11-01T00:37:57.661529+00:00",
+          "metadata": {
+            "tipo": "text",
+            "indice": 0,
+            "turnId": "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDhBRkU2MjIwNjNBMUMzNTlDRQA=",
+            "mediaId": null,
+            "eventKey": "597907523413541:597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDhBRkU2MjIwNjNBMUMzNTlDRQA=",
+            "transcripcion": "dame una recomendación para comprar un iPhone",
+            "interpretacion": {
+              "accion": null,
+              "carrito": {
+                "razon": null,
+                "operacion": null,
+                "cantidadDelta": null,
+                "cantidadObjetivo": null,
+                "aplicaAlUltimoProducto": null
+              },
+              "producto": {
+                "etapa": null,
+                "linea": null,
+                "marca": null,
+                "envase": null,
+                "tamano": null,
+                "especie": null,
+                "sabores": [],
+                "cantidad": null,
+                "mascotas": [],
+                "categoria": null,
+                "referencia": null,
+                "condiciones": [],
+                "presentacion": null,
+                "subcategoria": null,
+                "textoVisible": null,
+                "mencionOriginal": null,
+                "intencionPresentaciones": null
+              },
+              "intencion": "otro",
+              "productos": [],
+              "propuestaOperacion": null
+            },
+            "alcanceInterpretacion": "turno"
+          }
+        },
+        {
+          "id": "dd47691a-5a8c-14b8-255b-efdc61ce62c5",
+          "body": "Manejamos productos para mascotas. Si quieres, te ayudo con comida y accesorios para tu mascota 🐾",
+          "direction": "outbound",
+          "created_at": "2026-11-01T00:38:22.267259+00:00",
+          "metadata": {
+            "turnId": "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDhBRkU2MjIwNjNBMUMzNTlDRQA=",
+            "eventKey": "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDhBRkU2MjIwNjNBMUMzNTlDRQA="
+          }
+        },
+        {
+          "id": "755b45d2-7aca-6162-d170-f8888f0bd2b3",
+          "body": "Buenos dias \nPara pedir una arena",
+          "direction": "inbound",
+          "created_at": "2026-11-05T16:21:23.425152+00:00",
+          "metadata": {
+            "tipo": "text",
+            "indice": 0,
+            "turnId": "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEFCQzA5MjdBMEY5MUQ0NzFFRAA=",
+            "mediaId": null,
+            "eventKey": "597907523413541:597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEFCQzA5MjdBMEY5MUQ0NzFFRAA=",
+            "transcripcion": "Buenos dias \nPara pedir una arena",
+            "interpretacion": null,
+            "alcanceInterpretacion": "turno"
+          }
+        },
+        {
+          "id": "2020e52f-16b0-e081-bb4c-69448c34c60e",
+          "body": "Buenos días 😊  \n¿La arena la buscas para gato?",
+          "direction": "outbound",
+          "created_at": "2026-11-05T16:21:56.464047+00:00",
+          "metadata": {
+            "turnId": "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEFCQzA5MjdBMEY5MUQ0NzFFRAA=",
+            "eventKey": "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEFCQzA5MjdBMEY5MUQ0NzFFRAA="
+          }
+        },
+        {
+          "id": "b9193bfd-cc90-d16e-a9e5-4d0263d61f24",
+          "body": "Arena de maíz cat de 20 kg",
+          "direction": "inbound",
+          "created_at": "2026-11-05T16:22:44.021159+00:00",
+          "metadata": {
+            "tipo": "text",
+            "indice": 0,
+            "turnId": "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEFBNzFGRjA3MEREQjRGNEU2NwA=",
+            "mediaId": null,
+            "eventKey": "597907523413541:597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEFBNzFGRjA3MEREQjRGNEU2NwA=",
+            "transcripcion": "Arena de maíz cat de 20 kg",
+            "interpretacion": {
+              "accion": "consultar",
+              "carrito": {
+                "razon": null,
+                "operacion": null,
+                "cantidadDelta": null,
+                "cantidadObjetivo": null,
+                "aplicaAlUltimoProducto": null
+              },
+              "producto": {
+                "etapa": null,
+                "linea": null,
+                "marca": "ARENA MAIZ CAT",
+                "accion": "consultar",
+                "envase": null,
+                "tamano": null,
+                "especie": "gato",
+                "sabores": [],
+                "cantidad": null,
+                "duracion": null,
+                "mascotas": [],
+                "categoria": "arena_sustrato",
+                "referencia": "ARENA MAIZ CAT",
+                "condiciones": [],
+                "presentacion": "20kg",
+                "subcategoria": "arena",
+                "textoVisible": "Arena de maíz cat de 20 kg",
+                "nombreFamilia": "ARENA MAIZ CAT",
+                "mencionOriginal": null,
+                "pesoTextoOriginal": "20kg",
+                "requierePresentacion": false,
+                "intencionPresentaciones": "especifica",
+                "referenciasEquivalentes": [
+                  "ARENA MAIZ CAT"
+                ],
+                "coincidenciaVisualValidada": false,
+                "presentacionesEquivalentes": [
+                  {
+                    "peso": "x 20kg",
+                    "stock": null,
+                    "precio": 98000,
+                    "metadata": {
+                      "llave": "1856",
+                      "codigo": "110010101856",
+                      "source": "productos.json",
+                      "codigos": [
+                        "110010101856"
+                      ],
+                      "nombre_original": "ARENA MAIZ CAT X 20KG"
+                    },
+                    "referencia": "ARENA MAIZ CAT"
+                  }
+                ]
+              },
+              "intencion": "consulta_producto",
+              "productos": [],
+              "propuestaOperacion": null
+            },
+            "alcanceInterpretacion": "turno"
+          }
+        },
+        {
+          "id": "29a914a7-0774-75fa-584f-332d89dbbad7",
+          "body": "Sí, esa es ARENA MAIZ CAT x 20kg y vale $98.000. Las existencias están por confirmar. 🐱",
+          "direction": "outbound",
+          "created_at": "2026-11-05T16:23:06.020017+00:00",
+          "metadata": {
+            "turnId": "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEFBNzFGRjA3MEREQjRGNEU2NwA=",
+            "eventKey": "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEFBNzFGRjA3MEREQjRGNEU2NwA="
+          }
+        },
+        {
+          "id": "998d06ff-c2ef-cff9-bad2-b26114d399a7",
+          "body": "Mz 5 casa 11 Mirador de llano grande\nParque industrial",
+          "direction": "inbound",
+          "created_at": "2026-11-05T16:23:26.477757+00:00",
+          "metadata": {
+            "tipo": "text",
+            "indice": 0,
+            "turnId": "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDk4NTlGQTAxNkVBQUQzMDQyMAA=",
+            "mediaId": null,
+            "eventKey": "597907523413541:597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDk4NTlGQTAxNkVBQUQzMDQyMAA=",
+            "transcripcion": "Mz 5 casa 11 Mirador de llano grande\nParque industrial",
+            "interpretacion": {
+              "accion": null,
+              "carrito": {
+                "razon": null,
+                "operacion": null,
+                "cantidadDelta": null,
+                "cantidadObjetivo": null,
+                "aplicaAlUltimoProducto": null
+              },
+              "producto": {
+                "etapa": null,
+                "linea": null,
+                "marca": null,
+                "envase": null,
+                "tamano": null,
+                "especie": null,
+                "sabores": [],
+                "cantidad": null,
+                "mascotas": [],
+                "categoria": null,
+                "referencia": null,
+                "condiciones": [],
+                "presentacion": null,
+                "subcategoria": null,
+                "textoVisible": null,
+                "mencionOriginal": null,
+                "intencionPresentaciones": null
+              },
+              "intencion": "otro",
+              "productos": [],
+              "propuestaOperacion": null
+            },
+            "alcanceInterpretacion": "turno"
+          }
+        },
+        {
+          "id": "38fb3588-b2fa-6e6e-9092-5f1dca6ae279",
+          "body": "¿Puedes contarme un poco más sobre lo que necesitas?",
+          "direction": "outbound",
+          "created_at": "2026-11-05T16:23:43.019849+00:00",
+          "metadata": {
+            "turnId": "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDk4NTlGQTAxNkVBQUQzMDQyMAA=",
+            "eventKey": "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDk4NTlGQTAxNkVBQUQzMDQyMAA="
+          }
+        }
+      ],
+      "state": [
+        {
+          "state": {
+            "marca": "ARENA MAIZ CAT",
+            "carrito": [],
+            "entrega": {
+              "sede": null,
+              "tipo": "domicilio"
+            },
+            "criterios": {
+              "especie": "gato",
+              "categoria": "arena_sustrato",
+              "subcategoria": "arena"
+            },
+            "metodoPago": null,
+            "atencionHumana": {
+              "estado": "pendiente",
+              "motivo": "criterio_veterinario",
+              "solicitadaEn": "2026-10-29T20:21:46.781Z",
+              "consultaComercialPendiente": {
+                "estado": "pendiente",
+                "motivo": "producto_no_resuelto",
+                "politica": "revision_comercial_v1",
+                "asignacion": null,
+                "notificacion": "no_configurada",
+                "solicitadaEn": "2026-10-29T21:19:48.168Z",
+                "referenciaPendiente": {
+                  "mensaje": "que presentación tienes de Hills",
+                  "terminos": [
+                    "presentacion",
+                    "hills"
+                  ],
+                  "presentacion": null
+                }
+              }
+            },
+            "avisosTecnicos": [],
+            "datosDomicilio": {
+              "nombre": "y son 4 kilos",
+              "direccion": "Mz 5 casa 11 Mirador de llano grande"
+            },
+            "esperandoMarca": false,
+            "ultimaSeleccion": null,
+            "pedidoConfirmado": false,
+            "mensajesProcesados": [
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEYwQjc1MTc3QUQ5RDJCQUM3QQA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDA5RUY2QUY5Q0Q2NjIyNUE1RQA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEEyQUREMTIzMTgyRkU4Njc2RgA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDA0MDUzNDc5MEE4MTc1NTY3NQA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDNBRUE3QkU0MTNDMDVDNTlENAA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDc5REYyOUIwMDVGMTdEMjczQgA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEFDN0Q2MzRBOTM2NUU0NkQ3QwA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDE0MkUwMDM0RTYxRTg5MzE2MQA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDE5QjgwRjVFODkwMjY5N0RFMAA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDI5M0FDMzc4RjY1NjE0NTZFRgA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDJBNDBFQjA2M0EwMDRGODkwOAA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDEwRjJCOEM3OEEzRTg3Q0FDNgA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDIwRjM2OEFGMUJCMjFDQjRGQwA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDYyRjc2NjZCQUM4NjFGRUIzMgA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDY0MzY4NjdDMzg0N0UzNTQ2NQA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDREMTQyRkI0OTk2Njg2QjU0MwA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDRDNDlFMkFGODQ0MDQ2RDAwRgA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDFCNzE4NTI3NzhERDY2QTEwOQA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDFENDkzNDkwNUI2N0I4M0VGMAA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDY3RDU2OTBDRTQ1MkMyMEM1RAA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDdEOUI2Q0ZGRTA3RUVDRThGMAA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEMwNUUzQTkwMTI0M0E0RUFDNgA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEZBMkVDMEU0RTRENDQ0OURDMQA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDAyNDg4QTM5ODZCMEY4RjczQgA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDlDQjU5RjYxQjA4NTlBQ0M5MAA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDY0NjQ5OTBCQTQ1NkVENTExQQA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEY3MDAwRTE0Mzc3NzM5QkU5OAA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDNEQzEyMkVGQURBQUEzMTVGRAA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEFFNTg2QjFFMjBGMTNFNzhFMAA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDFCRjdCQURDNjM1N0EyMkMyRgA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEY0QUYzRDcwNzRDNDdBNTE5NQA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEQ1QkU1RUJGRDY5QjA4QzFFQwA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEZGODI3NTlFQUIyMUNBOTYwQQA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDY1OTEwNEFBNzA0M0YxNkU3MAA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDRCMDI0MkZGMjNFMDM4NDQyNgA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEQ2ODc5QUJDQzQ5QUU2MzRGRAA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDg1QkJGODAwOTIzMUZFQkY4RQA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEMzMEMwNTExQTkzRDY2QzU3NgA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDdFQzYwOTY1MkRBNzBCQ0Q1OQA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDQ5N0YwRDA3QjdEMTAxRjk4QQA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDQxQUY1MzVERUVEOTZGNUY3NwA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDY4NzY5NEE1OUU0MEUxMDZDQQA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDEzQzYyMEJEQzMxMzY2N0NGMAA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEVCMDgwQzQzQjQyRjZGOTBERAA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEU4MkNDMEE4NjU3NEQ3RUZBNgA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDc0Q0NERjlENzhCRUI3QzIzNAA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDhFNkQxMzA4NEJBNkNBQzcwRgA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEIzQ0UyMDc2RjVBNjg1M0NBMgA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDIxN0RENzZFOTY1M0RBNUIyRgA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDIwOTRDNjZDM0NFREQ4MDY5QQA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEQ5NTJCNjg2MEUzNDFDRUMzNQA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEZDMUE1NEFDQTU4MkZDMUIwMwA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEMwMjg3N0NFQTE0Njg0MTNBQQA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMERBN0IyRUU0OTY5NUI3MkQxNwA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDA5NEM4MENDRUE1OTk1QzAwQQA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDkyMDkwM0UzODdDM0RBNkM1QgA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEE2RkM1NUFGNUVGRjY3OUY2RAA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEIyRjA1MkEwMUZFRUQ1MEU2MwA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDNCODc3RTlBQUUzQzcwQ0NDNgA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDg2NDk3MTNENjREQzBFRUNBMAA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDA1OURBNTVCMUYwMzQ4QUZCOQA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDE1MTExQzU5NjE5N0IyNUJGOQA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDYzREFFMDY3RjBFMjZERUY4MwA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDNENDUwNUFCMEZDRUI2NjBBMAA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDgxQTNEMjAwNjY5RTIwNzVDMQA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDBCQjgwNkZFNzY3RTZBQUZBRQA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDBBQzM2NEExQThFMDFCOTEyMQA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDA3QTlGMTU3NkU5Njg2NkFDMwA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDFCQkI1MjdFRDQwRUI3MjU2MgA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDNFRDQ1Mjc2RDc0NjhENzVCOQA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDUxQjM5NzEzRkQxQzRFQ0U3RgA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDExNTY5MDk3MDlDQjYyNUY5OQA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDU1RTVFRjJGMEU5MDc5NUM3RgA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEQ5NURFRDAwMTlFOUExOUE5MwA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEZFOEMyRkYwMEE1MTY3ODREMAA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEMzQUFGRkNCRTA2QjczQ0U1QwA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMENGMjYyRDE3NjgyQjIxNTQ5NgA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDhBRkU2MjIwNjNBMUMzNTlDRQA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEFCQzA5MjdBMEY5MUQ0NzFFRAA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEFBNzFGRjA3MEREQjRGNEU2NwA=",
+              "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDk4NTlGQTAxNkVBQUQzMDQyMAA="
+            ],
+            "aclaracionIdentidad": null,
+            "esperandoMetodoPago": false,
+            "productosPendientes": [],
+            "recomendacionActiva": {
+              "opciones": [],
+              "criterios": {
+                "etapa": null,
+                "marca": null,
+                "tamano": null,
+                "especie": null,
+                "sabores": [],
+                "categoria": "arena_sustrato",
+                "condiciones": [],
+                "presentacion": null,
+                "subcategoria": null,
+                "presupuestoMaximo": null
+              },
+              "actualizadoEn": "2026-11-05T16:21:51.891Z"
+            },
+            "seleccionesProducto": [
+              {
+                "etapa": null,
+                "linea": "UR",
+                "marca": "PRO PLAN",
+                "accion": "consultar",
+                "envase": null,
+                "estado": "cotizado",
+                "tamano": null,
+                "especie": "perro",
+                "sabores": [],
+                "cantidad": null,
+                "mascotas": [],
+                "categoria": "comida",
+                "cotizacion": [
+                  {
+                    "peso": "2kg",
+                    "marca": "PRO PLAN",
+                    "stock": null,
+                    "precio": 122000,
+                    "cantidad": 1,
+                    "metadata": {
+                      "llave": "1387",
+                      "codigo": "10301011387",
+                      "source": "productos.json",
+                      "codigos": [
+                        "10301011387"
+                      ],
+                      "nombre_original": "PRO PLAN CANINE UR 2KG"
+                    },
+                    "referencia": "PRO PLAN CANINE UR"
+                  }
+                ],
+                "referencia": "PRO PLAN CANINE UR",
+                "condiciones": [],
+                "presentacion": "2kg",
+                "subcategoria": "concentrado",
+                "textoVisible": "Pro Plan UR para perro el concentrado de 2 kg",
+                "nombreFamilia": "PRO PLAN CANINE UR",
+                "mencionOriginal": null,
+                "pesoTextoOriginal": "2kg",
+                "requierePresentacion": false,
+                "intencionPresentaciones": "especifica",
+                "referenciasEquivalentes": [
+                  "PRO PLAN CANINE UR"
+                ],
+                "coincidenciaVisualValidada": false,
+                "presentacionesEquivalentes": [
+                  {
+                    "peso": "2kg",
+                    "stock": null,
+                    "precio": 122000,
+                    "metadata": {
+                      "llave": "1387",
+                      "codigo": "10301011387",
+                      "source": "productos.json",
+                      "codigos": [
+                        "10301011387"
+                      ],
+                      "nombre_original": "PRO PLAN CANINE UR 2KG"
+                    },
+                    "referencia": "PRO PLAN CANINE UR"
+                  }
+                ]
+              },
+              {
+                "etapa": null,
+                "linea": "INDOOR",
+                "marca": "DIAMOND",
+                "accion": "consultar",
+                "envase": null,
+                "estado": "cotizado",
+                "tamano": null,
+                "especie": "gato",
+                "sabores": [],
+                "cantidad": null,
+                "mascotas": [],
+                "categoria": "comida",
+                "cotizacion": [
+                  {
+                    "peso": "500gr",
+                    "marca": "DIAMOND",
+                    "stock": null,
+                    "precio": 19500,
+                    "cantidad": 1,
+                    "metadata": {
+                      "llave": "553",
+                      "codigo": "10301020553",
+                      "source": "productos.json",
+                      "codigos": [
+                        "10301020553"
+                      ],
+                      "nombre_original": "DIAMOND INDOOR CAT 500GR"
+                    },
+                    "referencia": "DIAMOND INDOOR CAT"
+                  }
+                ],
+                "referencia": "DIAMOND INDOOR CAT",
+                "condiciones": [],
+                "presentacion": "500g",
+                "subcategoria": "concentrado",
+                "textoVisible": "diamon indor para gato, medio kilo",
+                "nombreFamilia": "DIAMOND INDOOR CAT",
+                "mencionOriginal": null,
+                "pesoTextoOriginal": "500g",
+                "requierePresentacion": false,
+                "intencionPresentaciones": "especifica",
+                "referenciasEquivalentes": [
+                  "DIAMOND INDOOR",
+                  "DIAMOND INDOOR CAT"
+                ],
+                "coincidenciaVisualValidada": false,
+                "presentacionesEquivalentes": [
+                  {
+                    "peso": "2.72kg",
+                    "stock": null,
+                    "precio": 86500,
+                    "metadata": {
+                      "llave": "1816",
+                      "codigo": "103010201816",
+                      "source": "productos.json",
+                      "codigos": [
+                        "103010201816"
+                      ],
+                      "nombre_original": "DIAMOND INDOOR 2.72KG"
+                    },
+                    "referencia": "DIAMOND INDOOR"
+                  },
+                  {
+                    "peso": "500gr",
+                    "stock": null,
+                    "precio": 19500,
+                    "metadata": {
+                      "llave": "553",
+                      "codigo": "10301020553",
+                      "source": "productos.json",
+                      "codigos": [
+                        "10301020553"
+                      ],
+                      "nombre_original": "DIAMOND INDOOR CAT 500GR"
+                    },
+                    "referencia": "DIAMOND INDOOR CAT"
+                  }
+                ]
+              },
+              {
+                "etapa": null,
+                "linea": null,
+                "marca": "CAT CHOW",
+                "accion": "consultar",
+                "envase": null,
+                "estado": "cotizado",
+                "tamano": null,
+                "especie": "gato",
+                "sabores": [],
+                "cantidad": null,
+                "mascotas": [],
+                "categoria": "comida",
+                "cotizacion": [
+                  {
+                    "peso": "x 500 gr",
+                    "marca": "CAT CHOW",
+                    "stock": null,
+                    "precio": 13700,
+                    "cantidad": 1,
+                    "metadata": {
+                      "llave": "311",
+                      "codigo": "10301020311",
+                      "source": "productos.json",
+                      "codigos": [
+                        "10301020311"
+                      ],
+                      "nombre_original": "CAT CHOW DELICARNE X 500 GR",
+                      "source_reference": "CAT CHOW DELICARNE"
+                    },
+                    "referencia": "CAT CHOW DELICARNE"
+                  }
+                ],
+                "referencia": "CAT CHOW DELICARNE",
+                "condiciones": [],
+                "presentacion": "500g",
+                "subcategoria": "concentrado",
+                "textoVisible": "cat chow delicrne, quinientos gramos",
+                "nombreFamilia": "CAT CHOW DELICARNE",
+                "mencionOriginal": null,
+                "pesoTextoOriginal": "500g",
+                "requierePresentacion": false,
+                "intencionPresentaciones": "especifica",
+                "referenciasEquivalentes": [
+                  "CAT CHOW DELICARNE"
+                ],
+                "coincidenciaVisualValidada": false,
+                "presentacionesEquivalentes": [
+                  {
+                    "peso": "x 1.5 kg",
+                    "stock": null,
+                    "precio": 37700,
+                    "metadata": {
+                      "llave": "310",
+                      "codigo": "10301020310",
+                      "source": "productos.json",
+                      "codigos": [
+                        "10301020310"
+                      ],
+                      "nombre_original": "CAT CHOW DELICARNE X 1.5 KL",
+                      "source_reference": "CAT CHOW DELICARNE"
+                    },
+                    "referencia": "CAT CHOW DELICARNE"
+                  },
+                  {
+                    "peso": "x 15 kg",
+                    "stock": null,
+                    "precio": 183600,
+                    "metadata": {
+                      "llave": "308",
+                      "codigo": "10301020308",
+                      "source": "productos.json",
+                      "codigos": [
+                        "10301020308"
+                      ],
+                      "nombre_original": "CAT CHOW DELICARNE X 15 KL",
+                      "source_reference": "CAT CHOW DELICARNE"
+                    },
+                    "referencia": "CAT CHOW DELICARNE"
+                  },
+                  {
+                    "peso": "x 500 gr",
+                    "stock": null,
+                    "precio": 13700,
+                    "metadata": {
+                      "llave": "311",
+                      "codigo": "10301020311",
+                      "source": "productos.json",
+                      "codigos": [
+                        "10301020311"
+                      ],
+                      "nombre_original": "CAT CHOW DELICARNE X 500 GR",
+                      "source_reference": "CAT CHOW DELICARNE"
+                    },
+                    "referencia": "CAT CHOW DELICARNE"
+                  }
+                ]
+              },
+              {
+                "etapa": null,
+                "linea": "gastrointestinal",
+                "marca": "ROYALCANIN",
+                "accion": "consultar",
+                "envase": null,
+                "estado": "cotizado",
+                "tamano": null,
+                "especie": "perro",
+                "sabores": [],
+                "cantidad": null,
+                "mascotas": [],
+                "categoria": "comida",
+                "cotizacion": [
+                  {
+                    "peso": "2kg",
+                    "marca": "ROYALCANIN",
+                    "stock": null,
+                    "precio": 129000,
+                    "cantidad": 1,
+                    "metadata": {
+                      "llave": "2070",
+                      "codigo": "103010102070",
+                      "source": "productos.json",
+                      "codigos": [
+                        "103010102070"
+                      ],
+                      "nombre_original": "ROYALCANIN GASTROINTESTINAL PERRO 2KG"
+                    },
+                    "referencia": "ROYALCANIN GASTROINTESTINAL PERRO"
+                  }
+                ],
+                "referencia": "ROYALCANIN GASTROINTESTINAL PERRO",
+                "condiciones": [
+                  "gastrointestinal"
+                ],
+                "presentacion": "2kg",
+                "subcategoria": "concentrado",
+                "textoVisible": "Corrijo el tamaño: de 2 kg, el mismo concentrado para perro. Solo consultar el precio.",
+                "nombreFamilia": "ROYALCANIN GASTROINTESTINAL PERRO",
+                "mencionOriginal": null,
+                "pesoTextoOriginal": "2kg",
+                "requierePresentacion": false,
+                "intencionPresentaciones": "especifica",
+                "referenciasEquivalentes": [
+                  "ROYALCANIN GASTROINTESTINAL PERRO"
+                ],
+                "coincidenciaVisualValidada": false,
+                "presentacionesEquivalentes": [
+                  {
+                    "peso": "2kg",
+                    "stock": null,
+                    "precio": 129000,
+                    "metadata": {
+                      "llave": "2070",
+                      "codigo": "103010102070",
+                      "source": "productos.json",
+                      "codigos": [
+                        "103010102070"
+                      ],
+                      "nombre_original": "ROYALCANIN GASTROINTESTINAL PERRO 2KG"
+                    },
+                    "referencia": "ROYALCANIN GASTROINTESTINAL PERRO"
+                  }
+                ]
+              },
+              {
+                "etapa": null,
+                "linea": "UR",
+                "marca": "PRO PLAN",
+                "accion": "consultar",
+                "envase": "lata",
+                "estado": "cotizado",
+                "tamano": null,
+                "especie": "perro",
+                "sabores": [],
+                "cantidad": null,
+                "mascotas": [],
+                "categoria": "comida",
+                "cotizacion": [
+                  {
+                    "peso": "unidad",
+                    "marca": "PRO PLAN",
+                    "stock": null,
+                    "precio": 28600,
+                    "cantidad": 1,
+                    "metadata": {
+                      "llave": "1393",
+                      "codigo": "10401011393",
+                      "source": "productos.json",
+                      "codigos": [
+                        "10401011393"
+                      ],
+                      "nombre_original": "PRO PLAN CANINE LATA UR"
+                    },
+                    "referencia": "PRO PLAN CANINE LATA UR"
+                  }
+                ],
+                "referencia": "PRO PLAN CANINE LATA UR",
+                "condiciones": [],
+                "presentacion": "unidad",
+                "subcategoria": "comida_humeda",
+                "textoVisible": "lata PRO PLAN CANINE UR para perro (misma línea UR)",
+                "nombreFamilia": "PRO PLAN CANINE LATA UR",
+                "mencionOriginal": null,
+                "requierePresentacion": false,
+                "intencionPresentaciones": null,
+                "referenciasEquivalentes": [
+                  "PRO PLAN CANINE LATA UR"
+                ],
+                "coincidenciaVisualValidada": false,
+                "presentacionesEquivalentes": [
+                  {
+                    "peso": "unidad",
+                    "stock": null,
+                    "precio": 28600,
+                    "metadata": {
+                      "llave": "1393",
+                      "codigo": "10401011393",
+                      "source": "productos.json",
+                      "codigos": [
+                        "10401011393"
+                      ],
+                      "nombre_original": "PRO PLAN CANINE LATA UR"
+                    },
+                    "referencia": "PRO PLAN CANINE LATA UR"
+                  }
+                ]
+              },
+              {
+                "etapa": "cachorro",
+                "linea": "KITTEN",
+                "marca": "PRO PLAN",
+                "accion": "consultar",
+                "envase": "sobre",
+                "estado": "cotizado",
+                "tamano": null,
+                "especie": "gato",
+                "sabores": [],
+                "cantidad": 3,
+                "mascotas": [],
+                "categoria": "comida",
+                "cotizacion": [
+                  {
+                    "peso": "85gr",
+                    "marca": "PRO PLAN",
+                    "stock": null,
+                    "precio": 6200,
+                    "cantidad": 3,
+                    "metadata": {
+                      "llave": "1375",
+                      "codigo": "10301011375",
+                      "source": "productos.json",
+                      "codigos": [
+                        "10301011375"
+                      ],
+                      "nombre_original": "PRO PLAN POUCH FELINO KITTEN 85GR"
+                    },
+                    "referencia": "PRO PLAN POUCH FELINO KITTEN"
+                  }
+                ],
+                "referencia": "PRO PLAN POUCH FELINO KITTEN",
+                "condiciones": [],
+                "presentacion": "85g",
+                "subcategoria": "comida_humeda",
+                "textoVisible": "tres sobres del mismo producto, solo cotización",
+                "nombreFamilia": "PRO PLAN POUCH FELINO KITTEN",
+                "mencionOriginal": null,
+                "requierePresentacion": false,
+                "intencionPresentaciones": "especifica",
+                "referenciasEquivalentes": [
+                  "PRO PLAN POUCH FELINO KITTEN"
+                ],
+                "coincidenciaVisualValidada": false,
+                "presentacionesEquivalentes": [
+                  {
+                    "peso": "85gr",
+                    "stock": null,
+                    "precio": 6200,
+                    "metadata": {
+                      "llave": "1375",
+                      "codigo": "10301011375",
+                      "source": "productos.json",
+                      "codigos": [
+                        "10301011375"
+                      ],
+                      "nombre_original": "PRO PLAN POUCH FELINO KITTEN 85GR"
+                    },
+                    "referencia": "PRO PLAN POUCH FELINO KITTEN"
+                  }
+                ]
+              },
+              {
+                "etapa": null,
+                "linea": "D",
+                "marca": "CANISAN",
+                "accion": "consultar",
+                "envase": null,
+                "estado": "cotizado",
+                "tamano": null,
+                "especie": "perro y gato",
+                "sabores": [],
+                "cantidad": null,
+                "mascotas": [],
+                "categoria": "medicamento",
+                "cotizacion": [
+                  {
+                    "peso": "5 ml",
+                    "marca": "CANISAN",
+                    "stock": null,
+                    "precio": 21500,
+                    "cantidad": 1,
+                    "metadata": {
+                      "llave": "278",
+                      "codigo": "10101010278",
+                      "source": "productos.json",
+                      "codigos": [
+                        "10101010278"
+                      ],
+                      "nombre_original": "CANISAN D 5 ML"
+                    },
+                    "referencia": "CANISAN D"
+                  }
+                ],
+                "referencia": "CANISAN D",
+                "condiciones": [],
+                "presentacion": "5ml",
+                "subcategoria": "desparasitante",
+                "textoVisible": "Canisan D de 5ml",
+                "nombreFamilia": "CANISAN D",
+                "mencionOriginal": null,
+                "pesoTextoOriginal": "5ml",
+                "requierePresentacion": false,
+                "intencionPresentaciones": "especifica",
+                "referenciasEquivalentes": [
+                  "CANISAN D"
+                ],
+                "coincidenciaVisualValidada": false,
+                "presentacionesEquivalentes": [
+                  {
+                    "peso": "10 ml",
+                    "stock": null,
+                    "precio": 29700,
+                    "metadata": {
+                      "llave": "277",
+                      "codigo": "10101010277",
+                      "source": "productos.json",
+                      "codigos": [
+                        "10101010277"
+                      ],
+                      "nombre_original": "CANISAN D 10 ML"
+                    },
+                    "referencia": "CANISAN D"
+                  },
+                  {
+                    "peso": "2.5ml",
+                    "stock": null,
+                    "precio": 16800,
+                    "metadata": {
+                      "llave": "279",
+                      "codigo": "10101010279",
+                      "source": "productos.json",
+                      "codigos": [
+                        "10101010279"
+                      ],
+                      "nombre_original": "CANISAN D 2.5ML"
+                    },
+                    "referencia": "CANISAN D"
+                  },
+                  {
+                    "peso": "5 ml",
+                    "stock": null,
+                    "precio": 21500,
+                    "metadata": {
+                      "llave": "278",
+                      "codigo": "10101010278",
+                      "source": "productos.json",
+                      "codigos": [
+                        "10101010278"
+                      ],
+                      "nombre_original": "CANISAN D 5 ML"
+                    },
+                    "referencia": "CANISAN D"
+                  }
+                ]
+              },
+              {
+                "etapa": null,
+                "linea": null,
+                "marca": "NUTRA NUGGETS",
+                "accion": "consultar",
+                "envase": null,
+                "estado": "pendiente",
+                "tamano": null,
+                "especie": "perro",
+                "sabores": [
+                  "cordero"
+                ],
+                "cantidad": null,
+                "mascotas": [],
+                "categoria": "comida",
+                "cotizacion": [],
+                "referencia": "NUTRA NUGGETS CORDERO",
+                "condiciones": [],
+                "presentacion": "7kg",
+                "subcategoria": "concentrado",
+                "textoVisible": "nutra nugges cordero 7k perro",
+                "mencionOriginal": "El nutra nugges cordero 7k perro",
+                "contextoCreadoEn": "2026-10-31T00:56:04.981Z",
+                "intencionPresentaciones": "especifica",
+                "presentacionesDisponibles": [
+                  "1kg",
+                  "3kg"
+                ]
+              },
+              {
+                "etapa": "adulto",
+                "linea": null,
+                "marca": "BR CAT",
+                "accion": "consultar",
+                "envase": null,
+                "estado": "cotizado",
+                "tamano": null,
+                "especie": "gato",
+                "sabores": [
+                  "pollo"
+                ],
+                "cantidad": null,
+                "mascotas": [],
+                "pregunta": null,
+                "categoria": "comida",
+                "cotizacion": [
+                  {
+                    "peso": "1kg",
+                    "marca": "BR CAT",
+                    "stock": null,
+                    "precio": 28000,
+                    "cantidad": 1,
+                    "metadata": {
+                      "llave": "178",
+                      "codigo": "10301020178",
+                      "source": "productos.json",
+                      "codigos": [
+                        "10301020178"
+                      ],
+                      "nombre_original": "BR CAT CASTRADO POLLO 1KG"
+                    },
+                    "referencia": "BR CAT CASTRADO POLLO"
+                  }
+                ],
+                "referencia": "BR CAT CASTRADO POLLO",
+                "condiciones": [
+                  "castrado"
+                ],
+                "presentacion": "1kg",
+                "subcategoria": "concentrado",
+                "textoVisible": "br gato castrado de pollo 1k",
+                "mencionOriginal": "El br gato castrado de pollo 1k",
+                "contextoCreadoEn": "2026-10-31T00:56:04.983Z",
+                "intencionPresentaciones": "especifica",
+                "presentacionesDisponibles": [
+                  "10kg",
+                  "1kg",
+                  "3kg"
+                ]
+              },
+              {
+                "etapa": null,
+                "linea": null,
+                "marca": "NEXGARD",
+                "accion": "consultar",
+                "envase": null,
+                "estado": "cotizado",
+                "tamano": null,
+                "especie": "perro",
+                "sabores": [],
+                "cantidad": null,
+                "mascotas": [
+                  {
+                    "nombre": "Mascota 1",
+                    "pesoKg": 40
+                  }
+                ],
+                "pregunta": null,
+                "categoria": "medicamento",
+                "cotizacion": [
+                  {
+                    "peso": "25-50 kg",
+                    "marca": "NEXGARD",
+                    "stock": null,
+                    "precio": 56900,
+                    "cantidad": 1,
+                    "mascotas": [
+                      {
+                        "nombre": "Mascota 1",
+                        "pesoKg": 40
+                      }
+                    ],
+                    "referencia": "NEXGARD",
+                    "tipoSeleccion": "peso",
+                    "presentaciones": [
+                      {
+                        "peso": "10-25 kg",
+                        "stock": null,
+                        "precio": 49700,
+                        "metadata": {
+                          "llave": "1123",
+                          "codigo": "10101011123",
+                          "source": "productos.json",
+                          "codigos": [
+                            "10101011123"
+                          ],
+                          "rango_peso": {
+                            "desde_inclusivo": false
+                          },
+                          "nombre_original": "NEXGARD 10-25 KL"
+                        },
+                        "referencia": "NEXGARD"
+                      },
+                      {
+                        "peso": "2-4 kg",
+                        "stock": null,
+                        "precio": 39900,
+                        "metadata": {
+                          "llave": "1124",
+                          "codigo": "10101011124",
+                          "source": "productos.json",
+                          "codigos": [
+                            "10101011124"
+                          ],
+                          "nombre_original": "NEXGARD 2-4 KL"
+                        },
+                        "referencia": "NEXGARD"
+                      },
+                      {
+                        "peso": "25-50 kg",
+                        "stock": null,
+                        "precio": 56900,
+                        "metadata": {
+                          "llave": "1125",
+                          "codigo": "10101011125",
+                          "source": "productos.json",
+                          "codigos": [
+                            "10101011125"
+                          ],
+                          "nombre_original": "NEXGARD 25-50 KL"
+                        },
+                        "referencia": "NEXGARD"
+                      },
+                      {
+                        "peso": "4-10 kg",
+                        "stock": null,
+                        "precio": 42500,
+                        "metadata": {
+                          "llave": "1126",
+                          "codigo": "10101011126",
+                          "source": "productos.json",
+                          "codigos": [
+                            "10101011126"
+                          ],
+                          "nombre_original": "NEXGARD 4-10 KL"
+                        },
+                        "referencia": "NEXGARD"
+                      }
+                    ],
+                    "referenciaCatalogo": "NEXGARD"
+                  }
+                ],
+                "referencia": "NEXGARD",
+                "condiciones": [],
+                "presentacion": "25-50kg",
+                "subcategoria": null,
+                "textoVisible": "Nexgart para perro de 40k",
+                "mencionOriginal": "Nexgart para perro de 40k",
+                "contextoCreadoEn": "2026-10-31T00:56:04.983Z",
+                "intencionPresentaciones": null,
+                "seleccionPresentaciones": {
+                  "tipo": "peso",
+                  "grupos": [
+                    {
+                      "peso": "25-50 kg",
+                      "stock": null,
+                      "precio": 56900,
+                      "mascotas": [
+                        {
+                          "nombre": "Mascota 1",
+                          "pesoKg": 40
+                        }
+                      ],
+                      "metadata": {
+                        "llave": "1125",
+                        "codigo": "10101011125",
+                        "source": "productos.json",
+                        "codigos": [
+                          "10101011125"
+                        ],
+                        "nombre_original": "NEXGARD 25-50 KL"
+                      },
+                      "referencia": "NEXGARD"
+                    }
+                  ],
+                  "mascotas": [
+                    {
+                      "nombre": "Mascota 1",
+                      "pesoKg": 40
+                    }
+                  ],
+                  "pendientes": []
+                },
+                "presentacionesDisponibles": [
+                  "10-25 kg",
+                  "2-4 kg",
+                  "25-50 kg",
+                  "4-10 kg"
+                ]
+              },
+              {
+                "etapa": "cachorro",
+                "linea": "gold",
+                "marca": "AGILITY",
+                "accion": "consultar",
+                "envase": null,
+                "estado": "pendiente",
+                "tamano": "mediano",
+                "especie": "perro",
+                "sabores": [],
+                "cantidad": null,
+                "mascotas": [],
+                "categoria": "comida",
+                "cotizacion": [
+                  {
+                    "peso": "1.5kg",
+                    "marca": "AGILITY",
+                    "stock": null,
+                    "precio": 33700,
+                    "cantidad": 1,
+                    "metadata": {
+                      "source": "productos.json",
+                      "nombre_original": "AGILITY GRANDES CACHORROS 1.5KG",
+                      "source_reference": "AGILITY GRAND CACH"
+                    },
+                    "referencia": "AGILITY GRAND CACH"
+                  },
+                  {
+                    "peso": "3kg",
+                    "marca": "AGILITY",
+                    "stock": null,
+                    "precio": 65400,
+                    "cantidad": 1,
+                    "metadata": {
+                      "source": "Actualizacion confirmada por cliente 2026-09-24",
+                      "nombre_original": "AGILITY GRANDES CACHORROS 3KG",
+                      "source_reference": "AGILITY GRAND CACH"
+                    },
+                    "referencia": "AGILITY GRAND CACH"
+                  },
+                  {
+                    "peso": "15kg",
+                    "marca": "AGILITY",
+                    "stock": null,
+                    "precio": 299900,
+                    "cantidad": 1,
+                    "metadata": {
+                      "source": "Actualizacion confirmada por cliente 2026-09-24",
+                      "nombre_original": "AGILITY GRANDES CACHORROS 15KG",
+                      "source_reference": "AGILITY GRAND CACH"
+                    },
+                    "referencia": "AGILITY GRAND CACH"
+                  }
+                ],
+                "referencia": "AGILITY GRAND CACH",
+                "condiciones": [],
+                "presentacion": null,
+                "subcategoria": "concentrado",
+                "textoVisible": "agility gold cachorro razas medianas",
+                "nombreFamilia": "AGILITY GRAND CACH",
+                "mencionOriginal": null,
+                "requierePresentacion": false,
+                "intencionPresentaciones": null,
+                "referenciasEquivalentes": [
+                  "AGILITY GRAND CACH"
+                ],
+                "coincidenciaVisualValidada": false,
+                "presentacionesEquivalentes": [
+                  {
+                    "peso": "1.5kg",
+                    "stock": null,
+                    "precio": 33700,
+                    "metadata": {
+                      "source": "productos.json",
+                      "nombre_original": "AGILITY GRANDES CACHORROS 1.5KG",
+                      "source_reference": "AGILITY GRAND CACH"
+                    },
+                    "referencia": "AGILITY GRAND CACH"
+                  },
+                  {
+                    "peso": "3kg",
+                    "stock": null,
+                    "precio": 65400,
+                    "metadata": {
+                      "source": "Actualizacion confirmada por cliente 2026-09-24",
+                      "nombre_original": "AGILITY GRANDES CACHORROS 3KG",
+                      "source_reference": "AGILITY GRAND CACH"
+                    },
+                    "referencia": "AGILITY GRAND CACH"
+                  },
+                  {
+                    "peso": "15kg",
+                    "stock": null,
+                    "precio": 299900,
+                    "metadata": {
+                      "source": "Actualizacion confirmada por cliente 2026-09-24",
+                      "nombre_original": "AGILITY GRANDES CACHORROS 15KG",
+                      "source_reference": "AGILITY GRAND CACH"
+                    },
+                    "referencia": "AGILITY GRAND CACH"
+                  }
+                ]
+              },
+              {
+                "etapa": null,
+                "linea": "Veterinary Diets",
+                "marca": "ADVANCE",
+                "accion": "consultar",
+                "envase": null,
+                "estado": "pendiente",
+                "tamano": null,
+                "especie": null,
+                "sabores": [],
+                "cantidad": null,
+                "mascotas": [],
+                "categoria": "comida",
+                "observado": {
+                  "envase": null,
+                  "nombre": "ADVANCE Veterinary Diets Urinary",
+                  "especie": null,
+                  "presentacion": "1.5kg",
+                  "formaAlimento": "concentrado",
+                  "confianzaEspecie": 0.18,
+                  "confianzaFormato": 0.84,
+                  "evidenciaEspecie": null,
+                  "confianzaIdentidad": 0.93,
+                  "confianzaPresentacion": 0.9
+                },
+                "solicitud": {
+                  "especieTexto": null,
+                  "cantidadTexto": null,
+                  "contextoVigente": true,
+                  "cantidadContexto": null,
+                  "presentacionTexto": null,
+                  "presentacionContexto": "todas"
+                },
+                "cotizacion": [
+                  {
+                    "peso": "1.5kg",
+                    "marca": "ADVANCE",
+                    "stock": null,
+                    "precio": 108000,
+                    "cantidad": 1,
+                    "mascotas": [],
+                    "referencia": "ADVANCE URINAY",
+                    "tipoSeleccion": "alternativas",
+                    "presentaciones": [
+                      {
+                        "peso": "1.5kg",
+                        "stock": null,
+                        "precio": 108000,
+                        "metadata": {
+                          "llave": "2260",
+                          "codigo": "103010202260",
+                          "source": "productos.json",
+                          "codigos": [
+                            "103010202260"
+                          ],
+                          "nombre_original": "ADVANCE URINAY 1.5KR"
+                        },
+                        "referencia": "ADVANCE URINAY"
+                      },
+                      {
+                        "peso": "3kg",
+                        "stock": null,
+                        "precio": 196000,
+                        "metadata": {
+                          "llave": "2390",
+                          "codigo": "103010202390",
+                          "source": "productos.json",
+                          "codigos": [
+                            "103010202390"
+                          ],
+                          "nombre_original": "ADVANCE CAT URINARY 3KG"
+                        },
+                        "referencia": "ADVANCE CAT URINARY"
+                      }
+                    ],
+                    "referenciaCatalogo": "ADVANCE URINAY"
+                  },
+                  {
+                    "peso": "3kg",
+                    "marca": "ADVANCE",
+                    "stock": null,
+                    "precio": 196000,
+                    "cantidad": 1,
+                    "mascotas": [],
+                    "referencia": "ADVANCE CAT URINARY",
+                    "tipoSeleccion": "alternativas",
+                    "presentaciones": [
+                      {
+                        "peso": "1.5kg",
+                        "stock": null,
+                        "precio": 108000,
+                        "metadata": {
+                          "llave": "2260",
+                          "codigo": "103010202260",
+                          "source": "productos.json",
+                          "codigos": [
+                            "103010202260"
+                          ],
+                          "nombre_original": "ADVANCE URINAY 1.5KR"
+                        },
+                        "referencia": "ADVANCE URINAY"
+                      },
+                      {
+                        "peso": "3kg",
+                        "stock": null,
+                        "precio": 196000,
+                        "metadata": {
+                          "llave": "2390",
+                          "codigo": "103010202390",
+                          "source": "productos.json",
+                          "codigos": [
+                            "103010202390"
+                          ],
+                          "nombre_original": "ADVANCE CAT URINARY 3KG"
+                        },
+                        "referencia": "ADVANCE CAT URINARY"
+                      }
+                    ],
+                    "referenciaCatalogo": "ADVANCE CAT URINARY"
+                  }
+                ],
+                "referencia": "ADVANCE URINAY",
+                "condiciones": [
+                  "urinary"
+                ],
+                "presentacion": null,
+                "subcategoria": null,
+                "textoVisible": "Advance urinary",
+                "mencionOriginal": "esas 2 referencias",
+                "contextoCreadoEn": "2026-10-31T14:13:03.124Z",
+                "fuentePresentacion": "contexto",
+                "requierePresentacion": false,
+                "intencionPresentaciones": "todas",
+                "seleccionPresentaciones": {
+                  "tipo": "alternativas",
+                  "grupos": [
+                    {
+                      "peso": "1.5kg",
+                      "stock": null,
+                      "precio": 108000,
+                      "mascotas": [],
+                      "metadata": {
+                        "llave": "2260",
+                        "codigo": "103010202260",
+                        "source": "productos.json",
+                        "codigos": [
+                          "103010202260"
+                        ],
+                        "nombre_original": "ADVANCE URINAY 1.5KR"
+                      },
+                      "referencia": "ADVANCE URINAY"
+                    },
+                    {
+                      "peso": "3kg",
+                      "stock": null,
+                      "precio": 196000,
+                      "mascotas": [],
+                      "metadata": {
+                        "llave": "2390",
+                        "codigo": "103010202390",
+                        "source": "productos.json",
+                        "codigos": [
+                          "103010202390"
+                        ],
+                        "nombre_original": "ADVANCE CAT URINARY 3KG"
+                      },
+                      "referencia": "ADVANCE CAT URINARY"
+                    }
+                  ],
+                  "pendientes": []
+                },
+                "presentacionesDisponibles": [
+                  "1.5kg",
+                  "3kg"
+                ]
+              },
+              {
+                "etapa": null,
+                "linea": "Prescription Diet",
+                "marca": "HILLS",
+                "accion": "consultar",
+                "envase": null,
+                "estado": "cotizado",
+                "tamano": null,
+                "especie": "gato",
+                "sabores": [],
+                "cantidad": null,
+                "mascotas": [],
+                "categoria": "comida",
+                "observado": {
+                  "envase": null,
+                  "nombre": "Hill's Prescription Diet Urinary Care c/d Multicare",
+                  "especie": "gato",
+                  "presentacion": null,
+                  "formaAlimento": "concentrado",
+                  "confianzaEspecie": 0.98,
+                  "confianzaFormato": 0.86,
+                  "evidenciaEspecie": "gato",
+                  "confianzaIdentidad": 0.98,
+                  "confianzaPresentacion": 0.12
+                },
+                "solicitud": {
+                  "especieTexto": null,
+                  "cantidadTexto": null,
+                  "contextoVigente": true,
+                  "cantidadContexto": null,
+                  "presentacionTexto": null,
+                  "presentacionContexto": "todas"
+                },
+                "cotizacion": [
+                  {
+                    "peso": "1.8kg",
+                    "marca": "HILLS",
+                    "stock": null,
+                    "precio": 161000,
+                    "cantidad": 1,
+                    "mascotas": [],
+                    "referencia": "HILLS FEL C/D",
+                    "tipoSeleccion": "alternativas",
+                    "presentaciones": [
+                      {
+                        "peso": "1.8kg",
+                        "stock": null,
+                        "precio": 161000,
+                        "metadata": {
+                          "llave": "875",
+                          "codigo": "10301010875",
+                          "source": "productos.json",
+                          "codigos": [
+                            "10301010875"
+                          ],
+                          "nombre_original": "HILLS FEL C/D 1.8KG"
+                        },
+                        "referencia": "HILLS FEL C/D"
+                      }
+                    ],
+                    "referenciaCatalogo": "HILLS FEL C/D"
+                  }
+                ],
+                "referencia": "HILLS FEL C/D",
+                "condiciones": [
+                  "urinary"
+                ],
+                "presentacion": null,
+                "subcategoria": "concentrado",
+                "textoVisible": "Hill's Prescription Diet Urinary Care c/d Multicare para gato",
+                "mencionOriginal": "esas 2 referencias",
+                "contextoCreadoEn": "2026-10-31T14:13:03.123Z",
+                "fuentePresentacion": "contexto",
+                "requierePresentacion": false,
+                "intencionPresentaciones": "todas",
+                "seleccionPresentaciones": {
+                  "tipo": "alternativas",
+                  "grupos": [
+                    {
+                      "peso": "1.8kg",
+                      "stock": null,
+                      "precio": 161000,
+                      "mascotas": [],
+                      "metadata": {
+                        "llave": "875",
+                        "codigo": "10301010875",
+                        "source": "productos.json",
+                        "codigos": [
+                          "10301010875"
+                        ],
+                        "nombre_original": "HILLS FEL C/D 1.8KG"
+                      },
+                      "referencia": "HILLS FEL C/D"
+                    }
+                  ],
+                  "pendientes": []
+                },
+                "presentacionesDisponibles": [
+                  "1.8kg"
+                ]
+              },
+              {
+                "etapa": "adulto",
+                "linea": "MeGaMix",
+                "marca": "FELIX",
+                "accion": "consultar",
+                "envase": null,
+                "estado": "cotizado",
+                "tamano": null,
+                "especie": "gato",
+                "sabores": [],
+                "cantidad": null,
+                "mascotas": [],
+                "categoria": "comida",
+                "observado": {
+                  "envase": null,
+                  "nombre": "Felix MeGaMix Adultos",
+                  "especie": "gato",
+                  "presentacion": "10 kg",
+                  "formaAlimento": "concentrado",
+                  "confianzaEspecie": 0.99,
+                  "confianzaFormato": 0.93,
+                  "evidenciaEspecie": "gato",
+                  "confianzaIdentidad": 0.99,
+                  "confianzaPresentacion": 0.99
+                },
+                "solicitud": {
+                  "especieTexto": null,
+                  "cantidadTexto": null,
+                  "contextoVigente": true,
+                  "cantidadContexto": null,
+                  "presentacionTexto": null,
+                  "presentacionContexto": "10kg"
+                },
+                "cotizacion": [
+                  {
+                    "peso": "x 10kg",
+                    "marca": "FELIX",
+                    "stock": null,
+                    "precio": 129900,
+                    "cantidad": 1,
+                    "metadata": {
+                      "llave": "1325",
+                      "codigo": "10601011325",
+                      "source": "productos.json",
+                      "codigos": [
+                        "10601011325"
+                      ],
+                      "nombre_original": "FELIX MEGAMIX 10KG"
+                    },
+                    "referencia": "FELIX MEGAMI"
+                  }
+                ],
+                "referencia": "FELIX MEGAMI",
+                "condiciones": [],
+                "presentacion": "10kg",
+                "subcategoria": "concentrado",
+                "textoVisible": "PURINA felix MeGaMix ADULTOS Cont. Neto 10 kg",
+                "nombreFamilia": "FELIX MEGAMI",
+                "mencionOriginal": null,
+                "fuentePresentacion": "contexto",
+                "requierePresentacion": false,
+                "intencionPresentaciones": "especifica",
+                "referenciasEquivalentes": [
+                  "FELIX MEGAMI"
+                ],
+                "coincidenciaVisualValidada": true,
+                "presentacionesEquivalentes": [
+                  {
+                    "peso": "x 10kg",
+                    "stock": null,
+                    "precio": 129900,
+                    "metadata": {
+                      "llave": "1325",
+                      "codigo": "10601011325",
+                      "source": "productos.json",
+                      "codigos": [
+                        "10601011325"
+                      ],
+                      "nombre_original": "FELIX MEGAMIX 10KG"
+                    },
+                    "referencia": "FELIX MEGAMI"
+                  }
+                ]
+              },
+              {
+                "etapa": null,
+                "linea": null,
+                "marca": "ARENA MAIZ CAT",
+                "accion": "consultar",
+                "envase": null,
+                "estado": "cotizado",
+                "tamano": null,
+                "especie": "gato",
+                "sabores": [],
+                "cantidad": null,
+                "mascotas": [],
+                "categoria": "arena_sustrato",
+                "cotizacion": [
+                  {
+                    "peso": "x 20kg",
+                    "marca": "ARENA MAIZ CAT",
+                    "stock": null,
+                    "precio": 98000,
+                    "cantidad": 1,
+                    "metadata": {
+                      "llave": "1856",
+                      "codigo": "110010101856",
+                      "source": "productos.json",
+                      "codigos": [
+                        "110010101856"
+                      ],
+                      "nombre_original": "ARENA MAIZ CAT X 20KG"
+                    },
+                    "referencia": "ARENA MAIZ CAT"
+                  }
+                ],
+                "referencia": "ARENA MAIZ CAT",
+                "condiciones": [],
+                "presentacion": "20kg",
+                "subcategoria": "arena",
+                "textoVisible": "Arena de maíz cat de 20 kg",
+                "nombreFamilia": "ARENA MAIZ CAT",
+                "mencionOriginal": null,
+                "pesoTextoOriginal": "20kg",
+                "requierePresentacion": false,
+                "intencionPresentaciones": "especifica",
+                "referenciasEquivalentes": [
+                  "ARENA MAIZ CAT"
+                ],
+                "coincidenciaVisualValidada": false,
+                "presentacionesEquivalentes": [
+                  {
+                    "peso": "x 20kg",
+                    "stock": null,
+                    "precio": 98000,
+                    "metadata": {
+                      "llave": "1856",
+                      "codigo": "110010101856",
+                      "source": "productos.json",
+                      "codigos": [
+                        "110010101856"
+                      ],
+                      "nombre_original": "ARENA MAIZ CAT X 20KG"
+                    },
+                    "referencia": "ARENA MAIZ CAT"
+                  }
+                ]
+              }
+            ],
+            "alternativaPendiente": null,
+            "confirmacionPedidoId": null,
+            "esperandoPresupuesto": false,
+            "esperandoTipoEntrega": false,
+            "productosConsultados": [
+              {
+                "peso": "x 20kg",
+                "marca": "ARENA MAIZ CAT",
+                "stock": null,
+                "precio": 98000,
+                "cantidad": 1,
+                "categoria": "arena_sustrato",
+                "referencia": "ARENA MAIZ CAT",
+                "subcategoria": "arena",
+                "presentaciones": [
+                  {
+                    "peso": "x 10kg",
+                    "stock": null,
+                    "precio": 48800,
+                    "metadata": {
+                      "llave": "1855",
+                      "codigo": "110010101855",
+                      "source": "productos.json",
+                      "codigos": [
+                        "110010101855"
+                      ],
+                      "nombre_original": "ARENA MAIZ CAT X 10KG"
+                    },
+                    "referenciaCatalogo": "ARENA MAIZ CAT"
+                  },
+                  {
+                    "peso": "x 15kg",
+                    "stock": null,
+                    "precio": 61500,
+                    "metadata": {
+                      "llave": "92",
+                      "codigo": "10201010092",
+                      "source": "productos.json",
+                      "codigos": [
+                        "10201010092"
+                      ],
+                      "nombre_original": "ARENA MAIZ CAT X 15KG"
+                    },
+                    "referenciaCatalogo": "ARENA MAIZ CAT"
+                  },
+                  {
+                    "peso": "x 20kg",
+                    "stock": null,
+                    "precio": 98000,
+                    "metadata": {
+                      "llave": "1856",
+                      "codigo": "110010101856",
+                      "source": "productos.json",
+                      "codigos": [
+                        "110010101856"
+                      ],
+                      "nombre_original": "ARENA MAIZ CAT X 20KG"
+                    },
+                    "referenciaCatalogo": "ARENA MAIZ CAT"
+                  },
+                  {
+                    "peso": "x 2kg",
+                    "stock": null,
+                    "precio": 11600,
+                    "metadata": {
+                      "llave": "1853",
+                      "codigo": "110010101853",
+                      "source": "productos.json",
+                      "codigos": [
+                        "110010101853"
+                      ],
+                      "nombre_original": "ARENA MAIZ CAT X 2KG"
+                    },
+                    "referenciaCatalogo": "ARENA MAIZ CAT"
+                  },
+                  {
+                    "peso": "x 4kg",
+                    "stock": null,
+                    "precio": 22900,
+                    "metadata": {
+                      "llave": "1854",
+                      "codigo": "110010101854",
+                      "source": "productos.json",
+                      "codigos": [
+                        "110010101854"
+                      ],
+                      "nombre_original": "ARENA MAIZ CAT X 4KG"
+                    },
+                    "referenciaCatalogo": "ARENA MAIZ CAT"
+                  }
+                ],
+                "contextoCreadoEn": "2026-11-05T16:23:02.599Z",
+                "familiaReferencia": "ARENA MAIZ CAT",
+                "referenciaCatalogo": "ARENA MAIZ CAT",
+                "referenciasEquivalentes": [
+                  "ARENA MAIZ CAT"
+                ]
+              }
+            ],
+            "esperandoSedeRecogida": false,
+            "memoriaConversacional": {
+              "hasta": {
+                "id": "82d55d44-e8af-aba9-9e54-5507afbcb5de",
+                "created_at": "2026-10-31T00:55:23.170025+00:00"
+              },
+              "resumen": "Resumen vigente de la conversación comercial (integrado):\n\nContexto general\n- El cliente ha reiterado que es “solo consultar/cotizar”; no hay compra confirmada ni pedido armado.\n\nSolicitudes del cliente (cotizaciones/consultas) — confirmadas\nPerro\n- PRO PLAN CANINE UR (línea UR) concentrado 2 kg: consultar precio.\n- PRO PLAN CANINE UR versión lata/comida húmeda para perro: cotización (gramaje/presentación no confirmados).\n- Royal Canin Gastrointestinal para perro, concentrado 2 kg: consultar. El cliente corrigió el tamaño requerido a 2 kg (deja sin efecto la intención previa de 7 kg para esa solicitud específica).\n- Royal Canin Gastrointestinal para perro 7 kg: consulta histórica previa (menos prioritaria vs 2 kg).\n- Bonnat Gastrointestinal para perro: solo consultar (producto no identificado con certeza; presentación no indicada).\n- Canisan D 5 ml: consultar.\n- NexGard para perro de 40 kg: cotizar (corresponde a la presentación/rango 25–50 kg).\n- Nutra Nuggets cordero para perro 7 kg: pidió cotizar y reiteró la solicitud explícitamente (“Para cotizar: … 7k perro”). Presentación 7 kg solicitada, pero no confirmada en catálogo.\n- Premios/snacks para perro adulto con presupuesto máximo $20.000: pidió opciones (sin producto elegido).\n- Agility Gold cachorro razas medianas (“AGILITY GRAND CACH”): pidió cotizar.\n\nGato\n- DIAMOND INDOOR CAT 500 g: consultar precio.\n- CAT CHOW DELICARNE 500 g: consultar precio.\n- BR CAT Castrado Pollo 1 kg: el cliente pidió cotizar explícitamente (“Para cotizar: … 1k”).\n- PRO PLAN KITTEN pouch/sobre 85 g: consultar; cantidad para cotizar: 3 sobres.\n- “PRO PLAN Feline EN” para gato: consulta (presentación/tamaño no especificados).\n- Gatito 6 meses: pidió opciones de alimento (solo opciones, no compra).\n- Juguetes para gato: opciones hasta $25.000.\n- Salud gato: indicó “Mi gato no puede orinar” y preguntó qué comida darle “para curarlo” (solicitud de orientación; requiere evaluación veterinaria).\n- Hill's Prescription Diet Urinary Care c/d Multicare: consultó presentaciones disponibles y confirmó que es PARA GATO.\n- Advance Urinary (gato): consultó “y el advance urinary?”; se cotizó la presentación 1.5 kg.\n\nOtros\n- Consulta de disponibilidad: ZetaPruebaQ9 referencia ZQ17 4 kg.\n- “nefrotec x60”: pidió precio (pendiente confirmar si requiere caja x60 o unidades).\n- Canitabs Skin Coat: consultar (pendiente confirmar presentación/variante exacta).\n\nRespuestas del asistente / precios comunicados (históricos; requieren reconfirmación de vigencia y stock)\n- Royal Canin Gastrointestinal perro 7 kg: indicado como no disponible “en este momento”.\n- Royal Canin Gastrointestinal perro 2 kg: $129.000.\n- PRO PLAN CANINE UR concentrado 2 kg: $122.000.\n- PRO PLAN CANINE UR lata para perro: $28.600 unidad (gramaje no indicado).\n- DIAMOND INDOOR CAT 500 g: $19.500.\n- CAT CHOW DELICARNE 500 g: $13.700.\n- DIAMOND INDOOR CAT 2.72 kg: $86.500 (referencia histórica).\n- PRO PLAN KITTEN pouch 85 g: $6.200 c/u; para 3 sobres: $18.600 estimado.\n- Canisan D 5 ml: $21.500 (se mencionaron 2.5 ml $16.800 y 10 ml $29.700 como referencia no solicitada).\n- BR CAT CASTRADO POLLO 1 kg: $28.000.\n- NexGard 25–50 kg: $56.900 (para perro de 40 kg).\n- Nutra Nuggets cordero 7 kg: no se entregó precio; evidencia de catálogo solo muestra 1 kg ($28.900) y 3 kg ($76.500), por lo que 7 kg queda sin confirmar.\n- Agility (AGILITY GRAND CACH) cachorro: 1.5 kg $33.700; 3 kg $65.400; 15 kg $299.900.\n- ADVANCE Urinary (gato) 1.5 kg: $108.000.\n\nHechos confirmados vs. hipótesis/evidencia\n- Confirmado: el cliente pidió cotizar Nutra Nuggets cordero 7 kg perro, BR Cat Castrado Pollo 1 kg y NexGard para perro de 40 kg.\n- Evidencia no confirmada: el catálogo consultado no muestra Nutra Nuggets cordero en 7 kg (solo 1 kg y 3 kg); falta confirmación del cliente sobre alternativa.\n- La frase previa “Qué precio tiene esas 2 referencias” quedó ambigua (no se confirmó a cuáles 2 productos se refería).\n\nPendientes / aclaraciones necesarias\n- Confirmar si Nutra Nuggets cordero lo requiere sí o sí en 7 kg o si le sirve 1 kg o 3 kg.\n- Definir qué presentación necesita de Hill's Prescription Diet Urinary Care c/d Multicare para gato.\n- Confirmar a cuáles “2 referencias” se refería el cliente.\n- Confirmar precio/disponibilidad y presentaciones de: Bonnat Gastrointestinal perro; Nefrotec x60; Canitabs Skin Coat; PRO PLAN Feline EN (presentación requerida).\n- Para PRO PLAN CANINE UR en lata: falta definir gramaje/presentación exacta.\n\nPreferencias/restricciones explícitas del cliente\n- Mantiene intención de “solo consultar / para cotizar” para los productos mencionados; no ha confirmado compra."
+            },
+            "referenciasPendientes": null,
+            "facturacionElectronica": false,
+            "pendienteRecomendacion": false,
+            "ultimaConsultaProducto": {
+              "nivel": "alta",
+              "razon": "marca_y_presentacion",
+              "fuente": "texto",
+              "creadoEn": "2026-11-05T16:23:02.587Z",
+              "etiqueta": "Arena de maíz cat de 20 kg",
+              "terminos": [
+                "maiz",
+                "cat"
+              ],
+              "aclaracion": null,
+              "presentacion": "20kg",
+              "formaAlimento": null,
+              "envaseAlimento": null,
+              "solicitudOriginal": {
+                "accion": "consultar",
+                "producto": {
+                  "etapa": null,
+                  "linea": null,
+                  "marca": "ARENA MAIZ CAT",
+                  "accion": "consultar",
+                  "envase": null,
+                  "tamano": null,
+                  "especie": "gato",
+                  "sabores": [],
+                  "cantidad": null,
+                  "duracion": null,
+                  "mascotas": [],
+                  "categoria": "arena_sustrato",
+                  "referencia": "ARENA MAIZ CAT",
+                  "condiciones": [],
+                  "presentacion": "20kg",
+                  "subcategoria": "arena",
+                  "textoVisible": "Arena de maíz cat de 20 kg",
+                  "nombreFamilia": "ARENA MAIZ CAT",
+                  "mencionOriginal": null,
+                  "pesoTextoOriginal": "20kg",
+                  "requierePresentacion": false,
+                  "intencionPresentaciones": "especifica",
+                  "referenciasEquivalentes": [
+                    "ARENA MAIZ CAT"
+                  ],
+                  "coincidenciaVisualValidada": false,
+                  "presentacionesEquivalentes": [
+                    {
+                      "peso": "x 20kg",
+                      "stock": null,
+                      "precio": 98000,
+                      "metadata": {
+                        "llave": "1856",
+                        "codigo": "110010101856",
+                        "source": "productos.json",
+                        "codigos": [
+                          "110010101856"
+                        ],
+                        "nombre_original": "ARENA MAIZ CAT X 20KG"
+                      },
+                      "referencia": "ARENA MAIZ CAT"
+                    }
+                  ]
+                },
+                "intencion": "consulta_producto"
+              }
+            },
+            "ultimoPedidoConfirmado": null,
+            "ultimoPedidoGuardadoAt": null,
+            "datosPreviosConfirmados": false,
+            "esperandoDatosDomicilio": false,
+            "ultimaPreguntaAsistente": "¿Puedes contarme un poco más sobre lo que necesitas?",
+            "ultimoPedidoGuardadoKey": null,
+            "esperandoCambioDireccion": false,
+            "ultimaSolicitudProductos": [
+              {
+                "etapa": null,
+                "linea": null,
+                "marca": null,
+                "accion": "consultar",
+                "envase": null,
+                "estado": "pendiente",
+                "tamano": null,
+                "especie": null,
+                "sabores": [],
+                "cantidad": null,
+                "mascotas": [
+                  {
+                    "nombre": "Mascota 1",
+                    "pesoKg": 28
+                  }
+                ],
+                "pregunta": "¿De qué marca necesitas pastas para parásitos externos para gato de 2 kg?",
+                "categoria": "medicamento",
+                "referencia": null,
+                "condiciones": [
+                  "parásitos externos"
+                ],
+                "presentacion": null,
+                "subcategoria": null,
+                "textoVisible": "pastas para parásitos externos para 28 kg",
+                "mencionOriginal": "pastas tienen para parásitos externos",
+                "contextoCreadoEn": "2026-10-31T16:24:48.963Z",
+                "intencionPresentaciones": null,
+                "presentacionesDisponibles": []
+              },
+              {
+                "etapa": null,
+                "linea": null,
+                "marca": null,
+                "accion": "consultar",
+                "envase": null,
+                "estado": "pendiente",
+                "tamano": null,
+                "especie": null,
+                "sabores": [],
+                "cantidad": null,
+                "mascotas": [
+                  {
+                    "nombre": "Mascota 1",
+                    "pesoKg": 14
+                  }
+                ],
+                "pregunta": "¿De qué marca necesitas pastas para parásitos externos para gato de 2 kg?",
+                "categoria": "medicamento",
+                "referencia": null,
+                "condiciones": [
+                  "parásitos externos"
+                ],
+                "presentacion": null,
+                "subcategoria": null,
+                "textoVisible": "pastas para parásitos externos para 14 kg",
+                "mencionOriginal": "pastas tienen para parásitos externos",
+                "contextoCreadoEn": "2026-10-31T16:24:48.963Z",
+                "intencionPresentaciones": null,
+                "presentacionesDisponibles": []
+              },
+              {
+                "etapa": null,
+                "linea": null,
+                "marca": null,
+                "accion": "consultar",
+                "envase": null,
+                "estado": "pendiente",
+                "tamano": null,
+                "especie": "gato",
+                "sabores": [],
+                "cantidad": null,
+                "mascotas": [
+                  {
+                    "nombre": "Mascota 1",
+                    "pesoKg": 2
+                  }
+                ],
+                "pregunta": "¿De qué marca necesitas pastas para parásitos externos para gato de 2 kg?",
+                "categoria": "medicamento",
+                "referencia": null,
+                "condiciones": [
+                  "parásitos externos"
+                ],
+                "presentacion": null,
+                "subcategoria": null,
+                "textoVisible": "pastas para parásitos externos para gato de 2 kg",
+                "mencionOriginal": "Gato de 2 kg",
+                "contextoCreadoEn": "2026-10-31T16:24:48.963Z",
+                "intencionPresentaciones": null,
+                "presentacionesDisponibles": [
+                  "4-8kg",
+                  "hasta 4kg"
+                ]
+              }
+            ],
+            "instruccionesPagoEnviadas": false,
+            "ultimaInteraccionProducto": null,
+            "pedidoNuevoConDatosPrevios": false,
+            "esperandoConfirmacionPedido": false,
+            "ultimoTurnoContextoProducto": 12,
+            "historialProductosConsultados": [
+              {
+                "marca": "PRO PLAN",
+                "indice": 1,
+                "creadoEn": "2026-10-29T20:20:35.187Z",
+                "referencia": "PRO PLAN CANINE UR",
+                "actualizadoEn": "2026-10-30T18:10:24.019Z",
+                "presentaciones": [
+                  {
+                    "peso": "2kg",
+                    "stock": null,
+                    "precio": 122000,
+                    "referenciaCatalogo": "PRO PLAN CANINE UR"
+                  }
+                ],
+                "pendienteRespuesta": false,
+                "referenciasEquivalentes": [
+                  "PRO PLAN CANINE UR"
+                ]
+              },
+              {
+                "marca": "DIAMOND",
+                "indice": 2,
+                "creadoEn": "2026-10-29T21:24:50.191Z",
+                "referencia": "DIAMOND INDOOR CAT",
+                "actualizadoEn": "2026-10-30T18:27:56.614Z",
+                "presentaciones": [
+                  {
+                    "peso": "500gr",
+                    "stock": null,
+                    "precio": 19500,
+                    "referenciaCatalogo": "DIAMOND INDOOR CAT"
+                  }
+                ],
+                "pendienteRespuesta": false,
+                "referenciasEquivalentes": [
+                  "DIAMOND INDOOR CAT",
+                  "DIAMOND INDOOR"
+                ]
+              },
+              {
+                "marca": "CAT CHOW",
+                "indice": 3,
+                "creadoEn": "2026-10-30T17:26:27.796Z",
+                "referencia": "CAT CHOW DELICARNE",
+                "actualizadoEn": "2026-10-30T17:26:27.797Z",
+                "presentaciones": [
+                  {
+                    "peso": "x 1.5 kg",
+                    "stock": null,
+                    "precio": 37700,
+                    "referenciaCatalogo": "CAT CHOW DELICARNE"
+                  },
+                  {
+                    "peso": "x 15 kg",
+                    "stock": null,
+                    "precio": 183600,
+                    "referenciaCatalogo": "CAT CHOW DELICARNE"
+                  },
+                  {
+                    "peso": "x 500 gr",
+                    "stock": null,
+                    "precio": 13700,
+                    "referenciaCatalogo": "CAT CHOW DELICARNE"
+                  }
+                ],
+                "pendienteRespuesta": false,
+                "referenciasEquivalentes": [
+                  "CAT CHOW DELICARNE"
+                ]
+              },
+              {
+                "marca": "ROYALCANIN",
+                "indice": 4,
+                "creadoEn": "2026-10-30T17:36:14.291Z",
+                "referencia": "ROYALCANIN GASTROINTESTINAL PERRO",
+                "actualizadoEn": "2026-10-30T18:36:10.574Z",
+                "presentaciones": [
+                  {
+                    "peso": null,
+                    "stock": null,
+                    "precio": null,
+                    "referenciaCatalogo": "ROYALCANIN GASTROINTESTINAL PERRO"
+                  },
+                  {
+                    "peso": "2kg",
+                    "stock": null,
+                    "precio": 129000,
+                    "referenciaCatalogo": "ROYALCANIN GASTROINTESTINAL PERRO"
+                  }
+                ],
+                "pendienteRespuesta": false,
+                "referenciasEquivalentes": [
+                  "ROYALCANIN GASTROINTESTINAL PERRO"
+                ]
+              },
+              {
+                "marca": "PRO PLAN",
+                "indice": 5,
+                "creadoEn": "2026-10-30T18:14:17.969Z",
+                "referencia": "PRO PLAN CANINE LATA UR",
+                "actualizadoEn": "2026-10-30T18:14:17.970Z",
+                "presentaciones": [
+                  {
+                    "peso": "unidad",
+                    "stock": null,
+                    "precio": 28600,
+                    "referenciaCatalogo": "PRO PLAN CANINE LATA UR"
+                  }
+                ],
+                "pendienteRespuesta": false,
+                "referenciasEquivalentes": [
+                  "PRO PLAN CANINE LATA UR"
+                ]
+              },
+              {
+                "marca": "PRO PLAN",
+                "indice": 6,
+                "creadoEn": "2026-10-30T18:15:45.877Z",
+                "referencia": "PRO PLAN POUCH FELINO KITTEN",
+                "actualizadoEn": "2026-10-30T18:16:44.003Z",
+                "presentaciones": [
+                  {
+                    "peso": "85gr",
+                    "stock": null,
+                    "precio": 6200,
+                    "referenciaCatalogo": "PRO PLAN POUCH FELINO KITTEN"
+                  }
+                ],
+                "pendienteRespuesta": false,
+                "referenciasEquivalentes": [
+                  "PRO PLAN POUCH FELINO KITTEN"
+                ]
+              },
+              {
+                "marca": "CANISAN",
+                "indice": 7,
+                "creadoEn": "2026-10-30T18:32:15.953Z",
+                "referencia": "CANISAN D",
+                "actualizadoEn": "2026-10-30T18:32:15.954Z",
+                "presentaciones": [
+                  {
+                    "peso": "10 ml",
+                    "stock": null,
+                    "precio": 29700,
+                    "referenciaCatalogo": "CANISAN D"
+                  },
+                  {
+                    "peso": "2.5ml",
+                    "stock": null,
+                    "precio": 16800,
+                    "referenciaCatalogo": "CANISAN D"
+                  },
+                  {
+                    "peso": "5 ml",
+                    "stock": null,
+                    "precio": 21500,
+                    "referenciaCatalogo": "CANISAN D"
+                  }
+                ],
+                "pendienteRespuesta": false,
+                "referenciasEquivalentes": [
+                  "CANISAN D"
+                ]
+              },
+              {
+                "marca": "BR CAT",
+                "indice": 8,
+                "creadoEn": "2026-10-30T21:52:16.887Z",
+                "referencia": "BR CAT CASTRADO POLLO",
+                "actualizadoEn": "2026-10-31T00:56:04.985Z",
+                "presentaciones": [
+                  {
+                    "peso": "10kg",
+                    "stock": null,
+                    "precio": 264000,
+                    "referenciaCatalogo": "BR CAT CASTRADO POLLO"
+                  },
+                  {
+                    "peso": "1kg",
+                    "stock": null,
+                    "precio": 28000,
+                    "referenciaCatalogo": "BR CAT CASTRADO POLLO"
+                  },
+                  {
+                    "peso": "3kg",
+                    "stock": null,
+                    "precio": 81900,
+                    "referenciaCatalogo": "BR CAT CASTRADO POLLO"
+                  }
+                ],
+                "pendienteRespuesta": false,
+                "referenciasEquivalentes": [
+                  "BR CAT CASTRADO POLLO"
+                ]
+              },
+              {
+                "marca": "NEXGARD",
+                "indice": 9,
+                "creadoEn": "2026-10-30T21:52:16.888Z",
+                "referencia": "NEXGARD",
+                "actualizadoEn": "2026-10-31T00:56:04.985Z",
+                "presentaciones": [
+                  {
+                    "peso": "10-25 kg",
+                    "stock": null,
+                    "precio": 49700,
+                    "referenciaCatalogo": "NEXGARD"
+                  },
+                  {
+                    "peso": "2-4 kg",
+                    "stock": null,
+                    "precio": 39900,
+                    "referenciaCatalogo": "NEXGARD"
+                  },
+                  {
+                    "peso": "25-50 kg",
+                    "stock": null,
+                    "precio": 56900,
+                    "referenciaCatalogo": "NEXGARD"
+                  },
+                  {
+                    "peso": "4-10 kg",
+                    "stock": null,
+                    "precio": 42500,
+                    "referenciaCatalogo": "NEXGARD"
+                  }
+                ],
+                "pendienteRespuesta": false,
+                "referenciasEquivalentes": [
+                  "NEXGARD"
+                ]
+              },
+              {
+                "marca": "NUTRA NUGGETS",
+                "indice": 10,
+                "creadoEn": "2026-10-30T21:52:16.888Z",
+                "referencia": "NUTRA NUGGETS CORDERO",
+                "actualizadoEn": "2026-10-31T00:56:04.984Z",
+                "presentaciones": [
+                  {
+                    "peso": null,
+                    "stock": null,
+                    "precio": null,
+                    "referenciaCatalogo": "NUTRA NUGGETS CORDERO"
+                  }
+                ],
+                "pendienteRespuesta": false,
+                "referenciasEquivalentes": [
+                  "NUTRA NUGGETS CORDERO"
+                ]
+              },
+              {
+                "marca": "AGILITY",
+                "indice": 11,
+                "creadoEn": "2026-10-30T22:01:09.233Z",
+                "referencia": "AGILITY GRAND CACH",
+                "actualizadoEn": "2026-10-30T22:01:09.234Z",
+                "presentaciones": [
+                  {
+                    "peso": "1.5kg",
+                    "stock": null,
+                    "precio": 33700,
+                    "referenciaCatalogo": "AGILITY GRAND CACH"
+                  },
+                  {
+                    "peso": "3kg",
+                    "stock": null,
+                    "precio": 65400,
+                    "referenciaCatalogo": "AGILITY GRAND CACH"
+                  },
+                  {
+                    "peso": "15kg",
+                    "stock": null,
+                    "precio": 299900,
+                    "referenciaCatalogo": "AGILITY GRAND CACH"
+                  }
+                ],
+                "pendienteRespuesta": false,
+                "referenciasEquivalentes": [
+                  "AGILITY GRAND CACH"
+                ]
+              },
+              {
+                "marca": "ADVANCE",
+                "indice": 12,
+                "creadoEn": "2026-10-30T22:09:07.271Z",
+                "referencia": "ADVANCE CAT URINARY",
+                "actualizadoEn": "2026-10-31T14:13:03.123Z",
+                "presentaciones": [
+                  {
+                    "peso": "1.5kg",
+                    "stock": null,
+                    "precio": 108000,
+                    "referenciaCatalogo": "ADVANCE URINAY"
+                  },
+                  {
+                    "peso": "3kg",
+                    "stock": null,
+                    "precio": 196000,
+                    "referenciaCatalogo": "ADVANCE CAT URINARY"
+                  }
+                ],
+                "referenciasEquivalentes": [
+                  "ADVANCE CAT URINARY",
+                  "ADVANCE URINAY"
+                ]
+              },
+              {
+                "marca": "ADVANCE",
+                "indice": 13,
+                "creadoEn": "2026-10-30T22:09:07.272Z",
+                "referencia": "ADVANCE URINAY",
+                "actualizadoEn": "2026-10-31T14:13:03.125Z",
+                "presentaciones": [
+                  {
+                    "peso": "1.5kg",
+                    "stock": null,
+                    "precio": 108000,
+                    "referenciaCatalogo": "ADVANCE URINAY"
+                  },
+                  {
+                    "peso": "3kg",
+                    "stock": null,
+                    "precio": 196000,
+                    "referenciaCatalogo": "ADVANCE URINAY"
+                  }
+                ],
+                "pendienteRespuesta": false,
+                "referenciasEquivalentes": [
+                  "ADVANCE URINAY"
+                ]
+              },
+              {
+                "marca": "HILLS",
+                "indice": 14,
+                "creadoEn": "2026-10-31T14:13:03.123Z",
+                "referencia": "HILLS FEL C/D",
+                "actualizadoEn": "2026-10-31T14:13:03.125Z",
+                "presentaciones": [
+                  {
+                    "peso": "1.8kg",
+                    "stock": null,
+                    "precio": 161000,
+                    "referenciaCatalogo": "HILLS FEL C/D"
+                  }
+                ],
+                "pendienteRespuesta": false,
+                "referenciasEquivalentes": [
+                  "HILLS FEL C/D"
+                ]
+              },
+              {
+                "marca": "FELIX",
+                "indice": 15,
+                "creadoEn": "2026-10-31T15:44:48.313Z",
+                "referencia": "FELIX MEGAMI",
+                "actualizadoEn": "2026-10-31T23:55:57.412Z",
+                "presentaciones": [
+                  {
+                    "peso": "x 10kg",
+                    "stock": null,
+                    "precio": 129900,
+                    "referenciaCatalogo": "FELIX MEGAMI"
+                  }
+                ],
+                "pendienteRespuesta": false,
+                "referenciasEquivalentes": [
+                  "FELIX MEGAMI"
+                ]
+              },
+              {
+                "marca": "ARENA MAIZ CAT",
+                "indice": 16,
+                "creadoEn": "2026-11-05T16:23:02.598Z",
+                "referencia": "ARENA MAIZ CAT",
+                "actualizadoEn": "2026-11-05T16:23:02.599Z",
+                "presentaciones": [
+                  {
+                    "peso": "x 10kg",
+                    "stock": null,
+                    "precio": 48800,
+                    "referenciaCatalogo": "ARENA MAIZ CAT"
+                  },
+                  {
+                    "peso": "x 15kg",
+                    "stock": null,
+                    "precio": 61500,
+                    "referenciaCatalogo": "ARENA MAIZ CAT"
+                  },
+                  {
+                    "peso": "x 20kg",
+                    "stock": null,
+                    "precio": 98000,
+                    "referenciaCatalogo": "ARENA MAIZ CAT"
+                  },
+                  {
+                    "peso": "x 2kg",
+                    "stock": null,
+                    "precio": 11600,
+                    "referenciaCatalogo": "ARENA MAIZ CAT"
+                  },
+                  {
+                    "peso": "x 4kg",
+                    "stock": null,
+                    "precio": 22900,
+                    "referenciaCatalogo": "ARENA MAIZ CAT"
+                  }
+                ],
+                "pendienteRespuesta": false,
+                "referenciasEquivalentes": [
+                  "ARENA MAIZ CAT"
+                ]
+              }
+            ],
+            "esperandoConfirmacionDomicilio": false,
+            "coincidenciasProductoPendientes": null,
+            "pedidoConfirmadoPendienteGuardar": false,
+            "esperandoConfirmacionDatosPrevios": false,
+            "esperandoActualizacionDatosCliente": false,
+            "esperandoConfirmacionRepetirPedido": false,
+            "esperandoConfirmacionDatosFacturacion": false
+          },
+          "status": "pendiente_asesor",
+          "last_interaction_at": "2026-11-05T16:23:42.556+00:00"
+        }
+      ]
+    }
+  ]
+}

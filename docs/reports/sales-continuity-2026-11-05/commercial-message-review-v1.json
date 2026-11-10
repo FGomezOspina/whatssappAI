@@ -1,0 +1,347 @@
+{
+  "version": 1,
+  "sourceSha256": "a7ef9115e8849def1a427a0806ff6bd281fe9db06449ef2c61f8dc513f8288d1",
+  "reviewType": "Local reread of previously retained manual visual transcripts, NOT new WhatsApp capture",
+  "window": {
+    "timezone": "America/Bogota",
+    "from": "2026-10-30T00:00:00-05:00",
+    "through": "2026-10-30T09:35:19-05:00",
+    "captureCutoffUtc": "2026-10-30T14:35:19Z",
+    "source": "Authorized WhatsApp Business Safari window, real commercial chats",
+    "coverage": "4 customer chats plus 1 commercial-coordination chat excluded; partial accessible coverage, pagination not completed",
+    "priorCorpus": "28-29 October v1 unchanged"
+  },
+  "counts": {
+    "chats": 4,
+    "eventRecords": 28,
+    "textRecords": 24,
+    "mediaRecords": 4,
+    "knownOriginalImagesMissing": 9,
+    "knownOriginalAudioMissing": 1
+  },
+  "excluded": {
+    "T05": "Commercial coordination, no identification episode",
+    "C03_C06_C14": "Original export directory exists but empty; export counts in historical reports not counted as reread messages"
+  },
+  "chats": [
+    {
+      "id": "T01",
+      "source": "docs/reports/real-conversations-2026-10-30/today-corpus-v2.json",
+      "sequence": [
+        {
+          "eventKey": "T01-01",
+          "at": "08:08",
+          "direction": "customer",
+          "text": "Hola buenos dias",
+          "analysis": {
+            "classification": "greeting",
+            "reason": "No product or purchase selection."
+          }
+        },
+        {
+          "eventKey": "T01-02",
+          "at": "08:08",
+          "direction": "customer",
+          "text": "Me puedes regalar los precios de los sgtes alimentos",
+          "analysis": {
+            "classification": "quote_request",
+            "reason": "Prices requested; not acceptance."
+          }
+        },
+        {
+          "eventKey": "T01-03",
+          "at": "08:09",
+          "direction": "customer",
+          "media": "7 forwarded photos: 4-tile album + 3 single images",
+          "mediaOriginalFiles": [],
+          "view": "Human pixel inspection of rendered inline previews; original viewer/file not obtained",
+          "analysis": {
+            "classification": "unavailable_media",
+            "reason": "Seven original photos absent. No automatic perception claim."
+          }
+        },
+        {
+          "eventKey": "T01-04",
+          "at": "09:27",
+          "direction": "business_account",
+          "text": "Buenos días, ya te cotizo",
+          "analysis": {
+            "classification": "acknowledgment",
+            "reason": "Account promises quote; no customer commitment."
+          }
+        },
+        {
+          "eventKey": "T01-05",
+          "at": "09:31",
+          "direction": "business_account",
+          "text": "Pro plan feline UR 96.600\nVIRBAC UROLOGY 2 1.5KG 130.500\n3KG 253.000\nHILLS FEL C/D 1.8KG 161.000\nADVANCE URINARY 3KG 196.000\nROYAL CANIN URINARY 1.5KG 135.000\nPRO PLAN LATA UR 14.200\nROYAL CANIN URINARY LATA no lo manejamos",
+          "analysis": {
+            "classification": "quote_alternatives",
+            "reason": "Seven product lines, one unavailable; Urology sizes are alternatives. No customer acceptance in saved interval."
+          }
+        }
+      ]
+    },
+    {
+      "id": "T02",
+      "source": "docs/reports/real-conversations-2026-10-30/today-corpus-v2.json",
+      "sequence": [
+        {
+          "eventKey": "T02-01",
+          "at": "09:09",
+          "direction": "customer",
+          "media": "audio 6 seconds, not transcribed",
+          "analysis": {
+            "classification": "unavailable_audio",
+            "reason": "Do not reconstruct six-second audio from the answer."
+          }
+        },
+        {
+          "eventKey": "T02-02",
+          "at": "09:11",
+          "direction": "business_account",
+          "text": "Excellent esterilizado x3kg no viene",
+          "analysis": {
+            "classification": "unavailable_pack",
+            "reason": "Sterilized 3kg unavailable; preserve distinction from adult normal."
+          }
+        },
+        {
+          "eventKey": "T02-03",
+          "at": "09:11",
+          "direction": "business_account",
+          "text": "Solo x1kl",
+          "analysis": {
+            "classification": "alternative_pack",
+            "reason": "1kg applies to sterilized line in previous account message."
+          }
+        },
+        {
+          "eventKey": "T02-04",
+          "at": "09:11",
+          "direction": "business_account",
+          "text": "De gato adulto normal si viene x3kl",
+          "analysis": {
+            "classification": "alternative_reference",
+            "reason": "Adult normal 3kg offered; not selected."
+          }
+        },
+        {
+          "eventKey": "T02-05",
+          "at": "09:11",
+          "direction": "customer",
+          "text": "A y a cómo ese",
+          "analysis": {
+            "classification": "price_followup",
+            "reason": "Ese refers to immediately offered adult normal, not sterilized."
+          }
+        },
+        {
+          "eventKey": "T02-06",
+          "at": "09:12",
+          "direction": "customer",
+          "text": "Por favor",
+          "analysis": {
+            "classification": "courtesy",
+            "reason": "No additional product or quantity."
+          }
+        },
+        {
+          "eventKey": "T02-07",
+          "at": "09:12",
+          "direction": "business_account",
+          "text": "Excellent gato adulto x3kl 56.000",
+          "analysis": {
+            "classification": "quote",
+            "reason": "Adult 3kg price is account quote; not SKU proof."
+          }
+        },
+        {
+          "eventKey": "T02-08",
+          "at": "09:14",
+          "direction": "customer",
+          "text": "Me  envía dos  de adulto de kilo porfa",
+          "analysis": {
+            "classification": "purchase_with_correction",
+            "reason": "Customer selects TWO adult 1kg packs, replacing offered 3kg; not 2kg total packaging."
+          }
+        },
+        {
+          "eventKey": "T02-09",
+          "at": "09:14",
+          "direction": "customer",
+          "text": "1 paquete de churu porfs",
+          "analysis": {
+            "classification": "additional_pending_item",
+            "reason": "One Churu package requested; flavor and pack identity unresolved. Preserve adult item."
+          }
+        },
+        {
+          "eventKey": "T02-10",
+          "at": "09:17",
+          "direction": "business_account",
+          "text": "Sabor de churus?",
+          "analysis": {
+            "classification": "clarification",
+            "reason": "Account asks only unresolved flavor."
+          }
+        },
+        {
+          "eventKey": "T02-11",
+          "at": "09:22",
+          "direction": "customer",
+          "text": "Que no sea morrado",
+          "analysis": {
+            "classification": "negative_constraint",
+            "reason": "No morrado is a color exclusion; not a verified flavor or SKU."
+          }
+        },
+        {
+          "eventKey": "T02-12",
+          "at": "09:22",
+          "direction": "customer",
+          "text": "Porfa",
+          "analysis": {
+            "classification": "courtesy",
+            "reason": "Does not resolve flavor or authorize closing."
+          }
+        }
+      ]
+    },
+    {
+      "id": "T03",
+      "source": "docs/reports/real-conversations-2026-10-30/today-corpus-v2.json",
+      "sequence": [
+        {
+          "eventKey": "T03-01",
+          "at": "09:25",
+          "direction": "customer",
+          "text": "Buen día...DE pronto tiene estos medicamentos y a qué precio?",
+          "analysis": {
+            "classification": "quote_request",
+            "reason": "Availability and price inquiry, not order."
+          }
+        },
+        {
+          "eventKey": "T03-02",
+          "at": "09:25",
+          "direction": "customer",
+          "media": "1 formula image, inline preview pixels read manually",
+          "productTextRead": [
+            "B FEX JARABE",
+            "DERMOSYN SPRAY",
+            "A LAPIEL CREMA"
+          ],
+          "redaction": "Animal identifiers, prescription/dose instructions and clinician details not transcribed.",
+          "analysis": {
+            "classification": "unavailable_original",
+            "reason": "Prior manual preview reading retained; no original image now."
+          }
+        },
+        {
+          "eventKey": "T03-03",
+          "at": "09:27",
+          "direction": "business_account",
+          "text": "Buen día, claro que sí tenemos disponibles: B-FEX jarabe por $25.900; Dermosyn spray de 50 ml por $31.500 y de 100 ml por $44.300; Alapiel 30.300",
+          "transcription": "Visually verified text; AX duplicated bullets, not duplicated products.",
+          "analysis": {
+            "classification": "quote_alternatives",
+            "reason": "Dermosyn 50/100ml are choices, not two ordered products."
+          }
+        },
+        {
+          "eventKey": "T03-04",
+          "at": "09:29",
+          "direction": "customer",
+          "text": "Hasta que hora es el horario?",
+          "analysis": {
+            "classification": "schedule_question",
+            "reason": "Opening-hours question must not add quoted medicines."
+          }
+        },
+        {
+          "eventKey": "T03-05",
+          "at": "09:34",
+          "direction": "business_account",
+          "text": "Hasta las 5:30",
+          "analysis": {
+            "classification": "schedule_answer",
+            "reason": "Account answer only; no product choice."
+          }
+        },
+        {
+          "eventKey": "T03-06",
+          "at": "09:35",
+          "direction": "customer",
+          "text": "Muchas gracias",
+          "cutoffCaution": "Minute precision only; not used for identity or acceptance because second relative to cutoff unavailable.",
+          "analysis": {
+            "classification": "courtesy",
+            "reason": "Thanks is not acceptance; minute-only cutoff also uncertain."
+          }
+        }
+      ]
+    },
+    {
+      "id": "T04",
+      "source": "docs/reports/real-conversations-2026-10-30/today-corpus-v2.json",
+      "sequence": [
+        {
+          "eventKey": "T04-01",
+          "at": "09:00",
+          "direction": "customer",
+          "text": "Buenos dias, una pregunta, maneja estas gotas?",
+          "analysis": {
+            "classification": "availability_question",
+            "reason": "Identity depends on photo."
+          }
+        },
+        {
+          "eventKey": "T04-02",
+          "at": "09:00",
+          "direction": "customer",
+          "media": "1 photo, preview stayed blurred on two observations; original unavailable",
+          "analysis": {
+            "classification": "unavailable_media",
+            "reason": "Blurred preview and absent original; cannot name drops."
+          }
+        },
+        {
+          "eventKey": "T04-03",
+          "at": "09:01",
+          "direction": "business_account",
+          "text": "Buenos dias, nos llegaria para hoy si dios quiere",
+          "analysis": {
+            "classification": "arrival_estimate",
+            "reason": "Expected arrival does not establish stock."
+          }
+        },
+        {
+          "eventKey": "T04-04",
+          "at": "09:01",
+          "direction": "customer",
+          "text": "Y que costo tienen?",
+          "analysis": {
+            "classification": "price_followup",
+            "reason": "Price request, no purchase choice."
+          }
+        },
+        {
+          "eventKey": "T04-05",
+          "at": "09:02",
+          "direction": "business_account",
+          "text": "120.000",
+          "analysis": {
+            "classification": "price_only",
+            "reason": "120000 cannot identify SKU or prove payment/order."
+          }
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "No complete customer-to-final-confirmation historical dialogue preserved in these four sequences.",
+    "Account role does not by itself identify a human author; T01 authorship corroborated in prior user evidence.",
+    "No new image/audio processing; no transmission or database write."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "at": "2026-10-29T21:33:54.745Z",
+  "runtime": {
+    "pid": 15799,
+    "cwd": "/Users/gomez/Documents/WhatsappVELTIA",
+    "startedAt": "2026-10-29T21:29:31.997Z",
+    "sourceHash": "65a1ff26f1d0e2b032ef870cda6ed8fe54a9fca5f97323673c342902d4dccea2"
+  },
+  "status": 200,
+  "health": {
+    "ok": true,
+    "provider": "kapso"
+  },
+  "loadedMatchesDisk": true,
+  "failedTelemetry": [],
+  "errors": []
+}

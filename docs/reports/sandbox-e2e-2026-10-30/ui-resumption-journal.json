@@ -1,0 +1,133 @@
+{
+  "startedAt": "2026-10-30T18:24:42Z",
+  "surface": "Safari / web.whatsapp.com / Kapso Sandbox",
+  "observations": [
+    {
+      "case": "S07",
+      "kind": "existing_message_read_in_UI",
+      "timeDisplayed": "13:18 America/Bogota",
+      "text": "Tenemos opciones de nefrotec. ¿Necesitas un empaque cerrado de 60 unidades o unidades individuales? Necesito verificar esa presentación antes de cotizarla.",
+      "resent": false
+    },
+    {
+      "case": "S08",
+      "kind": "new_input_via_CUA_UI",
+      "actions": "click observed Sandbox composer 196; paste literal; Return; fresh AX shows outgoing row",
+      "timeDisplayed": "13:26 America/Bogota",
+      "text": "Solo consultar: Canitabs Skin Coat."
+    },
+    {
+      "case": "S08",
+      "kind": "response_read_in_UI",
+      "timeDisplayed": "13:26 America/Bogota",
+      "pass": true
+    },
+    {
+      "case": "S09",
+      "kind": "new_input_via_CUA_UI",
+      "timeDisplayed": "13:27 America/Bogota",
+      "text": "Solo consultar precio de diamon indor para gato, medio kilo"
+    },
+    {
+      "case": "S09",
+      "kind": "response_read_in_UI",
+      "timeDisplayed": "13:27 America/Bogota",
+      "pass": true
+    },
+    {
+      "case": "S10",
+      "kind": "new_input_via_CUA_UI",
+      "timeDisplayed": "13:28 America/Bogota",
+      "text": "Qué alimento me recomiendas para un gatito de seis meses? Solo quiero opciones, no comprar."
+    },
+    {
+      "case": "S10",
+      "kind": "response_read_in_UI",
+      "timeDisplayed": "13:28 America/Bogota",
+      "pass": true
+    },
+    {
+      "case": "S11",
+      "kind": "new_input_via_CUA_UI",
+      "timeDisplayed": "13:29 America/Bogota",
+      "text": "Solo consultar: marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos."
+    },
+    {
+      "case": "S11",
+      "kind": "response_read_in_UI",
+      "timeDisplayed": "13:30 America/Bogota",
+      "pass": true
+    },
+    {
+      "case": "S12",
+      "kind": "new_input_via_CUA_UI",
+      "timeDisplayed": "13:30 America/Bogota",
+      "text": "Solo consultar: Bonnat Gastrointestinal para perro."
+    },
+    {
+      "case": "S12",
+      "kind": "response_read_in_UI",
+      "timeDisplayed": "13:31 America/Bogota",
+      "pass": true
+    },
+    {
+      "case": "S14",
+      "kind": "new_input_via_CUA_UI",
+      "timeDisplayed": "13:31 America/Bogota",
+      "text": "Solo consultar: Canisan D de 5ml."
+    },
+    {
+      "case": "S14",
+      "kind": "response_read_in_UI",
+      "timeDisplayed": "13:32 America/Bogota",
+      "pass": true
+    },
+    {
+      "case": "S15",
+      "kind": "new_input_via_CUA_UI",
+      "timeDisplayed": "13:32 America/Bogota",
+      "text": "Solo consultar: proplan feline EN."
+    },
+    {
+      "case": "S15",
+      "kind": "response_read_in_UI",
+      "timeDisplayed": "13:33 America/Bogota",
+      "pass": true
+    },
+    {
+      "case": "S02",
+      "repetition": "new_visible_reconciliation",
+      "kind": "new_input_via_CUA_UI",
+      "timeDisplayed": "13:34 America/Bogota",
+      "text": "Solo consultar precio: Royal Canin gastrointestinal para perro, concentrado de 7 kg."
+    },
+    {
+      "case": "S02",
+      "repetition": "new_visible_reconciliation",
+      "kind": "response_read_in_UI",
+      "timeDisplayed": "13:34 America/Bogota",
+      "text": "Para Royal Canin Gastrointestinal perro en 7 kg no tengo esa presentación disponible en este momento. La presentación disponible es 2 kg por $129.000",
+      "identityPass": true,
+      "wordingCaveat": "La palabra disponible puede interpretarse como existencias. El catálogo tiene stock null: esa redacción no demuestra disponibilidad y se conserva como limitación."
+    },
+    {
+      "case": "S03",
+      "repetition": "new_visible_reconciliation",
+      "kind": "new_input_via_CUA_UI",
+      "timeDisplayed": "13:35 America/Bogota",
+      "text": "Corrijo el tamaño: de 2 kg, el mismo concentrado para perro. Solo consultar el precio."
+    },
+    {
+      "case": "S03",
+      "repetition": "new_visible_reconciliation",
+      "kind": "response_read_in_UI",
+      "timeDisplayed": "13:36 America/Bogota",
+      "text": "Sí, el ROYALCANIN GASTROINTESTINAL PERRO de 2 kg está en $129.000 🐾 Las existencias están por confirmar.",
+      "identityPass": true
+    }
+  ],
+  "limitations": [
+    "Two native scroll attempts returned noWindowsAvailable; enumeration, rebind and Raise attempted. Composer input succeeded afterward.",
+    "Historical Royal Canin inputs/outputs have provider receipts but no saved screenshots of original sending actions."
+  ]
+}

@@ -1,0 +1,2220 @@
+{
+  "capturedAt": "2026-10-29T16:18:02.632Z",
+  "mode": "real models and read-only Supabase; in-memory state; not WhatsApp E2E",
+  "label": "final-targeted",
+  "rows": [
+    {
+      "case": "capture",
+      "text": "Quiero un dimicilio para un alimento para mi gato de 6 meses que me recomienda",
+      "response": "Claro, para tu gato de 6 meses te puedo orientar con estas opciones:\n\n- MIRRINGO GATITO x 500gr: $5.900 — concentrado, gato, cachorro.\n- OHMAIGAT GATITOS x 200 gr: $3.800 — concentrado, gato, cachorro.\n- PRO PLAN POUCH FELINO KITTEN 85gr: $6.200 — comida humeda, gato, cachorro.\n\nLos precios están registrados; las existencias están por confirmar.\n\nSi me dices si prefieres alimento concentrado o húmedo, te ayudo a elegir el más adecuado.",
+      "ms": 11160,
+      "decisions": [
+        {
+          "router": true,
+          "decision": {
+            "recomendaciones": [],
+            "preguntaRecomendacion": null,
+            "solicitudComercialIndependiente": true,
+            "derivacionHumana": {
+              "necesaria": false,
+              "motivo": null
+            },
+            "seguimientoProducto": "nueva",
+            "resumenMemoria": null,
+            "continuarFlujo": false,
+            "compraContextual": null,
+            "solicitudesProductoDetectadas": 1,
+            "consultaCatalogo": {
+              "tipo": "necesidad",
+              "presupuestoMaximo": null,
+              "necesaria": true,
+              "consulta": "alimento para gato de 6 meses"
+            },
+            "respuestaConversacional": null,
+            "intencion": "recomendacion",
+            "accion": "consultar",
+            "confianza": 0.95,
+            "producto": {
+              "accion": "consultar",
+              "marca": null,
+              "referencia": null,
+              "linea": null,
+              "textoVisible": "alimento para mi gato de 6 meses",
+              "mencionOriginal": null,
+              "categoria": "comida",
+              "subcategoria": null,
+              "especie": "gato",
+              "etapa": "cachorro",
+              "tamano": null,
+              "sabores": [],
+              "presentacion": null,
+              "intencionPresentaciones": null,
+              "mascotas": [
+                {
+                  "nombre": "Mascota 1",
+                  "pesoKg": null
+                }
+              ],
+              "condiciones": [],
+              "cantidad": null
+            },
+            "productos": [
+              {
+                "accion": "consultar",
+                "marca": null,
+                "referencia": null,
+                "linea": null,
+                "textoVisible": "alimento para mi gato de 6 meses",
+                "mencionOriginal": "alimento para mi gato de 6 meses",
+                "categoria": "comida",
+                "subcategoria": null,
+                "especie": "gato",
+                "etapa": "cachorro",
+                "tamano": null,
+                "sabores": [],
+                "presentacion": null,
+                "intencionPresentaciones": null,
+                "mascotas": [
+                  {
+                    "nombre": "Mascota 1",
+                    "pesoKg": null
+                  }
+                ],
+                "condiciones": [],
+                "cantidad": null
+              }
+            ],
+            "entrega": {
+              "tipo": "domicilio",
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            },
+            "facturacion": {
+              "electronica": null,
+              "evidencia": null
+            },
+            "datosCliente": {
+              "nombre": null,
+              "cedula": null,
+              "correo": null,
+              "celular": null
+            },
+            "carrito": {
+              "operacion": null,
+              "cantidadObjetivo": null,
+              "cantidadDelta": null,
+              "aplicaAlUltimoProducto": null,
+              "razon": null
+            },
+            "faltanteSugerido": null
+          }
+        }
+      ],
+      "requests": [
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 6232,
+          "status": 200,
+          "model": "gpt-5.4-2026-03-05",
+          "output": "{\n  \"intencion\": \"recomendacion\",\n  \"accion\": \"consultar\",\n  \"confianza\": 0.95,\n  \"compraContextual\": null,\n  \"solicitudesProductoDetectadas\": 1,\n  \"consultaCatalogo\": {\n    \"necesaria\": true,\n    \"consulta\": \"alimento para gato de 6 meses\",\n    \"tipo\": \"necesidad\",\n    \"presupuestoMaximo\": null\n  },\n  \"producto\": {\n    \"accion\": \"consultar\",\n    \"marca\": null,\n    \"referencia\": null,\n    \"linea\": null,\n    \"textoVisible\": \"alimento para mi gato de 6 meses\",\n    \"categoria\": \"comida\",\n    \"subcategoria\": null,\n    \"especie\": \"gato\",\n    \"etapa\": \"cachorro\",\n    \"tamano\": null,\n    \"sabores\": [],\n    \"condiciones\": [],\n    \"presentacion\": null,\n    \"cantidad\": null,\n    \"intencionPresentaciones\": null,\n    \"mascotas\": [\n      {\n        \"nombre\": null,\n        \"pesoKg\": null\n      }\n    ]\n  },\n  \"productos\": [\n    {\n      \"accion\": \"consultar\",\n      \"marca\": null,\n      \"referencia\": null,\n      \"linea\": null,\n      \"textoVisible\": \"alimento para mi gato de 6 meses\",\n      \"mencionOriginal\": \"alimento para mi gato de 6 meses\",\n      \"categoria\": \"comida\",\n      \"subcategoria\": null,\n      \"especie\": \"gato\",\n      \"etapa\": \"cachorro\",\n      \"tamano\": null,\n      \"sabores\": [],\n      \"condiciones\": [],\n      \"presentacion\": null,\n      \"cantidad\": null,\n      \"intencionPresentaciones\": null,\n      \"mascotas\": [\n        {\n          \"nombre\": null,\n          \"pesoKg\": null\n        }\n      ]\n    }\n  ],\n  \"entrega\": {\n    \"tipo\": \"domicilio\",\n    \"direccion\": null,\n    \"direccionCompleta\": null,\n    \"sector\": null,\n    \"metodoPago\": null,\n    \"sede\": null\n  },\n  \"facturacion\": {\n    \"electronica\": null,\n    \"evidencia\": null\n  },\n  \"datosCliente\": {\n    \"nombre\": null,\n    \"cedula\": null,\n    \"correo\": null,\n    \"celular\": null\n  },\n  \"carrito\": {\n    \"operacion\": null,\n    \"cantidadObjetivo\": null,\n    \"cantidadDelta\": null,\n    \"aplicaAlUltimoProducto\": null,\n    \"razon\": null\n  },\n  \"faltanteSugerido\": null,\n  \"derivacionHumana\": {\n    \"necesaria\": false,\n    \"motivo\": null\n  },\n  \"solicitudComercialIndependiente\": true,\n  \"seguimientoProducto\": \"nueva\",\n  \"respuestaConversacional\": null\n}",
+          "usage": {
+            "prompt_tokens": 6432,
+            "completion_tokens": 657,
+            "total_tokens": 7089,
+            "prompt_tokens_details": {
+              "cached_tokens": 5888,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "supabase",
+          "method": "GET",
+          "path": "/rest/v1/catalog_references",
+          "ms": 298,
+          "status": 200
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 3166,
+          "status": 200,
+          "model": "gpt-5.4-mini-2026-03-17",
+          "output": "{\"recomendaciones\":[{\"id\":\"466d365f-12a8-41c1-8398-4794739688ab\",\"evidencia\":[\"\\\"MIRRINGO GATITO\\\"\",\"\\\"gato\\\"\",\"\\\"cachorro\\\"\",\"\\\"MIRRINGO GATITO X 500GR\\\"\"],\"atributos\":[{\"campo\":\"especie\",\"valor\":\"gato\",\"evidencia\":\"\\\"gato\\\"\"},{\"campo\":\"etapa\",\"valor\":\"cachorro\",\"evidencia\":\"\\\"cachorro\\\"\"},{\"campo\":\"categoria\",\"valor\":\"comida\",\"evidencia\":\"\\\"categoria\\\":\\\"comida\\\"\"},{\"campo\":\"subcategoria\",\"valor\":\"concentrado\",\"evidencia\":\"\\\"subcategoria\\\":\\\"concentrado\\\"\"}]},{\"id\":\"bac06106-16c1-46c3-b8cb-a1ff93401666\",\"evidencia\":[\"\\\"OHMAIGAT GATITOS\\\"\",\"\\\"gato\\\"\",\"\\\"cachorro\\\"\",\"\\\"OHMAIGAT GATITOS X 200 GR\\\"\"],\"atributos\":[{\"campo\":\"especie\",\"valor\":\"gato\",\"evidencia\":\"\\\"gato\\\"\"},{\"campo\":\"etapa\",\"valor\":\"cachorro\",\"evidencia\":\"\\\"cachorro\\\"\"},{\"campo\":\"categoria\",\"valor\":\"comida\",\"evidencia\":\"\\\"categoria\\\":\\\"comida\\\"\"},{\"campo\":\"subcategoria\",\"valor\":\"concentrado\",\"evidencia\":\"\\\"subcategoria\\\":\\\"concentrado\\\"\"}]},{\"id\":\"8f046478-8161-4273-bf42-72b9716a3eeb\",\"evidencia\":[\"\\\"PRO PLAN POUCH FELINO KITTEN\\\"\",\"\\\"gato\\\"\",\"\\\"cachorro\\\"\",\"\\\"PRO PLAN POUCH FELINO KITTEN 85GR\\\"\"],\"atributos\":[{\"campo\":\"especie\",\"valor\":\"gato\",\"evidencia\":\"\\\"gato\\\"\"},{\"campo\":\"etapa\",\"valor\":\"cachorro\",\"evidencia\":\"\\\"cachorro\\\"\"},{\"campo\":\"categoria\",\"valor\":\"comida\",\"evidencia\":\"\\\"categoria\\\":\\\"comida\\\"\"},{\"campo\":\"subcategoria\",\"valor\":\"comida_humeda\",\"evidencia\":\"\\\"subcategoria\\\":\\\"comida_humeda\\\"\"}]}],\"preguntaRecomendacion\":null}",
+          "usage": {
+            "prompt_tokens": 4048,
+            "completion_tokens": 494,
+            "total_tokens": 4542,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 1446,
+          "status": 200,
+          "model": "gpt-5.4-mini-2026-03-17",
+          "output": "Claro, para tu gato de 6 meses te puedo orientar con estas opciones:\n\n- MIRRINGO GATITO x 500gr: $5.900 — concentrado, gato, cachorro.\n- OHMAIGAT GATITOS x 200 gr: $3.800 — concentrado, gato, cachorro.\n- PRO PLAN POUCH FELINO KITTEN 85gr: $6.200 — comida humeda, gato, cachorro.\n\nLos precios están registrados; las existencias están por confirmar.\n\nSi me dices si prefieres alimento concentrado o húmedo, te ayudo a elegir el más adecuado.",
+          "usage": {
+            "prompt_tokens": 488,
+            "completion_tokens": 130,
+            "total_tokens": 618,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        }
+      ],
+      "cartUnchanged": true,
+      "state": {
+        "criterios": {},
+        "recomendacionActiva": {
+          "criterios": {
+            "categoria": "comida",
+            "subcategoria": null,
+            "especie": "gato",
+            "etapa": "cachorro",
+            "tamano": null,
+            "marca": null,
+            "sabores": [],
+            "condiciones": [],
+            "presentacion": null,
+            "presupuestoMaximo": null
+          },
+          "opciones": [
+            {
+              "indice": 1,
+              "marca": "MIRRINGO",
+              "referencia": "MIRRINGO GATITO",
+              "presentacion": "x 500gr",
+              "precio": 5900,
+              "referenceId": "466d365f-12a8-41c1-8398-4794739688ab"
+            },
+            {
+              "indice": 2,
+              "marca": "OHMAIGAT",
+              "referencia": "OHMAIGAT GATITOS",
+              "presentacion": "x 200 gr",
+              "precio": 3800,
+              "referenceId": "bac06106-16c1-46c3-b8cb-a1ff93401666"
+            },
+            {
+              "indice": 3,
+              "marca": "PRO PLAN",
+              "referencia": "PRO PLAN POUCH FELINO KITTEN",
+              "presentacion": "85gr",
+              "precio": 6200,
+              "referenceId": "8f046478-8161-4273-bf42-72b9716a3eeb"
+            }
+          ],
+          "actualizadoEn": "2026-10-29T16:18:08.906Z"
+        },
+        "atencionHumana": null,
+        "ultimaConsultaProducto": null
+      }
+    },
+    {
+      "case": "capture",
+      "text": "Qué alimento tiene para gato cachorro",
+      "response": "Para gato cachorro tengo estas opciones:\n\n- MIRRINGO GATITO x 500gr: $5.900 — concentrado, gato, cachorro.\n- ROYAL CANIN KITTEN 400gr: $30.000 — concentrado, gato, cachorro.\n- PRO PLAN POUCH FELINO KITTEN 85gr: $6.200 — comida humeda, gato, cachorro.\n\nLas existencias están por confirmar. ¿Prefieres concentrado o comida húmeda?",
+      "ms": 9953,
+      "decisions": [
+        {
+          "router": true,
+          "decision": {
+            "recomendaciones": [],
+            "preguntaRecomendacion": null,
+            "solicitudComercialIndependiente": true,
+            "derivacionHumana": {
+              "necesaria": false,
+              "motivo": null
+            },
+            "seguimientoProducto": "nueva",
+            "resumenMemoria": null,
+            "continuarFlujo": false,
+            "compraContextual": null,
+            "solicitudesProductoDetectadas": 1,
+            "consultaCatalogo": {
+              "tipo": "necesidad",
+              "presupuestoMaximo": null,
+              "necesaria": true,
+              "consulta": "alimento para gato cachorro"
+            },
+            "respuestaConversacional": null,
+            "intencion": "recomendacion",
+            "accion": "consultar",
+            "confianza": 0.96,
+            "producto": {
+              "accion": "consultar",
+              "marca": null,
+              "referencia": null,
+              "linea": null,
+              "textoVisible": "alimento para gato cachorro",
+              "mencionOriginal": null,
+              "categoria": "comida",
+              "subcategoria": null,
+              "especie": "gato",
+              "etapa": "cachorro",
+              "tamano": null,
+              "sabores": [],
+              "presentacion": null,
+              "intencionPresentaciones": null,
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": null
+            },
+            "productos": [
+              {
+                "accion": "consultar",
+                "marca": null,
+                "referencia": null,
+                "linea": null,
+                "textoVisible": "alimento para gato cachorro",
+                "mencionOriginal": "alimento tiene para gato cachorro",
+                "categoria": "comida",
+                "subcategoria": null,
+                "especie": "gato",
+                "etapa": "cachorro",
+                "tamano": null,
+                "sabores": [],
+                "presentacion": null,
+                "intencionPresentaciones": null,
+                "mascotas": [],
+                "condiciones": [],
+                "cantidad": null
+              }
+            ],
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            },
+            "facturacion": {
+              "electronica": null,
+              "evidencia": null
+            },
+            "datosCliente": {
+              "nombre": null,
+              "cedula": null,
+              "correo": null,
+              "celular": null
+            },
+            "carrito": {
+              "operacion": null,
+              "cantidadObjetivo": null,
+              "cantidadDelta": null,
+              "aplicaAlUltimoProducto": null,
+              "razon": null
+            },
+            "faltanteSugerido": null
+          }
+        }
+      ],
+      "requests": [
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 5438,
+          "status": 200,
+          "model": "gpt-5.4-2026-03-05",
+          "output": "{\n  \"intencion\": \"recomendacion\",\n  \"accion\": \"consultar\",\n  \"confianza\": 0.96,\n  \"compraContextual\": null,\n  \"solicitudesProductoDetectadas\": 1,\n  \"consultaCatalogo\": {\n    \"necesaria\": true,\n    \"consulta\": \"alimento para gato cachorro\",\n    \"tipo\": \"necesidad\",\n    \"presupuestoMaximo\": null\n  },\n  \"producto\": {\n    \"accion\": \"consultar\",\n    \"marca\": null,\n    \"referencia\": null,\n    \"linea\": null,\n    \"textoVisible\": \"alimento para gato cachorro\",\n    \"categoria\": \"comida\",\n    \"subcategoria\": null,\n    \"especie\": \"gato\",\n    \"etapa\": \"cachorro\",\n    \"tamano\": null,\n    \"sabores\": [],\n    \"condiciones\": [],\n    \"presentacion\": null,\n    \"cantidad\": null,\n    \"intencionPresentaciones\": null,\n    \"mascotas\": []\n  },\n  \"productos\": [\n    {\n      \"accion\": \"consultar\",\n      \"marca\": null,\n      \"referencia\": null,\n      \"linea\": null,\n      \"textoVisible\": \"alimento para gato cachorro\",\n      \"categoria\": \"comida\",\n      \"subcategoria\": null,\n      \"especie\": \"gato\",\n      \"etapa\": \"cachorro\",\n      \"tamano\": null,\n      \"sabores\": [],\n      \"condiciones\": [],\n      \"presentacion\": null,\n      \"cantidad\": null,\n      \"intencionPresentaciones\": null,\n      \"mascotas\": [],\n      \"mencionOriginal\": \"alimento tiene para gato cachorro\"\n    }\n  ],\n  \"entrega\": {\n    \"tipo\": null,\n    \"direccion\": null,\n    \"direccionCompleta\": null,\n    \"sector\": null,\n    \"metodoPago\": null,\n    \"sede\": null\n  },\n  \"facturacion\": {\n    \"electronica\": null,\n    \"evidencia\": null\n  },\n  \"datosCliente\": {\n    \"nombre\": null,\n    \"cedula\": null,\n    \"correo\": null,\n    \"celular\": null\n  },\n  \"carrito\": {\n    \"operacion\": null,\n    \"cantidadObjetivo\": null,\n    \"cantidadDelta\": null,\n    \"aplicaAlUltimoProducto\": null,\n    \"razon\": null\n  },\n  \"faltanteSugerido\": null,\n  \"derivacionHumana\": {\n    \"necesaria\": false,\n    \"motivo\": null\n  },\n  \"solicitudComercialIndependiente\": true,\n  \"seguimientoProducto\": \"nueva\",\n  \"respuestaConversacional\": null\n}",
+          "usage": {
+            "prompt_tokens": 6849,
+            "completion_tokens": 602,
+            "total_tokens": 7451,
+            "prompt_tokens_details": {
+              "cached_tokens": 5888,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "supabase",
+          "method": "GET",
+          "path": "/rest/v1/catalog_references",
+          "ms": 273,
+          "status": 200
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 2855,
+          "status": 200,
+          "model": "gpt-5.4-mini-2026-03-17",
+          "output": "{\"recomendaciones\":[{\"id\":\"466d365f-12a8-41c1-8398-4794739688ab\",\"evidencia\":[\"\\\"MIRRINGO GATITO\\\"\",\"\\\"especie\\\":\\\"gato\\\"\",\"\\\"etapa\\\":\\\"cachorro\\\"\",\"\\\"subcategoria\\\":\\\"concentrado\\\"\"],\"atributos\":[{\"campo\":\"especie\",\"valor\":\"gato\",\"evidencia\":\"\\\"especie\\\":\\\"gato\\\"\"},{\"campo\":\"etapa\",\"valor\":\"cachorro\",\"evidencia\":\"\\\"etapa\\\":\\\"cachorro\\\"\"},{\"campo\":\"categoria\",\"valor\":\"comida\",\"evidencia\":\"\\\"categoria\\\":\\\"comida\\\"\"},{\"campo\":\"subcategoria\",\"valor\":\"concentrado\",\"evidencia\":\"\\\"subcategoria\\\":\\\"concentrado\\\"\"}]},{\"id\":\"eb1de02c-66cd-43dc-a5a6-af60953600c0\",\"evidencia\":[\"\\\"ROYAL CANIN KITTEN\\\"\",\"\\\"especie\\\":\\\"gato\\\"\",\"\\\"etapa\\\":\\\"cachorro\\\"\",\"\\\"subcategoria\\\":\\\"concentrado\\\"\"],\"atributos\":[{\"campo\":\"especie\",\"valor\":\"gato\",\"evidencia\":\"\\\"especie\\\":\\\"gato\\\"\"},{\"campo\":\"etapa\",\"valor\":\"cachorro\",\"evidencia\":\"\\\"etapa\\\":\\\"cachorro\\\"\"},{\"campo\":\"categoria\",\"valor\":\"comida\",\"evidencia\":\"\\\"categoria\\\":\\\"comida\\\"\"},{\"campo\":\"subcategoria\",\"valor\":\"concentrado\",\"evidencia\":\"\\\"subcategoria\\\":\\\"concentrado\\\"\"}]},{\"id\":\"8f046478-8161-4273-bf42-72b9716a3eeb\",\"evidencia\":[\"\\\"PRO PLAN POUCH FELINO KITTEN\\\"\",\"\\\"especie\\\":\\\"gato\\\"\",\"\\\"etapa\\\":\\\"cachorro\\\"\",\"\\\"subcategoria\\\":\\\"comida_humeda\\\"\"],\"atributos\":[{\"campo\":\"especie\",\"valor\":\"gato\",\"evidencia\":\"\\\"especie\\\":\\\"gato\\\"\"},{\"campo\":\"etapa\",\"valor\":\"cachorro\",\"evidencia\":\"\\\"etapa\\\":\\\"cachorro\\\"\"},{\"campo\":\"categoria\",\"valor\":\"comida\",\"evidencia\":\"\\\"categoria\\\":\\\"comida\\\"\"},{\"campo\":\"subcategoria\",\"valor\":\"comida_humeda\",\"evidencia\":\"\\\"subcategoria\\\":\\\"comida_humeda\\\"\"}]}],\"preguntaRecomendacion\":null}",
+          "usage": {
+            "prompt_tokens": 4035,
+            "completion_tokens": 522,
+            "total_tokens": 4557,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 1371,
+          "status": 200,
+          "model": "gpt-5.4-mini-2026-03-17",
+          "output": "Para gato cachorro tengo estas opciones:\n\n- MIRRINGO GATITO x 500gr: $5.900 — concentrado, gato, cachorro.\n- ROYAL CANIN KITTEN 400gr: $30.000 — concentrado, gato, cachorro.\n- PRO PLAN POUCH FELINO KITTEN 85gr: $6.200 — comida humeda, gato, cachorro.\n\nLas existencias están por confirmar. ¿Prefieres concentrado o comida húmeda?",
+          "usage": {
+            "prompt_tokens": 475,
+            "completion_tokens": 104,
+            "total_tokens": 579,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        }
+      ],
+      "cartUnchanged": true,
+      "state": {
+        "criterios": {},
+        "recomendacionActiva": {
+          "criterios": {
+            "categoria": "comida",
+            "subcategoria": null,
+            "especie": "gato",
+            "etapa": "cachorro",
+            "tamano": null,
+            "marca": null,
+            "sabores": [],
+            "condiciones": [],
+            "presentacion": null,
+            "presupuestoMaximo": null
+          },
+          "opciones": [
+            {
+              "indice": 1,
+              "marca": "MIRRINGO",
+              "referencia": "MIRRINGO GATITO",
+              "presentacion": "x 500gr",
+              "precio": 5900,
+              "referenceId": "466d365f-12a8-41c1-8398-4794739688ab"
+            },
+            {
+              "indice": 2,
+              "marca": "ROYAL CANIN",
+              "referencia": "ROYAL CANIN KITTEN",
+              "presentacion": "400gr",
+              "precio": 30000,
+              "referenceId": "eb1de02c-66cd-43dc-a5a6-af60953600c0"
+            },
+            {
+              "indice": 3,
+              "marca": "PRO PLAN",
+              "referencia": "PRO PLAN POUCH FELINO KITTEN",
+              "presentacion": "85gr",
+              "precio": 6200,
+              "referenceId": "8f046478-8161-4273-bf42-72b9716a3eeb"
+            }
+          ],
+          "actualizadoEn": "2026-10-29T16:18:19.271Z"
+        },
+        "atencionHumana": null,
+        "ultimaConsultaProducto": null
+      }
+    },
+    {
+      "case": "capture",
+      "text": "No sé el nombre del producto",
+      "response": "Claro, para gato cachorro tenés estas opciones:\n\n- OHMAIGAT GATITOS x 200 gr: $3.800 — concentrado, gato, cachorro.\n- MIRRINGO GATITO x 500gr: $5.900 — concentrado, gato, cachorro.\n- PRO PLAN POUCH FELINO KITTEN 85gr: $6.200 — comida humeda, gato, cachorro.\n\nSi querés, te ayudo a elegir entre concentrado o comida húmeda.",
+      "ms": 12048,
+      "decisions": [
+        {
+          "router": true,
+          "decision": {
+            "recomendaciones": [],
+            "preguntaRecomendacion": null,
+            "solicitudComercialIndependiente": true,
+            "derivacionHumana": {
+              "necesaria": false,
+              "motivo": null
+            },
+            "seguimientoProducto": "aclaracion",
+            "resumenMemoria": null,
+            "continuarFlujo": false,
+            "compraContextual": null,
+            "solicitudesProductoDetectadas": 1,
+            "consultaCatalogo": {
+              "tipo": "necesidad",
+              "presupuestoMaximo": null,
+              "necesaria": true,
+              "consulta": "opciones de comida para gato cachorro"
+            },
+            "respuestaConversacional": "No pasa nada. ¿Lo buscas para gato cachorro en concentrado o comida húmeda?",
+            "intencion": "recomendacion",
+            "accion": "consultar",
+            "confianza": 0.98,
+            "producto": {
+              "accion": "consultar",
+              "marca": null,
+              "referencia": null,
+              "linea": null,
+              "textoVisible": "producto para gato cachorro",
+              "mencionOriginal": null,
+              "categoria": "comida",
+              "subcategoria": null,
+              "especie": "gato",
+              "etapa": "cachorro",
+              "tamano": null,
+              "sabores": [],
+              "presentacion": null,
+              "intencionPresentaciones": null,
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": null
+            },
+            "productos": [
+              {
+                "accion": "consultar",
+                "marca": null,
+                "referencia": null,
+                "linea": null,
+                "textoVisible": "producto para gato cachorro",
+                "mencionOriginal": "No sé el nombre del producto",
+                "categoria": "comida",
+                "subcategoria": null,
+                "especie": "gato",
+                "etapa": "cachorro",
+                "tamano": null,
+                "sabores": [],
+                "presentacion": null,
+                "intencionPresentaciones": null,
+                "mascotas": [],
+                "condiciones": [],
+                "cantidad": null
+              }
+            ],
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            },
+            "facturacion": {
+              "electronica": null,
+              "evidencia": null
+            },
+            "datosCliente": {
+              "nombre": null,
+              "cedula": null,
+              "correo": null,
+              "celular": null
+            },
+            "carrito": {
+              "operacion": null,
+              "cantidadObjetivo": null,
+              "cantidadDelta": null,
+              "aplicaAlUltimoProducto": null,
+              "razon": null
+            },
+            "faltanteSugerido": null
+          }
+        }
+      ],
+      "requests": [
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 7050,
+          "status": 200,
+          "model": "gpt-5.4-2026-03-05",
+          "output": "{\n  \"intencion\": \"recomendacion\",\n  \"accion\": \"consultar\",\n  \"confianza\": 0.98,\n  \"compraContextual\": null,\n  \"solicitudesProductoDetectadas\": 1,\n  \"consultaCatalogo\": {\n    \"necesaria\": true,\n    \"consulta\": \"opciones de comida para gato cachorro\",\n    \"tipo\": \"necesidad\",\n    \"presupuestoMaximo\": null\n  },\n  \"producto\": {\n    \"accion\": \"consultar\",\n    \"marca\": null,\n    \"referencia\": null,\n    \"linea\": null,\n    \"textoVisible\": \"producto para gato cachorro\",\n    \"categoria\": \"comida\",\n    \"subcategoria\": null,\n    \"especie\": \"gato\",\n    \"etapa\": \"cachorro\",\n    \"tamano\": null,\n    \"sabores\": [],\n    \"condiciones\": [],\n    \"presentacion\": null,\n    \"cantidad\": null,\n    \"intencionPresentaciones\": null,\n    \"mascotas\": []\n  },\n  \"productos\": [\n    {\n      \"accion\": \"consultar\",\n      \"marca\": null,\n      \"referencia\": null,\n      \"linea\": null,\n      \"textoVisible\": \"producto para gato cachorro\",\n      \"categoria\": \"comida\",\n      \"subcategoria\": null,\n      \"especie\": \"gato\",\n      \"etapa\": \"cachorro\",\n      \"tamano\": null,\n      \"sabores\": [],\n      \"condiciones\": [],\n      \"presentacion\": null,\n      \"cantidad\": null,\n      \"intencionPresentaciones\": null,\n      \"mascotas\": [],\n      \"mencionOriginal\": \"No sé el nombre del producto\"\n    }\n  ],\n  \"entrega\": {\n    \"tipo\": null,\n    \"direccion\": null,\n    \"direccionCompleta\": null,\n    \"sector\": null,\n    \"metodoPago\": null,\n    \"sede\": null\n  },\n  \"facturacion\": {\n    \"electronica\": null,\n    \"evidencia\": null\n  },\n  \"datosCliente\": {\n    \"nombre\": null,\n    \"cedula\": null,\n    \"correo\": null,\n    \"celular\": null\n  },\n  \"carrito\": {\n    \"operacion\": null,\n    \"cantidadObjetivo\": null,\n    \"cantidadDelta\": null,\n    \"aplicaAlUltimoProducto\": null,\n    \"razon\": null\n  },\n  \"faltanteSugerido\": null,\n  \"derivacionHumana\": {\n    \"necesaria\": false,\n    \"motivo\": null\n  },\n  \"solicitudComercialIndependiente\": true,\n  \"seguimientoProducto\": \"aclaracion\",\n  \"respuestaConversacional\": \"No pasa nada. ¿Lo buscas para gato cachorro en concentrado o comida húmeda?\"\n}",
+          "usage": {
+            "prompt_tokens": 6976,
+            "completion_tokens": 620,
+            "total_tokens": 7596,
+            "prompt_tokens_details": {
+              "cached_tokens": 5888,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "supabase",
+          "method": "GET",
+          "path": "/rest/v1/catalog_references",
+          "ms": 390,
+          "status": 200
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 3136,
+          "status": 200,
+          "model": "gpt-5.4-mini-2026-03-17",
+          "output": "{\"recomendaciones\":[{\"id\":\"bac06106-16c1-46c3-b8cb-a1ff93401666\",\"evidencia\":[\"\\\"OHMAIGAT GATITOS\\\"\",\"\\\"gato\\\"\",\"\\\"cachorro\\\"\",\"\\\"concentrado\\\"\",\"\\\"x 200 GR\\\"\"],\"atributos\":[{\"campo\":\"especie\",\"valor\":\"gato\",\"evidencia\":\"\\\"gato\\\"\"},{\"campo\":\"etapa\",\"valor\":\"cachorro\",\"evidencia\":\"\\\"cachorro\\\"\"},{\"campo\":\"categoria\",\"valor\":\"comida\",\"evidencia\":\"\\\"categoria\\\":\\\"comida\\\"\"},{\"campo\":\"subcategoria\",\"valor\":\"concentrado\",\"evidencia\":\"\\\"concentrado\\\"\"},{\"campo\":\"presentacion\",\"valor\":\"x 200 gr\",\"evidencia\":\"\\\"x 200 GR\\\"\"}]},{\"id\":\"466d365f-12a8-41c1-8398-4794739688ab\",\"evidencia\":[\"\\\"MIRRINGO GATITO\\\"\",\"\\\"gato\\\"\",\"\\\"cachorro\\\"\",\"\\\"concentrado\\\"\",\"\\\"x 500GR\\\"\"],\"atributos\":[{\"campo\":\"especie\",\"valor\":\"gato\",\"evidencia\":\"\\\"gato\\\"\"},{\"campo\":\"etapa\",\"valor\":\"cachorro\",\"evidencia\":\"\\\"cachorro\\\"\"},{\"campo\":\"categoria\",\"valor\":\"comida\",\"evidencia\":\"\\\"categoria\\\":\\\"comida\\\"\"},{\"campo\":\"subcategoria\",\"valor\":\"concentrado\",\"evidencia\":\"\\\"concentrado\\\"\"},{\"campo\":\"presentacion\",\"valor\":\"x 500gr\",\"evidencia\":\"\\\"x 500GR\\\"\"}]},{\"id\":\"8f046478-8161-4273-bf42-72b9716a3eeb\",\"evidencia\":[\"\\\"PRO PLAN POUCH FELINO KITTEN\\\"\",\"\\\"gato\\\"\",\"\\\"cachorro\\\"\",\"\\\"comida_humeda\\\"\",\"\\\"85GR\\\"\"],\"atributos\":[{\"campo\":\"especie\",\"valor\":\"gato\",\"evidencia\":\"\\\"gato\\\"\"},{\"campo\":\"etapa\",\"valor\":\"cachorro\",\"evidencia\":\"\\\"cachorro\\\"\"},{\"campo\":\"categoria\",\"valor\":\"comida\",\"evidencia\":\"\\\"categoria\\\":\\\"comida\\\"\"},{\"campo\":\"subcategoria\",\"valor\":\"comida_humeda\",\"evidencia\":\"\\\"comida_humeda\\\"\"},{\"campo\":\"presentacion\",\"valor\":\"85gr\",\"evidencia\":\"\\\"85GR\\\"\"}]}],\"preguntaRecomendacion\":null}",
+          "usage": {
+            "prompt_tokens": 4035,
+            "completion_tokens": 545,
+            "total_tokens": 4580,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 1459,
+          "status": 200,
+          "model": "gpt-5.4-mini-2026-03-17",
+          "output": "Claro, para gato cachorro tenés estas opciones:\n\n- OHMAIGAT GATITOS x 200 gr: $3.800 — concentrado, gato, cachorro.\n- MIRRINGO GATITO x 500gr: $5.900 — concentrado, gato, cachorro.\n- PRO PLAN POUCH FELINO KITTEN 85gr: $6.200 — comida humeda, gato, cachorro.\n\nSi querés, te ayudo a elegir entre concentrado o comida húmeda.",
+          "usage": {
+            "prompt_tokens": 475,
+            "completion_tokens": 107,
+            "total_tokens": 582,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        }
+      ],
+      "cartUnchanged": true,
+      "state": {
+        "criterios": {},
+        "recomendacionActiva": {
+          "criterios": {
+            "categoria": "comida",
+            "subcategoria": null,
+            "especie": "gato",
+            "etapa": "cachorro",
+            "tamano": null,
+            "marca": null,
+            "sabores": [],
+            "condiciones": [],
+            "presentacion": null,
+            "presupuestoMaximo": null
+          },
+          "opciones": [
+            {
+              "indice": 1,
+              "marca": "OHMAIGAT",
+              "referencia": "OHMAIGAT GATITOS",
+              "presentacion": "x 200 gr",
+              "precio": 3800,
+              "referenceId": "bac06106-16c1-46c3-b8cb-a1ff93401666"
+            },
+            {
+              "indice": 2,
+              "marca": "MIRRINGO",
+              "referencia": "MIRRINGO GATITO",
+              "presentacion": "x 500gr",
+              "precio": 5900,
+              "referenceId": "466d365f-12a8-41c1-8398-4794739688ab"
+            },
+            {
+              "indice": 3,
+              "marca": "PRO PLAN",
+              "referencia": "PRO PLAN POUCH FELINO KITTEN",
+              "presentacion": "85gr",
+              "precio": 6200,
+              "referenceId": "8f046478-8161-4273-bf42-72b9716a3eeb"
+            }
+          ],
+          "actualizadoEn": "2026-10-29T16:18:30.837Z"
+        },
+        "atencionHumana": null,
+        "ultimaConsultaProducto": null
+      }
+    },
+    {
+      "case": "kitten-budget",
+      "text": "Me ayudas a elegir comida para mi gatita pequeña, tiene 4 meses. Máximo 30000 pesos",
+      "response": "Para tu gato cachorro, estas opciones coinciden con lo que buscas y están dentro de $30.000:\n\n- OHMAIGAT GATITOS x 200 gr: $3.800 — concentrado, gato, cachorro.\n- MIRRINGO GATITO x 500gr: $5.900 — concentrado, gato, cachorro.\n- PRO PLAN POUCH FELINO KITTEN 85gr: $6.200 — comida humeda, gato, cachorro.\n\nLos precios están registrados; las existencias están por confirmar.\n\n¿Cuál te gustaría revisar?",
+      "ms": 9830,
+      "decisions": [
+        {
+          "router": true,
+          "decision": {
+            "recomendaciones": [],
+            "preguntaRecomendacion": null,
+            "solicitudComercialIndependiente": true,
+            "derivacionHumana": {
+              "necesaria": false,
+              "motivo": null
+            },
+            "seguimientoProducto": "nueva",
+            "resumenMemoria": null,
+            "continuarFlujo": false,
+            "compraContextual": null,
+            "solicitudesProductoDetectadas": 1,
+            "consultaCatalogo": {
+              "tipo": "necesidad",
+              "presupuestoMaximo": 30000,
+              "necesaria": true,
+              "consulta": "comida para gatita cachorro maximo 30000"
+            },
+            "respuestaConversacional": null,
+            "intencion": "recomendacion",
+            "accion": "consultar",
+            "confianza": 0.98,
+            "producto": {
+              "accion": "consultar",
+              "marca": null,
+              "referencia": null,
+              "linea": null,
+              "textoVisible": "comida para mi gatita pequeña",
+              "mencionOriginal": null,
+              "categoria": "comida",
+              "subcategoria": null,
+              "especie": "gato",
+              "etapa": "cachorro",
+              "tamano": null,
+              "sabores": [],
+              "presentacion": null,
+              "intencionPresentaciones": null,
+              "mascotas": [
+                {
+                  "nombre": "Mascota 1",
+                  "pesoKg": null
+                }
+              ],
+              "condiciones": [],
+              "cantidad": 1
+            },
+            "productos": [
+              {
+                "accion": "consultar",
+                "marca": null,
+                "referencia": null,
+                "linea": null,
+                "textoVisible": "comida para mi gatita pequeña",
+                "mencionOriginal": "comida para mi gatita pequeña",
+                "categoria": "comida",
+                "subcategoria": null,
+                "especie": "gato",
+                "etapa": "cachorro",
+                "tamano": null,
+                "sabores": [],
+                "presentacion": null,
+                "intencionPresentaciones": null,
+                "mascotas": [
+                  {
+                    "nombre": "Mascota 1",
+                    "pesoKg": null
+                  }
+                ],
+                "condiciones": [],
+                "cantidad": 1
+              }
+            ],
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            },
+            "facturacion": {
+              "electronica": null,
+              "evidencia": null
+            },
+            "datosCliente": {
+              "nombre": null,
+              "cedula": null,
+              "correo": null,
+              "celular": null
+            },
+            "carrito": {
+              "operacion": null,
+              "cantidadObjetivo": null,
+              "cantidadDelta": null,
+              "aplicaAlUltimoProducto": null,
+              "razon": null
+            },
+            "faltanteSugerido": null
+          }
+        }
+      ],
+      "requests": [
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 5886,
+          "status": 200,
+          "model": "gpt-5.4-2026-03-05",
+          "output": "{\n  \"intencion\": \"recomendacion\",\n  \"accion\": \"consultar\",\n  \"confianza\": 0.98,\n  \"compraContextual\": null,\n  \"solicitudesProductoDetectadas\": 1,\n  \"consultaCatalogo\": {\n    \"necesaria\": true,\n    \"consulta\": \"comida para gatita cachorro maximo 30000\",\n    \"tipo\": \"necesidad\",\n    \"presupuestoMaximo\": 30000\n  },\n  \"producto\": {\n    \"accion\": \"consultar\",\n    \"marca\": null,\n    \"referencia\": null,\n    \"linea\": null,\n    \"textoVisible\": \"comida para mi gatita pequeña\",\n    \"categoria\": \"comida\",\n    \"subcategoria\": null,\n    \"especie\": \"gato\",\n    \"etapa\": \"cachorro\",\n    \"tamano\": null,\n    \"sabores\": [],\n    \"condiciones\": [],\n    \"presentacion\": null,\n    \"cantidad\": 1,\n    \"intencionPresentaciones\": null,\n    \"mascotas\": [\n      {\n        \"nombre\": null,\n        \"pesoKg\": null\n      }\n    ]\n  },\n  \"productos\": [\n    {\n      \"accion\": \"consultar\",\n      \"marca\": null,\n      \"referencia\": null,\n      \"linea\": null,\n      \"textoVisible\": \"comida para mi gatita pequeña\",\n      \"mencionOriginal\": \"comida para mi gatita pequeña\",\n      \"categoria\": \"comida\",\n      \"subcategoria\": null,\n      \"especie\": \"gato\",\n      \"etapa\": \"cachorro\",\n      \"tamano\": null,\n      \"sabores\": [],\n      \"condiciones\": [],\n      \"presentacion\": null,\n      \"cantidad\": 1,\n      \"intencionPresentaciones\": null,\n      \"mascotas\": [\n        {\n          \"nombre\": null,\n          \"pesoKg\": null\n        }\n      ]\n    }\n  ],\n  \"entrega\": {\n    \"tipo\": null,\n    \"direccion\": null,\n    \"direccionCompleta\": null,\n    \"sector\": null,\n    \"metodoPago\": null,\n    \"sede\": null\n  },\n  \"facturacion\": {\n    \"electronica\": null,\n    \"evidencia\": null\n  },\n  \"datosCliente\": {\n    \"nombre\": null,\n    \"cedula\": null,\n    \"correo\": null,\n    \"celular\": null\n  },\n  \"carrito\": {\n    \"operacion\": null,\n    \"cantidadObjetivo\": null,\n    \"cantidadDelta\": null,\n    \"aplicaAlUltimoProducto\": null,\n    \"razon\": null\n  },\n  \"faltanteSugerido\": null,\n  \"derivacionHumana\": {\n    \"necesaria\": false,\n    \"motivo\": null\n  },\n  \"solicitudComercialIndependiente\": true,\n  \"seguimientoProducto\": \"nueva\",\n  \"respuestaConversacional\": null\n}",
+          "usage": {
+            "prompt_tokens": 6435,
+            "completion_tokens": 655,
+            "total_tokens": 7090,
+            "prompt_tokens_details": {
+              "cached_tokens": 5888,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "supabase",
+          "method": "GET",
+          "path": "/rest/v1/catalog_references",
+          "ms": 274,
+          "status": 200
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 2518,
+          "status": 200,
+          "model": "gpt-5.4-mini-2026-03-17",
+          "output": "{\"recomendaciones\":[{\"id\":\"bac06106-16c1-46c3-b8cb-a1ff93401666\",\"evidencia\":[\"\\\"OHMAIGAT GATITOS\\\"\",\"\\\"gato\\\"\",\"\\\"cachorro\\\"\",\"\\\"OHMAIGAT GATITOS X 200 GR\\\"\"],\"atributos\":[{\"campo\":\"especie\",\"valor\":\"gato\",\"evidencia\":\"\\\"gato\\\"\"},{\"campo\":\"etapa\",\"valor\":\"cachorro\",\"evidencia\":\"\\\"cachorro\\\"\"},{\"campo\":\"presentacion\",\"valor\":\"200 gr\",\"evidencia\":\"\\\"OHMAIGAT GATITOS X 200 GR\\\"\"}]},{\"id\":\"466d365f-12a8-41c1-8398-4794739688ab\",\"evidencia\":[\"\\\"MIRRINGO GATITO\\\"\",\"\\\"gato\\\"\",\"\\\"cachorro\\\"\",\"\\\"MIRRINGO GATITO X 500GR\\\"\"],\"atributos\":[{\"campo\":\"especie\",\"valor\":\"gato\",\"evidencia\":\"\\\"gato\\\"\"},{\"campo\":\"etapa\",\"valor\":\"cachorro\",\"evidencia\":\"\\\"cachorro\\\"\"},{\"campo\":\"presentacion\",\"valor\":\"500gr\",\"evidencia\":\"\\\"MIRRINGO GATITO X 500GR\\\"\"}]},{\"id\":\"8f046478-8161-4273-bf42-72b9716a3eeb\",\"evidencia\":[\"\\\"PRO PLAN POUCH FELINO KITTEN\\\"\",\"\\\"gato\\\"\",\"\\\"cachorro\\\"\",\"\\\"PRO PLAN POUCH FELINO KITTEN 85GR\\\"\"],\"atributos\":[{\"campo\":\"especie\",\"valor\":\"gato\",\"evidencia\":\"\\\"gato\\\"\"},{\"campo\":\"etapa\",\"valor\":\"cachorro\",\"evidencia\":\"\\\"cachorro\\\"\"},{\"campo\":\"presentacion\",\"valor\":\"85gr\",\"evidencia\":\"\\\"PRO PLAN POUCH FELINO KITTEN 85GR\\\"\"}]}],\"preguntaRecomendacion\":null}",
+          "usage": {
+            "prompt_tokens": 3319,
+            "completion_tokens": 444,
+            "total_tokens": 3763,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 1142,
+          "status": 200,
+          "model": "gpt-5.4-mini-2026-03-17",
+          "output": "Claro, para tu gatita de 4 meses te sirven estas opciones dentro de tu presupuesto:\n\n- OHMAIGAT GATITOS x 200 gr: $3.800 — concentrado, gato, cachorro.\n- MIRRINGO GATITO x 500gr: $5.900 — concentrado, gato, cachorro.\n- PRO PLAN POUCH FELINO KITTEN 85gr: $6.200 — comida humeda, gato, cachorro.\n\nSi quieres, te ayudo a elegir entre concentrado o comida húmeda.",
+          "usage": {
+            "prompt_tokens": 500,
+            "completion_tokens": 115,
+            "total_tokens": 615,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        }
+      ],
+      "cartUnchanged": true,
+      "state": {
+        "criterios": {},
+        "recomendacionActiva": {
+          "criterios": {
+            "categoria": "comida",
+            "subcategoria": null,
+            "especie": "gato",
+            "etapa": "cachorro",
+            "tamano": null,
+            "marca": null,
+            "sabores": [],
+            "condiciones": [],
+            "presentacion": null,
+            "presupuestoMaximo": 30000
+          },
+          "opciones": [
+            {
+              "indice": 1,
+              "marca": "OHMAIGAT",
+              "referencia": "OHMAIGAT GATITOS",
+              "presentacion": "x 200 gr",
+              "precio": 3800,
+              "referenceId": "bac06106-16c1-46c3-b8cb-a1ff93401666"
+            },
+            {
+              "indice": 2,
+              "marca": "MIRRINGO",
+              "referencia": "MIRRINGO GATITO",
+              "presentacion": "x 500gr",
+              "precio": 5900,
+              "referenceId": "466d365f-12a8-41c1-8398-4794739688ab"
+            },
+            {
+              "indice": 3,
+              "marca": "PRO PLAN",
+              "referencia": "PRO PLAN POUCH FELINO KITTEN",
+              "presentacion": "85gr",
+              "precio": 6200,
+              "referenceId": "8f046478-8161-4273-bf42-72b9716a3eeb"
+            }
+          ],
+          "actualizadoEn": "2026-10-29T16:18:41.720Z"
+        },
+        "atencionHumana": null,
+        "ultimaConsultaProducto": null
+      }
+    },
+    {
+      "case": "dog-puppy",
+      "text": "Estoy buscando comida para un cachorro de perro de raza pequeña, qué opciones hay",
+      "response": "Claro, para cachorro de raza pequeña tienes estas opciones:\n\n- BR DOG PUPPY RAZA PEQ 1kg: $25.800 — concentrado, perro, cachorro.\n- PRO PLAN PUPPY SMALL 1 kg: $59.800 — concentrado, perro, cachorro.\n- AGILITY PEQ CACH 1.5kg: $36.000 — concentrado, perro, cachorro.\n\nLos precios están registrados; las existencias están por confirmar.\n\n¿Prefieres revisar una opción de 1 kg o de 1.5 kg?",
+      "ms": 10464,
+      "decisions": [
+        {
+          "router": true,
+          "decision": {
+            "recomendaciones": [],
+            "preguntaRecomendacion": null,
+            "solicitudComercialIndependiente": true,
+            "derivacionHumana": {
+              "necesaria": false,
+              "motivo": null
+            },
+            "seguimientoProducto": "nueva",
+            "resumenMemoria": null,
+            "continuarFlujo": false,
+            "compraContextual": null,
+            "solicitudesProductoDetectadas": 1,
+            "consultaCatalogo": {
+              "tipo": "necesidad",
+              "presupuestoMaximo": null,
+              "necesaria": true,
+              "consulta": "comida para perro cachorro raza pequeña"
+            },
+            "respuestaConversacional": null,
+            "intencion": "recomendacion",
+            "accion": "consultar",
+            "confianza": 0.97,
+            "producto": {
+              "accion": "consultar",
+              "marca": null,
+              "referencia": null,
+              "linea": null,
+              "textoVisible": "comida para un cachorro de perro de raza pequeña",
+              "mencionOriginal": null,
+              "categoria": "comida",
+              "subcategoria": null,
+              "especie": "perro",
+              "etapa": "cachorro",
+              "tamano": "pequeño",
+              "sabores": [],
+              "presentacion": null,
+              "intencionPresentaciones": null,
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": null
+            },
+            "productos": [
+              {
+                "accion": "consultar",
+                "marca": null,
+                "referencia": null,
+                "linea": null,
+                "textoVisible": "comida para un cachorro de perro de raza pequeña",
+                "mencionOriginal": "comida para un cachorro de perro de raza pequeña",
+                "categoria": "comida",
+                "subcategoria": null,
+                "especie": "perro",
+                "etapa": "cachorro",
+                "tamano": "pequeño",
+                "sabores": [],
+                "presentacion": null,
+                "intencionPresentaciones": null,
+                "mascotas": [],
+                "condiciones": [],
+                "cantidad": null
+              }
+            ],
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            },
+            "facturacion": {
+              "electronica": null,
+              "evidencia": null
+            },
+            "datosCliente": {
+              "nombre": null,
+              "cedula": null,
+              "correo": null,
+              "celular": null
+            },
+            "carrito": {
+              "operacion": null,
+              "cantidadObjetivo": null,
+              "cantidadDelta": null,
+              "aplicaAlUltimoProducto": null,
+              "razon": null
+            },
+            "faltanteSugerido": null
+          }
+        }
+      ],
+      "requests": [
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 6248,
+          "status": 200,
+          "model": "gpt-5.4-2026-03-05",
+          "output": "{\n  \"intencion\": \"recomendacion\",\n  \"accion\": \"consultar\",\n  \"confianza\": 0.97,\n  \"compraContextual\": null,\n  \"solicitudesProductoDetectadas\": 1,\n  \"consultaCatalogo\": {\n    \"necesaria\": true,\n    \"consulta\": \"comida para perro cachorro raza pequeña\",\n    \"tipo\": \"necesidad\",\n    \"presupuestoMaximo\": null\n  },\n  \"producto\": {\n    \"accion\": \"consultar\",\n    \"marca\": null,\n    \"referencia\": null,\n    \"linea\": null,\n    \"textoVisible\": \"comida para un cachorro de perro de raza pequeña\",\n    \"categoria\": \"comida\",\n    \"subcategoria\": null,\n    \"especie\": \"perro\",\n    \"etapa\": \"cachorro\",\n    \"tamano\": \"pequeño\",\n    \"sabores\": [],\n    \"condiciones\": [],\n    \"presentacion\": null,\n    \"cantidad\": null,\n    \"intencionPresentaciones\": null,\n    \"mascotas\": []\n  },\n  \"productos\": [\n    {\n      \"accion\": \"consultar\",\n      \"marca\": null,\n      \"referencia\": null,\n      \"linea\": null,\n      \"textoVisible\": \"comida para un cachorro de perro de raza pequeña\",\n      \"mencionOriginal\": \"comida para un cachorro de perro de raza pequeña\",\n      \"categoria\": \"comida\",\n      \"subcategoria\": null,\n      \"especie\": \"perro\",\n      \"etapa\": \"cachorro\",\n      \"tamano\": \"pequeño\",\n      \"sabores\": [],\n      \"condiciones\": [],\n      \"presentacion\": null,\n      \"cantidad\": null,\n      \"intencionPresentaciones\": null,\n      \"mascotas\": []\n    }\n  ],\n  \"entrega\": {\n    \"tipo\": null,\n    \"direccion\": null,\n    \"direccionCompleta\": null,\n    \"sector\": null,\n    \"metodoPago\": null,\n    \"sede\": null\n  },\n  \"facturacion\": {\n    \"electronica\": null,\n    \"evidencia\": null\n  },\n  \"datosCliente\": {\n    \"nombre\": null,\n    \"cedula\": null,\n    \"correo\": null,\n    \"celular\": null\n  },\n  \"carrito\": {\n    \"operacion\": null,\n    \"cantidadObjetivo\": null,\n    \"cantidadDelta\": null,\n    \"aplicaAlUltimoProducto\": null,\n    \"razon\": null\n  },\n  \"faltanteSugerido\": null,\n  \"derivacionHumana\": {\n    \"necesaria\": false,\n    \"motivo\": null\n  },\n  \"solicitudComercialIndependiente\": true,\n  \"seguimientoProducto\": \"nueva\",\n  \"respuestaConversacional\": null\n}",
+          "usage": {
+            "prompt_tokens": 6428,
+            "completion_tokens": 624,
+            "total_tokens": 7052,
+            "prompt_tokens_details": {
+              "cached_tokens": 5888,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "supabase",
+          "method": "GET",
+          "path": "/rest/v1/catalog_references",
+          "ms": 287,
+          "status": 200
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 2616,
+          "status": 200,
+          "model": "gpt-5.4-mini-2026-03-17",
+          "output": "{\"recomendaciones\":[{\"id\":\"73506287-8a33-4526-840c-1c6ee1005e31\",\"evidencia\":[\"\\\"BR DOG PUPPY RAZA PEQ\\\"\",\"\\\"PUPPY RAZA PEQ\\\"\",\"\\\"perro\\\"\",\"\\\"cachorro\\\"\"],\"atributos\":[{\"campo\":\"especie\",\"valor\":\"perro\",\"evidencia\":\"\\\"especie\\\":\\\"perro\\\"\"},{\"campo\":\"etapa\",\"valor\":\"cachorro\",\"evidencia\":\"\\\"etapa\\\":\\\"cachorro\\\"\"},{\"campo\":\"tamano\",\"valor\":\"pequeño\",\"evidencia\":\"\\\"PUPPY RAZA PEQ\\\"\"}]},{\"id\":\"e442752c-2c26-43ce-9d2f-7e05a597e615\",\"evidencia\":[\"\\\"PRO PLAN PUPPY SMALL\\\"\",\"\\\"PUPPY SMALL\\\"\",\"\\\"perro\\\"\",\"\\\"cachorro\\\"\"],\"atributos\":[{\"campo\":\"especie\",\"valor\":\"perro\",\"evidencia\":\"\\\"especie\\\":\\\"perro\\\"\"},{\"campo\":\"etapa\",\"valor\":\"cachorro\",\"evidencia\":\"\\\"etapa\\\":\\\"cachorro\\\"\"},{\"campo\":\"tamano\",\"valor\":\"pequeño\",\"evidencia\":\"\\\"PUPPY SMALL\\\"\"}]},{\"id\":\"0cd6f7c2-0186-4bc3-ae7e-88d8fcd47c52\",\"evidencia\":[\"\\\"AGILITY PEQ CACH\\\"\",\"\\\"PEQ\\\"\",\"\\\"perro\\\"\",\"\\\"cachorro\\\"\"],\"atributos\":[{\"campo\":\"especie\",\"valor\":\"perro\",\"evidencia\":\"\\\"especie\\\":\\\"perro\\\"\"},{\"campo\":\"etapa\",\"valor\":\"cachorro\",\"evidencia\":\"\\\"etapa\\\":\\\"cachorro\\\"\"},{\"campo\":\"tamano\",\"valor\":\"pequeño\",\"evidencia\":\"\\\"PEQ\\\"\"}]}],\"preguntaRecomendacion\":null}",
+          "usage": {
+            "prompt_tokens": 4818,
+            "completion_tokens": 434,
+            "total_tokens": 5252,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 1300,
+          "status": 200,
+          "model": "gpt-5.4-mini-2026-03-17",
+          "output": "Claro, para cachorro de raza pequeña tienes estas opciones:\n\n- BR DOG PUPPY RAZA PEQ 1kg: $25.800 — concentrado, perro, cachorro.\n- PRO PLAN PUPPY SMALL 1 kg: $59.800 — concentrado, perro, cachorro.\n- AGILITY PEQ CACH 1.5kg: $36.000 — concentrado, perro, cachorro.\n\nLos precios están registrados; las existencias están por confirmar.\n\n¿Prefieres revisar una opción de 1 kg o de 1.5 kg?",
+          "usage": {
+            "prompt_tokens": 484,
+            "completion_tokens": 119,
+            "total_tokens": 603,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        }
+      ],
+      "cartUnchanged": true,
+      "state": {
+        "criterios": {},
+        "recomendacionActiva": {
+          "criterios": {
+            "categoria": "comida",
+            "subcategoria": null,
+            "especie": "perro",
+            "etapa": "cachorro",
+            "tamano": "pequeño",
+            "marca": null,
+            "sabores": [],
+            "condiciones": [],
+            "presentacion": null,
+            "presupuestoMaximo": null
+          },
+          "opciones": [
+            {
+              "indice": 1,
+              "marca": "BR DOG",
+              "referencia": "BR DOG PUPPY RAZA PEQ",
+              "presentacion": "1kg",
+              "precio": 25800,
+              "referenceId": "73506287-8a33-4526-840c-1c6ee1005e31"
+            },
+            {
+              "indice": 2,
+              "marca": "PRO PLAN",
+              "referencia": "PRO PLAN PUPPY SMALL",
+              "presentacion": "1 kg",
+              "precio": 59800,
+              "referenceId": "e442752c-2c26-43ce-9d2f-7e05a597e615"
+            },
+            {
+              "indice": 3,
+              "marca": "AGILITY",
+              "referencia": "AGILITY PEQ CACH",
+              "presentacion": "1.5kg",
+              "precio": 36000,
+              "referenceId": "0cd6f7c2-0186-4bc3-ae7e-88d8fcd47c52"
+            }
+          ],
+          "actualizadoEn": "2026-10-29T16:18:51.916Z"
+        },
+        "atencionHumana": null,
+        "ultimaConsultaProducto": null
+      }
+    },
+    {
+      "case": "snack",
+      "text": "Quiero premios para mi perro adulto por menos de 20000 pesos",
+      "response": "Claro, para tu perro adulto y con presupuesto de hasta $20.000, estas opciones te sirven:\n\n- GOLOSINAS x100: $100 — premio, perro.\n- HUESO 2-3 unidad: $1.200 — premio, perro.\n- GOLOSINAS 1500 unidad: $1.500 — premio, perro.\n\nLos precios están registrados; las existencias están por confirmar.\n\n¿Prefieres premios pequeños o tipo hueso?",
+      "ms": 12536,
+      "decisions": [
+        {
+          "router": true,
+          "decision": {
+            "recomendaciones": [],
+            "preguntaRecomendacion": null,
+            "solicitudComercialIndependiente": true,
+            "derivacionHumana": {
+              "necesaria": false,
+              "motivo": null
+            },
+            "seguimientoProducto": "nueva",
+            "resumenMemoria": null,
+            "continuarFlujo": false,
+            "compraContextual": null,
+            "solicitudesProductoDetectadas": 1,
+            "consultaCatalogo": {
+              "tipo": "necesidad",
+              "presupuestoMaximo": 20000,
+              "necesaria": true,
+              "consulta": "premios snack para perro adulto por menos de 20000 pesos"
+            },
+            "respuestaConversacional": null,
+            "intencion": "recomendacion",
+            "accion": "consultar",
+            "confianza": 0.97,
+            "producto": {
+              "accion": "consultar",
+              "marca": null,
+              "referencia": null,
+              "linea": null,
+              "textoVisible": "premios para mi perro adulto",
+              "mencionOriginal": null,
+              "categoria": "snack",
+              "subcategoria": null,
+              "especie": "perro",
+              "etapa": "adulto",
+              "tamano": null,
+              "sabores": [],
+              "presentacion": null,
+              "intencionPresentaciones": null,
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": null
+            },
+            "productos": [
+              {
+                "accion": "consultar",
+                "marca": null,
+                "referencia": null,
+                "linea": null,
+                "textoVisible": "premios para mi perro adulto",
+                "mencionOriginal": "premios para mi perro adulto",
+                "categoria": "snack",
+                "subcategoria": null,
+                "especie": "perro",
+                "etapa": "adulto",
+                "tamano": null,
+                "sabores": [],
+                "presentacion": null,
+                "intencionPresentaciones": null,
+                "mascotas": [],
+                "condiciones": [],
+                "cantidad": null
+              }
+            ],
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            },
+            "facturacion": {
+              "electronica": null,
+              "evidencia": null
+            },
+            "datosCliente": {
+              "nombre": null,
+              "cedula": null,
+              "correo": null,
+              "celular": null
+            },
+            "carrito": {
+              "operacion": null,
+              "cantidadObjetivo": null,
+              "cantidadDelta": null,
+              "aplicaAlUltimoProducto": null,
+              "razon": null
+            },
+            "faltanteSugerido": null
+          }
+        }
+      ],
+      "requests": [
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 6835,
+          "status": 200,
+          "model": "gpt-5.4-2026-03-05",
+          "output": "{\n  \"intencion\": \"recomendacion\",\n  \"accion\": \"consultar\",\n  \"confianza\": 0.97,\n  \"compraContextual\": null,\n  \"solicitudesProductoDetectadas\": 1,\n  \"consultaCatalogo\": {\n    \"necesaria\": true,\n    \"consulta\": \"premios snack para perro adulto por menos de 20000 pesos\",\n    \"tipo\": \"necesidad\",\n    \"presupuestoMaximo\": 20000\n  },\n  \"producto\": {\n    \"accion\": \"consultar\",\n    \"marca\": null,\n    \"referencia\": null,\n    \"linea\": null,\n    \"textoVisible\": \"premios para mi perro adulto\",\n    \"categoria\": \"snack\",\n    \"subcategoria\": null,\n    \"especie\": \"perro\",\n    \"etapa\": \"adulto\",\n    \"tamano\": null,\n    \"sabores\": [],\n    \"condiciones\": [],\n    \"presentacion\": null,\n    \"cantidad\": null,\n    \"intencionPresentaciones\": null,\n    \"mascotas\": []\n  },\n  \"productos\": [\n    {\n      \"accion\": \"consultar\",\n      \"marca\": null,\n      \"referencia\": null,\n      \"linea\": null,\n      \"textoVisible\": \"premios para mi perro adulto\",\n      \"categoria\": \"snack\",\n      \"subcategoria\": null,\n      \"especie\": \"perro\",\n      \"etapa\": \"adulto\",\n      \"tamano\": null,\n      \"sabores\": [],\n      \"condiciones\": [],\n      \"presentacion\": null,\n      \"cantidad\": null,\n      \"intencionPresentaciones\": null,\n      \"mascotas\": [],\n      \"mencionOriginal\": \"premios para mi perro adulto\"\n    }\n  ],\n  \"entrega\": {\n    \"tipo\": null,\n    \"direccion\": null,\n    \"direccionCompleta\": null,\n    \"sector\": null,\n    \"metodoPago\": null,\n    \"sede\": null\n  },\n  \"facturacion\": {\n    \"electronica\": null,\n    \"evidencia\": null\n  },\n  \"datosCliente\": {\n    \"nombre\": null,\n    \"cedula\": null,\n    \"correo\": null,\n    \"celular\": null\n  },\n  \"carrito\": {\n    \"operacion\": null,\n    \"cantidadObjetivo\": null,\n    \"cantidadDelta\": null,\n    \"aplicaAlUltimoProducto\": null,\n    \"razon\": null\n  },\n  \"faltanteSugerido\": null,\n  \"derivacionHumana\": {\n    \"necesaria\": false,\n    \"motivo\": null\n  },\n  \"solicitudComercialIndependiente\": true,\n  \"seguimientoProducto\": \"nueva\",\n  \"respuestaConversacional\": null\n}",
+          "usage": {
+            "prompt_tokens": 6427,
+            "completion_tokens": 612,
+            "total_tokens": 7039,
+            "prompt_tokens_details": {
+              "cached_tokens": 5888,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "supabase",
+          "method": "GET",
+          "path": "/rest/v1/catalog_references",
+          "ms": 301,
+          "status": 200
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 4121,
+          "status": 200,
+          "model": "gpt-5.4-mini-2026-03-17",
+          "output": "{\"recomendaciones\":[{\"id\":\"39db8b87-5eaa-4034-8772-338cb0672bb2\",\"evidencia\":[\"\\\"perro\\\"\",\"\\\"premio\\\"\",\"\\\"GOLOSINAS X100\\\"\"],\"atributos\":[{\"campo\":\"especie\",\"valor\":\"perro\",\"evidencia\":\"\\\"especie\\\":\\\"perro\\\"\"},{\"campo\":\"etapa\",\"valor\":\"adulto\",\"evidencia\":\"No se declara etapa; no se puede afirmar compatibilidad específica con adulto\"},{\"campo\":\"tamano\",\"valor\":null,\"evidencia\":\"No aplica: no se exige tamaño\"},{\"campo\":\"sabores\",\"valor\":[],\"evidencia\":\"No se declara sabor\"},{\"campo\":\"condiciones\",\"valor\":[],\"evidencia\":\"No se declaran condiciones\"},{\"campo\":\"finalidad\",\"valor\":\"snack/premio\",\"evidencia\":\"\\\"categoria\\\":\\\"snack\\\",\\\"subcategoria\\\":\\\"premio\\\"\"}]},{\"id\":\"0fbb9839-f4e1-4b92-ab6a-4cd7e22c8c3c\",\"evidencia\":[\"\\\"perro\\\"\",\"\\\"premio\\\"\",\"\\\"HUESO 2-3\\\"\"],\"atributos\":[{\"campo\":\"especie\",\"valor\":\"perro\",\"evidencia\":\"\\\"especie\\\":\\\"perro\\\"\"},{\"campo\":\"etapa\",\"valor\":\"adulto\",\"evidencia\":\"No se declara etapa; no se puede afirmar compatibilidad específica con adulto\"},{\"campo\":\"tamano\",\"valor\":null,\"evidencia\":\"No aplica: no se exige tamaño\"},{\"campo\":\"sabores\",\"valor\":[],\"evidencia\":\"No se declara sabor\"},{\"campo\":\"condiciones\",\"valor\":[],\"evidencia\":\"No se declaran condiciones\"},{\"campo\":\"finalidad\",\"valor\":\"snack/premio\",\"evidencia\":\"\\\"categoria\\\":\\\"snack\\\",\\\"subcategoria\\\":\\\"premio\\\"\"}]},{\"id\":\"a6efe5ce-1788-45a2-88e0-3c0cb120b603\",\"evidencia\":[\"\\\"perro\\\"\",\"\\\"premio\\\"\",\"\\\"GOLOSINAS 1500\\\"\"],\"atributos\":[{\"campo\":\"especie\",\"valor\":\"perro\",\"evidencia\":\"\\\"especie\\\":\\\"perro\\\"\"},{\"campo\":\"etapa\",\"valor\":\"adulto\",\"evidencia\":\"No se declara etapa; no se puede afirmar compatibilidad específica con adulto\"},{\"campo\":\"tamano\",\"valor\":null,\"evidencia\":\"No aplica: no se exige tamaño\"},{\"campo\":\"sabores\",\"valor\":[],\"evidencia\":\"No se declara sabor\"},{\"campo\":\"condiciones\",\"valor\":[],\"evidencia\":\"No se declaran condiciones\"},{\"campo\":\"finalidad\",\"valor\":\"snack/premio\",\"evidencia\":\"\\\"categoria\\\":\\\"snack\\\",\\\"subcategoria\\\":\\\"premio\\\"\"}]}],\"preguntaRecomendacion\":null}",
+          "usage": {
+            "prompt_tokens": 6526,
+            "completion_tokens": 611,
+            "total_tokens": 7137,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 1261,
+          "status": 200,
+          "model": "gpt-5.4-mini-2026-03-17",
+          "output": "Claro, para tu perro adulto y con presupuesto de hasta $20.000, estas opciones te sirven:\n\n- GOLOSINAS x100: $100 — premio, perro.\n- HUESO 2-3 unidad: $1.200 — premio, perro.\n- GOLOSINAS 1500 unidad: $1.500 — premio, perro.\n\nLos precios están registrados; las existencias están por confirmar.\n\n¿Prefieres premios pequeños o tipo hueso?",
+          "usage": {
+            "prompt_tokens": 467,
+            "completion_tokens": 99,
+            "total_tokens": 566,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        }
+      ],
+      "cartUnchanged": true,
+      "state": {
+        "criterios": {},
+        "recomendacionActiva": {
+          "criterios": {
+            "categoria": "snack",
+            "subcategoria": null,
+            "especie": "perro",
+            "etapa": "adulto",
+            "tamano": null,
+            "marca": null,
+            "sabores": [],
+            "condiciones": [],
+            "presentacion": null,
+            "presupuestoMaximo": 20000
+          },
+          "opciones": [
+            {
+              "indice": 1,
+              "marca": "GOLOSINAS",
+              "referencia": "GOLOSINAS",
+              "presentacion": "x100",
+              "precio": 100,
+              "referenceId": "39db8b87-5eaa-4034-8772-338cb0672bb2"
+            },
+            {
+              "indice": 2,
+              "marca": "HUESO",
+              "referencia": "HUESO 2-3",
+              "presentacion": "unidad",
+              "precio": 1200,
+              "referenceId": "0fbb9839-f4e1-4b92-ab6a-4cd7e22c8c3c"
+            },
+            {
+              "indice": 3,
+              "marca": "GOLOSINAS",
+              "referencia": "GOLOSINAS 1500",
+              "presentacion": "unidad",
+              "precio": 1500,
+              "referenceId": "a6efe5ce-1788-45a2-88e0-3c0cb120b603"
+            }
+          ],
+          "actualizadoEn": "2026-10-29T16:19:02.971Z"
+        },
+        "atencionHumana": null,
+        "ultimaConsultaProducto": null
+      }
+    },
+    {
+      "case": "accessory",
+      "text": "Estoy buscando un juguete para mi gato, ¿qué me aconsejas?",
+      "response": "Claro, para gato te puedo sugerir estas opciones:\n\n- RASCADOR unidad: $16.000 — juguete, gato.\n- RASCADOR REDONDO GATOS unidad: $22.000 — juguete, gato.\n- RASCADOR ESQUINERO unidad: $58.000 — juguete, gato.\n\nLos precios están registrados; las existencias están por confirmar.\n\nSi querés, te ayudo a elegir según el formato que prefieras.",
+      "ms": 7998,
+      "decisions": [
+        {
+          "router": true,
+          "decision": {
+            "recomendaciones": [],
+            "preguntaRecomendacion": null,
+            "solicitudComercialIndependiente": true,
+            "derivacionHumana": {
+              "necesaria": false,
+              "motivo": null
+            },
+            "seguimientoProducto": "nueva",
+            "resumenMemoria": null,
+            "continuarFlujo": false,
+            "compraContextual": null,
+            "solicitudesProductoDetectadas": 1,
+            "consultaCatalogo": {
+              "tipo": "necesidad",
+              "presupuestoMaximo": null,
+              "necesaria": true,
+              "consulta": "juguete para gato"
+            },
+            "respuestaConversacional": null,
+            "intencion": "recomendacion",
+            "accion": "consultar",
+            "confianza": 0.95,
+            "producto": {
+              "accion": "consultar",
+              "marca": null,
+              "referencia": null,
+              "linea": null,
+              "textoVisible": "juguete para mi gato",
+              "mencionOriginal": null,
+              "categoria": "juguete",
+              "subcategoria": null,
+              "especie": "gato",
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": null,
+              "intencionPresentaciones": null,
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": 1
+            },
+            "productos": [
+              {
+                "accion": "consultar",
+                "marca": null,
+                "referencia": null,
+                "linea": null,
+                "textoVisible": "juguete para mi gato",
+                "mencionOriginal": "un juguete para mi gato",
+                "categoria": "juguete",
+                "subcategoria": null,
+                "especie": "gato",
+                "etapa": null,
+                "tamano": null,
+                "sabores": [],
+                "presentacion": null,
+                "intencionPresentaciones": null,
+                "mascotas": [],
+                "condiciones": [],
+                "cantidad": 1
+              }
+            ],
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            },
+            "facturacion": {
+              "electronica": null,
+              "evidencia": null
+            },
+            "datosCliente": {
+              "nombre": null,
+              "cedula": null,
+              "correo": null,
+              "celular": null
+            },
+            "carrito": {
+              "operacion": null,
+              "cantidadObjetivo": null,
+              "cantidadDelta": null,
+              "aplicaAlUltimoProducto": null,
+              "razon": null
+            },
+            "faltanteSugerido": null
+          }
+        }
+      ],
+      "requests": [
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 4273,
+          "status": 200,
+          "model": "gpt-5.4-2026-03-05",
+          "output": "{\"intencion\":\"recomendacion\",\"accion\":\"consultar\",\"confianza\":0.95,\"compraContextual\":null,\"solicitudesProductoDetectadas\":1,\"consultaCatalogo\":{\"necesaria\":true,\"consulta\":\"juguete para gato\",\"tipo\":\"necesidad\",\"presupuestoMaximo\":null},\"producto\":{\"accion\":\"consultar\",\"marca\":null,\"referencia\":null,\"linea\":null,\"textoVisible\":\"juguete para mi gato\",\"categoria\":\"juguete\",\"subcategoria\":null,\"especie\":\"gato\",\"etapa\":null,\"tamano\":null,\"sabores\":[],\"condiciones\":[],\"presentacion\":null,\"cantidad\":1,\"intencionPresentaciones\":null,\"mascotas\":[]},\"productos\":[{\"accion\":\"consultar\",\"marca\":null,\"referencia\":null,\"linea\":null,\"textoVisible\":\"juguete para mi gato\",\"categoria\":\"juguete\",\"subcategoria\":null,\"especie\":\"gato\",\"etapa\":null,\"tamano\":null,\"sabores\":[],\"condiciones\":[],\"presentacion\":null,\"cantidad\":1,\"intencionPresentaciones\":null,\"mascotas\":[],\"mencionOriginal\":\"un juguete para mi gato\"}],\"entrega\":{\"tipo\":null,\"direccion\":null,\"direccionCompleta\":null,\"sector\":null,\"metodoPago\":null,\"sede\":null},\"facturacion\":{\"electronica\":null,\"evidencia\":null},\"datosCliente\":{\"nombre\":null,\"cedula\":null,\"correo\":null,\"celular\":null},\"carrito\":{\"operacion\":null,\"cantidadObjetivo\":null,\"cantidadDelta\":null,\"aplicaAlUltimoProducto\":null,\"razon\":null},\"faltanteSugerido\":null,\"derivacionHumana\":{\"necesaria\":false,\"motivo\":null},\"solicitudComercialIndependiente\":true,\"seguimientoProducto\":\"nueva\",\"respuestaConversacional\":null}",
+          "usage": {
+            "prompt_tokens": 6428,
+            "completion_tokens": 412,
+            "total_tokens": 6840,
+            "prompt_tokens_details": {
+              "cached_tokens": 5888,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "supabase",
+          "method": "GET",
+          "path": "/rest/v1/catalog_references",
+          "ms": 295,
+          "status": 200
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 1880,
+          "status": 200,
+          "model": "gpt-5.4-mini-2026-03-17",
+          "output": "{\"recomendaciones\":[{\"id\":\"a9c745dd-5ad5-443b-a7e1-dde3c3317b4a\",\"evidencia\":[\"\\\"RASCADOR\\\"\",\"\\\"gato\\\"\",\"\\\"juguete\\\"\"],\"atributos\":[{\"campo\":\"especie\",\"valor\":\"gato\",\"evidencia\":\"\\\"gato\\\"\"},{\"campo\":\"categoria\",\"valor\":\"juguete\",\"evidencia\":\"\\\"juguete\\\"\"}]},{\"id\":\"8cb303f6-ecf2-4d2d-8c8f-8cc2199e605b\",\"evidencia\":[\"\\\"RASCADOR REDONDO GATOS\\\"\",\"\\\"gato\\\"\",\"\\\"juguete\\\"\"],\"atributos\":[{\"campo\":\"especie\",\"valor\":\"gato\",\"evidencia\":\"\\\"gato\\\"\"},{\"campo\":\"categoria\",\"valor\":\"juguete\",\"evidencia\":\"\\\"juguete\\\"\"}]},{\"id\":\"03225e06-ebec-485b-bbbf-6362c563bbbb\",\"evidencia\":[\"\\\"RASCADOR ESQUINERO\\\"\",\"\\\"gato\\\"\",\"\\\"juguete\\\"\"],\"atributos\":[{\"campo\":\"especie\",\"valor\":\"gato\",\"evidencia\":\"\\\"gato\\\"\"},{\"campo\":\"categoria\",\"valor\":\"juguete\",\"evidencia\":\"\\\"juguete\\\"\"}]}],\"preguntaRecomendacion\":null}",
+          "usage": {
+            "prompt_tokens": 1992,
+            "completion_tokens": 313,
+            "total_tokens": 2305,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 1541,
+          "status": 200,
+          "model": "gpt-5.4-mini-2026-03-17",
+          "output": "Claro, para gato te puedo sugerir estas opciones:\n\n- RASCADOR unidad: $16.000 — juguete, gato.\n- RASCADOR REDONDO GATOS unidad: $22.000 — juguete, gato.\n- RASCADOR ESQUINERO unidad: $58.000 — juguete, gato.\n\nLos precios están registrados; las existencias están por confirmar.\n\nSi querés, te ayudo a elegir según el formato que prefieras.",
+          "usage": {
+            "prompt_tokens": 463,
+            "completion_tokens": 100,
+            "total_tokens": 563,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        }
+      ],
+      "cartUnchanged": true,
+      "state": {
+        "criterios": {},
+        "recomendacionActiva": {
+          "criterios": {
+            "categoria": "juguete",
+            "subcategoria": null,
+            "especie": "gato",
+            "etapa": null,
+            "tamano": null,
+            "marca": null,
+            "sabores": [],
+            "condiciones": [],
+            "presentacion": null,
+            "presupuestoMaximo": null
+          },
+          "opciones": [
+            {
+              "indice": 1,
+              "marca": "RASCADOR",
+              "referencia": "RASCADOR",
+              "presentacion": "unidad",
+              "precio": 16000,
+              "referenceId": "a9c745dd-5ad5-443b-a7e1-dde3c3317b4a"
+            },
+            {
+              "indice": 2,
+              "marca": "RASCADOR",
+              "referencia": "RASCADOR REDONDO GATOS",
+              "presentacion": "unidad",
+              "precio": 22000,
+              "referenceId": "8cb303f6-ecf2-4d2d-8c8f-8cc2199e605b"
+            },
+            {
+              "indice": 3,
+              "marca": "RASCADOR",
+              "referencia": "RASCADOR ESQUINERO",
+              "presentacion": "unidad",
+              "precio": 58000,
+              "referenceId": "03225e06-ebec-485b-bbbf-6362c563bbbb"
+            }
+          ],
+          "actualizadoEn": "2026-10-29T16:19:12.948Z"
+        },
+        "atencionHumana": null,
+        "ultimaConsultaProducto": null
+      }
+    }
+  ],
+  "requests": [
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/client_channels",
+      "ms": 311,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/aivance_clients",
+      "ms": 226,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/aivance_clients",
+      "ms": 257,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/client_prompts",
+      "ms": 189,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/client_delivery_rules",
+      "ms": 208,
+      "status": 200
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 6232,
+      "status": 200,
+      "model": "gpt-5.4-2026-03-05",
+      "output": "{\n  \"intencion\": \"recomendacion\",\n  \"accion\": \"consultar\",\n  \"confianza\": 0.95,\n  \"compraContextual\": null,\n  \"solicitudesProductoDetectadas\": 1,\n  \"consultaCatalogo\": {\n    \"necesaria\": true,\n    \"consulta\": \"alimento para gato de 6 meses\",\n    \"tipo\": \"necesidad\",\n    \"presupuestoMaximo\": null\n  },\n  \"producto\": {\n    \"accion\": \"consultar\",\n    \"marca\": null,\n    \"referencia\": null,\n    \"linea\": null,\n    \"textoVisible\": \"alimento para mi gato de 6 meses\",\n    \"categoria\": \"comida\",\n    \"subcategoria\": null,\n    \"especie\": \"gato\",\n    \"etapa\": \"cachorro\",\n    \"tamano\": null,\n    \"sabores\": [],\n    \"condiciones\": [],\n    \"presentacion\": null,\n    \"cantidad\": null,\n    \"intencionPresentaciones\": null,\n    \"mascotas\": [\n      {\n        \"nombre\": null,\n        \"pesoKg\": null\n      }\n    ]\n  },\n  \"productos\": [\n    {\n      \"accion\": \"consultar\",\n      \"marca\": null,\n      \"referencia\": null,\n      \"linea\": null,\n      \"textoVisible\": \"alimento para mi gato de 6 meses\",\n      \"mencionOriginal\": \"alimento para mi gato de 6 meses\",\n      \"categoria\": \"comida\",\n      \"subcategoria\": null,\n      \"especie\": \"gato\",\n      \"etapa\": \"cachorro\",\n      \"tamano\": null,\n      \"sabores\": [],\n      \"condiciones\": [],\n      \"presentacion\": null,\n      \"cantidad\": null,\n      \"intencionPresentaciones\": null,\n      \"mascotas\": [\n        {\n          \"nombre\": null,\n          \"pesoKg\": null\n        }\n      ]\n    }\n  ],\n  \"entrega\": {\n    \"tipo\": \"domicilio\",\n    \"direccion\": null,\n    \"direccionCompleta\": null,\n    \"sector\": null,\n    \"metodoPago\": null,\n    \"sede\": null\n  },\n  \"facturacion\": {\n    \"electronica\": null,\n    \"evidencia\": null\n  },\n  \"datosCliente\": {\n    \"nombre\": null,\n    \"cedula\": null,\n    \"correo\": null,\n    \"celular\": null\n  },\n  \"carrito\": {\n    \"operacion\": null,\n    \"cantidadObjetivo\": null,\n    \"cantidadDelta\": null,\n    \"aplicaAlUltimoProducto\": null,\n    \"razon\": null\n  },\n  \"faltanteSugerido\": null,\n  \"derivacionHumana\": {\n    \"necesaria\": false,\n    \"motivo\": null\n  },\n  \"solicitudComercialIndependiente\": true,\n  \"seguimientoProducto\": \"nueva\",\n  \"respuestaConversacional\": null\n}",
+      "usage": {
+        "prompt_tokens": 6432,
+        "completion_tokens": 657,
+        "total_tokens": 7089,
+        "prompt_tokens_details": {
+          "cached_tokens": 5888,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/catalog_references",
+      "ms": 298,
+      "status": 200
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 3166,
+      "status": 200,
+      "model": "gpt-5.4-mini-2026-03-17",
+      "output": "{\"recomendaciones\":[{\"id\":\"466d365f-12a8-41c1-8398-4794739688ab\",\"evidencia\":[\"\\\"MIRRINGO GATITO\\\"\",\"\\\"gato\\\"\",\"\\\"cachorro\\\"\",\"\\\"MIRRINGO GATITO X 500GR\\\"\"],\"atributos\":[{\"campo\":\"especie\",\"valor\":\"gato\",\"evidencia\":\"\\\"gato\\\"\"},{\"campo\":\"etapa\",\"valor\":\"cachorro\",\"evidencia\":\"\\\"cachorro\\\"\"},{\"campo\":\"categoria\",\"valor\":\"comida\",\"evidencia\":\"\\\"categoria\\\":\\\"comida\\\"\"},{\"campo\":\"subcategoria\",\"valor\":\"concentrado\",\"evidencia\":\"\\\"subcategoria\\\":\\\"concentrado\\\"\"}]},{\"id\":\"bac06106-16c1-46c3-b8cb-a1ff93401666\",\"evidencia\":[\"\\\"OHMAIGAT GATITOS\\\"\",\"\\\"gato\\\"\",\"\\\"cachorro\\\"\",\"\\\"OHMAIGAT GATITOS X 200 GR\\\"\"],\"atributos\":[{\"campo\":\"especie\",\"valor\":\"gato\",\"evidencia\":\"\\\"gato\\\"\"},{\"campo\":\"etapa\",\"valor\":\"cachorro\",\"evidencia\":\"\\\"cachorro\\\"\"},{\"campo\":\"categoria\",\"valor\":\"comida\",\"evidencia\":\"\\\"categoria\\\":\\\"comida\\\"\"},{\"campo\":\"subcategoria\",\"valor\":\"concentrado\",\"evidencia\":\"\\\"subcategoria\\\":\\\"concentrado\\\"\"}]},{\"id\":\"8f046478-8161-4273-bf42-72b9716a3eeb\",\"evidencia\":[\"\\\"PRO PLAN POUCH FELINO KITTEN\\\"\",\"\\\"gato\\\"\",\"\\\"cachorro\\\"\",\"\\\"PRO PLAN POUCH FELINO KITTEN 85GR\\\"\"],\"atributos\":[{\"campo\":\"especie\",\"valor\":\"gato\",\"evidencia\":\"\\\"gato\\\"\"},{\"campo\":\"etapa\",\"valor\":\"cachorro\",\"evidencia\":\"\\\"cachorro\\\"\"},{\"campo\":\"categoria\",\"valor\":\"comida\",\"evidencia\":\"\\\"categoria\\\":\\\"comida\\\"\"},{\"campo\":\"subcategoria\",\"valor\":\"comida_humeda\",\"evidencia\":\"\\\"subcategoria\\\":\\\"comida_humeda\\\"\"}]}],\"preguntaRecomendacion\":null}",
+      "usage": {
+        "prompt_tokens": 4048,
+        "completion_tokens": 494,
+        "total_tokens": 4542,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 1446,
+      "status": 200,
+      "model": "gpt-5.4-mini-2026-03-17",
+      "output": "Claro, para tu gato de 6 meses te puedo orientar con estas opciones:\n\n- MIRRINGO GATITO x 500gr: $5.900 — concentrado, gato, cachorro.\n- OHMAIGAT GATITOS x 200 gr: $3.800 — concentrado, gato, cachorro.\n- PRO PLAN POUCH FELINO KITTEN 85gr: $6.200 — comida humeda, gato, cachorro.\n\nLos precios están registrados; las existencias están por confirmar.\n\nSi me dices si prefieres alimento concentrado o húmedo, te ayudo a elegir el más adecuado.",
+      "usage": {
+        "prompt_tokens": 488,
+        "completion_tokens": 130,
+        "total_tokens": 618,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 5438,
+      "status": 200,
+      "model": "gpt-5.4-2026-03-05",
+      "output": "{\n  \"intencion\": \"recomendacion\",\n  \"accion\": \"consultar\",\n  \"confianza\": 0.96,\n  \"compraContextual\": null,\n  \"solicitudesProductoDetectadas\": 1,\n  \"consultaCatalogo\": {\n    \"necesaria\": true,\n    \"consulta\": \"alimento para gato cachorro\",\n    \"tipo\": \"necesidad\",\n    \"presupuestoMaximo\": null\n  },\n  \"producto\": {\n    \"accion\": \"consultar\",\n    \"marca\": null,\n    \"referencia\": null,\n    \"linea\": null,\n    \"textoVisible\": \"alimento para gato cachorro\",\n    \"categoria\": \"comida\",\n    \"subcategoria\": null,\n    \"especie\": \"gato\",\n    \"etapa\": \"cachorro\",\n    \"tamano\": null,\n    \"sabores\": [],\n    \"condiciones\": [],\n    \"presentacion\": null,\n    \"cantidad\": null,\n    \"intencionPresentaciones\": null,\n    \"mascotas\": []\n  },\n  \"productos\": [\n    {\n      \"accion\": \"consultar\",\n      \"marca\": null,\n      \"referencia\": null,\n      \"linea\": null,\n      \"textoVisible\": \"alimento para gato cachorro\",\n      \"categoria\": \"comida\",\n      \"subcategoria\": null,\n      \"especie\": \"gato\",\n      \"etapa\": \"cachorro\",\n      \"tamano\": null,\n      \"sabores\": [],\n      \"condiciones\": [],\n      \"presentacion\": null,\n      \"cantidad\": null,\n      \"intencionPresentaciones\": null,\n      \"mascotas\": [],\n      \"mencionOriginal\": \"alimento tiene para gato cachorro\"\n    }\n  ],\n  \"entrega\": {\n    \"tipo\": null,\n    \"direccion\": null,\n    \"direccionCompleta\": null,\n    \"sector\": null,\n    \"metodoPago\": null,\n    \"sede\": null\n  },\n  \"facturacion\": {\n    \"electronica\": null,\n    \"evidencia\": null\n  },\n  \"datosCliente\": {\n    \"nombre\": null,\n    \"cedula\": null,\n    \"correo\": null,\n    \"celular\": null\n  },\n  \"carrito\": {\n    \"operacion\": null,\n    \"cantidadObjetivo\": null,\n    \"cantidadDelta\": null,\n    \"aplicaAlUltimoProducto\": null,\n    \"razon\": null\n  },\n  \"faltanteSugerido\": null,\n  \"derivacionHumana\": {\n    \"necesaria\": false,\n    \"motivo\": null\n  },\n  \"solicitudComercialIndependiente\": true,\n  \"seguimientoProducto\": \"nueva\",\n  \"respuestaConversacional\": null\n}",
+      "usage": {
+        "prompt_tokens": 6849,
+        "completion_tokens": 602,
+        "total_tokens": 7451,
+        "prompt_tokens_details": {
+          "cached_tokens": 5888,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/catalog_references",
+      "ms": 273,
+      "status": 200
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 2855,
+      "status": 200,
+      "model": "gpt-5.4-mini-2026-03-17",
+      "output": "{\"recomendaciones\":[{\"id\":\"466d365f-12a8-41c1-8398-4794739688ab\",\"evidencia\":[\"\\\"MIRRINGO GATITO\\\"\",\"\\\"especie\\\":\\\"gato\\\"\",\"\\\"etapa\\\":\\\"cachorro\\\"\",\"\\\"subcategoria\\\":\\\"concentrado\\\"\"],\"atributos\":[{\"campo\":\"especie\",\"valor\":\"gato\",\"evidencia\":\"\\\"especie\\\":\\\"gato\\\"\"},{\"campo\":\"etapa\",\"valor\":\"cachorro\",\"evidencia\":\"\\\"etapa\\\":\\\"cachorro\\\"\"},{\"campo\":\"categoria\",\"valor\":\"comida\",\"evidencia\":\"\\\"categoria\\\":\\\"comida\\\"\"},{\"campo\":\"subcategoria\",\"valor\":\"concentrado\",\"evidencia\":\"\\\"subcategoria\\\":\\\"concentrado\\\"\"}]},{\"id\":\"eb1de02c-66cd-43dc-a5a6-af60953600c0\",\"evidencia\":[\"\\\"ROYAL CANIN KITTEN\\\"\",\"\\\"especie\\\":\\\"gato\\\"\",\"\\\"etapa\\\":\\\"cachorro\\\"\",\"\\\"subcategoria\\\":\\\"concentrado\\\"\"],\"atributos\":[{\"campo\":\"especie\",\"valor\":\"gato\",\"evidencia\":\"\\\"especie\\\":\\\"gato\\\"\"},{\"campo\":\"etapa\",\"valor\":\"cachorro\",\"evidencia\":\"\\\"etapa\\\":\\\"cachorro\\\"\"},{\"campo\":\"categoria\",\"valor\":\"comida\",\"evidencia\":\"\\\"categoria\\\":\\\"comida\\\"\"},{\"campo\":\"subcategoria\",\"valor\":\"concentrado\",\"evidencia\":\"\\\"subcategoria\\\":\\\"concentrado\\\"\"}]},{\"id\":\"8f046478-8161-4273-bf42-72b9716a3eeb\",\"evidencia\":[\"\\\"PRO PLAN POUCH FELINO KITTEN\\\"\",\"\\\"especie\\\":\\\"gato\\\"\",\"\\\"etapa\\\":\\\"cachorro\\\"\",\"\\\"subcategoria\\\":\\\"comida_humeda\\\"\"],\"atributos\":[{\"campo\":\"especie\",\"valor\":\"gato\",\"evidencia\":\"\\\"especie\\\":\\\"gato\\\"\"},{\"campo\":\"etapa\",\"valor\":\"cachorro\",\"evidencia\":\"\\\"etapa\\\":\\\"cachorro\\\"\"},{\"campo\":\"categoria\",\"valor\":\"comida\",\"evidencia\":\"\\\"categoria\\\":\\\"comida\\\"\"},{\"campo\":\"subcategoria\",\"valor\":\"comida_humeda\",\"evidencia\":\"\\\"subcategoria\\\":\\\"comida_humeda\\\"\"}]}],\"preguntaRecomendacion\":null}",
+      "usage": {
+        "prompt_tokens": 4035,
+        "completion_tokens": 522,
+        "total_tokens": 4557,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 1371,
+      "status": 200,
+      "model": "gpt-5.4-mini-2026-03-17",
+      "output": "Para gato cachorro tengo estas opciones:\n\n- MIRRINGO GATITO x 500gr: $5.900 — concentrado, gato, cachorro.\n- ROYAL CANIN KITTEN 400gr: $30.000 — concentrado, gato, cachorro.\n- PRO PLAN POUCH FELINO KITTEN 85gr: $6.200 — comida humeda, gato, cachorro.\n\nLas existencias están por confirmar. ¿Prefieres concentrado o comida húmeda?",
+      "usage": {
+        "prompt_tokens": 475,
+        "completion_tokens": 104,
+        "total_tokens": 579,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 7050,
+      "status": 200,
+      "model": "gpt-5.4-2026-03-05",
+      "output": "{\n  \"intencion\": \"recomendacion\",\n  \"accion\": \"consultar\",\n  \"confianza\": 0.98,\n  \"compraContextual\": null,\n  \"solicitudesProductoDetectadas\": 1,\n  \"consultaCatalogo\": {\n    \"necesaria\": true,\n    \"consulta\": \"opciones de comida para gato cachorro\",\n    \"tipo\": \"necesidad\",\n    \"presupuestoMaximo\": null\n  },\n  \"producto\": {\n    \"accion\": \"consultar\",\n    \"marca\": null,\n    \"referencia\": null,\n    \"linea\": null,\n    \"textoVisible\": \"producto para gato cachorro\",\n    \"categoria\": \"comida\",\n    \"subcategoria\": null,\n    \"especie\": \"gato\",\n    \"etapa\": \"cachorro\",\n    \"tamano\": null,\n    \"sabores\": [],\n    \"condiciones\": [],\n    \"presentacion\": null,\n    \"cantidad\": null,\n    \"intencionPresentaciones\": null,\n    \"mascotas\": []\n  },\n  \"productos\": [\n    {\n      \"accion\": \"consultar\",\n      \"marca\": null,\n      \"referencia\": null,\n      \"linea\": null,\n      \"textoVisible\": \"producto para gato cachorro\",\n      \"categoria\": \"comida\",\n      \"subcategoria\": null,\n      \"especie\": \"gato\",\n      \"etapa\": \"cachorro\",\n      \"tamano\": null,\n      \"sabores\": [],\n      \"condiciones\": [],\n      \"presentacion\": null,\n      \"cantidad\": null,\n      \"intencionPresentaciones\": null,\n      \"mascotas\": [],\n      \"mencionOriginal\": \"No sé el nombre del producto\"\n    }\n  ],\n  \"entrega\": {\n    \"tipo\": null,\n    \"direccion\": null,\n    \"direccionCompleta\": null,\n    \"sector\": null,\n    \"metodoPago\": null,\n    \"sede\": null\n  },\n  \"facturacion\": {\n    \"electronica\": null,\n    \"evidencia\": null\n  },\n  \"datosCliente\": {\n    \"nombre\": null,\n    \"cedula\": null,\n    \"correo\": null,\n    \"celular\": null\n  },\n  \"carrito\": {\n    \"operacion\": null,\n    \"cantidadObjetivo\": null,\n    \"cantidadDelta\": null,\n    \"aplicaAlUltimoProducto\": null,\n    \"razon\": null\n  },\n  \"faltanteSugerido\": null,\n  \"derivacionHumana\": {\n    \"necesaria\": false,\n    \"motivo\": null\n  },\n  \"solicitudComercialIndependiente\": true,\n  \"seguimientoProducto\": \"aclaracion\",\n  \"respuestaConversacional\": \"No pasa nada. ¿Lo buscas para gato cachorro en concentrado o comida húmeda?\"\n}",
+      "usage": {
+        "prompt_tokens": 6976,
+        "completion_tokens": 620,
+        "total_tokens": 7596,
+        "prompt_tokens_details": {
+          "cached_tokens": 5888,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/catalog_references",
+      "ms": 390,
+      "status": 200
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 3136,
+      "status": 200,
+      "model": "gpt-5.4-mini-2026-03-17",
+      "output": "{\"recomendaciones\":[{\"id\":\"bac06106-16c1-46c3-b8cb-a1ff93401666\",\"evidencia\":[\"\\\"OHMAIGAT GATITOS\\\"\",\"\\\"gato\\\"\",\"\\\"cachorro\\\"\",\"\\\"concentrado\\\"\",\"\\\"x 200 GR\\\"\"],\"atributos\":[{\"campo\":\"especie\",\"valor\":\"gato\",\"evidencia\":\"\\\"gato\\\"\"},{\"campo\":\"etapa\",\"valor\":\"cachorro\",\"evidencia\":\"\\\"cachorro\\\"\"},{\"campo\":\"categoria\",\"valor\":\"comida\",\"evidencia\":\"\\\"categoria\\\":\\\"comida\\\"\"},{\"campo\":\"subcategoria\",\"valor\":\"concentrado\",\"evidencia\":\"\\\"concentrado\\\"\"},{\"campo\":\"presentacion\",\"valor\":\"x 200 gr\",\"evidencia\":\"\\\"x 200 GR\\\"\"}]},{\"id\":\"466d365f-12a8-41c1-8398-4794739688ab\",\"evidencia\":[\"\\\"MIRRINGO GATITO\\\"\",\"\\\"gato\\\"\",\"\\\"cachorro\\\"\",\"\\\"concentrado\\\"\",\"\\\"x 500GR\\\"\"],\"atributos\":[{\"campo\":\"especie\",\"valor\":\"gato\",\"evidencia\":\"\\\"gato\\\"\"},{\"campo\":\"etapa\",\"valor\":\"cachorro\",\"evidencia\":\"\\\"cachorro\\\"\"},{\"campo\":\"categoria\",\"valor\":\"comida\",\"evidencia\":\"\\\"categoria\\\":\\\"comida\\\"\"},{\"campo\":\"subcategoria\",\"valor\":\"concentrado\",\"evidencia\":\"\\\"concentrado\\\"\"},{\"campo\":\"presentacion\",\"valor\":\"x 500gr\",\"evidencia\":\"\\\"x 500GR\\\"\"}]},{\"id\":\"8f046478-8161-4273-bf42-72b9716a3eeb\",\"evidencia\":[\"\\\"PRO PLAN POUCH FELINO KITTEN\\\"\",\"\\\"gato\\\"\",\"\\\"cachorro\\\"\",\"\\\"comida_humeda\\\"\",\"\\\"85GR\\\"\"],\"atributos\":[{\"campo\":\"especie\",\"valor\":\"gato\",\"evidencia\":\"\\\"gato\\\"\"},{\"campo\":\"etapa\",\"valor\":\"cachorro\",\"evidencia\":\"\\\"cachorro\\\"\"},{\"campo\":\"categoria\",\"valor\":\"comida\",\"evidencia\":\"\\\"categoria\\\":\\\"comida\\\"\"},{\"campo\":\"subcategoria\",\"valor\":\"comida_humeda\",\"evidencia\":\"\\\"comida_humeda\\\"\"},{\"campo\":\"presentacion\",\"valor\":\"85gr\",\"evidencia\":\"\\\"85GR\\\"\"}]}],\"preguntaRecomendacion\":null}",
+      "usage": {
+        "prompt_tokens": 4035,
+        "completion_tokens": 545,
+        "total_tokens": 4580,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 1459,
+      "status": 200,
+      "model": "gpt-5.4-mini-2026-03-17",
+      "output": "Claro, para gato cachorro tenés estas opciones:\n\n- OHMAIGAT GATITOS x 200 gr: $3.800 — concentrado, gato, cachorro.\n- MIRRINGO GATITO x 500gr: $5.900 — concentrado, gato, cachorro.\n- PRO PLAN POUCH FELINO KITTEN 85gr: $6.200 — comida humeda, gato, cachorro.\n\nSi querés, te ayudo a elegir entre concentrado o comida húmeda.",
+      "usage": {
+        "prompt_tokens": 475,
+        "completion_tokens": 107,
+        "total_tokens": 582,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 5886,
+      "status": 200,
+      "model": "gpt-5.4-2026-03-05",
+      "output": "{\n  \"intencion\": \"recomendacion\",\n  \"accion\": \"consultar\",\n  \"confianza\": 0.98,\n  \"compraContextual\": null,\n  \"solicitudesProductoDetectadas\": 1,\n  \"consultaCatalogo\": {\n    \"necesaria\": true,\n    \"consulta\": \"comida para gatita cachorro maximo 30000\",\n    \"tipo\": \"necesidad\",\n    \"presupuestoMaximo\": 30000\n  },\n  \"producto\": {\n    \"accion\": \"consultar\",\n    \"marca\": null,\n    \"referencia\": null,\n    \"linea\": null,\n    \"textoVisible\": \"comida para mi gatita pequeña\",\n    \"categoria\": \"comida\",\n    \"subcategoria\": null,\n    \"especie\": \"gato\",\n    \"etapa\": \"cachorro\",\n    \"tamano\": null,\n    \"sabores\": [],\n    \"condiciones\": [],\n    \"presentacion\": null,\n    \"cantidad\": 1,\n    \"intencionPresentaciones\": null,\n    \"mascotas\": [\n      {\n        \"nombre\": null,\n        \"pesoKg\": null\n      }\n    ]\n  },\n  \"productos\": [\n    {\n      \"accion\": \"consultar\",\n      \"marca\": null,\n      \"referencia\": null,\n      \"linea\": null,\n      \"textoVisible\": \"comida para mi gatita pequeña\",\n      \"mencionOriginal\": \"comida para mi gatita pequeña\",\n      \"categoria\": \"comida\",\n      \"subcategoria\": null,\n      \"especie\": \"gato\",\n      \"etapa\": \"cachorro\",\n      \"tamano\": null,\n      \"sabores\": [],\n      \"condiciones\": [],\n      \"presentacion\": null,\n      \"cantidad\": 1,\n      \"intencionPresentaciones\": null,\n      \"mascotas\": [\n        {\n          \"nombre\": null,\n          \"pesoKg\": null\n        }\n      ]\n    }\n  ],\n  \"entrega\": {\n    \"tipo\": null,\n    \"direccion\": null,\n    \"direccionCompleta\": null,\n    \"sector\": null,\n    \"metodoPago\": null,\n    \"sede\": null\n  },\n  \"facturacion\": {\n    \"electronica\": null,\n    \"evidencia\": null\n  },\n  \"datosCliente\": {\n    \"nombre\": null,\n    \"cedula\": null,\n    \"correo\": null,\n    \"celular\": null\n  },\n  \"carrito\": {\n    \"operacion\": null,\n    \"cantidadObjetivo\": null,\n    \"cantidadDelta\": null,\n    \"aplicaAlUltimoProducto\": null,\n    \"razon\": null\n  },\n  \"faltanteSugerido\": null,\n  \"derivacionHumana\": {\n    \"necesaria\": false,\n    \"motivo\": null\n  },\n  \"solicitudComercialIndependiente\": true,\n  \"seguimientoProducto\": \"nueva\",\n  \"respuestaConversacional\": null\n}",
+      "usage": {
+        "prompt_tokens": 6435,
+        "completion_tokens": 655,
+        "total_tokens": 7090,
+        "prompt_tokens_details": {
+          "cached_tokens": 5888,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/catalog_references",
+      "ms": 274,
+      "status": 200
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 2518,
+      "status": 200,
+      "model": "gpt-5.4-mini-2026-03-17",
+      "output": "{\"recomendaciones\":[{\"id\":\"bac06106-16c1-46c3-b8cb-a1ff93401666\",\"evidencia\":[\"\\\"OHMAIGAT GATITOS\\\"\",\"\\\"gato\\\"\",\"\\\"cachorro\\\"\",\"\\\"OHMAIGAT GATITOS X 200 GR\\\"\"],\"atributos\":[{\"campo\":\"especie\",\"valor\":\"gato\",\"evidencia\":\"\\\"gato\\\"\"},{\"campo\":\"etapa\",\"valor\":\"cachorro\",\"evidencia\":\"\\\"cachorro\\\"\"},{\"campo\":\"presentacion\",\"valor\":\"200 gr\",\"evidencia\":\"\\\"OHMAIGAT GATITOS X 200 GR\\\"\"}]},{\"id\":\"466d365f-12a8-41c1-8398-4794739688ab\",\"evidencia\":[\"\\\"MIRRINGO GATITO\\\"\",\"\\\"gato\\\"\",\"\\\"cachorro\\\"\",\"\\\"MIRRINGO GATITO X 500GR\\\"\"],\"atributos\":[{\"campo\":\"especie\",\"valor\":\"gato\",\"evidencia\":\"\\\"gato\\\"\"},{\"campo\":\"etapa\",\"valor\":\"cachorro\",\"evidencia\":\"\\\"cachorro\\\"\"},{\"campo\":\"presentacion\",\"valor\":\"500gr\",\"evidencia\":\"\\\"MIRRINGO GATITO X 500GR\\\"\"}]},{\"id\":\"8f046478-8161-4273-bf42-72b9716a3eeb\",\"evidencia\":[\"\\\"PRO PLAN POUCH FELINO KITTEN\\\"\",\"\\\"gato\\\"\",\"\\\"cachorro\\\"\",\"\\\"PRO PLAN POUCH FELINO KITTEN 85GR\\\"\"],\"atributos\":[{\"campo\":\"especie\",\"valor\":\"gato\",\"evidencia\":\"\\\"gato\\\"\"},{\"campo\":\"etapa\",\"valor\":\"cachorro\",\"evidencia\":\"\\\"cachorro\\\"\"},{\"campo\":\"presentacion\",\"valor\":\"85gr\",\"evidencia\":\"\\\"PRO PLAN POUCH FELINO KITTEN 85GR\\\"\"}]}],\"preguntaRecomendacion\":null}",
+      "usage": {
+        "prompt_tokens": 3319,
+        "completion_tokens": 444,
+        "total_tokens": 3763,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 1142,
+      "status": 200,
+      "model": "gpt-5.4-mini-2026-03-17",
+      "output": "Claro, para tu gatita de 4 meses te sirven estas opciones dentro de tu presupuesto:\n\n- OHMAIGAT GATITOS x 200 gr: $3.800 — concentrado, gato, cachorro.\n- MIRRINGO GATITO x 500gr: $5.900 — concentrado, gato, cachorro.\n- PRO PLAN POUCH FELINO KITTEN 85gr: $6.200 — comida humeda, gato, cachorro.\n\nSi quieres, te ayudo a elegir entre concentrado o comida húmeda.",
+      "usage": {
+        "prompt_tokens": 500,
+        "completion_tokens": 115,
+        "total_tokens": 615,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 6248,
+      "status": 200,
+      "model": "gpt-5.4-2026-03-05",
+      "output": "{\n  \"intencion\": \"recomendacion\",\n  \"accion\": \"consultar\",\n  \"confianza\": 0.97,\n  \"compraContextual\": null,\n  \"solicitudesProductoDetectadas\": 1,\n  \"consultaCatalogo\": {\n    \"necesaria\": true,\n    \"consulta\": \"comida para perro cachorro raza pequeña\",\n    \"tipo\": \"necesidad\",\n    \"presupuestoMaximo\": null\n  },\n  \"producto\": {\n    \"accion\": \"consultar\",\n    \"marca\": null,\n    \"referencia\": null,\n    \"linea\": null,\n    \"textoVisible\": \"comida para un cachorro de perro de raza pequeña\",\n    \"categoria\": \"comida\",\n    \"subcategoria\": null,\n    \"especie\": \"perro\",\n    \"etapa\": \"cachorro\",\n    \"tamano\": \"pequeño\",\n    \"sabores\": [],\n    \"condiciones\": [],\n    \"presentacion\": null,\n    \"cantidad\": null,\n    \"intencionPresentaciones\": null,\n    \"mascotas\": []\n  },\n  \"productos\": [\n    {\n      \"accion\": \"consultar\",\n      \"marca\": null,\n      \"referencia\": null,\n      \"linea\": null,\n      \"textoVisible\": \"comida para un cachorro de perro de raza pequeña\",\n      \"mencionOriginal\": \"comida para un cachorro de perro de raza pequeña\",\n      \"categoria\": \"comida\",\n      \"subcategoria\": null,\n      \"especie\": \"perro\",\n      \"etapa\": \"cachorro\",\n      \"tamano\": \"pequeño\",\n      \"sabores\": [],\n      \"condiciones\": [],\n      \"presentacion\": null,\n      \"cantidad\": null,\n      \"intencionPresentaciones\": null,\n      \"mascotas\": []\n    }\n  ],\n  \"entrega\": {\n    \"tipo\": null,\n    \"direccion\": null,\n    \"direccionCompleta\": null,\n    \"sector\": null,\n    \"metodoPago\": null,\n    \"sede\": null\n  },\n  \"facturacion\": {\n    \"electronica\": null,\n    \"evidencia\": null\n  },\n  \"datosCliente\": {\n    \"nombre\": null,\n    \"cedula\": null,\n    \"correo\": null,\n    \"celular\": null\n  },\n  \"carrito\": {\n    \"operacion\": null,\n    \"cantidadObjetivo\": null,\n    \"cantidadDelta\": null,\n    \"aplicaAlUltimoProducto\": null,\n    \"razon\": null\n  },\n  \"faltanteSugerido\": null,\n  \"derivacionHumana\": {\n    \"necesaria\": false,\n    \"motivo\": null\n  },\n  \"solicitudComercialIndependiente\": true,\n  \"seguimientoProducto\": \"nueva\",\n  \"respuestaConversacional\": null\n}",
+      "usage": {
+        "prompt_tokens": 6428,
+        "completion_tokens": 624,
+        "total_tokens": 7052,
+        "prompt_tokens_details": {
+          "cached_tokens": 5888,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/catalog_references",
+      "ms": 287,
+      "status": 200
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 2616,
+      "status": 200,
+      "model": "gpt-5.4-mini-2026-03-17",
+      "output": "{\"recomendaciones\":[{\"id\":\"73506287-8a33-4526-840c-1c6ee1005e31\",\"evidencia\":[\"\\\"BR DOG PUPPY RAZA PEQ\\\"\",\"\\\"PUPPY RAZA PEQ\\\"\",\"\\\"perro\\\"\",\"\\\"cachorro\\\"\"],\"atributos\":[{\"campo\":\"especie\",\"valor\":\"perro\",\"evidencia\":\"\\\"especie\\\":\\\"perro\\\"\"},{\"campo\":\"etapa\",\"valor\":\"cachorro\",\"evidencia\":\"\\\"etapa\\\":\\\"cachorro\\\"\"},{\"campo\":\"tamano\",\"valor\":\"pequeño\",\"evidencia\":\"\\\"PUPPY RAZA PEQ\\\"\"}]},{\"id\":\"e442752c-2c26-43ce-9d2f-7e05a597e615\",\"evidencia\":[\"\\\"PRO PLAN PUPPY SMALL\\\"\",\"\\\"PUPPY SMALL\\\"\",\"\\\"perro\\\"\",\"\\\"cachorro\\\"\"],\"atributos\":[{\"campo\":\"especie\",\"valor\":\"perro\",\"evidencia\":\"\\\"especie\\\":\\\"perro\\\"\"},{\"campo\":\"etapa\",\"valor\":\"cachorro\",\"evidencia\":\"\\\"etapa\\\":\\\"cachorro\\\"\"},{\"campo\":\"tamano\",\"valor\":\"pequeño\",\"evidencia\":\"\\\"PUPPY SMALL\\\"\"}]},{\"id\":\"0cd6f7c2-0186-4bc3-ae7e-88d8fcd47c52\",\"evidencia\":[\"\\\"AGILITY PEQ CACH\\\"\",\"\\\"PEQ\\\"\",\"\\\"perro\\\"\",\"\\\"cachorro\\\"\"],\"atributos\":[{\"campo\":\"especie\",\"valor\":\"perro\",\"evidencia\":\"\\\"especie\\\":\\\"perro\\\"\"},{\"campo\":\"etapa\",\"valor\":\"cachorro\",\"evidencia\":\"\\\"etapa\\\":\\\"cachorro\\\"\"},{\"campo\":\"tamano\",\"valor\":\"pequeño\",\"evidencia\":\"\\\"PEQ\\\"\"}]}],\"preguntaRecomendacion\":null}",
+      "usage": {
+        "prompt_tokens": 4818,
+        "completion_tokens": 434,
+        "total_tokens": 5252,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 1300,
+      "status": 200,
+      "model": "gpt-5.4-mini-2026-03-17",
+      "output": "Claro, para cachorro de raza pequeña tienes estas opciones:\n\n- BR DOG PUPPY RAZA PEQ 1kg: $25.800 — concentrado, perro, cachorro.\n- PRO PLAN PUPPY SMALL 1 kg: $59.800 — concentrado, perro, cachorro.\n- AGILITY PEQ CACH 1.5kg: $36.000 — concentrado, perro, cachorro.\n\nLos precios están registrados; las existencias están por confirmar.\n\n¿Prefieres revisar una opción de 1 kg o de 1.5 kg?",
+      "usage": {
+        "prompt_tokens": 484,
+        "completion_tokens": 119,
+        "total_tokens": 603,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 6835,
+      "status": 200,
+      "model": "gpt-5.4-2026-03-05",
+      "output": "{\n  \"intencion\": \"recomendacion\",\n  \"accion\": \"consultar\",\n  \"confianza\": 0.97,\n  \"compraContextual\": null,\n  \"solicitudesProductoDetectadas\": 1,\n  \"consultaCatalogo\": {\n    \"necesaria\": true,\n    \"consulta\": \"premios snack para perro adulto por menos de 20000 pesos\",\n    \"tipo\": \"necesidad\",\n    \"presupuestoMaximo\": 20000\n  },\n  \"producto\": {\n    \"accion\": \"consultar\",\n    \"marca\": null,\n    \"referencia\": null,\n    \"linea\": null,\n    \"textoVisible\": \"premios para mi perro adulto\",\n    \"categoria\": \"snack\",\n    \"subcategoria\": null,\n    \"especie\": \"perro\",\n    \"etapa\": \"adulto\",\n    \"tamano\": null,\n    \"sabores\": [],\n    \"condiciones\": [],\n    \"presentacion\": null,\n    \"cantidad\": null,\n    \"intencionPresentaciones\": null,\n    \"mascotas\": []\n  },\n  \"productos\": [\n    {\n      \"accion\": \"consultar\",\n      \"marca\": null,\n      \"referencia\": null,\n      \"linea\": null,\n      \"textoVisible\": \"premios para mi perro adulto\",\n      \"categoria\": \"snack\",\n      \"subcategoria\": null,\n      \"especie\": \"perro\",\n      \"etapa\": \"adulto\",\n      \"tamano\": null,\n      \"sabores\": [],\n      \"condiciones\": [],\n      \"presentacion\": null,\n      \"cantidad\": null,\n      \"intencionPresentaciones\": null,\n      \"mascotas\": [],\n      \"mencionOriginal\": \"premios para mi perro adulto\"\n    }\n  ],\n  \"entrega\": {\n    \"tipo\": null,\n    \"direccion\": null,\n    \"direccionCompleta\": null,\n    \"sector\": null,\n    \"metodoPago\": null,\n    \"sede\": null\n  },\n  \"facturacion\": {\n    \"electronica\": null,\n    \"evidencia\": null\n  },\n  \"datosCliente\": {\n    \"nombre\": null,\n    \"cedula\": null,\n    \"correo\": null,\n    \"celular\": null\n  },\n  \"carrito\": {\n    \"operacion\": null,\n    \"cantidadObjetivo\": null,\n    \"cantidadDelta\": null,\n    \"aplicaAlUltimoProducto\": null,\n    \"razon\": null\n  },\n  \"faltanteSugerido\": null,\n  \"derivacionHumana\": {\n    \"necesaria\": false,\n    \"motivo\": null\n  },\n  \"solicitudComercialIndependiente\": true,\n  \"seguimientoProducto\": \"nueva\",\n  \"respuestaConversacional\": null\n}",
+      "usage": {
+        "prompt_tokens": 6427,
+        "completion_tokens": 612,
+        "total_tokens": 7039,
+        "prompt_tokens_details": {
+          "cached_tokens": 5888,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/catalog_references",
+      "ms": 301,
+      "status": 200
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 4121,
+      "status": 200,
+      "model": "gpt-5.4-mini-2026-03-17",
+      "output": "{\"recomendaciones\":[{\"id\":\"39db8b87-5eaa-4034-8772-338cb0672bb2\",\"evidencia\":[\"\\\"perro\\\"\",\"\\\"premio\\\"\",\"\\\"GOLOSINAS X100\\\"\"],\"atributos\":[{\"campo\":\"especie\",\"valor\":\"perro\",\"evidencia\":\"\\\"especie\\\":\\\"perro\\\"\"},{\"campo\":\"etapa\",\"valor\":\"adulto\",\"evidencia\":\"No se declara etapa; no se puede afirmar compatibilidad específica con adulto\"},{\"campo\":\"tamano\",\"valor\":null,\"evidencia\":\"No aplica: no se exige tamaño\"},{\"campo\":\"sabores\",\"valor\":[],\"evidencia\":\"No se declara sabor\"},{\"campo\":\"condiciones\",\"valor\":[],\"evidencia\":\"No se declaran condiciones\"},{\"campo\":\"finalidad\",\"valor\":\"snack/premio\",\"evidencia\":\"\\\"categoria\\\":\\\"snack\\\",\\\"subcategoria\\\":\\\"premio\\\"\"}]},{\"id\":\"0fbb9839-f4e1-4b92-ab6a-4cd7e22c8c3c\",\"evidencia\":[\"\\\"perro\\\"\",\"\\\"premio\\\"\",\"\\\"HUESO 2-3\\\"\"],\"atributos\":[{\"campo\":\"especie\",\"valor\":\"perro\",\"evidencia\":\"\\\"especie\\\":\\\"perro\\\"\"},{\"campo\":\"etapa\",\"valor\":\"adulto\",\"evidencia\":\"No se declara etapa; no se puede afirmar compatibilidad específica con adulto\"},{\"campo\":\"tamano\",\"valor\":null,\"evidencia\":\"No aplica: no se exige tamaño\"},{\"campo\":\"sabores\",\"valor\":[],\"evidencia\":\"No se declara sabor\"},{\"campo\":\"condiciones\",\"valor\":[],\"evidencia\":\"No se declaran condiciones\"},{\"campo\":\"finalidad\",\"valor\":\"snack/premio\",\"evidencia\":\"\\\"categoria\\\":\\\"snack\\\",\\\"subcategoria\\\":\\\"premio\\\"\"}]},{\"id\":\"a6efe5ce-1788-45a2-88e0-3c0cb120b603\",\"evidencia\":[\"\\\"perro\\\"\",\"\\\"premio\\\"\",\"\\\"GOLOSINAS 1500\\\"\"],\"atributos\":[{\"campo\":\"especie\",\"valor\":\"perro\",\"evidencia\":\"\\\"especie\\\":\\\"perro\\\"\"},{\"campo\":\"etapa\",\"valor\":\"adulto\",\"evidencia\":\"No se declara etapa; no se puede afirmar compatibilidad específica con adulto\"},{\"campo\":\"tamano\",\"valor\":null,\"evidencia\":\"No aplica: no se exige tamaño\"},{\"campo\":\"sabores\",\"valor\":[],\"evidencia\":\"No se declara sabor\"},{\"campo\":\"condiciones\",\"valor\":[],\"evidencia\":\"No se declaran condiciones\"},{\"campo\":\"finalidad\",\"valor\":\"snack/premio\",\"evidencia\":\"\\\"categoria\\\":\\\"snack\\\",\\\"subcategoria\\\":\\\"premio\\\"\"}]}],\"preguntaRecomendacion\":null}",
+      "usage": {
+        "prompt_tokens": 6526,
+        "completion_tokens": 611,
+        "total_tokens": 7137,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 1261,
+      "status": 200,
+      "model": "gpt-5.4-mini-2026-03-17",
+      "output": "Claro, para tu perro adulto y con presupuesto de hasta $20.000, estas opciones te sirven:\n\n- GOLOSINAS x100: $100 — premio, perro.\n- HUESO 2-3 unidad: $1.200 — premio, perro.\n- GOLOSINAS 1500 unidad: $1.500 — premio, perro.\n\nLos precios están registrados; las existencias están por confirmar.\n\n¿Prefieres premios pequeños o tipo hueso?",
+      "usage": {
+        "prompt_tokens": 467,
+        "completion_tokens": 99,
+        "total_tokens": 566,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 4273,
+      "status": 200,
+      "model": "gpt-5.4-2026-03-05",
+      "output": "{\"intencion\":\"recomendacion\",\"accion\":\"consultar\",\"confianza\":0.95,\"compraContextual\":null,\"solicitudesProductoDetectadas\":1,\"consultaCatalogo\":{\"necesaria\":true,\"consulta\":\"juguete para gato\",\"tipo\":\"necesidad\",\"presupuestoMaximo\":null},\"producto\":{\"accion\":\"consultar\",\"marca\":null,\"referencia\":null,\"linea\":null,\"textoVisible\":\"juguete para mi gato\",\"categoria\":\"juguete\",\"subcategoria\":null,\"especie\":\"gato\",\"etapa\":null,\"tamano\":null,\"sabores\":[],\"condiciones\":[],\"presentacion\":null,\"cantidad\":1,\"intencionPresentaciones\":null,\"mascotas\":[]},\"productos\":[{\"accion\":\"consultar\",\"marca\":null,\"referencia\":null,\"linea\":null,\"textoVisible\":\"juguete para mi gato\",\"categoria\":\"juguete\",\"subcategoria\":null,\"especie\":\"gato\",\"etapa\":null,\"tamano\":null,\"sabores\":[],\"condiciones\":[],\"presentacion\":null,\"cantidad\":1,\"intencionPresentaciones\":null,\"mascotas\":[],\"mencionOriginal\":\"un juguete para mi gato\"}],\"entrega\":{\"tipo\":null,\"direccion\":null,\"direccionCompleta\":null,\"sector\":null,\"metodoPago\":null,\"sede\":null},\"facturacion\":{\"electronica\":null,\"evidencia\":null},\"datosCliente\":{\"nombre\":null,\"cedula\":null,\"correo\":null,\"celular\":null},\"carrito\":{\"operacion\":null,\"cantidadObjetivo\":null,\"cantidadDelta\":null,\"aplicaAlUltimoProducto\":null,\"razon\":null},\"faltanteSugerido\":null,\"derivacionHumana\":{\"necesaria\":false,\"motivo\":null},\"solicitudComercialIndependiente\":true,\"seguimientoProducto\":\"nueva\",\"respuestaConversacional\":null}",
+      "usage": {
+        "prompt_tokens": 6428,
+        "completion_tokens": 412,
+        "total_tokens": 6840,
+        "prompt_tokens_details": {
+          "cached_tokens": 5888,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/catalog_references",
+      "ms": 295,
+      "status": 200
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 1880,
+      "status": 200,
+      "model": "gpt-5.4-mini-2026-03-17",
+      "output": "{\"recomendaciones\":[{\"id\":\"a9c745dd-5ad5-443b-a7e1-dde3c3317b4a\",\"evidencia\":[\"\\\"RASCADOR\\\"\",\"\\\"gato\\\"\",\"\\\"juguete\\\"\"],\"atributos\":[{\"campo\":\"especie\",\"valor\":\"gato\",\"evidencia\":\"\\\"gato\\\"\"},{\"campo\":\"categoria\",\"valor\":\"juguete\",\"evidencia\":\"\\\"juguete\\\"\"}]},{\"id\":\"8cb303f6-ecf2-4d2d-8c8f-8cc2199e605b\",\"evidencia\":[\"\\\"RASCADOR REDONDO GATOS\\\"\",\"\\\"gato\\\"\",\"\\\"juguete\\\"\"],\"atributos\":[{\"campo\":\"especie\",\"valor\":\"gato\",\"evidencia\":\"\\\"gato\\\"\"},{\"campo\":\"categoria\",\"valor\":\"juguete\",\"evidencia\":\"\\\"juguete\\\"\"}]},{\"id\":\"03225e06-ebec-485b-bbbf-6362c563bbbb\",\"evidencia\":[\"\\\"RASCADOR ESQUINERO\\\"\",\"\\\"gato\\\"\",\"\\\"juguete\\\"\"],\"atributos\":[{\"campo\":\"especie\",\"valor\":\"gato\",\"evidencia\":\"\\\"gato\\\"\"},{\"campo\":\"categoria\",\"valor\":\"juguete\",\"evidencia\":\"\\\"juguete\\\"\"}]}],\"preguntaRecomendacion\":null}",
+      "usage": {
+        "prompt_tokens": 1992,
+        "completion_tokens": 313,
+        "total_tokens": 2305,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 1541,
+      "status": 200,
+      "model": "gpt-5.4-mini-2026-03-17",
+      "output": "Claro, para gato te puedo sugerir estas opciones:\n\n- RASCADOR unidad: $16.000 — juguete, gato.\n- RASCADOR REDONDO GATOS unidad: $22.000 — juguete, gato.\n- RASCADOR ESQUINERO unidad: $58.000 — juguete, gato.\n\nLos precios están registrados; las existencias están por confirmar.\n\nSi querés, te ayudo a elegir según el formato que prefieras.",
+      "usage": {
+        "prompt_tokens": 463,
+        "completion_tokens": 100,
+        "total_tokens": 563,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    }
+  ]
+}

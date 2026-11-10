@@ -1,0 +1,1529 @@
+{
+  "capturedAt": "2026-10-29T20:59:42.387Z",
+  "mode": "real models and read-only Supabase; in-memory state; not WhatsApp E2E",
+  "label": "final-scoped",
+  "rows": [
+    {
+      "case": "unresolved-tone",
+      "text": "Solo consultar: tienen marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos?",
+      "response": "Ahora mismo no puedo confirmar esa referencia exacta de ZetaPruebaQ9, ZQ17 en 4 kg. Si quieres, puedo ayudarte a revisar otras opciones similares, pero solo si te parece bien.\n\nPedido:\n- 1 x BR CAT SALMON 1kg: $30.500\nTotal: $30.500",
+      "ms": 22929,
+      "decisions": [
+        {
+          "router": true,
+          "decision": {
+            "recomendaciones": [],
+            "preguntaRecomendacion": null,
+            "solicitudComercialIndependiente": true,
+            "derivacionHumana": {
+              "necesaria": false,
+              "motivo": null
+            },
+            "seguimientoProducto": "nueva",
+            "recursosAclaracion": {},
+            "resumenMemoria": null,
+            "continuarFlujo": false,
+            "compraContextual": null,
+            "solicitudesProductoDetectadas": 1,
+            "consultaCatalogo": {
+              "tipo": "referencia",
+              "presupuestoMaximo": null,
+              "necesaria": true,
+              "consulta": "ZetaPruebaQ9 ZQ17 4 kilos"
+            },
+            "respuestaConversacional": null,
+            "intencion": "consulta_producto",
+            "accion": "consultar",
+            "confianza": 0.98,
+            "producto": {
+              "accion": "consultar",
+              "marca": "ZetaPruebaQ9",
+              "referencia": "ZQ17",
+              "linea": null,
+              "textoVisible": "marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos",
+              "mencionOriginal": "marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos?",
+              "categoria": null,
+              "subcategoria": null,
+              "especie": null,
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": "4 kilos",
+              "intencionPresentaciones": "especifica",
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": 1
+            },
+            "productos": [
+              {
+                "accion": "consultar",
+                "marca": "ZetaPruebaQ9",
+                "referencia": "ZQ17",
+                "linea": null,
+                "textoVisible": "marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos",
+                "mencionOriginal": "marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos?",
+                "categoria": null,
+                "subcategoria": null,
+                "especie": null,
+                "etapa": null,
+                "tamano": null,
+                "sabores": [],
+                "presentacion": "4 kilos",
+                "intencionPresentaciones": "especifica",
+                "mascotas": [],
+                "condiciones": [],
+                "cantidad": 1
+              }
+            ],
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            },
+            "facturacion": {
+              "electronica": null,
+              "evidencia": null
+            },
+            "datosCliente": {
+              "nombre": null,
+              "cedula": null,
+              "correo": null,
+              "celular": null
+            },
+            "carrito": {
+              "operacion": null,
+              "cantidadObjetivo": null,
+              "cantidadDelta": null,
+              "aplicaAlUltimoProducto": null,
+              "razon": null
+            },
+            "faltanteSugerido": null
+          }
+        },
+        {
+          "router": false,
+          "decision": {
+            "recomendaciones": [],
+            "preguntaRecomendacion": null,
+            "solicitudComercialIndependiente": false,
+            "derivacionHumana": {
+              "necesaria": false,
+              "motivo": null
+            },
+            "seguimientoProducto": null,
+            "recursosAclaracion": {
+              "fotoDisponible": null,
+              "masDatosDisponibles": null
+            },
+            "resumenMemoria": null,
+            "continuarFlujo": false,
+            "compraContextual": null,
+            "solicitudesProductoDetectadas": null,
+            "consultaCatalogo": {
+              "tipo": null,
+              "presupuestoMaximo": null,
+              "necesaria": null,
+              "consulta": null
+            },
+            "respuestaConversacional": null,
+            "intencion": "consulta_producto",
+            "accion": "consultar",
+            "confianza": 0.86,
+            "producto": {
+              "accion": "consultar",
+              "marca": "ZetaPruebaQ9",
+              "referencia": "ZQ17",
+              "linea": null,
+              "textoVisible": "marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos",
+              "mencionOriginal": null,
+              "categoria": null,
+              "subcategoria": null,
+              "especie": null,
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": "4 kilos",
+              "intencionPresentaciones": null,
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": null
+            },
+            "productos": [],
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            },
+            "facturacion": {
+              "electronica": null,
+              "evidencia": null
+            },
+            "datosCliente": {
+              "nombre": null,
+              "cedula": null,
+              "correo": null,
+              "celular": null
+            },
+            "carrito": {
+              "operacion": null,
+              "cantidadObjetivo": null,
+              "cantidadDelta": null,
+              "aplicaAlUltimoProducto": null,
+              "razon": null
+            },
+            "faltanteSugerido": null
+          }
+        }
+      ],
+      "requests": [
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 12683,
+          "status": 200,
+          "model": "gpt-5.4-2026-03-05",
+          "output": "{\n  \"intencion\": \"consulta_producto\",\n  \"accion\": \"consultar\",\n  \"confianza\": 0.98,\n  \"compraContextual\": null,\n  \"solicitudesProductoDetectadas\": 1,\n  \"producto\": {\n    \"accion\": \"consultar\",\n    \"marca\": \"ZetaPruebaQ9\",\n    \"referencia\": \"ZQ17\",\n    \"linea\": null,\n    \"textoVisible\": \"marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos\",\n    \"categoria\": null,\n    \"subcategoria\": null,\n    \"especie\": null,\n    \"etapa\": null,\n    \"tamano\": null,\n    \"sabores\": [],\n    \"condiciones\": [],\n    \"presentacion\": \"4 kilos\",\n    \"cantidad\": 1,\n    \"intencionPresentaciones\": \"especifica\",\n    \"mascotas\": [],\n    \"mencionOriginal\": \"marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos?\"\n  },\n  \"productos\": [\n    {\n      \"accion\": \"consultar\",\n      \"marca\": \"ZetaPruebaQ9\",\n      \"referencia\": \"ZQ17\",\n      \"linea\": null,\n      \"textoVisible\": \"marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos\",\n      \"categoria\": null,\n      \"subcategoria\": null,\n      \"especie\": null,\n      \"etapa\": null,\n      \"tamano\": null,\n      \"sabores\": [],\n      \"condiciones\": [],\n      \"presentacion\": \"4 kilos\",\n      \"cantidad\": 1,\n      \"intencionPresentaciones\": \"especifica\",\n      \"mascotas\": [],\n      \"mencionOriginal\": \"marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos?\"\n    }\n  ],\n  \"entrega\": {\n    \"tipo\": null,\n    \"direccion\": null,\n    \"direccionCompleta\": null,\n    \"sector\": null,\n    \"metodoPago\": null,\n    \"sede\": null\n  },\n  \"facturacion\": {\n    \"electronica\": null,\n    \"evidencia\": null\n  },\n  \"datosCliente\": {\n    \"nombre\": null,\n    \"cedula\": null,\n    \"correo\": null,\n    \"celular\": null\n  },\n  \"carrito\": {\n    \"operacion\": null,\n    \"cantidadObjetivo\": null,\n    \"cantidadDelta\": null,\n    \"aplicaAlUltimoProducto\": null,\n    \"razon\": null\n  },\n  \"faltanteSugerido\": null,\n  \"recursosAclaracion\": {\n    \"fotoDisponible\": null,\n    \"masDatosDisponibles\": null\n  },\n  \"consultaCatalogo\": {\n    \"necesaria\": true,\n    \"consulta\": \"ZetaPruebaQ9 ZQ17 4 kilos\",\n    \"tipo\": \"referencia\",\n    \"presupuestoMaximo\": null\n  },\n  \"derivacionHumana\": {\n    \"necesaria\": false,\n    \"motivo\": null\n  },\n  \"solicitudComercialIndependiente\": true,\n  \"seguimientoProducto\": \"nueva\",\n  \"respuestaConversacional\": null\n}",
+          "usage": {
+            "prompt_tokens": 6562,
+            "completion_tokens": 702,
+            "total_tokens": 7264,
+            "prompt_tokens_details": {
+              "cached_tokens": 2816,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "supabase",
+          "method": "POST",
+          "path": "/rest/v1/rpc/search_catalog_products",
+          "ms": 489,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "POST",
+          "path": "/rest/v1/rpc/search_catalog_products",
+          "ms": 375,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "POST",
+          "path": "/rest/v1/rpc/search_catalog_products",
+          "ms": 813,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "POST",
+          "path": "/rest/v1/rpc/search_catalog_products",
+          "ms": 415,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "GET",
+          "path": "/rest/v1/training_examples",
+          "ms": 200,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "GET",
+          "path": "/rest/v1/training_examples",
+          "ms": 260,
+          "status": 200
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 4029,
+          "status": 200,
+          "model": "gpt-5.2-2025-12-11",
+          "output": "{\"intencion\":\"consulta_producto\",\"accion\":\"consultar\",\"confianza\":0.86,\"compraContextual\":false,\"solicitudesProductoDetectadas\":[\"marca ZetaPruebaQ9 referencia ZQ17 4 kilos\"],\"producto\":{\"accion\":\"consultar\",\"marca\":\"ZetaPruebaQ9\",\"referencia\":\"ZQ17\",\"linea\":null,\"textoVisible\":\"marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos\",\"categoria\":null,\"subcategoria\":null,\"especie\":null,\"etapa\":null,\"tamano\":null,\"sabores\":[],\"condiciones\":[],\"presentacion\":\"4 kilos\",\"cantidad\":null,\"intencionPresentaciones\":\"exacta\",\"mascotas\":[]},\"productos\":[],\"entrega\":{\"tipo\":null,\"direccion\":null,\"direccionCompleta\":null,\"sector\":null,\"metodoPago\":null,\"sede\":null},\"facturacion\":{\"electronica\":null,\"evidencia\":null},\"datosCliente\":{\"nombre\":null,\"cedula\":null,\"correo\":null,\"celular\":null},\"carrito\":{\"operacion\":null,\"cantidadObjetivo\":null,\"cantidadDelta\":null,\"aplicaAlUltimoProducto\":null,\"razon\":null},\"faltanteSugerido\":null}",
+          "usage": {
+            "prompt_tokens": 2806,
+            "completion_tokens": 270,
+            "total_tokens": 3076,
+            "prompt_tokens_details": {
+              "cached_tokens": 2688,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 1252,
+          "status": 200,
+          "model": "gpt-5.4-mini-2026-03-17",
+          "output": "{\"respuesta\":\"Ahora mismo no puedo confirmarte esa referencia exacta de ZetaPruebaQ9, ZQ17 en 4 kg. Si quieres, puedo revisar otra forma de identificarla con un dato más o con una foto.\",\"siguientePaso\":\"pedir_dato\",\"datoSolicitado\":\"marca\"}",
+          "usage": {
+            "prompt_tokens": 578,
+            "completion_tokens": 69,
+            "total_tokens": 647,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 2336,
+          "status": 200,
+          "model": "gpt-5.4-mini-2026-03-17",
+          "output": "{\"respuesta\":\"Ahora mismo no puedo confirmar esa referencia exacta de ZetaPruebaQ9, ZQ17 en 4 kg. Si quieres, puedo ayudarte a revisar otras opciones similares, pero solo si te parece bien.\",\"siguientePaso\":\"ofrecer_busqueda\",\"datoSolicitado\":null}",
+          "usage": {
+            "prompt_tokens": 707,
+            "completion_tokens": 67,
+            "total_tokens": 774,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        }
+      ],
+      "cartUnchanged": true,
+      "state": {
+        "criterios": {},
+        "atencionHumana": null,
+        "ultimaConsultaProducto": {
+          "terminos": [
+            "zetapruebaq9",
+            "zq17"
+          ],
+          "etiqueta": "zetapruebaq9 zq17",
+          "presentacion": "4kg",
+          "fuente": "texto",
+          "nivel": "baja",
+          "razon": "sin_coincidencia_confiable",
+          "aclaracion": null,
+          "creadoEn": "2026-10-29T21:00:01.740Z",
+          "solicitudOriginal": {
+            "intencion": "consulta_producto",
+            "accion": "consultar",
+            "recursosAclaracion": {},
+            "producto": {
+              "accion": "consultar",
+              "marca": "ZetaPruebaQ9",
+              "referencia": "ZQ17",
+              "linea": null,
+              "textoVisible": "marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos",
+              "mencionOriginal": null,
+              "categoria": null,
+              "subcategoria": null,
+              "especie": null,
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": "4 kilos",
+              "intencionPresentaciones": "especifica",
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": 1,
+              "pesoTextoOriginal": "4kg"
+            },
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            }
+          },
+          "sinCoincidenciaInformada": true
+        }
+      }
+    },
+    {
+      "case": "unresolved-tone",
+      "text": "No tengo foto ni más datos, ese es el nombre y son 4 kilos",
+      "response": "Entiendo, con ese nombre y 4 kg no me queda margen para afinar más. Si quieres, puedo revisar otras opciones parecidas con lo que ya me has dado; si prefieres, lo dejamos aquí.\n\nPedido:\n- 1 x BR CAT SALMON 1kg: $30.500\nTotal: $30.500",
+      "ms": 15131,
+      "decisions": [
+        {
+          "router": true,
+          "decision": {
+            "recomendaciones": [],
+            "preguntaRecomendacion": null,
+            "solicitudComercialIndependiente": true,
+            "derivacionHumana": {
+              "necesaria": false,
+              "motivo": null
+            },
+            "seguimientoProducto": "sin_resolver",
+            "recursosAclaracion": {
+              "fotoDisponible": false,
+              "masDatosDisponibles": false
+            },
+            "resumenMemoria": null,
+            "continuarFlujo": false,
+            "compraContextual": null,
+            "solicitudesProductoDetectadas": 1,
+            "consultaCatalogo": {
+              "tipo": "referencia",
+              "presupuestoMaximo": null,
+              "necesaria": true,
+              "consulta": "ZetaPruebaQ9 ZQ17 4 kilos"
+            },
+            "respuestaConversacional": null,
+            "intencion": "consulta_producto",
+            "accion": "consultar",
+            "confianza": 0.96,
+            "producto": {
+              "accion": "consultar",
+              "marca": "ZetaPruebaQ9",
+              "referencia": "ZQ17",
+              "linea": null,
+              "textoVisible": "nombre ZetaPruebaQ9 ZQ17 de 4 kilos",
+              "mencionOriginal": "ese es el nombre y son 4 kilos",
+              "categoria": null,
+              "subcategoria": null,
+              "especie": null,
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": "4 kilos",
+              "intencionPresentaciones": "especifica",
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": 1
+            },
+            "productos": [
+              {
+                "accion": "consultar",
+                "marca": "ZetaPruebaQ9",
+                "referencia": "ZQ17",
+                "linea": null,
+                "textoVisible": "nombre ZetaPruebaQ9 ZQ17 de 4 kilos",
+                "mencionOriginal": "ese es el nombre y son 4 kilos",
+                "categoria": null,
+                "subcategoria": null,
+                "especie": null,
+                "etapa": null,
+                "tamano": null,
+                "sabores": [],
+                "presentacion": "4 kilos",
+                "intencionPresentaciones": "especifica",
+                "mascotas": [],
+                "condiciones": [],
+                "cantidad": 1
+              }
+            ],
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            },
+            "facturacion": {
+              "electronica": null,
+              "evidencia": null
+            },
+            "datosCliente": {
+              "nombre": null,
+              "cedula": null,
+              "correo": null,
+              "celular": null
+            },
+            "carrito": {
+              "operacion": null,
+              "cantidadObjetivo": null,
+              "cantidadDelta": null,
+              "aplicaAlUltimoProducto": null,
+              "razon": null
+            },
+            "faltanteSugerido": null
+          }
+        },
+        {
+          "router": false,
+          "decision": {
+            "recomendaciones": [],
+            "preguntaRecomendacion": null,
+            "solicitudComercialIndependiente": false,
+            "derivacionHumana": {
+              "necesaria": false,
+              "motivo": null
+            },
+            "seguimientoProducto": null,
+            "recursosAclaracion": {
+              "fotoDisponible": null,
+              "masDatosDisponibles": null
+            },
+            "resumenMemoria": null,
+            "continuarFlujo": false,
+            "compraContextual": null,
+            "solicitudesProductoDetectadas": null,
+            "consultaCatalogo": {
+              "tipo": null,
+              "presupuestoMaximo": null,
+              "necesaria": null,
+              "consulta": null
+            },
+            "respuestaConversacional": null,
+            "intencion": "consulta_producto",
+            "accion": "consultar",
+            "confianza": 0.74,
+            "producto": {
+              "accion": "consultar",
+              "marca": "ZetaPruebaQ9",
+              "referencia": "ZQ17",
+              "linea": null,
+              "textoVisible": null,
+              "mencionOriginal": null,
+              "categoria": null,
+              "subcategoria": null,
+              "especie": null,
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": "4kg",
+              "intencionPresentaciones": "especifica",
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": null
+            },
+            "productos": [],
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            },
+            "facturacion": {
+              "electronica": null,
+              "evidencia": null
+            },
+            "datosCliente": {
+              "nombre": null,
+              "cedula": null,
+              "correo": null,
+              "celular": null
+            },
+            "carrito": {
+              "operacion": null,
+              "cantidadObjetivo": null,
+              "cantidadDelta": null,
+              "aplicaAlUltimoProducto": null,
+              "razon": null
+            },
+            "faltanteSugerido": null
+          }
+        }
+      ],
+      "requests": [
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 6528,
+          "status": 200,
+          "model": "gpt-5.4-2026-03-05",
+          "output": "{\n  \"intencion\": \"consulta_producto\",\n  \"accion\": \"consultar\",\n  \"confianza\": 0.96,\n  \"compraContextual\": null,\n  \"solicitudesProductoDetectadas\": 1,\n  \"producto\": {\n    \"accion\": \"consultar\",\n    \"marca\": \"ZetaPruebaQ9\",\n    \"referencia\": \"ZQ17\",\n    \"linea\": null,\n    \"textoVisible\": \"nombre ZetaPruebaQ9 ZQ17 de 4 kilos\",\n    \"categoria\": null,\n    \"subcategoria\": null,\n    \"especie\": null,\n    \"etapa\": null,\n    \"tamano\": null,\n    \"sabores\": [],\n    \"condiciones\": [],\n    \"presentacion\": \"4 kilos\",\n    \"cantidad\": 1,\n    \"intencionPresentaciones\": \"especifica\",\n    \"mascotas\": [],\n    \"mencionOriginal\": \"ese es el nombre y son 4 kilos\"\n  },\n  \"productos\": [\n    {\n      \"accion\": \"consultar\",\n      \"marca\": \"ZetaPruebaQ9\",\n      \"referencia\": \"ZQ17\",\n      \"linea\": null,\n      \"textoVisible\": \"nombre ZetaPruebaQ9 ZQ17 de 4 kilos\",\n      \"categoria\": null,\n      \"subcategoria\": null,\n      \"especie\": null,\n      \"etapa\": null,\n      \"tamano\": null,\n      \"sabores\": [],\n      \"condiciones\": [],\n      \"presentacion\": \"4 kilos\",\n      \"cantidad\": 1,\n      \"intencionPresentaciones\": \"especifica\",\n      \"mascotas\": [],\n      \"mencionOriginal\": \"ese es el nombre y son 4 kilos\"\n    }\n  ],\n  \"entrega\": {\n    \"tipo\": null,\n    \"direccion\": null,\n    \"direccionCompleta\": null,\n    \"sector\": null,\n    \"metodoPago\": null,\n    \"sede\": null\n  },\n  \"facturacion\": {\n    \"electronica\": null,\n    \"evidencia\": null\n  },\n  \"datosCliente\": {\n    \"nombre\": null,\n    \"cedula\": null,\n    \"correo\": null,\n    \"celular\": null\n  },\n  \"carrito\": {\n    \"operacion\": null,\n    \"cantidadObjetivo\": null,\n    \"cantidadDelta\": null,\n    \"aplicaAlUltimoProducto\": null,\n    \"razon\": null\n  },\n  \"faltanteSugerido\": null,\n  \"recursosAclaracion\": {\n    \"fotoDisponible\": false,\n    \"masDatosDisponibles\": false\n  },\n  \"consultaCatalogo\": {\n    \"necesaria\": true,\n    \"consulta\": \"ZetaPruebaQ9 ZQ17 4 kilos\",\n    \"tipo\": \"referencia\",\n    \"presupuestoMaximo\": null\n  },\n  \"derivacionHumana\": {\n    \"necesaria\": false,\n    \"motivo\": null\n  },\n  \"solicitudComercialIndependiente\": true,\n  \"seguimientoProducto\": \"sin_resolver\",\n  \"respuestaConversacional\": null\n}",
+          "usage": {
+            "prompt_tokens": 6927,
+            "completion_tokens": 689,
+            "total_tokens": 7616,
+            "prompt_tokens_details": {
+              "cached_tokens": 4864,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "supabase",
+          "method": "POST",
+          "path": "/rest/v1/rpc/search_catalog_products",
+          "ms": 506,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "POST",
+          "path": "/rest/v1/rpc/search_catalog_products",
+          "ms": 398,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "POST",
+          "path": "/rest/v1/rpc/search_catalog_products",
+          "ms": 463,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "POST",
+          "path": "/rest/v1/rpc/search_catalog_products",
+          "ms": 387,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "GET",
+          "path": "/rest/v1/catalog_brands",
+          "ms": 241,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "POST",
+          "path": "/rest/v1/rpc/search_catalog_products",
+          "ms": 409,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "GET",
+          "path": "/rest/v1/training_examples",
+          "ms": 269,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "GET",
+          "path": "/rest/v1/training_examples",
+          "ms": 364,
+          "status": 200
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 3410,
+          "status": 200,
+          "model": "gpt-5.2-2025-12-11",
+          "output": "{\"intencion\":\"consulta_producto\",\"accion\":\"consultar\",\"confianza\":0.74,\"compraContextual\":null,\"solicitudesProductoDetectadas\":null,\"producto\":{\"accion\":\"consultar\",\"marca\":\"ZetaPruebaQ9\",\"referencia\":\"ZQ17\",\"linea\":null,\"textoVisible\":null,\"categoria\":null,\"subcategoria\":null,\"especie\":null,\"etapa\":null,\"tamano\":null,\"sabores\":[],\"condiciones\":[],\"presentacion\":\"4kg\",\"cantidad\":null,\"intencionPresentaciones\":\"especifica\",\"mascotas\":[]},\"productos\":[],\"entrega\":{\"tipo\":null,\"direccion\":null,\"direccionCompleta\":null,\"sector\":null,\"metodoPago\":null,\"sede\":null},\"facturacion\":{\"electronica\":null,\"evidencia\":null},\"datosCliente\":{\"nombre\":null,\"cedula\":null,\"correo\":null,\"celular\":null},\"carrito\":{\"operacion\":null,\"cantidadObjetivo\":null,\"cantidadDelta\":null,\"aplicaAlUltimoProducto\":null,\"razon\":null},\"faltanteSugerido\":null}",
+          "usage": {
+            "prompt_tokens": 3160,
+            "completion_tokens": 243,
+            "total_tokens": 3403,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 2086,
+          "status": 200,
+          "model": "gpt-5.4-mini-2026-03-17",
+          "output": "{\"respuesta\":\"Entiendo, con ese nombre y 4 kg no me queda margen para afinar más. Si quieres, puedo revisar otras opciones parecidas con lo que ya me has dado; si prefieres, lo dejamos aquí.\",\"siguientePaso\":\"ofrecer_busqueda\",\"datoSolicitado\":null}",
+          "usage": {
+            "prompt_tokens": 575,
+            "completion_tokens": 68,
+            "total_tokens": 643,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        }
+      ],
+      "cartUnchanged": true,
+      "state": {
+        "criterios": {},
+        "atencionHumana": null,
+        "ultimaConsultaProducto": {
+          "terminos": [
+            "ese",
+            "nombre",
+            "son"
+          ],
+          "etiqueta": "ese nombre son",
+          "presentacion": "4kg",
+          "fuente": "texto",
+          "nivel": "baja",
+          "razon": "sin_coincidencia_confiable",
+          "aclaracion": null,
+          "creadoEn": "2026-10-29T21:00:18.378Z",
+          "solicitudOriginal": {
+            "intencion": "consulta_producto",
+            "accion": "consultar",
+            "recursosAclaracion": {
+              "fotoDisponible": false,
+              "masDatosDisponibles": false
+            },
+            "producto": {
+              "accion": "consultar",
+              "marca": null,
+              "referencia": null,
+              "linea": null,
+              "textoVisible": null,
+              "mencionOriginal": null,
+              "categoria": null,
+              "subcategoria": null,
+              "especie": null,
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": "4kg",
+              "intencionPresentaciones": "especifica",
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": 1,
+              "pesoTextoOriginal": "4kg"
+            },
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            }
+          },
+          "sinCoincidenciaInformada": true
+        }
+      }
+    },
+    {
+      "case": "unresolved-paraphrase",
+      "text": "Me puedes mirar el ZQ17 de ZetaPruebaQ9? Es bolsa de cuatro kilos, no tengo foto",
+      "response": "Gracias, tengo anotado que buscas el ZQ17 de ZetaPruebaQ9 en bolsa de 4 kg. Con esos datos, no puedo asegurarte cuál es exactamente. Si quieres, puedo revisar otras opciones con ese mismo nombre y formato; dime si te interesa.\n\nPedido:\n- 1 x BR CAT SALMON 1kg: $30.500\nTotal: $30.500",
+      "ms": 16270,
+      "decisions": [
+        {
+          "router": true,
+          "decision": {
+            "recomendaciones": [],
+            "preguntaRecomendacion": null,
+            "solicitudComercialIndependiente": true,
+            "derivacionHumana": {
+              "necesaria": false,
+              "motivo": null
+            },
+            "seguimientoProducto": "nueva",
+            "recursosAclaracion": {
+              "fotoDisponible": false
+            },
+            "resumenMemoria": null,
+            "continuarFlujo": false,
+            "compraContextual": null,
+            "solicitudesProductoDetectadas": 1,
+            "consultaCatalogo": {
+              "tipo": "referencia",
+              "presupuestoMaximo": null,
+              "necesaria": true,
+              "consulta": "ZQ17 ZetaPruebaQ9 bolsa 4 kilos"
+            },
+            "respuestaConversacional": null,
+            "intencion": "consulta_producto",
+            "accion": "consultar",
+            "confianza": 0.95,
+            "producto": {
+              "accion": "consultar",
+              "marca": "ZetaPruebaQ9",
+              "referencia": "ZQ17",
+              "linea": null,
+              "textoVisible": "ZQ17 de ZetaPruebaQ9 bolsa de cuatro kilos",
+              "mencionOriginal": "el ZQ17 de ZetaPruebaQ9? Es bolsa de cuatro kilos",
+              "categoria": null,
+              "subcategoria": null,
+              "especie": null,
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": "cuatro kilos",
+              "intencionPresentaciones": "especifica",
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": 1
+            },
+            "productos": [
+              {
+                "accion": "consultar",
+                "marca": "ZetaPruebaQ9",
+                "referencia": "ZQ17",
+                "linea": null,
+                "textoVisible": "ZQ17 de ZetaPruebaQ9 bolsa de cuatro kilos",
+                "mencionOriginal": "el ZQ17 de ZetaPruebaQ9? Es bolsa de cuatro kilos",
+                "categoria": null,
+                "subcategoria": null,
+                "especie": null,
+                "etapa": null,
+                "tamano": null,
+                "sabores": [],
+                "presentacion": "cuatro kilos",
+                "intencionPresentaciones": "especifica",
+                "mascotas": [],
+                "condiciones": [],
+                "cantidad": 1
+              }
+            ],
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            },
+            "facturacion": {
+              "electronica": null,
+              "evidencia": null
+            },
+            "datosCliente": {
+              "nombre": null,
+              "cedula": null,
+              "correo": null,
+              "celular": null
+            },
+            "carrito": {
+              "operacion": null,
+              "cantidadObjetivo": null,
+              "cantidadDelta": null,
+              "aplicaAlUltimoProducto": null,
+              "razon": null
+            },
+            "faltanteSugerido": null
+          }
+        },
+        {
+          "router": false,
+          "decision": {
+            "recomendaciones": [],
+            "preguntaRecomendacion": null,
+            "solicitudComercialIndependiente": false,
+            "derivacionHumana": {
+              "necesaria": false,
+              "motivo": null
+            },
+            "seguimientoProducto": null,
+            "recursosAclaracion": {
+              "fotoDisponible": null,
+              "masDatosDisponibles": null
+            },
+            "resumenMemoria": null,
+            "continuarFlujo": false,
+            "compraContextual": null,
+            "solicitudesProductoDetectadas": null,
+            "consultaCatalogo": {
+              "tipo": null,
+              "presupuestoMaximo": null,
+              "necesaria": null,
+              "consulta": null
+            },
+            "respuestaConversacional": null,
+            "intencion": "consulta_producto",
+            "accion": "consultar",
+            "confianza": 0.78,
+            "producto": {
+              "accion": "consultar",
+              "marca": "ZetaPruebaQ9",
+              "referencia": "ZQ17",
+              "linea": null,
+              "textoVisible": "ZQ17 de ZetaPruebaQ9 bolsa de cuatro kilos",
+              "mencionOriginal": null,
+              "categoria": null,
+              "subcategoria": null,
+              "especie": null,
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": "4kg",
+              "intencionPresentaciones": null,
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": null
+            },
+            "productos": [],
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            },
+            "facturacion": {
+              "electronica": null,
+              "evidencia": null
+            },
+            "datosCliente": {
+              "nombre": null,
+              "cedula": null,
+              "correo": null,
+              "celular": null
+            },
+            "carrito": {
+              "operacion": null,
+              "cantidadObjetivo": null,
+              "cantidadDelta": null,
+              "aplicaAlUltimoProducto": null,
+              "razon": null
+            },
+            "faltanteSugerido": null
+          }
+        }
+      ],
+      "requests": [
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 7871,
+          "status": 200,
+          "model": "gpt-5.4-2026-03-05",
+          "output": "{\n  \"intencion\": \"consulta_producto\",\n  \"accion\": \"consultar\",\n  \"confianza\": 0.95,\n  \"compraContextual\": null,\n  \"solicitudesProductoDetectadas\": 1,\n  \"producto\": {\n    \"accion\": \"consultar\",\n    \"marca\": \"ZetaPruebaQ9\",\n    \"referencia\": \"ZQ17\",\n    \"linea\": null,\n    \"textoVisible\": \"ZQ17 de ZetaPruebaQ9 bolsa de cuatro kilos\",\n    \"categoria\": null,\n    \"subcategoria\": null,\n    \"especie\": null,\n    \"etapa\": null,\n    \"tamano\": null,\n    \"sabores\": [],\n    \"condiciones\": [],\n    \"presentacion\": \"cuatro kilos\",\n    \"cantidad\": 1,\n    \"intencionPresentaciones\": \"especifica\",\n    \"mascotas\": [],\n    \"mencionOriginal\": \"el ZQ17 de ZetaPruebaQ9? Es bolsa de cuatro kilos\"\n  },\n  \"productos\": [\n    {\n      \"accion\": \"consultar\",\n      \"marca\": \"ZetaPruebaQ9\",\n      \"referencia\": \"ZQ17\",\n      \"linea\": null,\n      \"textoVisible\": \"ZQ17 de ZetaPruebaQ9 bolsa de cuatro kilos\",\n      \"categoria\": null,\n      \"subcategoria\": null,\n      \"especie\": null,\n      \"etapa\": null,\n      \"tamano\": null,\n      \"sabores\": [],\n      \"condiciones\": [],\n      \"presentacion\": \"cuatro kilos\",\n      \"cantidad\": 1,\n      \"intencionPresentaciones\": \"especifica\",\n      \"mascotas\": [],\n      \"mencionOriginal\": \"el ZQ17 de ZetaPruebaQ9? Es bolsa de cuatro kilos\"\n    }\n  ],\n  \"entrega\": {\n    \"tipo\": null,\n    \"direccion\": null,\n    \"direccionCompleta\": null,\n    \"sector\": null,\n    \"metodoPago\": null,\n    \"sede\": null\n  },\n  \"facturacion\": {\n    \"electronica\": null,\n    \"evidencia\": null\n  },\n  \"datosCliente\": {\n    \"nombre\": null,\n    \"cedula\": null,\n    \"correo\": null,\n    \"celular\": null\n  },\n  \"carrito\": {\n    \"operacion\": null,\n    \"cantidadObjetivo\": null,\n    \"cantidadDelta\": null,\n    \"aplicaAlUltimoProducto\": null,\n    \"razon\": null\n  },\n  \"faltanteSugerido\": null,\n  \"recursosAclaracion\": {\n    \"fotoDisponible\": false,\n    \"masDatosDisponibles\": null\n  },\n  \"consultaCatalogo\": {\n    \"necesaria\": true,\n    \"consulta\": \"ZQ17 ZetaPruebaQ9 bolsa 4 kilos\",\n    \"tipo\": \"referencia\",\n    \"presupuestoMaximo\": null\n  },\n  \"derivacionHumana\": {\n    \"necesaria\": false,\n    \"motivo\": null\n  },\n  \"solicitudComercialIndependiente\": true,\n  \"seguimientoProducto\": \"nueva\",\n  \"respuestaConversacional\": null\n}",
+          "usage": {
+            "prompt_tokens": 6566,
+            "completion_tokens": 707,
+            "total_tokens": 7273,
+            "prompt_tokens_details": {
+              "cached_tokens": 5888,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "supabase",
+          "method": "POST",
+          "path": "/rest/v1/rpc/search_catalog_products",
+          "ms": 546,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "POST",
+          "path": "/rest/v1/rpc/search_catalog_products",
+          "ms": 401,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "POST",
+          "path": "/rest/v1/rpc/search_catalog_products",
+          "ms": 497,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "POST",
+          "path": "/rest/v1/rpc/search_catalog_products",
+          "ms": 402,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "POST",
+          "path": "/rest/v1/rpc/search_catalog_products",
+          "ms": 455,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "GET",
+          "path": "/rest/v1/training_examples",
+          "ms": 196,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "GET",
+          "path": "/rest/v1/training_examples",
+          "ms": 275,
+          "status": 200
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 3941,
+          "status": 200,
+          "model": "gpt-5.2-2025-12-11",
+          "output": "{\"intencion\":\"consulta_producto\",\"accion\":\"consultar\",\"confianza\":0.78,\"compraContextual\":true,\"solicitudesProductoDetectadas\":[\"ZQ17 de ZetaPruebaQ9 bolsa 4 kilos\"],\"producto\":{\"accion\":\"consultar\",\"marca\":\"ZetaPruebaQ9\",\"referencia\":\"ZQ17\",\"linea\":null,\"textoVisible\":\"ZQ17 de ZetaPruebaQ9 bolsa de cuatro kilos\",\"categoria\":null,\"subcategoria\":null,\"especie\":null,\"etapa\":null,\"tamano\":null,\"sabores\":[],\"condiciones\":[],\"presentacion\":\"4kg\",\"cantidad\":null,\"intencionPresentaciones\":null,\"mascotas\":[]},\"productos\":[],\"entrega\":{\"tipo\":null,\"direccion\":null,\"direccionCompleta\":null,\"sector\":null,\"metodoPago\":null,\"sede\":null},\"facturacion\":{\"electronica\":null,\"evidencia\":null},\"datosCliente\":{\"nombre\":null,\"cedula\":null,\"correo\":null,\"celular\":null},\"carrito\":{\"operacion\":null,\"cantidadObjetivo\":null,\"cantidadDelta\":null,\"aplicaAlUltimoProducto\":null,\"razon\":null},\"faltanteSugerido\":null}",
+          "usage": {
+            "prompt_tokens": 2963,
+            "completion_tokens": 268,
+            "total_tokens": 3231,
+            "prompt_tokens_details": {
+              "cached_tokens": 2688,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 1503,
+          "status": 200,
+          "model": "gpt-5.4-mini-2026-03-17",
+          "output": "{\"respuesta\":\"Gracias, tengo anotado que buscas el ZQ17 de ZetaPruebaQ9 en bolsa de 4 kg. Con esos datos, no puedo asegurarte cuál es exactamente. Si quieres, puedo revisar otras opciones con ese mismo nombre y formato; dime si te interesa.\",\"siguientePaso\":\"ofrecer_busqueda\",\"datoSolicitado\":null}",
+          "usage": {
+            "prompt_tokens": 593,
+            "completion_tokens": 80,
+            "total_tokens": 673,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        }
+      ],
+      "cartUnchanged": true,
+      "state": {
+        "criterios": {},
+        "atencionHumana": null,
+        "ultimaConsultaProducto": {
+          "terminos": [
+            "zq17",
+            "zetapruebaq9",
+            "cuatro",
+            "kilos"
+          ],
+          "etiqueta": "zq17 zetapruebaq9 cuatro kilos",
+          "presentacion": "4kg",
+          "fuente": "texto",
+          "nivel": "baja",
+          "razon": "sin_coincidencia_confiable",
+          "aclaracion": null,
+          "creadoEn": "2026-10-29T21:00:35.235Z",
+          "solicitudOriginal": {
+            "intencion": "consulta_producto",
+            "accion": "consultar",
+            "recursosAclaracion": {
+              "fotoDisponible": false
+            },
+            "producto": {
+              "accion": "consultar",
+              "marca": "ZetaPruebaQ9",
+              "referencia": "ZQ17",
+              "linea": null,
+              "textoVisible": "ZQ17 de ZetaPruebaQ9 bolsa de cuatro kilos",
+              "mencionOriginal": null,
+              "categoria": null,
+              "subcategoria": null,
+              "especie": null,
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": "4kg",
+              "intencionPresentaciones": "especifica",
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": 1
+            },
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            }
+          },
+          "sinCoincidenciaInformada": true
+        }
+      }
+    }
+  ],
+  "requests": [
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/client_channels",
+      "ms": 355,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/aivance_clients",
+      "ms": 447,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/aivance_clients",
+      "ms": 324,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/client_prompts",
+      "ms": 185,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/client_delivery_rules",
+      "ms": 205,
+      "status": 200
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 12683,
+      "status": 200,
+      "model": "gpt-5.4-2026-03-05",
+      "output": "{\n  \"intencion\": \"consulta_producto\",\n  \"accion\": \"consultar\",\n  \"confianza\": 0.98,\n  \"compraContextual\": null,\n  \"solicitudesProductoDetectadas\": 1,\n  \"producto\": {\n    \"accion\": \"consultar\",\n    \"marca\": \"ZetaPruebaQ9\",\n    \"referencia\": \"ZQ17\",\n    \"linea\": null,\n    \"textoVisible\": \"marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos\",\n    \"categoria\": null,\n    \"subcategoria\": null,\n    \"especie\": null,\n    \"etapa\": null,\n    \"tamano\": null,\n    \"sabores\": [],\n    \"condiciones\": [],\n    \"presentacion\": \"4 kilos\",\n    \"cantidad\": 1,\n    \"intencionPresentaciones\": \"especifica\",\n    \"mascotas\": [],\n    \"mencionOriginal\": \"marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos?\"\n  },\n  \"productos\": [\n    {\n      \"accion\": \"consultar\",\n      \"marca\": \"ZetaPruebaQ9\",\n      \"referencia\": \"ZQ17\",\n      \"linea\": null,\n      \"textoVisible\": \"marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos\",\n      \"categoria\": null,\n      \"subcategoria\": null,\n      \"especie\": null,\n      \"etapa\": null,\n      \"tamano\": null,\n      \"sabores\": [],\n      \"condiciones\": [],\n      \"presentacion\": \"4 kilos\",\n      \"cantidad\": 1,\n      \"intencionPresentaciones\": \"especifica\",\n      \"mascotas\": [],\n      \"mencionOriginal\": \"marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos?\"\n    }\n  ],\n  \"entrega\": {\n    \"tipo\": null,\n    \"direccion\": null,\n    \"direccionCompleta\": null,\n    \"sector\": null,\n    \"metodoPago\": null,\n    \"sede\": null\n  },\n  \"facturacion\": {\n    \"electronica\": null,\n    \"evidencia\": null\n  },\n  \"datosCliente\": {\n    \"nombre\": null,\n    \"cedula\": null,\n    \"correo\": null,\n    \"celular\": null\n  },\n  \"carrito\": {\n    \"operacion\": null,\n    \"cantidadObjetivo\": null,\n    \"cantidadDelta\": null,\n    \"aplicaAlUltimoProducto\": null,\n    \"razon\": null\n  },\n  \"faltanteSugerido\": null,\n  \"recursosAclaracion\": {\n    \"fotoDisponible\": null,\n    \"masDatosDisponibles\": null\n  },\n  \"consultaCatalogo\": {\n    \"necesaria\": true,\n    \"consulta\": \"ZetaPruebaQ9 ZQ17 4 kilos\",\n    \"tipo\": \"referencia\",\n    \"presupuestoMaximo\": null\n  },\n  \"derivacionHumana\": {\n    \"necesaria\": false,\n    \"motivo\": null\n  },\n  \"solicitudComercialIndependiente\": true,\n  \"seguimientoProducto\": \"nueva\",\n  \"respuestaConversacional\": null\n}",
+      "usage": {
+        "prompt_tokens": 6562,
+        "completion_tokens": 702,
+        "total_tokens": 7264,
+        "prompt_tokens_details": {
+          "cached_tokens": 2816,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "supabase",
+      "method": "POST",
+      "path": "/rest/v1/rpc/search_catalog_products",
+      "ms": 489,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "POST",
+      "path": "/rest/v1/rpc/search_catalog_products",
+      "ms": 375,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "POST",
+      "path": "/rest/v1/rpc/search_catalog_products",
+      "ms": 813,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "POST",
+      "path": "/rest/v1/rpc/search_catalog_products",
+      "ms": 415,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/training_examples",
+      "ms": 200,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/training_examples",
+      "ms": 260,
+      "status": 200
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 4029,
+      "status": 200,
+      "model": "gpt-5.2-2025-12-11",
+      "output": "{\"intencion\":\"consulta_producto\",\"accion\":\"consultar\",\"confianza\":0.86,\"compraContextual\":false,\"solicitudesProductoDetectadas\":[\"marca ZetaPruebaQ9 referencia ZQ17 4 kilos\"],\"producto\":{\"accion\":\"consultar\",\"marca\":\"ZetaPruebaQ9\",\"referencia\":\"ZQ17\",\"linea\":null,\"textoVisible\":\"marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos\",\"categoria\":null,\"subcategoria\":null,\"especie\":null,\"etapa\":null,\"tamano\":null,\"sabores\":[],\"condiciones\":[],\"presentacion\":\"4 kilos\",\"cantidad\":null,\"intencionPresentaciones\":\"exacta\",\"mascotas\":[]},\"productos\":[],\"entrega\":{\"tipo\":null,\"direccion\":null,\"direccionCompleta\":null,\"sector\":null,\"metodoPago\":null,\"sede\":null},\"facturacion\":{\"electronica\":null,\"evidencia\":null},\"datosCliente\":{\"nombre\":null,\"cedula\":null,\"correo\":null,\"celular\":null},\"carrito\":{\"operacion\":null,\"cantidadObjetivo\":null,\"cantidadDelta\":null,\"aplicaAlUltimoProducto\":null,\"razon\":null},\"faltanteSugerido\":null}",
+      "usage": {
+        "prompt_tokens": 2806,
+        "completion_tokens": 270,
+        "total_tokens": 3076,
+        "prompt_tokens_details": {
+          "cached_tokens": 2688,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 1252,
+      "status": 200,
+      "model": "gpt-5.4-mini-2026-03-17",
+      "output": "{\"respuesta\":\"Ahora mismo no puedo confirmarte esa referencia exacta de ZetaPruebaQ9, ZQ17 en 4 kg. Si quieres, puedo revisar otra forma de identificarla con un dato más o con una foto.\",\"siguientePaso\":\"pedir_dato\",\"datoSolicitado\":\"marca\"}",
+      "usage": {
+        "prompt_tokens": 578,
+        "completion_tokens": 69,
+        "total_tokens": 647,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 2336,
+      "status": 200,
+      "model": "gpt-5.4-mini-2026-03-17",
+      "output": "{\"respuesta\":\"Ahora mismo no puedo confirmar esa referencia exacta de ZetaPruebaQ9, ZQ17 en 4 kg. Si quieres, puedo ayudarte a revisar otras opciones similares, pero solo si te parece bien.\",\"siguientePaso\":\"ofrecer_busqueda\",\"datoSolicitado\":null}",
+      "usage": {
+        "prompt_tokens": 707,
+        "completion_tokens": 67,
+        "total_tokens": 774,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 6528,
+      "status": 200,
+      "model": "gpt-5.4-2026-03-05",
+      "output": "{\n  \"intencion\": \"consulta_producto\",\n  \"accion\": \"consultar\",\n  \"confianza\": 0.96,\n  \"compraContextual\": null,\n  \"solicitudesProductoDetectadas\": 1,\n  \"producto\": {\n    \"accion\": \"consultar\",\n    \"marca\": \"ZetaPruebaQ9\",\n    \"referencia\": \"ZQ17\",\n    \"linea\": null,\n    \"textoVisible\": \"nombre ZetaPruebaQ9 ZQ17 de 4 kilos\",\n    \"categoria\": null,\n    \"subcategoria\": null,\n    \"especie\": null,\n    \"etapa\": null,\n    \"tamano\": null,\n    \"sabores\": [],\n    \"condiciones\": [],\n    \"presentacion\": \"4 kilos\",\n    \"cantidad\": 1,\n    \"intencionPresentaciones\": \"especifica\",\n    \"mascotas\": [],\n    \"mencionOriginal\": \"ese es el nombre y son 4 kilos\"\n  },\n  \"productos\": [\n    {\n      \"accion\": \"consultar\",\n      \"marca\": \"ZetaPruebaQ9\",\n      \"referencia\": \"ZQ17\",\n      \"linea\": null,\n      \"textoVisible\": \"nombre ZetaPruebaQ9 ZQ17 de 4 kilos\",\n      \"categoria\": null,\n      \"subcategoria\": null,\n      \"especie\": null,\n      \"etapa\": null,\n      \"tamano\": null,\n      \"sabores\": [],\n      \"condiciones\": [],\n      \"presentacion\": \"4 kilos\",\n      \"cantidad\": 1,\n      \"intencionPresentaciones\": \"especifica\",\n      \"mascotas\": [],\n      \"mencionOriginal\": \"ese es el nombre y son 4 kilos\"\n    }\n  ],\n  \"entrega\": {\n    \"tipo\": null,\n    \"direccion\": null,\n    \"direccionCompleta\": null,\n    \"sector\": null,\n    \"metodoPago\": null,\n    \"sede\": null\n  },\n  \"facturacion\": {\n    \"electronica\": null,\n    \"evidencia\": null\n  },\n  \"datosCliente\": {\n    \"nombre\": null,\n    \"cedula\": null,\n    \"correo\": null,\n    \"celular\": null\n  },\n  \"carrito\": {\n    \"operacion\": null,\n    \"cantidadObjetivo\": null,\n    \"cantidadDelta\": null,\n    \"aplicaAlUltimoProducto\": null,\n    \"razon\": null\n  },\n  \"faltanteSugerido\": null,\n  \"recursosAclaracion\": {\n    \"fotoDisponible\": false,\n    \"masDatosDisponibles\": false\n  },\n  \"consultaCatalogo\": {\n    \"necesaria\": true,\n    \"consulta\": \"ZetaPruebaQ9 ZQ17 4 kilos\",\n    \"tipo\": \"referencia\",\n    \"presupuestoMaximo\": null\n  },\n  \"derivacionHumana\": {\n    \"necesaria\": false,\n    \"motivo\": null\n  },\n  \"solicitudComercialIndependiente\": true,\n  \"seguimientoProducto\": \"sin_resolver\",\n  \"respuestaConversacional\": null\n}",
+      "usage": {
+        "prompt_tokens": 6927,
+        "completion_tokens": 689,
+        "total_tokens": 7616,
+        "prompt_tokens_details": {
+          "cached_tokens": 4864,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "supabase",
+      "method": "POST",
+      "path": "/rest/v1/rpc/search_catalog_products",
+      "ms": 506,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "POST",
+      "path": "/rest/v1/rpc/search_catalog_products",
+      "ms": 398,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "POST",
+      "path": "/rest/v1/rpc/search_catalog_products",
+      "ms": 463,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "POST",
+      "path": "/rest/v1/rpc/search_catalog_products",
+      "ms": 387,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/catalog_brands",
+      "ms": 241,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "POST",
+      "path": "/rest/v1/rpc/search_catalog_products",
+      "ms": 409,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/training_examples",
+      "ms": 269,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/training_examples",
+      "ms": 364,
+      "status": 200
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 3410,
+      "status": 200,
+      "model": "gpt-5.2-2025-12-11",
+      "output": "{\"intencion\":\"consulta_producto\",\"accion\":\"consultar\",\"confianza\":0.74,\"compraContextual\":null,\"solicitudesProductoDetectadas\":null,\"producto\":{\"accion\":\"consultar\",\"marca\":\"ZetaPruebaQ9\",\"referencia\":\"ZQ17\",\"linea\":null,\"textoVisible\":null,\"categoria\":null,\"subcategoria\":null,\"especie\":null,\"etapa\":null,\"tamano\":null,\"sabores\":[],\"condiciones\":[],\"presentacion\":\"4kg\",\"cantidad\":null,\"intencionPresentaciones\":\"especifica\",\"mascotas\":[]},\"productos\":[],\"entrega\":{\"tipo\":null,\"direccion\":null,\"direccionCompleta\":null,\"sector\":null,\"metodoPago\":null,\"sede\":null},\"facturacion\":{\"electronica\":null,\"evidencia\":null},\"datosCliente\":{\"nombre\":null,\"cedula\":null,\"correo\":null,\"celular\":null},\"carrito\":{\"operacion\":null,\"cantidadObjetivo\":null,\"cantidadDelta\":null,\"aplicaAlUltimoProducto\":null,\"razon\":null},\"faltanteSugerido\":null}",
+      "usage": {
+        "prompt_tokens": 3160,
+        "completion_tokens": 243,
+        "total_tokens": 3403,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 2086,
+      "status": 200,
+      "model": "gpt-5.4-mini-2026-03-17",
+      "output": "{\"respuesta\":\"Entiendo, con ese nombre y 4 kg no me queda margen para afinar más. Si quieres, puedo revisar otras opciones parecidas con lo que ya me has dado; si prefieres, lo dejamos aquí.\",\"siguientePaso\":\"ofrecer_busqueda\",\"datoSolicitado\":null}",
+      "usage": {
+        "prompt_tokens": 575,
+        "completion_tokens": 68,
+        "total_tokens": 643,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 7871,
+      "status": 200,
+      "model": "gpt-5.4-2026-03-05",
+      "output": "{\n  \"intencion\": \"consulta_producto\",\n  \"accion\": \"consultar\",\n  \"confianza\": 0.95,\n  \"compraContextual\": null,\n  \"solicitudesProductoDetectadas\": 1,\n  \"producto\": {\n    \"accion\": \"consultar\",\n    \"marca\": \"ZetaPruebaQ9\",\n    \"referencia\": \"ZQ17\",\n    \"linea\": null,\n    \"textoVisible\": \"ZQ17 de ZetaPruebaQ9 bolsa de cuatro kilos\",\n    \"categoria\": null,\n    \"subcategoria\": null,\n    \"especie\": null,\n    \"etapa\": null,\n    \"tamano\": null,\n    \"sabores\": [],\n    \"condiciones\": [],\n    \"presentacion\": \"cuatro kilos\",\n    \"cantidad\": 1,\n    \"intencionPresentaciones\": \"especifica\",\n    \"mascotas\": [],\n    \"mencionOriginal\": \"el ZQ17 de ZetaPruebaQ9? Es bolsa de cuatro kilos\"\n  },\n  \"productos\": [\n    {\n      \"accion\": \"consultar\",\n      \"marca\": \"ZetaPruebaQ9\",\n      \"referencia\": \"ZQ17\",\n      \"linea\": null,\n      \"textoVisible\": \"ZQ17 de ZetaPruebaQ9 bolsa de cuatro kilos\",\n      \"categoria\": null,\n      \"subcategoria\": null,\n      \"especie\": null,\n      \"etapa\": null,\n      \"tamano\": null,\n      \"sabores\": [],\n      \"condiciones\": [],\n      \"presentacion\": \"cuatro kilos\",\n      \"cantidad\": 1,\n      \"intencionPresentaciones\": \"especifica\",\n      \"mascotas\": [],\n      \"mencionOriginal\": \"el ZQ17 de ZetaPruebaQ9? Es bolsa de cuatro kilos\"\n    }\n  ],\n  \"entrega\": {\n    \"tipo\": null,\n    \"direccion\": null,\n    \"direccionCompleta\": null,\n    \"sector\": null,\n    \"metodoPago\": null,\n    \"sede\": null\n  },\n  \"facturacion\": {\n    \"electronica\": null,\n    \"evidencia\": null\n  },\n  \"datosCliente\": {\n    \"nombre\": null,\n    \"cedula\": null,\n    \"correo\": null,\n    \"celular\": null\n  },\n  \"carrito\": {\n    \"operacion\": null,\n    \"cantidadObjetivo\": null,\n    \"cantidadDelta\": null,\n    \"aplicaAlUltimoProducto\": null,\n    \"razon\": null\n  },\n  \"faltanteSugerido\": null,\n  \"recursosAclaracion\": {\n    \"fotoDisponible\": false,\n    \"masDatosDisponibles\": null\n  },\n  \"consultaCatalogo\": {\n    \"necesaria\": true,\n    \"consulta\": \"ZQ17 ZetaPruebaQ9 bolsa 4 kilos\",\n    \"tipo\": \"referencia\",\n    \"presupuestoMaximo\": null\n  },\n  \"derivacionHumana\": {\n    \"necesaria\": false,\n    \"motivo\": null\n  },\n  \"solicitudComercialIndependiente\": true,\n  \"seguimientoProducto\": \"nueva\",\n  \"respuestaConversacional\": null\n}",
+      "usage": {
+        "prompt_tokens": 6566,
+        "completion_tokens": 707,
+        "total_tokens": 7273,
+        "prompt_tokens_details": {
+          "cached_tokens": 5888,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "supabase",
+      "method": "POST",
+      "path": "/rest/v1/rpc/search_catalog_products",
+      "ms": 546,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "POST",
+      "path": "/rest/v1/rpc/search_catalog_products",
+      "ms": 401,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "POST",
+      "path": "/rest/v1/rpc/search_catalog_products",
+      "ms": 497,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "POST",
+      "path": "/rest/v1/rpc/search_catalog_products",
+      "ms": 402,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "POST",
+      "path": "/rest/v1/rpc/search_catalog_products",
+      "ms": 455,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/training_examples",
+      "ms": 196,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/training_examples",
+      "ms": 275,
+      "status": 200
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 3941,
+      "status": 200,
+      "model": "gpt-5.2-2025-12-11",
+      "output": "{\"intencion\":\"consulta_producto\",\"accion\":\"consultar\",\"confianza\":0.78,\"compraContextual\":true,\"solicitudesProductoDetectadas\":[\"ZQ17 de ZetaPruebaQ9 bolsa 4 kilos\"],\"producto\":{\"accion\":\"consultar\",\"marca\":\"ZetaPruebaQ9\",\"referencia\":\"ZQ17\",\"linea\":null,\"textoVisible\":\"ZQ17 de ZetaPruebaQ9 bolsa de cuatro kilos\",\"categoria\":null,\"subcategoria\":null,\"especie\":null,\"etapa\":null,\"tamano\":null,\"sabores\":[],\"condiciones\":[],\"presentacion\":\"4kg\",\"cantidad\":null,\"intencionPresentaciones\":null,\"mascotas\":[]},\"productos\":[],\"entrega\":{\"tipo\":null,\"direccion\":null,\"direccionCompleta\":null,\"sector\":null,\"metodoPago\":null,\"sede\":null},\"facturacion\":{\"electronica\":null,\"evidencia\":null},\"datosCliente\":{\"nombre\":null,\"cedula\":null,\"correo\":null,\"celular\":null},\"carrito\":{\"operacion\":null,\"cantidadObjetivo\":null,\"cantidadDelta\":null,\"aplicaAlUltimoProducto\":null,\"razon\":null},\"faltanteSugerido\":null}",
+      "usage": {
+        "prompt_tokens": 2963,
+        "completion_tokens": 268,
+        "total_tokens": 3231,
+        "prompt_tokens_details": {
+          "cached_tokens": 2688,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 1503,
+      "status": 200,
+      "model": "gpt-5.4-mini-2026-03-17",
+      "output": "{\"respuesta\":\"Gracias, tengo anotado que buscas el ZQ17 de ZetaPruebaQ9 en bolsa de 4 kg. Con esos datos, no puedo asegurarte cuál es exactamente. Si quieres, puedo revisar otras opciones con ese mismo nombre y formato; dime si te interesa.\",\"siguientePaso\":\"ofrecer_busqueda\",\"datoSolicitado\":null}",
+      "usage": {
+        "prompt_tokens": 593,
+        "completion_tokens": 80,
+        "total_tokens": 673,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    }
+  ]
+}

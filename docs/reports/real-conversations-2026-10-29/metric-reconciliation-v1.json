@@ -1,0 +1,241 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-30T14:34:59.520Z",
+  "catalog": {
+    "capturedAt": "2026-10-29T23:52:19.742Z",
+    "sha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+    "tenantId": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+    "representedEntries": 1063,
+    "originalSupabaseRows": 1116
+  },
+  "scorePolicy": {
+    "identified": "Validator level alta and selected reference name/referenceCatalogo/equivalent reference list contains the expected commercial name.",
+    "clarification": "Validator is not alta; may already have nominal identity but lacks a presentation or distinguishing attribute.",
+    "different_reference": "Validator is alta and none of the reported commercial names equals expected. Canonical diagnostic is name-level, not an ID-level SKU/presentation accuracy measure.",
+    "excluded": "Missing original media or insufficient evidence; never included as successes.",
+    "comparisonRule": "Only compare runs with identical ordered IDs, input queries, expected names and catalog snapshot; enriched and raw sets are distinct."
+  },
+  "sets": [
+    {
+      "id": "enriched-v4",
+      "result": "catalog-canonical-v4.json",
+      "resultSha256": "46ff01676d75a3c121f0b89bcbd3975e55f635f9ef9a215b8a4643b6aa7d0712",
+      "count": 1063,
+      "counts": {
+        "identified": 1021,
+        "clarification": 42,
+        "different_reference": 0
+      }
+    },
+    {
+      "id": "raw-v2-before",
+      "input": "canonical-inputs-v2.json",
+      "inputSha256": "0db692a3f07d76f2ce9d41446800998f94ffed42aeed4a871e03e2fae0d3b4fa",
+      "result": "canonical-v2-before.json",
+      "resultSha256": "b21c03418cb8c13a02b7a945d27febc4daca2912f531bdc12ea08d0b0e930cb8",
+      "counts": {
+        "identified": 1011,
+        "clarification": 52,
+        "different_reference": 0
+      }
+    },
+    {
+      "id": "raw-v2-after",
+      "input": "canonical-inputs-v2.json",
+      "inputSha256": "0db692a3f07d76f2ce9d41446800998f94ffed42aeed4a871e03e2fae0d3b4fa",
+      "result": "canonical-v2-final.json",
+      "resultSha256": "58c844d309ed6218a8daa6a9a049238c711162371d1f58cbf856b60d66781cf5",
+      "counts": {
+        "identified": 1022,
+        "clarification": 41,
+        "different_reference": 0
+      }
+    }
+  ],
+  "inputChangeReconciliation": {
+    "changedQueries": 408,
+    "lostConfirmations": [
+      {
+        "referenceId": "eea49fc0-469d-4de1-bd66-5b6699ad21f0",
+        "name": "ROYAL CANIN URINAY",
+        "enrichedQuery": "ROYAL CANIN URINAY comida_humeda",
+        "rawQuery": "ROYAL CANIN URINAY",
+        "enriched": "identified",
+        "rawBefore": "clarification"
+      },
+      {
+        "referenceId": "2fdde1a0-357a-40a1-8e93-699f1d2a96d4",
+        "name": "PRO PLAN CANINE NF",
+        "enrichedQuery": "PRO PLAN CANINE NF concentrado",
+        "rawQuery": "PRO PLAN CANINE NF",
+        "enriched": "identified",
+        "rawBefore": "clarification"
+      },
+      {
+        "referenceId": "6c1d4eea-bf35-4d7f-8e4b-e9e075b03666",
+        "name": "PRO PLAN CANINE OM",
+        "enrichedQuery": "PRO PLAN CANINE OM concentrado",
+        "rawQuery": "PRO PLAN CANINE OM",
+        "enriched": "identified",
+        "rawBefore": "clarification"
+      },
+      {
+        "referenceId": "900230bf-4cf5-4522-afb6-739f0275909f",
+        "name": "PRO PLAN CANINE UR",
+        "enrichedQuery": "PRO PLAN CANINE UR concentrado",
+        "rawQuery": "PRO PLAN CANINE UR",
+        "enriched": "identified",
+        "rawBefore": "clarification"
+      },
+      {
+        "referenceId": "a31c63de-3c9b-4f14-8d81-b0915dc36573",
+        "name": "PRO PLAN GATO ADULT",
+        "enrichedQuery": "PRO PLAN GATO ADULT concentrado",
+        "rawQuery": "PRO PLAN GATO ADULT",
+        "enriched": "identified",
+        "rawBefore": "clarification"
+      },
+      {
+        "referenceId": "be9af4aa-c86e-4794-b423-c16443cb9622",
+        "name": "PRO PLAN CANINE EN",
+        "enrichedQuery": "PRO PLAN CANINE EN concentrado",
+        "rawQuery": "PRO PLAN CANINE EN",
+        "enriched": "identified",
+        "rawBefore": "clarification"
+      },
+      {
+        "referenceId": "c7bd39ca-5555-4f3f-a143-89720a5d49f5",
+        "name": "PRO PLAN FELINE UR",
+        "enrichedQuery": "PRO PLAN FELINE UR concentrado",
+        "rawQuery": "PRO PLAN FELINE UR",
+        "enriched": "identified",
+        "rawBefore": "clarification"
+      },
+      {
+        "referenceId": "eb5593d6-22be-497a-ab26-7b87c1320a9a",
+        "name": "PRO PLAN FELINE EN",
+        "enrichedQuery": "PRO PLAN FELINE EN concentrado",
+        "rawQuery": "PRO PLAN FELINE EN",
+        "enriched": "identified",
+        "rawBefore": "clarification"
+      },
+      {
+        "referenceId": "dca2f769-2359-4e1f-8a10-8e8037981819",
+        "name": "TASTE OF THE WILD",
+        "enrichedQuery": "TASTE OF THE WILD concentrado",
+        "rawQuery": "TASTE OF THE WILD",
+        "enriched": "identified",
+        "rawBefore": "clarification"
+      },
+      {
+        "referenceId": "3539f23c-f725-4c1d-9d8b-2f83b5cc7bc2",
+        "name": "HILLS FEL C/D",
+        "enrichedQuery": "HILLS FEL C/D concentrado",
+        "rawQuery": "HILLS FEL C/D",
+        "enriched": "identified",
+        "rawBefore": "clarification"
+      },
+      {
+        "referenceId": "ea4926e6-a080-4018-a507-57288aa3dd30",
+        "name": "HILLS FEL I/D",
+        "enrichedQuery": "HILLS FEL I/D concentrado",
+        "rawQuery": "HILLS FEL I/D",
+        "enriched": "identified",
+        "rawBefore": "clarification"
+      },
+      {
+        "referenceId": "b5d34609-b7b2-4b60-b82b-49e120410348",
+        "name": "MIRRINGO",
+        "enrichedQuery": "MIRRINGO concentrado",
+        "rawQuery": "MIRRINGO",
+        "enriched": "identified",
+        "rawBefore": "clarification"
+      }
+    ],
+    "gainedConfirmations": [
+      {
+        "referenceId": "b33002a6-2291-48ae-8e09-6747c200e26f",
+        "name": "WHISKAS POUCH ADULTO POLLO",
+        "enrichedQuery": "WHISKAS POUCH ADULTO POLLO comida_humeda sobre",
+        "rawQuery": "WHISKAS POUCH ADULTO POLLO",
+        "enriched": "clarification",
+        "rawBefore": "identified"
+      },
+      {
+        "referenceId": "964880a4-94c2-4e5c-8b57-f0f30f7697f4",
+        "name": "MICHIKO GATO",
+        "enrichedQuery": "MICHIKO GATO sobre",
+        "rawQuery": "MICHIKO GATO",
+        "enriched": "clarification",
+        "rawBefore": "identified"
+      }
+    ],
+    "equation": "1021 - 12 + 2 = 1011; 42 + 12 - 2 = 52. This is an input change, not a runtime regression."
+  },
+  "codeChangeReconciliation": {
+    "reviewedEnrichedFixes": 12,
+    "alreadyIdentifiedOnRawInput": [
+      {
+        "referenceId": "b33002a6-2291-48ae-8e09-6747c200e26f",
+        "name": "WHISKAS POUCH ADULTO POLLO"
+      },
+      {
+        "referenceId": "964880a4-94c2-4e5c-8b57-f0f30f7697f4",
+        "name": "MICHIKO GATO"
+      }
+    ],
+    "additionalRawGains": [
+      {
+        "referenceId": "77277315-8ee7-48c2-82eb-4c6c06b27038",
+        "name": "Q-IDA CAN ADULTO"
+      }
+    ],
+    "equation": "12 - 2 + 1 = 11; 1011 + 11 = 1022; 52 - 11 = 41.",
+    "sameInputComparison": true
+  },
+  "mismatchesOnDefectiveInputs": [
+    {
+      "sourceSet": "enriched-v4-42-clarifications",
+      "query": "HILLS CAN K/D lata",
+      "expectedId": "1a7d748f-a2e5-4483-9125-fd853fac2f57",
+      "expectedName": "HILLS CAN K/D",
+      "selectedName": "HILLS CAN LATA K/D",
+      "selectedIds": [
+        "bd346a80-c0ab-41ff-9bdf-720746cdedb2"
+      ],
+      "classification": "synthetic_input_error_can",
+      "scoredAsMismatchInOriginalSet": true
+    },
+    {
+      "sourceSet": "enriched-v4-42-clarifications",
+      "query": "HILLS CAN I/D lata",
+      "expectedId": "72b462be-c724-47ca-991c-4568824b0b02",
+      "expectedName": "HILLS CAN I/D",
+      "selectedName": "HILLS CAN LATA I/D",
+      "selectedIds": [
+        "762a02b9-173c-4d10-b81d-5721e8ceaf52"
+      ],
+      "classification": "synthetic_input_error_can",
+      "scoredAsMismatchInOriginalSet": true
+    }
+  ],
+  "felineContext": {
+    "caseId": "C16-01",
+    "frozenCorpusSha256": "388f17fbcfc380c98bc93d1a8f252110f182b144cba8d0bd82e66647f3dca2c2",
+    "currentMessage": "Me podrías enviar tres paquetes del contrato de proplan feline EN",
+    "antecedentDate": "2026-10-10",
+    "antecedentVerbatim": null,
+    "savedEvidence": "Only the summary in coverage-media-resumption.json and the fixture evidence note; no preserved verbatim antecedent or C16 transcript in the inspected local audit files. C03/C06/C14 exports do not supply C16.",
+    "newRealMultiMessageCaseCreated": false,
+    "manualProbe": "Existing concentrate-prefixed probe is a manual attribution test, not a historical multi-message replay. No attribute was inserted into the frozen engine input.",
+    "remainingLimit": "Current fragment still scores missed under historical expected-reference policy. Automatic recovery/interpretation of the missing old antecedent is not validated."
+  },
+  "productionChangedThisClosure": false,
+  "lastValidatedSuite": {
+    "tests": 1082,
+    "passed": 1082,
+    "failed": 0,
+    "file": "clarification-review-tests.txt"
+  },
+  "noBrowserOrOpenAICalls": true
+}

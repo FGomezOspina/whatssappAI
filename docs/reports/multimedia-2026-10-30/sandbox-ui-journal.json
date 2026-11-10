@@ -1,0 +1,21 @@
+{
+  "at": "2026-10-31T00:55:27.099Z",
+  "destination": "Kapso Sandbox (@kapso_sandbox), tenant Distrifinca, test recipient …4163",
+  "server": {
+    "pid": 49590,
+    "cwd": "/Users/gomez/Documents/WhatsappVELTIA",
+    "startedAt": "2026-10-31T00:54:46.477Z",
+    "sourceHash": "e97445f65117ba4237e25e644d8d60b79b02f834921942be014066c518732425",
+    "expectedHash": "e97445f65117ba4237e25e644d8d60b79b02f834921942be014066c518732425",
+    "matches": true
+  },
+  "actions": [
+    {
+      "type": "text",
+      "source": "WhatsApp Web Safari UI",
+      "message": "Para cotizar:\nEl nutra nugges cordero 7k perro\n\nEl br gato castrado de pollo 1k\n\nNexgart para perro de 40k",
+      "uiTimeColombia": "2026-10-30 19:55",
+      "state": "UI showed outgoing pending; awaiting receipt and response"
+    }
+  ]
+}

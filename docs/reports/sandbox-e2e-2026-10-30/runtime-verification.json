@@ -1,0 +1,98 @@
+{
+  "verifiedAt": "2026-10-30T18:19:56.411Z",
+  "runtimes": [
+    {
+      "pid": 38754,
+      "cwd": "/Users/gomez/Documents/WhatsappVELTIA",
+      "startedAt": "2026-10-30T17:20:49.269Z",
+      "sourceHash": "37467caadfab9c6599b8f4fc65fb39f095b3b453a10c329d5211dd6eaa957a2a"
+    },
+    {
+      "pid": 39222,
+      "cwd": "/Users/gomez/Documents/WhatsappVELTIA",
+      "startedAt": "2026-10-30T17:30:48.080Z",
+      "sourceHash": "67a9470e41309e7178d9983963b06ef26fd5f8a231820bfaa16672b465f4b7f7"
+    },
+    {
+      "pid": 39371,
+      "cwd": "/Users/gomez/Documents/WhatsappVELTIA",
+      "startedAt": "2026-10-30T17:31:23.423Z",
+      "sourceHash": "983fef66f192cede945b168bd2d1b2afe7a7ebf9f0fb9da6cf4eb57f54a911b4"
+    },
+    {
+      "pid": 39745,
+      "cwd": "/Users/gomez/Documents/WhatsappVELTIA",
+      "startedAt": "2026-10-30T17:35:09.923Z",
+      "sourceHash": "66964c741b531f9264421c77dcf0f501f0c253b926b738c02b57b91b1f480200"
+    },
+    {
+      "pid": 39959,
+      "cwd": "/Users/gomez/Documents/WhatsappVELTIA",
+      "startedAt": "2026-10-30T17:38:56.291Z",
+      "sourceHash": "4cfc7ebb43b6144165b92e690d24110508503df3aeb54a60fd859f7c0ca5e319"
+    },
+    {
+      "pid": 40864,
+      "cwd": "/Users/gomez/Documents/WhatsappVELTIA",
+      "startedAt": "2026-10-30T17:52:18.880Z",
+      "sourceHash": "cb40fb861dab29b2a245e03296734a15a30d3607b0c01e166e96f8e8d2383b78"
+    },
+    {
+      "pid": 41801,
+      "cwd": "/Users/gomez/Documents/WhatsappVELTIA",
+      "startedAt": "2026-10-30T17:59:48.700Z",
+      "sourceHash": "c7b3d73a867c5accafb03c36952df7bc31336de3d808605f359b2a82a760422b"
+    },
+    {
+      "pid": 42054,
+      "cwd": "/Users/gomez/Documents/WhatsappVELTIA",
+      "startedAt": "2026-10-30T18:04:22.553Z",
+      "sourceHash": "709ca48e23c303128967d01dc9a5b5e561c08f2c3ddd489cdd1deedc2b1e532c"
+    },
+    {
+      "pid": 42413,
+      "cwd": "/Users/gomez/Documents/WhatsappVELTIA",
+      "startedAt": "2026-10-30T18:07:58.645Z",
+      "sourceHash": "4bed763f693af2e1553a38f98eeb93e510d1840e9b97ff864947f5d5f824fbe9"
+    },
+    {
+      "pid": 43069,
+      "cwd": "/Users/gomez/Documents/WhatsappVELTIA",
+      "startedAt": "2026-10-30T18:13:24.557Z",
+      "sourceHash": "bc886e1fa3a497300ae9d7a5a3169c0e669a210240094b66223585e456185d4e"
+    },
+    {
+      "pid": 43441,
+      "cwd": "/Users/gomez/Documents/WhatsappVELTIA",
+      "startedAt": "2026-10-30T18:24:42.083Z",
+      "sourceHash": "bc886e1fa3a497300ae9d7a5a3169c0e669a210240094b66223585e456185d4e"
+    }
+  ],
+  "latestIndependentHash": "bc886e1fa3a497300ae9d7a5a3169c0e669a210240094b66223585e456185d4e",
+  "processSession": 53681,
+  "modelConfigChanged": false,
+  "processOnlyOverride": {
+    "LEARNING_CAPTURE_ENABLED": "false",
+    "PRODUCT_RECOGNITION_TRACE": "true"
+  },
+  "healthPreviouslyVerified": {
+    "ok": true,
+    "provider": "kapso"
+  },
+  "finalCheck": {
+    "at": "2026-10-30T18:38:13.016Z",
+    "health": true,
+    "listener": true,
+    "pid": 43441,
+    "sourceVerified": true
+  },
+  "previousFinalCheck": {
+    "at": "2026-10-30T18:21:26.133Z",
+    "health": false,
+    "curlExitCode": 7,
+    "listener": false,
+    "session": "Unknown process id 47763",
+    "terminationCause": "unknown",
+    "restarted": false
+  }
+}

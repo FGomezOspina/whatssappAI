@@ -1,0 +1,3695 @@
+{
+  "capturedAt": "2026-10-29T20:52:54.282Z",
+  "mode": "real models and read-only Supabase; in-memory state; not WhatsApp E2E",
+  "label": "final-tone",
+  "rows": [
+    {
+      "case": "kitten-budget",
+      "text": "Me ayudas a elegir comida para mi gatita pequeña, tiene 4 meses. Máximo 30000 pesos",
+      "response": "Claro, para tu gatita de 4 meses te puedo dejar estas opciones dentro de tu presupuesto:\n\n- ROYAL CANIN KITTEN 400gr: $30.000 — concentrado, gato, cachorro.\n- BR CAT GATITOS SALMON 1kg: $28.000 — concentrado, gato, cachorro.\n- BR CAT GATITO POLLO 1kg: $28.000 — concentrado, gato, cachorro.\n\nLas existencias están por confirmar. ¿Prefieres bolsa de 1 kg o una presentación más pequeña?",
+      "ms": 28307,
+      "decisions": [
+        {
+          "router": true,
+          "decision": {
+            "recomendaciones": [],
+            "preguntaRecomendacion": null,
+            "solicitudComercialIndependiente": true,
+            "derivacionHumana": {
+              "necesaria": false,
+              "motivo": null
+            },
+            "seguimientoProducto": "nueva",
+            "resumenMemoria": null,
+            "continuarFlujo": false,
+            "compraContextual": null,
+            "solicitudesProductoDetectadas": 1,
+            "consultaCatalogo": {
+              "tipo": "necesidad",
+              "presupuestoMaximo": 30000,
+              "necesaria": true,
+              "consulta": "comida para gato cachorro 4 meses presupuesto maximo 30000"
+            },
+            "respuestaConversacional": null,
+            "intencion": "recomendacion",
+            "accion": "consultar",
+            "confianza": 0.98,
+            "producto": {
+              "accion": "consultar",
+              "marca": null,
+              "referencia": null,
+              "linea": null,
+              "textoVisible": "comida para mi gatita pequeña",
+              "mencionOriginal": null,
+              "categoria": "comida",
+              "subcategoria": null,
+              "especie": "gato",
+              "etapa": "cachorro",
+              "tamano": null,
+              "sabores": [],
+              "presentacion": null,
+              "intencionPresentaciones": null,
+              "mascotas": [
+                {
+                  "nombre": "Mascota 1",
+                  "pesoKg": null
+                }
+              ],
+              "condiciones": [],
+              "cantidad": null
+            },
+            "productos": [
+              {
+                "accion": "consultar",
+                "marca": null,
+                "referencia": null,
+                "linea": null,
+                "textoVisible": "comida para mi gatita pequeña",
+                "mencionOriginal": null,
+                "categoria": "comida",
+                "subcategoria": null,
+                "especie": "gato",
+                "etapa": "cachorro",
+                "tamano": null,
+                "sabores": [],
+                "presentacion": null,
+                "intencionPresentaciones": null,
+                "mascotas": [
+                  {
+                    "nombre": "Mascota 1",
+                    "pesoKg": null
+                  }
+                ],
+                "condiciones": [],
+                "cantidad": null
+              }
+            ],
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            },
+            "facturacion": {
+              "electronica": null,
+              "evidencia": null
+            },
+            "datosCliente": {
+              "nombre": null,
+              "cedula": null,
+              "correo": null,
+              "celular": null
+            },
+            "carrito": {
+              "operacion": null,
+              "cantidadObjetivo": null,
+              "cantidadDelta": null,
+              "aplicaAlUltimoProducto": null,
+              "razon": null
+            },
+            "faltanteSugerido": null
+          }
+        }
+      ],
+      "requests": [
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 6942,
+          "status": 200,
+          "model": "gpt-5.4-2026-03-05",
+          "output": "{\n  \"intencion\": \"recomendacion\",\n  \"accion\": \"consultar\",\n  \"confianza\": 0.98,\n  \"compraContextual\": null,\n  \"solicitudesProductoDetectadas\": 1,\n  \"producto\": {\n    \"accion\": \"consultar\",\n    \"marca\": null,\n    \"referencia\": null,\n    \"linea\": null,\n    \"textoVisible\": \"comida para mi gatita pequeña\",\n    \"categoria\": \"comida\",\n    \"subcategoria\": null,\n    \"especie\": \"gato\",\n    \"etapa\": \"cachorro\",\n    \"tamano\": null,\n    \"sabores\": [],\n    \"condiciones\": [],\n    \"presentacion\": null,\n    \"cantidad\": null,\n    \"intencionPresentaciones\": null,\n    \"mascotas\": [\n      {\n        \"nombre\": null,\n        \"pesoKg\": null\n      }\n    ]\n  },\n  \"productos\": [\n    {\n      \"accion\": \"consultar\",\n      \"marca\": null,\n      \"referencia\": null,\n      \"linea\": null,\n      \"textoVisible\": \"comida para mi gatita pequeña\",\n      \"categoria\": \"comida\",\n      \"subcategoria\": null,\n      \"especie\": \"gato\",\n      \"etapa\": \"cachorro\",\n      \"tamano\": null,\n      \"sabores\": [],\n      \"condiciones\": [],\n      \"presentacion\": null,\n      \"cantidad\": null,\n      \"intencionPresentaciones\": null,\n      \"mascotas\": [\n        {\n          \"nombre\": null,\n          \"pesoKg\": null\n        }\n      ]\n    }\n  ],\n  \"entrega\": {\n    \"tipo\": null,\n    \"direccion\": null,\n    \"direccionCompleta\": null,\n    \"sector\": null,\n    \"metodoPago\": null,\n    \"sede\": null\n  },\n  \"facturacion\": {\n    \"electronica\": null,\n    \"evidencia\": null\n  },\n  \"datosCliente\": {\n    \"nombre\": null,\n    \"cedula\": null,\n    \"correo\": null,\n    \"celular\": null\n  },\n  \"carrito\": {\n    \"operacion\": null,\n    \"cantidadObjetivo\": null,\n    \"cantidadDelta\": null,\n    \"aplicaAlUltimoProducto\": null,\n    \"razon\": null\n  },\n  \"faltanteSugerido\": null,\n  \"consultaCatalogo\": {\n    \"necesaria\": true,\n    \"consulta\": \"comida para gato cachorro 4 meses presupuesto maximo 30000\",\n    \"tipo\": \"necesidad\",\n    \"presupuestoMaximo\": 30000\n  },\n  \"derivacionHumana\": {\n    \"necesaria\": false,\n    \"motivo\": null\n  },\n  \"solicitudComercialIndependiente\": true,\n  \"seguimientoProducto\": \"nueva\",\n  \"respuestaConversacional\": null\n}",
+          "usage": {
+            "prompt_tokens": 6427,
+            "completion_tokens": 641,
+            "total_tokens": 7068,
+            "prompt_tokens_details": {
+              "cached_tokens": 5888,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "supabase",
+          "method": "GET",
+          "path": "/rest/v1/catalog_references",
+          "ms": 385,
+          "status": 200
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 19055,
+          "status": 200,
+          "model": "gpt-5.4-mini-2026-03-17",
+          "output": "{\"recomendaciones\":[{\"id\":\"eb1de02c-66cd-43dc-a5a6-af60953600c0\",\"evidencia\":[\"\\\"ROYAL CANIN KITTEN\\\"\",\"\\\"gato\\\"\",\"\\\"cachorro\\\"\",\"\\\"400GR\\\"\"],\"atributos\":[{\"campo\":\"especie\",\"valor\":\"gato\",\"evidencia\":\"\\\"gato\\\"\"},{\"campo\":\"etapa\",\"valor\":\"cachorro\",\"evidencia\":\"\\\"cachorro\\\"\"},{\"campo\":\"presentacion\",\"valor\":\"400gr\",\"evidencia\":\"\\\"400GR\\\"\"}]},{\"id\":\"4af9a074-c4da-4fef-856a-1e56dee05847\",\"evidencia\":[\"\\\"BR CAT GATITOS SALMON\\\"\",\"\\\"gato\\\"\",\"\\\"cachorro\\\"\",\"\\\"1KG\\\"\"],\"atributos\":[{\"campo\":\"especie\",\"valor\":\"gato\",\"evidencia\":\"\\\"gato\\\"\"},{\"campo\":\"etapa\",\"valor\":\"cachorro\",\"evidencia\":\"\\\"cachorro\\\"\"},{\"campo\":\"presentacion\",\"valor\":\"1kg\",\"evidencia\":\"\\\"1KG\\\"\"}]},{\"id\":\"c35a4229-eaa4-4e4f-a60a-4815efe18eb4\",\"evidencia\":[\"\\\"BR CAT GATITO POLLO\\\"\",\"\\\"gato\\\"\",\"\\\"cachorro\\\"\",\"\\\"1KG\\\"\"],\"atributos\":[{\"campo\":\"especie\",\"valor\":\"gato\",\"evidencia\":\"\\\"gato\\\"\"},{\"campo\":\"etapa\",\"valor\":\"cachorro\",\"evidencia\":\"\\\"cachorro\\\"\"},{\"campo\":\"presentacion\",\"valor\":\"1kg\",\"evidencia\":\"\\\"1KG\\\"\"}]}],\"preguntaRecomendacion\":null}",
+          "usage": {
+            "prompt_tokens": 3319,
+            "completion_tokens": 386,
+            "total_tokens": 3705,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 1909,
+          "status": 200,
+          "model": "gpt-5.4-mini-2026-03-17",
+          "output": "Claro, para tu gatita de 4 meses te puedo dejar estas opciones dentro de tu presupuesto:\n\n- ROYAL CANIN KITTEN 400gr: $30.000 — concentrado, gato, cachorro.\n- BR CAT GATITOS SALMON 1kg: $28.000 — concentrado, gato, cachorro.\n- BR CAT GATITO POLLO 1kg: $28.000 — concentrado, gato, cachorro.\n\nLas existencias están por confirmar. ¿Prefieres bolsa de 1 kg o una presentación más pequeña?",
+          "usage": {
+            "prompt_tokens": 496,
+            "completion_tokens": 117,
+            "total_tokens": 613,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        }
+      ],
+      "cartUnchanged": true,
+      "state": {
+        "criterios": {},
+        "recomendacionActiva": {
+          "criterios": {
+            "categoria": "comida",
+            "subcategoria": null,
+            "especie": "gato",
+            "etapa": "cachorro",
+            "tamano": null,
+            "marca": null,
+            "sabores": [],
+            "condiciones": [],
+            "presentacion": null,
+            "presupuestoMaximo": 30000
+          },
+          "opciones": [
+            {
+              "indice": 1,
+              "marca": "ROYAL CANIN",
+              "referencia": "ROYAL CANIN KITTEN",
+              "presentacion": "400gr",
+              "precio": 30000,
+              "referenceId": "eb1de02c-66cd-43dc-a5a6-af60953600c0"
+            },
+            {
+              "indice": 2,
+              "marca": "BR CAT",
+              "referencia": "BR CAT GATITOS SALMON",
+              "presentacion": "1kg",
+              "precio": 28000,
+              "referenceId": "4af9a074-c4da-4fef-856a-1e56dee05847"
+            },
+            {
+              "indice": 3,
+              "marca": "BR CAT",
+              "referencia": "BR CAT GATITO POLLO",
+              "presentacion": "1kg",
+              "precio": 28000,
+              "referenceId": "c35a4229-eaa4-4e4f-a60a-4815efe18eb4"
+            }
+          ],
+          "actualizadoEn": "2026-10-29T20:53:01.241Z"
+        },
+        "atencionHumana": null,
+        "ultimaConsultaProducto": null
+      }
+    },
+    {
+      "case": "reference",
+      "text": "Cuánto vale Pro Plan UR",
+      "response": "¿Lo necesitas para perro o para gato? Así te digo cuál Pro Plan UR te sirve 🙂\n\nPedido:\n- 1 x BR CAT SALMON 1kg: $30.500\nTotal: $30.500",
+      "ms": 13306,
+      "decisions": [
+        {
+          "router": true,
+          "decision": {
+            "recomendaciones": [],
+            "preguntaRecomendacion": null,
+            "solicitudComercialIndependiente": true,
+            "derivacionHumana": {
+              "necesaria": false,
+              "motivo": null
+            },
+            "seguimientoProducto": "nueva",
+            "resumenMemoria": null,
+            "continuarFlujo": false,
+            "compraContextual": null,
+            "solicitudesProductoDetectadas": 1,
+            "consultaCatalogo": {
+              "tipo": "referencia",
+              "presupuestoMaximo": null,
+              "necesaria": true,
+              "consulta": "Pro Plan UR precio y presentaciones disponibles"
+            },
+            "respuestaConversacional": null,
+            "intencion": "consulta_producto",
+            "accion": "consultar",
+            "confianza": 0.97,
+            "producto": {
+              "accion": "consultar",
+              "marca": "Pro Plan",
+              "referencia": "UR",
+              "linea": null,
+              "textoVisible": "Pro Plan UR",
+              "mencionOriginal": "Pro Plan UR",
+              "categoria": "comida",
+              "subcategoria": null,
+              "especie": null,
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": null,
+              "intencionPresentaciones": null,
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": null
+            },
+            "productos": [
+              {
+                "accion": "consultar",
+                "marca": "Pro Plan",
+                "referencia": "UR",
+                "linea": null,
+                "textoVisible": "Pro Plan UR",
+                "mencionOriginal": "Pro Plan UR",
+                "categoria": "comida",
+                "subcategoria": null,
+                "especie": null,
+                "etapa": null,
+                "tamano": null,
+                "sabores": [],
+                "presentacion": null,
+                "intencionPresentaciones": null,
+                "mascotas": [],
+                "condiciones": [],
+                "cantidad": null
+              }
+            ],
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            },
+            "facturacion": {
+              "electronica": null,
+              "evidencia": null
+            },
+            "datosCliente": {
+              "nombre": null,
+              "cedula": null,
+              "correo": null,
+              "celular": null
+            },
+            "carrito": {
+              "operacion": null,
+              "cantidadObjetivo": null,
+              "cantidadDelta": null,
+              "aplicaAlUltimoProducto": null,
+              "razon": null
+            },
+            "faltanteSugerido": null
+          }
+        },
+        {
+          "router": false,
+          "decision": {
+            "recomendaciones": [],
+            "preguntaRecomendacion": null,
+            "solicitudComercialIndependiente": false,
+            "derivacionHumana": {
+              "necesaria": false,
+              "motivo": null
+            },
+            "seguimientoProducto": null,
+            "resumenMemoria": null,
+            "continuarFlujo": false,
+            "compraContextual": null,
+            "solicitudesProductoDetectadas": null,
+            "consultaCatalogo": {
+              "tipo": null,
+              "presupuestoMaximo": null,
+              "necesaria": null,
+              "consulta": null
+            },
+            "respuestaConversacional": null,
+            "intencion": "consulta_producto",
+            "accion": "consultar",
+            "confianza": 0.74,
+            "producto": {
+              "accion": "consultar",
+              "marca": "PRO PLAN",
+              "referencia": "UR",
+              "linea": null,
+              "textoVisible": "Pro Plan UR",
+              "mencionOriginal": null,
+              "categoria": "comida",
+              "subcategoria": null,
+              "especie": null,
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": null,
+              "intencionPresentaciones": null,
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": null
+            },
+            "productos": [],
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            },
+            "facturacion": {
+              "electronica": null,
+              "evidencia": null
+            },
+            "datosCliente": {
+              "nombre": null,
+              "cedula": null,
+              "correo": null,
+              "celular": null
+            },
+            "carrito": {
+              "operacion": null,
+              "cantidadObjetivo": null,
+              "cantidadDelta": null,
+              "aplicaAlUltimoProducto": null,
+              "razon": null
+            },
+            "faltanteSugerido": "¿Lo necesitas Pro Plan UR para gato o para perro? (y si lo quieres en concentrado o en lata)"
+          }
+        }
+      ],
+      "requests": [
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 6881,
+          "status": 200,
+          "model": "gpt-5.4-2026-03-05",
+          "output": "{\n  \"intencion\": \"consulta_producto\",\n  \"accion\": \"consultar\",\n  \"confianza\": 0.97,\n  \"compraContextual\": null,\n  \"solicitudesProductoDetectadas\": 1,\n  \"producto\": {\n    \"accion\": \"consultar\",\n    \"marca\": \"Pro Plan\",\n    \"referencia\": \"UR\",\n    \"linea\": null,\n    \"textoVisible\": \"Pro Plan UR\",\n    \"categoria\": \"comida\",\n    \"subcategoria\": null,\n    \"especie\": null,\n    \"etapa\": null,\n    \"tamano\": null,\n    \"sabores\": [],\n    \"condiciones\": [],\n    \"presentacion\": null,\n    \"cantidad\": null,\n    \"intencionPresentaciones\": null,\n    \"mascotas\": [],\n    \"mencionOriginal\": \"Pro Plan UR\"\n  },\n  \"productos\": [\n    {\n      \"accion\": \"consultar\",\n      \"marca\": \"Pro Plan\",\n      \"referencia\": \"UR\",\n      \"linea\": null,\n      \"textoVisible\": \"Pro Plan UR\",\n      \"categoria\": \"comida\",\n      \"subcategoria\": null,\n      \"especie\": null,\n      \"etapa\": null,\n      \"tamano\": null,\n      \"sabores\": [],\n      \"condiciones\": [],\n      \"presentacion\": null,\n      \"cantidad\": null,\n      \"intencionPresentaciones\": null,\n      \"mascotas\": [],\n      \"mencionOriginal\": \"Pro Plan UR\"\n    }\n  ],\n  \"entrega\": {\n    \"tipo\": null,\n    \"direccion\": null,\n    \"direccionCompleta\": null,\n    \"sector\": null,\n    \"metodoPago\": null,\n    \"sede\": null\n  },\n  \"facturacion\": {\n    \"electronica\": null,\n    \"evidencia\": null\n  },\n  \"datosCliente\": {\n    \"nombre\": null,\n    \"cedula\": null,\n    \"correo\": null,\n    \"celular\": null\n  },\n  \"carrito\": {\n    \"operacion\": null,\n    \"cantidadObjetivo\": null,\n    \"cantidadDelta\": null,\n    \"aplicaAlUltimoProducto\": null,\n    \"razon\": null\n  },\n  \"faltanteSugerido\": null,\n  \"consultaCatalogo\": {\n    \"necesaria\": true,\n    \"consulta\": \"Pro Plan UR precio y presentaciones disponibles\",\n    \"tipo\": \"referencia\",\n    \"presupuestoMaximo\": null\n  },\n  \"respuestaConversacional\": null,\n  \"derivacionHumana\": {\n    \"necesaria\": false,\n    \"motivo\": null\n  },\n  \"solicitudComercialIndependiente\": true,\n  \"seguimientoProducto\": \"nueva\"\n}",
+          "usage": {
+            "prompt_tokens": 6411,
+            "completion_tokens": 603,
+            "total_tokens": 7014,
+            "prompt_tokens_details": {
+              "cached_tokens": 5888,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "supabase",
+          "method": "POST",
+          "path": "/rest/v1/rpc/search_catalog_products",
+          "ms": 600,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "GET",
+          "path": "/rest/v1/training_examples",
+          "ms": 232,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "GET",
+          "path": "/rest/v1/training_examples",
+          "ms": 512,
+          "status": 200
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 4262,
+          "status": 200,
+          "model": "gpt-5.2-2025-12-11",
+          "output": "{\"intencion\":\"consulta_producto\",\"accion\":\"consultar\",\"confianza\":0.74,\"compraContextual\":null,\"solicitudesProductoDetectadas\":[\"Cuánto vale Pro Plan UR\"],\"producto\":{\"accion\":\"consultar\",\"marca\":\"PRO PLAN\",\"referencia\":\"UR\",\"linea\":null,\"textoVisible\":\"Pro Plan UR\",\"categoria\":\"comida\",\"subcategoria\":null,\"especie\":null,\"etapa\":null,\"tamano\":null,\"sabores\":[],\"condiciones\":[],\"presentacion\":null,\"cantidad\":null,\"intencionPresentaciones\":\"elegir\",\"mascotas\":[]},\"productos\":[],\"entrega\":{\"tipo\":null,\"direccion\":null,\"direccionCompleta\":null,\"sector\":null,\"metodoPago\":null,\"sede\":null},\"facturacion\":{\"electronica\":null,\"evidencia\":null},\"datosCliente\":{\"nombre\":null,\"cedula\":null,\"correo\":null,\"celular\":null},\"carrito\":{\"operacion\":null,\"cantidadObjetivo\":null,\"cantidadDelta\":null,\"aplicaAlUltimoProducto\":null,\"razon\":null},\"faltanteSugerido\":\"¿Lo necesitas Pro Plan UR para gato o para perro? (y si lo quieres en concentrado o en lata)\"}",
+          "usage": {
+            "prompt_tokens": 3250,
+            "completion_tokens": 268,
+            "total_tokens": 3518,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 978,
+          "status": 200,
+          "model": "gpt-5.4-mini-2026-03-17",
+          "output": "¿Lo necesitas para perro o para gato? Así te digo cuál Pro Plan UR te sirve 🙂",
+          "usage": {
+            "prompt_tokens": 1308,
+            "completion_tokens": 22,
+            "total_tokens": 1330,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        }
+      ],
+      "cartUnchanged": true,
+      "state": {
+        "criterios": {},
+        "atencionHumana": null,
+        "ultimaConsultaProducto": {
+          "terminos": [
+            "premium",
+            "plan",
+            "ur"
+          ],
+          "etiqueta": "premium plan ur",
+          "presentacion": null,
+          "fuente": "texto",
+          "nivel": "media",
+          "razon": "atributo_faltante",
+          "aclaracion": {
+            "campo": "especie",
+            "valores": [
+              "perro",
+              "gato"
+            ]
+          },
+          "creadoEn": "2026-10-29T20:53:34.924Z",
+          "solicitudOriginal": {
+            "intencion": "consulta_producto",
+            "accion": "consultar",
+            "producto": {
+              "accion": "consultar",
+              "marca": "PRO PLAN",
+              "referencia": "UR",
+              "linea": null,
+              "textoVisible": "Pro Plan UR",
+              "mencionOriginal": null,
+              "categoria": "comida",
+              "subcategoria": null,
+              "especie": null,
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": null,
+              "intencionPresentaciones": null,
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": null
+            },
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            }
+          },
+          "sinCoincidenciaInformada": false
+        }
+      }
+    },
+    {
+      "case": "reference",
+      "text": "Para perrito",
+      "response": "¿Buscas PRO PLAN CANINE UR de 2 kg o PRO PLAN CANINE LATA UR en unidad? 🐶\n\nPedido:\n- 1 x BR CAT SALMON 1kg: $30.500\nTotal: $30.500",
+      "ms": 12215,
+      "decisions": [
+        {
+          "router": true,
+          "decision": {
+            "recomendaciones": [],
+            "preguntaRecomendacion": null,
+            "solicitudComercialIndependiente": true,
+            "derivacionHumana": {
+              "necesaria": false,
+              "motivo": null
+            },
+            "seguimientoProducto": "aclaracion",
+            "resumenMemoria": null,
+            "continuarFlujo": false,
+            "compraContextual": null,
+            "solicitudesProductoDetectadas": 1,
+            "consultaCatalogo": {
+              "tipo": "referencia",
+              "presupuestoMaximo": null,
+              "necesaria": true,
+              "consulta": "PRO PLAN CANINE UR"
+            },
+            "respuestaConversacional": null,
+            "intencion": "consulta_producto",
+            "accion": "consultar",
+            "confianza": 0.98,
+            "producto": {
+              "accion": "consultar",
+              "marca": "PRO PLAN",
+              "referencia": "UR",
+              "linea": null,
+              "textoVisible": "Pro Plan UR para perrito",
+              "mencionOriginal": "Para perrito",
+              "categoria": "comida",
+              "subcategoria": null,
+              "especie": "perro",
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": null,
+              "intencionPresentaciones": null,
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": null
+            },
+            "productos": [
+              {
+                "accion": "consultar",
+                "marca": "PRO PLAN",
+                "referencia": "UR",
+                "linea": null,
+                "textoVisible": "Pro Plan UR para perrito",
+                "mencionOriginal": "Para perrito",
+                "categoria": "comida",
+                "subcategoria": null,
+                "especie": "perro",
+                "etapa": null,
+                "tamano": null,
+                "sabores": [],
+                "presentacion": null,
+                "intencionPresentaciones": null,
+                "mascotas": [],
+                "condiciones": [],
+                "cantidad": null
+              }
+            ],
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            },
+            "facturacion": {
+              "electronica": null,
+              "evidencia": null
+            },
+            "datosCliente": {
+              "nombre": null,
+              "cedula": null,
+              "correo": null,
+              "celular": null
+            },
+            "carrito": {
+              "operacion": null,
+              "cantidadObjetivo": null,
+              "cantidadDelta": null,
+              "aplicaAlUltimoProducto": null,
+              "razon": null
+            },
+            "faltanteSugerido": null
+          }
+        },
+        {
+          "router": false,
+          "decision": {
+            "recomendaciones": [],
+            "preguntaRecomendacion": null,
+            "solicitudComercialIndependiente": false,
+            "derivacionHumana": {
+              "necesaria": false,
+              "motivo": null
+            },
+            "seguimientoProducto": null,
+            "resumenMemoria": null,
+            "continuarFlujo": false,
+            "compraContextual": null,
+            "solicitudesProductoDetectadas": null,
+            "consultaCatalogo": {
+              "tipo": null,
+              "presupuestoMaximo": null,
+              "necesaria": null,
+              "consulta": null
+            },
+            "respuestaConversacional": null,
+            "intencion": "consulta_producto",
+            "accion": "consultar",
+            "confianza": 0.86,
+            "producto": {
+              "accion": "consultar",
+              "marca": "PRO PLAN",
+              "referencia": "UR",
+              "linea": null,
+              "textoVisible": "Para perrito",
+              "mencionOriginal": null,
+              "categoria": "comida",
+              "subcategoria": null,
+              "especie": "perro",
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": null,
+              "intencionPresentaciones": null,
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": null
+            },
+            "productos": [],
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            },
+            "facturacion": {
+              "electronica": null,
+              "evidencia": null
+            },
+            "datosCliente": {
+              "nombre": null,
+              "cedula": null,
+              "correo": null,
+              "celular": null
+            },
+            "carrito": {
+              "operacion": null,
+              "cantidadObjetivo": null,
+              "cantidadDelta": null,
+              "aplicaAlUltimoProducto": true,
+              "razon": null
+            },
+            "faltanteSugerido": "¿Lo quieres PRO PLAN CANINE UR (concentrado 2kg) o PRO PLAN CANINE LATA UR (unidad)?"
+          }
+        }
+      ],
+      "requests": [
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 5749,
+          "status": 200,
+          "model": "gpt-5.4-2026-03-05",
+          "output": "{\n  \"intencion\": \"consulta_producto\",\n  \"accion\": \"consultar\",\n  \"confianza\": 0.98,\n  \"compraContextual\": null,\n  \"solicitudesProductoDetectadas\": 1,\n  \"producto\": {\n    \"accion\": \"consultar\",\n    \"marca\": \"PRO PLAN\",\n    \"referencia\": \"UR\",\n    \"linea\": null,\n    \"textoVisible\": \"Pro Plan UR para perrito\",\n    \"categoria\": \"comida\",\n    \"subcategoria\": null,\n    \"especie\": \"perro\",\n    \"etapa\": null,\n    \"tamano\": null,\n    \"sabores\": [],\n    \"condiciones\": [],\n    \"presentacion\": null,\n    \"cantidad\": null,\n    \"intencionPresentaciones\": null,\n    \"mascotas\": [],\n    \"mencionOriginal\": \"Para perrito\"\n  },\n  \"productos\": [\n    {\n      \"accion\": \"consultar\",\n      \"marca\": \"PRO PLAN\",\n      \"referencia\": \"UR\",\n      \"linea\": null,\n      \"textoVisible\": \"Pro Plan UR para perrito\",\n      \"categoria\": \"comida\",\n      \"subcategoria\": null,\n      \"especie\": \"perro\",\n      \"etapa\": null,\n      \"tamano\": null,\n      \"sabores\": [],\n      \"condiciones\": [],\n      \"presentacion\": null,\n      \"cantidad\": null,\n      \"intencionPresentaciones\": null,\n      \"mascotas\": [],\n      \"mencionOriginal\": \"Para perrito\"\n    }\n  ],\n  \"entrega\": {\n    \"tipo\": null,\n    \"direccion\": null,\n    \"direccionCompleta\": null,\n    \"sector\": null,\n    \"metodoPago\": null,\n    \"sede\": null\n  },\n  \"facturacion\": {\n    \"electronica\": null,\n    \"evidencia\": null\n  },\n  \"datosCliente\": {\n    \"nombre\": null,\n    \"cedula\": null,\n    \"correo\": null,\n    \"celular\": null\n  },\n  \"carrito\": {\n    \"operacion\": null,\n    \"cantidadObjetivo\": null,\n    \"cantidadDelta\": null,\n    \"aplicaAlUltimoProducto\": null,\n    \"razon\": null\n  },\n  \"faltanteSugerido\": null,\n  \"consultaCatalogo\": {\n    \"necesaria\": true,\n    \"consulta\": \"PRO PLAN CANINE UR\",\n    \"tipo\": \"referencia\",\n    \"presupuestoMaximo\": null\n  },\n  \"derivacionHumana\": {\n    \"necesaria\": false,\n    \"motivo\": null\n  },\n  \"solicitudComercialIndependiente\": true,\n  \"seguimientoProducto\": \"aclaracion\",\n  \"respuestaConversacional\": null\n}",
+          "usage": {
+            "prompt_tokens": 7499,
+            "completion_tokens": 611,
+            "total_tokens": 8110,
+            "prompt_tokens_details": {
+              "cached_tokens": 4864,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "supabase",
+          "method": "POST",
+          "path": "/rest/v1/rpc/search_catalog_products",
+          "ms": 583,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "GET",
+          "path": "/rest/v1/training_examples",
+          "ms": 237,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "GET",
+          "path": "/rest/v1/training_examples",
+          "ms": 564,
+          "status": 200
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 4392,
+          "status": 200,
+          "model": "gpt-5.2-2025-12-11",
+          "output": "{\"intencion\":\"consulta_producto\",\"accion\":\"consultar\",\"confianza\":0.86,\"compraContextual\":true,\"solicitudesProductoDetectadas\":[{\"intencion\":\"consulta_producto\",\"accion\":\"consultar\",\"producto\":{\"marca\":\"PRO PLAN\",\"referencia\":\"UR\",\"especie\":\"perro\",\"textoVisible\":\"Para perrito\"}}],\"producto\":{\"accion\":\"consultar\",\"marca\":\"PRO PLAN\",\"referencia\":\"UR\",\"linea\":null,\"textoVisible\":\"Para perrito\",\"categoria\":\"comida\",\"subcategoria\":null,\"especie\":\"perro\",\"etapa\":null,\"tamano\":null,\"sabores\":[],\"condiciones\":[],\"presentacion\":null,\"cantidad\":null,\"intencionPresentaciones\":null,\"mascotas\":[]},\"productos\":[],\"entrega\":{\"tipo\":null,\"direccion\":null,\"direccionCompleta\":null,\"sector\":null,\"metodoPago\":null,\"sede\":null},\"facturacion\":{\"electronica\":null,\"evidencia\":null},\"datosCliente\":{\"nombre\":null,\"cedula\":null,\"correo\":null,\"celular\":null},\"carrito\":{\"operacion\":null,\"cantidadObjetivo\":null,\"cantidadDelta\":null,\"aplicaAlUltimoProducto\":true,\"razon\":null},\"faltanteSugerido\":\"¿Lo quieres PRO PLAN CANINE UR (concentrado 2kg) o PRO PLAN CANINE LATA UR (unidad)?\"}",
+          "usage": {
+            "prompt_tokens": 4002,
+            "completion_tokens": 302,
+            "total_tokens": 4304,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 863,
+          "status": 200,
+          "model": "gpt-5.4-mini-2026-03-17",
+          "output": "¿Buscas PRO PLAN CANINE UR de 2 kg o PRO PLAN CANINE LATA UR en unidad? 🐶",
+          "usage": {
+            "prompt_tokens": 1263,
+            "completion_tokens": 29,
+            "total_tokens": 1292,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        }
+      ],
+      "cartUnchanged": true,
+      "state": {
+        "criterios": {},
+        "atencionHumana": null,
+        "ultimaConsultaProducto": {
+          "terminos": [
+            "premium",
+            "plan",
+            "ur",
+            "perro"
+          ],
+          "etiqueta": "premium plan ur perro",
+          "presentacion": null,
+          "fuente": "texto",
+          "nivel": "media",
+          "razon": "ambigua",
+          "aclaracion": {
+            "campo": "referencia",
+            "valores": [
+              "PRO PLAN CANINE UR",
+              "PRO PLAN CANINE LATA UR"
+            ]
+          },
+          "creadoEn": "2026-10-29T20:53:47.259Z",
+          "solicitudOriginal": {
+            "intencion": "consulta_producto",
+            "accion": "consultar",
+            "producto": {
+              "accion": "consultar",
+              "marca": "PRO PLAN",
+              "referencia": "UR",
+              "linea": null,
+              "textoVisible": "Para perrito",
+              "mencionOriginal": null,
+              "categoria": "comida",
+              "subcategoria": null,
+              "especie": "perro",
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": null,
+              "intencionPresentaciones": null,
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": null
+            },
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            }
+          },
+          "sinCoincidenciaInformada": false
+        }
+      }
+    },
+    {
+      "case": "reference",
+      "text": "el concentrado",
+      "response": "Sí, está PRO PLAN CANINE UR en 2kg por $122.000 🐶 ¿Te interesa esa presentación?",
+      "ms": 12751,
+      "decisions": [
+        {
+          "router": true,
+          "decision": {
+            "recomendaciones": [],
+            "preguntaRecomendacion": null,
+            "solicitudComercialIndependiente": true,
+            "derivacionHumana": {
+              "necesaria": false,
+              "motivo": null
+            },
+            "seguimientoProducto": "aclaracion",
+            "resumenMemoria": null,
+            "continuarFlujo": false,
+            "compraContextual": null,
+            "solicitudesProductoDetectadas": 1,
+            "consultaCatalogo": {
+              "tipo": "referencia",
+              "presupuestoMaximo": null,
+              "necesaria": true,
+              "consulta": "PRO PLAN CANINE UR concentrado perro"
+            },
+            "respuestaConversacional": null,
+            "intencion": "consulta_producto",
+            "accion": "consultar",
+            "confianza": 0.93,
+            "producto": {
+              "accion": "consultar",
+              "marca": "PRO PLAN",
+              "referencia": "PRO PLAN CANINE UR",
+              "linea": null,
+              "textoVisible": "el concentrado",
+              "mencionOriginal": "el concentrado",
+              "categoria": "comida",
+              "subcategoria": "concentrado",
+              "especie": "perro",
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": null,
+              "intencionPresentaciones": null,
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": 1
+            },
+            "productos": [
+              {
+                "accion": "consultar",
+                "marca": "PRO PLAN",
+                "referencia": "PRO PLAN CANINE UR",
+                "linea": null,
+                "textoVisible": "el concentrado",
+                "mencionOriginal": "el concentrado",
+                "categoria": "comida",
+                "subcategoria": "concentrado",
+                "especie": "perro",
+                "etapa": null,
+                "tamano": null,
+                "sabores": [],
+                "presentacion": null,
+                "intencionPresentaciones": null,
+                "mascotas": [],
+                "condiciones": [],
+                "cantidad": 1
+              }
+            ],
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            },
+            "facturacion": {
+              "electronica": null,
+              "evidencia": null
+            },
+            "datosCliente": {
+              "nombre": null,
+              "cedula": null,
+              "correo": null,
+              "celular": null
+            },
+            "carrito": {
+              "operacion": null,
+              "cantidadObjetivo": null,
+              "cantidadDelta": null,
+              "aplicaAlUltimoProducto": null,
+              "razon": null
+            },
+            "faltanteSugerido": null
+          }
+        },
+        {
+          "router": false,
+          "decision": {
+            "recomendaciones": [],
+            "preguntaRecomendacion": null,
+            "solicitudComercialIndependiente": false,
+            "derivacionHumana": {
+              "necesaria": false,
+              "motivo": null
+            },
+            "seguimientoProducto": null,
+            "resumenMemoria": null,
+            "continuarFlujo": false,
+            "compraContextual": null,
+            "solicitudesProductoDetectadas": null,
+            "consultaCatalogo": {
+              "tipo": null,
+              "presupuestoMaximo": null,
+              "necesaria": null,
+              "consulta": null
+            },
+            "respuestaConversacional": null,
+            "intencion": "consulta_producto",
+            "accion": "consultar",
+            "confianza": 0.78,
+            "producto": {
+              "accion": "consultar",
+              "marca": "PRO PLAN",
+              "referencia": "PRO PLAN CANINE UR",
+              "linea": null,
+              "textoVisible": "el concentrado",
+              "mencionOriginal": null,
+              "categoria": "comida",
+              "subcategoria": "concentrado",
+              "especie": "perro",
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": null,
+              "intencionPresentaciones": null,
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": null
+            },
+            "productos": [],
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            },
+            "facturacion": {
+              "electronica": null,
+              "evidencia": null
+            },
+            "datosCliente": {
+              "nombre": null,
+              "cedula": null,
+              "correo": null,
+              "celular": null
+            },
+            "carrito": {
+              "operacion": null,
+              "cantidadObjetivo": null,
+              "cantidadDelta": null,
+              "aplicaAlUltimoProducto": true,
+              "razon": null
+            },
+            "faltanteSugerido": "¿Te cotizo el PRO PLAN CANINE UR concentrado en 2 kg?"
+          }
+        }
+      ],
+      "requests": [
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 6279,
+          "status": 200,
+          "model": "gpt-5.4-2026-03-05",
+          "output": "{\n  \"intencion\": \"consulta_producto\",\n  \"accion\": \"consultar\",\n  \"confianza\": 0.93,\n  \"compraContextual\": null,\n  \"solicitudesProductoDetectadas\": 1,\n  \"producto\": {\n    \"accion\": \"consultar\",\n    \"marca\": \"PRO PLAN\",\n    \"referencia\": \"PRO PLAN CANINE UR\",\n    \"linea\": null,\n    \"textoVisible\": \"el concentrado\",\n    \"categoria\": \"comida\",\n    \"subcategoria\": \"concentrado\",\n    \"especie\": \"perro\",\n    \"etapa\": null,\n    \"tamano\": null,\n    \"sabores\": [],\n    \"condiciones\": [],\n    \"presentacion\": null,\n    \"cantidad\": 1,\n    \"intencionPresentaciones\": null,\n    \"mascotas\": [],\n    \"mencionOriginal\": \"el concentrado\"\n  },\n  \"productos\": [\n    {\n      \"accion\": \"consultar\",\n      \"marca\": \"PRO PLAN\",\n      \"referencia\": \"PRO PLAN CANINE UR\",\n      \"linea\": null,\n      \"textoVisible\": \"el concentrado\",\n      \"categoria\": \"comida\",\n      \"subcategoria\": \"concentrado\",\n      \"especie\": \"perro\",\n      \"etapa\": null,\n      \"tamano\": null,\n      \"sabores\": [],\n      \"condiciones\": [],\n      \"presentacion\": null,\n      \"cantidad\": 1,\n      \"intencionPresentaciones\": null,\n      \"mascotas\": [],\n      \"mencionOriginal\": \"el concentrado\"\n    }\n  ],\n  \"entrega\": {\n    \"tipo\": null,\n    \"direccion\": null,\n    \"direccionCompleta\": null,\n    \"sector\": null,\n    \"metodoPago\": null,\n    \"sede\": null\n  },\n  \"facturacion\": {\n    \"electronica\": null,\n    \"evidencia\": null\n  },\n  \"datosCliente\": {\n    \"nombre\": null,\n    \"cedula\": null,\n    \"correo\": null,\n    \"celular\": null\n  },\n  \"carrito\": {\n    \"operacion\": null,\n    \"cantidadObjetivo\": null,\n    \"cantidadDelta\": null,\n    \"aplicaAlUltimoProducto\": null,\n    \"razon\": null\n  },\n  \"faltanteSugerido\": null,\n  \"consultaCatalogo\": {\n    \"necesaria\": true,\n    \"consulta\": \"PRO PLAN CANINE UR concentrado perro\",\n    \"tipo\": \"referencia\",\n    \"presupuestoMaximo\": null\n  },\n  \"respuestaConversacional\": null,\n  \"derivacionHumana\": {\n    \"necesaria\": false,\n    \"motivo\": null\n  },\n  \"solicitudComercialIndependiente\": true,\n  \"seguimientoProducto\": \"aclaracion\"\n}",
+          "usage": {
+            "prompt_tokens": 7253,
+            "completion_tokens": 624,
+            "total_tokens": 7877,
+            "prompt_tokens_details": {
+              "cached_tokens": 4864,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "supabase",
+          "method": "POST",
+          "path": "/rest/v1/rpc/search_catalog_products",
+          "ms": 716,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "GET",
+          "path": "/rest/v1/training_examples",
+          "ms": 197,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "GET",
+          "path": "/rest/v1/training_examples",
+          "ms": 534,
+          "status": 200
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 3672,
+          "status": 200,
+          "model": "gpt-5.2-2025-12-11",
+          "output": "{\"intencion\":\"consulta_producto\",\"accion\":\"consultar\",\"confianza\":0.78,\"compraContextual\":null,\"solicitudesProductoDetectadas\":null,\"producto\":{\"accion\":\"consultar\",\"marca\":\"PRO PLAN\",\"referencia\":\"PRO PLAN CANINE UR\",\"linea\":null,\"textoVisible\":\"el concentrado\",\"categoria\":\"comida\",\"subcategoria\":\"concentrado\",\"especie\":\"perro\",\"etapa\":null,\"tamano\":null,\"sabores\":[],\"condiciones\":[],\"presentacion\":null,\"cantidad\":null,\"intencionPresentaciones\":null,\"mascotas\":[]},\"productos\":[],\"entrega\":{\"tipo\":null,\"direccion\":null,\"direccionCompleta\":null,\"sector\":null,\"metodoPago\":null,\"sede\":null},\"facturacion\":{\"electronica\":null,\"evidencia\":null},\"datosCliente\":{\"nombre\":null,\"cedula\":null,\"correo\":null,\"celular\":null},\"carrito\":{\"operacion\":null,\"cantidadObjetivo\":null,\"cantidadDelta\":null,\"aplicaAlUltimoProducto\":true,\"razon\":null},\"faltanteSugerido\":\"¿Te cotizo el PRO PLAN CANINE UR concentrado en 2 kg?\"}",
+          "usage": {
+            "prompt_tokens": 3961,
+            "completion_tokens": 260,
+            "total_tokens": 4221,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 1492,
+          "status": 200,
+          "model": "gpt-5.4-mini-2026-03-17",
+          "output": "Sí, está PRO PLAN CANINE UR en 2kg por $122.000 🐶 ¿Te interesa esa presentación?",
+          "usage": {
+            "prompt_tokens": 1659,
+            "completion_tokens": 29,
+            "total_tokens": 1688,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        }
+      ],
+      "cartUnchanged": true,
+      "state": {
+        "criterios": {
+          "especie": "perro",
+          "categoria": "comida",
+          "subcategoria": "concentrado"
+        },
+        "atencionHumana": null,
+        "ultimaConsultaProducto": {
+          "terminos": [
+            "premium",
+            "plan",
+            "canine",
+            "ur",
+            "perro"
+          ],
+          "etiqueta": "premium plan canine ur perro",
+          "presentacion": null,
+          "fuente": "texto",
+          "nivel": "alta",
+          "razon": "nombre_exacto",
+          "aclaracion": null,
+          "creadoEn": "2026-10-29T20:53:59.374Z",
+          "solicitudOriginal": {
+            "intencion": "consulta_producto",
+            "accion": "consultar",
+            "producto": {
+              "accion": "consultar",
+              "marca": "PRO PLAN",
+              "referencia": "PRO PLAN CANINE UR",
+              "linea": null,
+              "textoVisible": "el concentrado",
+              "mencionOriginal": null,
+              "categoria": "comida",
+              "subcategoria": "concentrado",
+              "especie": "perro",
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": null,
+              "intencionPresentaciones": null,
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": null,
+              "duracion": null,
+              "coincidenciaVisualValidada": false,
+              "requierePresentacion": false,
+              "nombreFamilia": "PRO PLAN CANINE UR",
+              "referenciasEquivalentes": [
+                "PRO PLAN CANINE UR"
+              ],
+              "presentacionesEquivalentes": [
+                {
+                  "peso": "2kg",
+                  "precio": 122000,
+                  "metadata": {
+                    "llave": "1387",
+                    "codigo": "10301011387",
+                    "source": "productos.json",
+                    "codigos": [
+                      "10301011387"
+                    ],
+                    "nombre_original": "PRO PLAN CANINE UR 2KG"
+                  },
+                  "stock": null,
+                  "referencia": "PRO PLAN CANINE UR"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "case": "unresolved-tone",
+      "text": "Solo consultar: tienen marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos?",
+      "response": "Todavía no puedo confirmar ZETAPRUEBAQ9 ZQ17 de 4kg con seguridad. ¿Quieres que revisemos otra opción?\n\nPedido:\n- 1 x BR CAT SALMON 1kg: $30.500\nTotal: $30.500",
+      "ms": 16250,
+      "decisions": [
+        {
+          "router": true,
+          "decision": {
+            "recomendaciones": [],
+            "preguntaRecomendacion": null,
+            "solicitudComercialIndependiente": true,
+            "derivacionHumana": {
+              "necesaria": false,
+              "motivo": null
+            },
+            "seguimientoProducto": "nueva",
+            "resumenMemoria": null,
+            "continuarFlujo": false,
+            "compraContextual": null,
+            "solicitudesProductoDetectadas": 1,
+            "consultaCatalogo": {
+              "tipo": "referencia",
+              "presupuestoMaximo": null,
+              "necesaria": true,
+              "consulta": "ZetaPruebaQ9 ZQ17 4 kilos"
+            },
+            "respuestaConversacional": null,
+            "intencion": "consulta_producto",
+            "accion": "consultar",
+            "confianza": 0.99,
+            "producto": {
+              "accion": "consultar",
+              "marca": "ZetaPruebaQ9",
+              "referencia": "ZQ17",
+              "linea": null,
+              "textoVisible": "marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos",
+              "mencionOriginal": "marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos",
+              "categoria": null,
+              "subcategoria": null,
+              "especie": null,
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": "4 kilos",
+              "intencionPresentaciones": "especifica",
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": 1
+            },
+            "productos": [
+              {
+                "accion": "consultar",
+                "marca": "ZetaPruebaQ9",
+                "referencia": "ZQ17",
+                "linea": null,
+                "textoVisible": "marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos",
+                "mencionOriginal": "marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos",
+                "categoria": null,
+                "subcategoria": null,
+                "especie": null,
+                "etapa": null,
+                "tamano": null,
+                "sabores": [],
+                "presentacion": "4 kilos",
+                "intencionPresentaciones": "especifica",
+                "mascotas": [],
+                "condiciones": [],
+                "cantidad": 1
+              }
+            ],
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            },
+            "facturacion": {
+              "electronica": null,
+              "evidencia": null
+            },
+            "datosCliente": {
+              "nombre": null,
+              "cedula": null,
+              "correo": null,
+              "celular": null
+            },
+            "carrito": {
+              "operacion": null,
+              "cantidadObjetivo": null,
+              "cantidadDelta": null,
+              "aplicaAlUltimoProducto": null,
+              "razon": null
+            },
+            "faltanteSugerido": null
+          }
+        },
+        {
+          "router": false,
+          "decision": {
+            "recomendaciones": [],
+            "preguntaRecomendacion": null,
+            "solicitudComercialIndependiente": false,
+            "derivacionHumana": {
+              "necesaria": false,
+              "motivo": null
+            },
+            "seguimientoProducto": null,
+            "resumenMemoria": null,
+            "continuarFlujo": false,
+            "compraContextual": null,
+            "solicitudesProductoDetectadas": null,
+            "consultaCatalogo": {
+              "tipo": null,
+              "presupuestoMaximo": null,
+              "necesaria": null,
+              "consulta": null
+            },
+            "respuestaConversacional": null,
+            "intencion": "consulta_producto",
+            "accion": "consultar",
+            "confianza": 0.86,
+            "producto": {
+              "accion": "consultar",
+              "marca": "ZetaPruebaQ9",
+              "referencia": "ZQ17",
+              "linea": null,
+              "textoVisible": "marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos",
+              "mencionOriginal": null,
+              "categoria": null,
+              "subcategoria": null,
+              "especie": null,
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": "4 kilos",
+              "intencionPresentaciones": null,
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": null
+            },
+            "productos": [],
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            },
+            "facturacion": {
+              "electronica": null,
+              "evidencia": null
+            },
+            "datosCliente": {
+              "nombre": null,
+              "cedula": null,
+              "correo": null,
+              "celular": null
+            },
+            "carrito": {
+              "operacion": null,
+              "cantidadObjetivo": null,
+              "cantidadDelta": null,
+              "aplicaAlUltimoProducto": null,
+              "razon": null
+            },
+            "faltanteSugerido": null
+          }
+        }
+      ],
+      "requests": [
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 6880,
+          "status": 200,
+          "model": "gpt-5.4-2026-03-05",
+          "output": "{\n  \"intencion\": \"consulta_producto\",\n  \"accion\": \"consultar\",\n  \"confianza\": 0.99,\n  \"compraContextual\": null,\n  \"solicitudesProductoDetectadas\": 1,\n  \"producto\": {\n    \"accion\": \"consultar\",\n    \"marca\": \"ZetaPruebaQ9\",\n    \"referencia\": \"ZQ17\",\n    \"linea\": null,\n    \"textoVisible\": \"marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos\",\n    \"categoria\": null,\n    \"subcategoria\": null,\n    \"especie\": null,\n    \"etapa\": null,\n    \"tamano\": null,\n    \"sabores\": [],\n    \"condiciones\": [],\n    \"presentacion\": \"4 kilos\",\n    \"cantidad\": 1,\n    \"intencionPresentaciones\": \"especifica\",\n    \"mascotas\": [],\n    \"mencionOriginal\": \"marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos\"\n  },\n  \"productos\": [\n    {\n      \"accion\": \"consultar\",\n      \"marca\": \"ZetaPruebaQ9\",\n      \"referencia\": \"ZQ17\",\n      \"linea\": null,\n      \"textoVisible\": \"marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos\",\n      \"categoria\": null,\n      \"subcategoria\": null,\n      \"especie\": null,\n      \"etapa\": null,\n      \"tamano\": null,\n      \"sabores\": [],\n      \"condiciones\": [],\n      \"presentacion\": \"4 kilos\",\n      \"cantidad\": 1,\n      \"intencionPresentaciones\": \"especifica\",\n      \"mascotas\": [],\n      \"mencionOriginal\": \"marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos\"\n    }\n  ],\n  \"entrega\": {\n    \"tipo\": null,\n    \"direccion\": null,\n    \"direccionCompleta\": null,\n    \"sector\": null,\n    \"metodoPago\": null,\n    \"sede\": null\n  },\n  \"facturacion\": {\n    \"electronica\": null,\n    \"evidencia\": null\n  },\n  \"datosCliente\": {\n    \"nombre\": null,\n    \"cedula\": null,\n    \"correo\": null,\n    \"celular\": null\n  },\n  \"carrito\": {\n    \"operacion\": null,\n    \"cantidadObjetivo\": null,\n    \"cantidadDelta\": null,\n    \"aplicaAlUltimoProducto\": null,\n    \"razon\": null\n  },\n  \"faltanteSugerido\": null,\n  \"consultaCatalogo\": {\n    \"necesaria\": true,\n    \"consulta\": \"ZetaPruebaQ9 ZQ17 4 kilos\",\n    \"tipo\": \"referencia\",\n    \"presupuestoMaximo\": null\n  },\n  \"derivacionHumana\": {\n    \"necesaria\": false,\n    \"motivo\": null\n  },\n  \"solicitudComercialIndependiente\": true,\n  \"seguimientoProducto\": \"nueva\",\n  \"continuarFlujo\": false,\n  \"respuestaConversacional\": null\n}",
+          "usage": {
+            "prompt_tokens": 6425,
+            "completion_tokens": 684,
+            "total_tokens": 7109,
+            "prompt_tokens_details": {
+              "cached_tokens": 5888,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "supabase",
+          "method": "POST",
+          "path": "/rest/v1/rpc/search_catalog_products",
+          "ms": 473,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "POST",
+          "path": "/rest/v1/rpc/search_catalog_products",
+          "ms": 424,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "POST",
+          "path": "/rest/v1/rpc/search_catalog_products",
+          "ms": 590,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "POST",
+          "path": "/rest/v1/rpc/search_catalog_products",
+          "ms": 377,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "GET",
+          "path": "/rest/v1/training_examples",
+          "ms": 201,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "GET",
+          "path": "/rest/v1/training_examples",
+          "ms": 256,
+          "status": 200
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 4285,
+          "status": 200,
+          "model": "gpt-5.2-2025-12-11",
+          "output": "{\"intencion\":\"consulta_producto\",\"accion\":\"consultar\",\"confianza\":0.86,\"compraContextual\":null,\"solicitudesProductoDetectadas\":[\"Consultar disponibilidad de marca ZetaPruebaQ9, referencia ZQ17, presentación 4 kilos\"],\"producto\":{\"accion\":\"consultar\",\"marca\":\"ZetaPruebaQ9\",\"referencia\":\"ZQ17\",\"linea\":null,\"textoVisible\":\"marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos\",\"categoria\":null,\"subcategoria\":null,\"especie\":null,\"etapa\":null,\"tamano\":null,\"sabores\":[],\"condiciones\":[],\"presentacion\":\"4 kilos\",\"cantidad\":null,\"intencionPresentaciones\":\"exacta\",\"mascotas\":[]},\"productos\":[],\"entrega\":{\"tipo\":null,\"direccion\":null,\"direccionCompleta\":null,\"sector\":null,\"metodoPago\":null,\"sede\":null},\"facturacion\":{\"electronica\":null,\"evidencia\":null},\"datosCliente\":{\"nombre\":null,\"cedula\":null,\"correo\":null,\"celular\":null},\"carrito\":{\"operacion\":null,\"cantidadObjetivo\":null,\"cantidadDelta\":null,\"aplicaAlUltimoProducto\":null,\"razon\":null},\"faltanteSugerido\":null}",
+          "usage": {
+            "prompt_tokens": 2806,
+            "completion_tokens": 276,
+            "total_tokens": 3082,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 1552,
+          "status": 200,
+          "model": "gpt-5.4-mini-2026-03-17",
+          "output": "{\"respuesta\":\"De esa referencia no me aparece una confirmación segura por ahora. Si quieres, puedo revisar otras opciones de ese mismo nombre para ayudarte a ubicarla 🙂\",\"siguientePaso\":\"ofrecer_busqueda\",\"datoSolicitado\":null}",
+          "usage": {
+            "prompt_tokens": 1548,
+            "completion_tokens": 56,
+            "total_tokens": 1604,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 1187,
+          "status": 200,
+          "model": "gpt-5.4-mini-2026-03-17",
+          "output": "{\"respuesta\":\"No me queda confirmada esa referencia por ahora. Si quieres, puedo revisar otras opciones de ese mismo nombre para ayudarte a ubicarla 🙂\",\"siguientePaso\":\"ofrecer_busqueda\",\"datoSolicitado\":null}",
+          "usage": {
+            "prompt_tokens": 1661,
+            "completion_tokens": 53,
+            "total_tokens": 1714,
+            "prompt_tokens_details": {
+              "cached_tokens": 1408,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        }
+      ],
+      "cartUnchanged": true,
+      "state": {
+        "criterios": {},
+        "atencionHumana": null,
+        "ultimaConsultaProducto": {
+          "terminos": [
+            "zetapruebaq9",
+            "zq17"
+          ],
+          "etiqueta": "zetapruebaq9 zq17",
+          "presentacion": "4kg",
+          "fuente": "texto",
+          "nivel": "baja",
+          "razon": "sin_coincidencia_confiable",
+          "aclaracion": null,
+          "creadoEn": "2026-10-29T20:54:14.391Z",
+          "solicitudOriginal": {
+            "intencion": "consulta_producto",
+            "accion": "consultar",
+            "producto": {
+              "accion": "consultar",
+              "marca": "ZetaPruebaQ9",
+              "referencia": "ZQ17",
+              "linea": null,
+              "textoVisible": "marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos",
+              "mencionOriginal": null,
+              "categoria": null,
+              "subcategoria": null,
+              "especie": null,
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": "4 kilos",
+              "intencionPresentaciones": "especifica",
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": 1,
+              "pesoTextoOriginal": "4kg"
+            },
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            }
+          },
+          "sinCoincidenciaInformada": true
+        }
+      }
+    },
+    {
+      "case": "unresolved-tone",
+      "text": "No tengo foto ni más datos, ese es el nombre y son 4 kilos",
+      "response": "Por ahora no puedo confirmar esa referencia. ¿Quieres que revisemos otras opciones? Mantengo tu elección sin sustituirla por otro producto.\n\n\n\nPedido:\n- 1 x BR CAT SALMON 1kg: $30.500\nTotal: $30.500",
+      "ms": 17827,
+      "decisions": [
+        {
+          "router": true,
+          "decision": {
+            "recomendaciones": [],
+            "preguntaRecomendacion": null,
+            "solicitudComercialIndependiente": true,
+            "derivacionHumana": {
+              "necesaria": false,
+              "motivo": null
+            },
+            "seguimientoProducto": "aclaracion",
+            "resumenMemoria": null,
+            "continuarFlujo": false,
+            "compraContextual": null,
+            "solicitudesProductoDetectadas": 1,
+            "consultaCatalogo": {
+              "tipo": "referencia",
+              "presupuestoMaximo": null,
+              "necesaria": true,
+              "consulta": "ZetaPruebaQ9 ZQ17 4 kilos"
+            },
+            "respuestaConversacional": null,
+            "intencion": "consulta_producto",
+            "accion": "consultar",
+            "confianza": 0.95,
+            "producto": {
+              "accion": "consultar",
+              "marca": "ZetaPruebaQ9",
+              "referencia": "ZQ17",
+              "linea": null,
+              "textoVisible": "nombre ZetaPruebaQ9 ZQ17 4 kilos",
+              "mencionOriginal": "ese es el nombre y son 4 kilos",
+              "categoria": null,
+              "subcategoria": null,
+              "especie": null,
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": "4 kilos",
+              "intencionPresentaciones": "especifica",
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": 1
+            },
+            "productos": [
+              {
+                "accion": "consultar",
+                "marca": "ZetaPruebaQ9",
+                "referencia": "ZQ17",
+                "linea": null,
+                "textoVisible": "nombre ZetaPruebaQ9 ZQ17 4 kilos",
+                "mencionOriginal": "ese es el nombre y son 4 kilos",
+                "categoria": null,
+                "subcategoria": null,
+                "especie": null,
+                "etapa": null,
+                "tamano": null,
+                "sabores": [],
+                "presentacion": "4 kilos",
+                "intencionPresentaciones": "especifica",
+                "mascotas": [],
+                "condiciones": [],
+                "cantidad": 1
+              }
+            ],
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            },
+            "facturacion": {
+              "electronica": null,
+              "evidencia": null
+            },
+            "datosCliente": {
+              "nombre": null,
+              "cedula": null,
+              "correo": null,
+              "celular": null
+            },
+            "carrito": {
+              "operacion": null,
+              "cantidadObjetivo": null,
+              "cantidadDelta": null,
+              "aplicaAlUltimoProducto": null,
+              "razon": null
+            },
+            "faltanteSugerido": null
+          }
+        },
+        {
+          "router": false,
+          "decision": {
+            "recomendaciones": [],
+            "preguntaRecomendacion": null,
+            "solicitudComercialIndependiente": false,
+            "derivacionHumana": {
+              "necesaria": false,
+              "motivo": null
+            },
+            "seguimientoProducto": null,
+            "resumenMemoria": null,
+            "continuarFlujo": false,
+            "compraContextual": null,
+            "solicitudesProductoDetectadas": null,
+            "consultaCatalogo": {
+              "tipo": null,
+              "presupuestoMaximo": null,
+              "necesaria": null,
+              "consulta": null
+            },
+            "respuestaConversacional": null,
+            "intencion": "consulta_producto",
+            "accion": "consultar",
+            "confianza": 0.74,
+            "producto": {
+              "accion": "consultar",
+              "marca": "ZetaPruebaQ9",
+              "referencia": "ZQ17",
+              "linea": null,
+              "textoVisible": "No tengo foto ni más datos; es ZetaPruebaQ9 ZQ17 y son 4 kilos",
+              "mencionOriginal": null,
+              "categoria": null,
+              "subcategoria": null,
+              "especie": null,
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": "4 kilos",
+              "intencionPresentaciones": "especifica",
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": null
+            },
+            "productos": [],
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            },
+            "facturacion": {
+              "electronica": null,
+              "evidencia": null
+            },
+            "datosCliente": {
+              "nombre": null,
+              "cedula": null,
+              "correo": null,
+              "celular": null
+            },
+            "carrito": {
+              "operacion": null,
+              "cantidadObjetivo": null,
+              "cantidadDelta": null,
+              "aplicaAlUltimoProducto": null,
+              "razon": null
+            },
+            "faltanteSugerido": null
+          }
+        }
+      ],
+      "requests": [
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 7203,
+          "status": 200,
+          "model": "gpt-5.4-2026-03-05",
+          "output": "{\n  \"intencion\": \"consulta_producto\",\n  \"accion\": \"consultar\",\n  \"confianza\": 0.95,\n  \"compraContextual\": null,\n  \"solicitudesProductoDetectadas\": 1,\n  \"producto\": {\n    \"accion\": \"consultar\",\n    \"marca\": \"ZetaPruebaQ9\",\n    \"referencia\": \"ZQ17\",\n    \"linea\": null,\n    \"textoVisible\": \"nombre ZetaPruebaQ9 ZQ17 4 kilos\",\n    \"categoria\": null,\n    \"subcategoria\": null,\n    \"especie\": null,\n    \"etapa\": null,\n    \"tamano\": null,\n    \"sabores\": [],\n    \"condiciones\": [],\n    \"presentacion\": \"4 kilos\",\n    \"cantidad\": 1,\n    \"intencionPresentaciones\": \"especifica\",\n    \"mascotas\": [],\n    \"mencionOriginal\": \"ese es el nombre y son 4 kilos\"\n  },\n  \"productos\": [\n    {\n      \"accion\": \"consultar\",\n      \"marca\": \"ZetaPruebaQ9\",\n      \"referencia\": \"ZQ17\",\n      \"linea\": null,\n      \"textoVisible\": \"nombre ZetaPruebaQ9 ZQ17 4 kilos\",\n      \"categoria\": null,\n      \"subcategoria\": null,\n      \"especie\": null,\n      \"etapa\": null,\n      \"tamano\": null,\n      \"sabores\": [],\n      \"condiciones\": [],\n      \"presentacion\": \"4 kilos\",\n      \"cantidad\": 1,\n      \"intencionPresentaciones\": \"especifica\",\n      \"mascotas\": [],\n      \"mencionOriginal\": \"ese es el nombre y son 4 kilos\"\n    }\n  ],\n  \"entrega\": {\n    \"tipo\": null,\n    \"direccion\": null,\n    \"direccionCompleta\": null,\n    \"sector\": null,\n    \"metodoPago\": null,\n    \"sede\": null\n  },\n  \"facturacion\": {\n    \"electronica\": null,\n    \"evidencia\": null\n  },\n  \"datosCliente\": {\n    \"nombre\": null,\n    \"cedula\": null,\n    \"correo\": null,\n    \"celular\": null\n  },\n  \"carrito\": {\n    \"operacion\": null,\n    \"cantidadObjetivo\": null,\n    \"cantidadDelta\": null,\n    \"aplicaAlUltimoProducto\": null,\n    \"razon\": null\n  },\n  \"faltanteSugerido\": null,\n  \"consultaCatalogo\": {\n    \"necesaria\": true,\n    \"consulta\": \"ZetaPruebaQ9 ZQ17 4 kilos\",\n    \"tipo\": \"referencia\",\n    \"presupuestoMaximo\": null\n  },\n  \"respuestaConversacional\": null,\n  \"derivacionHumana\": {\n    \"necesaria\": false,\n    \"motivo\": null\n  },\n  \"solicitudComercialIndependiente\": true,\n  \"seguimientoProducto\": \"aclaracion\",\n  \"continuarFlujo\": false\n}",
+          "usage": {
+            "prompt_tokens": 6769,
+            "completion_tokens": 669,
+            "total_tokens": 7438,
+            "prompt_tokens_details": {
+              "cached_tokens": 4864,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "supabase",
+          "method": "POST",
+          "path": "/rest/v1/rpc/search_catalog_products",
+          "ms": 644,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "POST",
+          "path": "/rest/v1/rpc/search_catalog_products",
+          "ms": 475,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "POST",
+          "path": "/rest/v1/rpc/search_catalog_products",
+          "ms": 465,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "POST",
+          "path": "/rest/v1/rpc/search_catalog_products",
+          "ms": 448,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "GET",
+          "path": "/rest/v1/catalog_brands",
+          "ms": 205,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "POST",
+          "path": "/rest/v1/rpc/search_catalog_products",
+          "ms": 369,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "GET",
+          "path": "/rest/v1/training_examples",
+          "ms": 182,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "GET",
+          "path": "/rest/v1/training_examples",
+          "ms": 326,
+          "status": 200
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 4723,
+          "status": 200,
+          "model": "gpt-5.2-2025-12-11",
+          "output": "{\"intencion\":\"consulta_producto\",\"accion\":\"consultar\",\"confianza\":0.74,\"compraContextual\":null,\"solicitudesProductoDetectadas\":[\"Confirma que el producto consultado es por nombre (ZetaPruebaQ9 ZQ17) y presentación 4kg, sin foto ni más datos.\"],\"producto\":{\"accion\":\"consultar\",\"marca\":\"ZetaPruebaQ9\",\"referencia\":\"ZQ17\",\"linea\":null,\"textoVisible\":\"No tengo foto ni más datos; es ZetaPruebaQ9 ZQ17 y son 4 kilos\",\"categoria\":null,\"subcategoria\":null,\"especie\":null,\"etapa\":null,\"tamano\":null,\"sabores\":[],\"condiciones\":[],\"presentacion\":\"4 kilos\",\"cantidad\":null,\"intencionPresentaciones\":\"especifica\",\"mascotas\":[]},\"productos\":[],\"entrega\":{\"tipo\":null,\"direccion\":null,\"direccionCompleta\":null,\"sector\":null,\"metodoPago\":null,\"sede\":null},\"facturacion\":{\"electronica\":null,\"evidencia\":null},\"datosCliente\":{\"nombre\":null,\"cedula\":null,\"correo\":null,\"celular\":null},\"carrito\":{\"operacion\":null,\"cantidadObjetivo\":null,\"cantidadDelta\":null,\"aplicaAlUltimoProducto\":null,\"razon\":null},\"faltanteSugerido\":null}",
+          "usage": {
+            "prompt_tokens": 3139,
+            "completion_tokens": 296,
+            "total_tokens": 3435,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 1402,
+          "status": 200,
+          "model": "gpt-5.4-mini-2026-03-17",
+          "output": "{\"respuesta\":\"Con ese nombre y en 4 kilos todavía no me queda del todo claro cuál es exactamente 😕 Si quieres, puedo revisar si aparece alguna opción que encaje con eso y te la comparto.\",\"siguientePaso\":\"ofrecer_busqueda\",\"datoSolicitado\":null}",
+          "usage": {
+            "prompt_tokens": 1535,
+            "completion_tokens": 64,
+            "total_tokens": 1599,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 1230,
+          "status": 200,
+          "model": "gpt-5.4-mini-2026-03-17",
+          "output": "{\"respuesta\":\"Con ese nombre y en 4 kilos todavía no me queda del todo claro cuál es exactamente 😕 Si quieres, puedo revisar si aparece alguna opción que encaje con eso y te la comparto.\",\"siguientePaso\":\"ofrecer_busqueda\",\"datoSolicitado\":null}",
+          "usage": {
+            "prompt_tokens": 1656,
+            "completion_tokens": 64,
+            "total_tokens": 1720,
+            "prompt_tokens_details": {
+              "cached_tokens": 1408,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        }
+      ],
+      "cartUnchanged": true,
+      "state": {
+        "criterios": {},
+        "atencionHumana": null,
+        "ultimaConsultaProducto": {
+          "terminos": [
+            "ese",
+            "nombre",
+            "son"
+          ],
+          "etiqueta": "ese nombre son",
+          "presentacion": "4kg",
+          "fuente": "texto",
+          "nivel": "baja",
+          "razon": "sin_coincidencia_confiable",
+          "aclaracion": null,
+          "creadoEn": "2026-10-29T20:54:32.328Z",
+          "solicitudOriginal": {
+            "intencion": "consulta_producto",
+            "accion": "consultar",
+            "producto": {
+              "accion": "consultar",
+              "marca": null,
+              "referencia": null,
+              "linea": null,
+              "textoVisible": "No tengo foto ni más datos; es ZetaPruebaQ9 ZQ17 y son 4 kilos",
+              "mencionOriginal": null,
+              "categoria": null,
+              "subcategoria": null,
+              "especie": null,
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": "4 kilos",
+              "intencionPresentaciones": "especifica",
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": 1,
+              "pesoTextoOriginal": "4kg"
+            },
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            }
+          },
+          "sinCoincidenciaInformada": true
+        }
+      }
+    },
+    {
+      "case": "unresolved-paraphrase",
+      "text": "Me puedes mirar el ZQ17 de ZetaPruebaQ9? Es bolsa de cuatro kilos, no tengo foto",
+      "response": "Todavía no puedo confirmar ZQ17 ZETAPRUEBAQ9 de 4kg con seguridad. ¿Quieres que revisemos otra opción?\n\nPedido:\n- 1 x BR CAT SALMON 1kg: $30.500\nTotal: $30.500",
+      "ms": 15355,
+      "decisions": [
+        {
+          "router": true,
+          "decision": {
+            "recomendaciones": [],
+            "preguntaRecomendacion": null,
+            "solicitudComercialIndependiente": true,
+            "derivacionHumana": {
+              "necesaria": false,
+              "motivo": null
+            },
+            "seguimientoProducto": "nueva",
+            "resumenMemoria": null,
+            "continuarFlujo": false,
+            "compraContextual": null,
+            "solicitudesProductoDetectadas": 1,
+            "consultaCatalogo": {
+              "tipo": "referencia",
+              "presupuestoMaximo": null,
+              "necesaria": true,
+              "consulta": "ZQ17 ZetaPruebaQ9 4 kilos"
+            },
+            "respuestaConversacional": null,
+            "intencion": "consulta_producto",
+            "accion": "consultar",
+            "confianza": 0.96,
+            "producto": {
+              "accion": "consultar",
+              "marca": "ZetaPruebaQ9",
+              "referencia": "ZQ17",
+              "linea": null,
+              "textoVisible": "ZQ17 de ZetaPruebaQ9 bolsa de cuatro kilos",
+              "mencionOriginal": "el ZQ17 de ZetaPruebaQ9",
+              "categoria": null,
+              "subcategoria": null,
+              "especie": null,
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": "4 kilos",
+              "intencionPresentaciones": "especifica",
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": 1
+            },
+            "productos": [
+              {
+                "accion": "consultar",
+                "marca": "ZetaPruebaQ9",
+                "referencia": "ZQ17",
+                "linea": null,
+                "textoVisible": "ZQ17 de ZetaPruebaQ9 bolsa de cuatro kilos",
+                "mencionOriginal": "el ZQ17 de ZetaPruebaQ9",
+                "categoria": null,
+                "subcategoria": null,
+                "especie": null,
+                "etapa": null,
+                "tamano": null,
+                "sabores": [],
+                "presentacion": "4 kilos",
+                "intencionPresentaciones": "especifica",
+                "mascotas": [],
+                "condiciones": [],
+                "cantidad": 1
+              }
+            ],
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            },
+            "facturacion": {
+              "electronica": null,
+              "evidencia": null
+            },
+            "datosCliente": {
+              "nombre": null,
+              "cedula": null,
+              "correo": null,
+              "celular": null
+            },
+            "carrito": {
+              "operacion": null,
+              "cantidadObjetivo": null,
+              "cantidadDelta": null,
+              "aplicaAlUltimoProducto": null,
+              "razon": null
+            },
+            "faltanteSugerido": null
+          }
+        },
+        {
+          "router": false,
+          "decision": {
+            "recomendaciones": [],
+            "preguntaRecomendacion": null,
+            "solicitudComercialIndependiente": false,
+            "derivacionHumana": {
+              "necesaria": false,
+              "motivo": null
+            },
+            "seguimientoProducto": null,
+            "resumenMemoria": null,
+            "continuarFlujo": false,
+            "compraContextual": null,
+            "solicitudesProductoDetectadas": null,
+            "consultaCatalogo": {
+              "tipo": null,
+              "presupuestoMaximo": null,
+              "necesaria": null,
+              "consulta": null
+            },
+            "respuestaConversacional": null,
+            "intencion": "consulta_producto",
+            "accion": "consultar",
+            "confianza": 0.78,
+            "producto": {
+              "accion": "consultar",
+              "marca": "ZetaPruebaQ9",
+              "referencia": "ZQ17",
+              "linea": null,
+              "textoVisible": "ZQ17 de ZetaPruebaQ9 bolsa de cuatro kilos",
+              "mencionOriginal": null,
+              "categoria": null,
+              "subcategoria": null,
+              "especie": null,
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": "4 kilos",
+              "intencionPresentaciones": null,
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": null
+            },
+            "productos": [],
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            },
+            "facturacion": {
+              "electronica": null,
+              "evidencia": null
+            },
+            "datosCliente": {
+              "nombre": null,
+              "cedula": null,
+              "correo": null,
+              "celular": null
+            },
+            "carrito": {
+              "operacion": null,
+              "cantidadObjetivo": null,
+              "cantidadDelta": null,
+              "aplicaAlUltimoProducto": null,
+              "razon": null
+            },
+            "faltanteSugerido": null
+          }
+        }
+      ],
+      "requests": [
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 6357,
+          "status": 200,
+          "model": "gpt-5.4-2026-03-05",
+          "output": "{\n  \"intencion\": \"consulta_producto\",\n  \"accion\": \"consultar\",\n  \"confianza\": 0.96,\n  \"compraContextual\": null,\n  \"solicitudesProductoDetectadas\": 1,\n  \"producto\": {\n    \"accion\": \"consultar\",\n    \"marca\": \"ZetaPruebaQ9\",\n    \"referencia\": \"ZQ17\",\n    \"linea\": null,\n    \"textoVisible\": \"ZQ17 de ZetaPruebaQ9 bolsa de cuatro kilos\",\n    \"categoria\": null,\n    \"subcategoria\": null,\n    \"especie\": null,\n    \"etapa\": null,\n    \"tamano\": null,\n    \"sabores\": [],\n    \"condiciones\": [],\n    \"presentacion\": \"4 kilos\",\n    \"cantidad\": 1,\n    \"intencionPresentaciones\": \"especifica\",\n    \"mascotas\": [],\n    \"mencionOriginal\": \"el ZQ17 de ZetaPruebaQ9\"\n  },\n  \"productos\": [\n    {\n      \"accion\": \"consultar\",\n      \"marca\": \"ZetaPruebaQ9\",\n      \"referencia\": \"ZQ17\",\n      \"linea\": null,\n      \"textoVisible\": \"ZQ17 de ZetaPruebaQ9 bolsa de cuatro kilos\",\n      \"categoria\": null,\n      \"subcategoria\": null,\n      \"especie\": null,\n      \"etapa\": null,\n      \"tamano\": null,\n      \"sabores\": [],\n      \"condiciones\": [],\n      \"presentacion\": \"4 kilos\",\n      \"cantidad\": 1,\n      \"intencionPresentaciones\": \"especifica\",\n      \"mascotas\": [],\n      \"mencionOriginal\": \"el ZQ17 de ZetaPruebaQ9\"\n    }\n  ],\n  \"entrega\": {\n    \"tipo\": null,\n    \"direccion\": null,\n    \"direccionCompleta\": null,\n    \"sector\": null,\n    \"metodoPago\": null,\n    \"sede\": null\n  },\n  \"facturacion\": {\n    \"electronica\": null,\n    \"evidencia\": null\n  },\n  \"datosCliente\": {\n    \"nombre\": null,\n    \"cedula\": null,\n    \"correo\": null,\n    \"celular\": null\n  },\n  \"carrito\": {\n    \"operacion\": null,\n    \"cantidadObjetivo\": null,\n    \"cantidadDelta\": null,\n    \"aplicaAlUltimoProducto\": null,\n    \"razon\": null\n  },\n  \"faltanteSugerido\": null,\n  \"consultaCatalogo\": {\n    \"necesaria\": true,\n    \"consulta\": \"ZQ17 ZetaPruebaQ9 4 kilos\",\n    \"tipo\": \"referencia\",\n    \"presupuestoMaximo\": null\n  },\n  \"respuestaConversacional\": null,\n  \"derivacionHumana\": {\n    \"necesaria\": false,\n    \"motivo\": null\n  },\n  \"solicitudComercialIndependiente\": true,\n  \"seguimientoProducto\": \"nueva\"\n}",
+          "usage": {
+            "prompt_tokens": 6429,
+            "completion_tokens": 665,
+            "total_tokens": 7094,
+            "prompt_tokens_details": {
+              "cached_tokens": 5888,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "supabase",
+          "method": "POST",
+          "path": "/rest/v1/rpc/search_catalog_products",
+          "ms": 476,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "POST",
+          "path": "/rest/v1/rpc/search_catalog_products",
+          "ms": 428,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "POST",
+          "path": "/rest/v1/rpc/search_catalog_products",
+          "ms": 474,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "GET",
+          "path": "/rest/v1/training_examples",
+          "ms": 202,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "GET",
+          "path": "/rest/v1/training_examples",
+          "ms": 288,
+          "status": 200
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 4893,
+          "status": 200,
+          "model": "gpt-5.2-2025-12-11",
+          "output": "{\n  \"intencion\": \"consulta_producto\",\n  \"accion\": \"consultar\",\n  \"confianza\": 0.78,\n  \"compraContextual\": null,\n  \"solicitudesProductoDetectadas\": [\n    {\n      \"marca\": \"ZetaPruebaQ9\",\n      \"referencia\": \"ZQ17\",\n      \"presentacion\": \"4 kilos\"\n    }\n  ],\n  \"producto\": {\n    \"accion\": \"consultar\",\n    \"marca\": \"ZetaPruebaQ9\",\n    \"referencia\": \"ZQ17\",\n    \"linea\": null,\n    \"textoVisible\": \"ZQ17 de ZetaPruebaQ9 bolsa de cuatro kilos\",\n    \"categoria\": null,\n    \"subcategoria\": null,\n    \"especie\": null,\n    \"etapa\": null,\n    \"tamano\": null,\n    \"sabores\": [],\n    \"condiciones\": [],\n    \"presentacion\": \"4 kilos\",\n    \"cantidad\": null,\n    \"intencionPresentaciones\": null,\n    \"mascotas\": []\n  },\n  \"productos\": [],\n  \"entrega\": {\n    \"tipo\": null,\n    \"direccion\": null,\n    \"direccionCompleta\": null,\n    \"sector\": null,\n    \"metodoPago\": null,\n    \"sede\": null\n  },\n  \"facturacion\": {\n    \"electronica\": null,\n    \"evidencia\": null\n  },\n  \"datosCliente\": {\n    \"nombre\": null,\n    \"cedula\": null,\n    \"correo\": null,\n    \"celular\": null\n  },\n  \"carrito\": {\n    \"operacion\": null,\n    \"cantidadObjetivo\": null,\n    \"cantidadDelta\": null,\n    \"aplicaAlUltimoProducto\": null,\n    \"razon\": null\n  },\n  \"faltanteSugerido\": null\n}",
+          "usage": {
+            "prompt_tokens": 2825,
+            "completion_tokens": 403,
+            "total_tokens": 3228,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 1137,
+          "status": 200,
+          "model": "gpt-5.4-mini-2026-03-17",
+          "output": "{\"respuesta\":\"Gracias por el dato. No me queda segura la referencia ZQ17 de ZetaPruebaQ9 en bolsa de 4 kg, así que prefiero no afirmártela como encontrada todavía. Si quieres, puedo revisar otras opciones parecidas con ese mismo dato.\",\"siguientePaso\":\"ofrecer_busqueda\",\"datoSolicitado\":null}",
+          "usage": {
+            "prompt_tokens": 1552,
+            "completion_tokens": 78,
+            "total_tokens": 1630,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 1128,
+          "status": 200,
+          "model": "gpt-5.4-mini-2026-03-17",
+          "output": "{\"respuesta\":\"No me queda segura la referencia ZQ17 de ZetaPruebaQ9 en bolsa de 4 kg, así que prefiero no darte esa como confirmada. Si quieres, reviso otras opciones parecidas con ese mismo dato 🙂\",\"siguientePaso\":\"ofrecer_busqueda\",\"datoSolicitado\":null}",
+          "usage": {
+            "prompt_tokens": 1687,
+            "completion_tokens": 73,
+            "total_tokens": 1760,
+            "prompt_tokens_details": {
+              "cached_tokens": 1408,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        }
+      ],
+      "cartUnchanged": true,
+      "state": {
+        "criterios": {},
+        "atencionHumana": null,
+        "ultimaConsultaProducto": {
+          "terminos": [
+            "zq17",
+            "zetapruebaq9"
+          ],
+          "etiqueta": "zq17 zetapruebaq9",
+          "presentacion": "4kg",
+          "fuente": "texto",
+          "nivel": "baja",
+          "razon": "sin_coincidencia_confiable",
+          "aclaracion": null,
+          "creadoEn": "2026-10-29T20:54:48.055Z",
+          "solicitudOriginal": {
+            "intencion": "consulta_producto",
+            "accion": "consultar",
+            "producto": {
+              "accion": "consultar",
+              "marca": "ZetaPruebaQ9",
+              "referencia": "ZQ17",
+              "linea": null,
+              "textoVisible": "ZQ17 de ZetaPruebaQ9 bolsa de cuatro kilos",
+              "mencionOriginal": null,
+              "categoria": null,
+              "subcategoria": null,
+              "especie": null,
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": "4 kilos",
+              "intencionPresentaciones": "especifica",
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": 1
+            },
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            }
+          },
+          "sinCoincidenciaInformada": true
+        }
+      }
+    },
+    {
+      "case": "typo-tone",
+      "text": "Solo quiero consultar precio de diamon indor para gato, el de medio kilo",
+      "response": "Todavía no puedo confirmar DIAMON INDOR GATO MEDIO KILO de 500g con seguridad. ¿Quieres que revisemos otra opción?\n\nPedido:\n- 1 x BR CAT SALMON 1kg: $30.500\nTotal: $30.500",
+      "ms": 16887,
+      "decisions": [
+        {
+          "router": true,
+          "decision": {
+            "recomendaciones": [],
+            "preguntaRecomendacion": null,
+            "solicitudComercialIndependiente": true,
+            "derivacionHumana": {
+              "necesaria": false,
+              "motivo": null
+            },
+            "seguimientoProducto": "nueva",
+            "resumenMemoria": null,
+            "continuarFlujo": false,
+            "compraContextual": null,
+            "solicitudesProductoDetectadas": 1,
+            "consultaCatalogo": {
+              "tipo": "referencia",
+              "presupuestoMaximo": null,
+              "necesaria": true,
+              "consulta": "precio de diamon indor para gato medio kilo"
+            },
+            "respuestaConversacional": null,
+            "intencion": "consulta_producto",
+            "accion": "consultar",
+            "confianza": 0.98,
+            "producto": {
+              "accion": "consultar",
+              "marca": null,
+              "referencia": "diamon indor",
+              "linea": null,
+              "textoVisible": "diamon indor para gato, el de medio kilo",
+              "mencionOriginal": null,
+              "categoria": "comida",
+              "subcategoria": "concentrado",
+              "especie": "gato",
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": "medio kilo",
+              "intencionPresentaciones": "especifica",
+              "mascotas": [],
+              "condiciones": [
+                "indor"
+              ],
+              "cantidad": 1
+            },
+            "productos": [
+              {
+                "accion": "consultar",
+                "marca": null,
+                "referencia": "diamon indor",
+                "linea": null,
+                "textoVisible": "diamon indor para gato, el de medio kilo",
+                "mencionOriginal": "diamon indor para gato, el de medio kilo",
+                "categoria": "comida",
+                "subcategoria": "concentrado",
+                "especie": "gato",
+                "etapa": null,
+                "tamano": null,
+                "sabores": [],
+                "presentacion": "medio kilo",
+                "intencionPresentaciones": "especifica",
+                "mascotas": [],
+                "condiciones": [
+                  "indor"
+                ],
+                "cantidad": 1
+              }
+            ],
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            },
+            "facturacion": {
+              "electronica": null,
+              "evidencia": null
+            },
+            "datosCliente": {
+              "nombre": null,
+              "cedula": null,
+              "correo": null,
+              "celular": null
+            },
+            "carrito": {
+              "operacion": null,
+              "cantidadObjetivo": null,
+              "cantidadDelta": null,
+              "aplicaAlUltimoProducto": null,
+              "razon": null
+            },
+            "faltanteSugerido": null
+          }
+        },
+        {
+          "router": false,
+          "decision": {
+            "recomendaciones": [],
+            "preguntaRecomendacion": null,
+            "solicitudComercialIndependiente": false,
+            "derivacionHumana": {
+              "necesaria": false,
+              "motivo": null
+            },
+            "seguimientoProducto": null,
+            "resumenMemoria": null,
+            "continuarFlujo": false,
+            "compraContextual": null,
+            "solicitudesProductoDetectadas": null,
+            "consultaCatalogo": {
+              "tipo": null,
+              "presupuestoMaximo": null,
+              "necesaria": null,
+              "consulta": null
+            },
+            "respuestaConversacional": null,
+            "intencion": "consulta_producto",
+            "accion": "consultar",
+            "confianza": 0.93,
+            "producto": {
+              "accion": "consultar",
+              "marca": "DIAMOND",
+              "referencia": "DIAMOND INDOOR CAT",
+              "linea": null,
+              "textoVisible": "diamON indor para gato de medio kilo",
+              "mencionOriginal": null,
+              "categoria": "comida",
+              "subcategoria": "concentrado",
+              "especie": "gato",
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": "500gr",
+              "intencionPresentaciones": null,
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": null
+            },
+            "productos": [],
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            },
+            "facturacion": {
+              "electronica": null,
+              "evidencia": null
+            },
+            "datosCliente": {
+              "nombre": null,
+              "cedula": null,
+              "correo": null,
+              "celular": null
+            },
+            "carrito": {
+              "operacion": null,
+              "cantidadObjetivo": null,
+              "cantidadDelta": null,
+              "aplicaAlUltimoProducto": null,
+              "razon": null
+            },
+            "faltanteSugerido": null
+          }
+        }
+      ],
+      "requests": [
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 7229,
+          "status": 200,
+          "model": "gpt-5.4-2026-03-05",
+          "output": "{\n  \"intencion\": \"consulta_producto\",\n  \"accion\": \"consultar\",\n  \"confianza\": 0.98,\n  \"compraContextual\": null,\n  \"solicitudesProductoDetectadas\": 1,\n  \"producto\": {\n    \"accion\": \"consultar\",\n    \"marca\": null,\n    \"referencia\": \"diamon indor\",\n    \"linea\": null,\n    \"textoVisible\": \"diamon indor para gato, el de medio kilo\",\n    \"categoria\": \"comida\",\n    \"subcategoria\": \"concentrado\",\n    \"especie\": \"gato\",\n    \"etapa\": null,\n    \"tamano\": null,\n    \"sabores\": [],\n    \"condiciones\": [\n      \"indor\"\n    ],\n    \"presentacion\": \"medio kilo\",\n    \"cantidad\": 1,\n    \"intencionPresentaciones\": \"especifica\",\n    \"mascotas\": []\n  },\n  \"productos\": [\n    {\n      \"accion\": \"consultar\",\n      \"marca\": null,\n      \"referencia\": \"diamon indor\",\n      \"linea\": null,\n      \"textoVisible\": \"diamon indor para gato, el de medio kilo\",\n      \"categoria\": \"comida\",\n      \"subcategoria\": \"concentrado\",\n      \"especie\": \"gato\",\n      \"etapa\": null,\n      \"tamano\": null,\n      \"sabores\": [],\n      \"condiciones\": [\n        \"indor\"\n      ],\n      \"presentacion\": \"medio kilo\",\n      \"cantidad\": 1,\n      \"intencionPresentaciones\": \"especifica\",\n      \"mascotas\": [],\n      \"mencionOriginal\": \"diamon indor para gato, el de medio kilo\"\n    }\n  ],\n  \"entrega\": {\n    \"tipo\": null,\n    \"direccion\": null,\n    \"direccionCompleta\": null,\n    \"sector\": null,\n    \"metodoPago\": null,\n    \"sede\": null\n  },\n  \"facturacion\": {\n    \"electronica\": null,\n    \"evidencia\": null\n  },\n  \"datosCliente\": {\n    \"nombre\": null,\n    \"cedula\": null,\n    \"correo\": null,\n    \"celular\": null\n  },\n  \"carrito\": {\n    \"operacion\": null,\n    \"cantidadObjetivo\": null,\n    \"cantidadDelta\": null,\n    \"aplicaAlUltimoProducto\": null,\n    \"razon\": null\n  },\n  \"faltanteSugerido\": null,\n  \"consultaCatalogo\": {\n    \"necesaria\": true,\n    \"consulta\": \"precio de diamon indor para gato medio kilo\",\n    \"tipo\": \"referencia\",\n    \"presupuestoMaximo\": null\n  },\n  \"respuestaConversacional\": null,\n  \"derivacionHumana\": {\n    \"necesaria\": false,\n    \"motivo\": null\n  },\n  \"solicitudComercialIndependiente\": true,\n  \"seguimientoProducto\": \"nueva\"\n}",
+          "usage": {
+            "prompt_tokens": 6421,
+            "completion_tokens": 656,
+            "total_tokens": 7077,
+            "prompt_tokens_details": {
+              "cached_tokens": 5888,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "supabase",
+          "method": "POST",
+          "path": "/rest/v1/rpc/search_catalog_products",
+          "ms": 523,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "POST",
+          "path": "/rest/v1/rpc/search_catalog_products",
+          "ms": 454,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "POST",
+          "path": "/rest/v1/rpc/search_catalog_products",
+          "ms": 382,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "GET",
+          "path": "/rest/v1/catalog_brands",
+          "ms": 189,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "POST",
+          "path": "/rest/v1/rpc/search_catalog_products",
+          "ms": 502,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "POST",
+          "path": "/rest/v1/rpc/search_catalog_products",
+          "ms": 488,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "GET",
+          "path": "/rest/v1/training_examples",
+          "ms": 241,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "GET",
+          "path": "/rest/v1/training_examples",
+          "ms": 282,
+          "status": 200
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 3674,
+          "status": 200,
+          "model": "gpt-5.2-2025-12-11",
+          "output": "{\"intencion\":\"consulta_producto\",\"accion\":\"consultar\",\"confianza\":0.93,\"compraContextual\":null,\"solicitudesProductoDetectadas\":null,\"producto\":{\"accion\":\"consultar\",\"marca\":\"DIAMOND\",\"referencia\":\"DIAMOND INDOOR CAT\",\"linea\":null,\"textoVisible\":\"diamON indor para gato de medio kilo\",\"categoria\":\"comida\",\"subcategoria\":\"concentrado\",\"especie\":\"gato\",\"etapa\":null,\"tamano\":null,\"sabores\":[],\"condiciones\":[],\"presentacion\":\"500gr\",\"cantidad\":null,\"intencionPresentaciones\":\"precio\",\"mascotas\":[]},\"productos\":[],\"entrega\":{\"tipo\":null,\"direccion\":null,\"direccionCompleta\":null,\"sector\":null,\"metodoPago\":null,\"sede\":null},\"facturacion\":{\"electronica\":null,\"evidencia\":null},\"datosCliente\":{\"nombre\":null,\"cedula\":null,\"correo\":null,\"celular\":null},\"carrito\":{\"operacion\":null,\"cantidadObjetivo\":null,\"cantidadDelta\":null,\"aplicaAlUltimoProducto\":null,\"razon\":null},\"faltanteSugerido\":null}",
+          "usage": {
+            "prompt_tokens": 3358,
+            "completion_tokens": 254,
+            "total_tokens": 3612,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 1162,
+          "status": 200,
+          "model": "gpt-5.4-mini-2026-03-17",
+          "output": "{\"respuesta\":\"El DIAMOND Indoor Cat de 500 g te queda en $0. Si quieres, también te reviso el precio de otra presentación 🙂\",\"siguientePaso\":\"ofrecer_busqueda\",\"datoSolicitado\":null}",
+          "usage": {
+            "prompt_tokens": 1549,
+            "completion_tokens": 54,
+            "total_tokens": 1603,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 1433,
+          "status": 200,
+          "model": "gpt-5.4-mini-2026-03-17",
+          "output": "{\"respuesta\":\"No tengo la seguridad suficiente para darte ese precio con confianza. Si quieres, puedo revisar otras opciones para ayudarte a ubicarlo mejor, o si prefieres lo dejamos hasta aquí 🙂\",\"siguientePaso\":\"ofrecer_busqueda\",\"datoSolicitado\":null}",
+          "usage": {
+            "prompt_tokens": 1661,
+            "completion_tokens": 61,
+            "total_tokens": 1722,
+            "prompt_tokens_details": {
+              "cached_tokens": 1408,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        }
+      ],
+      "cartUnchanged": true,
+      "state": {
+        "criterios": {},
+        "atencionHumana": null,
+        "ultimaConsultaProducto": {
+          "terminos": [
+            "diamon",
+            "indor",
+            "gato",
+            "medio",
+            "kilo"
+          ],
+          "etiqueta": "diamon indor gato medio kilo",
+          "presentacion": "500g",
+          "fuente": "texto",
+          "nivel": "baja",
+          "razon": "sin_coincidencia_confiable",
+          "aclaracion": null,
+          "creadoEn": "2026-10-29T20:55:04.617Z",
+          "solicitudOriginal": {
+            "intencion": "consulta_producto",
+            "accion": "consultar",
+            "producto": {
+              "accion": "consultar",
+              "marca": null,
+              "referencia": null,
+              "linea": null,
+              "textoVisible": "diamON indor para gato de medio kilo",
+              "mencionOriginal": null,
+              "categoria": "comida",
+              "subcategoria": "concentrado",
+              "especie": "gato",
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": "500gr",
+              "intencionPresentaciones": "especifica",
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": 1
+            },
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            }
+          },
+          "sinCoincidenciaInformada": true
+        }
+      }
+    }
+  ],
+  "requests": [
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/client_channels",
+      "ms": 1348,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/aivance_clients",
+      "ms": 500,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/aivance_clients",
+      "ms": 712,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/client_prompts",
+      "ms": 212,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/client_delivery_rules",
+      "ms": 492,
+      "status": 200
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 6942,
+      "status": 200,
+      "model": "gpt-5.4-2026-03-05",
+      "output": "{\n  \"intencion\": \"recomendacion\",\n  \"accion\": \"consultar\",\n  \"confianza\": 0.98,\n  \"compraContextual\": null,\n  \"solicitudesProductoDetectadas\": 1,\n  \"producto\": {\n    \"accion\": \"consultar\",\n    \"marca\": null,\n    \"referencia\": null,\n    \"linea\": null,\n    \"textoVisible\": \"comida para mi gatita pequeña\",\n    \"categoria\": \"comida\",\n    \"subcategoria\": null,\n    \"especie\": \"gato\",\n    \"etapa\": \"cachorro\",\n    \"tamano\": null,\n    \"sabores\": [],\n    \"condiciones\": [],\n    \"presentacion\": null,\n    \"cantidad\": null,\n    \"intencionPresentaciones\": null,\n    \"mascotas\": [\n      {\n        \"nombre\": null,\n        \"pesoKg\": null\n      }\n    ]\n  },\n  \"productos\": [\n    {\n      \"accion\": \"consultar\",\n      \"marca\": null,\n      \"referencia\": null,\n      \"linea\": null,\n      \"textoVisible\": \"comida para mi gatita pequeña\",\n      \"categoria\": \"comida\",\n      \"subcategoria\": null,\n      \"especie\": \"gato\",\n      \"etapa\": \"cachorro\",\n      \"tamano\": null,\n      \"sabores\": [],\n      \"condiciones\": [],\n      \"presentacion\": null,\n      \"cantidad\": null,\n      \"intencionPresentaciones\": null,\n      \"mascotas\": [\n        {\n          \"nombre\": null,\n          \"pesoKg\": null\n        }\n      ]\n    }\n  ],\n  \"entrega\": {\n    \"tipo\": null,\n    \"direccion\": null,\n    \"direccionCompleta\": null,\n    \"sector\": null,\n    \"metodoPago\": null,\n    \"sede\": null\n  },\n  \"facturacion\": {\n    \"electronica\": null,\n    \"evidencia\": null\n  },\n  \"datosCliente\": {\n    \"nombre\": null,\n    \"cedula\": null,\n    \"correo\": null,\n    \"celular\": null\n  },\n  \"carrito\": {\n    \"operacion\": null,\n    \"cantidadObjetivo\": null,\n    \"cantidadDelta\": null,\n    \"aplicaAlUltimoProducto\": null,\n    \"razon\": null\n  },\n  \"faltanteSugerido\": null,\n  \"consultaCatalogo\": {\n    \"necesaria\": true,\n    \"consulta\": \"comida para gato cachorro 4 meses presupuesto maximo 30000\",\n    \"tipo\": \"necesidad\",\n    \"presupuestoMaximo\": 30000\n  },\n  \"derivacionHumana\": {\n    \"necesaria\": false,\n    \"motivo\": null\n  },\n  \"solicitudComercialIndependiente\": true,\n  \"seguimientoProducto\": \"nueva\",\n  \"respuestaConversacional\": null\n}",
+      "usage": {
+        "prompt_tokens": 6427,
+        "completion_tokens": 641,
+        "total_tokens": 7068,
+        "prompt_tokens_details": {
+          "cached_tokens": 5888,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/catalog_references",
+      "ms": 385,
+      "status": 200
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 19055,
+      "status": 200,
+      "model": "gpt-5.4-mini-2026-03-17",
+      "output": "{\"recomendaciones\":[{\"id\":\"eb1de02c-66cd-43dc-a5a6-af60953600c0\",\"evidencia\":[\"\\\"ROYAL CANIN KITTEN\\\"\",\"\\\"gato\\\"\",\"\\\"cachorro\\\"\",\"\\\"400GR\\\"\"],\"atributos\":[{\"campo\":\"especie\",\"valor\":\"gato\",\"evidencia\":\"\\\"gato\\\"\"},{\"campo\":\"etapa\",\"valor\":\"cachorro\",\"evidencia\":\"\\\"cachorro\\\"\"},{\"campo\":\"presentacion\",\"valor\":\"400gr\",\"evidencia\":\"\\\"400GR\\\"\"}]},{\"id\":\"4af9a074-c4da-4fef-856a-1e56dee05847\",\"evidencia\":[\"\\\"BR CAT GATITOS SALMON\\\"\",\"\\\"gato\\\"\",\"\\\"cachorro\\\"\",\"\\\"1KG\\\"\"],\"atributos\":[{\"campo\":\"especie\",\"valor\":\"gato\",\"evidencia\":\"\\\"gato\\\"\"},{\"campo\":\"etapa\",\"valor\":\"cachorro\",\"evidencia\":\"\\\"cachorro\\\"\"},{\"campo\":\"presentacion\",\"valor\":\"1kg\",\"evidencia\":\"\\\"1KG\\\"\"}]},{\"id\":\"c35a4229-eaa4-4e4f-a60a-4815efe18eb4\",\"evidencia\":[\"\\\"BR CAT GATITO POLLO\\\"\",\"\\\"gato\\\"\",\"\\\"cachorro\\\"\",\"\\\"1KG\\\"\"],\"atributos\":[{\"campo\":\"especie\",\"valor\":\"gato\",\"evidencia\":\"\\\"gato\\\"\"},{\"campo\":\"etapa\",\"valor\":\"cachorro\",\"evidencia\":\"\\\"cachorro\\\"\"},{\"campo\":\"presentacion\",\"valor\":\"1kg\",\"evidencia\":\"\\\"1KG\\\"\"}]}],\"preguntaRecomendacion\":null}",
+      "usage": {
+        "prompt_tokens": 3319,
+        "completion_tokens": 386,
+        "total_tokens": 3705,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 1909,
+      "status": 200,
+      "model": "gpt-5.4-mini-2026-03-17",
+      "output": "Claro, para tu gatita de 4 meses te puedo dejar estas opciones dentro de tu presupuesto:\n\n- ROYAL CANIN KITTEN 400gr: $30.000 — concentrado, gato, cachorro.\n- BR CAT GATITOS SALMON 1kg: $28.000 — concentrado, gato, cachorro.\n- BR CAT GATITO POLLO 1kg: $28.000 — concentrado, gato, cachorro.\n\nLas existencias están por confirmar. ¿Prefieres bolsa de 1 kg o una presentación más pequeña?",
+      "usage": {
+        "prompt_tokens": 496,
+        "completion_tokens": 117,
+        "total_tokens": 613,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 6881,
+      "status": 200,
+      "model": "gpt-5.4-2026-03-05",
+      "output": "{\n  \"intencion\": \"consulta_producto\",\n  \"accion\": \"consultar\",\n  \"confianza\": 0.97,\n  \"compraContextual\": null,\n  \"solicitudesProductoDetectadas\": 1,\n  \"producto\": {\n    \"accion\": \"consultar\",\n    \"marca\": \"Pro Plan\",\n    \"referencia\": \"UR\",\n    \"linea\": null,\n    \"textoVisible\": \"Pro Plan UR\",\n    \"categoria\": \"comida\",\n    \"subcategoria\": null,\n    \"especie\": null,\n    \"etapa\": null,\n    \"tamano\": null,\n    \"sabores\": [],\n    \"condiciones\": [],\n    \"presentacion\": null,\n    \"cantidad\": null,\n    \"intencionPresentaciones\": null,\n    \"mascotas\": [],\n    \"mencionOriginal\": \"Pro Plan UR\"\n  },\n  \"productos\": [\n    {\n      \"accion\": \"consultar\",\n      \"marca\": \"Pro Plan\",\n      \"referencia\": \"UR\",\n      \"linea\": null,\n      \"textoVisible\": \"Pro Plan UR\",\n      \"categoria\": \"comida\",\n      \"subcategoria\": null,\n      \"especie\": null,\n      \"etapa\": null,\n      \"tamano\": null,\n      \"sabores\": [],\n      \"condiciones\": [],\n      \"presentacion\": null,\n      \"cantidad\": null,\n      \"intencionPresentaciones\": null,\n      \"mascotas\": [],\n      \"mencionOriginal\": \"Pro Plan UR\"\n    }\n  ],\n  \"entrega\": {\n    \"tipo\": null,\n    \"direccion\": null,\n    \"direccionCompleta\": null,\n    \"sector\": null,\n    \"metodoPago\": null,\n    \"sede\": null\n  },\n  \"facturacion\": {\n    \"electronica\": null,\n    \"evidencia\": null\n  },\n  \"datosCliente\": {\n    \"nombre\": null,\n    \"cedula\": null,\n    \"correo\": null,\n    \"celular\": null\n  },\n  \"carrito\": {\n    \"operacion\": null,\n    \"cantidadObjetivo\": null,\n    \"cantidadDelta\": null,\n    \"aplicaAlUltimoProducto\": null,\n    \"razon\": null\n  },\n  \"faltanteSugerido\": null,\n  \"consultaCatalogo\": {\n    \"necesaria\": true,\n    \"consulta\": \"Pro Plan UR precio y presentaciones disponibles\",\n    \"tipo\": \"referencia\",\n    \"presupuestoMaximo\": null\n  },\n  \"respuestaConversacional\": null,\n  \"derivacionHumana\": {\n    \"necesaria\": false,\n    \"motivo\": null\n  },\n  \"solicitudComercialIndependiente\": true,\n  \"seguimientoProducto\": \"nueva\"\n}",
+      "usage": {
+        "prompt_tokens": 6411,
+        "completion_tokens": 603,
+        "total_tokens": 7014,
+        "prompt_tokens_details": {
+          "cached_tokens": 5888,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "supabase",
+      "method": "POST",
+      "path": "/rest/v1/rpc/search_catalog_products",
+      "ms": 600,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/training_examples",
+      "ms": 232,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/training_examples",
+      "ms": 512,
+      "status": 200
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 4262,
+      "status": 200,
+      "model": "gpt-5.2-2025-12-11",
+      "output": "{\"intencion\":\"consulta_producto\",\"accion\":\"consultar\",\"confianza\":0.74,\"compraContextual\":null,\"solicitudesProductoDetectadas\":[\"Cuánto vale Pro Plan UR\"],\"producto\":{\"accion\":\"consultar\",\"marca\":\"PRO PLAN\",\"referencia\":\"UR\",\"linea\":null,\"textoVisible\":\"Pro Plan UR\",\"categoria\":\"comida\",\"subcategoria\":null,\"especie\":null,\"etapa\":null,\"tamano\":null,\"sabores\":[],\"condiciones\":[],\"presentacion\":null,\"cantidad\":null,\"intencionPresentaciones\":\"elegir\",\"mascotas\":[]},\"productos\":[],\"entrega\":{\"tipo\":null,\"direccion\":null,\"direccionCompleta\":null,\"sector\":null,\"metodoPago\":null,\"sede\":null},\"facturacion\":{\"electronica\":null,\"evidencia\":null},\"datosCliente\":{\"nombre\":null,\"cedula\":null,\"correo\":null,\"celular\":null},\"carrito\":{\"operacion\":null,\"cantidadObjetivo\":null,\"cantidadDelta\":null,\"aplicaAlUltimoProducto\":null,\"razon\":null},\"faltanteSugerido\":\"¿Lo necesitas Pro Plan UR para gato o para perro? (y si lo quieres en concentrado o en lata)\"}",
+      "usage": {
+        "prompt_tokens": 3250,
+        "completion_tokens": 268,
+        "total_tokens": 3518,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 978,
+      "status": 200,
+      "model": "gpt-5.4-mini-2026-03-17",
+      "output": "¿Lo necesitas para perro o para gato? Así te digo cuál Pro Plan UR te sirve 🙂",
+      "usage": {
+        "prompt_tokens": 1308,
+        "completion_tokens": 22,
+        "total_tokens": 1330,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 5749,
+      "status": 200,
+      "model": "gpt-5.4-2026-03-05",
+      "output": "{\n  \"intencion\": \"consulta_producto\",\n  \"accion\": \"consultar\",\n  \"confianza\": 0.98,\n  \"compraContextual\": null,\n  \"solicitudesProductoDetectadas\": 1,\n  \"producto\": {\n    \"accion\": \"consultar\",\n    \"marca\": \"PRO PLAN\",\n    \"referencia\": \"UR\",\n    \"linea\": null,\n    \"textoVisible\": \"Pro Plan UR para perrito\",\n    \"categoria\": \"comida\",\n    \"subcategoria\": null,\n    \"especie\": \"perro\",\n    \"etapa\": null,\n    \"tamano\": null,\n    \"sabores\": [],\n    \"condiciones\": [],\n    \"presentacion\": null,\n    \"cantidad\": null,\n    \"intencionPresentaciones\": null,\n    \"mascotas\": [],\n    \"mencionOriginal\": \"Para perrito\"\n  },\n  \"productos\": [\n    {\n      \"accion\": \"consultar\",\n      \"marca\": \"PRO PLAN\",\n      \"referencia\": \"UR\",\n      \"linea\": null,\n      \"textoVisible\": \"Pro Plan UR para perrito\",\n      \"categoria\": \"comida\",\n      \"subcategoria\": null,\n      \"especie\": \"perro\",\n      \"etapa\": null,\n      \"tamano\": null,\n      \"sabores\": [],\n      \"condiciones\": [],\n      \"presentacion\": null,\n      \"cantidad\": null,\n      \"intencionPresentaciones\": null,\n      \"mascotas\": [],\n      \"mencionOriginal\": \"Para perrito\"\n    }\n  ],\n  \"entrega\": {\n    \"tipo\": null,\n    \"direccion\": null,\n    \"direccionCompleta\": null,\n    \"sector\": null,\n    \"metodoPago\": null,\n    \"sede\": null\n  },\n  \"facturacion\": {\n    \"electronica\": null,\n    \"evidencia\": null\n  },\n  \"datosCliente\": {\n    \"nombre\": null,\n    \"cedula\": null,\n    \"correo\": null,\n    \"celular\": null\n  },\n  \"carrito\": {\n    \"operacion\": null,\n    \"cantidadObjetivo\": null,\n    \"cantidadDelta\": null,\n    \"aplicaAlUltimoProducto\": null,\n    \"razon\": null\n  },\n  \"faltanteSugerido\": null,\n  \"consultaCatalogo\": {\n    \"necesaria\": true,\n    \"consulta\": \"PRO PLAN CANINE UR\",\n    \"tipo\": \"referencia\",\n    \"presupuestoMaximo\": null\n  },\n  \"derivacionHumana\": {\n    \"necesaria\": false,\n    \"motivo\": null\n  },\n  \"solicitudComercialIndependiente\": true,\n  \"seguimientoProducto\": \"aclaracion\",\n  \"respuestaConversacional\": null\n}",
+      "usage": {
+        "prompt_tokens": 7499,
+        "completion_tokens": 611,
+        "total_tokens": 8110,
+        "prompt_tokens_details": {
+          "cached_tokens": 4864,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "supabase",
+      "method": "POST",
+      "path": "/rest/v1/rpc/search_catalog_products",
+      "ms": 583,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/training_examples",
+      "ms": 237,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/training_examples",
+      "ms": 564,
+      "status": 200
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 4392,
+      "status": 200,
+      "model": "gpt-5.2-2025-12-11",
+      "output": "{\"intencion\":\"consulta_producto\",\"accion\":\"consultar\",\"confianza\":0.86,\"compraContextual\":true,\"solicitudesProductoDetectadas\":[{\"intencion\":\"consulta_producto\",\"accion\":\"consultar\",\"producto\":{\"marca\":\"PRO PLAN\",\"referencia\":\"UR\",\"especie\":\"perro\",\"textoVisible\":\"Para perrito\"}}],\"producto\":{\"accion\":\"consultar\",\"marca\":\"PRO PLAN\",\"referencia\":\"UR\",\"linea\":null,\"textoVisible\":\"Para perrito\",\"categoria\":\"comida\",\"subcategoria\":null,\"especie\":\"perro\",\"etapa\":null,\"tamano\":null,\"sabores\":[],\"condiciones\":[],\"presentacion\":null,\"cantidad\":null,\"intencionPresentaciones\":null,\"mascotas\":[]},\"productos\":[],\"entrega\":{\"tipo\":null,\"direccion\":null,\"direccionCompleta\":null,\"sector\":null,\"metodoPago\":null,\"sede\":null},\"facturacion\":{\"electronica\":null,\"evidencia\":null},\"datosCliente\":{\"nombre\":null,\"cedula\":null,\"correo\":null,\"celular\":null},\"carrito\":{\"operacion\":null,\"cantidadObjetivo\":null,\"cantidadDelta\":null,\"aplicaAlUltimoProducto\":true,\"razon\":null},\"faltanteSugerido\":\"¿Lo quieres PRO PLAN CANINE UR (concentrado 2kg) o PRO PLAN CANINE LATA UR (unidad)?\"}",
+      "usage": {
+        "prompt_tokens": 4002,
+        "completion_tokens": 302,
+        "total_tokens": 4304,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 863,
+      "status": 200,
+      "model": "gpt-5.4-mini-2026-03-17",
+      "output": "¿Buscas PRO PLAN CANINE UR de 2 kg o PRO PLAN CANINE LATA UR en unidad? 🐶",
+      "usage": {
+        "prompt_tokens": 1263,
+        "completion_tokens": 29,
+        "total_tokens": 1292,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 6279,
+      "status": 200,
+      "model": "gpt-5.4-2026-03-05",
+      "output": "{\n  \"intencion\": \"consulta_producto\",\n  \"accion\": \"consultar\",\n  \"confianza\": 0.93,\n  \"compraContextual\": null,\n  \"solicitudesProductoDetectadas\": 1,\n  \"producto\": {\n    \"accion\": \"consultar\",\n    \"marca\": \"PRO PLAN\",\n    \"referencia\": \"PRO PLAN CANINE UR\",\n    \"linea\": null,\n    \"textoVisible\": \"el concentrado\",\n    \"categoria\": \"comida\",\n    \"subcategoria\": \"concentrado\",\n    \"especie\": \"perro\",\n    \"etapa\": null,\n    \"tamano\": null,\n    \"sabores\": [],\n    \"condiciones\": [],\n    \"presentacion\": null,\n    \"cantidad\": 1,\n    \"intencionPresentaciones\": null,\n    \"mascotas\": [],\n    \"mencionOriginal\": \"el concentrado\"\n  },\n  \"productos\": [\n    {\n      \"accion\": \"consultar\",\n      \"marca\": \"PRO PLAN\",\n      \"referencia\": \"PRO PLAN CANINE UR\",\n      \"linea\": null,\n      \"textoVisible\": \"el concentrado\",\n      \"categoria\": \"comida\",\n      \"subcategoria\": \"concentrado\",\n      \"especie\": \"perro\",\n      \"etapa\": null,\n      \"tamano\": null,\n      \"sabores\": [],\n      \"condiciones\": [],\n      \"presentacion\": null,\n      \"cantidad\": 1,\n      \"intencionPresentaciones\": null,\n      \"mascotas\": [],\n      \"mencionOriginal\": \"el concentrado\"\n    }\n  ],\n  \"entrega\": {\n    \"tipo\": null,\n    \"direccion\": null,\n    \"direccionCompleta\": null,\n    \"sector\": null,\n    \"metodoPago\": null,\n    \"sede\": null\n  },\n  \"facturacion\": {\n    \"electronica\": null,\n    \"evidencia\": null\n  },\n  \"datosCliente\": {\n    \"nombre\": null,\n    \"cedula\": null,\n    \"correo\": null,\n    \"celular\": null\n  },\n  \"carrito\": {\n    \"operacion\": null,\n    \"cantidadObjetivo\": null,\n    \"cantidadDelta\": null,\n    \"aplicaAlUltimoProducto\": null,\n    \"razon\": null\n  },\n  \"faltanteSugerido\": null,\n  \"consultaCatalogo\": {\n    \"necesaria\": true,\n    \"consulta\": \"PRO PLAN CANINE UR concentrado perro\",\n    \"tipo\": \"referencia\",\n    \"presupuestoMaximo\": null\n  },\n  \"respuestaConversacional\": null,\n  \"derivacionHumana\": {\n    \"necesaria\": false,\n    \"motivo\": null\n  },\n  \"solicitudComercialIndependiente\": true,\n  \"seguimientoProducto\": \"aclaracion\"\n}",
+      "usage": {
+        "prompt_tokens": 7253,
+        "completion_tokens": 624,
+        "total_tokens": 7877,
+        "prompt_tokens_details": {
+          "cached_tokens": 4864,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "supabase",
+      "method": "POST",
+      "path": "/rest/v1/rpc/search_catalog_products",
+      "ms": 716,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/training_examples",
+      "ms": 197,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/training_examples",
+      "ms": 534,
+      "status": 200
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 3672,
+      "status": 200,
+      "model": "gpt-5.2-2025-12-11",
+      "output": "{\"intencion\":\"consulta_producto\",\"accion\":\"consultar\",\"confianza\":0.78,\"compraContextual\":null,\"solicitudesProductoDetectadas\":null,\"producto\":{\"accion\":\"consultar\",\"marca\":\"PRO PLAN\",\"referencia\":\"PRO PLAN CANINE UR\",\"linea\":null,\"textoVisible\":\"el concentrado\",\"categoria\":\"comida\",\"subcategoria\":\"concentrado\",\"especie\":\"perro\",\"etapa\":null,\"tamano\":null,\"sabores\":[],\"condiciones\":[],\"presentacion\":null,\"cantidad\":null,\"intencionPresentaciones\":null,\"mascotas\":[]},\"productos\":[],\"entrega\":{\"tipo\":null,\"direccion\":null,\"direccionCompleta\":null,\"sector\":null,\"metodoPago\":null,\"sede\":null},\"facturacion\":{\"electronica\":null,\"evidencia\":null},\"datosCliente\":{\"nombre\":null,\"cedula\":null,\"correo\":null,\"celular\":null},\"carrito\":{\"operacion\":null,\"cantidadObjetivo\":null,\"cantidadDelta\":null,\"aplicaAlUltimoProducto\":true,\"razon\":null},\"faltanteSugerido\":\"¿Te cotizo el PRO PLAN CANINE UR concentrado en 2 kg?\"}",
+      "usage": {
+        "prompt_tokens": 3961,
+        "completion_tokens": 260,
+        "total_tokens": 4221,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 1492,
+      "status": 200,
+      "model": "gpt-5.4-mini-2026-03-17",
+      "output": "Sí, está PRO PLAN CANINE UR en 2kg por $122.000 🐶 ¿Te interesa esa presentación?",
+      "usage": {
+        "prompt_tokens": 1659,
+        "completion_tokens": 29,
+        "total_tokens": 1688,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 6880,
+      "status": 200,
+      "model": "gpt-5.4-2026-03-05",
+      "output": "{\n  \"intencion\": \"consulta_producto\",\n  \"accion\": \"consultar\",\n  \"confianza\": 0.99,\n  \"compraContextual\": null,\n  \"solicitudesProductoDetectadas\": 1,\n  \"producto\": {\n    \"accion\": \"consultar\",\n    \"marca\": \"ZetaPruebaQ9\",\n    \"referencia\": \"ZQ17\",\n    \"linea\": null,\n    \"textoVisible\": \"marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos\",\n    \"categoria\": null,\n    \"subcategoria\": null,\n    \"especie\": null,\n    \"etapa\": null,\n    \"tamano\": null,\n    \"sabores\": [],\n    \"condiciones\": [],\n    \"presentacion\": \"4 kilos\",\n    \"cantidad\": 1,\n    \"intencionPresentaciones\": \"especifica\",\n    \"mascotas\": [],\n    \"mencionOriginal\": \"marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos\"\n  },\n  \"productos\": [\n    {\n      \"accion\": \"consultar\",\n      \"marca\": \"ZetaPruebaQ9\",\n      \"referencia\": \"ZQ17\",\n      \"linea\": null,\n      \"textoVisible\": \"marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos\",\n      \"categoria\": null,\n      \"subcategoria\": null,\n      \"especie\": null,\n      \"etapa\": null,\n      \"tamano\": null,\n      \"sabores\": [],\n      \"condiciones\": [],\n      \"presentacion\": \"4 kilos\",\n      \"cantidad\": 1,\n      \"intencionPresentaciones\": \"especifica\",\n      \"mascotas\": [],\n      \"mencionOriginal\": \"marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos\"\n    }\n  ],\n  \"entrega\": {\n    \"tipo\": null,\n    \"direccion\": null,\n    \"direccionCompleta\": null,\n    \"sector\": null,\n    \"metodoPago\": null,\n    \"sede\": null\n  },\n  \"facturacion\": {\n    \"electronica\": null,\n    \"evidencia\": null\n  },\n  \"datosCliente\": {\n    \"nombre\": null,\n    \"cedula\": null,\n    \"correo\": null,\n    \"celular\": null\n  },\n  \"carrito\": {\n    \"operacion\": null,\n    \"cantidadObjetivo\": null,\n    \"cantidadDelta\": null,\n    \"aplicaAlUltimoProducto\": null,\n    \"razon\": null\n  },\n  \"faltanteSugerido\": null,\n  \"consultaCatalogo\": {\n    \"necesaria\": true,\n    \"consulta\": \"ZetaPruebaQ9 ZQ17 4 kilos\",\n    \"tipo\": \"referencia\",\n    \"presupuestoMaximo\": null\n  },\n  \"derivacionHumana\": {\n    \"necesaria\": false,\n    \"motivo\": null\n  },\n  \"solicitudComercialIndependiente\": true,\n  \"seguimientoProducto\": \"nueva\",\n  \"continuarFlujo\": false,\n  \"respuestaConversacional\": null\n}",
+      "usage": {
+        "prompt_tokens": 6425,
+        "completion_tokens": 684,
+        "total_tokens": 7109,
+        "prompt_tokens_details": {
+          "cached_tokens": 5888,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "supabase",
+      "method": "POST",
+      "path": "/rest/v1/rpc/search_catalog_products",
+      "ms": 473,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "POST",
+      "path": "/rest/v1/rpc/search_catalog_products",
+      "ms": 424,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "POST",
+      "path": "/rest/v1/rpc/search_catalog_products",
+      "ms": 590,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "POST",
+      "path": "/rest/v1/rpc/search_catalog_products",
+      "ms": 377,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/training_examples",
+      "ms": 201,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/training_examples",
+      "ms": 256,
+      "status": 200
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 4285,
+      "status": 200,
+      "model": "gpt-5.2-2025-12-11",
+      "output": "{\"intencion\":\"consulta_producto\",\"accion\":\"consultar\",\"confianza\":0.86,\"compraContextual\":null,\"solicitudesProductoDetectadas\":[\"Consultar disponibilidad de marca ZetaPruebaQ9, referencia ZQ17, presentación 4 kilos\"],\"producto\":{\"accion\":\"consultar\",\"marca\":\"ZetaPruebaQ9\",\"referencia\":\"ZQ17\",\"linea\":null,\"textoVisible\":\"marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos\",\"categoria\":null,\"subcategoria\":null,\"especie\":null,\"etapa\":null,\"tamano\":null,\"sabores\":[],\"condiciones\":[],\"presentacion\":\"4 kilos\",\"cantidad\":null,\"intencionPresentaciones\":\"exacta\",\"mascotas\":[]},\"productos\":[],\"entrega\":{\"tipo\":null,\"direccion\":null,\"direccionCompleta\":null,\"sector\":null,\"metodoPago\":null,\"sede\":null},\"facturacion\":{\"electronica\":null,\"evidencia\":null},\"datosCliente\":{\"nombre\":null,\"cedula\":null,\"correo\":null,\"celular\":null},\"carrito\":{\"operacion\":null,\"cantidadObjetivo\":null,\"cantidadDelta\":null,\"aplicaAlUltimoProducto\":null,\"razon\":null},\"faltanteSugerido\":null}",
+      "usage": {
+        "prompt_tokens": 2806,
+        "completion_tokens": 276,
+        "total_tokens": 3082,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 1552,
+      "status": 200,
+      "model": "gpt-5.4-mini-2026-03-17",
+      "output": "{\"respuesta\":\"De esa referencia no me aparece una confirmación segura por ahora. Si quieres, puedo revisar otras opciones de ese mismo nombre para ayudarte a ubicarla 🙂\",\"siguientePaso\":\"ofrecer_busqueda\",\"datoSolicitado\":null}",
+      "usage": {
+        "prompt_tokens": 1548,
+        "completion_tokens": 56,
+        "total_tokens": 1604,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 1187,
+      "status": 200,
+      "model": "gpt-5.4-mini-2026-03-17",
+      "output": "{\"respuesta\":\"No me queda confirmada esa referencia por ahora. Si quieres, puedo revisar otras opciones de ese mismo nombre para ayudarte a ubicarla 🙂\",\"siguientePaso\":\"ofrecer_busqueda\",\"datoSolicitado\":null}",
+      "usage": {
+        "prompt_tokens": 1661,
+        "completion_tokens": 53,
+        "total_tokens": 1714,
+        "prompt_tokens_details": {
+          "cached_tokens": 1408,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 7203,
+      "status": 200,
+      "model": "gpt-5.4-2026-03-05",
+      "output": "{\n  \"intencion\": \"consulta_producto\",\n  \"accion\": \"consultar\",\n  \"confianza\": 0.95,\n  \"compraContextual\": null,\n  \"solicitudesProductoDetectadas\": 1,\n  \"producto\": {\n    \"accion\": \"consultar\",\n    \"marca\": \"ZetaPruebaQ9\",\n    \"referencia\": \"ZQ17\",\n    \"linea\": null,\n    \"textoVisible\": \"nombre ZetaPruebaQ9 ZQ17 4 kilos\",\n    \"categoria\": null,\n    \"subcategoria\": null,\n    \"especie\": null,\n    \"etapa\": null,\n    \"tamano\": null,\n    \"sabores\": [],\n    \"condiciones\": [],\n    \"presentacion\": \"4 kilos\",\n    \"cantidad\": 1,\n    \"intencionPresentaciones\": \"especifica\",\n    \"mascotas\": [],\n    \"mencionOriginal\": \"ese es el nombre y son 4 kilos\"\n  },\n  \"productos\": [\n    {\n      \"accion\": \"consultar\",\n      \"marca\": \"ZetaPruebaQ9\",\n      \"referencia\": \"ZQ17\",\n      \"linea\": null,\n      \"textoVisible\": \"nombre ZetaPruebaQ9 ZQ17 4 kilos\",\n      \"categoria\": null,\n      \"subcategoria\": null,\n      \"especie\": null,\n      \"etapa\": null,\n      \"tamano\": null,\n      \"sabores\": [],\n      \"condiciones\": [],\n      \"presentacion\": \"4 kilos\",\n      \"cantidad\": 1,\n      \"intencionPresentaciones\": \"especifica\",\n      \"mascotas\": [],\n      \"mencionOriginal\": \"ese es el nombre y son 4 kilos\"\n    }\n  ],\n  \"entrega\": {\n    \"tipo\": null,\n    \"direccion\": null,\n    \"direccionCompleta\": null,\n    \"sector\": null,\n    \"metodoPago\": null,\n    \"sede\": null\n  },\n  \"facturacion\": {\n    \"electronica\": null,\n    \"evidencia\": null\n  },\n  \"datosCliente\": {\n    \"nombre\": null,\n    \"cedula\": null,\n    \"correo\": null,\n    \"celular\": null\n  },\n  \"carrito\": {\n    \"operacion\": null,\n    \"cantidadObjetivo\": null,\n    \"cantidadDelta\": null,\n    \"aplicaAlUltimoProducto\": null,\n    \"razon\": null\n  },\n  \"faltanteSugerido\": null,\n  \"consultaCatalogo\": {\n    \"necesaria\": true,\n    \"consulta\": \"ZetaPruebaQ9 ZQ17 4 kilos\",\n    \"tipo\": \"referencia\",\n    \"presupuestoMaximo\": null\n  },\n  \"respuestaConversacional\": null,\n  \"derivacionHumana\": {\n    \"necesaria\": false,\n    \"motivo\": null\n  },\n  \"solicitudComercialIndependiente\": true,\n  \"seguimientoProducto\": \"aclaracion\",\n  \"continuarFlujo\": false\n}",
+      "usage": {
+        "prompt_tokens": 6769,
+        "completion_tokens": 669,
+        "total_tokens": 7438,
+        "prompt_tokens_details": {
+          "cached_tokens": 4864,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "supabase",
+      "method": "POST",
+      "path": "/rest/v1/rpc/search_catalog_products",
+      "ms": 644,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "POST",
+      "path": "/rest/v1/rpc/search_catalog_products",
+      "ms": 475,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "POST",
+      "path": "/rest/v1/rpc/search_catalog_products",
+      "ms": 465,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "POST",
+      "path": "/rest/v1/rpc/search_catalog_products",
+      "ms": 448,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/catalog_brands",
+      "ms": 205,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "POST",
+      "path": "/rest/v1/rpc/search_catalog_products",
+      "ms": 369,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/training_examples",
+      "ms": 182,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/training_examples",
+      "ms": 326,
+      "status": 200
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 4723,
+      "status": 200,
+      "model": "gpt-5.2-2025-12-11",
+      "output": "{\"intencion\":\"consulta_producto\",\"accion\":\"consultar\",\"confianza\":0.74,\"compraContextual\":null,\"solicitudesProductoDetectadas\":[\"Confirma que el producto consultado es por nombre (ZetaPruebaQ9 ZQ17) y presentación 4kg, sin foto ni más datos.\"],\"producto\":{\"accion\":\"consultar\",\"marca\":\"ZetaPruebaQ9\",\"referencia\":\"ZQ17\",\"linea\":null,\"textoVisible\":\"No tengo foto ni más datos; es ZetaPruebaQ9 ZQ17 y son 4 kilos\",\"categoria\":null,\"subcategoria\":null,\"especie\":null,\"etapa\":null,\"tamano\":null,\"sabores\":[],\"condiciones\":[],\"presentacion\":\"4 kilos\",\"cantidad\":null,\"intencionPresentaciones\":\"especifica\",\"mascotas\":[]},\"productos\":[],\"entrega\":{\"tipo\":null,\"direccion\":null,\"direccionCompleta\":null,\"sector\":null,\"metodoPago\":null,\"sede\":null},\"facturacion\":{\"electronica\":null,\"evidencia\":null},\"datosCliente\":{\"nombre\":null,\"cedula\":null,\"correo\":null,\"celular\":null},\"carrito\":{\"operacion\":null,\"cantidadObjetivo\":null,\"cantidadDelta\":null,\"aplicaAlUltimoProducto\":null,\"razon\":null},\"faltanteSugerido\":null}",
+      "usage": {
+        "prompt_tokens": 3139,
+        "completion_tokens": 296,
+        "total_tokens": 3435,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 1402,
+      "status": 200,
+      "model": "gpt-5.4-mini-2026-03-17",
+      "output": "{\"respuesta\":\"Con ese nombre y en 4 kilos todavía no me queda del todo claro cuál es exactamente 😕 Si quieres, puedo revisar si aparece alguna opción que encaje con eso y te la comparto.\",\"siguientePaso\":\"ofrecer_busqueda\",\"datoSolicitado\":null}",
+      "usage": {
+        "prompt_tokens": 1535,
+        "completion_tokens": 64,
+        "total_tokens": 1599,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 1230,
+      "status": 200,
+      "model": "gpt-5.4-mini-2026-03-17",
+      "output": "{\"respuesta\":\"Con ese nombre y en 4 kilos todavía no me queda del todo claro cuál es exactamente 😕 Si quieres, puedo revisar si aparece alguna opción que encaje con eso y te la comparto.\",\"siguientePaso\":\"ofrecer_busqueda\",\"datoSolicitado\":null}",
+      "usage": {
+        "prompt_tokens": 1656,
+        "completion_tokens": 64,
+        "total_tokens": 1720,
+        "prompt_tokens_details": {
+          "cached_tokens": 1408,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 6357,
+      "status": 200,
+      "model": "gpt-5.4-2026-03-05",
+      "output": "{\n  \"intencion\": \"consulta_producto\",\n  \"accion\": \"consultar\",\n  \"confianza\": 0.96,\n  \"compraContextual\": null,\n  \"solicitudesProductoDetectadas\": 1,\n  \"producto\": {\n    \"accion\": \"consultar\",\n    \"marca\": \"ZetaPruebaQ9\",\n    \"referencia\": \"ZQ17\",\n    \"linea\": null,\n    \"textoVisible\": \"ZQ17 de ZetaPruebaQ9 bolsa de cuatro kilos\",\n    \"categoria\": null,\n    \"subcategoria\": null,\n    \"especie\": null,\n    \"etapa\": null,\n    \"tamano\": null,\n    \"sabores\": [],\n    \"condiciones\": [],\n    \"presentacion\": \"4 kilos\",\n    \"cantidad\": 1,\n    \"intencionPresentaciones\": \"especifica\",\n    \"mascotas\": [],\n    \"mencionOriginal\": \"el ZQ17 de ZetaPruebaQ9\"\n  },\n  \"productos\": [\n    {\n      \"accion\": \"consultar\",\n      \"marca\": \"ZetaPruebaQ9\",\n      \"referencia\": \"ZQ17\",\n      \"linea\": null,\n      \"textoVisible\": \"ZQ17 de ZetaPruebaQ9 bolsa de cuatro kilos\",\n      \"categoria\": null,\n      \"subcategoria\": null,\n      \"especie\": null,\n      \"etapa\": null,\n      \"tamano\": null,\n      \"sabores\": [],\n      \"condiciones\": [],\n      \"presentacion\": \"4 kilos\",\n      \"cantidad\": 1,\n      \"intencionPresentaciones\": \"especifica\",\n      \"mascotas\": [],\n      \"mencionOriginal\": \"el ZQ17 de ZetaPruebaQ9\"\n    }\n  ],\n  \"entrega\": {\n    \"tipo\": null,\n    \"direccion\": null,\n    \"direccionCompleta\": null,\n    \"sector\": null,\n    \"metodoPago\": null,\n    \"sede\": null\n  },\n  \"facturacion\": {\n    \"electronica\": null,\n    \"evidencia\": null\n  },\n  \"datosCliente\": {\n    \"nombre\": null,\n    \"cedula\": null,\n    \"correo\": null,\n    \"celular\": null\n  },\n  \"carrito\": {\n    \"operacion\": null,\n    \"cantidadObjetivo\": null,\n    \"cantidadDelta\": null,\n    \"aplicaAlUltimoProducto\": null,\n    \"razon\": null\n  },\n  \"faltanteSugerido\": null,\n  \"consultaCatalogo\": {\n    \"necesaria\": true,\n    \"consulta\": \"ZQ17 ZetaPruebaQ9 4 kilos\",\n    \"tipo\": \"referencia\",\n    \"presupuestoMaximo\": null\n  },\n  \"respuestaConversacional\": null,\n  \"derivacionHumana\": {\n    \"necesaria\": false,\n    \"motivo\": null\n  },\n  \"solicitudComercialIndependiente\": true,\n  \"seguimientoProducto\": \"nueva\"\n}",
+      "usage": {
+        "prompt_tokens": 6429,
+        "completion_tokens": 665,
+        "total_tokens": 7094,
+        "prompt_tokens_details": {
+          "cached_tokens": 5888,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "supabase",
+      "method": "POST",
+      "path": "/rest/v1/rpc/search_catalog_products",
+      "ms": 476,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "POST",
+      "path": "/rest/v1/rpc/search_catalog_products",
+      "ms": 428,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "POST",
+      "path": "/rest/v1/rpc/search_catalog_products",
+      "ms": 474,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/training_examples",
+      "ms": 202,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/training_examples",
+      "ms": 288,
+      "status": 200
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 4893,
+      "status": 200,
+      "model": "gpt-5.2-2025-12-11",
+      "output": "{\n  \"intencion\": \"consulta_producto\",\n  \"accion\": \"consultar\",\n  \"confianza\": 0.78,\n  \"compraContextual\": null,\n  \"solicitudesProductoDetectadas\": [\n    {\n      \"marca\": \"ZetaPruebaQ9\",\n      \"referencia\": \"ZQ17\",\n      \"presentacion\": \"4 kilos\"\n    }\n  ],\n  \"producto\": {\n    \"accion\": \"consultar\",\n    \"marca\": \"ZetaPruebaQ9\",\n    \"referencia\": \"ZQ17\",\n    \"linea\": null,\n    \"textoVisible\": \"ZQ17 de ZetaPruebaQ9 bolsa de cuatro kilos\",\n    \"categoria\": null,\n    \"subcategoria\": null,\n    \"especie\": null,\n    \"etapa\": null,\n    \"tamano\": null,\n    \"sabores\": [],\n    \"condiciones\": [],\n    \"presentacion\": \"4 kilos\",\n    \"cantidad\": null,\n    \"intencionPresentaciones\": null,\n    \"mascotas\": []\n  },\n  \"productos\": [],\n  \"entrega\": {\n    \"tipo\": null,\n    \"direccion\": null,\n    \"direccionCompleta\": null,\n    \"sector\": null,\n    \"metodoPago\": null,\n    \"sede\": null\n  },\n  \"facturacion\": {\n    \"electronica\": null,\n    \"evidencia\": null\n  },\n  \"datosCliente\": {\n    \"nombre\": null,\n    \"cedula\": null,\n    \"correo\": null,\n    \"celular\": null\n  },\n  \"carrito\": {\n    \"operacion\": null,\n    \"cantidadObjetivo\": null,\n    \"cantidadDelta\": null,\n    \"aplicaAlUltimoProducto\": null,\n    \"razon\": null\n  },\n  \"faltanteSugerido\": null\n}",
+      "usage": {
+        "prompt_tokens": 2825,
+        "completion_tokens": 403,
+        "total_tokens": 3228,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 1137,
+      "status": 200,
+      "model": "gpt-5.4-mini-2026-03-17",
+      "output": "{\"respuesta\":\"Gracias por el dato. No me queda segura la referencia ZQ17 de ZetaPruebaQ9 en bolsa de 4 kg, así que prefiero no afirmártela como encontrada todavía. Si quieres, puedo revisar otras opciones parecidas con ese mismo dato.\",\"siguientePaso\":\"ofrecer_busqueda\",\"datoSolicitado\":null}",
+      "usage": {
+        "prompt_tokens": 1552,
+        "completion_tokens": 78,
+        "total_tokens": 1630,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 1128,
+      "status": 200,
+      "model": "gpt-5.4-mini-2026-03-17",
+      "output": "{\"respuesta\":\"No me queda segura la referencia ZQ17 de ZetaPruebaQ9 en bolsa de 4 kg, así que prefiero no darte esa como confirmada. Si quieres, reviso otras opciones parecidas con ese mismo dato 🙂\",\"siguientePaso\":\"ofrecer_busqueda\",\"datoSolicitado\":null}",
+      "usage": {
+        "prompt_tokens": 1687,
+        "completion_tokens": 73,
+        "total_tokens": 1760,
+        "prompt_tokens_details": {
+          "cached_tokens": 1408,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 7229,
+      "status": 200,
+      "model": "gpt-5.4-2026-03-05",
+      "output": "{\n  \"intencion\": \"consulta_producto\",\n  \"accion\": \"consultar\",\n  \"confianza\": 0.98,\n  \"compraContextual\": null,\n  \"solicitudesProductoDetectadas\": 1,\n  \"producto\": {\n    \"accion\": \"consultar\",\n    \"marca\": null,\n    \"referencia\": \"diamon indor\",\n    \"linea\": null,\n    \"textoVisible\": \"diamon indor para gato, el de medio kilo\",\n    \"categoria\": \"comida\",\n    \"subcategoria\": \"concentrado\",\n    \"especie\": \"gato\",\n    \"etapa\": null,\n    \"tamano\": null,\n    \"sabores\": [],\n    \"condiciones\": [\n      \"indor\"\n    ],\n    \"presentacion\": \"medio kilo\",\n    \"cantidad\": 1,\n    \"intencionPresentaciones\": \"especifica\",\n    \"mascotas\": []\n  },\n  \"productos\": [\n    {\n      \"accion\": \"consultar\",\n      \"marca\": null,\n      \"referencia\": \"diamon indor\",\n      \"linea\": null,\n      \"textoVisible\": \"diamon indor para gato, el de medio kilo\",\n      \"categoria\": \"comida\",\n      \"subcategoria\": \"concentrado\",\n      \"especie\": \"gato\",\n      \"etapa\": null,\n      \"tamano\": null,\n      \"sabores\": [],\n      \"condiciones\": [\n        \"indor\"\n      ],\n      \"presentacion\": \"medio kilo\",\n      \"cantidad\": 1,\n      \"intencionPresentaciones\": \"especifica\",\n      \"mascotas\": [],\n      \"mencionOriginal\": \"diamon indor para gato, el de medio kilo\"\n    }\n  ],\n  \"entrega\": {\n    \"tipo\": null,\n    \"direccion\": null,\n    \"direccionCompleta\": null,\n    \"sector\": null,\n    \"metodoPago\": null,\n    \"sede\": null\n  },\n  \"facturacion\": {\n    \"electronica\": null,\n    \"evidencia\": null\n  },\n  \"datosCliente\": {\n    \"nombre\": null,\n    \"cedula\": null,\n    \"correo\": null,\n    \"celular\": null\n  },\n  \"carrito\": {\n    \"operacion\": null,\n    \"cantidadObjetivo\": null,\n    \"cantidadDelta\": null,\n    \"aplicaAlUltimoProducto\": null,\n    \"razon\": null\n  },\n  \"faltanteSugerido\": null,\n  \"consultaCatalogo\": {\n    \"necesaria\": true,\n    \"consulta\": \"precio de diamon indor para gato medio kilo\",\n    \"tipo\": \"referencia\",\n    \"presupuestoMaximo\": null\n  },\n  \"respuestaConversacional\": null,\n  \"derivacionHumana\": {\n    \"necesaria\": false,\n    \"motivo\": null\n  },\n  \"solicitudComercialIndependiente\": true,\n  \"seguimientoProducto\": \"nueva\"\n}",
+      "usage": {
+        "prompt_tokens": 6421,
+        "completion_tokens": 656,
+        "total_tokens": 7077,
+        "prompt_tokens_details": {
+          "cached_tokens": 5888,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "supabase",
+      "method": "POST",
+      "path": "/rest/v1/rpc/search_catalog_products",
+      "ms": 523,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "POST",
+      "path": "/rest/v1/rpc/search_catalog_products",
+      "ms": 454,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "POST",
+      "path": "/rest/v1/rpc/search_catalog_products",
+      "ms": 382,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/catalog_brands",
+      "ms": 189,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "POST",
+      "path": "/rest/v1/rpc/search_catalog_products",
+      "ms": 502,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "POST",
+      "path": "/rest/v1/rpc/search_catalog_products",
+      "ms": 488,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/training_examples",
+      "ms": 241,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/training_examples",
+      "ms": 282,
+      "status": 200
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 3674,
+      "status": 200,
+      "model": "gpt-5.2-2025-12-11",
+      "output": "{\"intencion\":\"consulta_producto\",\"accion\":\"consultar\",\"confianza\":0.93,\"compraContextual\":null,\"solicitudesProductoDetectadas\":null,\"producto\":{\"accion\":\"consultar\",\"marca\":\"DIAMOND\",\"referencia\":\"DIAMOND INDOOR CAT\",\"linea\":null,\"textoVisible\":\"diamON indor para gato de medio kilo\",\"categoria\":\"comida\",\"subcategoria\":\"concentrado\",\"especie\":\"gato\",\"etapa\":null,\"tamano\":null,\"sabores\":[],\"condiciones\":[],\"presentacion\":\"500gr\",\"cantidad\":null,\"intencionPresentaciones\":\"precio\",\"mascotas\":[]},\"productos\":[],\"entrega\":{\"tipo\":null,\"direccion\":null,\"direccionCompleta\":null,\"sector\":null,\"metodoPago\":null,\"sede\":null},\"facturacion\":{\"electronica\":null,\"evidencia\":null},\"datosCliente\":{\"nombre\":null,\"cedula\":null,\"correo\":null,\"celular\":null},\"carrito\":{\"operacion\":null,\"cantidadObjetivo\":null,\"cantidadDelta\":null,\"aplicaAlUltimoProducto\":null,\"razon\":null},\"faltanteSugerido\":null}",
+      "usage": {
+        "prompt_tokens": 3358,
+        "completion_tokens": 254,
+        "total_tokens": 3612,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 1162,
+      "status": 200,
+      "model": "gpt-5.4-mini-2026-03-17",
+      "output": "{\"respuesta\":\"El DIAMOND Indoor Cat de 500 g te queda en $0. Si quieres, también te reviso el precio de otra presentación 🙂\",\"siguientePaso\":\"ofrecer_busqueda\",\"datoSolicitado\":null}",
+      "usage": {
+        "prompt_tokens": 1549,
+        "completion_tokens": 54,
+        "total_tokens": 1603,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 1433,
+      "status": 200,
+      "model": "gpt-5.4-mini-2026-03-17",
+      "output": "{\"respuesta\":\"No tengo la seguridad suficiente para darte ese precio con confianza. Si quieres, puedo revisar otras opciones para ayudarte a ubicarlo mejor, o si prefieres lo dejamos hasta aquí 🙂\",\"siguientePaso\":\"ofrecer_busqueda\",\"datoSolicitado\":null}",
+      "usage": {
+        "prompt_tokens": 1661,
+        "completion_tokens": 61,
+        "total_tokens": 1722,
+        "prompt_tokens_details": {
+          "cached_tokens": 1408,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    }
+  ]
+}

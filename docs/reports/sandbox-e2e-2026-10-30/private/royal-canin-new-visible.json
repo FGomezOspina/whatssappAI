@@ -1,0 +1,86 @@
+{
+  "scope": "New repetition introduced by CUA click/paste/Return and observed in UI, separate from historical sequence",
+  "targetMasked": "Sandbox WhatsApp …3541 / interlocutor …4163",
+  "turns": [
+    {
+      "inputs": [
+        {
+          "id": "ec873e5a9248",
+          "direction": "inbound",
+          "text": "Solo consultar precio: Royal Canin gastrointestinal para perro, concentrado de 7 kg.",
+          "at": "2026-10-30T18:34:10.000Z",
+          "atColombia": "2026-10-30 13:34:10",
+          "kapsoStatus": "read",
+          "kapsoProcessingStatus": "pending",
+          "origin": "cloud_api",
+          "targetMasked": "Sandbox WhatsApp …3541 / interlocutor …4163",
+          "statusEvents": [],
+          "providerId": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDA1OURBNTVCMUYwMzQ4QUZCOQA="
+        }
+      ],
+      "response": {
+        "id": "2f8b9a3dd1f6",
+        "direction": "outbound",
+        "text": "Para Royal Canin Gastrointestinal perro en 7 kg no tengo esa presentación disponible en este momento. La presentación disponible es 2 kg por $129.000 🐾",
+        "at": "2026-10-30T18:34:53.000Z",
+        "atColombia": "2026-10-30 13:34:53",
+        "kapsoStatus": "delivered",
+        "kapsoProcessingStatus": "processed",
+        "origin": "cloud_api",
+        "targetMasked": "Sandbox WhatsApp …3541 / interlocutor …4163",
+        "statusEvents": [
+          {
+            "status": "sent",
+            "atColombia": "2026-10-30 13:34:54"
+          },
+          {
+            "status": "delivered",
+            "atColombia": "2026-10-30 13:34:54"
+          }
+        ],
+        "providerId": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSMTYzMUE4NDFCOUVFMkYwNTg5AA=="
+      },
+      "providerElapsedMs": 43000
+    },
+    {
+      "inputs": [
+        {
+          "id": "12fc6f1f6022",
+          "direction": "inbound",
+          "text": "Corrijo el tamaño: de 2 kg, el mismo concentrado para perro. Solo consultar el precio.",
+          "at": "2026-10-30T18:35:30.000Z",
+          "atColombia": "2026-10-30 13:35:30",
+          "kapsoStatus": "read",
+          "kapsoProcessingStatus": "pending",
+          "origin": "cloud_api",
+          "targetMasked": "Sandbox WhatsApp …3541 / interlocutor …4163",
+          "statusEvents": [],
+          "providerId": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDE1MTExQzU5NjE5N0IyNUJGOQA="
+        }
+      ],
+      "response": {
+        "id": "b24c1448ef98",
+        "direction": "outbound",
+        "text": "Sí, el ROYALCANIN GASTROINTESTINAL PERRO de 2 kg está en $129.000 🐾 Las existencias están por confirmar.",
+        "at": "2026-10-30T18:36:13.000Z",
+        "atColombia": "2026-10-30 13:36:13",
+        "kapsoStatus": "delivered",
+        "kapsoProcessingStatus": "processed",
+        "origin": "cloud_api",
+        "targetMasked": "Sandbox WhatsApp …3541 / interlocutor …4163",
+        "statusEvents": [
+          {
+            "status": "sent",
+            "atColombia": "2026-10-30 13:36:13"
+          },
+          {
+            "status": "delivered",
+            "atColombia": "2026-10-30 13:36:14"
+          }
+        ],
+        "providerId": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSNkM5MTI4NUY0NTY5QjJFODRDAA=="
+      },
+      "providerElapsedMs": 43000
+    }
+  ]
+}

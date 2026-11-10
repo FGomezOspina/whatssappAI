@@ -1,0 +1,28 @@
+[AI Usage Summary] cliente=coverage-fixture | usuario=coverage-test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=coverage-fixture | usuario=coverage-test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=coverage-fixture | usuario=coverage-test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=coverage-fixture | usuario=coverage-test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=coverage-fixture | usuario=coverage-test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=coverage-fixture | usuario=coverage-test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+✔ original three-reference request reports unavailable pack alongside both quotes (563.968041ms)
+✔ two unresolved products from one image each receive an explicit outcome (2.916792ms)
+✔ commercial slash codes are case independent without treating ordinary lowercase words as codes (0.404875ms)
+✔ original visual extraction with uncertain food form retains both same-code formats (66.280875ms)
+✔ synthetic structured code separates packaging descriptors and preserves food form (63.343ms)
+✔ a protected code does not approve an undeclared commercial variant (1.66775ms)
+✔ an unresolved visual identity survives the narrower ranking terms during clarification (1.116958ms)
+✔ synthetic held-out slash code a/b cannot drift to the other line or wet format (0.856208ms)
+✔ synthetic held-out slash code x/y cannot drift to the other line or wet format (0.898958ms)
+✔ catalog-based punctuation normalization does not turn arbitrary words into another brand (0.162458ms)
+✔ synthetic consecutive-message variant preserves three references and per-item quantities (473.339708ms)
+✔ original persisted image extraction cannot turn an inferred dog species into a cat SKU (231.877708ms)
+✔ synthetic audio transcript plus text preserves all references; no real audio perception claimed (482.79475ms)
+✔ synthetic uncertain transcription remains a clarification alongside a known product (132.267916ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2075.646209

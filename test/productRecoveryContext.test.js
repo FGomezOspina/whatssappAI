@@ -51,8 +51,8 @@ test('real UR: pregunta especie, recupera variantes caninas, confirma concentrad
  assert.doesNotMatch(String(second),/pendiente de un asesor/);
  assert.equal(c.state().atencionHumana,null);
  assert.equal(c.state().ultimaConsultaProducto.solicitudOriginal.producto.especie,'perro');
- assert.equal(c.state().ultimaConsultaProducto.aclaracion.campo,'referencia');
- assert.match(String(second),/CANINE UR/);assert.match(String(second),/LATA/);
+ assert.equal(c.state().ultimaConsultaProducto.aclaracion.campo,'forma_alimento');
+ assert.match(String(second),/seco/);assert.match(String(second),/húmeda/);
  const third=await c.send('el concentrado');
  assert.match(String(third),/122[.,]000/);assert.equal(c.state().atencionHumana,null);
  assert.deepEqual(c.state().carrito,cart);
@@ -163,5 +163,13 @@ test('replay de RPC real mantiene selección y aclaraciones sin consultar red',a
  vm.runInNewContext(fs.readFileSync(file,'utf8'),{module:mod,process:{env:{CATALOG_SEARCH_LOGS:'false'}},console,require:n=>n==='../repositories/productRepository'?{buscarProductosCatalogoCliente:async(_c,o)=>{const r=fixtures[o.limit+'|'+o.query];assert.ok(r,`uncaptured RPC ${o.query}`);return structuredClone(r);}}:req(n)});
  for(const c of cases){const r=await mod.exports.seleccionarCatalogoParaIA({mensaje:c.mensaje,mensajeOriginal:c.mensaje,clasificacion:{requiereBusquedaProducto:true,perfilContexto:'producto'}});
  const v=validarCoincidenciaProducto({mensaje:c.mensaje,catalogo:r.catalogo,clasificacion:{intencion:'busqueda_producto',perfilContexto:'producto'}});
- assert.equal(v.nivel,c.nivel,c.mensaje);assert.equal(v.coincidencia?.referencia||null,c.match,c.mensaje);assert.deepEqual(v.aclaracion||null,c.clarification,c.mensaje);}
+ // New format requirement intentionally supersedes these historical expectations.
+ if (['PRO PLAN CANINE UR perro','PRO PLAN UR perro'].includes(c.mensaje)) {
+   assert.equal(v.nivel,'media');assert.equal(v.aclaracion.campo,'forma_alimento');continue;
+ }
+ assert.equal(v.nivel,c.nivel,c.mensaje);assert.equal(v.coincidencia?.referencia||null,c.match,c.mensaje);
+ // The captured misspelling now resolves its catalog family. It must still
+ // ask for the animal's weight/species; never select a medication size.
+ const expected=c.mensaje==='BRABECTO'?{campo:'peso_mascota',valores:[],requiereEspecie:true}:c.clarification;
+ assert.deepEqual(v.aclaracion||null,expected,c.mensaje);}
 });

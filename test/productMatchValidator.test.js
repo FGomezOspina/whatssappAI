@@ -101,7 +101,8 @@ test("rechaza una marca corta inexistente sin sustituirla por candidatos similar
   assert.equal(validacion.nivel, "baja");
   assert.deepEqual(validacion.terminos, ["br", "adulto", "perro", "pequeno"]);
   const respuesta = respuestaValidacionProducto(validacion);
-  assert.match(respuesta, /no encuentro BR ADULTO PEQUENO en el catálogo actual/i);
+  assert.match(respuesta, /no puedo confirmar BR ADULTO PEQUENO/i);
+  assert.doesNotMatch(respuesta, /cat[aá]logo|no lo manejamos|agotado/i);
   assert.doesNotMatch(respuesta, /NUTRECAN|CHUNKY/);
 });
 
@@ -1646,7 +1647,7 @@ test("texto con combinacion inexistente no sustituye una marca explicita por otr
   assert.doesNotMatch(respuesta, /ARENA FOFICAT TOFU/i);
   assert.ok(validacion.alternativas.every(item => item.marca === "MICHIKO"));
   assert.doesNotMatch(respuesta, /foto|empaque/i);
-  assert.match(respuesta, /no encuentro/i);
+  assert.match(respuesta, /no puedo confirmar/i);
 });
 
 test("une palabras separadas y tolera orden distinto al buscar en todo el catalogo", () => {

@@ -1,0 +1,153 @@
+{
+  "mode": "after",
+  "runAt": "2026-10-30T14:45:31.798Z",
+  "sourceScope": "Manual readings of displayed image previews and adviser/context reconstructions; not automatic vision, interpretation, cart or WhatsApp E2E",
+  "rawCatalogSha256": "88180af9eb2cbcc9f48413f7e6ba7d94b44232f854089636acc6d3bdb38db8bc",
+  "corpusSha256": "e2a6f1b16e45bd9e7d9c85ba1688f34787df35cefb1b02c9f1fdf0c556c60c9a",
+  "normalizedReferenceCount": 1069,
+  "summary": {
+    "correct": 8,
+    "safe_abstention": 1
+  },
+  "rows": [
+    {
+      "id": "T01-01",
+      "input": "PRO PLAN FELINE UR concentrado",
+      "level": "alta",
+      "reference": "PRO PLAN FELINE UR",
+      "presentationIds": [
+        "ffc444ab-d5dd-433a-bd45-cc27e5c24db8"
+      ],
+      "presentationValid": null,
+      "reason": "nombre_exacto",
+      "clarification": null,
+      "pass": true,
+      "outcome": "correct",
+      "ms": 52.817124999999976
+    },
+    {
+      "id": "T01-02",
+      "input": "VIRBAC CAT UROLOGY 2 1.5kg",
+      "level": "alta",
+      "reference": "VIRBAC CAT UROLOGY 2",
+      "presentationIds": [
+        "f5ecff29-5301-4e12-8374-28a124df6ae2",
+        "a150e063-8494-49a8-8bfb-dc65afdf62a8"
+      ],
+      "presentationValid": true,
+      "reason": "nombre_exacto",
+      "clarification": null,
+      "pass": true,
+      "outcome": "correct",
+      "ms": 56.636000000000024
+    },
+    {
+      "id": "T01-03",
+      "input": "VIRBAC UROLOGY 2 3kg",
+      "level": "alta",
+      "reference": "VIRBAC UROLOGY 2",
+      "presentationIds": [
+        "a150e063-8494-49a8-8bfb-dc65afdf62a8",
+        "f5ecff29-5301-4e12-8374-28a124df6ae2"
+      ],
+      "presentationValid": true,
+      "reason": "nombre_exacto",
+      "clarification": null,
+      "pass": true,
+      "outcome": "correct",
+      "ms": 48.948707999999954
+    },
+    {
+      "id": "T01-04",
+      "input": "HILLS FEL C/D 1.8kg",
+      "level": "alta",
+      "reference": "HILLS FEL C/D",
+      "presentationIds": [
+        "c31016c3-51ff-4720-8781-437d9cae07b1"
+      ],
+      "presentationValid": true,
+      "reason": "nombre_exacto",
+      "clarification": null,
+      "pass": true,
+      "outcome": "correct",
+      "ms": 39.58079100000003
+    },
+    {
+      "id": "T01-05",
+      "input": "ADVANCE CAT URINARY 3kg",
+      "level": "alta",
+      "reference": "ADVANCE CAT URINARY",
+      "presentationIds": [
+        "84ce8dea-b140-4318-8f22-e4de9be3a4f7",
+        "796ba95e-169d-47fa-b069-e62f1f877118"
+      ],
+      "presentationValid": true,
+      "reason": "nombre_exacto",
+      "clarification": null,
+      "pass": true,
+      "outcome": "correct",
+      "ms": 45.599917000000005
+    },
+    {
+      "id": "T01-06",
+      "input": "ROYAL CANIN URINARY S/O concentrado 1.5kg",
+      "level": "alta",
+      "reference": "ROYAL CANIN URINAY CAT S/O",
+      "presentationIds": [
+        "734115f2-dbf6-4341-8104-db81274ef071",
+        "a4bcd36e-b0e7-4da1-b300-574eacc49d50"
+      ],
+      "presentationValid": true,
+      "reason": "nombre_exacto",
+      "clarification": null,
+      "pass": true,
+      "outcome": "correct",
+      "ms": 46.20433400000002
+    },
+    {
+      "id": "T01-07",
+      "input": "PRO PLAN FELINE LATA UR 156g",
+      "level": "alta",
+      "reference": "PRO PLAN FELINE LATA UR",
+      "presentationIds": [
+        "81ad097e-5e4d-4c0d-b9d1-64e33cac0283"
+      ],
+      "presentationValid": false,
+      "reason": "nombre_exacto",
+      "clarification": null,
+      "pass": true,
+      "outcome": "correct",
+      "ms": 41.335083000000054
+    },
+    {
+      "id": "T01-08",
+      "input": "ROYAL CANIN URINARY SO gato lata",
+      "level": "baja",
+      "reference": null,
+      "presentationIds": [],
+      "presentationValid": null,
+      "reason": "sin_coincidencia_confiable",
+      "clarification": null,
+      "pass": true,
+      "outcome": "safe_abstention",
+      "ms": 45.66983400000004
+    },
+    {
+      "id": "T02-01",
+      "input": "2 Excellent gato adulto 1kg",
+      "level": "alta",
+      "reference": "EXCELLENT GATO ADULT",
+      "presentationIds": [
+        "752b60c7-2394-4d33-b989-46fe268affe0",
+        "b9b14806-889d-4a1e-80bd-f7605b3f9391",
+        "7f8d69bf-c637-420c-b572-c7d23916ad62"
+      ],
+      "presentationValid": true,
+      "reason": "nombre_exacto",
+      "clarification": null,
+      "pass": true,
+      "outcome": "correct",
+      "ms": 52.46904200000006
+    }
+  ]
+}

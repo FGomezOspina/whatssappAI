@@ -1,0 +1,24 @@
+{
+  "status": "reviewed",
+  "at": "2026-11-05T17:16:21.584Z",
+  "corpus": "sales-replay-v2-reviewed.json",
+  "corpusSha256": "977eb1136e77a9d34581c1e90b65a41674833d86cd152a96d477b3bb3c862ce4",
+  "originalCorpus": "sales-replay-v2.json",
+  "originalPersonalDataFound": false,
+  "fieldInventory": "v2-field-inventory.json",
+  "fieldCount": 33,
+  "offlineRequests": 3,
+  "offlineNetworkCalls": 0,
+  "payloads": "v2-offline-reviewed-history-payloads.jsonl",
+  "payloadChecks": "v2-offline-reviewed-history-payload-reviews.jsonl",
+  "manualReview": {
+    "history": "All four retained strings inspected: greeting, cat-litter clarification, product request and quote only. No names, contacts or addresses.",
+    "state": "Only product identity/price/quantity and generic old pending question. Metadata, codes, alternative packs and historical timestamps removed.",
+    "synthetic": "Cliente Prueba; 3000000000; Mz 8 casa 22 Conjunto Prueba / Sector de prueba. Not copied from the customer.",
+    "timing": "Quote 60 seconds old and pending request 48 hours old generated at runtime solely to reproduce active vs expired context.",
+    "modelPayloads": "Reviewed top-level model/response_format/messages and all user-context fields; system content is existing repository instructions. No media, original event IDs, UUIDs, source channel user ID, real address, real name, phone or credential values detected.",
+    "historyCorrection": "Harness now maps direction/body and excludes current inbound before completion; prior runs did not pass history text correctly. Their structured-state/current-turn validation remains, full-history claim withdrawn."
+  },
+  "runtimeGuard": "Every request inspected before client call; non-OpenAI network blocked; source-denylist and secrets checked without logging values; only one v2 retry permitted by exclusive ledger.",
+  "modelsUnchanged": true
+}

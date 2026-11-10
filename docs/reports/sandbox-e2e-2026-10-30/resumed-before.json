@@ -1,0 +1,452 @@
+{
+  "at": "2026-10-30T17:52:40.907Z",
+  "originalProcessed": true,
+  "cart": [
+    []
+  ],
+  "ordersCount": 0,
+  "messages": [
+    {
+      "id": "acb3e6c95d32",
+      "direction": "outbound",
+      "body": "¿Te refieres al **TASTE OF THE WILD ADULT PERRO** en **2 kg**? 🙂",
+      "at": "2026-10-30T17:37:15.248253+00:00"
+    },
+    {
+      "id": "97915d8c41de",
+      "direction": "inbound",
+      "body": "Corrijo el tamaño: de 2 kg, el mismo concentrado para perro. Solo consultar el precio.",
+      "at": "2026-10-30T17:36:38.731246+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": null,
+            "marca": "ROYALCANIN",
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "ROYALCANIN GASTROINTESTINAL PERRO",
+            "condiciones": [
+              "gastrointestinal"
+            ],
+            "presentacion": "2 kg",
+            "subcategoria": "concentrado",
+            "textoVisible": "mismo concentrado para perro de 2 kg",
+            "mencionOriginal": "de 2 kg, el mismo concentrado para perro",
+            "intencionPresentaciones": "especifica"
+          },
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": null,
+              "linea": null,
+              "marca": "ROYALCANIN",
+              "accion": "consultar",
+              "envase": null,
+              "tamano": null,
+              "especie": "perro",
+              "sabores": [],
+              "cantidad": null,
+              "mascotas": [],
+              "categoria": "comida",
+              "referencia": "ROYALCANIN GASTROINTESTINAL PERRO",
+              "condiciones": [
+                "gastrointestinal"
+              ],
+              "presentacion": "2 kg",
+              "subcategoria": "concentrado",
+              "textoVisible": "mismo concentrado para perro de 2 kg",
+              "mencionOriginal": "de 2 kg, el mismo concentrado para perro",
+              "intencionPresentaciones": "especifica"
+            }
+          ],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "5690ae1b137c",
+      "direction": "outbound",
+      "body": "Para **ROYALCANIN GASTROINTESTINAL PERRO** en **7 kg** no tengo esa presentación disponible en este momento. La única presentación validada es **2 kg por $129.000**. Si te sirve, te ayudo con esa 🙂",
+      "at": "2026-10-30T17:36:17.860872+00:00"
+    },
+    {
+      "id": "264b810414f6",
+      "direction": "inbound",
+      "body": "Solo consultar precio: Royal Canin gastrointestinal para perro, concentrado de 7 kg.",
+      "at": "2026-10-30T17:35:45.580182+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": null,
+            "marca": "ROYALCANIN",
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "duracion": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "ROYALCANIN GASTROINTESTINAL PERRO",
+            "condiciones": [
+              "gastrointestinal"
+            ],
+            "presentacion": "7kg",
+            "subcategoria": "concentrado",
+            "textoVisible": "Royal Canin gastrointestinal para perro, concentrado de 7 kg",
+            "nombreFamilia": "ROYALCANIN GASTROINTESTINAL PERRO",
+            "mencionOriginal": null,
+            "pesoTextoOriginal": "7kg",
+            "requierePresentacion": false,
+            "intencionPresentaciones": "especifica",
+            "referenciasEquivalentes": [
+              "ROYALCANIN GASTROINTESTINAL PERRO"
+            ],
+            "coincidenciaVisualValidada": false,
+            "presentacionesEquivalentes": [
+              {
+                "peso": "2kg",
+                "stock": null,
+                "precio": 129000,
+                "metadata": {
+                  "llave": "2070",
+                  "codigo": "103010102070",
+                  "source": "productos.json",
+                  "codigos": [
+                    "103010102070"
+                  ],
+                  "nombre_original": "ROYALCANIN GASTROINTESTINAL PERRO 2KG"
+                },
+                "referencia": "ROYALCANIN GASTROINTESTINAL PERRO"
+              }
+            ]
+          },
+          "intencion": "consulta_producto",
+          "productos": [],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "4fe1f98e8e71",
+      "direction": "outbound",
+      "body": "Gracias por la aclaración. La corrección de tamaño ya quedó tenida en cuenta, y por ahora la referencia sigue pendiente de revisión. En este chat todavía no hay un asesor asignado, así que no puedo confirmar el precio de ese producto en este momento. Si más adelante quieres, puedo seguir ayudándote con otras consultas mientras tanto.",
+      "at": "2026-10-30T17:33:25.414939+00:00"
+    },
+    {
+      "id": "34119ebc7d44",
+      "direction": "inbound",
+      "body": "Corrijo el tamaño: de 2 kg, el mismo concentrado para perro. Solo consultar el precio.",
+      "at": "2026-10-30T17:32:50.326203+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": null,
+            "marca": "ROYAL CANIN",
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "GASTROINTESTINAL",
+            "condiciones": [
+              "gastrointestinal"
+            ],
+            "presentacion": "2kg",
+            "subcategoria": "concentrado",
+            "textoVisible": "ROYAL CANIN GASTROINTESTINAL perro concentrado 2kg",
+            "mencionOriginal": "Corrijo el tamaño: de 2 kg, el mismo concentrado para perro. Solo consultar el precio.",
+            "pesoTextoOriginal": "2kg",
+            "intencionPresentaciones": "especifica"
+          },
+          "intencion": "consulta_producto",
+          "productos": [],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "1ced0f48c293",
+      "direction": "outbound",
+      "body": "Gracias por la aclaración. No puedo confirmar el precio de esa referencia en este momento. Si quieres, puedo ayudarte a buscar opciones de alimento gastrointestinal para perro según la necesidad, sin compromiso.",
+      "at": "2026-10-30T17:32:30.548991+00:00"
+    },
+    {
+      "id": "6581cc4f7a98",
+      "direction": "inbound",
+      "body": "Solo consultar precio: Royal Canin gastrointestinal para perro, concentrado de 7 kg.",
+      "at": "2026-10-30T17:31:53.463371+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": null,
+            "marca": "Royal Canin",
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "gastrointestinal",
+            "condiciones": [],
+            "presentacion": "7 kg",
+            "subcategoria": "concentrado",
+            "textoVisible": "Royal Canin gastrointestinal para perro, concentrado de 7 kg",
+            "mencionOriginal": "Royal Canin gastrointestinal para perro, concentrado de 7 kg.",
+            "intencionPresentaciones": "especifica"
+          },
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": null,
+              "linea": null,
+              "marca": "Royal Canin",
+              "accion": "consultar",
+              "envase": null,
+              "tamano": null,
+              "especie": "perro",
+              "sabores": [],
+              "cantidad": null,
+              "mascotas": [],
+              "categoria": "comida",
+              "referencia": "gastrointestinal",
+              "condiciones": [],
+              "presentacion": "7 kg",
+              "subcategoria": "concentrado",
+              "textoVisible": "Royal Canin gastrointestinal para perro, concentrado de 7 kg",
+              "mencionOriginal": "Royal Canin gastrointestinal para perro, concentrado de 7 kg.",
+              "intencionPresentaciones": "especifica"
+            }
+          ],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "644fca01b40d",
+      "direction": "outbound",
+      "body": "Gracias, queda como el mismo concentrado para perro en presentación de 2 kg. Como esta referencia sigue pendiente de revisión por un asesor y ahora mismo no hay uno asignado en este chat, no puedo confirmar el precio todavía. Si te sirve, puedes seguir consultando otras cosas mientras tanto.",
+      "at": "2026-10-30T17:28:45.505201+00:00"
+    },
+    {
+      "id": "014134519334",
+      "direction": "inbound",
+      "body": "Corrijo el tamaño: de 2 kg, el mismo concentrado para perro. Solo consultar el precio.",
+      "at": "2026-10-30T17:28:11.727632+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": null,
+            "marca": "ROYAL CANIN",
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "GASTROINTESTINAL",
+            "condiciones": [
+              "gastrointestinal"
+            ],
+            "presentacion": "2 kg",
+            "subcategoria": "concentrado",
+            "textoVisible": "mismo concentrado para perro de 2 kg",
+            "mencionOriginal": "de 2 kg, el mismo concentrado para perro",
+            "intencionPresentaciones": "especifica"
+          },
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": null,
+              "linea": null,
+              "marca": "ROYAL CANIN",
+              "accion": "consultar",
+              "envase": null,
+              "tamano": null,
+              "especie": "perro",
+              "sabores": [],
+              "cantidad": null,
+              "mascotas": [],
+              "categoria": "comida",
+              "referencia": "GASTROINTESTINAL",
+              "condiciones": [
+                "gastrointestinal"
+              ],
+              "presentacion": "2 kg",
+              "subcategoria": "concentrado",
+              "textoVisible": "mismo concentrado para perro de 2 kg",
+              "mencionOriginal": "de 2 kg, el mismo concentrado para perro",
+              "intencionPresentaciones": "especifica"
+            }
+          ],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "e272f2fecafd",
+      "direction": "outbound",
+      "body": "Todavía no puedo confirmar ROYAL CANIN GASTROINTESTINAL PERRO de 7kg con seguridad. ¿Quieres que revisemos otra opción?",
+      "at": "2026-10-30T17:27:47.20261+00:00"
+    },
+    {
+      "id": "f96c755af2bd",
+      "direction": "inbound",
+      "body": "Solo consultar precio: Royal Canin gastrointestinal para perro, concentrado de 7 kg.",
+      "at": "2026-10-30T17:27:07.354873+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": null,
+            "marca": "Royal Canin",
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "gastrointestinal",
+            "condiciones": [],
+            "presentacion": "7 kg",
+            "subcategoria": "concentrado",
+            "textoVisible": "Royal Canin gastrointestinal para perro, concentrado de 7 kg",
+            "mencionOriginal": "Royal Canin gastrointestinal para perro, concentrado de 7 kg.",
+            "intencionPresentaciones": "especifica"
+          },
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": null,
+              "linea": null,
+              "marca": "Royal Canin",
+              "accion": "consultar",
+              "envase": null,
+              "tamano": null,
+              "especie": "perro",
+              "sabores": [],
+              "cantidad": null,
+              "mascotas": [],
+              "categoria": "comida",
+              "referencia": "gastrointestinal",
+              "condiciones": [],
+              "presentacion": "7 kg",
+              "subcategoria": "concentrado",
+              "textoVisible": "Royal Canin gastrointestinal para perro, concentrado de 7 kg",
+              "mencionOriginal": "Royal Canin gastrointestinal para perro, concentrado de 7 kg.",
+              "intencionPresentaciones": "especifica"
+            }
+          ],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "0098f273fd65",
+      "direction": "outbound",
+      "body": "Claro, CAT CHOW DELICARNE x 500 gr te queda en $13.700. Las existencias están por confirmar. 🙂",
+      "at": "2026-10-30T17:26:31.20774+00:00"
+    }
+  ],
+  "kapso": [
+    {
+      "id": "804f9779e2e6",
+      "direction": "outbound",
+      "body": "¿Te refieres al **TASTE OF THE WILD ADULT PERRO** en **2 kg**? 🙂",
+      "at": "2026-10-30T17:37:14.000Z"
+    },
+    {
+      "id": "6076ea189dba",
+      "direction": "inbound",
+      "body": "Corrijo el tamaño: de 2 kg, el mismo concentrado para perro. Solo consultar el precio.",
+      "at": "2026-10-30T17:36:32.000Z"
+    },
+    {
+      "id": "fd9d0f43b556",
+      "direction": "outbound",
+      "body": "Para **ROYALCANIN GASTROINTESTINAL PERRO** en **7 kg** no tengo esa presentación disponible en este momento. La única presentación validada es **2 kg por $129.000**. Si te sirve, te ayudo con esa 🙂",
+      "at": "2026-10-30T17:36:17.000Z"
+    },
+    {
+      "id": "24ee7b043bc5",
+      "direction": "inbound",
+      "body": "Solo consultar precio: Royal Canin gastrointestinal para perro, concentrado de 7 kg.",
+      "at": "2026-10-30T17:35:38.000Z"
+    },
+    {
+      "id": "0b55956d0a2e",
+      "direction": "outbound",
+      "body": "Gracias por la aclaración. La corrección de tamaño ya quedó tenida en cuenta, y por ahora la referencia sigue pendiente de revisión. En este chat todavía no hay un asesor asignado, así que no puedo confirmar el precio de ese producto en este momento. Si más adelante quieres, puedo seguir ayudándote con otras consultas mientras tanto.",
+      "at": "2026-10-30T17:33:24.000Z"
+    }
+  ]
+}

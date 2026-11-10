@@ -1,0 +1,758 @@
+{
+  "capturedAt": "2026-10-29T16:04:13.751Z",
+  "mode": "real models and read-only Supabase; in-memory state; not WhatsApp E2E",
+  "label": "baseline",
+  "rows": [
+    {
+      "case": "capture",
+      "text": "Quiero un dimicilio para un alimento para mi gato de 6 meses que me recomienda",
+      "response": "No pude consultar el catálogo por un problema temporal. Aún no puedo confirmar el precio o la disponibilidad; por favor, inténtalo nuevamente.",
+      "ms": 11874,
+      "decisions": [
+        {
+          "router": true,
+          "decision": {
+            "solicitudComercialIndependiente": true,
+            "derivacionHumana": {
+              "necesaria": false,
+              "motivo": null
+            },
+            "seguimientoProducto": "nueva",
+            "resumenMemoria": null,
+            "continuarFlujo": false,
+            "compraContextual": null,
+            "solicitudesProductoDetectadas": 1,
+            "consultaCatalogo": {
+              "necesaria": true,
+              "consulta": "alimento para gato de 6 meses"
+            },
+            "respuestaConversacional": null,
+            "intencion": "recomendacion",
+            "accion": "consultar",
+            "confianza": 0.94,
+            "producto": {
+              "accion": "consultar",
+              "marca": null,
+              "referencia": null,
+              "linea": null,
+              "textoVisible": "alimento para mi gato de 6 meses",
+              "mencionOriginal": null,
+              "categoria": "alimento",
+              "subcategoria": null,
+              "especie": "gato",
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": null,
+              "intencionPresentaciones": null,
+              "mascotas": [
+                {
+                  "nombre": "Mascota 1",
+                  "pesoKg": null
+                }
+              ],
+              "condiciones": [],
+              "cantidad": null
+            },
+            "productos": [
+              {
+                "accion": "consultar",
+                "marca": null,
+                "referencia": null,
+                "linea": null,
+                "textoVisible": "alimento para mi gato de 6 meses",
+                "mencionOriginal": "alimento para mi gato de 6 meses",
+                "categoria": "alimento",
+                "subcategoria": null,
+                "especie": "gato",
+                "etapa": null,
+                "tamano": null,
+                "sabores": [],
+                "presentacion": null,
+                "intencionPresentaciones": null,
+                "mascotas": [
+                  {
+                    "nombre": "Mascota 1",
+                    "pesoKg": null
+                  }
+                ],
+                "condiciones": [],
+                "cantidad": null
+              }
+            ],
+            "entrega": {
+              "tipo": "domicilio",
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            },
+            "facturacion": {
+              "electronica": null,
+              "evidencia": null
+            },
+            "datosCliente": {
+              "nombre": null,
+              "cedula": null,
+              "correo": null,
+              "celular": null
+            },
+            "carrito": {
+              "operacion": null,
+              "cantidadObjetivo": null,
+              "cantidadDelta": null,
+              "aplicaAlUltimoProducto": null,
+              "razon": null
+            },
+            "faltanteSugerido": "¿Prefieres alimento para gatito seco o húmedo?"
+          }
+        }
+      ],
+      "requests": [
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 7835,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "POST",
+          "path": "/rest/v1/rpc/search_catalog_products",
+          "ms": 815,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "POST",
+          "path": "/rest/v1/rpc/search_catalog_products",
+          "ms": 545,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "POST",
+          "path": "/rest/v1/rpc/search_catalog_products",
+          "ms": 460,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "POST",
+          "path": "/rest/v1/rpc/search_catalog_products",
+          "ms": 798,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "POST",
+          "path": "/rest/v1/rpc/search_catalog_products",
+          "ms": 414,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "GET",
+          "path": "/rest/v1/catalog_brands",
+          "ms": 197,
+          "status": 200
+        }
+      ],
+      "cartUnchanged": true,
+      "state": {
+        "criterios": {},
+        "atencionHumana": null,
+        "ultimaConsultaProducto": null
+      }
+    },
+    {
+      "case": "capture",
+      "text": "Qué alimento tiene para gato cachorro",
+      "response": "No encuentro ALIMENTO GATO CACHORRO en el catálogo actual. No la he agregado al pedido. ¿Puedes confirmar el nombre completo y la presentación para revisarlo?\n\nPedido:\n- 1 x BR CAT SALMON 1kg: $30.500\nTotal: $30.500",
+      "ms": 14194,
+      "decisions": [
+        {
+          "router": true,
+          "decision": {
+            "solicitudComercialIndependiente": true,
+            "derivacionHumana": {
+              "necesaria": false,
+              "motivo": null
+            },
+            "seguimientoProducto": "nueva",
+            "resumenMemoria": null,
+            "continuarFlujo": false,
+            "compraContextual": null,
+            "solicitudesProductoDetectadas": 1,
+            "consultaCatalogo": {
+              "necesaria": true,
+              "consulta": "alimento para gato cachorro"
+            },
+            "respuestaConversacional": null,
+            "intencion": "consulta_producto",
+            "accion": "consultar",
+            "confianza": 0.95,
+            "producto": {
+              "accion": "consultar",
+              "marca": null,
+              "referencia": null,
+              "linea": null,
+              "textoVisible": "alimento para gato cachorro",
+              "mencionOriginal": null,
+              "categoria": "alimento",
+              "subcategoria": null,
+              "especie": "gato",
+              "etapa": "cachorro",
+              "tamano": null,
+              "sabores": [],
+              "presentacion": null,
+              "intencionPresentaciones": null,
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": null
+            },
+            "productos": [
+              {
+                "accion": "consultar",
+                "marca": null,
+                "referencia": null,
+                "linea": null,
+                "textoVisible": "alimento para gato cachorro",
+                "mencionOriginal": "alimento tiene para gato cachorro",
+                "categoria": "alimento",
+                "subcategoria": null,
+                "especie": "gato",
+                "etapa": "cachorro",
+                "tamano": null,
+                "sabores": [],
+                "presentacion": null,
+                "intencionPresentaciones": null,
+                "mascotas": [],
+                "condiciones": [],
+                "cantidad": null
+              }
+            ],
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            },
+            "facturacion": {
+              "electronica": null,
+              "evidencia": null
+            },
+            "datosCliente": {
+              "nombre": null,
+              "cedula": null,
+              "correo": null,
+              "celular": null
+            },
+            "carrito": {
+              "operacion": null,
+              "cantidadObjetivo": null,
+              "cantidadDelta": null,
+              "aplicaAlUltimoProducto": null,
+              "razon": null
+            },
+            "faltanteSugerido": null
+          }
+        },
+        {
+          "router": false,
+          "decision": {
+            "solicitudComercialIndependiente": false,
+            "derivacionHumana": {
+              "necesaria": false,
+              "motivo": null
+            },
+            "seguimientoProducto": null,
+            "resumenMemoria": null,
+            "continuarFlujo": false,
+            "compraContextual": null,
+            "solicitudesProductoDetectadas": null,
+            "consultaCatalogo": {
+              "necesaria": null,
+              "consulta": null
+            },
+            "respuestaConversacional": null,
+            "intencion": "consulta_producto",
+            "accion": "consultar",
+            "confianza": 0.74,
+            "producto": {
+              "marca": null,
+              "referencia": null,
+              "linea": null,
+              "textoVisible": "alimento para gato cachorro",
+              "mencionOriginal": null,
+              "categoria": "comida",
+              "subcategoria": "concentrado",
+              "especie": "gato",
+              "etapa": "cachorro",
+              "tamano": null,
+              "sabores": [],
+              "presentacion": null,
+              "intencionPresentaciones": null,
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": null
+            },
+            "productos": [],
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            },
+            "facturacion": {
+              "electronica": null,
+              "evidencia": null
+            },
+            "datosCliente": {
+              "nombre": null,
+              "cedula": null,
+              "correo": null,
+              "celular": null
+            },
+            "carrito": {
+              "operacion": null,
+              "cantidadObjetivo": null,
+              "cantidadDelta": null,
+              "aplicaAlUltimoProducto": null,
+              "razon": null
+            },
+            "faltanteSugerido": "En el catálogo visible solo aparece alimento para gato etapa adulto (AGILITY GATO AD). ¿Lo necesitas para gato cachorro (¿marca/peso) o te sirve adulto?"
+          }
+        }
+      ],
+      "requests": [
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 6076,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "POST",
+          "path": "/rest/v1/rpc/search_catalog_products",
+          "ms": 582,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "POST",
+          "path": "/rest/v1/rpc/search_catalog_products",
+          "ms": 787,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "POST",
+          "path": "/rest/v1/rpc/search_catalog_products",
+          "ms": 460,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "POST",
+          "path": "/rest/v1/rpc/search_catalog_products",
+          "ms": 528,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "POST",
+          "path": "/rest/v1/rpc/search_catalog_products",
+          "ms": 456,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "GET",
+          "path": "/rest/v1/catalog_brands",
+          "ms": 203,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "GET",
+          "path": "/rest/v1/training_examples",
+          "ms": 249,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "GET",
+          "path": "/rest/v1/training_examples",
+          "ms": 338,
+          "status": 200
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 4239,
+          "status": 200
+        }
+      ],
+      "cartUnchanged": true,
+      "state": {
+        "criterios": {},
+        "atencionHumana": null,
+        "ultimaConsultaProducto": {
+          "terminos": [
+            "alimento",
+            "gato",
+            "cachorro"
+          ],
+          "etiqueta": "alimento gato cachorro",
+          "presentacion": null,
+          "fuente": "texto",
+          "nivel": "baja",
+          "razon": "sin_coincidencia_confiable",
+          "aclaracion": null,
+          "creadoEn": "2026-10-29T16:04:39.832Z",
+          "solicitudOriginal": {
+            "intencion": "consulta_producto",
+            "accion": "consultar",
+            "producto": {
+              "marca": null,
+              "referencia": null,
+              "linea": null,
+              "textoVisible": "alimento para gato cachorro",
+              "mencionOriginal": null,
+              "categoria": "comida",
+              "subcategoria": "concentrado",
+              "especie": "gato",
+              "etapa": "cachorro",
+              "tamano": null,
+              "sabores": [],
+              "presentacion": null,
+              "intencionPresentaciones": null,
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": null,
+              "accion": "consultar"
+            },
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            }
+          },
+          "sinCoincidenciaInformada": true
+        }
+      }
+    },
+    {
+      "case": "capture",
+      "text": "No sé el nombre del producto",
+      "response": "Con la información disponible todavía no puedo confirmar esa referencia en el catálogo. No he agregado un producto distinto. Si consigues el nombre completo o una foto del empaque, puedo revisarlo; también puedes consultar otra referencia.",
+      "ms": 5444,
+      "decisions": [
+        {
+          "router": true,
+          "decision": {
+            "solicitudComercialIndependiente": false,
+            "derivacionHumana": {
+              "necesaria": false,
+              "motivo": null
+            },
+            "seguimientoProducto": "sin_resolver",
+            "resumenMemoria": null,
+            "continuarFlujo": false,
+            "compraContextual": null,
+            "solicitudesProductoDetectadas": 0,
+            "consultaCatalogo": {
+              "necesaria": false,
+              "consulta": null
+            },
+            "respuestaConversacional": "Claro, ¿me compartes el nombre, la marca o una foto del producto para revisarlo?",
+            "intencion": "otro",
+            "accion": null,
+            "confianza": 0.98,
+            "producto": {
+              "marca": null,
+              "referencia": null,
+              "linea": null,
+              "textoVisible": null,
+              "mencionOriginal": null,
+              "categoria": null,
+              "subcategoria": null,
+              "especie": null,
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": null,
+              "intencionPresentaciones": null,
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": null
+            },
+            "productos": [],
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            },
+            "facturacion": {
+              "electronica": null,
+              "evidencia": null
+            },
+            "datosCliente": {
+              "nombre": null,
+              "cedula": null,
+              "correo": null,
+              "celular": null
+            },
+            "carrito": {
+              "operacion": null,
+              "cantidadObjetivo": null,
+              "cantidadDelta": null,
+              "aplicaAlUltimoProducto": null,
+              "razon": null
+            },
+            "faltanteSugerido": "nombre o marca del producto"
+          }
+        }
+      ],
+      "requests": [
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 5441,
+          "status": 200
+        }
+      ],
+      "cartUnchanged": true,
+      "state": {
+        "criterios": {},
+        "atencionHumana": null,
+        "ultimaConsultaProducto": {
+          "terminos": [
+            "alimento",
+            "gato",
+            "cachorro"
+          ],
+          "etiqueta": "alimento gato cachorro",
+          "presentacion": null,
+          "fuente": "texto",
+          "nivel": "baja",
+          "razon": "sin_coincidencia_confiable",
+          "aclaracion": null,
+          "creadoEn": "2026-10-29T16:04:39.832Z",
+          "solicitudOriginal": {
+            "intencion": "consulta_producto",
+            "accion": "consultar",
+            "producto": {
+              "marca": null,
+              "referencia": null,
+              "linea": null,
+              "textoVisible": "alimento para gato cachorro",
+              "mencionOriginal": null,
+              "categoria": "comida",
+              "subcategoria": "concentrado",
+              "especie": "gato",
+              "etapa": "cachorro",
+              "tamano": null,
+              "sabores": [],
+              "presentacion": null,
+              "intencionPresentaciones": null,
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": null,
+              "accion": "consultar"
+            },
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            }
+          },
+          "sinCoincidenciaInformada": true
+        }
+      }
+    }
+  ],
+  "requests": [
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/client_channels",
+      "ms": 1687,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/aivance_clients",
+      "ms": 502,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/aivance_clients",
+      "ms": 284,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/client_prompts",
+      "ms": 237,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/client_delivery_rules",
+      "ms": 465,
+      "status": 200
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 7835,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "POST",
+      "path": "/rest/v1/rpc/search_catalog_products",
+      "ms": 815,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "POST",
+      "path": "/rest/v1/rpc/search_catalog_products",
+      "ms": 545,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "POST",
+      "path": "/rest/v1/rpc/search_catalog_products",
+      "ms": 460,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "POST",
+      "path": "/rest/v1/rpc/search_catalog_products",
+      "ms": 798,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "POST",
+      "path": "/rest/v1/rpc/search_catalog_products",
+      "ms": 414,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/catalog_brands",
+      "ms": 197,
+      "status": 200
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 6076,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "POST",
+      "path": "/rest/v1/rpc/search_catalog_products",
+      "ms": 582,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "POST",
+      "path": "/rest/v1/rpc/search_catalog_products",
+      "ms": 787,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "POST",
+      "path": "/rest/v1/rpc/search_catalog_products",
+      "ms": 460,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "POST",
+      "path": "/rest/v1/rpc/search_catalog_products",
+      "ms": 528,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "POST",
+      "path": "/rest/v1/rpc/search_catalog_products",
+      "ms": 456,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/catalog_brands",
+      "ms": 203,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/training_examples",
+      "ms": 249,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/training_examples",
+      "ms": 338,
+      "status": 200
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 4239,
+      "status": 200
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 5441,
+      "status": 200
+    }
+  ]
+}

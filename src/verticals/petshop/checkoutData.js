@@ -51,6 +51,7 @@ function normalizarDato(campo, valor, parcial = false) {
   }
   if (campo === 'nombre') {
     const texto = normalizar(limpio);
+    if (/\b\d+\s*(?:kilos?|kg|gramos?|gr|litros?|ml|unidades?)\b|^(?:y son|son|serian|cuestan)\b/.test(texto)) return null;
     if (limpio.length > 120 || /[@:#\n]/.test(limpio) ||
         /\b(?:factura|facturacion|necesito|quiero|domicilio|efectivo|tarjeta|transferencia|gracias|confirmo|pedido|direccion|celular|correo|pago|datos|completos|adelante|agrega|comprar|envia|envio|debe|figurar|persona)\b/.test(texto)) return null;
     return /^[\p{L}\d .&'’-]+$/u.test(limpio) && (limpio.match(/\p{L}+/gu) || []).length >= (parcial ? 1 : 2) ? limpio : null;

@@ -19,6 +19,7 @@ function crearEstadoInicial() {
     atencionHumana: null,
     aclaracionIdentidad: null,
     mensajesProcesados: [],
+    avisosTecnicos: [],
     ultimaPreguntaAsistente: null,
     memoriaConversacional: null,
     marca: null,
@@ -131,6 +132,27 @@ function marcarCotizacionesRespondidas(estado, texto) {
 
 async function guardarConversacionPersistida(usuario, estado, metadatos = {}) {
   const ejecucion = require('../services/pipelineTelemetry').contexto?.getStore();
+  if (ejecucion && metadatos.avisoTecnico && metadatos.respuesta) {
+    const { eventos, etapa } = metadatos.avisoTecnico;
+    const turnId = estado._turnoEntrante?.turnId;
+    // Reserve a notice attempt separately from processed business events.
+    // An uncertain transport outcome stays reserved, not blindly retried.
+    ejecucion.antesEnviar = async () => {
+      const anteriores = (estado.avisosTecnicos || []).filter(a => !eventos.includes(a.evento));
+      estado.avisosTecnicos = [...anteriores, ...eventos.map(evento => ({ evento, estado: 'reservado', etapa }))].slice(-256);
+      if (supabaseConfigurado()) await persistirConversacion(usuario, estado, { cliente: metadatos.cliente });
+    };
+    ejecucion.alEnviar = async texto => {
+      estado.avisosTecnicos = (estado.avisosTecnicos || []).map(a => eventos.includes(a.evento) ? { ...a, estado: 'enviado' } : a);
+      if (!supabaseConfigurado()) return;
+      const fila = await persistirConversacion(usuario, estado, { cliente: metadatos.cliente });
+      await guardarMensaje(usuario, 'outbound', texto, fila?.id || null, metadatos.cliente,
+        { eventKey: `${turnId}:technical_notice`, turnId, avisoTecnico: true });
+    };
+    // Do not advance the business question, processed IDs, orders or learning.
+    const { respuesta, avisoTecnico, ...resto } = metadatos;
+    metadatos = { ...resto, soloEstado: true };
+  }
   if (ejecucion && metadatos.respuesta) {
     const respuesta = metadatos.respuesta;
     const turnId = estado._turnoEntrante?.turnId;

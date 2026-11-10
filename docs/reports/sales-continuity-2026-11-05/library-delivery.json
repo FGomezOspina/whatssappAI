@@ -1,0 +1,24 @@
+{
+  "localPath": "/Users/gomez/Documents/WhatsappVELTIA/docs/reports/sales-continuity-2026-11-05/REPORT.html",
+  "identity": {
+    "operation": "create_library_file",
+    "status": "succeeded",
+    "path": "/REPORT.html",
+    "file_id": "file_00000000015481fda26efcd92e7c2646",
+    "library_file_id": "libfile_d0a0ec2624388191bb7ad58019e172cc",
+    "file_name": "REPORT.html",
+    "current_version_number": 0,
+    "restored_from_version_number": null,
+    "xattrs": [
+      {
+        "name": "user.library-file-version",
+        "value": "0"
+      }
+    ],
+    "directory_id": "libdir_44f6055841d48191b27c52ab423c4a51",
+    "mime_type": "text/html",
+    "library_artifact_type": "report",
+    "file_size_bytes": 7434,
+    "external_connectors_accessed": false
+  }
+}

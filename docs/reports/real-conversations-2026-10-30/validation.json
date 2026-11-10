@@ -1,0 +1,48 @@
+{
+  "checkedAt": "2026-10-30T14:56:28.705Z",
+  "suite": {
+    "tests": 1092,
+    "passed": 1092,
+    "failed": 0
+  },
+  "priorFrozenCorpusUnchanged": true,
+  "priorFrozenCatalogUnchanged": true,
+  "priorOutcomesUnchanged": true,
+  "before": {
+    "correct": 7,
+    "wrong": 2,
+    "safe_abstention": 2,
+    "missed": 1
+  },
+  "after": {
+    "correct": 8,
+    "safe_abstention": 2,
+    "useful_clarification": 2
+  },
+  "nominalFinal": {
+    "identified": 1022,
+    "clarification": 41,
+    "different_reference": 0
+  },
+  "productionChangedThisExpansion": [
+    "src/utils/numericProductIdentity.js",
+    "src/services/catalogConsolidationService.js",
+    "src/services/productMatchValidator.js"
+  ],
+  "noPaidModelCalls": true,
+  "noMessagesOrOrders": true,
+  "noSupabaseWrites": true,
+  "noDeploymentOrRestart": true,
+  "hashes": {
+    "corpusV2": "a7ef9115e8849def1a427a0806ff6bd281fe9db06449ef2c61f8dc513f8288d1",
+    "rawCatalog": "88180af9eb2cbcc9f48413f7e6ba7d94b44232f854089636acc6d3bdb38db8bc",
+    "normalizedAfter": "c0a76a3a0daf36b160637bfc5e4a97875239f3751d98daaa0a938be2cef7ffd7"
+  },
+  "reportSha256": "5e1230a7625a28467cf8604de6555f646fd2f8bc9fb568e7ed9f901570b1f320",
+  "library": {
+    "id": "libfile_d9a9e05b4c448191809eae46aa1a0618",
+    "version": 6,
+    "status": "succeeded",
+    "localXattrsApplied": false
+  }
+}

@@ -47,11 +47,18 @@ test('fallo de persistencia no promete transferencia completada',async()=>{
  await assert.rejects(c.send('consulta'),/Persistence unavailable/);
  assert.equal(c.state().atencionHumana,null);
 });
-test('producto sin referencia: conserva incertidumbre comercial sin pasar a cola',async()=>{
+test('producto sin referencia: busca y aclara antes de registrar revisión comercial',async()=>{
  const c=escenario({catalog:[],decision:args=>({intencion:'consulta_producto',accion:'consultar',producto:{referencia:'referencia desconocida'},
   seguimientoProducto:args.estado.aclaracionIdentidad?'sin_resolver':'nueva',consultaCatalogo:{necesaria:true,consulta:'referencia desconocida'}})});
  await c.send('referencia desconocida');assert.equal(c.state().atencionHumana,null);assert.ok(c.state().aclaracionIdentidad);
- assert.match(await c.send('no conozco más detalles'),/no puedo confirmar/);assert.equal(c.state().atencionHumana,null);
+ assert.match(await c.send('no conozco más detalles'),/pendiente de revisión por un asesor/);
+ assert.equal(c.state().atencionHumana.motivo,'producto_no_resuelto');
+ assert.equal(c.state().atencionHumana.notificacion,'no_configurada');
+ assert.equal(c.state().atencionHumana.referenciaPendiente.mensaje,'referencia desconocida');
+ const restarted=escenario({states:c.states});
+ assert.match(await restarted.send('precio Nube adulto gato 1kg',{messageId:'despues-pendiente'}),/10.000/);
+ assert.equal(restarted.state().atencionHumana.estado,'pendiente');
+ assert.equal(await restarted.send('precio Nube adulto gato 1kg',{messageId:'despues-pendiente'}),null);
 });
 test('aclaración resuelta valida catálogo y no escala',async()=>{
  let primera=true;const c=escenario({decision:()=>{if(primera){primera=false;return {intencion:'consulta_producto',accion:'consultar',producto:{referencia:'desconocida'},consultaCatalogo:{necesaria:true,consulta:'desconocida'}};}return {...consulta(),seguimientoProducto:'aclaracion'};}});
@@ -72,6 +79,19 @@ test('progreso entre atributos permite aclarar, nueva solicitud reinicia contado
  assert.equal(reg('especie','nueva'),false);assert.equal(reg('presentacion','aclaracion'),false);
  assert.equal(reg('marca','nueva'),false);assert.equal(s.aclaracionIdentidad.intentos,1);
  assert.equal(reg('marca','sin_resolver'),true);
+});
+
+test('revisión conserva solicitud inicial ante seguimiento genérico y una consulta nueva la reemplaza',()=>{
+ const {registrarAclaracion,prepararDerivacion}=require('../src/services/humanHandoffService');
+ const s={};
+ registrarAclaracion(s,{mensaje:'Marca NUBE, referencia CRIA de 4kg',decision:{seguimientoProducto:'nueva'},
+   validacion:{terminos:['nube','cria'],presentacionSolicitada:'4kg'}});
+ registrarAclaracion(s,{mensaje:'No tengo foto ni más datos',decision:{seguimientoProducto:'sin_resolver'},validacion:{terminos:['mas','datos']}});
+ prepararDerivacion(s,'producto_no_resuelto');
+ assert.equal(s.atencionHumana.referenciaPendiente.mensaje,'Marca NUBE, referencia CRIA de 4kg');
+ assert.deepEqual(s.atencionHumana.referenciaPendiente.terminos,['nube','cria']);
+ registrarAclaracion(s,{mensaje:'Otra referencia BRISA',decision:{seguimientoProducto:'nueva'},validacion:{terminos:['brisa']}});
+ assert.equal(s.aclaracionIdentidad.solicitudInicial.mensaje,'Otra referencia BRISA');
 });
 test('cierre explícito del estado por operador permite próximo turno sin perder carrito',async()=>{
  const c=escenario({decision:()=>({derivacionHumana:{necesaria:true,motivo:'solicitud_asesor'}})});
@@ -102,12 +122,34 @@ test('fallo técnico de búsqueda no aprende ausencia ni cuenta aclaración fall
  assert.equal(c.state().atencionHumana,null);assert.equal(c.state().aclaracionIdentidad,null);
 });
 
-test('tras buscar y preguntar, no conocer más detalles reconoce incertidumbre sin repetir búsqueda',async()=>{
+test('tras buscar y preguntar, no conocer más detalles registra revisión sin repetir búsqueda',async()=>{
  const c=escenario({catalog:[],decision:args=>args.estado.aclaracionIdentidad
   ? {intencion:'otro',seguimientoProducto:'sin_resolver',consultaCatalogo:{necesaria:false},respuestaConversacional:'Otra pregunta'}
   : {intencion:'consulta_producto',accion:'consultar',producto:{referencia:'desconocida'},consultaCatalogo:{necesaria:true,consulta:'desconocida'}}});
  await c.send('referencia desconocida');const busquedas=c.calls.search;
- assert.match(await c.send('no sé más'),/no puedo confirmar/);assert.equal(c.calls.search,busquedas);assert.equal(c.state().atencionHumana,null);
+ assert.match(await c.send('no sé más'),/pendiente de revisión por un asesor/);assert.equal(c.calls.search,busquedas);
+ assert.equal(c.state().atencionHumana.estado,'pendiente');
+});
+
+test('fallo al persistir revisión comercial no anuncia asignación ni registra respuesta exitosa',async()=>{
+ const c=escenario({failSave:true,catalog:[],decision:args=>({intencion:'consulta_producto',accion:'consultar',
+   producto:{referencia:'desconocida'},seguimientoProducto:args.estado.aclaracionIdentidad?'sin_resolver':'nueva',
+   consultaCatalogo:{necesaria:true,consulta:'desconocida'}})});
+ await c.send('referencia desconocida');
+ await assert.rejects(c.send('no sé más'),/Persistence unavailable/);
+ assert.equal(c.state().atencionHumana,null);
+ assert.ok(!c.calls.saves.some(s=>s.respuesta?.includes('pendiente de revisión')));
+});
+
+test('cola comercial preserva clínica previa y no interrumpe operador activo',()=>{
+ const {prepararDerivacion,pausaAutomaticaActiva}=require('../src/services/humanHandoffService');
+ const s={ultimaConsultaProducto:{solicitudOriginal:{producto:{marca:'NUBE',referencia:'CRIA'}}}};
+ prepararDerivacion(s,'producto_no_resuelto');assert.equal(pausaAutomaticaActiva(s),false);
+ prepararDerivacion(s,'criterio_veterinario');
+ assert.equal(s.atencionHumana.motivo,'criterio_veterinario');
+ assert.equal(s.atencionHumana.consultaComercialPendiente.motivo,'producto_no_resuelto');
+ prepararDerivacion(s,'producto_no_resuelto');assert.equal(s.atencionHumana.motivo,'criterio_veterinario');
+ s.atencionHumana.estado='en_atencion';assert.equal(pausaAutomaticaActiva(s),true);
 });
 test('recomendación general consulta referencias sin marcar criterio clínico ni comprar',async()=>{
  const c=escenario({decision:()=>({...consulta(),intencion:'recomendacion'})});

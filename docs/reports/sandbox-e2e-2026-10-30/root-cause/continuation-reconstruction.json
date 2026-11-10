@@ -1,0 +1,13 @@
+{
+  "type": "deterministic_reconstruction_not_original_API_trace",
+  "input": "Corrijo el tamaño: de 2 kg, el mismo concentrado para perro. Solo consultar el precio.",
+  "confidenceAndFollowup": "Explicit simulated router fields; original full raw router output unavailable",
+  "before": {
+    "continued": null,
+    "literalFragment": "de 2 kg, el mismo concentrado para perro"
+  },
+  "after": {
+    "continued": "ROYALCANIN ROYALCANIN GASTROINTESTINAL PERRO perro concentrado 2kg"
+  },
+  "stateSource": "private/resumed-before-correction.json (new traced reproduction)"
+}

@@ -276,7 +276,32 @@ async function cargarCatalogoCliente(cliente = null) {
   }
 }
 
+// Category discovery is a tenant-scoped attribute query, not commercial-name
+// matching. Bound the read and retain catalog IDs for recommendation evidence.
+async function explorarProductosCatalogoCliente(cliente, criterios = {}, { signal } = {}) {
+  if (!cliente?.id || !supabaseConfigurado()) throw new Error('Cliente y Supabase obligatorios');
+  const params = new URLSearchParams({
+    select: `id,name,species,category,subcategory,life_stage,requires_confirmation,description,metadata,brand:${BRANDS_TABLE}!inner(id,name,client_id,active),presentations:${PRESENTATIONS_TABLE}(id,weight,price,stock,metadata,active)`,
+    active: 'eq.true', 'brand.active': 'eq.true', 'brand.client_id': `eq.${cliente.id}`,
+    order: 'id.asc', limit: '121',
+  });
+  for (const [campo, columna] of [['categoria','category'],['subcategoria','subcategory'],['etapa','life_stage']]) {
+    if (campo==='etapa' && criterios.categoria!=='comida') continue;
+    if (criterios[campo]) params.set(columna, `eq.${criterios[campo]}`);
+  }
+  // Include shared-species records; the local validator checks membership.
+  if (criterios.especie) params.set('or', `(species.eq.${criterios.especie},metadata->especies.cs.${JSON.stringify([criterios.especie])})`);
+  const rows = await requestSupabase(`${REFERENCES_TABLE}?${params}`, {signal});
+  return { catalogo: construirCatalogoDesdeBusqueda((rows || []).slice(0,120).map(r => ({
+    brand_id:r.brand.id, brand_name:r.brand.name, reference_id:r.id, reference_name:r.name,
+    species:r.species, category:r.category, subcategory:r.subcategory, life_stage:r.life_stage,
+    requires_confirmation:r.requires_confirmation, description:r.description, reference_metadata:r.metadata,
+    presentations:(r.presentations || []).filter(p => p.active).map(p=>({...p,metadata:{...p.metadata,id:p.id}})),
+  }))), incompleto: (rows || []).length > 120 };
+}
+
 module.exports = {
+  explorarProductosCatalogoCliente,
   buscarProductosCatalogoCliente,
   cargarCatalogoCliente,
   cargarProductos: cargarProductosDesdeJson,

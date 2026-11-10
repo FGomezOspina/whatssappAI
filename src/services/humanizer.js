@@ -11,6 +11,7 @@ const { logPayloadOpenAI } = require("./aiContextAuditLogger");
 const { esRespuestaMultiMensaje, dividirRespuestaMensajes, unirMensajesRespuesta } = require("../utils/responseMessages");
 const { normalizar, normalizarPeso } = require("../utils/text");
 const { respuestaValidacionProducto } = require("./productMatchValidator");
+const { esConsultaInformativaProducto } = require('../utils/responsePresentation');
 
 const openai = process.env.OPENAI_API_KEY
   ? new OpenAI({
@@ -24,6 +25,14 @@ function extraerTokensCriticos(respuesta) {
     ...(respuesta.match(/\$\d[\d.]*/g) || []),
     ...(respuesta.match(/\b(?:hasta\s+)?\d+(?:[.,]\d+)?\s*(?:(?:kg|kl)?\s*(?:[-–—]|a)\s*\d+(?:[.,]\d+)?\s*)?(?:kg|kl|g|gr|lb|ml|mg)\b/gi) || []),
   ];
+}
+
+function conservaPresentacionCandidato(respuesta, candidatos = []) {
+  const mencionados=candidatos.filter(c=>normalizar(respuesta).includes(normalizar(c.referenciaCatalogo || c.referencia || '')));
+  if(mencionados.length!==1)return true;
+  const permitidos=new Set((mencionados[0].presentaciones || []).map(p=>normalizarPeso(p.peso)));
+  const pesos=extraerTokensCriticos(respuesta).filter(t=>!t.startsWith('$')).map(normalizarPeso);
+  return pesos.every(p=>permitidos.has(p));
 }
 
 // Importes COP en prosa: el simbolo y su espaciado no cambian el valor.
@@ -40,6 +49,8 @@ function extraerPrecios(texto = "") {
 }
 
 function conservaDatosCriticos(respuestaBase, respuestaHumanizada) {
+  if (respuestaBase.includes('Las existencias están por confirmar.') &&
+      !respuestaHumanizada.includes('Las existencias están por confirmar.')) return false;
   const tokensCriticos = extraerTokensCriticos(respuestaBase);
   const lineasCriticas = respuestaBase
     .split("\n")
@@ -191,6 +202,9 @@ function esRespuestaOperativaProtegida(respuestaBase = "") {
 }
 
 function omitirHumanizadorProducto(respuestaBase, opciones = {}) {
+  // Recommendations need the contextual explanation even when the initial
+  // lightweight classifier chose the cheap product-search profile.
+  if (opciones.clasificacion?.recomendacionCatalogo) return false;
   if (opciones.aclaracion) return false;
   if (opciones.interpretacionIA?.producto?.referencia &&
       opciones.interpretacionIA?.producto?.presentacion) return false;
@@ -218,6 +232,19 @@ function debeHumanizarRespuesta(respuestaBase, opciones = {}) {
 }
 
 async function humanizarRespuesta(mensajeCliente, respuestaBase, opciones = {}) {
+  // A candidate sold individually does not verify a requested sealed pack.
+  // Preserve this concrete clarification rather than let prose offer a
+  // different presentation as if it were already the requested one.
+  if (opciones.productoAutonomo?.aclaracion?.campo === 'unidades_empaque') {
+    opciones.onUsage?.({ skipped:true, reason:'aclaracion_empaque_sin_verificar' });
+    return respuestaValidacionProducto(opciones.productoAutonomo);
+  }
+  const consultaInformativa = esConsultaInformativaProducto(opciones.interpretacionIA);
+  if (consultaInformativa && typeof respuestaBase === 'string') {
+    // Remove only the backend's cart block, preserving any question or other facts
+    // after it. This is presentation, never a mutation of the stored cart.
+    respuestaBase = respuestaBase.replace(/(?:^|\n)Pedido:\n(?:- [^\n]*\n)*Total: [^\n]*/g, '').trim();
+  }
   if (opciones.interpretacionIA?.accion === 'consultar' &&
       (opciones.productoAutonomo?.seleccionPresentaciones ||
         opciones.productoAutonomo?.resultados?.some(r => r.seleccionPresentaciones))) {
@@ -237,7 +264,7 @@ async function humanizarRespuesta(mensajeCliente, respuestaBase, opciones = {}) 
     return respuestaBase;
   }
   // Una aclaracion de un item no oculta los productos ya guardados.
-  if (opciones.estado?.carrito?.length &&
+  if (!consultaInformativa && opciones.estado?.carrito?.length &&
       opciones.estado.ultimaSolicitudProductos?.some(item => item.estado === "pendiente") &&
       typeof respuestaBase === "string" && !respuestaBase.includes("Pedido:")) {
     const resumen = opciones.vertical?.orderLogic?.resumenCarrito;
@@ -420,12 +447,18 @@ ${promptCliente(opciones.cliente)}
 
 async function redactarRespuestaProducto(mensaje, respuestaOperativa, opciones) {
   const hechos = opciones.productoAutonomo;
-  // No hay una identidad que confirmar si la busqueda no encontro candidatos
-  // compatibles. Una pregunta generada no debe convertir ausencia en certeza.
-  if (hechos.nivel === "baja" && !hechos.aclaracion && !hechos.alternativas?.length) {
-    opciones.onUsage?.({ skipped: true, reason: "sin_coincidencia_catalogo" });
-    return respuestaValidacionProducto(hechos);
-  }
+  const sinCoincidencia = hechos.nivel === 'baja' && !hechos.aclaracion && !hechos.alternativas?.length;
+  const solicitudRecibida = {
+    ...opciones.estado?.ultimaConsultaProducto?.solicitudOriginal?.producto,
+    ...Object.fromEntries(Object.entries(opciones.interpretacionIA?.producto || {}).filter(([,v]) => v != null)),
+  };
+  const datosConocidos = {marca:solicitudRecibida.marca,referencia:solicitudRecibida.referencia,
+    presentacion:hechos.presentacionSolicitada || solicitudRecibida.presentacion};
+  const recursosAclaracion = opciones.interpretacionIA?.recursosAclaracion || {};
+  const sinMasDatos = Boolean(opciones.sinProgreso) || recursosAclaracion.masDatosDisponibles === false;
+  const cierreSolicitado = ['rechazo', 'agradecimiento'].includes(opciones.interpretacionIA?.intencion) ||
+    opciones.interpretacionIA?.accion === 'rechazar';
+  if (sinCoincidencia && !openai) return respuestaOperativa || respuestaValidacionProducto(hechos);
   if (!openai) throw new Error("OpenAI no disponible para redactar la respuesta de producto");
   const incierto = ["media", "baja"].includes(hechos.nivel);
   const coincidencia = hechos.coincidencia;
@@ -457,6 +490,10 @@ async function redactarRespuestaProducto(mensaje, respuestaOperativa, opciones) 
   });
   const contexto = {
     mensaje,
+    revisionComercial: opciones.revisionComercial || null,
+    ...(sinCoincidencia ? {sinCoincidencia:true,datosConocidos,
+      sinMasDatos, recursosAclaracion, cierreSolicitado,
+      referenciaSolicitada:hechos.etiqueta || hechos.terminos?.join(' ') || null} : {}),
     especieConocida: hechos.especieConocida || opciones.interpretacionIA?.producto?.especie || null,
     cotizacionCantidad,
     resultado: incierto ? { nivel: hechos.nivel, aclaracion: hechos.aclaracion,
@@ -467,13 +504,19 @@ async function redactarRespuestaProducto(mensaje, respuestaOperativa, opciones) 
     hechosOperativos: incierto ? null : respuestaOperativa,
     accion: opciones.interpretacionIA?.accion || null,
     preguntaPendiente: opciones.interpretacionIA?.preguntaPendiente || null,
-    carrito: incierto ? undefined : opciones.estado?.carrito?.map(({ precioBase, preciosPorCantidad, ...item }) => item),
+    consultaInformativa: esConsultaInformativaProducto(opciones.interpretacionIA),
+    necesidadConocida: { categoria: solicitudRecibida.categoria || null, especie: solicitudRecibida.especie || null,
+      etapa: solicitudRecibida.etapa || null },
+    carrito: incierto || esConsultaInformativaProducto(opciones.interpretacionIA) ? undefined : opciones.estado?.carrito?.map(({ precioBase, preciosPorCantidad, ...item }) => item),
     ultimaPregunta: opciones.estado?.ultimaPreguntaAsistente || null,
     instruccionesCliente: opciones.cliente?.prompts?.humanizer || opciones.cliente?.prompts?.humanizador || null,
   };
-  const prompt = `Redacta autonomamente una respuesta de WhatsApp en español colombiano para atender el mensaje completo.
+  const instruccionesIncertidumbre = `No se ha podido identificar con seguridad la referencia pedida. Eso NO demuestra que no se venda, que no exista o que este agotada. Expresa esa incertidumbre con amabilidad y palabras cotidianas, sin mencionar catalogos, bases de datos ni procesos internos. Habla como un asesor comercial cercano: reconoce lo que la persona ya explicó y céntrate en cómo ayudarla, sin narrar procesos de identificación ni puntuaciones de certeza. No uses una apertura fija: responde al mensaje actual y a la ultima pregunta. No inventes productos alternativos, precios, stock, capacidades de conseguir productos ni contacto con terceros. No te presentes como persona o veterinario.
+Devuelve JSON con respuesta (texto final), siguientePaso (pedir_dato, pedir_foto, explorar_necesidad, ofrecer_busqueda o cerrar) y datoSolicitado (marca, referencia, presentacion o null). Esos campos describen fielmente lo que preguntas. No pidas ni confirmes un campo presente en datosConocidos, ni datos que el cliente ya explico. Si recursosAclaracion.fotoDisponible=false no pidas foto ni como opcion secundaria. Si sinMasDatos=true o el cliente dice que no puede aportar mas, no pidas otra foto/nombre: reconoce la limitacion sin transmitir que ya no puedes ayudar. Ofrece un siguiente paso útil segun necesidadConocida y la ultimaPregunta. Si no conoces el tipo de producto o para qué mascota lo busca, usa explorar_necesidad: propone orientar por la necesidad y pide solo esa información si le interesa buscar otra opción; esto no exige mas datos de la referencia desconocida. No supongas para qué sirve una referencia no identificada. Si conoces la necesidad, puedes ofrecer buscar opciones para ella con consentimiento, sin prometer equivalencia. Usa ofrecer_busqueda solo cuando necesidadConocida.categoria tenga valor; si no, explora la necesidad con consentimiento. Usa cerrar solo cuando cierreSolicitado=true; agotar datos de identificación no significa querer abandonar la compra. No repitas una oferta vaga que ya hiciste ni hables de opciones parecidas, relacionadas o equivalentes a un producto cuya identidad desconoces. Si propones buscar opciones para una necesidad conocida, primero pregunta si quiere revisarlas, sin sustituir su eleccion ni afirmar que ya encontraste alternativas. Haz como maximo una pregunta util; cerrar no requiere pregunta. Una foto puede ayudar cuando ya dio nombre y tamaño, pero no la exijas si dice que no tiene. Conserva la identidad solicitada y no la presentes como confirmada.
+No comentes acciones de carrito o pedidos en esta respuesta: atiende solo la consulta sin resolver. El resumen real se adjunta por separado si corresponde. No menciones otras referencias concretas porque no hay alternativas validadas. Devuelve solo el JSON indicado.`;
+  const promptGeneral = `Redacta autonomamente una respuesta de WhatsApp en español colombiano para atender el mensaje completo.
 Usa exclusivamente los hechos validados. Los precios unitarios y totales actuales sustituyen los de la ultima pregunta o mensajes anteriores; no reutilices importes historicos al cambiar cantidades. Los hechos operativos describen el resultado del motor, no son una plantilla ni texto que debas copiar.
-Si resultado.equivalenciaPresentacion existe, la presentacion solicitada esta disponible bajo ese nombre comercial. Responde con el peso y precio del catalogo; no niegues disponibilidad ni la presentes como una alternativa diferente.
+Si resultado.equivalenciaPresentacion existe, la presentacion solicitada esta registrada bajo ese nombre comercial. Responde con el peso y precio del catalogo; no la presentes como una alternativa diferente. La identidad registrada no confirma existencias. Solo afirma disponibilidad si stock es true. Si los hechos operativos incluyen "Las existencias están por confirmar.", conserva esa frase literalmente y no afirmes disponibilidad.
 Un detalle recordado del empaque puede servir como pista sin estar registrado. No afirmes colores o caracteristicas del empaque que los hechos no confirmen. Si la referencia esta validada, comunica sus datos y pregunta solo la presentacion pendiente; si varias referencias encajan, aclara antes de elegir.
 La ultimaPregunta es historica, no una aclaracion vigente. Si los resultados actuales tienen identidad y presentacion resueltas, no vuelvas a pedir peso, especie o referencia. Solo pregunta por atributos que figuren pendientes en los resultados actuales; el siguiente paso de domicilio se conserva por separado.
 Si especieConocida tiene valor, no preguntes si es para perro o gato. Conserva esa especie y pide únicamente la variante pendiente. No conviertas una referencia candidata en una referencia confirmada.
@@ -481,12 +524,14 @@ Si hay coincidencia confirmada, comunica con naturalidad la referencia, presenta
 Si falta peso_mascota, la marca ya esta identificada: pregunta de forma natural por el peso de la mascota y, si requiereEspecie, tambien si es perro o gato. No pidas el nombre del empaque. Si el motivo es limite_peso_ambiguo o peso_fuera_de_rangos, explica ese dato sin recomendar otra dosis ni elegir un rango no validado.
 Si la identidad es incierta o no hay coincidencia, haz una pregunta breve que aporte el dato que falta para identificarla. Usa los atributos que distinguen candidatos; no vuelvas a pedir peso o marca ya expresados. Incluye las opciones concretas de la aclaracion (etapas o nombres de referencias compatibles); no preguntes simplemente por la referencia exacta. Conserva el peso solicitado y no sugieras categorias ni formatos distintos. Nunca pidas al cliente el precio del catalogo: la aclaracion debe resolver la identidad del producto, no pedirle datos comerciales de la tienda. No cotices candidatos inciertos, no los declares disponibles y no ofrezcas comprar otra referencia como si fuera la solicitada.
 Si el cliente cuenta una experiencia junto con su consulta, puedes reconocerla brevemente antes de responder; no conviertas productos del relato en solicitudes actuales. Ajusta el detalle a su necesidad, sin repetir sus palabras ni usar una apertura fija.
-Conserva las acciones realmente realizadas por el motor. Una consulta de precio no agrega al carrito. No confirmes un pedido si solo se agrego un producto. Respeta el siguiente paso operativo sin repetir preguntas resueltas. Mantén todas las solicitudes cuando hay varios productos. Distingue coincidencia de accion realizada: solo di que un articulo quedo agregado si figura en carrito. Los resultados pendientes requieren una pregunta concreta usando el atributo que falta y los datos ya solicitados; no pidas otra vez referencia y presentacion cuando una de ellas ya se conoce. No omitas los productos identificados por atender una aclaracion.
+Conserva las acciones realmente realizadas por el motor. Si consultaInformativa=true, atiende solo la consulta actual: no menciones ni resumas el carrito historico. Una consulta de precio no agrega al carrito. No confirmes un pedido si solo se agrego un producto. Respeta el siguiente paso operativo sin repetir preguntas resueltas. Mantén todas las solicitudes cuando hay varios productos. Distingue coincidencia de accion realizada: solo di que un articulo quedo agregado si figura en carrito. Los resultados pendientes requieren una pregunta concreta usando el atributo que falta y los datos ya solicitados; no pidas otra vez referencia y presentacion cuando una de ellas ya se conoce. No omitas los productos identificados por atender una aclaracion.
 Un resultado con nivel alta y pendiente presentacion ya tiene identidad confirmada: nombra su referencia validada y pregunta solo el peso, enumerando todas las presentaciones disponibles de esa referencia incluidas en los hechos. No anuncies "no se agregó al pedido" ni "falta confirmar la referencia" cuando solo falta elegir presentación. No preguntes cual de los productos busca si solicito ambos. Los precios no incluidos no estan autorizados para cotizar.
 Si preguntaPendiente contiene una pregunta, el sistema la muestra despues del resumen: no la repitas ni inventes otras preguntas; explica brevemente que productos quedaron agregados y cual esta pendiente.
 Solo si el cliente pregunta por domicilio, responde tambien: el precio del producto no es un total con envio. Si los hechos no incluyen una tarifa validada, indica que falta verificar ese costo, sin inventar tarifas, cobertura ni plazos. No inventes cuentas ni datos de pago.
 Si cotizacionCantidad existe, indica el precio por unidad y el total de las unidades solicitadas. Esto es una cotizacion, no una adicion al carrito. No deduzcas unidades ni dosis de pautas de administracion.
-No cambies cantidades, presentaciones ni precios. Puedes expresarlos en prosa libre sin conservar el formato de la respuesta operativa. Maximo una pregunta util y un emoji. Devuelve solo el mensaje final, sin comentarios tecnicos.`;
+No cambies cantidades, presentaciones ni precios. Puedes expresarlos en prosa libre sin conservar el formato de la respuesta operativa. Maximo una pregunta util y un emoji. ${sinCoincidencia ? 'Devuelve solamente el JSON indicado.' : 'Devuelve solo el mensaje final, sin comentarios tecnicos.'}`;
+  const prompt = sinCoincidencia ? instruccionesIncertidumbre + (opciones.revisionComercial?.registrada ? `
+La revisión comercial YA quedó registrada después de buscar y agotar las aclaraciones útiles. Devuelve siguientePaso=revision_asesor y datoSolicitado=null. Comunica con calidez que la referencia queda pendiente de revisión por un asesor y conserva el contexto. No pidas otra foto ni datos de identificación, no cierres la venta ni repitas ofertas vacías. Esta instalación solo registra el pendiente: nadie fue notificado ni asignado. Explica brevemente que todavía no hay un asesor asignado en este chat; puedes seguir atendiendo otras consultas mientras tanto. No prometas que alguien responderá, llamará, fue avisado o llegará en un plazo. No simules un traspaso en vivo. Tono cercano y respetuoso, nunca culpabilices al cliente; un toque ligero es opcional, sin bromas clínicas ni fingir ser humano.` : '') : promptGeneral;
   const modelo = opciones.model || modeloHumanizador(opciones.clasificacion);
   let motivoRechazo = null;
   let respuestaAnterior = null;
@@ -496,21 +541,69 @@ No cambies cantidades, presentaciones ni precios. Puedes expresarlos en prosa li
   };
   for (let intento = 0; intento < 2; intento++) {
     const inicio = Date.now();
-    const completion = await medir('openai_request', () => openai.chat.completions.create({ model: modelo,
+    let completion;
+    try {
+    completion = await medir('openai_request', () => openai.chat.completions.create({ model: modelo,
       messages: [{ role: "system", content: prompt }, { role: "user", content: JSON.stringify(contexto) },
         ...(intento ? [
           ...(respuestaAnterior ? [{ role: "assistant", content: respuestaAnterior }] : []),
-          { role: "system", content: `Corrige la respuesta anterior. Motivo del rechazo: ${motivoRechazo}. Conserva solo los hechos autorizados. Si la coincidencia esta confirmada, incluye referencia, presentacion y precio unitario validado, ademas de la pregunta operativa pendiente. Corregir una omision no autoriza eliminar los otros datos. Si el resultado es incierto, pide el atributo pendiente mediante una pregunta directa con signos de interrogacion y sin cotizar.` }
+          { role: "system", content: opciones.revisionComercial?.registrada
+            ? `Corrige el JSON anterior. Motivo: ${motivoRechazo}. Mantén siguientePaso=revision_asesor. La revisión está registrada, pero nadie fue notificado ni asignado. Expresa ese límite sin prometer plazos ni pedir otra aclaración; no conviertas la revisión pendiente en una oferta de búsqueda o un cierre.`
+            : sinCoincidencia
+            ? `Corrige el JSON anterior. Motivo: ${motivoRechazo}. Conserva la incertidumbre, no cotices ni repitas datos conocidos. Si no hay mas datos, ofrece buscar otras opciones con consentimiento o cierra sin exigir otra pregunta.`
+            : `Corrige la respuesta anterior. Motivo del rechazo: ${motivoRechazo}. Conserva solo los hechos autorizados. Si la coincidencia esta confirmada, incluye referencia, presentacion y precio unitario validado, ademas de la pregunta operativa pendiente. Corregir una omision no autoriza eliminar los otros datos. Si el resultado es incierto, pide el atributo pendiente mediante una pregunta directa con signos de interrogacion y sin cotizar.` }
         ] : [])],
+      ...(sinCoincidencia ? {response_format:{type:'json_object'}} : {}),
       ...(!/^gpt-5/i.test(modelo) ? { temperature: 0.55 } : {}),
     }), { kind: "product_response" });
+    } catch (error) {
+      if (!sinCoincidencia) throw error;
+      console.error('[Respuesta Producto] Fallo de redaccion de incertidumbre:', error.message);
+      opciones.onUsage?.({ skipped: true, reason: 'error_redaccion_incertidumbre' });
+      return opciones.sinProgreso ? respuestaOperativa : respuestaValidacionProducto(hechos);
+    }
     logUsoIA({ etapa: "respuesta_producto", channelUserId: opciones.channelUserId,
       cliente: opciones.cliente, intencion: opciones.clasificacion?.intencion,
       modelo, duracionMs: Date.now() - inicio, usage: completion.usage });
     opciones.onUsage?.({ skipped: false, usage: completion.usage, model: modelo });
-    const respuesta = completion.choices?.[0]?.message?.content?.trim();
-    respuestaAnterior = respuesta;
+    const contenido = completion.choices?.[0]?.message?.content?.trim();
+    require('./productRecognitionTrace').trazar('redaccion_producto', {
+      intento, resultado:contexto.resultado, datosConocidos, salida:contenido,
+    });
+    let respuesta=contenido, siguientePaso=null;
+    respuestaAnterior = contenido;
+    if (sinCoincidencia) {
+      let salida;try {salida=JSON.parse(contenido);} catch {rechazar('formato_de_respuesta');continue;}
+      respuesta=typeof salida.respuesta==='string'?salida.respuesta.trim():'';
+      siguientePaso=salida.siguientePaso;
+      if (!['pedir_dato','pedir_foto','explorar_necesidad','ofrecer_busqueda','cerrar','revision_asesor'].includes(siguientePaso) ||
+          (opciones.revisionComercial?.registrada ? siguientePaso !== 'revision_asesor' : siguientePaso === 'revision_asesor') ||
+          (siguientePaso==='pedir_dato' && (!['marca','referencia','presentacion'].includes(salida.datoSolicitado) || datosConocidos[salida.datoSolicitado])) ||
+          (siguientePaso!=='pedir_dato' && salida.datoSolicitado!=null) ||
+          (siguientePaso==='cerrar' && !cierreSolicitado) ||
+          (siguientePaso==='ofrecer_busqueda' && !solicitudRecibida.categoria) ||
+          (sinMasDatos && ['pedir_dato','pedir_foto'].includes(siguientePaso)) ||
+          (recursosAclaracion.fotoDisponible === false && siguientePaso === 'pedir_foto')) {
+        rechazar('pregunta_repetida_o_paso_no_permitido');continue;
+      }
+      if (/cat[aá]logo|base de datos/i.test(respuesta)) {rechazar('jerga_interna');continue;}
+      if (opciones.revisionComercial?.registrada &&
+          (/\b(?:notifiqu[eé]|avis[eé]|asign[eé]|contactar[aá]|llamar[aá]|responder[aá])\b/i.test(respuesta) ||
+           !/(?:\bno\b[^.\n]*asignad[oa]|\bsin\b[^.\n]*asignaci[oó]n)/i.test(respuesta))) {
+        rechazar('revision_sin_asignacion_confirmada');continue;
+      }
+      if (/\b(?:agotad[oa]s?|sin stock)\b|no\s+(?:lo\s+|la\s+)?(?:tenemos|manejamos|vendemos|existe)/i.test(respuesta)) {
+        rechazar('ausencia_o_stock_no_comprobados');continue;
+      }
+    }
     if (!respuesta) { rechazar("respuesta_vacia"); continue; }
+    if (incierto && !conservaPresentacionCandidato(respuesta, hechos.alternativas)) {
+      rechazar('presentacion_de_candidato_no_validada'); continue;
+    }
+    if (respuestaOperativa?.includes('Las existencias están por confirmar.') &&
+        !respuesta.includes('Las existencias están por confirmar.')) {
+      rechazar('falta_advertencia_stock_desconocido'); continue;
+    }
     if (contexto.especieConocida && hechos.aclaracion?.campo !== 'especie' &&
         /[¿?][^?¿]*(?:perro[^?¿]*\bo\b[^?¿]*gato|gato[^?¿]*\bo\b[^?¿]*perro)[^?¿]*[?]/i.test(respuesta)) {
       rechazar('especie_ya_conocida'); continue;
@@ -534,7 +627,8 @@ No cambies cantidades, presentaciones ni precios. Puedes expresarlos en prosa li
     }
     const precioAutorizado = precio => permitidos.has(precio);
     if (incierto && precios.length) { rechazar("precio_sin_coincidencia_confirmada"); continue; }
-    if (incierto && !respuesta.includes("?")) { rechazar("falta_pregunta_de_aclaracion"); continue; }
+    const requierePregunta = !sinCoincidencia || ['pedir_dato', 'pedir_foto'].includes(siguientePaso);
+    if (incierto && requierePregunta && !respuesta.includes("?")) { rechazar("falta_pregunta_de_aclaracion"); continue; }
     if (incierto && ["referencia", "sabores"].includes(hechos.aclaracion?.campo) && hechos.aclaracion.valores?.length > 1 &&
         hechos.aclaracion.valores.some(valor => !normalizar(respuesta).includes(normalizar(valor.replace(/_/g, " "))))) {
       rechazar("faltan_opciones_de_aclaracion"); continue;
@@ -569,6 +663,7 @@ No cambies cantidades, presentaciones ni precios. Puedes expresarlos en prosa li
     return respuesta;
   }
   // Una aclaracion fallida no deja al cliente sin respuesta. Construirla
+  if (sinCoincidencia && opciones.sinProgreso) return respuestaOperativa;
   if (motivoRechazo === 'especie_ya_conocida' && incierto) return respuestaValidacionProducto(hechos);
   // desde atributos validados, nunca desde candidatos cotizados ni del carrito.
   if (incierto && hechos.aclaracion?.valores?.length &&
@@ -594,5 +689,6 @@ module.exports = {
   humanizarRespuesta,
   _internals: {
     omitirHumanizadorProducto,
+    conservaPresentacionCandidato,
   },
 };

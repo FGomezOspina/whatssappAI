@@ -1,0 +1,1535 @@
+{
+  "at": "2026-10-30T17:20:29.135Z",
+  "original": {
+    "context": null,
+    "from": "573158994163",
+    "from_parent_user_id": null,
+    "from_user_id": "CO.1030198442801005",
+    "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDFCRjdCQURDNjM1N0EyMkMyRgA=",
+    "kapso": {
+      "direction": "inbound",
+      "status": "read",
+      "processing_status": "pending",
+      "origin": "cloud_api",
+      "phone_number": "573158994163",
+      "phone_number_id": "597907523413541",
+      "has_media": false,
+      "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+      "contact_name": "distrifincapereira",
+      "content": "Me dices el precio de cat chow delicrne, quinientos gramos?"
+    },
+    "text": {
+      "body": "Me dices el precio de cat chow delicrne, quinientos gramos?"
+    },
+    "timestamp": "1793312078",
+    "type": "text",
+    "username": null
+  },
+  "channelUserId": "573158994163",
+  "phoneNumberId": "597907523413541",
+  "tenant": {
+    "id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+    "slug": "distrifinca",
+    "resolution": "sandbox"
+  },
+  "webhook": {
+    "id": "0e17cb06-05e6-476b-bece-f48865b9b8dc",
+    "active": true,
+    "buffer_enabled": true,
+    "buffer_events": [
+      "whatsapp.message.received"
+    ],
+    "buffer_window_seconds": 5,
+    "created_at": "2026-05-30T16:58:05-04:00",
+    "events": [
+      "whatsapp.message.received"
+    ],
+    "headers": {},
+    "inactivity_minutes": 60,
+    "kind": "kapso",
+    "max_buffer_size": 50,
+    "payload_version": "v2",
+    "phone_number_id": "597907523413541",
+    "project_id": null,
+    "secret_key": "9f9fab102f93dae61aa6d1a8d568497684dde0411b61e74a412b859d129d911e",
+    "updated_at": "2026-05-30T16:58:05-04:00",
+    "url": "https://lion-payee-flatfoot.ngrok-free.dev/webhooks/kapso/whatsapp"
+  },
+  "conversations": [
+    {
+      "id": "8d1c7197-a2d0-4bb7-be5c-34a471e11f4a",
+      "state": {
+        "marca": "DIAMOND",
+        "carrito": [],
+        "entrega": {
+          "sede": null,
+          "tipo": null
+        },
+        "criterios": {
+          "especie": "gato",
+          "categoria": "comida",
+          "subcategoria": "concentrado"
+        },
+        "metodoPago": null,
+        "atencionHumana": {
+          "estado": "pendiente",
+          "motivo": "criterio_veterinario",
+          "solicitadaEn": "2026-10-29T20:21:46.781Z",
+          "consultaComercialPendiente": {
+            "estado": "pendiente",
+            "motivo": "producto_no_resuelto",
+            "politica": "revision_comercial_v1",
+            "asignacion": null,
+            "notificacion": "no_configurada",
+            "solicitadaEn": "2026-10-29T21:19:48.168Z",
+            "referenciaPendiente": {
+              "mensaje": "Solo consultar: tienen marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos?",
+              "terminos": [
+                "zetapruebaq9",
+                "zq17"
+              ],
+              "presentacion": "4kg"
+            }
+          }
+        },
+        "datosDomicilio": {
+          "nombre": "y son 4 kilos",
+          "sector": "pedido"
+        },
+        "esperandoMarca": false,
+        "ultimaSeleccion": null,
+        "pedidoConfirmado": false,
+        "mensajesProcesados": [
+          "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEYwQjc1MTc3QUQ5RDJCQUM3QQA=",
+          "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDA5RUY2QUY5Q0Q2NjIyNUE1RQA=",
+          "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEEyQUREMTIzMTgyRkU4Njc2RgA=",
+          "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDA0MDUzNDc5MEE4MTc1NTY3NQA=",
+          "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDNBRUE3QkU0MTNDMDVDNTlENAA=",
+          "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDc5REYyOUIwMDVGMTdEMjczQgA=",
+          "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEFDN0Q2MzRBOTM2NUU0NkQ3QwA=",
+          "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDE0MkUwMDM0RTYxRTg5MzE2MQA=",
+          "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDE5QjgwRjVFODkwMjY5N0RFMAA=",
+          "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDI5M0FDMzc4RjY1NjE0NTZFRgA=",
+          "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDJBNDBFQjA2M0EwMDRGODkwOAA=",
+          "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDEwRjJCOEM3OEEzRTg3Q0FDNgA=",
+          "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDIwRjM2OEFGMUJCMjFDQjRGQwA=",
+          "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDYyRjc2NjZCQUM4NjFGRUIzMgA=",
+          "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDY0MzY4NjdDMzg0N0UzNTQ2NQA=",
+          "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDREMTQyRkI0OTk2Njg2QjU0MwA=",
+          "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDRDNDlFMkFGODQ0MDQ2RDAwRgA=",
+          "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDFCNzE4NTI3NzhERDY2QTEwOQA=",
+          "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDFENDkzNDkwNUI2N0I4M0VGMAA=",
+          "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDY3RDU2OTBDRTQ1MkMyMEM1RAA=",
+          "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDdEOUI2Q0ZGRTA3RUVDRThGMAA=",
+          "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEMwNUUzQTkwMTI0M0E0RUFDNgA=",
+          "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEZBMkVDMEU0RTRENDQ0OURDMQA=",
+          "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDAyNDg4QTM5ODZCMEY4RjczQgA=",
+          "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDlDQjU5RjYxQjA4NTlBQ0M5MAA=",
+          "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDY0NjQ5OTBCQTQ1NkVENTExQQA=",
+          "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEY3MDAwRTE0Mzc3NzM5QkU5OAA=",
+          "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDNEQzEyMkVGQURBQUEzMTVGRAA=",
+          "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEFFNTg2QjFFMjBGMTNFNzhFMAA="
+        ],
+        "aclaracionIdentidad": null,
+        "esperandoMetodoPago": false,
+        "productosPendientes": [],
+        "recomendacionActiva": {
+          "opciones": [
+            {
+              "marca": "RASCADOR",
+              "indice": 1,
+              "precio": 16000,
+              "referencia": "RASCADOR",
+              "referenceId": "a9c745dd-5ad5-443b-a7e1-dde3c3317b4a",
+              "presentacion": "unidad"
+            },
+            {
+              "marca": "RASCADOR",
+              "indice": 2,
+              "precio": 22000,
+              "referencia": "RASCADOR REDONDO GATOS",
+              "referenceId": "8cb303f6-ecf2-4d2d-8c8f-8cc2199e605b",
+              "presentacion": "unidad"
+            }
+          ],
+          "criterios": {
+            "etapa": null,
+            "marca": null,
+            "tamano": null,
+            "especie": "gato",
+            "sabores": [],
+            "categoria": "juguete",
+            "condiciones": [],
+            "presentacion": null,
+            "subcategoria": null,
+            "presupuestoMaximo": 25000
+          },
+          "actualizadoEn": "2026-10-29T20:22:55.001Z"
+        },
+        "seleccionesProducto": [
+          {
+            "etapa": null,
+            "linea": null,
+            "marca": "PRO PLAN",
+            "accion": "consultar",
+            "estado": "cotizado",
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "cotizacion": [
+              {
+                "peso": "2kg",
+                "marca": "PRO PLAN",
+                "stock": null,
+                "precio": 122000,
+                "cantidad": 1,
+                "mascotas": [],
+                "referencia": "PRO PLAN CANINE UR",
+                "tipoSeleccion": "alternativas",
+                "presentaciones": [
+                  {
+                    "peso": "2kg",
+                    "stock": null,
+                    "precio": 122000,
+                    "metadata": {
+                      "llave": "1387",
+                      "codigo": "10301011387",
+                      "source": "productos.json",
+                      "codigos": [
+                        "10301011387"
+                      ],
+                      "nombre_original": "PRO PLAN CANINE UR 2KG"
+                    },
+                    "referencia": "PRO PLAN CANINE UR"
+                  }
+                ],
+                "referenciaCatalogo": "PRO PLAN CANINE UR"
+              }
+            ],
+            "referencia": "PRO PLAN CANINE UR",
+            "condiciones": [],
+            "presentacion": null,
+            "subcategoria": "concentrado",
+            "textoVisible": "El concentrado, solo quiero saber el precio",
+            "nombreFamilia": "PRO PLAN CANINE UR",
+            "mencionOriginal": null,
+            "requierePresentacion": false,
+            "intencionPresentaciones": "todas",
+            "referenciasEquivalentes": [
+              "PRO PLAN CANINE UR"
+            ],
+            "seleccionPresentaciones": {
+              "tipo": "alternativas",
+              "grupos": [
+                {
+                  "peso": "2kg",
+                  "stock": null,
+                  "precio": 122000,
+                  "mascotas": [],
+                  "metadata": {
+                    "llave": "1387",
+                    "codigo": "10301011387",
+                    "source": "productos.json",
+                    "codigos": [
+                      "10301011387"
+                    ],
+                    "nombre_original": "PRO PLAN CANINE UR 2KG"
+                  },
+                  "referencia": "PRO PLAN CANINE UR"
+                }
+              ],
+              "pendientes": []
+            },
+            "coincidenciaVisualValidada": false,
+            "presentacionesEquivalentes": [
+              {
+                "peso": "2kg",
+                "stock": null,
+                "precio": 122000,
+                "metadata": {
+                  "llave": "1387",
+                  "codigo": "10301011387",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10301011387"
+                  ],
+                  "nombre_original": "PRO PLAN CANINE UR 2KG"
+                },
+                "referencia": "PRO PLAN CANINE UR"
+              }
+            ]
+          },
+          {
+            "etapa": null,
+            "linea": null,
+            "marca": "DIAMOND",
+            "accion": "consultar",
+            "estado": "cotizado",
+            "tamano": null,
+            "especie": "gato",
+            "sabores": [],
+            "cantidad": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "cotizacion": [
+              {
+                "peso": "500gr",
+                "marca": "DIAMOND",
+                "stock": null,
+                "precio": 19500,
+                "cantidad": 1,
+                "metadata": {
+                  "llave": "553",
+                  "codigo": "10301020553",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10301020553"
+                  ],
+                  "nombre_original": "DIAMOND INDOOR CAT 500GR"
+                },
+                "referencia": "DIAMOND INDOOR CAT"
+              }
+            ],
+            "referencia": "DIAMOND INDOOR CAT",
+            "condiciones": [],
+            "presentacion": "500g",
+            "subcategoria": "concentrado",
+            "textoVisible": "diamon indor para gato, el de medio kilo",
+            "nombreFamilia": "DIAMOND INDOOR CAT",
+            "mencionOriginal": null,
+            "pesoTextoOriginal": "500g",
+            "requierePresentacion": false,
+            "intencionPresentaciones": "especifica",
+            "referenciasEquivalentes": [
+              "DIAMOND INDOOR CAT",
+              "DIAMOND INDOOR"
+            ],
+            "coincidenciaVisualValidada": false,
+            "presentacionesEquivalentes": [
+              {
+                "peso": "500gr",
+                "stock": null,
+                "precio": 19500,
+                "metadata": {
+                  "llave": "553",
+                  "codigo": "10301020553",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10301020553"
+                  ],
+                  "nombre_original": "DIAMOND INDOOR CAT 500GR"
+                },
+                "referencia": "DIAMOND INDOOR CAT"
+              },
+              {
+                "peso": "2.72kg",
+                "stock": null,
+                "precio": 86500,
+                "metadata": {
+                  "llave": "1816",
+                  "codigo": "103010201816",
+                  "source": "productos.json",
+                  "codigos": [
+                    "103010201816"
+                  ],
+                  "nombre_original": "DIAMOND INDOOR 2.72KG"
+                },
+                "referencia": "DIAMOND INDOOR"
+              }
+            ]
+          }
+        ],
+        "alternativaPendiente": null,
+        "confirmacionPedidoId": null,
+        "esperandoPresupuesto": false,
+        "esperandoTipoEntrega": false,
+        "productosConsultados": [
+          {
+            "peso": "500gr",
+            "marca": "DIAMOND",
+            "stock": null,
+            "precio": 19500,
+            "cantidad": 1,
+            "categoria": "comida",
+            "referencia": "DIAMOND INDOOR CAT",
+            "subcategoria": "concentrado",
+            "presentaciones": [
+              {
+                "peso": "500gr",
+                "stock": null,
+                "precio": 19500,
+                "metadata": {
+                  "llave": "553",
+                  "codigo": "10301020553",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10301020553"
+                  ],
+                  "nombre_original": "DIAMOND INDOOR CAT 500GR"
+                },
+                "referenciaCatalogo": "DIAMOND INDOOR CAT"
+              }
+            ],
+            "contextoCreadoEn": "2026-10-29T22:14:12.913Z",
+            "familiaReferencia": "DIAMOND INDOOR CAT",
+            "referenciaCatalogo": "DIAMOND INDOOR CAT",
+            "referenciasEquivalentes": [
+              "DIAMOND INDOOR CAT",
+              "DIAMOND INDOOR"
+            ]
+          }
+        ],
+        "esperandoSedeRecogida": false,
+        "memoriaConversacional": {
+          "hasta": {
+            "id": "ca24b76b-1348-5597-e760-6a6bd8d82ef2",
+            "created_at": "2026-10-29T20:54:32.070547+00:00"
+          },
+          "resumen": "Resumen vigente de la conversación comercial (integrado):\n\nNecesidades del cliente:\n- Perro adulto: busca premios/snacks con presupuesto máximo de $20.000 (no confirmó producto específico).\n- Gato: quiere conocer juguetes para su gato por hasta $25.000 y pidió “solo consultar/solo opciones” (no eligió aún).\n- Consulta sobre alimento medicado: preguntó por Pro Plan UR, confirmó que es “para perrito” y que quiere “el concentrado” (no lata) y que solo desea cotización/consulta de precio (sin agregar al pedido).\n- Salud gato: indicó “Mi gato no puede orinar” y preguntó qué comida darle “para curarlo” (solicitud de orientación/solución médica; sin producto definido; requiere evaluación veterinaria).\n- Consulta de disponibilidad: preguntó por alimento “marca ZetaPruebaQ9 referencia ZQ17” en presentación de 4 kilos; reiteró que es “solo consultar” (no pedido confirmado).\n\nPreferencias/restricciones explícitas (confirmadas):\n- Para Pro Plan UR (perro): “Solo consultar el precio, no lo agregues al pedido”.\n- Snacks perro: tope $20.000.\n- Juguete gato: tope $25.000 y quiere solo opciones/consultar.\n- Para ZetaPruebaQ9 ZQ17 4 kg: solo consulta (no agregar al pedido).\n\nProductos consultados/ofrecidos:\n- Pro Plan CANINE UR (perro) – concentrado (presentación exacta por confirmar). Se registró previamente como evidencia (no confirmación de compra; precio/stock no vigentes): Pro Plan Canine UR 2kg a $122.000.\n- Juguetes gato (opciones ofrecidas antes; precios históricos/no vigentes; stock por confirmar):\n  - RASCADOR unidad: $16.000.\n  - RASCADOR REDONDO GATOS unidad: $22.000.\n- ZetaPruebaQ9 ZQ17, comida, presentación 4 kilos (consultada; sin precio/stock confirmado).\n\nInteracciones recientes:\n- El asistente indicó que no encuentra ZetaPruebaQ9 ZQ17 de 4kg en el catálogo actual y pidió confirmar nombre completo y presentación; aclaró que no se agregó al pedido.\n- El cliente reiteró: “Solo consultar: tienen marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos?”\n\nPreguntas pendientes / información faltante:\n- Confirmar nombre completo (y/o variaciones de escritura) y la presentación exacta para poder volver a revisar ZetaPruebaQ9 ZQ17 4 kg, dado que no aparece en el catálogo actual.\n- Confirmar y consultar precio/stock actuales de:\n  - Pro Plan Canine UR (definir peso/presentación exacta a cotizar).\n- Para recomendaciones comerciales: preferencias del snack para perro (blandos/dentales/entrenamiento), tamaño/raza y alergias; y tipo de juguete para el gato y edad/estilo de juego.\n- Caso gato con dificultad para orinar: falta información clínica y requiere evaluación veterinaria; no hay producto definido.\n\nEstado del pedido:\n- No hay compra confirmada, ni cantidades definidas, ni datos de envío/pago.\n- Instrucciones vigentes del cliente: no agregar Pro Plan UR al pedido; solo consultar precio. Para ZetaPruebaQ9 ZQ17 4 kg: solo consulta."
+        },
+        "referenciasPendientes": null,
+        "facturacionElectronica": false,
+        "pendienteRecomendacion": false,
+        "ultimaConsultaProducto": {
+          "nivel": "alta",
+          "razon": "nombre_exacto",
+          "fuente": "texto",
+          "creadoEn": "2026-10-29T22:14:12.906Z",
+          "etiqueta": "diamon indor gato",
+          "terminos": [
+            "diamond",
+            "indoor",
+            "gato"
+          ],
+          "aclaracion": null,
+          "presentacion": "500g",
+          "solicitudOriginal": {
+            "accion": "consultar",
+            "producto": {
+              "etapa": null,
+              "linea": null,
+              "marca": "DIAMOND",
+              "accion": "consultar",
+              "tamano": null,
+              "especie": "gato",
+              "sabores": [],
+              "cantidad": null,
+              "duracion": null,
+              "mascotas": [],
+              "categoria": "comida",
+              "referencia": "DIAMOND INDOOR CAT",
+              "condiciones": [],
+              "presentacion": "500g",
+              "subcategoria": "concentrado",
+              "textoVisible": "diamon indor para gato, el de medio kilo",
+              "nombreFamilia": "DIAMOND INDOOR CAT",
+              "mencionOriginal": null,
+              "pesoTextoOriginal": "500g",
+              "requierePresentacion": false,
+              "intencionPresentaciones": "especifica",
+              "referenciasEquivalentes": [
+                "DIAMOND INDOOR CAT",
+                "DIAMOND INDOOR"
+              ],
+              "coincidenciaVisualValidada": false,
+              "presentacionesEquivalentes": [
+                {
+                  "peso": "500gr",
+                  "stock": null,
+                  "precio": 19500,
+                  "metadata": {
+                    "llave": "553",
+                    "codigo": "10301020553",
+                    "source": "productos.json",
+                    "codigos": [
+                      "10301020553"
+                    ],
+                    "nombre_original": "DIAMOND INDOOR CAT 500GR"
+                  },
+                  "referencia": "DIAMOND INDOOR CAT"
+                },
+                {
+                  "peso": "2.72kg",
+                  "stock": null,
+                  "precio": 86500,
+                  "metadata": {
+                    "llave": "1816",
+                    "codigo": "103010201816",
+                    "source": "productos.json",
+                    "codigos": [
+                      "103010201816"
+                    ],
+                    "nombre_original": "DIAMOND INDOOR 2.72KG"
+                  },
+                  "referencia": "DIAMOND INDOOR"
+                }
+              ]
+            },
+            "intencion": "consulta_producto"
+          }
+        },
+        "ultimoPedidoConfirmado": null,
+        "ultimoPedidoGuardadoAt": null,
+        "datosPreviosConfirmados": false,
+        "esperandoDatosDomicilio": false,
+        "ultimaPreguntaAsistente": "DIAMOND INDOOR CAT 500gr te queda en $19.500. Las existencias están por confirmar. 🙂",
+        "ultimoPedidoGuardadoKey": null,
+        "esperandoCambioDireccion": false,
+        "ultimaSolicitudProductos": [],
+        "instruccionesPagoEnviadas": false,
+        "ultimaInteraccionProducto": null,
+        "pedidoNuevoConDatosPrevios": false,
+        "esperandoConfirmacionPedido": false,
+        "ultimoTurnoContextoProducto": 4,
+        "historialProductosConsultados": [
+          {
+            "marca": "PRO PLAN",
+            "indice": 1,
+            "creadoEn": "2026-10-29T20:20:35.187Z",
+            "referencia": "PRO PLAN CANINE UR",
+            "actualizadoEn": "2026-10-29T21:23:50.923Z",
+            "presentaciones": [
+              {
+                "peso": "2kg",
+                "stock": null,
+                "precio": 122000,
+                "referenciaCatalogo": "PRO PLAN CANINE UR"
+              }
+            ],
+            "pendienteRespuesta": false,
+            "referenciasEquivalentes": [
+              "PRO PLAN CANINE UR"
+            ]
+          },
+          {
+            "marca": "DIAMOND",
+            "indice": 2,
+            "creadoEn": "2026-10-29T21:24:50.191Z",
+            "referencia": "DIAMOND INDOOR CAT",
+            "actualizadoEn": "2026-10-29T22:14:12.913Z",
+            "presentaciones": [
+              {
+                "peso": "500gr",
+                "stock": null,
+                "precio": 19500,
+                "referenciaCatalogo": "DIAMOND INDOOR CAT"
+              }
+            ],
+            "pendienteRespuesta": false,
+            "referenciasEquivalentes": [
+              "DIAMOND INDOOR CAT",
+              "DIAMOND INDOOR"
+            ]
+          }
+        ],
+        "esperandoConfirmacionDomicilio": false,
+        "coincidenciasProductoPendientes": null,
+        "pedidoConfirmadoPendienteGuardar": false,
+        "esperandoConfirmacionDatosPrevios": false,
+        "esperandoActualizacionDatosCliente": false,
+        "esperandoConfirmacionRepetirPedido": false,
+        "esperandoConfirmacionDatosFacturacion": false
+      },
+      "status": "pendiente_asesor",
+      "last_interaction_at": "2026-10-29T22:14:51.221+00:00"
+    }
+  ],
+  "messages": [
+    {
+      "id": "a838fd08-07f6-a7c5-d86e-8ba8c5d8719e",
+      "direction": "inbound",
+      "body": "Me dices el precio de cat chow delicrne, quinientos gramos?",
+      "created_at": "2026-10-29T22:14:45.431408+00:00",
+      "metadata": {
+        "tipo": "text",
+        "indice": 0,
+        "turnId": "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDFCRjdCQURDNjM1N0EyMkMyRgA=",
+        "mediaId": null,
+        "eventKey": "597907523413541:597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDFCRjdCQURDNjM1N0EyMkMyRgA=",
+        "transcripcion": "Me dices el precio de cat chow delicrne, quinientos gramos?",
+        "interpretacion": null,
+        "alcanceInterpretacion": "turno"
+      }
+    },
+    {
+      "id": "86d3b9a6-353d-96e6-0780-b293155bdf2a",
+      "direction": "outbound",
+      "body": "DIAMOND INDOOR CAT 500gr te queda en $19.500. Las existencias están por confirmar. 🙂",
+      "created_at": "2026-10-29T22:14:16.466166+00:00",
+      "metadata": {
+        "turnId": "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEFFNTg2QjFFMjBGMTNFNzhFMAA=",
+        "eventKey": "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEFFNTg2QjFFMjBGMTNFNzhFMAA="
+      }
+    },
+    {
+      "id": "c9b80aac-1a6b-6dbb-0d0f-d1b4dce1c3d6",
+      "direction": "inbound",
+      "body": "Solo quiero consultar precio de diamon indor para gato, el de medio kilo",
+      "created_at": "2026-10-29T22:13:46.689864+00:00",
+      "metadata": {
+        "tipo": "text",
+        "indice": 0,
+        "turnId": "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEFFNTg2QjFFMjBGMTNFNzhFMAA=",
+        "mediaId": null,
+        "eventKey": "597907523413541:597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEFFNTg2QjFFMjBGMTNFNzhFMAA=",
+        "transcripcion": "Solo quiero consultar precio de diamon indor para gato, el de medio kilo",
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": null,
+            "marca": "DIAMOND",
+            "accion": "consultar",
+            "tamano": null,
+            "especie": "gato",
+            "sabores": [],
+            "cantidad": null,
+            "duracion": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "DIAMOND INDOOR CAT",
+            "condiciones": [],
+            "presentacion": "500g",
+            "subcategoria": "concentrado",
+            "textoVisible": "diamon indor para gato, el de medio kilo",
+            "nombreFamilia": "DIAMOND INDOOR CAT",
+            "mencionOriginal": null,
+            "pesoTextoOriginal": "500g",
+            "requierePresentacion": false,
+            "intencionPresentaciones": "especifica",
+            "referenciasEquivalentes": [
+              "DIAMOND INDOOR CAT",
+              "DIAMOND INDOOR"
+            ],
+            "coincidenciaVisualValidada": false,
+            "presentacionesEquivalentes": [
+              {
+                "peso": "500gr",
+                "stock": null,
+                "precio": 19500,
+                "metadata": {
+                  "llave": "553",
+                  "codigo": "10301020553",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10301020553"
+                  ],
+                  "nombre_original": "DIAMOND INDOOR CAT 500GR"
+                },
+                "referencia": "DIAMOND INDOOR CAT"
+              },
+              {
+                "peso": "2.72kg",
+                "stock": null,
+                "precio": 86500,
+                "metadata": {
+                  "llave": "1816",
+                  "codigo": "103010201816",
+                  "source": "productos.json",
+                  "codigos": [
+                    "103010201816"
+                  ],
+                  "nombre_original": "DIAMOND INDOOR 2.72KG"
+                },
+                "referencia": "DIAMOND INDOOR"
+              }
+            ]
+          },
+          "intencion": "consulta_producto",
+          "productos": [],
+          "propuestaOperacion": null
+        },
+        "alcanceInterpretacion": "turno"
+      }
+    },
+    {
+      "id": "4c7e3ebe-c615-8d9b-eaba-b57392b0ecd9",
+      "direction": "outbound",
+      "body": "DIAMOND INDOOR CAT de 500 gr te queda en $19.500. Las existencias están por confirmar. 🙂",
+      "created_at": "2026-10-29T22:06:35.615082+00:00",
+      "metadata": {
+        "turnId": "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDNEQzEyMkVGQURBQUEzMTVGRAA=",
+        "eventKey": "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDNEQzEyMkVGQURBQUEzMTVGRAA="
+      }
+    },
+    {
+      "id": "ac6d87fc-519d-5f22-f76a-9411bc0e1aae",
+      "direction": "inbound",
+      "body": "Solo quiero consultar precio de diamon indor para gato, el de medio kilo",
+      "created_at": "2026-10-29T22:06:05.46108+00:00",
+      "metadata": {
+        "tipo": "text",
+        "indice": 0,
+        "turnId": "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDNEQzEyMkVGQURBQUEzMTVGRAA=",
+        "mediaId": null,
+        "eventKey": "597907523413541:597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDNEQzEyMkVGQURBQUEzMTVGRAA=",
+        "transcripcion": "Solo quiero consultar precio de diamon indor para gato, el de medio kilo",
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": null,
+            "marca": "DIAMOND",
+            "accion": "consultar",
+            "tamano": null,
+            "especie": "gato",
+            "sabores": [],
+            "cantidad": null,
+            "duracion": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "DIAMOND INDOOR CAT",
+            "condiciones": [],
+            "presentacion": "500g",
+            "subcategoria": "concentrado",
+            "textoVisible": "diamon indor para gato, el de medio kilo",
+            "nombreFamilia": "DIAMOND INDOOR CAT",
+            "mencionOriginal": null,
+            "requierePresentacion": false,
+            "intencionPresentaciones": "especifica",
+            "referenciasEquivalentes": [
+              "DIAMOND INDOOR",
+              "DIAMOND INDOOR CAT"
+            ],
+            "coincidenciaVisualValidada": false,
+            "presentacionesEquivalentes": [
+              {
+                "peso": "2.72kg",
+                "stock": null,
+                "precio": 86500,
+                "metadata": {
+                  "llave": "1816",
+                  "codigo": "103010201816",
+                  "source": "productos.json",
+                  "codigos": [
+                    "103010201816"
+                  ],
+                  "nombre_original": "DIAMOND INDOOR 2.72KG"
+                },
+                "referencia": "DIAMOND INDOOR"
+              },
+              {
+                "peso": "500gr",
+                "stock": null,
+                "precio": 19500,
+                "metadata": {
+                  "llave": "553",
+                  "codigo": "10301020553",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10301020553"
+                  ],
+                  "nombre_original": "DIAMOND INDOOR CAT 500GR"
+                },
+                "referencia": "DIAMOND INDOOR CAT"
+              }
+            ]
+          },
+          "intencion": "consulta_producto",
+          "productos": [],
+          "propuestaOperacion": null
+        },
+        "alcanceInterpretacion": "turno"
+      }
+    },
+    {
+      "id": "1219458d-d6d0-2bc9-370e-309d0f573f79",
+      "direction": "outbound",
+      "body": "DIAMOND INDOOR CAT de 500 g te queda en $19.500. Las existencias están por confirmar. 🙂",
+      "created_at": "2026-10-29T21:33:15.035307+00:00",
+      "metadata": {
+        "turnId": "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEY3MDAwRTE0Mzc3NzM5QkU5OAA=",
+        "eventKey": "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEY3MDAwRTE0Mzc3NzM5QkU5OAA="
+      }
+    },
+    {
+      "id": "f7dc8e33-fb0f-9b53-0629-61586acbe2b0",
+      "direction": "inbound",
+      "body": "Cuánto vale DIAMOND INDOOR CAT de 500 gramos?",
+      "created_at": "2026-10-29T21:32:46.416584+00:00",
+      "metadata": {
+        "tipo": "text",
+        "indice": 0,
+        "turnId": "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEY3MDAwRTE0Mzc3NzM5QkU5OAA=",
+        "mediaId": null,
+        "eventKey": "597907523413541:597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEY3MDAwRTE0Mzc3NzM5QkU5OAA=",
+        "transcripcion": "Cuánto vale DIAMOND INDOOR CAT de 500 gramos?",
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": null,
+            "marca": "DIAMOND",
+            "accion": "consultar",
+            "tamano": null,
+            "especie": "gato",
+            "sabores": [],
+            "cantidad": null,
+            "duracion": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "DIAMOND INDOOR CAT",
+            "condiciones": [],
+            "presentacion": "500g",
+            "subcategoria": "concentrado",
+            "textoVisible": "Cuánto vale DIAMOND INDOOR CAT de 500 gramos?",
+            "nombreFamilia": "DIAMOND INDOOR CAT",
+            "mencionOriginal": null,
+            "pesoTextoOriginal": "500g",
+            "requierePresentacion": false,
+            "intencionPresentaciones": "especifica",
+            "referenciasEquivalentes": [
+              "DIAMOND INDOOR CAT",
+              "DIAMOND INDOOR"
+            ],
+            "coincidenciaVisualValidada": false,
+            "presentacionesEquivalentes": [
+              {
+                "peso": "500gr",
+                "stock": null,
+                "precio": 19500,
+                "metadata": {
+                  "llave": "553",
+                  "codigo": "10301020553",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10301020553"
+                  ],
+                  "nombre_original": "DIAMOND INDOOR CAT 500GR"
+                },
+                "referencia": "DIAMOND INDOOR CAT"
+              },
+              {
+                "peso": "2.72kg",
+                "stock": null,
+                "precio": 86500,
+                "metadata": {
+                  "llave": "1816",
+                  "codigo": "103010201816",
+                  "source": "productos.json",
+                  "codigos": [
+                    "103010201816"
+                  ],
+                  "nombre_original": "DIAMOND INDOOR 2.72KG"
+                },
+                "referencia": "DIAMOND INDOOR"
+              }
+            ]
+          },
+          "intencion": "consulta_producto",
+          "productos": [],
+          "propuestaOperacion": null
+        },
+        "alcanceInterpretacion": "turno"
+      }
+    },
+    {
+      "id": "4587c740-83d1-b1fc-4fed-e6768f86baa6",
+      "direction": "outbound",
+      "body": "Gracias, lo dejo registrado para revisión con la referencia y la presentación que indicaste. Por ahora no hay un asesor asignado en este chat ni se ha notificado a nadie, así que queda pendiente de revisión. Mientras tanto, puedo seguir ayudándote con cualquier otra consulta que tengas.",
+      "created_at": "2026-10-29T21:31:43.220596+00:00",
+      "metadata": {
+        "turnId": "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDY0NjQ5OTBCQTQ1NkVENTExQQA=",
+        "eventKey": "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDY0NjQ5OTBCQTQ1NkVENTExQQA="
+      }
+    },
+    {
+      "id": "4d1cf2c7-617a-ec31-5aed-e159fda4ff8f",
+      "direction": "inbound",
+      "body": "No tengo foto ni más datos, ese es el nombre y son 4 kilos",
+      "created_at": "2026-10-29T21:31:08.862536+00:00",
+      "metadata": {
+        "tipo": "text",
+        "indice": 0,
+        "turnId": "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDY0NjQ5OTBCQTQ1NkVENTExQQA=",
+        "mediaId": null,
+        "eventKey": "597907523413541:597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDY0NjQ5OTBCQTQ1NkVENTExQQA=",
+        "transcripcion": "No tengo foto ni más datos, ese es el nombre y son 4 kilos",
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": null,
+            "marca": "ZetaPruebaQ9",
+            "accion": "consultar",
+            "tamano": null,
+            "especie": null,
+            "sabores": [],
+            "cantidad": null,
+            "mascotas": [],
+            "categoria": null,
+            "referencia": "ZQ17",
+            "condiciones": [],
+            "presentacion": "4 kilos",
+            "subcategoria": null,
+            "textoVisible": "nombre y 4 kilos",
+            "mencionOriginal": "ese es el nombre y son 4 kilos",
+            "intencionPresentaciones": "especifica"
+          },
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": null,
+              "linea": null,
+              "marca": "ZetaPruebaQ9",
+              "accion": "consultar",
+              "tamano": null,
+              "especie": null,
+              "sabores": [],
+              "cantidad": null,
+              "mascotas": [],
+              "categoria": null,
+              "referencia": "ZQ17",
+              "condiciones": [],
+              "presentacion": "4 kilos",
+              "subcategoria": null,
+              "textoVisible": "nombre y 4 kilos",
+              "mencionOriginal": "ese es el nombre y son 4 kilos",
+              "intencionPresentaciones": "especifica"
+            }
+          ],
+          "propuestaOperacion": null
+        },
+        "alcanceInterpretacion": "turno"
+      }
+    },
+    {
+      "id": "3b0ed4b3-7524-305a-e6f7-15cc00d3d73e",
+      "direction": "outbound",
+      "body": "No lo puedo confirmar con seguridad con esos datos. Si te interesa, puedo ayudarte a orientar la búsqueda por la necesidad que tengas; dime para qué tipo de producto es y te sigo.",
+      "created_at": "2026-10-29T21:30:38.442218+00:00",
+      "metadata": {
+        "turnId": "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDlDQjU5RjYxQjA4NTlBQ0M5MAA=",
+        "eventKey": "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDlDQjU5RjYxQjA4NTlBQ0M5MAA="
+      }
+    },
+    {
+      "id": "466ff77d-36a3-9fed-4fb2-158ee843095c",
+      "direction": "inbound",
+      "body": "Solo consultar: tienen marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos?",
+      "created_at": "2026-10-29T21:30:06.640191+00:00",
+      "metadata": {
+        "tipo": "text",
+        "indice": 0,
+        "turnId": "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDlDQjU5RjYxQjA4NTlBQ0M5MAA=",
+        "mediaId": null,
+        "eventKey": "597907523413541:597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDlDQjU5RjYxQjA4NTlBQ0M5MAA=",
+        "transcripcion": "Solo consultar: tienen marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos?",
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": null,
+            "marca": "ZetaPruebaQ9",
+            "accion": "consultar",
+            "tamano": null,
+            "especie": null,
+            "sabores": [],
+            "cantidad": null,
+            "mascotas": [],
+            "categoria": null,
+            "referencia": "ZQ17",
+            "condiciones": [],
+            "presentacion": "4 kilos",
+            "subcategoria": null,
+            "textoVisible": "marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos",
+            "mencionOriginal": "marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos",
+            "intencionPresentaciones": "especifica"
+          },
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": null,
+              "linea": null,
+              "marca": "ZetaPruebaQ9",
+              "accion": "consultar",
+              "tamano": null,
+              "especie": null,
+              "sabores": [],
+              "cantidad": null,
+              "mascotas": [],
+              "categoria": null,
+              "referencia": "ZQ17",
+              "condiciones": [],
+              "presentacion": "4 kilos",
+              "subcategoria": null,
+              "textoVisible": "marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos",
+              "mencionOriginal": "marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos",
+              "intencionPresentaciones": "especifica"
+            }
+          ],
+          "propuestaOperacion": null
+        },
+        "alcanceInterpretacion": "turno"
+      }
+    },
+    {
+      "id": "13e92b29-954f-0a5a-b274-5c6d5e2a0a00",
+      "direction": "outbound",
+      "body": "Te confirmo, esa referencia la manejamos: DIAMOND INDOOR CAT 500gr por $19.500. Las existencias están por confirmar. 🐱",
+      "created_at": "2026-10-29T21:24:53.500916+00:00",
+      "metadata": {
+        "turnId": "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDAyNDg4QTM5ODZCMEY4RjczQgA=",
+        "eventKey": "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDAyNDg4QTM5ODZCMEY4RjczQgA="
+      }
+    }
+  ],
+  "orders": [],
+  "deliveries": {
+    "data": [
+      {
+        "id": "fecddd81-9a63-4982-bac8-7d17c20c4e99",
+        "attempt_count": 1,
+        "conversation_phone_number": "573158994163",
+        "created_at": "2026-10-29T19:14:44-03:00",
+        "delivered_at": "2026-10-29T19:14:45-03:00",
+        "event": "whatsapp.message.received",
+        "failed_at": null,
+        "last_attempt_at": "2026-10-29T19:14:45-03:00",
+        "phone_number_id": "597907523413541",
+        "response_status": 200,
+        "status": "delivered",
+        "webhook_id": "0e17cb06-05e6-476b-bece-f48865b9b8dc",
+        "webhook_url": "https://lion-payee-flatfoot.ngrok-free.dev/webhooks/kapso/whatsapp",
+        "whatsapp_config_id": "48fe4f0a-5742-4c69-80cd-247d3b140b92"
+      },
+      {
+        "id": "59b4415c-7204-4995-b396-536f6325099f",
+        "attempt_count": 1,
+        "conversation_phone_number": "573158994163",
+        "created_at": "2026-10-29T19:13:44-03:00",
+        "delivered_at": "2026-10-29T19:13:46-03:00",
+        "event": "whatsapp.message.received",
+        "failed_at": null,
+        "last_attempt_at": "2026-10-29T19:13:46-03:00",
+        "phone_number_id": "597907523413541",
+        "response_status": 200,
+        "status": "delivered",
+        "webhook_id": "0e17cb06-05e6-476b-bece-f48865b9b8dc",
+        "webhook_url": "https://lion-payee-flatfoot.ngrok-free.dev/webhooks/kapso/whatsapp",
+        "whatsapp_config_id": "48fe4f0a-5742-4c69-80cd-247d3b140b92"
+      },
+      {
+        "id": "a82a484e-bfcf-49c7-a69d-0d3e006c5c8c",
+        "attempt_count": 1,
+        "conversation_phone_number": "573158994163",
+        "created_at": "2026-10-29T19:06:04-03:00",
+        "delivered_at": "2026-10-29T19:06:05-03:00",
+        "event": "whatsapp.message.received",
+        "failed_at": null,
+        "last_attempt_at": "2026-10-29T19:06:05-03:00",
+        "phone_number_id": "597907523413541",
+        "response_status": 200,
+        "status": "delivered",
+        "webhook_id": "0e17cb06-05e6-476b-bece-f48865b9b8dc",
+        "webhook_url": "https://lion-payee-flatfoot.ngrok-free.dev/webhooks/kapso/whatsapp",
+        "whatsapp_config_id": "48fe4f0a-5742-4c69-80cd-247d3b140b92"
+      },
+      {
+        "id": "eed3bbc7-ec8e-46dc-96fb-8cec438e876b",
+        "attempt_count": 1,
+        "conversation_phone_number": "573158994163",
+        "created_at": "2026-10-29T18:32:44-03:00",
+        "delivered_at": "2026-10-29T18:32:46-03:00",
+        "event": "whatsapp.message.received",
+        "failed_at": null,
+        "last_attempt_at": "2026-10-29T18:32:46-03:00",
+        "phone_number_id": "597907523413541",
+        "response_status": 200,
+        "status": "delivered",
+        "webhook_id": "0e17cb06-05e6-476b-bece-f48865b9b8dc",
+        "webhook_url": "https://lion-payee-flatfoot.ngrok-free.dev/webhooks/kapso/whatsapp",
+        "whatsapp_config_id": "48fe4f0a-5742-4c69-80cd-247d3b140b92"
+      },
+      {
+        "id": "7dfa7ec9-dbc7-41f1-ad87-5b4ab3554a8c",
+        "attempt_count": 1,
+        "conversation_phone_number": "573158994163",
+        "created_at": "2026-10-29T18:31:07-03:00",
+        "delivered_at": "2026-10-29T18:31:09-03:00",
+        "event": "whatsapp.message.received",
+        "failed_at": null,
+        "last_attempt_at": "2026-10-29T18:31:09-03:00",
+        "phone_number_id": "597907523413541",
+        "response_status": 200,
+        "status": "delivered",
+        "webhook_id": "0e17cb06-05e6-476b-bece-f48865b9b8dc",
+        "webhook_url": "https://lion-payee-flatfoot.ngrok-free.dev/webhooks/kapso/whatsapp",
+        "whatsapp_config_id": "48fe4f0a-5742-4c69-80cd-247d3b140b92"
+      },
+      {
+        "id": "9dc7a352-6cc8-47d1-8008-b681df49c9df",
+        "attempt_count": 1,
+        "conversation_phone_number": "573158994163",
+        "created_at": "2026-10-29T18:30:04-03:00",
+        "delivered_at": "2026-10-29T18:30:06-03:00",
+        "event": "whatsapp.message.received",
+        "failed_at": null,
+        "last_attempt_at": "2026-10-29T18:30:06-03:00",
+        "phone_number_id": "597907523413541",
+        "response_status": 200,
+        "status": "delivered",
+        "webhook_id": "0e17cb06-05e6-476b-bece-f48865b9b8dc",
+        "webhook_url": "https://lion-payee-flatfoot.ngrok-free.dev/webhooks/kapso/whatsapp",
+        "whatsapp_config_id": "48fe4f0a-5742-4c69-80cd-247d3b140b92"
+      },
+      {
+        "id": "5babbb17-e0f8-4996-8530-100549f6b77f",
+        "attempt_count": 1,
+        "conversation_phone_number": "573158994163",
+        "created_at": "2026-10-29T18:24:24-03:00",
+        "delivered_at": "2026-10-29T18:24:26-03:00",
+        "event": "whatsapp.message.received",
+        "failed_at": null,
+        "last_attempt_at": "2026-10-29T18:24:26-03:00",
+        "phone_number_id": "597907523413541",
+        "response_status": 200,
+        "status": "delivered",
+        "webhook_id": "0e17cb06-05e6-476b-bece-f48865b9b8dc",
+        "webhook_url": "https://lion-payee-flatfoot.ngrok-free.dev/webhooks/kapso/whatsapp",
+        "whatsapp_config_id": "48fe4f0a-5742-4c69-80cd-247d3b140b92"
+      },
+      {
+        "id": "1d0da35a-51c9-44af-bbc6-2853976a339d",
+        "attempt_count": 1,
+        "conversation_phone_number": "573158994163",
+        "created_at": "2026-10-29T18:23:26-03:00",
+        "delivered_at": "2026-10-29T18:23:27-03:00",
+        "event": "whatsapp.message.received",
+        "failed_at": null,
+        "last_attempt_at": "2026-10-29T18:23:27-03:00",
+        "phone_number_id": "597907523413541",
+        "response_status": 200,
+        "status": "delivered",
+        "webhook_id": "0e17cb06-05e6-476b-bece-f48865b9b8dc",
+        "webhook_url": "https://lion-payee-flatfoot.ngrok-free.dev/webhooks/kapso/whatsapp",
+        "whatsapp_config_id": "48fe4f0a-5742-4c69-80cd-247d3b140b92"
+      },
+      {
+        "id": "39d73f66-735e-4481-962c-ff8d1aeb842e",
+        "attempt_count": 1,
+        "conversation_phone_number": "573158994163",
+        "created_at": "2026-10-29T18:22:34-03:00",
+        "delivered_at": "2026-10-29T18:22:36-03:00",
+        "event": "whatsapp.message.received",
+        "failed_at": null,
+        "last_attempt_at": "2026-10-29T18:22:36-03:00",
+        "phone_number_id": "597907523413541",
+        "response_status": 200,
+        "status": "delivered",
+        "webhook_id": "0e17cb06-05e6-476b-bece-f48865b9b8dc",
+        "webhook_url": "https://lion-payee-flatfoot.ngrok-free.dev/webhooks/kapso/whatsapp",
+        "whatsapp_config_id": "48fe4f0a-5742-4c69-80cd-247d3b140b92"
+      },
+      {
+        "id": "ecf5eac3-53ff-4ea7-8a66-c526f8414904",
+        "attempt_count": 1,
+        "conversation_phone_number": "573158994163",
+        "created_at": "2026-10-29T18:21:11-03:00",
+        "delivered_at": "2026-10-29T18:21:13-03:00",
+        "event": "whatsapp.message.received",
+        "failed_at": null,
+        "last_attempt_at": "2026-10-29T18:21:13-03:00",
+        "phone_number_id": "597907523413541",
+        "response_status": 200,
+        "status": "delivered",
+        "webhook_id": "0e17cb06-05e6-476b-bece-f48865b9b8dc",
+        "webhook_url": "https://lion-payee-flatfoot.ngrok-free.dev/webhooks/kapso/whatsapp",
+        "whatsapp_config_id": "48fe4f0a-5742-4c69-80cd-247d3b140b92"
+      },
+      {
+        "id": "c668d076-d24c-4cc3-aab9-3a922bc5c377",
+        "attempt_count": 1,
+        "conversation_phone_number": "573158994163",
+        "created_at": "2026-10-29T18:20:13-03:00",
+        "delivered_at": "2026-10-29T18:20:14-03:00",
+        "event": "whatsapp.message.received",
+        "failed_at": null,
+        "last_attempt_at": "2026-10-29T18:20:14-03:00",
+        "phone_number_id": "597907523413541",
+        "response_status": 200,
+        "status": "delivered",
+        "webhook_id": "0e17cb06-05e6-476b-bece-f48865b9b8dc",
+        "webhook_url": "https://lion-payee-flatfoot.ngrok-free.dev/webhooks/kapso/whatsapp",
+        "whatsapp_config_id": "48fe4f0a-5742-4c69-80cd-247d3b140b92"
+      },
+      {
+        "id": "d8828abd-ef6b-4046-adcd-24fa9450a8da",
+        "attempt_count": 1,
+        "conversation_phone_number": "573158994163",
+        "created_at": "2026-10-29T18:19:22-03:00",
+        "delivered_at": "2026-10-29T18:19:24-03:00",
+        "event": "whatsapp.message.received",
+        "failed_at": null,
+        "last_attempt_at": "2026-10-29T18:19:24-03:00",
+        "phone_number_id": "597907523413541",
+        "response_status": 200,
+        "status": "delivered",
+        "webhook_id": "0e17cb06-05e6-476b-bece-f48865b9b8dc",
+        "webhook_url": "https://lion-payee-flatfoot.ngrok-free.dev/webhooks/kapso/whatsapp",
+        "whatsapp_config_id": "48fe4f0a-5742-4c69-80cd-247d3b140b92"
+      },
+      {
+        "id": "f5524d57-dccb-4977-9ddd-7062c1c2ea65",
+        "attempt_count": 1,
+        "conversation_phone_number": "573158994163",
+        "created_at": "2026-10-29T17:56:03-03:00",
+        "delivered_at": "2026-10-29T17:56:05-03:00",
+        "event": "whatsapp.message.received",
+        "failed_at": null,
+        "last_attempt_at": "2026-10-29T17:56:05-03:00",
+        "phone_number_id": "597907523413541",
+        "response_status": 200,
+        "status": "delivered",
+        "webhook_id": "0e17cb06-05e6-476b-bece-f48865b9b8dc",
+        "webhook_url": "https://lion-payee-flatfoot.ngrok-free.dev/webhooks/kapso/whatsapp",
+        "whatsapp_config_id": "48fe4f0a-5742-4c69-80cd-247d3b140b92"
+      },
+      {
+        "id": "b2091879-499c-4690-8b23-c203225cfcc8",
+        "attempt_count": 1,
+        "conversation_phone_number": "573158994163",
+        "created_at": "2026-10-29T17:54:30-03:00",
+        "delivered_at": "2026-10-29T17:54:32-03:00",
+        "event": "whatsapp.message.received",
+        "failed_at": null,
+        "last_attempt_at": "2026-10-29T17:54:32-03:00",
+        "phone_number_id": "597907523413541",
+        "response_status": 200,
+        "status": "delivered",
+        "webhook_id": "0e17cb06-05e6-476b-bece-f48865b9b8dc",
+        "webhook_url": "https://lion-payee-flatfoot.ngrok-free.dev/webhooks/kapso/whatsapp",
+        "whatsapp_config_id": "48fe4f0a-5742-4c69-80cd-247d3b140b92"
+      },
+      {
+        "id": "1fa8778e-2974-4530-b6be-24ffc879cef6",
+        "attempt_count": 1,
+        "conversation_phone_number": "573158994163",
+        "created_at": "2026-10-29T17:23:21-03:00",
+        "delivered_at": "2026-10-29T17:23:23-03:00",
+        "event": "whatsapp.message.received",
+        "failed_at": null,
+        "last_attempt_at": "2026-10-29T17:23:23-03:00",
+        "phone_number_id": "597907523413541",
+        "response_status": 200,
+        "status": "delivered",
+        "webhook_id": "0e17cb06-05e6-476b-bece-f48865b9b8dc",
+        "webhook_url": "https://lion-payee-flatfoot.ngrok-free.dev/webhooks/kapso/whatsapp",
+        "whatsapp_config_id": "48fe4f0a-5742-4c69-80cd-247d3b140b92"
+      },
+      {
+        "id": "31be7a4d-5de2-4602-837f-d3bdc5c81451",
+        "attempt_count": 1,
+        "conversation_phone_number": "573158994163",
+        "created_at": "2026-10-29T17:22:41-03:00",
+        "delivered_at": "2026-10-29T17:22:43-03:00",
+        "event": "whatsapp.message.received",
+        "failed_at": null,
+        "last_attempt_at": "2026-10-29T17:22:43-03:00",
+        "phone_number_id": "597907523413541",
+        "response_status": 200,
+        "status": "delivered",
+        "webhook_id": "0e17cb06-05e6-476b-bece-f48865b9b8dc",
+        "webhook_url": "https://lion-payee-flatfoot.ngrok-free.dev/webhooks/kapso/whatsapp",
+        "whatsapp_config_id": "48fe4f0a-5742-4c69-80cd-247d3b140b92"
+      },
+      {
+        "id": "bc41b8c1-1c13-4801-b439-a0b7039e8bfc",
+        "attempt_count": 1,
+        "conversation_phone_number": "573158994163",
+        "created_at": "2026-10-29T17:21:34-03:00",
+        "delivered_at": "2026-10-29T17:21:36-03:00",
+        "event": "whatsapp.message.received",
+        "failed_at": null,
+        "last_attempt_at": "2026-10-29T17:21:36-03:00",
+        "phone_number_id": "597907523413541",
+        "response_status": 200,
+        "status": "delivered",
+        "webhook_id": "0e17cb06-05e6-476b-bece-f48865b9b8dc",
+        "webhook_url": "https://lion-payee-flatfoot.ngrok-free.dev/webhooks/kapso/whatsapp",
+        "whatsapp_config_id": "48fe4f0a-5742-4c69-80cd-247d3b140b92"
+      },
+      {
+        "id": "2fe696d1-5a94-4d7f-83d4-78d0e5bdfcd2",
+        "attempt_count": 1,
+        "conversation_phone_number": "573158994163",
+        "created_at": "2026-10-29T17:20:34-03:00",
+        "delivered_at": "2026-10-29T17:20:35-03:00",
+        "event": "whatsapp.message.received",
+        "failed_at": null,
+        "last_attempt_at": "2026-10-29T17:20:35-03:00",
+        "phone_number_id": "597907523413541",
+        "response_status": 200,
+        "status": "delivered",
+        "webhook_id": "0e17cb06-05e6-476b-bece-f48865b9b8dc",
+        "webhook_url": "https://lion-payee-flatfoot.ngrok-free.dev/webhooks/kapso/whatsapp",
+        "whatsapp_config_id": "48fe4f0a-5742-4c69-80cd-247d3b140b92"
+      },
+      {
+        "id": "70e5588f-bf81-4dc8-a88b-a292ee228cf6",
+        "attempt_count": 1,
+        "conversation_phone_number": "573158994163",
+        "created_at": "2026-10-29T17:20:17-03:00",
+        "delivered_at": "2026-10-29T17:20:18-03:00",
+        "event": "whatsapp.message.received",
+        "failed_at": null,
+        "last_attempt_at": "2026-10-29T17:20:18-03:00",
+        "phone_number_id": "597907523413541",
+        "response_status": 200,
+        "status": "delivered",
+        "webhook_id": "0e17cb06-05e6-476b-bece-f48865b9b8dc",
+        "webhook_url": "https://lion-payee-flatfoot.ngrok-free.dev/webhooks/kapso/whatsapp",
+        "whatsapp_config_id": "48fe4f0a-5742-4c69-80cd-247d3b140b92"
+      },
+      {
+        "id": "cba57c85-b4ba-4491-a99b-70a7e556ab85",
+        "attempt_count": 1,
+        "conversation_phone_number": "573158994163",
+        "created_at": "2026-10-29T17:19:31-03:00",
+        "delivered_at": "2026-10-29T17:19:33-03:00",
+        "event": "whatsapp.message.received",
+        "failed_at": null,
+        "last_attempt_at": "2026-10-29T17:19:33-03:00",
+        "phone_number_id": "597907523413541",
+        "response_status": 200,
+        "status": "delivered",
+        "webhook_id": "0e17cb06-05e6-476b-bece-f48865b9b8dc",
+        "webhook_url": "https://lion-payee-flatfoot.ngrok-free.dev/webhooks/kapso/whatsapp",
+        "whatsapp_config_id": "48fe4f0a-5742-4c69-80cd-247d3b140b92"
+      },
+      {
+        "id": "2f9f538e-8302-45ef-94ae-eb8b565a5c92",
+        "attempt_count": 1,
+        "conversation_phone_number": "573158994163",
+        "created_at": "2026-10-29T17:18:48-03:00",
+        "delivered_at": "2026-10-29T17:18:50-03:00",
+        "event": "whatsapp.message.received",
+        "failed_at": null,
+        "last_attempt_at": "2026-10-29T17:18:50-03:00",
+        "phone_number_id": "597907523413541",
+        "response_status": 200,
+        "status": "delivered",
+        "webhook_id": "0e17cb06-05e6-476b-bece-f48865b9b8dc",
+        "webhook_url": "https://lion-payee-flatfoot.ngrok-free.dev/webhooks/kapso/whatsapp",
+        "whatsapp_config_id": "48fe4f0a-5742-4c69-80cd-247d3b140b92"
+      },
+      {
+        "id": "235e6892-a640-4f51-b149-d53c47109cc8",
+        "attempt_count": 1,
+        "conversation_phone_number": "573158994163",
+        "created_at": "2026-10-29T17:17:52-03:00",
+        "delivered_at": "2026-10-29T17:17:54-03:00",
+        "event": "whatsapp.message.received",
+        "failed_at": null,
+        "last_attempt_at": "2026-10-29T17:17:54-03:00",
+        "phone_number_id": "597907523413541",
+        "response_status": 200,
+        "status": "delivered",
+        "webhook_id": "0e17cb06-05e6-476b-bece-f48865b9b8dc",
+        "webhook_url": "https://lion-payee-flatfoot.ngrok-free.dev/webhooks/kapso/whatsapp",
+        "whatsapp_config_id": "48fe4f0a-5742-4c69-80cd-247d3b140b92"
+      },
+      {
+        "id": "9db43e00-4fda-4f52-b38a-ef89f591b4a8",
+        "attempt_count": 1,
+        "conversation_phone_number": "573158994163",
+        "created_at": "2026-10-29T17:17:11-03:00",
+        "delivered_at": "2026-10-29T17:17:13-03:00",
+        "event": "whatsapp.message.received",
+        "failed_at": null,
+        "last_attempt_at": "2026-10-29T17:17:13-03:00",
+        "phone_number_id": "597907523413541",
+        "response_status": 200,
+        "status": "delivered",
+        "webhook_id": "0e17cb06-05e6-476b-bece-f48865b9b8dc",
+        "webhook_url": "https://lion-payee-flatfoot.ngrok-free.dev/webhooks/kapso/whatsapp",
+        "whatsapp_config_id": "48fe4f0a-5742-4c69-80cd-247d3b140b92"
+      },
+      {
+        "id": "dd1cff4c-8532-4606-9b04-4dcaea6effa4",
+        "attempt_count": 1,
+        "conversation_phone_number": "573158994163",
+        "created_at": "2026-10-29T17:16:19-03:00",
+        "delivered_at": "2026-10-29T17:16:21-03:00",
+        "event": "whatsapp.message.received",
+        "failed_at": null,
+        "last_attempt_at": "2026-10-29T17:16:21-03:00",
+        "phone_number_id": "597907523413541",
+        "response_status": 200,
+        "status": "delivered",
+        "webhook_id": "0e17cb06-05e6-476b-bece-f48865b9b8dc",
+        "webhook_url": "https://lion-payee-flatfoot.ngrok-free.dev/webhooks/kapso/whatsapp",
+        "whatsapp_config_id": "48fe4f0a-5742-4c69-80cd-247d3b140b92"
+      },
+      {
+        "id": "21a3e83b-2e5f-48dc-9895-0120651cce88",
+        "attempt_count": 1,
+        "conversation_phone_number": "573158994163",
+        "created_at": "2026-10-29T17:15:38-03:00",
+        "delivered_at": "2026-10-29T17:15:39-03:00",
+        "event": "whatsapp.message.received",
+        "failed_at": null,
+        "last_attempt_at": "2026-10-29T17:15:39-03:00",
+        "phone_number_id": "597907523413541",
+        "response_status": 200,
+        "status": "delivered",
+        "webhook_id": "0e17cb06-05e6-476b-bece-f48865b9b8dc",
+        "webhook_url": "https://lion-payee-flatfoot.ngrok-free.dev/webhooks/kapso/whatsapp",
+        "whatsapp_config_id": "48fe4f0a-5742-4c69-80cd-247d3b140b92"
+      },
+      {
+        "id": "6a1eda22-cedb-4cb3-9b4e-78894798f98a",
+        "attempt_count": 1,
+        "conversation_phone_number": "573158994163",
+        "created_at": "2026-10-29T17:14:57-03:00",
+        "delivered_at": "2026-10-29T17:14:59-03:00",
+        "event": "whatsapp.message.received",
+        "failed_at": null,
+        "last_attempt_at": "2026-10-29T17:14:59-03:00",
+        "phone_number_id": "597907523413541",
+        "response_status": 200,
+        "status": "delivered",
+        "webhook_id": "0e17cb06-05e6-476b-bece-f48865b9b8dc",
+        "webhook_url": "https://lion-payee-flatfoot.ngrok-free.dev/webhooks/kapso/whatsapp",
+        "whatsapp_config_id": "48fe4f0a-5742-4c69-80cd-247d3b140b92"
+      },
+      {
+        "id": "dad59e73-47ab-4c1e-99be-8e30b3bde834",
+        "attempt_count": 1,
+        "conversation_phone_number": "573158994163",
+        "created_at": "2026-10-29T17:12:37-03:00",
+        "delivered_at": "2026-10-29T17:12:39-03:00",
+        "event": "whatsapp.message.received",
+        "failed_at": null,
+        "last_attempt_at": "2026-10-29T17:12:39-03:00",
+        "phone_number_id": "597907523413541",
+        "response_status": 200,
+        "status": "delivered",
+        "webhook_id": "0e17cb06-05e6-476b-bece-f48865b9b8dc",
+        "webhook_url": "https://lion-payee-flatfoot.ngrok-free.dev/webhooks/kapso/whatsapp",
+        "whatsapp_config_id": "48fe4f0a-5742-4c69-80cd-247d3b140b92"
+      },
+      {
+        "id": "d58d53f4-66c9-482b-8b08-4e25774505b0",
+        "attempt_count": 1,
+        "conversation_phone_number": "573158994163",
+        "created_at": "2026-10-29T17:11:14-03:00",
+        "delivered_at": "2026-10-29T17:11:15-03:00",
+        "event": "whatsapp.message.received",
+        "failed_at": null,
+        "last_attempt_at": "2026-10-29T17:11:15-03:00",
+        "phone_number_id": "597907523413541",
+        "response_status": 200,
+        "status": "delivered",
+        "webhook_id": "0e17cb06-05e6-476b-bece-f48865b9b8dc",
+        "webhook_url": "https://lion-payee-flatfoot.ngrok-free.dev/webhooks/kapso/whatsapp",
+        "whatsapp_config_id": "48fe4f0a-5742-4c69-80cd-247d3b140b92"
+      },
+      {
+        "id": "3aa205be-6c95-4974-8e07-1a7461177a40",
+        "attempt_count": 1,
+        "conversation_phone_number": "573158994163",
+        "created_at": "2026-10-29T17:10:15-03:00",
+        "delivered_at": "2026-10-29T17:10:19-03:00",
+        "event": "whatsapp.message.received",
+        "failed_at": null,
+        "last_attempt_at": "2026-10-29T17:10:19-03:00",
+        "phone_number_id": "597907523413541",
+        "response_status": 200,
+        "status": "delivered",
+        "webhook_id": "0e17cb06-05e6-476b-bece-f48865b9b8dc",
+        "webhook_url": "https://lion-payee-flatfoot.ngrok-free.dev/webhooks/kapso/whatsapp",
+        "whatsapp_config_id": "48fe4f0a-5742-4c69-80cd-247d3b140b92"
+      },
+      {
+        "id": "663455ef-21cf-4a0c-a916-06605ca2fab5",
+        "attempt_count": 1,
+        "conversation_phone_number": "573104114396",
+        "created_at": "2026-10-28T23:40:42-03:00",
+        "delivered_at": "2026-10-28T23:40:43-03:00",
+        "event": "whatsapp.message.received",
+        "failed_at": null,
+        "last_attempt_at": "2026-10-28T23:40:43-03:00",
+        "phone_number_id": "597907523413541",
+        "response_status": 200,
+        "status": "delivered",
+        "webhook_id": "0e17cb06-05e6-476b-bece-f48865b9b8dc",
+        "webhook_url": "https://lion-payee-flatfoot.ngrok-free.dev/webhooks/kapso/whatsapp",
+        "whatsapp_config_id": "48fe4f0a-5742-4c69-80cd-247d3b140b92"
+      }
+    ],
+    "paging": {
+      "cursors": {
+        "before": "eyJ2YWx1ZXMiOlsiMjAyNi0xMC0yOVQyMjoxNDo0NC40MDI3NjRaIiwiZmVjZGRkODEtOWE2My00OTgyLWJhYzgtN2QxN2MyMGM0ZTk5Il0sImNvbHVtbnMiOlsiY3JlYXRlZF9hdCIsImlkIl19",
+        "after": "eyJ2YWx1ZXMiOlsiMjAyNi0xMC0yOVQwMjo0MDo0Mi4xNTgwMDJaIiwiNjYzNDU1ZWYtMjFjZi00YTBjLWE5MTYtMDY2MDVjYTJmYWI1Il0sImNvbHVtbnMiOlsiY3JlYXRlZF9hdCIsImlkIl19"
+      },
+      "next": "eyJ2YWx1ZXMiOlsiMjAyNi0xMC0yOVQwMjo0MDo0Mi4xNTgwMDJaIiwiNjYzNDU1ZWYtMjFjZi00YTBjLWE5MTYtMDY2MDVjYTJmYWI1Il0sImNvbHVtbnMiOlsiY3JlYXRlZF9hdCIsImlkIl19",
+      "previous": null
+    }
+  },
+  "detail": {
+    "data": {
+      "context": null,
+      "from": "573158994163",
+      "from_parent_user_id": null,
+      "from_user_id": "CO.1030198442801005",
+      "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDFCRjdCQURDNjM1N0EyMkMyRgA=",
+      "kapso": {
+        "direction": "inbound",
+        "status": "read",
+        "processing_status": "pending",
+        "origin": "cloud_api",
+        "phone_number": "573158994163",
+        "phone_number_id": "597907523413541",
+        "has_media": false,
+        "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+        "contact_name": "distrifincapereira",
+        "content": "Me dices el precio de cat chow delicrne, quinientos gramos?"
+      },
+      "text": {
+        "body": "Me dices el precio de cat chow delicrne, quinientos gramos?"
+      },
+      "timestamp": "1793312078",
+      "type": "text",
+      "username": null
+    }
+  }
+}

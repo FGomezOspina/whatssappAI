@@ -1,0 +1,23 @@
+{
+  "at": "2026-10-31T01:04:38.500Z",
+  "library_file_id": "libfile_d9a9e05b4c448191809eae46aa1a0618",
+  "file_id": "file_00000000653c81f681cd2c057217a24b",
+  "current_version_number": 14,
+  "path": "/Informe-VELTIA-conversaciones-reales-28-29-octubre-2026.html",
+  "local_path": "/Users/gomez/Documents/WhatsappVELTIA/docs/reports/real-conversations-2026-10-29/Informe-VELTIA-conversaciones-reales-28-29-octubre-2026.html",
+  "status": "succeeded",
+  "xattrs_applied": false,
+  "xattrs": [
+    {
+      "name": "user.library-file-version",
+      "value": "14"
+    }
+  ],
+  "xattr_error": "Official helper Python3.9 TypeError Path | int; not modified",
+  "content_verified": {
+    "version": 14,
+    "sectionMatches": 1,
+    "suiteMatches": 1,
+    "at": "2026-10-31T01:05:10.648Z"
+  }
+}

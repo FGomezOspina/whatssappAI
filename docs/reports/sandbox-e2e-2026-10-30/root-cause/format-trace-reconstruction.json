@@ -1,0 +1,184 @@
+{
+  "mode": "retained_trace_local_reconstruction",
+  "before": {
+    "run": "f82936b1-a5c5-43c0-8ed4-7563f9acb194",
+    "etapa": "fuente_identidad",
+    "continuada": null,
+    "fuenteIdentidad": "la lata de esa misma línea UR para perro",
+    "consultaIdentidad": null,
+    "previa": {
+      "nivel": "alta",
+      "razon": "nombre_exacto",
+      "fuente": "texto",
+      "creadoEn": "2026-10-30T18:05:26.610Z",
+      "etiqueta": "premium plan canine ur perro",
+      "terminos": [
+        "premium",
+        "plan",
+        "canine",
+        "ur",
+        "perro"
+      ],
+      "aclaracion": null,
+      "presentacion": "2kg",
+      "formaAlimento": "concentrado",
+      "envaseAlimento": null,
+      "solicitudOriginal": {
+        "accion": "consultar",
+        "producto": {
+          "etapa": null,
+          "linea": "UR",
+          "marca": "PRO PLAN",
+          "accion": "consultar",
+          "envase": null,
+          "tamano": null,
+          "especie": "perro",
+          "sabores": [],
+          "cantidad": null,
+          "duracion": null,
+          "mascotas": [],
+          "categoria": "comida",
+          "referencia": "PRO PLAN CANINE UR",
+          "condiciones": [],
+          "presentacion": "2kg",
+          "subcategoria": "concentrado",
+          "textoVisible": "Solo consultar: Pro Plan UR para perro el concentrado de 2 kg",
+          "nombreFamilia": "PRO PLAN CANINE UR",
+          "mencionOriginal": null,
+          "pesoTextoOriginal": "2kg",
+          "requierePresentacion": false,
+          "intencionPresentaciones": "especifica",
+          "referenciasEquivalentes": [
+            "PRO PLAN CANINE UR"
+          ],
+          "coincidenciaVisualValidada": false,
+          "presentacionesEquivalentes": [
+            {
+              "peso": "2kg",
+              "stock": null,
+              "precio": 122000,
+              "metadata": {
+                "llave": "1387",
+                "codigo": "10301011387",
+                "source": "productos.json",
+                "codigos": [
+                  "10301011387"
+                ],
+                "nombre_original": "PRO PLAN CANINE UR 2KG"
+              },
+              "referencia": "PRO PLAN CANINE UR"
+            }
+          ]
+        },
+        "intencion": "consulta_producto"
+      }
+    },
+    "lectura": {
+      "intencion": "consulta_producto",
+      "accion": "consultar",
+      "producto": {
+        "marca": "PRO PLAN",
+        "referencia": "PRO PLAN CANINE UR",
+        "linea": "UR",
+        "categoria": "comida",
+        "especie": "perro",
+        "etapa": null,
+        "tamano": null,
+        "sabores": [],
+        "presentacion": null,
+        "cantidad": null
+      },
+      "productos": [
+        {
+          "marca": "PRO PLAN",
+          "referencia": "PRO PLAN CANINE UR",
+          "linea": "UR",
+          "categoria": "comida",
+          "especie": "perro",
+          "etapa": null,
+          "tamano": null,
+          "sabores": [],
+          "presentacion": null,
+          "cantidad": null
+        }
+      ],
+      "consultaCatalogo": {
+        "tipo": "referencia",
+        "presupuestoMaximo": null,
+        "necesaria": true,
+        "consulta": "PRO PLAN CANINE UR lata perro"
+      },
+      "seguimientoProducto": "nueva",
+      "confianza": 0.97,
+      "derivacionHumana": {
+        "necesaria": false,
+        "motivo": null
+      },
+      "solicitudComercialIndependiente": true
+    }
+  },
+  "after": {
+    "intencion": "consulta_producto",
+    "accion": "consultar",
+    "producto": {
+      "etapa": null,
+      "linea": "UR",
+      "marca": "PRO PLAN",
+      "accion": "consultar",
+      "envase": "lata",
+      "tamano": null,
+      "especie": "perro",
+      "sabores": [],
+      "cantidad": null,
+      "duracion": null,
+      "mascotas": [],
+      "categoria": "comida",
+      "referencia": "PRO PLAN CANINE UR",
+      "condiciones": [],
+      "presentacion": null,
+      "subcategoria": "comida_humeda",
+      "textoVisible": "PRO PLAN UR PRO PLAN CANINE UR perro comida_humeda lata",
+      "nombreFamilia": "PRO PLAN CANINE UR",
+      "mencionOriginal": "Ahora cotízame la lata de esa misma línea UR para perro. Solo consulta.",
+      "pesoTextoOriginal": null,
+      "requierePresentacion": false,
+      "intencionPresentaciones": "especifica",
+      "referenciasEquivalentes": [
+        "PRO PLAN CANINE UR"
+      ],
+      "coincidenciaVisualValidada": false,
+      "presentacionesEquivalentes": [
+        {
+          "peso": "2kg",
+          "stock": null,
+          "precio": 122000,
+          "metadata": {
+            "llave": "1387",
+            "codigo": "10301011387",
+            "source": "productos.json",
+            "codigos": [
+              "10301011387"
+            ],
+            "nombre_original": "PRO PLAN CANINE UR 2KG"
+          },
+          "referencia": "PRO PLAN CANINE UR"
+        }
+      ]
+    },
+    "productos": [],
+    "consultaCatalogo": {
+      "necesaria": true,
+      "consulta": "PRO PLAN UR PRO PLAN CANINE UR perro comida_humeda lata"
+    },
+    "seguimientoProducto": "nueva",
+    "confianza": 0.97,
+    "derivacionHumana": {
+      "necesaria": false,
+      "motivo": null
+    },
+    "solicitudComercialIndependiente": true,
+    "continuarFlujo": true,
+    "_consultaContinuada": "PRO PLAN UR PRO PLAN CANINE UR perro comida_humeda lata",
+    "_aclaracionAtributo": true
+  }
+}

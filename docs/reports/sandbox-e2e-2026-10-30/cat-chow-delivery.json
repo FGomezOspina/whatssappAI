@@ -1,0 +1,48 @@
+{
+  "at": "2026-10-30T17:26:44.382Z",
+  "originalProcessed": true,
+  "cart": [
+    []
+  ],
+  "ordersCount": 0,
+  "messages": [
+    {
+      "id": "0098f273fd65",
+      "direction": "outbound",
+      "body": "Claro, CAT CHOW DELICARNE x 500 gr te queda en $13.700. Las existencias están por confirmar. 🙂",
+      "at": "2026-10-30T17:26:31.20774+00:00"
+    }
+  ],
+  "kapso": [
+    {
+      "id": "4aa412277938",
+      "direction": "outbound",
+      "body": "Claro, CAT CHOW DELICARNE x 500 gr te queda en $13.700. Las existencias están por confirmar. 🙂",
+      "at": "2026-10-30T17:26:30.000Z"
+    },
+    {
+      "id": "feb86363b323",
+      "direction": "inbound",
+      "body": "Me dices el precio de cat chow delicrne, quinientos gramos?",
+      "at": "2026-10-29T22:14:38.000Z"
+    },
+    {
+      "id": "0790a9313601",
+      "direction": "outbound",
+      "body": "DIAMOND INDOOR CAT 500gr te queda en $19.500. Las existencias están por confirmar. 🙂",
+      "at": "2026-10-29T22:14:15.000Z"
+    },
+    {
+      "id": "cddff53008aa",
+      "direction": "inbound",
+      "body": "Solo quiero consultar precio de diamon indor para gato, el de medio kilo",
+      "at": "2026-10-29T22:13:39.000Z"
+    },
+    {
+      "id": "bcd30bea6fab",
+      "direction": "outbound",
+      "body": "DIAMOND INDOOR CAT de 500 gr te queda en $19.500. Las existencias están por confirmar. 🙂",
+      "at": "2026-10-29T22:06:35.000Z"
+    }
+  ]
+}

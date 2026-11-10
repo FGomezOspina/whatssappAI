@@ -1,0 +1,738 @@
+{
+  "at": "2026-10-29T22:01:04.891Z",
+  "source": "Read-only tenant-scoped Supabase catalog tables",
+  "rows": [
+    {
+      "mensaje": "diamon indor para gato medio kilo",
+      "result": {
+        "nivel": "alta",
+        "razon": "nombre_exacto",
+        "aclaracion": null,
+        "pesoMascotaSolicitado": null,
+        "identidadAntesDePresentacion": {
+          "marca": "DIAMOND",
+          "referencia": "DIAMOND INDOOR CAT",
+          "referenciaCatalogo": "DIAMOND INDOOR CAT",
+          "referenciasEquivalentes": [
+            "DIAMOND INDOOR",
+            "DIAMOND INDOOR CAT"
+          ],
+          "score": 1,
+          "tipoCoincidencia": "referencia",
+          "presentaciones": [
+            {
+              "peso": "2.72kg",
+              "precio": 86500,
+              "metadata": {
+                "llave": "1816",
+                "codigo": "103010201816",
+                "source": "productos.json",
+                "codigos": [
+                  "103010201816"
+                ],
+                "nombre_original": "DIAMOND INDOOR 2.72KG"
+              },
+              "stock": null,
+              "referencia": "DIAMOND INDOOR"
+            },
+            {
+              "peso": "500gr",
+              "precio": 19500,
+              "metadata": {
+                "llave": "553",
+                "codigo": "10301020553",
+                "source": "productos.json",
+                "codigos": [
+                  "10301020553"
+                ],
+                "nombre_original": "DIAMOND INDOOR CAT 500GR"
+              },
+              "stock": null,
+              "referencia": "DIAMOND INDOOR CAT"
+            }
+          ]
+        },
+        "especieConocida": "gato",
+        "terminos": [
+          "diamond",
+          "indoor",
+          "gato"
+        ],
+        "etiqueta": "diamon indor gato",
+        "score": 1,
+        "diferencia": 1,
+        "usaInterpretacion": false,
+        "marcaExacta": "diamond",
+        "presentacionValida": true,
+        "requiereVision": false,
+        "presentacionSolicitada": "500g",
+        "coincidencia": {
+          "marca": "DIAMOND",
+          "referencia": "DIAMOND INDOOR CAT",
+          "referenciaCatalogo": "DIAMOND INDOOR CAT",
+          "referenciasEquivalentes": [
+            "DIAMOND INDOOR",
+            "DIAMOND INDOOR CAT"
+          ],
+          "score": 1,
+          "tipoCoincidencia": "referencia",
+          "presentaciones": [
+            {
+              "peso": "2.72kg",
+              "precio": 86500,
+              "metadata": {
+                "llave": "1816",
+                "codigo": "103010201816",
+                "source": "productos.json",
+                "codigos": [
+                  "103010201816"
+                ],
+                "nombre_original": "DIAMOND INDOOR 2.72KG"
+              },
+              "stock": null,
+              "referencia": "DIAMOND INDOOR"
+            },
+            {
+              "peso": "500gr",
+              "precio": 19500,
+              "metadata": {
+                "llave": "553",
+                "codigo": "10301020553",
+                "source": "productos.json",
+                "codigos": [
+                  "10301020553"
+                ],
+                "nombre_original": "DIAMOND INDOOR CAT 500GR"
+              },
+              "stock": null,
+              "referencia": "DIAMOND INDOOR CAT"
+            }
+          ]
+        },
+        "alternativas": [
+          {
+            "marca": "DIAMOND",
+            "referencia": "DIAMOND INDOOR CAT",
+            "referenciaCatalogo": "DIAMOND INDOOR CAT",
+            "referenciasEquivalentes": [
+              "DIAMOND INDOOR",
+              "DIAMOND INDOOR CAT"
+            ],
+            "score": 1,
+            "tipoCoincidencia": "referencia",
+            "presentaciones": [
+              {
+                "peso": "2.72kg",
+                "precio": 86500,
+                "metadata": {
+                  "llave": "1816",
+                  "codigo": "103010201816",
+                  "source": "productos.json",
+                  "codigos": [
+                    "103010201816"
+                  ],
+                  "nombre_original": "DIAMOND INDOOR 2.72KG"
+                },
+                "stock": null,
+                "referencia": "DIAMOND INDOOR"
+              },
+              {
+                "peso": "500gr",
+                "precio": 19500,
+                "metadata": {
+                  "llave": "553",
+                  "codigo": "10301020553",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10301020553"
+                  ],
+                  "nombre_original": "DIAMOND INDOOR CAT 500GR"
+                },
+                "stock": null,
+                "referencia": "DIAMOND INDOOR CAT"
+              }
+            ]
+          }
+        ]
+      },
+      "ms": 65.265084,
+      "traces": [
+        {
+          "run": null,
+          "etapa": "matching_filtros",
+          "vision": false,
+          "producto": null,
+          "antes": [
+            {
+              "nombre": "DIAMOND INDOOR",
+              "score": 1,
+              "scoreBase": 1,
+              "peso": false,
+              "especie": true,
+              "etapa": null,
+              "categoria": null
+            },
+            {
+              "nombre": "DIAMOND INDOOR CAT",
+              "score": 1,
+              "scoreBase": 1,
+              "peso": true,
+              "especie": true,
+              "etapa": null,
+              "categoria": null
+            }
+          ],
+          "despues": [
+            {
+              "nombre": "DIAMOND INDOOR",
+              "score": 1
+            },
+            {
+              "nombre": "DIAMOND INDOOR CAT",
+              "score": 1
+            }
+          ]
+        },
+        {
+          "run": null,
+          "etapa": "match_final",
+          "nivel": "alta",
+          "razon": "nombre_exacto",
+          "presentacion": "500g",
+          "coincidencia": {
+            "marca": "DIAMOND",
+            "referencia": "DIAMOND INDOOR CAT",
+            "referenciaCatalogo": "DIAMOND INDOOR CAT",
+            "referenciasEquivalentes": [
+              "DIAMOND INDOOR",
+              "DIAMOND INDOOR CAT"
+            ],
+            "score": 1,
+            "tipoCoincidencia": "referencia",
+            "presentaciones": [
+              {
+                "peso": "2.72kg",
+                "precio": 86500,
+                "metadata": {
+                  "llave": "1816",
+                  "codigo": "103010201816",
+                  "source": "productos.json",
+                  "codigos": [
+                    "103010201816"
+                  ],
+                  "nombre_original": "DIAMOND INDOOR 2.72KG"
+                },
+                "stock": null,
+                "referencia": "DIAMOND INDOOR"
+              },
+              {
+                "peso": "500gr",
+                "precio": 19500,
+                "metadata": {
+                  "llave": "553",
+                  "codigo": "10301020553",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10301020553"
+                  ],
+                  "nombre_original": "DIAMOND INDOOR CAT 500GR"
+                },
+                "stock": null,
+                "referencia": "DIAMOND INDOOR CAT"
+              }
+            ]
+          },
+          "equivalencia": null
+        }
+      ]
+    },
+    {
+      "mensaje": "diamon indor gato 500g",
+      "result": {
+        "nivel": "alta",
+        "razon": "nombre_exacto",
+        "aclaracion": null,
+        "pesoMascotaSolicitado": null,
+        "identidadAntesDePresentacion": {
+          "marca": "DIAMOND",
+          "referencia": "DIAMOND INDOOR CAT",
+          "referenciaCatalogo": "DIAMOND INDOOR CAT",
+          "referenciasEquivalentes": [
+            "DIAMOND INDOOR",
+            "DIAMOND INDOOR CAT"
+          ],
+          "score": 1,
+          "tipoCoincidencia": "referencia",
+          "presentaciones": [
+            {
+              "peso": "2.72kg",
+              "precio": 86500,
+              "metadata": {
+                "llave": "1816",
+                "codigo": "103010201816",
+                "source": "productos.json",
+                "codigos": [
+                  "103010201816"
+                ],
+                "nombre_original": "DIAMOND INDOOR 2.72KG"
+              },
+              "stock": null,
+              "referencia": "DIAMOND INDOOR"
+            },
+            {
+              "peso": "500gr",
+              "precio": 19500,
+              "metadata": {
+                "llave": "553",
+                "codigo": "10301020553",
+                "source": "productos.json",
+                "codigos": [
+                  "10301020553"
+                ],
+                "nombre_original": "DIAMOND INDOOR CAT 500GR"
+              },
+              "stock": null,
+              "referencia": "DIAMOND INDOOR CAT"
+            }
+          ]
+        },
+        "especieConocida": "gato",
+        "terminos": [
+          "diamond",
+          "indoor",
+          "gato"
+        ],
+        "etiqueta": "diamon indor gato",
+        "score": 1,
+        "diferencia": 1,
+        "usaInterpretacion": false,
+        "marcaExacta": "diamond",
+        "presentacionValida": true,
+        "requiereVision": false,
+        "presentacionSolicitada": "500g",
+        "coincidencia": {
+          "marca": "DIAMOND",
+          "referencia": "DIAMOND INDOOR CAT",
+          "referenciaCatalogo": "DIAMOND INDOOR CAT",
+          "referenciasEquivalentes": [
+            "DIAMOND INDOOR",
+            "DIAMOND INDOOR CAT"
+          ],
+          "score": 1,
+          "tipoCoincidencia": "referencia",
+          "presentaciones": [
+            {
+              "peso": "2.72kg",
+              "precio": 86500,
+              "metadata": {
+                "llave": "1816",
+                "codigo": "103010201816",
+                "source": "productos.json",
+                "codigos": [
+                  "103010201816"
+                ],
+                "nombre_original": "DIAMOND INDOOR 2.72KG"
+              },
+              "stock": null,
+              "referencia": "DIAMOND INDOOR"
+            },
+            {
+              "peso": "500gr",
+              "precio": 19500,
+              "metadata": {
+                "llave": "553",
+                "codigo": "10301020553",
+                "source": "productos.json",
+                "codigos": [
+                  "10301020553"
+                ],
+                "nombre_original": "DIAMOND INDOOR CAT 500GR"
+              },
+              "stock": null,
+              "referencia": "DIAMOND INDOOR CAT"
+            }
+          ]
+        },
+        "alternativas": [
+          {
+            "marca": "DIAMOND",
+            "referencia": "DIAMOND INDOOR CAT",
+            "referenciaCatalogo": "DIAMOND INDOOR CAT",
+            "referenciasEquivalentes": [
+              "DIAMOND INDOOR",
+              "DIAMOND INDOOR CAT"
+            ],
+            "score": 1,
+            "tipoCoincidencia": "referencia",
+            "presentaciones": [
+              {
+                "peso": "2.72kg",
+                "precio": 86500,
+                "metadata": {
+                  "llave": "1816",
+                  "codigo": "103010201816",
+                  "source": "productos.json",
+                  "codigos": [
+                    "103010201816"
+                  ],
+                  "nombre_original": "DIAMOND INDOOR 2.72KG"
+                },
+                "stock": null,
+                "referencia": "DIAMOND INDOOR"
+              },
+              {
+                "peso": "500gr",
+                "precio": 19500,
+                "metadata": {
+                  "llave": "553",
+                  "codigo": "10301020553",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10301020553"
+                  ],
+                  "nombre_original": "DIAMOND INDOOR CAT 500GR"
+                },
+                "stock": null,
+                "referencia": "DIAMOND INDOOR CAT"
+              }
+            ]
+          }
+        ]
+      },
+      "ms": 49.905625,
+      "traces": [
+        {
+          "run": null,
+          "etapa": "matching_filtros",
+          "vision": false,
+          "producto": null,
+          "antes": [
+            {
+              "nombre": "DIAMOND INDOOR",
+              "score": 1,
+              "scoreBase": 1,
+              "peso": false,
+              "especie": true,
+              "etapa": null,
+              "categoria": null
+            },
+            {
+              "nombre": "DIAMOND INDOOR CAT",
+              "score": 1,
+              "scoreBase": 1,
+              "peso": true,
+              "especie": true,
+              "etapa": null,
+              "categoria": null
+            }
+          ],
+          "despues": [
+            {
+              "nombre": "DIAMOND INDOOR",
+              "score": 1
+            },
+            {
+              "nombre": "DIAMOND INDOOR CAT",
+              "score": 1
+            }
+          ]
+        },
+        {
+          "run": null,
+          "etapa": "match_final",
+          "nivel": "alta",
+          "razon": "nombre_exacto",
+          "presentacion": "500g",
+          "coincidencia": {
+            "marca": "DIAMOND",
+            "referencia": "DIAMOND INDOOR CAT",
+            "referenciaCatalogo": "DIAMOND INDOOR CAT",
+            "referenciasEquivalentes": [
+              "DIAMOND INDOOR",
+              "DIAMOND INDOOR CAT"
+            ],
+            "score": 1,
+            "tipoCoincidencia": "referencia",
+            "presentaciones": [
+              {
+                "peso": "2.72kg",
+                "precio": 86500,
+                "metadata": {
+                  "llave": "1816",
+                  "codigo": "103010201816",
+                  "source": "productos.json",
+                  "codigos": [
+                    "103010201816"
+                  ],
+                  "nombre_original": "DIAMOND INDOOR 2.72KG"
+                },
+                "stock": null,
+                "referencia": "DIAMOND INDOOR"
+              },
+              {
+                "peso": "500gr",
+                "precio": 19500,
+                "metadata": {
+                  "llave": "553",
+                  "codigo": "10301020553",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10301020553"
+                  ],
+                  "nombre_original": "DIAMOND INDOOR CAT 500GR"
+                },
+                "stock": null,
+                "referencia": "DIAMOND INDOOR CAT"
+              }
+            ]
+          },
+          "equivalencia": null
+        }
+      ]
+    },
+    {
+      "mensaje": "DIAMOND INDOOR CAT 500g",
+      "result": {
+        "nivel": "alta",
+        "razon": "nombre_exacto",
+        "aclaracion": null,
+        "pesoMascotaSolicitado": null,
+        "identidadAntesDePresentacion": {
+          "marca": "DIAMOND",
+          "referencia": "DIAMOND INDOOR CAT",
+          "referenciaCatalogo": "DIAMOND INDOOR CAT",
+          "referenciasEquivalentes": [
+            "DIAMOND INDOOR",
+            "DIAMOND INDOOR CAT"
+          ],
+          "score": 1,
+          "tipoCoincidencia": "referencia",
+          "presentaciones": [
+            {
+              "peso": "2.72kg",
+              "precio": 86500,
+              "metadata": {
+                "llave": "1816",
+                "codigo": "103010201816",
+                "source": "productos.json",
+                "codigos": [
+                  "103010201816"
+                ],
+                "nombre_original": "DIAMOND INDOOR 2.72KG"
+              },
+              "stock": null,
+              "referencia": "DIAMOND INDOOR"
+            },
+            {
+              "peso": "500gr",
+              "precio": 19500,
+              "metadata": {
+                "llave": "553",
+                "codigo": "10301020553",
+                "source": "productos.json",
+                "codigos": [
+                  "10301020553"
+                ],
+                "nombre_original": "DIAMOND INDOOR CAT 500GR"
+              },
+              "stock": null,
+              "referencia": "DIAMOND INDOOR CAT"
+            }
+          ]
+        },
+        "especieConocida": "gato",
+        "terminos": [
+          "diamond",
+          "indoor",
+          "cat"
+        ],
+        "etiqueta": "diamond indoor cat",
+        "score": 1,
+        "diferencia": 1,
+        "usaInterpretacion": false,
+        "marcaExacta": "diamond",
+        "presentacionValida": true,
+        "requiereVision": false,
+        "presentacionSolicitada": "500g",
+        "coincidencia": {
+          "marca": "DIAMOND",
+          "referencia": "DIAMOND INDOOR CAT",
+          "referenciaCatalogo": "DIAMOND INDOOR CAT",
+          "referenciasEquivalentes": [
+            "DIAMOND INDOOR",
+            "DIAMOND INDOOR CAT"
+          ],
+          "score": 1,
+          "tipoCoincidencia": "referencia",
+          "presentaciones": [
+            {
+              "peso": "2.72kg",
+              "precio": 86500,
+              "metadata": {
+                "llave": "1816",
+                "codigo": "103010201816",
+                "source": "productos.json",
+                "codigos": [
+                  "103010201816"
+                ],
+                "nombre_original": "DIAMOND INDOOR 2.72KG"
+              },
+              "stock": null,
+              "referencia": "DIAMOND INDOOR"
+            },
+            {
+              "peso": "500gr",
+              "precio": 19500,
+              "metadata": {
+                "llave": "553",
+                "codigo": "10301020553",
+                "source": "productos.json",
+                "codigos": [
+                  "10301020553"
+                ],
+                "nombre_original": "DIAMOND INDOOR CAT 500GR"
+              },
+              "stock": null,
+              "referencia": "DIAMOND INDOOR CAT"
+            }
+          ]
+        },
+        "alternativas": [
+          {
+            "marca": "DIAMOND",
+            "referencia": "DIAMOND INDOOR CAT",
+            "referenciaCatalogo": "DIAMOND INDOOR CAT",
+            "referenciasEquivalentes": [
+              "DIAMOND INDOOR",
+              "DIAMOND INDOOR CAT"
+            ],
+            "score": 1,
+            "tipoCoincidencia": "referencia",
+            "presentaciones": [
+              {
+                "peso": "2.72kg",
+                "precio": 86500,
+                "metadata": {
+                  "llave": "1816",
+                  "codigo": "103010201816",
+                  "source": "productos.json",
+                  "codigos": [
+                    "103010201816"
+                  ],
+                  "nombre_original": "DIAMOND INDOOR 2.72KG"
+                },
+                "stock": null,
+                "referencia": "DIAMOND INDOOR"
+              },
+              {
+                "peso": "500gr",
+                "precio": 19500,
+                "metadata": {
+                  "llave": "553",
+                  "codigo": "10301020553",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10301020553"
+                  ],
+                  "nombre_original": "DIAMOND INDOOR CAT 500GR"
+                },
+                "stock": null,
+                "referencia": "DIAMOND INDOOR CAT"
+              }
+            ]
+          }
+        ]
+      },
+      "ms": 48.21158399999999,
+      "traces": [
+        {
+          "run": null,
+          "etapa": "matching_filtros",
+          "vision": false,
+          "producto": null,
+          "antes": [
+            {
+              "nombre": "DIAMOND INDOOR",
+              "score": 1,
+              "scoreBase": 1,
+              "peso": false,
+              "especie": true,
+              "etapa": null,
+              "categoria": null
+            },
+            {
+              "nombre": "DIAMOND INDOOR CAT",
+              "score": 1,
+              "scoreBase": 1,
+              "peso": true,
+              "especie": true,
+              "etapa": null,
+              "categoria": null
+            }
+          ],
+          "despues": [
+            {
+              "nombre": "DIAMOND INDOOR",
+              "score": 1
+            },
+            {
+              "nombre": "DIAMOND INDOOR CAT",
+              "score": 1
+            }
+          ]
+        },
+        {
+          "run": null,
+          "etapa": "match_final",
+          "nivel": "alta",
+          "razon": "nombre_exacto",
+          "presentacion": "500g",
+          "coincidencia": {
+            "marca": "DIAMOND",
+            "referencia": "DIAMOND INDOOR CAT",
+            "referenciaCatalogo": "DIAMOND INDOOR CAT",
+            "referenciasEquivalentes": [
+              "DIAMOND INDOOR",
+              "DIAMOND INDOOR CAT"
+            ],
+            "score": 1,
+            "tipoCoincidencia": "referencia",
+            "presentaciones": [
+              {
+                "peso": "2.72kg",
+                "precio": 86500,
+                "metadata": {
+                  "llave": "1816",
+                  "codigo": "103010201816",
+                  "source": "productos.json",
+                  "codigos": [
+                    "103010201816"
+                  ],
+                  "nombre_original": "DIAMOND INDOOR 2.72KG"
+                },
+                "stock": null,
+                "referencia": "DIAMOND INDOOR"
+              },
+              {
+                "peso": "500gr",
+                "precio": 19500,
+                "metadata": {
+                  "llave": "553",
+                  "codigo": "10301020553",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10301020553"
+                  ],
+                  "nombre_original": "DIAMOND INDOOR CAT 500GR"
+                },
+                "stock": null,
+                "referencia": "DIAMOND INDOOR CAT"
+              }
+            ]
+          },
+          "equivalencia": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=38 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=si | continuarFlujo=si | interpretacion=recibida
+[Catalog Match] cliente=anonymous-isolated-sales | nivel=alta | razon=nombre_exacto | terminos="excellent gato adulto" | score=1 | diferencia=1
+[Router] Interaccion | cliente=isolated-sales-validation | usuario=anonymous-isolated-sales | intencion=busqueda_producto | complejidad=normal | vision=no | audio=no | catalogoIA=undefined/undefined | estrategia=undefined | topScore=n/a | secondScore=n/a
+[Catalog Match] cliente=anonymous-isolated-sales | nivel=alta | razon=nombre_exacto | terminos="excellent gato adulto" | score=1 | diferencia=1
+[OpenAI] Interpretacion IA | cliente=anonymous-isolated-sales | intencion=pedido_producto | accion=agregar | marca=EXCELLENT | referencia=EXCELLENT GATO ADULT | etapa=adulto | tamano=null | presentacion=1kg | confianza=0.86
+[AI Usage Summary] cliente=isolated-sales-validation | usuario=anonymous-isolated-sales | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=18 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=5 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=38 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=si | continuarFlujo=si | interpretacion=recibida
+[Catalog Match] cliente=anonymous-isolated-sales | nivel=alta | razon=nombre_exacto | terminos="excellent gato adulto" | score=1 | diferencia=1
+[Router] Interaccion | cliente=isolated-sales-validation | usuario=anonymous-isolated-sales | intencion=busqueda_producto | complejidad=normal | vision=no | audio=no | catalogoIA=undefined/undefined | estrategia=undefined | topScore=n/a | secondScore=n/a
+[Catalog Match] cliente=anonymous-isolated-sales | nivel=alta | razon=nombre_exacto | terminos="excellent gato adulto" | score=1 | diferencia=1
+[OpenAI] Interpretacion IA | cliente=anonymous-isolated-sales | intencion=pedido_producto | accion=agregar | marca=EXCELLENT | referencia=EXCELLENT GATO ADULT | etapa=adulto | tamano=null | presentacion=1kg | confianza=0.74
+[AI Usage Summary] cliente=isolated-sales-validation | usuario=anonymous-isolated-sales | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=24 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Cart Operation] {"action":"agregar","targetResolved":false,"mutationApplied":false,"catalogLookup":false,"target":"Churu snack"}
+[Semantic Router] catalogo=si | continuarFlujo=si | interpretacion=recibida
+[Catalog Match] cliente=anonymous-isolated-sales | nivel=alta | razon=nombre_exacto | terminos="churu" | score=1 | diferencia=1
+[Router] Interaccion | cliente=isolated-sales-validation | usuario=anonymous-isolated-sales | intencion=busqueda_producto | complejidad=simple | vision=no | audio=no | catalogoIA=undefined/undefined | estrategia=undefined | topScore=n/a | secondScore=n/a
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=38 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=si | continuarFlujo=si | interpretacion=recibida
+[Catalog Match] cliente=anonymous-isolated-sales | nivel=alta | razon=nombre_exacto | terminos="excellent gato adulto" | score=1 | diferencia=1
+[Router] Interaccion | cliente=isolated-sales-validation | usuario=anonymous-isolated-sales | intencion=busqueda_producto | complejidad=normal | vision=no | audio=no | catalogoIA=undefined/undefined | estrategia=undefined | topScore=n/a | secondScore=n/a
+[Catalog Match] cliente=anonymous-isolated-sales | nivel=alta | razon=nombre_exacto | terminos="excellent gato adulto" | score=1 | diferencia=1
+[OpenAI] Interpretacion IA | cliente=anonymous-isolated-sales | intencion=pedido_producto | accion=agregar | marca=EXCELLENT | referencia=EXCELLENT GATO ADULT | etapa=adulto | tamano=null | presentacion=1kg | confianza=0.86
+[AI Usage Summary] cliente=isolated-sales-validation | usuario=anonymous-isolated-sales | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=38 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=si | continuarFlujo=si | interpretacion=recibida
+[Catalog Match] cliente=anonymous-isolated-sales | nivel=alta | razon=nombre_exacto | terminos="excellent gato adulto" | score=1 | diferencia=1
+[Router] Interaccion | cliente=isolated-sales-validation | usuario=anonymous-isolated-sales | intencion=busqueda_producto | complejidad=normal | vision=no | audio=no | catalogoIA=undefined/undefined | estrategia=undefined | topScore=n/a | secondScore=n/a
+[Catalog Match] cliente=anonymous-isolated-sales | nivel=alta | razon=nombre_exacto | terminos="excellent gato adulto" | score=1 | diferencia=1
+[OpenAI] Interpretacion IA | cliente=anonymous-isolated-sales | intencion=pedido_producto | accion=agregar | marca=EXCELLENT | referencia=EXCELLENT GATO ADULT | etapa=null | tamano=null | presentacion=1kg | confianza=0.9
+[AI Usage Summary] cliente=isolated-sales-validation | usuario=anonymous-isolated-sales | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=24 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=no | continuarFlujo=no | interpretacion=recibida
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=18 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=no | continuarFlujo=no | interpretacion=recibida
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=5 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=no | continuarFlujo=no | interpretacion=recibida
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=74 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=si | continuarFlujo=no | interpretacion=recibida
+[Catalog Match] cliente=anonymous-isolated-sales | nivel=alta | razon=marca_y_presentacion | terminos="king cat" | score=0 | diferencia=0
+[Router] Interaccion | cliente=isolated-sales-validation | usuario=anonymous-isolated-sales | intencion=busqueda_producto | complejidad=compleja | vision=no | audio=no | catalogoIA=undefined/undefined | estrategia=undefined | topScore=n/a | secondScore=n/a
+[Catalog Match] cliente=anonymous-isolated-sales | nivel=alta | razon=marca_y_presentacion | terminos="king cat" | score=0 | diferencia=0
+[OpenAI] Interpretacion IA | cliente=anonymous-isolated-sales | intencion=pedido_producto | accion=agregar | marca=ARENA KING CAT | referencia=ARENA KING CAT | etapa=null | tamano=null | presentacion=25kg | confianza=0.9
+[AI Usage Summary] cliente=isolated-sales-validation | usuario=anonymous-isolated-sales | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=88 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=no | continuarFlujo=si | interpretacion=recibida
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=28 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=no | continuarFlujo=no | interpretacion=recibida
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=44 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=no | continuarFlujo=no | interpretacion=recibida
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=18 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=no | continuarFlujo=si | interpretacion=recibida
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=16 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=no | continuarFlujo=no | interpretacion=recibida
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=52 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=no | continuarFlujo=no | interpretacion=recibida
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=61 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=no | continuarFlujo=no | interpretacion=recibida
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=29 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=no | continuarFlujo=no | interpretacion=recibida
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=14 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=no | continuarFlujo=no | interpretacion=recibida
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=16 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=no | continuarFlujo=si | interpretacion=recibida
+✔ T02 identidad omitida se ancla a cotizacion unica y valida nueva presentacion (146.236416ms)
+✔ preferencia no verificada no reemplaza SKU ni deriva por cantidad pendiente (1.958291ms)
+✔ compra de presentacion no cotizada no se degrada en revision de carrito vacio (74.169042ms)
+✔ paquete de venta unitaria sin numero de unidades pide cantidad y conserva carrito (10.452542ms)
+✔ T02 reproduce salida real OpenAI: recuperacion contextual no pisa dos unidades de 1kg (72.661167ms)
+✔ T02 contexto comercial: dos de kilo sustituye cotizacion de 3kg; Churu no resuelto no borra alimento (80.898416ms)
+✔ C05 solicitud real y cierre sintetico: 2 bultos, direccion, factura y confirmacion aislada (8.795458ms)
+✔ T01: cotizacion y consulta/cortesia no seleccionan alternativas (1.733083ms)
+✔ T03: cotizacion y consulta/cortesia no seleccionan alternativas (1.727417ms)
+✔ harness aislado no comparte carrito ni datos entre clientes (1.651708ms)
+✔ compra contextual conserva una cantidad nueva del mismo SKU (1.562458ms)
+✔ nueva presentacion vuelve a validacion, no copia precio ni peso anteriores (0.986208ms)
+✔ otra referencia explicita no hereda el foco previo (0.254791ms)
+✔ paquete declarado por catalogo no se convierte en venta suelta (0.646333ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 444.599708

@@ -1,0 +1,274 @@
+{
+  "capturedAt": "2026-10-29T22:11:01.471Z",
+  "mode": "real models and read-only Supabase; in-memory state; not WhatsApp E2E",
+  "label": "pending-discovery-verified",
+  "rows": [
+    {
+      "case": "identity-pending-discovery",
+      "text": "El de salmón, un kilo",
+      "response": "Perfecto, para gato te va bien Monello sabor salmón en presentación de 1kg.  \n¿Qué edad tiene tu mascota?",
+      "ms": 7689,
+      "decisions": [
+        {
+          "router": true,
+          "decision": {
+            "recomendaciones": [],
+            "preguntaRecomendacion": null,
+            "solicitudComercialIndependiente": true,
+            "derivacionHumana": {
+              "necesaria": false,
+              "motivo": null
+            },
+            "seguimientoProducto": "aclaracion",
+            "recursosAclaracion": {
+              "masDatosDisponibles": true
+            },
+            "resumenMemoria": null,
+            "continuarFlujo": false,
+            "compraContextual": null,
+            "solicitudesProductoDetectadas": 1,
+            "consultaCatalogo": {
+              "tipo": "necesidad",
+              "presupuestoMaximo": null,
+              "necesaria": false,
+              "consulta": null
+            },
+            "respuestaConversacional": "¡Claro! ¿Lo buscas para gato adulto, gatito o senior?",
+            "intencion": "recomendacion",
+            "accion": "consultar",
+            "confianza": 0.93,
+            "producto": {
+              "accion": "consultar",
+              "marca": "Monello",
+              "referencia": null,
+              "linea": null,
+              "textoVisible": "de salmón, un kilo",
+              "mencionOriginal": "de salmón, un kilo",
+              "categoria": "comida",
+              "subcategoria": null,
+              "especie": "gato",
+              "etapa": null,
+              "tamano": null,
+              "sabores": [
+                "salmón"
+              ],
+              "presentacion": "1kg",
+              "intencionPresentaciones": "especifica",
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": 1
+            },
+            "productos": [
+              {
+                "accion": "consultar",
+                "marca": "Monello",
+                "referencia": null,
+                "linea": null,
+                "textoVisible": "de salmón, un kilo",
+                "mencionOriginal": "de salmón, un kilo",
+                "categoria": "comida",
+                "subcategoria": null,
+                "especie": "gato",
+                "etapa": null,
+                "tamano": null,
+                "sabores": [
+                  "salmón"
+                ],
+                "presentacion": "1kg",
+                "intencionPresentaciones": "especifica",
+                "mascotas": [],
+                "condiciones": [],
+                "cantidad": 1
+              }
+            ],
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            },
+            "facturacion": {
+              "electronica": null,
+              "evidencia": null
+            },
+            "datosCliente": {
+              "nombre": null,
+              "cedula": null,
+              "correo": null,
+              "celular": null
+            },
+            "carrito": {
+              "operacion": null,
+              "cantidadObjetivo": null,
+              "cantidadDelta": null,
+              "aplicaAlUltimoProducto": null,
+              "razon": null
+            },
+            "faltanteSugerido": "¿Es para gato adulto, gatito o senior?"
+          }
+        }
+      ],
+      "requests": [
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 6729,
+          "status": 200,
+          "model": "gpt-5.4-2026-03-05",
+          "output": "{\n  \"intencion\": \"recomendacion\",\n  \"accion\": \"consultar\",\n  \"confianza\": 0.93,\n  \"compraContextual\": null,\n  \"solicitudesProductoDetectadas\": 1,\n  \"producto\": {\n    \"accion\": \"consultar\",\n    \"marca\": \"Monello\",\n    \"referencia\": null,\n    \"linea\": null,\n    \"textoVisible\": \"de salmón, un kilo\",\n    \"categoria\": \"comida\",\n    \"subcategoria\": null,\n    \"especie\": \"gato\",\n    \"etapa\": null,\n    \"tamano\": null,\n    \"sabores\": [\n      \"salmón\"\n    ],\n    \"condiciones\": [],\n    \"presentacion\": \"1kg\",\n    \"cantidad\": 1,\n    \"intencionPresentaciones\": \"especifica\",\n    \"mascotas\": [],\n    \"mencionOriginal\": \"de salmón, un kilo\"\n  },\n  \"productos\": [\n    {\n      \"accion\": \"consultar\",\n      \"marca\": \"Monello\",\n      \"referencia\": null,\n      \"linea\": null,\n      \"textoVisible\": \"de salmón, un kilo\",\n      \"categoria\": \"comida\",\n      \"subcategoria\": null,\n      \"especie\": \"gato\",\n      \"etapa\": null,\n      \"tamano\": null,\n      \"sabores\": [\n        \"salmón\"\n      ],\n      \"condiciones\": [],\n      \"presentacion\": \"1kg\",\n      \"cantidad\": 1,\n      \"intencionPresentaciones\": \"especifica\",\n      \"mascotas\": [],\n      \"mencionOriginal\": \"de salmón, un kilo\"\n    }\n  ],\n  \"entrega\": {\n    \"tipo\": null,\n    \"direccion\": null,\n    \"direccionCompleta\": null,\n    \"sector\": null,\n    \"metodoPago\": null,\n    \"sede\": null\n  },\n  \"facturacion\": {\n    \"electronica\": null,\n    \"evidencia\": null\n  },\n  \"datosCliente\": {\n    \"nombre\": null,\n    \"cedula\": null,\n    \"correo\": null,\n    \"celular\": null\n  },\n  \"carrito\": {\n    \"operacion\": null,\n    \"cantidadObjetivo\": null,\n    \"cantidadDelta\": null,\n    \"aplicaAlUltimoProducto\": null,\n    \"razon\": null\n  },\n  \"faltanteSugerido\": \"¿Es para gato adulto, gatito o senior?\",\n  \"recursosAclaracion\": {\n    \"fotoDisponible\": null,\n    \"masDatosDisponibles\": true\n  },\n  \"consultaCatalogo\": {\n    \"necesaria\": false,\n    \"consulta\": null,\n    \"tipo\": \"necesidad\",\n    \"presupuestoMaximo\": null\n  },\n  \"derivacionHumana\": {\n    \"necesaria\": false,\n    \"motivo\": null\n  },\n  \"solicitudComercialIndependiente\": true,\n  \"seguimientoProducto\": \"aclaracion\",\n  \"respuestaConversacional\": \"¡Claro! ¿Lo buscas para gato adulto, gatito o senior?\"\n}",
+          "usage": {
+            "prompt_tokens": 6876,
+            "completion_tokens": 695,
+            "total_tokens": 7571,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 946,
+          "status": 200,
+          "model": "gpt-5.4-mini-2026-03-17",
+          "output": "Perfecto, para gato te va bien Monello sabor salmón en presentación de 1kg.  \n¿Qué edad tiene tu mascota?",
+          "usage": {
+            "prompt_tokens": 392,
+            "completion_tokens": 31,
+            "total_tokens": 423,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        }
+      ],
+      "cartUnchanged": true,
+      "state": {
+        "criterios": {},
+        "recomendacionActiva": {
+          "criterios": {
+            "categoria": "comida",
+            "subcategoria": null,
+            "especie": "gato",
+            "etapa": null,
+            "tamano": null,
+            "marca": "Monello",
+            "sabores": [
+              "salmón"
+            ],
+            "condiciones": [],
+            "presentacion": "1kg",
+            "presupuestoMaximo": null
+          },
+          "opciones": [],
+          "actualizadoEn": "2026-10-29T22:11:08.219Z"
+        },
+        "atencionHumana": null,
+        "ultimaConsultaProducto": null
+      }
+    }
+  ],
+  "requests": [
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/client_channels",
+      "ms": 613,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/aivance_clients",
+      "ms": 225,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/aivance_clients",
+      "ms": 295,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/client_prompts",
+      "ms": 196,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/client_delivery_rules",
+      "ms": 221,
+      "status": 200
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 6729,
+      "status": 200,
+      "model": "gpt-5.4-2026-03-05",
+      "output": "{\n  \"intencion\": \"recomendacion\",\n  \"accion\": \"consultar\",\n  \"confianza\": 0.93,\n  \"compraContextual\": null,\n  \"solicitudesProductoDetectadas\": 1,\n  \"producto\": {\n    \"accion\": \"consultar\",\n    \"marca\": \"Monello\",\n    \"referencia\": null,\n    \"linea\": null,\n    \"textoVisible\": \"de salmón, un kilo\",\n    \"categoria\": \"comida\",\n    \"subcategoria\": null,\n    \"especie\": \"gato\",\n    \"etapa\": null,\n    \"tamano\": null,\n    \"sabores\": [\n      \"salmón\"\n    ],\n    \"condiciones\": [],\n    \"presentacion\": \"1kg\",\n    \"cantidad\": 1,\n    \"intencionPresentaciones\": \"especifica\",\n    \"mascotas\": [],\n    \"mencionOriginal\": \"de salmón, un kilo\"\n  },\n  \"productos\": [\n    {\n      \"accion\": \"consultar\",\n      \"marca\": \"Monello\",\n      \"referencia\": null,\n      \"linea\": null,\n      \"textoVisible\": \"de salmón, un kilo\",\n      \"categoria\": \"comida\",\n      \"subcategoria\": null,\n      \"especie\": \"gato\",\n      \"etapa\": null,\n      \"tamano\": null,\n      \"sabores\": [\n        \"salmón\"\n      ],\n      \"condiciones\": [],\n      \"presentacion\": \"1kg\",\n      \"cantidad\": 1,\n      \"intencionPresentaciones\": \"especifica\",\n      \"mascotas\": [],\n      \"mencionOriginal\": \"de salmón, un kilo\"\n    }\n  ],\n  \"entrega\": {\n    \"tipo\": null,\n    \"direccion\": null,\n    \"direccionCompleta\": null,\n    \"sector\": null,\n    \"metodoPago\": null,\n    \"sede\": null\n  },\n  \"facturacion\": {\n    \"electronica\": null,\n    \"evidencia\": null\n  },\n  \"datosCliente\": {\n    \"nombre\": null,\n    \"cedula\": null,\n    \"correo\": null,\n    \"celular\": null\n  },\n  \"carrito\": {\n    \"operacion\": null,\n    \"cantidadObjetivo\": null,\n    \"cantidadDelta\": null,\n    \"aplicaAlUltimoProducto\": null,\n    \"razon\": null\n  },\n  \"faltanteSugerido\": \"¿Es para gato adulto, gatito o senior?\",\n  \"recursosAclaracion\": {\n    \"fotoDisponible\": null,\n    \"masDatosDisponibles\": true\n  },\n  \"consultaCatalogo\": {\n    \"necesaria\": false,\n    \"consulta\": null,\n    \"tipo\": \"necesidad\",\n    \"presupuestoMaximo\": null\n  },\n  \"derivacionHumana\": {\n    \"necesaria\": false,\n    \"motivo\": null\n  },\n  \"solicitudComercialIndependiente\": true,\n  \"seguimientoProducto\": \"aclaracion\",\n  \"respuestaConversacional\": \"¡Claro! ¿Lo buscas para gato adulto, gatito o senior?\"\n}",
+      "usage": {
+        "prompt_tokens": 6876,
+        "completion_tokens": 695,
+        "total_tokens": 7571,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 946,
+      "status": 200,
+      "model": "gpt-5.4-mini-2026-03-17",
+      "output": "Perfecto, para gato te va bien Monello sabor salmón en presentación de 1kg.  \n¿Qué edad tiene tu mascota?",
+      "usage": {
+        "prompt_tokens": 392,
+        "completion_tokens": 31,
+        "total_tokens": 423,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    }
+  ]
+}

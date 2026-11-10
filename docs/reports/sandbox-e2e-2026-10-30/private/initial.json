@@ -1,0 +1,1744 @@
+{
+  "at": "2026-10-30T17:19:57.516Z",
+  "phoneNumberId": "597907523413541",
+  "numbers": {
+    "data": [
+      {
+        "id": "597907523413541",
+        "business_account_id": "2102230076919824",
+        "calls_enabled": false,
+        "code_verification_status": null,
+        "created_at": "2026-05-30T16:45:56-04:00",
+        "customer_id": null,
+        "display_name": "Sandbox WhatsApp",
+        "display_phone_number": null,
+        "display_phone_number_normalized": null,
+        "inbound_call_handler": "external",
+        "inbound_processing_enabled": true,
+        "internal_id": "48fe4f0a-5742-4c69-80cd-247d3b140b92",
+        "is_coexistence": false,
+        "is_official_business_account": null,
+        "is_pin_enabled": null,
+        "kind": "sandbox",
+        "meta_app_id": null,
+        "name": "Sandbox WhatsApp",
+        "name_status": null,
+        "phone_number_id": "597907523413541",
+        "quality_rating": null,
+        "status": null,
+        "throughput_tier": null,
+        "updated_at": "2026-08-26T18:46:35-04:00",
+        "username": null,
+        "username_status": null,
+        "verified_name": null,
+        "webhook_verified_at": null,
+        "whatsapp_business_manager_messaging_limit": "TIER_10K"
+      }
+    ],
+    "meta": {
+      "page": 1,
+      "per_page": 20,
+      "total_pages": 1,
+      "total_count": 1
+    }
+  },
+  "messages": {
+    "data": [
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDFCRjdCQURDNjM1N0EyMkMyRgA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Me dices el precio de cat chow delicrne, quinientos gramos?"
+        },
+        "text": {
+          "body": "Me dices el precio de cat chow delicrne, quinientos gramos?"
+        },
+        "timestamp": "1793312078",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSNThEOEE1MUZBRTlCOEU0NTI0AA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "DIAMOND INDOOR CAT 500gr te queda en $19.500. Las existencias están por confirmar. 🙂",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSNThEOEE1MUZBRTlCOEU0NTI0AA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793312057",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSNThEOEE1MUZBRTlCOEU0NTI0AA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793312057",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "DIAMOND INDOOR CAT 500gr te queda en $19.500. Las existencias están por confirmar. 🙂"
+        },
+        "timestamp": "1793312055",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEFFNTg2QjFFMjBGMTNFNzhFMAA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Solo quiero consultar precio de diamon indor para gato, el de medio kilo"
+        },
+        "text": {
+          "body": "Solo quiero consultar precio de diamon indor para gato, el de medio kilo"
+        },
+        "timestamp": "1793312019",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSNENGREM2QzJBNjJBMzlDQzIwAA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "DIAMOND INDOOR CAT de 500 gr te queda en $19.500. Las existencias están por confirmar. 🙂",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSNENGREM2QzJBNjJBMzlDQzIwAA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793311596",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSNENGREM2QzJBNjJBMzlDQzIwAA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793311596",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "DIAMOND INDOOR CAT de 500 gr te queda en $19.500. Las existencias están por confirmar. 🙂"
+        },
+        "timestamp": "1793311595",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDNEQzEyMkVGQURBQUEzMTVGRAA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Solo quiero consultar precio de diamon indor para gato, el de medio kilo"
+        },
+        "text": {
+          "body": "Solo quiero consultar precio de diamon indor para gato, el de medio kilo"
+        },
+        "timestamp": "1793311558",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSRTBBNjk5Qzg0QzkwNjBBNDA1AA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "DIAMOND INDOOR CAT de 500 g te queda en $19.500. Las existencias están por confirmar. 🙂",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSRTBBNjk5Qzg0QzkwNjBBNDA1AA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793309595",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSRTBBNjk5Qzg0QzkwNjBBNDA1AA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793309595",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSRTBBNjk5Qzg0QzkwNjBBNDA1AA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793309596",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "DIAMOND INDOOR CAT de 500 g te queda en $19.500. Las existencias están por confirmar. 🙂"
+        },
+        "timestamp": "1793309594",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEY3MDAwRTE0Mzc3NzM5QkU5OAA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Cuánto vale DIAMOND INDOOR CAT de 500 gramos?"
+        },
+        "text": {
+          "body": "Cuánto vale DIAMOND INDOOR CAT de 500 gramos?"
+        },
+        "timestamp": "1793309559",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSQTQ3NjJGMzYzMjg0ODczNDU3AA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Gracias, lo dejo registrado para revisión con la referencia y la presentación que indicaste. Por ahora no hay un asesor asignado en este chat ni se ha notificado a nadie, así que queda pendiente de revisión. Mientras tanto, puedo seguir ayudándote con cualquier otra consulta que tengas.",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSQTQ3NjJGMzYzMjg0ODczNDU3AA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793309503",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSQTQ3NjJGMzYzMjg0ODczNDU3AA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793309504",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "Gracias, lo dejo registrado para revisión con la referencia y la presentación que indicaste. Por ahora no hay un asesor asignado en este chat ni se ha notificado a nadie, así que queda pendiente de revisión. Mientras tanto, puedo seguir ayudándote con cualquier otra consulta que tengas."
+        },
+        "timestamp": "1793309502",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDY0NjQ5OTBCQTQ1NkVENTExQQA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "No tengo foto ni más datos, ese es el nombre y son 4 kilos"
+        },
+        "text": {
+          "body": "No tengo foto ni más datos, ese es el nombre y son 4 kilos"
+        },
+        "timestamp": "1793309462",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSMzFFOTIwMUY4NkI4MjExRjEzAA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "No lo puedo confirmar con seguridad con esos datos. Si te interesa, puedo ayudarte a orientar la búsqueda por la necesidad que tengas; dime para qué tipo de producto es y te sigo.",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSMzFFOTIwMUY4NkI4MjExRjEzAA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793309438",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSMzFFOTIwMUY4NkI4MjExRjEzAA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793309439",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "No lo puedo confirmar con seguridad con esos datos. Si te interesa, puedo ayudarte a orientar la búsqueda por la necesidad que tengas; dime para qué tipo de producto es y te sigo."
+        },
+        "timestamp": "1793309437",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDlDQjU5RjYxQjA4NTlBQ0M5MAA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Solo consultar: tienen marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos?"
+        },
+        "text": {
+          "body": "Solo consultar: tienen marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos?"
+        },
+        "timestamp": "1793309399",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSQjM1MUZFQjRBNURCRDU3QjNBAA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Te confirmo, esa referencia la manejamos: DIAMOND INDOOR CAT 500gr por $19.500. Las existencias están por confirmar. 🐱",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSQjM1MUZFQjRBNURCRDU3QjNBAA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793309094",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSQjM1MUZFQjRBNURCRDU3QjNBAA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793309094",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "Te confirmo, esa referencia la manejamos: DIAMOND INDOOR CAT 500gr por $19.500. Las existencias están por confirmar. 🐱"
+        },
+        "timestamp": "1793309092",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDAyNDg4QTM5ODZCMEY4RjczQgA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Y solo para consultar, cuánto vale DIAMOND INDOOR CAT de 500 gramos?"
+        },
+        "text": {
+          "body": "Y solo para consultar, cuánto vale DIAMOND INDOOR CAT de 500 gramos?"
+        },
+        "timestamp": "1793309059",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSNkUyQzAxMEY1N0EwNTlCMkJEAA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Presentaciones y precios unitarios:\n- PRO PLAN CANINE UR 2kg: $122.000",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSNkUyQzAxMEY1N0EwNTlCMkJEAA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793309034",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSNkUyQzAxMEY1N0EwNTlCMkJEAA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793309034",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "Presentaciones y precios unitarios:\n- PRO PLAN CANINE UR 2kg: $122.000"
+        },
+        "timestamp": "1793309033",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEZBMkVDMEU0RTRENDQ0OURDMQA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "El concentrado, solo quiero saber el precio"
+        },
+        "text": {
+          "body": "El concentrado, solo quiero saber el precio"
+        },
+        "timestamp": "1793309000",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSOTE5Nzg5QTk5QTNBNDJBMEM5AA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Para perro, ¿buscas PRO PLAN CANINE UR de 2 kg o PRO PLAN CANINE LATA UR?",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSOTE5Nzg5QTk5QTNBNDJBMEM5AA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793308986",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSOTE5Nzg5QTk5QTNBNDJBMEM5AA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793308986",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSOTE5Nzg5QTk5QTNBNDJBMEM5AA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793308987",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "Para perro, ¿buscas PRO PLAN CANINE UR de 2 kg o PRO PLAN CANINE LATA UR?"
+        },
+        "timestamp": "1793308985",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEMwNUUzQTkwMTI0M0E0RUFDNgA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Para perrito"
+        },
+        "text": {
+          "body": "Para perrito"
+        },
+        "timestamp": "1793308948",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSODQzQ0VCNDExOTI1M0ZCRkZBAA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Claro 😊, Pro Plan UR puede ser para perro o para gato. ¿Cuál de los dos buscas?",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSODQzQ0VCNDExOTI1M0ZCRkZBAA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793308900",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSODQzQ0VCNDExOTI1M0ZCRkZBAA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793308900",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "Claro 😊, Pro Plan UR puede ser para perro o para gato. ¿Cuál de los dos buscas?"
+        },
+        "timestamp": "1793308899",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDdEOUI2Q0ZGRTA3RUVDRThGMAA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Ahora solo quiero consultar cuánto vale Pro Plan UR"
+        },
+        "text": {
+          "body": "Ahora solo quiero consultar cuánto vale Pro Plan UR"
+        },
+        "timestamp": "1793308865",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSMzFEMzQwQjlDQjRFOUQxNERCAA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Gracias, con eso ya queda todo lo que se podía aclarar aquí. La referencia sigue pendiente de revisión por un asesor, y en este chat todavía no hay nadie asignado. Si necesitas resolver otra consulta, puedo ayudarte con eso.",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSMzFEMzQwQjlDQjRFOUQxNERCAA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793308844",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSMzFEMzQwQjlDQjRFOUQxNERCAA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793308844",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "Gracias, con eso ya queda todo lo que se podía aclarar aquí. La referencia sigue pendiente de revisión por un asesor, y en este chat todavía no hay nadie asignado. Si necesitas resolver otra consulta, puedo ayudarte con eso."
+        },
+        "timestamp": "1793308843",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDY3RDU2OTBDRTQ1MkMyMEM1RAA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "No tengo foto ni más datos, ese es el nombre y son 4 kilos"
+        },
+        "text": {
+          "body": "No tengo foto ni más datos, ese es el nombre y son 4 kilos"
+        },
+        "timestamp": "1793308807",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSRTJGQjMzM0RDMTQ2Nzg5ODFDAA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Por ahora esa referencia queda pendiente de revisión por un asesor. En este chat todavía no hay nadie asignado, pero puedo seguir ayudándote con otras consultas si lo necesitas.",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSRTJGQjMzM0RDMTQ2Nzg5ODFDAA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793308793",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSRTJGQjMzM0RDMTQ2Nzg5ODFDAA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793308793",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSRTJGQjMzM0RDMTQ2Nzg5ODFDAA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793308794",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "Por ahora esa referencia queda pendiente de revisión por un asesor. En este chat todavía no hay nadie asignado, pero puedo seguir ayudándote con otras consultas si lo necesitas."
+        },
+        "timestamp": "1793308792",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDFENDkzNDkwNUI2N0I4M0VGMAA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Solo consultar: tienen marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos?"
+        },
+        "text": {
+          "body": "Solo consultar: tienen marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos?"
+        },
+        "timestamp": "1793308757",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSMEIyRjdCMjdERkVBMkM4QTNDAA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Por ahora no puedo confirmarte esa referencia con seguridad. Si quieres, podemos revisar otras opciones parecidas. 🙂",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSMEIyRjdCMjdERkVBMkM4QTNDAA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793307392",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSMEIyRjdCMjdERkVBMkM4QTNDAA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793307392",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSMEIyRjdCMjdERkVBMkM4QTNDAA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793307393",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "Por ahora no puedo confirmarte esa referencia con seguridad. Si quieres, podemos revisar otras opciones parecidas. 🙂"
+        },
+        "timestamp": "1793307391",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDFCNzE4NTI3NzhERDY2QTEwOQA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Solo consultar: tienen marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos?"
+        },
+        "text": {
+          "body": "Solo consultar: tienen marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos?"
+        },
+        "timestamp": "1793307357",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSQjA5REIzMDFEREE0REQzREM2AA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Por ahora no puedo confirmar esa referencia. ¿Quieres que revisemos otras opciones? Mantengo tu elección sin sustituirla por otro producto.",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSQjA5REIzMDFEREE0REQzREM2AA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793307298",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSQjA5REIzMDFEREE0REQzREM2AA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793307298",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "Por ahora no puedo confirmar esa referencia. ¿Quieres que revisemos otras opciones? Mantengo tu elección sin sustituirla por otro producto."
+        },
+        "timestamp": "1793307297",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDRDNDlFMkFGODQ0MDQ2RDAwRgA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Solo consultar: tienen marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos?"
+        },
+        "text": {
+          "body": "Solo consultar: tienen marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos?"
+        },
+        "timestamp": "1793307265",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSQkM1NzE4OTMwREQ0NDdCMjYxAA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "No encuentro ZETAPRUEBAQ9 ZQ17 de 4kg en el catálogo actual. No la he agregado al pedido. ¿Puedes confirmar el nombre completo y la presentación para revisarlo?",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSQkM1NzE4OTMwREQ0NDdCMjYxAA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793305425",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSQkM1NzE4OTMwREQ0NDdCMjYxAA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793305426",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "No encuentro ZETAPRUEBAQ9 ZQ17 de 4kg en el catálogo actual. No la he agregado al pedido. ¿Puedes confirmar el nombre completo y la presentación para revisarlo?"
+        },
+        "timestamp": "1793305424",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDREMTQyRkI0OTk2Njg2QjU0MwA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Solo consultar: tienen marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos?"
+        },
+        "text": {
+          "body": "Solo consultar: tienen marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos?"
+        },
+        "timestamp": "1793305396",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSNkZEMDRCQTEwOTZENkIyMTY0AA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Claro, para tu gato tengo estas opciones dentro de $25.000:\n\n- RASCADOR unidad: $16.000 — juguete, gato.\n- RASCADOR REDONDO GATOS unidad: $22.000 — juguete, gato.\n\nLas existencias están por confirmar. ¿Cuál te gustaría revisar?",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSNkZEMDRCQTEwOTZENkIyMTY0AA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793305381",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSNkZEMDRCQTEwOTZENkIyMTY0AA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793305381",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSNkZEMDRCQTEwOTZENkIyMTY0AA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793305382",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "Claro, para tu gato tengo estas opciones dentro de $25.000:\n\n- RASCADOR unidad: $16.000 — juguete, gato.\n- RASCADOR REDONDO GATOS unidad: $22.000 — juguete, gato.\n\nLas existencias están por confirmar. ¿Cuál te gustaría revisar?"
+        },
+        "timestamp": "1793305380",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDY0MzY4NjdDMzg0N0UzNTQ2NQA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Ahora solo quiero saber qué juguetes tienes para mi gato, hasta 25000 pesos"
+        },
+        "text": {
+          "body": "Ahora solo quiero saber qué juguetes tienes para mi gato, hasta 25000 pesos"
+        },
+        "timestamp": "1793305355",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSREFGMTE4QUM0MjMwRTI2RDI4AA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Para orientarte sobre diagnóstico o tratamiento se necesita criterio veterinario. Dejo tu consulta pendiente de un asesor para que te ayude con la orientación especializada.",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSREFGMTE4QUM0MjMwRTI2RDI4AA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793305309",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSREFGMTE4QUM0MjMwRTI2RDI4AA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793305309",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSREFGMTE4QUM0MjMwRTI2RDI4AA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793305310",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "Para orientarte sobre diagnóstico o tratamiento se necesita criterio veterinario. Dejo tu consulta pendiente de un asesor para que te ayude con la orientación especializada."
+        },
+        "timestamp": "1793305308",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDYyRjc2NjZCQUM4NjFGRUIzMgA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Mi gato no puede orinar, ¿qué comida le doy para curarlo?"
+        },
+        "text": {
+          "body": "Mi gato no puede orinar, ¿qué comida le doy para curarlo?"
+        },
+        "timestamp": "1793305288",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSREVDNUQyOEMyNDc0QjQzQjMwAA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Presentaciones y precios unitarios:\n- PRO PLAN CANINE UR 2kg: $122.000",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSREVDNUQyOEMyNDc0QjQzQjMwAA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793305255",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSREVDNUQyOEMyNDc0QjQzQjMwAA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793305256",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "Presentaciones y precios unitarios:\n- PRO PLAN CANINE UR 2kg: $122.000"
+        },
+        "timestamp": "1793305254",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDIwRjM2OEFGMUJCMjFDQjRGQwA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Solo consultar el precio, no lo agregues al pedido"
+        },
+        "text": {
+          "body": "Solo consultar el precio, no lo agregues al pedido"
+        },
+        "timestamp": "1793305228",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDEwRjJCOEM3OEEzRTg3Q0FDNgA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "el concentrado"
+        },
+        "text": {
+          "body": "el concentrado"
+        },
+        "timestamp": "1793305211",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSRDI4MjlGMkRCQkU2NTJEQzhFAA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Para perrito, ¿busca PRO PLAN CANINE UR de 2 kg o PRO PLAN CANINE LATA UR por unidad?",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSRDI4MjlGMkRCQkU2NTJEQzhFAA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793305194",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSRDI4MjlGMkRCQkU2NTJEQzhFAA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793305195",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "Para perrito, ¿busca PRO PLAN CANINE UR de 2 kg o PRO PLAN CANINE LATA UR por unidad?"
+        },
+        "timestamp": "1793305194",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDJBNDBFQjA2M0EwMDRGODkwOAA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Para perrito"
+        },
+        "text": {
+          "body": "Para perrito"
+        },
+        "timestamp": "1793305166",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSNUM5QjI2MUI0QjI0N0EzNkU2AA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "¿Es para perro o para gato? 😊",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSNUM5QjI2MUI0QjI0N0EzNkU2AA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793305151",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSNUM5QjI2MUI0QjI0N0EzNkU2AA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793305151",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "¿Es para perro o para gato? 😊"
+        },
+        "timestamp": "1793305150",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDI5M0FDMzc4RjY1NjE0NTZFRgA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Cuánto vale Pro Plan UR"
+        },
+        "text": {
+          "body": "Cuánto vale Pro Plan UR"
+        },
+        "timestamp": "1793305123",
+        "type": "text",
+        "username": null
+      }
+    ],
+    "paging": {
+      "cursors": {
+        "before": "eyJ2YWx1ZXMiOlsiMjAyNi0xMC0yOVQyMjoxNDozOC43MDg3MjhaIiwiYmExMTkxOTgtMDdlNi00MTJjLTkyODAtMWRlYWQzNDI5NzZkIl0sImNvbHVtbnMiOlsiY3JlYXRlZF9hdCIsImlkIl19",
+        "after": "eyJ2YWx1ZXMiOlsiMjAyNi0xMC0yOVQyMDoxODo0My4xNDc1MDFaIiwiZmVjMzJkYTEtMTZlMS00ZDAzLThlMTUtMTU3ZWYyZGVkZWM0Il0sImNvbHVtbnMiOlsiY3JlYXRlZF9hdCIsImlkIl19"
+      },
+      "next": "eyJ2YWx1ZXMiOlsiMjAyNi0xMC0yOVQyMDoxODo0My4xNDc1MDFaIiwiZmVjMzJkYTEtMTZlMS00ZDAzLThlMTUtMTU3ZWYyZGVkZWM0Il0sImNvbHVtbnMiOlsiY3JlYXRlZF9hdCIsImlkIl19",
+      "previous": null
+    }
+  },
+  "webhooks": {
+    "data": [
+      {
+        "id": "0e17cb06-05e6-476b-bece-f48865b9b8dc",
+        "active": true,
+        "buffer_enabled": true,
+        "buffer_events": [
+          "whatsapp.message.received"
+        ],
+        "buffer_window_seconds": 5,
+        "created_at": "2026-05-30T16:58:05-04:00",
+        "events": [
+          "whatsapp.message.received"
+        ],
+        "headers": {},
+        "inactivity_minutes": 60,
+        "kind": "kapso",
+        "max_buffer_size": 50,
+        "payload_version": "v2",
+        "phone_number_id": "597907523413541",
+        "project_id": null,
+        "secret_key": "9f9fab102f93dae61aa6d1a8d568497684dde0411b61e74a412b859d129d911e",
+        "updated_at": "2026-05-30T16:58:05-04:00",
+        "url": "https://lion-payee-flatfoot.ngrok-free.dev/webhooks/kapso/whatsapp"
+      }
+    ],
+    "meta": {
+      "page": 1,
+      "per_page": 20,
+      "total_pages": 1,
+      "total_count": 1
+    }
+  },
+  "tunnel": {
+    "tunnels": [
+      {
+        "name": "command_line",
+        "ID": "3b569c7636f227aa523a9ad4c32c5cdc",
+        "uri": "/api/tunnels/command_line",
+        "public_url": "https://lion-payee-flatfoot.ngrok-free.dev",
+        "proto": "https",
+        "config": {
+          "addr": "http://localhost:3000",
+          "inspect": true
+        },
+        "metrics": {
+          "conns": {
+            "count": 78,
+            "gauge": 0,
+            "rate1": 4.97630270473267e-249,
+            "rate5": 3.096237106920224e-52,
+            "rate15": 1.1423476889227817e-19,
+            "p50": 7252083688,
+            "p90": 8256186904.2,
+            "p95": 8564127244.099999,
+            "p99": 9580645250
+          },
+          "http": {
+            "count": 78,
+            "rate1": 4.578419508994087e-249,
+            "rate5": 3.04505934620635e-52,
+            "rate15": 1.1358730527896427e-19,
+            "p50": 1249143312.5,
+            "p90": 2248318988.1000004,
+            "p95": 2559763970.849999,
+            "p99": 3577865375
+          }
+        }
+      }
+    ],
+    "uri": "/api/tunnels"
+  },
+  "tenant": {
+    "id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+    "slug": "distrifinca",
+    "resolution": "sandbox"
+  }
+}

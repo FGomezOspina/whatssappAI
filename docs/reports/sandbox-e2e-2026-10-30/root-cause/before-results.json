@@ -1,0 +1,1008 @@
+{
+  "generatedAt": "2026-10-30T17:39:19.984Z",
+  "scope": "KapsoSandbox controlled text-only integration",
+  "messages": [
+    {
+      "id": "4aa412277938",
+      "direction": "outbound",
+      "text": "Claro, CAT CHOW DELICARNE x 500 gr te queda en $13.700. Las existencias están por confirmar. 🙂",
+      "at": "2026-10-30T17:26:30.000Z"
+    },
+    {
+      "id": "5c3fe84597da",
+      "direction": "inbound",
+      "text": "Solo consultar precio: Royal Canin gastrointestinal para perro, concentrado de 7 kg.",
+      "at": "2026-10-30T17:27:00.000Z"
+    },
+    {
+      "id": "8d447ad92f15",
+      "direction": "outbound",
+      "text": "Todavía no puedo confirmar ROYAL CANIN GASTROINTESTINAL PERRO de 7kg con seguridad. ¿Quieres que revisemos otra opción?",
+      "at": "2026-10-30T17:27:46.000Z"
+    },
+    {
+      "id": "658c46f9e5f8",
+      "direction": "inbound",
+      "text": "Corrijo el tamaño: de 2 kg, el mismo concentrado para perro. Solo consultar el precio.",
+      "at": "2026-10-30T17:28:04.000Z"
+    },
+    {
+      "id": "c6d0257a048e",
+      "direction": "outbound",
+      "text": "Gracias, queda como el mismo concentrado para perro en presentación de 2 kg. Como esta referencia sigue pendiente de revisión por un asesor y ahora mismo no hay uno asignado en este chat, no puedo confirmar el precio todavía. Si te sirve, puedes seguir consultando otras cosas mientras tanto.",
+      "at": "2026-10-30T17:28:44.000Z"
+    },
+    {
+      "id": "5a1438115a1f",
+      "direction": "inbound",
+      "text": "Solo consultar precio: Royal Canin gastrointestinal para perro, concentrado de 7 kg.",
+      "at": "2026-10-30T17:31:45.000Z"
+    },
+    {
+      "id": "a94d8fca3fce",
+      "direction": "outbound",
+      "text": "Gracias por la aclaración. No puedo confirmar el precio de esa referencia en este momento. Si quieres, puedo ayudarte a buscar opciones de alimento gastrointestinal para perro según la necesidad, sin compromiso.",
+      "at": "2026-10-30T17:32:29.000Z"
+    },
+    {
+      "id": "c0aa91a255bf",
+      "direction": "inbound",
+      "text": "Corrijo el tamaño: de 2 kg, el mismo concentrado para perro. Solo consultar el precio.",
+      "at": "2026-10-30T17:32:44.000Z"
+    },
+    {
+      "id": "0b55956d0a2e",
+      "direction": "outbound",
+      "text": "Gracias por la aclaración. La corrección de tamaño ya quedó tenida en cuenta, y por ahora la referencia sigue pendiente de revisión. En este chat todavía no hay un asesor asignado, así que no puedo confirmar el precio de ese producto en este momento. Si más adelante quieres, puedo seguir ayudándote con otras consultas mientras tanto.",
+      "at": "2026-10-30T17:33:24.000Z"
+    },
+    {
+      "id": "24ee7b043bc5",
+      "direction": "inbound",
+      "text": "Solo consultar precio: Royal Canin gastrointestinal para perro, concentrado de 7 kg.",
+      "at": "2026-10-30T17:35:38.000Z"
+    },
+    {
+      "id": "fd9d0f43b556",
+      "direction": "outbound",
+      "text": "Para **ROYALCANIN GASTROINTESTINAL PERRO** en **7 kg** no tengo esa presentación disponible en este momento. La única presentación validada es **2 kg por $129.000**. Si te sirve, te ayudo con esa 🙂",
+      "at": "2026-10-30T17:36:17.000Z"
+    },
+    {
+      "id": "6076ea189dba",
+      "direction": "inbound",
+      "text": "Corrijo el tamaño: de 2 kg, el mismo concentrado para perro. Solo consultar el precio.",
+      "at": "2026-10-30T17:36:32.000Z"
+    },
+    {
+      "id": "804f9779e2e6",
+      "direction": "outbound",
+      "text": "¿Te refieres al **TASTE OF THE WILD ADULT PERRO** en **2 kg**? 🙂",
+      "at": "2026-10-30T17:37:14.000Z"
+    }
+  ],
+  "turns": [
+    {
+      "inputs": [],
+      "response": {
+        "id": "4aa412277938",
+        "direction": "outbound",
+        "text": "Claro, CAT CHOW DELICARNE x 500 gr te queda en $13.700. Las existencias están por confirmar. 🙂",
+        "at": "2026-10-30T17:26:30.000Z"
+      },
+      "providerElapsedMs": null
+    },
+    {
+      "inputs": [
+        {
+          "id": "5c3fe84597da",
+          "direction": "inbound",
+          "text": "Solo consultar precio: Royal Canin gastrointestinal para perro, concentrado de 7 kg.",
+          "at": "2026-10-30T17:27:00.000Z"
+        }
+      ],
+      "response": {
+        "id": "8d447ad92f15",
+        "direction": "outbound",
+        "text": "Todavía no puedo confirmar ROYAL CANIN GASTROINTESTINAL PERRO de 7kg con seguridad. ¿Quieres que revisemos otra opción?",
+        "at": "2026-10-30T17:27:46.000Z"
+      },
+      "providerElapsedMs": 46000
+    },
+    {
+      "inputs": [
+        {
+          "id": "658c46f9e5f8",
+          "direction": "inbound",
+          "text": "Corrijo el tamaño: de 2 kg, el mismo concentrado para perro. Solo consultar el precio.",
+          "at": "2026-10-30T17:28:04.000Z"
+        }
+      ],
+      "response": {
+        "id": "c6d0257a048e",
+        "direction": "outbound",
+        "text": "Gracias, queda como el mismo concentrado para perro en presentación de 2 kg. Como esta referencia sigue pendiente de revisión por un asesor y ahora mismo no hay uno asignado en este chat, no puedo confirmar el precio todavía. Si te sirve, puedes seguir consultando otras cosas mientras tanto.",
+        "at": "2026-10-30T17:28:44.000Z"
+      },
+      "providerElapsedMs": 40000
+    },
+    {
+      "inputs": [
+        {
+          "id": "5a1438115a1f",
+          "direction": "inbound",
+          "text": "Solo consultar precio: Royal Canin gastrointestinal para perro, concentrado de 7 kg.",
+          "at": "2026-10-30T17:31:45.000Z"
+        }
+      ],
+      "response": {
+        "id": "a94d8fca3fce",
+        "direction": "outbound",
+        "text": "Gracias por la aclaración. No puedo confirmar el precio de esa referencia en este momento. Si quieres, puedo ayudarte a buscar opciones de alimento gastrointestinal para perro según la necesidad, sin compromiso.",
+        "at": "2026-10-30T17:32:29.000Z"
+      },
+      "providerElapsedMs": 44000
+    },
+    {
+      "inputs": [
+        {
+          "id": "c0aa91a255bf",
+          "direction": "inbound",
+          "text": "Corrijo el tamaño: de 2 kg, el mismo concentrado para perro. Solo consultar el precio.",
+          "at": "2026-10-30T17:32:44.000Z"
+        }
+      ],
+      "response": {
+        "id": "0b55956d0a2e",
+        "direction": "outbound",
+        "text": "Gracias por la aclaración. La corrección de tamaño ya quedó tenida en cuenta, y por ahora la referencia sigue pendiente de revisión. En este chat todavía no hay un asesor asignado, así que no puedo confirmar el precio de ese producto en este momento. Si más adelante quieres, puedo seguir ayudándote con otras consultas mientras tanto.",
+        "at": "2026-10-30T17:33:24.000Z"
+      },
+      "providerElapsedMs": 40000
+    },
+    {
+      "inputs": [
+        {
+          "id": "24ee7b043bc5",
+          "direction": "inbound",
+          "text": "Solo consultar precio: Royal Canin gastrointestinal para perro, concentrado de 7 kg.",
+          "at": "2026-10-30T17:35:38.000Z"
+        }
+      ],
+      "response": {
+        "id": "fd9d0f43b556",
+        "direction": "outbound",
+        "text": "Para **ROYALCANIN GASTROINTESTINAL PERRO** en **7 kg** no tengo esa presentación disponible en este momento. La única presentación validada es **2 kg por $129.000**. Si te sirve, te ayudo con esa 🙂",
+        "at": "2026-10-30T17:36:17.000Z"
+      },
+      "providerElapsedMs": 39000
+    },
+    {
+      "inputs": [
+        {
+          "id": "6076ea189dba",
+          "direction": "inbound",
+          "text": "Corrijo el tamaño: de 2 kg, el mismo concentrado para perro. Solo consultar el precio.",
+          "at": "2026-10-30T17:36:32.000Z"
+        }
+      ],
+      "response": {
+        "id": "804f9779e2e6",
+        "direction": "outbound",
+        "text": "¿Te refieres al **TASTE OF THE WILD ADULT PERRO** en **2 kg**? 🙂",
+        "at": "2026-10-30T17:37:14.000Z"
+      },
+      "providerElapsedMs": 42000
+    }
+  ],
+  "pending": [],
+  "orders": 0,
+  "cart": [
+    []
+  ],
+  "sourceRuntimes": [
+    {
+      "pid": 38754,
+      "cwd": "/Users/gomez/Documents/WhatsappVELTIA",
+      "startedAt": "2026-10-30T17:20:49.269Z",
+      "sourceHash": "37467caadfab9c6599b8f4fc65fb39f095b3b453a10c329d5211dd6eaa957a2a"
+    },
+    {
+      "pid": 39222,
+      "cwd": "/Users/gomez/Documents/WhatsappVELTIA",
+      "startedAt": "2026-10-30T17:30:48.080Z",
+      "sourceHash": "67a9470e41309e7178d9983963b06ef26fd5f8a231820bfaa16672b465f4b7f7"
+    },
+    {
+      "pid": 39371,
+      "cwd": "/Users/gomez/Documents/WhatsappVELTIA",
+      "startedAt": "2026-10-30T17:31:23.423Z",
+      "sourceHash": "983fef66f192cede945b168bd2d1b2afe7a7ebf9f0fb9da6cf4eb57f54a911b4"
+    },
+    {
+      "pid": 39745,
+      "cwd": "/Users/gomez/Documents/WhatsappVELTIA",
+      "startedAt": "2026-10-30T17:35:09.923Z",
+      "sourceHash": "66964c741b531f9264421c77dcf0f501f0c253b926b738c02b57b91b1f480200"
+    },
+    {
+      "pid": 39959,
+      "cwd": "/Users/gomez/Documents/WhatsappVELTIA",
+      "startedAt": "2026-10-30T17:38:56.291Z",
+      "sourceHash": "4cfc7ebb43b6144165b92e690d24110508503df3aeb54a60fd859f7c0ca5e319"
+    }
+  ],
+  "telemetry": [
+    {
+      "run": "63e26814-a8c2-4c5d-ad8d-f07575c653b9",
+      "etapa": "summary",
+      "outcome": {
+        "status": "sent",
+        "parts": 1
+      },
+      "grupos": {
+        "inbound_buffer": {
+          "llamadas": 1,
+          "ms": 5018
+        },
+        "supabase_attempt": {
+          "llamadas": 26,
+          "ms": 6141.34
+        },
+        "supabase_request": {
+          "llamadas": 26,
+          "ms": 6175.79
+        },
+        "save_inbound_message": {
+          "llamadas": 1,
+          "ms": 1276.91
+        },
+        "load_context": {
+          "llamadas": 1,
+          "ms": 241.35
+        },
+        "kapso_typing_mark_read": {
+          "llamadas": 2,
+          "ms": 1424.56
+        },
+        "openai_request": {
+          "llamadas": 4,
+          "ms": 25699.7
+        },
+        "tool_product_search": {
+          "llamadas": 1,
+          "ms": 801.64
+        },
+        "tool_order_logic": {
+          "llamadas": 1,
+          "ms": 4.64
+        },
+        "tool_save_order": {
+          "llamadas": 1,
+          "ms": 0.13
+        },
+        "agent_processing": {
+          "llamadas": 1,
+          "ms": 30082.12
+        },
+        "kapso_send": {
+          "llamadas": 1,
+          "ms": 1421.6
+        },
+        "save_response": {
+          "llamadas": 1,
+          "ms": 340.48
+        }
+      },
+      "supabaseTop3": [
+        {
+          "etapa": "supabase_request",
+          "numero": 13,
+          "ms": 732.86,
+          "ok": true,
+          "operation": "POST rpc/search_catalog_products",
+          "queryHash": "f5635f65fa92",
+          "select": null,
+          "filas": 20
+        },
+        {
+          "etapa": "supabase_request",
+          "numero": 15,
+          "ms": 449.83,
+          "ok": true,
+          "operation": "GET training_examples",
+          "queryHash": "6affe875db03",
+          "select": "intent,customer_message,ideal_response,notes,tags,priority",
+          "filas": 0
+        },
+        {
+          "etapa": "supabase_request",
+          "numero": 4,
+          "ms": 363.5,
+          "ok": true,
+          "operation": "GET client_prompts",
+          "queryHash": "0df530c40b16",
+          "select": "prompt_key,content,metadata,priority",
+          "filas": 0
+        }
+      ],
+      "consultasRepetidas": [
+        [
+          "1d3045cb061d",
+          2
+        ],
+        [
+          "08ebcb9df2c6",
+          2
+        ],
+        [
+          "cb2f05e644c8",
+          2
+        ]
+      ],
+      "totalConBufferMs": 36867,
+      "totalProcesamientoMs": 31848
+    },
+    {
+      "run": "88569f0f-1b68-415d-86e0-dd6b77bdd88f",
+      "etapa": "summary",
+      "outcome": {
+        "status": "sent",
+        "parts": 1
+      },
+      "grupos": {
+        "inbound_buffer": {
+          "llamadas": 1,
+          "ms": 5003
+        },
+        "supabase_attempt": {
+          "llamadas": 30,
+          "ms": 7809.92
+        },
+        "supabase_request": {
+          "llamadas": 30,
+          "ms": 7844.79
+        },
+        "save_inbound_message": {
+          "llamadas": 1,
+          "ms": 1006.63
+        },
+        "load_context": {
+          "llamadas": 1,
+          "ms": 232.13
+        },
+        "kapso_typing_mark_read": {
+          "llamadas": 2,
+          "ms": 1581.35
+        },
+        "openai_request": {
+          "llamadas": 5,
+          "ms": 27511.2
+        },
+        "tool_product_search": {
+          "llamadas": 1,
+          "ms": 2955.88
+        },
+        "tool_save_order": {
+          "llamadas": 1,
+          "ms": 0.03
+        },
+        "agent_processing": {
+          "llamadas": 1,
+          "ms": 34113.73
+        },
+        "kapso_send": {
+          "llamadas": 1,
+          "ms": 1393.75
+        },
+        "save_response": {
+          "llamadas": 1,
+          "ms": 331.19
+        }
+      },
+      "supabaseTop3": [
+        {
+          "etapa": "supabase_request",
+          "numero": 20,
+          "ms": 691.58,
+          "ok": true,
+          "operation": "POST whatsapp_conversations",
+          "queryHash": "fb9d56e7358f",
+          "select": null,
+          "filas": 1
+        },
+        {
+          "etapa": "supabase_request",
+          "numero": 17,
+          "ms": 600.1,
+          "ok": true,
+          "operation": "POST rpc/search_catalog_products",
+          "queryHash": "3ed31bbed162",
+          "select": null,
+          "filas": 20
+        },
+        {
+          "etapa": "supabase_request",
+          "numero": 13,
+          "ms": 576.19,
+          "ok": true,
+          "operation": "POST rpc/search_catalog_products",
+          "queryHash": "ee86d6e2aaec",
+          "select": null,
+          "filas": 20
+        }
+      ],
+      "consultasRepetidas": [
+        [
+          "1d3045cb061d",
+          2
+        ],
+        [
+          "08ebcb9df2c6",
+          2
+        ],
+        [
+          "2f990c6b594d",
+          2
+        ]
+      ],
+      "totalConBufferMs": 40844,
+      "totalProcesamientoMs": 35840
+    },
+    {
+      "run": "9bd44c2a-071b-4d51-8203-960d75ccb976",
+      "etapa": "summary",
+      "outcome": {
+        "status": "sent",
+        "parts": 1
+      },
+      "grupos": {
+        "inbound_buffer": {
+          "llamadas": 1,
+          "ms": 5004
+        },
+        "supabase_attempt": {
+          "llamadas": 28,
+          "ms": 6823.9
+        },
+        "supabase_request": {
+          "llamadas": 28,
+          "ms": 6855.11
+        },
+        "save_inbound_message": {
+          "llamadas": 1,
+          "ms": 1430.4
+        },
+        "load_context": {
+          "llamadas": 1,
+          "ms": 160.89
+        },
+        "kapso_typing_mark_read": {
+          "llamadas": 2,
+          "ms": 1487.9
+        },
+        "openai_request": {
+          "llamadas": 4,
+          "ms": 23436.33
+        },
+        "tool_product_search": {
+          "llamadas": 1,
+          "ms": 1118.7
+        },
+        "tool_save_order": {
+          "llamadas": 1,
+          "ms": 0.01
+        },
+        "agent_processing": {
+          "llamadas": 1,
+          "ms": 27992.24
+        },
+        "kapso_send": {
+          "llamadas": 1,
+          "ms": 1398.93
+        },
+        "save_response": {
+          "llamadas": 1,
+          "ms": 893.04
+        }
+      },
+      "supabaseTop3": [
+        {
+          "etapa": "supabase_request",
+          "numero": 1,
+          "ms": 698.42,
+          "ok": true,
+          "operation": "GET client_channels",
+          "queryHash": "1d3045cb061d",
+          "select": "client_id,settings,display_name",
+          "filas": 1
+        },
+        {
+          "etapa": "supabase_request",
+          "numero": 21,
+          "ms": 633.08,
+          "ok": true,
+          "operation": "POST whatsapp_conversations",
+          "queryHash": "909f8e94d1d0",
+          "select": null,
+          "filas": 1
+        },
+        {
+          "etapa": "supabase_request",
+          "numero": 13,
+          "ms": 524.25,
+          "ok": true,
+          "operation": "POST rpc/search_catalog_products",
+          "queryHash": "ab499a97fcee",
+          "select": null,
+          "filas": 20
+        }
+      ],
+      "consultasRepetidas": [
+        [
+          "1d3045cb061d",
+          2
+        ],
+        [
+          "08ebcb9df2c6",
+          2
+        ],
+        [
+          "646e5519930a",
+          2
+        ],
+        [
+          "7411256d8315",
+          2
+        ]
+      ],
+      "totalConBufferMs": 35290,
+      "totalProcesamientoMs": 30286
+    },
+    {
+      "run": "6661d48d-5415-4399-86cf-3108e33840ce",
+      "etapa": "summary",
+      "outcome": {
+        "status": "sent",
+        "parts": 1
+      },
+      "grupos": {
+        "inbound_buffer": {
+          "llamadas": 1,
+          "ms": 5024
+        },
+        "supabase_attempt": {
+          "llamadas": 30,
+          "ms": 8314.17
+        },
+        "supabase_request": {
+          "llamadas": 30,
+          "ms": 8353.92
+        },
+        "save_inbound_message": {
+          "llamadas": 1,
+          "ms": 1739.65
+        },
+        "load_context": {
+          "llamadas": 1,
+          "ms": 157.88
+        },
+        "kapso_typing_mark_read": {
+          "llamadas": 2,
+          "ms": 2169.74
+        },
+        "openai_request": {
+          "llamadas": 5,
+          "ms": 25553.37
+        },
+        "tool_product_search": {
+          "llamadas": 1,
+          "ms": 2908.99
+        },
+        "tool_save_order": {
+          "llamadas": 1,
+          "ms": 0.26
+        },
+        "agent_processing": {
+          "llamadas": 1,
+          "ms": 31856.91
+        },
+        "kapso_send": {
+          "llamadas": 1,
+          "ms": 1593.79
+        },
+        "save_response": {
+          "llamadas": 1,
+          "ms": 342.86
+        }
+      },
+      "supabaseTop3": [
+        {
+          "etapa": "supabase_request",
+          "numero": 1,
+          "ms": 931.9,
+          "ok": true,
+          "operation": "GET client_channels",
+          "queryHash": "1d3045cb061d",
+          "select": "client_id,settings,display_name",
+          "filas": 1
+        },
+        {
+          "etapa": "supabase_request",
+          "numero": 13,
+          "ms": 657.37,
+          "ok": true,
+          "operation": "POST rpc/search_catalog_products",
+          "queryHash": "ee86d6e2aaec",
+          "select": null,
+          "filas": 20
+        },
+        {
+          "etapa": "supabase_request",
+          "numero": 15,
+          "ms": 569.01,
+          "ok": true,
+          "operation": "POST rpc/search_catalog_products",
+          "queryHash": "28298aaf4ca3",
+          "select": null,
+          "filas": 20
+        }
+      ],
+      "consultasRepetidas": [
+        [
+          "1d3045cb061d",
+          2
+        ],
+        [
+          "08ebcb9df2c6",
+          2
+        ],
+        [
+          "09ffbe22fb8f",
+          2
+        ]
+      ],
+      "totalConBufferMs": 38821,
+      "totalProcesamientoMs": 33797
+    },
+    {
+      "run": "494af808-5b4c-451d-8735-505fe950b1e4",
+      "etapa": "summary",
+      "outcome": {
+        "status": "sent",
+        "parts": 1
+      },
+      "grupos": {
+        "inbound_buffer": {
+          "llamadas": 1,
+          "ms": 5003
+        },
+        "supabase_attempt": {
+          "llamadas": 31,
+          "ms": 7504.95
+        },
+        "supabase_request": {
+          "llamadas": 31,
+          "ms": 7543.09
+        },
+        "save_inbound_message": {
+          "llamadas": 1,
+          "ms": 771.1
+        },
+        "kapso_typing_mark_read": {
+          "llamadas": 2,
+          "ms": 1760.5
+        },
+        "load_context": {
+          "llamadas": 1,
+          "ms": 161.02
+        },
+        "openai_request": {
+          "llamadas": 4,
+          "ms": 22455.44
+        },
+        "tool_product_search": {
+          "llamadas": 1,
+          "ms": 2676.37
+        },
+        "tool_save_order": {
+          "llamadas": 1,
+          "ms": 0.01
+        },
+        "agent_processing": {
+          "llamadas": 1,
+          "ms": 29150.12
+        },
+        "kapso_send": {
+          "llamadas": 1,
+          "ms": 1372.06
+        },
+        "save_response": {
+          "llamadas": 1,
+          "ms": 337.1
+        }
+      },
+      "supabaseTop3": [
+        {
+          "etapa": "supabase_request",
+          "numero": 16,
+          "ms": 521.73,
+          "ok": true,
+          "operation": "POST rpc/search_catalog_products",
+          "queryHash": "5fc96d9877c2",
+          "select": null,
+          "filas": 20
+        },
+        {
+          "etapa": "supabase_request",
+          "numero": 17,
+          "ms": 492.07,
+          "ok": true,
+          "operation": "POST rpc/search_catalog_products",
+          "queryHash": "0dc97f9e6b64",
+          "select": null,
+          "filas": 20
+        },
+        {
+          "etapa": "supabase_request",
+          "numero": 19,
+          "ms": 451.71,
+          "ok": true,
+          "operation": "POST rpc/search_catalog_products",
+          "queryHash": "bad1727c5c89",
+          "select": null,
+          "filas": 20
+        }
+      ],
+      "consultasRepetidas": [
+        [
+          "1d3045cb061d",
+          2
+        ],
+        [
+          "08ebcb9df2c6",
+          2
+        ],
+        [
+          "14c2dbc0256a",
+          2
+        ],
+        [
+          "a9a984ae86cf",
+          2
+        ]
+      ],
+      "totalConBufferMs": 35865,
+      "totalProcesamientoMs": 30862
+    },
+    {
+      "run": "597991b2-4c0a-4a43-8113-6300f6e6e805",
+      "etapa": "summary",
+      "outcome": {
+        "status": "sent",
+        "parts": 1
+      },
+      "grupos": {
+        "inbound_buffer": {
+          "llamadas": 1,
+          "ms": 5027
+        },
+        "supabase_attempt": {
+          "llamadas": 24,
+          "ms": 5709.61
+        },
+        "supabase_request": {
+          "llamadas": 24,
+          "ms": 5744.36
+        },
+        "save_inbound_message": {
+          "llamadas": 1,
+          "ms": 1607.02
+        },
+        "load_context": {
+          "llamadas": 1,
+          "ms": 161.02
+        },
+        "kapso_typing_mark_read": {
+          "llamadas": 2,
+          "ms": 1875.34
+        },
+        "openai_request": {
+          "llamadas": 4,
+          "ms": 23423.17
+        },
+        "tool_product_search": {
+          "llamadas": 1,
+          "ms": 711.12
+        },
+        "tool_order_logic": {
+          "llamadas": 1,
+          "ms": 4.64
+        },
+        "tool_save_order": {
+          "llamadas": 1,
+          "ms": 0.15
+        },
+        "agent_processing": {
+          "llamadas": 1,
+          "ms": 27141.57
+        },
+        "kapso_send": {
+          "llamadas": 1,
+          "ms": 1277.44
+        },
+        "save_response": {
+          "llamadas": 1,
+          "ms": 421.13
+        }
+      },
+      "supabaseTop3": [
+        {
+          "etapa": "supabase_request",
+          "numero": 1,
+          "ms": 703.18,
+          "ok": true,
+          "operation": "GET client_channels",
+          "queryHash": "1d3045cb061d",
+          "select": "client_id,settings,display_name",
+          "filas": 1
+        },
+        {
+          "etapa": "supabase_request",
+          "numero": 13,
+          "ms": 625.62,
+          "ok": true,
+          "operation": "POST rpc/search_catalog_products",
+          "queryHash": "ee86d6e2aaec",
+          "select": null,
+          "filas": 20
+        },
+        {
+          "etapa": "supabase_request",
+          "numero": 14,
+          "ms": 347.51,
+          "ok": true,
+          "operation": "POST whatsapp_conversations",
+          "queryHash": "f0ef65acb66b",
+          "select": null,
+          "filas": 1
+        }
+      ],
+      "consultasRepetidas": [
+        [
+          "1d3045cb061d",
+          2
+        ],
+        [
+          "08ebcb9df2c6",
+          2
+        ],
+        [
+          "cab02d4fdc89",
+          2
+        ]
+      ],
+      "totalConBufferMs": 33872,
+      "totalProcesamientoMs": 28845
+    },
+    {
+      "run": "8bb0e2a1-3d05-45f2-b9de-d5e111888e42",
+      "etapa": "summary",
+      "outcome": {
+        "status": "sent",
+        "parts": 1
+      },
+      "grupos": {
+        "inbound_buffer": {
+          "llamadas": 1,
+          "ms": 5004
+        },
+        "supabase_attempt": {
+          "llamadas": 28,
+          "ms": 6836.53
+        },
+        "supabase_request": {
+          "llamadas": 28,
+          "ms": 6869.93
+        },
+        "save_inbound_message": {
+          "llamadas": 1,
+          "ms": 709.56
+        },
+        "load_context": {
+          "llamadas": 1,
+          "ms": 214.49
+        },
+        "kapso_typing_mark_read": {
+          "llamadas": 2,
+          "ms": 1602.33
+        },
+        "openai_request": {
+          "llamadas": 5,
+          "ms": 24752.65
+        },
+        "tool_product_search": {
+          "llamadas": 1,
+          "ms": 2785.47
+        },
+        "tool_save_order": {
+          "llamadas": 1,
+          "ms": 0.02
+        },
+        "agent_processing": {
+          "llamadas": 1,
+          "ms": 30825.31
+        },
+        "kapso_send": {
+          "llamadas": 1,
+          "ms": 1068.83
+        },
+        "save_response": {
+          "llamadas": 1,
+          "ms": 327.64
+        }
+      },
+      "supabaseTop3": [
+        {
+          "etapa": "supabase_request",
+          "numero": 13,
+          "ms": 527.21,
+          "ok": true,
+          "operation": "POST rpc/search_catalog_products",
+          "queryHash": "ab499a97fcee",
+          "select": null,
+          "filas": 20
+        },
+        {
+          "etapa": "supabase_request",
+          "numero": 15,
+          "ms": 464.25,
+          "ok": true,
+          "operation": "POST rpc/search_catalog_products",
+          "queryHash": "51406eb237d7",
+          "select": null,
+          "filas": 20
+        },
+        {
+          "etapa": "supabase_request",
+          "numero": 14,
+          "ms": 438.17,
+          "ok": true,
+          "operation": "POST rpc/search_catalog_products",
+          "queryHash": "171b02a47e5a",
+          "select": null,
+          "filas": 20
+        }
+      ],
+      "consultasRepetidas": [
+        [
+          "1d3045cb061d",
+          2
+        ],
+        [
+          "08ebcb9df2c6",
+          2
+        ],
+        [
+          "3b9c7b88f35b",
+          2
+        ]
+      ],
+      "totalConBufferMs": 37227,
+      "totalProcesamientoMs": 32223
+    }
+  ],
+  "usage": {
+    "calls": 31,
+    "promptTokens": 158710,
+    "completionTokens": 13575,
+    "totalTokens": 172285,
+    "models": [
+      "gpt-5.2",
+      "gpt-5.4",
+      "gpt-5.4-mini"
+    ],
+    "monetaryCost": null
+  },
+  "note": "First outbound recovers an original Oct29 event; use redelivery elapsed time, not its original message age. New turns include provider transport, 5s buffer, model, catalog and send. No original media tested."
+}

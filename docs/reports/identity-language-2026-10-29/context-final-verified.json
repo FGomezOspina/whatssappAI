@@ -1,0 +1,1459 @@
+{
+  "capturedAt": "2026-10-29T22:09:21.809Z",
+  "mode": "real models and read-only Supabase; in-memory state; not WhatsApp E2E",
+  "label": "context-final-verified",
+  "rows": [
+    {
+      "case": "identity-context",
+      "text": "Solo consulta: qué Monello hay para gato?",
+      "response": "Para gato hay Monello Cat Salmón, Monello Cat Filhotes, Monello Cat Castrado y Monello Bolas de Pelos. ¿Cuál de esas referencias está buscando?",
+      "ms": 12102,
+      "decisions": [
+        {
+          "router": true,
+          "decision": {
+            "recomendaciones": [],
+            "preguntaRecomendacion": null,
+            "solicitudComercialIndependiente": true,
+            "derivacionHumana": {
+              "necesaria": false,
+              "motivo": null
+            },
+            "seguimientoProducto": "nueva",
+            "recursosAclaracion": {},
+            "resumenMemoria": null,
+            "continuarFlujo": false,
+            "compraContextual": null,
+            "solicitudesProductoDetectadas": 1,
+            "consultaCatalogo": {
+              "tipo": "referencia",
+              "presupuestoMaximo": null,
+              "necesaria": true,
+              "consulta": "productos Monello para gato"
+            },
+            "respuestaConversacional": null,
+            "intencion": "consulta_marcas",
+            "accion": "consultar",
+            "confianza": 0.96,
+            "producto": {
+              "accion": "consultar",
+              "marca": "Monello",
+              "referencia": null,
+              "linea": null,
+              "textoVisible": "Monello para gato",
+              "mencionOriginal": null,
+              "categoria": "comida",
+              "subcategoria": null,
+              "especie": "gato",
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": null,
+              "intencionPresentaciones": null,
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": null
+            },
+            "productos": [
+              {
+                "accion": "consultar",
+                "marca": "Monello",
+                "referencia": null,
+                "linea": null,
+                "textoVisible": "Monello para gato",
+                "mencionOriginal": "qué Monello hay para gato",
+                "categoria": "comida",
+                "subcategoria": null,
+                "especie": "gato",
+                "etapa": null,
+                "tamano": null,
+                "sabores": [],
+                "presentacion": null,
+                "intencionPresentaciones": null,
+                "mascotas": [],
+                "condiciones": [],
+                "cantidad": null
+              }
+            ],
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            },
+            "facturacion": {
+              "electronica": null,
+              "evidencia": null
+            },
+            "datosCliente": {
+              "nombre": null,
+              "cedula": null,
+              "correo": null,
+              "celular": null
+            },
+            "carrito": {
+              "operacion": null,
+              "cantidadObjetivo": null,
+              "cantidadDelta": null,
+              "aplicaAlUltimoProducto": null,
+              "razon": null
+            },
+            "faltanteSugerido": null
+          }
+        },
+        {
+          "router": false,
+          "decision": {
+            "recomendaciones": [],
+            "preguntaRecomendacion": null,
+            "solicitudComercialIndependiente": false,
+            "derivacionHumana": {
+              "necesaria": false,
+              "motivo": null
+            },
+            "seguimientoProducto": null,
+            "recursosAclaracion": {
+              "fotoDisponible": null,
+              "masDatosDisponibles": null
+            },
+            "resumenMemoria": null,
+            "continuarFlujo": false,
+            "compraContextual": null,
+            "solicitudesProductoDetectadas": null,
+            "consultaCatalogo": {
+              "tipo": null,
+              "presupuestoMaximo": null,
+              "necesaria": null,
+              "consulta": null
+            },
+            "respuestaConversacional": null,
+            "intencion": "consulta_producto",
+            "accion": "consultar",
+            "confianza": 0.78,
+            "producto": {
+              "accion": "consultar",
+              "marca": "MONELLO",
+              "referencia": null,
+              "linea": null,
+              "textoVisible": "qué Monello hay para gato",
+              "mencionOriginal": null,
+              "categoria": "comida",
+              "subcategoria": "concentrado",
+              "especie": "gato",
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": null,
+              "intencionPresentaciones": null,
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": null
+            },
+            "productos": [],
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            },
+            "facturacion": {
+              "electronica": null,
+              "evidencia": null
+            },
+            "datosCliente": {
+              "nombre": null,
+              "cedula": null,
+              "correo": null,
+              "celular": null
+            },
+            "carrito": {
+              "operacion": null,
+              "cantidadObjetivo": null,
+              "cantidadDelta": null,
+              "aplicaAlUltimoProducto": null,
+              "razon": null
+            },
+            "faltanteSugerido": null
+          }
+        }
+      ],
+      "requests": [
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 5581,
+          "status": 200,
+          "model": "gpt-5.4-2026-03-05",
+          "output": "{\n  \"intencion\": \"consulta_marcas\",\n  \"accion\": \"consultar\",\n  \"confianza\": 0.96,\n  \"compraContextual\": null,\n  \"solicitudesProductoDetectadas\": 1,\n  \"producto\": {\n    \"accion\": \"consultar\",\n    \"marca\": \"Monello\",\n    \"referencia\": null,\n    \"linea\": null,\n    \"textoVisible\": \"Monello para gato\",\n    \"categoria\": \"comida\",\n    \"subcategoria\": null,\n    \"especie\": \"gato\",\n    \"etapa\": null,\n    \"tamano\": null,\n    \"sabores\": [],\n    \"condiciones\": [],\n    \"presentacion\": null,\n    \"cantidad\": null,\n    \"intencionPresentaciones\": null,\n    \"mascotas\": []\n  },\n  \"productos\": [\n    {\n      \"accion\": \"consultar\",\n      \"marca\": \"Monello\",\n      \"referencia\": null,\n      \"linea\": null,\n      \"textoVisible\": \"Monello para gato\",\n      \"categoria\": \"comida\",\n      \"subcategoria\": null,\n      \"especie\": \"gato\",\n      \"etapa\": null,\n      \"tamano\": null,\n      \"sabores\": [],\n      \"condiciones\": [],\n      \"presentacion\": null,\n      \"cantidad\": null,\n      \"intencionPresentaciones\": null,\n      \"mascotas\": [],\n      \"mencionOriginal\": \"qué Monello hay para gato\"\n    }\n  ],\n  \"entrega\": {\n    \"tipo\": null,\n    \"direccion\": null,\n    \"direccionCompleta\": null,\n    \"sector\": null,\n    \"metodoPago\": null,\n    \"sede\": null\n  },\n  \"facturacion\": {\n    \"electronica\": null,\n    \"evidencia\": null\n  },\n  \"datosCliente\": {\n    \"nombre\": null,\n    \"cedula\": null,\n    \"correo\": null,\n    \"celular\": null\n  },\n  \"carrito\": {\n    \"operacion\": null,\n    \"cantidadObjetivo\": null,\n    \"cantidadDelta\": null,\n    \"aplicaAlUltimoProducto\": null,\n    \"razon\": null\n  },\n  \"faltanteSugerido\": null,\n  \"recursosAclaracion\": {\n    \"fotoDisponible\": null,\n    \"masDatosDisponibles\": null\n  },\n  \"consultaCatalogo\": {\n    \"necesaria\": true,\n    \"consulta\": \"productos Monello para gato\",\n    \"tipo\": \"referencia\",\n    \"presupuestoMaximo\": null\n  },\n  \"derivacionHumana\": {\n    \"necesaria\": false,\n    \"motivo\": null\n  },\n  \"solicitudComercialIndependiente\": true,\n  \"seguimientoProducto\": \"nueva\",\n  \"respuestaConversacional\": null\n}",
+          "usage": {
+            "prompt_tokens": 6620,
+            "completion_tokens": 624,
+            "total_tokens": 7244,
+            "prompt_tokens_details": {
+              "cached_tokens": 4864,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "supabase",
+          "method": "POST",
+          "path": "/rest/v1/rpc/search_catalog_products",
+          "ms": 664,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "GET",
+          "path": "/rest/v1/training_examples",
+          "ms": 212,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "GET",
+          "path": "/rest/v1/training_examples",
+          "ms": 261,
+          "status": 200
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 3597,
+          "status": 200,
+          "model": "gpt-5.2-2025-12-11",
+          "output": "{\"intencion\":\"consulta_producto\",\"accion\":\"consultar\",\"confianza\":0.78,\"compraContextual\":false,\"solicitudesProductoDetectadas\":[\"Monello para gato (referencias y presentaciones disponibles)\"],\"producto\":{\"accion\":\"consultar\",\"marca\":\"MONELLO\",\"referencia\":null,\"linea\":null,\"textoVisible\":\"qué Monello hay para gato\",\"categoria\":\"comida\",\"subcategoria\":\"concentrado\",\"especie\":\"gato\",\"etapa\":null,\"tamano\":null,\"sabores\":[],\"condiciones\":[],\"presentacion\":null,\"cantidad\":null,\"intencionPresentaciones\":\"listar_opciones\",\"mascotas\":[]},\"productos\":[],\"entrega\":{\"tipo\":null,\"direccion\":null,\"direccionCompleta\":null,\"sector\":null,\"metodoPago\":null,\"sede\":null},\"facturacion\":{\"electronica\":null,\"evidencia\":null},\"datosCliente\":{\"nombre\":null,\"cedula\":null,\"correo\":null,\"celular\":null},\"carrito\":{\"operacion\":null,\"cantidadObjetivo\":null,\"cantidadDelta\":null,\"aplicaAlUltimoProducto\":null,\"razon\":null},\"faltanteSugerido\":null}",
+          "usage": {
+            "prompt_tokens": 3164,
+            "completion_tokens": 258,
+            "total_tokens": 3422,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 985,
+          "status": 200,
+          "model": "gpt-5.4-mini-2026-03-17",
+          "output": "Claro, para gato hay Monello Cat Salmón, Monello Cat Filhotes, Monello Cat Castrado y Monello Bolas de Pelos 😊\n\nSi me dices cuál está buscando, te paso la presentación disponible.",
+          "usage": {
+            "prompt_tokens": 1428,
+            "completion_tokens": 50,
+            "total_tokens": 1478,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 910,
+          "status": 200,
+          "model": "gpt-5.4-mini-2026-03-17",
+          "output": "Para gato hay Monello Cat Salmón, Monello Cat Filhotes, Monello Cat Castrado y Monello Bolas de Pelos. ¿Cuál de esas referencias está buscando?",
+          "usage": {
+            "prompt_tokens": 1581,
+            "completion_tokens": 42,
+            "total_tokens": 1623,
+            "prompt_tokens_details": {
+              "cached_tokens": 1280,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        }
+      ],
+      "cartUnchanged": true,
+      "state": {
+        "criterios": {},
+        "recomendacionActiva": null,
+        "atencionHumana": null,
+        "ultimaConsultaProducto": {
+          "terminos": [
+            "monello",
+            "gato"
+          ],
+          "etiqueta": "monello gato",
+          "presentacion": null,
+          "fuente": "texto",
+          "nivel": "media",
+          "razon": "ambigua",
+          "aclaracion": {
+            "campo": "referencia",
+            "valores": [
+              "MONELLO CAT SALMON",
+              "MONELLO CAT FILHOTES",
+              "MONELLO CAT CASTRADO",
+              "MONELLO BOLAS DE PELOS"
+            ]
+          },
+          "creadoEn": "2026-10-29T22:09:32.038Z",
+          "solicitudOriginal": {
+            "intencion": "consulta_marcas",
+            "accion": "consultar",
+            "recursosAclaracion": {},
+            "producto": {
+              "accion": "consultar",
+              "marca": "MONELLO",
+              "referencia": null,
+              "linea": null,
+              "textoVisible": "qué Monello hay para gato",
+              "mencionOriginal": null,
+              "categoria": "comida",
+              "subcategoria": "concentrado",
+              "especie": "gato",
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": null,
+              "intencionPresentaciones": null,
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": null
+            },
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            }
+          },
+          "sinCoincidenciaInformada": false
+        }
+      }
+    },
+    {
+      "case": "identity-context",
+      "text": "El de salmón, un kilo",
+      "response": "Claro, para gato está MONELLO CAT SALMON x 1kg en $27.300 🐾",
+      "ms": 11466,
+      "decisions": [
+        {
+          "router": true,
+          "decision": {
+            "recomendaciones": [],
+            "preguntaRecomendacion": null,
+            "solicitudComercialIndependiente": true,
+            "derivacionHumana": {
+              "necesaria": false,
+              "motivo": null
+            },
+            "seguimientoProducto": "aclaracion",
+            "recursosAclaracion": {},
+            "resumenMemoria": null,
+            "continuarFlujo": false,
+            "compraContextual": null,
+            "solicitudesProductoDetectadas": 1,
+            "consultaCatalogo": {
+              "tipo": "referencia",
+              "presupuestoMaximo": null,
+              "necesaria": true,
+              "consulta": "MONELLO CAT SALMON 1kg gato"
+            },
+            "respuestaConversacional": null,
+            "intencion": "consulta_producto",
+            "accion": "consultar",
+            "confianza": 0.97,
+            "producto": {
+              "accion": "consultar",
+              "marca": "MONELLO",
+              "referencia": "MONELLO CAT SALMON",
+              "linea": null,
+              "textoVisible": "de salmón, un kilo",
+              "mencionOriginal": "de salmón, un kilo",
+              "categoria": "comida",
+              "subcategoria": "concentrado",
+              "especie": "gato",
+              "etapa": null,
+              "tamano": null,
+              "sabores": [
+                "salmón"
+              ],
+              "presentacion": "1kg",
+              "intencionPresentaciones": "especifica",
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": 1
+            },
+            "productos": [
+              {
+                "accion": "consultar",
+                "marca": "MONELLO",
+                "referencia": "MONELLO CAT SALMON",
+                "linea": null,
+                "textoVisible": "de salmón, un kilo",
+                "mencionOriginal": "de salmón, un kilo",
+                "categoria": "comida",
+                "subcategoria": "concentrado",
+                "especie": "gato",
+                "etapa": null,
+                "tamano": null,
+                "sabores": [
+                  "salmón"
+                ],
+                "presentacion": "1kg",
+                "intencionPresentaciones": "especifica",
+                "mascotas": [],
+                "condiciones": [],
+                "cantidad": 1
+              }
+            ],
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            },
+            "facturacion": {
+              "electronica": null,
+              "evidencia": null
+            },
+            "datosCliente": {
+              "nombre": null,
+              "cedula": null,
+              "correo": null,
+              "celular": null
+            },
+            "carrito": {
+              "operacion": null,
+              "cantidadObjetivo": null,
+              "cantidadDelta": null,
+              "aplicaAlUltimoProducto": null,
+              "razon": null
+            },
+            "faltanteSugerido": null
+          }
+        },
+        {
+          "router": false,
+          "decision": {
+            "recomendaciones": [],
+            "preguntaRecomendacion": null,
+            "solicitudComercialIndependiente": false,
+            "derivacionHumana": {
+              "necesaria": false,
+              "motivo": null
+            },
+            "seguimientoProducto": null,
+            "recursosAclaracion": {
+              "fotoDisponible": null,
+              "masDatosDisponibles": null
+            },
+            "resumenMemoria": null,
+            "continuarFlujo": false,
+            "compraContextual": null,
+            "solicitudesProductoDetectadas": null,
+            "consultaCatalogo": {
+              "tipo": null,
+              "presupuestoMaximo": null,
+              "necesaria": null,
+              "consulta": null
+            },
+            "respuestaConversacional": null,
+            "intencion": "consulta_producto",
+            "accion": "consultar",
+            "confianza": 0.86,
+            "producto": {
+              "accion": "consultar",
+              "marca": "MONELLO",
+              "referencia": "MONELLO CAT SALMON",
+              "linea": null,
+              "textoVisible": "El de salmón, un kilo",
+              "mencionOriginal": null,
+              "categoria": "comida",
+              "subcategoria": "concentrado",
+              "especie": "gato",
+              "etapa": null,
+              "tamano": null,
+              "sabores": [
+                "salmón"
+              ],
+              "presentacion": "x 1kg",
+              "intencionPresentaciones": null,
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": 1
+            },
+            "productos": [],
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            },
+            "facturacion": {
+              "electronica": null,
+              "evidencia": null
+            },
+            "datosCliente": {
+              "nombre": null,
+              "cedula": null,
+              "correo": null,
+              "celular": null
+            },
+            "carrito": {
+              "operacion": null,
+              "cantidadObjetivo": null,
+              "cantidadDelta": null,
+              "aplicaAlUltimoProducto": true,
+              "razon": null
+            },
+            "faltanteSugerido": null
+          }
+        }
+      ],
+      "requests": [
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 5938,
+          "status": 200,
+          "model": "gpt-5.4-2026-03-05",
+          "output": "{\n  \"intencion\": \"consulta_producto\",\n  \"accion\": \"consultar\",\n  \"confianza\": 0.97,\n  \"compraContextual\": null,\n  \"solicitudesProductoDetectadas\": 1,\n  \"producto\": {\n    \"accion\": \"consultar\",\n    \"marca\": \"MONELLO\",\n    \"referencia\": \"MONELLO CAT SALMON\",\n    \"linea\": null,\n    \"textoVisible\": \"de salmón, un kilo\",\n    \"categoria\": \"comida\",\n    \"subcategoria\": \"concentrado\",\n    \"especie\": \"gato\",\n    \"etapa\": null,\n    \"tamano\": null,\n    \"sabores\": [\"salmón\"],\n    \"condiciones\": [],\n    \"presentacion\": \"1kg\",\n    \"cantidad\": 1,\n    \"intencionPresentaciones\": \"especifica\",\n    \"mascotas\": [],\n    \"mencionOriginal\": \"de salmón, un kilo\"\n  },\n  \"productos\": [\n    {\n      \"accion\": \"consultar\",\n      \"marca\": \"MONELLO\",\n      \"referencia\": \"MONELLO CAT SALMON\",\n      \"linea\": null,\n      \"textoVisible\": \"de salmón, un kilo\",\n      \"categoria\": \"comida\",\n      \"subcategoria\": \"concentrado\",\n      \"especie\": \"gato\",\n      \"etapa\": null,\n      \"tamano\": null,\n      \"sabores\": [\"salmón\"],\n      \"condiciones\": [],\n      \"presentacion\": \"1kg\",\n      \"cantidad\": 1,\n      \"intencionPresentaciones\": \"especifica\",\n      \"mascotas\": [],\n      \"mencionOriginal\": \"de salmón, un kilo\"\n    }\n  ],\n  \"entrega\": {\n    \"tipo\": null,\n    \"direccion\": null,\n    \"direccionCompleta\": null,\n    \"sector\": null,\n    \"metodoPago\": null,\n    \"sede\": null\n  },\n  \"facturacion\": {\n    \"electronica\": null,\n    \"evidencia\": null\n  },\n  \"datosCliente\": {\n    \"nombre\": null,\n    \"cedula\": null,\n    \"correo\": null,\n    \"celular\": null\n  },\n  \"carrito\": {\n    \"operacion\": null,\n    \"cantidadObjetivo\": null,\n    \"cantidadDelta\": null,\n    \"aplicaAlUltimoProducto\": null,\n    \"razon\": null\n  },\n  \"faltanteSugerido\": null,\n  \"recursosAclaracion\": {\n    \"fotoDisponible\": null,\n    \"masDatosDisponibles\": null\n  },\n  \"consultaCatalogo\": {\n    \"necesaria\": true,\n    \"consulta\": \"MONELLO CAT SALMON 1kg gato\",\n    \"tipo\": \"referencia\",\n    \"presupuestoMaximo\": null\n  },\n  \"respuestaConversacional\": null,\n  \"derivacionHumana\": {\n    \"necesaria\": false,\n    \"motivo\": null\n  },\n  \"solicitudComercialIndependiente\": true,\n  \"seguimientoProducto\": \"aclaracion\"\n}",
+          "usage": {
+            "prompt_tokens": 7999,
+            "completion_tokens": 691,
+            "total_tokens": 8690,
+            "prompt_tokens_details": {
+              "cached_tokens": 4864,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "supabase",
+          "method": "POST",
+          "path": "/rest/v1/rpc/search_catalog_products",
+          "ms": 511,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "GET",
+          "path": "/rest/v1/training_examples",
+          "ms": 230,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "GET",
+          "path": "/rest/v1/training_examples",
+          "ms": 247,
+          "status": 200
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 3417,
+          "status": 200,
+          "model": "gpt-5.2-2025-12-11",
+          "output": "{\"intencion\":\"consulta_producto\",\"accion\":\"consultar\",\"confianza\":0.86,\"compraContextual\":null,\"solicitudesProductoDetectadas\":null,\"producto\":{\"accion\":\"consultar\",\"marca\":\"MONELLO\",\"referencia\":\"MONELLO CAT SALMON\",\"linea\":null,\"textoVisible\":\"El de salmón, un kilo\",\"categoria\":\"comida\",\"subcategoria\":\"concentrado\",\"especie\":\"gato\",\"etapa\":null,\"tamano\":null,\"sabores\":[\"salmón\"],\"condiciones\":[],\"presentacion\":\"x 1kg\",\"cantidad\":1,\"intencionPresentaciones\":null,\"mascotas\":[]},\"productos\":[],\"entrega\":{\"tipo\":null,\"direccion\":null,\"direccionCompleta\":null,\"sector\":null,\"metodoPago\":null,\"sede\":null},\"facturacion\":{\"electronica\":null,\"evidencia\":null},\"datosCliente\":{\"nombre\":null,\"cedula\":null,\"correo\":null,\"celular\":null},\"carrito\":{\"operacion\":null,\"cantidadObjetivo\":null,\"cantidadDelta\":null,\"aplicaAlUltimoProducto\":true,\"razon\":null},\"faltanteSugerido\":null}",
+          "usage": {
+            "prompt_tokens": 4090,
+            "completion_tokens": 258,
+            "total_tokens": 4348,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 1258,
+          "status": 200,
+          "model": "gpt-5.4-mini-2026-03-17",
+          "output": "Claro, para gato está MONELLO CAT SALMON x 1kg en $27.300 🐾",
+          "usage": {
+            "prompt_tokens": 1913,
+            "completion_tokens": 26,
+            "total_tokens": 1939,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        }
+      ],
+      "cartUnchanged": true,
+      "state": {
+        "criterios": {
+          "especie": "gato",
+          "categoria": "comida",
+          "subcategoria": "concentrado",
+          "sabores": [
+            "salmon"
+          ]
+        },
+        "recomendacionActiva": null,
+        "atencionHumana": null,
+        "ultimaConsultaProducto": {
+          "terminos": [
+            "monello",
+            "cat",
+            "salmon",
+            "gato"
+          ],
+          "etiqueta": "monello cat salmon gato",
+          "presentacion": "1kg",
+          "fuente": "texto",
+          "nivel": "alta",
+          "razon": "nombre_exacto",
+          "aclaracion": null,
+          "creadoEn": "2026-10-29T22:09:44.135Z",
+          "solicitudOriginal": {
+            "intencion": "consulta_marcas",
+            "accion": "consultar",
+            "producto": {
+              "accion": "consultar",
+              "marca": "MONELLO",
+              "referencia": "MONELLO CAT SALMON",
+              "linea": null,
+              "textoVisible": "El de salmón, un kilo",
+              "mencionOriginal": null,
+              "categoria": "comida",
+              "subcategoria": "concentrado",
+              "especie": "gato",
+              "etapa": null,
+              "tamano": null,
+              "sabores": [
+                "salmón"
+              ],
+              "presentacion": "1kg",
+              "intencionPresentaciones": null,
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": 1,
+              "pesoTextoOriginal": "1kg",
+              "duracion": null,
+              "coincidenciaVisualValidada": false,
+              "requierePresentacion": false,
+              "nombreFamilia": "MONELLO CAT SALMON",
+              "referenciasEquivalentes": [
+                "MONELLO CAT SALMON"
+              ],
+              "presentacionesEquivalentes": [
+                {
+                  "peso": "x 1kg",
+                  "precio": 27300,
+                  "metadata": {
+                    "llave": "1068",
+                    "codigo": "10301011068",
+                    "source": "productos.json",
+                    "codigos": [
+                      "10301011068"
+                    ],
+                    "nombre_original": "MONELLO CAT SALMON X 1KL",
+                    "source_reference": "MONELLO CAT SALMON"
+                  },
+                  "stock": null,
+                  "referencia": "MONELLO CAT SALMON"
+                },
+                {
+                  "peso": "x 7 kg",
+                  "precio": 139500,
+                  "metadata": {
+                    "llave": "1069",
+                    "codigo": "10301011069",
+                    "source": "productos.json",
+                    "codigos": [
+                      "10301011069"
+                    ],
+                    "nombre_original": "MONELLO CAT SALMON X 7 KL",
+                    "source_reference": "MONELLO CAT SALMON"
+                  },
+                  "stock": null,
+                  "referencia": "MONELLO CAT SALMON"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "case": "identity-context",
+      "text": "Ahora quiero saber el precio de Nutrecan adulto raza pequeña, dos kilos",
+      "response": "Te confirmo, esa referencia la manejamos: NUTRECAN ADULTO RP 2 kg por $25.000. Las existencias están por confirmar. 🙂",
+      "ms": 12045,
+      "decisions": [
+        {
+          "router": true,
+          "decision": {
+            "recomendaciones": [],
+            "preguntaRecomendacion": null,
+            "solicitudComercialIndependiente": true,
+            "derivacionHumana": {
+              "necesaria": false,
+              "motivo": null
+            },
+            "seguimientoProducto": "nueva",
+            "recursosAclaracion": {},
+            "resumenMemoria": null,
+            "continuarFlujo": false,
+            "compraContextual": null,
+            "solicitudesProductoDetectadas": 1,
+            "consultaCatalogo": {
+              "tipo": "referencia",
+              "presupuestoMaximo": null,
+              "necesaria": true,
+              "consulta": "Nutrecan adulto raza pequeña 2 kilos"
+            },
+            "respuestaConversacional": null,
+            "intencion": "consulta_producto",
+            "accion": "consultar",
+            "confianza": 0.98,
+            "producto": {
+              "accion": "consultar",
+              "marca": "Nutrecan",
+              "referencia": "Nutrecan adulto raza pequeña",
+              "linea": null,
+              "textoVisible": "Nutrecan adulto raza pequeña, dos kilos",
+              "mencionOriginal": null,
+              "categoria": "comida",
+              "subcategoria": "concentrado",
+              "especie": null,
+              "etapa": "adulto",
+              "tamano": "pequeña",
+              "sabores": [],
+              "presentacion": "2 kilos",
+              "intencionPresentaciones": "especifica",
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": 1
+            },
+            "productos": [
+              {
+                "accion": "consultar",
+                "marca": "Nutrecan",
+                "referencia": "Nutrecan adulto raza pequeña",
+                "linea": null,
+                "textoVisible": "Nutrecan adulto raza pequeña, dos kilos",
+                "mencionOriginal": "Nutrecan adulto raza pequeña, dos kilos",
+                "categoria": "comida",
+                "subcategoria": "concentrado",
+                "especie": null,
+                "etapa": "adulto",
+                "tamano": "pequeña",
+                "sabores": [],
+                "presentacion": "2 kilos",
+                "intencionPresentaciones": "especifica",
+                "mascotas": [],
+                "condiciones": [],
+                "cantidad": 1
+              }
+            ],
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            },
+            "facturacion": {
+              "electronica": null,
+              "evidencia": null
+            },
+            "datosCliente": {
+              "nombre": null,
+              "cedula": null,
+              "correo": null,
+              "celular": null
+            },
+            "carrito": {
+              "operacion": null,
+              "cantidadObjetivo": null,
+              "cantidadDelta": null,
+              "aplicaAlUltimoProducto": null,
+              "razon": null
+            },
+            "faltanteSugerido": null
+          }
+        },
+        {
+          "router": false,
+          "decision": {
+            "recomendaciones": [],
+            "preguntaRecomendacion": null,
+            "solicitudComercialIndependiente": false,
+            "derivacionHumana": {
+              "necesaria": false,
+              "motivo": null
+            },
+            "seguimientoProducto": null,
+            "recursosAclaracion": {
+              "fotoDisponible": null,
+              "masDatosDisponibles": null
+            },
+            "resumenMemoria": null,
+            "continuarFlujo": false,
+            "compraContextual": null,
+            "solicitudesProductoDetectadas": null,
+            "consultaCatalogo": {
+              "tipo": null,
+              "presupuestoMaximo": null,
+              "necesaria": null,
+              "consulta": null
+            },
+            "respuestaConversacional": null,
+            "intencion": "consulta_producto",
+            "accion": "consultar",
+            "confianza": 0.91,
+            "producto": {
+              "accion": "consultar",
+              "marca": "NUTRECAN",
+              "referencia": "NUTRECAN ADULTO RP",
+              "linea": null,
+              "textoVisible": "Nutrecan adulto raza pequeña, dos kilos",
+              "mencionOriginal": null,
+              "categoria": "comida",
+              "subcategoria": "concentrado",
+              "especie": "perro",
+              "etapa": "adulto",
+              "tamano": "raza pequeña",
+              "sabores": [],
+              "presentacion": "2 kg",
+              "intencionPresentaciones": null,
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": null
+            },
+            "productos": [],
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            },
+            "facturacion": {
+              "electronica": null,
+              "evidencia": null
+            },
+            "datosCliente": {
+              "nombre": null,
+              "cedula": null,
+              "correo": null,
+              "celular": null
+            },
+            "carrito": {
+              "operacion": null,
+              "cantidadObjetivo": null,
+              "cantidadDelta": null,
+              "aplicaAlUltimoProducto": null,
+              "razon": null
+            },
+            "faltanteSugerido": null
+          }
+        }
+      ],
+      "requests": [
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 6318,
+          "status": 200,
+          "model": "gpt-5.4-2026-03-05",
+          "output": "{\n  \"intencion\": \"consulta_producto\",\n  \"accion\": \"consultar\",\n  \"confianza\": 0.98,\n  \"compraContextual\": null,\n  \"solicitudesProductoDetectadas\": 1,\n  \"producto\": {\n    \"accion\": \"consultar\",\n    \"marca\": \"Nutrecan\",\n    \"referencia\": \"Nutrecan adulto raza pequeña\",\n    \"linea\": null,\n    \"textoVisible\": \"Nutrecan adulto raza pequeña, dos kilos\",\n    \"categoria\": \"comida\",\n    \"subcategoria\": \"concentrado\",\n    \"especie\": null,\n    \"etapa\": \"adulto\",\n    \"tamano\": \"pequeña\",\n    \"sabores\": [],\n    \"condiciones\": [],\n    \"presentacion\": \"2 kilos\",\n    \"cantidad\": 1,\n    \"intencionPresentaciones\": \"especifica\",\n    \"mascotas\": []\n  },\n  \"productos\": [\n    {\n      \"accion\": \"consultar\",\n      \"marca\": \"Nutrecan\",\n      \"referencia\": \"Nutrecan adulto raza pequeña\",\n      \"linea\": null,\n      \"textoVisible\": \"Nutrecan adulto raza pequeña, dos kilos\",\n      \"mencionOriginal\": \"Nutrecan adulto raza pequeña, dos kilos\",\n      \"categoria\": \"comida\",\n      \"subcategoria\": \"concentrado\",\n      \"especie\": null,\n      \"etapa\": \"adulto\",\n      \"tamano\": \"pequeña\",\n      \"sabores\": [],\n      \"condiciones\": [],\n      \"presentacion\": \"2 kilos\",\n      \"cantidad\": 1,\n      \"intencionPresentaciones\": \"especifica\",\n      \"mascotas\": []\n    }\n  ],\n  \"entrega\": {\n    \"tipo\": null,\n    \"direccion\": null,\n    \"direccionCompleta\": null,\n    \"sector\": null,\n    \"metodoPago\": null,\n    \"sede\": null\n  },\n  \"facturacion\": {\n    \"electronica\": null,\n    \"evidencia\": null\n  },\n  \"datosCliente\": {\n    \"nombre\": null,\n    \"cedula\": null,\n    \"correo\": null,\n    \"celular\": null\n  },\n  \"carrito\": {\n    \"operacion\": null,\n    \"cantidadObjetivo\": null,\n    \"cantidadDelta\": null,\n    \"aplicaAlUltimoProducto\": null,\n    \"razon\": null\n  },\n  \"faltanteSugerido\": null,\n  \"recursosAclaracion\": {\n    \"fotoDisponible\": null,\n    \"masDatosDisponibles\": null\n  },\n  \"consultaCatalogo\": {\n    \"necesaria\": true,\n    \"consulta\": \"Nutrecan adulto raza pequeña 2 kilos\",\n    \"tipo\": \"referencia\",\n    \"presupuestoMaximo\": null\n  },\n  \"respuestaConversacional\": null,\n  \"derivacionHumana\": {\n    \"necesaria\": false,\n    \"motivo\": null\n  },\n  \"solicitudComercialIndependiente\": true,\n  \"seguimientoProducto\": \"nueva\"\n}",
+          "usage": {
+            "prompt_tokens": 8015,
+            "completion_tokens": 678,
+            "total_tokens": 8693,
+            "prompt_tokens_details": {
+              "cached_tokens": 5888,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "supabase",
+          "method": "POST",
+          "path": "/rest/v1/rpc/search_catalog_products",
+          "ms": 558,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "GET",
+          "path": "/rest/v1/training_examples",
+          "ms": 207,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "GET",
+          "path": "/rest/v1/training_examples",
+          "ms": 243,
+          "status": 200
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 3657,
+          "status": 200,
+          "model": "gpt-5.2-2025-12-11",
+          "output": "{\"intencion\":\"consulta_producto\",\"accion\":\"consultar\",\"confianza\":0.91,\"compraContextual\":null,\"solicitudesProductoDetectadas\":null,\"producto\":{\"accion\":\"consultar\",\"marca\":\"NUTRECAN\",\"referencia\":\"NUTRECAN ADULTO RP\",\"linea\":null,\"textoVisible\":\"Nutrecan adulto raza pequeña, dos kilos\",\"categoria\":\"comida\",\"subcategoria\":\"concentrado\",\"especie\":\"perro\",\"etapa\":\"adulto\",\"tamano\":\"raza pequeña\",\"sabores\":[],\"condiciones\":[],\"presentacion\":\"2 kg\",\"cantidad\":null,\"intencionPresentaciones\":\"precio\",\"mascotas\":[]},\"productos\":[],\"entrega\":{\"tipo\":null,\"direccion\":null,\"direccionCompleta\":null,\"sector\":null,\"metodoPago\":null,\"sede\":null},\"facturacion\":{\"electronica\":null,\"evidencia\":null},\"datosCliente\":{\"nombre\":null,\"cedula\":null,\"correo\":null,\"celular\":null},\"carrito\":{\"operacion\":null,\"cantidadObjetivo\":null,\"cantidadDelta\":null,\"aplicaAlUltimoProducto\":null,\"razon\":null},\"faltanteSugerido\":null}",
+          "usage": {
+            "prompt_tokens": 3968,
+            "completion_tokens": 259,
+            "total_tokens": 4227,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 1113,
+          "status": 200,
+          "model": "gpt-5.4-mini-2026-03-17",
+          "output": "Te confirmo, esa referencia la manejamos: NUTRECAN ADULTO RP 2 kg por $25.000. Las existencias están por confirmar. 🙂",
+          "usage": {
+            "prompt_tokens": 2040,
+            "completion_tokens": 38,
+            "total_tokens": 2078,
+            "prompt_tokens_details": {
+              "cached_tokens": 1920,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        }
+      ],
+      "cartUnchanged": true,
+      "state": {
+        "criterios": {
+          "especie": "perro",
+          "categoria": "comida",
+          "subcategoria": "concentrado",
+          "etapa": "adulto",
+          "tamano": "pequeno"
+        },
+        "recomendacionActiva": null,
+        "atencionHumana": null,
+        "ultimaConsultaProducto": {
+          "terminos": [
+            "nutrecan",
+            "adulto",
+            "perro",
+            "pequeno"
+          ],
+          "etiqueta": "nutrecan adulto pequeno",
+          "presentacion": "2kg",
+          "fuente": "texto",
+          "nivel": "alta",
+          "razon": "nombre_exacto",
+          "aclaracion": null,
+          "creadoEn": "2026-10-29T22:09:56.337Z",
+          "solicitudOriginal": {
+            "intencion": "consulta_producto",
+            "accion": "consultar",
+            "producto": {
+              "accion": "consultar",
+              "marca": "NUTRECAN",
+              "referencia": "NUTRECAN ADULTO RP",
+              "linea": null,
+              "textoVisible": "Nutrecan adulto raza pequeña, dos kilos",
+              "mencionOriginal": null,
+              "categoria": "comida",
+              "subcategoria": "concentrado",
+              "especie": "perro",
+              "etapa": "adulto",
+              "tamano": "raza pequeña",
+              "sabores": [],
+              "presentacion": "2kg",
+              "intencionPresentaciones": "especifica",
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": 1,
+              "pesoTextoOriginal": "2kg",
+              "duracion": null,
+              "coincidenciaVisualValidada": false,
+              "requierePresentacion": false,
+              "nombreFamilia": "NUTRECAN ADULTO RP",
+              "referenciasEquivalentes": [
+                "NUTRECAN ADULTO RP"
+              ],
+              "presentacionesEquivalentes": [
+                {
+                  "peso": "2 kg",
+                  "precio": 25000,
+                  "metadata": {
+                    "llave": "1154",
+                    "codigo": "10301011154",
+                    "source": "productos.json",
+                    "codigos": [
+                      "10301011154"
+                    ],
+                    "nombre_original": "NUTRECAN ADULTO RP 2 KL"
+                  },
+                  "stock": null,
+                  "referencia": "NUTRECAN ADULTO RP"
+                },
+                {
+                  "peso": "8 kg",
+                  "precio": 100000,
+                  "metadata": {
+                    "llave": "1156",
+                    "codigo": "10301011156",
+                    "source": "productos.json",
+                    "codigos": [
+                      "10301011156"
+                    ],
+                    "nombre_original": "NUTRECAN ADULTO RP 8 KL"
+                  },
+                  "stock": null,
+                  "referencia": "NUTRECAN ADULTO RP"
+                },
+                {
+                  "peso": "800 gr",
+                  "precio": 10000,
+                  "metadata": {
+                    "llave": "1157",
+                    "codigo": "10301011157",
+                    "source": "productos.json",
+                    "codigos": [
+                      "10301011157"
+                    ],
+                    "nombre_original": "NUTRECAN ADULTO RP 800 GR"
+                  },
+                  "stock": null,
+                  "referencia": "NUTRECAN ADULTO RP"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "requests": [
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/client_channels",
+      "ms": 641,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/aivance_clients",
+      "ms": 251,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/aivance_clients",
+      "ms": 287,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/client_delivery_rules",
+      "ms": 232,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/client_prompts",
+      "ms": 234,
+      "status": 200
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 5581,
+      "status": 200,
+      "model": "gpt-5.4-2026-03-05",
+      "output": "{\n  \"intencion\": \"consulta_marcas\",\n  \"accion\": \"consultar\",\n  \"confianza\": 0.96,\n  \"compraContextual\": null,\n  \"solicitudesProductoDetectadas\": 1,\n  \"producto\": {\n    \"accion\": \"consultar\",\n    \"marca\": \"Monello\",\n    \"referencia\": null,\n    \"linea\": null,\n    \"textoVisible\": \"Monello para gato\",\n    \"categoria\": \"comida\",\n    \"subcategoria\": null,\n    \"especie\": \"gato\",\n    \"etapa\": null,\n    \"tamano\": null,\n    \"sabores\": [],\n    \"condiciones\": [],\n    \"presentacion\": null,\n    \"cantidad\": null,\n    \"intencionPresentaciones\": null,\n    \"mascotas\": []\n  },\n  \"productos\": [\n    {\n      \"accion\": \"consultar\",\n      \"marca\": \"Monello\",\n      \"referencia\": null,\n      \"linea\": null,\n      \"textoVisible\": \"Monello para gato\",\n      \"categoria\": \"comida\",\n      \"subcategoria\": null,\n      \"especie\": \"gato\",\n      \"etapa\": null,\n      \"tamano\": null,\n      \"sabores\": [],\n      \"condiciones\": [],\n      \"presentacion\": null,\n      \"cantidad\": null,\n      \"intencionPresentaciones\": null,\n      \"mascotas\": [],\n      \"mencionOriginal\": \"qué Monello hay para gato\"\n    }\n  ],\n  \"entrega\": {\n    \"tipo\": null,\n    \"direccion\": null,\n    \"direccionCompleta\": null,\n    \"sector\": null,\n    \"metodoPago\": null,\n    \"sede\": null\n  },\n  \"facturacion\": {\n    \"electronica\": null,\n    \"evidencia\": null\n  },\n  \"datosCliente\": {\n    \"nombre\": null,\n    \"cedula\": null,\n    \"correo\": null,\n    \"celular\": null\n  },\n  \"carrito\": {\n    \"operacion\": null,\n    \"cantidadObjetivo\": null,\n    \"cantidadDelta\": null,\n    \"aplicaAlUltimoProducto\": null,\n    \"razon\": null\n  },\n  \"faltanteSugerido\": null,\n  \"recursosAclaracion\": {\n    \"fotoDisponible\": null,\n    \"masDatosDisponibles\": null\n  },\n  \"consultaCatalogo\": {\n    \"necesaria\": true,\n    \"consulta\": \"productos Monello para gato\",\n    \"tipo\": \"referencia\",\n    \"presupuestoMaximo\": null\n  },\n  \"derivacionHumana\": {\n    \"necesaria\": false,\n    \"motivo\": null\n  },\n  \"solicitudComercialIndependiente\": true,\n  \"seguimientoProducto\": \"nueva\",\n  \"respuestaConversacional\": null\n}",
+      "usage": {
+        "prompt_tokens": 6620,
+        "completion_tokens": 624,
+        "total_tokens": 7244,
+        "prompt_tokens_details": {
+          "cached_tokens": 4864,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "supabase",
+      "method": "POST",
+      "path": "/rest/v1/rpc/search_catalog_products",
+      "ms": 664,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/training_examples",
+      "ms": 212,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/training_examples",
+      "ms": 261,
+      "status": 200
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 3597,
+      "status": 200,
+      "model": "gpt-5.2-2025-12-11",
+      "output": "{\"intencion\":\"consulta_producto\",\"accion\":\"consultar\",\"confianza\":0.78,\"compraContextual\":false,\"solicitudesProductoDetectadas\":[\"Monello para gato (referencias y presentaciones disponibles)\"],\"producto\":{\"accion\":\"consultar\",\"marca\":\"MONELLO\",\"referencia\":null,\"linea\":null,\"textoVisible\":\"qué Monello hay para gato\",\"categoria\":\"comida\",\"subcategoria\":\"concentrado\",\"especie\":\"gato\",\"etapa\":null,\"tamano\":null,\"sabores\":[],\"condiciones\":[],\"presentacion\":null,\"cantidad\":null,\"intencionPresentaciones\":\"listar_opciones\",\"mascotas\":[]},\"productos\":[],\"entrega\":{\"tipo\":null,\"direccion\":null,\"direccionCompleta\":null,\"sector\":null,\"metodoPago\":null,\"sede\":null},\"facturacion\":{\"electronica\":null,\"evidencia\":null},\"datosCliente\":{\"nombre\":null,\"cedula\":null,\"correo\":null,\"celular\":null},\"carrito\":{\"operacion\":null,\"cantidadObjetivo\":null,\"cantidadDelta\":null,\"aplicaAlUltimoProducto\":null,\"razon\":null},\"faltanteSugerido\":null}",
+      "usage": {
+        "prompt_tokens": 3164,
+        "completion_tokens": 258,
+        "total_tokens": 3422,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 985,
+      "status": 200,
+      "model": "gpt-5.4-mini-2026-03-17",
+      "output": "Claro, para gato hay Monello Cat Salmón, Monello Cat Filhotes, Monello Cat Castrado y Monello Bolas de Pelos 😊\n\nSi me dices cuál está buscando, te paso la presentación disponible.",
+      "usage": {
+        "prompt_tokens": 1428,
+        "completion_tokens": 50,
+        "total_tokens": 1478,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 910,
+      "status": 200,
+      "model": "gpt-5.4-mini-2026-03-17",
+      "output": "Para gato hay Monello Cat Salmón, Monello Cat Filhotes, Monello Cat Castrado y Monello Bolas de Pelos. ¿Cuál de esas referencias está buscando?",
+      "usage": {
+        "prompt_tokens": 1581,
+        "completion_tokens": 42,
+        "total_tokens": 1623,
+        "prompt_tokens_details": {
+          "cached_tokens": 1280,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 5938,
+      "status": 200,
+      "model": "gpt-5.4-2026-03-05",
+      "output": "{\n  \"intencion\": \"consulta_producto\",\n  \"accion\": \"consultar\",\n  \"confianza\": 0.97,\n  \"compraContextual\": null,\n  \"solicitudesProductoDetectadas\": 1,\n  \"producto\": {\n    \"accion\": \"consultar\",\n    \"marca\": \"MONELLO\",\n    \"referencia\": \"MONELLO CAT SALMON\",\n    \"linea\": null,\n    \"textoVisible\": \"de salmón, un kilo\",\n    \"categoria\": \"comida\",\n    \"subcategoria\": \"concentrado\",\n    \"especie\": \"gato\",\n    \"etapa\": null,\n    \"tamano\": null,\n    \"sabores\": [\"salmón\"],\n    \"condiciones\": [],\n    \"presentacion\": \"1kg\",\n    \"cantidad\": 1,\n    \"intencionPresentaciones\": \"especifica\",\n    \"mascotas\": [],\n    \"mencionOriginal\": \"de salmón, un kilo\"\n  },\n  \"productos\": [\n    {\n      \"accion\": \"consultar\",\n      \"marca\": \"MONELLO\",\n      \"referencia\": \"MONELLO CAT SALMON\",\n      \"linea\": null,\n      \"textoVisible\": \"de salmón, un kilo\",\n      \"categoria\": \"comida\",\n      \"subcategoria\": \"concentrado\",\n      \"especie\": \"gato\",\n      \"etapa\": null,\n      \"tamano\": null,\n      \"sabores\": [\"salmón\"],\n      \"condiciones\": [],\n      \"presentacion\": \"1kg\",\n      \"cantidad\": 1,\n      \"intencionPresentaciones\": \"especifica\",\n      \"mascotas\": [],\n      \"mencionOriginal\": \"de salmón, un kilo\"\n    }\n  ],\n  \"entrega\": {\n    \"tipo\": null,\n    \"direccion\": null,\n    \"direccionCompleta\": null,\n    \"sector\": null,\n    \"metodoPago\": null,\n    \"sede\": null\n  },\n  \"facturacion\": {\n    \"electronica\": null,\n    \"evidencia\": null\n  },\n  \"datosCliente\": {\n    \"nombre\": null,\n    \"cedula\": null,\n    \"correo\": null,\n    \"celular\": null\n  },\n  \"carrito\": {\n    \"operacion\": null,\n    \"cantidadObjetivo\": null,\n    \"cantidadDelta\": null,\n    \"aplicaAlUltimoProducto\": null,\n    \"razon\": null\n  },\n  \"faltanteSugerido\": null,\n  \"recursosAclaracion\": {\n    \"fotoDisponible\": null,\n    \"masDatosDisponibles\": null\n  },\n  \"consultaCatalogo\": {\n    \"necesaria\": true,\n    \"consulta\": \"MONELLO CAT SALMON 1kg gato\",\n    \"tipo\": \"referencia\",\n    \"presupuestoMaximo\": null\n  },\n  \"respuestaConversacional\": null,\n  \"derivacionHumana\": {\n    \"necesaria\": false,\n    \"motivo\": null\n  },\n  \"solicitudComercialIndependiente\": true,\n  \"seguimientoProducto\": \"aclaracion\"\n}",
+      "usage": {
+        "prompt_tokens": 7999,
+        "completion_tokens": 691,
+        "total_tokens": 8690,
+        "prompt_tokens_details": {
+          "cached_tokens": 4864,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "supabase",
+      "method": "POST",
+      "path": "/rest/v1/rpc/search_catalog_products",
+      "ms": 511,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/training_examples",
+      "ms": 230,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/training_examples",
+      "ms": 247,
+      "status": 200
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 3417,
+      "status": 200,
+      "model": "gpt-5.2-2025-12-11",
+      "output": "{\"intencion\":\"consulta_producto\",\"accion\":\"consultar\",\"confianza\":0.86,\"compraContextual\":null,\"solicitudesProductoDetectadas\":null,\"producto\":{\"accion\":\"consultar\",\"marca\":\"MONELLO\",\"referencia\":\"MONELLO CAT SALMON\",\"linea\":null,\"textoVisible\":\"El de salmón, un kilo\",\"categoria\":\"comida\",\"subcategoria\":\"concentrado\",\"especie\":\"gato\",\"etapa\":null,\"tamano\":null,\"sabores\":[\"salmón\"],\"condiciones\":[],\"presentacion\":\"x 1kg\",\"cantidad\":1,\"intencionPresentaciones\":null,\"mascotas\":[]},\"productos\":[],\"entrega\":{\"tipo\":null,\"direccion\":null,\"direccionCompleta\":null,\"sector\":null,\"metodoPago\":null,\"sede\":null},\"facturacion\":{\"electronica\":null,\"evidencia\":null},\"datosCliente\":{\"nombre\":null,\"cedula\":null,\"correo\":null,\"celular\":null},\"carrito\":{\"operacion\":null,\"cantidadObjetivo\":null,\"cantidadDelta\":null,\"aplicaAlUltimoProducto\":true,\"razon\":null},\"faltanteSugerido\":null}",
+      "usage": {
+        "prompt_tokens": 4090,
+        "completion_tokens": 258,
+        "total_tokens": 4348,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 1258,
+      "status": 200,
+      "model": "gpt-5.4-mini-2026-03-17",
+      "output": "Claro, para gato está MONELLO CAT SALMON x 1kg en $27.300 🐾",
+      "usage": {
+        "prompt_tokens": 1913,
+        "completion_tokens": 26,
+        "total_tokens": 1939,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 6318,
+      "status": 200,
+      "model": "gpt-5.4-2026-03-05",
+      "output": "{\n  \"intencion\": \"consulta_producto\",\n  \"accion\": \"consultar\",\n  \"confianza\": 0.98,\n  \"compraContextual\": null,\n  \"solicitudesProductoDetectadas\": 1,\n  \"producto\": {\n    \"accion\": \"consultar\",\n    \"marca\": \"Nutrecan\",\n    \"referencia\": \"Nutrecan adulto raza pequeña\",\n    \"linea\": null,\n    \"textoVisible\": \"Nutrecan adulto raza pequeña, dos kilos\",\n    \"categoria\": \"comida\",\n    \"subcategoria\": \"concentrado\",\n    \"especie\": null,\n    \"etapa\": \"adulto\",\n    \"tamano\": \"pequeña\",\n    \"sabores\": [],\n    \"condiciones\": [],\n    \"presentacion\": \"2 kilos\",\n    \"cantidad\": 1,\n    \"intencionPresentaciones\": \"especifica\",\n    \"mascotas\": []\n  },\n  \"productos\": [\n    {\n      \"accion\": \"consultar\",\n      \"marca\": \"Nutrecan\",\n      \"referencia\": \"Nutrecan adulto raza pequeña\",\n      \"linea\": null,\n      \"textoVisible\": \"Nutrecan adulto raza pequeña, dos kilos\",\n      \"mencionOriginal\": \"Nutrecan adulto raza pequeña, dos kilos\",\n      \"categoria\": \"comida\",\n      \"subcategoria\": \"concentrado\",\n      \"especie\": null,\n      \"etapa\": \"adulto\",\n      \"tamano\": \"pequeña\",\n      \"sabores\": [],\n      \"condiciones\": [],\n      \"presentacion\": \"2 kilos\",\n      \"cantidad\": 1,\n      \"intencionPresentaciones\": \"especifica\",\n      \"mascotas\": []\n    }\n  ],\n  \"entrega\": {\n    \"tipo\": null,\n    \"direccion\": null,\n    \"direccionCompleta\": null,\n    \"sector\": null,\n    \"metodoPago\": null,\n    \"sede\": null\n  },\n  \"facturacion\": {\n    \"electronica\": null,\n    \"evidencia\": null\n  },\n  \"datosCliente\": {\n    \"nombre\": null,\n    \"cedula\": null,\n    \"correo\": null,\n    \"celular\": null\n  },\n  \"carrito\": {\n    \"operacion\": null,\n    \"cantidadObjetivo\": null,\n    \"cantidadDelta\": null,\n    \"aplicaAlUltimoProducto\": null,\n    \"razon\": null\n  },\n  \"faltanteSugerido\": null,\n  \"recursosAclaracion\": {\n    \"fotoDisponible\": null,\n    \"masDatosDisponibles\": null\n  },\n  \"consultaCatalogo\": {\n    \"necesaria\": true,\n    \"consulta\": \"Nutrecan adulto raza pequeña 2 kilos\",\n    \"tipo\": \"referencia\",\n    \"presupuestoMaximo\": null\n  },\n  \"respuestaConversacional\": null,\n  \"derivacionHumana\": {\n    \"necesaria\": false,\n    \"motivo\": null\n  },\n  \"solicitudComercialIndependiente\": true,\n  \"seguimientoProducto\": \"nueva\"\n}",
+      "usage": {
+        "prompt_tokens": 8015,
+        "completion_tokens": 678,
+        "total_tokens": 8693,
+        "prompt_tokens_details": {
+          "cached_tokens": 5888,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "supabase",
+      "method": "POST",
+      "path": "/rest/v1/rpc/search_catalog_products",
+      "ms": 558,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/training_examples",
+      "ms": 207,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/training_examples",
+      "ms": 243,
+      "status": 200
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 3657,
+      "status": 200,
+      "model": "gpt-5.2-2025-12-11",
+      "output": "{\"intencion\":\"consulta_producto\",\"accion\":\"consultar\",\"confianza\":0.91,\"compraContextual\":null,\"solicitudesProductoDetectadas\":null,\"producto\":{\"accion\":\"consultar\",\"marca\":\"NUTRECAN\",\"referencia\":\"NUTRECAN ADULTO RP\",\"linea\":null,\"textoVisible\":\"Nutrecan adulto raza pequeña, dos kilos\",\"categoria\":\"comida\",\"subcategoria\":\"concentrado\",\"especie\":\"perro\",\"etapa\":\"adulto\",\"tamano\":\"raza pequeña\",\"sabores\":[],\"condiciones\":[],\"presentacion\":\"2 kg\",\"cantidad\":null,\"intencionPresentaciones\":\"precio\",\"mascotas\":[]},\"productos\":[],\"entrega\":{\"tipo\":null,\"direccion\":null,\"direccionCompleta\":null,\"sector\":null,\"metodoPago\":null,\"sede\":null},\"facturacion\":{\"electronica\":null,\"evidencia\":null},\"datosCliente\":{\"nombre\":null,\"cedula\":null,\"correo\":null,\"celular\":null},\"carrito\":{\"operacion\":null,\"cantidadObjetivo\":null,\"cantidadDelta\":null,\"aplicaAlUltimoProducto\":null,\"razon\":null},\"faltanteSugerido\":null}",
+      "usage": {
+        "prompt_tokens": 3968,
+        "completion_tokens": 259,
+        "total_tokens": 4227,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 1113,
+      "status": 200,
+      "model": "gpt-5.4-mini-2026-03-17",
+      "output": "Te confirmo, esa referencia la manejamos: NUTRECAN ADULTO RP 2 kg por $25.000. Las existencias están por confirmar. 🙂",
+      "usage": {
+        "prompt_tokens": 2040,
+        "completion_tokens": 38,
+        "total_tokens": 2078,
+        "prompt_tokens_details": {
+          "cached_tokens": 1920,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    }
+  ]
+}

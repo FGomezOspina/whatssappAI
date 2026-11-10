@@ -9,7 +9,7 @@ const { validarCoincidenciaProducto } = require('../src/services/productMatchVal
 const { _internals: { normalizarInterpretacion } } = require('../src/services/aiInterpreter');
 
 const catalogo = [{ marca: 'NUTRIALFA', referencias: [
-  { nombre: 'NUTRIALFA PIEL ADULTO', categoria: 'comida', especie: 'perro', presentaciones: [
+  { nombre: 'NUTRIALFA PIEL ADULTO', subcategoria: 'concentrado', categoria: 'comida', especie: 'perro', presentaciones: [
     { peso: '1.5kg', precio: 39500 }, { peso: '3kg', precio: 75900 }, { peso: '15kg', precio: 250000 }] },
   { nombre: 'NUTRIALFA CACHORRO', categoria: 'comida', especie: 'perro', presentaciones: [{ peso: '3kg', precio: 99999 }] },
 ] }, { marca: 'PROTECCION', referencias: [

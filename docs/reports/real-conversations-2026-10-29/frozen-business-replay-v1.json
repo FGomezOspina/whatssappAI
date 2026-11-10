@@ -1,0 +1,2671 @@
+{
+  "schemaVersion": 1,
+  "corpusVersion": "distrifinca-2026-10-30-v1",
+  "createdAt": "2026-10-30T14:10:42.644Z",
+  "window": {
+    "from": "2026-10-28T00:00:00-05:00",
+    "through": "2026-10-29T18:46:00-05:00"
+  },
+  "scope": "Anonymized partial audit; outgoing account messages are not proof of human authorship. No Sandbox, no synthetic customer history. No independent holdout or E2E claim.",
+  "catalog": {
+    "path": "docs/reports/real-conversations-2026-10-29/catalog.json",
+    "sha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+    "capturedAt": "2026-10-29T23:52:19.742Z",
+    "tenantId": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+    "references": 1063
+  },
+  "sources": [
+    {
+      "path": "test/fixtures/distrifinca-business-2026-10-29.json",
+      "sha256": "ae18fb772929aa3aad57136e89de0b127a87daf166555d99773fb17dbeb2ac3b"
+    },
+    {
+      "path": "test/fixtures/distrifinca-business-followup-2026-10-29.json",
+      "sha256": "5ae04fa6b5ab4523c9891570e0a82ee656e7d1f571b8e01104151ec8525a9dae"
+    },
+    {
+      "path": "test/fixtures/distrifinca-business-continuation-2026-10-29.json",
+      "sha256": "d8c6e0f6cec203cf4b77bd567bfcf9b5480f17a6011be4bc4ed1d36cc31e81a4"
+    },
+    {
+      "path": "test/fixtures/distrifinca-business-media-resumption-2026-10-29.json",
+      "sha256": "0b6eb696b365ffbbaad98f000bb9a0056678b53dd8b9fc048e72df3f23022e65"
+    }
+  ],
+  "syntheticControls": {
+    "path": "test/foodIdentityDimensions.test.js",
+    "sha256": "c24cbbfa6e429dfc95884e60d871aed35ef2878630ab008aa8361cc5bacbdd87",
+    "source": "const test=require('node:test'),assert=require('node:assert/strict');\nconst {dimensionesAlimento:d,dimensionesReferencia:dr}=require('../src/utils/foodFormat');\nconst {validarCoincidenciaProducto:v,construirConsultaProductoContextual:context,respuestaValidacionProducto:reply}=require('../src/services/productMatchValidator');\nconst refs=[['NUBE GATO ADULTO','concentrado','1kg'],['NUBE LATA GATO ADULTO','comida_humeda','85g'],['NUBE POUCH GATO ADULTO','comida_humeda','85g']].map(([nombre,subcategoria,peso])=>({nombre,subcategoria,categoria:'comida',especie:'gato',presentaciones:[{peso,precio:100}]}));\nconst cat=[{marca:'NUBE',referencias:refs}],cl={intencion:'busqueda_producto',perfilContexto:'producto',requiereBusquedaProducto:true};\nconst run=(mensaje,extra={})=>v({mensaje,catalogo:cat,clasificacion:cl,...extra});\nconst ctx=(forma,envase,extra={})=>({creadoEn:new Date().toISOString(),nivel:'alta',terminos:['nube','gato','adulto'],formaAlimento:forma,envaseAlimento:envase,presentacion:'85g',...extra});\ntest('food form and container remain distinct; weight and bags imply neither',()=>{\n assert.equal(d('7 kilos en bolsa').forma,null);assert.equal(d('sobre').forma,'comida_humeda');assert.equal(d('lata').envase,'lata');assert.equal(d('comida húmeda').envase,null);\n assert.deepEqual(dr({nombre:'MEDICINA SOBRES',categoria:'medicamento'}),{forma:null,envase:null});\n});\ntest('requested dry food, pouch and can exclude each other even at shared weights',()=>{\n for(const [q,name] of [['concentrado Nube gato adulto','NUBE GATO ADULTO'],['sobre Nube gato adulto 85g','NUBE POUCH GATO ADULTO'],['lata Nube gato adulto 85g','NUBE LATA GATO ADULTO']]){\n const r=run(q);assert.equal(r.nivel,'alta',q);assert.equal(r.coincidencia.referencia,name,q);}\n});\ntest('shared identity without food form asks a useful clarification',()=>{\n const r=run('Nube gato adulto');assert.equal(r.nivel,'media');assert.equal(r.aclaracion.campo,'forma_alimento');assert.match(reply(r),/seco.*húmeda/);\n});\ntest('wet food without container retains both can and pouch',()=>{\n const r=run('comida húmeda Nube gato adulto');assert.equal(r.nivel,'media');assert.equal(r.aclaracion.campo,'envase_alimento');assert.match(reply(r),/sobre.*lata/);assert.equal(r.alternativas.length,2);\n});\ntest('weight clarification inherits verified container and never turns it into dry',()=>{\n const r=run('85g',{contextoProducto:ctx('comida_humeda','sobre')});assert.equal(r.nivel,'alta');assert.equal(r.coincidencia.referencia,'NUBE POUCH GATO ADULTO');\n});\ntest('explicit format corrections replace old format and clear inherited pack',()=>{\n for(const [q,name] of [['no en sobre, sino en lata','NUBE LATA GATO ADULTO'],['mejor concentrado','NUBE GATO ADULTO']]){\n const r=run(q,{contextoProducto:ctx('comida_humeda','sobre')});assert.equal(r.nivel,'alta',q);assert.equal(r.coincidencia.referencia,name);assert.equal(r.presentacionSolicitada,null);}\n});\ntest('another named product or expired context does not inherit container',()=>{\n assert.equal(context('Otra marca gato',ctx('comida_humeda','lata')),'Otra marca gato');\n const r=run('85g',{contextoProducto:ctx('comida_humeda','lata',{creadoEn:'2000-01-01'})});assert.notEqual(r.nivel,'alta');\n});\ntest('insufficient catalog format stays unverified',()=>{\n const r=run('sobre Nube gato adulto',{catalogo:[{marca:'NUBE',referencias:[{nombre:'NUBE GATO ADULTO',categoria:'comida',especie:'gato',presentaciones:[{peso:'85g',precio:100}]}]}]});assert.notEqual(r.nivel,'alta');assert.match(r.razon,/formato_catalogo/);\n});\ntest('verified image evidence supplies format; explicit text can correct pictured container',()=>{\n const interpretacion={producto:{marca:'NUBE',categoria:'comida',especie:'gato',observado:{nombre:'NUBE GATO ADULTO',confianzaIdentidad:.98,formaAlimento:'comida_humeda',envase:'lata',confianzaFormato:.98}}};\n const clv={...cl,requiereVision:true};\n assert.equal(run('[imagen]',{clasificacion:clv,interpretacion}).coincidencia?.referencia,'NUBE LATA GATO ADULTO');\n assert.equal(run('lo quiero en sobre',{clasificacion:clv,interpretacion}).coincidencia?.referencia,'NUBE POUCH GATO ADULTO');\n});\ntest('contradictory formats require clarification even with one catalog option',()=>{\n for (const q of ['Nube gato adulto seco y húmedo','Nube gato adulto lata o sobre']) {\n  assert.notEqual(run(q,{catalogo:[{marca:'NUBE',referencias:[refs[1]]}]}).nivel,'alta');\n }\n});\ntest('semantic compression and brand-weight shortcut cannot erase requested container',()=>{\n const catalogo=[{marca:'NUBE',referencias:[{nombre:'NUBE ADULTO',categoria:'comida',presentaciones:[{peso:'85g',precio:100}]}]}];\n for (const mensaje of ['3 sobres Nube adulto 85g','Nube lata 85g']) {\n  const r=run(mensaje,{catalogo,interpretacion:{accion:'consultar',producto:{marca:'NUBE',textoVisible:'Nube adulto',presentacion:'85g'}}});\n  assert.notEqual(r.nivel,'alta');\n }\n});\ntest('normalized visual attributes and conversation state survive format correction without mutating old evidence',()=>{\n const {normalizarInterpretacion}=require('../src/services/aiInterpreter')._internals;\n const {continuarSolicitudProducto}=require('../src/services/conversationService')._internals;\n const observed={nombre:'NUBE GATO ADULTO',formaAlimento:'comida_humeda',envase:'sobre',confianzaFormato:.98,confianzaIdentidad:.99};\n const original=normalizarInterpretacion({intencion:'consulta_producto',accion:'consultar',producto:{marca:'NUBE',referencia:'NUBE POUCH GATO ADULTO',especie:'gato',categoria:'comida',envase:'sobre',subcategoria:'comida_humeda',presentacion:'85g',observado:observed}});\n const estado={ultimaConsultaProducto:ctx('comida_humeda','sobre',{solicitudOriginal:original})};\n const saved=JSON.stringify(estado);\n for (const [mensaje,envase,forma] of [['no en sobre, sino en lata','lata','comida_humeda'],['mejor concentrado',null,'concentrado']]) {\n  const r=continuarSolicitudProducto({intencion:'consulta_producto',accion:'consultar',seguimientoProducto:'aclaracion',confianza:.99,producto:{}},estado,mensaje);\n  assert.equal(r.producto.envase,envase);assert.equal(r.producto.subcategoria,forma);assert.equal(r.producto.presentacion,null);\n  const resolved=run(r._consultaContinuada);assert.equal(resolved.nivel,'alta');assert.equal(resolved.envaseAlimento,envase);\n }\n assert.equal(JSON.stringify(estado),saved);assert.equal(original.producto.observado.envase,'sobre');\n});\ntest('medicine sachets do not become wet food when interpreter category is absent',()=>{\n const catalogo=[{marca:'CALMA',referencias:[{nombre:'CALMA SOBRES',categoria:'medicamento',presentaciones:[{peso:'1g',precio:100}]}]}];\n const r=v({mensaje:'Calma sobres 1g',catalogo,clasificacion:cl});assert.equal(r.nivel,'alta');assert.equal(r.formaAlimento,null);assert.equal(r.envaseAlimento,null);\n});\ntest('asking available sizes cannot promote an unverified food format',()=>{\n const {resolverPresentacionesIdentificadas}=require('../src/services/presentationSelectionService');\n const r=run('Nube gato adulto');const out=resolverPresentacionesIdentificadas({validacion:r,producto:{intencionPresentaciones:'todas'},mensaje:'todos los tamaños',catalogo:cat});\n assert.equal(out.nivel,'media');assert.equal(out.aclaracion.campo,'forma_alimento');\n});\n",
+    "scope": "Separate synthetic component controls; observed visual attributes are mocked, never real image understanding. Not sent to OpenAI by this replay."
+  },
+  "cases": [
+    {
+      "id": "C01-01",
+      "origin": "real_business_evidence",
+      "provenance": {
+        "id": "C01-01",
+        "chat": "C01",
+        "at": "2026-10-29T07:45:00-05:00",
+        "direction": "inbound",
+        "split": "development",
+        "query": "Buenos días Proplan OM x2k?",
+        "kind": "text",
+        "gold": "confirmed_identity",
+        "expectedReference": "PRO PLAN CANINE OM",
+        "referenceId": "6c1d4eea-bf35-4d7f-8e4b-e9e075b03666",
+        "expectedWeight": "2kg",
+        "presentationId": "980f6864-b771-475f-8e5b-5aaf225dc2f1",
+        "evidence": "Inbound brand, OM and presentation; prior 20 Oct exchange explicitly confirms dog; adviser accepts at 08:52. Price excluded as identification proof.",
+        "sourceFixture": "test/fixtures/distrifinca-business-2026-10-29.json"
+      },
+      "input": {
+        "message": "Buenos días Proplan OM x2k?",
+        "contextState": null,
+        "history": [],
+        "derivation": "text",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "confirmed_identity",
+        "referenceIds": [
+          "6c1d4eea-bf35-4d7f-8e4b-e9e075b03666"
+        ],
+        "reference": "PRO PLAN CANINE OM",
+        "presentationId": "980f6864-b771-475f-8e5b-5aaf225dc2f1",
+        "weight": "2kg",
+        "decision": "identify",
+        "annotation": null
+      },
+      "media": {
+        "files": [],
+        "status": "text_only"
+      },
+      "candidates": [
+        {
+          "referenceId": "6c1d4eea-bf35-4d7f-8e4b-e9e075b03666",
+          "reference": "PRO PLAN CANINE OM",
+          "brand": "PRO PLAN"
+        },
+        {
+          "referenceId": "b2b20116-6840-4bb1-a08c-70b3f474378e",
+          "reference": "PRO PLAN FELINE OM",
+          "brand": "PRO PLAN"
+        },
+        {
+          "referenceId": "fe9eec8d-2f47-4414-bf6a-91136886408a",
+          "reference": "PRO PLAN CANINE LATA OM",
+          "brand": "PRO PLAN"
+        },
+        {
+          "referenceId": "1277a1f0-8a36-445f-aab9-e26414c6eabc",
+          "reference": "PRO PLAN ADULT SMALL SENSITIVE SKIN",
+          "brand": "PRO PLAN"
+        },
+        {
+          "referenceId": "2fdde1a0-357a-40a1-8e93-699f1d2a96d4",
+          "reference": "PRO PLAN CANINE NF",
+          "brand": "PRO PLAN"
+        },
+        {
+          "referenceId": "3081f187-df5f-433b-9729-702e81ca1a4f",
+          "reference": "PRO PLAN POUCH FELINO ESTERELIZADOS",
+          "brand": "PRO PLAN"
+        },
+        {
+          "referenceId": "38fbf049-d4c4-43c4-aef2-a8da499d11fa",
+          "reference": "PRO PLAN CANINE LATA UR",
+          "brand": "PRO PLAN"
+        },
+        {
+          "referenceId": "4d75980f-c69e-4fc1-bd00-3f1a9d7160ec",
+          "reference": "PRO PLAN FELINE LATA UR",
+          "brand": "PRO PLAN"
+        }
+      ],
+      "localResult": {
+        "level": "alta",
+        "selected": "PRO PLAN CANINE OM",
+        "reason": "nombre_exacto",
+        "clarification": null,
+        "weight": "2kg",
+        "presentationValid": true
+      }
+    },
+    {
+      "id": "C01-02",
+      "origin": "real_business_evidence",
+      "provenance": {
+        "id": "C01-02",
+        "chat": "C01",
+        "at": "2026-10-29T08:53:00-05:00",
+        "direction": "inbound",
+        "split": "development",
+        "query": "Y churubites?",
+        "kind": "text",
+        "gold": "ambiguous",
+        "evidence": "Adviser asks dog; customer says yes. Multiple catalog Bites/Roll variants; no exact SKU proven.",
+        "sourceFixture": "test/fixtures/distrifinca-business-2026-10-29.json"
+      },
+      "input": {
+        "message": "Y churubites?",
+        "contextState": null,
+        "history": [],
+        "derivation": "text",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "ambiguous",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "abstain_or_clarify",
+        "annotation": null
+      },
+      "media": {
+        "files": [],
+        "status": "text_only"
+      },
+      "candidates": [],
+      "localResult": {
+        "level": "baja",
+        "selected": null,
+        "reason": "sin_coincidencia_confiable",
+        "clarification": null,
+        "weight": null,
+        "presentationValid": null
+      }
+    },
+    {
+      "id": "C01-03",
+      "origin": "real_business_evidence",
+      "provenance": {
+        "id": "C01-03",
+        "chat": "C01",
+        "at": "2026-10-29T09:17:00-05:00",
+        "direction": "inbound",
+        "split": "development",
+        "query": "Pollo con vegetales y el Proplan OM X2K",
+        "kind": "multi_product",
+        "gold": "incomplete_media",
+        "evidence": "First item depends on 09:15 photo (blurred, not decoded), offered flavors and confirmation of a pack of four. Do not equate pack with catalog units or run as single-product identity.",
+        "sourceFixture": "test/fixtures/distrifinca-business-2026-10-29.json"
+      },
+      "input": {
+        "message": "Pollo con vegetales y el Proplan OM X2K",
+        "contextState": null,
+        "history": [],
+        "derivation": "multi_product",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "incomplete_media",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "excluded",
+        "annotation": null
+      },
+      "media": {
+        "files": [],
+        "status": "missing_not_evaluable"
+      },
+      "candidates": [],
+      "localResult": null
+    },
+    {
+      "id": "C02-01",
+      "origin": "real_business_evidence",
+      "provenance": {
+        "id": "C02-01",
+        "chat": "C02",
+        "at": "2026-10-28T08:54:00-05:00",
+        "direction": "inbound",
+        "split": "evaluation",
+        "query": "Buen día\nManejan arena de Sr gato",
+        "kind": "text",
+        "gold": "unresolved",
+        "evidence": "Adviser states not carried 09:07. No matching name in active tenant snapshot; do not substitute another cat litter.",
+        "sourceFixture": "test/fixtures/distrifinca-business-2026-10-29.json"
+      },
+      "input": {
+        "message": "Buen día\nManejan arena de Sr gato",
+        "contextState": null,
+        "history": [],
+        "derivation": "text",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "unresolved",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "abstain_or_clarify",
+        "annotation": null
+      },
+      "media": {
+        "files": [],
+        "status": "text_only"
+      },
+      "candidates": [
+        {
+          "referenceId": "30a5e872-42cf-41f9-996e-dc7860272fe5",
+          "reference": "ARENA MIRRINGO",
+          "brand": "ARENA"
+        },
+        {
+          "referenceId": "b382a2ac-b8fb-49fb-949a-f44ac9c10c2b",
+          "reference": "ARENA UNIKAT",
+          "brand": "ARENA"
+        },
+        {
+          "referenceId": "bf0fe92a-7bee-4c7a-9365-e43feebe8e35",
+          "reference": "ARENA FOFICAT",
+          "brand": "ARENA"
+        },
+        {
+          "referenceId": "86ef18ee-4c31-4952-a168-cdaa41d3bf86",
+          "reference": "ARENA KING",
+          "brand": "ARENA"
+        },
+        {
+          "referenceId": "e0aef8fc-051f-43fc-a822-719c9f767359",
+          "reference": "ARENA BUOS",
+          "brand": "ARENA"
+        },
+        {
+          "referenceId": "0f64c472-046a-45eb-9642-16572d656197",
+          "reference": "ARENA KING CAT",
+          "brand": "ARENA KING CAT"
+        },
+        {
+          "referenceId": "169fb814-40e3-4db3-b7ce-d1567fb71e3b",
+          "reference": "ARENA KITTEN LAVANDA",
+          "brand": "ARENA KITTEN LAVANDA"
+        },
+        {
+          "referenceId": "281b7bc3-b8a1-4a3c-875e-0dd44ab92944",
+          "reference": "ARENA SEPI CAT",
+          "brand": "ARENA SEPI CAT"
+        }
+      ],
+      "localResult": {
+        "level": "media",
+        "selected": null,
+        "reason": "ambigua",
+        "clarification": null,
+        "weight": null,
+        "presentationValid": null
+      }
+    },
+    {
+      "id": "C02-02",
+      "origin": "real_business_evidence",
+      "provenance": {
+        "id": "C02-02",
+        "chat": "C02",
+        "at": "2026-10-28T10:22:00-05:00",
+        "direction": "inbound",
+        "split": "evaluation",
+        "query": "Está de pronto ?",
+        "kind": "image_and_text",
+        "gold": "incomplete_media",
+        "evidence": "Forwarded photograph unavailable for exact decoding. Adviser says not carried at 10:47. Image could be a different product from the first request.",
+        "sourceFixture": "test/fixtures/distrifinca-business-2026-10-29.json"
+      },
+      "input": {
+        "message": "Está de pronto ?",
+        "contextState": null,
+        "history": [],
+        "derivation": "image_and_text",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "incomplete_media",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "excluded",
+        "annotation": null
+      },
+      "media": {
+        "files": [],
+        "status": "missing_not_evaluable"
+      },
+      "candidates": [],
+      "localResult": null
+    },
+    {
+      "id": "C03-01",
+      "origin": "real_business_evidence",
+      "provenance": {
+        "id": "C03-01",
+        "chat": "C03",
+        "at": "2026-10-28T09:55:00-05:00",
+        "direction": "inbound",
+        "split": "evaluation",
+        "query": "tienen está arena\nde 20 kilos",
+        "kind": "image_and_multi_message",
+        "gold": "incomplete_media",
+        "evidence": "09:54 category + 09:55 photograph and weight; accepted 10:11, price-only response 10:12. Not an adviser error. Price cannot identify the SKU.",
+        "sourceFixture": "test/fixtures/distrifinca-business-2026-10-29.json"
+      },
+      "input": {
+        "message": "tienen está arena\nde 20 kilos",
+        "contextState": null,
+        "history": [],
+        "derivation": "image_and_multi_message",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "incomplete_media",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "excluded",
+        "annotation": null
+      },
+      "media": {
+        "files": [],
+        "status": "missing_not_evaluable"
+      },
+      "candidates": [],
+      "localResult": null
+    },
+    {
+      "id": "C04-01",
+      "origin": "real_business_evidence",
+      "provenance": {
+        "id": "C04-01",
+        "chat": "C04",
+        "at": "2026-10-28T11:47:00-05:00",
+        "direction": "inbound",
+        "split": "evaluation",
+        "query": "metronidl",
+        "inputDerivation": "Exact product span from customer selection of two products; not a full turn replay.",
+        "kind": "text_span",
+        "gold": "confirmed_reference_only",
+        "expectedReference": "METRONID",
+        "referenceId": "b619c8fc-c47a-4fde-8439-23970f59070e",
+        "evidence": "Adviser at 11:24 lists Metronidl; customer repeats at 11:47. Unique catalog lexical counterpart METRONID. 15 ml vs 50 ml remains unverified without image; never infer from price.",
+        "sourceFixture": "test/fixtures/distrifinca-business-2026-10-29.json"
+      },
+      "input": {
+        "message": "metronidl",
+        "contextState": null,
+        "history": [],
+        "derivation": "Exact product span from customer selection of two products; not a full turn replay.",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "confirmed_reference_only",
+        "referenceIds": [
+          "b619c8fc-c47a-4fde-8439-23970f59070e"
+        ],
+        "reference": "METRONID",
+        "presentationId": null,
+        "weight": null,
+        "decision": "identify",
+        "annotation": null
+      },
+      "media": {
+        "files": [],
+        "status": "text_only"
+      },
+      "candidates": [
+        {
+          "referenceId": "b619c8fc-c47a-4fde-8439-23970f59070e",
+          "reference": "METRONID",
+          "brand": "METRONID"
+        }
+      ],
+      "localResult": {
+        "level": "alta",
+        "selected": "METRONID",
+        "reason": "nombre_exacto",
+        "clarification": null,
+        "weight": null,
+        "presentationValid": null
+      }
+    },
+    {
+      "id": "C04-02",
+      "origin": "real_business_evidence",
+      "provenance": {
+        "id": "C04-02",
+        "chat": "C04",
+        "at": "2026-10-28T11:47:00-05:00",
+        "direction": "inbound",
+        "split": "evaluation",
+        "query": "advocate",
+        "inputDerivation": "Exact product span from customer selection; context requires cat variant, weight not available.",
+        "kind": "text_span",
+        "gold": "ambiguous",
+        "evidence": "Adviser typo Advocqte gato anchors species, but two cat weight bands exist and the photograph is not decoded. No exact presentation gold.",
+        "sourceFixture": "test/fixtures/distrifinca-business-2026-10-29.json"
+      },
+      "input": {
+        "message": "advocate",
+        "contextState": null,
+        "history": [],
+        "derivation": "Exact product span from customer selection; context requires cat variant, weight not available.",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "ambiguous",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "abstain_or_clarify",
+        "annotation": null
+      },
+      "media": {
+        "files": [],
+        "status": "text_only"
+      },
+      "candidates": [
+        {
+          "referenceId": "419f5b11-e899-4071-adc8-6d7b50d2051c",
+          "reference": "ADVOCATE",
+          "brand": "ADVOCATE"
+        },
+        {
+          "referenceId": "5d6914d7-9deb-4431-a084-e215822bab78",
+          "reference": "ADVOCATE GATO",
+          "brand": "ADVOCATE"
+        }
+      ],
+      "localResult": {
+        "level": "media",
+        "selected": null,
+        "reason": "falta_peso_mascota",
+        "clarification": {
+          "campo": "peso_mascota",
+          "valores": [],
+          "requiereEspecie": true
+        },
+        "weight": null,
+        "presentationValid": null
+      }
+    },
+    {
+      "id": "C05-01",
+      "origin": "real_business_evidence",
+      "provenance": {
+        "id": "C05-01",
+        "chat": "C05",
+        "at": "2026-10-28T09:24:00-05:00",
+        "direction": "inbound",
+        "split": "evaluation",
+        "query": "Buenos días tiene arena king cat para pedir\n2\nbultos de 25 Kg a domicilio?",
+        "kind": "text",
+        "gold": "confirmed_identity",
+        "expectedReference": "ARENA KING CAT",
+        "referenceId": "0f64c472-046a-45eb-9642-16572d656197",
+        "expectedWeight": "25kg",
+        "presentationId": "3f1e5cf1-e027-4dcb-9797-395843147c0b",
+        "quantity": 2,
+        "evidence": "Customer names litter, brand and weight; adviser accepts 09:29; customer reiterates two sacks 10:17. No price used for mapping.",
+        "sourceFixture": "test/fixtures/distrifinca-business-2026-10-29.json"
+      },
+      "input": {
+        "message": "Buenos días tiene arena king cat para pedir\n2\nbultos de 25 Kg a domicilio?",
+        "contextState": null,
+        "history": [],
+        "derivation": "text",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "confirmed_identity",
+        "referenceIds": [
+          "0f64c472-046a-45eb-9642-16572d656197"
+        ],
+        "reference": "ARENA KING CAT",
+        "presentationId": "3f1e5cf1-e027-4dcb-9797-395843147c0b",
+        "weight": "25kg",
+        "decision": "identify",
+        "annotation": null
+      },
+      "media": {
+        "files": [],
+        "status": "text_only"
+      },
+      "candidates": [
+        {
+          "referenceId": "0f64c472-046a-45eb-9642-16572d656197",
+          "reference": "ARENA KING CAT",
+          "brand": "ARENA KING CAT"
+        },
+        {
+          "referenceId": "86ef18ee-4c31-4952-a168-cdaa41d3bf86",
+          "reference": "ARENA KING",
+          "brand": "ARENA"
+        }
+      ],
+      "localResult": {
+        "level": "alta",
+        "selected": "ARENA KING CAT",
+        "reason": "marca_y_presentacion",
+        "clarification": null,
+        "weight": "25kg",
+        "presentationValid": true
+      }
+    },
+    {
+      "id": "C06-01",
+      "origin": "real_business_evidence",
+      "provenance": {
+        "id": "C06-01",
+        "chat": "C06",
+        "at": "2026-10-28T08:50:00-05:00",
+        "direction": "outbound_adviser",
+        "split": "evaluation",
+        "query": "Un bulto de chunky 25 kls",
+        "kind": "contextual_adviser_restatement",
+        "gold": "ambiguous",
+        "evidence": "Restatement of customer order from Sunday 25 Oct; original line has no species or variety. Audio could disambiguate but is unavailable. Do not infer variant from weight.",
+        "sourceFixture": "test/fixtures/distrifinca-business-2026-10-29.json"
+      },
+      "input": {
+        "message": "Un bulto de chunky 25 kls",
+        "contextState": null,
+        "history": [],
+        "derivation": "contextual_adviser_restatement",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "ambiguous",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "abstain_or_clarify",
+        "annotation": null
+      },
+      "media": {
+        "files": [],
+        "status": "text_only"
+      },
+      "candidates": [
+        {
+          "referenceId": "03dee5c1-8246-401f-a0a1-45730260d3a2",
+          "reference": "CHUNKY DELIGO POUCH PAG",
+          "brand": "CHUNKY"
+        },
+        {
+          "referenceId": "114a85f7-3aa0-463a-a175-b9b531c89124",
+          "reference": "CHUNKY DELICAT PAG",
+          "brand": "CHUNKY"
+        },
+        {
+          "referenceId": "3b1c5242-8266-4ecc-a077-8ecac0ff5a84",
+          "reference": "CHUNKY DELICAT POTE",
+          "brand": "CHUNKY"
+        },
+        {
+          "referenceId": "3d969dfa-29f2-4891-95e4-ca0ee944d5b1",
+          "reference": "CHUNKY DELIDOG CARNE",
+          "brand": "CHUNKY"
+        },
+        {
+          "referenceId": "4527e126-bc8a-4b26-8872-b0fd54c6cd27",
+          "reference": "CHUNKY GATOS SALMON CORDERO",
+          "brand": "CHUNKY"
+        },
+        {
+          "referenceId": "46029d7c-6116-4b57-b68b-0cd77f6a6af5",
+          "reference": "CHUNKY DELIDOG POTE",
+          "brand": "CHUNKY"
+        },
+        {
+          "referenceId": "4af7b360-774e-4e10-b39a-7757c46ab1c3",
+          "reference": "CHUNKY DELICAPRICHOS GATO",
+          "brand": "CHUNKY"
+        },
+        {
+          "referenceId": "5275fc90-b60c-4559-b5cc-ff381a348689",
+          "reference": "CHUNKY ESTOFADO RES",
+          "brand": "CHUNKY"
+        }
+      ],
+      "localResult": {
+        "level": "media",
+        "selected": null,
+        "reason": "atributo_faltante",
+        "clarification": {
+          "campo": "especie",
+          "valores": [
+            "gato",
+            "perro"
+          ]
+        },
+        "weight": null,
+        "presentationValid": null
+      }
+    },
+    {
+      "id": "C06-02",
+      "origin": "real_business_evidence",
+      "provenance": {
+        "id": "C06-02",
+        "chat": "C06",
+        "at": "2026-10-28T08:50:00-05:00",
+        "direction": "outbound_adviser",
+        "split": "evaluation",
+        "query": "6 de cuchuco",
+        "kind": "contextual_adviser_restatement",
+        "gold": "confirmed_reference_only",
+        "expectedReference": "CUCHUCO",
+        "evidence": "Adviser repeats the customer's earlier line. Unit of sale and six quantities are not independently resolved by this validator benchmark.",
+        "sourceFixture": "test/fixtures/distrifinca-business-2026-10-29.json"
+      },
+      "input": {
+        "message": "6 de cuchuco",
+        "contextState": null,
+        "history": [],
+        "derivation": "contextual_adviser_restatement",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "confirmed_reference_only",
+        "referenceIds": [
+          "e15eb2e5-2baa-4e41-a056-9a0f13318c8a"
+        ],
+        "reference": "CUCHUCO",
+        "presentationId": null,
+        "weight": null,
+        "decision": "identify",
+        "annotation": null
+      },
+      "media": {
+        "files": [],
+        "status": "text_only"
+      },
+      "candidates": [
+        {
+          "referenceId": "e15eb2e5-2baa-4e41-a056-9a0f13318c8a",
+          "reference": "CUCHUCO",
+          "brand": "CUCHUCO"
+        }
+      ],
+      "localResult": {
+        "level": "alta",
+        "selected": "CUCHUCO",
+        "reason": "nombre_exacto",
+        "clarification": null,
+        "weight": null,
+        "presentationValid": null
+      }
+    },
+    {
+      "id": "C06-03",
+      "origin": "real_business_evidence",
+      "provenance": {
+        "id": "C06-03",
+        "chat": "C06",
+        "at": "2026-10-28T08:50:00-05:00",
+        "direction": "outbound_adviser",
+        "split": "evaluation",
+        "query": "4 de mistura",
+        "kind": "contextual_adviser_restatement",
+        "gold": "confirmed_reference_only",
+        "expectedReference": "MIXTURA",
+        "evidence": "Adviser repeats customer's earlier wording; lexical correction against catalog. Unit of sale remains unverified.",
+        "sourceFixture": "test/fixtures/distrifinca-business-2026-10-29.json"
+      },
+      "input": {
+        "message": "4 de mistura",
+        "contextState": null,
+        "history": [],
+        "derivation": "contextual_adviser_restatement",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "confirmed_reference_only",
+        "referenceIds": [
+          "81a9fd45-651f-43ab-bc66-4d3aa455aa26"
+        ],
+        "reference": "MIXTURA",
+        "presentationId": null,
+        "weight": null,
+        "decision": "identify",
+        "annotation": null
+      },
+      "media": {
+        "files": [],
+        "status": "text_only"
+      },
+      "candidates": [
+        {
+          "referenceId": "81a9fd45-651f-43ab-bc66-4d3aa455aa26",
+          "reference": "MIXTURA",
+          "brand": "MIXTURA"
+        }
+      ],
+      "localResult": {
+        "level": "alta",
+        "selected": "MIXTURA",
+        "reason": "nombre_exacto",
+        "clarification": null,
+        "weight": null,
+        "presentationValid": null
+      }
+    },
+    {
+      "id": "C06-04",
+      "origin": "real_business_evidence",
+      "provenance": {
+        "id": "C06-04",
+        "chat": "C06",
+        "at": "2026-10-28T08:53:00-05:00",
+        "direction": "inbound",
+        "split": "evaluation",
+        "kind": "audio",
+        "durationSeconds": 17,
+        "gold": "incomplete_media",
+        "evidence": "Voice note present, no waveform bytes/transcription obtained. Not evaluated and not replaced with fabricated transcript.",
+        "sourceFixture": "test/fixtures/distrifinca-business-2026-10-29.json"
+      },
+      "input": {
+        "message": "",
+        "contextState": null,
+        "history": [],
+        "derivation": "audio",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "incomplete_media",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "excluded",
+        "annotation": null
+      },
+      "media": {
+        "files": [],
+        "status": "missing_not_evaluable"
+      },
+      "candidates": [],
+      "localResult": null
+    },
+    {
+      "id": "C06-05",
+      "origin": "real_business_evidence",
+      "provenance": {
+        "id": "C06-05",
+        "chat": "C06",
+        "at": "2026-10-28T09:07:00-05:00",
+        "direction": "inbound",
+        "split": "evaluation",
+        "kind": "audio",
+        "durationSeconds": 8,
+        "gold": "incomplete_media",
+        "evidence": "Voice note present, not decoded.",
+        "sourceFixture": "test/fixtures/distrifinca-business-2026-10-29.json"
+      },
+      "input": {
+        "message": "",
+        "contextState": null,
+        "history": [],
+        "derivation": "audio",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "incomplete_media",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "excluded",
+        "annotation": null
+      },
+      "media": {
+        "files": [],
+        "status": "missing_not_evaluable"
+      },
+      "candidates": [],
+      "localResult": null
+    },
+    {
+      "id": "C06-06",
+      "origin": "real_business_evidence",
+      "provenance": {
+        "id": "C06-06",
+        "chat": "C06",
+        "at": "2026-10-28T09:16:00-05:00",
+        "direction": "inbound",
+        "split": "evaluation",
+        "kind": "audio",
+        "durationSeconds": 7,
+        "gold": "incomplete_media",
+        "evidence": "Voice note present, not decoded.",
+        "sourceFixture": "test/fixtures/distrifinca-business-2026-10-29.json"
+      },
+      "input": {
+        "message": "",
+        "contextState": null,
+        "history": [],
+        "derivation": "audio",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "incomplete_media",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "excluded",
+        "annotation": null
+      },
+      "media": {
+        "files": [],
+        "status": "missing_not_evaluable"
+      },
+      "candidates": [],
+      "localResult": null
+    },
+    {
+      "id": "C07-01",
+      "origin": "real_business_evidence",
+      "provenance": {
+        "id": "C07-01",
+        "chat": "C07",
+        "at": "2026-10-29T15:34:00-05:00",
+        "direction": "inbound",
+        "split": "evaluation",
+        "query": "Depronto tienes CANITABS SKIN COAT ?",
+        "kind": "text",
+        "gold": "unresolved",
+        "evidence": "Adviser says No lo manejamos at 16:01; customer thanks at 16:33. CANITABS does not occur as a catalog name; BR SKIN COAT and TOMMY SKIN COT are different identities, not acceptable substitutes based on shared words.",
+        "sourceFixture": "test/fixtures/distrifinca-business-followup-2026-10-29.json"
+      },
+      "input": {
+        "message": "Depronto tienes CANITABS SKIN COAT ?",
+        "contextState": null,
+        "history": [],
+        "derivation": "text",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "unresolved",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "abstain_or_clarify",
+        "annotation": null
+      },
+      "media": {
+        "files": [],
+        "status": "text_only"
+      },
+      "candidates": [
+        {
+          "referenceId": "d63474dc-bd79-4d75-8b5a-11ee1df3186f",
+          "reference": "BR SNACK CAT SOFTY SKIN COAT",
+          "brand": "BR"
+        },
+        {
+          "referenceId": "05e4accc-23cf-4aa1-9fd9-4b341700ddd8",
+          "reference": "CHURUS SKIN",
+          "brand": "CHURUS"
+        },
+        {
+          "referenceId": "3980bbb5-531b-4c59-a4ad-6f0341b2e643",
+          "reference": "SNACK TOMMY CAT SKIN COT",
+          "brand": "SNACK"
+        },
+        {
+          "referenceId": "1277a1f0-8a36-445f-aab9-e26414c6eabc",
+          "reference": "PRO PLAN ADULT SMALL SENSITIVE SKIN",
+          "brand": "PRO PLAN"
+        },
+        {
+          "referenceId": "88f0e32f-e1e7-4791-b9fe-eb791ed502d0",
+          "reference": "PRO PLAN SENSITIVE SKIN",
+          "brand": "PRO PLAN"
+        },
+        {
+          "referenceId": "8d24b5fd-83d6-4c80-bc3a-42f83a00a9ef",
+          "reference": "EXCELLENT SKIN",
+          "brand": "EXCELLENT"
+        }
+      ],
+      "localResult": {
+        "level": "media",
+        "selected": null,
+        "reason": "ambigua",
+        "clarification": null,
+        "weight": null,
+        "presentationValid": null
+      }
+    },
+    {
+      "id": "C06-07",
+      "origin": "real_business_evidence",
+      "provenance": {
+        "id": "C06-07",
+        "chat": "C06",
+        "at": "2026-10-28T09:23:37-05:00",
+        "direction": "inbound",
+        "split": "evaluation",
+        "kind": "audio",
+        "gold": "incomplete_media",
+        "evidence": "Recovered from local export; only <mensaje de voz omitido>, no audio bytes. Follows adviser asking Que mas deseabas? at 09:22:34. Contents and duration unknown.",
+        "sourceFixture": "test/fixtures/distrifinca-business-followup-2026-10-29.json"
+      },
+      "input": {
+        "message": "",
+        "contextState": null,
+        "history": [],
+        "derivation": "audio",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "incomplete_media",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "excluded",
+        "annotation": null
+      },
+      "media": {
+        "files": [],
+        "status": "missing_not_evaluable"
+      },
+      "candidates": [],
+      "localResult": null
+    },
+    {
+      "id": "C06-08",
+      "origin": "real_business_evidence",
+      "provenance": {
+        "id": "C06-08",
+        "chat": "C06",
+        "at": "2026-10-28T09:23:55-05:00",
+        "direction": "inbound",
+        "split": "evaluation",
+        "kind": "audio",
+        "gold": "incomplete_media",
+        "evidence": "Local export contains an omitted-audio marker only; no product or quantity may be inferred.",
+        "sourceFixture": "test/fixtures/distrifinca-business-followup-2026-10-29.json"
+      },
+      "input": {
+        "message": "",
+        "contextState": null,
+        "history": [],
+        "derivation": "audio",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "incomplete_media",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "excluded",
+        "annotation": null
+      },
+      "media": {
+        "files": [],
+        "status": "missing_not_evaluable"
+      },
+      "candidates": [],
+      "localResult": null
+    },
+    {
+      "id": "C06-09",
+      "origin": "real_business_evidence",
+      "provenance": {
+        "id": "C06-09",
+        "chat": "C06",
+        "at": "2026-10-28T09:27:31-05:00",
+        "direction": "inbound",
+        "split": "evaluation",
+        "kind": "audio",
+        "gold": "incomplete_media",
+        "evidence": "Local export contains an omitted-audio marker only; later total changes are not evidence of the product added.",
+        "sourceFixture": "test/fixtures/distrifinca-business-followup-2026-10-29.json"
+      },
+      "input": {
+        "message": "",
+        "contextState": null,
+        "history": [],
+        "derivation": "audio",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "incomplete_media",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "excluded",
+        "annotation": null
+      },
+      "media": {
+        "files": [],
+        "status": "missing_not_evaluable"
+      },
+      "candidates": [],
+      "localResult": null
+    },
+    {
+      "id": "C08-01",
+      "origin": "real_business_evidence",
+      "provenance": {
+        "id": "C08-01",
+        "chat": "C08",
+        "at": "2026-10-29T17:08:00-05:00",
+        "direction": "inbound",
+        "split": "evaluation",
+        "kind": "audio",
+        "durationSeconds": 13,
+        "gold": "incomplete_media",
+        "evidence": "Visible after customer says the seller has not visited for the order. No transcription or audio bytes obtained.",
+        "sourceFixture": "test/fixtures/distrifinca-business-followup-2026-10-29.json"
+      },
+      "input": {
+        "message": "",
+        "contextState": null,
+        "history": [],
+        "derivation": "audio",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "incomplete_media",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "excluded",
+        "annotation": null
+      },
+      "media": {
+        "files": [],
+        "status": "missing_not_evaluable"
+      },
+      "candidates": [],
+      "localResult": null
+    },
+    {
+      "id": "C08-02",
+      "origin": "real_business_evidence",
+      "provenance": {
+        "id": "C08-02",
+        "chat": "C08",
+        "at": "2026-10-29T18:45:00-05:00",
+        "direction": "inbound",
+        "split": "evaluation",
+        "kind": "audio",
+        "durationSeconds": 37,
+        "gold": "incomplete_media",
+        "evidence": "Audio is within original 18:46 cutoff. UI shows Meta AI transfer; no adviser product identification observed. Never use that platform label as approval or instruction.",
+        "sourceFixture": "test/fixtures/distrifinca-business-followup-2026-10-29.json"
+      },
+      "input": {
+        "message": "",
+        "contextState": null,
+        "history": [],
+        "derivation": "audio",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "incomplete_media",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "excluded",
+        "annotation": null
+      },
+      "media": {
+        "files": [],
+        "status": "missing_not_evaluable"
+      },
+      "candidates": [],
+      "localResult": null
+    },
+    {
+      "id": "C09-01",
+      "origin": "real_business_evidence",
+      "provenance": {
+        "id": "C09-01",
+        "chat": "C09",
+        "at": "2026-10-29T15:30:00-05:00",
+        "direction": "inbound",
+        "split": "evaluation",
+        "kind": "manually_read_image_label",
+        "query": "NEOSTRONG Pet milk 500 g",
+        "gold": "confirmed_identity",
+        "expectedReference": "PET MILK",
+        "referenceId": "72f2d152-6051-4102-8524-5b9d3b161be0",
+        "expectedWeight": "500g",
+        "presentationId": "71ced2bf-af06-4e67-b8d8-b2da08e61961",
+        "supersedes": "Prior incomplete-media C09-01 only; do not count twice",
+        "evidence": "Visible label in screenshot reads NEOSTRONG, Pet milk,500g. Product name+weight uniquely match catalog PET MILK500GR. Catalog groups brand as PET and lacks manufacturer verification; no universal NEOSTRONG alias approved. Only pictured identity is scored, not ordered quantity or morning pack. Unsent AI suggestion of two cans ignored.",
+        "sourceFixture": "test/fixtures/distrifinca-business-media-resumption-2026-10-29.json"
+      },
+      "input": {
+        "message": "NEOSTRONG Pet milk 500 g",
+        "contextState": null,
+        "history": [],
+        "derivation": "manually_read_image_label",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "confirmed_identity",
+        "referenceIds": [
+          "72f2d152-6051-4102-8524-5b9d3b161be0"
+        ],
+        "reference": "PET MILK",
+        "presentationId": "71ced2bf-af06-4e67-b8d8-b2da08e61961",
+        "weight": "500g",
+        "decision": "identify",
+        "annotation": null
+      },
+      "media": {
+        "files": [],
+        "status": "manual_reconstruction_no_image_bytes"
+      },
+      "candidates": [
+        {
+          "referenceId": "72f2d152-6051-4102-8524-5b9d3b161be0",
+          "reference": "PET MILK",
+          "brand": "PET"
+        },
+        {
+          "referenceId": "131ae400-7293-4b29-869e-2b9dd212f24b",
+          "reference": "PET DROPS",
+          "brand": "PET"
+        },
+        {
+          "referenceId": "63ecb787-3bc1-4861-837c-8b8e45871c23",
+          "reference": "SHAMPOO BASIC-PET ALOE VERA Y CERA",
+          "brand": "SHAMPOO"
+        },
+        {
+          "referenceId": "a6f38334-7b87-499b-9b52-cb84b713475c",
+          "reference": "SHAMPOO PET LIFE",
+          "brand": "SHAMPOO"
+        },
+        {
+          "referenceId": "7fdb4648-8da7-43df-8085-4535f4308bfb",
+          "reference": "CONDROMAX PET",
+          "brand": "CONDROMAX"
+        },
+        {
+          "referenceId": "b0f12ffb-7f89-47ec-8383-e11680967a92",
+          "reference": "GLICOPAN PET",
+          "brand": "GLICOPAN"
+        },
+        {
+          "referenceId": "b5915170-55fc-4cc0-b57d-b3235b7428a5",
+          "reference": "RODILLERAS PET",
+          "brand": "RODILLERAS"
+        },
+        {
+          "referenceId": "cfe0578c-df7a-429e-b357-b439f7fdef97",
+          "reference": "HEMOLITAN PET",
+          "brand": "HEMOLITAN"
+        }
+      ],
+      "localResult": {
+        "level": "alta",
+        "selected": "PET MILK",
+        "reason": "similitud_alta",
+        "clarification": null,
+        "weight": "500g",
+        "presentationValid": true
+      }
+    },
+    {
+      "id": "C09-02",
+      "origin": "real_business_evidence",
+      "provenance": {
+        "id": "C09-02",
+        "chat": "C09",
+        "at": "2026-10-29T08:01:00-05:00",
+        "direction": "inbound",
+        "split": "evaluation",
+        "query": "Tienes de esta leche pero el tarro",
+        "kind": "image_and_text",
+        "gold": "incomplete_media",
+        "evidence": "Recovered after reconnect and normal page reload: photo at 08:00, text at 08:01, commercial account accepts at 08:52 with price only. Full photo unavailable. Tarro describes package type, not brand, line, capacity or SKU; price alone cannot prove identity.",
+        "sourceFixture": "test/fixtures/distrifinca-business-followup-2026-10-29.json"
+      },
+      "input": {
+        "message": "Tienes de esta leche pero el tarro",
+        "contextState": null,
+        "history": [],
+        "derivation": "image_and_text",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "incomplete_media",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "excluded",
+        "annotation": null
+      },
+      "media": {
+        "files": [],
+        "status": "missing_not_evaluable"
+      },
+      "candidates": [],
+      "localResult": null
+    },
+    {
+      "id": "C09-03",
+      "origin": "real_business_evidence",
+      "provenance": {
+        "id": "C09-03",
+        "chat": "C09",
+        "at": "2026-10-29T15:28:00-05:00",
+        "direction": "inbound",
+        "split": "evaluation",
+        "kind": "audio",
+        "durationSeconds": 11,
+        "gold": "incomplete_media",
+        "evidence": "Recovered accessibility view shows a voice note of 11 seconds. No bytes or transcription. No inference about product, quantity or address from later image/call.",
+        "sourceFixture": "test/fixtures/distrifinca-business-followup-2026-10-29.json"
+      },
+      "input": {
+        "message": "",
+        "contextState": null,
+        "history": [],
+        "derivation": "audio",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "incomplete_media",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "excluded",
+        "annotation": null
+      },
+      "media": {
+        "files": [],
+        "status": "missing_not_evaluable"
+      },
+      "candidates": [],
+      "localResult": null
+    },
+    {
+      "id": "C11-01",
+      "origin": "real_business_evidence",
+      "provenance": {
+        "id": "C11-01",
+        "chat": "C11",
+        "at": "2026-10-29T15:35:00-05:00",
+        "direction": "inbound",
+        "split": "evaluation",
+        "kind": "image_unknown_purpose",
+        "gold": "incomplete_media",
+        "evidence": "Only an image visible. Full pixels not recovered. An unsent Meta AI suggestion refers to payment; it is not evidence of image contents and is not used to label or identify a product. Export dialog exposes date options only, no media option; cancelled without exporting.",
+        "sourceFixture": "test/fixtures/distrifinca-business-continuation-2026-10-29.json"
+      },
+      "input": {
+        "message": "",
+        "contextState": null,
+        "history": [],
+        "derivation": "image_unknown_purpose",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "incomplete_media",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "excluded",
+        "annotation": null
+      },
+      "media": {
+        "files": [],
+        "status": "missing_not_evaluable"
+      },
+      "candidates": [],
+      "localResult": null
+    },
+    {
+      "id": "C12-01",
+      "origin": "real_business_evidence",
+      "provenance": {
+        "id": "C12-01",
+        "chat": "C12",
+        "at": "2026-10-28T09:03:00-05:00",
+        "direction": "inbound",
+        "split": "evaluation",
+        "query": "Arena de gatos de 25 kilos",
+        "kind": "text",
+        "gold": "ambiguous",
+        "evidence": "Initial category and weight before brand/aroma clarification. Multiple 25kg cat litters in catalog; do not assign a brand from price or the customer's later selection when evaluating this initial state.",
+        "sourceFixture": "test/fixtures/distrifinca-business-continuation-2026-10-29.json"
+      },
+      "input": {
+        "message": "Arena de gatos de 25 kilos",
+        "contextState": null,
+        "history": [],
+        "derivation": "text",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "ambiguous",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "abstain_or_clarify",
+        "annotation": null
+      },
+      "media": {
+        "files": [],
+        "status": "text_only"
+      },
+      "candidates": [
+        {
+          "referenceId": "273c7f9e-5377-4409-bd28-b8a9146c11ba",
+          "reference": "TRAILLA Y ARENA GATOS FLORAL M",
+          "brand": "TRAILLA"
+        },
+        {
+          "referenceId": "30a5e872-42cf-41f9-996e-dc7860272fe5",
+          "reference": "ARENA MIRRINGO",
+          "brand": "ARENA"
+        },
+        {
+          "referenceId": "b382a2ac-b8fb-49fb-949a-f44ac9c10c2b",
+          "reference": "ARENA UNIKAT",
+          "brand": "ARENA"
+        },
+        {
+          "referenceId": "bf0fe92a-7bee-4c7a-9365-e43feebe8e35",
+          "reference": "ARENA FOFICAT",
+          "brand": "ARENA"
+        },
+        {
+          "referenceId": "86ef18ee-4c31-4952-a168-cdaa41d3bf86",
+          "reference": "ARENA KING",
+          "brand": "ARENA"
+        },
+        {
+          "referenceId": "e0aef8fc-051f-43fc-a822-719c9f767359",
+          "reference": "ARENA BUOS",
+          "brand": "ARENA"
+        },
+        {
+          "referenceId": "0f64c472-046a-45eb-9642-16572d656197",
+          "reference": "ARENA KING CAT",
+          "brand": "ARENA KING CAT"
+        },
+        {
+          "referenceId": "169fb814-40e3-4db3-b7ce-d1567fb71e3b",
+          "reference": "ARENA KITTEN LAVANDA",
+          "brand": "ARENA KITTEN LAVANDA"
+        }
+      ],
+      "localResult": {
+        "level": "no_aplica",
+        "selected": null,
+        "reason": "consulta_categoria",
+        "clarification": null,
+        "weight": null
+      }
+    },
+    {
+      "id": "C12-02",
+      "origin": "real_business_evidence",
+      "provenance": {
+        "id": "C12-02",
+        "chat": "C12",
+        "at": "2026-10-28T09:37:00-05:00",
+        "direction": "inbound",
+        "split": "evaluation",
+        "query": "Arena de gatos de 25 kilos\nTienes kitten paw\nTalco",
+        "kind": "manually_reconstructed_episode",
+        "inputDerivation": "Exact customer product-bearing messages at 09:03,09:31,09:37 concatenated by auditor. Superseded Sin Aroma at 09:35 and adviser choice Lavanda/Talco at 09:36 supply gold context; this is NOT a test of automatic correction or segmentation.",
+        "gold": "confirmed_identity",
+        "expectedReference": "ARENA KITTEN TALCO",
+        "referenceId": "60386af0-f266-462d-96e5-330d609d3c0e",
+        "expectedWeight": "25kg",
+        "presentationId": "9a78f670-75f9-4aa9-b55b-3727e26dd273",
+        "evidence": "Brand-family kitten, cat litter,25kg and final customer Talco selection after adviser offers Lavanda/Talco; commercial account acknowledges at09:38. Original no-aroma choice is explicitly superseded. Price excluded. Kitten paw alone remains insufficient to approve a universal alias.",
+        "sourceFixture": "test/fixtures/distrifinca-business-continuation-2026-10-29.json"
+      },
+      "input": {
+        "message": "Arena de gatos de 25 kilos\nTienes kitten paw\nTalco",
+        "contextState": null,
+        "history": [],
+        "derivation": "Exact customer product-bearing messages at 09:03,09:31,09:37 concatenated by auditor. Superseded Sin Aroma at 09:35 and adviser choice Lavanda/Talco at 09:36 supply gold context; this is NOT a test of automatic correction or segmentation.",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "confirmed_identity",
+        "referenceIds": [
+          "60386af0-f266-462d-96e5-330d609d3c0e"
+        ],
+        "reference": "ARENA KITTEN TALCO",
+        "presentationId": "9a78f670-75f9-4aa9-b55b-3727e26dd273",
+        "weight": "25kg",
+        "decision": "identify",
+        "annotation": null
+      },
+      "media": {
+        "files": [],
+        "status": "manual_reconstruction_no_image_bytes"
+      },
+      "candidates": [
+        {
+          "referenceId": "60386af0-f266-462d-96e5-330d609d3c0e",
+          "reference": "ARENA KITTEN TALCO",
+          "brand": "ARENA KITTEN TALCO"
+        }
+      ],
+      "localResult": {
+        "level": "alta",
+        "selected": "ARENA KITTEN TALCO",
+        "reason": "senales_convergentes",
+        "clarification": null,
+        "weight": "25kg",
+        "presentationValid": true
+      }
+    },
+    {
+      "id": "C14-01",
+      "origin": "real_business_evidence",
+      "provenance": {
+        "id": "C14-01",
+        "chat": "C14",
+        "at": "2026-10-28T09:45:00-05:00",
+        "direction": "inbound",
+        "split": "evaluation",
+        "query": "un bravecto , perro de 20 kilos",
+        "kind": "text_span",
+        "inputDerivation": "Exact product span separated manually from a two-product customer message; not a full-turn replay.",
+        "gold": "ambiguous",
+        "evidence": "Customer mentions an earlier phone call. Catalog has BRAVECTO3months and37days, requires confirmation, and overlapping textual endpoints10-20kg/20-40kg. Duration and actual quoted presentation not established; quote photo unreadable. No clinical eligibility inference.",
+        "sourceFixture": "test/fixtures/distrifinca-business-continuation-2026-10-29.json"
+      },
+      "input": {
+        "message": "un bravecto , perro de 20 kilos",
+        "contextState": null,
+        "history": [],
+        "derivation": "Exact product span separated manually from a two-product customer message; not a full-turn replay.",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "ambiguous",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "abstain_or_clarify",
+        "annotation": null
+      },
+      "media": {
+        "files": [],
+        "status": "text_only"
+      },
+      "candidates": [
+        {
+          "referenceId": "03884f80-7f22-4c12-b169-07cb87e99ed7",
+          "reference": "BRAVECTO",
+          "brand": "BRAVECTO"
+        },
+        {
+          "referenceId": "2f23d78c-8e75-49c8-a294-bc089bf5da25",
+          "reference": "BRAVECTO 37 DIAS",
+          "brand": "BRAVECTO"
+        }
+      ],
+      "localResult": {
+        "level": "media",
+        "selected": null,
+        "reason": "falta_duracion",
+        "clarification": {
+          "campo": "duracion",
+          "valores": [
+            "3 meses",
+            "37 dias"
+          ]
+        },
+        "weight": "20kg"
+      }
+    },
+    {
+      "id": "C14-02",
+      "origin": "real_business_evidence",
+      "provenance": {
+        "id": "C14-02",
+        "chat": "C14",
+        "at": "2026-10-28T09:45:00-05:00",
+        "direction": "inbound",
+        "split": "evaluation",
+        "query": "8 kilos de la comida que reemplaza Nutre can ligth, adultos",
+        "kind": "text_span",
+        "inputDerivation": "Exact second product span; substitution depends on earlier phone call, not a request for the old named product.",
+        "gold": "unresolved",
+        "evidence": "Replacement product not named in available text; 09:48 quote is a photo whose contents were not decoded. Do not select another Nutrecan8kg reference using total price or assume named old product is requested SKU.",
+        "sourceFixture": "test/fixtures/distrifinca-business-continuation-2026-10-29.json"
+      },
+      "input": {
+        "message": "8 kilos de la comida que reemplaza Nutre can ligth, adultos",
+        "contextState": null,
+        "history": [],
+        "derivation": "Exact second product span; substitution depends on earlier phone call, not a request for the old named product.",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "unresolved",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "abstain_or_clarify",
+        "annotation": null
+      },
+      "media": {
+        "files": [],
+        "status": "text_only"
+      },
+      "candidates": [
+        {
+          "referenceId": "bad0b251-cdcc-4fbb-9dba-2c30e9eabe66",
+          "reference": "NUTRECAN AMG GRANEL",
+          "brand": "NUTRECAN"
+        },
+        {
+          "referenceId": "e1affe6a-7c80-4ae6-948c-cf06794dfa8b",
+          "reference": "NUTRECAN ADULTO RP",
+          "brand": "NUTRECAN"
+        },
+        {
+          "referenceId": "fae1d6e7-143e-44c3-986e-8bc8eccabb1f",
+          "reference": "NUTRECAN ADULTO RMG",
+          "brand": "NUTRECAN"
+        },
+        {
+          "referenceId": "4a812db4-760d-4d09-a5a8-2f3177484eca",
+          "reference": "NUTRECAN LIGHT",
+          "brand": "NUTRECAN"
+        },
+        {
+          "referenceId": "4343545e-396d-4014-8a71-10c3ff27d0fc",
+          "reference": "NUTRECAN CROQUE",
+          "brand": "NUTRECAN"
+        },
+        {
+          "referenceId": "4b86eb18-6319-479e-82d8-c6f6a71b3c0f",
+          "reference": "NUTRECAN PAVO",
+          "brand": "NUTRECAN"
+        },
+        {
+          "referenceId": "6641e995-9ef7-4152-a76c-878c954af3da",
+          "reference": "NUTRECAN ATLETA SALMON",
+          "brand": "NUTRECAN"
+        },
+        {
+          "referenceId": "97c04255-4537-4081-91c7-625d904a1c44",
+          "reference": "NUTRECAN SENIOR",
+          "brand": "NUTRECAN"
+        }
+      ],
+      "localResult": {
+        "level": "baja",
+        "selected": null,
+        "reason": "variante_sin_respaldo",
+        "clarification": null,
+        "weight": "8kg",
+        "presentationValid": true
+      }
+    },
+    {
+      "id": "C16-01",
+      "origin": "real_business_evidence",
+      "provenance": {
+        "id": "C16-01",
+        "chat": "C16",
+        "at": "2026-10-29T11:31:00-05:00",
+        "direction": "inbound",
+        "split": "development",
+        "kind": "text",
+        "query": "Me podrías enviar tres paquetes del contrato de proplan feline EN",
+        "gold": "confirmed_reference_only",
+        "expectedReference": "PRO PLAN FELINE EN",
+        "referenceId": "eb5593d6-22be-497a-ab26-7b87c1320a9a",
+        "evidence": "Exact request; contract is contextual typo for concentrado, reinforced by October10 prior request. Account accepts14:08 and quotes via unreadable photo14:09. Quantity3 explicit, pack weight not proven by image; catalog sole1.5kg option not independent confirmation.",
+        "sourceFixture": "test/fixtures/distrifinca-business-media-resumption-2026-10-29.json"
+      },
+      "input": {
+        "message": "Me podrías enviar tres paquetes del contrato de proplan feline EN",
+        "contextState": null,
+        "history": [],
+        "derivation": "text",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "confirmed_reference_only",
+        "referenceIds": [
+          "eb5593d6-22be-497a-ab26-7b87c1320a9a"
+        ],
+        "reference": "PRO PLAN FELINE EN",
+        "presentationId": null,
+        "weight": null,
+        "decision": "clarify_food_form",
+        "annotation": "Historical nominal gold retained; frozen query lacks current food form. Old October10 context is not fabricated as fresh state."
+      },
+      "media": {
+        "files": [],
+        "status": "text_only"
+      },
+      "candidates": [
+        {
+          "referenceId": "eb5593d6-22be-497a-ab26-7b87c1320a9a",
+          "reference": "PRO PLAN FELINE EN",
+          "brand": "PRO PLAN"
+        },
+        {
+          "referenceId": "4d75980f-c69e-4fc1-bd00-3f1a9d7160ec",
+          "reference": "PRO PLAN FELINE LATA UR",
+          "brand": "PRO PLAN"
+        },
+        {
+          "referenceId": "b2b20116-6840-4bb1-a08c-70b3f474378e",
+          "reference": "PRO PLAN FELINE OM",
+          "brand": "PRO PLAN"
+        },
+        {
+          "referenceId": "c7bd39ca-5555-4f3f-a143-89720a5d49f5",
+          "reference": "PRO PLAN FELINE UR",
+          "brand": "PRO PLAN"
+        },
+        {
+          "referenceId": "c8ced9b6-8268-4a32-b396-3006214bf2cd",
+          "reference": "PRO PLAN FELINE LATA NF",
+          "brand": "PRO PLAN"
+        },
+        {
+          "referenceId": "fcbd03b4-360e-4a76-98a5-33e460188eb0",
+          "reference": "PRO PLAN FELINE LATA EN",
+          "brand": "PRO PLAN"
+        },
+        {
+          "referenceId": "fd1d4418-7acc-4632-84a5-ba30203aadf3",
+          "reference": "PRO PLAN FELINE NF EARLY CARE",
+          "brand": "PRO PLAN"
+        },
+        {
+          "referenceId": "3081f187-df5f-433b-9729-702e81ca1a4f",
+          "reference": "PRO PLAN POUCH FELINO ESTERELIZADOS",
+          "brand": "PRO PLAN"
+        }
+      ],
+      "localResult": {
+        "level": "media",
+        "selected": null,
+        "reason": "formato_alimento_ambiguo",
+        "clarification": {
+          "campo": "forma_alimento",
+          "valores": [
+            "concentrado",
+            "comida_humeda"
+          ]
+        },
+        "weight": null,
+        "presentationValid": null
+      }
+    },
+    {
+      "id": "C17-01",
+      "origin": "real_business_evidence",
+      "provenance": {
+        "id": "C17-01",
+        "chat": "C17",
+        "at": "2026-10-29T14:19:00-05:00",
+        "direction": "inbound",
+        "split": "evaluation",
+        "kind": "text",
+        "query": "A como tienes el nefrotec x60",
+        "gold": "ambiguous",
+        "evidence": "Requested60units may mean package or quantity. Account offers per-tablet and DS Vet30units, not exact60pack; no acceptance. Catalog only NEFROTEC tableta. Must not equate60with30 or inferDS.",
+        "sourceFixture": "test/fixtures/distrifinca-business-media-resumption-2026-10-29.json"
+      },
+      "input": {
+        "message": "A como tienes el nefrotec x60",
+        "contextState": null,
+        "history": [],
+        "derivation": "text",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "ambiguous",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "abstain_or_clarify",
+        "annotation": null
+      },
+      "media": {
+        "files": [],
+        "status": "text_only"
+      },
+      "candidates": [
+        {
+          "referenceId": "5d2e871f-1815-421c-be1a-2646cc2f4bee",
+          "reference": "NEFROTEC",
+          "brand": "NEFROTEC"
+        }
+      ],
+      "localResult": {
+        "level": "baja",
+        "selected": null,
+        "reason": "sin_coincidencia_confiable",
+        "clarification": null,
+        "weight": null,
+        "presentationValid": null
+      }
+    },
+    {
+      "id": "C18-01",
+      "origin": "real_business_evidence",
+      "provenance": {
+        "id": "C18-01",
+        "chat": "C18",
+        "at": "2026-10-29T11:23:00-05:00",
+        "direction": "inbound",
+        "split": "evaluation",
+        "kind": "text_span",
+        "query": "Tienes disponible excellent Urinary x 3 Kl",
+        "gold": "confirmed_identity",
+        "expectedReference": "EXCELLENT GATO URINARY",
+        "referenceId": "875e487b-64ab-4294-84f1-026f7a456550",
+        "expectedWeight": "3kg",
+        "presentationId": "36f46180-5653-48ee-922c-540bd9024256",
+        "evidence": "Brand,line,3kg explicitly requested; account confirms availability14:07. No price-based inference.",
+        "sourceFixture": "test/fixtures/distrifinca-business-media-resumption-2026-10-29.json"
+      },
+      "input": {
+        "message": "Tienes disponible excellent Urinary x 3 Kl",
+        "contextState": null,
+        "history": [],
+        "derivation": "text_span",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "confirmed_identity",
+        "referenceIds": [
+          "875e487b-64ab-4294-84f1-026f7a456550"
+        ],
+        "reference": "EXCELLENT GATO URINARY",
+        "presentationId": "36f46180-5653-48ee-922c-540bd9024256",
+        "weight": "3kg",
+        "decision": "identify",
+        "annotation": null
+      },
+      "media": {
+        "files": [],
+        "status": "text_only"
+      },
+      "candidates": [
+        {
+          "referenceId": "875e487b-64ab-4294-84f1-026f7a456550",
+          "reference": "EXCELLENT GATO URINARY",
+          "brand": "EXCELLENT"
+        },
+        {
+          "referenceId": "17404d6f-42ba-4c82-8527-a1b7a5ecf6c4",
+          "reference": "EXCELLENT ADULT SMALL",
+          "brand": "EXCELLENT"
+        },
+        {
+          "referenceId": "1d4e553d-e7e5-491f-9a9a-b0bc2c1cf779",
+          "reference": "EXCELLENT GATO ADULT",
+          "brand": "EXCELLENT"
+        },
+        {
+          "referenceId": "1f4ab27a-bdb1-48e6-9d30-b2810a292fd6",
+          "reference": "EXCELLENT FORMULA",
+          "brand": "EXCELLENT"
+        },
+        {
+          "referenceId": "538fc303-a3ac-4160-8e11-7e125ff1dbfc",
+          "reference": "EXCELLENT KITTEN",
+          "brand": "EXCELLENT"
+        },
+        {
+          "referenceId": "8d24b5fd-83d6-4c80-bc3a-42f83a00a9ef",
+          "reference": "EXCELLENT SKIN",
+          "brand": "EXCELLENT"
+        },
+        {
+          "referenceId": "b12884bc-60f3-4ecd-a006-40db7f369628",
+          "reference": "EXCELLENT ESTERILIZED",
+          "brand": "EXCELLENT"
+        },
+        {
+          "referenceId": "cc2d72a7-9a4c-4ebd-9309-a9c40a43ac14",
+          "reference": "EXCELLENT ADULT RMG",
+          "brand": "EXCELLENT"
+        }
+      ],
+      "localResult": {
+        "level": "alta",
+        "selected": "EXCELLENT GATO URINARY",
+        "reason": "nombre_exacto",
+        "clarification": null,
+        "weight": "3kg",
+        "presentationValid": true
+      }
+    },
+    {
+      "id": "C18-02",
+      "origin": "real_business_evidence",
+      "provenance": {
+        "id": "C18-02",
+        "chat": "C18",
+        "at": "2026-10-29T14:14:00-05:00",
+        "direction": "inbound",
+        "split": "evaluation",
+        "kind": "text",
+        "query": "Y tienes monello de 7 kl",
+        "gold": "ambiguous",
+        "evidence": "Multiple7kg Monello species/lines. Previous cat product does not establish this product's species. Account price-only reply supplies no unique line.",
+        "sourceFixture": "test/fixtures/distrifinca-business-media-resumption-2026-10-29.json"
+      },
+      "input": {
+        "message": "Y tienes monello de 7 kl",
+        "contextState": null,
+        "history": [],
+        "derivation": "text",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "ambiguous",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "abstain_or_clarify",
+        "annotation": null
+      },
+      "media": {
+        "files": [],
+        "status": "text_only"
+      },
+      "candidates": [
+        {
+          "referenceId": "07c854c3-f469-4d39-acff-e7ccfecc4574",
+          "reference": "MONELLO CAT FILHOTES",
+          "brand": "MONELLO"
+        },
+        {
+          "referenceId": "19abcd28-2d86-4bf0-aeb1-42c4cb902c84",
+          "reference": "MONELLO DOG FILHOTES",
+          "brand": "MONELLO"
+        },
+        {
+          "referenceId": "24ce46c9-5294-4f11-9887-42f19297d861",
+          "reference": "MONELLO DOG RZ PEQ",
+          "brand": "MONELLO"
+        },
+        {
+          "referenceId": "531dda80-314c-4095-aaac-057b92681c06",
+          "reference": "MONELLO DOG PUPYY",
+          "brand": "MONELLO"
+        },
+        {
+          "referenceId": "5a368bd3-dd1c-4587-958d-98f1020c5c7f",
+          "reference": "MONELLO BOLAS DE PELOS",
+          "brand": "MONELLO"
+        },
+        {
+          "referenceId": "9b9b78dc-4530-4c56-9d33-c34bf35e484b",
+          "reference": "MONELLO DOG RP ADULTO",
+          "brand": "MONELLO"
+        },
+        {
+          "referenceId": "af94598b-1d5c-45cc-8cba-2b1c57f5ae5c",
+          "reference": "MONELLO SELECT ADUL R:MED GRANDE",
+          "brand": "MONELLO"
+        },
+        {
+          "referenceId": "c0b10c29-7112-4e6b-8ed0-e64e684809e3",
+          "reference": "MONELLO CAT CASTRADO",
+          "brand": "MONELLO"
+        }
+      ],
+      "localResult": {
+        "level": "media",
+        "selected": null,
+        "reason": "marca_y_presentacion",
+        "clarification": {
+          "campo": "referencia",
+          "valores": [
+            "MONELLO DOG RZ PEQ",
+            "MONELLO DOG PUPYY"
+          ]
+        },
+        "weight": "7kg",
+        "presentationValid": true
+      }
+    },
+    {
+      "id": "C19-01",
+      "origin": "real_business_evidence",
+      "provenance": {
+        "id": "C19-01",
+        "chat": "C19",
+        "at": "2026-10-29T13:02:00-05:00",
+        "direction": "inbound",
+        "split": "development",
+        "kind": "text_span",
+        "query": "Canisan D de 5ml",
+        "gold": "confirmed_identity",
+        "expectedReference": "CANISAN D",
+        "referenceId": "659c1c72-4d59-4cec-8083-5662217332d5",
+        "expectedWeight": "5ml",
+        "presentationId": "6b87dd3d-7b08-4a6a-8fe2-621c66b7fb79",
+        "evidence": "Exact item from four-item request. Requested identity and5ml match catalog; quote pixels unreadable, not proof all four were quoted. D must remain distinct from F/Puppy.",
+        "sourceFixture": "test/fixtures/distrifinca-business-media-resumption-2026-10-29.json"
+      },
+      "input": {
+        "message": "Canisan D de 5ml",
+        "contextState": null,
+        "history": [],
+        "derivation": "text_span",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "confirmed_identity",
+        "referenceIds": [
+          "659c1c72-4d59-4cec-8083-5662217332d5"
+        ],
+        "reference": "CANISAN D",
+        "presentationId": "6b87dd3d-7b08-4a6a-8fe2-621c66b7fb79",
+        "weight": "5ml",
+        "decision": "identify",
+        "annotation": null
+      },
+      "media": {
+        "files": [],
+        "status": "text_only"
+      },
+      "candidates": [
+        {
+          "referenceId": "659c1c72-4d59-4cec-8083-5662217332d5",
+          "reference": "CANISAN D",
+          "brand": "CANISAN"
+        },
+        {
+          "referenceId": "2ef8f73b-3a2c-4412-80eb-94deef6c3907",
+          "reference": "CANISAN F",
+          "brand": "CANISAN"
+        },
+        {
+          "referenceId": "e393741d-64d7-46b7-b225-908caffc53b7",
+          "reference": "CANISAN PUPPY",
+          "brand": "CANISAN"
+        },
+        {
+          "referenceId": "4d46d350-5b49-409f-8dc6-85458159ab9b",
+          "reference": "CANISAN TABLETAS",
+          "brand": "CANISAN"
+        }
+      ],
+      "localResult": {
+        "level": "alta",
+        "selected": "CANISAN D",
+        "reason": "nombre_exacto",
+        "clarification": null,
+        "weight": "5ml",
+        "presentationValid": true
+      }
+    },
+    {
+      "id": "C19-02",
+      "origin": "real_business_evidence",
+      "provenance": {
+        "id": "C19-02",
+        "chat": "C19",
+        "at": "2026-10-29T13:02:00-05:00",
+        "direction": "inbound",
+        "split": "evaluation",
+        "kind": "text_span_quote_pending",
+        "query": "Enterochonic",
+        "gold": "incomplete_media",
+        "evidence": "Near catalog ENTERO CHORONIC but quote unreadable and no account textual restatement. Candidate not promoted to verified equivalence from typo similarity alone.",
+        "sourceFixture": "test/fixtures/distrifinca-business-media-resumption-2026-10-29.json"
+      },
+      "input": {
+        "message": "Enterochonic",
+        "contextState": null,
+        "history": [],
+        "derivation": "text_span_quote_pending",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "incomplete_media",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "excluded",
+        "annotation": null
+      },
+      "media": {
+        "files": [],
+        "status": "missing_not_evaluable"
+      },
+      "candidates": [],
+      "localResult": null
+    },
+    {
+      "id": "C19-03",
+      "origin": "real_business_evidence",
+      "provenance": {
+        "id": "C19-03",
+        "chat": "C19",
+        "at": "2026-10-29T14:15:00-05:00",
+        "direction": "inbound",
+        "split": "evaluation",
+        "kind": "manually_reconstructed_episode",
+        "query": "Fortiflora\nPerro",
+        "gold": "confirmed_reference_only",
+        "expectedReference": "FORTIFLORA CANINE",
+        "referenceId": "02432bf0-7fc2-4e56-9c51-016ced59560b",
+        "evidence": "Fortiflora appears13:02; account specifically asks dog/cat14:14; customer saysPerro14:15. Auditor joined messages manually. No automated attribution/segmentation or clinical assessment tested.",
+        "sourceFixture": "test/fixtures/distrifinca-business-media-resumption-2026-10-29.json"
+      },
+      "input": {
+        "message": "Fortiflora\nPerro",
+        "contextState": null,
+        "history": [],
+        "derivation": "manually_reconstructed_episode",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "confirmed_reference_only",
+        "referenceIds": [
+          "02432bf0-7fc2-4e56-9c51-016ced59560b"
+        ],
+        "reference": "FORTIFLORA CANINE",
+        "presentationId": null,
+        "weight": null,
+        "decision": "identify",
+        "annotation": null
+      },
+      "media": {
+        "files": [],
+        "status": "manual_reconstruction_no_image_bytes"
+      },
+      "candidates": [
+        {
+          "referenceId": "02432bf0-7fc2-4e56-9c51-016ced59560b",
+          "reference": "FORTIFLORA CANINE",
+          "brand": "FORTIFLORA"
+        },
+        {
+          "referenceId": "96f2869e-a5eb-4e0d-8480-0579ef557a79",
+          "reference": "FORTIFLOR FELINE",
+          "brand": "FORTIFLOR"
+        }
+      ],
+      "localResult": {
+        "level": "alta",
+        "selected": "FORTIFLORA CANINE",
+        "reason": "nombre_exacto",
+        "clarification": null,
+        "weight": null,
+        "presentationValid": null
+      }
+    },
+    {
+      "id": "C19-04",
+      "origin": "real_business_evidence",
+      "provenance": {
+        "id": "C19-04",
+        "chat": "C19",
+        "at": "2026-10-29T13:02:00-05:00",
+        "direction": "inbound",
+        "split": "evaluation",
+        "kind": "text_span_quote_pending",
+        "query": "Lata humeda proplan gastronteric perros",
+        "gold": "incomplete_media",
+        "evidence": "Wet canine gastrointestinal description. PRO PLAN CANINE LATA EN candidate but catalog supplied description repeats code without explicit expanded line; quote unreadable. No external clinical/brand inference used to validate equivalence.",
+        "sourceFixture": "test/fixtures/distrifinca-business-media-resumption-2026-10-29.json"
+      },
+      "input": {
+        "message": "Lata humeda proplan gastronteric perros",
+        "contextState": null,
+        "history": [],
+        "derivation": "text_span_quote_pending",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "incomplete_media",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "excluded",
+        "annotation": null
+      },
+      "media": {
+        "files": [],
+        "status": "missing_not_evaluable"
+      },
+      "candidates": [],
+      "localResult": null
+    },
+    {
+      "id": "C15-01",
+      "origin": "real_business_evidence",
+      "provenance": {
+        "id": "C15-01",
+        "chat": "C15",
+        "at": "2026-10-28T07:56:00-05:00",
+        "direction": "inbound",
+        "split": "development",
+        "kind": "text_span",
+        "query": "Royal canin perro gastrointestinal de 7 kilos",
+        "gold": "unresolved",
+        "evidence": "Catalog canine dry gastrointestinal only2kg; must not accept7kg as stocked or mapto feline. Account accepts list but totalprice not pack evidence; no catalog write.",
+        "sourceFixture": "test/fixtures/distrifinca-business-media-resumption-2026-10-29.json"
+      },
+      "input": {
+        "message": "Royal canin perro gastrointestinal de 7 kilos",
+        "contextState": null,
+        "history": [],
+        "derivation": "text_span",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "unresolved",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "abstain_or_clarify",
+        "annotation": null
+      },
+      "media": {
+        "files": [],
+        "status": "text_only"
+      },
+      "candidates": [
+        {
+          "referenceId": "1b2baa12-4c7e-44ae-bf38-7679ba6de3af",
+          "reference": "ROYAL CANIN CAT GASTROINTESTINAL",
+          "brand": "ROYAL CANIN"
+        },
+        {
+          "referenceId": "0d77eee6-42be-4b38-8fb0-3259d67007be",
+          "reference": "ROYAL CANIN DOG PUPY INDOOR",
+          "brand": "ROYAL CANIN"
+        },
+        {
+          "referenceId": "1653f713-b691-4424-b853-ebf7b3ea4c6a",
+          "reference": "ROYAL CANIN BEAUTY",
+          "brand": "ROYAL CANIN"
+        },
+        {
+          "referenceId": "781332a4-21b7-4827-a8d5-383e8504daba",
+          "reference": "ROYAL CANIN YORKSHIRE ADULT",
+          "brand": "ROYAL CANIN"
+        },
+        {
+          "referenceId": "8e4abc47-4a11-4dc6-bfcb-2f85a851145f",
+          "reference": "ROYAL CANIN DOG LATA GASTRO",
+          "brand": "ROYAL CANIN"
+        },
+        {
+          "referenceId": "9acc7e44-572f-499c-9f67-94d6ac3c75d2",
+          "reference": "ROYAL CANIN MINI EXIGENT",
+          "brand": "ROYAL CANIN"
+        },
+        {
+          "referenceId": "c4aa439c-bc10-4d5e-b362-1270d3a9fad1",
+          "reference": "ROYAL CANIN PUPPY LATS",
+          "brand": "ROYAL CANIN"
+        },
+        {
+          "referenceId": "dd223b83-c8eb-4626-9d69-0357f2d9d51b",
+          "reference": "ROYAL CANIN POMERANIAN ADULT",
+          "brand": "ROYAL CANIN"
+        }
+      ],
+      "localResult": {
+        "level": "media",
+        "selected": null,
+        "reason": "formato_y_presentacion_por_confirmar",
+        "clarification": null,
+        "weight": "7kg",
+        "presentationValid": false
+      }
+    },
+    {
+      "id": "C15-02",
+      "origin": "real_business_evidence",
+      "provenance": {
+        "id": "C15-02",
+        "chat": "C15",
+        "at": "2026-10-28T07:56:00-05:00",
+        "direction": "inbound",
+        "split": "evaluation",
+        "kind": "text_span",
+        "query": "Dos latas de Royal canin gastrointestinal perro",
+        "gold": "confirmed_reference_only",
+        "expectedReference": "ROYAL CANIN DOG LATA GASTRO",
+        "referenceId": "8e4abc47-4a11-4dc6-bfcb-2f85a851145f",
+        "evidence": "Brand,canine,gastro,wet can explicit. Qty2 not package weight. Only nominal identity scored; no automatic list parsing tested.",
+        "sourceFixture": "test/fixtures/distrifinca-business-media-resumption-2026-10-29.json"
+      },
+      "input": {
+        "message": "Dos latas de Royal canin gastrointestinal perro",
+        "contextState": null,
+        "history": [],
+        "derivation": "text_span",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "confirmed_reference_only",
+        "referenceIds": [
+          "8e4abc47-4a11-4dc6-bfcb-2f85a851145f"
+        ],
+        "reference": "ROYAL CANIN DOG LATA GASTRO",
+        "presentationId": null,
+        "weight": null,
+        "decision": "identify",
+        "annotation": null
+      },
+      "media": {
+        "files": [],
+        "status": "text_only"
+      },
+      "candidates": [
+        {
+          "referenceId": "1b2baa12-4c7e-44ae-bf38-7679ba6de3af",
+          "reference": "ROYAL CANIN CAT GASTROINTESTINAL",
+          "brand": "ROYAL CANIN"
+        },
+        {
+          "referenceId": "8e4abc47-4a11-4dc6-bfcb-2f85a851145f",
+          "reference": "ROYAL CANIN DOG LATA GASTRO",
+          "brand": "ROYAL CANIN"
+        },
+        {
+          "referenceId": "0d77eee6-42be-4b38-8fb0-3259d67007be",
+          "reference": "ROYAL CANIN DOG PUPY INDOOR",
+          "brand": "ROYAL CANIN"
+        },
+        {
+          "referenceId": "1653f713-b691-4424-b853-ebf7b3ea4c6a",
+          "reference": "ROYAL CANIN BEAUTY",
+          "brand": "ROYAL CANIN"
+        },
+        {
+          "referenceId": "781332a4-21b7-4827-a8d5-383e8504daba",
+          "reference": "ROYAL CANIN YORKSHIRE ADULT",
+          "brand": "ROYAL CANIN"
+        },
+        {
+          "referenceId": "9acc7e44-572f-499c-9f67-94d6ac3c75d2",
+          "reference": "ROYAL CANIN MINI EXIGENT",
+          "brand": "ROYAL CANIN"
+        },
+        {
+          "referenceId": "c4aa439c-bc10-4d5e-b362-1270d3a9fad1",
+          "reference": "ROYAL CANIN PUPPY LATS",
+          "brand": "ROYAL CANIN"
+        },
+        {
+          "referenceId": "dd223b83-c8eb-4626-9d69-0357f2d9d51b",
+          "reference": "ROYAL CANIN POMERANIAN ADULT",
+          "brand": "ROYAL CANIN"
+        }
+      ],
+      "localResult": {
+        "level": "alta",
+        "selected": "ROYAL CANIN DOG LATA GASTRO",
+        "reason": "senales_convergentes",
+        "clarification": null,
+        "weight": null,
+        "presentationValid": null
+      }
+    },
+    {
+      "id": "C15-03",
+      "origin": "real_business_evidence",
+      "provenance": {
+        "id": "C15-03",
+        "chat": "C15",
+        "at": "2026-10-28T07:56:00-05:00",
+        "direction": "inbound",
+        "split": "evaluation",
+        "kind": "text_span",
+        "query": "proplan comida mojada gato, 10 sobres",
+        "gold": "ambiguous",
+        "evidence": "No current flavor/line. Forwarded old quote references five salmon and swapped kitten SKU, but customer09:25 says it was an example of the screenshot normally sent. Not evidence for current10flavors. Later delivery notice confirms pouches only.",
+        "sourceFixture": "test/fixtures/distrifinca-business-media-resumption-2026-10-29.json"
+      },
+      "input": {
+        "message": "proplan comida mojada gato, 10 sobres",
+        "contextState": null,
+        "history": [],
+        "derivation": "text_span",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "ambiguous",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "abstain_or_clarify",
+        "annotation": null
+      },
+      "media": {
+        "files": [],
+        "status": "text_only"
+      },
+      "candidates": [
+        {
+          "referenceId": "71796897-f838-4909-929c-9673737d87d1",
+          "reference": "PRO PLAN GATO NF RENAL",
+          "brand": "PRO PLAN"
+        },
+        {
+          "referenceId": "a31c63de-3c9b-4f14-8d81-b0915dc36573",
+          "reference": "PRO PLAN GATO ADULT",
+          "brand": "PRO PLAN"
+        },
+        {
+          "referenceId": "a830fe59-9f01-469d-a229-2a4487b8bbde",
+          "reference": "PRO PLAN GATO STERILIZED",
+          "brand": "PRO PLAN"
+        },
+        {
+          "referenceId": "d5384457-bd1a-4a95-ba05-b54cf1cc1994",
+          "reference": "PRO PLAN GATO URINARY",
+          "brand": "PRO PLAN"
+        },
+        {
+          "referenceId": "3081f187-df5f-433b-9729-702e81ca1a4f",
+          "reference": "PRO PLAN POUCH FELINO ESTERELIZADOS",
+          "brand": "PRO PLAN"
+        },
+        {
+          "referenceId": "86fcfc4b-da28-4eb8-a4cb-59ef793e721e",
+          "reference": "PRO PLAN POUCH FELINO ADULT",
+          "brand": "PRO PLAN"
+        },
+        {
+          "referenceId": "8f046478-8161-4273-bf42-72b9716a3eeb",
+          "reference": "PRO PLAN POUCH FELINO KITTEN",
+          "brand": "PRO PLAN"
+        },
+        {
+          "referenceId": "a005bf0e-0675-4925-a30c-85edbde54f34",
+          "reference": "PRO PLAN POUCH CANINO ADULT",
+          "brand": "PRO PLAN"
+        }
+      ],
+      "localResult": {
+        "level": "media",
+        "selected": null,
+        "reason": "atributo_faltante",
+        "clarification": {
+          "campo": "etapa",
+          "valores": [
+            "cachorro",
+            "adulto"
+          ]
+        },
+        "weight": null,
+        "presentationValid": null
+      }
+    },
+    {
+      "id": "C21-01",
+      "origin": "real_business_evidence",
+      "provenance": {
+        "id": "C21-01",
+        "chat": "C21",
+        "at": "2026-10-28T12:28:00-05:00",
+        "direction": "inbound",
+        "split": "evaluation",
+        "kind": "text",
+        "query": "muy buena tarde cómo estas?, tienes Bonnat Gastrointestinal para perro?",
+        "gold": "unresolved",
+        "evidence": "Account confirms and specifies2kg14:07. No Bonnat reference in fixed Supabase snapshot; BR DOG VET GASTRO is a different named brand, not equivalent.",
+        "sourceFixture": "test/fixtures/distrifinca-business-media-resumption-2026-10-29.json"
+      },
+      "input": {
+        "message": "muy buena tarde cómo estas?, tienes Bonnat Gastrointestinal para perro?",
+        "contextState": null,
+        "history": [],
+        "derivation": "text",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "unresolved",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "abstain_or_clarify",
+        "annotation": null
+      },
+      "media": {
+        "files": [],
+        "status": "text_only"
+      },
+      "candidates": [
+        {
+          "referenceId": "2765c462-c1bf-43cf-babc-0750dd39caa0",
+          "reference": "ROYALCANIN GASTROINTESTINAL PERRO",
+          "brand": "ROYALCANIN"
+        },
+        {
+          "referenceId": "1b2baa12-4c7e-44ae-bf38-7679ba6de3af",
+          "reference": "ROYAL CANIN CAT GASTROINTESTINAL",
+          "brand": "ROYAL CANIN"
+        },
+        {
+          "referenceId": "d4c90667-ba66-4398-ad95-68a6a2e769cd",
+          "reference": "FAJA POST TALLA M PERRO",
+          "brand": "FAJA"
+        },
+        {
+          "referenceId": "9af6c6fe-068d-4a35-9281-487a0b247ddc",
+          "reference": "FIPROSTAR PERRO 0.10KG",
+          "brand": "FIPROSTAR"
+        },
+        {
+          "referenceId": "cf6bce40-1dc4-41d1-96d9-09f466309360",
+          "reference": "CHUNKY DELICAPRICHOS PERRO",
+          "brand": "CHUNKY"
+        },
+        {
+          "referenceId": "f3806200-02b5-401e-be71-e0013be76b7b",
+          "reference": "CAN AMOR TALCO DESODO PERRO",
+          "brand": "CAN"
+        },
+        {
+          "referenceId": "06517fa2-f3d0-4f2f-bba9-471fd43d9e08",
+          "reference": "TASTE HUMEDO PERRO",
+          "brand": "TASTE"
+        },
+        {
+          "referenceId": "95883db0-1129-4cd8-9d78-923e56ff9d3c",
+          "reference": "TOMMY POUCH PERRO",
+          "brand": "TOMMY"
+        }
+      ],
+      "localResult": {
+        "level": "media",
+        "selected": null,
+        "reason": "similitud_media",
+        "clarification": null,
+        "weight": null,
+        "presentationValid": null
+      }
+    },
+    {
+      "id": "C21-02",
+      "origin": "real_business_evidence",
+      "provenance": {
+        "id": "C21-02",
+        "chat": "C21",
+        "at": "2026-10-29T12:41:00-05:00",
+        "direction": "inbound",
+        "split": "evaluation",
+        "kind": "manually_reconstructed_episode",
+        "query": "Mi hermano ya va por el chiquito\nEl de\n27.500",
+        "gold": "unresolved",
+        "evidence": "Three immediately preceding calls unavailable. Small size and price cannot establish presentation or whether previous product still intended. No half-kilo inference from proportional price.",
+        "sourceFixture": "test/fixtures/distrifinca-business-media-resumption-2026-10-29.json"
+      },
+      "input": {
+        "message": "Mi hermano ya va por el chiquito\nEl de\n27.500",
+        "contextState": null,
+        "history": [],
+        "derivation": "manually_reconstructed_episode",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "unresolved",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "abstain_or_clarify",
+        "annotation": null
+      },
+      "media": {
+        "files": [],
+        "status": "manual_reconstruction_no_image_bytes"
+      },
+      "candidates": [
+        {
+          "referenceId": "eab81c43-3c52-49f4-abb4-3a703c925a43",
+          "reference": "SNACKS MEOW MI",
+          "brand": "SNACKS"
+        }
+      ],
+      "localResult": {
+        "level": "baja",
+        "selected": null,
+        "reason": "sin_coincidencia_confiable",
+        "clarification": null,
+        "weight": null,
+        "presentationValid": null
+      }
+    },
+    {
+      "id": "C22-01",
+      "origin": "real_business_evidence",
+      "provenance": {
+        "id": "C22-01",
+        "chat": "C22",
+        "at": "2026-10-28T17:48:00-05:00",
+        "direction": "inbound",
+        "split": "evaluation",
+        "kind": "text_span",
+        "query": "Me gustaría pedir excellent 7,5 kg gato adulto a domicilio",
+        "gold": "confirmed_identity",
+        "expectedReference": "EXCELLENT GATO ADULT",
+        "referenceId": "1d4e553d-e7e5-491f-9a9a-b0bc2c1cf779",
+        "expectedWeight": "7.5kg",
+        "presentationId": "7f8d69bf-c637-420c-b572-c7d23916ad62",
+        "evidence": "Exact brand,species,life stage and7.5kg request; commercial account accepts nextday08:43. Personal address/payment data removed; no reliance on price. Separatechat fromC04, header explicitly verified.",
+        "sourceFixture": "test/fixtures/distrifinca-business-media-resumption-2026-10-29.json"
+      },
+      "input": {
+        "message": "Me gustaría pedir excellent 7,5 kg gato adulto a domicilio",
+        "contextState": null,
+        "history": [],
+        "derivation": "text_span",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "confirmed_identity",
+        "referenceIds": [
+          "1d4e553d-e7e5-491f-9a9a-b0bc2c1cf779"
+        ],
+        "reference": "EXCELLENT GATO ADULT",
+        "presentationId": "7f8d69bf-c637-420c-b572-c7d23916ad62",
+        "weight": "7.5kg",
+        "decision": "identify",
+        "annotation": null
+      },
+      "media": {
+        "files": [],
+        "status": "text_only"
+      },
+      "candidates": [
+        {
+          "referenceId": "1d4e553d-e7e5-491f-9a9a-b0bc2c1cf779",
+          "reference": "EXCELLENT GATO ADULT",
+          "brand": "EXCELLENT"
+        },
+        {
+          "referenceId": "875e487b-64ab-4294-84f1-026f7a456550",
+          "reference": "EXCELLENT GATO URINARY",
+          "brand": "EXCELLENT"
+        },
+        {
+          "referenceId": "17404d6f-42ba-4c82-8527-a1b7a5ecf6c4",
+          "reference": "EXCELLENT ADULT SMALL",
+          "brand": "EXCELLENT"
+        },
+        {
+          "referenceId": "cc2d72a7-9a4c-4ebd-9309-a9c40a43ac14",
+          "reference": "EXCELLENT ADULT RMG",
+          "brand": "EXCELLENT"
+        },
+        {
+          "referenceId": "538fc303-a3ac-4160-8e11-7e125ff1dbfc",
+          "reference": "EXCELLENT KITTEN",
+          "brand": "EXCELLENT"
+        },
+        {
+          "referenceId": "b12884bc-60f3-4ecd-a006-40db7f369628",
+          "reference": "EXCELLENT ESTERILIZED",
+          "brand": "EXCELLENT"
+        },
+        {
+          "referenceId": "1f4ab27a-bdb1-48e6-9d30-b2810a292fd6",
+          "reference": "EXCELLENT FORMULA",
+          "brand": "EXCELLENT"
+        },
+        {
+          "referenceId": "8d24b5fd-83d6-4c80-bc3a-42f83a00a9ef",
+          "reference": "EXCELLENT SKIN",
+          "brand": "EXCELLENT"
+        }
+      ],
+      "localResult": {
+        "level": "alta",
+        "selected": "EXCELLENT GATO ADULT",
+        "reason": "senales_convergentes",
+        "clarification": null,
+        "weight": "7.5kg",
+        "presentationValid": true
+      }
+    }
+  ]
+}

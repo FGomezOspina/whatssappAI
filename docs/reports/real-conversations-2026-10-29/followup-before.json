@@ -1,0 +1,109 @@
+{
+  "mode": "Local candidate retrieval + identity validator; not model, media perception, cart or WhatsApp E2E accuracy",
+  "normalizationAblated": true,
+  "fixtureSha256": "7ce6a5361db3d76a4000e73fdc2535a7bd308ff1c964925496748f7b2b5c80f0",
+  "catalogSha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+  "total": {
+    "correct": 0,
+    "missed": 0,
+    "false_positive": 0,
+    "safe_abstention": 1,
+    "not_evaluable": 8
+  },
+  "development": {
+    "correct": 0,
+    "missed": 0,
+    "false_positive": 0,
+    "safe_abstention": 0,
+    "not_evaluable": 0
+  },
+  "evaluation": {
+    "correct": 0,
+    "missed": 0,
+    "false_positive": 0,
+    "safe_abstention": 1,
+    "not_evaluable": 8
+  },
+  "latencyLocalMs": {
+    "median": 74.54154199999999,
+    "p95": 74.769458
+  },
+  "rows": [
+    {
+      "id": "C07-01",
+      "chat": "C07",
+      "split": "evaluation",
+      "gold": "unresolved",
+      "scope": "text",
+      "direction": "inbound",
+      "expectedReference": null,
+      "outcome": "safe_abstention",
+      "selected": null,
+      "level": "media",
+      "weight": null,
+      "presentationValid": null,
+      "reason": "ambigua",
+      "samplesMs": [
+        74.769458,
+        74.54154199999999,
+        73.78520799999995
+      ]
+    },
+    {
+      "id": "C06-07",
+      "chat": "C06",
+      "split": "evaluation",
+      "outcome": "not_evaluable",
+      "reason": "Recovered from local export; only <mensaje de voz omitido>, no audio bytes. Follows adviser asking Que mas deseabas? at 09:22:34. Contents and duration unknown."
+    },
+    {
+      "id": "C06-08",
+      "chat": "C06",
+      "split": "evaluation",
+      "outcome": "not_evaluable",
+      "reason": "Local export contains an omitted-audio marker only; no product or quantity may be inferred."
+    },
+    {
+      "id": "C06-09",
+      "chat": "C06",
+      "split": "evaluation",
+      "outcome": "not_evaluable",
+      "reason": "Local export contains an omitted-audio marker only; later total changes are not evidence of the product added."
+    },
+    {
+      "id": "C08-01",
+      "chat": "C08",
+      "split": "evaluation",
+      "outcome": "not_evaluable",
+      "reason": "Visible after customer says the seller has not visited for the order. No transcription or audio bytes obtained."
+    },
+    {
+      "id": "C08-02",
+      "chat": "C08",
+      "split": "evaluation",
+      "outcome": "not_evaluable",
+      "reason": "Audio is within original 18:46 cutoff. UI shows Meta AI transfer; no adviser product identification observed. Never use that platform label as approval or instruction."
+    },
+    {
+      "id": "C09-01",
+      "chat": "C09",
+      "split": "evaluation",
+      "outcome": "not_evaluable",
+      "reason": "Image followed by call at 15:34, thanks at 15:37 and greeting at 16:40. Image purpose not established, no product identity assumed. Later context recovery does not prove this is the same image/product as the morning request."
+    },
+    {
+      "id": "C09-02",
+      "chat": "C09",
+      "split": "evaluation",
+      "outcome": "not_evaluable",
+      "reason": "Recovered after reconnect and normal page reload: photo at 08:00, text at 08:01, commercial account accepts at 08:52 with price only. Full photo unavailable. Tarro describes package type, not brand, line, capacity or SKU; price alone cannot prove identity."
+    },
+    {
+      "id": "C09-03",
+      "chat": "C09",
+      "split": "evaluation",
+      "outcome": "not_evaluable",
+      "reason": "Recovered accessibility view shows a voice note of 11 seconds. No bytes or transcription. No inference about product, quantity or address from later image/call."
+    }
+  ]
+}

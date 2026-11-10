@@ -1,0 +1,3786 @@
+{
+  "at": "2026-10-31T00:40:26.086Z",
+  "originalProcessed": true,
+  "cart": [
+    []
+  ],
+  "ordersCount": 0,
+  "messages": [
+    {
+      "id": "527873f8146c",
+      "direction": "outbound",
+      "body": "Gracias, queda pendiente de revisión por un asesor. Veo que es para gato y que la marca es HILLS, pero en este chat todavía no hay un asesor asignado. Puedo seguir ayudándote con otras consultas si lo necesitas.",
+      "at": "2026-10-30T22:11:22.873422+00:00"
+    },
+    {
+      "id": "96b60e672475",
+      "direction": "inbound",
+      "body": "gato",
+      "at": "2026-10-30T22:10:45.197427+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": null,
+            "marca": null,
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": "gato",
+            "sabores": [],
+            "cantidad": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": null,
+            "condiciones": [],
+            "presentacion": null,
+            "subcategoria": null,
+            "textoVisible": "Hill's",
+            "mencionOriginal": null,
+            "intencionPresentaciones": "todas"
+          },
+          "intencion": "consulta_producto",
+          "productos": [],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "18baab78ac25",
+      "direction": "outbound",
+      "body": "¿La buscas para gato o para perro?",
+      "at": "2026-10-30T22:10:28.540793+00:00"
+    },
+    {
+      "id": "fba65b019ea7",
+      "direction": "inbound",
+      "body": "que presentación tienes de Hills",
+      "at": "2026-10-30T22:09:48.302283+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": "Prescription Diet",
+            "marca": "Hill's",
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": "gato",
+            "sabores": [],
+            "cantidad": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "c/d Multicare",
+            "condiciones": [
+              "urinary"
+            ],
+            "presentacion": null,
+            "subcategoria": "concentrado",
+            "textoVisible": "presentación de Hills",
+            "mencionOriginal": "que presentación tienes de Hills",
+            "intencionPresentaciones": "todas"
+          },
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": null,
+              "linea": "Prescription Diet",
+              "marca": "Hill's",
+              "accion": "consultar",
+              "envase": null,
+              "tamano": null,
+              "especie": "gato",
+              "sabores": [],
+              "cantidad": null,
+              "mascotas": [],
+              "categoria": "comida",
+              "referencia": "c/d Multicare",
+              "condiciones": [
+                "urinary"
+              ],
+              "presentacion": null,
+              "subcategoria": "concentrado",
+              "textoVisible": "presentación de Hills",
+              "mencionOriginal": "que presentación tienes de Hills",
+              "intencionPresentaciones": "todas"
+            }
+          ],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "a76647158ae6",
+      "direction": "outbound",
+      "body": "Cotización:\n- 1 x ADVANCE URINAY 1.5kg: $108.000\nTotal cotizado: $108.000\n\n¿Qué presentación necesitas de Hill's Prescription Diet Urinary Care c/d Multicare para gato?",
+      "at": "2026-10-30T22:09:09.675998+00:00"
+    },
+    {
+      "id": "e56c1563a630",
+      "direction": "inbound",
+      "body": "y el advance urinary?",
+      "at": "2026-10-30T22:08:06.767072+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": "Veterinary Diets",
+            "marca": "ADVANCE",
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": null,
+            "sabores": [],
+            "cantidad": null,
+            "duracion": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "ADVANCE URINAY",
+            "condiciones": [
+              "urinary"
+            ],
+            "presentacion": "1.5kg",
+            "subcategoria": "concentrado",
+            "textoVisible": "Advance urinary",
+            "nombreFamilia": "ADVANCE CAT URINARY",
+            "mencionOriginal": null,
+            "requierePresentacion": false,
+            "intencionPresentaciones": "especifica",
+            "referenciasEquivalentes": [
+              "ADVANCE CAT URINARY",
+              "ADVANCE URINAY"
+            ],
+            "coincidenciaVisualValidada": false,
+            "presentacionesEquivalentes": [
+              {
+                "peso": "3kg",
+                "stock": null,
+                "precio": 196000,
+                "metadata": {
+                  "llave": "2390",
+                  "codigo": "103010202390",
+                  "source": "productos.json",
+                  "codigos": [
+                    "103010202390"
+                  ],
+                  "nombre_original": "ADVANCE CAT URINARY 3KG"
+                },
+                "referencia": "ADVANCE CAT URINARY"
+              },
+              {
+                "peso": "1.5kg",
+                "stock": null,
+                "precio": 108000,
+                "metadata": {
+                  "llave": "2260",
+                  "codigo": "103010202260",
+                  "source": "productos.json",
+                  "codigos": [
+                    "103010202260"
+                  ],
+                  "nombre_original": "ADVANCE URINAY 1.5KR"
+                },
+                "referencia": "ADVANCE URINAY"
+              }
+            ]
+          },
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": null,
+              "linea": null,
+              "marca": "ADVANCE",
+              "accion": "consultar",
+              "envase": null,
+              "tamano": null,
+              "especie": "gato",
+              "sabores": [],
+              "cantidad": null,
+              "mascotas": [],
+              "categoria": "comida",
+              "referencia": "ADVANCE CAT URINARY",
+              "condiciones": [
+                "urinary"
+              ],
+              "presentacion": "3kg",
+              "subcategoria": "concentrado",
+              "textoVisible": "Advance Cat Urinary",
+              "mencionOriginal": null,
+              "intencionPresentaciones": "especifica"
+            },
+            {
+              "etapa": null,
+              "linea": null,
+              "marca": "ADVANCE",
+              "accion": "consultar",
+              "envase": null,
+              "tamano": null,
+              "especie": "gato",
+              "sabores": [],
+              "cantidad": null,
+              "mascotas": [],
+              "categoria": "comida",
+              "referencia": "ADVANCE URINAY",
+              "condiciones": [
+                "urinary"
+              ],
+              "presentacion": "1.5kg",
+              "subcategoria": "concentrado",
+              "textoVisible": "Advance Urinary (gato)",
+              "mencionOriginal": null,
+              "intencionPresentaciones": "especifica"
+            }
+          ],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "7b81e71b6c6e",
+      "direction": "inbound",
+      "body": "Que presentación tienes",
+      "at": "2026-10-30T22:07:59.131779+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": "Prescription Diet",
+            "marca": "Hill's",
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": "gato",
+            "sabores": [],
+            "cantidad": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "c/d Multicare",
+            "condiciones": [
+              "urinary"
+            ],
+            "presentacion": null,
+            "subcategoria": "concentrado",
+            "textoVisible": "presentación de Hill's Prescription Diet Urinary Care c/d Multicare para gato",
+            "mencionOriginal": "Que presentación tienes",
+            "intencionPresentaciones": "todas"
+          },
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": null,
+              "linea": "Prescription Diet",
+              "marca": "Hill's",
+              "accion": "consultar",
+              "envase": null,
+              "tamano": null,
+              "especie": "gato",
+              "sabores": [],
+              "cantidad": null,
+              "mascotas": [],
+              "categoria": "comida",
+              "referencia": "c/d Multicare",
+              "condiciones": [
+                "urinary"
+              ],
+              "presentacion": null,
+              "subcategoria": "concentrado",
+              "textoVisible": "presentación de Hill's Prescription Diet Urinary Care c/d Multicare para gato",
+              "mencionOriginal": "Que presentación tienes",
+              "intencionPresentaciones": "todas"
+            }
+          ],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "b44c763a59f3",
+      "direction": "outbound",
+      "body": "¿Qué presentación necesitas de Hill's Prescription Diet Urinary Care c/d Multicare para gato?",
+      "at": "2026-10-30T22:07:21.50651+00:00"
+    },
+    {
+      "id": "79f2de575a8f",
+      "direction": "inbound",
+      "body": "Que precio tiene esas 2 referencias",
+      "at": "2026-10-30T22:06:28.374334+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": null,
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": null,
+              "linea": "Prescription Diet",
+              "marca": "Hill's",
+              "accion": "consultar",
+              "envase": null,
+              "estado": "pendiente",
+              "tamano": null,
+              "especie": "gato",
+              "sabores": [],
+              "cantidad": null,
+              "mascotas": [],
+              "pregunta": "¿Qué presentación necesitas de Hill's Prescription Diet Urinary Care c/d Multicare para gato?",
+              "categoria": "comida",
+              "observado": {
+                "envase": null,
+                "nombre": "Hill's Prescription Diet Urinary Care c/d Multicare",
+                "presentacion": null,
+                "formaAlimento": "concentrado",
+                "confianzaFormato": 0.82,
+                "confianzaIdentidad": 0.97,
+                "confianzaPresentacion": 0.12
+              },
+              "solicitud": {
+                "cantidadTexto": null,
+                "contextoVigente": false,
+                "cantidadContexto": null,
+                "presentacionTexto": null,
+                "presentacionContexto": null
+              },
+              "referencia": "c/d Multicare",
+              "condiciones": [
+                "urinary"
+              ],
+              "presentacion": null,
+              "subcategoria": "concentrado",
+              "textoVisible": "Hill's Prescription Diet Urinary Care c/d Multicare para gato",
+              "mencionOriginal": "esas 2 referencias",
+              "fuentePresentacion": null,
+              "requierePresentacion": true,
+              "intencionPresentaciones": null,
+              "presentacionesDisponibles": []
+            },
+            {
+              "etapa": null,
+              "linea": "Veterinary Diets",
+              "marca": "ADVANCE",
+              "accion": "consultar",
+              "envase": null,
+              "estado": "pendiente",
+              "tamano": null,
+              "especie": "perro",
+              "sabores": [],
+              "cantidad": null,
+              "mascotas": [],
+              "categoria": "comida",
+              "observado": {
+                "envase": null,
+                "nombre": "ADVANCE Veterinary Diets Urinary",
+                "presentacion": "1.5kg",
+                "formaAlimento": "concentrado",
+                "confianzaFormato": 0.84,
+                "confianzaIdentidad": 0.93,
+                "confianzaPresentacion": 0.9
+              },
+              "solicitud": {
+                "cantidadTexto": null,
+                "contextoVigente": false,
+                "cantidadContexto": null,
+                "presentacionTexto": null,
+                "presentacionContexto": null
+              },
+              "referencia": "URINARY",
+              "condiciones": [
+                "urinary"
+              ],
+              "presentacion": "1.5kg",
+              "subcategoria": "concentrado",
+              "textoVisible": "Advance Veterinary Diets Urinary",
+              "mencionOriginal": "esas 2 referencias",
+              "fuentePresentacion": "imagen",
+              "requierePresentacion": false,
+              "intencionPresentaciones": "especifica",
+              "presentacionesDisponibles": []
+            }
+          ],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "5de3d29b319f",
+      "direction": "outbound",
+      "body": "Claro 🙂 AGILITY GRAND CACH para cachorro de perro está en 1.5 kg por $33.700, 3 kg por $65.400 y 15 kg por $299.900. ¿Cuál presentación te sirve?",
+      "at": "2026-10-30T22:01:13.174428+00:00"
+    },
+    {
+      "id": "7cc53202f746",
+      "direction": "inbound",
+      "body": "para cotizar:\nagility gold cachorro razas medianas",
+      "at": "2026-10-30T22:00:34.315995+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": "cachorro",
+            "linea": "gold",
+            "marca": "AGILITY",
+            "accion": "consultar",
+            "envase": null,
+            "tamano": "mediano",
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "duracion": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "AGILITY GRAND CACH",
+            "condiciones": [],
+            "presentacion": null,
+            "subcategoria": "concentrado",
+            "textoVisible": "agility gold cachorro razas medianas",
+            "nombreFamilia": "AGILITY GRAND CACH",
+            "mencionOriginal": null,
+            "requierePresentacion": false,
+            "intencionPresentaciones": null,
+            "referenciasEquivalentes": [
+              "AGILITY GRAND CACH"
+            ],
+            "coincidenciaVisualValidada": false,
+            "presentacionesEquivalentes": [
+              {
+                "peso": "1.5kg",
+                "stock": null,
+                "precio": 33700,
+                "metadata": {
+                  "source": "productos.json",
+                  "nombre_original": "AGILITY GRANDES CACHORROS 1.5KG",
+                  "source_reference": "AGILITY GRAND CACH"
+                },
+                "referencia": "AGILITY GRAND CACH"
+              },
+              {
+                "peso": "3kg",
+                "stock": null,
+                "precio": 65400,
+                "metadata": {
+                  "source": "Actualizacion confirmada por cliente 2026-09-24",
+                  "nombre_original": "AGILITY GRANDES CACHORROS 3KG",
+                  "source_reference": "AGILITY GRAND CACH"
+                },
+                "referencia": "AGILITY GRAND CACH"
+              },
+              {
+                "peso": "15kg",
+                "stock": null,
+                "precio": 299900,
+                "metadata": {
+                  "source": "Actualizacion confirmada por cliente 2026-09-24",
+                  "nombre_original": "AGILITY GRANDES CACHORROS 15KG",
+                  "source_reference": "AGILITY GRAND CACH"
+                },
+                "referencia": "AGILITY GRAND CACH"
+              }
+            ]
+          },
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": "cachorro",
+              "linea": "gold",
+              "marca": "AGILITY",
+              "accion": "consultar",
+              "envase": null,
+              "tamano": "mediano",
+              "especie": "perro",
+              "sabores": [],
+              "cantidad": null,
+              "duracion": null,
+              "mascotas": [],
+              "categoria": "comida",
+              "referencia": "AGILITY GRAND CACH",
+              "condiciones": [],
+              "presentacion": null,
+              "subcategoria": "concentrado",
+              "textoVisible": "agility gold cachorro razas medianas",
+              "nombreFamilia": "AGILITY GRAND CACH",
+              "mencionOriginal": null,
+              "requierePresentacion": false,
+              "intencionPresentaciones": null,
+              "referenciasEquivalentes": [
+                "AGILITY GRAND CACH"
+              ],
+              "coincidenciaVisualValidada": false,
+              "presentacionesEquivalentes": [
+                {
+                  "peso": "1.5kg",
+                  "stock": null,
+                  "precio": 33700,
+                  "metadata": {
+                    "source": "productos.json",
+                    "nombre_original": "AGILITY GRANDES CACHORROS 1.5KG",
+                    "source_reference": "AGILITY GRAND CACH"
+                  },
+                  "referencia": "AGILITY GRAND CACH"
+                },
+                {
+                  "peso": "3kg",
+                  "stock": null,
+                  "precio": 65400,
+                  "metadata": {
+                    "source": "Actualizacion confirmada por cliente 2026-09-24",
+                    "nombre_original": "AGILITY GRANDES CACHORROS 3KG",
+                    "source_reference": "AGILITY GRAND CACH"
+                  },
+                  "referencia": "AGILITY GRAND CACH"
+                },
+                {
+                  "peso": "15kg",
+                  "stock": null,
+                  "precio": 299900,
+                  "metadata": {
+                    "source": "Actualizacion confirmada por cliente 2026-09-24",
+                    "nombre_original": "AGILITY GRANDES CACHORROS 15KG",
+                    "source_reference": "AGILITY GRAND CACH"
+                  },
+                  "referencia": "AGILITY GRAND CACH"
+                }
+              ]
+            }
+          ],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "bbdb3aa29906",
+      "direction": "outbound",
+      "body": "¿Te sirve Nutra Nuggets Cordero en 1 kg o 3 kg?",
+      "at": "2026-10-30T21:55:13.879471+00:00"
+    },
+    {
+      "id": "8b362e33ba19",
+      "direction": "inbound",
+      "body": "y nutra nuggets cordero 7kg?",
+      "at": "2026-10-30T21:54:33.321087+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": null,
+            "marca": "NUTRA NUGGETS",
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [
+              "cordero"
+            ],
+            "cantidad": null,
+            "duracion": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "NUTRA NUGGETS CORDERO",
+            "condiciones": [],
+            "presentacion": "7kg",
+            "subcategoria": "concentrado",
+            "textoVisible": "nutra nuggets cordero 7kg",
+            "nombreFamilia": "NUTRA NUGGETS CORDERO",
+            "mencionOriginal": null,
+            "pesoTextoOriginal": "7kg",
+            "requierePresentacion": false,
+            "intencionPresentaciones": "especifica",
+            "referenciasEquivalentes": [
+              "NUTRA NUGGETS CORDERO"
+            ],
+            "coincidenciaVisualValidada": false,
+            "presentacionesEquivalentes": [
+              {
+                "peso": "1kg",
+                "stock": null,
+                "precio": 28900,
+                "metadata": {
+                  "llave": "1142",
+                  "codigo": "10301011142",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10301011142"
+                  ],
+                  "nombre_original": "NUTRA NUGGETS CORDERO 1KL"
+                },
+                "referencia": "NUTRA NUGGETS CORDERO"
+              },
+              {
+                "peso": "3kg",
+                "stock": null,
+                "precio": 76500,
+                "metadata": {
+                  "llave": "1141",
+                  "codigo": "10301011141",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10301011141"
+                  ],
+                  "nombre_original": "NUTRA NUGGETS CORDERO 3KG"
+                },
+                "referencia": "NUTRA NUGGETS CORDERO"
+              }
+            ]
+          },
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": null,
+              "linea": null,
+              "marca": "NUTRA NUGGETS",
+              "accion": "consultar",
+              "envase": null,
+              "tamano": null,
+              "especie": "perro",
+              "sabores": [
+                "cordero"
+              ],
+              "cantidad": null,
+              "duracion": null,
+              "mascotas": [],
+              "categoria": "comida",
+              "referencia": "NUTRA NUGGETS CORDERO",
+              "condiciones": [],
+              "presentacion": "7kg",
+              "subcategoria": "concentrado",
+              "textoVisible": "nutra nuggets cordero 7kg",
+              "nombreFamilia": "NUTRA NUGGETS CORDERO",
+              "mencionOriginal": null,
+              "pesoTextoOriginal": "7kg",
+              "requierePresentacion": false,
+              "intencionPresentaciones": "especifica",
+              "referenciasEquivalentes": [
+                "NUTRA NUGGETS CORDERO"
+              ],
+              "coincidenciaVisualValidada": false,
+              "presentacionesEquivalentes": [
+                {
+                  "peso": "1kg",
+                  "stock": null,
+                  "precio": 28900,
+                  "metadata": {
+                    "llave": "1142",
+                    "codigo": "10301011142",
+                    "source": "productos.json",
+                    "codigos": [
+                      "10301011142"
+                    ],
+                    "nombre_original": "NUTRA NUGGETS CORDERO 1KL"
+                  },
+                  "referencia": "NUTRA NUGGETS CORDERO"
+                },
+                {
+                  "peso": "3kg",
+                  "stock": null,
+                  "precio": 76500,
+                  "metadata": {
+                    "llave": "1141",
+                    "codigo": "10301011141",
+                    "source": "productos.json",
+                    "codigos": [
+                      "10301011141"
+                    ],
+                    "nombre_original": "NUTRA NUGGETS CORDERO 3KG"
+                  },
+                  "referencia": "NUTRA NUGGETS CORDERO"
+                }
+              ]
+            }
+          ],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "570a9d671583",
+      "direction": "outbound",
+      "body": "Presentaciones y precios unitarios:\n- BR CAT CASTRADO POLLO 1kg: $28.000\n- NEXGARD 25-50 kg: $56.900 — Mascota 1 (40 kg)",
+      "at": "2026-10-30T21:52:19.590297+00:00"
+    },
+    {
+      "id": "ad283f3e1703",
+      "direction": "inbound",
+      "body": "Para cotizar:\nEl nutra nugges cordero 7k perro\n\nEl br gato castrado de pollo 1k\n\nNexgart para perro de 40k",
+      "at": "2026-10-30T21:51:40.672327+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": null,
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": null,
+              "linea": null,
+              "marca": "NUTRA NUGGETS",
+              "accion": "consultar",
+              "envase": null,
+              "estado": "identificado",
+              "tamano": null,
+              "especie": "perro",
+              "sabores": [
+                "cordero"
+              ],
+              "cantidad": null,
+              "mascotas": [],
+              "pregunta": null,
+              "categoria": "comida",
+              "cotizacion": [],
+              "referencia": "NUTRA NUGGETS CORDERO",
+              "condiciones": [],
+              "presentacion": "7k",
+              "subcategoria": "concentrado",
+              "textoVisible": "nutra nugges cordero 7k perro",
+              "mencionOriginal": "El nutra nugges cordero 7k perro",
+              "contextoCreadoEn": "2026-10-30T21:52:16.881Z",
+              "intencionPresentaciones": "especifica",
+              "presentacionesDisponibles": [
+                "1kg",
+                "3kg"
+              ]
+            },
+            {
+              "etapa": "adulto",
+              "linea": null,
+              "marca": "BR CAT",
+              "accion": "consultar",
+              "envase": null,
+              "estado": "identificado",
+              "tamano": null,
+              "especie": "gato",
+              "sabores": [
+                "pollo"
+              ],
+              "cantidad": null,
+              "mascotas": [],
+              "pregunta": null,
+              "categoria": "comida",
+              "cotizacion": [
+                {
+                  "peso": "1kg",
+                  "marca": "BR CAT",
+                  "stock": null,
+                  "precio": 28000,
+                  "cantidad": 1,
+                  "referencia": "BR CAT CASTRADO POLLO",
+                  "presentaciones": [
+                    {
+                      "peso": "10kg",
+                      "stock": null,
+                      "precio": 264000,
+                      "metadata": {
+                        "llave": "177",
+                        "codigo": "10301020177",
+                        "source": "productos.json",
+                        "codigos": [
+                          "10301020177"
+                        ],
+                        "nombre_original": "BR CAT CASTRADO POLLO 10KG"
+                      },
+                      "referencia": "BR CAT CASTRADO POLLO"
+                    },
+                    {
+                      "peso": "1kg",
+                      "stock": null,
+                      "precio": 28000,
+                      "metadata": {
+                        "llave": "178",
+                        "codigo": "10301020178",
+                        "source": "productos.json",
+                        "codigos": [
+                          "10301020178"
+                        ],
+                        "nombre_original": "BR CAT CASTRADO POLLO 1KG"
+                      },
+                      "referencia": "BR CAT CASTRADO POLLO"
+                    },
+                    {
+                      "peso": "3kg",
+                      "stock": null,
+                      "precio": 81900,
+                      "metadata": {
+                        "llave": "179",
+                        "codigo": "10301020179",
+                        "source": "productos.json",
+                        "codigos": [
+                          "10301020179"
+                        ],
+                        "nombre_original": "BR CAT CASTRADO POLLO 3KG"
+                      },
+                      "referencia": "BR CAT CASTRADO POLLO"
+                    }
+                  ],
+                  "referenciaCatalogo": "BR CAT CASTRADO POLLO"
+                }
+              ],
+              "referencia": "BR CAT CASTRADO POLLO",
+              "condiciones": [
+                "castrado"
+              ],
+              "presentacion": "1kg",
+              "subcategoria": "concentrado",
+              "textoVisible": "br gato castrado de pollo 1k",
+              "mencionOriginal": "El br gato castrado de pollo 1k",
+              "contextoCreadoEn": "2026-10-30T21:52:16.887Z",
+              "intencionPresentaciones": "especifica",
+              "presentacionesDisponibles": [
+                "10kg",
+                "1kg",
+                "3kg"
+              ]
+            },
+            {
+              "etapa": null,
+              "linea": null,
+              "marca": "NEXGARD",
+              "accion": "consultar",
+              "envase": null,
+              "estado": "identificado",
+              "tamano": null,
+              "especie": "perro",
+              "sabores": [],
+              "cantidad": null,
+              "mascotas": [
+                {
+                  "nombre": "Mascota 1",
+                  "pesoKg": 40
+                }
+              ],
+              "pregunta": null,
+              "categoria": "medicamento",
+              "cotizacion": [
+                {
+                  "peso": "25-50 kg",
+                  "marca": "NEXGARD",
+                  "stock": null,
+                  "precio": 56900,
+                  "cantidad": 1,
+                  "mascotas": [
+                    {
+                      "nombre": "Mascota 1",
+                      "pesoKg": 40
+                    }
+                  ],
+                  "referencia": "NEXGARD",
+                  "tipoSeleccion": "peso",
+                  "presentaciones": [
+                    {
+                      "peso": "10-25 kg",
+                      "stock": null,
+                      "precio": 49700,
+                      "metadata": {
+                        "llave": "1123",
+                        "codigo": "10101011123",
+                        "source": "productos.json",
+                        "codigos": [
+                          "10101011123"
+                        ],
+                        "rango_peso": {
+                          "desde_inclusivo": false
+                        },
+                        "nombre_original": "NEXGARD 10-25 KL"
+                      },
+                      "referencia": "NEXGARD"
+                    },
+                    {
+                      "peso": "2-4 kg",
+                      "stock": null,
+                      "precio": 39900,
+                      "metadata": {
+                        "llave": "1124",
+                        "codigo": "10101011124",
+                        "source": "productos.json",
+                        "codigos": [
+                          "10101011124"
+                        ],
+                        "nombre_original": "NEXGARD 2-4 KL"
+                      },
+                      "referencia": "NEXGARD"
+                    },
+                    {
+                      "peso": "25-50 kg",
+                      "stock": null,
+                      "precio": 56900,
+                      "metadata": {
+                        "llave": "1125",
+                        "codigo": "10101011125",
+                        "source": "productos.json",
+                        "codigos": [
+                          "10101011125"
+                        ],
+                        "nombre_original": "NEXGARD 25-50 KL"
+                      },
+                      "referencia": "NEXGARD"
+                    },
+                    {
+                      "peso": "4-10 kg",
+                      "stock": null,
+                      "precio": 42500,
+                      "metadata": {
+                        "llave": "1126",
+                        "codigo": "10101011126",
+                        "source": "productos.json",
+                        "codigos": [
+                          "10101011126"
+                        ],
+                        "nombre_original": "NEXGARD 4-10 KL"
+                      },
+                      "referencia": "NEXGARD"
+                    }
+                  ],
+                  "referenciaCatalogo": "NEXGARD"
+                }
+              ],
+              "referencia": "NEXGARD",
+              "condiciones": [],
+              "presentacion": "25-50kg",
+              "subcategoria": null,
+              "textoVisible": "Nexgart para perro de 40k",
+              "mencionOriginal": "Nexgart para perro de 40k",
+              "contextoCreadoEn": "2026-10-30T21:52:16.888Z",
+              "intencionPresentaciones": null,
+              "seleccionPresentaciones": {
+                "tipo": "peso",
+                "grupos": [
+                  {
+                    "peso": "25-50 kg",
+                    "stock": null,
+                    "precio": 56900,
+                    "mascotas": [
+                      {
+                        "nombre": "Mascota 1",
+                        "pesoKg": 40
+                      }
+                    ],
+                    "metadata": {
+                      "llave": "1125",
+                      "codigo": "10101011125",
+                      "source": "productos.json",
+                      "codigos": [
+                        "10101011125"
+                      ],
+                      "nombre_original": "NEXGARD 25-50 KL"
+                    },
+                    "referencia": "NEXGARD"
+                  }
+                ],
+                "mascotas": [
+                  {
+                    "nombre": "Mascota 1",
+                    "pesoKg": 40
+                  }
+                ],
+                "pendientes": []
+              },
+              "presentacionesDisponibles": [
+                "10-25 kg",
+                "2-4 kg",
+                "25-50 kg",
+                "4-10 kg"
+              ]
+            }
+          ],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "939844315197",
+      "direction": "outbound",
+      "body": "Sí, el ROYALCANIN GASTROINTESTINAL PERRO de 2 kg está en $129.000 🐾 Las existencias están por confirmar.",
+      "at": "2026-10-30T18:36:13.868078+00:00"
+    },
+    {
+      "id": "65530bec0522",
+      "direction": "inbound",
+      "body": "Corrijo el tamaño: de 2 kg, el mismo concentrado para perro. Solo consultar el precio.",
+      "at": "2026-10-30T18:35:37.774736+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": "gastrointestinal",
+            "marca": "ROYALCANIN",
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "duracion": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "ROYALCANIN GASTROINTESTINAL PERRO",
+            "condiciones": [
+              "gastrointestinal"
+            ],
+            "presentacion": "2kg",
+            "subcategoria": "concentrado",
+            "textoVisible": "Corrijo el tamaño: de 2 kg, el mismo concentrado para perro. Solo consultar el precio.",
+            "nombreFamilia": "ROYALCANIN GASTROINTESTINAL PERRO",
+            "mencionOriginal": null,
+            "pesoTextoOriginal": "2kg",
+            "requierePresentacion": false,
+            "intencionPresentaciones": "especifica",
+            "referenciasEquivalentes": [
+              "ROYALCANIN GASTROINTESTINAL PERRO"
+            ],
+            "coincidenciaVisualValidada": false,
+            "presentacionesEquivalentes": [
+              {
+                "peso": "2kg",
+                "stock": null,
+                "precio": 129000,
+                "metadata": {
+                  "llave": "2070",
+                  "codigo": "103010102070",
+                  "source": "productos.json",
+                  "codigos": [
+                    "103010102070"
+                  ],
+                  "nombre_original": "ROYALCANIN GASTROINTESTINAL PERRO 2KG"
+                },
+                "referencia": "ROYALCANIN GASTROINTESTINAL PERRO"
+              }
+            ]
+          },
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": null,
+              "linea": "gastrointestinal",
+              "marca": "ROYALCANIN",
+              "accion": "consultar",
+              "envase": null,
+              "tamano": null,
+              "especie": "perro",
+              "sabores": [],
+              "cantidad": null,
+              "duracion": null,
+              "mascotas": [],
+              "categoria": "comida",
+              "referencia": "ROYALCANIN GASTROINTESTINAL PERRO",
+              "condiciones": [
+                "gastrointestinal"
+              ],
+              "presentacion": "2kg",
+              "subcategoria": "concentrado",
+              "textoVisible": "Corrijo el tamaño: de 2 kg, el mismo concentrado para perro. Solo consultar el precio.",
+              "nombreFamilia": "ROYALCANIN GASTROINTESTINAL PERRO",
+              "mencionOriginal": null,
+              "pesoTextoOriginal": "2kg",
+              "requierePresentacion": false,
+              "intencionPresentaciones": "especifica",
+              "referenciasEquivalentes": [
+                "ROYALCANIN GASTROINTESTINAL PERRO"
+              ],
+              "coincidenciaVisualValidada": false,
+              "presentacionesEquivalentes": [
+                {
+                  "peso": "2kg",
+                  "stock": null,
+                  "precio": 129000,
+                  "metadata": {
+                    "llave": "2070",
+                    "codigo": "103010102070",
+                    "source": "productos.json",
+                    "codigos": [
+                      "103010102070"
+                    ],
+                    "nombre_original": "ROYALCANIN GASTROINTESTINAL PERRO 2KG"
+                  },
+                  "referencia": "ROYALCANIN GASTROINTESTINAL PERRO"
+                }
+              ]
+            }
+          ],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "3d1ab1483be0",
+      "direction": "outbound",
+      "body": "Para Royal Canin Gastrointestinal perro en 7 kg no tengo esa presentación disponible en este momento. La presentación disponible es 2 kg por $129.000 🐾",
+      "at": "2026-10-30T18:34:54.178228+00:00"
+    },
+    {
+      "id": "6ebff7fded87",
+      "direction": "inbound",
+      "body": "Solo consultar precio: Royal Canin gastrointestinal para perro, concentrado de 7 kg.",
+      "at": "2026-10-30T18:34:17.487271+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": "gastrointestinal",
+            "marca": "ROYALCANIN",
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "duracion": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "ROYALCANIN GASTROINTESTINAL PERRO",
+            "condiciones": [
+              "gastrointestinal"
+            ],
+            "presentacion": "7kg",
+            "subcategoria": "concentrado",
+            "textoVisible": "Royal Canin gastrointestinal para perro, concentrado de 7 kg",
+            "nombreFamilia": "ROYALCANIN GASTROINTESTINAL PERRO",
+            "mencionOriginal": null,
+            "pesoTextoOriginal": "7kg",
+            "requierePresentacion": false,
+            "intencionPresentaciones": "especifica",
+            "referenciasEquivalentes": [
+              "ROYALCANIN GASTROINTESTINAL PERRO"
+            ],
+            "coincidenciaVisualValidada": false,
+            "presentacionesEquivalentes": [
+              {
+                "peso": "2kg",
+                "stock": null,
+                "precio": 129000,
+                "metadata": {
+                  "llave": "2070",
+                  "codigo": "103010102070",
+                  "source": "productos.json",
+                  "codigos": [
+                    "103010102070"
+                  ],
+                  "nombre_original": "ROYALCANIN GASTROINTESTINAL PERRO 2KG"
+                },
+                "referencia": "ROYALCANIN GASTROINTESTINAL PERRO"
+              }
+            ]
+          },
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": null,
+              "linea": "gastrointestinal",
+              "marca": "ROYALCANIN",
+              "accion": "consultar",
+              "envase": null,
+              "tamano": null,
+              "especie": "perro",
+              "sabores": [],
+              "cantidad": null,
+              "duracion": null,
+              "mascotas": [],
+              "categoria": "comida",
+              "referencia": "ROYALCANIN GASTROINTESTINAL PERRO",
+              "condiciones": [
+                "gastrointestinal"
+              ],
+              "presentacion": "7kg",
+              "subcategoria": "concentrado",
+              "textoVisible": "Royal Canin gastrointestinal para perro, concentrado de 7 kg",
+              "nombreFamilia": "ROYALCANIN GASTROINTESTINAL PERRO",
+              "mencionOriginal": null,
+              "pesoTextoOriginal": "7kg",
+              "requierePresentacion": false,
+              "intencionPresentaciones": "especifica",
+              "referenciasEquivalentes": [
+                "ROYALCANIN GASTROINTESTINAL PERRO"
+              ],
+              "coincidenciaVisualValidada": false,
+              "presentacionesEquivalentes": [
+                {
+                  "peso": "2kg",
+                  "stock": null,
+                  "precio": 129000,
+                  "metadata": {
+                    "llave": "2070",
+                    "codigo": "103010102070",
+                    "source": "productos.json",
+                    "codigos": [
+                      "103010102070"
+                    ],
+                    "nombre_original": "ROYALCANIN GASTROINTESTINAL PERRO 2KG"
+                  },
+                  "referencia": "ROYALCANIN GASTROINTESTINAL PERRO"
+                }
+              ]
+            }
+          ],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "77b851649aa2",
+      "direction": "outbound",
+      "body": "Para gato, tengo estas dos opciones: PRO PLAN FELINE EN concentrado de 1.5 kg o PRO PLAN FELINE LATA EN comida húmeda por unidad. ¿Cuál forma busca? 🐾",
+      "at": "2026-10-30T18:33:36.64239+00:00"
+    },
+    {
+      "id": "461be50fbd00",
+      "direction": "inbound",
+      "body": "Solo consultar: proplan feline EN.",
+      "at": "2026-10-30T18:33:02.223196+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": "EN",
+            "marca": "PRO PLAN",
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": "gato",
+            "sabores": [],
+            "cantidad": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "proplan feline EN",
+            "condiciones": [],
+            "presentacion": null,
+            "subcategoria": null,
+            "textoVisible": "proplan feline EN",
+            "mencionOriginal": "proplan feline EN.",
+            "intencionPresentaciones": null
+          },
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": null,
+              "linea": "EN",
+              "marca": "PRO PLAN",
+              "accion": "consultar",
+              "envase": null,
+              "tamano": null,
+              "especie": "gato",
+              "sabores": [],
+              "cantidad": null,
+              "mascotas": [],
+              "categoria": "comida",
+              "referencia": "proplan feline EN",
+              "condiciones": [],
+              "presentacion": null,
+              "subcategoria": null,
+              "textoVisible": "proplan feline EN",
+              "mencionOriginal": "proplan feline EN.",
+              "intencionPresentaciones": null
+            }
+          ],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "20999fd9b06e",
+      "direction": "outbound",
+      "body": "Sí, CANISAN D de 5 ml está en $21.500. Las existencias están por confirmar. 🐾",
+      "at": "2026-10-30T18:32:19.511777+00:00"
+    },
+    {
+      "id": "117debdee5ee",
+      "direction": "inbound",
+      "body": "Solo consultar: Canisan D de 5ml.",
+      "at": "2026-10-30T18:31:47.101521+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": "D",
+            "marca": "CANISAN",
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": "perro y gato",
+            "sabores": [],
+            "cantidad": null,
+            "duracion": null,
+            "mascotas": [],
+            "categoria": "medicamento",
+            "referencia": "CANISAN D",
+            "condiciones": [],
+            "presentacion": "5ml",
+            "subcategoria": "desparasitante",
+            "textoVisible": "Canisan D de 5ml",
+            "nombreFamilia": "CANISAN D",
+            "mencionOriginal": null,
+            "pesoTextoOriginal": "5ml",
+            "requierePresentacion": false,
+            "intencionPresentaciones": "especifica",
+            "referenciasEquivalentes": [
+              "CANISAN D"
+            ],
+            "coincidenciaVisualValidada": false,
+            "presentacionesEquivalentes": [
+              {
+                "peso": "10 ml",
+                "stock": null,
+                "precio": 29700,
+                "metadata": {
+                  "llave": "277",
+                  "codigo": "10101010277",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10101010277"
+                  ],
+                  "nombre_original": "CANISAN D 10 ML"
+                },
+                "referencia": "CANISAN D"
+              },
+              {
+                "peso": "2.5ml",
+                "stock": null,
+                "precio": 16800,
+                "metadata": {
+                  "llave": "279",
+                  "codigo": "10101010279",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10101010279"
+                  ],
+                  "nombre_original": "CANISAN D 2.5ML"
+                },
+                "referencia": "CANISAN D"
+              },
+              {
+                "peso": "5 ml",
+                "stock": null,
+                "precio": 21500,
+                "metadata": {
+                  "llave": "278",
+                  "codigo": "10101010278",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10101010278"
+                  ],
+                  "nombre_original": "CANISAN D 5 ML"
+                },
+                "referencia": "CANISAN D"
+              }
+            ]
+          },
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": null,
+              "linea": "D",
+              "marca": "CANISAN",
+              "accion": "consultar",
+              "envase": null,
+              "tamano": null,
+              "especie": "perro y gato",
+              "sabores": [],
+              "cantidad": null,
+              "duracion": null,
+              "mascotas": [],
+              "categoria": "medicamento",
+              "referencia": "CANISAN D",
+              "condiciones": [],
+              "presentacion": "5ml",
+              "subcategoria": "desparasitante",
+              "textoVisible": "Canisan D de 5ml",
+              "nombreFamilia": "CANISAN D",
+              "mencionOriginal": null,
+              "pesoTextoOriginal": "5ml",
+              "requierePresentacion": false,
+              "intencionPresentaciones": "especifica",
+              "referenciasEquivalentes": [
+                "CANISAN D"
+              ],
+              "coincidenciaVisualValidada": false,
+              "presentacionesEquivalentes": [
+                {
+                  "peso": "10 ml",
+                  "stock": null,
+                  "precio": 29700,
+                  "metadata": {
+                    "llave": "277",
+                    "codigo": "10101010277",
+                    "source": "productos.json",
+                    "codigos": [
+                      "10101010277"
+                    ],
+                    "nombre_original": "CANISAN D 10 ML"
+                  },
+                  "referencia": "CANISAN D"
+                },
+                {
+                  "peso": "2.5ml",
+                  "stock": null,
+                  "precio": 16800,
+                  "metadata": {
+                    "llave": "279",
+                    "codigo": "10101010279",
+                    "source": "productos.json",
+                    "codigos": [
+                      "10101010279"
+                    ],
+                    "nombre_original": "CANISAN D 2.5ML"
+                  },
+                  "referencia": "CANISAN D"
+                },
+                {
+                  "peso": "5 ml",
+                  "stock": null,
+                  "precio": 21500,
+                  "metadata": {
+                    "llave": "278",
+                    "codigo": "10101010278",
+                    "source": "productos.json",
+                    "codigos": [
+                      "10101010278"
+                    ],
+                    "nombre_original": "CANISAN D 5 ML"
+                  },
+                  "referencia": "CANISAN D"
+                }
+              ]
+            }
+          ],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "b0896d81234d",
+      "direction": "outbound",
+      "body": "Con ese nombre no te lo puedo dejar confirmado. Si quieres, puedo ayudarte a orientarlo por la necesidad para perro y revisar qué encaja mejor; ¿te interesa que lo haga?",
+      "at": "2026-10-30T18:31:07.674568+00:00"
+    },
+    {
+      "id": "139e29ba0b53",
+      "direction": "inbound",
+      "body": "Solo consultar: Bonnat Gastrointestinal para perro.",
+      "at": "2026-10-30T18:30:30.239436+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": "Gastrointestinal",
+            "marca": "Bonnat",
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "Bonnat Gastrointestinal",
+            "condiciones": [
+              "gastrointestinal"
+            ],
+            "presentacion": null,
+            "subcategoria": null,
+            "textoVisible": "Bonnat Gastrointestinal para perro",
+            "mencionOriginal": "Bonnat Gastrointestinal para perro",
+            "intencionPresentaciones": null
+          },
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": null,
+              "linea": "Gastrointestinal",
+              "marca": "Bonnat",
+              "accion": "consultar",
+              "envase": null,
+              "tamano": null,
+              "especie": "perro",
+              "sabores": [],
+              "cantidad": null,
+              "mascotas": [],
+              "categoria": "comida",
+              "referencia": "Bonnat Gastrointestinal",
+              "condiciones": [
+                "gastrointestinal"
+              ],
+              "presentacion": null,
+              "subcategoria": null,
+              "textoVisible": "Bonnat Gastrointestinal para perro",
+              "mencionOriginal": "Bonnat Gastrointestinal para perro",
+              "intencionPresentaciones": null
+            }
+          ],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "a89272e52a13",
+      "direction": "outbound",
+      "body": "No logro identificar con seguridad esa referencia. Si quieres, puedo ayudarte a orientarlo según la necesidad, pero no te confirmaría que sea ese producto solo con ese nombre y ese formato.",
+      "at": "2026-10-30T18:30:11.061665+00:00"
+    },
+    {
+      "id": "96c6eb1f7ce4",
+      "direction": "inbound",
+      "body": "Solo consultar: marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos.",
+      "at": "2026-10-30T18:29:34.766106+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": null,
+            "marca": "ZetaPruebaQ9",
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": null,
+            "sabores": [],
+            "cantidad": null,
+            "mascotas": [],
+            "categoria": "otro",
+            "referencia": "ZQ17",
+            "condiciones": [],
+            "presentacion": "4 kilos",
+            "subcategoria": null,
+            "textoVisible": "marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos",
+            "mencionOriginal": "marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos.",
+            "intencionPresentaciones": "especifica"
+          },
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": null,
+              "linea": null,
+              "marca": "ZetaPruebaQ9",
+              "accion": "consultar",
+              "envase": null,
+              "tamano": null,
+              "especie": null,
+              "sabores": [],
+              "cantidad": null,
+              "mascotas": [],
+              "categoria": "otro",
+              "referencia": "ZQ17",
+              "condiciones": [],
+              "presentacion": "4 kilos",
+              "subcategoria": null,
+              "textoVisible": "marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos",
+              "mencionOriginal": "marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos.",
+              "intencionPresentaciones": "especifica"
+            }
+          ],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "fca560d8c6ca",
+      "direction": "outbound",
+      "body": "Para un gatito de 6 meses, estas opciones sí corresponden a cachorro:  \n\n- PRO PLAN POUCH FELINO KITTEN 85gr: $6.200 — comida humeda, gato, cachorro.  \n- ROYAL CANIN LATA KITTEN LOAF unidad: $10.500 — comida humeda, gato, cachorro.  \n- ROYAL CANIN KITTEN 400gr: $30.000 — concentrado, gato, cachorro.  \n\nLos precios están registrados; las existencias están por confirmar. ¿Prefieres comida húmeda o concentrado?",
+      "at": "2026-10-30T18:28:52.31751+00:00"
+    },
+    {
+      "id": "5f50ec82a97c",
+      "direction": "inbound",
+      "body": "Qué alimento me recomiendas para un gatito de seis meses? Solo quiero opciones, no comprar.",
+      "at": "2026-10-30T18:28:22.245094+00:00"
+    },
+    {
+      "id": "e1a9b9b110d7",
+      "direction": "outbound",
+      "body": "Te confirmo, esa referencia la manejamos: DIAMOND INDOOR CAT 500gr por $19.500. Las existencias están por confirmar. 😊",
+      "at": "2026-10-30T18:27:59.703932+00:00"
+    },
+    {
+      "id": "07e9cb083882",
+      "direction": "inbound",
+      "body": "Solo consultar precio de diamon indor para gato, medio kilo",
+      "at": "2026-10-30T18:27:24.372252+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": "INDOOR",
+            "marca": "DIAMOND",
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": "gato",
+            "sabores": [],
+            "cantidad": null,
+            "duracion": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "DIAMOND INDOOR CAT",
+            "condiciones": [],
+            "presentacion": "500g",
+            "subcategoria": "concentrado",
+            "textoVisible": "diamon indor para gato, medio kilo",
+            "nombreFamilia": "DIAMOND INDOOR CAT",
+            "mencionOriginal": null,
+            "pesoTextoOriginal": "500g",
+            "requierePresentacion": false,
+            "intencionPresentaciones": "especifica",
+            "referenciasEquivalentes": [
+              "DIAMOND INDOOR",
+              "DIAMOND INDOOR CAT"
+            ],
+            "coincidenciaVisualValidada": false,
+            "presentacionesEquivalentes": [
+              {
+                "peso": "2.72kg",
+                "stock": null,
+                "precio": 86500,
+                "metadata": {
+                  "llave": "1816",
+                  "codigo": "103010201816",
+                  "source": "productos.json",
+                  "codigos": [
+                    "103010201816"
+                  ],
+                  "nombre_original": "DIAMOND INDOOR 2.72KG"
+                },
+                "referencia": "DIAMOND INDOOR"
+              },
+              {
+                "peso": "500gr",
+                "stock": null,
+                "precio": 19500,
+                "metadata": {
+                  "llave": "553",
+                  "codigo": "10301020553",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10301020553"
+                  ],
+                  "nombre_original": "DIAMOND INDOOR CAT 500GR"
+                },
+                "referencia": "DIAMOND INDOOR CAT"
+              }
+            ]
+          },
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": null,
+              "linea": "INDOOR",
+              "marca": "DIAMOND",
+              "accion": "consultar",
+              "envase": null,
+              "tamano": null,
+              "especie": "gato",
+              "sabores": [],
+              "cantidad": null,
+              "duracion": null,
+              "mascotas": [],
+              "categoria": "comida",
+              "referencia": "DIAMOND INDOOR CAT",
+              "condiciones": [],
+              "presentacion": "500g",
+              "subcategoria": "concentrado",
+              "textoVisible": "diamon indor para gato, medio kilo",
+              "nombreFamilia": "DIAMOND INDOOR CAT",
+              "mencionOriginal": null,
+              "pesoTextoOriginal": "500g",
+              "requierePresentacion": false,
+              "intencionPresentaciones": "especifica",
+              "referenciasEquivalentes": [
+                "DIAMOND INDOOR",
+                "DIAMOND INDOOR CAT"
+              ],
+              "coincidenciaVisualValidada": false,
+              "presentacionesEquivalentes": [
+                {
+                  "peso": "2.72kg",
+                  "stock": null,
+                  "precio": 86500,
+                  "metadata": {
+                    "llave": "1816",
+                    "codigo": "103010201816",
+                    "source": "productos.json",
+                    "codigos": [
+                      "103010201816"
+                    ],
+                    "nombre_original": "DIAMOND INDOOR 2.72KG"
+                  },
+                  "referencia": "DIAMOND INDOOR"
+                },
+                {
+                  "peso": "500gr",
+                  "stock": null,
+                  "precio": 19500,
+                  "metadata": {
+                    "llave": "553",
+                    "codigo": "10301020553",
+                    "source": "productos.json",
+                    "codigos": [
+                      "10301020553"
+                    ],
+                    "nombre_original": "DIAMOND INDOOR CAT 500GR"
+                  },
+                  "referencia": "DIAMOND INDOOR CAT"
+                }
+              ]
+            }
+          ],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "da3df8618edc",
+      "direction": "outbound",
+      "body": "Veo que consultas por Canitabs Skin Coat. Ahora mismo no me queda claro cuál es exactamente esa referencia, así que prefiero no darte una identificación que pueda confundirte. Si quieres, puedo intentar orientarte por la necesidad del producto, pero en este momento no tengo más datos para afinarlo.",
+      "at": "2026-10-30T18:26:55.291193+00:00"
+    },
+    {
+      "id": "9e47aa8b82d4",
+      "direction": "inbound",
+      "body": "Solo consultar: Canitabs Skin Coat.",
+      "at": "2026-10-30T18:26:15.514399+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": "Skin Coat",
+            "marca": "CANITABS",
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": null,
+            "sabores": [],
+            "cantidad": null,
+            "mascotas": [],
+            "categoria": "suplemento",
+            "referencia": "Canitabs Skin Coat",
+            "condiciones": [],
+            "presentacion": null,
+            "subcategoria": null,
+            "textoVisible": "Canitabs Skin Coat",
+            "mencionOriginal": "Canitabs Skin Coat",
+            "intencionPresentaciones": null
+          },
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": null,
+              "linea": "Skin Coat",
+              "marca": "CANITABS",
+              "accion": "consultar",
+              "envase": null,
+              "tamano": null,
+              "especie": null,
+              "sabores": [],
+              "cantidad": null,
+              "mascotas": [],
+              "categoria": "suplemento",
+              "referencia": "Canitabs Skin Coat",
+              "condiciones": [],
+              "presentacion": null,
+              "subcategoria": null,
+              "textoVisible": "Canitabs Skin Coat",
+              "mencionOriginal": "Canitabs Skin Coat",
+              "intencionPresentaciones": null
+            }
+          ],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "9dddf8c8b74c",
+      "direction": "outbound",
+      "body": "Tenemos opciones de nefrotec. ¿Necesitas un empaque cerrado de 60 unidades o unidades individuales? Necesito verificar esa presentación antes de cotizarla.",
+      "at": "2026-10-30T18:18:02.698931+00:00"
+    },
+    {
+      "id": "58dd20f6f15a",
+      "direction": "inbound",
+      "body": "A como tienes el nefrotec x60",
+      "at": "2026-10-30T18:17:27.930241+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": null,
+            "marca": null,
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": null,
+            "sabores": [],
+            "cantidad": null,
+            "mascotas": [],
+            "categoria": "otro",
+            "referencia": "nefrotec x60",
+            "condiciones": [],
+            "presentacion": "x60",
+            "subcategoria": null,
+            "textoVisible": "nefrotec x60",
+            "mencionOriginal": "nefrotec x60",
+            "intencionPresentaciones": "especifica"
+          },
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": null,
+              "linea": null,
+              "marca": null,
+              "accion": "consultar",
+              "envase": null,
+              "tamano": null,
+              "especie": null,
+              "sabores": [],
+              "cantidad": null,
+              "mascotas": [],
+              "categoria": "otro",
+              "referencia": "nefrotec x60",
+              "condiciones": [],
+              "presentacion": "x60",
+              "subcategoria": null,
+              "textoVisible": "nefrotec x60",
+              "mencionOriginal": "nefrotec x60",
+              "intencionPresentaciones": "especifica"
+            }
+          ],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "90e5d2354505",
+      "direction": "outbound",
+      "body": "Claro 😊 tres sobres de PRO PLAN POUCH FELINO KITTEN de 85gr te quedan en $6.200 c/u, para un total de $18.600. Las existencias están por confirmar.",
+      "at": "2026-10-30T18:16:48.891638+00:00"
+    },
+    {
+      "id": "25f082466f0f",
+      "direction": "inbound",
+      "body": "Ahora serían tres sobres del mismo producto, solo cotización.",
+      "at": "2026-10-30T18:16:14.841749+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": "cachorro",
+            "linea": "KITTEN",
+            "marca": "PRO PLAN",
+            "accion": "consultar",
+            "envase": "sobre",
+            "tamano": null,
+            "especie": "gato",
+            "sabores": [],
+            "cantidad": 3,
+            "duracion": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "PRO PLAN POUCH FELINO KITTEN",
+            "condiciones": [],
+            "presentacion": "85g",
+            "subcategoria": "comida_humeda",
+            "textoVisible": "tres sobres del mismo producto, solo cotización",
+            "nombreFamilia": "PRO PLAN POUCH FELINO KITTEN",
+            "mencionOriginal": null,
+            "requierePresentacion": false,
+            "intencionPresentaciones": "especifica",
+            "referenciasEquivalentes": [
+              "PRO PLAN POUCH FELINO KITTEN"
+            ],
+            "coincidenciaVisualValidada": false,
+            "presentacionesEquivalentes": [
+              {
+                "peso": "85gr",
+                "stock": null,
+                "precio": 6200,
+                "metadata": {
+                  "llave": "1375",
+                  "codigo": "10301011375",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10301011375"
+                  ],
+                  "nombre_original": "PRO PLAN POUCH FELINO KITTEN 85GR"
+                },
+                "referencia": "PRO PLAN POUCH FELINO KITTEN"
+              }
+            ]
+          },
+          "intencion": "consulta_producto",
+          "productos": [],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "fcb8614b628c",
+      "direction": "outbound",
+      "body": "Claro 😊 te confirmo el PRO PLAN POUCH FELINO KITTEN de 85gr en $6.200. Las existencias están por confirmar.",
+      "at": "2026-10-30T18:15:51.054332+00:00"
+    },
+    {
+      "id": "51086c62a4bc",
+      "direction": "inbound",
+      "body": "Solo consultar: Pro Plan kitten para gatito, en sobre de 85 gramos.",
+      "at": "2026-10-30T18:15:14.196712+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": "cachorro",
+            "linea": "KITTEN",
+            "marca": "PRO PLAN",
+            "accion": "consultar",
+            "envase": "sobre",
+            "tamano": null,
+            "especie": "gato",
+            "sabores": [],
+            "cantidad": null,
+            "duracion": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "PRO PLAN POUCH FELINO KITTEN",
+            "condiciones": [],
+            "presentacion": "85g",
+            "subcategoria": "comida_humeda",
+            "textoVisible": "Pro Plan kitten para gatito, en sobre de 85 gramos",
+            "nombreFamilia": "PRO PLAN POUCH FELINO KITTEN",
+            "mencionOriginal": null,
+            "pesoTextoOriginal": "85g",
+            "requierePresentacion": false,
+            "intencionPresentaciones": "especifica",
+            "referenciasEquivalentes": [
+              "PRO PLAN POUCH FELINO KITTEN"
+            ],
+            "coincidenciaVisualValidada": false,
+            "presentacionesEquivalentes": [
+              {
+                "peso": "85gr",
+                "stock": null,
+                "precio": 6200,
+                "metadata": {
+                  "llave": "1375",
+                  "codigo": "10301011375",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10301011375"
+                  ],
+                  "nombre_original": "PRO PLAN POUCH FELINO KITTEN 85GR"
+                },
+                "referencia": "PRO PLAN POUCH FELINO KITTEN"
+              }
+            ]
+          },
+          "intencion": "consulta_producto",
+          "productos": [],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "81107b69d844",
+      "direction": "outbound",
+      "body": "Claro 😊 la lata PRO PLAN CANINE LATA UR para perro está en $28.600. Las existencias están por confirmar.",
+      "at": "2026-10-30T18:14:21.391073+00:00"
+    },
+    {
+      "id": "19a25ef9e077",
+      "direction": "inbound",
+      "body": "Ahora cotízame la lata de esa misma línea UR para perro. Solo consulta.",
+      "at": "2026-10-30T18:13:47.687156+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": "UR",
+            "marca": "PRO PLAN",
+            "accion": "consultar",
+            "envase": "lata",
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "duracion": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "PRO PLAN CANINE LATA UR",
+            "condiciones": [],
+            "presentacion": "unidad",
+            "subcategoria": "comida_humeda",
+            "textoVisible": "lata PRO PLAN CANINE UR para perro (misma línea UR)",
+            "nombreFamilia": "PRO PLAN CANINE LATA UR",
+            "mencionOriginal": null,
+            "requierePresentacion": false,
+            "intencionPresentaciones": null,
+            "referenciasEquivalentes": [
+              "PRO PLAN CANINE LATA UR"
+            ],
+            "coincidenciaVisualValidada": false,
+            "presentacionesEquivalentes": [
+              {
+                "peso": "unidad",
+                "stock": null,
+                "precio": 28600,
+                "metadata": {
+                  "llave": "1393",
+                  "codigo": "10401011393",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10401011393"
+                  ],
+                  "nombre_original": "PRO PLAN CANINE LATA UR"
+                },
+                "referencia": "PRO PLAN CANINE LATA UR"
+              }
+            ]
+          },
+          "intencion": "consulta_producto",
+          "productos": [],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "8bfe419e5815",
+      "direction": "outbound",
+      "body": "Claro 😊 PRO PLAN CANINE UR para perro en 2 kg está en $122.000. Las existencias están por confirmar. ¿Quieres agregar esa presentación al pedido?",
+      "at": "2026-10-30T18:10:28.507315+00:00"
+    },
+    {
+      "id": "ef8a7c3bbc39",
+      "direction": "inbound",
+      "body": "Ahora cotízame la lata de esa misma línea UR para perro. Solo consulta.",
+      "at": "2026-10-30T18:09:55.239172+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": "UR",
+            "marca": "PRO PLAN",
+            "accion": "consultar",
+            "envase": "lata",
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "duracion": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "PRO PLAN CANINE UR",
+            "condiciones": [],
+            "presentacion": null,
+            "subcategoria": "comida_humeda",
+            "textoVisible": "PRO PLAN UR PRO PLAN CANINE UR perro comida_humeda lata",
+            "mencionOriginal": "Ahora cotízame la lata de esa misma línea UR para perro. Solo consulta.",
+            "pesoTextoOriginal": null
+          },
+          "intencion": "consulta_producto",
+          "productos": [],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "16bace359fc7",
+      "direction": "outbound",
+      "body": "Claro 😊 PRO PLAN CANINE UR para perro en 2 kg está en $122.000. Las existencias están por confirmar.",
+      "at": "2026-10-30T18:09:00.539382+00:00"
+    },
+    {
+      "id": "b2c64b497b0b",
+      "direction": "inbound",
+      "body": "Solo consultar: Pro Plan UR para perro",
+      "at": "2026-10-30T18:08:21.888254+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": "UR",
+            "marca": "PRO PLAN",
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "duracion": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "PRO PLAN CANINE UR",
+            "condiciones": [],
+            "presentacion": "2kg",
+            "subcategoria": "concentrado",
+            "textoVisible": "Pro Plan UR para perro el concentrado de 2 kg",
+            "nombreFamilia": "PRO PLAN CANINE UR",
+            "mencionOriginal": null,
+            "pesoTextoOriginal": "2kg",
+            "requierePresentacion": false,
+            "intencionPresentaciones": "especifica",
+            "referenciasEquivalentes": [
+              "PRO PLAN CANINE UR"
+            ],
+            "coincidenciaVisualValidada": false,
+            "presentacionesEquivalentes": [
+              {
+                "peso": "2kg",
+                "stock": null,
+                "precio": 122000,
+                "metadata": {
+                  "llave": "1387",
+                  "codigo": "10301011387",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10301011387"
+                  ],
+                  "nombre_original": "PRO PLAN CANINE UR 2KG"
+                },
+                "referencia": "PRO PLAN CANINE UR"
+              }
+            ]
+          },
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": null,
+              "linea": "UR",
+              "marca": "PRO PLAN",
+              "accion": "consultar",
+              "envase": null,
+              "tamano": null,
+              "especie": "perro",
+              "sabores": [],
+              "cantidad": null,
+              "duracion": null,
+              "mascotas": [],
+              "categoria": "comida",
+              "referencia": "PRO PLAN CANINE UR",
+              "condiciones": [],
+              "presentacion": "2kg",
+              "subcategoria": "concentrado",
+              "textoVisible": "Pro Plan UR para perro el concentrado de 2 kg",
+              "nombreFamilia": "PRO PLAN CANINE UR",
+              "mencionOriginal": null,
+              "pesoTextoOriginal": "2kg",
+              "requierePresentacion": false,
+              "intencionPresentaciones": "especifica",
+              "referenciasEquivalentes": [
+                "PRO PLAN CANINE UR"
+              ],
+              "coincidenciaVisualValidada": false,
+              "presentacionesEquivalentes": [
+                {
+                  "peso": "2kg",
+                  "stock": null,
+                  "precio": 122000,
+                  "metadata": {
+                    "llave": "1387",
+                    "codigo": "10301011387",
+                    "source": "productos.json",
+                    "codigos": [
+                      "10301011387"
+                    ],
+                    "nombre_original": "PRO PLAN CANINE UR 2KG"
+                  },
+                  "referencia": "PRO PLAN CANINE UR"
+                }
+              ]
+            }
+          ],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "66736049f4d5",
+      "direction": "inbound",
+      "body": "el concentrado de 2 kg",
+      "at": "2026-10-30T18:08:21.713978+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": "UR",
+            "marca": "PRO PLAN",
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "duracion": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "PRO PLAN CANINE UR",
+            "condiciones": [],
+            "presentacion": "2kg",
+            "subcategoria": "concentrado",
+            "textoVisible": "Pro Plan UR para perro el concentrado de 2 kg",
+            "nombreFamilia": "PRO PLAN CANINE UR",
+            "mencionOriginal": null,
+            "pesoTextoOriginal": "2kg",
+            "requierePresentacion": false,
+            "intencionPresentaciones": "especifica",
+            "referenciasEquivalentes": [
+              "PRO PLAN CANINE UR"
+            ],
+            "coincidenciaVisualValidada": false,
+            "presentacionesEquivalentes": [
+              {
+                "peso": "2kg",
+                "stock": null,
+                "precio": 122000,
+                "metadata": {
+                  "llave": "1387",
+                  "codigo": "10301011387",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10301011387"
+                  ],
+                  "nombre_original": "PRO PLAN CANINE UR 2KG"
+                },
+                "referencia": "PRO PLAN CANINE UR"
+              }
+            ]
+          },
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": null,
+              "linea": "UR",
+              "marca": "PRO PLAN",
+              "accion": "consultar",
+              "envase": null,
+              "tamano": null,
+              "especie": "perro",
+              "sabores": [],
+              "cantidad": null,
+              "duracion": null,
+              "mascotas": [],
+              "categoria": "comida",
+              "referencia": "PRO PLAN CANINE UR",
+              "condiciones": [],
+              "presentacion": "2kg",
+              "subcategoria": "concentrado",
+              "textoVisible": "Pro Plan UR para perro el concentrado de 2 kg",
+              "nombreFamilia": "PRO PLAN CANINE UR",
+              "mencionOriginal": null,
+              "pesoTextoOriginal": "2kg",
+              "requierePresentacion": false,
+              "intencionPresentaciones": "especifica",
+              "referenciasEquivalentes": [
+                "PRO PLAN CANINE UR"
+              ],
+              "coincidenciaVisualValidada": false,
+              "presentacionesEquivalentes": [
+                {
+                  "peso": "2kg",
+                  "stock": null,
+                  "precio": 122000,
+                  "metadata": {
+                    "llave": "1387",
+                    "codigo": "10301011387",
+                    "source": "productos.json",
+                    "codigos": [
+                      "10301011387"
+                    ],
+                    "nombre_original": "PRO PLAN CANINE UR 2KG"
+                  },
+                  "referencia": "PRO PLAN CANINE UR"
+                }
+              ]
+            }
+          ],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "cf7802cba998",
+      "direction": "outbound",
+      "body": "¿Te refieres a la lata PRO PLAN CANINE UR para perro? Si sí, te la cotizo en unidad.",
+      "at": "2026-10-30T18:06:35.004734+00:00"
+    },
+    {
+      "id": "5dd95b8ae82a",
+      "direction": "inbound",
+      "body": "Ahora cotízame la lata de esa misma línea UR para perro. Solo consulta.",
+      "at": "2026-10-30T18:05:55.35673+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": "UR",
+            "marca": "PRO PLAN",
+            "accion": "consultar",
+            "envase": "lata",
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "PRO PLAN CANINE UR",
+            "condiciones": [],
+            "presentacion": null,
+            "subcategoria": "comida_humeda",
+            "textoVisible": "lata de esa misma línea UR para perro",
+            "mencionOriginal": "la lata de esa misma línea UR para perro",
+            "intencionPresentaciones": null
+          },
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": null,
+              "linea": "UR",
+              "marca": "PRO PLAN",
+              "accion": "consultar",
+              "envase": "lata",
+              "tamano": null,
+              "especie": "perro",
+              "sabores": [],
+              "cantidad": null,
+              "mascotas": [],
+              "categoria": "comida",
+              "referencia": "PRO PLAN CANINE UR",
+              "condiciones": [],
+              "presentacion": null,
+              "subcategoria": "comida_humeda",
+              "textoVisible": "lata de esa misma línea UR para perro",
+              "mencionOriginal": "la lata de esa misma línea UR para perro",
+              "intencionPresentaciones": null
+            }
+          ],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "adf876df8b30",
+      "direction": "outbound",
+      "body": "Sí, para perro está el PRO PLAN CANINE UR en presentación de 2 kg por $122.000. Las existencias están por confirmar. 🙂",
+      "at": "2026-10-30T18:05:30.115046+00:00"
+    },
+    {
+      "id": "bd34c1750093",
+      "direction": "inbound",
+      "body": "el concentrado de 2 kg",
+      "at": "2026-10-30T18:04:56.94804+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": "UR",
+            "marca": "PRO PLAN",
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "duracion": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "PRO PLAN CANINE UR",
+            "condiciones": [],
+            "presentacion": "2kg",
+            "subcategoria": "concentrado",
+            "textoVisible": "Solo consultar: Pro Plan UR para perro el concentrado de 2 kg",
+            "nombreFamilia": "PRO PLAN CANINE UR",
+            "mencionOriginal": null,
+            "pesoTextoOriginal": "2kg",
+            "requierePresentacion": false,
+            "intencionPresentaciones": "especifica",
+            "referenciasEquivalentes": [
+              "PRO PLAN CANINE UR"
+            ],
+            "coincidenciaVisualValidada": false,
+            "presentacionesEquivalentes": [
+              {
+                "peso": "2kg",
+                "stock": null,
+                "precio": 122000,
+                "metadata": {
+                  "llave": "1387",
+                  "codigo": "10301011387",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10301011387"
+                  ],
+                  "nombre_original": "PRO PLAN CANINE UR 2KG"
+                },
+                "referencia": "PRO PLAN CANINE UR"
+              }
+            ]
+          },
+          "intencion": "consulta_producto",
+          "productos": [],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "b88bfc9fd87b",
+      "direction": "inbound",
+      "body": "Solo consultar: Pro Plan UR para perro",
+      "at": "2026-10-30T18:04:56.911742+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": "UR",
+            "marca": "PRO PLAN",
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "duracion": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "PRO PLAN CANINE UR",
+            "condiciones": [],
+            "presentacion": "2kg",
+            "subcategoria": "concentrado",
+            "textoVisible": "Solo consultar: Pro Plan UR para perro el concentrado de 2 kg",
+            "nombreFamilia": "PRO PLAN CANINE UR",
+            "mencionOriginal": null,
+            "pesoTextoOriginal": "2kg",
+            "requierePresentacion": false,
+            "intencionPresentaciones": "especifica",
+            "referenciasEquivalentes": [
+              "PRO PLAN CANINE UR"
+            ],
+            "coincidenciaVisualValidada": false,
+            "presentacionesEquivalentes": [
+              {
+                "peso": "2kg",
+                "stock": null,
+                "precio": 122000,
+                "metadata": {
+                  "llave": "1387",
+                  "codigo": "10301011387",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10301011387"
+                  ],
+                  "nombre_original": "PRO PLAN CANINE UR 2KG"
+                },
+                "referencia": "PRO PLAN CANINE UR"
+              }
+            ]
+          },
+          "intencion": "consulta_producto",
+          "productos": [],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "fb41250a5385",
+      "direction": "outbound",
+      "body": "Sí, para perro está el PRO PLAN CANINE UR en presentación de 2 kg. ¿Lo buscas en concentrado o en comida húmeda? 🙂",
+      "at": "2026-10-30T18:01:00.825255+00:00"
+    },
+    {
+      "id": "2869ea211dc7",
+      "direction": "inbound",
+      "body": "Solo consultar: Pro Plan UR para perro",
+      "at": "2026-10-30T18:00:23.748877+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": "UR",
+            "marca": "PRO PLAN",
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "PRO PLAN CANINE UR",
+            "condiciones": [],
+            "presentacion": "2 kg",
+            "subcategoria": "concentrado",
+            "textoVisible": "Pro Plan UR para perro, concentrado de 2 kg",
+            "mencionOriginal": "Pro Plan UR para perro",
+            "intencionPresentaciones": "especifica"
+          },
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": null,
+              "linea": "UR",
+              "marca": "PRO PLAN",
+              "accion": "consultar",
+              "envase": null,
+              "tamano": null,
+              "especie": "perro",
+              "sabores": [],
+              "cantidad": null,
+              "mascotas": [],
+              "categoria": "comida",
+              "referencia": "PRO PLAN CANINE UR",
+              "condiciones": [],
+              "presentacion": "2 kg",
+              "subcategoria": "concentrado",
+              "textoVisible": "Pro Plan UR para perro, concentrado de 2 kg",
+              "mencionOriginal": "Pro Plan UR para perro",
+              "intencionPresentaciones": "especifica"
+            }
+          ],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "a1be5e68ece1",
+      "direction": "inbound",
+      "body": "el concentrado de 2 kg",
+      "at": "2026-10-30T18:00:23.513469+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": "UR",
+            "marca": "PRO PLAN",
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "PRO PLAN CANINE UR",
+            "condiciones": [],
+            "presentacion": "2 kg",
+            "subcategoria": "concentrado",
+            "textoVisible": "Pro Plan UR para perro, concentrado de 2 kg",
+            "mencionOriginal": "Pro Plan UR para perro",
+            "intencionPresentaciones": "especifica"
+          },
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": null,
+              "linea": "UR",
+              "marca": "PRO PLAN",
+              "accion": "consultar",
+              "envase": null,
+              "tamano": null,
+              "especie": "perro",
+              "sabores": [],
+              "cantidad": null,
+              "mascotas": [],
+              "categoria": "comida",
+              "referencia": "PRO PLAN CANINE UR",
+              "condiciones": [],
+              "presentacion": "2 kg",
+              "subcategoria": "concentrado",
+              "textoVisible": "Pro Plan UR para perro, concentrado de 2 kg",
+              "mencionOriginal": "Pro Plan UR para perro",
+              "intencionPresentaciones": "especifica"
+            }
+          ],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "69abbc4667a9",
+      "direction": "outbound",
+      "body": "¿Me confirmas si buscas la lata PRO PLAN CANINE UR, presentación unidad, para perro?",
+      "at": "2026-10-30T17:57:10.684815+00:00"
+    },
+    {
+      "id": "10c1934b9a70",
+      "direction": "inbound",
+      "body": "Ahora cotízame la lata de esa misma línea UR para perro. Solo consulta.",
+      "at": "2026-10-30T17:56:32.331475+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": "UR",
+            "marca": "PRO PLAN",
+            "accion": "consultar",
+            "envase": "lata",
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "PRO PLAN CANINE UR",
+            "condiciones": [],
+            "presentacion": null,
+            "subcategoria": "comida_humeda",
+            "textoVisible": "lata de esa misma línea UR para perro",
+            "mencionOriginal": "la lata de esa misma línea UR para perro",
+            "intencionPresentaciones": null
+          },
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": null,
+              "linea": "UR",
+              "marca": "PRO PLAN",
+              "accion": "consultar",
+              "envase": "lata",
+              "tamano": null,
+              "especie": "perro",
+              "sabores": [],
+              "cantidad": null,
+              "mascotas": [],
+              "categoria": "comida",
+              "referencia": "PRO PLAN CANINE UR",
+              "condiciones": [],
+              "presentacion": null,
+              "subcategoria": "comida_humeda",
+              "textoVisible": "lata de esa misma línea UR para perro",
+              "mencionOriginal": "la lata de esa misma línea UR para perro",
+              "intencionPresentaciones": null
+            }
+          ],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "586d613dd22d",
+      "direction": "outbound",
+      "body": "Sí, esa referencia la manejamos: PRO PLAN CANINE UR 2 kg está en $122.000. Las existencias están por confirmar.",
+      "at": "2026-10-30T17:56:07.372741+00:00"
+    },
+    {
+      "id": "97868d1bd82f",
+      "direction": "inbound",
+      "body": "Solo consultar: Pro Plan UR para perro",
+      "at": "2026-10-30T17:55:31.61189+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": null,
+            "marca": "PRO PLAN",
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "duracion": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "PRO PLAN CANINE UR",
+            "condiciones": [],
+            "presentacion": "2kg",
+            "subcategoria": "concentrado",
+            "textoVisible": "Solo consultar: Pro Plan UR para perro el concentrado de 2 kg",
+            "nombreFamilia": "PRO PLAN CANINE UR",
+            "mencionOriginal": null,
+            "pesoTextoOriginal": "2kg",
+            "requierePresentacion": false,
+            "intencionPresentaciones": "especifica",
+            "referenciasEquivalentes": [
+              "PRO PLAN CANINE UR"
+            ],
+            "coincidenciaVisualValidada": false,
+            "presentacionesEquivalentes": [
+              {
+                "peso": "2kg",
+                "stock": null,
+                "precio": 122000,
+                "metadata": {
+                  "llave": "1387",
+                  "codigo": "10301011387",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10301011387"
+                  ],
+                  "nombre_original": "PRO PLAN CANINE UR 2KG"
+                },
+                "referencia": "PRO PLAN CANINE UR"
+              }
+            ]
+          },
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": null,
+              "linea": null,
+              "marca": "PRO PLAN",
+              "accion": "consultar",
+              "envase": null,
+              "tamano": null,
+              "especie": "perro",
+              "sabores": [],
+              "cantidad": null,
+              "duracion": null,
+              "mascotas": [],
+              "categoria": "comida",
+              "referencia": "PRO PLAN CANINE UR",
+              "condiciones": [],
+              "presentacion": "2kg",
+              "subcategoria": "concentrado",
+              "textoVisible": "Solo consultar: Pro Plan UR para perro el concentrado de 2 kg",
+              "nombreFamilia": "PRO PLAN CANINE UR",
+              "mencionOriginal": null,
+              "pesoTextoOriginal": "2kg",
+              "requierePresentacion": false,
+              "intencionPresentaciones": "especifica",
+              "referenciasEquivalentes": [
+                "PRO PLAN CANINE UR"
+              ],
+              "coincidenciaVisualValidada": false,
+              "presentacionesEquivalentes": [
+                {
+                  "peso": "2kg",
+                  "stock": null,
+                  "precio": 122000,
+                  "metadata": {
+                    "llave": "1387",
+                    "codigo": "10301011387",
+                    "source": "productos.json",
+                    "codigos": [
+                      "10301011387"
+                    ],
+                    "nombre_original": "PRO PLAN CANINE UR 2KG"
+                  },
+                  "referencia": "PRO PLAN CANINE UR"
+                }
+              ]
+            }
+          ],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "fdf697c57973",
+      "direction": "inbound",
+      "body": "el concentrado de 2 kg",
+      "at": "2026-10-30T17:55:31.441238+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": null,
+            "marca": "PRO PLAN",
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "duracion": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "PRO PLAN CANINE UR",
+            "condiciones": [],
+            "presentacion": "2kg",
+            "subcategoria": "concentrado",
+            "textoVisible": "Solo consultar: Pro Plan UR para perro el concentrado de 2 kg",
+            "nombreFamilia": "PRO PLAN CANINE UR",
+            "mencionOriginal": null,
+            "pesoTextoOriginal": "2kg",
+            "requierePresentacion": false,
+            "intencionPresentaciones": "especifica",
+            "referenciasEquivalentes": [
+              "PRO PLAN CANINE UR"
+            ],
+            "coincidenciaVisualValidada": false,
+            "presentacionesEquivalentes": [
+              {
+                "peso": "2kg",
+                "stock": null,
+                "precio": 122000,
+                "metadata": {
+                  "llave": "1387",
+                  "codigo": "10301011387",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10301011387"
+                  ],
+                  "nombre_original": "PRO PLAN CANINE UR 2KG"
+                },
+                "referencia": "PRO PLAN CANINE UR"
+              }
+            ]
+          },
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": null,
+              "linea": null,
+              "marca": "PRO PLAN",
+              "accion": "consultar",
+              "envase": null,
+              "tamano": null,
+              "especie": "perro",
+              "sabores": [],
+              "cantidad": null,
+              "duracion": null,
+              "mascotas": [],
+              "categoria": "comida",
+              "referencia": "PRO PLAN CANINE UR",
+              "condiciones": [],
+              "presentacion": "2kg",
+              "subcategoria": "concentrado",
+              "textoVisible": "Solo consultar: Pro Plan UR para perro el concentrado de 2 kg",
+              "nombreFamilia": "PRO PLAN CANINE UR",
+              "mencionOriginal": null,
+              "pesoTextoOriginal": "2kg",
+              "requierePresentacion": false,
+              "intencionPresentaciones": "especifica",
+              "referenciasEquivalentes": [
+                "PRO PLAN CANINE UR"
+              ],
+              "coincidenciaVisualValidada": false,
+              "presentacionesEquivalentes": [
+                {
+                  "peso": "2kg",
+                  "stock": null,
+                  "precio": 122000,
+                  "metadata": {
+                    "llave": "1387",
+                    "codigo": "10301011387",
+                    "source": "productos.json",
+                    "codigos": [
+                      "10301011387"
+                    ],
+                    "nombre_original": "PRO PLAN CANINE UR 2KG"
+                  },
+                  "referencia": "PRO PLAN CANINE UR"
+                }
+              ]
+            }
+          ],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "6695bda8a5d8",
+      "direction": "outbound",
+      "body": "Sí, el ROYALCANIN GASTROINTESTINAL PERRO de 2 kg está en $129.000. Las existencias están por confirmar.",
+      "at": "2026-10-30T17:54:48.02381+00:00"
+    },
+    {
+      "id": "d12e2f24885d",
+      "direction": "inbound",
+      "body": "Corrijo el tamaño: de 2 kg, el mismo concentrado para perro. Solo consultar el precio.",
+      "at": "2026-10-30T17:54:12.197559+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": null,
+            "marca": "ROYALCANIN",
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "duracion": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "ROYALCANIN GASTROINTESTINAL PERRO",
+            "condiciones": [
+              "gastrointestinal"
+            ],
+            "presentacion": "2kg",
+            "subcategoria": "concentrado",
+            "textoVisible": "Corrijo el tamaño: de 2 kg, el mismo concentrado para perro. Solo consultar el precio.",
+            "nombreFamilia": "ROYALCANIN GASTROINTESTINAL PERRO",
+            "mencionOriginal": null,
+            "pesoTextoOriginal": "2kg",
+            "requierePresentacion": false,
+            "intencionPresentaciones": "especifica",
+            "referenciasEquivalentes": [
+              "ROYALCANIN GASTROINTESTINAL PERRO"
+            ],
+            "coincidenciaVisualValidada": false,
+            "presentacionesEquivalentes": [
+              {
+                "peso": "2kg",
+                "stock": null,
+                "precio": 129000,
+                "metadata": {
+                  "llave": "2070",
+                  "codigo": "103010102070",
+                  "source": "productos.json",
+                  "codigos": [
+                    "103010102070"
+                  ],
+                  "nombre_original": "ROYALCANIN GASTROINTESTINAL PERRO 2KG"
+                },
+                "referencia": "ROYALCANIN GASTROINTESTINAL PERRO"
+              }
+            ]
+          },
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": null,
+              "linea": null,
+              "marca": "ROYALCANIN",
+              "accion": "consultar",
+              "envase": null,
+              "tamano": null,
+              "especie": "perro",
+              "sabores": [],
+              "cantidad": null,
+              "duracion": null,
+              "mascotas": [],
+              "categoria": "comida",
+              "referencia": "ROYALCANIN GASTROINTESTINAL PERRO",
+              "condiciones": [
+                "gastrointestinal"
+              ],
+              "presentacion": "2kg",
+              "subcategoria": "concentrado",
+              "textoVisible": "Corrijo el tamaño: de 2 kg, el mismo concentrado para perro. Solo consultar el precio.",
+              "nombreFamilia": "ROYALCANIN GASTROINTESTINAL PERRO",
+              "mencionOriginal": null,
+              "pesoTextoOriginal": "2kg",
+              "requierePresentacion": false,
+              "intencionPresentaciones": "especifica",
+              "referenciasEquivalentes": [
+                "ROYALCANIN GASTROINTESTINAL PERRO"
+              ],
+              "coincidenciaVisualValidada": false,
+              "presentacionesEquivalentes": [
+                {
+                  "peso": "2kg",
+                  "stock": null,
+                  "precio": 129000,
+                  "metadata": {
+                    "llave": "2070",
+                    "codigo": "103010102070",
+                    "source": "productos.json",
+                    "codigos": [
+                      "103010102070"
+                    ],
+                    "nombre_original": "ROYALCANIN GASTROINTESTINAL PERRO 2KG"
+                  },
+                  "referencia": "ROYALCANIN GASTROINTESTINAL PERRO"
+                }
+              ]
+            }
+          ],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "6b8092559b24",
+      "direction": "outbound",
+      "body": "En ROYALCANIN GASTROINTESTINAL PERRO no tengo presentación de 7 kg en este momento.\n\nSí está disponible en 2 kg por $129.000.",
+      "at": "2026-10-30T17:53:34.068404+00:00"
+    },
+    {
+      "id": "09c1d9829ad3",
+      "direction": "inbound",
+      "body": "Solo consultar precio: Royal Canin gastrointestinal para perro, concentrado de 7 kg.",
+      "at": "2026-10-30T17:52:58.371258+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": null,
+            "marca": "ROYALCANIN",
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "duracion": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "ROYALCANIN GASTROINTESTINAL PERRO",
+            "condiciones": [
+              "gastrointestinal"
+            ],
+            "presentacion": "7kg",
+            "subcategoria": "concentrado",
+            "textoVisible": "Solo consultar precio: Royal Canin gastrointestinal para perro, concentrado de 7 kg.",
+            "nombreFamilia": "ROYALCANIN GASTROINTESTINAL PERRO",
+            "mencionOriginal": null,
+            "pesoTextoOriginal": "7kg",
+            "requierePresentacion": false,
+            "intencionPresentaciones": "especifica",
+            "referenciasEquivalentes": [
+              "ROYALCANIN GASTROINTESTINAL PERRO"
+            ],
+            "coincidenciaVisualValidada": false,
+            "presentacionesEquivalentes": [
+              {
+                "peso": "2kg",
+                "stock": null,
+                "precio": 129000,
+                "metadata": {
+                  "llave": "2070",
+                  "codigo": "103010102070",
+                  "source": "productos.json",
+                  "codigos": [
+                    "103010102070"
+                  ],
+                  "nombre_original": "ROYALCANIN GASTROINTESTINAL PERRO 2KG"
+                },
+                "referencia": "ROYALCANIN GASTROINTESTINAL PERRO"
+              }
+            ]
+          },
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": null,
+              "linea": null,
+              "marca": "ROYALCANIN",
+              "accion": "consultar",
+              "envase": null,
+              "tamano": null,
+              "especie": "perro",
+              "sabores": [],
+              "cantidad": null,
+              "duracion": null,
+              "mascotas": [],
+              "categoria": "comida",
+              "referencia": "ROYALCANIN GASTROINTESTINAL PERRO",
+              "condiciones": [
+                "gastrointestinal"
+              ],
+              "presentacion": "7kg",
+              "subcategoria": "concentrado",
+              "textoVisible": "Solo consultar precio: Royal Canin gastrointestinal para perro, concentrado de 7 kg.",
+              "nombreFamilia": "ROYALCANIN GASTROINTESTINAL PERRO",
+              "mencionOriginal": null,
+              "pesoTextoOriginal": "7kg",
+              "requierePresentacion": false,
+              "intencionPresentaciones": "especifica",
+              "referenciasEquivalentes": [
+                "ROYALCANIN GASTROINTESTINAL PERRO"
+              ],
+              "coincidenciaVisualValidada": false,
+              "presentacionesEquivalentes": [
+                {
+                  "peso": "2kg",
+                  "stock": null,
+                  "precio": 129000,
+                  "metadata": {
+                    "llave": "2070",
+                    "codigo": "103010102070",
+                    "source": "productos.json",
+                    "codigos": [
+                      "103010102070"
+                    ],
+                    "nombre_original": "ROYALCANIN GASTROINTESTINAL PERRO 2KG"
+                  },
+                  "referencia": "ROYALCANIN GASTROINTESTINAL PERRO"
+                }
+              ]
+            }
+          ],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "acb3e6c95d32",
+      "direction": "outbound",
+      "body": "¿Te refieres al **TASTE OF THE WILD ADULT PERRO** en **2 kg**? 🙂",
+      "at": "2026-10-30T17:37:15.248253+00:00"
+    },
+    {
+      "id": "97915d8c41de",
+      "direction": "inbound",
+      "body": "Corrijo el tamaño: de 2 kg, el mismo concentrado para perro. Solo consultar el precio.",
+      "at": "2026-10-30T17:36:38.731246+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": null,
+            "marca": "ROYALCANIN",
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "ROYALCANIN GASTROINTESTINAL PERRO",
+            "condiciones": [
+              "gastrointestinal"
+            ],
+            "presentacion": "2 kg",
+            "subcategoria": "concentrado",
+            "textoVisible": "mismo concentrado para perro de 2 kg",
+            "mencionOriginal": "de 2 kg, el mismo concentrado para perro",
+            "intencionPresentaciones": "especifica"
+          },
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": null,
+              "linea": null,
+              "marca": "ROYALCANIN",
+              "accion": "consultar",
+              "envase": null,
+              "tamano": null,
+              "especie": "perro",
+              "sabores": [],
+              "cantidad": null,
+              "mascotas": [],
+              "categoria": "comida",
+              "referencia": "ROYALCANIN GASTROINTESTINAL PERRO",
+              "condiciones": [
+                "gastrointestinal"
+              ],
+              "presentacion": "2 kg",
+              "subcategoria": "concentrado",
+              "textoVisible": "mismo concentrado para perro de 2 kg",
+              "mencionOriginal": "de 2 kg, el mismo concentrado para perro",
+              "intencionPresentaciones": "especifica"
+            }
+          ],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "5690ae1b137c",
+      "direction": "outbound",
+      "body": "Para **ROYALCANIN GASTROINTESTINAL PERRO** en **7 kg** no tengo esa presentación disponible en este momento. La única presentación validada es **2 kg por $129.000**. Si te sirve, te ayudo con esa 🙂",
+      "at": "2026-10-30T17:36:17.860872+00:00"
+    },
+    {
+      "id": "264b810414f6",
+      "direction": "inbound",
+      "body": "Solo consultar precio: Royal Canin gastrointestinal para perro, concentrado de 7 kg.",
+      "at": "2026-10-30T17:35:45.580182+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": null,
+            "marca": "ROYALCANIN",
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "duracion": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "ROYALCANIN GASTROINTESTINAL PERRO",
+            "condiciones": [
+              "gastrointestinal"
+            ],
+            "presentacion": "7kg",
+            "subcategoria": "concentrado",
+            "textoVisible": "Royal Canin gastrointestinal para perro, concentrado de 7 kg",
+            "nombreFamilia": "ROYALCANIN GASTROINTESTINAL PERRO",
+            "mencionOriginal": null,
+            "pesoTextoOriginal": "7kg",
+            "requierePresentacion": false,
+            "intencionPresentaciones": "especifica",
+            "referenciasEquivalentes": [
+              "ROYALCANIN GASTROINTESTINAL PERRO"
+            ],
+            "coincidenciaVisualValidada": false,
+            "presentacionesEquivalentes": [
+              {
+                "peso": "2kg",
+                "stock": null,
+                "precio": 129000,
+                "metadata": {
+                  "llave": "2070",
+                  "codigo": "103010102070",
+                  "source": "productos.json",
+                  "codigos": [
+                    "103010102070"
+                  ],
+                  "nombre_original": "ROYALCANIN GASTROINTESTINAL PERRO 2KG"
+                },
+                "referencia": "ROYALCANIN GASTROINTESTINAL PERRO"
+              }
+            ]
+          },
+          "intencion": "consulta_producto",
+          "productos": [],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "4fe1f98e8e71",
+      "direction": "outbound",
+      "body": "Gracias por la aclaración. La corrección de tamaño ya quedó tenida en cuenta, y por ahora la referencia sigue pendiente de revisión. En este chat todavía no hay un asesor asignado, así que no puedo confirmar el precio de ese producto en este momento. Si más adelante quieres, puedo seguir ayudándote con otras consultas mientras tanto.",
+      "at": "2026-10-30T17:33:25.414939+00:00"
+    },
+    {
+      "id": "34119ebc7d44",
+      "direction": "inbound",
+      "body": "Corrijo el tamaño: de 2 kg, el mismo concentrado para perro. Solo consultar el precio.",
+      "at": "2026-10-30T17:32:50.326203+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": null,
+            "marca": "ROYAL CANIN",
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "GASTROINTESTINAL",
+            "condiciones": [
+              "gastrointestinal"
+            ],
+            "presentacion": "2kg",
+            "subcategoria": "concentrado",
+            "textoVisible": "ROYAL CANIN GASTROINTESTINAL perro concentrado 2kg",
+            "mencionOriginal": "Corrijo el tamaño: de 2 kg, el mismo concentrado para perro. Solo consultar el precio.",
+            "pesoTextoOriginal": "2kg",
+            "intencionPresentaciones": "especifica"
+          },
+          "intencion": "consulta_producto",
+          "productos": [],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "1ced0f48c293",
+      "direction": "outbound",
+      "body": "Gracias por la aclaración. No puedo confirmar el precio de esa referencia en este momento. Si quieres, puedo ayudarte a buscar opciones de alimento gastrointestinal para perro según la necesidad, sin compromiso.",
+      "at": "2026-10-30T17:32:30.548991+00:00"
+    },
+    {
+      "id": "6581cc4f7a98",
+      "direction": "inbound",
+      "body": "Solo consultar precio: Royal Canin gastrointestinal para perro, concentrado de 7 kg.",
+      "at": "2026-10-30T17:31:53.463371+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": null,
+            "marca": "Royal Canin",
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "gastrointestinal",
+            "condiciones": [],
+            "presentacion": "7 kg",
+            "subcategoria": "concentrado",
+            "textoVisible": "Royal Canin gastrointestinal para perro, concentrado de 7 kg",
+            "mencionOriginal": "Royal Canin gastrointestinal para perro, concentrado de 7 kg.",
+            "intencionPresentaciones": "especifica"
+          },
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": null,
+              "linea": null,
+              "marca": "Royal Canin",
+              "accion": "consultar",
+              "envase": null,
+              "tamano": null,
+              "especie": "perro",
+              "sabores": [],
+              "cantidad": null,
+              "mascotas": [],
+              "categoria": "comida",
+              "referencia": "gastrointestinal",
+              "condiciones": [],
+              "presentacion": "7 kg",
+              "subcategoria": "concentrado",
+              "textoVisible": "Royal Canin gastrointestinal para perro, concentrado de 7 kg",
+              "mencionOriginal": "Royal Canin gastrointestinal para perro, concentrado de 7 kg.",
+              "intencionPresentaciones": "especifica"
+            }
+          ],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "644fca01b40d",
+      "direction": "outbound",
+      "body": "Gracias, queda como el mismo concentrado para perro en presentación de 2 kg. Como esta referencia sigue pendiente de revisión por un asesor y ahora mismo no hay uno asignado en este chat, no puedo confirmar el precio todavía. Si te sirve, puedes seguir consultando otras cosas mientras tanto.",
+      "at": "2026-10-30T17:28:45.505201+00:00"
+    },
+    {
+      "id": "014134519334",
+      "direction": "inbound",
+      "body": "Corrijo el tamaño: de 2 kg, el mismo concentrado para perro. Solo consultar el precio.",
+      "at": "2026-10-30T17:28:11.727632+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": null,
+            "marca": "ROYAL CANIN",
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "GASTROINTESTINAL",
+            "condiciones": [
+              "gastrointestinal"
+            ],
+            "presentacion": "2 kg",
+            "subcategoria": "concentrado",
+            "textoVisible": "mismo concentrado para perro de 2 kg",
+            "mencionOriginal": "de 2 kg, el mismo concentrado para perro",
+            "intencionPresentaciones": "especifica"
+          },
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": null,
+              "linea": null,
+              "marca": "ROYAL CANIN",
+              "accion": "consultar",
+              "envase": null,
+              "tamano": null,
+              "especie": "perro",
+              "sabores": [],
+              "cantidad": null,
+              "mascotas": [],
+              "categoria": "comida",
+              "referencia": "GASTROINTESTINAL",
+              "condiciones": [
+                "gastrointestinal"
+              ],
+              "presentacion": "2 kg",
+              "subcategoria": "concentrado",
+              "textoVisible": "mismo concentrado para perro de 2 kg",
+              "mencionOriginal": "de 2 kg, el mismo concentrado para perro",
+              "intencionPresentaciones": "especifica"
+            }
+          ],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "e272f2fecafd",
+      "direction": "outbound",
+      "body": "Todavía no puedo confirmar ROYAL CANIN GASTROINTESTINAL PERRO de 7kg con seguridad. ¿Quieres que revisemos otra opción?",
+      "at": "2026-10-30T17:27:47.20261+00:00"
+    },
+    {
+      "id": "f96c755af2bd",
+      "direction": "inbound",
+      "body": "Solo consultar precio: Royal Canin gastrointestinal para perro, concentrado de 7 kg.",
+      "at": "2026-10-30T17:27:07.354873+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": null,
+            "marca": "Royal Canin",
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "gastrointestinal",
+            "condiciones": [],
+            "presentacion": "7 kg",
+            "subcategoria": "concentrado",
+            "textoVisible": "Royal Canin gastrointestinal para perro, concentrado de 7 kg",
+            "mencionOriginal": "Royal Canin gastrointestinal para perro, concentrado de 7 kg.",
+            "intencionPresentaciones": "especifica"
+          },
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": null,
+              "linea": null,
+              "marca": "Royal Canin",
+              "accion": "consultar",
+              "envase": null,
+              "tamano": null,
+              "especie": "perro",
+              "sabores": [],
+              "cantidad": null,
+              "mascotas": [],
+              "categoria": "comida",
+              "referencia": "gastrointestinal",
+              "condiciones": [],
+              "presentacion": "7 kg",
+              "subcategoria": "concentrado",
+              "textoVisible": "Royal Canin gastrointestinal para perro, concentrado de 7 kg",
+              "mencionOriginal": "Royal Canin gastrointestinal para perro, concentrado de 7 kg.",
+              "intencionPresentaciones": "especifica"
+            }
+          ],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "0098f273fd65",
+      "direction": "outbound",
+      "body": "Claro, CAT CHOW DELICARNE x 500 gr te queda en $13.700. Las existencias están por confirmar. 🙂",
+      "at": "2026-10-30T17:26:31.20774+00:00"
+    }
+  ],
+  "kapso": [
+    {
+      "id": "19e4e297f5bb",
+      "direction": "outbound",
+      "body": "Gracias, queda pendiente de revisión por un asesor. Veo que es para gato y que la marca es HILLS, pero en este chat todavía no hay un asesor asignado. Puedo seguir ayudándote con otras consultas si lo necesitas.",
+      "at": "2026-10-30T22:11:22.000Z"
+    },
+    {
+      "id": "dd1d82d08c25",
+      "direction": "inbound",
+      "body": "gato",
+      "at": "2026-10-30T22:10:38.000Z"
+    },
+    {
+      "id": "bba5cb658389",
+      "direction": "outbound",
+      "body": "¿La buscas para gato o para perro?",
+      "at": "2026-10-30T22:10:28.000Z"
+    },
+    {
+      "id": "52ea3387b80e",
+      "direction": "inbound",
+      "body": "que presentación tienes de Hills",
+      "at": "2026-10-30T22:09:41.000Z"
+    },
+    {
+      "id": "3e836032bd51",
+      "direction": "outbound",
+      "body": "Cotización:\n- 1 x ADVANCE URINAY 1.5kg: $108.000\nTotal cotizado: $108.000\n\n¿Qué presentación necesitas de Hill's Prescription Diet Urinary Care c/d Multicare para gato?",
+      "at": "2026-10-30T22:09:09.000Z"
+    }
+  ]
+}

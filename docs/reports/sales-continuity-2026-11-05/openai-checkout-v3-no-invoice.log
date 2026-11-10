@@ -1,0 +1,5 @@
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=16 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[AI Context] etapa=interprete | perfil=pedido | modeloUsado=gpt-5.4 | presupuestoTokens=16000 | promptBaseChars=31913 | reglasChars=5710 | memoriaClienteChars=1198 | historialChars=188 | resumenChars=32 | productosChars=2 | mensajeActualChars=16 | totalChars=33494 | tokensEstimados=8374 | reducciones=ninguna
+[OpenAI] No se pudo interpretar texto; interpretacion no disponible | error=Connection error.
+{"id":"v3-no-invoice","index":0,"response":"No pude procesar tu mensaje en este momento por un problema temporal. Por favor, inténtalo nuevamente.","cart":[],"confirmed":false,"ms":26.653417000000005,"calls":1}
+API error; stopped without retry

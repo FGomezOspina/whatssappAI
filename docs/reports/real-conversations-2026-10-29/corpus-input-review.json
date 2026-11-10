@@ -1,0 +1,501 @@
+{
+  "scope": "Source fidelity audit, not a replacement corpus. Complete transcripts and media were not captured. Manual reductions retain a derivation label; omitted context is not fabricated as model input.",
+  "rows": [
+    {
+      "id": "C01-01",
+      "queryUnchangedFromSource": true,
+      "history": [],
+      "contextState": null,
+      "derivation": "text",
+      "fullRawConversationIncluded": false,
+      "originalProductSpanOrManualInput": "Buenos días Proplan OM x2k?",
+      "evidenceNotesOnly": "Inbound brand, OM and presentation; prior 20 Oct exchange explicitly confirms dog; adviser accepts at 08:52. Price excluded as identification proof.",
+      "originalMessageSequenceAvailable": null
+    },
+    {
+      "id": "C01-02",
+      "queryUnchangedFromSource": true,
+      "history": [],
+      "contextState": null,
+      "derivation": "text",
+      "fullRawConversationIncluded": false,
+      "originalProductSpanOrManualInput": "Y churubites?",
+      "evidenceNotesOnly": "Adviser asks dog; customer says yes. Multiple catalog Bites/Roll variants; no exact SKU proven.",
+      "originalMessageSequenceAvailable": null
+    },
+    {
+      "id": "C01-03",
+      "queryUnchangedFromSource": true,
+      "history": [],
+      "contextState": null,
+      "derivation": "multi_product",
+      "fullRawConversationIncluded": false,
+      "originalProductSpanOrManualInput": "Pollo con vegetales y el Proplan OM X2K",
+      "evidenceNotesOnly": "First item depends on 09:15 photo (blurred, not decoded), offered flavors and confirmation of a pack of four. Do not equate pack with catalog units or run as single-product identity.",
+      "originalMessageSequenceAvailable": null
+    },
+    {
+      "id": "C02-01",
+      "queryUnchangedFromSource": true,
+      "history": [],
+      "contextState": null,
+      "derivation": "text",
+      "fullRawConversationIncluded": false,
+      "originalProductSpanOrManualInput": "Buen día\nManejan arena de Sr gato",
+      "evidenceNotesOnly": "Adviser states not carried 09:07. No matching name in active tenant snapshot; do not substitute another cat litter.",
+      "originalMessageSequenceAvailable": null
+    },
+    {
+      "id": "C02-02",
+      "queryUnchangedFromSource": true,
+      "history": [],
+      "contextState": null,
+      "derivation": "image_and_text",
+      "fullRawConversationIncluded": false,
+      "originalProductSpanOrManualInput": "Está de pronto ?",
+      "evidenceNotesOnly": "Forwarded photograph unavailable for exact decoding. Adviser says not carried at 10:47. Image could be a different product from the first request.",
+      "originalMessageSequenceAvailable": null
+    },
+    {
+      "id": "C03-01",
+      "queryUnchangedFromSource": true,
+      "history": [],
+      "contextState": null,
+      "derivation": "image_and_multi_message",
+      "fullRawConversationIncluded": false,
+      "originalProductSpanOrManualInput": "tienen está arena\nde 20 kilos",
+      "evidenceNotesOnly": "09:54 category + 09:55 photograph and weight; accepted 10:11, price-only response 10:12. Not an adviser error. Price cannot identify the SKU.",
+      "originalMessageSequenceAvailable": null
+    },
+    {
+      "id": "C04-01",
+      "queryUnchangedFromSource": true,
+      "history": [],
+      "contextState": null,
+      "derivation": "Exact product span from customer selection of two products; not a full turn replay.",
+      "fullRawConversationIncluded": false,
+      "originalProductSpanOrManualInput": "metronidl",
+      "evidenceNotesOnly": "Adviser at 11:24 lists Metronidl; customer repeats at 11:47. Unique catalog lexical counterpart METRONID. 15 ml vs 50 ml remains unverified without image; never infer from price.",
+      "originalMessageSequenceAvailable": null
+    },
+    {
+      "id": "C04-02",
+      "queryUnchangedFromSource": true,
+      "history": [],
+      "contextState": null,
+      "derivation": "Exact product span from customer selection; context requires cat variant, weight not available.",
+      "fullRawConversationIncluded": false,
+      "originalProductSpanOrManualInput": "advocate",
+      "evidenceNotesOnly": "Adviser typo Advocqte gato anchors species, but two cat weight bands exist and the photograph is not decoded. No exact presentation gold.",
+      "originalMessageSequenceAvailable": null
+    },
+    {
+      "id": "C05-01",
+      "queryUnchangedFromSource": true,
+      "history": [],
+      "contextState": null,
+      "derivation": "text",
+      "fullRawConversationIncluded": false,
+      "originalProductSpanOrManualInput": "Buenos días tiene arena king cat para pedir\n2\nbultos de 25 Kg a domicilio?",
+      "evidenceNotesOnly": "Customer names litter, brand and weight; adviser accepts 09:29; customer reiterates two sacks 10:17. No price used for mapping.",
+      "originalMessageSequenceAvailable": null
+    },
+    {
+      "id": "C06-01",
+      "queryUnchangedFromSource": true,
+      "history": [],
+      "contextState": null,
+      "derivation": "contextual_adviser_restatement",
+      "fullRawConversationIncluded": false,
+      "originalProductSpanOrManualInput": "Un bulto de chunky 25 kls",
+      "evidenceNotesOnly": "Restatement of customer order from Sunday 25 Oct; original line has no species or variety. Audio could disambiguate but is unavailable. Do not infer variant from weight.",
+      "originalMessageSequenceAvailable": null
+    },
+    {
+      "id": "C06-02",
+      "queryUnchangedFromSource": true,
+      "history": [],
+      "contextState": null,
+      "derivation": "contextual_adviser_restatement",
+      "fullRawConversationIncluded": false,
+      "originalProductSpanOrManualInput": "6 de cuchuco",
+      "evidenceNotesOnly": "Adviser repeats the customer's earlier line. Unit of sale and six quantities are not independently resolved by this validator benchmark.",
+      "originalMessageSequenceAvailable": null
+    },
+    {
+      "id": "C06-03",
+      "queryUnchangedFromSource": true,
+      "history": [],
+      "contextState": null,
+      "derivation": "contextual_adviser_restatement",
+      "fullRawConversationIncluded": false,
+      "originalProductSpanOrManualInput": "4 de mistura",
+      "evidenceNotesOnly": "Adviser repeats customer's earlier wording; lexical correction against catalog. Unit of sale remains unverified.",
+      "originalMessageSequenceAvailable": null
+    },
+    {
+      "id": "C06-04",
+      "queryUnchangedFromSource": true,
+      "history": [],
+      "contextState": null,
+      "derivation": "audio",
+      "fullRawConversationIncluded": false,
+      "originalProductSpanOrManualInput": null,
+      "evidenceNotesOnly": "Voice note present, no waveform bytes/transcription obtained. Not evaluated and not replaced with fabricated transcript.",
+      "originalMessageSequenceAvailable": null
+    },
+    {
+      "id": "C06-05",
+      "queryUnchangedFromSource": true,
+      "history": [],
+      "contextState": null,
+      "derivation": "audio",
+      "fullRawConversationIncluded": false,
+      "originalProductSpanOrManualInput": null,
+      "evidenceNotesOnly": "Voice note present, not decoded.",
+      "originalMessageSequenceAvailable": null
+    },
+    {
+      "id": "C06-06",
+      "queryUnchangedFromSource": true,
+      "history": [],
+      "contextState": null,
+      "derivation": "audio",
+      "fullRawConversationIncluded": false,
+      "originalProductSpanOrManualInput": null,
+      "evidenceNotesOnly": "Voice note present, not decoded.",
+      "originalMessageSequenceAvailable": null
+    },
+    {
+      "id": "C07-01",
+      "queryUnchangedFromSource": true,
+      "history": [],
+      "contextState": null,
+      "derivation": "text",
+      "fullRawConversationIncluded": false,
+      "originalProductSpanOrManualInput": "Depronto tienes CANITABS SKIN COAT ?",
+      "evidenceNotesOnly": "Adviser says No lo manejamos at 16:01; customer thanks at 16:33. CANITABS does not occur as a catalog name; BR SKIN COAT and TOMMY SKIN COT are different identities, not acceptable substitutes based on shared words.",
+      "originalMessageSequenceAvailable": null
+    },
+    {
+      "id": "C06-07",
+      "queryUnchangedFromSource": true,
+      "history": [],
+      "contextState": null,
+      "derivation": "audio",
+      "fullRawConversationIncluded": false,
+      "originalProductSpanOrManualInput": null,
+      "evidenceNotesOnly": "Recovered from local export; only <mensaje de voz omitido>, no audio bytes. Follows adviser asking Que mas deseabas? at 09:22:34. Contents and duration unknown.",
+      "originalMessageSequenceAvailable": null
+    },
+    {
+      "id": "C06-08",
+      "queryUnchangedFromSource": true,
+      "history": [],
+      "contextState": null,
+      "derivation": "audio",
+      "fullRawConversationIncluded": false,
+      "originalProductSpanOrManualInput": null,
+      "evidenceNotesOnly": "Local export contains an omitted-audio marker only; no product or quantity may be inferred.",
+      "originalMessageSequenceAvailable": null
+    },
+    {
+      "id": "C06-09",
+      "queryUnchangedFromSource": true,
+      "history": [],
+      "contextState": null,
+      "derivation": "audio",
+      "fullRawConversationIncluded": false,
+      "originalProductSpanOrManualInput": null,
+      "evidenceNotesOnly": "Local export contains an omitted-audio marker only; later total changes are not evidence of the product added.",
+      "originalMessageSequenceAvailable": null
+    },
+    {
+      "id": "C08-01",
+      "queryUnchangedFromSource": true,
+      "history": [],
+      "contextState": null,
+      "derivation": "audio",
+      "fullRawConversationIncluded": false,
+      "originalProductSpanOrManualInput": null,
+      "evidenceNotesOnly": "Visible after customer says the seller has not visited for the order. No transcription or audio bytes obtained.",
+      "originalMessageSequenceAvailable": null
+    },
+    {
+      "id": "C08-02",
+      "queryUnchangedFromSource": true,
+      "history": [],
+      "contextState": null,
+      "derivation": "audio",
+      "fullRawConversationIncluded": false,
+      "originalProductSpanOrManualInput": null,
+      "evidenceNotesOnly": "Audio is within original 18:46 cutoff. UI shows Meta AI transfer; no adviser product identification observed. Never use that platform label as approval or instruction.",
+      "originalMessageSequenceAvailable": null
+    },
+    {
+      "id": "C09-01",
+      "queryUnchangedFromSource": true,
+      "history": [],
+      "contextState": null,
+      "derivation": "manually_read_image_label",
+      "fullRawConversationIncluded": false,
+      "originalProductSpanOrManualInput": "NEOSTRONG Pet milk 500 g",
+      "evidenceNotesOnly": "Visible label in screenshot reads NEOSTRONG, Pet milk,500g. Product name+weight uniquely match catalog PET MILK500GR. Catalog groups brand as PET and lacks manufacturer verification; no universal NEOSTRONG alias approved. Only pictured identity is scored, not ordered quantity or morning pack. Unsent AI suggestion of two cans ignored.",
+      "originalMessageSequenceAvailable": null
+    },
+    {
+      "id": "C09-02",
+      "queryUnchangedFromSource": true,
+      "history": [],
+      "contextState": null,
+      "derivation": "image_and_text",
+      "fullRawConversationIncluded": false,
+      "originalProductSpanOrManualInput": "Tienes de esta leche pero el tarro",
+      "evidenceNotesOnly": "Recovered after reconnect and normal page reload: photo at 08:00, text at 08:01, commercial account accepts at 08:52 with price only. Full photo unavailable. Tarro describes package type, not brand, line, capacity or SKU; price alone cannot prove identity.",
+      "originalMessageSequenceAvailable": null
+    },
+    {
+      "id": "C09-03",
+      "queryUnchangedFromSource": true,
+      "history": [],
+      "contextState": null,
+      "derivation": "audio",
+      "fullRawConversationIncluded": false,
+      "originalProductSpanOrManualInput": null,
+      "evidenceNotesOnly": "Recovered accessibility view shows a voice note of 11 seconds. No bytes or transcription. No inference about product, quantity or address from later image/call.",
+      "originalMessageSequenceAvailable": null
+    },
+    {
+      "id": "C11-01",
+      "queryUnchangedFromSource": true,
+      "history": [],
+      "contextState": null,
+      "derivation": "image_unknown_purpose",
+      "fullRawConversationIncluded": false,
+      "originalProductSpanOrManualInput": null,
+      "evidenceNotesOnly": "Only an image visible. Full pixels not recovered. An unsent Meta AI suggestion refers to payment; it is not evidence of image contents and is not used to label or identify a product. Export dialog exposes date options only, no media option; cancelled without exporting.",
+      "originalMessageSequenceAvailable": null
+    },
+    {
+      "id": "C12-01",
+      "queryUnchangedFromSource": true,
+      "history": [],
+      "contextState": null,
+      "derivation": "text",
+      "fullRawConversationIncluded": false,
+      "originalProductSpanOrManualInput": "Arena de gatos de 25 kilos",
+      "evidenceNotesOnly": "Initial category and weight before brand/aroma clarification. Multiple 25kg cat litters in catalog; do not assign a brand from price or the customer's later selection when evaluating this initial state.",
+      "originalMessageSequenceAvailable": null
+    },
+    {
+      "id": "C12-02",
+      "queryUnchangedFromSource": true,
+      "history": [],
+      "contextState": null,
+      "derivation": "Exact customer product-bearing messages at 09:03,09:31,09:37 concatenated by auditor. Superseded Sin Aroma at 09:35 and adviser choice Lavanda/Talco at 09:36 supply gold context; this is NOT a test of automatic correction or segmentation.",
+      "fullRawConversationIncluded": false,
+      "originalProductSpanOrManualInput": "Arena de gatos de 25 kilos\nTienes kitten paw\nTalco",
+      "evidenceNotesOnly": "Brand-family kitten, cat litter,25kg and final customer Talco selection after adviser offers Lavanda/Talco; commercial account acknowledges at09:38. Original no-aroma choice is explicitly superseded. Price excluded. Kitten paw alone remains insufficient to approve a universal alias.",
+      "originalMessageSequenceAvailable": [
+        {
+          "at": "09:03",
+          "text": "Arena de gatos de 25 kilos"
+        },
+        {
+          "at": "09:31",
+          "text": "Tienes kitten paw"
+        },
+        {
+          "at": "09:35",
+          "text": "Sin Aroma"
+        },
+        {
+          "at": "09:36",
+          "direction": "outbound_account",
+          "text": "Lavanda/Talco",
+          "verbatim": false
+        },
+        {
+          "at": "09:37",
+          "text": "Talco"
+        }
+      ]
+    },
+    {
+      "id": "C14-01",
+      "queryUnchangedFromSource": true,
+      "history": [],
+      "contextState": null,
+      "derivation": "Exact product span separated manually from a two-product customer message; not a full-turn replay.",
+      "fullRawConversationIncluded": false,
+      "originalProductSpanOrManualInput": "un bravecto , perro de 20 kilos",
+      "evidenceNotesOnly": "Customer mentions an earlier phone call. Catalog has BRAVECTO3months and37days, requires confirmation, and overlapping textual endpoints10-20kg/20-40kg. Duration and actual quoted presentation not established; quote photo unreadable. No clinical eligibility inference.",
+      "originalMessageSequenceAvailable": null
+    },
+    {
+      "id": "C14-02",
+      "queryUnchangedFromSource": true,
+      "history": [],
+      "contextState": null,
+      "derivation": "Exact second product span; substitution depends on earlier phone call, not a request for the old named product.",
+      "fullRawConversationIncluded": false,
+      "originalProductSpanOrManualInput": "8 kilos de la comida que reemplaza Nutre can ligth, adultos",
+      "evidenceNotesOnly": "Replacement product not named in available text; 09:48 quote is a photo whose contents were not decoded. Do not select another Nutrecan8kg reference using total price or assume named old product is requested SKU.",
+      "originalMessageSequenceAvailable": null
+    },
+    {
+      "id": "C16-01",
+      "queryUnchangedFromSource": true,
+      "history": [],
+      "contextState": null,
+      "derivation": "text",
+      "fullRawConversationIncluded": false,
+      "originalProductSpanOrManualInput": "Me podrías enviar tres paquetes del contrato de proplan feline EN",
+      "evidenceNotesOnly": "Exact request; contract is contextual typo for concentrado, reinforced by October10 prior request. Account accepts14:08 and quotes via unreadable photo14:09. Quantity3 explicit, pack weight not proven by image; catalog sole1.5kg option not independent confirmation.",
+      "originalMessageSequenceAvailable": null
+    },
+    {
+      "id": "C17-01",
+      "queryUnchangedFromSource": true,
+      "history": [],
+      "contextState": null,
+      "derivation": "text",
+      "fullRawConversationIncluded": false,
+      "originalProductSpanOrManualInput": "A como tienes el nefrotec x60",
+      "evidenceNotesOnly": "Requested60units may mean package or quantity. Account offers per-tablet and DS Vet30units, not exact60pack; no acceptance. Catalog only NEFROTEC tableta. Must not equate60with30 or inferDS.",
+      "originalMessageSequenceAvailable": null
+    },
+    {
+      "id": "C18-01",
+      "queryUnchangedFromSource": true,
+      "history": [],
+      "contextState": null,
+      "derivation": "text_span",
+      "fullRawConversationIncluded": false,
+      "originalProductSpanOrManualInput": "Tienes disponible excellent Urinary x 3 Kl",
+      "evidenceNotesOnly": "Brand,line,3kg explicitly requested; account confirms availability14:07. No price-based inference.",
+      "originalMessageSequenceAvailable": null
+    },
+    {
+      "id": "C18-02",
+      "queryUnchangedFromSource": true,
+      "history": [],
+      "contextState": null,
+      "derivation": "text",
+      "fullRawConversationIncluded": false,
+      "originalProductSpanOrManualInput": "Y tienes monello de 7 kl",
+      "evidenceNotesOnly": "Multiple7kg Monello species/lines. Previous cat product does not establish this product's species. Account price-only reply supplies no unique line.",
+      "originalMessageSequenceAvailable": null
+    },
+    {
+      "id": "C19-01",
+      "queryUnchangedFromSource": true,
+      "history": [],
+      "contextState": null,
+      "derivation": "text_span",
+      "fullRawConversationIncluded": false,
+      "originalProductSpanOrManualInput": "Canisan D de 5ml",
+      "evidenceNotesOnly": "Exact item from four-item request. Requested identity and5ml match catalog; quote pixels unreadable, not proof all four were quoted. D must remain distinct from F/Puppy.",
+      "originalMessageSequenceAvailable": null
+    },
+    {
+      "id": "C19-02",
+      "queryUnchangedFromSource": true,
+      "history": [],
+      "contextState": null,
+      "derivation": "text_span_quote_pending",
+      "fullRawConversationIncluded": false,
+      "originalProductSpanOrManualInput": "Enterochonic",
+      "evidenceNotesOnly": "Near catalog ENTERO CHORONIC but quote unreadable and no account textual restatement. Candidate not promoted to verified equivalence from typo similarity alone.",
+      "originalMessageSequenceAvailable": null
+    },
+    {
+      "id": "C19-03",
+      "queryUnchangedFromSource": true,
+      "history": [],
+      "contextState": null,
+      "derivation": "manually_reconstructed_episode",
+      "fullRawConversationIncluded": false,
+      "originalProductSpanOrManualInput": "Fortiflora\nPerro",
+      "evidenceNotesOnly": "Fortiflora appears13:02; account specifically asks dog/cat14:14; customer saysPerro14:15. Auditor joined messages manually. No automated attribution/segmentation or clinical assessment tested.",
+      "originalMessageSequenceAvailable": null
+    },
+    {
+      "id": "C19-04",
+      "queryUnchangedFromSource": true,
+      "history": [],
+      "contextState": null,
+      "derivation": "text_span_quote_pending",
+      "fullRawConversationIncluded": false,
+      "originalProductSpanOrManualInput": "Lata humeda proplan gastronteric perros",
+      "evidenceNotesOnly": "Wet canine gastrointestinal description. PRO PLAN CANINE LATA EN candidate but catalog supplied description repeats code without explicit expanded line; quote unreadable. No external clinical/brand inference used to validate equivalence.",
+      "originalMessageSequenceAvailable": null
+    },
+    {
+      "id": "C15-01",
+      "queryUnchangedFromSource": true,
+      "history": [],
+      "contextState": null,
+      "derivation": "text_span",
+      "fullRawConversationIncluded": false,
+      "originalProductSpanOrManualInput": "Royal canin perro gastrointestinal de 7 kilos",
+      "evidenceNotesOnly": "Catalog canine dry gastrointestinal only2kg; must not accept7kg as stocked or mapto feline. Account accepts list but totalprice not pack evidence; no catalog write.",
+      "originalMessageSequenceAvailable": null
+    },
+    {
+      "id": "C15-02",
+      "queryUnchangedFromSource": true,
+      "history": [],
+      "contextState": null,
+      "derivation": "text_span",
+      "fullRawConversationIncluded": false,
+      "originalProductSpanOrManualInput": "Dos latas de Royal canin gastrointestinal perro",
+      "evidenceNotesOnly": "Brand,canine,gastro,wet can explicit. Qty2 not package weight. Only nominal identity scored; no automatic list parsing tested.",
+      "originalMessageSequenceAvailable": null
+    },
+    {
+      "id": "C15-03",
+      "queryUnchangedFromSource": true,
+      "history": [],
+      "contextState": null,
+      "derivation": "text_span",
+      "fullRawConversationIncluded": false,
+      "originalProductSpanOrManualInput": "proplan comida mojada gato, 10 sobres",
+      "evidenceNotesOnly": "No current flavor/line. Forwarded old quote references five salmon and swapped kitten SKU, but customer09:25 says it was an example of the screenshot normally sent. Not evidence for current10flavors. Later delivery notice confirms pouches only.",
+      "originalMessageSequenceAvailable": null
+    },
+    {
+      "id": "C21-01",
+      "queryUnchangedFromSource": true,
+      "history": [],
+      "contextState": null,
+      "derivation": "text",
+      "fullRawConversationIncluded": false,
+      "originalProductSpanOrManualInput": "muy buena tarde cómo estas?, tienes Bonnat Gastrointestinal para perro?",
+      "evidenceNotesOnly": "Account confirms and specifies2kg14:07. No Bonnat reference in fixed Supabase snapshot; BR DOG VET GASTRO is a different named brand, not equivalent.",
+      "originalMessageSequenceAvailable": null
+    },
+    {
+      "id": "C21-02",
+      "queryUnchangedFromSource": true,
+      "history": [],
+      "contextState": null,
+      "derivation": "manually_reconstructed_episode",
+      "fullRawConversationIncluded": false,
+      "originalProductSpanOrManualInput": "Mi hermano ya va por el chiquito\nEl de\n27.500",
+      "evidenceNotesOnly": "Three immediately preceding calls unavailable. Small size and price cannot establish presentation or whether previous product still intended. No half-kilo inference from proportional price.",
+      "originalMessageSequenceAvailable": null
+    },
+    {
+      "id": "C22-01",
+      "queryUnchangedFromSource": true,
+      "history": [],
+      "contextState": null,
+      "derivation": "text_span",
+      "fullRawConversationIncluded": false,
+      "originalProductSpanOrManualInput": "Me gustaría pedir excellent 7,5 kg gato adulto a domicilio",
+      "evidenceNotesOnly": "Exact brand,species,life stage and7.5kg request; commercial account accepts nextday08:43. Personal address/payment data removed; no reliance on price. Separatechat fromC04, header explicitly verified.",
+      "originalMessageSequenceAvailable": null
+    }
+  ]
+}

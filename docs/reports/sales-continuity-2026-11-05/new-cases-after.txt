@@ -1,0 +1,26 @@
+[AI Usage Summary] cliente=sales-test | usuario=synthetic | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=sales-test | usuario=synthetic | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=sales-test | usuario=synthetic | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=sales-test | usuario=synthetic | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=sales-test | usuario=synthetic | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=sales-test | usuario=synthetic | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=sales-test | usuario=synthetic | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+✔ direccion tras cotizacion con router otro; pendientes antiguos=false (46.3145ms)
+✔ direccion tras cotizacion con router otro; pendientes antiguos=true (5.367333ms)
+✔ cotizacion nueva, direccion, correccion y datos completos conservan dos unidades sin duplicar (8.609917ms)
+✔ direccion no equivale a compra: ¿Llegan a Calle 10 # 20-30? (0.924416ms)
+✔ direccion no equivale a compra: No quiero comprar, Calle 10 # 20-30 (0.700833ms)
+✔ direccion no equivale a compra: Si compro, Calle 10 # 20-30 (1.011708ms)
+✔ pago afirmativo retoma cotizacion; consulta de pago no compra (4.16525ms)
+✔ direccion entre varias presentaciones aclara sin comprar todas (1.072208ms)
+✔ direccion sin cotizacion conserva dato sin inventar productos (0.829417ms)
+✔ venta completa local hasta confirmacion, factura=false (4.373167ms)
+✔ venta completa local hasta confirmacion, factura=true (6.029667ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 121.490792

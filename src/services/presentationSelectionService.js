@@ -46,6 +46,8 @@ function seleccionarPorPeso(referencia, pesoKg) {
 
 function resolverPresentacionesIdentificadas({ validacion, producto = {}, mensaje = '', catalogo = [], estado = {} }) {
   producto = producto || {};
+  // A range of sizes is considered only after commercial form/container are established.
+  if (['forma_alimento', 'envase_alimento'].includes(validacion?.aclaracion?.campo)) return validacion;
   const identidad = validacion?.coincidencia || validacion?.identidadAntesDePresentacion;
   if (!identidad || identidad.tipoCoincidencia === 'marca') return validacion;
   const nombres = identidad.referenciasEquivalentes || [identidad.referenciaCatalogo || identidad.referencia];

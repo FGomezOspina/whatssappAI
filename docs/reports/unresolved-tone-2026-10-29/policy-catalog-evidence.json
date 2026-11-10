@@ -1,0 +1,63 @@
+{
+  "at": "2026-10-29T21:23:42.084Z",
+  "source": "tenant scoped read of catalog_references and catalog_presentations",
+  "references": [
+    {
+      "id": "38fbf049-d4c4-43c4-aef2-a8da499d11fa",
+      "name": "PRO PLAN CANINE LATA UR",
+      "species": "perro",
+      "category": "comida",
+      "life_stage": null,
+      "brand": {
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "beedab12-eda7-430b-b146-c902edff5826",
+          "price": 28600,
+          "stock": null,
+          "active": true,
+          "weight": "unidad"
+        }
+      ]
+    },
+    {
+      "id": "900230bf-4cf5-4522-afb6-739f0275909f",
+      "name": "PRO PLAN CANINE UR",
+      "species": "perro",
+      "category": "comida",
+      "life_stage": null,
+      "brand": {
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "81213977-ea5f-463e-a373-63bd31918289",
+          "price": 122000,
+          "stock": null,
+          "active": true,
+          "weight": "2kg"
+        }
+      ]
+    },
+    {
+      "id": "1224f0d0-b4db-494b-8200-56c6e0dad19f",
+      "name": "DIAMOND INDOOR CAT",
+      "species": "gato",
+      "category": "comida",
+      "life_stage": null,
+      "brand": {
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "acbd88f0-9d53-46d7-aedd-2573272bfe0e",
+          "price": 19500,
+          "stock": null,
+          "active": true,
+          "weight": "500gr"
+        }
+      ]
+    }
+  ]
+}

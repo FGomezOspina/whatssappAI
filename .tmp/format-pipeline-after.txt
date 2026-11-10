@@ -1,0 +1,22 @@
+[AI Usage Summary] cliente=tenant-a | usuario=anon | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=tenant-a | usuario=anon | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=tenant-a | usuario=anon | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=tenant-a | usuario=anon | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=tenant-a | usuario=anon | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=tenant-b | usuario=anon | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=tenant-a | usuario=anon | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=tenant-a | usuario=anon | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=tenant-a | usuario=anon | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+✔ held-out pipeline: HORIZON correction keeps identity despite foreign candidates (39.555958ms)
+✔ held-out pipeline: MONTE correction keeps identity despite foreign candidates (9.615708ms)
+✔ held-out pipeline: product focus is scoped to tenant and conversation (4.6395ms)
+✔ buffer completo conserva formato literal aunque el intérprete segmente solo la identidad (3.423875ms)
+✔ cambio contextual de formato no recupera la cotización seca desde selección pendiente (8.616625ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 124.941125

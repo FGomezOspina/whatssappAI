@@ -1,0 +1,656 @@
+{
+  "capturedAt": "2026-10-30T14:40:56.310Z",
+  "source": "Supabase read-only catalog, tenant-scoped",
+  "client": {
+    "id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+    "name": "Distrifinca",
+    "slug": "distrifinca"
+  },
+  "pages": [
+    {
+      "offset": 0,
+      "count": 500
+    },
+    {
+      "offset": 500,
+      "count": 500
+    },
+    {
+      "offset": 1000,
+      "count": 116
+    }
+  ],
+  "references": 1116,
+  "sha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+  "relevant": [
+    {
+      "id": "05e4accc-23cf-4aa1-9fd9-4b341700ddd8",
+      "name": "CHURUS SKIN",
+      "species": "gato",
+      "category": "snack",
+      "subcategory": "premio",
+      "life_stage": null,
+      "description": "CHURUS SKIN",
+      "requires_confirmation": false,
+      "metadata": {
+        "source": "productos.json",
+        "original_names": [
+          "CHURUS SKIN X14GR"
+        ]
+      },
+      "brand": {
+        "id": "13c9d70a-d22b-4483-b76e-680fc89ba8ec",
+        "name": "CHURUS",
+        "active": true,
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "ea537790-bd65-48a4-a34c-e4f71c2e0369",
+          "price": 3300,
+          "stock": null,
+          "active": true,
+          "weight": "x14gr",
+          "metadata": {
+            "llave": "2510",
+            "codigo": "105010102510",
+            "source": "productos.json",
+            "codigos": [
+              "105010102510"
+            ],
+            "nombre_original": "CHURUS SKIN X14GR"
+          }
+        }
+      ]
+    },
+    {
+      "id": "1b4a4347-32d7-440b-bc8a-73df062bc0cf",
+      "name": "CHURU FUN BITES DOG",
+      "species": "perro",
+      "category": "snack",
+      "subcategory": "premio",
+      "life_stage": null,
+      "description": "CHURU FUN BITES DOG",
+      "requires_confirmation": false,
+      "metadata": {
+        "source": "productos.json",
+        "original_names": [
+          "CHURU FUN BITES DOG 6UND"
+        ]
+      },
+      "brand": {
+        "id": "ff1be7eb-e0eb-4ea1-aa0f-0f9edbedbd70",
+        "name": "CHURU",
+        "active": true,
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "9e381e2f-ccad-4392-809f-cbef6ccb6022",
+          "price": 5000,
+          "stock": null,
+          "active": true,
+          "weight": "6und",
+          "metadata": {
+            "llave": "2310",
+            "codigo": "105010102310",
+            "source": "productos.json",
+            "codigos": [
+              "105010102310"
+            ],
+            "nombre_original": "CHURU FUN BITES DOG 6UND"
+          }
+        }
+      ]
+    },
+    {
+      "id": "2549a7c5-6795-4be5-99da-332b844aa7c5",
+      "name": "CHURU ROOLL CAT SAP",
+      "species": "gato",
+      "category": "snack",
+      "subcategory": "premio",
+      "life_stage": null,
+      "description": "CHURU ROOLL CAT SAP",
+      "requires_confirmation": false,
+      "metadata": {
+        "source": "productos.json",
+        "original_names": [
+          "CHURU ROOLL CAT SAP 40GR"
+        ]
+      },
+      "brand": {
+        "id": "ff1be7eb-e0eb-4ea1-aa0f-0f9edbedbd70",
+        "name": "CHURU",
+        "active": true,
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "7ff44335-632f-453b-8a14-c07ee907d208",
+          "price": 3500,
+          "stock": null,
+          "active": true,
+          "weight": "40gr",
+          "metadata": {
+            "llave": "2309",
+            "codigo": "105010102309",
+            "source": "productos.json",
+            "codigos": [
+              "105010102309"
+            ],
+            "nombre_original": "CHURU ROOLL CAT SAP 40GR"
+          }
+        }
+      ]
+    },
+    {
+      "id": "4e4d4e89-ed92-43b0-917d-4689fe1aa65c",
+      "name": "CHURU FUN BITES CAT",
+      "species": "gato",
+      "category": "snack",
+      "subcategory": "premio",
+      "life_stage": null,
+      "description": "CHURU FUN BITES CAT",
+      "requires_confirmation": false,
+      "metadata": {
+        "source": "productos.json",
+        "original_names": [
+          "CHURU FUN BITES CAT X 3UND"
+        ]
+      },
+      "brand": {
+        "id": "ff1be7eb-e0eb-4ea1-aa0f-0f9edbedbd70",
+        "name": "CHURU",
+        "active": true,
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "d66da6b4-c002-4cc7-b845-770c6a5a9723",
+          "price": 5500,
+          "stock": null,
+          "active": true,
+          "weight": "x 3und",
+          "metadata": {
+            "llave": "2308",
+            "codigo": "105010102308",
+            "source": "productos.json",
+            "codigos": [
+              "105010102308"
+            ],
+            "nombre_original": "CHURU FUN BITES CAT X 3UND"
+          }
+        }
+      ]
+    },
+    {
+      "id": "6a79d88b-63da-4af2-b734-4b67f68d8dc1",
+      "name": "CHURU 20TUBES",
+      "species": "perro",
+      "category": "snack",
+      "subcategory": "premio",
+      "life_stage": null,
+      "description": "CHURU 20TUBES",
+      "requires_confirmation": false,
+      "metadata": {
+        "source": "productos.json",
+        "original_names": [
+          "CHURU 20TUBES X 14GR"
+        ]
+      },
+      "brand": {
+        "id": "ff1be7eb-e0eb-4ea1-aa0f-0f9edbedbd70",
+        "name": "CHURU",
+        "active": true,
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "fcdbf53f-4c27-474c-b94d-6369591f4e9e",
+          "price": 60500,
+          "stock": null,
+          "active": true,
+          "weight": "x 14gr",
+          "metadata": {
+            "llave": "2238",
+            "codigo": "104010102238",
+            "source": "productos.json",
+            "codigos": [
+              "104010102238"
+            ],
+            "nombre_original": "CHURU 20TUBES X 14GR"
+          }
+        }
+      ]
+    },
+    {
+      "id": "6c1d4eea-bf35-4d7f-8e4b-e9e075b03666",
+      "name": "PRO PLAN CANINE OM",
+      "species": "perro",
+      "category": "comida",
+      "subcategory": "concentrado",
+      "life_stage": null,
+      "description": "PRO PLAN CANINE OM",
+      "requires_confirmation": false,
+      "metadata": {
+        "source": "productos.json",
+        "original_names": [
+          "PRO PLAN CANINE OM 18LB",
+          "PRO PLAN CANINE OM 2KG"
+        ]
+      },
+      "brand": {
+        "id": "41ec8da4-b3f0-4527-a921-5c905c811397",
+        "name": "PRO PLAN",
+        "active": true,
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "4392ee78-ec94-4d6f-9d56-a2250f44b502",
+          "price": 359800,
+          "stock": null,
+          "active": true,
+          "weight": "18l",
+          "metadata": {
+            "llave": "566",
+            "codigo": "10301010566",
+            "source": "productos.json",
+            "codigos": [
+              "10301010566"
+            ],
+            "nombre_original": "PRO PLAN CANINE OM 18LB"
+          }
+        },
+        {
+          "id": "980f6864-b771-475f-8e5b-5aaf225dc2f1",
+          "price": 122000,
+          "stock": null,
+          "active": true,
+          "weight": "2kg",
+          "metadata": {
+            "llave": "1388",
+            "codigo": "10301011388",
+            "source": "productos.json",
+            "codigos": [
+              "10301011388"
+            ],
+            "nombre_original": "PRO PLAN CANINE OM 2KG"
+          }
+        }
+      ]
+    },
+    {
+      "id": "89341e5a-7d5a-4974-aa11-f8704dc157a7",
+      "name": "CHURU BITES BOLSA 8UND",
+      "species": "otro",
+      "category": "snack",
+      "subcategory": "premio",
+      "life_stage": null,
+      "description": "CHURU BITES BOLSA 8UND",
+      "requires_confirmation": false,
+      "metadata": {
+        "source": "productos.json",
+        "original_names": [
+          "CHURU BITES BOLSA 8UND 12GR"
+        ]
+      },
+      "brand": {
+        "id": "ff1be7eb-e0eb-4ea1-aa0f-0f9edbedbd70",
+        "name": "CHURU",
+        "active": true,
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "2aaa7a35-f5b8-4c6a-9141-dadd33d15c85",
+          "price": 5100,
+          "stock": null,
+          "active": true,
+          "weight": "12gr",
+          "metadata": {
+            "llave": "2034",
+            "codigo": "105010102034",
+            "source": "productos.json",
+            "codigos": [
+              "105010102034"
+            ],
+            "nombre_original": "CHURU BITES BOLSA 8UND 12GR"
+          }
+        }
+      ]
+    },
+    {
+      "id": "8ba9ab35-0aa9-4dfb-9daa-d9f9db6cdff9",
+      "name": "CHURU DOG ROLL",
+      "species": "perro",
+      "category": "snack",
+      "subcategory": "premio",
+      "life_stage": null,
+      "description": "CHURU DOG ROLL",
+      "requires_confirmation": false,
+      "metadata": {
+        "source": "productos.json",
+        "original_names": [
+          "CHURU DOG ROLL 96 GRA"
+        ]
+      },
+      "brand": {
+        "id": "ff1be7eb-e0eb-4ea1-aa0f-0f9edbedbd70",
+        "name": "CHURU",
+        "active": true,
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "8d817bce-b949-4675-902b-db2321d8876a",
+          "price": 3500,
+          "stock": null,
+          "active": true,
+          "weight": "96 gr",
+          "metadata": {
+            "llave": "2311",
+            "codigo": "105010102311",
+            "source": "productos.json",
+            "codigos": [
+              "105010102311"
+            ],
+            "nombre_original": "CHURU DOG ROLL 96 GRA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "967d9ebd-9e20-4a21-a071-691949bf3deb",
+      "name": "CHURU 40TUBES",
+      "species": "perro",
+      "category": "snack",
+      "subcategory": "premio",
+      "life_stage": null,
+      "description": "CHURU 40TUBES",
+      "requires_confirmation": false,
+      "metadata": {
+        "source": "productos.json",
+        "original_names": [
+          "CHURU 40TUBES X 14GR"
+        ]
+      },
+      "brand": {
+        "id": "ff1be7eb-e0eb-4ea1-aa0f-0f9edbedbd70",
+        "name": "CHURU",
+        "active": true,
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "e187a32f-f0c9-4d6c-a8cd-194c343c7002",
+          "price": 110900,
+          "stock": null,
+          "active": true,
+          "weight": "x 14gr",
+          "metadata": {
+            "llave": "2424",
+            "codigo": "105010102424",
+            "source": "productos.json",
+            "codigos": [
+              "105010102424"
+            ],
+            "nombre_original": "CHURU 40TUBES X 14GR"
+          }
+        }
+      ]
+    },
+    {
+      "id": "b2b20116-6840-4bb1-a08c-70b3f474378e",
+      "name": "PRO PLAN FELINE OM",
+      "species": "gato",
+      "category": "comida",
+      "subcategory": "concentrado",
+      "life_stage": null,
+      "description": "PRO PLAN FELINE OM",
+      "requires_confirmation": false,
+      "metadata": {
+        "source": "productos.json",
+        "original_names": [
+          "PRO PLAN FELINE OM 1.5KG"
+        ]
+      },
+      "brand": {
+        "id": "41ec8da4-b3f0-4527-a921-5c905c811397",
+        "name": "PRO PLAN",
+        "active": true,
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "51a51b5c-237e-4ea2-9d8e-0eef0845d737",
+          "price": 113600,
+          "stock": null,
+          "active": true,
+          "weight": "1.5kg",
+          "metadata": {
+            "llave": "1404",
+            "codigo": "10301021404",
+            "source": "productos.json",
+            "codigos": [
+              "10301021404"
+            ],
+            "nombre_original": "PRO PLAN FELINE OM 1.5KG"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bf89b91a-0e6a-4972-8df7-e985aba04db9",
+      "name": "CHURU",
+      "species": "perro y gato",
+      "category": "snack",
+      "subcategory": "premio",
+      "life_stage": null,
+      "description": "CHURU",
+      "requires_confirmation": false,
+      "metadata": {
+        "source": "productos.json",
+        "especies": [
+          "perro",
+          "gato"
+        ],
+        "usage_context": "Se vende por unidad individual de 14gr para perro o gato. Un paquete solicitado de 4 tubitos o sobres corresponde a 4 unidades individuales, no a una presentación diferente. El catálogo no detalla sabores: conservar la preferencia del cliente sin prometer un sabor disponible.",
+        "original_names": [
+          "CHURU 14GR"
+        ],
+        "venta_por_unidad": true
+      },
+      "brand": {
+        "id": "ff1be7eb-e0eb-4ea1-aa0f-0f9edbedbd70",
+        "name": "CHURU",
+        "active": true,
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "d7a3b288-830c-4d3d-a74b-d77ad2d1e3c7",
+          "price": 3200,
+          "stock": null,
+          "active": true,
+          "weight": "14gr",
+          "metadata": {
+            "llave": "2000",
+            "codigo": "105010102000",
+            "source": "productos.json",
+            "codigos": [
+              "105010102000"
+            ],
+            "nombre_original": "CHURU 14GR",
+            "precios_por_cantidad": [
+              {
+                "desde": 4,
+                "precio": 3000
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "c8c71844-d0c2-478c-b64b-5129ef8b006a",
+      "name": "CHURU BOMBONERA",
+      "species": "perro",
+      "category": "snack",
+      "subcategory": "premio",
+      "life_stage": null,
+      "description": "CHURU BOMBONERA",
+      "requires_confirmation": false,
+      "metadata": {
+        "source": "productos.json",
+        "original_names": [
+          "CHURU BOMBONERA 50UND"
+        ]
+      },
+      "brand": {
+        "id": "ff1be7eb-e0eb-4ea1-aa0f-0f9edbedbd70",
+        "name": "CHURU",
+        "active": true,
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "f3d3410e-5670-49e5-8548-11865c211a91",
+          "price": 163000,
+          "stock": null,
+          "active": true,
+          "weight": "50und",
+          "metadata": {
+            "llave": "2142",
+            "codigo": "105010102142",
+            "source": "productos.json",
+            "codigos": [
+              "105010102142"
+            ],
+            "nombre_original": "CHURU BOMBONERA 50UND"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cba362c7-3348-413c-b92b-715b9678410e",
+      "name": "CHURU CAT 10 UND",
+      "species": "gato",
+      "category": "snack",
+      "subcategory": "premio",
+      "life_stage": null,
+      "description": "CHURU CAT 10 UND",
+      "requires_confirmation": false,
+      "metadata": {
+        "source": "productos.json",
+        "original_names": [
+          "CHURU CAT 10 UND X 14G"
+        ]
+      },
+      "brand": {
+        "id": "ff1be7eb-e0eb-4ea1-aa0f-0f9edbedbd70",
+        "name": "CHURU",
+        "active": true,
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "2d552a5c-cd96-4e31-b107-cb9cb10f665a",
+          "price": 3500,
+          "stock": null,
+          "active": true,
+          "weight": "x 14g",
+          "metadata": {
+            "llave": "2449",
+            "codigo": "105010102449",
+            "source": "productos.json",
+            "codigos": [
+              "105010102449"
+            ],
+            "nombre_original": "CHURU CAT 10 UND X 14G"
+          }
+        }
+      ]
+    },
+    {
+      "id": "da0cb338-eb5e-464e-99fd-7ad0f26d57eb",
+      "name": "CHURU MEDICADO",
+      "species": "perro",
+      "category": "snack",
+      "subcategory": "premio",
+      "life_stage": null,
+      "description": "CHURU MEDICADO",
+      "requires_confirmation": false,
+      "metadata": {
+        "source": "productos.json",
+        "original_names": [
+          "CHURU MEDICADO"
+        ]
+      },
+      "brand": {
+        "id": "ff1be7eb-e0eb-4ea1-aa0f-0f9edbedbd70",
+        "name": "CHURU",
+        "active": true,
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "60a88e79-1e60-4f0f-b176-1dabf3ae91d8",
+          "price": 4000,
+          "stock": null,
+          "active": true,
+          "weight": "unidad",
+          "metadata": {
+            "llave": "2099",
+            "codigo": "105010102099",
+            "source": "productos.json",
+            "codigos": [
+              "105010102099"
+            ],
+            "nombre_original": "CHURU MEDICADO"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fe9eec8d-2f47-4414-bf6a-91136886408a",
+      "name": "PRO PLAN CANINE LATA OM",
+      "species": "perro",
+      "category": "comida",
+      "subcategory": "comida_humeda",
+      "life_stage": null,
+      "description": "PRO PLAN CANINE LATA OM",
+      "requires_confirmation": false,
+      "metadata": {
+        "source": "productos.json",
+        "original_names": [
+          "PRO PLAN CANINE LATA OM"
+        ]
+      },
+      "brand": {
+        "id": "41ec8da4-b3f0-4527-a921-5c905c811397",
+        "name": "PRO PLAN",
+        "active": true,
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "a5087791-e99c-4857-96bd-0745a2e2b7cd",
+          "price": 28600,
+          "stock": null,
+          "active": true,
+          "weight": "unidad",
+          "metadata": {
+            "llave": "1395",
+            "codigo": "10401011395",
+            "source": "productos.json",
+            "codigos": [
+              "10401011395"
+            ],
+            "nombre_original": "PRO PLAN CANINE LATA OM"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "at": "2026-10-31T01:04:08.942Z",
+  "runs": [
+    {
+      "name": "api-v1",
+      "turns": 2,
+      "calls": 5,
+      "tokens": 27834,
+      "ms": [
+        19956,
+        15076
+      ]
+    },
+    {
+      "name": "api-followups-v1",
+      "turns": 4,
+      "calls": 10,
+      "tokens": 73841,
+      "ms": [
+        17308,
+        14781,
+        13235,
+        11886
+      ]
+    },
+    {
+      "name": "api-v2-full",
+      "turns": 6,
+      "calls": 16,
+      "tokens": 85330,
+      "ms": [
+        26981,
+        18068,
+        17897,
+        13767,
+        19565,
+        10608
+      ]
+    },
+    {
+      "name": "api-v3-image-context",
+      "turns": 2,
+      "calls": 5,
+      "tokens": 24371,
+      "ms": [
+        19236,
+        18370
+      ]
+    },
+    {
+      "name": "api-v4-image-context",
+      "turns": 5,
+      "calls": 13,
+      "tokens": 75729,
+      "ms": [
+        15597,
+        17210,
+        12162,
+        17257,
+        6934
+      ]
+    },
+    {
+      "name": "api-v5-identity-evidence",
+      "turns": 5,
+      "calls": 13,
+      "tokens": 78537,
+      "ms": [
+        21846,
+        16784,
+        10501,
+        15783,
+        13060
+      ]
+    },
+    {
+      "name": "api-v6-followups",
+      "turns": 4,
+      "calls": 12,
+      "tokens": 72716,
+      "ms": [
+        17493,
+        10354,
+        14589,
+        14381
+      ]
+    },
+    {
+      "name": "api-v7-reentry",
+      "turns": 2,
+      "calls": 7,
+      "tokens": 37193,
+      "ms": [
+        20177,
+        13863
+      ]
+    }
+  ],
+  "totalRecordedCalls": 81,
+  "totalRecordedTokens": 475551,
+  "cost": null
+}

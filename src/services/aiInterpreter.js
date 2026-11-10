@@ -157,6 +157,17 @@ function resumenEstado(estado = {}) {
 function normalizarInterpretacion(valor) {
   if (!valor || typeof valor !== "object") return null;
 
+  // A list explicitly classified as consultations cannot become a purchase
+  // because the model contradicted those item actions in the root object.
+  // Mixed lists and explicit operations on an existing cart keep their scope.
+  if (valor.productos?.length > 1 && valor.productos.every(p => p?.accion === 'consultar') &&
+      ['agregar', 'nuevo_pedido'].includes(valor.accion) &&
+      (!valor.carrito?.operacion || valor.carrito.operacion === 'agregar')) {
+    valor = { ...valor, accion:'consultar', intencion:'consulta_producto',
+      producto: valor.producto ? { ...valor.producto, accion:'consultar' } : valor.producto,
+      carrito:{ ...valor.carrito, operacion:null, cantidadDelta:null, cantidadObjetivo:null } };
+  }
+
   const textoBreve = (valor, limite) =>
     typeof valor === "string" ? valor.trim().slice(0, limite) || null : null;
   const normalizarProducto = (producto = {}) => ({
@@ -168,6 +179,7 @@ function normalizarInterpretacion(valor) {
     mencionOriginal: textoBreve(producto.mencionOriginal, 500),
     categoria: producto.categoria || null,
     subcategoria: producto.subcategoria || null,
+    envase: ['sobre', 'lata'].includes(producto.envase) ? producto.envase : null,
     especie: producto.especie || null,
     etapa: producto.etapa || null,
     tamano: producto.tamano || null,
@@ -182,12 +194,19 @@ function normalizarInterpretacion(valor) {
     ...(producto.observado && typeof producto.observado === "object" ? {
       observado: {
         nombre: textoBreve(producto.observado.nombre, 200),
+        formaAlimento: ['concentrado','comida_humeda'].includes(producto.observado.formaAlimento) ? producto.observado.formaAlimento : null,
+        envase: ['sobre','lata'].includes(producto.observado.envase) ? producto.observado.envase : null,
+        confianzaFormato: Math.max(0, Math.min(1, Number(producto.observado.confianzaFormato) || 0)),
         presentacion: textoBreve(producto.observado.presentacion, 80),
         confianzaIdentidad: Number(producto.observado.confianzaIdentidad) || 0,
         confianzaPresentacion: Number(producto.observado.confianzaPresentacion) || 0,
+        especie: textoBreve(producto.observado.especie, 40),
+        evidenciaEspecie: textoBreve(producto.observado.evidenciaEspecie, 200),
+        confianzaEspecie: Math.max(0, Math.min(1, Number(producto.observado.confianzaEspecie) || 0)),
       },
       solicitud: {
         presentacionTexto: textoBreve(producto.solicitud?.presentacionTexto, 80),
+        especieTexto: textoBreve(producto.solicitud?.especieTexto, 40),
         presentacionContexto: textoBreve(producto.solicitud?.presentacionContexto, 80),
         contextoVigente: producto.solicitud?.contextoVigente === true,
         cantidadTexto: Number(producto.solicitud?.cantidadTexto) > 0 ? Number(producto.solicitud.cantidadTexto) : null,
@@ -201,6 +220,11 @@ function normalizarInterpretacion(valor) {
   const productoPrincipal = normalizarProducto(valor.producto || productos[0] || {});
 
   return {
+    recomendaciones: Array.isArray(valor.recomendaciones) ? valor.recomendaciones.slice(0,3).map(r=>({
+      id: textoBreve(r.id,100), evidencia: Array.isArray(r.evidencia) ? r.evidencia.filter(e=>typeof e==='string').slice(0,5) : [],
+      atributos: Array.isArray(r.atributos) ? r.atributos.slice(0,12).map(a=>({campo:textoBreve(a.campo,40),valor:textoBreve(a.valor,100),evidencia:textoBreve(a.evidencia,180)})) : [],
+    })) : [],
+    preguntaRecomendacion: textoBreve(valor.preguntaRecomendacion,240),
     solicitudComercialIndependiente: valor.solicitudComercialIndependiente === true,
     derivacionHumana: {
       necesaria: valor.derivacionHumana?.necesaria === true &&
@@ -210,12 +234,17 @@ function normalizarInterpretacion(valor) {
     },
     seguimientoProducto: ['nueva', 'aclaracion', 'sin_resolver'].includes(valor.seguimientoProducto)
       ? valor.seguimientoProducto : null,
+    recursosAclaracion: Object.fromEntries(['fotoDisponible', 'masDatosDisponibles'].map(campo =>
+      [campo, typeof valor.recursosAclaracion?.[campo] === 'boolean' ? valor.recursosAclaracion[campo] : null])),
     resumenMemoria: textoBreve(valor.resumenMemoria, 5000),
     continuarFlujo: valor.continuarFlujo === true,
     compraContextual: ['conjunto', 'foco', 'anterior'].includes(valor.compraContextual) ? valor.compraContextual : null,
     solicitudesProductoDetectadas: Number.isInteger(valor.solicitudesProductoDetectadas) && valor.solicitudesProductoDetectadas >= 0
       ? valor.solicitudesProductoDetectadas : null,
     consultaCatalogo: {
+      tipo: ['necesidad','referencia'].includes(valor.consultaCatalogo?.tipo) ? valor.consultaCatalogo.tipo : null,
+      presupuestoMaximo: Number.isFinite(valor.consultaCatalogo?.presupuestoMaximo) && valor.consultaCatalogo.presupuestoMaximo > 0
+        ? valor.consultaCatalogo.presupuestoMaximo : null,
       necesaria: typeof valor.consultaCatalogo?.necesaria === "boolean"
         ? valor.consultaCatalogo.necesaria : null,
       consulta: typeof valor.consultaCatalogo?.consulta === "string" ? valor.consultaCatalogo.consulta.trim() : null,

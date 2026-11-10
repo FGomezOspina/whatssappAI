@@ -1,0 +1,160 @@
+{
+  "version": 3,
+  "createdAt": "2026-10-30T18:05:00.050Z",
+  "scope": "Only KapsoSandbox, consultation; no orders",
+  "catalogSha256": "de386321dccdda50f1ab96af10cd503dd95967022ee644e9e3257f7ebf1d7dcb",
+  "cases": [
+    {
+      "id": "S01",
+      "kind": "original_sandbox_recovered",
+      "messages": [
+        "Me dices el precio de cat chow delicrne, quinientos gramos?"
+      ],
+      "expected": {
+        "reference": "CAT CHOW DELICARNE",
+        "presentation": "500gr"
+      }
+    },
+    {
+      "id": "S02",
+      "kind": "controlled_synthetic",
+      "messages": [
+        "Solo consultar precio: Royal Canin gastrointestinal para perro, concentrado de 7 kg."
+      ],
+      "expected": {
+        "abstainUnavailablePresentation": true,
+        "forbidWet": true
+      }
+    },
+    {
+      "id": "S03",
+      "kind": "controlled_synthetic_context",
+      "messages": [
+        "Corrijo el tamaño: de 2 kg, el mismo concentrado para perro. Solo consultar el precio."
+      ],
+      "expected": {
+        "reference": "ROYALCANIN GASTROINTESTINAL PERRO",
+        "presentation": "2kg",
+        "inherits": "S02"
+      }
+    },
+    {
+      "id": "S04",
+      "kind": "controlled_synthetic_burst",
+      "messages": [
+        "Solo consultar: Pro Plan UR para perro",
+        "el concentrado de 2 kg"
+      ],
+      "expected": {
+        "reference": "PRO PLAN CANINE UR",
+        "presentation": "2kg",
+        "oneBufferedReply": true
+      }
+    },
+    {
+      "id": "S05",
+      "kind": "controlled_synthetic_context",
+      "messages": [
+        "Ahora cotízame la lata de esa misma línea UR para perro. Solo consulta."
+      ],
+      "expected": {
+        "reference": "PRO PLAN CANINE LATA UR",
+        "format": "lata",
+        "inherits": "S04"
+      }
+    },
+    {
+      "id": "S06",
+      "kind": "controlled_synthetic",
+      "messages": [
+        "Solo consultar: Pro Plan kitten para gatito, en sobre de 85 gramos."
+      ],
+      "expected": {
+        "reference": "PRO PLAN POUCH FELINO KITTEN",
+        "format": "sobre",
+        "presentation": "85gr"
+      }
+    },
+    {
+      "id": "S07",
+      "kind": "real_corpus_literal",
+      "messages": [
+        "A como tienes el nefrotec x60"
+      ],
+      "expected": {
+        "clarifyPack": true,
+        "forbidUnitQuoteAsPack": true
+      }
+    },
+    {
+      "id": "S08",
+      "kind": "controlled_synthetic_from_real_identity",
+      "messages": [
+        "Solo consultar: Canitabs Skin Coat."
+      ],
+      "expected": {
+        "abstain": true,
+        "forbidReference": "BR SNACK CAT SOFTY SKIN COAT"
+      }
+    },
+    {
+      "id": "S09",
+      "kind": "controlled_synthetic_typo",
+      "messages": [
+        "Solo consultar precio de diamon indor para gato, medio kilo"
+      ],
+      "expected": {
+        "reference": "DIAMOND INDOOR CAT",
+        "presentation": "500gr"
+      }
+    },
+    {
+      "id": "S10",
+      "kind": "controlled_synthetic_recommendation",
+      "messages": [
+        "Qué alimento me recomiendas para un gatito de seis meses? Solo quiero opciones, no comprar."
+      ],
+      "expected": {
+        "recommendation": true,
+        "noCart": true
+      }
+    },
+    {
+      "id": "S11",
+      "kind": "controlled_synthetic_negative",
+      "messages": [
+        "Solo consultar: marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos."
+      ],
+      "expected": {
+        "abstain": true,
+        "noInventedProduct": true
+      }
+    },
+    {
+      "id": "S12",
+      "kind": "real_corpus_identity_control",
+      "messages": [
+        "Solo consultar: Bonnat Gastrointestinal para perro."
+      ],
+      "expected": {
+        "abstain": true,
+        "forbidSubstitution": "ROYALCANIN GASTROINTESTINAL PERRO"
+      }
+    },
+    {
+      "id": "S13",
+      "kind": "controlled_synthetic_context",
+      "messages": [
+        "Ahora serían tres sobres del mismo producto, solo cotización."
+      ],
+      "expected": {
+        "reference": "PRO PLAN POUCH FELINO KITTEN",
+        "presentation": "85gr",
+        "quantity": 3,
+        "inherits": "S06",
+        "noCart": true
+      }
+    }
+  ],
+  "reason": "Adds quantity correction after S06; prior inputs and expectations unchanged."
+}

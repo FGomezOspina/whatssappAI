@@ -1,0 +1,12 @@
+{
+  "htmlBytes": 36267,
+  "tables": 5,
+  "rows": 56,
+  "externalAssets": [],
+  "privacyCheck": "passed",
+  "aggregateCounts": "verified",
+  "unchangedFixtureHashesBetweenModes": true,
+  "reportSha256": "8fd1c1a6e8a882b6fe2e125f2d79dad7877158d3fe89908637c662b4439bfd56",
+  "lastFullSuite": 1049,
+  "newRuntimeEditsThisContinuation": 0
+}

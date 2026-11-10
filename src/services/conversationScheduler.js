@@ -79,6 +79,11 @@ function crearCoordinador({ procesar, enviar, typing = async () => {}, guardarEn
         for (const text of partes) {
           if (!vigente()) { ctx.resultado = { status: 'superseded', confirmedParts: enviados.length }; log(s, 'Remaining response discarded (stale)'); return; }
           const antes = enviados.length;
+          if (!antes && ctx.antesEnviar) {
+            etapa = 'response_reservation';
+            await ctx.antesEnviar();
+            if (!vigente()) { ctx.resultado = { status: 'superseded', confirmedParts: 0 }; return; }
+          }
           etapa = 'kapso_send';
           await medir('kapso_send', () => enviar({ to: actual.recipientId, phoneNumberId: actual.phoneNumberId, text, vigente,
             alEnviarParte: parte => enviados.push(parte) }));
@@ -86,7 +91,7 @@ function crearCoordinador({ procesar, enviar, typing = async () => {}, guardarEn
           if (enviados.length === antes && vigente()) enviados.push(text);
         }
         registrar('response_send_completed', { parts: enviados.length });
-        ctx.resultado = { status: 'sent', parts: enviados.length };
+        ctx.resultado = { status: ctx.respuestaTecnica ? 'technical_notice' : 'sent', parts: enviados.length };
       } catch (error) {
         // No imprimir cuerpos HTTP, mensajes del cliente ni credenciales.
         // Identificar la etapa sin exponer el error crudo.
@@ -112,6 +117,9 @@ function crearCoordinador({ procesar, enviar, typing = async () => {}, guardarEn
           }
         }
         const datos = resumen(ctx);
+        // A technical notice does not consume the original event. A later
+        // explicit redelivery can retry processing; no automatic enqueue.
+        if (ctx.eventosReintentables) for (const e of eventos) recibidos.delete(e._receiptKey);
         s.activo = false; s.run = null;
         try { onSummary(datos); } catch { /* observabilidad no bloquea la cola */ }
         if (s.listos.length && !s.enBuffer) { log(s, 'Scheduling processing with latest messages'); iniciar(s); }

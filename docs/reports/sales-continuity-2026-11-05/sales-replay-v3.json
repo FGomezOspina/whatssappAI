@@ -1,0 +1,210 @@
+{
+  "version": 3,
+  "purpose": "Fresh authorized real OpenAI validation of checkout continuity after address; separate from one-time v2.",
+  "privacy": "Synthetic dialogue; fictional customer identity/address/payment; product identity and quote from local catalog snapshot. Not a customer transcript.",
+  "catalogSnapshot": "../real-conversations-2026-10-30/catalog.json",
+  "catalogSha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+  "cases": [
+    {
+      "id": "v3-no-invoice",
+      "catalogBrands": [
+        "ARENA MAIZ CAT"
+      ],
+      "relativeQuoteAgeMs": 60000,
+      "relativePendingAgeMs": 172800000,
+      "initialState": {
+        "productosConsultados": [
+          {
+            "marca": "ARENA MAIZ CAT",
+            "referencia": "ARENA MAIZ CAT",
+            "peso": "x 20kg",
+            "precio": 98000,
+            "cantidad": 1,
+            "stock": null,
+            "categoria": "arena_sustrato",
+            "subcategoria": "arena"
+          }
+        ],
+        "ultimaSolicitudProductos": [
+          {
+            "estado": "pendiente",
+            "accion": "consultar",
+            "pregunta": "¿Qué medicamento necesitas?"
+          }
+        ]
+      },
+      "history": [
+        {
+          "role": "user",
+          "content": "Hola, ¿cuánto vale una arena de maíz cat de 20kg?"
+        },
+        {
+          "role": "assistant",
+          "content": "La ARENA MAIZ CAT de 20kg cuesta $98.000. Las existencias están por confirmar."
+        }
+      ],
+      "turns": [
+        {
+          "text": "Calle 10 # 20-30",
+          "origin": "Synthetic dialogue; fictional customer identity/address/payment; product identity and quote from local catalog snapshot. Not a customer transcript.",
+          "expected": {
+            "quantity": 1,
+            "confirmed": false,
+            "missing": [
+              "nombre",
+              "celular",
+              "metodoPago"
+            ]
+          }
+        },
+        {
+          "text": "Nombre: Cliente Prueba; celular: 3000000000; pago: efectivo. No necesito factura electrónica.",
+          "origin": "Synthetic dialogue; fictional customer identity/address/payment; product identity and quote from local catalog snapshot. Not a customer transcript.",
+          "expected": {
+            "quantity": 1,
+            "confirmed": false,
+            "waitingConfirmation": true,
+            "invoice": false
+          }
+        },
+        {
+          "text": "Mejor déjame dos bolsas de esa arena de 20kg",
+          "origin": "Synthetic dialogue; fictional customer identity/address/payment; product identity and quote from local catalog snapshot. Not a customer transcript.",
+          "expected": {
+            "quantity": 2,
+            "confirmed": false,
+            "waitingConfirmation": true
+          }
+        },
+        {
+          "text": "Corrijo la dirección: Calle 11 # 21-31",
+          "origin": "Synthetic dialogue; fictional customer identity/address/payment; product identity and quote from local catalog snapshot. Not a customer transcript.",
+          "expected": {
+            "quantity": 2,
+            "confirmed": false,
+            "waitingConfirmation": true,
+            "address": "Calle 11 # 21-31"
+          }
+        },
+        {
+          "text": "Sí, confirmo el pedido con esos datos",
+          "origin": "Synthetic dialogue; fictional customer identity/address/payment; product identity and quote from local catalog snapshot. Not a customer transcript.",
+          "expected": {
+            "quantity": 2,
+            "confirmed": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "v3-invoice",
+      "catalogBrands": [
+        "ARENA MAIZ CAT"
+      ],
+      "relativeQuoteAgeMs": 60000,
+      "relativePendingAgeMs": 172800000,
+      "initialState": {
+        "productosConsultados": [
+          {
+            "marca": "ARENA MAIZ CAT",
+            "referencia": "ARENA MAIZ CAT",
+            "peso": "x 20kg",
+            "precio": 98000,
+            "cantidad": 1,
+            "stock": null,
+            "categoria": "arena_sustrato",
+            "subcategoria": "arena"
+          }
+        ],
+        "ultimaSolicitudProductos": [
+          {
+            "estado": "pendiente",
+            "accion": "consultar",
+            "pregunta": "¿Qué medicamento necesitas?"
+          }
+        ]
+      },
+      "history": [
+        {
+          "role": "user",
+          "content": "Hola, ¿cuánto vale una arena de maíz cat de 20kg?"
+        },
+        {
+          "role": "assistant",
+          "content": "La ARENA MAIZ CAT de 20kg cuesta $98.000. Las existencias están por confirmar."
+        }
+      ],
+      "turns": [
+        {
+          "text": "Calle 12 # 22-32",
+          "origin": "Synthetic dialogue; fictional customer identity/address/payment; product identity and quote from local catalog snapshot. Not a customer transcript.",
+          "expected": {
+            "quantity": 1,
+            "confirmed": false,
+            "missing": [
+              "nombre",
+              "celular",
+              "metodoPago"
+            ]
+          }
+        },
+        {
+          "text": "Necesito factura electrónica",
+          "origin": "Synthetic dialogue; fictional customer identity/address/payment; product identity and quote from local catalog snapshot. Not a customer transcript.",
+          "expected": {
+            "quantity": 1,
+            "confirmed": false,
+            "invoice": true
+          }
+        },
+        {
+          "text": "Nombre: Cliente Prueba; celular: 3000000000; pago: efectivo",
+          "origin": "Synthetic dialogue; fictional customer identity/address/payment; product identity and quote from local catalog snapshot. Not a customer transcript.",
+          "expected": {
+            "quantity": 1,
+            "confirmed": false,
+            "missing": [
+              "cedula",
+              "correo"
+            ]
+          }
+        },
+        {
+          "text": "NIT: 900000001-1; correo: prueba@example.com",
+          "origin": "Synthetic dialogue; fictional customer identity/address/payment; product identity and quote from local catalog snapshot. Not a customer transcript.",
+          "expected": {
+            "quantity": 1,
+            "confirmed": false,
+            "waitingConfirmation": true
+          }
+        },
+        {
+          "text": "Pon dos bolsas de la misma arena de 20kg",
+          "origin": "Synthetic dialogue; fictional customer identity/address/payment; product identity and quote from local catalog snapshot. Not a customer transcript.",
+          "expected": {
+            "quantity": 2,
+            "confirmed": false,
+            "waitingConfirmation": true
+          }
+        },
+        {
+          "text": "Quita una unidad; deja solamente una bolsa",
+          "origin": "Synthetic dialogue; fictional customer identity/address/payment; product identity and quote from local catalog snapshot. Not a customer transcript.",
+          "expected": {
+            "quantity": 1,
+            "confirmed": false,
+            "waitingConfirmation": true
+          }
+        },
+        {
+          "text": "Confirmo el pedido así, con factura electrónica",
+          "origin": "Synthetic dialogue; fictional customer identity/address/payment; product identity and quote from local catalog snapshot. Not a customer transcript.",
+          "expected": {
+            "quantity": 1,
+            "confirmed": true
+          }
+        }
+      ]
+    }
+  ]
+}

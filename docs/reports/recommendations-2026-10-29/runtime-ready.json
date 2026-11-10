@@ -1,0 +1,23 @@
+{
+  "checkedAt": "2026-10-29T16:51:22.355Z",
+  "health": {
+    "ok": true,
+    "provider": "kapso"
+  },
+  "runtime": {
+    "pid": 9914,
+    "cwd": "/Users/gomez/Documents/WhatsappVELTIA",
+    "startedAt": "2026-10-29T16:50:55.642Z",
+    "sourceHash": "ae3293173fa8558bbe74e682f3050b66268802f06ce9d61d74cd982c9ba99fdc"
+  },
+  "sourceHashMatches": true,
+  "whatsappTestsSent": 0,
+  "publicTunnelHealth": {
+    "checkedAt": "2026-10-29T16:52:11.674Z",
+    "status": 200,
+    "health": {
+      "ok": true,
+      "provider": "kapso"
+    }
+  }
+}

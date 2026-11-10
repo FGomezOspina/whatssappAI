@@ -1,0 +1,200 @@
+{
+  "text": "Me  envía dos  de adulto de kilo porfa",
+  "interpretations": [
+    {
+      "router": true,
+      "result": {
+        "recomendaciones": [],
+        "preguntaRecomendacion": null,
+        "solicitudComercialIndependiente": true,
+        "derivacionHumana": {
+          "necesaria": false,
+          "motivo": null
+        },
+        "seguimientoProducto": "aclaracion",
+        "recursosAclaracion": {},
+        "resumenMemoria": null,
+        "continuarFlujo": true,
+        "compraContextual": null,
+        "solicitudesProductoDetectadas": 1,
+        "consultaCatalogo": {
+          "tipo": "referencia",
+          "presupuestoMaximo": null,
+          "necesaria": true,
+          "consulta": "EXCELLENT GATO ADULT 1kg"
+        },
+        "respuestaConversacional": null,
+        "intencion": "pedido_producto",
+        "accion": "agregar",
+        "confianza": 0.58,
+        "producto": {
+          "accion": "agregar",
+          "marca": null,
+          "referencia": null,
+          "linea": null,
+          "textoVisible": "adulto de kilo",
+          "mencionOriginal": "dos  de adulto de kilo",
+          "categoria": "comida",
+          "subcategoria": null,
+          "envase": null,
+          "especie": null,
+          "etapa": "adulto",
+          "tamano": null,
+          "sabores": [],
+          "presentacion": "1kg",
+          "intencionPresentaciones": "especifica",
+          "mascotas": [],
+          "condiciones": [],
+          "cantidad": 2
+        },
+        "productos": [
+          {
+            "accion": "agregar",
+            "marca": null,
+            "referencia": null,
+            "linea": null,
+            "textoVisible": "adulto de kilo",
+            "mencionOriginal": "dos  de adulto de kilo",
+            "categoria": "comida",
+            "subcategoria": null,
+            "envase": null,
+            "especie": null,
+            "etapa": "adulto",
+            "tamano": null,
+            "sabores": [],
+            "presentacion": "1kg",
+            "intencionPresentaciones": "especifica",
+            "mascotas": [],
+            "condiciones": [],
+            "cantidad": 2
+          }
+        ],
+        "entrega": {
+          "tipo": "domicilio",
+          "direccion": null,
+          "direccionCompleta": null,
+          "sector": null,
+          "metodoPago": null,
+          "sede": null
+        },
+        "facturacion": {
+          "electronica": null,
+          "evidencia": null
+        },
+        "datosCliente": {
+          "nombre": null,
+          "cedula": null,
+          "correo": null,
+          "celular": null
+        },
+        "carrito": {
+          "operacion": null,
+          "cantidadObjetivo": null,
+          "cantidadDelta": null,
+          "aplicaAlUltimoProducto": null,
+          "razon": null
+        },
+        "faltanteSugerido": "¿Te refieres a Excellent gato adulto de 1kg?"
+      }
+    },
+    {
+      "router": true,
+      "result": {
+        "recomendaciones": [],
+        "preguntaRecomendacion": null,
+        "solicitudComercialIndependiente": false,
+        "derivacionHumana": {
+          "necesaria": false,
+          "motivo": null
+        },
+        "seguimientoProducto": null,
+        "recursosAclaracion": {
+          "fotoDisponible": null,
+          "masDatosDisponibles": null
+        },
+        "resumenMemoria": null,
+        "continuarFlujo": false,
+        "compraContextual": null,
+        "solicitudesProductoDetectadas": 1,
+        "consultaCatalogo": {
+          "tipo": null,
+          "presupuestoMaximo": null,
+          "necesaria": null,
+          "consulta": null
+        },
+        "respuestaConversacional": null,
+        "intencion": "pedido_producto",
+        "accion": "consultar",
+        "confianza": 0.43,
+        "producto": {
+          "accion": "consultar",
+          "marca": null,
+          "referencia": null,
+          "linea": null,
+          "textoVisible": "adulto de kilo",
+          "mencionOriginal": null,
+          "categoria": "comida",
+          "subcategoria": null,
+          "envase": null,
+          "especie": null,
+          "etapa": "adulto",
+          "tamano": null,
+          "sabores": [],
+          "presentacion": "1kg",
+          "intencionPresentaciones": "especifica",
+          "mascotas": [],
+          "condiciones": [],
+          "cantidad": 2
+        },
+        "productos": [
+          {
+            "accion": "consultar",
+            "marca": null,
+            "referencia": null,
+            "linea": null,
+            "textoVisible": "adulto de kilo",
+            "mencionOriginal": null,
+            "categoria": "comida",
+            "subcategoria": null,
+            "envase": null,
+            "especie": null,
+            "etapa": "adulto",
+            "tamano": null,
+            "sabores": [],
+            "presentacion": "1kg",
+            "intencionPresentaciones": "especifica",
+            "mascotas": [],
+            "condiciones": [],
+            "cantidad": 2
+          }
+        ],
+        "entrega": {
+          "tipo": "domicilio",
+          "direccion": null,
+          "direccionCompleta": null,
+          "sector": null,
+          "metodoPago": null,
+          "sede": null
+        },
+        "facturacion": {
+          "electronica": null,
+          "evidencia": null
+        },
+        "datosCliente": {
+          "nombre": null,
+          "cedula": null,
+          "correo": null,
+          "celular": null
+        },
+        "carrito": {
+          "operacion": null,
+          "cantidadObjetivo": null,
+          "cantidadDelta": null,
+          "aplicaAlUltimoProducto": null,
+          "razon": null
+        },
+        "faltanteSugerido": "¿Te refieres a Excellent gato adulto de 1kg?"
+      }
+    }
+  ]
+}

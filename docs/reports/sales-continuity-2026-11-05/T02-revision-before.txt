@@ -1,0 +1,100 @@
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=38 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=si | continuarFlujo=no | interpretacion=recibida
+[Router] Interaccion | cliente=isolated-sales-validation | usuario=anonymous-isolated-sales | intencion=busqueda_producto | complejidad=normal | vision=no | audio=no | catalogoIA=undefined/undefined | estrategia=undefined | topScore=n/a | secondScore=n/a
+[Catalog Match] cliente=anonymous-isolated-sales | nivel=media | razon=ambigua | terminos="adulto kilo" | score=0.8 | diferencia=0.064
+[Catalog Match] Aclaracion redactada por IA | cliente=anonymous-isolated-sales | nivel=media
+[AI Usage Summary] cliente=isolated-sales-validation | usuario=anonymous-isolated-sales | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=24 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Cart Operation] {"action":"agregar","targetResolved":false,"mutationApplied":false,"catalogLookup":false,"target":"Churu snack"}
+[Semantic Router] catalogo=si | continuarFlujo=si | interpretacion=recibida
+[Catalog Match] cliente=anonymous-isolated-sales | nivel=alta | razon=nombre_exacto | terminos="churu" | score=1 | diferencia=1
+[Router] Interaccion | cliente=isolated-sales-validation | usuario=anonymous-isolated-sales | intencion=busqueda_producto | complejidad=simple | vision=no | audio=no | catalogoIA=undefined/undefined | estrategia=undefined | topScore=n/a | secondScore=n/a
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=38 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Cart Operation] {"action":"agregar","targetResolved":false,"mutationApplied":false,"catalogLookup":false,"target":"EXCELLENT EXCELLENT GATO ADULT comida"}
+[Semantic Router] catalogo=si | continuarFlujo=si | interpretacion=recibida
+[Catalog Match] cliente=anonymous-isolated-sales | nivel=alta | razon=nombre_exacto | terminos="excellent gato adulto" | score=1 | diferencia=1
+[Router] Interaccion | cliente=isolated-sales-validation | usuario=anonymous-isolated-sales | intencion=busqueda_producto | complejidad=normal | vision=no | audio=no | catalogoIA=undefined/undefined | estrategia=undefined | topScore=n/a | secondScore=n/a
+[Catalog Match] cliente=anonymous-isolated-sales | nivel=alta | razon=nombre_exacto | terminos="excellent gato adulto" | score=1 | diferencia=1
+[OpenAI] Interpretacion IA | cliente=anonymous-isolated-sales | intencion=pedido_producto | accion=agregar | marca=EXCELLENT | referencia=EXCELLENT GATO ADULT | etapa=adulto | tamano=null | presentacion=1kg | confianza=0.86
+[AI Usage Summary] cliente=isolated-sales-validation | usuario=anonymous-isolated-sales | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=38 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=si | continuarFlujo=si | interpretacion=recibida
+[Catalog Match] cliente=anonymous-isolated-sales | nivel=alta | razon=nombre_exacto | terminos="excellent gato adulto" | score=1 | diferencia=1
+[Router] Interaccion | cliente=isolated-sales-validation | usuario=anonymous-isolated-sales | intencion=busqueda_producto | complejidad=normal | vision=no | audio=no | catalogoIA=undefined/undefined | estrategia=undefined | topScore=n/a | secondScore=n/a
+[Catalog Match] cliente=anonymous-isolated-sales | nivel=alta | razon=nombre_exacto | terminos="excellent gato adulto" | score=1 | diferencia=1
+[OpenAI] Interpretacion IA | cliente=anonymous-isolated-sales | intencion=pedido_producto | accion=agregar | marca=EXCELLENT | referencia=EXCELLENT GATO ADULT | etapa=null | tamano=null | presentacion=1kg | confianza=0.9
+[AI Usage Summary] cliente=isolated-sales-validation | usuario=anonymous-isolated-sales | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=24 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=no | continuarFlujo=no | interpretacion=recibida
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=18 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=no | continuarFlujo=no | interpretacion=recibida
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=5 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=no | continuarFlujo=no | interpretacion=recibida
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=74 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=si | continuarFlujo=no | interpretacion=recibida
+[Catalog Match] cliente=anonymous-isolated-sales | nivel=alta | razon=marca_y_presentacion | terminos="king cat" | score=0 | diferencia=0
+[Router] Interaccion | cliente=isolated-sales-validation | usuario=anonymous-isolated-sales | intencion=busqueda_producto | complejidad=compleja | vision=no | audio=no | catalogoIA=undefined/undefined | estrategia=undefined | topScore=n/a | secondScore=n/a
+[Catalog Match] cliente=anonymous-isolated-sales | nivel=alta | razon=marca_y_presentacion | terminos="king cat" | score=0 | diferencia=0
+[OpenAI] Interpretacion IA | cliente=anonymous-isolated-sales | intencion=pedido_producto | accion=agregar | marca=ARENA KING CAT | referencia=ARENA KING CAT | etapa=null | tamano=null | presentacion=25kg | confianza=0.9
+[AI Usage Summary] cliente=isolated-sales-validation | usuario=anonymous-isolated-sales | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=88 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=no | continuarFlujo=si | interpretacion=recibida
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=28 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=no | continuarFlujo=no | interpretacion=recibida
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=44 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=no | continuarFlujo=no | interpretacion=recibida
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=18 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=no | continuarFlujo=si | interpretacion=recibida
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=16 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=no | continuarFlujo=no | interpretacion=recibida
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=52 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=no | continuarFlujo=no | interpretacion=recibida
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=61 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=no | continuarFlujo=no | interpretacion=recibida
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=29 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=no | continuarFlujo=no | interpretacion=recibida
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=14 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=no | continuarFlujo=no | interpretacion=recibida
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=16 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=no | continuarFlujo=si | interpretacion=recibida
+✖ compra de presentacion no cotizada no se degrada en revision de carrito vacio (125.647333ms)
+✔ paquete de venta unitaria sin numero de unidades pide cantidad y conserva carrito (11.216959ms)
+✔ T02 reproduce salida real OpenAI: recuperacion contextual no pisa dos unidades de 1kg (77.270541ms)
+✔ T02 contexto comercial: dos de kilo sustituye cotizacion de 3kg; Churu no resuelto no borra alimento (74.25975ms)
+✔ C05 solicitud real y cierre sintetico: 2 bultos, direccion, factura y confirmacion aislada (21.044ms)
+✔ T01: cotizacion y consulta/cortesia no seleccionan alternativas (2.791834ms)
+✔ T03: cotizacion y consulta/cortesia no seleccionan alternativas (2.607042ms)
+✔ harness aislado no comparte carrito ni datos entre clientes (2.594458ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 7
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 380.130875
+
+✖ failing tests:
+
+test at test/commercialSalesDialogues.test.js:7:1
+✖ compra de presentacion no cotizada no se degrada en revision de carrito vacio (125.647333ms)
+  AssertionError [ERR_ASSERTION]: Tengo estas referencias:
+  
+  - EXCELLENT GATO ADULT: 1kg: $31.000, 3kg: $74.700, 7.5kg: $163.700
+  - EXCELLENT ADULT SMALL: 3kg: $64.600
+  - EXCELLENT ADULT RMG: 3kg: $61.600
+  
+  ¿Cuál te sirve?
+  
+  0 !== 1
+  
+      at TestContext.<anonymous> (/Users/gomez/Documents/WhatsappVELTIA/test/commercialSalesDialogues.test.js:12:10)
+      at async Test.run (node:internal/test_runner/test:1208:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

@@ -1,0 +1,15 @@
+{
+  "at": "2026-10-31T00:47:27.325Z",
+  "samples": [
+    {
+      "query": "HILLS",
+      "ms": 870,
+      "count": 8
+    },
+    {
+      "query": "ADVANCE",
+      "ms": 386,
+      "count": 4
+    }
+  ]
+}

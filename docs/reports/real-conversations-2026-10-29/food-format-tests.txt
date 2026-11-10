@@ -1,0 +1,17 @@
+✔ food form and container remain distinct; weight and bags imply neither (0.957958ms)
+✔ requested dry food, pouch and can exclude each other even at shared weights (20.105334ms)
+✔ shared identity without food form asks a useful clarification (2.897292ms)
+✔ wet food without container retains both can and pouch (3.275792ms)
+✔ weight clarification inherits verified container and never turns it into dry (3.025875ms)
+✔ explicit format corrections replace old format and clear inherited pack (1.769333ms)
+✔ another named product or expired context does not inherit container (0.239083ms)
+✔ insufficient catalog format stays unverified (1.3925ms)
+✔ verified image evidence supplies format; explicit text can correct pictured container (1.334292ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 87.514416

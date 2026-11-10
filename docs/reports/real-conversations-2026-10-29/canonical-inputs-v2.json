@@ -1,0 +1,5320 @@
+{
+  "scope": "Synthetic exact catalog names without derived food/container hints. New diagnostic input version, never mixed with previous enriched queries.",
+  "rows": [
+    {
+      "id": "0001dbad-31c5-42c7-901a-33486d17d61c",
+      "query": "LHA TRARNIC-V",
+      "expected": "LHA TRARNIC-V"
+    },
+    {
+      "id": "0d5d09d0-0728-410d-ab50-1ae3f2567ef4",
+      "query": "LHA RINOM",
+      "expected": "LHA RINOM"
+    },
+    {
+      "id": "1f57ed36-01b2-4a1e-a647-bdba0221605c",
+      "query": "LHA INMUL-V",
+      "expected": "LHA INMUL-V"
+    },
+    {
+      "id": "26bffde6-36a7-4489-9330-fe44b0a1ced6",
+      "query": "LHA SOLEPOL",
+      "expected": "LHA SOLEPOL"
+    },
+    {
+      "id": "35323691-fa26-490c-8c94-d52421891759",
+      "query": "LHA RINOM-V",
+      "expected": "LHA RINOM-V"
+    },
+    {
+      "id": "373b796e-9c9e-4f38-ba5f-1955ffaf3d96",
+      "query": "LHA DIGEST-V",
+      "expected": "LHA DIGEST-V"
+    },
+    {
+      "id": "3b76e721-2866-4ced-a9ce-39ef0393c829",
+      "query": "LHA OSTYMUS",
+      "expected": "LHA OSTYMUS"
+    },
+    {
+      "id": "3e902615-5300-49c9-92bf-2a22369406b8",
+      "query": "LHA NEUMO-V",
+      "expected": "LHA NEUMO-V"
+    },
+    {
+      "id": "6967928e-f9e4-4673-9517-a6b70f4fc1a2",
+      "query": "LHA OSTYMUS-VLHA",
+      "expected": "LHA OSTYMUS-VLHA"
+    },
+    {
+      "id": "8528b57b-6c39-4f8c-a222-6dce1cc2f624",
+      "query": "LHA OCUL-V SOLUCION",
+      "expected": "LHA OCUL-V SOLUCION"
+    },
+    {
+      "id": "ae4e388d-5ec6-4d66-b5e9-bfa19a92b4e8",
+      "query": "LHA DIGEST-VGOTAS",
+      "expected": "LHA DIGEST-VGOTAS"
+    },
+    {
+      "id": "bc749f0f-5ebd-4668-875c-2d80a93a3594",
+      "query": "LHA METRISMAST",
+      "expected": "LHA METRISMAST"
+    },
+    {
+      "id": "d7722071-84d2-476b-a915-367079cb3387",
+      "query": "LHA INMUL-V GOTAS",
+      "expected": "LHA INMUL-V GOTAS"
+    },
+    {
+      "id": "ef225a84-aa2f-4e33-8939-efbdf4100748",
+      "query": "LHA CIRCUL-V",
+      "expected": "LHA CIRCUL-V"
+    },
+    {
+      "id": "f428d575-a6aa-44c9-be24-1c5f5a3959e9",
+      "query": "LHA BIOTIKA",
+      "expected": "LHA BIOTIKA"
+    },
+    {
+      "id": "0079809c-cb32-4cd4-bf7b-36837287eea2",
+      "query": "HUACAL BASICO M",
+      "expected": "HUACAL BASICO M"
+    },
+    {
+      "id": "0a60bb93-d41b-40e4-889f-e87d4cb4aaec",
+      "query": "HUACAL MEDELLIN PEQUEÑO",
+      "expected": "HUACAL MEDELLIN PEQUEÑO"
+    },
+    {
+      "id": "16d2583b-f66d-4dae-b783-4d76e9675f5a",
+      "query": "HUACAL GRANDE 80X56",
+      "expected": "HUACAL GRANDE 80X56"
+    },
+    {
+      "id": "2de40235-c5d5-433e-b619-bc98fcf67221",
+      "query": "HUACAL BRISTOL XL",
+      "expected": "HUACAL BRISTOL XL"
+    },
+    {
+      "id": "4a9488cd-2ae4-49ba-8461-7b208b62c580",
+      "query": "HUACAL MASCOTAS",
+      "expected": "HUACAL MASCOTAS"
+    },
+    {
+      "id": "ac769682-c1b4-457a-808e-9c81ba6a29a4",
+      "query": "HUACAL BRISTOL S",
+      "expected": "HUACAL BRISTOL S"
+    },
+    {
+      "id": "af24a158-b9a1-4f3d-a273-c5eecb6a9180",
+      "query": "HUACAL PEQ 50X34",
+      "expected": "HUACAL PEQ 50X34"
+    },
+    {
+      "id": "ca808248-e334-4a6d-8617-d191560ecf59",
+      "query": "HUACAL MEDELLIN GRANDE",
+      "expected": "HUACAL MEDELLIN GRANDE"
+    },
+    {
+      "id": "d6a63a40-5e78-40d0-80dd-388c2163ee3c",
+      "query": "HUACAL SENCILLO S",
+      "expected": "HUACAL SENCILLO S"
+    },
+    {
+      "id": "e9ef513c-134b-48be-aede-2c5bc7aa9450",
+      "query": "HUACAL MEDELLIN MEDIANO",
+      "expected": "HUACAL MEDELLIN MEDIANO"
+    },
+    {
+      "id": "0080b53d-d0df-453d-98a9-c766f65a3c93",
+      "query": "FAJA XL (DE",
+      "expected": "FAJA XL (DE"
+    },
+    {
+      "id": "0f8525a8-b4e2-4126-ba10-1a970eea275f",
+      "query": "FAJA POST TALLA L",
+      "expected": "FAJA POST TALLA L"
+    },
+    {
+      "id": "2a1a06bf-ebb4-446a-a330-ef21c3e98a8a",
+      "query": "FAJA MINI (HASTA",
+      "expected": "FAJA MINI (HASTA"
+    },
+    {
+      "id": "2f8a103c-9124-4931-9e3a-865f3fd2d0fa",
+      "query": "FAJA POST TALLA 2XL",
+      "expected": "FAJA POST TALLA 2XL"
+    },
+    {
+      "id": "34dc66c9-d524-4515-93fd-7f0b6e26eab5",
+      "query": "FAJA XXL (DE",
+      "expected": "FAJA XXL (DE"
+    },
+    {
+      "id": "84de5106-0bf8-4d20-afd3-45ea1238fdb2",
+      "query": "FAJA POST TALLA XL",
+      "expected": "FAJA POST TALLA XL"
+    },
+    {
+      "id": "909adf9c-37f9-408d-8c50-c5221f62554a",
+      "query": "FAJA XXS (DE",
+      "expected": "FAJA XXS (DE"
+    },
+    {
+      "id": "976d0bc1-5973-41ae-ae6c-76a72ecfc532",
+      "query": "FAJA M(DE",
+      "expected": "FAJA M(DE"
+    },
+    {
+      "id": "a03e1f37-32cc-481c-9ca4-a73b2186d52f",
+      "query": "FAJA ML (DE",
+      "expected": "FAJA ML (DE"
+    },
+    {
+      "id": "d4c90667-ba66-4398-ad95-68a6a2e769cd",
+      "query": "FAJA POST TALLA M PERRO",
+      "expected": "FAJA POST TALLA M PERRO"
+    },
+    {
+      "id": "ea4bd46d-770e-4480-ac77-bd2e2a5105b0",
+      "query": "FAJA XS (DE",
+      "expected": "FAJA XS (DE"
+    },
+    {
+      "id": "00a1f6cc-b1df-4331-b128-4b32ce8bb903",
+      "query": "NEXGARD COMBO",
+      "expected": "NEXGARD COMBO"
+    },
+    {
+      "id": "0fa85762-17aa-4ea0-af21-48ab2448d3a6",
+      "query": "NEXGARD SPECTRA",
+      "expected": "NEXGARD SPECTRA"
+    },
+    {
+      "id": "302fb0c0-f6d5-4188-8872-f76737757ea8",
+      "query": "NEXGARD COMBO GATO",
+      "expected": "NEXGARD COMBO GATO"
+    },
+    {
+      "id": "855e99f1-ed6c-400b-b5a3-580d39588a46",
+      "query": "NEXGARD",
+      "expected": "NEXGARD"
+    },
+    {
+      "id": "00d4aba8-9184-4131-a776-c67b810076d1",
+      "query": "SHAMPOO PEROXYPROC",
+      "expected": "SHAMPOO PEROXYPROC"
+    },
+    {
+      "id": "0dd3534c-5026-42d5-ad9e-b0c0e322949c",
+      "query": "SHAMPOO KETOCLEAN",
+      "expected": "SHAMPOO KETOCLEAN"
+    },
+    {
+      "id": "420ffaad-62f1-48cf-a623-839805b1bbbd",
+      "query": "SHAMPOO CANIS Y FELIS K-ZOL",
+      "expected": "SHAMPOO CANIS Y FELIS K-ZOL"
+    },
+    {
+      "id": "49597e97-18c7-48a4-b2fc-9485cb961e26",
+      "query": "SHAMPOO BAXIDIN CERAMIDAS",
+      "expected": "SHAMPOO BAXIDIN CERAMIDAS"
+    },
+    {
+      "id": "54254792-89d2-4ed8-b6ac-f118a83d8ef0",
+      "query": "SHAMPOO MICLORPROC",
+      "expected": "SHAMPOO MICLORPROC"
+    },
+    {
+      "id": "61d2aa24-6779-408f-88b2-e2ad33b7be52",
+      "query": "SHAMPOO CANIS Y FELIS CLORHEXINA",
+      "expected": "SHAMPOO CANIS Y FELIS CLORHEXINA"
+    },
+    {
+      "id": "620d68bb-3034-4d3b-ba01-0fb7acc843fe",
+      "query": "SHAMPOO CANIS Y FELIS MEDICADO",
+      "expected": "SHAMPOO CANIS Y FELIS MEDICADO"
+    },
+    {
+      "id": "6398c67a-7bdc-48c2-928c-977e2ef87ebe",
+      "query": "SHAMPOO BRILLO SOBRE",
+      "expected": "SHAMPOO BRILLO SOBRE"
+    },
+    {
+      "id": "63ecb787-3bc1-4861-837c-8b8e45871c23",
+      "query": "SHAMPOO BASIC-PET ALOE VERA Y CERA",
+      "expected": "SHAMPOO BASIC-PET ALOE VERA Y CERA"
+    },
+    {
+      "id": "7d955266-d3c4-4f04-acbe-8f00f93b0c1b",
+      "query": "SHAMPOO SUNSHINE",
+      "expected": "SHAMPOO SUNSHINE"
+    },
+    {
+      "id": "9043e0a2-6e3e-48e8-856c-97a5475a28b0",
+      "query": "SHAMPOO SULFICURE",
+      "expected": "SHAMPOO SULFICURE"
+    },
+    {
+      "id": "a1098839-272e-48f5-8607-816b2568f80a",
+      "query": "SHAMPOO BONNY ARGAN",
+      "expected": "SHAMPOO BONNY ARGAN"
+    },
+    {
+      "id": "a6f38334-7b87-499b-9b52-cb84b713475c",
+      "query": "SHAMPOO PET LIFE",
+      "expected": "SHAMPOO PET LIFE"
+    },
+    {
+      "id": "ba7d9e61-83b5-4460-9a77-4c5cd32f778b",
+      "query": "SHAMPOO FITOVETE",
+      "expected": "SHAMPOO FITOVETE"
+    },
+    {
+      "id": "cae1f88b-eaa9-4f14-b13f-562e6a155ba3",
+      "query": "SHAMPOO PETYS INSECTICIDA",
+      "expected": "SHAMPOO PETYS INSECTICIDA"
+    },
+    {
+      "id": "cc101278-33bc-4389-a59a-b719cd3cfddf",
+      "query": "SHAMPOO CLORHEXIN 3.0",
+      "expected": "SHAMPOO CLORHEXIN 3.0"
+    },
+    {
+      "id": "d5bd212c-56a7-4c43-b4db-66d6244003ec",
+      "query": "SHAMPOO SEBOLYTIC SIS",
+      "expected": "SHAMPOO SEBOLYTIC SIS"
+    },
+    {
+      "id": "dc3fc9c3-24a0-4ff1-82e3-b0adc62d2cf1",
+      "query": "SHAMPOO ALLERMYL SIS",
+      "expected": "SHAMPOO ALLERMYL SIS"
+    },
+    {
+      "id": "e4c5fc7d-e663-42a6-844b-4dded6db2dc1",
+      "query": "SHAMPOO CLORHEXIN",
+      "expected": "SHAMPOO CLORHEXIN"
+    },
+    {
+      "id": "f881a0e9-a052-4ecc-a672-6f60085bcd6e",
+      "query": "SHAMPOO KERACLEEN",
+      "expected": "SHAMPOO KERACLEEN"
+    },
+    {
+      "id": "fc0778a1-8305-46c7-b65e-2fb7a4d1d0d9",
+      "query": "SHAMPOO SEBOCALM",
+      "expected": "SHAMPOO SEBOCALM"
+    },
+    {
+      "id": "011b3c99-74fc-4511-89e8-bb506dfababf",
+      "query": "PAÑITOS HUMEDOS BASIC",
+      "expected": "PAÑITOS HUMEDOS BASIC"
+    },
+    {
+      "id": "08edaa6c-6151-47d8-9270-c694e416431f",
+      "query": "PAÑITOS TOMMY PETS",
+      "expected": "PAÑITOS TOMMY PETS"
+    },
+    {
+      "id": "3fa267f1-9b42-48bb-9474-79dbd1010d1e",
+      "query": "PAÑITOS CAN AMOR",
+      "expected": "PAÑITOS CAN AMOR"
+    },
+    {
+      "id": "46cf8c7f-896b-465d-8f4f-198038e620c6",
+      "query": "PAÑITOS LIMPIEZA ESENCIAL 50UNID",
+      "expected": "PAÑITOS LIMPIEZA ESENCIAL 50UNID"
+    },
+    {
+      "id": "9ea5e093-01a0-41b0-bb68-53cef895d1c3",
+      "query": "PAÑITOS PETYS LAVANDA",
+      "expected": "PAÑITOS PETYS LAVANDA"
+    },
+    {
+      "id": "bdae18f0-20b9-48d4-89cf-64548ceb9e55",
+      "query": "PAÑITOS PETYS",
+      "expected": "PAÑITOS PETYS"
+    },
+    {
+      "id": "f6a04628-2868-46fe-971d-df7c254d4c04",
+      "query": "PAÑITOS PETYS ANTIBACTERIAL",
+      "expected": "PAÑITOS PETYS ANTIBACTERIAL"
+    },
+    {
+      "id": "0141fbc1-a8cf-49dc-afb2-49b47924dd86",
+      "query": "PIMOCARD 10",
+      "expected": "PIMOCARD 10"
+    },
+    {
+      "id": "4794e374-3d36-4551-88d5-1ce2f1fbb659",
+      "query": "PIMOCARD 1.25",
+      "expected": "PIMOCARD 1.25"
+    },
+    {
+      "id": "4ea84b74-17ec-4bb8-b41c-896263873891",
+      "query": "PIMOCARD 5",
+      "expected": "PIMOCARD 5"
+    },
+    {
+      "id": "c29b75fd-91d9-4188-ae22-46d8e7790295",
+      "query": "PIMOCARD 2.5",
+      "expected": "PIMOCARD 2.5"
+    },
+    {
+      "id": "0144805d-c4cb-4a58-8b25-ce742ead74c9",
+      "query": "DIAMOND KITTEN CAT",
+      "expected": "DIAMOND KITTEN CAT"
+    },
+    {
+      "id": "1224f0d0-b4db-494b-8200-56c6e0dad19f",
+      "query": "DIAMOND INDOOR CAT",
+      "expected": "DIAMOND INDOOR CAT"
+    },
+    {
+      "id": "1a336a00-0749-49cf-83ca-9f74e7cba45a",
+      "query": "DIAMOND KITTEN",
+      "expected": "DIAMOND KITTEN"
+    },
+    {
+      "id": "d5672c11-9e41-4aae-b5ee-a487e91eaea1",
+      "query": "DIAMOND INDOOR",
+      "expected": "DIAMOND INDOOR"
+    },
+    {
+      "id": "021f5e66-bf45-4859-9c65-a3d28493b7f5",
+      "query": "EQUILIBRIO ADULT RPEQ",
+      "expected": "EQUILIBRIO ADULT RPEQ"
+    },
+    {
+      "id": "422307b9-3ca3-4e79-9496-44d737fa16a7",
+      "query": "EQUILIBRIO GATO PELOS LONGOS",
+      "expected": "EQUILIBRIO GATO PELOS LONGOS"
+    },
+    {
+      "id": "444edd3b-79ca-4721-82e1-542c16e8522a",
+      "query": "EQUILIBRIO GATO UR",
+      "expected": "EQUILIBRIO GATO UR"
+    },
+    {
+      "id": "5ef9776f-4712-4eba-ae7d-092892ef7ab5",
+      "query": "EQUILIBRIO ADUL RPEQ LIGHT",
+      "expected": "EQUILIBRIO ADUL RPEQ LIGHT"
+    },
+    {
+      "id": "6ac27d1a-894d-4bfa-95fd-4769776991c9",
+      "query": "EQUILIBRIO GATO SALMON",
+      "expected": "EQUILIBRIO GATO SALMON"
+    },
+    {
+      "id": "edf491df-7301-4991-9f4a-da107aa96836",
+      "query": "EQUILIBRIO GATO ADULT",
+      "expected": "EQUILIBRIO GATO ADULT"
+    },
+    {
+      "id": "fbbdc7ad-9fc3-4c9d-8786-8ecaec55f59b",
+      "query": "EQUILIBRIO GATO LIGHT",
+      "expected": "EQUILIBRIO GATO LIGHT"
+    },
+    {
+      "id": "02432bf0-7fc2-4e56-9c51-016ced59560b",
+      "query": "FORTIFLORA CANINE",
+      "expected": "FORTIFLORA CANINE"
+    },
+    {
+      "id": "02633881-a3f4-4184-9bab-81a6ca8a7735",
+      "query": "FIPROSTAR",
+      "expected": "FIPROSTAR"
+    },
+    {
+      "id": "9af6c6fe-068d-4a35-9281-487a0b247ddc",
+      "query": "FIPROSTAR PERRO 0.10KG",
+      "expected": "FIPROSTAR PERRO 0.10KG"
+    },
+    {
+      "id": "f9a0a9f4-813b-4d72-966d-8f5c999bc0b2",
+      "query": "FIPROSTAR SPARY",
+      "expected": "FIPROSTAR SPARY"
+    },
+    {
+      "id": "02916b95-e8b6-492e-99f3-e97760a12007",
+      "query": "DOG CHOW POUCHE CARNE",
+      "expected": "DOG CHOW POUCHE CARNE"
+    },
+    {
+      "id": "0552e1d4-e6a7-48b9-ae5f-07637ae82179",
+      "query": "DOG CHOW POUCH PAG",
+      "expected": "DOG CHOW POUCH PAG"
+    },
+    {
+      "id": "094d088d-f04c-43fb-ab40-8ef2b8b18c7f",
+      "query": "DOG CHOW ADULRMG",
+      "expected": "DOG CHOW ADULRMG"
+    },
+    {
+      "id": "1cd14970-8c05-4c50-b48b-4c47066caf33",
+      "query": "DOG CHOW C RMG",
+      "expected": "DOG CHOW C RMG"
+    },
+    {
+      "id": "112c03de-9bcd-465d-91b9-46848f9c8572",
+      "query": "DOG CHOW A.R.P A GRANEL",
+      "expected": "DOG CHOW A.R.P A GRANEL"
+    },
+    {
+      "id": "1bc3e0d3-b2b5-4848-b8ec-ef8a18949ea1",
+      "query": "DOG CHOW C RP",
+      "expected": "DOG CHOW C RP"
+    },
+    {
+      "id": "f2825bef-752b-49d8-9446-71128f6d8247",
+      "query": "DOG CHOW ADUL TODOS LOS TAMAÑOS",
+      "expected": "DOG CHOW ADUL TODOS LOS TAMAÑOS"
+    },
+    {
+      "id": "312b2fae-b636-40c8-ac9a-20f92576eea2",
+      "query": "DOG CHOW C RMG *475",
+      "expected": "DOG CHOW C RMG *475"
+    },
+    {
+      "id": "464ed0bc-e095-4713-abb9-e8d1535e190e",
+      "query": "DOG CHOW SINCO LONGEVIDAD",
+      "expected": "DOG CHOW SINCO LONGEVIDAD"
+    },
+    {
+      "id": "473a9bab-0fc6-4d66-b5c4-9707c4a2884c",
+      "query": "DOG CHOW POUCHE CACH",
+      "expected": "DOG CHOW POUCHE CACH"
+    },
+    {
+      "id": "4c64d4be-7137-48ac-87ae-ae50364a0ef4",
+      "query": "DOG CHOW CONTROL DE PESO",
+      "expected": "DOG CHOW CONTROL DE PESO"
+    },
+    {
+      "id": "5c5f7606-9628-46f9-911e-76ce164dab8c",
+      "query": "DOG CHOW CONTROL PESO SINCOL",
+      "expected": "DOG CHOW CONTROL PESO SINCOL"
+    },
+    {
+      "id": "7d088364-2c58-474b-aa47-e2d9dc0b810d",
+      "query": "DOG CHOW",
+      "expected": "DOG CHOW"
+    },
+    {
+      "id": "97fa87c2-259d-43f9-a42e-09b57872d810",
+      "query": "DOG CHOW A RMG",
+      "expected": "DOG CHOW A RMG"
+    },
+    {
+      "id": "af7869a8-8f00-4920-9586-d8d345e71471",
+      "query": "DOG CHOW A.M.G A GRANEL",
+      "expected": "DOG CHOW A.M.G A GRANEL"
+    },
+    {
+      "id": "b15749f9-b0f5-4963-bedb-eb455f4ee982",
+      "query": "DOG CHOW ADUL RMG PAG 19.7 LLEV",
+      "expected": "DOG CHOW ADUL RMG PAG 19.7 LLEV"
+    },
+    {
+      "id": "02dc8703-a7ea-4989-9df3-4ae33878f347",
+      "query": "PULOFF",
+      "expected": "PULOFF"
+    },
+    {
+      "id": "0af36c5a-be0f-4bd8-a71f-dda79245fe7d",
+      "query": "PULOFF 2.68ML",
+      "expected": "PULOFF 2.68ML"
+    },
+    {
+      "id": "8b2cbc0d-8a14-4248-a24f-b7c337cb4cce",
+      "query": "PULOFF 0.67ML",
+      "expected": "PULOFF 0.67ML"
+    },
+    {
+      "id": "b28e7c3c-1290-488b-a176-2ab8ecbf8892",
+      "query": "PULOFF 1.34ML",
+      "expected": "PULOFF 1.34ML"
+    },
+    {
+      "id": "030a41c8-d0b6-4f38-9276-cb4d85e755d0",
+      "query": "BR CAT ADULT CASTR CONEJO",
+      "expected": "BR CAT ADULT CASTR CONEJO"
+    },
+    {
+      "id": "0b2bfef7-03c8-4de7-afb5-042aca203115",
+      "query": "BR CAT ADUL CASTRA ATUN",
+      "expected": "BR CAT ADUL CASTRA ATUN"
+    },
+    {
+      "id": "14c8bfa8-6532-421e-b25b-3e142ed3dbdc",
+      "query": "BR CAT ADUL POLLO",
+      "expected": "BR CAT ADUL POLLO"
+    },
+    {
+      "id": "16286921-5c49-4f75-9d00-17e09001ec92",
+      "query": "BR CAT PATE",
+      "expected": "BR CAT PATE"
+    },
+    {
+      "id": "2322e970-c703-4e46-9312-63859e7bef5a",
+      "query": "BR CAT SENIOR",
+      "expected": "BR CAT SENIOR"
+    },
+    {
+      "id": "33feda53-d630-4b34-9929-d25f70c5893d",
+      "query": "BR CAT ADUL BOLA PELO",
+      "expected": "BR CAT ADUL BOLA PELO"
+    },
+    {
+      "id": "4af9a074-c4da-4fef-856a-1e56dee05847",
+      "query": "BR CAT GATITOS SALMON",
+      "expected": "BR CAT GATITOS SALMON"
+    },
+    {
+      "id": "62e66c84-5953-459b-89e9-9649e04c3e80",
+      "query": "BR CAT WILD ADUL SALMON",
+      "expected": "BR CAT WILD ADUL SALMON"
+    },
+    {
+      "id": "771ede7f-75a9-4366-8b43-3edfff0545b0",
+      "query": "BR CAT CASTRADO POLLO",
+      "expected": "BR CAT CASTRADO POLLO"
+    },
+    {
+      "id": "9086fb51-6582-431d-897a-8a5150a1d49d",
+      "query": "BR CAT ADUL CASTR PAVO",
+      "expected": "BR CAT ADUL CASTR PAVO"
+    },
+    {
+      "id": "99c66acb-4671-4809-bf5f-2e36184e297c",
+      "query": "BR CAT VET URINARY",
+      "expected": "BR CAT VET URINARY"
+    },
+    {
+      "id": "a138b85d-62e6-4e1d-b828-6c3b1ba1309e",
+      "query": "BR CAT ADUL CASTRA SALMON",
+      "expected": "BR CAT ADUL CASTRA SALMON"
+    },
+    {
+      "id": "a48b1f97-fca8-4577-9076-7d2e40b066cc",
+      "query": "BR CAT SALMON",
+      "expected": "BR CAT SALMON"
+    },
+    {
+      "id": "b17e210d-8ea2-4fe3-bcf5-c577cb9d755c",
+      "query": "BR CAT SOFTY WEIGTH",
+      "expected": "BR CAT SOFTY WEIGTH"
+    },
+    {
+      "id": "c35a4229-eaa4-4e4f-a60a-4815efe18eb4",
+      "query": "BR CAT GATITO POLLO",
+      "expected": "BR CAT GATITO POLLO"
+    },
+    {
+      "id": "d290dae5-d022-4730-bec5-f4895e38ce86",
+      "query": "BR CAT WILD KITTEN",
+      "expected": "BR CAT WILD KITTEN"
+    },
+    {
+      "id": "d53c7153-66de-4f88-a50a-2b6bb0fd3490",
+      "query": "BR CAT SALMON CASTRADO",
+      "expected": "BR CAT SALMON CASTRADO"
+    },
+    {
+      "id": "fee69b03-fa3a-4a92-b039-f75c3d816c86",
+      "query": "BR CAT VET HEPATIC",
+      "expected": "BR CAT VET HEPATIC"
+    },
+    {
+      "id": "031e725c-0a08-4518-abfc-ec1bdc92556e",
+      "query": "CEPILLO PEINE BOTON EXPULSADOR",
+      "expected": "CEPILLO PEINE BOTON EXPULSADOR"
+    },
+    {
+      "id": "14b62cb3-1892-41f2-bc15-1f1d1154d1e3",
+      "query": "CEPILLO CARDADOR O MADERA DOBLE",
+      "expected": "CEPILLO CARDADOR O MADERA DOBLE"
+    },
+    {
+      "id": "14fecb22-0035-447f-a6ac-bc5537dda03d",
+      "query": "CEPILLO DESLANADOR",
+      "expected": "CEPILLO DESLANADOR"
+    },
+    {
+      "id": "23b1be0c-b327-4366-9c7e-e147a3ba2d9c",
+      "query": "CEPILLO DEDO",
+      "expected": "CEPILLO DEDO"
+    },
+    {
+      "id": "58b21528-eedb-4013-80ba-633fc48d826e",
+      "query": "CEPILLO CON DISPENSADOR DE ESENCIAS",
+      "expected": "CEPILLO CON DISPENSADOR DE ESENCIAS"
+    },
+    {
+      "id": "61f70ba0-e1a2-4400-8474-635da07572c5",
+      "query": "CEPILLO MASCOTA",
+      "expected": "CEPILLO MASCOTA"
+    },
+    {
+      "id": "686303af-876c-45ae-b6d0-ae5602f63213",
+      "query": "CEPILLO MASCOTA MADERA O PASTEL",
+      "expected": "CEPILLO MASCOTA MADERA O PASTEL"
+    },
+    {
+      "id": "9e57f114-6381-4add-9ab5-75508c764bdd",
+      "query": "CEPILLO MASCOTA HL15414",
+      "expected": "CEPILLO MASCOTA HL15414"
+    },
+    {
+      "id": "03225e06-ebec-485b-bbbf-6362c563bbbb",
+      "query": "RASCADOR ESQUINERO",
+      "expected": "RASCADOR ESQUINERO"
+    },
+    {
+      "id": "8cb303f6-ecf2-4d2d-8c8f-8cc2199e605b",
+      "query": "RASCADOR REDONDO GATOS",
+      "expected": "RASCADOR REDONDO GATOS"
+    },
+    {
+      "id": "a9c745dd-5ad5-443b-a7e1-dde3c3317b4a",
+      "query": "RASCADOR",
+      "expected": "RASCADOR"
+    },
+    {
+      "id": "03884f80-7f22-4c12-b169-07cb87e99ed7",
+      "query": "BRAVECTO",
+      "expected": "BRAVECTO"
+    },
+    {
+      "id": "2f23d78c-8e75-49c8-a294-bc089bf5da25",
+      "query": "BRAVECTO 37 DIAS",
+      "expected": "BRAVECTO 37 DIAS"
+    },
+    {
+      "id": "03c5c383-9158-4e8a-9947-ff6b3be217d3",
+      "query": "ARENA A GRANEL",
+      "expected": "ARENA A GRANEL"
+    },
+    {
+      "id": "03cd6ce0-f5d3-418e-838c-37468dd8af19",
+      "query": "BR SNACK EQUILIBRIO",
+      "expected": "BR SNACK EQUILIBRIO"
+    },
+    {
+      "id": "3e86a94f-02b9-4e71-94ae-1250b7c6bca6",
+      "query": "BR WILD CAT ADULT",
+      "expected": "BR WILD CAT ADULT"
+    },
+    {
+      "id": "61a5d5af-af02-498b-a286-8a452ab7f312",
+      "query": "BR SNACK CAT SOFTY KITTEN",
+      "expected": "BR SNACK CAT SOFTY KITTEN"
+    },
+    {
+      "id": "6a077821-07a8-4e1c-bcf2-37f7a07bd5b5",
+      "query": "BR SNACK BOLA DE PELO",
+      "expected": "BR SNACK BOLA DE PELO"
+    },
+    {
+      "id": "81311161-08af-4b33-a696-5944761410de",
+      "query": "BR SNACK DOG HERBAL",
+      "expected": "BR SNACK DOG HERBAL"
+    },
+    {
+      "id": "c4fa8dde-def9-41a4-a0de-7fa540a63b51",
+      "query": "BR SNACK URINARY",
+      "expected": "BR SNACK URINARY"
+    },
+    {
+      "id": "d63474dc-bd79-4d75-8b5a-11ee1df3186f",
+      "query": "BR SNACK CAT SOFTY SKIN COAT",
+      "expected": "BR SNACK CAT SOFTY SKIN COAT"
+    },
+    {
+      "id": "d91373fb-8114-4ef6-addf-0e3f067f5329",
+      "query": "BR CORDERO",
+      "expected": "BR CORDERO"
+    },
+    {
+      "id": "e5c26014-4ac2-48db-a8c5-30741f211bba",
+      "query": "BR SNACK CATNIP",
+      "expected": "BR SNACK CATNIP"
+    },
+    {
+      "id": "ef16b51d-30b8-45bd-857c-d77d6682a0fc",
+      "query": "BR POMM BITTES TOCINETA",
+      "expected": "BR POMM BITTES TOCINETA"
+    },
+    {
+      "id": "03dee5c1-8246-401f-a0a1-45730260d3a2",
+      "query": "CHUNKY DELIGO POUCH PAG",
+      "expected": "CHUNKY DELIGO POUCH PAG"
+    },
+    {
+      "id": "114a85f7-3aa0-463a-a175-b9b531c89124",
+      "query": "CHUNKY DELICAT PAG",
+      "expected": "CHUNKY DELICAT PAG"
+    },
+    {
+      "id": "3b1c5242-8266-4ecc-a077-8ecac0ff5a84",
+      "query": "CHUNKY DELICAT POTE",
+      "expected": "CHUNKY DELICAT POTE"
+    },
+    {
+      "id": "3d969dfa-29f2-4891-95e4-ca0ee944d5b1",
+      "query": "CHUNKY DELIDOG CARNE",
+      "expected": "CHUNKY DELIDOG CARNE"
+    },
+    {
+      "id": "4527e126-bc8a-4b26-8872-b0fd54c6cd27",
+      "query": "CHUNKY GATOS SALMON CORDERO",
+      "expected": "CHUNKY GATOS SALMON CORDERO"
+    },
+    {
+      "id": "46029d7c-6116-4b57-b68b-0cd77f6a6af5",
+      "query": "CHUNKY DELIDOG POTE",
+      "expected": "CHUNKY DELIDOG POTE"
+    },
+    {
+      "id": "4af7b360-774e-4e10-b39a-7757c46ab1c3",
+      "query": "CHUNKY DELICAPRICHOS GATO",
+      "expected": "CHUNKY DELICAPRICHOS GATO"
+    },
+    {
+      "id": "5275fc90-b60c-4559-b5cc-ff381a348689",
+      "query": "CHUNKY ESTOFADO RES",
+      "expected": "CHUNKY ESTOFADO RES"
+    },
+    {
+      "id": "5288a8f9-b84d-4a20-8d2d-16066950577a",
+      "query": "CHUNKY DELICAT",
+      "expected": "CHUNKY DELICAT"
+    },
+    {
+      "id": "64739335-e698-4f5d-92d3-d445f524d591",
+      "query": "CHUNKY DELIDOG BONE",
+      "expected": "CHUNKY DELIDOG BONE"
+    },
+    {
+      "id": "87939a56-ef27-4871-9922-022d7613bf4a",
+      "query": "CHUNKY CACHORRO",
+      "expected": "CHUNKY CACHORRO"
+    },
+    {
+      "id": "67cb10ce-c52b-4fb7-8c93-5875073cb6cb",
+      "query": "CHUNKY DELIDOG",
+      "expected": "CHUNKY DELIDOG"
+    },
+    {
+      "id": "abda1596-0a85-4fd7-94ad-b4a10dc8e0d9",
+      "query": "CHUNKY GATOS POLLO",
+      "expected": "CHUNKY GATOS POLLO"
+    },
+    {
+      "id": "76e61e44-1426-41a2-9f3f-bf042ace30b6",
+      "query": "CHUNKY DELIDOG MIX C",
+      "expected": "CHUNKY DELIDOG MIX C"
+    },
+    {
+      "id": "7c9a45a0-2cbd-4f7e-9962-f74d6e8b5b08",
+      "query": "CHUNKY GATITOS",
+      "expected": "CHUNKY GATITOS"
+    },
+    {
+      "id": "8bae7f2f-6af3-4b71-bcd3-3aee19cd1120",
+      "query": "CHUNKY ADULTO",
+      "expected": "CHUNKY ADULTO"
+    },
+    {
+      "id": "8c04a6ef-475c-4f7b-80b8-b4d35915d224",
+      "query": "CHUNKY DELIDOG DENT",
+      "expected": "CHUNKY DELIDOG DENT"
+    },
+    {
+      "id": "8c4a2395-3e6e-468b-aded-d6cd533d1a1d",
+      "query": "CHUNKY CATS",
+      "expected": "CHUNKY CATS"
+    },
+    {
+      "id": "96490638-67a5-46e5-a34a-ef9f6544dbbc",
+      "query": "CHUNKY CATS GATOS",
+      "expected": "CHUNKY CATS GATOS"
+    },
+    {
+      "id": "a3af80e2-0b03-4a52-8bb4-cd55c3b4e0dc",
+      "query": "CHUNKY ADULTO RP",
+      "expected": "CHUNKY ADULTO RP"
+    },
+    {
+      "id": "acce4d2d-df6d-47dd-a47b-83ebccd7b85c",
+      "query": "CHUNKY MENU CAT NAT",
+      "expected": "CHUNKY MENU CAT NAT"
+    },
+    {
+      "id": "b1f93911-f261-4819-abd4-ed5fa3a9d9a9",
+      "query": "CHUNKY ADUL MAYORES",
+      "expected": "CHUNKY ADUL MAYORES"
+    },
+    {
+      "id": "c8b8e3ab-7443-4a81-97d5-beb4eb859d65",
+      "query": "CHUNKY DELIDOG POUCH",
+      "expected": "CHUNKY DELIDOG POUCH"
+    },
+    {
+      "id": "cf6bce40-1dc4-41d1-96d9-09f466309360",
+      "query": "CHUNKY DELICAPRICHOS PERRO",
+      "expected": "CHUNKY DELICAPRICHOS PERRO"
+    },
+    {
+      "id": "d83d9a9b-355d-4f53-8229-5a12311f90aa",
+      "query": "CHUNKY ADULT GRANEL X KG",
+      "expected": "CHUNKY ADULT GRANEL X KG"
+    },
+    {
+      "id": "e0bca36a-d48b-4e75-b678-be123c36c041",
+      "query": "CHUNKY CHUROS",
+      "expected": "CHUNKY CHUROS"
+    },
+    {
+      "id": "f4d12940-f6e3-4ffb-88ca-b587bb24a20d",
+      "query": "CHUNKY CACH RP",
+      "expected": "CHUNKY CACH RP"
+    },
+    {
+      "id": "f5f96efb-5fb3-4ca5-95ef-03e5484edc0d",
+      "query": "CHUNKY CORDERO ADULTO",
+      "expected": "CHUNKY CORDERO ADULTO"
+    },
+    {
+      "id": "f7e33d25-4483-4d2c-8f12-7ae0b64cd93f",
+      "query": "CHUNKY CORDERO CACHORRO",
+      "expected": "CHUNKY CORDERO CACHORRO"
+    },
+    {
+      "id": "03df73f4-2836-452b-b3e5-394a8e67ce12",
+      "query": "ARENERA CUBIERTA GRANDE CON ESPACIO FILTRO",
+      "expected": "ARENERA CUBIERTA GRANDE CON ESPACIO FILTRO"
+    },
+    {
+      "id": "097e5f6d-60b9-4074-b848-5ef68396ad1f",
+      "query": "ARENERA ABIERTA ALTA SEMICERRADA L",
+      "expected": "ARENERA ABIERTA ALTA SEMICERRADA L"
+    },
+    {
+      "id": "22c50888-aa49-43db-81f4-d418885844c7",
+      "query": "ARENERA SENCILLA",
+      "expected": "ARENERA SENCILLA"
+    },
+    {
+      "id": "d97e1edb-c972-4de7-914e-bd36e4be3725",
+      "query": "ARENERA CUADRADO LUZ UV",
+      "expected": "ARENERA CUADRADO LUZ UV"
+    },
+    {
+      "id": "04075beb-8264-481e-afae-fa338c16013d",
+      "query": "MIRRAPEL CACHORROS 120MNL",
+      "expected": "MIRRAPEL CACHORROS 120MNL"
+    },
+    {
+      "id": "316841ad-c400-40e2-8b5c-2f1da4da2bea",
+      "query": "MIRRAPEL SENIOR",
+      "expected": "MIRRAPEL SENIOR"
+    },
+    {
+      "id": "7a3adde3-816f-4191-bce0-938c2136daec",
+      "query": "MIRRAPEL GATOS",
+      "expected": "MIRRAPEL GATOS"
+    },
+    {
+      "id": "ebd3fc88-90f3-4ae8-bfe8-809e97e3973f",
+      "query": "MIRRAPEL OLEOSO",
+      "expected": "MIRRAPEL OLEOSO"
+    },
+    {
+      "id": "fa99bfb2-aee5-49be-bd77-4df647dbd4e4",
+      "query": "MIRRAPEL POLVO",
+      "expected": "MIRRAPEL POLVO"
+    },
+    {
+      "id": "0441e42e-78c9-4d7f-94ab-a80926176a3f",
+      "query": "FELIX PACK SURT",
+      "expected": "FELIX PACK SURT"
+    },
+    {
+      "id": "2021c1e3-96a6-4fb0-82aa-c712115f7f71",
+      "query": "FELIX PATE PAVO MENU",
+      "expected": "FELIX PATE PAVO MENU"
+    },
+    {
+      "id": "25a502d0-941f-436d-b076-027b89e1c185",
+      "query": "FELIX SALMON",
+      "expected": "FELIX SALMON"
+    },
+    {
+      "id": "39acdeb4-0bcd-4a3c-aa32-7356b36c8fa7",
+      "query": "FELIX CARNE",
+      "expected": "FELIX CARNE"
+    },
+    {
+      "id": "61759171-809c-4a71-aeea-ede178bcd2aa",
+      "query": "FELIX MEGAMI",
+      "expected": "FELIX MEGAMI"
+    },
+    {
+      "id": "6bd1272c-2da4-44e6-a851-6bae1c31d2ab",
+      "query": "FELIX PATE PESC ATUN",
+      "expected": "FELIX PATE PESC ATUN"
+    },
+    {
+      "id": "bd07adb4-1096-4b3f-b817-835a0085f0da",
+      "query": "FELIX 3 PROTEINAS",
+      "expected": "FELIX 3 PROTEINAS"
+    },
+    {
+      "id": "def623c1-3df7-41ea-9d3d-8af663d40e0b",
+      "query": "FELIX MIX 7 PROTEINAS",
+      "expected": "FELIX MIX 7 PROTEINAS"
+    },
+    {
+      "id": "e941dd83-5693-460e-acb0-4360fb8f9cff",
+      "query": "FELIX TRIPLE",
+      "expected": "FELIX TRIPLE"
+    },
+    {
+      "id": "ef0ed4b8-e264-4747-bda4-c63b8ca2c3e2",
+      "query": "FELIX PATE SALMON",
+      "expected": "FELIX PATE SALMON"
+    },
+    {
+      "id": "fb6f5aac-e5cb-4f7b-b387-0726410dbc8d",
+      "query": "FELIX FILETE PESC ATUN",
+      "expected": "FELIX FILETE PESC ATUN"
+    },
+    {
+      "id": "0476ef91-ab35-4fd9-80a0-c8955e906fb0",
+      "query": "TRAILLA REFLECTIVA CON RESORTE",
+      "expected": "TRAILLA REFLECTIVA CON RESORTE"
+    },
+    {
+      "id": "0c048b67-f88a-4a09-a011-b6f43b9acd13",
+      "query": "TRAILLA CON LAZO M",
+      "expected": "TRAILLA CON LAZO M"
+    },
+    {
+      "id": "1bca1426-128b-407a-babe-46a6c34044fc",
+      "query": "TRAILLA ANTITIRON COLOR PASTEL",
+      "expected": "TRAILLA ANTITIRON COLOR PASTEL"
+    },
+    {
+      "id": "273c7f9e-5377-4409-bd28-b8a9146c11ba",
+      "query": "TRAILLA Y ARENA GATOS FLORAL M",
+      "expected": "TRAILLA Y ARENA GATOS FLORAL M"
+    },
+    {
+      "id": "2b6674e5-c8fa-414f-9ed7-cbeea0cb7fb5",
+      "query": "TRAILLA CON ARNES MANGO DE GOMA S",
+      "expected": "TRAILLA CON ARNES MANGO DE GOMA S"
+    },
+    {
+      "id": "4fbbfab7-a809-429b-99d5-8822ed7b6946",
+      "query": "TRAILLA Y ARNES GATOS FLORAL S",
+      "expected": "TRAILLA Y ARNES GATOS FLORAL S"
+    },
+    {
+      "id": "4fe14302-bf52-4825-8cfb-a1f199591917",
+      "query": "TRAILLA AHOGO GRANDE",
+      "expected": "TRAILLA AHOGO GRANDE"
+    },
+    {
+      "id": "541dbd5c-d4ab-4f8f-b837-a44dc3685854",
+      "query": "TRAILLA CON LAZO XL",
+      "expected": "TRAILLA CON LAZO XL"
+    },
+    {
+      "id": "5eed4840-e3ab-4a0f-b37a-119e35d9eefd",
+      "query": "TRAILLA Y ARNES M",
+      "expected": "TRAILLA Y ARNES M"
+    },
+    {
+      "id": "5f291da2-7aac-4c0a-9113-624f4c826f75",
+      "query": "TRAILLA IMITACION CUERO S",
+      "expected": "TRAILLA IMITACION CUERO S"
+    },
+    {
+      "id": "6c644ab9-1e2c-4d75-95c4-edcd0efcffcc",
+      "query": "TRAILLA PEQUEÑA ECONMICA",
+      "expected": "TRAILLA PEQUEÑA ECONMICA"
+    },
+    {
+      "id": "6e48dfab-ce49-4458-9b01-391e085ee841",
+      "query": "TRAILLA Y ARNES L-XL",
+      "expected": "TRAILLA Y ARNES L-XL"
+    },
+    {
+      "id": "71b67c49-9175-4e05-a4d3-6cb49269d5e3",
+      "query": "TRAILLA ESTILO PARACAIDAS L",
+      "expected": "TRAILLA ESTILO PARACAIDAS L"
+    },
+    {
+      "id": "78cdc167-5b6d-4899-9d55-c6109ce6af0a",
+      "query": "TRAILLA ECONOMICAS",
+      "expected": "TRAILLA ECONOMICAS"
+    },
+    {
+      "id": "eb29f296-f17e-4cea-907d-fc46140178b0",
+      "query": "TRAILLA ESTILO PARACAIDAS XL",
+      "expected": "TRAILLA ESTILO PARACAIDAS XL"
+    },
+    {
+      "id": "f416b77e-77a2-40e1-b200-6f49cb43b68e",
+      "query": "TRAILLA TRENZADA",
+      "expected": "TRAILLA TRENZADA"
+    },
+    {
+      "id": "f4651b3b-a79f-45f4-bcd7-f8fbf9c4f835",
+      "query": "TRAILLA COLLAR TACTICO ANTITIRONES",
+      "expected": "TRAILLA COLLAR TACTICO ANTITIRONES"
+    },
+    {
+      "id": "04f7780b-88c3-418e-86f3-efa1efdf98c4",
+      "query": "HEEL COENZYME COMP",
+      "expected": "HEEL COENZYME COMP"
+    },
+    {
+      "id": "3def7f28-ffdb-4e6f-9b5d-2fd56ab222a9",
+      "query": "HEEL TRAUMELL UND",
+      "expected": "HEEL TRAUMELL UND"
+    },
+    {
+      "id": "91735510-a177-4418-9ac1-0225715d307d",
+      "query": "HEEL GASTRICUMEEL",
+      "expected": "HEEL GASTRICUMEEL"
+    },
+    {
+      "id": "c5e6012b-c384-463d-bc4f-591ab80fcf6e",
+      "query": "HEEL ENGYSTOL UND",
+      "expected": "HEEL ENGYSTOL UND"
+    },
+    {
+      "id": "eedcff02-f475-41c9-b7bc-c04da69fd2af",
+      "query": "HEEL SOLIDAGO",
+      "expected": "HEEL SOLIDAGO"
+    },
+    {
+      "id": "0505ae8c-32d8-46fa-8f7a-e2bd48c83ef2",
+      "query": "ROYAL CANIN URINAY CAT S/O",
+      "expected": "ROYAL CANIN URINAY CAT S/O"
+    },
+    {
+      "id": "06048d82-f0d0-4341-ad4b-d873347a5c66",
+      "query": "ROYAL CANIN URINARY S/O",
+      "expected": "ROYAL CANIN URINARY S/O"
+    },
+    {
+      "id": "0d77eee6-42be-4b38-8fb0-3259d67007be",
+      "query": "ROYAL CANIN DOG PUPY INDOOR",
+      "expected": "ROYAL CANIN DOG PUPY INDOOR"
+    },
+    {
+      "id": "0eeea2c1-83af-4354-9eb1-13bcf8f83ce2",
+      "query": "ROYAL CANIN FELINE STERILIZED",
+      "expected": "ROYAL CANIN FELINE STERILIZED"
+    },
+    {
+      "id": "1653f713-b691-4424-b853-ebf7b3ea4c6a",
+      "query": "ROYAL CANIN BEAUTY",
+      "expected": "ROYAL CANIN BEAUTY"
+    },
+    {
+      "id": "1b2baa12-4c7e-44ae-bf38-7679ba6de3af",
+      "query": "ROYAL CANIN CAT GASTROINTESTINAL",
+      "expected": "ROYAL CANIN CAT GASTROINTESTINAL"
+    },
+    {
+      "id": "35f8e9b5-1c3c-4dfb-b21d-d2ff68dc717e",
+      "query": "ROYAL CANIN PERSIAN ADULT",
+      "expected": "ROYAL CANIN PERSIAN ADULT"
+    },
+    {
+      "id": "6a973621-864e-44cb-a5f7-62e0e7059b93",
+      "query": "ROYAL CANIN LATA KITTEN LOAF",
+      "expected": "ROYAL CANIN LATA KITTEN LOAF"
+    },
+    {
+      "id": "6b1f4cb5-e4b4-4bf5-aa2a-f72e71ebea97",
+      "query": "ROYAL CANIN CAT RENAL",
+      "expected": "ROYAL CANIN CAT RENAL"
+    },
+    {
+      "id": "740aac9b-c7b5-44cd-81a5-ccdc956ab212",
+      "query": "ROYAL CANIN INDOOR",
+      "expected": "ROYAL CANIN INDOOR"
+    },
+    {
+      "id": "781332a4-21b7-4827-a8d5-383e8504daba",
+      "query": "ROYAL CANIN YORKSHIRE ADULT",
+      "expected": "ROYAL CANIN YORKSHIRE ADULT"
+    },
+    {
+      "id": "864ca5c6-38ad-4161-a25e-05b3ecb2b0fc",
+      "query": "ROYAL CANIN LATA BABY CAT TROCITOS",
+      "expected": "ROYAL CANIN LATA BABY CAT TROCITOS"
+    },
+    {
+      "id": "8e4abc47-4a11-4dc6-bfcb-2f85a851145f",
+      "query": "ROYAL CANIN DOG LATA GASTRO",
+      "expected": "ROYAL CANIN DOG LATA GASTRO"
+    },
+    {
+      "id": "96398068-65b7-4dad-b862-10682cfa0b78",
+      "query": "ROYAL CANIN PERSIAN KITTEN",
+      "expected": "ROYAL CANIN PERSIAN KITTEN"
+    },
+    {
+      "id": "9acc7e44-572f-499c-9f67-94d6ac3c75d2",
+      "query": "ROYAL CANIN MINI EXIGENT",
+      "expected": "ROYAL CANIN MINI EXIGENT"
+    },
+    {
+      "id": "c4aa439c-bc10-4d5e-b362-1270d3a9fad1",
+      "query": "ROYAL CANIN PUPPY LATS",
+      "expected": "ROYAL CANIN PUPPY LATS"
+    },
+    {
+      "id": "dd223b83-c8eb-4626-9d69-0357f2d9d51b",
+      "query": "ROYAL CANIN POMERANIAN ADULT",
+      "expected": "ROYAL CANIN POMERANIAN ADULT"
+    },
+    {
+      "id": "ea6a5cfb-3fb2-4607-b55c-a483b669a3ab",
+      "query": "ROYAL CANIN MINI ADULT",
+      "expected": "ROYAL CANIN MINI ADULT"
+    },
+    {
+      "id": "eb1de02c-66cd-43dc-a5a6-af60953600c0",
+      "query": "ROYAL CANIN KITTEN",
+      "expected": "ROYAL CANIN KITTEN"
+    },
+    {
+      "id": "eea49fc0-469d-4de1-bd66-5b6699ad21f0",
+      "query": "ROYAL CANIN URINAY",
+      "expected": "ROYAL CANIN URINAY"
+    },
+    {
+      "id": "fafca685-e8e2-4634-b205-9a0e371706e5",
+      "query": "ROYAL CANIN STERILIDED",
+      "expected": "ROYAL CANIN STERILIDED"
+    },
+    {
+      "id": "fb544563-b9a6-4190-96eb-10b7dd29ca04",
+      "query": "ROYAL CANIN EXIGENT",
+      "expected": "ROYAL CANIN EXIGENT"
+    },
+    {
+      "id": "0526a689-0dc5-4f60-a236-dbad91432a93",
+      "query": "RINGO CACHORRO",
+      "expected": "RINGO CACHORRO"
+    },
+    {
+      "id": "78cdf197-d40b-4158-b6db-1f9db613f643",
+      "query": "RINGO CROQUETAS",
+      "expected": "RINGO CROQUETAS"
+    },
+    {
+      "id": "c24e9349-8eb0-43cf-9dd6-6bfc7e2e3ee6",
+      "query": "RINGO PREMIUM CACHORRO",
+      "expected": "RINGO PREMIUM CACHORRO"
+    },
+    {
+      "id": "647d1d11-18a4-4379-b9e2-7a1340e6cede",
+      "query": "RINGO CREMA DE MANI",
+      "expected": "RINGO CREMA DE MANI"
+    },
+    {
+      "id": "7f40b822-5296-4c65-bed7-40db8ca26fdf",
+      "query": "RINGO VITALITY ADUL",
+      "expected": "RINGO VITALITY ADUL"
+    },
+    {
+      "id": "7f9b8157-7394-4792-b085-88111d643afc",
+      "query": "RINGO PREMIUN PRO",
+      "expected": "RINGO PREMIUN PRO"
+    },
+    {
+      "id": "9e43d4d2-c4d3-4049-817e-7f210c1fd88e",
+      "query": "RINGO PREMIUM",
+      "expected": "RINGO PREMIUM"
+    },
+    {
+      "id": "0573fc63-8d73-458f-832c-118157324ea0",
+      "query": "CAN AMOR SHAMPOO PIEL",
+      "expected": "CAN AMOR SHAMPOO PIEL"
+    },
+    {
+      "id": "20fe95af-7eec-4122-a9be-cccb19f71add",
+      "query": "CAN AMOR JABON DESODORANTE",
+      "expected": "CAN AMOR JABON DESODORANTE"
+    },
+    {
+      "id": "22329913-1ebe-4516-9594-aff4bf1251bb",
+      "query": "CAN AMOR PERFUME CANINO",
+      "expected": "CAN AMOR PERFUME CANINO"
+    },
+    {
+      "id": "4123b9f1-0569-4eb7-b310-f6505193f478",
+      "query": "CAN AMOR BAÑO ESPUMOSO",
+      "expected": "CAN AMOR BAÑO ESPUMOSO"
+    },
+    {
+      "id": "6df177b5-8791-4a91-b6b7-23b3e64b7b42",
+      "query": "CAN AMOR SHAMPOO PELO OSCURO",
+      "expected": "CAN AMOR SHAMPOO PELO OSCURO"
+    },
+    {
+      "id": "8d3adde2-0a9e-4fec-91da-75882b2fbf76",
+      "query": "CAN AMOR SHAMPOO RINSE",
+      "expected": "CAN AMOR SHAMPOO RINSE"
+    },
+    {
+      "id": "9c24e420-0729-444f-96ea-774f9129607b",
+      "query": "CAN AMOR SHAMPOO ARBOL DE TE",
+      "expected": "CAN AMOR SHAMPOO ARBOL DE TE"
+    },
+    {
+      "id": "a6fef464-44b1-4d60-af67-d0104c016867",
+      "query": "CAN AMOR PERFUME GATO",
+      "expected": "CAN AMOR PERFUME GATO"
+    },
+    {
+      "id": "adf5b040-b142-4d1b-a081-fee443afcfcb",
+      "query": "CAN AMOR SHAMPOO ANTIPUL",
+      "expected": "CAN AMOR SHAMPOO ANTIPUL"
+    },
+    {
+      "id": "b156ac55-ffd9-4716-9bcc-aa5dcd64abd2",
+      "query": "CAN AMOR TALCO INSECT",
+      "expected": "CAN AMOR TALCO INSECT"
+    },
+    {
+      "id": "cef04b59-64e4-4b74-b9ce-4051fe7b3d01",
+      "query": "CAN AMOR JABON ANTIPULGAS",
+      "expected": "CAN AMOR JABON ANTIPULGAS"
+    },
+    {
+      "id": "e1271989-9755-4009-ac38-609719384ecc",
+      "query": "CAN AMOR TALCO DESODO GATO",
+      "expected": "CAN AMOR TALCO DESODO GATO"
+    },
+    {
+      "id": "f3806200-02b5-401e-be71-e0013be76b7b",
+      "query": "CAN AMOR TALCO DESODO PERRO",
+      "expected": "CAN AMOR TALCO DESODO PERRO"
+    },
+    {
+      "id": "ffa62add-513e-4d2f-a682-16fdbe0ddfb3",
+      "query": "CAN AMOR SHAMPOO PELO LARGO",
+      "expected": "CAN AMOR SHAMPOO PELO LARGO"
+    },
+    {
+      "id": "05a01439-34a8-41f1-a821-d4aaf27a6d9f",
+      "query": "RECARGA BOMBONERA DELIDOG BONE",
+      "expected": "RECARGA BOMBONERA DELIDOG BONE"
+    },
+    {
+      "id": "678a1773-d142-4f07-9c6c-ac4191968036",
+      "query": "RECARGA BOMBONERA DELIDOG DENT KG",
+      "expected": "RECARGA BOMBONERA DELIDOG DENT KG"
+    },
+    {
+      "id": "f7f94cdd-7c35-41a4-a9be-f6785e7a1ecb",
+      "query": "RECARGA BOMBONERA DELIDOG MIX KG",
+      "expected": "RECARGA BOMBONERA DELIDOG MIX KG"
+    },
+    {
+      "id": "05a259e9-a4bf-4e00-b03e-5888bf16d520",
+      "query": "TAPETE X UND",
+      "expected": "TAPETE X UND"
+    },
+    {
+      "id": "168b8528-1ba5-41f3-9261-f84c29f01f20",
+      "query": "TAPETE PETYS",
+      "expected": "TAPETE PETYS"
+    },
+    {
+      "id": "462e3340-452c-4dc5-90db-93d26159c1d2",
+      "query": "TAPETE PETYS MEDIANO",
+      "expected": "TAPETE PETYS MEDIANO"
+    },
+    {
+      "id": "56f9f882-8b08-4fb1-8203-7f19f311f89f",
+      "query": "TAPETE PETYS EXTRA GRANDE 30",
+      "expected": "TAPETE PETYS EXTRA GRANDE 30"
+    },
+    {
+      "id": "d80eb25e-6dee-416c-bd97-52d9f4dffc3e",
+      "query": "TAPETE PETYS PQÑ",
+      "expected": "TAPETE PETYS PQÑ"
+    },
+    {
+      "id": "05b72f53-ab54-4b0e-85f9-ff84874230f7",
+      "query": "GIMNACIO 2 RASCADORES",
+      "expected": "GIMNACIO 2 RASCADORES"
+    },
+    {
+      "id": "05e4accc-23cf-4aa1-9fd9-4b341700ddd8",
+      "query": "CHURUS SKIN",
+      "expected": "CHURUS SKIN"
+    },
+    {
+      "id": "05ecb3c2-605b-47da-b556-fe1d9dd25b4c",
+      "query": "TASTE PACIFIC PUPPY",
+      "expected": "TASTE PACIFIC PUPPY"
+    },
+    {
+      "id": "06517fa2-f3d0-4f2f-bba9-471fd43d9e08",
+      "query": "TASTE HUMEDO PERRO",
+      "expected": "TASTE HUMEDO PERRO"
+    },
+    {
+      "id": "247c934d-c8a2-49b3-8572-38cf7faa5d3c",
+      "query": "TASTE LOWLAND PATO FELINE 14B",
+      "expected": "TASTE LOWLAND PATO FELINE 14B"
+    },
+    {
+      "id": "4f64b168-b36d-4488-825a-9c81bcd080c4",
+      "query": "TASTE PATO",
+      "expected": "TASTE PATO"
+    },
+    {
+      "id": "05eff817-4b97-403d-a0af-3cdcadbef027",
+      "query": "NICILAN",
+      "expected": "NICILAN"
+    },
+    {
+      "id": "067a1c55-e9da-4a3e-921f-4e7e35a13306",
+      "query": "REPTOMIN TORTUGAS",
+      "expected": "REPTOMIN TORTUGAS"
+    },
+    {
+      "id": "068443b9-64d2-42da-af44-333211f04a9c",
+      "query": "ENDOGARD 30 X UND",
+      "expected": "ENDOGARD 30 X UND"
+    },
+    {
+      "id": "c020c2a6-551e-455f-b5c5-d7044d74b223",
+      "query": "ENDOGARD 10 X UND",
+      "expected": "ENDOGARD 10 X UND"
+    },
+    {
+      "id": "06dce5d6-102f-43e8-8862-f96cdc640c01",
+      "query": "ZEEL",
+      "expected": "ZEEL"
+    },
+    {
+      "id": "07818779-4d74-495e-9f2f-534b98711339",
+      "query": "BIH CANAV PLUS FREE",
+      "expected": "BIH CANAV PLUS FREE"
+    },
+    {
+      "id": "b95e1329-dee1-44ea-9249-beddc59c9610",
+      "query": "BIH NEP-VET BIHOV",
+      "expected": "BIH NEP-VET BIHOV"
+    },
+    {
+      "id": "bfd00da2-0c22-435f-a691-4e223626807a",
+      "query": "BIH GASTROPRAZOL",
+      "expected": "BIH GASTROPRAZOL"
+    },
+    {
+      "id": "07824edb-13c5-486a-8cf5-795e087681b9",
+      "query": "GATSY PESCADO",
+      "expected": "GATSY PESCADO"
+    },
+    {
+      "id": "13356c70-ad1c-47f1-8010-1894c91a4e8f",
+      "query": "GATSY PESCADO PAG 15 LLLE",
+      "expected": "GATSY PESCADO PAG 15 LLLE"
+    },
+    {
+      "id": "182ca498-7e5b-4f48-a82c-4cbad2b403c6",
+      "query": "GATSY CARNE X 17 PAG",
+      "expected": "GATSY CARNE X 17 PAG"
+    },
+    {
+      "id": "68a9459b-4400-4ae6-9440-96263aeaf8a4",
+      "query": "GATSY A GRANEL",
+      "expected": "GATSY A GRANEL"
+    },
+    {
+      "id": "f6649e23-3cf5-462a-a431-d8f30213fb22",
+      "query": "GATSY CARNE",
+      "expected": "GATSY CARNE"
+    },
+    {
+      "id": "07b21de7-fbfc-451f-9772-6f8f2114095a",
+      "query": "C-THYRO-TABS",
+      "expected": "C-THYRO-TABS"
+    },
+    {
+      "id": "07c854c3-f469-4d39-acff-e7ccfecc4574",
+      "query": "MONELLO CAT FILHOTES",
+      "expected": "MONELLO CAT FILHOTES"
+    },
+    {
+      "id": "19abcd28-2d86-4bf0-aeb1-42c4cb902c84",
+      "query": "MONELLO DOG FILHOTES",
+      "expected": "MONELLO DOG FILHOTES"
+    },
+    {
+      "id": "24ce46c9-5294-4f11-9887-42f19297d861",
+      "query": "MONELLO DOG RZ PEQ",
+      "expected": "MONELLO DOG RZ PEQ"
+    },
+    {
+      "id": "531dda80-314c-4095-aaac-057b92681c06",
+      "query": "MONELLO DOG PUPYY",
+      "expected": "MONELLO DOG PUPYY"
+    },
+    {
+      "id": "5a368bd3-dd1c-4587-958d-98f1020c5c7f",
+      "query": "MONELLO BOLAS DE PELOS",
+      "expected": "MONELLO BOLAS DE PELOS"
+    },
+    {
+      "id": "9b9b78dc-4530-4c56-9d33-c34bf35e484b",
+      "query": "MONELLO DOG RP ADULTO",
+      "expected": "MONELLO DOG RP ADULTO"
+    },
+    {
+      "id": "af94598b-1d5c-45cc-8cba-2b1c57f5ae5c",
+      "query": "MONELLO SELECT ADUL R:MED GRANDE",
+      "expected": "MONELLO SELECT ADUL R:MED GRANDE"
+    },
+    {
+      "id": "c0b10c29-7112-4e6b-8ed0-e64e684809e3",
+      "query": "MONELLO CAT CASTRADO",
+      "expected": "MONELLO CAT CASTRADO"
+    },
+    {
+      "id": "c2a11991-4bb0-4607-9bae-614859e36640",
+      "query": "MONELLO CAT SALMON",
+      "expected": "MONELLO CAT SALMON"
+    },
+    {
+      "id": "fb2180fc-412b-4df8-9108-0660dbeb5de7",
+      "query": "MONELLO DOG TRADICIONAL",
+      "expected": "MONELLO DOG TRADICIONAL"
+    },
+    {
+      "id": "07f95a32-4d74-450d-89db-192c03ff96b9",
+      "query": "REVOLUTION 6% ROSADO MENOR A",
+      "expected": "REVOLUTION 6% ROSADO MENOR A"
+    },
+    {
+      "id": "5040f50c-9bcb-4978-b403-9339989d8bda",
+      "query": "REVOLUTION 6% AZUL GATO",
+      "expected": "REVOLUTION 6% AZUL GATO"
+    },
+    {
+      "id": "6926493e-8aa7-4084-bdf1-37ff6d84915b",
+      "query": "REVOLUTION 12% LILA",
+      "expected": "REVOLUTION 12% LILA"
+    },
+    {
+      "id": "a5cbdcf1-60b9-4d6d-ac0c-85a864c47ba0",
+      "query": "REVOLUTION 12% CAFE",
+      "expected": "REVOLUTION 12% CAFE"
+    },
+    {
+      "id": "e5ba2c75-3eb7-4416-a405-9d4791c5c875",
+      "query": "REVOLUTION 0.25ML",
+      "expected": "REVOLUTION 0.25ML"
+    },
+    {
+      "id": "08e745b3-07b7-4340-a563-c5743a239fa6",
+      "query": "FINCU GEL",
+      "expected": "FINCU GEL"
+    },
+    {
+      "id": "09251a46-adf7-4782-aa6b-49f05e0ea75e",
+      "query": "JERINGA",
+      "expected": "JERINGA"
+    },
+    {
+      "id": "09edfd4a-7188-40cc-bb52-4e9763a2cc07",
+      "query": "BOZAL CAUCHO #1",
+      "expected": "BOZAL CAUCHO #1"
+    },
+    {
+      "id": "1f456cf8-57ad-4b7b-a5ab-343349bacf2a",
+      "query": "BOZAL CAUCHO # 3 #2",
+      "expected": "BOZAL CAUCHO # 3 #2"
+    },
+    {
+      "id": "75cf889b-6d1d-4839-b3d5-800bd11e1b75",
+      "query": "BOZAL CAUCHO # 4-5",
+      "expected": "BOZAL CAUCHO # 4-5"
+    },
+    {
+      "id": "89b3bd66-23fa-4602-a74a-60d1d6044d01",
+      "query": "BOZAL REGILLA",
+      "expected": "BOZAL REGILLA"
+    },
+    {
+      "id": "9643ad9a-6b72-4732-85e6-9c98f201b071",
+      "query": "BOZAL TIPO CANASTILLA ACERO INOXIDABLE XL",
+      "expected": "BOZAL TIPO CANASTILLA ACERO INOXIDABLE XL"
+    },
+    {
+      "id": "aa500441-3658-4dff-bebb-f48ee4f8745a",
+      "query": "BOZAL TIPO CANASTILLA ACERO INOXIDABLE M-L",
+      "expected": "BOZAL TIPO CANASTILLA ACERO INOXIDABLE M-L"
+    },
+    {
+      "id": "b250229a-045f-47af-9d07-2319ee22e21d",
+      "query": "BOZAL PLASTICO #7",
+      "expected": "BOZAL PLASTICO #7"
+    },
+    {
+      "id": "09f3a923-a084-48bb-85e7-4163be6de86b",
+      "query": "TOMMY CATS CASTRADO",
+      "expected": "TOMMY CATS CASTRADO"
+    },
+    {
+      "id": "61ec76f6-db5f-4c20-ac71-386def1d5592",
+      "query": "TOMMY POUCH CAT",
+      "expected": "TOMMY POUCH CAT"
+    },
+    {
+      "id": "95883db0-1129-4cd8-9d78-923e56ff9d3c",
+      "query": "TOMMY POUCH PERRO",
+      "expected": "TOMMY POUCH PERRO"
+    },
+    {
+      "id": "0abac5ad-fba7-44b1-8430-2ed3e8008a3d",
+      "query": "ENTERO CHORONIC",
+      "expected": "ENTERO CHORONIC"
+    },
+    {
+      "id": "0f197522-0955-4873-a663-7ed2651559b7",
+      "query": "VIRBAC CAT UROLOGY 1",
+      "expected": "VIRBAC CAT UROLOGY 1"
+    },
+    {
+      "id": "1d2250b4-67e8-40c5-a692-def8d49e0d5b",
+      "query": "VIRBAC DOG DIGESTIVE",
+      "expected": "VIRBAC DOG DIGESTIVE"
+    },
+    {
+      "id": "2b4fa911-6ae7-4c32-ad8e-1c065face6fe",
+      "query": "VIRBAC KIDNEY JOINT 2",
+      "expected": "VIRBAC KIDNEY JOINT 2"
+    },
+    {
+      "id": "4a53b7d4-e2a1-47ff-b118-a6f46e6e9851",
+      "query": "VIRBAC ADUL CAT",
+      "expected": "VIRBAC ADUL CAT"
+    },
+    {
+      "id": "590da138-26c9-482a-9cb0-1deed63a2bf3",
+      "query": "VIRBAC CAT GASTRO 1",
+      "expected": "VIRBAC CAT GASTRO 1"
+    },
+    {
+      "id": "6fd96dd5-7d3c-4121-9193-40890b2a7e0b",
+      "query": "VIRBAC CAT WEIGHT DIABETES 1",
+      "expected": "VIRBAC CAT WEIGHT DIABETES 1"
+    },
+    {
+      "id": "8e70c23c-2c06-41a4-b21e-d3ec1912034b",
+      "query": "VIRBAC DOG SENIOR",
+      "expected": "VIRBAC DOG SENIOR"
+    },
+    {
+      "id": "b5381d38-0f0b-42e0-873a-1891d1b481d1",
+      "query": "VIRBAC ADULT SMALL",
+      "expected": "VIRBAC ADULT SMALL"
+    },
+    {
+      "id": "b8c7de69-466e-4b65-bc2b-3133c8dcb34a",
+      "query": "VIRBAC CAT ADULT SALMON",
+      "expected": "VIRBAC CAT ADULT SALMON"
+    },
+    {
+      "id": "c5d2cf9a-2ef7-4fbf-810c-fe2d6ae0ba42",
+      "query": "VIRBAC CAT WEIGTH 2",
+      "expected": "VIRBAC CAT WEIGTH 2"
+    },
+    {
+      "id": "ca8fe887-e2f8-4d7b-ac7b-1eec441ae5c6",
+      "query": "VIRBAC DOG WIGHT2",
+      "expected": "VIRBAC DOG WIGHT2"
+    },
+    {
+      "id": "d1398f81-c855-4495-bbca-92648f71dee3",
+      "query": "VIRBAC SENIOR CAT",
+      "expected": "VIRBAC SENIOR CAT"
+    },
+    {
+      "id": "d4765997-a923-40f7-bd5c-562ab26a2d10",
+      "query": "VIRBAC UROLOGY 2",
+      "expected": "VIRBAC UROLOGY 2"
+    },
+    {
+      "id": "e11c8f1d-309b-4323-b999-37480617e7a3",
+      "query": "VIRBAC WEIGHT 1",
+      "expected": "VIRBAC WEIGHT 1"
+    },
+    {
+      "id": "0b88874a-fa5f-4f43-9030-b3c62ed0368d",
+      "query": "SNACK TOMMY CAT SENSITIVE",
+      "expected": "SNACK TOMMY CAT SENSITIVE"
+    },
+    {
+      "id": "3980bbb5-531b-4c59-a4ad-6f0341b2e643",
+      "query": "SNACK TOMMY CAT SKIN COT",
+      "expected": "SNACK TOMMY CAT SKIN COT"
+    },
+    {
+      "id": "6372f779-11fd-4caa-ac01-5c096c9c8a04",
+      "query": "SNACK TOMMY CAT DENTAL",
+      "expected": "SNACK TOMMY CAT DENTAL"
+    },
+    {
+      "id": "a413a143-38d5-40ae-8ce5-0d06a911a38a",
+      "query": "SNACK FRUITABLES",
+      "expected": "SNACK FRUITABLES"
+    },
+    {
+      "id": "facb481c-9ee4-44dd-8678-4499ed9ceb81",
+      "query": "SNACK PREMIO HAIRBALL",
+      "expected": "SNACK PREMIO HAIRBALL"
+    },
+    {
+      "id": "0ba2d1df-ac0f-4f12-bc45-ff039205a19c",
+      "query": "AZIMELO",
+      "expected": "AZIMELO"
+    },
+    {
+      "id": "0bd46bbb-a749-49ed-9f3f-5bc3e8a125c5",
+      "query": "BOLFO POLVO",
+      "expected": "BOLFO POLVO"
+    },
+    {
+      "id": "1bbb4ade-b964-4770-a469-65515ccb0676",
+      "query": "BOLFO SHAMPOO",
+      "expected": "BOLFO SHAMPOO"
+    },
+    {
+      "id": "e90d8d2c-af7a-4b07-a2fe-4954938567b4",
+      "query": "BOLFO POLVO SOBRE",
+      "expected": "BOLFO POLVO SOBRE"
+    },
+    {
+      "id": "0cd6f7c2-0186-4bc3-ae7e-88d8fcd47c52",
+      "query": "AGILITY PEQ CACH",
+      "expected": "AGILITY PEQ CACH"
+    },
+    {
+      "id": "24eff518-2ad4-485e-88e5-edde61550e18",
+      "query": "AGILITY SNAKS PREMIO",
+      "expected": "AGILITY SNAKS PREMIO"
+    },
+    {
+      "id": "2c26a2b8-fc1c-4739-828a-fa65c491ac28",
+      "query": "AGILITY GATITO",
+      "expected": "AGILITY GATITO"
+    },
+    {
+      "id": "4128b96d-b89a-4189-a9f3-cac359cd35e4",
+      "query": "AGILITY GRAND CACH",
+      "expected": "AGILITY GRAND CACH"
+    },
+    {
+      "id": "439a4c7c-f395-42f8-88b2-d85e8aa14087",
+      "query": "AGILITY POUCH CACH",
+      "expected": "AGILITY POUCH CACH"
+    },
+    {
+      "id": "a1c83764-e0ee-4910-8e1d-ccc5734778f9",
+      "query": "AGILITY GRAND ADUL",
+      "expected": "AGILITY GRAND ADUL"
+    },
+    {
+      "id": "53f3d36b-441e-4d44-825f-618e06779d39",
+      "query": "AGILITY POUCH *100 PAG 3*4",
+      "expected": "AGILITY POUCH *100 PAG 3*4"
+    },
+    {
+      "id": "5c1b4964-fccf-4b99-9f21-5dde9d04a994",
+      "query": "AGILITY ESTERILIZADOS",
+      "expected": "AGILITY ESTERILIZADOS"
+    },
+    {
+      "id": "67c997ae-00ae-4abf-bc45-2621e77ae846",
+      "query": "AGILITY OBESOS",
+      "expected": "AGILITY OBESOS"
+    },
+    {
+      "id": "7b9666f2-4887-40e1-904d-0a70e26b6785",
+      "query": "AGILITY EN LATA PERRO",
+      "expected": "AGILITY EN LATA PERRO"
+    },
+    {
+      "id": "95186a15-c23b-4809-84a7-289d4bf74b2a",
+      "query": "AGILITY GATO ESTERILIZADO",
+      "expected": "AGILITY GATO ESTERILIZADO"
+    },
+    {
+      "id": "e87e2b5c-8d75-4917-9e3c-8215dc49ca6e",
+      "query": "AGILITY PEQ ADUL",
+      "expected": "AGILITY PEQ ADUL"
+    },
+    {
+      "id": "b5c9fa23-c9e3-4d1f-9770-ab6056de66c6",
+      "query": "AGILITY EN GATO",
+      "expected": "AGILITY EN GATO"
+    },
+    {
+      "id": "ba1cc66f-ee23-4bde-ac49-1c42b8ef69f0",
+      "query": "AGILITY POUCH ADUL",
+      "expected": "AGILITY POUCH ADUL"
+    },
+    {
+      "id": "cce8eb88-4915-4a8e-980f-035489b7bbaa",
+      "query": "AGILITY GATO AD",
+      "expected": "AGILITY GATO AD"
+    },
+    {
+      "id": "d55a84c2-fc6e-415c-8560-48e97fa8d09b",
+      "query": "AGILITY CAT PREMIOS",
+      "expected": "AGILITY CAT PREMIOS"
+    },
+    {
+      "id": "d8696d07-88f1-42a5-9025-4c393b40dd9a",
+      "query": "AGILITY GRAND ADUL PIEL",
+      "expected": "AGILITY GRAND ADUL PIEL"
+    },
+    {
+      "id": "e7563d91-15d7-49b5-b343-d8f3d1166341",
+      "query": "AGILITY PERROS PREMIO",
+      "expected": "AGILITY PERROS PREMIO"
+    },
+    {
+      "id": "ffc426e4-907f-4bc2-a6e0-1c07b4109b70",
+      "query": "AGILITY PEQ ADUL PIEL",
+      "expected": "AGILITY PEQ ADUL PIEL"
+    },
+    {
+      "id": "0d46686a-a25b-4ad1-b41f-b59d483ec8fd",
+      "query": "JUGUETE MASCOTAS",
+      "expected": "JUGUETE MASCOTAS"
+    },
+    {
+      "id": "3d21a9db-c5c5-4a7e-817e-0ebd510c6935",
+      "query": "JUGUETE PARA MOSCOTA MO-P05 M0-P04",
+      "expected": "JUGUETE PARA MOSCOTA MO-P05 M0-P04"
+    },
+    {
+      "id": "40e5fb71-e8be-4be4-bab2-67f9cce4df6a",
+      "query": "JUGUETE ALGODON",
+      "expected": "JUGUETE ALGODON"
+    },
+    {
+      "id": "48680f61-0bfd-4027-af36-0918a1a3f1c0",
+      "query": "JUGUETE POLLO CON SONIDO 39CM",
+      "expected": "JUGUETE POLLO CON SONIDO 39CM"
+    },
+    {
+      "id": "6502b21f-6989-4b29-b785-74ea5682514c",
+      "query": "JUGUETE HUESO CHILLON",
+      "expected": "JUGUETE HUESO CHILLON"
+    },
+    {
+      "id": "6bd615e0-d6d6-4846-b854-27521258cc7c",
+      "query": "JUGUETE PELOTA MACIZA GRANDE",
+      "expected": "JUGUETE PELOTA MACIZA GRANDE"
+    },
+    {
+      "id": "742530e1-4cc0-48ea-bbf2-7ff653db9931",
+      "query": "JUGUETE PELOTA CHILLON",
+      "expected": "JUGUETE PELOTA CHILLON"
+    },
+    {
+      "id": "83dc0194-df04-4f65-bef0-55eb67040938",
+      "query": "JUGUETE 24",
+      "expected": "JUGUETE 24"
+    },
+    {
+      "id": "99efb21c-3a6e-4412-824c-092dc2ccc522",
+      "query": "JUGUETE MASCOTAS EDG-175",
+      "expected": "JUGUETE MASCOTAS EDG-175"
+    },
+    {
+      "id": "d869b81d-e74f-4e9a-b50a-547da2a82d82",
+      "query": "JUGUETE ORUGA MOVIMIENTO",
+      "expected": "JUGUETE ORUGA MOVIMIENTO"
+    },
+    {
+      "id": "f9ebab25-d43b-49a9-89b8-3cb307b36890",
+      "query": "JUGUETE LAZO PELOTA S",
+      "expected": "JUGUETE LAZO PELOTA S"
+    },
+    {
+      "id": "0d4aef52-6490-4168-8f81-7ec53f215247",
+      "query": "OFTALMOSYN",
+      "expected": "OFTALMOSYN"
+    },
+    {
+      "id": "0d64d282-9d35-4ddc-99c5-b04bb8496f90",
+      "query": "CREDELIO PLUS 11KG A 22KG",
+      "expected": "CREDELIO PLUS 11KG A 22KG"
+    },
+    {
+      "id": "9e66cc58-47b1-40fe-ac3f-e1a2985066e2",
+      "query": "CREDELIO",
+      "expected": "CREDELIO"
+    },
+    {
+      "id": "bb5d6e8a-0b73-4c91-875a-d3ecfc9172cf",
+      "query": "CREDELIO PLUS 2.8KG 5.5KG",
+      "expected": "CREDELIO PLUS 2.8KG 5.5KG"
+    },
+    {
+      "id": "0dd2d64e-2769-4b20-9388-97b88c48a72b",
+      "query": "VETSOLUTION CAT GASTROINTES",
+      "expected": "VETSOLUTION CAT GASTROINTES"
+    },
+    {
+      "id": "37f48acd-e027-42bb-bab2-8461ce280242",
+      "query": "VETSOLUTION DOG RECOVERY",
+      "expected": "VETSOLUTION DOG RECOVERY"
+    },
+    {
+      "id": "44ad4e9d-24e5-4457-99d1-26f0013ddaee",
+      "query": "VETSOLUTION CAT RECOVERY",
+      "expected": "VETSOLUTION CAT RECOVERY"
+    },
+    {
+      "id": "4fc47d0b-4d7b-4bc2-8a81-ebd440b0f910",
+      "query": "VETSOLUTION CAT RENAL",
+      "expected": "VETSOLUTION CAT RENAL"
+    },
+    {
+      "id": "ad418b0f-17fd-4484-bf06-ca9b7310edd8",
+      "query": "VETSOLUTION CAT URINARY",
+      "expected": "VETSOLUTION CAT URINARY"
+    },
+    {
+      "id": "b6b6628f-e344-4d3b-b544-9b42e6b067e0",
+      "query": "VETSOLUTION CANINE RENAL",
+      "expected": "VETSOLUTION CANINE RENAL"
+    },
+    {
+      "id": "0e8a30fa-253f-4110-935f-dd1f0b2d91fa",
+      "query": "CAT CHOW GATITOS *",
+      "expected": "CAT CHOW GATITOS *"
+    },
+    {
+      "id": "166c983e-a49a-42fc-94df-2a6dd0fe4f6a",
+      "query": "CAT CHOW CARNE",
+      "expected": "CAT CHOW CARNE"
+    },
+    {
+      "id": "4bc0d61e-f309-4fd2-80e0-3a7a8ab55bb2",
+      "query": "CAT CHOW PESCADO",
+      "expected": "CAT CHOW PESCADO"
+    },
+    {
+      "id": "5d377638-db18-493f-9639-dea831ad100d",
+      "query": "CAT CHOW A GRANEL",
+      "expected": "CAT CHOW A GRANEL"
+    },
+    {
+      "id": "7c2a19ad-f9e4-44eb-8cc8-be747f7b457c",
+      "query": "CAT CHOW DELIMIX",
+      "expected": "CAT CHOW DELIMIX"
+    },
+    {
+      "id": "8b2c7eab-462c-4265-9440-72fbb3ecf3d7",
+      "query": "CAT CHOW ESTERELIZADO",
+      "expected": "CAT CHOW ESTERELIZADO"
+    },
+    {
+      "id": "a9c84c8b-ed3a-44bf-be59-3095f8f73efa",
+      "query": "CAT CHOW DELICARNE",
+      "expected": "CAT CHOW DELICARNE"
+    },
+    {
+      "id": "c27c5a7e-2bf4-40c4-88c6-59096210fe4e",
+      "query": "CAT CHOW VIDA SANA",
+      "expected": "CAT CHOW VIDA SANA"
+    },
+    {
+      "id": "eeaba178-da68-4f65-8d5b-790f6d77f8d6",
+      "query": "CAT CHOW VIDA SANA 1.3 PAG",
+      "expected": "CAT CHOW VIDA SANA 1.3 PAG"
+    },
+    {
+      "id": "0eb26ecb-fb82-4fb1-8806-a7498488a0d0",
+      "query": "ORENDA SOLUCION OTICA",
+      "expected": "ORENDA SOLUCION OTICA"
+    },
+    {
+      "id": "889ee946-ead3-4139-97e2-b2822faf8cb5",
+      "query": "ORENDA CREMA",
+      "expected": "ORENDA CREMA"
+    },
+    {
+      "id": "963b9093-b70f-4cab-838b-fd11859e1c84",
+      "query": "ORENDA PAW BALSAMO",
+      "expected": "ORENDA PAW BALSAMO"
+    },
+    {
+      "id": "0f0a8f92-94a3-4afb-a252-dfdcd139440e",
+      "query": "ALERNEX",
+      "expected": "ALERNEX"
+    },
+    {
+      "id": "0f64c472-046a-45eb-9642-16572d656197",
+      "query": "ARENA KING CAT",
+      "expected": "ARENA KING CAT"
+    },
+    {
+      "id": "0fbb9839-f4e1-4b92-ab6a-4cd7e22c8c3c",
+      "query": "HUESO 2-3",
+      "expected": "HUESO 2-3"
+    },
+    {
+      "id": "155560e3-8cc0-4250-b938-6981fad290f6",
+      "query": "HUESO 10-11",
+      "expected": "HUESO 10-11"
+    },
+    {
+      "id": "1f94fef2-76cf-4370-8efa-f2558e777111",
+      "query": "HUESO 15-17",
+      "expected": "HUESO 15-17"
+    },
+    {
+      "id": "52990f9a-6614-4118-ae2a-057aa7e4cff9",
+      "query": "HUESO 4-5",
+      "expected": "HUESO 4-5"
+    },
+    {
+      "id": "5d80d370-f1dc-4f84-aedc-c01fb090b953",
+      "query": "HUESO 6-7",
+      "expected": "HUESO 6-7"
+    },
+    {
+      "id": "a92d94aa-1b66-4776-9ffc-ad44bd5df844",
+      "query": "HUESO 8-9",
+      "expected": "HUESO 8-9"
+    },
+    {
+      "id": "bbb1a9a7-0994-40c1-827a-1be5cf03c6f4",
+      "query": "HUESO 5-6",
+      "expected": "HUESO 5-6"
+    },
+    {
+      "id": "de92e58f-d123-4637-953e-96141118ff96",
+      "query": "HUESO 3-4",
+      "expected": "HUESO 3-4"
+    },
+    {
+      "id": "0fd169f1-89a6-4ff7-9e1c-da0e60d6fa60",
+      "query": "PALA CARA DE GATO",
+      "expected": "PALA CARA DE GATO"
+    },
+    {
+      "id": "1b67cd47-a8f2-4aef-8980-3f39e9cb26d8",
+      "query": "PALA PREMIUM GATO",
+      "expected": "PALA PREMIUM GATO"
+    },
+    {
+      "id": "0ffa9f86-9a5a-4a84-ad43-50934e00912f",
+      "query": "CADENA FINCA #8",
+      "expected": "CADENA FINCA #8"
+    },
+    {
+      "id": "3539ec18-21d9-46a7-a3d5-18045b3b11f6",
+      "query": "CADENA #12",
+      "expected": "CADENA #12"
+    },
+    {
+      "id": "7617ebdd-ca79-464d-8793-33f15e7bae4d",
+      "query": "CADENA #14",
+      "expected": "CADENA #14"
+    },
+    {
+      "id": "7bac576e-3a39-4122-9eb1-6f32b186e2b8",
+      "query": "CADENA FINCA #10",
+      "expected": "CADENA FINCA #10"
+    },
+    {
+      "id": "11654961-bdc2-4f20-966e-70e384be02d1",
+      "query": "PED POUCHE",
+      "expected": "PED POUCHE"
+    },
+    {
+      "id": "90e18cca-817c-46fd-9b59-56566f2adbd5",
+      "query": "PED ADULT RP",
+      "expected": "PED ADULT RP"
+    },
+    {
+      "id": "b935ae77-0b3a-4ebf-8bde-6a2c79706000",
+      "query": "PED ADUL R.P A GRANEL",
+      "expected": "PED ADUL R.P A GRANEL"
+    },
+    {
+      "id": "e9bab45f-1cee-471c-b714-b597f15caf41",
+      "query": "PED POUCHE ADUL RP POLLO",
+      "expected": "PED POUCHE ADUL RP POLLO"
+    },
+    {
+      "id": "11c98d92-c1b1-4cab-9676-cfd8e0d120a8",
+      "query": "NUPEC DIGESTIVE CARE",
+      "expected": "NUPEC DIGESTIVE CARE"
+    },
+    {
+      "id": "9409b7e3-cb00-43e5-9ca9-771d7fcde643",
+      "query": "NUPEC TREATS JOINT CARE",
+      "expected": "NUPEC TREATS JOINT CARE"
+    },
+    {
+      "id": "d149e6fe-f37a-4361-8091-4b361b54abf4",
+      "query": "NUPEC RELA",
+      "expected": "NUPEC RELA"
+    },
+    {
+      "id": "e5db0495-d3ad-472d-8e48-54b7f70d556a",
+      "query": "NUPEC DENTAL CARE",
+      "expected": "NUPEC DENTAL CARE"
+    },
+    {
+      "id": "1277a1f0-8a36-445f-aab9-e26414c6eabc",
+      "query": "PRO PLAN ADULT SMALL SENSITIVE SKIN",
+      "expected": "PRO PLAN ADULT SMALL SENSITIVE SKIN"
+    },
+    {
+      "id": "2fdde1a0-357a-40a1-8e93-699f1d2a96d4",
+      "query": "PRO PLAN CANINE NF",
+      "expected": "PRO PLAN CANINE NF"
+    },
+    {
+      "id": "3081f187-df5f-433b-9729-702e81ca1a4f",
+      "query": "PRO PLAN POUCH FELINO ESTERELIZADOS",
+      "expected": "PRO PLAN POUCH FELINO ESTERELIZADOS"
+    },
+    {
+      "id": "38fbf049-d4c4-43c4-aef2-a8da499d11fa",
+      "query": "PRO PLAN CANINE LATA UR",
+      "expected": "PRO PLAN CANINE LATA UR"
+    },
+    {
+      "id": "4d75980f-c69e-4fc1-bd00-3f1a9d7160ec",
+      "query": "PRO PLAN FELINE LATA UR",
+      "expected": "PRO PLAN FELINE LATA UR"
+    },
+    {
+      "id": "62623289-815b-489a-a2f0-09d670c7fba7",
+      "query": "PRO PLAN CANINE LATA NF",
+      "expected": "PRO PLAN CANINE LATA NF"
+    },
+    {
+      "id": "63c5bf10-2b32-4ea4-883e-bdbcdde1ae33",
+      "query": "PRO PLAN CAT URINARY",
+      "expected": "PRO PLAN CAT URINARY"
+    },
+    {
+      "id": "6c1d4eea-bf35-4d7f-8e4b-e9e075b03666",
+      "query": "PRO PLAN CANINE OM",
+      "expected": "PRO PLAN CANINE OM"
+    },
+    {
+      "id": "71796897-f838-4909-929c-9673737d87d1",
+      "query": "PRO PLAN GATO NF RENAL",
+      "expected": "PRO PLAN GATO NF RENAL"
+    },
+    {
+      "id": "86fcfc4b-da28-4eb8-a4cb-59ef793e721e",
+      "query": "PRO PLAN POUCH FELINO ADULT",
+      "expected": "PRO PLAN POUCH FELINO ADULT"
+    },
+    {
+      "id": "88f0e32f-e1e7-4791-b9fe-eb791ed502d0",
+      "query": "PRO PLAN SENSITIVE SKIN",
+      "expected": "PRO PLAN SENSITIVE SKIN"
+    },
+    {
+      "id": "8f046478-8161-4273-bf42-72b9716a3eeb",
+      "query": "PRO PLAN POUCH FELINO KITTEN",
+      "expected": "PRO PLAN POUCH FELINO KITTEN"
+    },
+    {
+      "id": "900230bf-4cf5-4522-afb6-739f0275909f",
+      "query": "PRO PLAN CANINE UR",
+      "expected": "PRO PLAN CANINE UR"
+    },
+    {
+      "id": "a005bf0e-0675-4925-a30c-85edbde54f34",
+      "query": "PRO PLAN POUCH CANINO ADULT",
+      "expected": "PRO PLAN POUCH CANINO ADULT"
+    },
+    {
+      "id": "a31c63de-3c9b-4f14-8d81-b0915dc36573",
+      "query": "PRO PLAN GATO ADULT",
+      "expected": "PRO PLAN GATO ADULT"
+    },
+    {
+      "id": "a830fe59-9f01-469d-a229-2a4487b8bbde",
+      "query": "PRO PLAN GATO STERILIZED",
+      "expected": "PRO PLAN GATO STERILIZED"
+    },
+    {
+      "id": "b2b20116-6840-4bb1-a08c-70b3f474378e",
+      "query": "PRO PLAN FELINE OM",
+      "expected": "PRO PLAN FELINE OM"
+    },
+    {
+      "id": "be9af4aa-c86e-4794-b423-c16443cb9622",
+      "query": "PRO PLAN CANINE EN",
+      "expected": "PRO PLAN CANINE EN"
+    },
+    {
+      "id": "c6ba8daa-edf2-452e-875d-4fd0b93230ff",
+      "query": "PRO PLAN CANINE LATA EN",
+      "expected": "PRO PLAN CANINE LATA EN"
+    },
+    {
+      "id": "c7bd39ca-5555-4f3f-a143-89720a5d49f5",
+      "query": "PRO PLAN FELINE UR",
+      "expected": "PRO PLAN FELINE UR"
+    },
+    {
+      "id": "c8ced9b6-8268-4a32-b396-3006214bf2cd",
+      "query": "PRO PLAN FELINE LATA NF",
+      "expected": "PRO PLAN FELINE LATA NF"
+    },
+    {
+      "id": "d213bedd-8765-4bfb-b5e3-fb0c8575552a",
+      "query": "PRO PLAN CANINE HA",
+      "expected": "PRO PLAN CANINE HA"
+    },
+    {
+      "id": "d5384457-bd1a-4a95-ba05-b54cf1cc1994",
+      "query": "PRO PLAN GATO URINARY",
+      "expected": "PRO PLAN GATO URINARY"
+    },
+    {
+      "id": "d81a9944-2b7d-4e62-92af-32c07f758aa0",
+      "query": "PRO PLAN ADULT SMALL EXIGENT",
+      "expected": "PRO PLAN ADULT SMALL EXIGENT"
+    },
+    {
+      "id": "e442752c-2c26-43ce-9d2f-7e05a597e615",
+      "query": "PRO PLAN PUPPY SMALL",
+      "expected": "PRO PLAN PUPPY SMALL"
+    },
+    {
+      "id": "eb5593d6-22be-497a-ab26-7b87c1320a9a",
+      "query": "PRO PLAN FELINE EN",
+      "expected": "PRO PLAN FELINE EN"
+    },
+    {
+      "id": "efffdb5f-9b1a-48f4-9e47-dd302d9af057",
+      "query": "PRO PLAN LATA CN",
+      "expected": "PRO PLAN LATA CN"
+    },
+    {
+      "id": "fc7d7642-c2f0-4e01-b363-4bf4e2cf69f3",
+      "query": "PRO PLAN ADULT SMALL",
+      "expected": "PRO PLAN ADULT SMALL"
+    },
+    {
+      "id": "fcbd03b4-360e-4a76-98a5-33e460188eb0",
+      "query": "PRO PLAN FELINE LATA EN",
+      "expected": "PRO PLAN FELINE LATA EN"
+    },
+    {
+      "id": "fd1d4418-7acc-4632-84a5-ba30203aadf3",
+      "query": "PRO PLAN FELINE NF EARLY CARE",
+      "expected": "PRO PLAN FELINE NF EARLY CARE"
+    },
+    {
+      "id": "fe9eec8d-2f47-4414-bf6a-91136886408a",
+      "query": "PRO PLAN CANINE LATA OM",
+      "expected": "PRO PLAN CANINE LATA OM"
+    },
+    {
+      "id": "12ad9c0f-0941-4d28-ad53-261bcfbab1ed",
+      "query": "COLIRIO VM",
+      "expected": "COLIRIO VM"
+    },
+    {
+      "id": "f35346fd-5e12-4f95-9e03-24bcb10fddda",
+      "query": "COLIRIO ZOO",
+      "expected": "COLIRIO ZOO"
+    },
+    {
+      "id": "12aee537-44e4-4160-be24-7a14456b007b",
+      "query": "NOVAABISMOL",
+      "expected": "NOVAABISMOL"
+    },
+    {
+      "id": "12da2b41-4139-45d1-af58-6e0d89baab55",
+      "query": "TASTE OF THE WILD ADULT PERRO",
+      "expected": "TASTE OF THE WILD ADULT PERRO"
+    },
+    {
+      "id": "5db066b0-06ae-4c81-ade8-fe65dd1a27de",
+      "query": "TASTE OF THE WILD LATA",
+      "expected": "TASTE OF THE WILD LATA"
+    },
+    {
+      "id": "71f0b9d5-fadf-4798-b1f8-98f25642b94f",
+      "query": "TASTE OF THE WILD CAT VERDE",
+      "expected": "TASTE OF THE WILD CAT VERDE"
+    },
+    {
+      "id": "a8e61122-656a-4f68-a81e-055e4b8bfa9e",
+      "query": "TASTE OF THE WILD PATO FELINE",
+      "expected": "TASTE OF THE WILD PATO FELINE"
+    },
+    {
+      "id": "aa65c932-66f1-4928-84a0-48a90a59598f",
+      "query": "TASTE OF THE WILD CAT AMARILLO",
+      "expected": "TASTE OF THE WILD CAT AMARILLO"
+    },
+    {
+      "id": "dca2f769-2359-4e1f-8a10-8e8037981819",
+      "query": "TASTE OF THE WILD",
+      "expected": "TASTE OF THE WILD"
+    },
+    {
+      "id": "130337b1-3395-42cb-ab64-066fe764a909",
+      "query": "NATURPROC GEL",
+      "expected": "NATURPROC GEL"
+    },
+    {
+      "id": "131ae400-7293-4b29-869e-2b9dd212f24b",
+      "query": "PET DROPS",
+      "expected": "PET DROPS"
+    },
+    {
+      "id": "72f2d152-6051-4102-8524-5b9d3b161be0",
+      "query": "PET MILK",
+      "expected": "PET MILK"
+    },
+    {
+      "id": "13848a7e-3072-4969-af28-d2f088a85803",
+      "query": "MORRAL TRANSPARENTE CON CAP",
+      "expected": "MORRAL TRANSPARENTE CON CAP"
+    },
+    {
+      "id": "5870d073-d6bb-4ed3-891a-8be1d51004e1",
+      "query": "MORRAL CON CAPSULA PEQUEÑA",
+      "expected": "MORRAL CON CAPSULA PEQUEÑA"
+    },
+    {
+      "id": "600f923d-731d-4725-90ec-5f2538644791",
+      "query": "MORRAL HELLO CAT",
+      "expected": "MORRAL HELLO CAT"
+    },
+    {
+      "id": "ae54cf98-6a5e-4411-a046-138c34761a8a",
+      "query": "MORRAL CAPSULA CABIN",
+      "expected": "MORRAL CAPSULA CABIN"
+    },
+    {
+      "id": "b27908b3-e9e8-437c-a53e-674cb3bc5d34",
+      "query": "MORRAL TRANSPARENTE",
+      "expected": "MORRAL TRANSPARENTE"
+    },
+    {
+      "id": "13b49b19-27a5-4218-9dd6-8b4849571bb5",
+      "query": "DENTY-FARM",
+      "expected": "DENTY-FARM"
+    },
+    {
+      "id": "13d5848a-c40e-427f-b858-9e46f653fa91",
+      "query": "RATON X UND",
+      "expected": "RATON X UND"
+    },
+    {
+      "id": "13e8fd80-d337-42fc-af3e-a06cdc6c60fb",
+      "query": "CAMA DONA BASICA S-40*40*15C",
+      "expected": "CAMA DONA BASICA S-40*40*15C"
+    },
+    {
+      "id": "39479946-47aa-4a18-bc83-e49cc56a0631",
+      "query": "CAMA DONA BASICA M 50 *50*15C",
+      "expected": "CAMA DONA BASICA M 50 *50*15C"
+    },
+    {
+      "id": "6e0785f3-0924-404a-b3b5-6ff8a46f2bbd",
+      "query": "CAMA COJIN BASICO L-M",
+      "expected": "CAMA COJIN BASICO L-M"
+    },
+    {
+      "id": "76840260-2ab4-436c-ab96-132f941b46a8",
+      "query": "CAMA TALLA S",
+      "expected": "CAMA TALLA S"
+    },
+    {
+      "id": "7d02d50c-1115-4a7d-80d7-87f836571ecb",
+      "query": "CAMA REDONDA MEDIANA MEDELLIN",
+      "expected": "CAMA REDONDA MEDIANA MEDELLIN"
+    },
+    {
+      "id": "a17a96a5-f66a-4121-8020-62333c572bde",
+      "query": "CAMA PEQ MEDELLIN",
+      "expected": "CAMA PEQ MEDELLIN"
+    },
+    {
+      "id": "b28787d4-c47a-466c-8c59-6f4ae33fe2ff",
+      "query": "CAMA COLCHONETA L",
+      "expected": "CAMA COLCHONETA L"
+    },
+    {
+      "id": "d2e66278-d997-492b-8de6-27dd2f7178f7",
+      "query": "CAMA COLCHONETA XL",
+      "expected": "CAMA COLCHONETA XL"
+    },
+    {
+      "id": "d6b56640-86e6-4dbc-a22b-fe7848be2e8a",
+      "query": "CAMA MOBILCAT MULTIFUNCIONAL",
+      "expected": "CAMA MOBILCAT MULTIFUNCIONAL"
+    },
+    {
+      "id": "14d0c9cd-73f5-490d-95a0-672daf53b0a5",
+      "query": "VETMEDIN",
+      "expected": "VETMEDIN"
+    },
+    {
+      "id": "15196aca-bd81-4f93-930b-dec795995a46",
+      "query": "WHISKAS PAG",
+      "expected": "WHISKAS PAG"
+    },
+    {
+      "id": "952fd8fc-0175-4085-9a05-ec6883e1f543",
+      "query": "WHISKAS CARNE",
+      "expected": "WHISKAS CARNE"
+    },
+    {
+      "id": "b33002a6-2291-48ae-8e09-6747c200e26f",
+      "query": "WHISKAS POUCH ADULTO POLLO",
+      "expected": "WHISKAS POUCH ADULTO POLLO"
+    },
+    {
+      "id": "c316a12e-720d-4d52-a33d-2dbb0604fd9f",
+      "query": "WHISKAS SOBRES ECONO PACK",
+      "expected": "WHISKAS SOBRES ECONO PACK"
+    },
+    {
+      "id": "15c305b5-f010-4f26-b0ee-3cd993a90f4d",
+      "query": "SEDANPET",
+      "expected": "SEDANPET"
+    },
+    {
+      "id": "169fb814-40e3-4db3-b7ce-d1567fb71e3b",
+      "query": "ARENA KITTEN LAVANDA",
+      "expected": "ARENA KITTEN LAVANDA"
+    },
+    {
+      "id": "16c73524-519d-4812-bb7e-19ca2fa98c93",
+      "query": "ROYALCANIN CALM CAT",
+      "expected": "ROYALCANIN CALM CAT"
+    },
+    {
+      "id": "2765c462-c1bf-43cf-babc-0750dd39caa0",
+      "query": "ROYALCANIN GASTROINTESTINAL PERRO",
+      "expected": "ROYALCANIN GASTROINTESTINAL PERRO"
+    },
+    {
+      "id": "b992ee10-6de7-4d63-af9a-452bf820617a",
+      "query": "ROYALCANIN HEPATIC CAT",
+      "expected": "ROYALCANIN HEPATIC CAT"
+    },
+    {
+      "id": "16f91e10-7310-4ad8-bfbd-a1a4cb545a5f",
+      "query": "GALLETAS ADORE CAT",
+      "expected": "GALLETAS ADORE CAT"
+    },
+    {
+      "id": "4833e28b-1473-4912-856e-c1029f02f8a4",
+      "query": "GALLETAS PUPPY TREATS",
+      "expected": "GALLETAS PUPPY TREATS"
+    },
+    {
+      "id": "542cde09-cbba-4ab0-a4f0-63154947659e",
+      "query": "GALLETAS SANDWICH",
+      "expected": "GALLETAS SANDWICH"
+    },
+    {
+      "id": "72232208-94fa-4e15-ac73-02e6d6e3bd57",
+      "query": "GALLETAS ADORE DOG",
+      "expected": "GALLETAS ADORE DOG"
+    },
+    {
+      "id": "ae615dd7-095f-4b28-ad68-65d8d74917bb",
+      "query": "GALLETAS SANDWICH X KL",
+      "expected": "GALLETAS SANDWICH X KL"
+    },
+    {
+      "id": "b6e1cf54-a8a0-4802-a6f2-d0f4a5e8f6c8",
+      "query": "GALLETAS BEGGIN",
+      "expected": "GALLETAS BEGGIN"
+    },
+    {
+      "id": "17404d6f-42ba-4c82-8527-a1b7a5ecf6c4",
+      "query": "EXCELLENT ADULT SMALL",
+      "expected": "EXCELLENT ADULT SMALL"
+    },
+    {
+      "id": "1d4e553d-e7e5-491f-9a9a-b0bc2c1cf779",
+      "query": "EXCELLENT GATO ADULT",
+      "expected": "EXCELLENT GATO ADULT"
+    },
+    {
+      "id": "1f4ab27a-bdb1-48e6-9d30-b2810a292fd6",
+      "query": "EXCELLENT FORMULA",
+      "expected": "EXCELLENT FORMULA"
+    },
+    {
+      "id": "538fc303-a3ac-4160-8e11-7e125ff1dbfc",
+      "query": "EXCELLENT KITTEN",
+      "expected": "EXCELLENT KITTEN"
+    },
+    {
+      "id": "875e487b-64ab-4294-84f1-026f7a456550",
+      "query": "EXCELLENT GATO URINARY",
+      "expected": "EXCELLENT GATO URINARY"
+    },
+    {
+      "id": "8d24b5fd-83d6-4c80-bc3a-42f83a00a9ef",
+      "query": "EXCELLENT SKIN",
+      "expected": "EXCELLENT SKIN"
+    },
+    {
+      "id": "b12884bc-60f3-4ecd-a006-40db7f369628",
+      "query": "EXCELLENT ESTERILIZED",
+      "expected": "EXCELLENT ESTERILIZED"
+    },
+    {
+      "id": "cc2d72a7-9a4c-4ebd-9309-a9c40a43ac14",
+      "query": "EXCELLENT ADULT RMG",
+      "expected": "EXCELLENT ADULT RMG"
+    },
+    {
+      "id": "17588094-d2b2-44d6-8dad-f6b4b63e5032",
+      "query": "VITAPERICO",
+      "expected": "VITAPERICO"
+    },
+    {
+      "id": "18397c8f-c608-4f1f-bed8-f6cf3e14c749",
+      "query": "RATION",
+      "expected": "RATION"
+    },
+    {
+      "id": "18ba5869-f492-4d1c-9e6c-6b4211962e88",
+      "query": "FELINNEX PASTA",
+      "expected": "FELINNEX PASTA"
+    },
+    {
+      "id": "19063fbe-2999-45ad-966b-e880818a4ab9",
+      "query": "HAIRBALL ENZIME",
+      "expected": "HAIRBALL ENZIME"
+    },
+    {
+      "id": "1a1a1484-5f55-4e88-8c81-7fbf42811b4b",
+      "query": "NATURAL FRESHLY SPRAY EASY",
+      "expected": "NATURAL FRESHLY SPRAY EASY"
+    },
+    {
+      "id": "2ebffbc3-60d9-420e-9e86-069a0adfa3cd",
+      "query": "NATURAL FRESHLY ANTI ESTRES",
+      "expected": "NATURAL FRESHLY ANTI ESTRES"
+    },
+    {
+      "id": "314116e6-ca1b-41d6-a263-532486e960b8",
+      "query": "NATURAL FRESHLY PERFUME",
+      "expected": "NATURAL FRESHLY PERFUME"
+    },
+    {
+      "id": "6db87782-9f4c-4d23-8afb-b5919437e138",
+      "query": "NATURAL FRESHLY DERMA CLEAN BALSAMO",
+      "expected": "NATURAL FRESHLY DERMA CLEAN BALSAMO"
+    },
+    {
+      "id": "7c01a1d5-bca5-4659-9759-20bb85e8db9b",
+      "query": "NATURAL FRESHLY OMEGA 3-6-9 2X1",
+      "expected": "NATURAL FRESHLY OMEGA 3-6-9 2X1"
+    },
+    {
+      "id": "83392e96-cfad-4d9c-995f-432cef7903b7",
+      "query": "NATURAL FRESHLY AQUI SI CAN",
+      "expected": "NATURAL FRESHLY AQUI SI CAN"
+    },
+    {
+      "id": "852133ad-4084-4b37-9b39-fe2c2192ede0",
+      "query": "NATURAL FRESHLY BAÑO SECO PERRO",
+      "expected": "NATURAL FRESHLY BAÑO SECO PERRO"
+    },
+    {
+      "id": "8adb8e6e-e47a-4892-a96e-f2dd45b2b4e7",
+      "query": "NATURAL FRESHLY BOLA DE PELO JALEA",
+      "expected": "NATURAL FRESHLY BOLA DE PELO JALEA"
+    },
+    {
+      "id": "8aded49f-3e19-4921-b743-7c059cae873f",
+      "query": "NATURAL FRESHLY NO MUERDA",
+      "expected": "NATURAL FRESHLY NO MUERDA"
+    },
+    {
+      "id": "963699c0-35b4-4f3e-836c-7f9a21fa8466",
+      "query": "NATURAL FRESHY LIMPIADOR OIDOS",
+      "expected": "NATURAL FRESHY LIMPIADOR OIDOS"
+    },
+    {
+      "id": "97937a70-a2a8-423f-84f9-c8a746d1e083",
+      "query": "NATURAL FRESHLY PELO LINDO",
+      "expected": "NATURAL FRESHLY PELO LINDO"
+    },
+    {
+      "id": "9a5df849-960e-496a-b9b3-79a11e13c8a0",
+      "query": "NATURAL FRESHLY JALEA TUBO",
+      "expected": "NATURAL FRESHLY JALEA TUBO"
+    },
+    {
+      "id": "b51133f4-e058-4c05-ba7c-0f0abd972e15",
+      "query": "NATURAL FRESHLY BAÑO SECO GATO",
+      "expected": "NATURAL FRESHLY BAÑO SECO GATO"
+    },
+    {
+      "id": "c1cb7364-9827-4664-bdb7-da5ddd594dc2",
+      "query": "NATURAL FRESHLY DIGESTAR FIBRA",
+      "expected": "NATURAL FRESHLY DIGESTAR FIBRA"
+    },
+    {
+      "id": "d43e2d10-4fd0-4d7f-8d24-833b1f0a0337",
+      "query": "NATURAL FRESHLY ESENCIAS",
+      "expected": "NATURAL FRESHLY ESENCIAS"
+    },
+    {
+      "id": "d488609a-2b5b-41b2-9864-3ecec765ca44",
+      "query": "NATURAL FRESHLY MIELTERTOS",
+      "expected": "NATURAL FRESHLY MIELTERTOS"
+    },
+    {
+      "id": "d71e5278-367f-4262-b994-0bf1f2a3c4fe",
+      "query": "NATURAL FRESHLY UROVITAL 50",
+      "expected": "NATURAL FRESHLY UROVITAL 50"
+    },
+    {
+      "id": "ee799319-45c2-4850-807d-ddeaad916677",
+      "query": "NATURAL FRESHLY ENJUAGUE BUCAL",
+      "expected": "NATURAL FRESHLY ENJUAGUE BUCAL"
+    },
+    {
+      "id": "1a3ded72-2a68-42cf-836a-bed2a5b783c2",
+      "query": "SIMPARICA TRIO",
+      "expected": "SIMPARICA TRIO"
+    },
+    {
+      "id": "210fcd1c-a285-4b34-8fc5-e555ca074f5d",
+      "query": "SIMPARICA",
+      "expected": "SIMPARICA"
+    },
+    {
+      "id": "1a6c1313-b2e3-43f0-b3b4-d72192e02f0b",
+      "query": "PECHERA ABSORCION IMPACTOS AMORTIGUACION M-L",
+      "expected": "PECHERA ABSORCION IMPACTOS AMORTIGUACION M-L"
+    },
+    {
+      "id": "350bd216-2dc6-447d-8139-be0e13b6cd1c",
+      "query": "PECHERA CON TRAILLA REFLECTIVA MANGO L-XL",
+      "expected": "PECHERA CON TRAILLA REFLECTIVA MANGO L-XL"
+    },
+    {
+      "id": "431080ff-5530-488f-bb35-286ab731cc7e",
+      "query": "PECHERA TRADILLA SENCILLA S",
+      "expected": "PECHERA TRADILLA SENCILLA S"
+    },
+    {
+      "id": "46305e94-fb99-4988-af20-375bcef3eb48",
+      "query": "PECHERA Y CORREA PREMIUN S-XS",
+      "expected": "PECHERA Y CORREA PREMIUN S-XS"
+    },
+    {
+      "id": "5f41c59e-0417-4a38-9ab4-7b356ee593c8",
+      "query": "PECHERA Y CORREA PREMIUM M-L",
+      "expected": "PECHERA Y CORREA PREMIUM M-L"
+    },
+    {
+      "id": "717404eb-29ea-48ef-9a02-d14e2a44eede",
+      "query": "PECHERA TRADILLA SENCILLA L-XL",
+      "expected": "PECHERA TRADILLA SENCILLA L-XL"
+    },
+    {
+      "id": "af498171-b7dd-4aa7-a551-b157ce9bfb7c",
+      "query": "PECHERA HARNES RALLAS M",
+      "expected": "PECHERA HARNES RALLAS M"
+    },
+    {
+      "id": "c03ed7af-d87a-464e-bd25-03880e77ed6b",
+      "query": "PECHERA CON TRADILLA REFLECTIVA MANGO M-S",
+      "expected": "PECHERA CON TRADILLA REFLECTIVA MANGO M-S"
+    },
+    {
+      "id": "d1c9e77c-dbf3-44ab-83ea-886894453cc7",
+      "query": "PECHERA ABSORCION IMPACTOS AMORTIGUACION XL",
+      "expected": "PECHERA ABSORCION IMPACTOS AMORTIGUACION XL"
+    },
+    {
+      "id": "e9cb87f0-693d-4c78-9323-8874ba590fab",
+      "query": "PECHERA CON ABSORCION IMPACTOS EXTRA L",
+      "expected": "PECHERA CON ABSORCION IMPACTOS EXTRA L"
+    },
+    {
+      "id": "f8cb6209-5235-44d5-8e9d-68409e95c88e",
+      "query": "PECHERA ARNES GIYOOM S - M",
+      "expected": "PECHERA ARNES GIYOOM S - M"
+    },
+    {
+      "id": "1a7d748f-a2e5-4483-9125-fd853fac2f57",
+      "query": "HILLS CAN K/D",
+      "expected": "HILLS CAN K/D"
+    },
+    {
+      "id": "1e59e2d3-6e20-4b20-b855-e2a600d086fb",
+      "query": "HILLS FEL LATA I/D",
+      "expected": "HILLS FEL LATA I/D"
+    },
+    {
+      "id": "3539f23c-f725-4c1d-9d8b-2f83b5cc7bc2",
+      "query": "HILLS FEL C/D",
+      "expected": "HILLS FEL C/D"
+    },
+    {
+      "id": "363a1e96-a9fe-4d69-a4e1-5d5d23e7c27d",
+      "query": "HILLS ADULT SMALL PAWS +7",
+      "expected": "HILLS ADULT SMALL PAWS +7"
+    },
+    {
+      "id": "57418005-9a2e-4da0-abcd-95e629fb705e",
+      "query": "HILLS ADULT SMALL PAWS CORDERO",
+      "expected": "HILLS ADULT SMALL PAWS CORDERO"
+    },
+    {
+      "id": "575ed62a-6685-4d5a-98c9-5e02707b4b03",
+      "query": "HILLS ADULT DOG METABOLIC",
+      "expected": "HILLS ADULT DOG METABOLIC"
+    },
+    {
+      "id": "61273e4f-ce6d-4aa5-8ec6-e0bb06236793",
+      "query": "HILLS FEL ADULT HAIRBALL",
+      "expected": "HILLS FEL ADULT HAIRBALL"
+    },
+    {
+      "id": "69f57a0a-d781-4ed2-9963-ef22de2781e4",
+      "query": "HILLS ADUL SMALL BITES",
+      "expected": "HILLS ADUL SMALL BITES"
+    },
+    {
+      "id": "70ef79d1-0b40-4564-b96e-fbe5f9d57cb9",
+      "query": "HILLS HAIRBALL CONTROL ADULT 7+",
+      "expected": "HILLS HAIRBALL CONTROL ADULT 7+"
+    },
+    {
+      "id": "72b462be-c724-47ca-991c-4568824b0b02",
+      "query": "HILLS CAN I/D",
+      "expected": "HILLS CAN I/D"
+    },
+    {
+      "id": "762a02b9-173c-4d10-b81d-5721e8ceaf52",
+      "query": "HILLS CAN LATA I/D",
+      "expected": "HILLS CAN LATA I/D"
+    },
+    {
+      "id": "bd346a80-c0ab-41ff-9bdf-720746cdedb2",
+      "query": "HILLS CAN LATA K/D",
+      "expected": "HILLS CAN LATA K/D"
+    },
+    {
+      "id": "c5e9e053-be89-4ca5-8471-5e718a717255",
+      "query": "HILLS FEL LATA C/D",
+      "expected": "HILLS FEL LATA C/D"
+    },
+    {
+      "id": "c91d362b-9c40-4fe9-99c0-a93be3092e8c",
+      "query": "HILLS FELINO PERFECT WEIGHT",
+      "expected": "HILLS FELINO PERFECT WEIGHT"
+    },
+    {
+      "id": "ddc52d3a-0ee7-4ea0-a60a-c9b560c0436b",
+      "query": "HILLS FEL LATA K/D",
+      "expected": "HILLS FEL LATA K/D"
+    },
+    {
+      "id": "e58e20d2-d749-4f57-9f1e-ff085c0561af",
+      "query": "HILLS CAN Y FEL LATA A/D",
+      "expected": "HILLS CAN Y FEL LATA A/D"
+    },
+    {
+      "id": "ea4926e6-a080-4018-a507-57288aa3dd30",
+      "query": "HILLS FEL I/D",
+      "expected": "HILLS FEL I/D"
+    },
+    {
+      "id": "f10de382-4c23-46b6-bcbe-3e6fee16abc2",
+      "query": "HILLS METABOLIC CAT",
+      "expected": "HILLS METABOLIC CAT"
+    },
+    {
+      "id": "1a86bcaf-8347-4a66-a0fb-4359a6f7d58f",
+      "query": "KIT DE SIEMBRA MICHIKO",
+      "expected": "KIT DE SIEMBRA MICHIKO"
+    },
+    {
+      "id": "c9409efa-13ee-4189-b830-07ac5a8b7b7a",
+      "query": "KIT CEPILLO Y PEINE S",
+      "expected": "KIT CEPILLO Y PEINE S"
+    },
+    {
+      "id": "1b4a4347-32d7-440b-bc8a-73df062bc0cf",
+      "query": "CHURU FUN BITES DOG",
+      "expected": "CHURU FUN BITES DOG"
+    },
+    {
+      "id": "2549a7c5-6795-4be5-99da-332b844aa7c5",
+      "query": "CHURU ROOLL CAT SAP",
+      "expected": "CHURU ROOLL CAT SAP"
+    },
+    {
+      "id": "4e4d4e89-ed92-43b0-917d-4689fe1aa65c",
+      "query": "CHURU FUN BITES CAT",
+      "expected": "CHURU FUN BITES CAT"
+    },
+    {
+      "id": "6a79d88b-63da-4af2-b734-4b67f68d8dc1",
+      "query": "CHURU 20TUBES",
+      "expected": "CHURU 20TUBES"
+    },
+    {
+      "id": "89341e5a-7d5a-4974-aa11-f8704dc157a7",
+      "query": "CHURU BITES BOLSA 8UND",
+      "expected": "CHURU BITES BOLSA 8UND"
+    },
+    {
+      "id": "8ba9ab35-0aa9-4dfb-9daa-d9f9db6cdff9",
+      "query": "CHURU DOG ROLL",
+      "expected": "CHURU DOG ROLL"
+    },
+    {
+      "id": "bf89b91a-0e6a-4972-8df7-e985aba04db9",
+      "query": "CHURU",
+      "expected": "CHURU"
+    },
+    {
+      "id": "c8c71844-d0c2-478c-b64b-5129ef8b006a",
+      "query": "CHURU BOMBONERA",
+      "expected": "CHURU BOMBONERA"
+    },
+    {
+      "id": "cba362c7-3348-413c-b92b-715b9678410e",
+      "query": "CHURU CAT 10 UND",
+      "expected": "CHURU CAT 10 UND"
+    },
+    {
+      "id": "da0cb338-eb5e-464e-99fd-7ad0f26d57eb",
+      "query": "CHURU MEDICADO",
+      "expected": "CHURU MEDICADO"
+    },
+    {
+      "id": "1beafedc-87d6-48a6-a135-c948643497d3",
+      "query": "AMIGO PUPPY",
+      "expected": "AMIGO PUPPY"
+    },
+    {
+      "id": "1ef1cd88-ac9e-4f2d-851a-1bfb58be6de0",
+      "query": "AMIGO RENAL GATO",
+      "expected": "AMIGO RENAL GATO"
+    },
+    {
+      "id": "2619a87a-db03-4637-9263-1378e8fb2527",
+      "query": "AMIGO CALCIO",
+      "expected": "AMIGO CALCIO"
+    },
+    {
+      "id": "d0bda543-2ffa-4eea-bf80-5bee869db8c6",
+      "query": "AMIGO GATO",
+      "expected": "AMIGO GATO"
+    },
+    {
+      "id": "d5e3dd8b-dd16-45b5-aa69-de58d257b8de",
+      "query": "AMIGO PERRO",
+      "expected": "AMIGO PERRO"
+    },
+    {
+      "id": "1bfcd8f6-918e-4ad9-92b8-e1ee2cd9bae0",
+      "query": "NUTRECAT SALMON",
+      "expected": "NUTRECAT SALMON"
+    },
+    {
+      "id": "25701a30-314a-4c59-84fa-498f2b0fc395",
+      "query": "NUTRECAT TILAPIA",
+      "expected": "NUTRECAT TILAPIA"
+    },
+    {
+      "id": "3268a3a9-b233-4a9f-9bfe-0d24650e0ab0",
+      "query": "NUTRECAT LIBERTY",
+      "expected": "NUTRECAT LIBERTY"
+    },
+    {
+      "id": "7cb10095-eb1f-4577-a30d-d5155417e6e6",
+      "query": "NUTRECAT HOME",
+      "expected": "NUTRECAT HOME"
+    },
+    {
+      "id": "a9845a4d-d903-4be7-a062-cbecbe442df9",
+      "query": "NUTRECAT LATA",
+      "expected": "NUTRECAT LATA"
+    },
+    {
+      "id": "1c02dd88-dc0c-4134-b6ec-3dcc21823968",
+      "query": "MAX CAT CASTRADO",
+      "expected": "MAX CAT CASTRADO"
+    },
+    {
+      "id": "dd084f25-2a32-4665-aa76-0caff1116bfa",
+      "query": "MAX CAT ADUL FRANGO",
+      "expected": "MAX CAT ADUL FRANGO"
+    },
+    {
+      "id": "1c311449-b6d1-48c7-b8e2-099ab482cb59",
+      "query": "BOMBONERA BR GATO BOLA PELO",
+      "expected": "BOMBONERA BR GATO BOLA PELO"
+    },
+    {
+      "id": "69815e99-9eb9-49e3-abb6-9fdaaa2235fd",
+      "query": "BOMBONERA BR GATO EQUIL",
+      "expected": "BOMBONERA BR GATO EQUIL"
+    },
+    {
+      "id": "1cede9db-ab5b-4027-8b99-262eed5b4350",
+      "query": "CANNE",
+      "expected": "CANNE"
+    },
+    {
+      "id": "1d4ee500-b52d-4771-9a8e-570262ce9426",
+      "query": "COMPLELAND B12 O",
+      "expected": "COMPLELAND B12 O"
+    },
+    {
+      "id": "1d7b416a-911a-4196-b3c3-9ffe03b18a5d",
+      "query": "NUTRISS CARNE",
+      "expected": "NUTRISS CARNE"
+    },
+    {
+      "id": "74a2a51f-c0d2-4a04-ae25-0f41a7a97c55",
+      "query": "NUTRISS POLLO",
+      "expected": "NUTRISS POLLO"
+    },
+    {
+      "id": "a8aabfbd-3821-461e-acad-131d85d63a25",
+      "query": "NUTRISS CACHORRO",
+      "expected": "NUTRISS CACHORRO"
+    },
+    {
+      "id": "bb929e15-83ee-413a-8bb8-598d1cff4d33",
+      "query": "NUTRISS NAT ADUL POLLO",
+      "expected": "NUTRISS NAT ADUL POLLO"
+    },
+    {
+      "id": "1dadf47c-b4ba-45d6-9e96-ce3ba81b203f",
+      "query": "JUGUETES 7 COLORES 5CM 7CM",
+      "expected": "JUGUETES 7 COLORES 5CM 7CM"
+    },
+    {
+      "id": "8f69e507-26a3-44bd-925d-efec624a0b36",
+      "query": "JUGUETES ECONOMICOS #2",
+      "expected": "JUGUETES ECONOMICOS #2"
+    },
+    {
+      "id": "1df02b77-81f4-4027-abfb-4dccca3fec3a",
+      "query": "VACUNA TRIPLE FELINA",
+      "expected": "VACUNA TRIPLE FELINA"
+    },
+    {
+      "id": "22352d39-c031-4b9f-87c5-a2782de3e21e",
+      "query": "VACUNA LEUCEMIA",
+      "expected": "VACUNA LEUCEMIA"
+    },
+    {
+      "id": "28f7e799-f45c-44d8-939d-c859a50dbbf4",
+      "query": "VACUNA QUINTUPLE",
+      "expected": "VACUNA QUINTUPLE"
+    },
+    {
+      "id": "58ed5d08-1edc-4488-bd35-e35f1aef05f6",
+      "query": "VACUNA PUPPY",
+      "expected": "VACUNA PUPPY"
+    },
+    {
+      "id": "7b679013-a669-41d9-8631-84fe019a68a1",
+      "query": "VACUNA TRIPLE FELINA + LEUCEMIA",
+      "expected": "VACUNA TRIPLE FELINA + LEUCEMIA"
+    },
+    {
+      "id": "91a43d37-0e00-41ca-9dd1-4859e010374d",
+      "query": "VACUNA SEXTUPLE",
+      "expected": "VACUNA SEXTUPLE"
+    },
+    {
+      "id": "ae27c76b-cf12-40ae-95fd-b6c431575754",
+      "query": "VACUNA RABISIN",
+      "expected": "VACUNA RABISIN"
+    },
+    {
+      "id": "c00e6d55-35ee-4a80-8180-dba493f4f474",
+      "query": "VACUNA TRIPLE FELINA + RABIA",
+      "expected": "VACUNA TRIPLE FELINA + RABIA"
+    },
+    {
+      "id": "1e0e8e16-5370-49ac-9d19-1dc896f3e43c",
+      "query": "DOXICAN",
+      "expected": "DOXICAN"
+    },
+    {
+      "id": "1f46656b-7845-4b5e-a176-5d3b4a267230",
+      "query": "ARNES ANTITIRONES M",
+      "expected": "ARNES ANTITIRONES M"
+    },
+    {
+      "id": "2056ea4d-b97e-4b57-bb99-f3a98282f804",
+      "query": "ARNES 2.5CM PARA MASCOTAS",
+      "expected": "ARNES 2.5CM PARA MASCOTAS"
+    },
+    {
+      "id": "477761f5-cef5-4373-8637-8c01ac2c6040",
+      "query": "ARNES GATO ESTRELLA L",
+      "expected": "ARNES GATO ESTRELLA L"
+    },
+    {
+      "id": "6d685364-5c1d-4b8a-9ae0-dc2543df660b",
+      "query": "ARNES MULTISCOLOR CASCABEL L",
+      "expected": "ARNES MULTISCOLOR CASCABEL L"
+    },
+    {
+      "id": "b06f48d5-7aa7-4b45-9dd1-a496f1def1aa",
+      "query": "ARNES ANTITIRONES XS",
+      "expected": "ARNES ANTITIRONES XS"
+    },
+    {
+      "id": "b1c1a92b-4bfb-442a-846b-ef02e1827c6f",
+      "query": "ARNES Y TRAILLA ANTITIRONES",
+      "expected": "ARNES Y TRAILLA ANTITIRONES"
+    },
+    {
+      "id": "eb1f306d-af73-459f-9140-1173a6ba72a0",
+      "query": "ARNES ANTITIRONES XL",
+      "expected": "ARNES ANTITIRONES XL"
+    },
+    {
+      "id": "fdfeaa3f-1180-483d-ae7e-e5962f5b3dca",
+      "query": "ARNES Y TRADILLA COLOR DESGRADADO M-S",
+      "expected": "ARNES Y TRADILLA COLOR DESGRADADO M-S"
+    },
+    {
+      "id": "1fe44d6a-d2ad-4a14-bc48-1bea85210207",
+      "query": "COMEDERO EN ACERO HUESITOS 15CM",
+      "expected": "COMEDERO EN ACERO HUESITOS 15CM"
+    },
+    {
+      "id": "22cc438f-1e0c-401e-99e6-7ce60af13858",
+      "query": "COMEDERO EN ACERO 30CM",
+      "expected": "COMEDERO EN ACERO 30CM"
+    },
+    {
+      "id": "3153e367-11b4-4fc8-bc1b-2fd773cac0e7",
+      "query": "COMEDERO ECONOMICO",
+      "expected": "COMEDERO ECONOMICO"
+    },
+    {
+      "id": "57a08e9e-cc3e-41d1-9174-fa87f2de166c",
+      "query": "COMEDERO EN ACERO 18CM",
+      "expected": "COMEDERO EN ACERO 18CM"
+    },
+    {
+      "id": "57ab9c74-fca4-418c-8d54-7e08df621bf4",
+      "query": "COMEDERO Y BEBEDERO PORTABLE L",
+      "expected": "COMEDERO Y BEBEDERO PORTABLE L"
+    },
+    {
+      "id": "7a5a79e1-48a2-47c1-9c98-b378a4a13348",
+      "query": "COMEDERO ALTO S",
+      "expected": "COMEDERO ALTO S"
+    },
+    {
+      "id": "7bdad75b-0583-488d-9362-134339d405de",
+      "query": "COMEDERO ALTO L",
+      "expected": "COMEDERO ALTO L"
+    },
+    {
+      "id": "85dd2381-b572-4ee1-a30e-396ea17eec38",
+      "query": "COMEDERO EN ACERO 22CM",
+      "expected": "COMEDERO EN ACERO 22CM"
+    },
+    {
+      "id": "a4f53538-8dd4-42b9-a139-19725149e89f",
+      "query": "COMEDERO ANTIHORMIGAS PQÑ",
+      "expected": "COMEDERO ANTIHORMIGAS PQÑ"
+    },
+    {
+      "id": "d9a8acf0-969a-41a0-a835-f15ed01fdca5",
+      "query": "COMEDERO ANTIREFLUJO HUESO PQÑ PERRO",
+      "expected": "COMEDERO ANTIREFLUJO HUESO PQÑ PERRO"
+    },
+    {
+      "id": "dbc29f9e-4f41-4460-a053-c712b9fa94d6",
+      "query": "COMEDERO ALTO XS",
+      "expected": "COMEDERO ALTO XS"
+    },
+    {
+      "id": "ee8c074f-8b66-4ae2-96a6-e7f0bf4c8e65",
+      "query": "COMEDERO ALTO M",
+      "expected": "COMEDERO ALTO M"
+    },
+    {
+      "id": "20a51bd3-91e1-4bbd-9d93-41cf7320f987",
+      "query": "OXIMED ACONDICIONADOR",
+      "expected": "OXIMED ACONDICIONADOR"
+    },
+    {
+      "id": "7bc9257b-22fa-4767-87c9-df5e5b6a0f32",
+      "query": "OXIMED SPRAY",
+      "expected": "OXIMED SPRAY"
+    },
+    {
+      "id": "22e8126a-d79e-48eb-bccc-2c0037d24666",
+      "query": "CORTA UÑAS L",
+      "expected": "CORTA UÑAS L"
+    },
+    {
+      "id": "2385769b-97e9-42c2-938b-e8e89cde790f",
+      "query": "SANIDERM",
+      "expected": "SANIDERM"
+    },
+    {
+      "id": "23961349-3a93-4c7b-9f65-5914f2811ca9",
+      "query": "TRIHEPAT",
+      "expected": "TRIHEPAT"
+    },
+    {
+      "id": "23dee46c-6864-4f34-b206-eabc154eca5b",
+      "query": "ENTEREX CARBON ACTIVADO",
+      "expected": "ENTEREX CARBON ACTIVADO"
+    },
+    {
+      "id": "23e7652f-09a2-4b50-adae-cd5a0704dd98",
+      "query": "ONE",
+      "expected": "ONE"
+    },
+    {
+      "id": "24475ccf-69b5-48da-a3ce-53320b69eda7",
+      "query": "CLORDENT",
+      "expected": "CLORDENT"
+    },
+    {
+      "id": "250cb84c-2c17-4c8a-872d-4c387970ba4c",
+      "query": "STOMORGYL",
+      "expected": "STOMORGYL"
+    },
+    {
+      "id": "2514466b-87d0-4904-9641-d87b62a1c642",
+      "query": "BIOCANIS JERINGA",
+      "expected": "BIOCANIS JERINGA"
+    },
+    {
+      "id": "260f9032-eee9-45f1-aeb0-5c1355f8eb85",
+      "query": "MUNGOSVITAL + PROBIOTIC",
+      "expected": "MUNGOSVITAL + PROBIOTIC"
+    },
+    {
+      "id": "261b248a-e561-422d-bf40-18453e58c664",
+      "query": "COLLAR ISABELINO TIPO ALMOHADA L",
+      "expected": "COLLAR ISABELINO TIPO ALMOHADA L"
+    },
+    {
+      "id": "26485b0d-599f-4ff9-a06b-406284cc2b46",
+      "query": "COLLAR SERESTO PERRO MED Y GRAN",
+      "expected": "COLLAR SERESTO PERRO MED Y GRAN"
+    },
+    {
+      "id": "40d67302-4bdb-42f7-8aee-1dd53213adcf",
+      "query": "COLLAR PEZ L",
+      "expected": "COLLAR PEZ L"
+    },
+    {
+      "id": "4bf21bbd-60ad-4de3-9c5b-266817e42de6",
+      "query": "COLLAR CON SONAJERO EDG-146",
+      "expected": "COLLAR CON SONAJERO EDG-146"
+    },
+    {
+      "id": "55f8bb18-e9a0-420f-834c-e8119489d9e3",
+      "query": "COLLAR ISABELINO TIPO ALMOHADA XL",
+      "expected": "COLLAR ISABELINO TIPO ALMOHADA XL"
+    },
+    {
+      "id": "61f92d2c-9d95-4498-8d4f-142bf14d0b47",
+      "query": "COLLAR CADENA CON PLACA",
+      "expected": "COLLAR CADENA CON PLACA"
+    },
+    {
+      "id": "740b806f-539a-4638-a725-f2ff10591d14",
+      "query": "COLLAR SERESTO PERROS Y GATOS",
+      "expected": "COLLAR SERESTO PERROS Y GATOS"
+    },
+    {
+      "id": "e6bb1449-65e0-4dd5-a8eb-48731dd570bf",
+      "query": "COLLAR ISABELINO",
+      "expected": "COLLAR ISABELINO"
+    },
+    {
+      "id": "267fe95e-3014-4ade-bb14-34e6505a7b92",
+      "query": "BOLSO MEDIANO X MEDELLIN",
+      "expected": "BOLSO MEDIANO X MEDELLIN"
+    },
+    {
+      "id": "39d714fd-436d-463f-87dd-744ef2d7985b",
+      "query": "BOLSO DISEÑO BASICO T-M",
+      "expected": "BOLSO DISEÑO BASICO T-M"
+    },
+    {
+      "id": "269b4e71-ebc2-4546-b50a-9acd4491178b",
+      "query": "ESPUMA BUCAL IBASA",
+      "expected": "ESPUMA BUCAL IBASA"
+    },
+    {
+      "id": "26c51380-2ead-4b44-baa7-7be573716e49",
+      "query": "CEFALEXINA",
+      "expected": "CEFALEXINA"
+    },
+    {
+      "id": "281b7bc3-b8a1-4a3c-875e-0dd44ab92944",
+      "query": "ARENA SEPI CAT",
+      "expected": "ARENA SEPI CAT"
+    },
+    {
+      "id": "281c5060-8f9a-4573-9f42-056f31e6b37d",
+      "query": "DOGOURMET A GRANEL",
+      "expected": "DOGOURMET A GRANEL"
+    },
+    {
+      "id": "3b8257f8-fd76-44d3-8430-ad5a999ae9b5",
+      "query": "DOGOURMET CACHO TRIC",
+      "expected": "DOGOURMET CACHO TRIC"
+    },
+    {
+      "id": "706a38cf-d18e-4b25-b60d-4d2b4ab8cbd5",
+      "query": "DOGOURMET CACHO",
+      "expected": "DOGOURMET CACHO"
+    },
+    {
+      "id": "93d7d6cd-40f0-4676-b57f-7dc519bee725",
+      "query": "DOGOURMET PARRILLA",
+      "expected": "DOGOURMET PARRILLA"
+    },
+    {
+      "id": "cface178-82ee-4cf3-b25d-ef396830670e",
+      "query": "DOGOURMET PAVO POLLO",
+      "expected": "DOGOURMET PAVO POLLO"
+    },
+    {
+      "id": "d8486af1-2065-4c2d-8290-5d4bdf43a685",
+      "query": "DOGOURMET SALMON",
+      "expected": "DOGOURMET SALMON"
+    },
+    {
+      "id": "fe0ef113-1f8c-4a93-a9a5-ea99a3e0a13e",
+      "query": "DOGOURMET CARNE",
+      "expected": "DOGOURMET CARNE"
+    },
+    {
+      "id": "2875e0da-72c4-4dda-bdea-e0e32d921cdc",
+      "query": "SHED X DOG GRANDE",
+      "expected": "SHED X DOG GRANDE"
+    },
+    {
+      "id": "d75bc05e-061d-4e20-99da-5ab0c3ebb58d",
+      "query": "SHED X DOG PEQ",
+      "expected": "SHED X DOG PEQ"
+    },
+    {
+      "id": "2906baa4-5771-4481-972e-e4913ed3da41",
+      "query": "MOMETAX UNGUENTO OTICO",
+      "expected": "MOMETAX UNGUENTO OTICO"
+    },
+    {
+      "id": "298011b2-437b-47d0-b837-761f3fd8a14e",
+      "query": "ADVANCE DOG ATOPIC MINI",
+      "expected": "ADVANCE DOG ATOPIC MINI"
+    },
+    {
+      "id": "7a807515-b9ed-4850-b0e9-b530509a9aa8",
+      "query": "ADVANCE CAT RENAL",
+      "expected": "ADVANCE CAT RENAL"
+    },
+    {
+      "id": "d2e3344f-ea7d-4652-abf2-ef313c468bd2",
+      "query": "ADVANCE CAT URINARY",
+      "expected": "ADVANCE CAT URINARY"
+    },
+    {
+      "id": "ea9d70a6-4ef1-4585-b731-08dd18dba4b7",
+      "query": "ADVANCE URINAY",
+      "expected": "ADVANCE URINAY"
+    },
+    {
+      "id": "29f9955f-fdb0-4148-a8f6-9d9ba1b1c481",
+      "query": "PAÑAL L",
+      "expected": "PAÑAL L"
+    },
+    {
+      "id": "63fbf94a-370a-48f2-b532-eb8f8b10ef0f",
+      "query": "PAÑAL XL",
+      "expected": "PAÑAL XL"
+    },
+    {
+      "id": "821ce7cc-721a-4b64-ab64-1eaae8acd1bf",
+      "query": "PAÑAL S",
+      "expected": "PAÑAL S"
+    },
+    {
+      "id": "a24e9a02-0e04-4507-b3f1-5a860f83eb32",
+      "query": "PAÑAL XXS",
+      "expected": "PAÑAL XXS"
+    },
+    {
+      "id": "b6d44f02-b7aa-4cbb-a801-78a432d43733",
+      "query": "PAÑAL M",
+      "expected": "PAÑAL M"
+    },
+    {
+      "id": "c8e5068e-9cfd-40e9-8af0-c8ac704b92f9",
+      "query": "PAÑAL XS",
+      "expected": "PAÑAL XS"
+    },
+    {
+      "id": "2b5015db-db21-4069-9a23-0c55e903a5d8",
+      "query": "DONKAT ADULTOS",
+      "expected": "DONKAT ADULTOS"
+    },
+    {
+      "id": "4132c60d-4392-4f0a-a95b-467eb4f8d169",
+      "query": "DONKAT CREMOSO",
+      "expected": "DONKAT CREMOSO"
+    },
+    {
+      "id": "76392829-5baf-4229-b857-810ba8d53504",
+      "query": "DONKAT CREMOSO X UND",
+      "expected": "DONKAT CREMOSO X UND"
+    },
+    {
+      "id": "a87c53d0-2e75-4f51-9a40-a898de357397",
+      "query": "DONKAT GATO",
+      "expected": "DONKAT GATO"
+    },
+    {
+      "id": "e262d725-45fc-482d-b7f6-27dd1bb96f18",
+      "query": "DONKAT GATITO",
+      "expected": "DONKAT GATITO"
+    },
+    {
+      "id": "2bbdca10-45a9-409c-a239-f881409c828d",
+      "query": "LUCKY CAT CASTRADO",
+      "expected": "LUCKY CAT CASTRADO"
+    },
+    {
+      "id": "817e3c8d-9eae-4169-a3bf-d54d23149e1b",
+      "query": "LUCKY CAT URINARIO",
+      "expected": "LUCKY CAT URINARIO"
+    },
+    {
+      "id": "82bd372e-b053-4b37-987b-eaddfe2cb13d",
+      "query": "LUCKY CONTROL PESO",
+      "expected": "LUCKY CONTROL PESO"
+    },
+    {
+      "id": "92a70841-e01f-4d98-8d40-b338cd7f9ab2",
+      "query": "LUCKY CUIADADO ARTICULAR",
+      "expected": "LUCKY CUIADADO ARTICULAR"
+    },
+    {
+      "id": "95af9d6b-192f-4aad-8358-43bae58fd6a4",
+      "query": "LUCKY CUIDADO DIGESTIVO",
+      "expected": "LUCKY CUIDADO DIGESTIVO"
+    },
+    {
+      "id": "9a3b9d15-8a73-4314-934f-f3e9c4800fbf",
+      "query": "LUCKY URINARY",
+      "expected": "LUCKY URINARY"
+    },
+    {
+      "id": "ddd5a8f6-852a-4482-9b43-65bd40e917ba",
+      "query": "LUCKY CUIDADO DE PIEL KG",
+      "expected": "LUCKY CUIDADO DE PIEL KG"
+    },
+    {
+      "id": "2d12b67d-4a7b-4055-b410-3a0ac473697e",
+      "query": "KETOBLAN",
+      "expected": "KETOBLAN"
+    },
+    {
+      "id": "2d1cc202-2415-4e42-8a08-a3ec08a611b8",
+      "query": "SALCHICHA",
+      "expected": "SALCHICHA"
+    },
+    {
+      "id": "2d4282cc-fe61-4c62-8bcb-5bd1043b3efd",
+      "query": "CORREA CWXQ1242",
+      "expected": "CORREA CWXQ1242"
+    },
+    {
+      "id": "2e0ad5bb-4d63-4813-aa83-a4aead220cc4",
+      "query": "OJUX-V COLIRIO",
+      "expected": "OJUX-V COLIRIO"
+    },
+    {
+      "id": "2ef8f73b-3a2c-4412-80eb-94deef6c3907",
+      "query": "CANISAN F",
+      "expected": "CANISAN F"
+    },
+    {
+      "id": "4d46d350-5b49-409f-8dc6-85458159ab9b",
+      "query": "CANISAN TABLETAS",
+      "expected": "CANISAN TABLETAS"
+    },
+    {
+      "id": "659c1c72-4d59-4cec-8083-5662217332d5",
+      "query": "CANISAN D",
+      "expected": "CANISAN D"
+    },
+    {
+      "id": "e393741d-64d7-46b7-b225-908caffc53b7",
+      "query": "CANISAN PUPPY",
+      "expected": "CANISAN PUPPY"
+    },
+    {
+      "id": "2fdb09cf-7db6-40c2-8e23-397ecc34b047",
+      "query": "VETSOLUCION GASTROISTESTINAL DOG",
+      "expected": "VETSOLUCION GASTROISTESTINAL DOG"
+    },
+    {
+      "id": "30a3bb8d-1d6d-43ae-a259-fb7eb3891114",
+      "query": "ACIFLUX TAB",
+      "expected": "ACIFLUX TAB"
+    },
+    {
+      "id": "e82371a2-5719-474f-9fca-520c60158fa8",
+      "query": "ACIFLUX SUSPENSION",
+      "expected": "ACIFLUX SUSPENSION"
+    },
+    {
+      "id": "30a5e872-42cf-41f9-996e-dc7860272fe5",
+      "query": "ARENA MIRRINGO",
+      "expected": "ARENA MIRRINGO"
+    },
+    {
+      "id": "86ef18ee-4c31-4952-a168-cdaa41d3bf86",
+      "query": "ARENA KING",
+      "expected": "ARENA KING"
+    },
+    {
+      "id": "b382a2ac-b8fb-49fb-949a-f44ac9c10c2b",
+      "query": "ARENA UNIKAT",
+      "expected": "ARENA UNIKAT"
+    },
+    {
+      "id": "bf0fe92a-7bee-4c7a-9365-e43feebe8e35",
+      "query": "ARENA FOFICAT",
+      "expected": "ARENA FOFICAT"
+    },
+    {
+      "id": "e0aef8fc-051f-43fc-a822-719c9f767359",
+      "query": "ARENA BUOS",
+      "expected": "ARENA BUOS"
+    },
+    {
+      "id": "32b1d3b8-60ff-4b9b-ab3d-3bbe9beb9f23",
+      "query": "BR DOG VET HEPATIC",
+      "expected": "BR DOG VET HEPATIC"
+    },
+    {
+      "id": "6614eb18-54bd-4be2-af15-ce7a73913c7b",
+      "query": "BR DOG VET GASTRO",
+      "expected": "BR DOG VET GASTRO"
+    },
+    {
+      "id": "73506287-8a33-4526-840c-1c6ee1005e31",
+      "query": "BR DOG PUPPY RAZA PEQ",
+      "expected": "BR DOG PUPPY RAZA PEQ"
+    },
+    {
+      "id": "945d4c9e-61ee-440f-9092-f61204336063",
+      "query": "BR DOG VET RENAL",
+      "expected": "BR DOG VET RENAL"
+    },
+    {
+      "id": "a1cba5c9-7a56-495b-99cc-f7c2f61674e3",
+      "query": "BR DOG CORDERO",
+      "expected": "BR DOG CORDERO"
+    },
+    {
+      "id": "a6eda0f8-b948-4aba-912d-672eca92927a",
+      "query": "BR DOG ADUL CORDERO",
+      "expected": "BR DOG ADUL CORDERO"
+    },
+    {
+      "id": "ac8e44d2-e42f-435e-9110-b620548879c8",
+      "query": "BR DOG PATE",
+      "expected": "BR DOG PATE"
+    },
+    {
+      "id": "f7eafed1-9b13-47c3-bdca-81cc2ee7bd29",
+      "query": "BR DOG PUPYY CORDERO",
+      "expected": "BR DOG PUPYY CORDERO"
+    },
+    {
+      "id": "a32d492c-78d3-4fb5-822f-127fc50bf191",
+      "query": "MIRRINGO + PRO",
+      "expected": "MIRRINGO + PRO"
+    },
+    {
+      "id": "466d365f-12a8-41c1-8398-4794739688ab",
+      "query": "MIRRINGO GATITO",
+      "expected": "MIRRINGO GATITO"
+    },
+    {
+      "id": "b5d34609-b7b2-4b60-b82b-49e120410348",
+      "query": "MIRRINGO",
+      "expected": "MIRRINGO"
+    },
+    {
+      "id": "34d8f744-b54b-4753-8e33-7d716d66ee00",
+      "query": "VERDEMINT",
+      "expected": "VERDEMINT"
+    },
+    {
+      "id": "34db86eb-0b3b-4893-a1fe-e281ce3db2fc",
+      "query": "STOMIZOL",
+      "expected": "STOMIZOL"
+    },
+    {
+      "id": "35df9fde-9c31-43a4-8698-3872452cc8bb",
+      "query": "COUNTRY VALUE PERRO",
+      "expected": "COUNTRY VALUE PERRO"
+    },
+    {
+      "id": "d20b910c-f8bc-449b-8653-78d791c751bc",
+      "query": "COUNTRY GATOS",
+      "expected": "COUNTRY GATOS"
+    },
+    {
+      "id": "36242dbf-f253-49a0-870b-cef756b42906",
+      "query": "CABANOS",
+      "expected": "CABANOS"
+    },
+    {
+      "id": "3edde301-3beb-4e69-a71c-cb08f6391332",
+      "query": "CABANOS KILO SURTIDO APRO 140",
+      "expected": "CABANOS KILO SURTIDO APRO 140"
+    },
+    {
+      "id": "3634b462-98bf-4fc9-93db-59c09f808488",
+      "query": "JABON VETRIDERM",
+      "expected": "JABON VETRIDERM"
+    },
+    {
+      "id": "54785a39-76ee-4d28-a19f-1059670acaad",
+      "query": "JABON CLORHEXIN",
+      "expected": "JABON CLORHEXIN"
+    },
+    {
+      "id": "368851ab-1032-489c-83e8-e37a52794441",
+      "query": "APETIL",
+      "expected": "APETIL"
+    },
+    {
+      "id": "3871210f-2c57-4160-80c5-0c22f8ff8421",
+      "query": "SPLED DOG",
+      "expected": "SPLED DOG"
+    },
+    {
+      "id": "38b1abf5-82d7-41cb-b6f2-a5dbc57be844",
+      "query": "RONDEL",
+      "expected": "RONDEL"
+    },
+    {
+      "id": "be50696c-9db7-4a25-a016-d5f9365ad028",
+      "query": "RONDEL PUPPY",
+      "expected": "RONDEL PUPPY"
+    },
+    {
+      "id": "395afb97-45c1-4a70-8a75-7bb6f8b29276",
+      "query": "MILPRO 16MG",
+      "expected": "MILPRO 16MG"
+    },
+    {
+      "id": "fd754ed1-ea39-4f50-a398-d9ac45f0690b",
+      "query": "MILPRO KITTEN 4MG",
+      "expected": "MILPRO KITTEN 4MG"
+    },
+    {
+      "id": "39a46959-5a73-49bc-8ddf-9a88e29672a4",
+      "query": "OFTAPROC M",
+      "expected": "OFTAPROC M"
+    },
+    {
+      "id": "80193231-381b-413c-9580-f5f1d937c3ca",
+      "query": "OFTAPROC E",
+      "expected": "OFTAPROC E"
+    },
+    {
+      "id": "39db8b87-5eaa-4034-8772-338cb0672bb2",
+      "query": "GOLOSINAS",
+      "expected": "GOLOSINAS"
+    },
+    {
+      "id": "a6efe5ce-1788-45a2-88e0-3c0cb120b603",
+      "query": "GOLOSINAS 1500",
+      "expected": "GOLOSINAS 1500"
+    },
+    {
+      "id": "3a473ee6-2e03-4d6f-9498-667360455b53",
+      "query": "OTIFLE",
+      "expected": "OTIFLE"
+    },
+    {
+      "id": "3ac9ca21-63e7-4df0-91f5-8a6ce5432a5e",
+      "query": "ESPECIFICO",
+      "expected": "ESPECIFICO"
+    },
+    {
+      "id": "3ac9e12c-efee-4518-9965-d4d8d0e9fc1b",
+      "query": "PAÑOLETA MASCOTAS ECO",
+      "expected": "PAÑOLETA MASCOTAS ECO"
+    },
+    {
+      "id": "80a37bbc-6a1d-4c8a-8a73-fd0a4cb93902",
+      "query": "PAÑOLETA MASCOTAS PREMIUM",
+      "expected": "PAÑOLETA MASCOTAS PREMIUM"
+    },
+    {
+      "id": "3b9afbef-8c8c-4fe9-8167-da74f685eb08",
+      "query": "CANIPETS",
+      "expected": "CANIPETS"
+    },
+    {
+      "id": "93ccd25f-765b-49cf-84f5-14a157d5429c",
+      "query": "CANIPETS PUPPY",
+      "expected": "CANIPETS PUPPY"
+    },
+    {
+      "id": "3cac5547-e5bd-4057-9377-22a29e30f6c7",
+      "query": "VACOL POMADA",
+      "expected": "VACOL POMADA"
+    },
+    {
+      "id": "3d223c28-006f-46c0-bd2a-777472561480",
+      "query": "MICHIKO VET SALUD HUESOS Y ARTICULACIONES",
+      "expected": "MICHIKO VET SALUD HUESOS Y ARTICULACIONES"
+    },
+    {
+      "id": "46629447-2d0b-42a8-b55f-7b13e97e19a3",
+      "query": "MICHIKO VET GATITOS",
+      "expected": "MICHIKO VET GATITOS"
+    },
+    {
+      "id": "49b83055-9345-44ef-b338-95fcbb30106c",
+      "query": "MICHIKO VET EMBARAZO POS",
+      "expected": "MICHIKO VET EMBARAZO POS"
+    },
+    {
+      "id": "58333fe7-8f8e-465f-9cec-e934907b7cad",
+      "query": "MICHIKO VET ANTIINFLAMACIO",
+      "expected": "MICHIKO VET ANTIINFLAMACIO"
+    },
+    {
+      "id": "8754b326-d1aa-406f-b933-7c28448907ae",
+      "query": "MICHIKO NATURAL CREAMY",
+      "expected": "MICHIKO NATURAL CREAMY"
+    },
+    {
+      "id": "964880a4-94c2-4e5c-8b57-f0f30f7697f4",
+      "query": "MICHIKO GATO",
+      "expected": "MICHIKO GATO"
+    },
+    {
+      "id": "b3725995-76e8-4089-95d2-d70524131c95",
+      "query": "MICHIKO VET CAVIDAD ORAL",
+      "expected": "MICHIKO VET CAVIDAD ORAL"
+    },
+    {
+      "id": "dd295277-6268-4a9e-b082-c96c2b592221",
+      "query": "MICHIKO VET GATO MAYOR 14R 4 SACHETS",
+      "expected": "MICHIKO VET GATO MAYOR 14R 4 SACHETS"
+    },
+    {
+      "id": "e0c294ab-168b-48a2-80ef-c9e10c404285",
+      "query": "MICHIKO VET MANCHAS LAGRIMAS",
+      "expected": "MICHIKO VET MANCHAS LAGRIMAS"
+    },
+    {
+      "id": "e4769b9b-6722-413f-97ac-bdb3e4c2a65a",
+      "query": "MICHIKO VET PIEL Y PELAJE",
+      "expected": "MICHIKO VET PIEL Y PELAJE"
+    },
+    {
+      "id": "f480451c-c2c0-4fc2-8f9b-badc5fbf710b",
+      "query": "MICHIKO X UND",
+      "expected": "MICHIKO X UND"
+    },
+    {
+      "id": "3d31c48e-3d95-4a93-a905-7ef1c34be49d",
+      "query": "LIMP HIDRAT 100NL",
+      "expected": "LIMP HIDRAT 100NL"
+    },
+    {
+      "id": "3eb33358-039f-4573-94c5-b1e3ac8b58e1",
+      "query": "APOQUEL",
+      "expected": "APOQUEL"
+    },
+    {
+      "id": "3f172821-0a1e-4ec3-a333-1d4547c0b5c0",
+      "query": "FINCA CONEJOS",
+      "expected": "FINCA CONEJOS"
+    },
+    {
+      "id": "51fc2465-2c26-446f-a129-1257a3f06e67",
+      "query": "FINCA POLLO CAMP ENG",
+      "expected": "FINCA POLLO CAMP ENG"
+    },
+    {
+      "id": "618804a4-616b-4d6e-90ca-8f0f08657f66",
+      "query": "FINCA POLLO CAMP LEV",
+      "expected": "FINCA POLLO CAMP LEV"
+    },
+    {
+      "id": "d44ffcd5-8b14-4e29-b9c5-6a3570aaea47",
+      "query": "FINCA HUEVO QUEBRADA",
+      "expected": "FINCA HUEVO QUEBRADA"
+    },
+    {
+      "id": "3f61166b-f607-430a-85ec-1d5d1aeab1e6",
+      "query": "CARDIAL B/2.5",
+      "expected": "CARDIAL B/2.5"
+    },
+    {
+      "id": "b0ed4e11-7c1e-432b-ace0-b78cc6231fc2",
+      "query": "CARDIAL",
+      "expected": "CARDIAL"
+    },
+    {
+      "id": "cf134b04-e3a2-4232-ab9c-785ba2266044",
+      "query": "CARDIAL B/5",
+      "expected": "CARDIAL B/5"
+    },
+    {
+      "id": "3f931b6a-79cb-46a5-ac06-28142d001e15",
+      "query": "MELOXIMA",
+      "expected": "MELOXIMA"
+    },
+    {
+      "id": "40290f96-7fcc-46f4-aa2c-7f9698bd8245",
+      "query": "VITAGRANO MOSTAZA",
+      "expected": "VITAGRANO MOSTAZA"
+    },
+    {
+      "id": "8da99c7a-07cb-4320-affb-5446ce6583b7",
+      "query": "VITAGRANO MIJO ROJO -BLANCO",
+      "expected": "VITAGRANO MIJO ROJO -BLANCO"
+    },
+    {
+      "id": "4072ad04-78d5-41c6-b40d-27d695272769",
+      "query": "NUTRA NUGETS SENIOR",
+      "expected": "NUTRA NUGETS SENIOR"
+    },
+    {
+      "id": "411c3dbe-9366-46b5-9588-068dba726c7b",
+      "query": "GENTAX OTICO",
+      "expected": "GENTAX OTICO"
+    },
+    {
+      "id": "416d3523-4758-4064-bbf7-a7e6f3220f25",
+      "query": "EXTALOE EAR LIMPIADOR",
+      "expected": "EXTALOE EAR LIMPIADOR"
+    },
+    {
+      "id": "419f5b11-e899-4071-adc8-6d7b50d2051c",
+      "query": "ADVOCATE",
+      "expected": "ADVOCATE"
+    },
+    {
+      "id": "5d6914d7-9deb-4431-a084-e215822bab78",
+      "query": "ADVOCATE GATO",
+      "expected": "ADVOCATE GATO"
+    },
+    {
+      "id": "41e9bcdc-36d2-4483-aeeb-bfef339c0c1c",
+      "query": "CUTAMYCON SPRAY",
+      "expected": "CUTAMYCON SPRAY"
+    },
+    {
+      "id": "b90a9cd8-9edf-43f0-bc65-cbac85a80b84",
+      "query": "CUTAMYCON VF CREMA",
+      "expected": "CUTAMYCON VF CREMA"
+    },
+    {
+      "id": "423e7542-5521-4d58-a424-3858fa32b777",
+      "query": "ARENA UNIKAT LAVANDA",
+      "expected": "ARENA UNIKAT LAVANDA"
+    },
+    {
+      "id": "42a7d49b-32a9-44c6-81d0-463ab0dcdecc",
+      "query": "ALBONDIGAS DOGO DOG",
+      "expected": "ALBONDIGAS DOGO DOG"
+    },
+    {
+      "id": "8f27b56a-ab8d-4467-8453-aee7e6f10fdd",
+      "query": "ALBONDIGAS DOGO PERRO",
+      "expected": "ALBONDIGAS DOGO PERRO"
+    },
+    {
+      "id": "42b2179b-7b0a-4693-b819-6fef19bea90d",
+      "query": "DOGG MA",
+      "expected": "DOGG MA"
+    },
+    {
+      "id": "431282c3-ec47-4e30-ab5e-76226a4cb5ed",
+      "query": "MAX VITA ADUL GATO SABORES FRANCO",
+      "expected": "MAX VITA ADUL GATO SABORES FRANCO"
+    },
+    {
+      "id": "60398637-e441-4f91-9289-3567f2c1e491",
+      "query": "MAX VITA ADULT RP",
+      "expected": "MAX VITA ADULT RP"
+    },
+    {
+      "id": "89b3f68b-4a1c-4b59-8bed-f2317f81c34f",
+      "query": "MAX VITA GATO ADUL SABORES DEL MAR",
+      "expected": "MAX VITA GATO ADUL SABORES DEL MAR"
+    },
+    {
+      "id": "b94664aa-19fd-49c4-82c1-e6d107c6fb5e",
+      "query": "MAX ADULT LIGHT",
+      "expected": "MAX ADULT LIGHT"
+    },
+    {
+      "id": "c6d48219-97f3-4781-aa4e-cb499c137d8a",
+      "query": "MAX MATURE +7",
+      "expected": "MAX MATURE +7"
+    },
+    {
+      "id": "d7ebfc61-01e4-4021-b6da-74c9d081ed3d",
+      "query": "MAX VITA GATO CASTRADO",
+      "expected": "MAX VITA GATO CASTRADO"
+    },
+    {
+      "id": "edc5224f-63fb-47b7-8640-26189265ea9c",
+      "query": "MAX ADULT RPEQ PERFORM POLLO",
+      "expected": "MAX ADULT RPEQ PERFORM POLLO"
+    },
+    {
+      "id": "4343545e-396d-4014-8a71-10c3ff27d0fc",
+      "query": "NUTRECAN CROQUE",
+      "expected": "NUTRECAN CROQUE"
+    },
+    {
+      "id": "4a812db4-760d-4d09-a5a8-2f3177484eca",
+      "query": "NUTRECAN LIGHT",
+      "expected": "NUTRECAN LIGHT"
+    },
+    {
+      "id": "4b86eb18-6319-479e-82d8-c6f6a71b3c0f",
+      "query": "NUTRECAN PAVO",
+      "expected": "NUTRECAN PAVO"
+    },
+    {
+      "id": "6641e995-9ef7-4152-a76c-878c954af3da",
+      "query": "NUTRECAN ATLETA SALMON",
+      "expected": "NUTRECAN ATLETA SALMON"
+    },
+    {
+      "id": "97c04255-4537-4081-91c7-625d904a1c44",
+      "query": "NUTRECAN SENIOR",
+      "expected": "NUTRECAN SENIOR"
+    },
+    {
+      "id": "a49826d2-d003-48e2-bc2d-2a13864961da",
+      "query": "NUTRECAN CACHO",
+      "expected": "NUTRECAN CACHO"
+    },
+    {
+      "id": "b868d8e3-6b5b-4089-b4e2-51c1f04fbd49",
+      "query": "NUTRECAN SALMON Y QUESO",
+      "expected": "NUTRECAN SALMON Y QUESO"
+    },
+    {
+      "id": "bad0b251-cdcc-4fbb-9dba-2c30e9eabe66",
+      "query": "NUTRECAN AMG GRANEL",
+      "expected": "NUTRECAN AMG GRANEL"
+    },
+    {
+      "id": "e1affe6a-7c80-4ae6-948c-cf06794dfa8b",
+      "query": "NUTRECAN ADULTO RP",
+      "expected": "NUTRECAN ADULTO RP"
+    },
+    {
+      "id": "f3d60486-9032-477e-beb7-b99813a640e1",
+      "query": "NUTRECAN CACHO RP",
+      "expected": "NUTRECAN CACHO RP"
+    },
+    {
+      "id": "fae1d6e7-143e-44c3-986e-8bc8eccabb1f",
+      "query": "NUTRECAN ADULTO RMG",
+      "expected": "NUTRECAN ADULTO RMG"
+    },
+    {
+      "id": "434fd4f7-000b-42f5-97b5-9f96e65f2762",
+      "query": "ARENA MICHIKO LIMON",
+      "expected": "ARENA MICHIKO LIMON"
+    },
+    {
+      "id": "43ee4735-09d1-47b3-b4f7-4518c0104603",
+      "query": "VITA HAMSTERS",
+      "expected": "VITA HAMSTERS"
+    },
+    {
+      "id": "8bac1dcc-4a3e-4faf-8429-c098f3eac94e",
+      "query": "VITA PICHONES",
+      "expected": "VITA PICHONES"
+    },
+    {
+      "id": "4426721e-26da-44f4-9cce-0012503df878",
+      "query": "GEL DIENTES GATO 2ONZ",
+      "expected": "GEL DIENTES GATO 2ONZ"
+    },
+    {
+      "id": "73cdff61-c195-4fb2-8f06-efd2f5d2437e",
+      "query": "GEL MANTEQUILLA MANI PERRO 2ONZ",
+      "expected": "GEL MANTEQUILLA MANI PERRO 2ONZ"
+    },
+    {
+      "id": "45006806-cec7-4132-8c83-a8ea92f49efc",
+      "query": "TETRA COLOR",
+      "expected": "TETRA COLOR"
+    },
+    {
+      "id": "be34c078-1e0a-4265-92c5-83018f41e902",
+      "query": "TETRA COLOR LATA",
+      "expected": "TETRA COLOR LATA"
+    },
+    {
+      "id": "451f929c-acd3-4d1c-9f73-915b07a13f7b",
+      "query": "GRADUAL GATOS",
+      "expected": "GRADUAL GATOS"
+    },
+    {
+      "id": "82773371-cfe6-4e21-b62e-ee5dfc5c1efd",
+      "query": "GRADUAL",
+      "expected": "GRADUAL"
+    },
+    {
+      "id": "466343f4-c9ef-4a5f-965b-2b7785e3803b",
+      "query": "FITOVETE GEL",
+      "expected": "FITOVETE GEL"
+    },
+    {
+      "id": "c32428f6-b178-4c4a-b0f3-b32646abc072",
+      "query": "FITOVETE",
+      "expected": "FITOVETE"
+    },
+    {
+      "id": "46bb2dc1-e5b9-4f35-930b-9605fb3bdb76",
+      "query": "LIV52 VET. LUQUIDO",
+      "expected": "LIV52 VET. LUQUIDO"
+    },
+    {
+      "id": "46c1ebf1-751a-4b1e-96db-0ced59deaa90",
+      "query": "CANTAXANTIN CANTO",
+      "expected": "CANTAXANTIN CANTO"
+    },
+    {
+      "id": "e701c20c-01f8-480d-b298-80afed56ee1f",
+      "query": "CANTAXANTIN COLOR",
+      "expected": "CANTAXANTIN COLOR"
+    },
+    {
+      "id": "4741d3cc-55da-408f-92cc-fd82280cae51",
+      "query": "SIETE VIDAS",
+      "expected": "SIETE VIDAS"
+    },
+    {
+      "id": "479759b3-fbe8-4b17-8f7f-855a280b5936",
+      "query": "UNGUENTO 100",
+      "expected": "UNGUENTO 100"
+    },
+    {
+      "id": "493b5328-9084-4b74-9a25-b718151c7e1b",
+      "query": "ARENA MICHIKO LAVANDA",
+      "expected": "ARENA MICHIKO LAVANDA"
+    },
+    {
+      "id": "493fae07-81e7-44a3-a932-6c01ff89f4ab",
+      "query": "CAT BALANCE",
+      "expected": "CAT BALANCE"
+    },
+    {
+      "id": "4a840894-a218-4b45-b59a-21e8b89a3859",
+      "query": "MIKOMAX TABLETAS",
+      "expected": "MIKOMAX TABLETAS"
+    },
+    {
+      "id": "4b3a91cc-4c60-43da-aaba-90d70714b53d",
+      "query": "CICLORAC",
+      "expected": "CICLORAC"
+    },
+    {
+      "id": "4b53a420-74eb-435e-bf97-7e6aa3391967",
+      "query": "SINSONTES Y TUR",
+      "expected": "SINSONTES Y TUR"
+    },
+    {
+      "id": "4c4d5840-c1ea-431b-bf44-ab4fc02697b7",
+      "query": "FELIWAY SPRAY",
+      "expected": "FELIWAY SPRAY"
+    },
+    {
+      "id": "5fab98f7-7656-4740-954d-799bf91e9e58",
+      "query": "FELIWAY",
+      "expected": "FELIWAY"
+    },
+    {
+      "id": "4ce174e6-19da-47b1-96b0-5edbfc864347",
+      "query": "EPIOTIC",
+      "expected": "EPIOTIC"
+    },
+    {
+      "id": "4e45e0d0-5d20-4dc0-95eb-e97aaaf077f1",
+      "query": "B-FE",
+      "expected": "B-FE"
+    },
+    {
+      "id": "50278ba0-e355-4f5d-a923-3f1ffa23d550",
+      "query": "BARKFRESH",
+      "expected": "BARKFRESH"
+    },
+    {
+      "id": "50448956-6013-458a-ba60-9d99648e93d2",
+      "query": "SEPTIDERM",
+      "expected": "SEPTIDERM"
+    },
+    {
+      "id": "a3a04da6-2673-474e-89c1-31c280ca53a6",
+      "query": "SEPTIDERM E",
+      "expected": "SEPTIDERM E"
+    },
+    {
+      "id": "507b8266-fadd-4393-a00f-45d21aa7466f",
+      "query": "OHMAIGAT GRANEL",
+      "expected": "OHMAIGAT GRANEL"
+    },
+    {
+      "id": "6e7d44b9-064c-41dc-8730-b60092defdb6",
+      "query": "OHMAIGAT INQUIETOS",
+      "expected": "OHMAIGAT INQUIETOS"
+    },
+    {
+      "id": "7e69db3a-ec7f-474e-8c26-ead6eaf836c8",
+      "query": "OHMAIGAT CASEROS",
+      "expected": "OHMAIGAT CASEROS"
+    },
+    {
+      "id": "a95fa9c1-732f-4540-ba4b-68def80a5b9c",
+      "query": "OHMAIGAT SEDENTA 1.5",
+      "expected": "OHMAIGAT SEDENTA 1.5"
+    },
+    {
+      "id": "bac06106-16c1-46c3-b8cb-a1ff93401666",
+      "query": "OHMAIGAT GATITOS",
+      "expected": "OHMAIGAT GATITOS"
+    },
+    {
+      "id": "c789ce51-4d91-458a-b3c5-ff4d7f548a45",
+      "query": "OHMAIGAT SEDENTA 500",
+      "expected": "OHMAIGAT SEDENTA 500"
+    },
+    {
+      "id": "dcd94963-e81b-4c4f-899e-ee285a0e6e93",
+      "query": "OHMAIGAT SEDENTA",
+      "expected": "OHMAIGAT SEDENTA"
+    },
+    {
+      "id": "50cd6907-ed6b-4780-93ea-70393e955e26",
+      "query": "ARENA KITTEN ORIGINAL",
+      "expected": "ARENA KITTEN ORIGINAL"
+    },
+    {
+      "id": "50d9ba7f-e564-4240-a821-2a841931ec4f",
+      "query": "MUNGOSVITAL+MOBILITY",
+      "expected": "MUNGOSVITAL+MOBILITY"
+    },
+    {
+      "id": "511e9ef0-d6d9-43c2-867b-5bc1fccba483",
+      "query": "NUTRA NUGGETS MANTEN GATO",
+      "expected": "NUTRA NUGGETS MANTEN GATO"
+    },
+    {
+      "id": "5adab83e-31f0-4352-9d37-91027d9df050",
+      "query": "NUTRA NUGGETS MANTEN PERRO",
+      "expected": "NUTRA NUGGETS MANTEN PERRO"
+    },
+    {
+      "id": "5d345fa2-c8e2-4855-ae17-0c10a4c49695",
+      "query": "NUTRA NUGGETS CORDERO",
+      "expected": "NUTRA NUGGETS CORDERO"
+    },
+    {
+      "id": "6e8117c4-a3fe-4f2e-b20d-9022798a6bea",
+      "query": "NUTRA NUGGETS LITE SENIOR",
+      "expected": "NUTRA NUGGETS LITE SENIOR"
+    },
+    {
+      "id": "51362611-991f-4981-9646-60b6070b2630",
+      "query": "TEMPTATIONS",
+      "expected": "TEMPTATIONS"
+    },
+    {
+      "id": "514d7a1f-8151-4cd3-8fa1-2624dd9fa718",
+      "query": "POMADA ALFA",
+      "expected": "POMADA ALFA"
+    },
+    {
+      "id": "bd1c7b7e-6236-442d-ac63-031ec3758ceb",
+      "query": "POMADA ALFA 3 CICATRIZANTE",
+      "expected": "POMADA ALFA 3 CICATRIZANTE"
+    },
+    {
+      "id": "52af2a5f-6991-4f48-a395-5c75bb739c5f",
+      "query": "FUENTE CON SENSOR DE MOVIMENTO",
+      "expected": "FUENTE CON SENSOR DE MOVIMENTO"
+    },
+    {
+      "id": "74762ab8-5129-42ee-a337-bcb7d00c1272",
+      "query": "FUENTE GATOS",
+      "expected": "FUENTE GATOS"
+    },
+    {
+      "id": "e48b8ffd-6ae0-4636-aed3-9c344db4eb5d",
+      "query": "FUENTE A CON TAPETE",
+      "expected": "FUENTE A CON TAPETE"
+    },
+    {
+      "id": "54b58320-5efa-44f3-8dbd-be403650ac82",
+      "query": "ANIMOL",
+      "expected": "ANIMOL"
+    },
+    {
+      "id": "57008880-3f10-404a-a928-2491cb627f9d",
+      "query": "GALGOCAL 200",
+      "expected": "GALGOCAL 200"
+    },
+    {
+      "id": "bc0b95e9-4553-476c-8031-857866af6866",
+      "query": "GALGOCAL 600",
+      "expected": "GALGOCAL 600"
+    },
+    {
+      "id": "58ca4fb5-dcde-4ac4-8bb0-36b3bfe426db",
+      "query": "LINTODENT GEL DENTAL",
+      "expected": "LINTODENT GEL DENTAL"
+    },
+    {
+      "id": "c050c0f1-ade7-4ad2-b825-b51e85b92db6",
+      "query": "LINTODENT ENJUAGUE BUCAL",
+      "expected": "LINTODENT ENJUAGUE BUCAL"
+    },
+    {
+      "id": "58eb4502-196b-4e3c-bd23-df12273f8e8d",
+      "query": "CORTAVANCE",
+      "expected": "CORTAVANCE"
+    },
+    {
+      "id": "5941ddae-ef00-4d43-8aeb-c98503ccf9a1",
+      "query": "FREEMIAU",
+      "expected": "FREEMIAU"
+    },
+    {
+      "id": "9aea18f6-d3a2-469a-b8ec-0a6c9d8d36a4",
+      "query": "FREEMIAU LAVANDA",
+      "expected": "FREEMIAU LAVANDA"
+    },
+    {
+      "id": "be85db08-6c6e-49b7-9398-f44abb05bd31",
+      "query": "FREEMIAU CITRICA",
+      "expected": "FREEMIAU CITRICA"
+    },
+    {
+      "id": "5964bb83-1f43-4302-be64-4f031b5a22d4",
+      "query": "FLETES",
+      "expected": "FLETES"
+    },
+    {
+      "id": "5970a99b-f774-438f-b77c-d2e84fe57aff",
+      "query": "NOVABRONCOL PETS",
+      "expected": "NOVABRONCOL PETS"
+    },
+    {
+      "id": "e241ae94-c6c8-48ae-bf9d-564306034fa9",
+      "query": "NOVABRONCOL AVES",
+      "expected": "NOVABRONCOL AVES"
+    },
+    {
+      "id": "599eb5ef-67b9-4e09-b929-3e6fb9eb6c7e",
+      "query": "CORREAS ECONOMICAS",
+      "expected": "CORREAS ECONOMICAS"
+    },
+    {
+      "id": "afe58e28-9df1-43f8-b2f3-50caf5df8788",
+      "query": "CORREAS 4000",
+      "expected": "CORREAS 4000"
+    },
+    {
+      "id": "5a36b2fa-9f48-422f-abdd-521cb0aa1b08",
+      "query": "ALPISTE",
+      "expected": "ALPISTE"
+    },
+    {
+      "id": "5a6ff90a-afb8-45a9-ac7f-bfc5f3ae7388",
+      "query": "RENAL BALANCE UND",
+      "expected": "RENAL BALANCE UND"
+    },
+    {
+      "id": "9ea8d8d6-9457-42c5-a945-682f983d7132",
+      "query": "RENAL BALANCE CAT UND",
+      "expected": "RENAL BALANCE CAT UND"
+    },
+    {
+      "id": "5be5fb43-5ef4-470f-9c93-2c738a1b467b",
+      "query": "HIALURINA GOTAS ML",
+      "expected": "HIALURINA GOTAS ML"
+    },
+    {
+      "id": "5c8aace5-a73d-435f-95a4-62e8a5ba9653",
+      "query": "SMARTBONES BOMBONERA",
+      "expected": "SMARTBONES BOMBONERA"
+    },
+    {
+      "id": "5d2e871f-1815-421c-be1a-2646cc2f4bee",
+      "query": "NEFROTEC",
+      "expected": "NEFROTEC"
+    },
+    {
+      "id": "5dc101f6-14c6-421a-8baf-237c449b9eea",
+      "query": "DERMACURE EMULSION",
+      "expected": "DERMACURE EMULSION"
+    },
+    {
+      "id": "5e973705-5700-472d-9eb8-ebb90b3884aa",
+      "query": "ELECTROZOO SOBRE",
+      "expected": "ELECTROZOO SOBRE"
+    },
+    {
+      "id": "5f48faf1-248c-47ad-81e7-65d7c3988cfe",
+      "query": "GIMNASIO FELPA 3 NIVELES",
+      "expected": "GIMNASIO FELPA 3 NIVELES"
+    },
+    {
+      "id": "bad29ad4-ef75-4b7b-80fd-9e5b1af7c7b8",
+      "query": "GIMNASIO KITTY CLIMB-UP",
+      "expected": "GIMNASIO KITTY CLIMB-UP"
+    },
+    {
+      "id": "d08ddada-274c-43ac-a5a2-67d9b3d38be1",
+      "query": "GIMNASIO PEQ TUNEL",
+      "expected": "GIMNASIO PEQ TUNEL"
+    },
+    {
+      "id": "60386af0-f266-462d-96e5-330d609d3c0e",
+      "query": "ARENA KITTEN TALCO",
+      "expected": "ARENA KITTEN TALCO"
+    },
+    {
+      "id": "61510e45-ae78-475b-b9d0-5164d9dcc874",
+      "query": "ROYAL DACHSHUND LATA",
+      "expected": "ROYAL DACHSHUND LATA"
+    },
+    {
+      "id": "963b4e80-31eb-4e41-8bef-3b4d83c64b89",
+      "query": "ROYAL POMERANIAN LATA",
+      "expected": "ROYAL POMERANIAN LATA"
+    },
+    {
+      "id": "98ee5c7b-36d0-4cbc-bc6c-260881374d44",
+      "query": "ROYAL FIT",
+      "expected": "ROYAL FIT"
+    },
+    {
+      "id": "bbd1ba3d-162c-4c22-bc2b-e02b9114bd98",
+      "query": "ROYAL HEPATIC",
+      "expected": "ROYAL HEPATIC"
+    },
+    {
+      "id": "615239ed-527e-4a5f-a79f-525f4f7f88ac",
+      "query": "ARENA BUOS CAFE",
+      "expected": "ARENA BUOS CAFE"
+    },
+    {
+      "id": "6152a799-e48c-46dc-a885-7a1dba05e78d",
+      "query": "ARENA FRESH STEP",
+      "expected": "ARENA FRESH STEP"
+    },
+    {
+      "id": "62a176fa-346c-4e12-9c34-491b8776d370",
+      "query": "DONKAN ADULTO",
+      "expected": "DONKAN ADULTO"
+    },
+    {
+      "id": "94a5f184-86d6-4fc5-bf17-11e00e397468",
+      "query": "DONKAN",
+      "expected": "DONKAN"
+    },
+    {
+      "id": "63b246f6-745a-473d-8830-b74fc6c6dfd7",
+      "query": "LEVOTIROXINA",
+      "expected": "LEVOTIROXINA"
+    },
+    {
+      "id": "644dd211-f6b9-4ce6-acfe-ede230725932",
+      "query": "CARDIO B+E 5/40",
+      "expected": "CARDIO B+E 5/40"
+    },
+    {
+      "id": "9e9ee3e5-9251-4a19-b185-6a3517bc59b9",
+      "query": "CARDIO B+E 10",
+      "expected": "CARDIO B+E 10"
+    },
+    {
+      "id": "f009648a-df23-47bb-85d6-defa56310cbd",
+      "query": "CARDIO B",
+      "expected": "CARDIO B"
+    },
+    {
+      "id": "65351150-593e-4f58-ac82-a1ba30834f50",
+      "query": "GERIOO",
+      "expected": "GERIOO"
+    },
+    {
+      "id": "65845ad7-8632-4379-9559-b8d0a43e5337",
+      "query": "TOTAL PERRO GRANDE",
+      "expected": "TOTAL PERRO GRANDE"
+    },
+    {
+      "id": "92e8a5a3-7baa-44e4-97ef-0e76aa07bc41",
+      "query": "TOTAL GATOS",
+      "expected": "TOTAL GATOS"
+    },
+    {
+      "id": "d27d8532-351f-48da-b225-64d3be787b74",
+      "query": "TOTAL PERRO MEDIANO",
+      "expected": "TOTAL PERRO MEDIANO"
+    },
+    {
+      "id": "d372e2dc-01b1-41a6-b471-17521055ebc8",
+      "query": "TOTAL PERRO CHICO",
+      "expected": "TOTAL PERRO CHICO"
+    },
+    {
+      "id": "66a70cba-1226-4880-b0c2-91508bbbe684",
+      "query": "MELOXIPET",
+      "expected": "MELOXIPET"
+    },
+    {
+      "id": "67a00c56-3f37-47d4-803d-28d457ec26a3",
+      "query": "LAZZO ANTIMORDIDA",
+      "expected": "LAZZO ANTIMORDIDA"
+    },
+    {
+      "id": "67afafa4-0396-4711-9201-29da133df58c",
+      "query": "ENDOGAR 2.5 X UND",
+      "expected": "ENDOGAR 2.5 X UND"
+    },
+    {
+      "id": "67bb1970-abaf-4e22-a3aa-f4e210fda948",
+      "query": "KILTIX GRAN 66CM",
+      "expected": "KILTIX GRAN 66CM"
+    },
+    {
+      "id": "67dcb0a3-1cd8-440d-844e-fa1c974c0d8f",
+      "query": "HELL 177 UBICHINON AMPOLLA",
+      "expected": "HELL 177 UBICHINON AMPOLLA"
+    },
+    {
+      "id": "699b3837-d095-4919-8158-6673711cd708",
+      "query": "OCUFLOX COLIRIO",
+      "expected": "OCUFLOX COLIRIO"
+    },
+    {
+      "id": "6a5eb764-77f7-4be7-b85b-b2094b89d0f4",
+      "query": "ARTRIN PRO",
+      "expected": "ARTRIN PRO"
+    },
+    {
+      "id": "6b9e3bd1-0173-4189-87e7-10e9459eece2",
+      "query": "PEZONIL",
+      "expected": "PEZONIL"
+    },
+    {
+      "id": "7010f7e1-d02a-43a4-b821-d2f2845ece6a",
+      "query": "DENTASTIX 2X8",
+      "expected": "DENTASTIX 2X8"
+    },
+    {
+      "id": "c4140b9f-deb1-4967-82bf-eb4bb46a1d81",
+      "query": "DENTASTIX PEDIGREE",
+      "expected": "DENTASTIX PEDIGREE"
+    },
+    {
+      "id": "706215df-fb29-4a88-ba49-4d0f1fb720ce",
+      "query": "SANIX AH",
+      "expected": "SANIX AH"
+    },
+    {
+      "id": "7213b80e-f9d1-41c9-80f1-81fe09f97dcf",
+      "query": "RESTADERM CREMA",
+      "expected": "RESTADERM CREMA"
+    },
+    {
+      "id": "bcfbe527-68bb-45c7-853b-a91948657c60",
+      "query": "RESTADERM SPRAY",
+      "expected": "RESTADERM SPRAY"
+    },
+    {
+      "id": "723b0cf1-2723-4648-911c-9421fbea3c37",
+      "query": "Q-IDA CAT A GRANEL",
+      "expected": "Q-IDA CAT A GRANEL"
+    },
+    {
+      "id": "77277315-8ee7-48c2-82eb-4c6c06b27038",
+      "query": "Q-IDA CAN ADULTO",
+      "expected": "Q-IDA CAN ADULTO"
+    },
+    {
+      "id": "85b75b4d-26c5-4187-8f38-4055edcacf00",
+      "query": "Q-IDA CAT *500",
+      "expected": "Q-IDA CAT *500"
+    },
+    {
+      "id": "f29df342-066a-4a36-a620-07f6b45a47fc",
+      "query": "Q-IDA CAT *",
+      "expected": "Q-IDA CAT *"
+    },
+    {
+      "id": "72805d6e-9fc8-4547-ad27-5cbbf42622cf",
+      "query": "KLERAT SOBRE",
+      "expected": "KLERAT SOBRE"
+    },
+    {
+      "id": "730c269e-2bc3-4dec-821a-4622acc55b81",
+      "query": "DERMOBEST SPRAY",
+      "expected": "DERMOBEST SPRAY"
+    },
+    {
+      "id": "733f515a-d393-4e47-ac6b-8806b42c0fe7",
+      "query": "INMUNAIR GOTERO",
+      "expected": "INMUNAIR GOTERO"
+    },
+    {
+      "id": "735de9bf-e6c0-4af0-84ee-22c11fc18e85",
+      "query": "PREVICO",
+      "expected": "PREVICO"
+    },
+    {
+      "id": "744ad650-21e3-4870-897f-2a683475a658",
+      "query": "CIPACAN CARNE",
+      "expected": "CIPACAN CARNE"
+    },
+    {
+      "id": "a0c2c1c8-58e3-478f-b03c-beb0d1b0b672",
+      "query": "CIPACAN POLLO",
+      "expected": "CIPACAN POLLO"
+    },
+    {
+      "id": "745df69d-a099-48b9-82b1-c27ce3173000",
+      "query": "COQUITOS",
+      "expected": "COQUITOS"
+    },
+    {
+      "id": "b0770af8-1b54-434b-9735-d3ee8dd27ae1",
+      "query": "COQUITOS X KL 140 APROX",
+      "expected": "COQUITOS X KL 140 APROX"
+    },
+    {
+      "id": "748c49a7-04d7-4e19-a1df-9c09f6c54e2d",
+      "query": "ASUNTOL JABON",
+      "expected": "ASUNTOL JABON"
+    },
+    {
+      "id": "cb29f665-afd8-4235-83a9-2bd28e826b12",
+      "query": "ASUNTOL SABILA",
+      "expected": "ASUNTOL SABILA"
+    },
+    {
+      "id": "7588a6df-a605-494b-b8ac-6042a08a4f63",
+      "query": "CORRAL PLEGABLE",
+      "expected": "CORRAL PLEGABLE"
+    },
+    {
+      "id": "77f30d40-da9b-4fff-972f-cdf9a742337b",
+      "query": "C-THYRO TABS",
+      "expected": "C-THYRO TABS"
+    },
+    {
+      "id": "7890ac15-1d7e-49ff-a37a-6812505c6b0e",
+      "query": "DESCENSOR",
+      "expected": "DESCENSOR"
+    },
+    {
+      "id": "78c695b3-9a1d-4264-a5cd-d7e50415cf41",
+      "query": "REVITALICE MORA-AZUL",
+      "expected": "REVITALICE MORA-AZUL"
+    },
+    {
+      "id": "790af09f-e68d-4742-9449-e10e0a6c8a74",
+      "query": "AVENA",
+      "expected": "AVENA"
+    },
+    {
+      "id": "79239091-3b7d-46a8-9035-fd38f47b2605",
+      "query": "CALSYN",
+      "expected": "CALSYN"
+    },
+    {
+      "id": "7a622b99-b1f0-403d-9aae-ad06aab582b3",
+      "query": "EASOTIC",
+      "expected": "EASOTIC"
+    },
+    {
+      "id": "7a87b810-9fab-419d-83bc-4fb6298779fb",
+      "query": "DERMOSYN",
+      "expected": "DERMOSYN"
+    },
+    {
+      "id": "7aea23c2-1d20-41d5-b15e-06e0fd4dbd14",
+      "query": "SEMILLAS SOBRES",
+      "expected": "SEMILLAS SOBRES"
+    },
+    {
+      "id": "7b2f917d-38f9-465c-86cf-b6b516110e3c",
+      "query": "PANZER SOBRE",
+      "expected": "PANZER SOBRE"
+    },
+    {
+      "id": "7d428b20-0fcc-4c39-bb79-a8a8356c272a",
+      "query": "UNIDOL",
+      "expected": "UNIDOL"
+    },
+    {
+      "id": "7dfa1974-6c4d-47a5-9953-349956a76b77",
+      "query": "ARENA KITTEN CAFE",
+      "expected": "ARENA KITTEN CAFE"
+    },
+    {
+      "id": "7e0d38fc-1d37-4788-8275-555769b60da5",
+      "query": "POUCH CARE CAT PLAISIR",
+      "expected": "POUCH CARE CAT PLAISIR"
+    },
+    {
+      "id": "7eb44be2-fd23-4620-b75b-eb2cd99f3939",
+      "query": "POUCH CARE DOG PLAISER",
+      "expected": "POUCH CARE DOG PLAISER"
+    },
+    {
+      "id": "f7bf0f89-9726-4f82-a677-1b6d3ba7a9f3",
+      "query": "POUCH OPTIMUS GATO",
+      "expected": "POUCH OPTIMUS GATO"
+    },
+    {
+      "id": "fbf4fb2c-52b2-4f6e-8ab9-07293d04bec9",
+      "query": "POUCH OPTIMUN PAG",
+      "expected": "POUCH OPTIMUN PAG"
+    },
+    {
+      "id": "7f3ca67e-d858-4473-9065-6cf0bb48a4d2",
+      "query": "URANOTEST LEUCEMIA/VIH FELINO",
+      "expected": "URANOTEST LEUCEMIA/VIH FELINO"
+    },
+    {
+      "id": "7fdb4648-8da7-43df-8085-4535f4308bfb",
+      "query": "CONDROMAX PET",
+      "expected": "CONDROMAX PET"
+    },
+    {
+      "id": "81a9fd45-651f-43ab-bc66-4d3aa455aa26",
+      "query": "MIXTURA",
+      "expected": "MIXTURA"
+    },
+    {
+      "id": "81eab611-08ab-4d4a-95bf-ce1aab1f1882",
+      "query": "JAULA GATO MIAULOFT 3 NIVEL",
+      "expected": "JAULA GATO MIAULOFT 3 NIVEL"
+    },
+    {
+      "id": "8238255e-f707-431f-b2d8-d17a3039d8c8",
+      "query": "PROMOCALIER",
+      "expected": "PROMOCALIER"
+    },
+    {
+      "id": "830ffa8e-9ec2-4908-9020-ee0e80c3548a",
+      "query": "BAXIDIN",
+      "expected": "BAXIDIN"
+    },
+    {
+      "id": "837afe89-2a2d-4560-a027-ceeb2fef0f3f",
+      "query": "CRIOLLO SANCOCHO",
+      "expected": "CRIOLLO SANCOCHO"
+    },
+    {
+      "id": "83960497-178e-4040-9dd3-659cafc3a585",
+      "query": "ALPO ADUL",
+      "expected": "ALPO ADUL"
+    },
+    {
+      "id": "8631450e-0071-4512-a586-1cef142edbae",
+      "query": "AQUADENT",
+      "expected": "AQUADENT"
+    },
+    {
+      "id": "8649e722-5be1-4a90-8dd7-c758e9e1dbba",
+      "query": "MEDROXIPROGESTERONA",
+      "expected": "MEDROXIPROGESTERONA"
+    },
+    {
+      "id": "86d0979d-ea07-467d-b8e6-d3106d5dd455",
+      "query": "ARTRI-TABS",
+      "expected": "ARTRI-TABS"
+    },
+    {
+      "id": "879b0b23-29f7-43a7-a08c-fe9e1dd1d21d",
+      "query": "NOVACAN T",
+      "expected": "NOVACAN T"
+    },
+    {
+      "id": "87eef0bb-6c96-4a45-9732-7695e4e9db30",
+      "query": "NUTRI-GEL",
+      "expected": "NUTRI-GEL"
+    },
+    {
+      "id": "8828007e-e2fe-489a-b2e2-9037e63c6414",
+      "query": "CIPROVET",
+      "expected": "CIPROVET"
+    },
+    {
+      "id": "887940ca-f556-4737-a3a9-1d7a86afd23b",
+      "query": "BOLSA POPIS X UND",
+      "expected": "BOLSA POPIS X UND"
+    },
+    {
+      "id": "8e72fb91-e76b-4f6d-9a1c-41c7457f432d",
+      "query": "BOLSA POPIS",
+      "expected": "BOLSA POPIS"
+    },
+    {
+      "id": "890f7539-fae6-4fe1-bc28-e0f5b67ae492",
+      "query": "LOROS Y HAMSTER",
+      "expected": "LOROS Y HAMSTER"
+    },
+    {
+      "id": "8a40f535-d3e8-4cc6-baee-2d7ea73124ce",
+      "query": "POSATE",
+      "expected": "POSATE"
+    },
+    {
+      "id": "8b566f7b-ce4f-4db2-939f-514942014d07",
+      "query": "PEZOSAN CREMA",
+      "expected": "PEZOSAN CREMA"
+    },
+    {
+      "id": "8b91416e-cafe-4873-ba41-65948978fd80",
+      "query": "BHI SYLIYM",
+      "expected": "BHI SYLIYM"
+    },
+    {
+      "id": "b5023cc8-ba72-49eb-a229-e11efafa8bd7",
+      "query": "BHI NEUROBIHOV CAP",
+      "expected": "BHI NEUROBIHOV CAP"
+    },
+    {
+      "id": "b5e3265b-01e2-4815-bba8-74e5cae66b7c",
+      "query": "BHI COFAGIA",
+      "expected": "BHI COFAGIA"
+    },
+    {
+      "id": "cf4a6ff3-4ac0-4ad3-8d07-9232369edd41",
+      "query": "BHI CANAV THC",
+      "expected": "BHI CANAV THC"
+    },
+    {
+      "id": "deb505d4-6666-4a2f-83c4-c65c041ad07e",
+      "query": "BHI NEP-VET",
+      "expected": "BHI NEP-VET"
+    },
+    {
+      "id": "e7e60b8c-10d2-441a-b284-cbf9536d56f6",
+      "query": "BHI CANAV GOTAS",
+      "expected": "BHI CANAV GOTAS"
+    },
+    {
+      "id": "8c5a6599-fbe6-4009-a226-93a72dcc4e51",
+      "query": "SNACKS DESHIDRATADO CALABAZA",
+      "expected": "SNACKS DESHIDRATADO CALABAZA"
+    },
+    {
+      "id": "eab81c43-3c52-49f4-abb4-3a703c925a43",
+      "query": "SNACKS MEOW MI",
+      "expected": "SNACKS MEOW MI"
+    },
+    {
+      "id": "8e175530-c1fc-4859-baca-a5565902cfd8",
+      "query": "VITAVET C",
+      "expected": "VITAVET C"
+    },
+    {
+      "id": "8f37b0c9-6f02-4ca5-9a67-5a3dd520755d",
+      "query": "ESENCIAS GOTAS",
+      "expected": "ESENCIAS GOTAS"
+    },
+    {
+      "id": "f9c39bbf-b16b-4d68-9767-ae04858b4d16",
+      "query": "ESENCIAS SPRAY",
+      "expected": "ESENCIAS SPRAY"
+    },
+    {
+      "id": "8f4828f4-864d-45bc-a1f2-7a3f4fd3df3d",
+      "query": "TETERO L",
+      "expected": "TETERO L"
+    },
+    {
+      "id": "8f7e5e11-9b7a-4fe9-beac-710b10e06e11",
+      "query": "FINCUC SPRAY",
+      "expected": "FINCUC SPRAY"
+    },
+    {
+      "id": "d4222380-3a3b-4efc-ad5b-f6dc76215317",
+      "query": "FINCUC TARR0",
+      "expected": "FINCUC TARR0"
+    },
+    {
+      "id": "eb7f4dc2-20ff-4559-914b-792a61109ac3",
+      "query": "FINCUC GEL EN JERINGA",
+      "expected": "FINCUC GEL EN JERINGA"
+    },
+    {
+      "id": "906dcade-aa4e-4c7b-b652-978353832387",
+      "query": "ARENA MAIZ CAT",
+      "expected": "ARENA MAIZ CAT"
+    },
+    {
+      "id": "9088e46b-21e0-4161-868d-604b1c1635a7",
+      "query": "CANPLUSVIT",
+      "expected": "CANPLUSVIT"
+    },
+    {
+      "id": "90f90977-3e7d-4a13-b4ff-8927ff7078d9",
+      "query": "KITEKAT POUCH",
+      "expected": "KITEKAT POUCH"
+    },
+    {
+      "id": "91f33789-caf7-4461-8c54-91c224ee3105",
+      "query": "QUINODIAR SUSP",
+      "expected": "QUINODIAR SUSP"
+    },
+    {
+      "id": "9240324c-2f46-49a8-942a-d131abab046d",
+      "query": "DEODORIZANTE ARENA MICHIKO 462",
+      "expected": "DEODORIZANTE ARENA MICHIKO 462"
+    },
+    {
+      "id": "933eac49-4fb6-47d4-a862-0f811cb09a42",
+      "query": "BEBEDERO HAMSTER, CONEJO MINI",
+      "expected": "BEBEDERO HAMSTER, CONEJO MINI"
+    },
+    {
+      "id": "969855d6-ebf8-49c8-8a35-24a55f5bec05",
+      "query": "BEBEDERO HUACAL",
+      "expected": "BEBEDERO HUACAL"
+    },
+    {
+      "id": "cdd225e2-e9a6-429b-86f1-5b50c4d2e67f",
+      "query": "BEBEDERO PAJARO GR",
+      "expected": "BEBEDERO PAJARO GR"
+    },
+    {
+      "id": "94521d52-d58e-46b8-8ef9-45bcb7290825",
+      "query": "STICKS SABORES",
+      "expected": "STICKS SABORES"
+    },
+    {
+      "id": "9470522d-747d-4c6d-8c78-2a88cf0f1dc7",
+      "query": "DOXIFIG SUSP",
+      "expected": "DOXIFIG SUSP"
+    },
+    {
+      "id": "95baccc2-8364-45e0-9099-7d81fcc9168f",
+      "query": "DENTAXTIX PEDIGREE PAG 2 LLEVE 3",
+      "expected": "DENTAXTIX PEDIGREE PAG 2 LLEVE 3"
+    },
+    {
+      "id": "964eae00-6000-4500-adc9-51749d55d1db",
+      "query": "ITRACONAZOL",
+      "expected": "ITRACONAZOL"
+    },
+    {
+      "id": "96f2869e-a5eb-4e0d-8480-0579ef557a79",
+      "query": "FORTIFLOR FELINE",
+      "expected": "FORTIFLOR FELINE"
+    },
+    {
+      "id": "98a7b766-eda3-4028-936a-5bdbb0aba62f",
+      "query": "LAZO MASCOTAS 2CM FINA",
+      "expected": "LAZO MASCOTAS 2CM FINA"
+    },
+    {
+      "id": "98bd8dea-6e28-4b37-8aac-bd34e3151847",
+      "query": "TRADILLA REFLECTIVA MULTICOLOR",
+      "expected": "TRADILLA REFLECTIVA MULTICOLOR"
+    },
+    {
+      "id": "98e2d58d-dc69-4caf-94b4-90785955986e",
+      "query": "GUSANTROL CREMA",
+      "expected": "GUSANTROL CREMA"
+    },
+    {
+      "id": "993a3656-85cf-439c-8ca7-d7ab98b818c5",
+      "query": "OTOFARM",
+      "expected": "OTOFARM"
+    },
+    {
+      "id": "9998d849-5fa6-456b-bbe2-9cfa46d492d7",
+      "query": "ALAPIEL",
+      "expected": "ALAPIEL"
+    },
+    {
+      "id": "9b09996d-4e4e-40d5-89ba-b6c0a57c9c08",
+      "query": "ATIVI",
+      "expected": "ATIVI"
+    },
+    {
+      "id": "9b91efc9-da92-4e2a-94bc-ca8aa67e25d4",
+      "query": "PIPERAZINA UND",
+      "expected": "PIPERAZINA UND"
+    },
+    {
+      "id": "9b97e8be-0dae-4bf6-a806-1fe0ecf12497",
+      "query": "COLONIA HELLO KITTY",
+      "expected": "COLONIA HELLO KITTY"
+    },
+    {
+      "id": "9ba1cd9b-b7db-4bb7-82d4-3d340b2f1bad",
+      "query": "OPTER",
+      "expected": "OPTER"
+    },
+    {
+      "id": "9badf1b1-b2a0-48a2-bd78-f4b2dfa2feb8",
+      "query": "ARENA FOFICAT TOFU",
+      "expected": "ARENA FOFICAT TOFU"
+    },
+    {
+      "id": "9d7113d5-7fb9-4168-8fcd-14dbde2d17e3",
+      "query": "ARENA HAMSTER X KL",
+      "expected": "ARENA HAMSTER X KL"
+    },
+    {
+      "id": "9e84c5f6-4473-46b0-b78f-e16038766f02",
+      "query": "MAMITOLINA",
+      "expected": "MAMITOLINA"
+    },
+    {
+      "id": "9fe14db4-ecbc-4f01-b442-cf3d58661165",
+      "query": "OTIVET FORTE",
+      "expected": "OTIVET FORTE"
+    },
+    {
+      "id": "a019a2bc-96b7-4e68-a99f-8ea874bd4fe0",
+      "query": "SANUCH SOBRE",
+      "expected": "SANUCH SOBRE"
+    },
+    {
+      "id": "a03afb3f-bec8-41fe-8cba-45426376a834",
+      "query": "CLORHEXIN SPRAY",
+      "expected": "CLORHEXIN SPRAY"
+    },
+    {
+      "id": "a1c20f04-58f8-494f-aa63-cb8c71640abd",
+      "query": "MELOXICAM",
+      "expected": "MELOXICAM"
+    },
+    {
+      "id": "a1cd7ec5-6191-47f1-8612-082baad09c49",
+      "query": "CERULINE",
+      "expected": "CERULINE"
+    },
+    {
+      "id": "a1ce21cb-3a02-4b24-a178-0317f2abf5e8",
+      "query": "SEDOLAX GOTERO",
+      "expected": "SEDOLAX GOTERO"
+    },
+    {
+      "id": "a34ce265-9d8f-42a5-ba2f-adc906a7a71f",
+      "query": "CACAHUATE",
+      "expected": "CACAHUATE"
+    },
+    {
+      "id": "a59b9468-393f-4ed2-a919-b99b242ab220",
+      "query": "CICANDUL",
+      "expected": "CICANDUL"
+    },
+    {
+      "id": "a5fef309-d57c-4ab9-9099-7cad33027d72",
+      "query": "UBREVET",
+      "expected": "UBREVET"
+    },
+    {
+      "id": "a705d922-3ea7-4869-a177-66b40a642f1c",
+      "query": "FELI",
+      "expected": "FELI"
+    },
+    {
+      "id": "a8885926-6360-46c1-81b3-5a0264a2d96c",
+      "query": "PULFEN",
+      "expected": "PULFEN"
+    },
+    {
+      "id": "a9ddaeac-42a1-4d66-95e8-2ee93f1be713",
+      "query": "PERNIL CARNAZA",
+      "expected": "PERNIL CARNAZA"
+    },
+    {
+      "id": "d885bb28-10b8-46c4-a43d-b4f9b519f6e9",
+      "query": "PERNIL POLLO CARNAZA",
+      "expected": "PERNIL POLLO CARNAZA"
+    },
+    {
+      "id": "abafa679-a950-44a2-82e4-8400f41419c9",
+      "query": "MR GATTO SALMON",
+      "expected": "MR GATTO SALMON"
+    },
+    {
+      "id": "acacf246-418d-4446-b7fc-3e595d50964e",
+      "query": "STREPTOLAND",
+      "expected": "STREPTOLAND"
+    },
+    {
+      "id": "acb2d86b-3581-4668-8e4d-4d8e0cfd659b",
+      "query": "ARTRIBALANCE",
+      "expected": "ARTRIBALANCE"
+    },
+    {
+      "id": "ad0b7109-5569-438f-8f2a-e891064a9960",
+      "query": "SHEBA POUCH GATO",
+      "expected": "SHEBA POUCH GATO"
+    },
+    {
+      "id": "ada29ca8-19c9-4386-84bb-73db7d156eae",
+      "query": "SUTRIM SUSP",
+      "expected": "SUTRIM SUSP"
+    },
+    {
+      "id": "af9513b7-0946-42c6-9050-cf9a7cf69871",
+      "query": "FILPO",
+      "expected": "FILPO"
+    },
+    {
+      "id": "f876f7cd-d6ed-4f12-bba1-8c8ea469b5aa",
+      "query": "FILPO GATOS",
+      "expected": "FILPO GATOS"
+    },
+    {
+      "id": "b0637d4f-aa5e-4373-b8a9-d5a87768d873",
+      "query": "AMOX C",
+      "expected": "AMOX C"
+    },
+    {
+      "id": "b0f12ffb-7f89-47ec-8383-e11680967a92",
+      "query": "GLICOPAN PET",
+      "expected": "GLICOPAN PET"
+    },
+    {
+      "id": "b189d0ab-a0a9-41da-bdc4-dc1196cb419b",
+      "query": "BISMOPET",
+      "expected": "BISMOPET"
+    },
+    {
+      "id": "b2d21722-f7c2-489a-8eee-18aa8ad21134",
+      "query": "ROYALADULT INSTINCTIVE",
+      "expected": "ROYALADULT INSTINCTIVE"
+    },
+    {
+      "id": "b3c6cc23-e60a-4ebf-a778-81a1ee76c6d5",
+      "query": "ANKOFEN",
+      "expected": "ANKOFEN"
+    },
+    {
+      "id": "b437e848-6e07-4e67-bced-fbe1f3457781",
+      "query": "LAXA-FORM TUBO",
+      "expected": "LAXA-FORM TUBO"
+    },
+    {
+      "id": "b4f37529-f7fb-4931-8291-897a0dd17168",
+      "query": "PANOLOG",
+      "expected": "PANOLOG"
+    },
+    {
+      "id": "b5915170-55fc-4cc0-b57d-b3235b7428a5",
+      "query": "RODILLERAS PET",
+      "expected": "RODILLERAS PET"
+    },
+    {
+      "id": "b600f5ef-8234-47bf-9be5-e4e6db10229d",
+      "query": "OTOCURE GOTAS",
+      "expected": "OTOCURE GOTAS"
+    },
+    {
+      "id": "b619c8fc-c47a-4fde-8439-23970f59070e",
+      "query": "METRONID",
+      "expected": "METRONID"
+    },
+    {
+      "id": "b8226b29-3e20-44fe-a788-753dc8df86ec",
+      "query": "SINGAP",
+      "expected": "SINGAP"
+    },
+    {
+      "id": "b939da82-e081-4aaf-a168-8d26f526fdea",
+      "query": "MELOXIPROC",
+      "expected": "MELOXIPROC"
+    },
+    {
+      "id": "b9a9d019-d719-48db-9c2f-d8841399a771",
+      "query": "ORGANEW POLVO",
+      "expected": "ORGANEW POLVO"
+    },
+    {
+      "id": "b9b31334-02c3-4535-b6dc-372d7cacda29",
+      "query": "GUANTE PREMIUM",
+      "expected": "GUANTE PREMIUM"
+    },
+    {
+      "id": "bfc5490a-3be2-4459-a284-94cfe3df9ffa",
+      "query": "GUANTE PARA CEPILLAR Y MASAJE",
+      "expected": "GUANTE PARA CEPILLAR Y MASAJE"
+    },
+    {
+      "id": "b9daf395-ab65-4372-9df1-cd3d86842785",
+      "query": "PIEL Y PELO GATOS",
+      "expected": "PIEL Y PELO GATOS"
+    },
+    {
+      "id": "c8020df5-1bac-4e72-b449-4079d92d5cc4",
+      "query": "PIEL Y PELO PERRRO",
+      "expected": "PIEL Y PELO PERRRO"
+    },
+    {
+      "id": "bb1585e3-5657-46d3-a9e5-d36a6bd0ad42",
+      "query": "NUTRIS GATO",
+      "expected": "NUTRIS GATO"
+    },
+    {
+      "id": "bba7447b-712c-4f2e-bc55-7a85cf5d66ca",
+      "query": "NUTRIS ADUL CARNE",
+      "expected": "NUTRIS ADUL CARNE"
+    },
+    {
+      "id": "bbaee7dd-82be-4d87-8a37-ddc82e61231b",
+      "query": "DIGYTON GOTAS",
+      "expected": "DIGYTON GOTAS"
+    },
+    {
+      "id": "bc2811e4-8d26-4ba7-b5f8-525b35812d69",
+      "query": "NUTRIBAR",
+      "expected": "NUTRIBAR"
+    },
+    {
+      "id": "e5cb5f6e-9c87-42bc-af5d-354ee5e77704",
+      "query": "NUTRIBAR X UNIAD",
+      "expected": "NUTRIBAR X UNIAD"
+    },
+    {
+      "id": "bcdaf5ec-8e98-45a1-ba39-d98a32631b86",
+      "query": "NEO PLE",
+      "expected": "NEO PLE"
+    },
+    {
+      "id": "bf7381e2-c3de-473e-83fe-5d4ccbe45ff4",
+      "query": "CONSULTA VETERINARIA",
+      "expected": "CONSULTA VETERINARIA"
+    },
+    {
+      "id": "c0210264-20c6-4e5b-a2df-ff19b3820ef2",
+      "query": "CARGADOR ESTILO BEBE M",
+      "expected": "CARGADOR ESTILO BEBE M"
+    },
+    {
+      "id": "c26fc21c-3d04-467c-a78f-620eba3c015a",
+      "query": "GIMNACIOS PEQUEÑOS ESPALDAR",
+      "expected": "GIMNACIOS PEQUEÑOS ESPALDAR"
+    },
+    {
+      "id": "c33646fe-1002-4bbe-af74-94f7660869b3",
+      "query": "SET COMEDERO Y BEBEDERO CUTE CAT",
+      "expected": "SET COMEDERO Y BEBEDERO CUTE CAT"
+    },
+    {
+      "id": "c387554d-bd2d-4096-9fb5-c4d4fc70c4d2",
+      "query": "BAYTRIL",
+      "expected": "BAYTRIL"
+    },
+    {
+      "id": "c476fc7e-4bf9-4b88-9c37-966b92961c74",
+      "query": "TEARS FCO",
+      "expected": "TEARS FCO"
+    },
+    {
+      "id": "c6057413-f48b-4183-8805-e49adab4b0af",
+      "query": "VITACANARIO CANTO Y COLOR",
+      "expected": "VITACANARIO CANTO Y COLOR"
+    },
+    {
+      "id": "c6d04e4d-6814-45c6-9161-29210251f46c",
+      "query": "BOLSAS 8 ROLLOS BIODEGRADLE",
+      "expected": "BOLSAS 8 ROLLOS BIODEGRADLE"
+    },
+    {
+      "id": "cabfae3f-71c3-4811-a1a7-89d651efe12e",
+      "query": "GALLIPRANT",
+      "expected": "GALLIPRANT"
+    },
+    {
+      "id": "cc9bfd13-7792-45b6-a019-159d081c144c",
+      "query": "MARBOQUIN",
+      "expected": "MARBOQUIN"
+    },
+    {
+      "id": "cd901e1a-e9f3-460a-a9c2-08e6ad23d5ea",
+      "query": "FAJAS S(DE",
+      "expected": "FAJAS S(DE"
+    },
+    {
+      "id": "cdfa3785-fa42-4237-8c71-21891d3b4dc3",
+      "query": "FANCY FEAST",
+      "expected": "FANCY FEAST"
+    },
+    {
+      "id": "ce7eb41f-a895-4735-ae69-b0c805ba348e",
+      "query": "MAIZ",
+      "expected": "MAIZ"
+    },
+    {
+      "id": "cf062280-6ff0-4ea4-8daf-68928bcaeef1",
+      "query": "TOPIN COLA PEQ",
+      "expected": "TOPIN COLA PEQ"
+    },
+    {
+      "id": "cfe0578c-df7a-429e-b357-b439f7fdef97",
+      "query": "HEMOLITAN PET",
+      "expected": "HEMOLITAN PET"
+    },
+    {
+      "id": "d5c34b78-9a9d-41c5-8e92-c13252cbb84b",
+      "query": "CALMUROFEL CAP",
+      "expected": "CALMUROFEL CAP"
+    },
+    {
+      "id": "d6abc72b-9f51-4dce-967d-0129bd63eae3",
+      "query": "CEFAMAX CEFALEXINA",
+      "expected": "CEFAMAX CEFALEXINA"
+    },
+    {
+      "id": "d73f5168-0297-4fb0-9b86-9131441bb0e7",
+      "query": "NUTRIPEZ",
+      "expected": "NUTRIPEZ"
+    },
+    {
+      "id": "d8233f7e-e233-4676-af62-3511bd08c600",
+      "query": "GIRASOL",
+      "expected": "GIRASOL"
+    },
+    {
+      "id": "d9d0d2a7-8a53-4fca-9f1f-5c1e10a1b928",
+      "query": "TUSIVET SUSPENSION",
+      "expected": "TUSIVET SUSPENSION"
+    },
+    {
+      "id": "da5bb04b-72ac-4a5a-9e55-f07af5e39605",
+      "query": "PREDNIZOO",
+      "expected": "PREDNIZOO"
+    },
+    {
+      "id": "dade9345-a3ba-40b7-ad98-15a19cb3eac8",
+      "query": "GUAYAQUIL",
+      "expected": "GUAYAQUIL"
+    },
+    {
+      "id": "db07879d-8f50-4bee-a960-05e2b521bbff",
+      "query": "SUPERENERGY",
+      "expected": "SUPERENERGY"
+    },
+    {
+      "id": "dc188c4d-5f3c-4153-bfac-e5c8e877890f",
+      "query": "ARENA KITTEN LIMON",
+      "expected": "ARENA KITTEN LIMON"
+    },
+    {
+      "id": "dc1e98a2-e001-4b69-bd13-bea9ef6750ca",
+      "query": "VENDA FUN FLEX COLORES 10",
+      "expected": "VENDA FUN FLEX COLORES 10"
+    },
+    {
+      "id": "dd4df1f2-971f-451e-868c-aacfa8d132d0",
+      "query": "ENZIMAX",
+      "expected": "ENZIMAX"
+    },
+    {
+      "id": "df3b4835-e222-40d1-aecd-34676bd8a8db",
+      "query": "CORTAUÑAS TIJERA",
+      "expected": "CORTAUÑAS TIJERA"
+    },
+    {
+      "id": "df456fe1-367c-487b-85d5-b827b1db1540",
+      "query": "MUNGOS MULTI-VIT + VITAMINAS MINERALES",
+      "expected": "MUNGOS MULTI-VIT + VITAMINAS MINERALES"
+    },
+    {
+      "id": "e15eb2e5-2baa-4e41-a056-9a0f13318c8a",
+      "query": "CUCHUCO",
+      "expected": "CUCHUCO"
+    },
+    {
+      "id": "e1c7dd03-e745-4c75-b769-3ee1ce23261f",
+      "query": "DRONTAL PS",
+      "expected": "DRONTAL PS"
+    },
+    {
+      "id": "e1cc1abd-d910-4dcf-9d13-f1888a96f71c",
+      "query": "REUTOPIC",
+      "expected": "REUTOPIC"
+    },
+    {
+      "id": "e1e636ab-270a-4315-95bf-e1e07ba36aaf",
+      "query": "PREDNISOLONA",
+      "expected": "PREDNISOLONA"
+    },
+    {
+      "id": "e2b1ca02-624c-49bb-8ed0-375b4a1fa938",
+      "query": "CIPACAT",
+      "expected": "CIPACAT"
+    },
+    {
+      "id": "e52579d9-c04d-4134-ab25-de4b647a196b",
+      "query": "ROYALSHIH TZU LATA 0.85",
+      "expected": "ROYALSHIH TZU LATA 0.85"
+    },
+    {
+      "id": "f07fbee0-8012-4953-b66c-a0152fa9de3a",
+      "query": "VARA PARA GATO",
+      "expected": "VARA PARA GATO"
+    },
+    {
+      "id": "f52282b4-4071-461e-b7bc-4f156bb7d43b",
+      "query": "SINRAT SOBRE",
+      "expected": "SINRAT SOBRE"
+    },
+    {
+      "id": "f636b50e-29b4-4d0d-abe4-ef5cadb9b3aa",
+      "query": "OL-TRANS",
+      "expected": "OL-TRANS"
+    },
+    {
+      "id": "f6868501-66ca-4333-b81b-dcffcc8f977d",
+      "query": "CANATO",
+      "expected": "CANATO"
+    },
+    {
+      "id": "f68a28dd-1bc4-4515-8eb6-6ccea6f9d90f",
+      "query": "FLORALAC SOBRE",
+      "expected": "FLORALAC SOBRE"
+    },
+    {
+      "id": "f6934c13-7602-4aa1-a5f3-de88a294844c",
+      "query": "QUINOCALF",
+      "expected": "QUINOCALF"
+    },
+    {
+      "id": "f6f048b7-6199-4c27-a1da-c30e0f701dcc",
+      "query": "BAÑOL 20.8%",
+      "expected": "BAÑOL 20.8%"
+    },
+    {
+      "id": "fa3713ad-1151-4bda-bdc6-fd22756c1958",
+      "query": "VISIVET GOTERO",
+      "expected": "VISIVET GOTERO"
+    },
+    {
+      "id": "fae884fc-723d-45e1-9860-05a5af63451e",
+      "query": "TOBRAMAX GOTAS",
+      "expected": "TOBRAMAX GOTAS"
+    },
+    {
+      "id": "fbb7418a-28b9-4072-abcb-5e48dc9c6159",
+      "query": "IXER",
+      "expected": "IXER"
+    },
+    {
+      "id": "fd4ad68d-cd01-4f20-bcfb-42a79ea562d7",
+      "query": "ADVANTAGE GATO",
+      "expected": "ADVANTAGE GATO"
+    },
+    {
+      "id": "fd5d88f1-f020-4401-8454-0554dfba7939",
+      "query": "UT BALANCE UND",
+      "expected": "UT BALANCE UND"
+    },
+    {
+      "id": "fd66dfc1-5af8-45f6-b9dd-3d36a7c2df9a",
+      "query": "GEMON DOG ADUL",
+      "expected": "GEMON DOG ADUL"
+    },
+    {
+      "id": "fd755d9f-2fde-419c-8ed7-7c51e65d88e9",
+      "query": "QUERCETOL",
+      "expected": "QUERCETOL"
+    },
+    {
+      "id": "fe410301-3725-4c22-abc0-5e45bb915d86",
+      "query": "GALLETA CONEJOS",
+      "expected": "GALLETA CONEJOS"
+    },
+    {
+      "id": "ff05bed1-2114-4643-9bf0-230cfc953cc5",
+      "query": "BRILLO CLEAN EYES",
+      "expected": "BRILLO CLEAN EYES"
+    },
+    {
+      "id": "ffe9da46-4b41-4d61-b86f-c50b90564e4e",
+      "query": "SNAKS SOBRE MICHIKO SEMANARIO",
+      "expected": "SNAKS SOBRE MICHIKO SEMANARIO"
+    }
+  ]
+}

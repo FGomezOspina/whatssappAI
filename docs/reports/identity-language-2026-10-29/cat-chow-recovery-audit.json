@@ -1,0 +1,25 @@
+{
+  "checkedAt": "2026-10-29T22:23:09.462Z",
+  "source": "Local saved read-only Supabase/Kapso evidence; no new external calls",
+  "snapshotAt": "2026-10-29T22:16:21.932Z",
+  "inboundId": "a838fd08-07f6-a7c5-d86e-8ba8c5d8719e",
+  "turnIdHash": "bf65793d213d5692",
+  "incomingAt": "2026-10-29T22:14:45.431408+00:00",
+  "providerMessageFound": true,
+  "providerDirection": "inbound",
+  "providerStatus": "read",
+  "processedReceiptPresent": false,
+  "inboundEventKeyInProcessed": false,
+  "outboundRowsForTurn": 0,
+  "ordersCreated": 0,
+  "pendingOrderWrite": false,
+  "interpretationPersisted": false,
+  "run": "0b69480f-a27d-4f75-b1e3-aa096627b8be",
+  "hasSendAttempt": false,
+  "lastSummaryIsFailedRun": true,
+  "memoryCursor": {
+    "id": "ca24b76b-1348-5597-e760-6a6bd8d82ef2",
+    "created_at": "2026-10-29T20:54:32.070547+00:00"
+  },
+  "lastLogModifiedAt": "2026-10-29T22:14:53.528Z"
+}

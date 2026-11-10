@@ -1,0 +1,182 @@
+{
+  "capturedAtUTC": "2026-10-30T03:02:13.944825+00:00",
+  "source": "Same existing Safari WhatsApp Web commercial profile distrifincapereira; date picker confirmed October2026; Mac local clock verified2026-10-29 21:48 -05 while UTC2026-10-30 02:48.",
+  "interval": {
+    "timezone": "America/Bogota",
+    "from": "2026-10-28T00:00:00-05:00",
+    "through": "2026-10-29T18:46:00-05:00"
+  },
+  "previousInventories": [
+    "coverage.json",
+    "coverage-followup.json"
+  ],
+  "coverage": "Partial,14 customer-facing chats and1supplier excluded. Exhaustive list pagination unavailable. A greeting,call or image-only chat is not treated as a product request.",
+  "customers": [
+    {
+      "key": "C03",
+      "date": "2026-10-28",
+      "observedFrom": "09:53:34",
+      "observedThrough": "11:58:41",
+      "topic": "Photo-led litter20kg; later delivery timing",
+      "limits": "Single-chat export resolved former11:09–11:58 gap; no further product clues, image omitted."
+    },
+    {
+      "key": "C10",
+      "date": "2026-10-29",
+      "observedFrom": "18:04",
+      "observedThrough": "18:04",
+      "topic": "Greeting only",
+      "limits": "No product request identified; not a benchmark case. Visible system/contact header and sole greeting, no full export."
+    },
+    {
+      "key": "C11",
+      "date": "2026-10-29",
+      "observedFrom": "15:35",
+      "observedThrough": "15:35",
+      "topic": "Image without identifying text",
+      "limits": "Full image unavailable; unsent Meta AI payment suggestion not accepted as evidence. Export dialog inspected and cancelled; no media option shown."
+    },
+    {
+      "key": "C12",
+      "date": "2026-10-28",
+      "observedFrom": "08:48",
+      "observedThrough": "09:39",
+      "topic": "Litter25kg; kitten paw; no aroma superseded by final talco selection",
+      "limits": "Date navigation recovered product episode. EarlierSeptember28 context displayed automatically but not used as in-window evidence. Exact product-bearing messages reconstructed manually for component benchmark, not automated dialogue replay."
+    },
+    {
+      "key": "C13",
+      "date": "2026-10-28",
+      "observedFrom": "09:14",
+      "observedThrough": "09:14",
+      "topic": "Call accepted on another device",
+      "limits": "Date28navigation confirmed call-only visible interval; call content unavailable. UI requests phone for earlier messages. Not counted as identifiable product case."
+    },
+    {
+      "key": "C14",
+      "date": "2026-10-28",
+      "observedFrom": "09:45:44",
+      "observedThrough": "10:24:24",
+      "topic": "Bravecto for20kgdog plus8kg of unnamed replacement for Nutre can ligth adult food",
+      "limits": "21eventexport closes text gap. Earlier phone call and two quote images unavailable; payment image excluded. Duration and replacement identity remain ambiguous/unresolved. No clinical inference."
+    }
+  ],
+  "exports": {
+    "C03": {
+      "chat": "C03",
+      "source": "WhatsApp Web export, locally date-filtered",
+      "zipSha256": "ccb8dfb579888aa8d355e8c643f68bbf5ef7e6a446b19f2ad8b80f1910486fdd",
+      "files": [
+        "chat.txt",
+        "chat.md"
+      ],
+      "outOfWindowExcluded": 0,
+      "withinWindow": 17,
+      "first": "2026-10-28T09:53:34-05:00",
+      "last": "2026-10-28T11:58:41-05:00",
+      "byType": {
+        "text": 16,
+        "image": 1,
+        "audio": 0
+      },
+      "byDirection": {
+        "inbound": 10,
+        "outbound_adviser": 6,
+        "call": 0,
+        "system": 1
+      },
+      "mediaIncluded": false
+    },
+    "C14": {
+      "chat": "C14",
+      "source": "WhatsApp Web export, locally date-filtered",
+      "zipSha256": "50e7bfea824c957ed6809823419b6b6b37e58df8b4d805fc930e3fc1d0f82fb6",
+      "files": [
+        "chat.txt",
+        "chat.md"
+      ],
+      "outOfWindowExcluded": 0,
+      "withinWindow": 21,
+      "first": "2026-10-28T09:45:44-05:00",
+      "last": "2026-10-28T10:24:24-05:00",
+      "byType": {
+        "text": 18,
+        "image": 3,
+        "audio": 0
+      },
+      "byDirection": {
+        "inbound": 9,
+        "outbound_adviser": 10,
+        "call": 0,
+        "system": 2
+      },
+      "mediaIncluded": false
+    }
+  },
+  "confirmedIdentity": {
+    "case": "C12-02",
+    "reference": "ARENA KITTEN TALCO",
+    "referenceId": "60386af0-f266-462d-96e5-330d609d3c0e",
+    "presentation": "25kg",
+    "presentationId": "9a78f670-75f9-4aa9-b55b-3727e26dd273",
+    "basis": "Customer category+25kg09:03, kitten paw09:31, Sin Aroma09:35; commercial account offers Lavanda/Talco09:36 and says only those2available09:37; customer selectsTalco09:37; account acknowledges09:38. Price excluded."
+  },
+  "catalogEvidence": "catalog.json immutable Supabase snapshot873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+  "counts": {
+    "customerChatsReviewed": 14,
+    "supplierChatsExcluded": 1,
+    "analysisCases": 29,
+    "locallyScoredCases": 14,
+    "notEvaluableMediaDependentCases": 15,
+    "historicalMessagesTotal": null,
+    "allInWindowChatsTotal": null
+  },
+  "media": {
+    "inWindowVoiceNotesObserved": 9,
+    "voiceNotesWithKnownDuration": 6,
+    "knownDurationSeconds": 93,
+    "unknownDurationVoiceNotes": 3,
+    "voiceNotesTranscribed": 0,
+    "fullImagesDecoded": 0,
+    "paidModelCalls": 0,
+    "localAudioAvailability": "Export contains omitted markers, no audio files. No installed whisper/whisper-cli/ffmpeg found; afconvert alone is not a transcription engine. No software installed, no external model invoked."
+  },
+  "evaluation": {
+    "combinedBefore": {
+      "correct": 5,
+      "missed": 1,
+      "false_positive": 0,
+      "safe_abstention": 8,
+      "not_evaluable": 15
+    },
+    "combinedAfter": {
+      "correct": 6,
+      "missed": 0,
+      "false_positive": 0,
+      "safe_abstention": 8,
+      "not_evaluable": 15
+    },
+    "continuationFixture": "test/fixtures/distrifinca-business-continuation-2026-10-29.json",
+    "newProductionEdits": 0,
+    "lastFullSuitePassed": 1049,
+    "pendingReviewProposals": 3,
+    "holdoutCaveat": "Post-fix diagnostic examples; no production tuning. C12 inputs reconstructed manually; initial and final states are correlated cases, not independent conversations."
+  },
+  "currentBlock": {
+    "action": "Exhaustively paginate chat list and decode full business media",
+    "target": "Existing Safari WhatsApp Web business session",
+    "status": "partial_access_ui_limitation",
+    "macLocked": false,
+    "reason": "Mac and text search/date navigation accessible. Native list scroll failed noWindowsAvailable; row/table click for pagination failed cannotClickOffscreenElement (including final keyboard-pagination attempt before any key sent). Gallery opened via contact files but displayed no media controls and screenshot blank; no full image or audio bytes recovered. One date-result read timed out; reinitialization recovered samechat, no repeated mutation.",
+    "deniedByAutoReview": false,
+    "restoration": "Exports finished; composer verified empty; search cleared. No sends, orders, DBwrites,paidmodels orrestart."
+  },
+  "sideEffects": {
+    "messagesSent": 0,
+    "ordersCreated": 0,
+    "supabaseWrites": 0,
+    "serverRestarts": 0,
+    "openAICalls": 0,
+    "note": "Normal read receipts may occur from opening chats. No explicit status, assignment or resolution actions."
+  }
+}

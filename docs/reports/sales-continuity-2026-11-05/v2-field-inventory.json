@@ -1,0 +1,134 @@
+[
+  {
+    "path": "corpus.version",
+    "value": 2
+  },
+  {
+    "path": "corpus.reviewedRevision",
+    "value": 1
+  },
+  {
+    "path": "corpus.privacy",
+    "value": "Only product requests/quote, minimal catalog fields and explicitly synthetic customer fields. No raw observation file loaded at runtime."
+  },
+  {
+    "path": "corpus.parentSha256",
+    "value": "0c32c6d9961ce6d9bb2c7a20d96631fad237c6f1cbd1a3fe80adb771c871fb89"
+  },
+  {
+    "path": "corpus.catalogSnapshot",
+    "value": "../real-conversations-2026-10-30/catalog.json"
+  },
+  {
+    "path": "corpus.catalogSha256",
+    "value": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403"
+  },
+  {
+    "path": "corpus.cases.0.id",
+    "value": "quote-address-reentry"
+  },
+  {
+    "path": "corpus.cases.0.catalogBrands.0",
+    "value": "ARENA MAIZ CAT"
+  },
+  {
+    "path": "corpus.cases.0.relativeQuoteAgeMs",
+    "value": 60000
+  },
+  {
+    "path": "corpus.cases.0.relativePendingAgeMs",
+    "value": 172800000
+  },
+  {
+    "path": "corpus.cases.0.initialState.productosConsultados.0.marca",
+    "value": "ARENA MAIZ CAT"
+  },
+  {
+    "path": "corpus.cases.0.initialState.productosConsultados.0.referencia",
+    "value": "ARENA MAIZ CAT"
+  },
+  {
+    "path": "corpus.cases.0.initialState.productosConsultados.0.peso",
+    "value": "x 20kg"
+  },
+  {
+    "path": "corpus.cases.0.initialState.productosConsultados.0.precio",
+    "value": 98000
+  },
+  {
+    "path": "corpus.cases.0.initialState.productosConsultados.0.cantidad",
+    "value": 1
+  },
+  {
+    "path": "corpus.cases.0.initialState.productosConsultados.0.stock",
+    "value": null
+  },
+  {
+    "path": "corpus.cases.0.initialState.productosConsultados.0.categoria",
+    "value": "arena_sustrato"
+  },
+  {
+    "path": "corpus.cases.0.initialState.productosConsultados.0.subcategoria",
+    "value": "arena"
+  },
+  {
+    "path": "corpus.cases.0.initialState.ultimaSolicitudProductos.0.estado",
+    "value": "pendiente"
+  },
+  {
+    "path": "corpus.cases.0.initialState.ultimaSolicitudProductos.0.accion",
+    "value": "consultar"
+  },
+  {
+    "path": "corpus.cases.0.initialState.ultimaSolicitudProductos.0.pregunta",
+    "value": "¿Qué medicamento necesitas?"
+  },
+  {
+    "path": "corpus.cases.0.history.0.role",
+    "value": "user"
+  },
+  {
+    "path": "corpus.cases.0.history.0.content",
+    "value": "Buenos dias \nPara pedir una arena"
+  },
+  {
+    "path": "corpus.cases.0.history.1.role",
+    "value": "assistant"
+  },
+  {
+    "path": "corpus.cases.0.history.1.content",
+    "value": "Buenos días 😊  \n¿La arena la buscas para gato?"
+  },
+  {
+    "path": "corpus.cases.0.history.2.role",
+    "value": "user"
+  },
+  {
+    "path": "corpus.cases.0.history.2.content",
+    "value": "Arena de maíz cat de 20 kg"
+  },
+  {
+    "path": "corpus.cases.0.history.3.role",
+    "value": "assistant"
+  },
+  {
+    "path": "corpus.cases.0.history.3.content",
+    "value": "Sí, esa es ARENA MAIZ CAT x 20kg y vale $98.000. Las existencias están por confirmar. 🐱"
+  },
+  {
+    "path": "corpus.cases.0.turns.0.text",
+    "value": "Mz 8 casa 22 Conjunto Prueba\nSector de prueba"
+  },
+  {
+    "path": "corpus.cases.0.turns.0.origin",
+    "value": "Synthetic replacement for private address; prior product-only turns original; state reconstructed from post-incident observation"
+  },
+  {
+    "path": "corpus.cases.0.turns.1.text",
+    "value": "Nombre: Cliente Prueba; celular: 3000000000; pago: efectivo"
+  },
+  {
+    "path": "corpus.cases.0.turns.1.origin",
+    "value": "Synthetic continuation; no final confirmation requested"
+  }
+]

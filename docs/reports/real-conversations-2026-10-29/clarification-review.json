@@ -1,0 +1,967 @@
+{
+  "scope": "Review of exactly the 42 clarification rows published in Library v4. Same enriched queries retained for comparable results. The separate frozen v2 diagnostic removes generated format hints and has its own before/after.",
+  "counts": {
+    "missing_animal_weight": 14,
+    "avoidable_false_negative_fixed": 12,
+    "shared_family_needs_variant": 4,
+    "strength_misread_as_body_weight": 6,
+    "different_records_punctuation_only": 2,
+    "catalog_presentation_mapping_requires_review": 1,
+    "synthetic_input_error_can": 3
+  },
+  "comparison": {
+    "sameCases": 42,
+    "beforeConfirmed": 0,
+    "afterConfirmed": 12,
+    "afterClarifications": 28,
+    "differentFromHistoricalExpected": 2,
+    "invalidSyntheticInputs": 3,
+    "validInputSubset": {
+      "cases": 39,
+      "confirmed": 12,
+      "clarifications": 27,
+      "differentReferences": 0
+    }
+  },
+  "feline": [
+    {
+      "kind": "frozen_original_input",
+      "query": "Me podrías enviar tres paquetes del contrato de proplan feline EN",
+      "level": "media",
+      "reason": "formato_alimento_ambiguo",
+      "weight": null,
+      "clarification": {
+        "campo": "forma_alimento",
+        "valores": [
+          "concentrado",
+          "comida_humeda"
+        ]
+      }
+    },
+    {
+      "kind": "manual_context_reconstruction_not_automatic_history",
+      "query": "concentrado Me podrías enviar tres paquetes del contrato de proplan feline EN",
+      "level": "alta",
+      "reason": "senales_convergentes",
+      "selected": "PRO PLAN FELINE EN",
+      "weight": null,
+      "clarification": null
+    }
+  ],
+  "rows": [
+    {
+      "id": "00a1f6cc-b1df-4331-b128-4b32ce8bb903",
+      "query": "NEXGARD COMBO",
+      "expected": "NEXGARD COMBO",
+      "before": {
+        "level": "not_high",
+        "reason": "falta_peso_mascota"
+      },
+      "after": {
+        "level": "media",
+        "reason": "falta_peso_mascota",
+        "selected": null,
+        "nominalIdentityBeforePresentation": "NEXGARD COMBO",
+        "clarification": {
+          "campo": "peso_mascota",
+          "valores": [
+            "2.5-7.5kg"
+          ],
+          "pesoSolicitado": null,
+          "motivo": "falta_peso_mascota"
+        }
+      },
+      "classification": "missing_animal_weight",
+      "explanation": "The original input does not provide body weight; preserve presentation clarification."
+    },
+    {
+      "id": "0fa85762-17aa-4ea0-af21-48ab2448d3a6",
+      "query": "NEXGARD SPECTRA",
+      "expected": "NEXGARD SPECTRA",
+      "before": {
+        "level": "not_high",
+        "reason": "falta_peso_mascota"
+      },
+      "after": {
+        "level": "media",
+        "reason": "falta_peso_mascota",
+        "selected": null,
+        "nominalIdentityBeforePresentation": "NEXGARD SPECTRA",
+        "clarification": {
+          "campo": "peso_mascota",
+          "valores": [],
+          "requiereEspecie": true
+        }
+      },
+      "classification": "missing_animal_weight",
+      "explanation": "The original input does not provide body weight; preserve presentation clarification."
+    },
+    {
+      "id": "855e99f1-ed6c-400b-b5a3-580d39588a46",
+      "query": "NEXGARD",
+      "expected": "NEXGARD",
+      "before": {
+        "level": "not_high",
+        "reason": "falta_peso_mascota"
+      },
+      "after": {
+        "level": "media",
+        "reason": "falta_peso_mascota",
+        "selected": null,
+        "nominalIdentityBeforePresentation": "NEXGARD",
+        "clarification": {
+          "campo": "peso_mascota",
+          "valores": [],
+          "requiereEspecie": true
+        }
+      },
+      "classification": "missing_animal_weight",
+      "explanation": "The original input does not provide body weight; preserve presentation clarification."
+    },
+    {
+      "id": "00d4aba8-9184-4131-a776-c67b810076d1",
+      "query": "SHAMPOO PEROXYPROC",
+      "expected": "SHAMPOO PEROXYPROC",
+      "before": {
+        "level": "not_high",
+        "reason": "ambigua"
+      },
+      "after": {
+        "level": "alta",
+        "reason": "nombre_exacto",
+        "selected": "SHAMPOO PEROXYPROC",
+        "nominalIdentityBeforePresentation": "SHAMPOO PEROXYPROC",
+        "clarification": null
+      },
+      "classification": "avoidable_false_negative_fixed",
+      "explanation": "Same diagnostic input now identifies its expected reference, without changing gold or catalog."
+    },
+    {
+      "id": "54254792-89d2-4ed8-b6ac-f118a83d8ef0",
+      "query": "SHAMPOO MICLORPROC",
+      "expected": "SHAMPOO MICLORPROC",
+      "before": {
+        "level": "not_high",
+        "reason": "ambigua"
+      },
+      "after": {
+        "level": "alta",
+        "reason": "nombre_exacto",
+        "selected": "SHAMPOO MICLORPROC",
+        "nominalIdentityBeforePresentation": "SHAMPOO MICLORPROC",
+        "clarification": null
+      },
+      "classification": "avoidable_false_negative_fixed",
+      "explanation": "Same diagnostic input now identifies its expected reference, without changing gold or catalog."
+    },
+    {
+      "id": "02633881-a3f4-4184-9bab-81a6ca8a7735",
+      "query": "FIPROSTAR",
+      "expected": "FIPROSTAR",
+      "before": {
+        "level": "not_high",
+        "reason": "falta_peso_mascota"
+      },
+      "after": {
+        "level": "media",
+        "reason": "falta_peso_mascota",
+        "selected": null,
+        "nominalIdentityBeforePresentation": "FIPROSTAR",
+        "clarification": {
+          "campo": "peso_mascota",
+          "valores": [],
+          "requiereEspecie": true
+        }
+      },
+      "classification": "missing_animal_weight",
+      "explanation": "The original input does not provide body weight; preserve presentation clarification."
+    },
+    {
+      "id": "02dc8703-a7ea-4989-9df3-4ae33878f347",
+      "query": "PULOFF",
+      "expected": "PULOFF",
+      "before": {
+        "level": "not_high",
+        "reason": "ambigua"
+      },
+      "after": {
+        "level": "media",
+        "reason": "ambigua",
+        "selected": null,
+        "nominalIdentityBeforePresentation": null,
+        "clarification": {
+          "campo": "referencia",
+          "valores": [
+            "PULOFF",
+            "PULOFF 2.68ML",
+            "PULOFF 0.67ML",
+            "PULOFF 1.34ML"
+          ]
+        }
+      },
+      "classification": "shared_family_needs_variant",
+      "explanation": "Bare family name also matches distinct commercial variants; do not force the base reference."
+    },
+    {
+      "id": "0af36c5a-be0f-4bd8-a71f-dda79245fe7d",
+      "query": "PULOFF 2.68ML",
+      "expected": "PULOFF 2.68ML",
+      "before": {
+        "level": "not_high",
+        "reason": "peso_fuera_de_rangos"
+      },
+      "after": {
+        "level": "media",
+        "reason": "falta_peso_mascota",
+        "selected": null,
+        "nominalIdentityBeforePresentation": "PULOFF 2.68ML",
+        "clarification": {
+          "campo": "peso_mascota",
+          "valores": [
+            "21-40kg"
+          ],
+          "pesoSolicitado": null,
+          "motivo": "falta_peso_mascota"
+        }
+      },
+      "classification": "strength_misread_as_body_weight",
+      "explanation": "Fixed misleading reason: mg/ml are not animal kg. Body-weight clarification remains, without a dose recommendation."
+    },
+    {
+      "id": "8b2cbc0d-8a14-4248-a24f-b7c337cb4cce",
+      "query": "PULOFF 0.67ML",
+      "expected": "PULOFF 0.67ML",
+      "before": {
+        "level": "not_high",
+        "reason": "peso_fuera_de_rangos"
+      },
+      "after": {
+        "level": "media",
+        "reason": "falta_peso_mascota",
+        "selected": null,
+        "nominalIdentityBeforePresentation": "PULOFF 0.67ML",
+        "clarification": {
+          "campo": "peso_mascota",
+          "valores": [
+            "2-10kg"
+          ],
+          "pesoSolicitado": null,
+          "motivo": "falta_peso_mascota"
+        }
+      },
+      "classification": "strength_misread_as_body_weight",
+      "explanation": "Fixed misleading reason: mg/ml are not animal kg. Body-weight clarification remains, without a dose recommendation."
+    },
+    {
+      "id": "b28e7c3c-1290-488b-a176-2ab8ecbf8892",
+      "query": "PULOFF 1.34ML",
+      "expected": "PULOFF 1.34ML",
+      "before": {
+        "level": "not_high",
+        "reason": "peso_fuera_de_rangos"
+      },
+      "after": {
+        "level": "media",
+        "reason": "falta_peso_mascota",
+        "selected": null,
+        "nominalIdentityBeforePresentation": "PULOFF 1.34ML",
+        "clarification": {
+          "campo": "peso_mascota",
+          "valores": [
+            "11-20kg"
+          ],
+          "pesoSolicitado": null,
+          "motivo": "falta_peso_mascota"
+        }
+      },
+      "classification": "strength_misread_as_body_weight",
+      "explanation": "Fixed misleading reason: mg/ml are not animal kg. Body-weight clarification remains, without a dose recommendation."
+    },
+    {
+      "id": "03884f80-7f22-4c12-b169-07cb87e99ed7",
+      "query": "BRAVECTO",
+      "expected": "BRAVECTO",
+      "before": {
+        "level": "not_high",
+        "reason": "falta_peso_mascota"
+      },
+      "after": {
+        "level": "media",
+        "reason": "falta_peso_mascota",
+        "selected": null,
+        "nominalIdentityBeforePresentation": null,
+        "clarification": {
+          "campo": "peso_mascota",
+          "valores": [],
+          "requiereEspecie": true
+        }
+      },
+      "classification": "missing_animal_weight",
+      "explanation": "The original input does not provide body weight; preserve presentation clarification."
+    },
+    {
+      "id": "2f23d78c-8e75-49c8-a294-bc089bf5da25",
+      "query": "BRAVECTO 37 DIAS",
+      "expected": "BRAVECTO 37 DIAS",
+      "before": {
+        "level": "not_high",
+        "reason": "falta_peso_mascota"
+      },
+      "after": {
+        "level": "media",
+        "reason": "falta_peso_mascota",
+        "selected": null,
+        "nominalIdentityBeforePresentation": "BRAVECTO 37 DIAS",
+        "clarification": {
+          "campo": "peso_mascota",
+          "valores": [],
+          "requiereEspecie": true
+        }
+      },
+      "classification": "missing_animal_weight",
+      "explanation": "The original input does not provide body weight; preserve presentation clarification."
+    },
+    {
+      "id": "273c7f9e-5377-4409-bd28-b8a9146c11ba",
+      "query": "TRAILLA Y ARENA GATOS FLORAL M",
+      "expected": "TRAILLA Y ARENA GATOS FLORAL M",
+      "before": {
+        "level": "not_high",
+        "reason": "sin_coincidencia_confiable"
+      },
+      "after": {
+        "level": "alta",
+        "reason": "nombre_exacto",
+        "selected": "TRAILLA Y ARENA GATOS FLORAL M",
+        "nominalIdentityBeforePresentation": "TRAILLA Y ARENA GATOS FLORAL M",
+        "clarification": null
+      },
+      "classification": "avoidable_false_negative_fixed",
+      "explanation": "Same diagnostic input now identifies its expected reference, without changing gold or catalog."
+    },
+    {
+      "id": "adf5b040-b142-4d1b-a081-fee443afcfcb",
+      "query": "CAN AMOR SHAMPOO ANTIPUL",
+      "expected": "CAN AMOR SHAMPOO ANTIPUL",
+      "before": {
+        "level": "not_high",
+        "reason": "ambigua"
+      },
+      "after": {
+        "level": "alta",
+        "reason": "nombre_exacto",
+        "selected": "CAN AMOR SHAMPOO ANTIPUL",
+        "nominalIdentityBeforePresentation": "CAN AMOR SHAMPOO ANTIPUL",
+        "clarification": null
+      },
+      "classification": "avoidable_false_negative_fixed",
+      "explanation": "Same diagnostic input now identifies its expected reference, without changing gold or catalog."
+    },
+    {
+      "id": "07b21de7-fbfc-451f-9772-6f8f2114095a",
+      "query": "C-THYRO-TABS",
+      "expected": "C-THYRO-TABS",
+      "before": {
+        "level": "not_high",
+        "reason": "identidad_compartida_entre_registros"
+      },
+      "after": {
+        "level": "media",
+        "reason": "identidad_compartida_entre_registros",
+        "selected": null,
+        "nominalIdentityBeforePresentation": null,
+        "clarification": {
+          "campo": "presentacion",
+          "valores": [
+            "0.2mg",
+            "0.3mg",
+            "0.4mg",
+            "0.7mg",
+            "0.8mg",
+            "0.5mg"
+          ]
+        }
+      },
+      "classification": "different_records_punctuation_only",
+      "explanation": "Separate IDs have different presentations. Punctuation alone does not establish equivalence."
+    },
+    {
+      "id": "5040f50c-9bcb-4978-b403-9339989d8bda",
+      "query": "REVOLUTION 6% AZUL GATO",
+      "expected": "REVOLUTION 6% AZUL GATO",
+      "before": {
+        "level": "not_high",
+        "reason": "falta_peso_mascota"
+      },
+      "after": {
+        "level": "media",
+        "reason": "falta_peso_mascota",
+        "selected": null,
+        "nominalIdentityBeforePresentation": "REVOLUTION 6% AZUL GATO",
+        "clarification": {
+          "campo": "peso_mascota",
+          "valores": [],
+          "requiereEspecie": false
+        }
+      },
+      "classification": "missing_animal_weight",
+      "explanation": "The original input does not provide body weight; preserve presentation clarification."
+    },
+    {
+      "id": "6926493e-8aa7-4084-bdf1-37ff6d84915b",
+      "query": "REVOLUTION 12% LILA",
+      "expected": "REVOLUTION 12% LILA",
+      "before": {
+        "level": "not_high",
+        "reason": "falta_peso_mascota"
+      },
+      "after": {
+        "level": "media",
+        "reason": "falta_peso_mascota",
+        "selected": null,
+        "nominalIdentityBeforePresentation": "REVOLUTION 12% LILA",
+        "clarification": {
+          "campo": "peso_mascota",
+          "valores": [],
+          "requiereEspecie": true
+        }
+      },
+      "classification": "missing_animal_weight",
+      "explanation": "The original input does not provide body weight; preserve presentation clarification."
+    },
+    {
+      "id": "a5cbdcf1-60b9-4d6d-ac0c-85a864c47ba0",
+      "query": "REVOLUTION 12% CAFE",
+      "expected": "REVOLUTION 12% CAFE",
+      "before": {
+        "level": "not_high",
+        "reason": "falta_peso_mascota"
+      },
+      "after": {
+        "level": "media",
+        "reason": "falta_peso_mascota",
+        "selected": null,
+        "nominalIdentityBeforePresentation": "REVOLUTION 12% CAFE",
+        "clarification": {
+          "campo": "peso_mascota",
+          "valores": [],
+          "requiereEspecie": true
+        }
+      },
+      "classification": "missing_animal_weight",
+      "explanation": "The original input does not provide body weight; preserve presentation clarification."
+    },
+    {
+      "id": "e5ba2c75-3eb7-4416-a405-9d4791c5c875",
+      "query": "REVOLUTION 0.25ML",
+      "expected": "REVOLUTION 0.25ML",
+      "before": {
+        "level": "not_high",
+        "reason": "peso_fuera_de_rangos"
+      },
+      "after": {
+        "level": "media",
+        "reason": "falta_peso_mascota",
+        "selected": null,
+        "nominalIdentityBeforePresentation": "REVOLUTION 0.25ML",
+        "clarification": {
+          "campo": "peso_mascota",
+          "valores": [
+            "1.2 a 2.5kg"
+          ],
+          "pesoSolicitado": null,
+          "motivo": "falta_peso_mascota"
+        }
+      },
+      "classification": "strength_misread_as_body_weight",
+      "explanation": "Fixed misleading reason: mg/ml are not animal kg. Body-weight clarification remains, without a dose recommendation."
+    },
+    {
+      "id": "1bbb4ade-b964-4770-a469-65515ccb0676",
+      "query": "BOLFO SHAMPOO",
+      "expected": "BOLFO SHAMPOO",
+      "before": {
+        "level": "not_high",
+        "reason": "sin_coincidencia_confiable"
+      },
+      "after": {
+        "level": "alta",
+        "reason": "nombre_exacto",
+        "selected": "BOLFO SHAMPOO",
+        "nominalIdentityBeforePresentation": "BOLFO SHAMPOO",
+        "clarification": null
+      },
+      "classification": "avoidable_false_negative_fixed",
+      "explanation": "Same diagnostic input now identifies its expected reference, without changing gold or catalog."
+    },
+    {
+      "id": "0d64d282-9d35-4ddc-99c5-b04bb8496f90",
+      "query": "CREDELIO PLUS 11KG A 22KG",
+      "expected": "CREDELIO PLUS 11KG A 22KG",
+      "before": {
+        "level": "not_high",
+        "reason": "peso_fuera_de_rangos"
+      },
+      "after": {
+        "level": "media",
+        "reason": "peso_fuera_de_rangos",
+        "selected": null,
+        "nominalIdentityBeforePresentation": "CREDELIO PLUS 11KG A 22KG",
+        "clarification": {
+          "campo": "peso_mascota",
+          "valores": [
+            "450mg",
+            "900mg",
+            "225mg",
+            "56.25mg"
+          ],
+          "pesoSolicitado": "11-22kg",
+          "motivo": "peso_fuera_de_rangos"
+        }
+      },
+      "classification": "catalog_presentation_mapping_requires_review",
+      "explanation": "Consolidated reference contains several kg bands in original_names but presentations are mg. Do not infer all mg-to-band mappings from the first reference name; catalog repair requires verified source and authorization."
+    },
+    {
+      "id": "9e66cc58-47b1-40fe-ac3f-e1a2985066e2",
+      "query": "CREDELIO",
+      "expected": "CREDELIO",
+      "before": {
+        "level": "not_high",
+        "reason": "falta_peso_mascota"
+      },
+      "after": {
+        "level": "media",
+        "reason": "falta_peso_mascota",
+        "selected": null,
+        "nominalIdentityBeforePresentation": "CREDELIO",
+        "clarification": {
+          "campo": "peso_mascota",
+          "valores": [],
+          "requiereEspecie": true
+        }
+      },
+      "classification": "missing_animal_weight",
+      "explanation": "The original input does not provide body weight; preserve presentation clarification."
+    },
+    {
+      "id": "b33002a6-2291-48ae-8e09-6747c200e26f",
+      "query": "WHISKAS POUCH ADULTO POLLO comida_humeda sobre",
+      "expected": "WHISKAS POUCH ADULTO POLLO",
+      "before": {
+        "level": "not_high",
+        "reason": "variante_sin_respaldo"
+      },
+      "after": {
+        "level": "alta",
+        "reason": "senales_convergentes",
+        "selected": "WHISKAS POUCH ADULTO POLLO",
+        "nominalIdentityBeforePresentation": "WHISKAS POUCH ADULTO POLLO",
+        "clarification": null
+      },
+      "classification": "avoidable_false_negative_fixed",
+      "explanation": "Same diagnostic input now identifies its expected reference, without changing gold or catalog."
+    },
+    {
+      "id": "852133ad-4084-4b37-9b39-fe2c2192ede0",
+      "query": "NATURAL FRESHLY BAÑO SECO PERRO",
+      "expected": "NATURAL FRESHLY BAÑO SECO PERRO",
+      "before": {
+        "level": "not_high",
+        "reason": "formato_catalogo_sin_verificar"
+      },
+      "after": {
+        "level": "alta",
+        "reason": "nombre_exacto",
+        "selected": "NATURAL FRESHLY BAÑO SECO PERRO",
+        "nominalIdentityBeforePresentation": "NATURAL FRESHLY BAÑO SECO PERRO",
+        "clarification": null
+      },
+      "classification": "avoidable_false_negative_fixed",
+      "explanation": "Same diagnostic input now identifies its expected reference, without changing gold or catalog."
+    },
+    {
+      "id": "b51133f4-e058-4c05-ba7c-0f0abd972e15",
+      "query": "NATURAL FRESHLY BAÑO SECO GATO",
+      "expected": "NATURAL FRESHLY BAÑO SECO GATO",
+      "before": {
+        "level": "not_high",
+        "reason": "formato_catalogo_sin_verificar"
+      },
+      "after": {
+        "level": "alta",
+        "reason": "nombre_exacto",
+        "selected": "NATURAL FRESHLY BAÑO SECO GATO",
+        "nominalIdentityBeforePresentation": "NATURAL FRESHLY BAÑO SECO GATO",
+        "clarification": null
+      },
+      "classification": "avoidable_false_negative_fixed",
+      "explanation": "Same diagnostic input now identifies its expected reference, without changing gold or catalog."
+    },
+    {
+      "id": "1a3ded72-2a68-42cf-836a-bed2a5b783c2",
+      "query": "SIMPARICA TRIO",
+      "expected": "SIMPARICA TRIO",
+      "before": {
+        "level": "not_high",
+        "reason": "falta_peso_mascota"
+      },
+      "after": {
+        "level": "media",
+        "reason": "falta_peso_mascota",
+        "selected": null,
+        "nominalIdentityBeforePresentation": "SIMPARICA TRIO",
+        "clarification": {
+          "campo": "peso_mascota",
+          "valores": [],
+          "requiereEspecie": true
+        }
+      },
+      "classification": "missing_animal_weight",
+      "explanation": "The original input does not provide body weight; preserve presentation clarification."
+    },
+    {
+      "id": "210fcd1c-a285-4b34-8fc5-e555ca074f5d",
+      "query": "SIMPARICA",
+      "expected": "SIMPARICA",
+      "before": {
+        "level": "not_high",
+        "reason": "falta_peso_mascota"
+      },
+      "after": {
+        "level": "media",
+        "reason": "falta_peso_mascota",
+        "selected": null,
+        "nominalIdentityBeforePresentation": "SIMPARICA",
+        "clarification": {
+          "campo": "peso_mascota",
+          "valores": [],
+          "requiereEspecie": true
+        }
+      },
+      "classification": "missing_animal_weight",
+      "explanation": "The original input does not provide body weight; preserve presentation clarification."
+    },
+    {
+      "id": "1a7d748f-a2e5-4483-9125-fd853fac2f57",
+      "query": "HILLS CAN K/D lata",
+      "expected": "HILLS CAN K/D",
+      "before": {
+        "level": "not_high",
+        "reason": "formato_catalogo_sin_verificar"
+      },
+      "after": {
+        "level": "alta",
+        "reason": "nombre_exacto",
+        "selected": "HILLS CAN LATA K/D",
+        "nominalIdentityBeforePresentation": "HILLS CAN LATA K/D",
+        "clarification": null
+      },
+      "classification": "synthetic_input_error_can",
+      "explanation": "The previous diagnostic incorrectly derived lata from CAN. Exact original query retained here; separate v2 uses unmodified commercial names before and after the fix. CAN is no longer container evidence."
+    },
+    {
+      "id": "72b462be-c724-47ca-991c-4568824b0b02",
+      "query": "HILLS CAN I/D lata",
+      "expected": "HILLS CAN I/D",
+      "before": {
+        "level": "not_high",
+        "reason": "formato_catalogo_sin_verificar"
+      },
+      "after": {
+        "level": "alta",
+        "reason": "nombre_exacto",
+        "selected": "HILLS CAN LATA I/D",
+        "nominalIdentityBeforePresentation": "HILLS CAN LATA I/D",
+        "clarification": null
+      },
+      "classification": "synthetic_input_error_can",
+      "explanation": "The previous diagnostic incorrectly derived lata from CAN. Exact original query retained here; separate v2 uses unmodified commercial names before and after the fix. CAN is no longer container evidence."
+    },
+    {
+      "id": "26485b0d-599f-4ff9-a06b-406284cc2b46",
+      "query": "COLLAR SERESTO PERRO MED Y GRAN",
+      "expected": "COLLAR SERESTO PERRO MED Y GRAN",
+      "before": {
+        "level": "not_high",
+        "reason": "sin_coincidencia_confiable"
+      },
+      "after": {
+        "level": "alta",
+        "reason": "nombre_exacto",
+        "selected": "COLLAR SERESTO PERRO MED Y GRAN",
+        "nominalIdentityBeforePresentation": "COLLAR SERESTO PERRO MED Y GRAN",
+        "clarification": null
+      },
+      "classification": "avoidable_false_negative_fixed",
+      "explanation": "Same diagnostic input now identifies its expected reference, without changing gold or catalog."
+    },
+    {
+      "id": "740b806f-539a-4638-a725-f2ff10591d14",
+      "query": "COLLAR SERESTO PERROS Y GATOS",
+      "expected": "COLLAR SERESTO PERROS Y GATOS",
+      "before": {
+        "level": "not_high",
+        "reason": "sin_coincidencia_confiable"
+      },
+      "after": {
+        "level": "alta",
+        "reason": "nombre_exacto",
+        "selected": "COLLAR SERESTO PERROS Y GATOS",
+        "nominalIdentityBeforePresentation": "COLLAR SERESTO PERROS Y GATOS",
+        "clarification": null
+      },
+      "classification": "avoidable_false_negative_fixed",
+      "explanation": "Same diagnostic input now identifies its expected reference, without changing gold or catalog."
+    },
+    {
+      "id": "395afb97-45c1-4a70-8a75-7bb6f8b29276",
+      "query": "MILPRO 16MG",
+      "expected": "MILPRO 16MG",
+      "before": {
+        "level": "not_high",
+        "reason": "peso_fuera_de_rangos"
+      },
+      "after": {
+        "level": "media",
+        "reason": "falta_peso_mascota",
+        "selected": null,
+        "nominalIdentityBeforePresentation": "MILPRO 16MG",
+        "clarification": {
+          "campo": "peso_mascota",
+          "valores": [
+            "2-8kg"
+          ],
+          "pesoSolicitado": null,
+          "motivo": "falta_peso_mascota"
+        }
+      },
+      "classification": "strength_misread_as_body_weight",
+      "explanation": "Fixed misleading reason: mg/ml are not animal kg. Body-weight clarification remains, without a dose recommendation."
+    },
+    {
+      "id": "fd754ed1-ea39-4f50-a398-d9ac45f0690b",
+      "query": "MILPRO KITTEN 4MG",
+      "expected": "MILPRO KITTEN 4MG",
+      "before": {
+        "level": "not_high",
+        "reason": "peso_fuera_de_rangos"
+      },
+      "after": {
+        "level": "media",
+        "reason": "falta_peso_mascota",
+        "selected": null,
+        "nominalIdentityBeforePresentation": "MILPRO KITTEN 4MG",
+        "clarification": {
+          "campo": "peso_mascota",
+          "valores": [
+            "hasta 2kg"
+          ],
+          "pesoSolicitado": null,
+          "motivo": "falta_peso_mascota"
+        }
+      },
+      "classification": "strength_misread_as_body_weight",
+      "explanation": "Fixed misleading reason: mg/ml are not animal kg. Body-weight clarification remains, without a dose recommendation."
+    },
+    {
+      "id": "39db8b87-5eaa-4034-8772-338cb0672bb2",
+      "query": "GOLOSINAS",
+      "expected": "GOLOSINAS",
+      "before": {
+        "level": "not_high",
+        "reason": "ambigua"
+      },
+      "after": {
+        "level": "media",
+        "reason": "ambigua",
+        "selected": null,
+        "nominalIdentityBeforePresentation": null,
+        "clarification": {
+          "campo": "referencia",
+          "valores": [
+            "GOLOSINAS",
+            "GOLOSINAS 1500"
+          ]
+        }
+      },
+      "classification": "shared_family_needs_variant",
+      "explanation": "Bare family name also matches distinct commercial variants; do not force the base reference."
+    },
+    {
+      "id": "964880a4-94c2-4e5c-8b57-f0f30f7697f4",
+      "query": "MICHIKO GATO sobre",
+      "expected": "MICHIKO GATO",
+      "before": {
+        "level": "not_high",
+        "reason": "formato_catalogo_sin_verificar"
+      },
+      "after": {
+        "level": "alta",
+        "reason": "similitud_lexica_catalogo_completo",
+        "selected": "MICHIKO GATO",
+        "nominalIdentityBeforePresentation": "MICHIKO GATO",
+        "clarification": null
+      },
+      "classification": "avoidable_false_negative_fixed",
+      "explanation": "Same diagnostic input now identifies its expected reference, without changing gold or catalog."
+    },
+    {
+      "id": "b0ed4e11-7c1e-432b-ace0-b78cc6231fc2",
+      "query": "CARDIAL",
+      "expected": "CARDIAL",
+      "before": {
+        "level": "not_high",
+        "reason": "ambigua"
+      },
+      "after": {
+        "level": "media",
+        "reason": "ambigua",
+        "selected": null,
+        "nominalIdentityBeforePresentation": null,
+        "clarification": {
+          "campo": "referencia",
+          "valores": [
+            "CARDIAL",
+            "CARDIAL B/2.5",
+            "CARDIAL B/5"
+          ]
+        }
+      },
+      "classification": "shared_family_needs_variant",
+      "explanation": "Bare family name also matches distinct commercial variants; do not force the base reference."
+    },
+    {
+      "id": "419f5b11-e899-4071-adc8-6d7b50d2051c",
+      "query": "ADVOCATE",
+      "expected": "ADVOCATE",
+      "before": {
+        "level": "not_high",
+        "reason": "falta_peso_mascota"
+      },
+      "after": {
+        "level": "media",
+        "reason": "falta_peso_mascota",
+        "selected": null,
+        "nominalIdentityBeforePresentation": "ADVOCATE",
+        "clarification": {
+          "campo": "peso_mascota",
+          "valores": [],
+          "requiereEspecie": true
+        }
+      },
+      "classification": "missing_animal_weight",
+      "explanation": "The original input does not provide body weight; preserve presentation clarification."
+    },
+    {
+      "id": "5d6914d7-9deb-4431-a084-e215822bab78",
+      "query": "ADVOCATE GATO",
+      "expected": "ADVOCATE GATO",
+      "before": {
+        "level": "not_high",
+        "reason": "falta_peso_mascota"
+      },
+      "after": {
+        "level": "media",
+        "reason": "falta_peso_mascota",
+        "selected": null,
+        "nominalIdentityBeforePresentation": "ADVOCATE GATO",
+        "clarification": {
+          "campo": "peso_mascota",
+          "valores": [],
+          "requiereEspecie": false
+        }
+      },
+      "classification": "missing_animal_weight",
+      "explanation": "The original input does not provide body weight; preserve presentation clarification."
+    },
+    {
+      "id": "be34c078-1e0a-4265-92c5-83018f41e902",
+      "query": "TETRA COLOR LATA lata",
+      "expected": "TETRA COLOR LATA",
+      "before": {
+        "level": "not_high",
+        "reason": "formato_catalogo_sin_verificar"
+      },
+      "after": {
+        "level": "alta",
+        "reason": "nombre_exacto",
+        "selected": "TETRA COLOR LATA",
+        "nominalIdentityBeforePresentation": "TETRA COLOR LATA",
+        "clarification": null
+      },
+      "classification": "avoidable_false_negative_fixed",
+      "explanation": "Same diagnostic input now identifies its expected reference, without changing gold or catalog."
+    },
+    {
+      "id": "50448956-6013-458a-ba60-9d99648e93d2",
+      "query": "SEPTIDERM",
+      "expected": "SEPTIDERM",
+      "before": {
+        "level": "not_high",
+        "reason": "ambigua"
+      },
+      "after": {
+        "level": "media",
+        "reason": "ambigua",
+        "selected": null,
+        "nominalIdentityBeforePresentation": null,
+        "clarification": {
+          "campo": "referencia",
+          "valores": [
+            "SEPTIDERM",
+            "SEPTIDERM E"
+          ]
+        }
+      },
+      "classification": "shared_family_needs_variant",
+      "explanation": "Bare family name also matches distinct commercial variants; do not force the base reference."
+    },
+    {
+      "id": "77277315-8ee7-48c2-82eb-4c6c06b27038",
+      "query": "Q-IDA CAN ADULTO lata",
+      "expected": "Q-IDA CAN ADULTO",
+      "before": {
+        "level": "not_high",
+        "reason": "formato_catalogo_sin_verificar"
+      },
+      "after": {
+        "level": "baja",
+        "reason": "sin_coincidencia_confiable",
+        "selected": null,
+        "nominalIdentityBeforePresentation": null,
+        "clarification": null
+      },
+      "classification": "synthetic_input_error_can",
+      "explanation": "The previous diagnostic incorrectly derived lata from CAN. Exact original query retained here; separate v2 uses unmodified commercial names before and after the fix. CAN is no longer container evidence."
+    },
+    {
+      "id": "77f30d40-da9b-4fff-972f-cdf9a742337b",
+      "query": "C-THYRO TABS",
+      "expected": "C-THYRO TABS",
+      "before": {
+        "level": "not_high",
+        "reason": "identidad_compartida_entre_registros"
+      },
+      "after": {
+        "level": "media",
+        "reason": "identidad_compartida_entre_registros",
+        "selected": null,
+        "nominalIdentityBeforePresentation": null,
+        "clarification": {
+          "campo": "presentacion",
+          "valores": [
+            "0.2mg",
+            "0.3mg",
+            "0.4mg",
+            "0.7mg",
+            "0.8mg",
+            "0.5mg"
+          ]
+        }
+      },
+      "classification": "different_records_punctuation_only",
+      "explanation": "Separate IDs have different presentations. Punctuation alone does not establish equivalence."
+    }
+  ]
+}

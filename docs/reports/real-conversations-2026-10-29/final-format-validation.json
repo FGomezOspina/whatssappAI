@@ -1,0 +1,32 @@
+{
+  "checkedAt": "2026-10-30T14:16:06.063Z",
+  "tests": 1075,
+  "passed": 1075,
+  "failed": 0,
+  "manifestCases": 43,
+  "expectedIdsVerified": true,
+  "syntheticSourceUnchanged": true,
+  "knownPiiAbsent": true,
+  "externalHtmlResourcesAbsent": true,
+  "ui": {
+    "readAccess": true,
+    "scroll": "noWindowsAvailable after Raise",
+    "newChats": 0,
+    "newMedia": 0
+  },
+  "restrictions": {
+    "openaiCalls": 0,
+    "whatsappSends": 0,
+    "orders": 0,
+    "supabaseWrites": 0,
+    "restarts": 0
+  },
+  "hashes": {
+    "frozen-business-replay-v1.json": "388f17fbcfc380c98bc93d1a8f252110f182b144cba8d0bd82e66647f3dca2c2",
+    "frozen-replay-local.json": "eb30b1c2a6c0049ffb21badb06698b01954fca029f7d4173022f97ca5e6e54d7",
+    "catalog.json": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+    "food-format-final-tests.txt": "bf4437cc9129875bad424e787679eec104992c6af19b063c3528b12add9b4206",
+    "catalog-canonical-diagnostic.json": "46ff01676d75a3c121f0b89bcbd3975e55f635f9ef9a215b8a4643b6aa7d0712",
+    "Informe-VELTIA-conversaciones-reales-28-29-octubre-2026.html": "cdde7dcfcd1960d46eec30d5ac6cbe955032a86ade6b6ec88c19bed73e3a63f5"
+  }
+}

@@ -61,4 +61,13 @@ function normalizarVentaUnitaria(interpretacion, catalogo, mensaje = '') {
   return true;
 }
 
-module.exports = { normalizarVentaUnitaria, especiesReferencia, admiteEspecie, precioPorCantidad, reglasPrecio, datosPrecio, actualizarPrecioItem };
+function empaqueUnitarioSinCantidad(mensaje, producto, catalogo) {
+  if (!producto || !/\b(?:paquetes?|packs?|cajas?)\b/i.test(mensaje) ||
+      /\b(?:de|x|por)\s*\d+\s*(?:paquetitos?|tubitos?|tubos?|sobres?|unidades?|und)\b/i.test(mensaje)) return null;
+  const referencias = catalogo.filter(m => normalizar(m.marca) === normalizar(producto.marca || ''))
+    .flatMap(m => m.referencias).filter(r => normalizar(r.nombre) === normalizar(producto.referencia || ''));
+  if (referencias.length !== 1 || referencias[0].metadata?.venta_por_unidad !== true) return null;
+  return { referencia: referencias[0].nombre, presentaciones: referencias[0].presentaciones.map(p => p.peso) };
+}
+
+module.exports = { empaqueUnitarioSinCantidad, normalizarVentaUnitaria, especiesReferencia, admiteEspecie, precioPorCantidad, reglasPrecio, datosPrecio, actualizarPrecioItem };

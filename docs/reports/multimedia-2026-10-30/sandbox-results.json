@@ -1,0 +1,62 @@
+{
+  "at": "2026-10-31T01:02:19.498Z",
+  "summary": "Dos nuevas entradas reales por WhatsApp Web en Kapso Sandbox, ambas con respuesta visible y estado entregado. La primera reveló mezcla con solicitudes antiguas. Tras corregir vigencia y separación de lotes, la segunda cubrió 3/3 referencias sin productos ajenos. No se logró subir una nueva foto: prueba multimedia integral pendiente.",
+  "destination": "Sandbox …4163",
+  "cases": [
+    {
+      "input": "Para cotizar:\nEl nutra nugges cordero 7k perro\n\nEl br gato castrado de pollo 1k\n\nNexgart para perro de 40k",
+      "response": "Presentaciones y precios unitarios:\n- ADVANCE URINAY 1.5kg: $108.000\n- BR CAT CASTRADO POLLO 1kg: $28.000\n- NEXGARD 25-50 kg: $56.900 — Mascota 1 (40 kg)\n\n¿Qué presentación necesitas de Hill's Prescription Diet Urinary Care c/d Multicare para gato?\n\nPara NUTRA NUGGETS CORDERO, no aparece la presentación de 7kg en el catálogo. Figuran 1kg y 3kg. ¿Cuál te sirve?",
+      "colombia": "2026-10-30 19:55:15",
+      "inputHash": "c1e89993bb1c",
+      "outputHash": "395561b57a0b",
+      "inputStatus": "read",
+      "delivery": "delivered",
+      "processing": "pending",
+      "ms": 52000,
+      "outgoingStatuses": [
+        {
+          "status": "sent",
+          "timestamp": "1793408168"
+        },
+        {
+          "status": "delivered",
+          "timestamp": "1793408168"
+        }
+      ],
+      "visible": true,
+      "result": "Cobertura 3/3, pero contaminada con dos referencias antiguas; corregida después"
+    },
+    {
+      "input": "Para cotizar:\nEl nutra nugges cordero 7k perro\n\nEl br gato castrado de pollo 1k\n\nNexgart para perro de 40k",
+      "response": "Te cotizo BR Cat Castrado Pollo 1 kg y NexGard 25-50 kg. Para Nutra Nuggets Cordero no me aparece 7 kg; solo 1 kg y 3 kg. ¿Cuál te sirve?",
+      "colombia": "2026-10-30 19:58:31",
+      "inputHash": "86c3fcb2c21c",
+      "outputHash": "117280e5ad92",
+      "inputStatus": "read",
+      "delivery": "delivered",
+      "processing": "pending",
+      "ms": 43000,
+      "outgoingStatuses": [
+        {
+          "status": "sent",
+          "timestamp": "1793408355"
+        },
+        {
+          "status": "delivered",
+          "timestamp": "1793408355"
+        },
+        {
+          "status": "delivered",
+          "timestamp": "1793408356"
+        }
+      ],
+      "visible": true,
+      "result": "Cobertura 3/3, sin productos ajenos; menciona referencias y alternativas, no repite precios en este turno"
+    }
+  ],
+  "orders": 0,
+  "cart": [
+    []
+  ],
+  "imageE2E": "blocked: Safari Upload disabled for .jpeg and identical .jpg; coordinate click returned noWindowsAvailable; cancelled file picker; zero new image events"
+}

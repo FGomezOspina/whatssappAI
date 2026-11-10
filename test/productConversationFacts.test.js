@@ -44,7 +44,9 @@ function humanizador(respuestas, solicitudes) {
     require: name => name === 'openai' ? class {
       chat = { completions: { create: async request => {
         solicitudes.push(request);
-        return { choices: [{ message: { content: respuestas.shift() } }] };
+        const respuesta = respuestas.shift();
+        if (respuesta instanceof Error) throw respuesta;
+        return { choices: [{ message: { content: respuesta } }] };
       } } };
     } : localRequire(name), module: modulo, process: { env: { OPENAI_API_KEY: 'synthetic' } }, console,
   });
@@ -98,6 +100,8 @@ test('mensaje con direccion y transferencia valida la consulta de producto separ
   const localRequire = createRequire(archivo);
   const estado = crearEstadoInicial();
   const productos = catalogo();
+  // Synthetic food form is explicit; this test concerns logistics, not unknown packaging.
+  for (const marca of productos) for (const ref of marca.referencias) ref.subcategoria = 'concentrado';
   const redacciones = [];
   const solicitudesRedaccion = [];
   const redactar = humanizador([
@@ -308,17 +312,158 @@ test('redaccion de un item acepta el total real del carrito y conserva sus separ
   assert.ok(respuesta.includes(resumen));
 });
 
-test('sin candidatos comunica ausencia y no genera confirmaciones de atributos ya recibidos', async () => {
+test('sin candidatos comunica incertidumbre y no genera confirmaciones de atributos ya recibidos', async () => {
   const solicitudes = [];
-  const redactar = humanizador(['¿Me confirmas cachorro o adulto?', '¿Es 1.5 kg?'], solicitudes);
+  const redactar = humanizador([
+    JSON.stringify({respuesta:'¿Es 1.5 kg?',siguientePaso:'pedir_dato',datoSolicitado:'presentacion'}),
+    JSON.stringify({respuesta:'Aún no puedo confirmar esa referencia de 1.5 kg. ¿Quieres que revisemos otra opción?',siguientePaso:'ofrecer_busqueda',datoSolicitado:null}),
+  ], solicitudes);
   const respuesta = await redactar('De 1.5 kilos', 'No encuentro el producto.', {
     productoAutonomo: { nivel: 'baja', terminos: ['PRUEBA', 'cachorro', 'grande'],
       presentacionSolicitada: '1.5kg', alternativas: [], aclaracion: null }, estado: {}, clasificacion,
+    interpretacionIA: {producto:{categoria:'comida',especie:'perro'}},
   });
-  assert.match(respuesta, /No encuentro.*PRUEBA CACHORRO GRANDE.*1\.5kg/);
-  assert.match(respuesta, /No la he agregado/);
-  assert.doesNotMatch(respuesta, /confirmas|cachorro o adulto/);
-  assert.equal(solicitudes.length, 0);
+  assert.match(respuesta, /no puedo confirmar.*1\.5 kg/);
+  assert.doesNotMatch(respuesta, /confirmas|cachorro o adulto|catálogo|no tenemos/);
+  assert.equal(solicitudes.length, 2);
+  assert.equal(JSON.parse(solicitudes[0].messages[1].content).datosConocidos.presentacion,'1.5kg');
+});
+
+test('fallo del redactor de incertidumbre conserva respuesta segura sin dejar silencio', async () => {
+  const solicitudes = [];
+  const redactar = humanizador([new Error('simulated timeout')], solicitudes);
+  const r = await redactar('Precio de NUBE CRIA', 'Texto operativo antiguo', {
+    productoAutonomo: {nivel:'baja',alternativas:[],terminos:['NUBE','CRIA']},estado:{},clasificacion,
+  });
+  assert.match(r,/no puedo confirmar NUBE CRIA/i);
+  assert.doesNotMatch(r,/cat[aá]logo|no tenemos|agotado/i);
+  assert.equal(solicitudes.length,1);
+});
+
+test('sin mas datos no vuelve a pedir foto y puede orientar por necesidad sin exigir otra pregunta', async()=>{
+ const solicitudes=[];
+ const redactar=humanizador([
+  JSON.stringify({respuesta:'¿Tienes una foto?',siguientePaso:'pedir_foto',datoSolicitado:null}),
+  JSON.stringify({respuesta:'Entiendo. Si te sirve buscar otra opción, cuéntame qué tipo de producto necesitas y para qué mascota.',siguientePaso:'explorar_necesidad',datoSolicitado:null}),
+ ],solicitudes);
+ const r=await redactar('Ya dije que no tengo foto ni más datos','Por ahora no puedo confirmarlo.',{
+  productoAutonomo:{nivel:'baja',alternativas:[],terminos:['NUBE']},estado:{},clasificacion,sinProgreso:true,
+ });
+ assert.doesNotMatch(r,/\?|foto|cat[aá]logo/);assert.match(r,/Entiendo/);assert.equal(solicitudes.length,2);
+});
+
+test('ofrecer una busqueda con consentimiento no exige signos de interrogacion', async () => {
+  const solicitudes=[];
+  const esperada='Con ese nombre aún no puedo confirmarlo. Si quieres, revisamos otras opciones.';
+  const redactar=humanizador([JSON.stringify({respuesta:esperada,siguientePaso:'ofrecer_busqueda',datoSolicitado:null})],solicitudes);
+  const r=await redactar('NUBE CRIA de 4 kilos', 'Respuesta operativa', {
+    productoAutonomo:{nivel:'baja',alternativas:[],terminos:['NUBE','CRIA'],presentacionSolicitada:'4kg'},
+    estado:{},clasificacion,interpretacionIA:{producto:{categoria:'comida'}},
+  });
+  assert.equal(r,esperada);assert.equal(solicitudes.length,1);
+});
+
+test('recurso no disponible interpretado por router impide pedir foto en consulta nueva', async () => {
+  const solicitudes=[];
+  const redactar=humanizador([
+    JSON.stringify({respuesta:'¿Puedes mandar una foto?',siguientePaso:'pedir_foto',datoSolicitado:null}),
+    JSON.stringify({respuesta:'Gracias. Si quieres que busquemos por necesidad, cuéntame qué tipo de producto necesitas.',siguientePaso:'explorar_necesidad',datoSolicitado:null}),
+  ],solicitudes);
+  const r=await redactar('NUBE CRIA de 4kg, no puedo mostrar el empaque', 'Respuesta operativa', {
+    productoAutonomo:{nivel:'baja',alternativas:[],terminos:['NUBE','CRIA'],presentacionSolicitada:'4kg'},
+    interpretacionIA:{recursosAclaracion:{fotoDisponible:false,masDatosDisponibles:null}},estado:{},clasificacion,
+  });
+  assert.doesNotMatch(r,/foto|empaque/);assert.equal(solicitudes.length,2);
+  assert.equal(JSON.parse(solicitudes[0].messages[1].content).recursosAclaracion.fotoDisponible,false);
+});
+
+test('normaliza restricciones de aclaracion como booleanos sin inferir ausencia por null', () => {
+  const {normalizarInterpretacion}=require('../src/services/aiInterpreter')._internals;
+  const d=normalizarInterpretacion({recursosAclaracion:{fotoDisponible:false,masDatosDisponibles:'no'}});
+  assert.deepEqual(d.recursosAclaracion,{fotoDisponible:false,masDatosDisponibles:null});
+});
+
+test('sin identidad rechaza veredictos de stock y precios inventados',async()=>{
+ const redactar=humanizador([
+  JSON.stringify({respuesta:'No lo tenemos. ¿Quieres otro?',siguientePaso:'ofrecer_busqueda',datoSolicitado:null}),
+  JSON.stringify({respuesta:'Cuesta $15.000. ¿Lo quieres?',siguientePaso:'ofrecer_busqueda',datoSolicitado:null}),
+ ],[]);
+ const r=await redactar('Precio de NUBE CRIA','No puedo confirmarlo.',{
+  productoAutonomo:{nivel:'baja',alternativas:[],terminos:['NUBE','CRIA']},estado:{},clasificacion,
+  interpretacionIA:{producto:{categoria:'comida'}},
+ });
+ assert.doesNotMatch(r,/15\.000|no lo tenemos|cat[aá]logo/i);assert.match(r,/no puedo confirmar NUBE CRIA/i);
+});
+
+test('agotar pistas no autoriza cerrar ni prometer alternativas sin conocer necesidad', async () => {
+  const solicitudes=[];
+  const esperada='Si te interesa elegir por necesidad, ¿qué tipo de producto buscas y para qué mascota?';
+  const redactar=humanizador([
+    JSON.stringify({respuesta:'Entonces lo dejamos aquí.',siguientePaso:'cerrar',datoSolicitado:null}),
+    JSON.stringify({respuesta:esperada,siguientePaso:'explorar_necesidad',datoSolicitado:null}),
+  ],solicitudes);
+  const r=await redactar('No tengo más información', 'Contingencia', {
+    productoAutonomo:{nivel:'baja',alternativas:[]},estado:{},clasificacion,sinProgreso:true,
+    interpretacionIA:{intencion:'consulta_producto',accion:'consultar'},
+  });
+  assert.equal(r,esperada);assert.equal(solicitudes.length,2);
+});
+
+test('rechazo explicito permite cerrar sin insistir', async () => {
+  const esperada='De acuerdo, aquí estoy si necesitas algo más.';
+  const redactar=humanizador([JSON.stringify({respuesta:esperada,siguientePaso:'cerrar',datoSolicitado:null})],[]);
+  assert.equal(await redactar('No gracias, dejemos así', 'Contingencia', {
+    productoAutonomo:{nivel:'baja',alternativas:[]},estado:{},clasificacion,sinProgreso:true,
+    interpretacionIA:{intencion:'rechazo',accion:'rechazar'},
+  }),esperada);
+});
+
+test('revisión comercial solo comunica pendiente guardado, sin inventar aviso o asignación', async () => {
+  const solicitudes=[];
+  const esperada='Gracias por aclararlo. Dejé la referencia pendiente de revisión por un asesor; todavía no hay uno asignado en este chat. Puedo ayudarte con otras consultas mientras tanto.';
+  const redactar=humanizador([
+    JSON.stringify({respuesta:'Ya avisé a un asesor y te responderá enseguida.',siguientePaso:'revision_asesor',datoSolicitado:null}),
+    JSON.stringify({respuesta:esperada,siguientePaso:'revision_asesor',datoSolicitado:null}),
+  ],solicitudes);
+  const r=await redactar('No tengo más datos',esperada,{
+    productoAutonomo:{nivel:'baja',alternativas:[]},sinProgreso:true,estado:{},clasificacion,
+    revisionComercial:{registrada:true,notificada:false,asignada:false},
+    interpretacionIA:{intencion:'consulta_producto',accion:'consultar'},
+  });
+  assert.equal(r,esperada);assert.equal(solicitudes.length,2);
+});
+
+test('consulta informativa omite resumen heredado sin tocar carrito ni pregunta de producto', async () => {
+  const solicitudes=[];
+  const respuesta='PRUEBA de 1kg cuesta $10.000. ¿Qué presentación del otro producto necesitas?';
+  const redactar=humanizador([respuesta],solicitudes);
+  const estado={carrito:[{marca:'ANTERIOR',referencia:'ANTERIOR',peso:'2kg',precio:20000,cantidad:2}],
+    ultimaSolicitudProductos:[{estado:'pendiente'}]};
+  const before=JSON.stringify(estado);
+  const r=await redactar('Cuánto vale PRUEBA', 'PRUEBA 1kg $10.000\n\nPedido:\n- 2 x ANTERIOR 2kg: $40.000\nTotal: $40.000\n\n¿Qué presentación del otro producto necesitas?', {
+    estado,clasificacion,interpretacionIA:{intencion:'consulta_producto',accion:'consultar'},
+    productoAutonomo:{nivel:'alta',coincidencia:{referencia:'PRUEBA',presentaciones:[{peso:'1kg',precio:10000}]}},
+    vertical:{orderLogic:{resumenCarrito:()=>{throw Error('No debe adjuntar el carrito');}}},
+  });
+  assert.equal(r,respuesta);assert.doesNotMatch(r,/Pedido:|ANTERIOR|40\.000/);
+  assert.equal(JSON.stringify(estado),before);
+  assert.equal(JSON.parse(solicitudes[0].messages[1].content).carrito,undefined);
+});
+
+test('presentacion conserva resumen para solicitud de carrito, compra y avance operativo', async () => {
+  const {esConsultaInformativaProducto}=require('../src/utils/responsePresentation');
+  for(const decision of [
+    {accion:'consultar',intencion:'carrito'}, {accion:'agregar',intencion:'pedido_producto'},
+    {accion:'consultar',intencion:'consulta_producto',continuarFlujo:true},
+    {accion:'consultar',productos:[{accion:'consultar'},{accion:'agregar'}]},
+    {accion:'consultar',carrito:{operacion:'modificar_cantidad'}},
+  ]) {
+    assert.equal(esConsultaInformativaProducto(decision),false);
+    const r=await humanizador([],[])('Mensaje interpretado','Pedido:\n- 1 x PRUEBA 1kg: $10.000\nTotal: $10.000',{
+      estado:{},interpretacionIA:decision,productoAutonomo:{nivel:'alta'},
+    });
+    assert.match(r,/Pedido:.*\n- 1 x PRUEBA/);
+  }
 });
 
 test('consulta de varias unidades cotiza cantidad solicitada sin agregar ni usar pauta', async () => {

@@ -1,0 +1,155 @@
+[
+  {
+    "kind": "synthetic diagnostic, not client request or vision output",
+    "input": {
+      "marca": "Hill's",
+      "referencia": "c/d Multicare",
+      "especie": "gato",
+      "categoria": "comida",
+      "observado": {
+        "nombre": "Hill's Prescription Diet c/d Multicare",
+        "confianzaIdentidad": 0.99,
+        "formaAlimento": "concentrado",
+        "confianzaFormato": 0.99
+      }
+    },
+    "expected": "Do not approve an undeclared modifier solely because code matches",
+    "result": {
+      "nivel": "media",
+      "razon": "variante_codificada_por_confirmar",
+      "aclaracion": {
+        "campo": "referencia",
+        "valores": [
+          "HILLS FEL C/D"
+        ],
+        "pregunta": "En el catálogo figura HILLS FEL C/D, pero su ficha no confirma la variante «multicare». ¿Esa es la referencia que necesitas?"
+      },
+      "pesoMascotaSolicitado": null,
+      "identidadAntesDePresentacion": null,
+      "especieConocida": "gato",
+      "formaAlimento": "concentrado",
+      "envaseAlimento": null,
+      "terminos": [
+        "hill",
+        "prescription",
+        "diet",
+        "multicare"
+      ],
+      "etiqueta": "hill",
+      "score": 0.593,
+      "diferencia": 0.593,
+      "usaInterpretacion": true,
+      "marcaExacta": "hills",
+      "presentacionValida": null,
+      "requiereVision": true,
+      "presentacionSolicitada": null,
+      "coincidencia": null,
+      "alternativas": [
+        {
+          "marca": "HILLS",
+          "referencia": "HILLS FEL C/D",
+          "referenciaCatalogo": "HILLS FEL C/D",
+          "referenciasEquivalentes": [
+            "HILLS FEL C/D"
+          ],
+          "score": 0.593,
+          "tipoCoincidencia": "referencia",
+          "presentaciones": [
+            {
+              "peso": "1.8kg",
+              "precio": 161000,
+              "metadata": {
+                "llave": "875",
+                "codigo": "10301010875",
+                "source": "productos.json",
+                "codigos": [
+                  "10301010875"
+                ],
+                "nombre_original": "HILLS FEL C/D 1.8KG"
+              },
+              "stock": null,
+              "referencia": "HILLS FEL C/D"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "kind": "synthetic diagnostic, not client request or vision output",
+    "input": {
+      "marca": "Hill's",
+      "referencia": "c/d Multicare Stress",
+      "especie": "gato",
+      "categoria": "comida",
+      "observado": {
+        "nombre": "Hill's Prescription Diet c/d Multicare Stress",
+        "confianzaIdentidad": 0.99,
+        "formaAlimento": "concentrado",
+        "confianzaFormato": 0.99
+      }
+    },
+    "expected": "Do not approve an undeclared modifier solely because code matches",
+    "result": {
+      "nivel": "media",
+      "razon": "variante_codificada_por_confirmar",
+      "aclaracion": {
+        "campo": "referencia",
+        "valores": [
+          "HILLS FEL C/D"
+        ],
+        "pregunta": "En el catálogo figura HILLS FEL C/D, pero su ficha no confirma la variante «multicare stress». ¿Esa es la referencia que necesitas?"
+      },
+      "pesoMascotaSolicitado": null,
+      "identidadAntesDePresentacion": null,
+      "especieConocida": "gato",
+      "formaAlimento": "concentrado",
+      "envaseAlimento": null,
+      "terminos": [
+        "hill",
+        "prescription",
+        "diet",
+        "multicare",
+        "stress"
+      ],
+      "etiqueta": "hill",
+      "score": 0.538,
+      "diferencia": 0.538,
+      "usaInterpretacion": true,
+      "marcaExacta": "hills",
+      "presentacionValida": null,
+      "requiereVision": true,
+      "presentacionSolicitada": null,
+      "coincidencia": null,
+      "alternativas": [
+        {
+          "marca": "HILLS",
+          "referencia": "HILLS FEL C/D",
+          "referenciaCatalogo": "HILLS FEL C/D",
+          "referenciasEquivalentes": [
+            "HILLS FEL C/D"
+          ],
+          "score": 0.538,
+          "tipoCoincidencia": "referencia",
+          "presentaciones": [
+            {
+              "peso": "1.8kg",
+              "precio": 161000,
+              "metadata": {
+                "llave": "875",
+                "codigo": "10301010875",
+                "source": "productos.json",
+                "codigos": [
+                  "10301010875"
+                ],
+                "nombre_original": "HILLS FEL C/D 1.8KG"
+              },
+              "stock": null,
+              "referencia": "HILLS FEL C/D"
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

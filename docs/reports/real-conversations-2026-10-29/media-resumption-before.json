@@ -1,0 +1,307 @@
+{
+  "mode": "Local candidate retrieval + identity validator; not model, media perception, cart or WhatsApp E2E accuracy",
+  "normalizationAblated": false,
+  "fixtureSha256": "da1c7bd1ef6f8ab6d1a1acdb2810a8a1c58b76270a646fc00583bd9a49ca6c12",
+  "catalogSha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+  "total": {
+    "correct": 5,
+    "missed": 2,
+    "false_positive": 1,
+    "safe_abstention": 5,
+    "not_evaluable": 2
+  },
+  "development": {
+    "correct": 0,
+    "missed": 2,
+    "false_positive": 1,
+    "safe_abstention": 0,
+    "not_evaluable": 0
+  },
+  "evaluation": {
+    "correct": 5,
+    "missed": 0,
+    "false_positive": 0,
+    "safe_abstention": 5,
+    "not_evaluable": 2
+  },
+  "latencyLocalMs": {
+    "median": 53.17141599999991,
+    "p95": 123.24358299999994
+  },
+  "rows": [
+    {
+      "id": "C09-01",
+      "chat": "C09",
+      "split": "evaluation",
+      "gold": "confirmed_identity",
+      "scope": "manually_read_image_label",
+      "direction": "inbound",
+      "expectedReference": "PET MILK",
+      "outcome": "correct",
+      "selected": "PET MILK",
+      "level": "alta",
+      "weight": "500g",
+      "presentationValid": true,
+      "reason": "similitud_alta",
+      "samplesMs": [
+        59.743042,
+        58.173833,
+        58.754208999999975
+      ]
+    },
+    {
+      "id": "C16-01",
+      "chat": "C16",
+      "split": "development",
+      "gold": "confirmed_reference_only",
+      "scope": "text",
+      "direction": "inbound",
+      "expectedReference": "PRO PLAN FELINE EN",
+      "outcome": "missed",
+      "selected": null,
+      "level": "media",
+      "weight": null,
+      "presentationValid": null,
+      "reason": "similitud_media",
+      "samplesMs": [
+        53.74995799999999,
+        54.08633299999997,
+        50.68283299999996
+      ]
+    },
+    {
+      "id": "C17-01",
+      "chat": "C17",
+      "split": "evaluation",
+      "gold": "ambiguous",
+      "scope": "text",
+      "direction": "inbound",
+      "expectedReference": null,
+      "outcome": "safe_abstention",
+      "selected": null,
+      "level": "baja",
+      "weight": null,
+      "presentationValid": null,
+      "reason": "sin_coincidencia_confiable",
+      "samplesMs": [
+        39.42587500000002,
+        39.95112500000005,
+        40.13179200000002
+      ]
+    },
+    {
+      "id": "C18-01",
+      "chat": "C18",
+      "split": "evaluation",
+      "gold": "confirmed_identity",
+      "scope": "text_span",
+      "direction": "inbound",
+      "expectedReference": "EXCELLENT GATO URINARY",
+      "outcome": "correct",
+      "selected": "EXCELLENT GATO URINARY",
+      "level": "alta",
+      "weight": "3kg",
+      "presentationValid": true,
+      "reason": "nombre_exacto",
+      "samplesMs": [
+        49.95775000000003,
+        48.68629199999998,
+        48.039041999999995
+      ]
+    },
+    {
+      "id": "C18-02",
+      "chat": "C18",
+      "split": "evaluation",
+      "gold": "ambiguous",
+      "scope": "text",
+      "direction": "inbound",
+      "expectedReference": null,
+      "outcome": "safe_abstention",
+      "selected": null,
+      "level": "media",
+      "weight": "7kg",
+      "presentationValid": true,
+      "reason": "marca_y_presentacion",
+      "samplesMs": [
+        37.76262500000007,
+        36.216999999999985,
+        36.04754099999991
+      ]
+    },
+    {
+      "id": "C19-01",
+      "chat": "C19",
+      "split": "development",
+      "gold": "confirmed_identity",
+      "scope": "text_span",
+      "direction": "inbound",
+      "expectedReference": "CANISAN D",
+      "outcome": "missed",
+      "selected": null,
+      "level": "media",
+      "weight": "5ml",
+      "presentationValid": true,
+      "reason": "marca_y_presentacion",
+      "samplesMs": [
+        35.009209000000055,
+        34.931916999999885,
+        35.27937500000007
+      ]
+    },
+    {
+      "id": "C19-02",
+      "chat": "C19",
+      "split": "evaluation",
+      "outcome": "not_evaluable",
+      "reason": "Near catalog ENTERO CHORONIC but quote unreadable and no account textual restatement. Candidate not promoted to verified equivalence from typo similarity alone."
+    },
+    {
+      "id": "C19-03",
+      "chat": "C19",
+      "split": "evaluation",
+      "gold": "confirmed_reference_only",
+      "scope": "manually_reconstructed_episode",
+      "direction": "inbound",
+      "expectedReference": "FORTIFLORA CANINE",
+      "outcome": "correct",
+      "selected": "FORTIFLORA CANINE",
+      "level": "alta",
+      "weight": null,
+      "presentationValid": null,
+      "reason": "nombre_exacto",
+      "samplesMs": [
+        37.55062500000008,
+        36.66279200000008,
+        37.505540999999994
+      ]
+    },
+    {
+      "id": "C19-04",
+      "chat": "C19",
+      "split": "evaluation",
+      "outcome": "not_evaluable",
+      "reason": "Wet canine gastrointestinal description. PRO PLAN CANINE LATA EN candidate but catalog supplied description repeats code without explicit expanded line; quote unreadable. No external clinical/brand inference used to validate equivalence."
+    },
+    {
+      "id": "C15-01",
+      "chat": "C15",
+      "split": "development",
+      "gold": "unresolved",
+      "scope": "text_span",
+      "direction": "inbound",
+      "expectedReference": null,
+      "outcome": "false_positive",
+      "selected": "ROYAL CANIN DOG LATA GASTRO",
+      "level": "alta",
+      "weight": "7kg",
+      "presentationValid": false,
+      "reason": "nombre_exacto",
+      "samplesMs": [
+        64.73775,
+        64.65045800000007,
+        64.27150000000006
+      ]
+    },
+    {
+      "id": "C15-02",
+      "chat": "C15",
+      "split": "evaluation",
+      "gold": "confirmed_reference_only",
+      "scope": "text_span",
+      "direction": "inbound",
+      "expectedReference": "ROYAL CANIN DOG LATA GASTRO",
+      "outcome": "correct",
+      "selected": "ROYAL CANIN DOG LATA GASTRO",
+      "level": "alta",
+      "weight": null,
+      "presentationValid": null,
+      "reason": "senales_convergentes",
+      "samplesMs": [
+        50.3012920000001,
+        49.43008299999997,
+        49.55079099999989
+      ]
+    },
+    {
+      "id": "C15-03",
+      "chat": "C15",
+      "split": "evaluation",
+      "gold": "ambiguous",
+      "scope": "text_span",
+      "direction": "inbound",
+      "expectedReference": null,
+      "outcome": "safe_abstention",
+      "selected": null,
+      "level": "media",
+      "weight": null,
+      "presentationValid": null,
+      "reason": "atributo_faltante",
+      "samplesMs": [
+        53.386584000000084,
+        53.94645800000012,
+        53.17141599999991
+      ]
+    },
+    {
+      "id": "C21-01",
+      "chat": "C21",
+      "split": "evaluation",
+      "gold": "unresolved",
+      "scope": "text",
+      "direction": "inbound",
+      "expectedReference": null,
+      "outcome": "safe_abstention",
+      "selected": null,
+      "level": "media",
+      "weight": null,
+      "presentationValid": null,
+      "reason": "similitud_media",
+      "samplesMs": [
+        123.24358299999994,
+        123.67554100000007,
+        122.75612499999988
+      ]
+    },
+    {
+      "id": "C21-02",
+      "chat": "C21",
+      "split": "evaluation",
+      "gold": "unresolved",
+      "scope": "manually_reconstructed_episode",
+      "direction": "inbound",
+      "expectedReference": null,
+      "outcome": "safe_abstention",
+      "selected": null,
+      "level": "baja",
+      "weight": null,
+      "presentationValid": null,
+      "reason": "sin_coincidencia_confiable",
+      "samplesMs": [
+        64.09679200000028,
+        63.39616700000033,
+        63.13445899999988
+      ]
+    },
+    {
+      "id": "C22-01",
+      "chat": "C22",
+      "split": "evaluation",
+      "gold": "confirmed_identity",
+      "scope": "text_span",
+      "direction": "inbound",
+      "expectedReference": "EXCELLENT GATO ADULT",
+      "outcome": "correct",
+      "selected": "EXCELLENT GATO ADULT",
+      "level": "alta",
+      "weight": "7.5kg",
+      "presentationValid": true,
+      "reason": "senales_convergentes",
+      "samplesMs": [
+        60.58458299999984,
+        60.55641700000024,
+        60.5681669999999
+      ]
+    }
+  ]
+}

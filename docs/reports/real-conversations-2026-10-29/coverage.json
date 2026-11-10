@@ -1,0 +1,25 @@
+{
+  "source": "Existing Safari WhatsApp Web session, profile distrifincapereira visually verified with business logo",
+  "interval": {"timezone":"America/Bogota","from":"2026-10-28T00:00:00-05:00","through":"2026-10-29T18:46:00-05:00","fromUTC":"2026-10-28T05:00:00Z","throughUTC":"2026-10-29T23:46:00Z"},
+  "coverage": "partial; purposeful sample, not a census or random sample",
+  "method": "Observed existing commercial chat, verified business profile, inspected visible yesterday list, then selected known chats through search and the date picker for 28 October. UI date picker confirmed October 2026. No API or Sandbox conversations used.",
+  "customers": [
+    {"key":"C01","date":"2026-10-29","observedFrom":"07:45","observedThrough":"11:36","minimalEarlierContext":"2026-10-20: adviser asks whether Pro Plan is for dog; customer confirms","topic":"OM shorthand; bites vs tubes; flavors; pack of four; two products","limits":"Photo thumbnail blurred; full history not exported"},
+    {"key":"C02","date":"2026-10-28","observedFrom":"08:54","observedThrough":"10:47","topic":"Sr gato litter; later photo-led alternative","limits":"Second photo not decoded; later photo must not automatically inherit first product identity"},
+    {"key":"C03","date":"2026-10-28","observedFrom":"09:54","observedThrough":"11:58","topic":"Litter photograph followed by 20 kilos; price-only quote","limits":"Date view reached 11:09; latest row 11:58 independently seen, intervening messages not fully read; photo not decoded"},
+    {"key":"C04","date":"2026-10-28","observedFrom":"11:18","observedThrough":"11:58","topic":"Photo-led medication quote; customer selects two of four quoted products","limits":"Product photo blurred; quote-image line and caption observed but image not decoded; no medical use, dosage or treatment inference"},
+    {"key":"C05","date":"2026-10-28","observedFrom":"09:24","observedThrough":"13:00","topic":"King Cat litter, two sacks of 25 kg","limits":"Payment media excluded; no WhatsApp message IDs exported"},
+    {"key":"C06","date":"2026-10-28","observedFrom":"08:49","observedThrough":"11:54","minimalEarlierContext":"2026-10-25 23:48 customer product list; 26 October stock discussion; no earlier examples included as new in-window requests","topic":"Adviser repeats earlier three-item order; unavailable spray; audio follow-ups","limits":"Read through 09:16 and separately latest call 11:54; intervening coverage incomplete. Three in-window voice notes of 17, 8 and 7 seconds not decoded"}
+  ],
+  "excluded": [
+    {"key":"S01","reason":"Supplier conversation, identified from preceding procurement and cost/VAT exchange; 28 October contains forwarded photo, not a customer identity example"},
+    {"source":"KapsoSandbox","reason":"Demo only; prior 24 conversation records are not real Distrifinca customer corpus"},
+    {"source":"training_examples","reason":"Examples are not commercial message history"},
+    {"source":"synthetic regression controls","reason":"Marked synthetic, never accepted as historical evidence"},
+    {"source":"payment documents, addresses, contact names/numbers and unrelated personal tabs","reason":"Not included in saved report or fixtures"}
+  ],
+  "uiBlock": {"action":"Read remaining chats, paginate interval and inspect full media","target":"Existing Safari WhatsApp Web business session","reason":"Mac locked; automatic unlock could not unlock it; tool requires manual unlock","status":"pending_manual_unlock","deniedByAutoReview":false,"priorErrors":["noWindowsAvailable for coordinate clicks/scroll","cannotClickOffscreenElement for list rows"],"partialRecovery":"Chat search and date navigation allowed bounded text review before lock","restoration":"No outgoing message or order; temporary search remained at last customer because lock prevented clearing it"},
+  "media": {"inWindowVoiceNotesObserved":3,"inWindowVoiceSecondsObserved":32,"voiceNotesTranscribed":0,"fullImagesDecoded":0,"pixelInspection":"Product thumbnails from C01 and C04 were visually inspected and unreadable; not accepted as identity evidence","paidModelCalls":0},
+  "counts": {"customerChatsReviewed":6,"supplierChatsExcluded":1,"analysisCases":15,"locallyScoredCases":9,"notEvaluableMediaDependentCases":6,"historicalMessagesTotal":null,"allInWindowChatsTotal":null},
+  "sideEffects": {"messagesSent":0,"ordersCreated":0,"supabaseWrites":0,"serverRestarts":0,"openAICalls":0,"note":"Opening WhatsApp chats can cause normal read receipts; no explicit message status operation was issued"}
+}

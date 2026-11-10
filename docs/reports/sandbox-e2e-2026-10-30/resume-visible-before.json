@@ -1,0 +1,1890 @@
+{
+  "at": "2026-10-30T18:25:56.439Z",
+  "originalProcessed": true,
+  "cart": [
+    []
+  ],
+  "ordersCount": 0,
+  "messages": [
+    {
+      "id": "9dddf8c8b74c",
+      "direction": "outbound",
+      "body": "Tenemos opciones de nefrotec. ¿Necesitas un empaque cerrado de 60 unidades o unidades individuales? Necesito verificar esa presentación antes de cotizarla.",
+      "at": "2026-10-30T18:18:02.698931+00:00"
+    },
+    {
+      "id": "58dd20f6f15a",
+      "direction": "inbound",
+      "body": "A como tienes el nefrotec x60",
+      "at": "2026-10-30T18:17:27.930241+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": null,
+            "marca": null,
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": null,
+            "sabores": [],
+            "cantidad": null,
+            "mascotas": [],
+            "categoria": "otro",
+            "referencia": "nefrotec x60",
+            "condiciones": [],
+            "presentacion": "x60",
+            "subcategoria": null,
+            "textoVisible": "nefrotec x60",
+            "mencionOriginal": "nefrotec x60",
+            "intencionPresentaciones": "especifica"
+          },
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": null,
+              "linea": null,
+              "marca": null,
+              "accion": "consultar",
+              "envase": null,
+              "tamano": null,
+              "especie": null,
+              "sabores": [],
+              "cantidad": null,
+              "mascotas": [],
+              "categoria": "otro",
+              "referencia": "nefrotec x60",
+              "condiciones": [],
+              "presentacion": "x60",
+              "subcategoria": null,
+              "textoVisible": "nefrotec x60",
+              "mencionOriginal": "nefrotec x60",
+              "intencionPresentaciones": "especifica"
+            }
+          ],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "90e5d2354505",
+      "direction": "outbound",
+      "body": "Claro 😊 tres sobres de PRO PLAN POUCH FELINO KITTEN de 85gr te quedan en $6.200 c/u, para un total de $18.600. Las existencias están por confirmar.",
+      "at": "2026-10-30T18:16:48.891638+00:00"
+    },
+    {
+      "id": "25f082466f0f",
+      "direction": "inbound",
+      "body": "Ahora serían tres sobres del mismo producto, solo cotización.",
+      "at": "2026-10-30T18:16:14.841749+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": "cachorro",
+            "linea": "KITTEN",
+            "marca": "PRO PLAN",
+            "accion": "consultar",
+            "envase": "sobre",
+            "tamano": null,
+            "especie": "gato",
+            "sabores": [],
+            "cantidad": 3,
+            "duracion": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "PRO PLAN POUCH FELINO KITTEN",
+            "condiciones": [],
+            "presentacion": "85g",
+            "subcategoria": "comida_humeda",
+            "textoVisible": "tres sobres del mismo producto, solo cotización",
+            "nombreFamilia": "PRO PLAN POUCH FELINO KITTEN",
+            "mencionOriginal": null,
+            "requierePresentacion": false,
+            "intencionPresentaciones": "especifica",
+            "referenciasEquivalentes": [
+              "PRO PLAN POUCH FELINO KITTEN"
+            ],
+            "coincidenciaVisualValidada": false,
+            "presentacionesEquivalentes": [
+              {
+                "peso": "85gr",
+                "stock": null,
+                "precio": 6200,
+                "metadata": {
+                  "llave": "1375",
+                  "codigo": "10301011375",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10301011375"
+                  ],
+                  "nombre_original": "PRO PLAN POUCH FELINO KITTEN 85GR"
+                },
+                "referencia": "PRO PLAN POUCH FELINO KITTEN"
+              }
+            ]
+          },
+          "intencion": "consulta_producto",
+          "productos": [],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "fcb8614b628c",
+      "direction": "outbound",
+      "body": "Claro 😊 te confirmo el PRO PLAN POUCH FELINO KITTEN de 85gr en $6.200. Las existencias están por confirmar.",
+      "at": "2026-10-30T18:15:51.054332+00:00"
+    },
+    {
+      "id": "51086c62a4bc",
+      "direction": "inbound",
+      "body": "Solo consultar: Pro Plan kitten para gatito, en sobre de 85 gramos.",
+      "at": "2026-10-30T18:15:14.196712+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": "cachorro",
+            "linea": "KITTEN",
+            "marca": "PRO PLAN",
+            "accion": "consultar",
+            "envase": "sobre",
+            "tamano": null,
+            "especie": "gato",
+            "sabores": [],
+            "cantidad": null,
+            "duracion": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "PRO PLAN POUCH FELINO KITTEN",
+            "condiciones": [],
+            "presentacion": "85g",
+            "subcategoria": "comida_humeda",
+            "textoVisible": "Pro Plan kitten para gatito, en sobre de 85 gramos",
+            "nombreFamilia": "PRO PLAN POUCH FELINO KITTEN",
+            "mencionOriginal": null,
+            "pesoTextoOriginal": "85g",
+            "requierePresentacion": false,
+            "intencionPresentaciones": "especifica",
+            "referenciasEquivalentes": [
+              "PRO PLAN POUCH FELINO KITTEN"
+            ],
+            "coincidenciaVisualValidada": false,
+            "presentacionesEquivalentes": [
+              {
+                "peso": "85gr",
+                "stock": null,
+                "precio": 6200,
+                "metadata": {
+                  "llave": "1375",
+                  "codigo": "10301011375",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10301011375"
+                  ],
+                  "nombre_original": "PRO PLAN POUCH FELINO KITTEN 85GR"
+                },
+                "referencia": "PRO PLAN POUCH FELINO KITTEN"
+              }
+            ]
+          },
+          "intencion": "consulta_producto",
+          "productos": [],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "81107b69d844",
+      "direction": "outbound",
+      "body": "Claro 😊 la lata PRO PLAN CANINE LATA UR para perro está en $28.600. Las existencias están por confirmar.",
+      "at": "2026-10-30T18:14:21.391073+00:00"
+    },
+    {
+      "id": "19a25ef9e077",
+      "direction": "inbound",
+      "body": "Ahora cotízame la lata de esa misma línea UR para perro. Solo consulta.",
+      "at": "2026-10-30T18:13:47.687156+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": "UR",
+            "marca": "PRO PLAN",
+            "accion": "consultar",
+            "envase": "lata",
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "duracion": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "PRO PLAN CANINE LATA UR",
+            "condiciones": [],
+            "presentacion": "unidad",
+            "subcategoria": "comida_humeda",
+            "textoVisible": "lata PRO PLAN CANINE UR para perro (misma línea UR)",
+            "nombreFamilia": "PRO PLAN CANINE LATA UR",
+            "mencionOriginal": null,
+            "requierePresentacion": false,
+            "intencionPresentaciones": null,
+            "referenciasEquivalentes": [
+              "PRO PLAN CANINE LATA UR"
+            ],
+            "coincidenciaVisualValidada": false,
+            "presentacionesEquivalentes": [
+              {
+                "peso": "unidad",
+                "stock": null,
+                "precio": 28600,
+                "metadata": {
+                  "llave": "1393",
+                  "codigo": "10401011393",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10401011393"
+                  ],
+                  "nombre_original": "PRO PLAN CANINE LATA UR"
+                },
+                "referencia": "PRO PLAN CANINE LATA UR"
+              }
+            ]
+          },
+          "intencion": "consulta_producto",
+          "productos": [],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "8bfe419e5815",
+      "direction": "outbound",
+      "body": "Claro 😊 PRO PLAN CANINE UR para perro en 2 kg está en $122.000. Las existencias están por confirmar. ¿Quieres agregar esa presentación al pedido?",
+      "at": "2026-10-30T18:10:28.507315+00:00"
+    },
+    {
+      "id": "ef8a7c3bbc39",
+      "direction": "inbound",
+      "body": "Ahora cotízame la lata de esa misma línea UR para perro. Solo consulta.",
+      "at": "2026-10-30T18:09:55.239172+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": "UR",
+            "marca": "PRO PLAN",
+            "accion": "consultar",
+            "envase": "lata",
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "duracion": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "PRO PLAN CANINE UR",
+            "condiciones": [],
+            "presentacion": null,
+            "subcategoria": "comida_humeda",
+            "textoVisible": "PRO PLAN UR PRO PLAN CANINE UR perro comida_humeda lata",
+            "mencionOriginal": "Ahora cotízame la lata de esa misma línea UR para perro. Solo consulta.",
+            "pesoTextoOriginal": null
+          },
+          "intencion": "consulta_producto",
+          "productos": [],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "16bace359fc7",
+      "direction": "outbound",
+      "body": "Claro 😊 PRO PLAN CANINE UR para perro en 2 kg está en $122.000. Las existencias están por confirmar.",
+      "at": "2026-10-30T18:09:00.539382+00:00"
+    },
+    {
+      "id": "b2c64b497b0b",
+      "direction": "inbound",
+      "body": "Solo consultar: Pro Plan UR para perro",
+      "at": "2026-10-30T18:08:21.888254+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": "UR",
+            "marca": "PRO PLAN",
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "duracion": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "PRO PLAN CANINE UR",
+            "condiciones": [],
+            "presentacion": "2kg",
+            "subcategoria": "concentrado",
+            "textoVisible": "Pro Plan UR para perro el concentrado de 2 kg",
+            "nombreFamilia": "PRO PLAN CANINE UR",
+            "mencionOriginal": null,
+            "pesoTextoOriginal": "2kg",
+            "requierePresentacion": false,
+            "intencionPresentaciones": "especifica",
+            "referenciasEquivalentes": [
+              "PRO PLAN CANINE UR"
+            ],
+            "coincidenciaVisualValidada": false,
+            "presentacionesEquivalentes": [
+              {
+                "peso": "2kg",
+                "stock": null,
+                "precio": 122000,
+                "metadata": {
+                  "llave": "1387",
+                  "codigo": "10301011387",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10301011387"
+                  ],
+                  "nombre_original": "PRO PLAN CANINE UR 2KG"
+                },
+                "referencia": "PRO PLAN CANINE UR"
+              }
+            ]
+          },
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": null,
+              "linea": "UR",
+              "marca": "PRO PLAN",
+              "accion": "consultar",
+              "envase": null,
+              "tamano": null,
+              "especie": "perro",
+              "sabores": [],
+              "cantidad": null,
+              "duracion": null,
+              "mascotas": [],
+              "categoria": "comida",
+              "referencia": "PRO PLAN CANINE UR",
+              "condiciones": [],
+              "presentacion": "2kg",
+              "subcategoria": "concentrado",
+              "textoVisible": "Pro Plan UR para perro el concentrado de 2 kg",
+              "nombreFamilia": "PRO PLAN CANINE UR",
+              "mencionOriginal": null,
+              "pesoTextoOriginal": "2kg",
+              "requierePresentacion": false,
+              "intencionPresentaciones": "especifica",
+              "referenciasEquivalentes": [
+                "PRO PLAN CANINE UR"
+              ],
+              "coincidenciaVisualValidada": false,
+              "presentacionesEquivalentes": [
+                {
+                  "peso": "2kg",
+                  "stock": null,
+                  "precio": 122000,
+                  "metadata": {
+                    "llave": "1387",
+                    "codigo": "10301011387",
+                    "source": "productos.json",
+                    "codigos": [
+                      "10301011387"
+                    ],
+                    "nombre_original": "PRO PLAN CANINE UR 2KG"
+                  },
+                  "referencia": "PRO PLAN CANINE UR"
+                }
+              ]
+            }
+          ],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "66736049f4d5",
+      "direction": "inbound",
+      "body": "el concentrado de 2 kg",
+      "at": "2026-10-30T18:08:21.713978+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": "UR",
+            "marca": "PRO PLAN",
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "duracion": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "PRO PLAN CANINE UR",
+            "condiciones": [],
+            "presentacion": "2kg",
+            "subcategoria": "concentrado",
+            "textoVisible": "Pro Plan UR para perro el concentrado de 2 kg",
+            "nombreFamilia": "PRO PLAN CANINE UR",
+            "mencionOriginal": null,
+            "pesoTextoOriginal": "2kg",
+            "requierePresentacion": false,
+            "intencionPresentaciones": "especifica",
+            "referenciasEquivalentes": [
+              "PRO PLAN CANINE UR"
+            ],
+            "coincidenciaVisualValidada": false,
+            "presentacionesEquivalentes": [
+              {
+                "peso": "2kg",
+                "stock": null,
+                "precio": 122000,
+                "metadata": {
+                  "llave": "1387",
+                  "codigo": "10301011387",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10301011387"
+                  ],
+                  "nombre_original": "PRO PLAN CANINE UR 2KG"
+                },
+                "referencia": "PRO PLAN CANINE UR"
+              }
+            ]
+          },
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": null,
+              "linea": "UR",
+              "marca": "PRO PLAN",
+              "accion": "consultar",
+              "envase": null,
+              "tamano": null,
+              "especie": "perro",
+              "sabores": [],
+              "cantidad": null,
+              "duracion": null,
+              "mascotas": [],
+              "categoria": "comida",
+              "referencia": "PRO PLAN CANINE UR",
+              "condiciones": [],
+              "presentacion": "2kg",
+              "subcategoria": "concentrado",
+              "textoVisible": "Pro Plan UR para perro el concentrado de 2 kg",
+              "nombreFamilia": "PRO PLAN CANINE UR",
+              "mencionOriginal": null,
+              "pesoTextoOriginal": "2kg",
+              "requierePresentacion": false,
+              "intencionPresentaciones": "especifica",
+              "referenciasEquivalentes": [
+                "PRO PLAN CANINE UR"
+              ],
+              "coincidenciaVisualValidada": false,
+              "presentacionesEquivalentes": [
+                {
+                  "peso": "2kg",
+                  "stock": null,
+                  "precio": 122000,
+                  "metadata": {
+                    "llave": "1387",
+                    "codigo": "10301011387",
+                    "source": "productos.json",
+                    "codigos": [
+                      "10301011387"
+                    ],
+                    "nombre_original": "PRO PLAN CANINE UR 2KG"
+                  },
+                  "referencia": "PRO PLAN CANINE UR"
+                }
+              ]
+            }
+          ],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "cf7802cba998",
+      "direction": "outbound",
+      "body": "¿Te refieres a la lata PRO PLAN CANINE UR para perro? Si sí, te la cotizo en unidad.",
+      "at": "2026-10-30T18:06:35.004734+00:00"
+    },
+    {
+      "id": "5dd95b8ae82a",
+      "direction": "inbound",
+      "body": "Ahora cotízame la lata de esa misma línea UR para perro. Solo consulta.",
+      "at": "2026-10-30T18:05:55.35673+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": "UR",
+            "marca": "PRO PLAN",
+            "accion": "consultar",
+            "envase": "lata",
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "PRO PLAN CANINE UR",
+            "condiciones": [],
+            "presentacion": null,
+            "subcategoria": "comida_humeda",
+            "textoVisible": "lata de esa misma línea UR para perro",
+            "mencionOriginal": "la lata de esa misma línea UR para perro",
+            "intencionPresentaciones": null
+          },
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": null,
+              "linea": "UR",
+              "marca": "PRO PLAN",
+              "accion": "consultar",
+              "envase": "lata",
+              "tamano": null,
+              "especie": "perro",
+              "sabores": [],
+              "cantidad": null,
+              "mascotas": [],
+              "categoria": "comida",
+              "referencia": "PRO PLAN CANINE UR",
+              "condiciones": [],
+              "presentacion": null,
+              "subcategoria": "comida_humeda",
+              "textoVisible": "lata de esa misma línea UR para perro",
+              "mencionOriginal": "la lata de esa misma línea UR para perro",
+              "intencionPresentaciones": null
+            }
+          ],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "adf876df8b30",
+      "direction": "outbound",
+      "body": "Sí, para perro está el PRO PLAN CANINE UR en presentación de 2 kg por $122.000. Las existencias están por confirmar. 🙂",
+      "at": "2026-10-30T18:05:30.115046+00:00"
+    },
+    {
+      "id": "bd34c1750093",
+      "direction": "inbound",
+      "body": "el concentrado de 2 kg",
+      "at": "2026-10-30T18:04:56.94804+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": "UR",
+            "marca": "PRO PLAN",
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "duracion": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "PRO PLAN CANINE UR",
+            "condiciones": [],
+            "presentacion": "2kg",
+            "subcategoria": "concentrado",
+            "textoVisible": "Solo consultar: Pro Plan UR para perro el concentrado de 2 kg",
+            "nombreFamilia": "PRO PLAN CANINE UR",
+            "mencionOriginal": null,
+            "pesoTextoOriginal": "2kg",
+            "requierePresentacion": false,
+            "intencionPresentaciones": "especifica",
+            "referenciasEquivalentes": [
+              "PRO PLAN CANINE UR"
+            ],
+            "coincidenciaVisualValidada": false,
+            "presentacionesEquivalentes": [
+              {
+                "peso": "2kg",
+                "stock": null,
+                "precio": 122000,
+                "metadata": {
+                  "llave": "1387",
+                  "codigo": "10301011387",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10301011387"
+                  ],
+                  "nombre_original": "PRO PLAN CANINE UR 2KG"
+                },
+                "referencia": "PRO PLAN CANINE UR"
+              }
+            ]
+          },
+          "intencion": "consulta_producto",
+          "productos": [],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "b88bfc9fd87b",
+      "direction": "inbound",
+      "body": "Solo consultar: Pro Plan UR para perro",
+      "at": "2026-10-30T18:04:56.911742+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": "UR",
+            "marca": "PRO PLAN",
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "duracion": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "PRO PLAN CANINE UR",
+            "condiciones": [],
+            "presentacion": "2kg",
+            "subcategoria": "concentrado",
+            "textoVisible": "Solo consultar: Pro Plan UR para perro el concentrado de 2 kg",
+            "nombreFamilia": "PRO PLAN CANINE UR",
+            "mencionOriginal": null,
+            "pesoTextoOriginal": "2kg",
+            "requierePresentacion": false,
+            "intencionPresentaciones": "especifica",
+            "referenciasEquivalentes": [
+              "PRO PLAN CANINE UR"
+            ],
+            "coincidenciaVisualValidada": false,
+            "presentacionesEquivalentes": [
+              {
+                "peso": "2kg",
+                "stock": null,
+                "precio": 122000,
+                "metadata": {
+                  "llave": "1387",
+                  "codigo": "10301011387",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10301011387"
+                  ],
+                  "nombre_original": "PRO PLAN CANINE UR 2KG"
+                },
+                "referencia": "PRO PLAN CANINE UR"
+              }
+            ]
+          },
+          "intencion": "consulta_producto",
+          "productos": [],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "fb41250a5385",
+      "direction": "outbound",
+      "body": "Sí, para perro está el PRO PLAN CANINE UR en presentación de 2 kg. ¿Lo buscas en concentrado o en comida húmeda? 🙂",
+      "at": "2026-10-30T18:01:00.825255+00:00"
+    },
+    {
+      "id": "2869ea211dc7",
+      "direction": "inbound",
+      "body": "Solo consultar: Pro Plan UR para perro",
+      "at": "2026-10-30T18:00:23.748877+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": "UR",
+            "marca": "PRO PLAN",
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "PRO PLAN CANINE UR",
+            "condiciones": [],
+            "presentacion": "2 kg",
+            "subcategoria": "concentrado",
+            "textoVisible": "Pro Plan UR para perro, concentrado de 2 kg",
+            "mencionOriginal": "Pro Plan UR para perro",
+            "intencionPresentaciones": "especifica"
+          },
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": null,
+              "linea": "UR",
+              "marca": "PRO PLAN",
+              "accion": "consultar",
+              "envase": null,
+              "tamano": null,
+              "especie": "perro",
+              "sabores": [],
+              "cantidad": null,
+              "mascotas": [],
+              "categoria": "comida",
+              "referencia": "PRO PLAN CANINE UR",
+              "condiciones": [],
+              "presentacion": "2 kg",
+              "subcategoria": "concentrado",
+              "textoVisible": "Pro Plan UR para perro, concentrado de 2 kg",
+              "mencionOriginal": "Pro Plan UR para perro",
+              "intencionPresentaciones": "especifica"
+            }
+          ],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "a1be5e68ece1",
+      "direction": "inbound",
+      "body": "el concentrado de 2 kg",
+      "at": "2026-10-30T18:00:23.513469+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": "UR",
+            "marca": "PRO PLAN",
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "PRO PLAN CANINE UR",
+            "condiciones": [],
+            "presentacion": "2 kg",
+            "subcategoria": "concentrado",
+            "textoVisible": "Pro Plan UR para perro, concentrado de 2 kg",
+            "mencionOriginal": "Pro Plan UR para perro",
+            "intencionPresentaciones": "especifica"
+          },
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": null,
+              "linea": "UR",
+              "marca": "PRO PLAN",
+              "accion": "consultar",
+              "envase": null,
+              "tamano": null,
+              "especie": "perro",
+              "sabores": [],
+              "cantidad": null,
+              "mascotas": [],
+              "categoria": "comida",
+              "referencia": "PRO PLAN CANINE UR",
+              "condiciones": [],
+              "presentacion": "2 kg",
+              "subcategoria": "concentrado",
+              "textoVisible": "Pro Plan UR para perro, concentrado de 2 kg",
+              "mencionOriginal": "Pro Plan UR para perro",
+              "intencionPresentaciones": "especifica"
+            }
+          ],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "69abbc4667a9",
+      "direction": "outbound",
+      "body": "¿Me confirmas si buscas la lata PRO PLAN CANINE UR, presentación unidad, para perro?",
+      "at": "2026-10-30T17:57:10.684815+00:00"
+    },
+    {
+      "id": "10c1934b9a70",
+      "direction": "inbound",
+      "body": "Ahora cotízame la lata de esa misma línea UR para perro. Solo consulta.",
+      "at": "2026-10-30T17:56:32.331475+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": "UR",
+            "marca": "PRO PLAN",
+            "accion": "consultar",
+            "envase": "lata",
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "PRO PLAN CANINE UR",
+            "condiciones": [],
+            "presentacion": null,
+            "subcategoria": "comida_humeda",
+            "textoVisible": "lata de esa misma línea UR para perro",
+            "mencionOriginal": "la lata de esa misma línea UR para perro",
+            "intencionPresentaciones": null
+          },
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": null,
+              "linea": "UR",
+              "marca": "PRO PLAN",
+              "accion": "consultar",
+              "envase": "lata",
+              "tamano": null,
+              "especie": "perro",
+              "sabores": [],
+              "cantidad": null,
+              "mascotas": [],
+              "categoria": "comida",
+              "referencia": "PRO PLAN CANINE UR",
+              "condiciones": [],
+              "presentacion": null,
+              "subcategoria": "comida_humeda",
+              "textoVisible": "lata de esa misma línea UR para perro",
+              "mencionOriginal": "la lata de esa misma línea UR para perro",
+              "intencionPresentaciones": null
+            }
+          ],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "586d613dd22d",
+      "direction": "outbound",
+      "body": "Sí, esa referencia la manejamos: PRO PLAN CANINE UR 2 kg está en $122.000. Las existencias están por confirmar.",
+      "at": "2026-10-30T17:56:07.372741+00:00"
+    },
+    {
+      "id": "97868d1bd82f",
+      "direction": "inbound",
+      "body": "Solo consultar: Pro Plan UR para perro",
+      "at": "2026-10-30T17:55:31.61189+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": null,
+            "marca": "PRO PLAN",
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "duracion": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "PRO PLAN CANINE UR",
+            "condiciones": [],
+            "presentacion": "2kg",
+            "subcategoria": "concentrado",
+            "textoVisible": "Solo consultar: Pro Plan UR para perro el concentrado de 2 kg",
+            "nombreFamilia": "PRO PLAN CANINE UR",
+            "mencionOriginal": null,
+            "pesoTextoOriginal": "2kg",
+            "requierePresentacion": false,
+            "intencionPresentaciones": "especifica",
+            "referenciasEquivalentes": [
+              "PRO PLAN CANINE UR"
+            ],
+            "coincidenciaVisualValidada": false,
+            "presentacionesEquivalentes": [
+              {
+                "peso": "2kg",
+                "stock": null,
+                "precio": 122000,
+                "metadata": {
+                  "llave": "1387",
+                  "codigo": "10301011387",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10301011387"
+                  ],
+                  "nombre_original": "PRO PLAN CANINE UR 2KG"
+                },
+                "referencia": "PRO PLAN CANINE UR"
+              }
+            ]
+          },
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": null,
+              "linea": null,
+              "marca": "PRO PLAN",
+              "accion": "consultar",
+              "envase": null,
+              "tamano": null,
+              "especie": "perro",
+              "sabores": [],
+              "cantidad": null,
+              "duracion": null,
+              "mascotas": [],
+              "categoria": "comida",
+              "referencia": "PRO PLAN CANINE UR",
+              "condiciones": [],
+              "presentacion": "2kg",
+              "subcategoria": "concentrado",
+              "textoVisible": "Solo consultar: Pro Plan UR para perro el concentrado de 2 kg",
+              "nombreFamilia": "PRO PLAN CANINE UR",
+              "mencionOriginal": null,
+              "pesoTextoOriginal": "2kg",
+              "requierePresentacion": false,
+              "intencionPresentaciones": "especifica",
+              "referenciasEquivalentes": [
+                "PRO PLAN CANINE UR"
+              ],
+              "coincidenciaVisualValidada": false,
+              "presentacionesEquivalentes": [
+                {
+                  "peso": "2kg",
+                  "stock": null,
+                  "precio": 122000,
+                  "metadata": {
+                    "llave": "1387",
+                    "codigo": "10301011387",
+                    "source": "productos.json",
+                    "codigos": [
+                      "10301011387"
+                    ],
+                    "nombre_original": "PRO PLAN CANINE UR 2KG"
+                  },
+                  "referencia": "PRO PLAN CANINE UR"
+                }
+              ]
+            }
+          ],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "fdf697c57973",
+      "direction": "inbound",
+      "body": "el concentrado de 2 kg",
+      "at": "2026-10-30T17:55:31.441238+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": null,
+            "marca": "PRO PLAN",
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "duracion": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "PRO PLAN CANINE UR",
+            "condiciones": [],
+            "presentacion": "2kg",
+            "subcategoria": "concentrado",
+            "textoVisible": "Solo consultar: Pro Plan UR para perro el concentrado de 2 kg",
+            "nombreFamilia": "PRO PLAN CANINE UR",
+            "mencionOriginal": null,
+            "pesoTextoOriginal": "2kg",
+            "requierePresentacion": false,
+            "intencionPresentaciones": "especifica",
+            "referenciasEquivalentes": [
+              "PRO PLAN CANINE UR"
+            ],
+            "coincidenciaVisualValidada": false,
+            "presentacionesEquivalentes": [
+              {
+                "peso": "2kg",
+                "stock": null,
+                "precio": 122000,
+                "metadata": {
+                  "llave": "1387",
+                  "codigo": "10301011387",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10301011387"
+                  ],
+                  "nombre_original": "PRO PLAN CANINE UR 2KG"
+                },
+                "referencia": "PRO PLAN CANINE UR"
+              }
+            ]
+          },
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": null,
+              "linea": null,
+              "marca": "PRO PLAN",
+              "accion": "consultar",
+              "envase": null,
+              "tamano": null,
+              "especie": "perro",
+              "sabores": [],
+              "cantidad": null,
+              "duracion": null,
+              "mascotas": [],
+              "categoria": "comida",
+              "referencia": "PRO PLAN CANINE UR",
+              "condiciones": [],
+              "presentacion": "2kg",
+              "subcategoria": "concentrado",
+              "textoVisible": "Solo consultar: Pro Plan UR para perro el concentrado de 2 kg",
+              "nombreFamilia": "PRO PLAN CANINE UR",
+              "mencionOriginal": null,
+              "pesoTextoOriginal": "2kg",
+              "requierePresentacion": false,
+              "intencionPresentaciones": "especifica",
+              "referenciasEquivalentes": [
+                "PRO PLAN CANINE UR"
+              ],
+              "coincidenciaVisualValidada": false,
+              "presentacionesEquivalentes": [
+                {
+                  "peso": "2kg",
+                  "stock": null,
+                  "precio": 122000,
+                  "metadata": {
+                    "llave": "1387",
+                    "codigo": "10301011387",
+                    "source": "productos.json",
+                    "codigos": [
+                      "10301011387"
+                    ],
+                    "nombre_original": "PRO PLAN CANINE UR 2KG"
+                  },
+                  "referencia": "PRO PLAN CANINE UR"
+                }
+              ]
+            }
+          ],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "6695bda8a5d8",
+      "direction": "outbound",
+      "body": "Sí, el ROYALCANIN GASTROINTESTINAL PERRO de 2 kg está en $129.000. Las existencias están por confirmar.",
+      "at": "2026-10-30T17:54:48.02381+00:00"
+    },
+    {
+      "id": "d12e2f24885d",
+      "direction": "inbound",
+      "body": "Corrijo el tamaño: de 2 kg, el mismo concentrado para perro. Solo consultar el precio.",
+      "at": "2026-10-30T17:54:12.197559+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": null,
+            "marca": "ROYALCANIN",
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "duracion": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "ROYALCANIN GASTROINTESTINAL PERRO",
+            "condiciones": [
+              "gastrointestinal"
+            ],
+            "presentacion": "2kg",
+            "subcategoria": "concentrado",
+            "textoVisible": "Corrijo el tamaño: de 2 kg, el mismo concentrado para perro. Solo consultar el precio.",
+            "nombreFamilia": "ROYALCANIN GASTROINTESTINAL PERRO",
+            "mencionOriginal": null,
+            "pesoTextoOriginal": "2kg",
+            "requierePresentacion": false,
+            "intencionPresentaciones": "especifica",
+            "referenciasEquivalentes": [
+              "ROYALCANIN GASTROINTESTINAL PERRO"
+            ],
+            "coincidenciaVisualValidada": false,
+            "presentacionesEquivalentes": [
+              {
+                "peso": "2kg",
+                "stock": null,
+                "precio": 129000,
+                "metadata": {
+                  "llave": "2070",
+                  "codigo": "103010102070",
+                  "source": "productos.json",
+                  "codigos": [
+                    "103010102070"
+                  ],
+                  "nombre_original": "ROYALCANIN GASTROINTESTINAL PERRO 2KG"
+                },
+                "referencia": "ROYALCANIN GASTROINTESTINAL PERRO"
+              }
+            ]
+          },
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": null,
+              "linea": null,
+              "marca": "ROYALCANIN",
+              "accion": "consultar",
+              "envase": null,
+              "tamano": null,
+              "especie": "perro",
+              "sabores": [],
+              "cantidad": null,
+              "duracion": null,
+              "mascotas": [],
+              "categoria": "comida",
+              "referencia": "ROYALCANIN GASTROINTESTINAL PERRO",
+              "condiciones": [
+                "gastrointestinal"
+              ],
+              "presentacion": "2kg",
+              "subcategoria": "concentrado",
+              "textoVisible": "Corrijo el tamaño: de 2 kg, el mismo concentrado para perro. Solo consultar el precio.",
+              "nombreFamilia": "ROYALCANIN GASTROINTESTINAL PERRO",
+              "mencionOriginal": null,
+              "pesoTextoOriginal": "2kg",
+              "requierePresentacion": false,
+              "intencionPresentaciones": "especifica",
+              "referenciasEquivalentes": [
+                "ROYALCANIN GASTROINTESTINAL PERRO"
+              ],
+              "coincidenciaVisualValidada": false,
+              "presentacionesEquivalentes": [
+                {
+                  "peso": "2kg",
+                  "stock": null,
+                  "precio": 129000,
+                  "metadata": {
+                    "llave": "2070",
+                    "codigo": "103010102070",
+                    "source": "productos.json",
+                    "codigos": [
+                      "103010102070"
+                    ],
+                    "nombre_original": "ROYALCANIN GASTROINTESTINAL PERRO 2KG"
+                  },
+                  "referencia": "ROYALCANIN GASTROINTESTINAL PERRO"
+                }
+              ]
+            }
+          ],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "6b8092559b24",
+      "direction": "outbound",
+      "body": "En ROYALCANIN GASTROINTESTINAL PERRO no tengo presentación de 7 kg en este momento.\n\nSí está disponible en 2 kg por $129.000.",
+      "at": "2026-10-30T17:53:34.068404+00:00"
+    },
+    {
+      "id": "09c1d9829ad3",
+      "direction": "inbound",
+      "body": "Solo consultar precio: Royal Canin gastrointestinal para perro, concentrado de 7 kg.",
+      "at": "2026-10-30T17:52:58.371258+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": null,
+            "marca": "ROYALCANIN",
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "duracion": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "ROYALCANIN GASTROINTESTINAL PERRO",
+            "condiciones": [
+              "gastrointestinal"
+            ],
+            "presentacion": "7kg",
+            "subcategoria": "concentrado",
+            "textoVisible": "Solo consultar precio: Royal Canin gastrointestinal para perro, concentrado de 7 kg.",
+            "nombreFamilia": "ROYALCANIN GASTROINTESTINAL PERRO",
+            "mencionOriginal": null,
+            "pesoTextoOriginal": "7kg",
+            "requierePresentacion": false,
+            "intencionPresentaciones": "especifica",
+            "referenciasEquivalentes": [
+              "ROYALCANIN GASTROINTESTINAL PERRO"
+            ],
+            "coincidenciaVisualValidada": false,
+            "presentacionesEquivalentes": [
+              {
+                "peso": "2kg",
+                "stock": null,
+                "precio": 129000,
+                "metadata": {
+                  "llave": "2070",
+                  "codigo": "103010102070",
+                  "source": "productos.json",
+                  "codigos": [
+                    "103010102070"
+                  ],
+                  "nombre_original": "ROYALCANIN GASTROINTESTINAL PERRO 2KG"
+                },
+                "referencia": "ROYALCANIN GASTROINTESTINAL PERRO"
+              }
+            ]
+          },
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": null,
+              "linea": null,
+              "marca": "ROYALCANIN",
+              "accion": "consultar",
+              "envase": null,
+              "tamano": null,
+              "especie": "perro",
+              "sabores": [],
+              "cantidad": null,
+              "duracion": null,
+              "mascotas": [],
+              "categoria": "comida",
+              "referencia": "ROYALCANIN GASTROINTESTINAL PERRO",
+              "condiciones": [
+                "gastrointestinal"
+              ],
+              "presentacion": "7kg",
+              "subcategoria": "concentrado",
+              "textoVisible": "Solo consultar precio: Royal Canin gastrointestinal para perro, concentrado de 7 kg.",
+              "nombreFamilia": "ROYALCANIN GASTROINTESTINAL PERRO",
+              "mencionOriginal": null,
+              "pesoTextoOriginal": "7kg",
+              "requierePresentacion": false,
+              "intencionPresentaciones": "especifica",
+              "referenciasEquivalentes": [
+                "ROYALCANIN GASTROINTESTINAL PERRO"
+              ],
+              "coincidenciaVisualValidada": false,
+              "presentacionesEquivalentes": [
+                {
+                  "peso": "2kg",
+                  "stock": null,
+                  "precio": 129000,
+                  "metadata": {
+                    "llave": "2070",
+                    "codigo": "103010102070",
+                    "source": "productos.json",
+                    "codigos": [
+                      "103010102070"
+                    ],
+                    "nombre_original": "ROYALCANIN GASTROINTESTINAL PERRO 2KG"
+                  },
+                  "referencia": "ROYALCANIN GASTROINTESTINAL PERRO"
+                }
+              ]
+            }
+          ],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "acb3e6c95d32",
+      "direction": "outbound",
+      "body": "¿Te refieres al **TASTE OF THE WILD ADULT PERRO** en **2 kg**? 🙂",
+      "at": "2026-10-30T17:37:15.248253+00:00"
+    },
+    {
+      "id": "97915d8c41de",
+      "direction": "inbound",
+      "body": "Corrijo el tamaño: de 2 kg, el mismo concentrado para perro. Solo consultar el precio.",
+      "at": "2026-10-30T17:36:38.731246+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": null,
+            "marca": "ROYALCANIN",
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "ROYALCANIN GASTROINTESTINAL PERRO",
+            "condiciones": [
+              "gastrointestinal"
+            ],
+            "presentacion": "2 kg",
+            "subcategoria": "concentrado",
+            "textoVisible": "mismo concentrado para perro de 2 kg",
+            "mencionOriginal": "de 2 kg, el mismo concentrado para perro",
+            "intencionPresentaciones": "especifica"
+          },
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": null,
+              "linea": null,
+              "marca": "ROYALCANIN",
+              "accion": "consultar",
+              "envase": null,
+              "tamano": null,
+              "especie": "perro",
+              "sabores": [],
+              "cantidad": null,
+              "mascotas": [],
+              "categoria": "comida",
+              "referencia": "ROYALCANIN GASTROINTESTINAL PERRO",
+              "condiciones": [
+                "gastrointestinal"
+              ],
+              "presentacion": "2 kg",
+              "subcategoria": "concentrado",
+              "textoVisible": "mismo concentrado para perro de 2 kg",
+              "mencionOriginal": "de 2 kg, el mismo concentrado para perro",
+              "intencionPresentaciones": "especifica"
+            }
+          ],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "5690ae1b137c",
+      "direction": "outbound",
+      "body": "Para **ROYALCANIN GASTROINTESTINAL PERRO** en **7 kg** no tengo esa presentación disponible en este momento. La única presentación validada es **2 kg por $129.000**. Si te sirve, te ayudo con esa 🙂",
+      "at": "2026-10-30T17:36:17.860872+00:00"
+    },
+    {
+      "id": "264b810414f6",
+      "direction": "inbound",
+      "body": "Solo consultar precio: Royal Canin gastrointestinal para perro, concentrado de 7 kg.",
+      "at": "2026-10-30T17:35:45.580182+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": null,
+            "marca": "ROYALCANIN",
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "duracion": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "ROYALCANIN GASTROINTESTINAL PERRO",
+            "condiciones": [
+              "gastrointestinal"
+            ],
+            "presentacion": "7kg",
+            "subcategoria": "concentrado",
+            "textoVisible": "Royal Canin gastrointestinal para perro, concentrado de 7 kg",
+            "nombreFamilia": "ROYALCANIN GASTROINTESTINAL PERRO",
+            "mencionOriginal": null,
+            "pesoTextoOriginal": "7kg",
+            "requierePresentacion": false,
+            "intencionPresentaciones": "especifica",
+            "referenciasEquivalentes": [
+              "ROYALCANIN GASTROINTESTINAL PERRO"
+            ],
+            "coincidenciaVisualValidada": false,
+            "presentacionesEquivalentes": [
+              {
+                "peso": "2kg",
+                "stock": null,
+                "precio": 129000,
+                "metadata": {
+                  "llave": "2070",
+                  "codigo": "103010102070",
+                  "source": "productos.json",
+                  "codigos": [
+                    "103010102070"
+                  ],
+                  "nombre_original": "ROYALCANIN GASTROINTESTINAL PERRO 2KG"
+                },
+                "referencia": "ROYALCANIN GASTROINTESTINAL PERRO"
+              }
+            ]
+          },
+          "intencion": "consulta_producto",
+          "productos": [],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "4fe1f98e8e71",
+      "direction": "outbound",
+      "body": "Gracias por la aclaración. La corrección de tamaño ya quedó tenida en cuenta, y por ahora la referencia sigue pendiente de revisión. En este chat todavía no hay un asesor asignado, así que no puedo confirmar el precio de ese producto en este momento. Si más adelante quieres, puedo seguir ayudándote con otras consultas mientras tanto.",
+      "at": "2026-10-30T17:33:25.414939+00:00"
+    },
+    {
+      "id": "34119ebc7d44",
+      "direction": "inbound",
+      "body": "Corrijo el tamaño: de 2 kg, el mismo concentrado para perro. Solo consultar el precio.",
+      "at": "2026-10-30T17:32:50.326203+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": null,
+            "marca": "ROYAL CANIN",
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "GASTROINTESTINAL",
+            "condiciones": [
+              "gastrointestinal"
+            ],
+            "presentacion": "2kg",
+            "subcategoria": "concentrado",
+            "textoVisible": "ROYAL CANIN GASTROINTESTINAL perro concentrado 2kg",
+            "mencionOriginal": "Corrijo el tamaño: de 2 kg, el mismo concentrado para perro. Solo consultar el precio.",
+            "pesoTextoOriginal": "2kg",
+            "intencionPresentaciones": "especifica"
+          },
+          "intencion": "consulta_producto",
+          "productos": [],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "1ced0f48c293",
+      "direction": "outbound",
+      "body": "Gracias por la aclaración. No puedo confirmar el precio de esa referencia en este momento. Si quieres, puedo ayudarte a buscar opciones de alimento gastrointestinal para perro según la necesidad, sin compromiso.",
+      "at": "2026-10-30T17:32:30.548991+00:00"
+    },
+    {
+      "id": "6581cc4f7a98",
+      "direction": "inbound",
+      "body": "Solo consultar precio: Royal Canin gastrointestinal para perro, concentrado de 7 kg.",
+      "at": "2026-10-30T17:31:53.463371+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": null,
+            "marca": "Royal Canin",
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "gastrointestinal",
+            "condiciones": [],
+            "presentacion": "7 kg",
+            "subcategoria": "concentrado",
+            "textoVisible": "Royal Canin gastrointestinal para perro, concentrado de 7 kg",
+            "mencionOriginal": "Royal Canin gastrointestinal para perro, concentrado de 7 kg.",
+            "intencionPresentaciones": "especifica"
+          },
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": null,
+              "linea": null,
+              "marca": "Royal Canin",
+              "accion": "consultar",
+              "envase": null,
+              "tamano": null,
+              "especie": "perro",
+              "sabores": [],
+              "cantidad": null,
+              "mascotas": [],
+              "categoria": "comida",
+              "referencia": "gastrointestinal",
+              "condiciones": [],
+              "presentacion": "7 kg",
+              "subcategoria": "concentrado",
+              "textoVisible": "Royal Canin gastrointestinal para perro, concentrado de 7 kg",
+              "mencionOriginal": "Royal Canin gastrointestinal para perro, concentrado de 7 kg.",
+              "intencionPresentaciones": "especifica"
+            }
+          ],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "644fca01b40d",
+      "direction": "outbound",
+      "body": "Gracias, queda como el mismo concentrado para perro en presentación de 2 kg. Como esta referencia sigue pendiente de revisión por un asesor y ahora mismo no hay uno asignado en este chat, no puedo confirmar el precio todavía. Si te sirve, puedes seguir consultando otras cosas mientras tanto.",
+      "at": "2026-10-30T17:28:45.505201+00:00"
+    },
+    {
+      "id": "014134519334",
+      "direction": "inbound",
+      "body": "Corrijo el tamaño: de 2 kg, el mismo concentrado para perro. Solo consultar el precio.",
+      "at": "2026-10-30T17:28:11.727632+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": null,
+            "marca": "ROYAL CANIN",
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "GASTROINTESTINAL",
+            "condiciones": [
+              "gastrointestinal"
+            ],
+            "presentacion": "2 kg",
+            "subcategoria": "concentrado",
+            "textoVisible": "mismo concentrado para perro de 2 kg",
+            "mencionOriginal": "de 2 kg, el mismo concentrado para perro",
+            "intencionPresentaciones": "especifica"
+          },
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": null,
+              "linea": null,
+              "marca": "ROYAL CANIN",
+              "accion": "consultar",
+              "envase": null,
+              "tamano": null,
+              "especie": "perro",
+              "sabores": [],
+              "cantidad": null,
+              "mascotas": [],
+              "categoria": "comida",
+              "referencia": "GASTROINTESTINAL",
+              "condiciones": [
+                "gastrointestinal"
+              ],
+              "presentacion": "2 kg",
+              "subcategoria": "concentrado",
+              "textoVisible": "mismo concentrado para perro de 2 kg",
+              "mencionOriginal": "de 2 kg, el mismo concentrado para perro",
+              "intencionPresentaciones": "especifica"
+            }
+          ],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "e272f2fecafd",
+      "direction": "outbound",
+      "body": "Todavía no puedo confirmar ROYAL CANIN GASTROINTESTINAL PERRO de 7kg con seguridad. ¿Quieres que revisemos otra opción?",
+      "at": "2026-10-30T17:27:47.20261+00:00"
+    },
+    {
+      "id": "f96c755af2bd",
+      "direction": "inbound",
+      "body": "Solo consultar precio: Royal Canin gastrointestinal para perro, concentrado de 7 kg.",
+      "at": "2026-10-30T17:27:07.354873+00:00",
+      "metadata": {
+        "interpretacion": {
+          "accion": "consultar",
+          "carrito": {
+            "razon": null,
+            "operacion": null,
+            "cantidadDelta": null,
+            "cantidadObjetivo": null,
+            "aplicaAlUltimoProducto": null
+          },
+          "producto": {
+            "etapa": null,
+            "linea": null,
+            "marca": "Royal Canin",
+            "accion": "consultar",
+            "envase": null,
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "referencia": "gastrointestinal",
+            "condiciones": [],
+            "presentacion": "7 kg",
+            "subcategoria": "concentrado",
+            "textoVisible": "Royal Canin gastrointestinal para perro, concentrado de 7 kg",
+            "mencionOriginal": "Royal Canin gastrointestinal para perro, concentrado de 7 kg.",
+            "intencionPresentaciones": "especifica"
+          },
+          "intencion": "consulta_producto",
+          "productos": [
+            {
+              "etapa": null,
+              "linea": null,
+              "marca": "Royal Canin",
+              "accion": "consultar",
+              "envase": null,
+              "tamano": null,
+              "especie": "perro",
+              "sabores": [],
+              "cantidad": null,
+              "mascotas": [],
+              "categoria": "comida",
+              "referencia": "gastrointestinal",
+              "condiciones": [],
+              "presentacion": "7 kg",
+              "subcategoria": "concentrado",
+              "textoVisible": "Royal Canin gastrointestinal para perro, concentrado de 7 kg",
+              "mencionOriginal": "Royal Canin gastrointestinal para perro, concentrado de 7 kg.",
+              "intencionPresentaciones": "especifica"
+            }
+          ],
+          "propuestaOperacion": null
+        }
+      }
+    },
+    {
+      "id": "0098f273fd65",
+      "direction": "outbound",
+      "body": "Claro, CAT CHOW DELICARNE x 500 gr te queda en $13.700. Las existencias están por confirmar. 🙂",
+      "at": "2026-10-30T17:26:31.20774+00:00"
+    }
+  ],
+  "kapso": [
+    {
+      "id": "7f70c41ad595",
+      "direction": "outbound",
+      "body": "Tenemos opciones de nefrotec. ¿Necesitas un empaque cerrado de 60 unidades o unidades individuales? Necesito verificar esa presentación antes de cotizarla.",
+      "at": "2026-10-30T18:18:02.000Z"
+    },
+    {
+      "id": "ff03b51b710c",
+      "direction": "inbound",
+      "body": "A como tienes el nefrotec x60",
+      "at": "2026-10-30T18:17:21.000Z"
+    },
+    {
+      "id": "3243c490ab40",
+      "direction": "outbound",
+      "body": "Claro 😊 tres sobres de PRO PLAN POUCH FELINO KITTEN de 85gr te quedan en $6.200 c/u, para un total de $18.600. Las existencias están por confirmar.",
+      "at": "2026-10-30T18:16:48.000Z"
+    },
+    {
+      "id": "5d640fd1109b",
+      "direction": "inbound",
+      "body": "Ahora serían tres sobres del mismo producto, solo cotización.",
+      "at": "2026-10-30T18:16:07.000Z"
+    },
+    {
+      "id": "302918851548",
+      "direction": "outbound",
+      "body": "Claro 😊 te confirmo el PRO PLAN POUCH FELINO KITTEN de 85gr en $6.200. Las existencias están por confirmar.",
+      "at": "2026-10-30T18:15:50.000Z"
+    }
+  ]
+}

@@ -2549,13 +2549,13 @@ function resolverOperacionCarritoIA(mensaje, estado, catalogo, interpretacion = 
     });
     estado.carrito = estado.carrito.filter(item => item.cantidad > 0);
     if (!verificar()) return `Tu pedido ya tiene ese ajuste.\n\n${resumenCarrito(estado)}`;
-    return `Listo, ajusté la cantidad.\n\n${resumenCarrito(estado)}\n\n¿Seguimos con la entrega o quieres cambiar algo más?`;
+    return `Listo, ajusté la cantidad.\n\n${productoAgregadoRespuesta(estado)}`;
   }
 
   if (operacion === "mantener_solo") {
     estado.carrito = coincidencias;
     if (!verificar()) return `Tu pedido ya tiene ese ajuste.\n\n${resumenCarrito(estado)}`;
-    return `Listo, dejé el pedido solamente con eso.\n\n${resumenCarrito(estado)}\n\n¿Seguimos con la entrega o quieres cambiar algo más?`;
+    return `Listo, dejé el pedido solamente con eso.\n\n${productoAgregadoRespuesta(estado)}`;
   }
 
   // Mutar exactamente las lineas resueltas, no todas las que compartan una
@@ -2568,7 +2568,7 @@ function resolverOperacionCarritoIA(mensaje, estado, catalogo, interpretacion = 
     return "Listo, retiré ese producto y el pedido quedó vacío. Dime qué producto quieres pedir y lo armamos de nuevo.";
   }
 
-  return `Listo, retiré ese producto del pedido.\n\n${resumenCarrito(estado)}\n\n¿Seguimos con la entrega o quieres cambiar algo más?`;
+  return `Listo, retiré ese producto del pedido.\n\n${productoAgregadoRespuesta(estado)}`;
 }
 
 function detectarCambioCarrito(mensaje) {
@@ -2663,10 +2663,19 @@ function resolverCambioCarrito(mensaje, estado, catalogo) {
         : "Listo, dejé el pedido solo con ese producto."
       : "Listo, retiré ese producto del pedido.";
 
-  return `${cambio}\n\n${resumenCarrito(estado)}\n\n¿Quieres agregar algo más o avanzamos con la entrega?`;
+  return `${cambio}\n\n${productoAgregadoRespuesta(estado)}`;
 }
 
 function productoAgregadoRespuesta(estado) {
+  if (!estado.carrito.length) {
+    return "El pedido quedó vacío. Dime qué producto quieres pedir y lo armamos de nuevo.";
+  }
+  // Agregar o ajustar una línea no reinicia una entrega ya elegida. Conservar
+  // los datos válidos y pedir solo los faltantes; completar datos nunca confirma.
+  if (estado.entrega?.tipo === "domicilio") {
+    if (requiereConfirmarDatosPrevios(estado)) return solicitarConfirmacionDatosPrevios(estado);
+    return solicitarDatosDomicilio(estado);
+  }
   estado.esperandoConfirmacionDomicilio = true;
   return `${resumenCarrito(estado)}\n\n¿Quieres agregar algo más o avanzamos con la entrega?`;
 }
@@ -2909,8 +2918,11 @@ function tieneOtrasPresentaciones(item) {
 }
 
 function bloqueConsultaConfirmada(item, clave, opciones = {}) {
-  const lineasConsulta = lineasConsultaItem(item);
-  const apertura = elegirVariante(clave, [
+  const stockSinConfirmar = (item.cotizarTodasPresentaciones
+    ? item.referencia.presentaciones || [] : [item.presentacion]).some(p => p && p.stock == null);
+  const lineasConsulta = lineasConsultaItem(item) + (stockSinConfirmar
+    ? '\nLas existencias están por confirmar.' : '');
+  const apertura = stockSinConfirmar ? 'Te confirmo, esa referencia la manejamos:' : elegirVariante(clave, [
     "Claro, lo tenemos:",
     "Sí, esa presentación está disponible:",
     "Te confirmo, esa referencia la manejamos:",
@@ -4357,6 +4369,11 @@ function extraerDatosDomicilio(mensaje, estado = null) {
   if (correo) { datos.correo ||= correo[0]; libre = libre.replace(correo[0], ' '); }
   const partes = libre.split(/[\n;,]/).map(p => p.trim()).filter(Boolean);
   for (const parte of partes) {
+    // A location continuation is part of the address, not a person's name.
+    if (datos.direccion && /^(?:barrio|sector|parque|conjunto|condominio|urbanizacion|vereda)\b/i.test(normalizar(parte))) {
+      datos.direccion += `, ${parte}`;
+      continue;
+    }
     const separados = separarNombreDireccion(parte);
     if (separados) {
       datos.nombre ||= normalizarDato('nombre', separados.nombre);
@@ -4407,6 +4424,19 @@ function registrarDatosCierre(mensaje, estado, interpretacion = {}) {
     estado.esperandoDatosDomicilio = true;
   }
   return cambio || factura !== null;
+}
+
+function detectarSenalCierre(mensaje, estado, interpretacion = {}) {
+  const texto = normalizar(mensaje);
+  // Questions, hypothetical destinations and explicit refusals are not an
+  // acceptance. The semantic route remains available for more complex turns.
+  if (/[?¿]/.test(mensaje) || /\b(?:no quiero|no necesito|no envies|no envi[eé]s|no voy a comprar|solo cotizo|solo consulto|cuanto|cuesta|llegan|cubren|si compro)\b/.test(texto)) return null;
+  const datos = extraerDatosDomicilio(mensaje, estado);
+  if (datos.direccion) return { tipo: 'domicilio', direccion: datos.direccion };
+  const pago = detectarMetodoPago(mensaje);
+  if (pago && /^(?:(?:yo )?(?:pago|pagare|lo pago|te pago|pagar[eé])(?: en| por| con)? )?(?:efectivo|contraentrega|contra entrega|transferencia|tarjeta|bre b)(?: por favor)?$/.test(texto)) return { metodoPago: pago };
+  if (interpretacion.intencion === 'datos_envio' && Object.values(interpretacion.datosCliente || {}).some(Boolean)) return {};
+  return null;
 }
 
 function pareceDireccion(valor = "") {
@@ -4659,6 +4689,7 @@ function incluirInstruccionesPago(estado, respuesta) {
 }
 
 function registrarMetodoPago(mensaje, estado) {
+  if (/[?¿]/.test(mensaje) || /\b(?:aceptan|reciben|puedo|se puede|no voy a|no quiero)\b/.test(normalizar(mensaje))) return null;
   const metodo = detectarMetodoPago(mensaje);
   if (!metodo) return null;
 
@@ -4700,7 +4731,7 @@ function solicitarDatosDomicilio(estado) {
     datosSolicitados.push("- método de pago: efectivo/contraentrega, transferencia bancaria, tarjeta débito o crédito, o llave bre-B");
   }
   return incluirInstruccionesPago(estado,
-    `${resumenCarrito(estado)}${detalleDireccion}\n\nPara completar tu domicilio, compárteme estos datos:\n${datosSolicitados.join("\n")}`);
+    `${resumenCarrito(estado)}${detalleDireccion}\n\nPuedes agregar algo más antes de confirmar. Para completar tu domicilio, ¿me compartes los datos que faltan?\n${datosSolicitados.join("\n")}`);
 }
 
 function resumenDatosFacturacionYDomicilio(estado) {
@@ -5524,8 +5555,11 @@ function resolverConsultaCatalogo(mensaje, estado, catalogo = [], interpretacion
       return resolverEntregaYPago(mensaje, estado, interpretacion);
     }
     if (!estado.carrito.length && ["datos_envio", "metodo_pago"].includes(interpretacion.intencion) &&
-        (Object.values(interpretacion.datosCliente || {}).some(Boolean) || interpretacion.entrega?.direccion)) {
-      const pendientes = (estado.ultimaSolicitudProductos || []).filter(item => item.estado === "pendiente");
+        (Object.values(interpretacion.datosCliente || {}).some(Boolean) || interpretacion.entrega?.direccion || interpretacion.entrega?.metodoPago)) {
+      const opciones = estado.productosConsultados || [];
+      if (opciones.length > 1) return `Conservo tus datos. ¿Qué referencia y presentación quieres incluir?\n${opciones.map(p => `- ${p.referencia} ${p.peso || p.presentacion}`).join('\n')}`;
+      const pendientes = (estado.ultimaSolicitudProductos || []).filter(item => item.estado === "pendiente" &&
+        (!item.contextoCreadoEn || Date.now() - Date.parse(item.contextoCreadoEn) < 30 * 60 * 1000));
       return pendientes.length
         ? `Conservo tus datos de entrega. ${pendientes[0].pregunta || "¿Qué referencia y presentación quieres completar para el pedido?"}`
         : "Conservo tus datos de entrega. ¿Qué productos y cantidades quieres incluir en el pedido?";
@@ -6042,6 +6076,7 @@ function resolverConsultaCatalogo(mensaje, estado, catalogo = [], interpretacion
 }
 
 module.exports = {
+  detectarSenalCierre,
   registrarDatosCierre,
   camposDomicilioFaltantes,
   operacionCarritoInterpretada,

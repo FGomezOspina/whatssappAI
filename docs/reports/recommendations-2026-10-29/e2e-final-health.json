@@ -1,0 +1,58 @@
+{
+  "at": "2026-10-29T20:25:39.493Z",
+  "health": {
+    "ok": true,
+    "provider": "kapso"
+  },
+  "publicHealth": {
+    "ok": true,
+    "provider": "kapso"
+  },
+  "status": 200,
+  "runtime": {
+    "pid": 12012,
+    "cwd": "/Users/gomez/Documents/WhatsappVELTIA",
+    "startedAt": "2026-10-29T20:14:24.628Z",
+    "sourceHash": "cc2d18d8a17e5d01cf408e96a64ab6eb62a46606c8a6cda8726e8bbe595eba01"
+  },
+  "loadedMatchesDisk": true,
+  "learningCandidates": [
+    {
+      "id": "8befc94b-ea21-f636-e4bd-f22a410fb76a",
+      "active": false,
+      "tags": [
+        "learning:v1",
+        "learning:pending"
+      ],
+      "updated_at": "2026-10-29T20:19:08.996022+00:00"
+    },
+    {
+      "id": "f51a0b55-f337-9515-1be0-e6be81c69555",
+      "active": false,
+      "tags": [
+        "learning:v1",
+        "learning:pending"
+      ],
+      "updated_at": "2026-10-29T20:19:52.932405+00:00"
+    },
+    {
+      "id": "14176060-e000-7282-33e3-63a36a618a80",
+      "active": false,
+      "tags": [
+        "learning:v1",
+        "learning:pending"
+      ],
+      "updated_at": "2026-10-29T20:20:36.129635+00:00"
+    },
+    {
+      "id": "a21e923b-5d34-29f6-de6c-663be272415b",
+      "active": false,
+      "tags": [
+        "learning:v1",
+        "learning:pending"
+      ],
+      "updated_at": "2026-10-29T20:20:53.252303+00:00"
+    }
+  ],
+  "internalErrors": 0
+}

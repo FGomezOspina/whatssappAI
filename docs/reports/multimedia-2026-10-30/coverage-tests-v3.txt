@@ -1,0 +1,15 @@
+[AI Usage Summary] cliente=coverage-fixture | usuario=coverage-test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=coverage-fixture | usuario=coverage-test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+✔ original three-reference request reports unavailable pack alongside both quotes (549.451459ms)
+✔ two unresolved products from one image each receive an explicit outcome (2.803416ms)
+✔ commercial slash codes are case independent without treating ordinary lowercase words as codes (0.322667ms)
+✔ original visual extraction with uncertain food form retains both same-code formats (65.981875ms)
+✔ synthetic explicit dry-food clarification preserves the exact lowercase commercial code (63.7455ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 727.875292

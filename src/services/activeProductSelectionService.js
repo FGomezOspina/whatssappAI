@@ -96,8 +96,20 @@ function resolverCompraContextual(mensaje, decision, estado) {
   }
   if (!selecciones.length || selecciones.some(p => p.estado === 'pendiente') ||
       (/\b(los dos|ambos)\b/.test(texto) && selecciones.length !== 2)) return null;
+  const actuales = decision.productos?.length ? decision.productos : [decision.producto].filter(Boolean);
+  const corresponde = (actual, previa) =>
+    (!actual.marca || normalizar(actual.marca) === normalizar(previa.marca)) &&
+    (!actual.referencia || normalizar(actual.referencia) === normalizar(previa.referencia) ||
+      (previa.cotizacion || []).some(c => normalizar(c.referencia) === normalizar(actual.referencia)));
+  // Context resolves an omitted identity; it must not override a new pack,
+  // variant or target. Such requests return to normal catalog validation.
+  if (actuales.some(a => !selecciones.some(p => corresponde(a,p)) ||
+      selecciones.some(p => corresponde(a,p) && (
+        (a.presentacion && !(p.cotizacion || []).some(c => normalizarPeso(c.peso || c.presentacion) === normalizarPeso(a.presentacion))) ||
+        ['especie','etapa','linea','duracion','envase'].some(k => a[k] && p[k] && normalizar(a[k]) !== normalizar(p[k])))))) return null;
   const productos = selecciones.flatMap(p => p.cotizacion.map(c => ({ ...p, ...c,
-    presentacion: c.peso || c.presentacion, cantidad: c.cantidad || 1, accion: 'agregar',
+    presentacion: c.peso || c.presentacion,
+    cantidad: actuales.find(a => corresponde(a,p))?.cantidad || c.cantidad || 1, accion: 'agregar',
     intencionPresentaciones: 'especifica', seleccionPresentaciones: undefined,
     observado: undefined, solicitud: undefined, _identidadPendiente: true,
   })));

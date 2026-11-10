@@ -1,0 +1,91 @@
+{
+  "runs": [
+    {
+      "file": "openai-sales-v1.jsonl",
+      "turns": 4,
+      "calls": 6
+    },
+    {
+      "file": "openai-commercial-v1.jsonl",
+      "turns": 9,
+      "calls": 20
+    },
+    {
+      "file": "openai-commercial-after-v1.jsonl",
+      "turns": 4,
+      "calls": 11
+    },
+    {
+      "file": "openai-commercial-final-v1.jsonl",
+      "turns": 2,
+      "calls": 5
+    },
+    {
+      "file": "openai-commercial-verified-v1.jsonl",
+      "turns": 4,
+      "calls": 8
+    }
+  ],
+  "turns": 23,
+  "calls": 50,
+  "tokens": 251183,
+  "promptTokens": 230811,
+  "completionTokens": 20372,
+  "cachedPromptTokens": 123264,
+  "models": [
+    "gpt-5.4",
+    "gpt-5.2",
+    "gpt-5.4-mini"
+  ],
+  "apiErrors": 0,
+  "cost": null,
+  "costNote": "API did not return billing cost; no estimate asserted",
+  "latencyMs": {
+    "median": 12237.590624999997,
+    "min": 4238.440082999994,
+    "max": 20551.841292,
+    "scope": "isolated OpenAI service, no WhatsApp transport or buffer"
+  },
+  "finalT02": [
+    {
+      "turn": 0,
+      "correctCart": true,
+      "asksUnits": null,
+      "unconfirmed": true,
+      "noHandoff": true
+    },
+    {
+      "turn": 1,
+      "correctCart": true,
+      "asksUnits": true,
+      "unconfirmed": true,
+      "noHandoff": true
+    },
+    {
+      "turn": 2,
+      "correctCart": true,
+      "asksUnits": true,
+      "unconfirmed": true,
+      "noHandoff": true
+    },
+    {
+      "turn": 3,
+      "correctCart": true,
+      "asksUnits": true,
+      "unconfirmed": true,
+      "noHandoff": true
+    }
+  ],
+  "blockedV2": {
+    "executed": false,
+    "reason": "auto-review required explicit proof that private-derived snapshot fields were anonymized",
+    "retriesAfterRejection": 0
+  },
+  "externalEffects": {
+    "whatsappSends": 0,
+    "realOrders": 0,
+    "supabaseWrites": 0,
+    "restarts": 0,
+    "deploys": 0
+  }
+}

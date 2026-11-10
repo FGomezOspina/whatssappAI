@@ -1,0 +1,255 @@
+{
+  "mode": "Local candidate retrieval + identity validator; not model, media perception, cart or WhatsApp E2E accuracy",
+  "normalizationAblated": true,
+  "fixtureSha256": "fb8996ed2a0b62f254d68c5f957fd81246e03e767f74e6b4a255a71a99693470",
+  "catalogSha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+  "total": {
+    "correct": 4,
+    "missed": 1,
+    "false_positive": 0,
+    "safe_abstention": 4,
+    "not_evaluable": 6
+  },
+  "development": {
+    "correct": 0,
+    "missed": 1,
+    "false_positive": 0,
+    "safe_abstention": 1,
+    "not_evaluable": 1
+  },
+  "evaluation": {
+    "correct": 4,
+    "missed": 0,
+    "false_positive": 0,
+    "safe_abstention": 3,
+    "not_evaluable": 5
+  },
+  "latencyLocalMs": {
+    "median": 38.13220799999999,
+    "p95": 58.697333000000015
+  },
+  "rows": [
+    {
+      "id": "C01-01",
+      "chat": "C01",
+      "split": "development",
+      "gold": "confirmed_identity",
+      "scope": "text",
+      "direction": "inbound",
+      "expectedReference": "PRO PLAN CANINE OM",
+      "outcome": "missed",
+      "selected": null,
+      "level": "baja",
+      "weight": null,
+      "presentationValid": null,
+      "reason": "sin_coincidencia_confiable",
+      "samplesMs": [
+        34.715917000000005,
+        35.35020800000001,
+        33.939875
+      ]
+    },
+    {
+      "id": "C01-02",
+      "chat": "C01",
+      "split": "development",
+      "gold": "ambiguous",
+      "scope": "text",
+      "direction": "inbound",
+      "expectedReference": null,
+      "outcome": "safe_abstention",
+      "selected": null,
+      "level": "baja",
+      "weight": null,
+      "presentationValid": null,
+      "reason": "sin_coincidencia_confiable",
+      "samplesMs": [
+        39.62312499999999,
+        39.32858399999998,
+        39.425707999999986
+      ]
+    },
+    {
+      "id": "C01-03",
+      "chat": "C01",
+      "split": "development",
+      "outcome": "not_evaluable",
+      "reason": "First item depends on 09:15 photo (blurred, not decoded), offered flavors and confirmation of a pack of four. Do not equate pack with catalog units or run as single-product identity."
+    },
+    {
+      "id": "C02-01",
+      "chat": "C02",
+      "split": "evaluation",
+      "gold": "unresolved",
+      "scope": "text",
+      "direction": "inbound",
+      "expectedReference": null,
+      "outcome": "safe_abstention",
+      "selected": null,
+      "level": "media",
+      "weight": null,
+      "presentationValid": null,
+      "reason": "ambigua",
+      "samplesMs": [
+        58.86195799999996,
+        58.697333000000015,
+        57.242208000000005
+      ]
+    },
+    {
+      "id": "C02-02",
+      "chat": "C02",
+      "split": "evaluation",
+      "outcome": "not_evaluable",
+      "reason": "Forwarded photograph unavailable for exact decoding. Adviser says not carried at 10:47. Image could be a different product from the first request."
+    },
+    {
+      "id": "C03-01",
+      "chat": "C03",
+      "split": "evaluation",
+      "outcome": "not_evaluable",
+      "reason": "09:54 category + 09:55 photograph and weight; accepted 10:11, price-only response 10:12. Not an adviser error. Price cannot identify the SKU."
+    },
+    {
+      "id": "C04-01",
+      "chat": "C04",
+      "split": "evaluation",
+      "gold": "confirmed_reference_only",
+      "scope": "text_span",
+      "direction": "inbound",
+      "expectedReference": "METRONID",
+      "outcome": "correct",
+      "selected": "METRONID",
+      "level": "alta",
+      "weight": null,
+      "presentationValid": null,
+      "reason": "nombre_exacto",
+      "samplesMs": [
+        38.255416999999966,
+        39.46254099999999,
+        38.09187499999996
+      ]
+    },
+    {
+      "id": "C04-02",
+      "chat": "C04",
+      "split": "evaluation",
+      "gold": "ambiguous",
+      "scope": "text_span",
+      "direction": "inbound",
+      "expectedReference": null,
+      "outcome": "safe_abstention",
+      "selected": null,
+      "level": "media",
+      "weight": null,
+      "presentationValid": null,
+      "reason": "falta_peso_mascota",
+      "samplesMs": [
+        31.9470409999999,
+        32.21524999999997,
+        32.30325000000005
+      ]
+    },
+    {
+      "id": "C05-01",
+      "chat": "C05",
+      "split": "evaluation",
+      "gold": "confirmed_identity",
+      "scope": "text",
+      "direction": "inbound",
+      "expectedReference": "ARENA KING CAT",
+      "outcome": "correct",
+      "selected": "ARENA KING CAT",
+      "level": "alta",
+      "weight": "25kg",
+      "presentationValid": true,
+      "reason": "marca_y_presentacion",
+      "samplesMs": [
+        34.30062499999997,
+        33.988207999999986,
+        34.16008399999998
+      ]
+    },
+    {
+      "id": "C06-01",
+      "chat": "C06",
+      "split": "evaluation",
+      "gold": "ambiguous",
+      "scope": "contextual_adviser_restatement",
+      "direction": "outbound_adviser",
+      "expectedReference": null,
+      "outcome": "safe_abstention",
+      "selected": null,
+      "level": "media",
+      "weight": null,
+      "presentationValid": null,
+      "reason": "atributo_faltante",
+      "samplesMs": [
+        48.05404199999998,
+        49.090416000000005,
+        49.10045800000012
+      ]
+    },
+    {
+      "id": "C06-02",
+      "chat": "C06",
+      "split": "evaluation",
+      "gold": "confirmed_reference_only",
+      "scope": "contextual_adviser_restatement",
+      "direction": "outbound_adviser",
+      "expectedReference": "CUCHUCO",
+      "outcome": "correct",
+      "selected": "CUCHUCO",
+      "level": "alta",
+      "weight": null,
+      "presentationValid": null,
+      "reason": "nombre_exacto",
+      "samplesMs": [
+        31.97129199999995,
+        32.57941699999992,
+        32.08812500000022
+      ]
+    },
+    {
+      "id": "C06-03",
+      "chat": "C06",
+      "split": "evaluation",
+      "gold": "confirmed_reference_only",
+      "scope": "contextual_adviser_restatement",
+      "direction": "outbound_adviser",
+      "expectedReference": "MIXTURA",
+      "outcome": "correct",
+      "selected": "MIXTURA",
+      "level": "alta",
+      "weight": null,
+      "presentationValid": null,
+      "reason": "nombre_exacto",
+      "samplesMs": [
+        39.44862500000022,
+        38.13220799999999,
+        38.993416000000025
+      ]
+    },
+    {
+      "id": "C06-04",
+      "chat": "C06",
+      "split": "evaluation",
+      "outcome": "not_evaluable",
+      "reason": "Voice note present, no waveform bytes/transcription obtained. Not evaluated and not replaced with fabricated transcript."
+    },
+    {
+      "id": "C06-05",
+      "chat": "C06",
+      "split": "evaluation",
+      "outcome": "not_evaluable",
+      "reason": "Voice note present, not decoded."
+    },
+    {
+      "id": "C06-06",
+      "chat": "C06",
+      "split": "evaluation",
+      "outcome": "not_evaluable",
+      "reason": "Voice note present, not decoded."
+    }
+  ]
+}

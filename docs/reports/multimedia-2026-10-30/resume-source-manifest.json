@@ -1,0 +1,43 @@
+{
+  "at": "2026-10-31T01:04:38.501Z",
+  "production": [
+    {
+      "path": "src/services/conversationService.js",
+      "sha256": "266e2760c5957ba506a07c7b74f41cd829a5698687e46768bd8e554dde88df90"
+    },
+    {
+      "path": "src/services/productRequestContext.js",
+      "sha256": "23c76551a1497452fcd93dd2c2c7454074ce2b1b7dbdd6f69d053077278361bf"
+    },
+    {
+      "path": "src/services/productMatchValidator.js",
+      "sha256": "71e0fd64439b7ce237ab3c35ca7ed62aac9378c6ad8f33813e0c3a17ea052af7"
+    },
+    {
+      "path": "src/services/productEvidenceService.js",
+      "sha256": "937a189ba84e7ec80b683646a480381b1d87d3e8c2cd05dececbfcac87e871da"
+    },
+    {
+      "path": "src/services/aiInterpreter.js",
+      "sha256": "bbb992f77086041eb1730a49ceac376aac6501de32d355f1260c3e98ac99796f"
+    },
+    {
+      "path": "src/utils/text.js",
+      "sha256": "612ef5a139e9495051cd36102f61b8062a4b8ea943260742c94cade866b1f382"
+    }
+  ],
+  "runtime": {
+    "pid": 49998,
+    "cwd": "/Users/gomez/Documents/WhatsappVELTIA",
+    "startedAt": "2026-10-31T00:58:09.437Z",
+    "sourceHash": "d44a04fe6a707fe93dfee114c786679243b4fef52e9889422977be82a5530a15",
+    "expectedHash": "d44a04fe6a707fe93dfee114c786679243b4fef52e9889422977be82a5530a15",
+    "matches": true
+  },
+  "tests": {
+    "passed": 1152,
+    "total": 1152,
+    "ms": 8237.594041,
+    "file": "full-suite-final-resume.txt"
+  }
+}

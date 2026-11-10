@@ -1,0 +1,97 @@
+{
+  "at": "2026-11-05T16:39:30.057Z",
+  "rows": [
+    {
+      "id": "906dcade-aa4e-4c7b-b652-978353832387",
+      "name": "ARENA MAIZ CAT",
+      "species": "gato",
+      "brand": {
+        "id": "39ca691c-bb20-4814-90ac-d72926000136",
+        "name": "ARENA MAIZ CAT",
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "fb49b2e5-e4ed-41a9-873c-1bee5357ea2b",
+          "price": 48800,
+          "stock": null,
+          "active": true,
+          "weight": "x 10kg",
+          "metadata": {
+            "llave": "1855",
+            "codigo": "110010101855",
+            "source": "productos.json",
+            "codigos": [
+              "110010101855"
+            ],
+            "nombre_original": "ARENA MAIZ CAT X 10KG"
+          }
+        },
+        {
+          "id": "75abc53c-936d-4aab-ba30-85740563978b",
+          "price": 61500,
+          "stock": null,
+          "active": true,
+          "weight": "x 15kg",
+          "metadata": {
+            "llave": "92",
+            "codigo": "10201010092",
+            "source": "productos.json",
+            "codigos": [
+              "10201010092"
+            ],
+            "nombre_original": "ARENA MAIZ CAT X 15KG"
+          }
+        },
+        {
+          "id": "cc48f1d0-28d7-47ef-9724-5536672c7eb7",
+          "price": 98000,
+          "stock": null,
+          "active": true,
+          "weight": "x 20kg",
+          "metadata": {
+            "llave": "1856",
+            "codigo": "110010101856",
+            "source": "productos.json",
+            "codigos": [
+              "110010101856"
+            ],
+            "nombre_original": "ARENA MAIZ CAT X 20KG"
+          }
+        },
+        {
+          "id": "b29a75c0-61f7-481b-aeb9-b33924e32b51",
+          "price": 11600,
+          "stock": null,
+          "active": true,
+          "weight": "x 2kg",
+          "metadata": {
+            "llave": "1853",
+            "codigo": "110010101853",
+            "source": "productos.json",
+            "codigos": [
+              "110010101853"
+            ],
+            "nombre_original": "ARENA MAIZ CAT X 2KG"
+          }
+        },
+        {
+          "id": "55834f3f-2e73-44cd-b481-ec200b821a95",
+          "price": 22900,
+          "stock": null,
+          "active": true,
+          "weight": "x 4kg",
+          "metadata": {
+            "llave": "1854",
+            "codigo": "110010101854",
+            "source": "productos.json",
+            "codigos": [
+              "110010101854"
+            ],
+            "nombre_original": "ARENA MAIZ CAT X 4KG"
+          }
+        }
+      ]
+    }
+  ]
+}

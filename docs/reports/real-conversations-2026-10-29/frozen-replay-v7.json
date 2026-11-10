@@ -1,0 +1,447 @@
+{
+  "provider": "local",
+  "model": null,
+  "corpusVersion": "distrifinca-2026-10-30-v1",
+  "manifestSha256": "388f17fbcfc380c98bc93d1a8f252110f182b144cba8d0bd82e66647f3dca2c2",
+  "catalogSha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+  "runAt": "2026-10-30T14:51:32.034Z",
+  "scope": "Offline candidate retrieval + validator",
+  "rows": [
+    {
+      "id": "C01-01",
+      "level": "alta",
+      "selected": "PRO PLAN CANINE OM",
+      "reason": "nombre_exacto",
+      "clarification": null,
+      "weight": "2kg",
+      "presentationValid": true,
+      "historicalOutcome": "correct",
+      "currentExpectationMet": true,
+      "ms": 7.045875000000009
+    },
+    {
+      "id": "C01-02",
+      "level": "baja",
+      "selected": null,
+      "reason": "sin_coincidencia_confiable",
+      "clarification": null,
+      "weight": null,
+      "presentationValid": null,
+      "historicalOutcome": "safe_abstention",
+      "currentExpectationMet": true,
+      "ms": 0.4708339999999964
+    },
+    {
+      "id": "C01-03",
+      "outcome": "not_evaluable",
+      "media": "missing_not_evaluable"
+    },
+    {
+      "id": "C02-01",
+      "level": "media",
+      "selected": null,
+      "reason": "ambigua",
+      "clarification": null,
+      "weight": null,
+      "presentationValid": null,
+      "historicalOutcome": "safe_abstention",
+      "currentExpectationMet": true,
+      "ms": 9.306125000000009
+    },
+    {
+      "id": "C02-02",
+      "outcome": "not_evaluable",
+      "media": "missing_not_evaluable"
+    },
+    {
+      "id": "C03-01",
+      "outcome": "not_evaluable",
+      "media": "missing_not_evaluable"
+    },
+    {
+      "id": "C04-01",
+      "level": "alta",
+      "selected": "METRONID",
+      "reason": "nombre_exacto",
+      "clarification": null,
+      "weight": null,
+      "presentationValid": null,
+      "historicalOutcome": "correct",
+      "currentExpectationMet": true,
+      "ms": 0.9559169999999995
+    },
+    {
+      "id": "C04-02",
+      "level": "media",
+      "selected": null,
+      "reason": "falta_peso_mascota",
+      "clarification": {
+        "campo": "peso_mascota",
+        "valores": [],
+        "requiereEspecie": true
+      },
+      "weight": null,
+      "presentationValid": null,
+      "historicalOutcome": "safe_abstention",
+      "currentExpectationMet": true,
+      "ms": 0.9802919999999631
+    },
+    {
+      "id": "C05-01",
+      "level": "alta",
+      "selected": "ARENA KING CAT",
+      "reason": "marca_y_presentacion",
+      "clarification": null,
+      "weight": "25kg",
+      "presentationValid": true,
+      "historicalOutcome": "correct",
+      "currentExpectationMet": true,
+      "ms": 1.8249589999999785
+    },
+    {
+      "id": "C06-01",
+      "level": "media",
+      "selected": null,
+      "reason": "atributo_faltante",
+      "clarification": {
+        "campo": "especie",
+        "valores": [
+          "gato",
+          "perro"
+        ]
+      },
+      "weight": null,
+      "presentationValid": null,
+      "historicalOutcome": "safe_abstention",
+      "currentExpectationMet": true,
+      "ms": 15.490709000000038
+    },
+    {
+      "id": "C06-02",
+      "level": "alta",
+      "selected": "CUCHUCO",
+      "reason": "nombre_exacto",
+      "clarification": null,
+      "weight": null,
+      "presentationValid": null,
+      "historicalOutcome": "correct",
+      "currentExpectationMet": true,
+      "ms": 0.44820800000002237
+    },
+    {
+      "id": "C06-03",
+      "level": "alta",
+      "selected": "MIXTURA",
+      "reason": "nombre_exacto",
+      "clarification": null,
+      "weight": null,
+      "presentationValid": null,
+      "historicalOutcome": "correct",
+      "currentExpectationMet": true,
+      "ms": 0.5206660000000056
+    },
+    {
+      "id": "C06-04",
+      "outcome": "not_evaluable",
+      "media": "missing_not_evaluable"
+    },
+    {
+      "id": "C06-05",
+      "outcome": "not_evaluable",
+      "media": "missing_not_evaluable"
+    },
+    {
+      "id": "C06-06",
+      "outcome": "not_evaluable",
+      "media": "missing_not_evaluable"
+    },
+    {
+      "id": "C07-01",
+      "level": "media",
+      "selected": null,
+      "reason": "ambigua",
+      "clarification": null,
+      "weight": null,
+      "presentationValid": null,
+      "historicalOutcome": "safe_abstention",
+      "currentExpectationMet": true,
+      "ms": 16.445959000000016
+    },
+    {
+      "id": "C06-07",
+      "outcome": "not_evaluable",
+      "media": "missing_not_evaluable"
+    },
+    {
+      "id": "C06-08",
+      "outcome": "not_evaluable",
+      "media": "missing_not_evaluable"
+    },
+    {
+      "id": "C06-09",
+      "outcome": "not_evaluable",
+      "media": "missing_not_evaluable"
+    },
+    {
+      "id": "C08-01",
+      "outcome": "not_evaluable",
+      "media": "missing_not_evaluable"
+    },
+    {
+      "id": "C08-02",
+      "outcome": "not_evaluable",
+      "media": "missing_not_evaluable"
+    },
+    {
+      "id": "C09-01",
+      "level": "alta",
+      "selected": "PET MILK",
+      "reason": "similitud_alta",
+      "clarification": null,
+      "weight": "500g",
+      "presentationValid": true,
+      "historicalOutcome": "correct",
+      "currentExpectationMet": true,
+      "ms": 12.024625000000015
+    },
+    {
+      "id": "C09-02",
+      "outcome": "not_evaluable",
+      "media": "missing_not_evaluable"
+    },
+    {
+      "id": "C09-03",
+      "outcome": "not_evaluable",
+      "media": "missing_not_evaluable"
+    },
+    {
+      "id": "C11-01",
+      "outcome": "not_evaluable",
+      "media": "missing_not_evaluable"
+    },
+    {
+      "id": "C12-01",
+      "level": "no_aplica",
+      "selected": null,
+      "reason": "consulta_categoria",
+      "clarification": null,
+      "weight": null,
+      "historicalOutcome": "safe_abstention",
+      "currentExpectationMet": true,
+      "ms": 3.7013339999999744
+    },
+    {
+      "id": "C12-02",
+      "level": "alta",
+      "selected": "ARENA KITTEN TALCO",
+      "reason": "senales_convergentes",
+      "clarification": null,
+      "weight": "25kg",
+      "presentationValid": true,
+      "historicalOutcome": "correct",
+      "currentExpectationMet": true,
+      "ms": 3.7718750000000227
+    },
+    {
+      "id": "C14-01",
+      "level": "media",
+      "selected": null,
+      "reason": "falta_duracion",
+      "clarification": {
+        "campo": "duracion",
+        "valores": [
+          "3 meses",
+          "37 dias"
+        ]
+      },
+      "weight": "20kg",
+      "historicalOutcome": "safe_abstention",
+      "currentExpectationMet": true,
+      "ms": 0.17962499999998727
+    },
+    {
+      "id": "C14-02",
+      "level": "baja",
+      "selected": null,
+      "reason": "variante_sin_respaldo",
+      "clarification": null,
+      "weight": "8kg",
+      "presentationValid": true,
+      "historicalOutcome": "safe_abstention",
+      "currentExpectationMet": true,
+      "ms": 23.34379100000001
+    },
+    {
+      "id": "C16-01",
+      "level": "media",
+      "selected": null,
+      "reason": "formato_alimento_ambiguo",
+      "clarification": {
+        "campo": "forma_alimento",
+        "valores": [
+          "concentrado",
+          "comida_humeda"
+        ]
+      },
+      "weight": null,
+      "presentationValid": null,
+      "historicalOutcome": "missed",
+      "currentExpectationMet": true,
+      "ms": 8.416041999999948
+    },
+    {
+      "id": "C17-01",
+      "level": "baja",
+      "selected": null,
+      "reason": "sin_coincidencia_confiable",
+      "clarification": null,
+      "weight": null,
+      "presentationValid": null,
+      "historicalOutcome": "safe_abstention",
+      "currentExpectationMet": true,
+      "ms": 1.115624999999909
+    },
+    {
+      "id": "C18-01",
+      "level": "alta",
+      "selected": "EXCELLENT GATO URINARY",
+      "reason": "nombre_exacto",
+      "clarification": null,
+      "weight": "3kg",
+      "presentationValid": true,
+      "historicalOutcome": "correct",
+      "currentExpectationMet": true,
+      "ms": 13.148040999999921
+    },
+    {
+      "id": "C18-02",
+      "level": "media",
+      "selected": null,
+      "reason": "marca_y_presentacion",
+      "clarification": {
+        "campo": "referencia",
+        "valores": [
+          "MONELLO DOG RZ PEQ",
+          "MONELLO DOG PUPYY"
+        ]
+      },
+      "weight": "7kg",
+      "presentationValid": true,
+      "historicalOutcome": "safe_abstention",
+      "currentExpectationMet": true,
+      "ms": 2.6852499999999964
+    },
+    {
+      "id": "C19-01",
+      "level": "alta",
+      "selected": "CANISAN D",
+      "reason": "nombre_exacto",
+      "clarification": null,
+      "weight": "5ml",
+      "presentationValid": true,
+      "historicalOutcome": "correct",
+      "currentExpectationMet": true,
+      "ms": 1.5241249999999127
+    },
+    {
+      "id": "C19-02",
+      "outcome": "not_evaluable",
+      "media": "missing_not_evaluable"
+    },
+    {
+      "id": "C19-03",
+      "level": "alta",
+      "selected": "FORTIFLORA CANINE",
+      "reason": "nombre_exacto",
+      "clarification": null,
+      "weight": null,
+      "presentationValid": null,
+      "historicalOutcome": "correct",
+      "currentExpectationMet": true,
+      "ms": 1.3934999999999036
+    },
+    {
+      "id": "C19-04",
+      "outcome": "not_evaluable",
+      "media": "missing_not_evaluable"
+    },
+    {
+      "id": "C15-01",
+      "level": "media",
+      "selected": null,
+      "reason": "formato_y_presentacion_por_confirmar",
+      "clarification": null,
+      "weight": "7kg",
+      "presentationValid": false,
+      "historicalOutcome": "safe_abstention",
+      "currentExpectationMet": true,
+      "ms": 21.908707999999933
+    },
+    {
+      "id": "C15-02",
+      "level": "alta",
+      "selected": "ROYAL CANIN DOG LATA GASTRO",
+      "reason": "senales_convergentes",
+      "clarification": null,
+      "weight": null,
+      "presentationValid": null,
+      "historicalOutcome": "correct",
+      "currentExpectationMet": true,
+      "ms": 4.535458000000062
+    },
+    {
+      "id": "C15-03",
+      "level": "media",
+      "selected": null,
+      "reason": "atributo_faltante",
+      "clarification": {
+        "campo": "etapa",
+        "valores": [
+          "cachorro",
+          "adulto"
+        ]
+      },
+      "weight": null,
+      "presentationValid": null,
+      "historicalOutcome": "safe_abstention",
+      "currentExpectationMet": true,
+      "ms": 14.870750000000044
+    },
+    {
+      "id": "C21-01",
+      "level": "media",
+      "selected": null,
+      "reason": "similitud_media",
+      "clarification": null,
+      "weight": null,
+      "presentationValid": null,
+      "historicalOutcome": "safe_abstention",
+      "currentExpectationMet": true,
+      "ms": 29.11845799999992
+    },
+    {
+      "id": "C21-02",
+      "level": "baja",
+      "selected": null,
+      "reason": "sin_coincidencia_confiable",
+      "clarification": null,
+      "weight": null,
+      "presentationValid": null,
+      "historicalOutcome": "safe_abstention",
+      "currentExpectationMet": true,
+      "ms": 1.9862909999999374
+    },
+    {
+      "id": "C22-01",
+      "level": "alta",
+      "selected": "EXCELLENT GATO ADULT",
+      "reason": "senales_convergentes",
+      "clarification": null,
+      "weight": "7.5kg",
+      "presentationValid": true,
+      "historicalOutcome": "correct",
+      "currentExpectationMet": true,
+      "ms": 20.758000000000038
+    }
+  ]
+}

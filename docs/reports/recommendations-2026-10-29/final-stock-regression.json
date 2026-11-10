@@ -1,0 +1,1317 @@
+{
+  "capturedAt": "2026-10-29T16:35:18.353Z",
+  "mode": "real models and read-only Supabase; in-memory state; not WhatsApp E2E",
+  "label": "final-stock-regression",
+  "rows": [
+    {
+      "case": "reference",
+      "text": "Cuánto vale Pro Plan UR",
+      "response": "¿Lo buscas para perro o para gato? Así te digo la presentación correcta de Pro Plan UR 🙂\n\nPedido:\n- 1 x BR CAT SALMON 1kg: $30.500\nTotal: $30.500",
+      "ms": 12090,
+      "decisions": [
+        {
+          "router": true,
+          "decision": {
+            "recomendaciones": [],
+            "preguntaRecomendacion": null,
+            "solicitudComercialIndependiente": true,
+            "derivacionHumana": {
+              "necesaria": false,
+              "motivo": null
+            },
+            "seguimientoProducto": "nueva",
+            "resumenMemoria": null,
+            "continuarFlujo": false,
+            "compraContextual": null,
+            "solicitudesProductoDetectadas": 1,
+            "consultaCatalogo": {
+              "tipo": "referencia",
+              "presupuestoMaximo": null,
+              "necesaria": true,
+              "consulta": "precio Pro Plan UR"
+            },
+            "respuestaConversacional": null,
+            "intencion": "consulta_producto",
+            "accion": "consultar",
+            "confianza": 0.96,
+            "producto": {
+              "accion": "consultar",
+              "marca": "Pro Plan",
+              "referencia": "UR",
+              "linea": null,
+              "textoVisible": "Pro Plan UR",
+              "mencionOriginal": "Pro Plan UR",
+              "categoria": "comida",
+              "subcategoria": null,
+              "especie": null,
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": null,
+              "intencionPresentaciones": null,
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": null
+            },
+            "productos": [
+              {
+                "accion": "consultar",
+                "marca": "Pro Plan",
+                "referencia": "UR",
+                "linea": null,
+                "textoVisible": "Pro Plan UR",
+                "mencionOriginal": "Pro Plan UR",
+                "categoria": "comida",
+                "subcategoria": null,
+                "especie": null,
+                "etapa": null,
+                "tamano": null,
+                "sabores": [],
+                "presentacion": null,
+                "intencionPresentaciones": null,
+                "mascotas": [],
+                "condiciones": [],
+                "cantidad": null
+              }
+            ],
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            },
+            "facturacion": {
+              "electronica": null,
+              "evidencia": null
+            },
+            "datosCliente": {
+              "nombre": null,
+              "cedula": null,
+              "correo": null,
+              "celular": null
+            },
+            "carrito": {
+              "operacion": null,
+              "cantidadObjetivo": null,
+              "cantidadDelta": null,
+              "aplicaAlUltimoProducto": null,
+              "razon": null
+            },
+            "faltanteSugerido": null
+          }
+        },
+        {
+          "router": false,
+          "decision": {
+            "recomendaciones": [],
+            "preguntaRecomendacion": null,
+            "solicitudComercialIndependiente": false,
+            "derivacionHumana": {
+              "necesaria": false,
+              "motivo": null
+            },
+            "seguimientoProducto": null,
+            "resumenMemoria": null,
+            "continuarFlujo": false,
+            "compraContextual": null,
+            "solicitudesProductoDetectadas": null,
+            "consultaCatalogo": {
+              "tipo": null,
+              "presupuestoMaximo": null,
+              "necesaria": null,
+              "consulta": null
+            },
+            "respuestaConversacional": null,
+            "intencion": "consulta_producto",
+            "accion": "consultar",
+            "confianza": 0.78,
+            "producto": {
+              "accion": "consultar",
+              "marca": "PRO PLAN",
+              "referencia": "UR",
+              "linea": null,
+              "textoVisible": "Pro Plan UR",
+              "mencionOriginal": null,
+              "categoria": null,
+              "subcategoria": null,
+              "especie": null,
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": null,
+              "intencionPresentaciones": null,
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": null
+            },
+            "productos": [],
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            },
+            "facturacion": {
+              "electronica": null,
+              "evidencia": null
+            },
+            "datosCliente": {
+              "nombre": null,
+              "cedula": null,
+              "correo": null,
+              "celular": null
+            },
+            "carrito": {
+              "operacion": null,
+              "cantidadObjetivo": null,
+              "cantidadDelta": null,
+              "aplicaAlUltimoProducto": null,
+              "razon": null
+            },
+            "faltanteSugerido": "¿Lo necesitas Pro Plan UR para perro o para gato, y en concentrado o en lata?"
+          }
+        }
+      ],
+      "requests": [
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 6254,
+          "status": 200,
+          "model": "gpt-5.4-2026-03-05",
+          "output": "{\n  \"intencion\": \"consulta_producto\",\n  \"accion\": \"consultar\",\n  \"confianza\": 0.96,\n  \"compraContextual\": null,\n  \"solicitudesProductoDetectadas\": 1,\n  \"producto\": {\n    \"accion\": \"consultar\",\n    \"marca\": \"Pro Plan\",\n    \"referencia\": \"UR\",\n    \"linea\": null,\n    \"textoVisible\": \"Pro Plan UR\",\n    \"categoria\": \"comida\",\n    \"subcategoria\": null,\n    \"especie\": null,\n    \"etapa\": null,\n    \"tamano\": null,\n    \"sabores\": [],\n    \"condiciones\": [],\n    \"presentacion\": null,\n    \"cantidad\": null,\n    \"intencionPresentaciones\": null,\n    \"mascotas\": [],\n    \"mencionOriginal\": \"Pro Plan UR\"\n  },\n  \"productos\": [\n    {\n      \"accion\": \"consultar\",\n      \"marca\": \"Pro Plan\",\n      \"referencia\": \"UR\",\n      \"linea\": null,\n      \"textoVisible\": \"Pro Plan UR\",\n      \"categoria\": \"comida\",\n      \"subcategoria\": null,\n      \"especie\": null,\n      \"etapa\": null,\n      \"tamano\": null,\n      \"sabores\": [],\n      \"condiciones\": [],\n      \"presentacion\": null,\n      \"cantidad\": null,\n      \"intencionPresentaciones\": null,\n      \"mascotas\": [],\n      \"mencionOriginal\": \"Pro Plan UR\"\n    }\n  ],\n  \"entrega\": {\n    \"tipo\": null,\n    \"direccion\": null,\n    \"direccionCompleta\": null,\n    \"sector\": null,\n    \"metodoPago\": null,\n    \"sede\": null\n  },\n  \"facturacion\": {\n    \"electronica\": null,\n    \"evidencia\": null\n  },\n  \"datosCliente\": {\n    \"nombre\": null,\n    \"cedula\": null,\n    \"correo\": null,\n    \"celular\": null\n  },\n  \"carrito\": {\n    \"operacion\": null,\n    \"cantidadObjetivo\": null,\n    \"cantidadDelta\": null,\n    \"aplicaAlUltimoProducto\": null,\n    \"razon\": null\n  },\n  \"faltanteSugerido\": null,\n  \"consultaCatalogo\": {\n    \"necesaria\": true,\n    \"consulta\": \"precio Pro Plan UR\",\n    \"tipo\": \"referencia\",\n    \"presupuestoMaximo\": null\n  },\n  \"derivacionHumana\": {\n    \"necesaria\": false,\n    \"motivo\": null\n  },\n  \"solicitudComercialIndependiente\": true,\n  \"seguimientoProducto\": \"nueva\",\n  \"respuestaConversacional\": null\n}",
+          "usage": {
+            "prompt_tokens": 6411,
+            "completion_tokens": 599,
+            "total_tokens": 7010,
+            "prompt_tokens_details": {
+              "cached_tokens": 5888,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "supabase",
+          "method": "POST",
+          "path": "/rest/v1/rpc/search_catalog_products",
+          "ms": 566,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "GET",
+          "path": "/rest/v1/training_examples",
+          "ms": 216,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "GET",
+          "path": "/rest/v1/training_examples",
+          "ms": 247,
+          "status": 200
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 3691,
+          "status": 200,
+          "model": "gpt-5.2-2025-12-11",
+          "output": "{\"intencion\":\"consulta_producto\",\"accion\":\"consultar\",\"confianza\":0.78,\"compraContextual\":null,\"solicitudesProductoDetectadas\":null,\"producto\":{\"accion\":\"consultar\",\"marca\":\"PRO PLAN\",\"referencia\":\"UR\",\"linea\":null,\"textoVisible\":\"Pro Plan UR\",\"categoria\":null,\"subcategoria\":null,\"especie\":null,\"etapa\":null,\"tamano\":null,\"sabores\":[],\"condiciones\":[],\"presentacion\":null,\"cantidad\":null,\"intencionPresentaciones\":null,\"mascotas\":[]},\"productos\":[],\"entrega\":{\"tipo\":null,\"direccion\":null,\"direccionCompleta\":null,\"sector\":null,\"metodoPago\":null,\"sede\":null},\"facturacion\":{\"electronica\":null,\"evidencia\":null},\"datosCliente\":{\"nombre\":null,\"cedula\":null,\"correo\":null,\"celular\":null},\"carrito\":{\"operacion\":null,\"cantidadObjetivo\":null,\"cantidadDelta\":null,\"aplicaAlUltimoProducto\":null,\"razon\":null},\"faltanteSugerido\":\"¿Lo necesitas Pro Plan UR para perro o para gato, y en concentrado o en lata?\"}",
+          "usage": {
+            "prompt_tokens": 3250,
+            "completion_tokens": 255,
+            "total_tokens": 3505,
+            "prompt_tokens_details": {
+              "cached_tokens": 2688,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 1284,
+          "status": 200,
+          "model": "gpt-5.4-mini-2026-03-17",
+          "output": "¿Lo buscas para perro o para gato? Así te digo la presentación correcta de Pro Plan UR 🙂",
+          "usage": {
+            "prompt_tokens": 1307,
+            "completion_tokens": 23,
+            "total_tokens": 1330,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        }
+      ],
+      "cartUnchanged": true,
+      "state": {
+        "criterios": {},
+        "atencionHumana": null,
+        "ultimaConsultaProducto": {
+          "terminos": [
+            "premium",
+            "plan",
+            "ur"
+          ],
+          "etiqueta": "premium plan ur",
+          "presentacion": null,
+          "fuente": "texto",
+          "nivel": "media",
+          "razon": "atributo_faltante",
+          "aclaracion": {
+            "campo": "especie",
+            "valores": [
+              "perro",
+              "gato"
+            ]
+          },
+          "creadoEn": "2026-10-29T16:35:29.181Z",
+          "solicitudOriginal": {
+            "intencion": "consulta_producto",
+            "accion": "consultar",
+            "producto": {
+              "accion": "consultar",
+              "marca": "PRO PLAN",
+              "referencia": "UR",
+              "linea": null,
+              "textoVisible": "Pro Plan UR",
+              "mencionOriginal": null,
+              "categoria": null,
+              "subcategoria": null,
+              "especie": null,
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": null,
+              "intencionPresentaciones": null,
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": null
+            },
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            }
+          },
+          "sinCoincidenciaInformada": false
+        }
+      }
+    },
+    {
+      "case": "reference",
+      "text": "Para perrito",
+      "response": "Para perrito tengo estas dos opciones de PRO PLAN: ¿buscas PRO PLAN CANINE UR de 2 kg o PRO PLAN CANINE LATA UR de unidad? 🐶\n\nPedido:\n- 1 x BR CAT SALMON 1kg: $30.500\nTotal: $30.500",
+      "ms": 11999,
+      "decisions": [
+        {
+          "router": true,
+          "decision": {
+            "recomendaciones": [],
+            "preguntaRecomendacion": null,
+            "solicitudComercialIndependiente": true,
+            "derivacionHumana": {
+              "necesaria": false,
+              "motivo": null
+            },
+            "seguimientoProducto": "aclaracion",
+            "resumenMemoria": null,
+            "continuarFlujo": false,
+            "compraContextual": null,
+            "solicitudesProductoDetectadas": 1,
+            "consultaCatalogo": {
+              "tipo": "referencia",
+              "presupuestoMaximo": null,
+              "necesaria": true,
+              "consulta": "PRO PLAN CANINE UR"
+            },
+            "respuestaConversacional": null,
+            "intencion": "consulta_producto",
+            "accion": "consultar",
+            "confianza": 0.98,
+            "producto": {
+              "accion": "consultar",
+              "marca": "PRO PLAN",
+              "referencia": "UR",
+              "linea": null,
+              "textoVisible": "Pro Plan UR para perrito",
+              "mencionOriginal": "Para perrito",
+              "categoria": "comida",
+              "subcategoria": null,
+              "especie": "perro",
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": null,
+              "intencionPresentaciones": null,
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": null
+            },
+            "productos": [
+              {
+                "accion": "consultar",
+                "marca": "PRO PLAN",
+                "referencia": "UR",
+                "linea": null,
+                "textoVisible": "Pro Plan UR para perrito",
+                "mencionOriginal": "Para perrito",
+                "categoria": "comida",
+                "subcategoria": null,
+                "especie": "perro",
+                "etapa": null,
+                "tamano": null,
+                "sabores": [],
+                "presentacion": null,
+                "intencionPresentaciones": null,
+                "mascotas": [],
+                "condiciones": [],
+                "cantidad": null
+              }
+            ],
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            },
+            "facturacion": {
+              "electronica": null,
+              "evidencia": null
+            },
+            "datosCliente": {
+              "nombre": null,
+              "cedula": null,
+              "correo": null,
+              "celular": null
+            },
+            "carrito": {
+              "operacion": null,
+              "cantidadObjetivo": null,
+              "cantidadDelta": null,
+              "aplicaAlUltimoProducto": null,
+              "razon": null
+            },
+            "faltanteSugerido": null
+          }
+        },
+        {
+          "router": false,
+          "decision": {
+            "recomendaciones": [],
+            "preguntaRecomendacion": null,
+            "solicitudComercialIndependiente": false,
+            "derivacionHumana": {
+              "necesaria": false,
+              "motivo": null
+            },
+            "seguimientoProducto": null,
+            "resumenMemoria": null,
+            "continuarFlujo": false,
+            "compraContextual": null,
+            "solicitudesProductoDetectadas": null,
+            "consultaCatalogo": {
+              "tipo": null,
+              "presupuestoMaximo": null,
+              "necesaria": null,
+              "consulta": null
+            },
+            "respuestaConversacional": null,
+            "intencion": "consulta_producto",
+            "accion": "consultar",
+            "confianza": 0.9,
+            "producto": {
+              "accion": "consultar",
+              "marca": "PRO PLAN",
+              "referencia": "PRO PLAN CANINE UR",
+              "linea": null,
+              "textoVisible": "Pro Plan UR para perrito",
+              "mencionOriginal": null,
+              "categoria": null,
+              "subcategoria": null,
+              "especie": "perro",
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": null,
+              "intencionPresentaciones": null,
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": null
+            },
+            "productos": [],
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            },
+            "facturacion": {
+              "electronica": null,
+              "evidencia": null
+            },
+            "datosCliente": {
+              "nombre": null,
+              "cedula": null,
+              "correo": null,
+              "celular": null
+            },
+            "carrito": {
+              "operacion": null,
+              "cantidadObjetivo": null,
+              "cantidadDelta": null,
+              "aplicaAlUltimoProducto": null,
+              "razon": null
+            },
+            "faltanteSugerido": "¿Lo quieres en concentrado (2kg) o en lata (unidad)?"
+          }
+        }
+      ],
+      "requests": [
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 5986,
+          "status": 200,
+          "model": "gpt-5.4-2026-03-05",
+          "output": "{\n  \"intencion\": \"consulta_producto\",\n  \"accion\": \"consultar\",\n  \"confianza\": 0.98,\n  \"compraContextual\": null,\n  \"solicitudesProductoDetectadas\": 1,\n  \"producto\": {\n    \"accion\": \"consultar\",\n    \"marca\": \"PRO PLAN\",\n    \"referencia\": \"UR\",\n    \"linea\": null,\n    \"textoVisible\": \"Pro Plan UR para perrito\",\n    \"categoria\": \"comida\",\n    \"subcategoria\": null,\n    \"especie\": \"perro\",\n    \"etapa\": null,\n    \"tamano\": null,\n    \"sabores\": [],\n    \"condiciones\": [],\n    \"presentacion\": null,\n    \"cantidad\": null,\n    \"intencionPresentaciones\": null,\n    \"mascotas\": [],\n    \"mencionOriginal\": \"Para perrito\"\n  },\n  \"productos\": [\n    {\n      \"accion\": \"consultar\",\n      \"marca\": \"PRO PLAN\",\n      \"referencia\": \"UR\",\n      \"linea\": null,\n      \"textoVisible\": \"Pro Plan UR para perrito\",\n      \"categoria\": \"comida\",\n      \"subcategoria\": null,\n      \"especie\": \"perro\",\n      \"etapa\": null,\n      \"tamano\": null,\n      \"sabores\": [],\n      \"condiciones\": [],\n      \"presentacion\": null,\n      \"cantidad\": null,\n      \"intencionPresentaciones\": null,\n      \"mascotas\": [],\n      \"mencionOriginal\": \"Para perrito\"\n    }\n  ],\n  \"entrega\": {\n    \"tipo\": null,\n    \"direccion\": null,\n    \"direccionCompleta\": null,\n    \"sector\": null,\n    \"metodoPago\": null,\n    \"sede\": null\n  },\n  \"facturacion\": {\n    \"electronica\": null,\n    \"evidencia\": null\n  },\n  \"datosCliente\": {\n    \"nombre\": null,\n    \"cedula\": null,\n    \"correo\": null,\n    \"celular\": null\n  },\n  \"carrito\": {\n    \"operacion\": null,\n    \"cantidadObjetivo\": null,\n    \"cantidadDelta\": null,\n    \"aplicaAlUltimoProducto\": null,\n    \"razon\": null\n  },\n  \"faltanteSugerido\": null,\n  \"consultaCatalogo\": {\n    \"necesaria\": true,\n    \"consulta\": \"PRO PLAN CANINE UR\",\n    \"tipo\": \"referencia\",\n    \"presupuestoMaximo\": null\n  },\n  \"respuestaConversacional\": null,\n  \"derivacionHumana\": {\n    \"necesaria\": false,\n    \"motivo\": null\n  },\n  \"solicitudComercialIndependiente\": true,\n  \"seguimientoProducto\": \"aclaracion\"\n}",
+          "usage": {
+            "prompt_tokens": 7499,
+            "completion_tokens": 611,
+            "total_tokens": 8110,
+            "prompt_tokens_details": {
+              "cached_tokens": 4864,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "supabase",
+          "method": "POST",
+          "path": "/rest/v1/rpc/search_catalog_products",
+          "ms": 781,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "GET",
+          "path": "/rest/v1/training_examples",
+          "ms": 195,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "GET",
+          "path": "/rest/v1/training_examples",
+          "ms": 255,
+          "status": 200
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 3903,
+          "status": 200,
+          "model": "gpt-5.2-2025-12-11",
+          "output": "{\"intencion\":\"consulta_producto\",\"accion\":\"consultar\",\"confianza\":0.9,\"compraContextual\":true,\"solicitudesProductoDetectadas\":[\"PRO PLAN UR para perro\"],\"producto\":{\"accion\":\"consultar\",\"marca\":\"PRO PLAN\",\"referencia\":\"PRO PLAN CANINE UR\",\"linea\":null,\"textoVisible\":\"Pro Plan UR para perrito\",\"categoria\":null,\"subcategoria\":null,\"especie\":\"perro\",\"etapa\":null,\"tamano\":null,\"sabores\":[],\"condiciones\":[],\"presentacion\":null,\"cantidad\":null,\"intencionPresentaciones\":null,\"mascotas\":[]},\"productos\":[],\"entrega\":{\"tipo\":null,\"direccion\":null,\"direccionCompleta\":null,\"sector\":null,\"metodoPago\":null,\"sede\":null},\"facturacion\":{\"electronica\":null,\"evidencia\":null},\"datosCliente\":{\"nombre\":null,\"cedula\":null,\"correo\":null,\"celular\":null},\"carrito\":{\"operacion\":null,\"cantidadObjetivo\":null,\"cantidadDelta\":null,\"aplicaAlUltimoProducto\":null,\"razon\":null},\"faltanteSugerido\":\"¿Lo quieres en concentrado (2kg) o en lata (unidad)?\"}",
+          "usage": {
+            "prompt_tokens": 4002,
+            "completion_tokens": 265,
+            "total_tokens": 4267,
+            "prompt_tokens_details": {
+              "cached_tokens": 1664,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 1003,
+          "status": 200,
+          "model": "gpt-5.4-mini-2026-03-17",
+          "output": "Para perrito tengo estas dos opciones de PRO PLAN: ¿buscas PRO PLAN CANINE UR de 2 kg o PRO PLAN CANINE LATA UR de unidad? 🐶",
+          "usage": {
+            "prompt_tokens": 1262,
+            "completion_tokens": 40,
+            "total_tokens": 1302,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        }
+      ],
+      "cartUnchanged": true,
+      "state": {
+        "criterios": {},
+        "atencionHumana": null,
+        "ultimaConsultaProducto": {
+          "terminos": [
+            "premium",
+            "plan",
+            "ur",
+            "perro"
+          ],
+          "etiqueta": "premium plan ur perro",
+          "presentacion": null,
+          "fuente": "texto",
+          "nivel": "media",
+          "razon": "ambigua",
+          "aclaracion": {
+            "campo": "referencia",
+            "valores": [
+              "PRO PLAN CANINE UR",
+              "PRO PLAN CANINE LATA UR"
+            ]
+          },
+          "creadoEn": "2026-10-29T16:35:41.466Z",
+          "solicitudOriginal": {
+            "intencion": "consulta_producto",
+            "accion": "consultar",
+            "producto": {
+              "accion": "consultar",
+              "marca": "PRO PLAN",
+              "referencia": "PRO PLAN CANINE UR",
+              "linea": null,
+              "textoVisible": "Pro Plan UR para perrito",
+              "mencionOriginal": null,
+              "categoria": null,
+              "subcategoria": null,
+              "especie": "perro",
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": null,
+              "intencionPresentaciones": null,
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": null
+            },
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            }
+          },
+          "sinCoincidenciaInformada": false
+        }
+      }
+    },
+    {
+      "case": "reference",
+      "text": "el concentrado",
+      "response": "Te confirmo, esa referencia la manejamos: PRO PLAN CANINE UR 2kg por $122.000. Las existencias están por confirmar. 🐶",
+      "ms": 11878,
+      "decisions": [
+        {
+          "router": true,
+          "decision": {
+            "recomendaciones": [],
+            "preguntaRecomendacion": null,
+            "solicitudComercialIndependiente": true,
+            "derivacionHumana": {
+              "necesaria": false,
+              "motivo": null
+            },
+            "seguimientoProducto": "aclaracion",
+            "resumenMemoria": null,
+            "continuarFlujo": false,
+            "compraContextual": null,
+            "solicitudesProductoDetectadas": 1,
+            "consultaCatalogo": {
+              "tipo": "referencia",
+              "presupuestoMaximo": null,
+              "necesaria": false,
+              "consulta": null
+            },
+            "respuestaConversacional": "Perfecto, sería el PRO PLAN CANINE UR de 2 kg. ¿Te lo cotizo o te lo agrego?",
+            "intencion": "consulta_producto",
+            "accion": "consultar",
+            "confianza": 0.88,
+            "producto": {
+              "accion": "consultar",
+              "marca": "PRO PLAN",
+              "referencia": "PRO PLAN CANINE UR",
+              "linea": null,
+              "textoVisible": "el concentrado",
+              "mencionOriginal": "el concentrado",
+              "categoria": "comida",
+              "subcategoria": "concentrado",
+              "especie": "perro",
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": "2kg",
+              "intencionPresentaciones": null,
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": 1
+            },
+            "productos": [
+              {
+                "accion": "consultar",
+                "marca": "PRO PLAN",
+                "referencia": "PRO PLAN CANINE UR",
+                "linea": null,
+                "textoVisible": "el concentrado",
+                "mencionOriginal": "el concentrado",
+                "categoria": "comida",
+                "subcategoria": "concentrado",
+                "especie": "perro",
+                "etapa": null,
+                "tamano": null,
+                "sabores": [],
+                "presentacion": "2kg",
+                "intencionPresentaciones": null,
+                "mascotas": [],
+                "condiciones": [],
+                "cantidad": 1
+              }
+            ],
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            },
+            "facturacion": {
+              "electronica": null,
+              "evidencia": null
+            },
+            "datosCliente": {
+              "nombre": null,
+              "cedula": null,
+              "correo": null,
+              "celular": null
+            },
+            "carrito": {
+              "operacion": null,
+              "cantidadObjetivo": null,
+              "cantidadDelta": null,
+              "aplicaAlUltimoProducto": null,
+              "razon": null
+            },
+            "faltanteSugerido": null
+          }
+        },
+        {
+          "router": false,
+          "decision": {
+            "recomendaciones": [],
+            "preguntaRecomendacion": null,
+            "solicitudComercialIndependiente": false,
+            "derivacionHumana": {
+              "necesaria": false,
+              "motivo": null
+            },
+            "seguimientoProducto": null,
+            "resumenMemoria": null,
+            "continuarFlujo": false,
+            "compraContextual": null,
+            "solicitudesProductoDetectadas": null,
+            "consultaCatalogo": {
+              "tipo": null,
+              "presupuestoMaximo": null,
+              "necesaria": null,
+              "consulta": null
+            },
+            "respuestaConversacional": null,
+            "intencion": "consulta_producto",
+            "accion": "consultar",
+            "confianza": 0.74,
+            "producto": {
+              "accion": "consultar",
+              "marca": "PRO PLAN",
+              "referencia": "PRO PLAN CANINE UR",
+              "linea": null,
+              "textoVisible": "el concentrado",
+              "mencionOriginal": null,
+              "categoria": "comida",
+              "subcategoria": "concentrado",
+              "especie": "perro",
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": "2kg",
+              "intencionPresentaciones": null,
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": null
+            },
+            "productos": [],
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            },
+            "facturacion": {
+              "electronica": null,
+              "evidencia": null
+            },
+            "datosCliente": {
+              "nombre": null,
+              "cedula": null,
+              "correo": null,
+              "celular": null
+            },
+            "carrito": {
+              "operacion": null,
+              "cantidadObjetivo": null,
+              "cantidadDelta": null,
+              "aplicaAlUltimoProducto": true,
+              "razon": null
+            },
+            "faltanteSugerido": null
+          }
+        }
+      ],
+      "requests": [
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 6038,
+          "status": 200,
+          "model": "gpt-5.4-2026-03-05",
+          "output": "{\n  \"intencion\": \"consulta_producto\",\n  \"accion\": \"consultar\",\n  \"confianza\": 0.88,\n  \"compraContextual\": null,\n  \"solicitudesProductoDetectadas\": 1,\n  \"producto\": {\n    \"accion\": \"consultar\",\n    \"marca\": \"PRO PLAN\",\n    \"referencia\": \"PRO PLAN CANINE UR\",\n    \"linea\": null,\n    \"textoVisible\": \"el concentrado\",\n    \"mencionOriginal\": \"el concentrado\",\n    \"categoria\": \"comida\",\n    \"subcategoria\": \"concentrado\",\n    \"especie\": \"perro\",\n    \"etapa\": null,\n    \"tamano\": null,\n    \"sabores\": [],\n    \"condiciones\": [],\n    \"presentacion\": \"2kg\",\n    \"cantidad\": 1,\n    \"intencionPresentaciones\": null,\n    \"mascotas\": []\n  },\n  \"productos\": [\n    {\n      \"accion\": \"consultar\",\n      \"marca\": \"PRO PLAN\",\n      \"referencia\": \"PRO PLAN CANINE UR\",\n      \"linea\": null,\n      \"textoVisible\": \"el concentrado\",\n      \"mencionOriginal\": \"el concentrado\",\n      \"categoria\": \"comida\",\n      \"subcategoria\": \"concentrado\",\n      \"especie\": \"perro\",\n      \"etapa\": null,\n      \"tamano\": null,\n      \"sabores\": [],\n      \"condiciones\": [],\n      \"presentacion\": \"2kg\",\n      \"cantidad\": 1,\n      \"intencionPresentaciones\": null,\n      \"mascotas\": []\n    }\n  ],\n  \"entrega\": {\n    \"tipo\": null,\n    \"direccion\": null,\n    \"direccionCompleta\": null,\n    \"sector\": null,\n    \"metodoPago\": null,\n    \"sede\": null\n  },\n  \"facturacion\": {\n    \"electronica\": null,\n    \"evidencia\": null\n  },\n  \"datosCliente\": {\n    \"nombre\": null,\n    \"cedula\": null,\n    \"correo\": null,\n    \"celular\": null\n  },\n  \"carrito\": {\n    \"operacion\": null,\n    \"cantidadObjetivo\": null,\n    \"cantidadDelta\": null,\n    \"aplicaAlUltimoProducto\": null,\n    \"razon\": null\n  },\n  \"faltanteSugerido\": null,\n  \"consultaCatalogo\": {\n    \"necesaria\": false,\n    \"consulta\": null,\n    \"tipo\": \"referencia\",\n    \"presupuestoMaximo\": null\n  },\n  \"derivacionHumana\": {\n    \"necesaria\": false,\n    \"motivo\": null\n  },\n  \"solicitudComercialIndependiente\": true,\n  \"seguimientoProducto\": \"aclaracion\",\n  \"respuestaConversacional\": \"Perfecto, sería el PRO PLAN CANINE UR de 2 kg. ¿Te lo cotizo o te lo agrego?\"\n}",
+          "usage": {
+            "prompt_tokens": 7271,
+            "completion_tokens": 645,
+            "total_tokens": 7916,
+            "prompt_tokens_details": {
+              "cached_tokens": 4864,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "supabase",
+          "method": "POST",
+          "path": "/rest/v1/rpc/search_catalog_products",
+          "ms": 575,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "GET",
+          "path": "/rest/v1/training_examples",
+          "ms": 212,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "GET",
+          "path": "/rest/v1/training_examples",
+          "ms": 341,
+          "status": 200
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 3571,
+          "status": 200,
+          "model": "gpt-5.2-2025-12-11",
+          "output": "{\"intencion\":\"consulta_producto\",\"accion\":\"consultar\",\"confianza\":0.74,\"compraContextual\":null,\"solicitudesProductoDetectadas\":null,\"producto\":{\"accion\":\"consultar\",\"marca\":\"PRO PLAN\",\"referencia\":\"PRO PLAN CANINE UR\",\"linea\":null,\"textoVisible\":\"el concentrado\",\"categoria\":\"comida\",\"subcategoria\":\"concentrado\",\"especie\":\"perro\",\"etapa\":null,\"tamano\":null,\"sabores\":[],\"condiciones\":[],\"presentacion\":\"2kg\",\"cantidad\":null,\"intencionPresentaciones\":null,\"mascotas\":[]},\"productos\":[],\"entrega\":{\"tipo\":null,\"direccion\":null,\"direccionCompleta\":null,\"sector\":null,\"metodoPago\":null,\"sede\":null},\"facturacion\":{\"electronica\":null,\"evidencia\":null},\"datosCliente\":{\"nombre\":null,\"cedula\":null,\"correo\":null,\"celular\":null},\"carrito\":{\"operacion\":null,\"cantidadObjetivo\":null,\"cantidadDelta\":null,\"aplicaAlUltimoProducto\":true,\"razon\":null},\"faltanteSugerido\":null}",
+          "usage": {
+            "prompt_tokens": 3979,
+            "completion_tokens": 245,
+            "total_tokens": 4224,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 1292,
+          "status": 200,
+          "model": "gpt-5.4-mini-2026-03-17",
+          "output": "Te confirmo, esa referencia la manejamos: PRO PLAN CANINE UR 2kg por $122.000. Las existencias están por confirmar. 🐶",
+          "usage": {
+            "prompt_tokens": 1660,
+            "completion_tokens": 37,
+            "total_tokens": 1697,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        }
+      ],
+      "cartUnchanged": true,
+      "state": {
+        "criterios": {
+          "especie": "perro",
+          "categoria": "comida",
+          "subcategoria": "concentrado"
+        },
+        "atencionHumana": null,
+        "ultimaConsultaProducto": {
+          "terminos": [
+            "premium",
+            "plan",
+            "canine",
+            "ur",
+            "perro"
+          ],
+          "etiqueta": "premium plan canine ur perro",
+          "presentacion": "2kg",
+          "fuente": "texto",
+          "nivel": "alta",
+          "razon": "nombre_exacto",
+          "aclaracion": null,
+          "creadoEn": "2026-10-29T16:35:53.047Z",
+          "solicitudOriginal": {
+            "intencion": "consulta_producto",
+            "accion": "consultar",
+            "producto": {
+              "accion": "consultar",
+              "marca": "PRO PLAN",
+              "referencia": "PRO PLAN CANINE UR",
+              "linea": null,
+              "textoVisible": "el concentrado",
+              "mencionOriginal": null,
+              "categoria": "comida",
+              "subcategoria": "concentrado",
+              "especie": "perro",
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": "2kg",
+              "intencionPresentaciones": null,
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": null,
+              "duracion": null,
+              "coincidenciaVisualValidada": false,
+              "requierePresentacion": false,
+              "nombreFamilia": "PRO PLAN CANINE UR",
+              "referenciasEquivalentes": [
+                "PRO PLAN CANINE UR"
+              ],
+              "presentacionesEquivalentes": [
+                {
+                  "peso": "2kg",
+                  "precio": 122000,
+                  "metadata": {
+                    "llave": "1387",
+                    "codigo": "10301011387",
+                    "source": "productos.json",
+                    "codigos": [
+                      "10301011387"
+                    ],
+                    "nombre_original": "PRO PLAN CANINE UR 2KG"
+                  },
+                  "stock": null,
+                  "referencia": "PRO PLAN CANINE UR"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "requests": [
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/client_channels",
+      "ms": 568,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/aivance_clients",
+      "ms": 222,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/aivance_clients",
+      "ms": 272,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/client_prompts",
+      "ms": 254,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/client_delivery_rules",
+      "ms": 254,
+      "status": 200
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 6254,
+      "status": 200,
+      "model": "gpt-5.4-2026-03-05",
+      "output": "{\n  \"intencion\": \"consulta_producto\",\n  \"accion\": \"consultar\",\n  \"confianza\": 0.96,\n  \"compraContextual\": null,\n  \"solicitudesProductoDetectadas\": 1,\n  \"producto\": {\n    \"accion\": \"consultar\",\n    \"marca\": \"Pro Plan\",\n    \"referencia\": \"UR\",\n    \"linea\": null,\n    \"textoVisible\": \"Pro Plan UR\",\n    \"categoria\": \"comida\",\n    \"subcategoria\": null,\n    \"especie\": null,\n    \"etapa\": null,\n    \"tamano\": null,\n    \"sabores\": [],\n    \"condiciones\": [],\n    \"presentacion\": null,\n    \"cantidad\": null,\n    \"intencionPresentaciones\": null,\n    \"mascotas\": [],\n    \"mencionOriginal\": \"Pro Plan UR\"\n  },\n  \"productos\": [\n    {\n      \"accion\": \"consultar\",\n      \"marca\": \"Pro Plan\",\n      \"referencia\": \"UR\",\n      \"linea\": null,\n      \"textoVisible\": \"Pro Plan UR\",\n      \"categoria\": \"comida\",\n      \"subcategoria\": null,\n      \"especie\": null,\n      \"etapa\": null,\n      \"tamano\": null,\n      \"sabores\": [],\n      \"condiciones\": [],\n      \"presentacion\": null,\n      \"cantidad\": null,\n      \"intencionPresentaciones\": null,\n      \"mascotas\": [],\n      \"mencionOriginal\": \"Pro Plan UR\"\n    }\n  ],\n  \"entrega\": {\n    \"tipo\": null,\n    \"direccion\": null,\n    \"direccionCompleta\": null,\n    \"sector\": null,\n    \"metodoPago\": null,\n    \"sede\": null\n  },\n  \"facturacion\": {\n    \"electronica\": null,\n    \"evidencia\": null\n  },\n  \"datosCliente\": {\n    \"nombre\": null,\n    \"cedula\": null,\n    \"correo\": null,\n    \"celular\": null\n  },\n  \"carrito\": {\n    \"operacion\": null,\n    \"cantidadObjetivo\": null,\n    \"cantidadDelta\": null,\n    \"aplicaAlUltimoProducto\": null,\n    \"razon\": null\n  },\n  \"faltanteSugerido\": null,\n  \"consultaCatalogo\": {\n    \"necesaria\": true,\n    \"consulta\": \"precio Pro Plan UR\",\n    \"tipo\": \"referencia\",\n    \"presupuestoMaximo\": null\n  },\n  \"derivacionHumana\": {\n    \"necesaria\": false,\n    \"motivo\": null\n  },\n  \"solicitudComercialIndependiente\": true,\n  \"seguimientoProducto\": \"nueva\",\n  \"respuestaConversacional\": null\n}",
+      "usage": {
+        "prompt_tokens": 6411,
+        "completion_tokens": 599,
+        "total_tokens": 7010,
+        "prompt_tokens_details": {
+          "cached_tokens": 5888,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "supabase",
+      "method": "POST",
+      "path": "/rest/v1/rpc/search_catalog_products",
+      "ms": 566,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/training_examples",
+      "ms": 216,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/training_examples",
+      "ms": 247,
+      "status": 200
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 3691,
+      "status": 200,
+      "model": "gpt-5.2-2025-12-11",
+      "output": "{\"intencion\":\"consulta_producto\",\"accion\":\"consultar\",\"confianza\":0.78,\"compraContextual\":null,\"solicitudesProductoDetectadas\":null,\"producto\":{\"accion\":\"consultar\",\"marca\":\"PRO PLAN\",\"referencia\":\"UR\",\"linea\":null,\"textoVisible\":\"Pro Plan UR\",\"categoria\":null,\"subcategoria\":null,\"especie\":null,\"etapa\":null,\"tamano\":null,\"sabores\":[],\"condiciones\":[],\"presentacion\":null,\"cantidad\":null,\"intencionPresentaciones\":null,\"mascotas\":[]},\"productos\":[],\"entrega\":{\"tipo\":null,\"direccion\":null,\"direccionCompleta\":null,\"sector\":null,\"metodoPago\":null,\"sede\":null},\"facturacion\":{\"electronica\":null,\"evidencia\":null},\"datosCliente\":{\"nombre\":null,\"cedula\":null,\"correo\":null,\"celular\":null},\"carrito\":{\"operacion\":null,\"cantidadObjetivo\":null,\"cantidadDelta\":null,\"aplicaAlUltimoProducto\":null,\"razon\":null},\"faltanteSugerido\":\"¿Lo necesitas Pro Plan UR para perro o para gato, y en concentrado o en lata?\"}",
+      "usage": {
+        "prompt_tokens": 3250,
+        "completion_tokens": 255,
+        "total_tokens": 3505,
+        "prompt_tokens_details": {
+          "cached_tokens": 2688,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 1284,
+      "status": 200,
+      "model": "gpt-5.4-mini-2026-03-17",
+      "output": "¿Lo buscas para perro o para gato? Así te digo la presentación correcta de Pro Plan UR 🙂",
+      "usage": {
+        "prompt_tokens": 1307,
+        "completion_tokens": 23,
+        "total_tokens": 1330,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 5986,
+      "status": 200,
+      "model": "gpt-5.4-2026-03-05",
+      "output": "{\n  \"intencion\": \"consulta_producto\",\n  \"accion\": \"consultar\",\n  \"confianza\": 0.98,\n  \"compraContextual\": null,\n  \"solicitudesProductoDetectadas\": 1,\n  \"producto\": {\n    \"accion\": \"consultar\",\n    \"marca\": \"PRO PLAN\",\n    \"referencia\": \"UR\",\n    \"linea\": null,\n    \"textoVisible\": \"Pro Plan UR para perrito\",\n    \"categoria\": \"comida\",\n    \"subcategoria\": null,\n    \"especie\": \"perro\",\n    \"etapa\": null,\n    \"tamano\": null,\n    \"sabores\": [],\n    \"condiciones\": [],\n    \"presentacion\": null,\n    \"cantidad\": null,\n    \"intencionPresentaciones\": null,\n    \"mascotas\": [],\n    \"mencionOriginal\": \"Para perrito\"\n  },\n  \"productos\": [\n    {\n      \"accion\": \"consultar\",\n      \"marca\": \"PRO PLAN\",\n      \"referencia\": \"UR\",\n      \"linea\": null,\n      \"textoVisible\": \"Pro Plan UR para perrito\",\n      \"categoria\": \"comida\",\n      \"subcategoria\": null,\n      \"especie\": \"perro\",\n      \"etapa\": null,\n      \"tamano\": null,\n      \"sabores\": [],\n      \"condiciones\": [],\n      \"presentacion\": null,\n      \"cantidad\": null,\n      \"intencionPresentaciones\": null,\n      \"mascotas\": [],\n      \"mencionOriginal\": \"Para perrito\"\n    }\n  ],\n  \"entrega\": {\n    \"tipo\": null,\n    \"direccion\": null,\n    \"direccionCompleta\": null,\n    \"sector\": null,\n    \"metodoPago\": null,\n    \"sede\": null\n  },\n  \"facturacion\": {\n    \"electronica\": null,\n    \"evidencia\": null\n  },\n  \"datosCliente\": {\n    \"nombre\": null,\n    \"cedula\": null,\n    \"correo\": null,\n    \"celular\": null\n  },\n  \"carrito\": {\n    \"operacion\": null,\n    \"cantidadObjetivo\": null,\n    \"cantidadDelta\": null,\n    \"aplicaAlUltimoProducto\": null,\n    \"razon\": null\n  },\n  \"faltanteSugerido\": null,\n  \"consultaCatalogo\": {\n    \"necesaria\": true,\n    \"consulta\": \"PRO PLAN CANINE UR\",\n    \"tipo\": \"referencia\",\n    \"presupuestoMaximo\": null\n  },\n  \"respuestaConversacional\": null,\n  \"derivacionHumana\": {\n    \"necesaria\": false,\n    \"motivo\": null\n  },\n  \"solicitudComercialIndependiente\": true,\n  \"seguimientoProducto\": \"aclaracion\"\n}",
+      "usage": {
+        "prompt_tokens": 7499,
+        "completion_tokens": 611,
+        "total_tokens": 8110,
+        "prompt_tokens_details": {
+          "cached_tokens": 4864,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "supabase",
+      "method": "POST",
+      "path": "/rest/v1/rpc/search_catalog_products",
+      "ms": 781,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/training_examples",
+      "ms": 195,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/training_examples",
+      "ms": 255,
+      "status": 200
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 3903,
+      "status": 200,
+      "model": "gpt-5.2-2025-12-11",
+      "output": "{\"intencion\":\"consulta_producto\",\"accion\":\"consultar\",\"confianza\":0.9,\"compraContextual\":true,\"solicitudesProductoDetectadas\":[\"PRO PLAN UR para perro\"],\"producto\":{\"accion\":\"consultar\",\"marca\":\"PRO PLAN\",\"referencia\":\"PRO PLAN CANINE UR\",\"linea\":null,\"textoVisible\":\"Pro Plan UR para perrito\",\"categoria\":null,\"subcategoria\":null,\"especie\":\"perro\",\"etapa\":null,\"tamano\":null,\"sabores\":[],\"condiciones\":[],\"presentacion\":null,\"cantidad\":null,\"intencionPresentaciones\":null,\"mascotas\":[]},\"productos\":[],\"entrega\":{\"tipo\":null,\"direccion\":null,\"direccionCompleta\":null,\"sector\":null,\"metodoPago\":null,\"sede\":null},\"facturacion\":{\"electronica\":null,\"evidencia\":null},\"datosCliente\":{\"nombre\":null,\"cedula\":null,\"correo\":null,\"celular\":null},\"carrito\":{\"operacion\":null,\"cantidadObjetivo\":null,\"cantidadDelta\":null,\"aplicaAlUltimoProducto\":null,\"razon\":null},\"faltanteSugerido\":\"¿Lo quieres en concentrado (2kg) o en lata (unidad)?\"}",
+      "usage": {
+        "prompt_tokens": 4002,
+        "completion_tokens": 265,
+        "total_tokens": 4267,
+        "prompt_tokens_details": {
+          "cached_tokens": 1664,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 1003,
+      "status": 200,
+      "model": "gpt-5.4-mini-2026-03-17",
+      "output": "Para perrito tengo estas dos opciones de PRO PLAN: ¿buscas PRO PLAN CANINE UR de 2 kg o PRO PLAN CANINE LATA UR de unidad? 🐶",
+      "usage": {
+        "prompt_tokens": 1262,
+        "completion_tokens": 40,
+        "total_tokens": 1302,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 6038,
+      "status": 200,
+      "model": "gpt-5.4-2026-03-05",
+      "output": "{\n  \"intencion\": \"consulta_producto\",\n  \"accion\": \"consultar\",\n  \"confianza\": 0.88,\n  \"compraContextual\": null,\n  \"solicitudesProductoDetectadas\": 1,\n  \"producto\": {\n    \"accion\": \"consultar\",\n    \"marca\": \"PRO PLAN\",\n    \"referencia\": \"PRO PLAN CANINE UR\",\n    \"linea\": null,\n    \"textoVisible\": \"el concentrado\",\n    \"mencionOriginal\": \"el concentrado\",\n    \"categoria\": \"comida\",\n    \"subcategoria\": \"concentrado\",\n    \"especie\": \"perro\",\n    \"etapa\": null,\n    \"tamano\": null,\n    \"sabores\": [],\n    \"condiciones\": [],\n    \"presentacion\": \"2kg\",\n    \"cantidad\": 1,\n    \"intencionPresentaciones\": null,\n    \"mascotas\": []\n  },\n  \"productos\": [\n    {\n      \"accion\": \"consultar\",\n      \"marca\": \"PRO PLAN\",\n      \"referencia\": \"PRO PLAN CANINE UR\",\n      \"linea\": null,\n      \"textoVisible\": \"el concentrado\",\n      \"mencionOriginal\": \"el concentrado\",\n      \"categoria\": \"comida\",\n      \"subcategoria\": \"concentrado\",\n      \"especie\": \"perro\",\n      \"etapa\": null,\n      \"tamano\": null,\n      \"sabores\": [],\n      \"condiciones\": [],\n      \"presentacion\": \"2kg\",\n      \"cantidad\": 1,\n      \"intencionPresentaciones\": null,\n      \"mascotas\": []\n    }\n  ],\n  \"entrega\": {\n    \"tipo\": null,\n    \"direccion\": null,\n    \"direccionCompleta\": null,\n    \"sector\": null,\n    \"metodoPago\": null,\n    \"sede\": null\n  },\n  \"facturacion\": {\n    \"electronica\": null,\n    \"evidencia\": null\n  },\n  \"datosCliente\": {\n    \"nombre\": null,\n    \"cedula\": null,\n    \"correo\": null,\n    \"celular\": null\n  },\n  \"carrito\": {\n    \"operacion\": null,\n    \"cantidadObjetivo\": null,\n    \"cantidadDelta\": null,\n    \"aplicaAlUltimoProducto\": null,\n    \"razon\": null\n  },\n  \"faltanteSugerido\": null,\n  \"consultaCatalogo\": {\n    \"necesaria\": false,\n    \"consulta\": null,\n    \"tipo\": \"referencia\",\n    \"presupuestoMaximo\": null\n  },\n  \"derivacionHumana\": {\n    \"necesaria\": false,\n    \"motivo\": null\n  },\n  \"solicitudComercialIndependiente\": true,\n  \"seguimientoProducto\": \"aclaracion\",\n  \"respuestaConversacional\": \"Perfecto, sería el PRO PLAN CANINE UR de 2 kg. ¿Te lo cotizo o te lo agrego?\"\n}",
+      "usage": {
+        "prompt_tokens": 7271,
+        "completion_tokens": 645,
+        "total_tokens": 7916,
+        "prompt_tokens_details": {
+          "cached_tokens": 4864,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "supabase",
+      "method": "POST",
+      "path": "/rest/v1/rpc/search_catalog_products",
+      "ms": 575,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/training_examples",
+      "ms": 212,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/training_examples",
+      "ms": 341,
+      "status": 200
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 3571,
+      "status": 200,
+      "model": "gpt-5.2-2025-12-11",
+      "output": "{\"intencion\":\"consulta_producto\",\"accion\":\"consultar\",\"confianza\":0.74,\"compraContextual\":null,\"solicitudesProductoDetectadas\":null,\"producto\":{\"accion\":\"consultar\",\"marca\":\"PRO PLAN\",\"referencia\":\"PRO PLAN CANINE UR\",\"linea\":null,\"textoVisible\":\"el concentrado\",\"categoria\":\"comida\",\"subcategoria\":\"concentrado\",\"especie\":\"perro\",\"etapa\":null,\"tamano\":null,\"sabores\":[],\"condiciones\":[],\"presentacion\":\"2kg\",\"cantidad\":null,\"intencionPresentaciones\":null,\"mascotas\":[]},\"productos\":[],\"entrega\":{\"tipo\":null,\"direccion\":null,\"direccionCompleta\":null,\"sector\":null,\"metodoPago\":null,\"sede\":null},\"facturacion\":{\"electronica\":null,\"evidencia\":null},\"datosCliente\":{\"nombre\":null,\"cedula\":null,\"correo\":null,\"celular\":null},\"carrito\":{\"operacion\":null,\"cantidadObjetivo\":null,\"cantidadDelta\":null,\"aplicaAlUltimoProducto\":true,\"razon\":null},\"faltanteSugerido\":null}",
+      "usage": {
+        "prompt_tokens": 3979,
+        "completion_tokens": 245,
+        "total_tokens": 4224,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 1292,
+      "status": 200,
+      "model": "gpt-5.4-mini-2026-03-17",
+      "output": "Te confirmo, esa referencia la manejamos: PRO PLAN CANINE UR 2kg por $122.000. Las existencias están por confirmar. 🐶",
+      "usage": {
+        "prompt_tokens": 1660,
+        "completion_tokens": 37,
+        "total_tokens": 1697,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    }
+  ]
+}

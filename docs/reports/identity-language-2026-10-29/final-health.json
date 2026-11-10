@@ -1,0 +1,17 @@
+{
+  "at": "2026-10-29T22:16:24.740Z",
+  "runtime": {
+    "pid": 18929,
+    "cwd": "/Users/gomez/Documents/WhatsappVELTIA",
+    "startedAt": "2026-10-29T22:13:06.977Z",
+    "sourceHash": "2b29de5cf541c393b36576794d6ac7e88e028c7538864be55373cd82e6397951"
+  },
+  "currentSourceHash": "2b29de5cf541c393b36576794d6ac7e88e028c7538864be55373cd82e6397951",
+  "httpStatus": 200,
+  "health": {
+    "ok": true,
+    "provider": "kapso"
+  },
+  "openAIBlocked": true,
+  "error": "429 credit_balance_exhausted: no credits remaining; no further model calls or sends attempted after detecting it"
+}

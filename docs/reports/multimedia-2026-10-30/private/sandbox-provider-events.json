@@ -1,0 +1,171 @@
+[
+  {
+    "context": null,
+    "from": "573158994163",
+    "from_parent_user_id": null,
+    "from_user_id": "CO.1030198442801005",
+    "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDUxQjM5NzEzRkQxQzRFQ0U3RgA=",
+    "kapso": {
+      "direction": "inbound",
+      "status": "read",
+      "processing_status": "pending",
+      "origin": "cloud_api",
+      "phone_number": "573158994163",
+      "phone_number_id": "597907523413541",
+      "has_media": false,
+      "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+      "contact_name": "distrifincapereira",
+      "content": "Para cotizar:\nEl nutra nugges cordero 7k perro\n\nEl br gato castrado de pollo 1k\n\nNexgart para perro de 40k"
+    },
+    "text": {
+      "body": "Para cotizar:\nEl nutra nugges cordero 7k perro\n\nEl br gato castrado de pollo 1k\n\nNexgart para perro de 40k"
+    },
+    "timestamp": "1793408115",
+    "type": "text",
+    "username": null
+  },
+  {
+    "context": null,
+    "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSQURDNEQ5M0MxMUFGODA1NjQyAA==",
+    "kapso": {
+      "direction": "outbound",
+      "status": "delivered",
+      "processing_status": "processed",
+      "origin": "cloud_api",
+      "phone_number": "573158994163",
+      "phone_number_id": "597907523413541",
+      "has_media": false,
+      "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+      "contact_name": "distrifincapereira",
+      "content": "Presentaciones y precios unitarios:\n- ADVANCE URINAY 1.5kg: $108.000\n- BR CAT CASTRADO POLLO 1kg: $28.000\n- NEXGARD 25-50 kg: $56.900 — Mascota 1 (40 kg)\n\n¿Qué presentación necesitas de Hill's Prescription Diet Urinary Care c/d Multicare para gato?\n\nPara NUTRA NUGGETS CORDERO, no aparece la presentación de 7kg en el catálogo. Figuran 1kg y 3kg. ¿Cuál te sirve?",
+      "statuses": [
+        {
+          "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSQURDNEQ5M0MxMUFGODA1NjQyAA==",
+          "status": "sent",
+          "pricing": {
+            "type": "regular",
+            "billable": true,
+            "category": "service",
+            "pricing_model": "PMP"
+          },
+          "timestamp": "1793408168",
+          "recipient_id": "573158994163",
+          "recipient_user_id": "CO.1030198442801005"
+        },
+        {
+          "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSQURDNEQ5M0MxMUFGODA1NjQyAA==",
+          "status": "delivered",
+          "pricing": {
+            "type": "regular",
+            "billable": true,
+            "category": "service",
+            "pricing_model": "PMP"
+          },
+          "timestamp": "1793408168",
+          "recipient_id": "573158994163",
+          "recipient_user_id": "CO.1030198442801005"
+        }
+      ]
+    },
+    "text": {
+      "body": "Presentaciones y precios unitarios:\n- ADVANCE URINAY 1.5kg: $108.000\n- BR CAT CASTRADO POLLO 1kg: $28.000\n- NEXGARD 25-50 kg: $56.900 — Mascota 1 (40 kg)\n\n¿Qué presentación necesitas de Hill's Prescription Diet Urinary Care c/d Multicare para gato?\n\nPara NUTRA NUGGETS CORDERO, no aparece la presentación de 7kg en el catálogo. Figuran 1kg y 3kg. ¿Cuál te sirve?"
+    },
+    "timestamp": "1793408167",
+    "to": "573158994163",
+    "to_parent_user_id": null,
+    "to_user_id": null,
+    "type": "text",
+    "username": null
+  },
+  {
+    "context": null,
+    "from": "573158994163",
+    "from_parent_user_id": null,
+    "from_user_id": "CO.1030198442801005",
+    "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDExNTY5MDk3MDlDQjYyNUY5OQA=",
+    "kapso": {
+      "direction": "inbound",
+      "status": "read",
+      "processing_status": "pending",
+      "origin": "cloud_api",
+      "phone_number": "573158994163",
+      "phone_number_id": "597907523413541",
+      "has_media": false,
+      "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+      "contact_name": "distrifincapereira",
+      "content": "Para cotizar:\nEl nutra nugges cordero 7k perro\n\nEl br gato castrado de pollo 1k\n\nNexgart para perro de 40k"
+    },
+    "text": {
+      "body": "Para cotizar:\nEl nutra nugges cordero 7k perro\n\nEl br gato castrado de pollo 1k\n\nNexgart para perro de 40k"
+    },
+    "timestamp": "1793408311",
+    "type": "text",
+    "username": null
+  },
+  {
+    "context": null,
+    "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSRTUzQjIwNDNGRjlCRjRDNjYzAA==",
+    "kapso": {
+      "direction": "outbound",
+      "status": "delivered",
+      "processing_status": "processed",
+      "origin": "cloud_api",
+      "phone_number": "573158994163",
+      "phone_number_id": "597907523413541",
+      "has_media": false,
+      "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+      "contact_name": "distrifincapereira",
+      "content": "Te cotizo BR Cat Castrado Pollo 1 kg y NexGard 25-50 kg. Para Nutra Nuggets Cordero no me aparece 7 kg; solo 1 kg y 3 kg. ¿Cuál te sirve?",
+      "statuses": [
+        {
+          "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSRTUzQjIwNDNGRjlCRjRDNjYzAA==",
+          "status": "sent",
+          "pricing": {
+            "type": "regular",
+            "billable": true,
+            "category": "service",
+            "pricing_model": "PMP"
+          },
+          "timestamp": "1793408355",
+          "recipient_id": "573158994163",
+          "recipient_user_id": "CO.1030198442801005"
+        },
+        {
+          "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSRTUzQjIwNDNGRjlCRjRDNjYzAA==",
+          "status": "delivered",
+          "pricing": {
+            "type": "regular",
+            "billable": true,
+            "category": "service",
+            "pricing_model": "PMP"
+          },
+          "timestamp": "1793408355",
+          "recipient_id": "573158994163",
+          "recipient_user_id": "CO.1030198442801005"
+        },
+        {
+          "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSRTUzQjIwNDNGRjlCRjRDNjYzAA==",
+          "status": "delivered",
+          "pricing": {
+            "type": "regular",
+            "billable": true,
+            "category": "service",
+            "pricing_model": "PMP"
+          },
+          "timestamp": "1793408356",
+          "recipient_id": "573158994163",
+          "recipient_user_id": "CO.1030198442801005"
+        }
+      ]
+    },
+    "text": {
+      "body": "Te cotizo BR Cat Castrado Pollo 1 kg y NexGard 25-50 kg. Para Nutra Nuggets Cordero no me aparece 7 kg; solo 1 kg y 3 kg. ¿Cuál te sirve?"
+    },
+    "timestamp": "1793408354",
+    "to": "573158994163",
+    "to_parent_user_id": null,
+    "to_user_id": null,
+    "type": "text",
+    "username": null
+  }
+]

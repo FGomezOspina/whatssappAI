@@ -1,0 +1,155 @@
+{
+  "at": "2026-10-29T22:14:19.770Z",
+  "source": "Read-only tenant-scoped Supabase catalog_references/catalog_presentations/catalog_brands",
+  "references": [
+    {
+      "id": "c2a11991-4bb0-4607-9bae-614859e36640",
+      "name": "MONELLO CAT SALMON",
+      "species": "gato",
+      "category": "comida",
+      "life_stage": null,
+      "brand": {
+        "name": "MONELLO",
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "9ae0605e-3d21-4e93-9ae0-54f4ed097819",
+          "price": 27300,
+          "stock": null,
+          "active": true,
+          "weight": "x 1kg"
+        },
+        {
+          "id": "e91f9b24-a0a9-4d70-86dc-0b475aa25a9b",
+          "price": 139500,
+          "stock": null,
+          "active": true,
+          "weight": "x 7 kg"
+        }
+      ]
+    },
+    {
+      "id": "2c26a2b8-fc1c-4739-828a-fa65c491ac28",
+      "name": "AGILITY GATITO",
+      "species": "gato",
+      "category": "comida",
+      "life_stage": "cachorro",
+      "brand": {
+        "name": "AGILITY",
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "fe26111b-caec-495d-be78-ddd0acc5f29d",
+          "price": 45700,
+          "stock": null,
+          "active": true,
+          "weight": "1.5kg"
+        },
+        {
+          "id": "20a16bf6-6052-43ad-8cb1-e4023fdce657",
+          "price": 86700,
+          "stock": null,
+          "active": true,
+          "weight": "3kg"
+        },
+        {
+          "id": "b3831765-2420-4880-9cca-c03468aa0f81",
+          "price": 16900,
+          "stock": null,
+          "active": true,
+          "weight": "500gr"
+        }
+      ]
+    },
+    {
+      "id": "1224f0d0-b4db-494b-8200-56c6e0dad19f",
+      "name": "DIAMOND INDOOR CAT",
+      "species": "gato",
+      "category": "comida",
+      "life_stage": null,
+      "brand": {
+        "name": "DIAMOND",
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "acbd88f0-9d53-46d7-aedd-2573272bfe0e",
+          "price": 19500,
+          "stock": null,
+          "active": true,
+          "weight": "500gr"
+        }
+      ]
+    },
+    {
+      "id": "e1affe6a-7c80-4ae6-948c-cf06794dfa8b",
+      "name": "NUTRECAN ADULTO RP",
+      "species": "perro",
+      "category": "comida",
+      "life_stage": "adulto",
+      "brand": {
+        "name": "NUTRECAN",
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "62f1608a-9176-4353-822d-5ff135aad906",
+          "price": 25000,
+          "stock": null,
+          "active": true,
+          "weight": "2 kg"
+        },
+        {
+          "id": "e6b51119-d7c7-4df8-89fa-88bc2f40cb76",
+          "price": 100000,
+          "stock": null,
+          "active": true,
+          "weight": "8 kg"
+        },
+        {
+          "id": "a14fd88a-be0a-4e3d-a05f-cf25edd4363b",
+          "price": 10000,
+          "stock": null,
+          "active": true,
+          "weight": "800 gr"
+        }
+      ]
+    },
+    {
+      "id": "a9c84c8b-ed3a-44bf-be59-3095f8f73efa",
+      "name": "CAT CHOW DELICARNE",
+      "species": "gato",
+      "category": "comida",
+      "life_stage": null,
+      "brand": {
+        "name": "CAT CHOW",
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "ba538a9a-a545-4d2d-992b-823321d83795",
+          "price": 37700,
+          "stock": null,
+          "active": true,
+          "weight": "x 1.5 kg"
+        },
+        {
+          "id": "93b7760d-897d-44c8-9ec2-bd432bec785f",
+          "price": 183600,
+          "stock": null,
+          "active": true,
+          "weight": "x 15 kg"
+        },
+        {
+          "id": "f43c7bfb-05fa-44aa-b127-09216219716c",
+          "price": 13700,
+          "stock": null,
+          "active": true,
+          "weight": "x 500 gr"
+        }
+      ]
+    }
+  ]
+}

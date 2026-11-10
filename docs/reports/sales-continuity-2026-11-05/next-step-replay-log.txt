@@ -1,0 +1,10 @@
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=45 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=si | continuarFlujo=si | interpretacion=recibida
+[Catalog Match] cliente=anonymous-isolated-sales | nivel=alta | razon=marca_y_presentacion | terminos="maiz cat" | score=0 | diferencia=0
+[Router] Interaccion | cliente=isolated-sales-validation | usuario=anonymous-isolated-sales | intencion=busqueda_producto | complejidad=normal | vision=no | audio=no | catalogoIA=undefined/undefined | estrategia=undefined | topScore=n/a | secondScore=n/a
+[Catalog Match] cliente=anonymous-isolated-sales | nivel=alta | razon=marca_y_presentacion | terminos="maiz cat" | score=0 | diferencia=0
+[OpenAI] Interpretacion IA | cliente=anonymous-isolated-sales | intencion=pedido_producto | accion=agregar | marca=ARENA MAIZ CAT | referencia=ARENA MAIZ CAT | etapa=null | tamano=null | presentacion=20kg | confianza=0.96
+[AI Usage Summary] cliente=isolated-sales-validation | usuario=anonymous-isolated-sales | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=59 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=no | continuarFlujo=si | interpretacion=recibida
+/Users/gomez/Documents/WhatsappVELTIA/docs/reports/sales-continuity-2026-11-05/next-step-offline-replay.json

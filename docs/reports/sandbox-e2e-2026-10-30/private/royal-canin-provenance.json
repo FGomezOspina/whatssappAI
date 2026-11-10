@@ -1,0 +1,89 @@
+{
+  "savedAt": "2026-10-30T18:24:09.477Z",
+  "source": "private/final.json already saved, no new API call",
+  "rows": [
+    {
+      "providerId": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDg1QkJGODAwOTIzMUZFQkY4RQA=",
+      "publicHash": "c8f5c8fccb1b",
+      "direction": "inbound",
+      "text": "Solo consultar precio: Royal Canin gastrointestinal para perro, concentrado de 7 kg.",
+      "atUTC": "2026-10-30T17:52:49.000Z",
+      "atColombia": "2026-10-30 12:52:49 America/Bogota",
+      "targetMasked": "Sandbox WhatsApp, phoneNumberId …3541, interlocutor …4163",
+      "kapsoStatus": "read",
+      "kapsoProcessingStatus": "pending",
+      "origin": "cloud_api",
+      "statusEvents": [],
+      "appProcessed": true
+    },
+    {
+      "providerId": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSNDVGNUZCNThFNUJCNUZDMTBDAA==",
+      "publicHash": "249ca2049db0",
+      "direction": "outbound",
+      "text": "En ROYALCANIN GASTROINTESTINAL PERRO no tengo presentación de 7 kg en este momento.\n\nSí está disponible en 2 kg por $129.000.",
+      "atUTC": "2026-10-30T17:53:33.000Z",
+      "atColombia": "2026-10-30 12:53:33 America/Bogota",
+      "targetMasked": "Sandbox WhatsApp, phoneNumberId …3541, interlocutor …4163",
+      "kapsoStatus": "delivered",
+      "kapsoProcessingStatus": "processed",
+      "origin": "cloud_api",
+      "statusEvents": [
+        {
+          "status": "sent",
+          "atColombia": "2026-10-30 12:53:34 America/Bogota"
+        },
+        {
+          "status": "delivered",
+          "atColombia": "2026-10-30 12:53:34 America/Bogota"
+        },
+        {
+          "status": "delivered",
+          "atColombia": "2026-10-30 12:53:35 America/Bogota"
+        }
+      ]
+    },
+    {
+      "providerId": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEMzMEMwNTExQTkzRDY2QzU3NgA=",
+      "publicHash": "d095f5a5a93d",
+      "direction": "inbound",
+      "text": "Corrijo el tamaño: de 2 kg, el mismo concentrado para perro. Solo consultar el precio.",
+      "atUTC": "2026-10-30T17:54:05.000Z",
+      "atColombia": "2026-10-30 12:54:05 America/Bogota",
+      "targetMasked": "Sandbox WhatsApp, phoneNumberId …3541, interlocutor …4163",
+      "kapsoStatus": "read",
+      "kapsoProcessingStatus": "pending",
+      "origin": "cloud_api",
+      "statusEvents": [],
+      "appProcessed": true
+    },
+    {
+      "providerId": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSMjI3RkQ1NUE5N0FBMzM4QUE0AA==",
+      "publicHash": "b62ca46f7b73",
+      "direction": "outbound",
+      "text": "Sí, el ROYALCANIN GASTROINTESTINAL PERRO de 2 kg está en $129.000. Las existencias están por confirmar.",
+      "atUTC": "2026-10-30T17:54:47.000Z",
+      "atColombia": "2026-10-30 12:54:47 America/Bogota",
+      "targetMasked": "Sandbox WhatsApp, phoneNumberId …3541, interlocutor …4163",
+      "kapsoStatus": "delivered",
+      "kapsoProcessingStatus": "processed",
+      "origin": "cloud_api",
+      "statusEvents": [
+        {
+          "status": "delivered",
+          "atColombia": "2026-10-30 12:54:48 America/Bogota"
+        },
+        {
+          "status": "sent",
+          "atColombia": "2026-10-30 12:54:48 America/Bogota"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "No screenshot or exported AX transcript of this Royal Canin pair was located in the audit directory.",
+    "Kapso origin=cloud_api exists for inbound and outbound; it is not evidence of the UI input method.",
+    "The stored evidence proves inbound existence and outbound sent/delivered receipts, not that the user personally viewed the messages.",
+    "Inbound Kapso processing_status=pending differs from application state: both provider IDs are marked processed by the local application.",
+    "The stored replay script and original-redelivery-attempt refer to the previous CatChow event, not this pair. This does not by itself prove the UI origin of every other message."
+  ]
+}

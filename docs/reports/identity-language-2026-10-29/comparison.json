@@ -1,0 +1,47 @@
+{
+  "scope": "Three deterministic validation cases against same saved real Supabase catalog. Not model generalization or retrieval recall.",
+  "rows": [
+    {
+      "input": "diamon indor para gato medio kilo",
+      "expected": "DIAMOND INDOOR CAT",
+      "before": {
+        "level": "baja",
+        "match": null,
+        "ms": 2774.9748749999994
+      },
+      "after": {
+        "level": "alta",
+        "match": "DIAMOND INDOOR CAT",
+        "ms": 65.013667
+      }
+    },
+    {
+      "input": "diamon indor gato 500g",
+      "expected": "DIAMOND INDOOR CAT",
+      "before": {
+        "level": "alta",
+        "match": "DIAMOND KITTEN CAT",
+        "ms": 1906.1533749999999
+      },
+      "after": {
+        "level": "alta",
+        "match": "DIAMOND INDOOR CAT",
+        "ms": 50.867125
+      }
+    },
+    {
+      "input": "DIAMOND INDOOR CAT 500g",
+      "expected": "DIAMOND INDOOR CAT",
+      "before": {
+        "level": "alta",
+        "match": "DIAMOND INDOOR CAT",
+        "ms": 42.020958000000064
+      },
+      "after": {
+        "level": "alta",
+        "match": "DIAMOND INDOOR CAT",
+        "ms": 50.53858300000002
+      }
+    }
+  ]
+}

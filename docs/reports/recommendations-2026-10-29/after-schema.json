@@ -1,0 +1,672 @@
+{
+  "capturedAt": "2026-10-29T16:11:46.247Z",
+  "mode": "real models and read-only Supabase; in-memory state; not WhatsApp E2E",
+  "label": "after-schema",
+  "rows": [
+    {
+      "case": "capture",
+      "text": "Quiero un dimicilio para un alimento para mi gato de 6 meses que me recomienda",
+      "response": "Para tu gato cachorro, estas opciones coinciden con lo que buscas:\n\n- OHMAIGAT GATITOS x 200 gr: $3.800\n- MIRRINGO GATITO x 500gr: $5.900\n- PRO PLAN POUCH FELINO KITTEN 85gr: $6.200\n\nLos precios están registrados; las existencias están por confirmar.\n\n¿Cuál te gustaría revisar?",
+      "ms": 10975,
+      "decisions": [
+        {
+          "router": true,
+          "decision": {
+            "recomendaciones": [],
+            "preguntaRecomendacion": null,
+            "solicitudComercialIndependiente": true,
+            "derivacionHumana": {
+              "necesaria": false,
+              "motivo": null
+            },
+            "seguimientoProducto": "nueva",
+            "resumenMemoria": null,
+            "continuarFlujo": false,
+            "compraContextual": null,
+            "solicitudesProductoDetectadas": 1,
+            "consultaCatalogo": {
+              "tipo": "necesidad",
+              "presupuestoMaximo": null,
+              "necesaria": true,
+              "consulta": "alimento para gato de 6 meses"
+            },
+            "respuestaConversacional": null,
+            "intencion": "recomendacion",
+            "accion": "consultar",
+            "confianza": 0.97,
+            "producto": {
+              "accion": "consultar",
+              "marca": null,
+              "referencia": null,
+              "linea": null,
+              "textoVisible": "alimento para mi gato de 6 meses",
+              "mencionOriginal": null,
+              "categoria": "comida",
+              "subcategoria": null,
+              "especie": "gato",
+              "etapa": "cachorro",
+              "tamano": null,
+              "sabores": [],
+              "presentacion": null,
+              "intencionPresentaciones": null,
+              "mascotas": [
+                {
+                  "nombre": "Mascota 1",
+                  "pesoKg": null
+                }
+              ],
+              "condiciones": [],
+              "cantidad": 1
+            },
+            "productos": [
+              {
+                "accion": "consultar",
+                "marca": null,
+                "referencia": null,
+                "linea": null,
+                "textoVisible": "alimento para mi gato de 6 meses",
+                "mencionOriginal": "alimento para mi gato de 6 meses",
+                "categoria": "comida",
+                "subcategoria": null,
+                "especie": "gato",
+                "etapa": "cachorro",
+                "tamano": null,
+                "sabores": [],
+                "presentacion": null,
+                "intencionPresentaciones": null,
+                "mascotas": [
+                  {
+                    "nombre": "Mascota 1",
+                    "pesoKg": null
+                  }
+                ],
+                "condiciones": [],
+                "cantidad": 1
+              }
+            ],
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            },
+            "facturacion": {
+              "electronica": null,
+              "evidencia": null
+            },
+            "datosCliente": {
+              "nombre": null,
+              "cedula": null,
+              "correo": null,
+              "celular": null
+            },
+            "carrito": {
+              "operacion": null,
+              "cantidadObjetivo": null,
+              "cantidadDelta": null,
+              "aplicaAlUltimoProducto": null,
+              "razon": null
+            },
+            "faltanteSugerido": null
+          }
+        }
+      ],
+      "requests": [
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 7550,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "GET",
+          "path": "/rest/v1/catalog_references",
+          "ms": 310,
+          "status": 200
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 1633,
+          "status": 200
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 1443,
+          "status": 200
+        }
+      ],
+      "cartUnchanged": true,
+      "state": {
+        "criterios": {},
+        "recomendacionActiva": {
+          "criterios": {
+            "categoria": "comida",
+            "subcategoria": null,
+            "especie": "gato",
+            "etapa": "cachorro",
+            "tamano": null,
+            "marca": null,
+            "sabores": [],
+            "condiciones": [],
+            "presentacion": null,
+            "presupuestoMaximo": null
+          },
+          "opciones": [
+            {
+              "indice": 1,
+              "marca": "OHMAIGAT",
+              "referencia": "OHMAIGAT GATITOS",
+              "presentacion": "x 200 gr",
+              "precio": 3800,
+              "referenceId": "bac06106-16c1-46c3-b8cb-a1ff93401666"
+            },
+            {
+              "indice": 2,
+              "marca": "MIRRINGO",
+              "referencia": "MIRRINGO GATITO",
+              "presentacion": "x 500gr",
+              "precio": 5900,
+              "referenceId": "466d365f-12a8-41c1-8398-4794739688ab"
+            },
+            {
+              "indice": 3,
+              "marca": "PRO PLAN",
+              "referencia": "PRO PLAN POUCH FELINO KITTEN",
+              "presentacion": "85gr",
+              "precio": 6200,
+              "referenceId": "8f046478-8161-4273-bf42-72b9716a3eeb"
+            }
+          ],
+          "actualizadoEn": "2026-10-29T16:11:53.836Z"
+        },
+        "atencionHumana": null,
+        "ultimaConsultaProducto": null
+      }
+    },
+    {
+      "case": "capture",
+      "text": "Qué alimento tiene para gato cachorro",
+      "response": "Para tu gato cachorro, estas opciones coinciden con lo que buscas:\n\n- OHMAIGAT GATITOS x 200 gr: $3.800\n- MIRRINGO GATITO x 500gr: $5.900\n- PRO PLAN POUCH FELINO KITTEN 85gr: $6.200\n\nLos precios están registrados; las existencias están por confirmar.\n\n¿Cuál te gustaría revisar?",
+      "ms": 9835,
+      "decisions": [
+        {
+          "router": true,
+          "decision": {
+            "recomendaciones": [],
+            "preguntaRecomendacion": null,
+            "solicitudComercialIndependiente": true,
+            "derivacionHumana": {
+              "necesaria": false,
+              "motivo": null
+            },
+            "seguimientoProducto": "nueva",
+            "resumenMemoria": null,
+            "continuarFlujo": false,
+            "compraContextual": null,
+            "solicitudesProductoDetectadas": 1,
+            "consultaCatalogo": {
+              "tipo": "necesidad",
+              "presupuestoMaximo": null,
+              "necesaria": true,
+              "consulta": "alimento para gato cachorro"
+            },
+            "respuestaConversacional": null,
+            "intencion": "recomendacion",
+            "accion": "consultar",
+            "confianza": 0.96,
+            "producto": {
+              "accion": "consultar",
+              "marca": null,
+              "referencia": null,
+              "linea": null,
+              "textoVisible": "alimento para gato cachorro",
+              "mencionOriginal": null,
+              "categoria": "comida",
+              "subcategoria": null,
+              "especie": "gato",
+              "etapa": "cachorro",
+              "tamano": null,
+              "sabores": [],
+              "presentacion": null,
+              "intencionPresentaciones": null,
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": 1
+            },
+            "productos": [
+              {
+                "accion": "consultar",
+                "marca": null,
+                "referencia": null,
+                "linea": null,
+                "textoVisible": "alimento para gato cachorro",
+                "mencionOriginal": "alimento tiene para gato cachorro",
+                "categoria": "comida",
+                "subcategoria": null,
+                "especie": "gato",
+                "etapa": "cachorro",
+                "tamano": null,
+                "sabores": [],
+                "presentacion": null,
+                "intencionPresentaciones": null,
+                "mascotas": [],
+                "condiciones": [],
+                "cantidad": 1
+              }
+            ],
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            },
+            "facturacion": {
+              "electronica": null,
+              "evidencia": null
+            },
+            "datosCliente": {
+              "nombre": null,
+              "cedula": null,
+              "correo": null,
+              "celular": null
+            },
+            "carrito": {
+              "operacion": null,
+              "cantidadObjetivo": null,
+              "cantidadDelta": null,
+              "aplicaAlUltimoProducto": null,
+              "razon": null
+            },
+            "faltanteSugerido": null
+          }
+        }
+      ],
+      "requests": [
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 6642,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "GET",
+          "path": "/rest/v1/catalog_references",
+          "ms": 277,
+          "status": 200
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 1755,
+          "status": 200
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 1141,
+          "status": 200
+        }
+      ],
+      "cartUnchanged": true,
+      "state": {
+        "criterios": {},
+        "recomendacionActiva": {
+          "criterios": {
+            "categoria": "comida",
+            "subcategoria": null,
+            "especie": "gato",
+            "etapa": "cachorro",
+            "tamano": null,
+            "marca": null,
+            "sabores": [],
+            "condiciones": [],
+            "presentacion": null,
+            "presupuestoMaximo": null
+          },
+          "opciones": [
+            {
+              "indice": 1,
+              "marca": "OHMAIGAT",
+              "referencia": "OHMAIGAT GATITOS",
+              "presentacion": "x 200 gr",
+              "precio": 3800,
+              "referenceId": "bac06106-16c1-46c3-b8cb-a1ff93401666"
+            },
+            {
+              "indice": 2,
+              "marca": "MIRRINGO",
+              "referencia": "MIRRINGO GATITO",
+              "presentacion": "x 500gr",
+              "precio": 5900,
+              "referenceId": "466d365f-12a8-41c1-8398-4794739688ab"
+            },
+            {
+              "indice": 3,
+              "marca": "PRO PLAN",
+              "referencia": "PRO PLAN POUCH FELINO KITTEN",
+              "presentacion": "85gr",
+              "precio": 6200,
+              "referenceId": "8f046478-8161-4273-bf42-72b9716a3eeb"
+            }
+          ],
+          "actualizadoEn": "2026-10-29T16:12:03.894Z"
+        },
+        "atencionHumana": null,
+        "ultimaConsultaProducto": null
+      }
+    },
+    {
+      "case": "capture",
+      "text": "No sé el nombre del producto",
+      "response": "Para tu gato cachorro, estas opciones coinciden con lo que buscas:\n\n- OHMAIGAT GATITOS x 200 gr: $3.800\n- MIRRINGO GATITO x 500gr: $5.900\n- PRO PLAN POUCH FELINO KITTEN 85gr: $6.200\n\nLos precios están registrados; las existencias están por confirmar.\n\n¿Cuál te gustaría revisar?",
+      "ms": 10386,
+      "decisions": [
+        {
+          "router": true,
+          "decision": {
+            "recomendaciones": [],
+            "preguntaRecomendacion": null,
+            "solicitudComercialIndependiente": true,
+            "derivacionHumana": {
+              "necesaria": false,
+              "motivo": null
+            },
+            "seguimientoProducto": "aclaracion",
+            "resumenMemoria": null,
+            "continuarFlujo": false,
+            "compraContextual": null,
+            "solicitudesProductoDetectadas": 1,
+            "consultaCatalogo": {
+              "tipo": "necesidad",
+              "presupuestoMaximo": null,
+              "necesaria": true,
+              "consulta": "comida para gato cachorro"
+            },
+            "respuestaConversacional": "No te preocupes. ¿Buscas una opción para gato cachorro como las que te mostré o quieres que te recomiende otras?",
+            "intencion": "recomendacion",
+            "accion": "consultar",
+            "confianza": 0.98,
+            "producto": {
+              "accion": "consultar",
+              "marca": null,
+              "referencia": null,
+              "linea": null,
+              "textoVisible": "producto para gato cachorro",
+              "mencionOriginal": null,
+              "categoria": "comida",
+              "subcategoria": null,
+              "especie": "gato",
+              "etapa": "cachorro",
+              "tamano": null,
+              "sabores": [],
+              "presentacion": null,
+              "intencionPresentaciones": null,
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": null
+            },
+            "productos": [
+              {
+                "accion": "consultar",
+                "marca": null,
+                "referencia": null,
+                "linea": null,
+                "textoVisible": "producto para gato cachorro",
+                "mencionOriginal": null,
+                "categoria": "comida",
+                "subcategoria": null,
+                "especie": "gato",
+                "etapa": "cachorro",
+                "tamano": null,
+                "sabores": [],
+                "presentacion": null,
+                "intencionPresentaciones": null,
+                "mascotas": [],
+                "condiciones": [],
+                "cantidad": null
+              }
+            ],
+            "entrega": {
+              "tipo": null,
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": null,
+              "sede": null
+            },
+            "facturacion": {
+              "electronica": null,
+              "evidencia": null
+            },
+            "datosCliente": {
+              "nombre": null,
+              "cedula": null,
+              "correo": null,
+              "celular": null
+            },
+            "carrito": {
+              "operacion": null,
+              "cantidadObjetivo": null,
+              "cantidadDelta": null,
+              "aplicaAlUltimoProducto": null,
+              "razon": null
+            },
+            "faltanteSugerido": null
+          }
+        }
+      ],
+      "requests": [
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 6829,
+          "status": 200
+        },
+        {
+          "service": "supabase",
+          "method": "GET",
+          "path": "/rest/v1/catalog_references",
+          "ms": 351,
+          "status": 200
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 1856,
+          "status": 200
+        },
+        {
+          "service": "openai",
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "ms": 1328,
+          "status": 200
+        }
+      ],
+      "cartUnchanged": true,
+      "state": {
+        "criterios": {},
+        "recomendacionActiva": {
+          "criterios": {
+            "categoria": "comida",
+            "subcategoria": null,
+            "especie": "gato",
+            "etapa": "cachorro",
+            "tamano": null,
+            "marca": null,
+            "sabores": [],
+            "condiciones": [],
+            "presentacion": null,
+            "presupuestoMaximo": null
+          },
+          "opciones": [
+            {
+              "indice": 1,
+              "marca": "OHMAIGAT",
+              "referencia": "OHMAIGAT GATITOS",
+              "presentacion": "x 200 gr",
+              "precio": 3800,
+              "referenceId": "bac06106-16c1-46c3-b8cb-a1ff93401666"
+            },
+            {
+              "indice": 2,
+              "marca": "MIRRINGO",
+              "referencia": "MIRRINGO GATITO",
+              "presentacion": "x 500gr",
+              "precio": 5900,
+              "referenceId": "466d365f-12a8-41c1-8398-4794739688ab"
+            },
+            {
+              "indice": 3,
+              "marca": "PRO PLAN",
+              "referencia": "PRO PLAN POUCH FELINO KITTEN",
+              "presentacion": "85gr",
+              "precio": 6200,
+              "referenceId": "8f046478-8161-4273-bf42-72b9716a3eeb"
+            }
+          ],
+          "actualizadoEn": "2026-10-29T16:12:13.919Z"
+        },
+        "atencionHumana": null,
+        "ultimaConsultaProducto": null
+      }
+    }
+  ],
+  "requests": [
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/client_channels",
+      "ms": 338,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/aivance_clients",
+      "ms": 196,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/aivance_clients",
+      "ms": 256,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/client_delivery_rules",
+      "ms": 190,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/client_prompts",
+      "ms": 264,
+      "status": 200
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 7550,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/catalog_references",
+      "ms": 310,
+      "status": 200
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 1633,
+      "status": 200
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 1443,
+      "status": 200
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 6642,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/catalog_references",
+      "ms": 277,
+      "status": 200
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 1755,
+      "status": 200
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 1141,
+      "status": 200
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 6829,
+      "status": 200
+    },
+    {
+      "service": "supabase",
+      "method": "GET",
+      "path": "/rest/v1/catalog_references",
+      "ms": 351,
+      "status": 200
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 1856,
+      "status": 200
+    },
+    {
+      "service": "openai",
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "ms": 1328,
+      "status": 200
+    }
+  ]
+}

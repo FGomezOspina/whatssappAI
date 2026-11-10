@@ -1,0 +1,25 @@
+{
+  "at": "2026-10-29T21:02:36.241Z",
+  "source": "scoped read of catalog_references and catalog_presentations",
+  "references": [
+    {
+      "id": "1224f0d0-b4db-494b-8200-56c6e0dad19f",
+      "name": "DIAMOND INDOOR CAT",
+      "species": "gato",
+      "category": "comida",
+      "life_stage": null,
+      "brand": {
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "acbd88f0-9d53-46d7-aedd-2573272bfe0e",
+          "price": 19500,
+          "stock": null,
+          "active": true,
+          "weight": "500gr"
+        }
+      ]
+    }
+  ]
+}

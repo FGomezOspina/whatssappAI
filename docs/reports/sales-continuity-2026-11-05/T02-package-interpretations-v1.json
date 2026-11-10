@@ -1,0 +1,299 @@
+{
+  "text": "1 paquete de churu porfs",
+  "interpretations": [
+    {
+      "router": true,
+      "result": {
+        "recomendaciones": [],
+        "preguntaRecomendacion": null,
+        "solicitudComercialIndependiente": true,
+        "derivacionHumana": {
+          "necesaria": false,
+          "motivo": null
+        },
+        "seguimientoProducto": "nueva",
+        "recursosAclaracion": {},
+        "resumenMemoria": null,
+        "continuarFlujo": true,
+        "compraContextual": null,
+        "solicitudesProductoDetectadas": 1,
+        "consultaCatalogo": {
+          "tipo": "referencia",
+          "presupuestoMaximo": null,
+          "necesaria": true,
+          "consulta": "Churu paquete snack"
+        },
+        "respuestaConversacional": null,
+        "intencion": "pedido_producto",
+        "accion": "agregar",
+        "confianza": 0.98,
+        "producto": {
+          "accion": "agregar",
+          "marca": "Churu",
+          "referencia": null,
+          "linea": null,
+          "textoVisible": "paquete de churu",
+          "mencionOriginal": "1 paquete de churu",
+          "categoria": "snack",
+          "subcategoria": null,
+          "envase": null,
+          "especie": null,
+          "etapa": null,
+          "tamano": null,
+          "sabores": [],
+          "presentacion": null,
+          "intencionPresentaciones": null,
+          "mascotas": [],
+          "condiciones": [],
+          "cantidad": 1
+        },
+        "productos": [
+          {
+            "accion": "agregar",
+            "marca": "Churu",
+            "referencia": null,
+            "linea": null,
+            "textoVisible": "paquete de churu",
+            "mencionOriginal": "1 paquete de churu",
+            "categoria": "snack",
+            "subcategoria": null,
+            "envase": null,
+            "especie": null,
+            "etapa": null,
+            "tamano": null,
+            "sabores": [],
+            "presentacion": null,
+            "intencionPresentaciones": null,
+            "mascotas": [],
+            "condiciones": [],
+            "cantidad": 1
+          }
+        ],
+        "entrega": {
+          "tipo": "domicilio",
+          "direccion": null,
+          "direccionCompleta": null,
+          "sector": null,
+          "metodoPago": null,
+          "sede": null
+        },
+        "facturacion": {
+          "electronica": null,
+          "evidencia": null
+        },
+        "datosCliente": {
+          "nombre": null,
+          "cedula": null,
+          "correo": null,
+          "celular": null
+        },
+        "carrito": {
+          "operacion": "agregar",
+          "cantidadObjetivo": null,
+          "cantidadDelta": 1,
+          "aplicaAlUltimoProducto": false,
+          "razon": null
+        },
+        "faltanteSugerido": null
+      }
+    },
+    {
+      "router": true,
+      "result": {
+        "recomendaciones": [],
+        "preguntaRecomendacion": null,
+        "solicitudComercialIndependiente": false,
+        "derivacionHumana": {
+          "necesaria": false,
+          "motivo": null
+        },
+        "seguimientoProducto": null,
+        "recursosAclaracion": {
+          "fotoDisponible": null,
+          "masDatosDisponibles": null
+        },
+        "resumenMemoria": null,
+        "continuarFlujo": false,
+        "compraContextual": null,
+        "solicitudesProductoDetectadas": 1,
+        "consultaCatalogo": {
+          "tipo": null,
+          "presupuestoMaximo": null,
+          "necesaria": null,
+          "consulta": null
+        },
+        "respuestaConversacional": null,
+        "intencion": "pedido_producto",
+        "accion": "consultar",
+        "confianza": 0.97,
+        "producto": {
+          "accion": "consultar",
+          "marca": "Churu",
+          "referencia": null,
+          "linea": null,
+          "textoVisible": "paquete de churu",
+          "mencionOriginal": null,
+          "categoria": "snack",
+          "subcategoria": null,
+          "envase": null,
+          "especie": null,
+          "etapa": null,
+          "tamano": null,
+          "sabores": [],
+          "presentacion": null,
+          "intencionPresentaciones": null,
+          "mascotas": [],
+          "condiciones": [],
+          "cantidad": 1
+        },
+        "productos": [
+          {
+            "accion": "consultar",
+            "marca": "Churu",
+            "referencia": null,
+            "linea": null,
+            "textoVisible": "paquete de churu",
+            "mencionOriginal": null,
+            "categoria": "snack",
+            "subcategoria": null,
+            "envase": null,
+            "especie": null,
+            "etapa": null,
+            "tamano": null,
+            "sabores": [],
+            "presentacion": null,
+            "intencionPresentaciones": null,
+            "mascotas": [],
+            "condiciones": [],
+            "cantidad": 1
+          }
+        ],
+        "entrega": {
+          "tipo": "domicilio",
+          "direccion": null,
+          "direccionCompleta": null,
+          "sector": null,
+          "metodoPago": null,
+          "sede": null
+        },
+        "facturacion": {
+          "electronica": null,
+          "evidencia": null
+        },
+        "datosCliente": {
+          "nombre": null,
+          "cedula": null,
+          "correo": null,
+          "celular": null
+        },
+        "carrito": {
+          "operacion": null,
+          "cantidadObjetivo": null,
+          "cantidadDelta": null,
+          "aplicaAlUltimoProducto": null,
+          "razon": null
+        },
+        "faltanteSugerido": null
+      }
+    },
+    {
+      "router": false,
+      "result": {
+        "recomendaciones": [],
+        "preguntaRecomendacion": null,
+        "solicitudComercialIndependiente": false,
+        "derivacionHumana": {
+          "necesaria": false,
+          "motivo": null
+        },
+        "seguimientoProducto": null,
+        "recursosAclaracion": {
+          "fotoDisponible": null,
+          "masDatosDisponibles": null
+        },
+        "resumenMemoria": null,
+        "continuarFlujo": false,
+        "compraContextual": null,
+        "solicitudesProductoDetectadas": null,
+        "consultaCatalogo": {
+          "tipo": null,
+          "presupuestoMaximo": null,
+          "necesaria": null,
+          "consulta": null
+        },
+        "respuestaConversacional": null,
+        "intencion": "pedido_producto",
+        "accion": "agregar",
+        "confianza": 0.78,
+        "producto": {
+          "accion": "agregar",
+          "marca": "CHURU",
+          "referencia": "CHURU",
+          "linea": null,
+          "textoVisible": "1 paquete de churu",
+          "mencionOriginal": null,
+          "categoria": "snack",
+          "subcategoria": "premio",
+          "envase": null,
+          "especie": null,
+          "etapa": null,
+          "tamano": null,
+          "sabores": [],
+          "presentacion": "14gr",
+          "intencionPresentaciones": null,
+          "mascotas": [],
+          "condiciones": [],
+          "cantidad": 4
+        },
+        "productos": [
+          {
+            "accion": "agregar",
+            "marca": "CHURU",
+            "referencia": "CHURU",
+            "linea": null,
+            "textoVisible": "1 paquete de churu",
+            "mencionOriginal": null,
+            "categoria": "snack",
+            "subcategoria": "premio",
+            "envase": null,
+            "especie": null,
+            "etapa": null,
+            "tamano": null,
+            "sabores": [],
+            "presentacion": "14gr",
+            "intencionPresentaciones": null,
+            "mascotas": [],
+            "condiciones": [],
+            "cantidad": 4
+          }
+        ],
+        "entrega": {
+          "tipo": "domicilio",
+          "direccion": null,
+          "direccionCompleta": null,
+          "sector": null,
+          "metodoPago": null,
+          "sede": null
+        },
+        "facturacion": {
+          "electronica": null,
+          "evidencia": null
+        },
+        "datosCliente": {
+          "nombre": null,
+          "cedula": null,
+          "correo": null,
+          "celular": null
+        },
+        "carrito": {
+          "operacion": "agregar",
+          "cantidadObjetivo": null,
+          "cantidadDelta": null,
+          "aplicaAlUltimoProducto": false,
+          "razon": "El cliente pidió \"1 paquete de churu\"; según el catálogo, paquete equivale a 4 unidades individuales de 14gr."
+        },
+        "faltanteSugerido": null
+      }
+    }
+  ]
+}

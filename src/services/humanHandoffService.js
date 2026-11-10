@@ -1,10 +1,11 @@
 const { normalizar } = require('../utils/text');
-const MOTIVOS = new Set(['criterio_veterinario', 'solicitud_asesor']);
+const MOTIVOS = new Set(['criterio_veterinario', 'solicitud_asesor', 'producto_no_resuelto']);
 function reanudarPendienteComercial(estado) {
   const anterior = estado.atencionHumana;
   // Historical automatic commercial queues no longer pause the bot. A person
   // already attending, or an explicit human request, always retains control.
   if (anterior?.estado !== 'pendiente' || anterior.motivo !== 'producto_no_resuelto') return false;
+  if (anterior.politica === 'revision_comercial_v1') return false;
   estado.atencionHumana = anterior.consultaClinicaPendiente || {
     ...anterior, estado: 'cerrada', cerradaEn: new Date().toISOString(),
     motivoCierre: 'continuidad_comercial',
@@ -12,7 +13,7 @@ function reanudarPendienteComercial(estado) {
   return true;
 }
 function respuestaIncertidumbreComercial() {
-  return 'Con la información disponible todavía no puedo confirmar esa referencia en el catálogo. No he agregado un producto distinto. Si consigues el nombre completo o una foto del empaque, puedo revisarlo; también puedes consultar otra referencia.';
+  return 'Por ahora no puedo confirmar esa referencia. ¿Quieres que revisemos otras opciones? Mantengo tu elección sin sustituirla por otro producto.';
 }
 function atencionHumanaActiva(estado) {
   return ['pendiente', 'en_atencion'].includes(estado.atencionHumana?.estado);
@@ -22,7 +23,10 @@ function consultaClinicaPendiente(estado) {
     estado.atencionHumana.motivo === 'criterio_veterinario';
 }
 function pausaAutomaticaActiva(estado) {
-  return atencionHumanaActiva(estado) && !consultaClinicaPendiente(estado);
+  const comercialPendiente = estado.atencionHumana?.estado === 'pendiente' &&
+    estado.atencionHumana.motivo === 'producto_no_resuelto' &&
+    estado.atencionHumana.politica === 'revision_comercial_v1';
+  return atencionHumanaActiva(estado) && !consultaClinicaPendiente(estado) && !comercialPendiente;
 }
 function permiteSolicitudComercialMixta(decision) {
   return motivoDerivacion(decision) === 'criterio_veterinario' &&
@@ -41,9 +45,25 @@ function motivoDerivacion(decision) {
 }
 function prepararDerivacion(estado, motivo) {
   if (!MOTIVOS.has(motivo)) throw new Error('Motivo de atención no válido');
+  if (motivo === 'producto_no_resuelto') {
+    const anterior = estado.atencionHumana?.motivo === motivo ? estado.atencionHumana
+      : estado.atencionHumana?.consultaComercialPendiente;
+    const pendiente = { estado:'pendiente', motivo, politica:'revision_comercial_v1',
+      solicitadaEn:anterior?.solicitadaEn || new Date().toISOString(),
+      referenciaPendiente:estado.aclaracionIdentidad?.solicitudInicial || anterior?.referenciaPendiente ||
+        estado.ultimaConsultaProducto?.solicitudOriginal || null,
+      notificacion:'no_configurada', asignacion:null };
+    if (consultaClinicaPendiente(estado)) estado.atencionHumana.consultaComercialPendiente = pendiente;
+    else if (!atencionHumanaActiva(estado) || estado.atencionHumana.motivo === motivo) estado.atencionHumana = pendiente;
+    return 'Gracias por los datos. Dejé esta referencia pendiente de revisión por un asesor. Todavía no hay un asesor asignado en este chat; conservo tu consulta y puedo ayudarte con otras preguntas mientras tanto.';
+  }
   if (!atencionHumanaActiva(estado)) estado.atencionHumana = {
     estado: 'pendiente', motivo, solicitadaEn: new Date().toISOString(),
   };
+  else if (estado.atencionHumana.estado === 'pendiente' && estado.atencionHumana.motivo === 'producto_no_resuelto') {
+    estado.atencionHumana = {estado:'pendiente',motivo,solicitadaEn:new Date().toISOString(),
+      consultaComercialPendiente:{...estado.atencionHumana}};
+  }
   else if (consultaClinicaPendiente(estado) && motivo !== 'criterio_veterinario') {
     // Una petición explícita de operador vuelve a pausar todo el bot. Conservar
     // la consulta clínica anterior, sin declararla resuelta ni asignada.
@@ -65,7 +85,11 @@ function registrarAclaracion(estado, { mensaje, decision, validacion }) {
   const campo = validacion?.aclaracion?.campo || null;
   const progreso = misma && campo && campo !== anterior.campo;
   const intentos = misma ? anterior.intentos + 1 : 1;
-  estado.aclaracionIdentidad = { consulta, campo, intentos };
+  const solicitudInicial = misma && anterior.solicitudInicial ? anterior.solicitudInicial : {
+    mensaje: String(mensaje).slice(0,1000), terminos: (validacion?.terminos || []).slice(0,12),
+    presentacion: validacion?.presentacionSolicitada || decision?.producto?.presentacion || null,
+  };
+  estado.aclaracionIdentidad = { consulta, campo, intentos, solicitudInicial };
   return Boolean(misma && (!progreso || intentos >= 3));
 }
 module.exports = { atencionHumanaActiva, consultaClinicaPendiente, pausaAutomaticaActiva,

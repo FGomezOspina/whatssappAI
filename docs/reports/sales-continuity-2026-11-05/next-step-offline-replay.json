@@ -1,0 +1,384 @@
+{
+  "at": "2026-11-05T17:28:27.531Z",
+  "mode": "offline-saved-router-output-base-response",
+  "apiCalls": 0,
+  "whatsappMessages": 0,
+  "realOrders": 0,
+  "modelHumanizer": false,
+  "corpusSha256": "977eb1136e77a9d34581c1e90b65a41674833d86cd152a96d477b3bb3c862ce4",
+  "traceSha256": "208c58ded8d3151d974338d247ebd22f957cc1bc7d59c82d4599882aa2a9840f",
+  "productionFileSha256": "16625c795c0925d61fe22a7c1adfb58d42aac9cd26ea77ddc882d38f751d093b",
+  "limitations": "Original anonymized inputs and saved router outputs; relative timestamps are synthetic. Final humanizer is a passthrough, not a new model call. No end-to-end WhatsApp validation.",
+  "results": [
+    {
+      "text": "Mz 8 casa 22 Conjunto Prueba\nSector de prueba",
+      "response": "Listo, agregué al pedido:\n- 1 x ARENA MAIZ CAT x 20kg: $98.000\n\nPedido:\n- 1 x ARENA MAIZ CAT x 20kg: $98.000\nTotal: $98.000\n\nPuedes agregar algo más antes de confirmar. Para completar tu domicilio, ¿me compartes los datos que faltan?\n- nombre completo\n- celular\n- método de pago: efectivo/contraentrega, transferencia bancaria, tarjeta débito o crédito, o llave bre-B",
+      "ms": 66.578625,
+      "state": {
+        "atencionHumana": null,
+        "aclaracionIdentidad": null,
+        "mensajesProcesados": [],
+        "avisosTecnicos": [],
+        "ultimaPreguntaAsistente": "Listo, agregué al pedido:\n- 1 x ARENA MAIZ CAT x 20kg: $98.000\n\nPedido:\n- 1 x ARENA MAIZ CAT x 20kg: $98.000\nTotal: $98.000\n\nPuedes agregar algo más antes de confirmar. Para completar tu domicilio, ¿me compartes los datos que faltan?\n- nombre completo\n- celular\n- método de pago: efectivo/contraentrega, transferencia bancaria, tarjeta débito o crédito, o llave bre-B",
+        "memoriaConversacional": null,
+        "marca": null,
+        "criterios": {},
+        "ultimaSeleccion": null,
+        "ultimaSolicitudProductos": [
+          {
+            "estado": "pendiente",
+            "accion": "consultar",
+            "pregunta": "¿Qué medicamento necesitas?",
+            "contextoCreadoEn": "2026-11-03T17:28:27.440Z"
+          }
+        ],
+        "productosConsultados": [],
+        "historialProductosConsultados": [],
+        "productosPendientes": [],
+        "referenciasPendientes": null,
+        "coincidenciasProductoPendientes": null,
+        "ultimaInteraccionProducto": null,
+        "ultimaConsultaProducto": null,
+        "ultimoTurnoContextoProducto": 0,
+        "carrito": [
+          {
+            "marca": "ARENA MAIZ CAT",
+            "referencia": "ARENA MAIZ CAT",
+            "peso": "x 20kg",
+            "precio": 98000,
+            "cantidad": 1,
+            "categoria": "arena_sustrato",
+            "subcategoria": "arena",
+            "especie": "gato",
+            "requiereConfirmacion": false
+          }
+        ],
+        "pedidoConfirmado": false,
+        "ultimoPedidoConfirmado": null,
+        "datosDomicilio": {
+          "direccion": "Mz 8 casa 22 Conjunto Prueba, Sector de prueba"
+        },
+        "facturacionElectronica": false,
+        "entrega": {
+          "tipo": "domicilio",
+          "sede": null
+        },
+        "metodoPago": null,
+        "confirmacionPedidoId": null,
+        "ultimoPedidoGuardadoKey": null,
+        "ultimoPedidoGuardadoAt": null,
+        "pedidoConfirmadoPendienteGuardar": false,
+        "pedidoNuevoConDatosPrevios": false,
+        "datosPreviosConfirmados": false,
+        "esperandoTipoEntrega": false,
+        "esperandoSedeRecogida": false,
+        "esperandoMetodoPago": true,
+        "instruccionesPagoEnviadas": false,
+        "esperandoDatosDomicilio": true,
+        "esperandoPresupuesto": false,
+        "pendienteRecomendacion": false,
+        "esperandoMarca": false,
+        "esperandoConfirmacionDomicilio": false,
+        "esperandoConfirmacionPedido": false,
+        "esperandoConfirmacionRepetirPedido": false,
+        "esperandoConfirmacionDatosPrevios": false,
+        "esperandoCambioDireccion": false,
+        "esperandoConfirmacionDatosFacturacion": false,
+        "esperandoActualizacionDatosCliente": false,
+        "alternativaPendiente": null,
+        "seleccionesProducto": [
+          {
+            "marca": "ARENA MAIZ CAT",
+            "referencia": "ARENA MAIZ CAT",
+            "peso": "x 20kg",
+            "precio": 98000,
+            "cantidad": 1,
+            "stock": null,
+            "categoria": "arena_sustrato",
+            "subcategoria": "arena",
+            "contextoCreadoEn": "2026-11-05T17:27:27.440Z",
+            "cotizacion": [
+              {
+                "marca": "ARENA MAIZ CAT",
+                "referencia": "ARENA MAIZ CAT",
+                "peso": "x 20kg",
+                "precio": 98000,
+                "cantidad": 1,
+                "categoria": "arena_sustrato",
+                "subcategoria": "arena",
+                "especie": "gato",
+                "requiereConfirmacion": false,
+                "seleccionado": true
+              }
+            ],
+            "estado": "seleccionado"
+          }
+        ]
+      },
+      "interpretations": [
+        {
+          "router": true,
+          "result": {
+            "recomendaciones": [],
+            "preguntaRecomendacion": null,
+            "solicitudComercialIndependiente": false,
+            "derivacionHumana": {
+              "necesaria": false,
+              "motivo": null
+            },
+            "seguimientoProducto": null,
+            "recursosAclaracion": {},
+            "resumenMemoria": null,
+            "continuarFlujo": true,
+            "compraContextual": "foco",
+            "solicitudesProductoDetectadas": 0,
+            "consultaCatalogo": {
+              "tipo": null,
+              "presupuestoMaximo": null,
+              "necesaria": false,
+              "consulta": null
+            },
+            "respuestaConversacional": "Perfecto. ¿Me compartes tu nombre completo, celular y método de pago para el domicilio?",
+            "intencion": "datos_envio",
+            "accion": null,
+            "confianza": 0.96,
+            "producto": {
+              "marca": null,
+              "referencia": null,
+              "linea": null,
+              "textoVisible": null,
+              "mencionOriginal": null,
+              "categoria": null,
+              "subcategoria": null,
+              "envase": null,
+              "especie": null,
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": null,
+              "intencionPresentaciones": null,
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": null
+            },
+            "productos": [],
+            "entrega": {
+              "tipo": "domicilio",
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": "Sector de prueba",
+              "metodoPago": null,
+              "sede": null
+            },
+            "facturacion": {
+              "electronica": null,
+              "evidencia": null
+            },
+            "datosCliente": {
+              "nombre": null,
+              "cedula": null,
+              "correo": null,
+              "celular": null
+            },
+            "carrito": {
+              "operacion": null,
+              "cantidadObjetivo": null,
+              "cantidadDelta": null,
+              "aplicaAlUltimoProducto": null,
+              "razon": null
+            },
+            "faltanteSugerido": null
+          }
+        }
+      ],
+      "origin": "Synthetic replacement for private address; prior product-only turns original; state reconstructed from post-incident observation",
+      "previousApiResponse": "Listo, te quedó agregado 1 ARENA MAIZ CAT x 20kg por $98.000 😊\n\nPedido:\n- 1 x ARENA MAIZ CAT x 20kg: $98.000\nTotal: $98.000\n\n¿Quieres agregar algo más o avanzamos con la entrega?"
+    },
+    {
+      "text": "Nombre: Cliente Prueba; celular: 3000000000; pago: efectivo",
+      "response": "Pedido:\n- 1 x ARENA MAIZ CAT x 20kg: $98.000\nTotal: $98.000\n\nDatos de domicilio:\n- Dirección: Mz 8 casa 22 Conjunto Prueba, Sector de prueba\n- Nombre: Cliente Prueba\n- Celular: 3000000000\n- Método de pago: efectivo\n\n¿Deseas agregar algo más o finalizamos el pedido así?",
+      "ms": 4.800749999999994,
+      "state": {
+        "atencionHumana": null,
+        "aclaracionIdentidad": null,
+        "mensajesProcesados": [],
+        "avisosTecnicos": [],
+        "ultimaPreguntaAsistente": "Pedido:\n- 1 x ARENA MAIZ CAT x 20kg: $98.000\nTotal: $98.000\n\nDatos de domicilio:\n- Dirección: Mz 8 casa 22 Conjunto Prueba, Sector de prueba\n- Nombre: Cliente Prueba\n- Celular: 3000000000\n- Método de pago: efectivo\n\n¿Deseas agregar algo más o finalizamos el pedido así?",
+        "memoriaConversacional": null,
+        "marca": null,
+        "criterios": {},
+        "ultimaSeleccion": null,
+        "ultimaSolicitudProductos": [
+          {
+            "estado": "pendiente",
+            "accion": "consultar",
+            "pregunta": "¿Qué medicamento necesitas?",
+            "contextoCreadoEn": "2026-11-03T17:28:27.440Z"
+          }
+        ],
+        "productosConsultados": [],
+        "historialProductosConsultados": [],
+        "productosPendientes": [],
+        "referenciasPendientes": null,
+        "coincidenciasProductoPendientes": null,
+        "ultimaInteraccionProducto": null,
+        "ultimaConsultaProducto": null,
+        "ultimoTurnoContextoProducto": 0,
+        "carrito": [
+          {
+            "marca": "ARENA MAIZ CAT",
+            "referencia": "ARENA MAIZ CAT",
+            "peso": "x 20kg",
+            "precio": 98000,
+            "cantidad": 1,
+            "categoria": "arena_sustrato",
+            "subcategoria": "arena",
+            "especie": "gato",
+            "requiereConfirmacion": false
+          }
+        ],
+        "pedidoConfirmado": false,
+        "ultimoPedidoConfirmado": null,
+        "datosDomicilio": {
+          "direccion": "Mz 8 casa 22 Conjunto Prueba, Sector de prueba",
+          "nombre": "Cliente Prueba",
+          "celular": "3000000000"
+        },
+        "facturacionElectronica": false,
+        "entrega": {
+          "tipo": "domicilio",
+          "sede": null
+        },
+        "metodoPago": "efectivo",
+        "confirmacionPedidoId": "5c329096-cb7b-4189-b51d-b2c73e4c24d9",
+        "ultimoPedidoGuardadoKey": null,
+        "ultimoPedidoGuardadoAt": null,
+        "pedidoConfirmadoPendienteGuardar": false,
+        "pedidoNuevoConDatosPrevios": false,
+        "datosPreviosConfirmados": false,
+        "esperandoTipoEntrega": false,
+        "esperandoSedeRecogida": false,
+        "esperandoMetodoPago": false,
+        "instruccionesPagoEnviadas": false,
+        "esperandoDatosDomicilio": false,
+        "esperandoPresupuesto": false,
+        "pendienteRecomendacion": false,
+        "esperandoMarca": false,
+        "esperandoConfirmacionDomicilio": false,
+        "esperandoConfirmacionPedido": true,
+        "esperandoConfirmacionRepetirPedido": false,
+        "esperandoConfirmacionDatosPrevios": false,
+        "esperandoCambioDireccion": false,
+        "esperandoConfirmacionDatosFacturacion": false,
+        "esperandoActualizacionDatosCliente": false,
+        "alternativaPendiente": null,
+        "seleccionesProducto": [
+          {
+            "marca": "ARENA MAIZ CAT",
+            "referencia": "ARENA MAIZ CAT",
+            "peso": "x 20kg",
+            "precio": 98000,
+            "cantidad": 1,
+            "stock": null,
+            "categoria": "arena_sustrato",
+            "subcategoria": "arena",
+            "contextoCreadoEn": "2026-11-05T17:27:27.440Z",
+            "cotizacion": [
+              {
+                "marca": "ARENA MAIZ CAT",
+                "referencia": "ARENA MAIZ CAT",
+                "peso": "x 20kg",
+                "precio": 98000,
+                "cantidad": 1,
+                "categoria": "arena_sustrato",
+                "subcategoria": "arena",
+                "especie": "gato",
+                "requiereConfirmacion": false,
+                "seleccionado": true
+              }
+            ],
+            "estado": "seleccionado"
+          }
+        ]
+      },
+      "interpretations": [
+        {
+          "router": true,
+          "result": {
+            "recomendaciones": [],
+            "preguntaRecomendacion": null,
+            "solicitudComercialIndependiente": false,
+            "derivacionHumana": {
+              "necesaria": false,
+              "motivo": null
+            },
+            "seguimientoProducto": null,
+            "recursosAclaracion": {},
+            "resumenMemoria": null,
+            "continuarFlujo": true,
+            "compraContextual": "foco",
+            "solicitudesProductoDetectadas": 0,
+            "consultaCatalogo": {
+              "tipo": null,
+              "presupuestoMaximo": null,
+              "necesaria": false,
+              "consulta": null
+            },
+            "respuestaConversacional": "Perfecto, ya tengo tu nombre, celular y pago en efectivo. ¿Te ayudo con algo más del pedido?",
+            "intencion": "datos_envio",
+            "accion": null,
+            "confianza": 0.98,
+            "producto": {
+              "marca": null,
+              "referencia": null,
+              "linea": null,
+              "textoVisible": null,
+              "mencionOriginal": null,
+              "categoria": null,
+              "subcategoria": null,
+              "envase": null,
+              "especie": null,
+              "etapa": null,
+              "tamano": null,
+              "sabores": [],
+              "presentacion": null,
+              "intencionPresentaciones": null,
+              "mascotas": [],
+              "condiciones": [],
+              "cantidad": null
+            },
+            "productos": [],
+            "entrega": {
+              "tipo": "domicilio",
+              "direccion": null,
+              "direccionCompleta": null,
+              "sector": null,
+              "metodoPago": "efectivo/contraentrega",
+              "sede": null
+            },
+            "facturacion": {
+              "electronica": null,
+              "evidencia": null
+            },
+            "datosCliente": {
+              "nombre": "Cliente Prueba",
+              "cedula": null,
+              "correo": null,
+              "celular": "3000000000"
+            },
+            "carrito": {
+              "operacion": null,
+              "cantidadObjetivo": null,
+              "cantidadDelta": null,
+              "aplicaAlUltimoProducto": null,
+              "razon": null
+            },
+            "faltanteSugerido": null
+          }
+        }
+      ],
+      "origin": "Synthetic continuation; no final confirmation requested",
+      "previousApiResponse": "Pedido:\n- 1 x ARENA MAIZ CAT x 20kg: $98.000\nTotal: $98.000\n\nDatos de domicilio:\n- Dirección: Mz 8 casa 22 Conjunto Prueba, Sector de prueba\n- Nombre: Cliente Prueba\n- Celular: 3000000000\n- Método de pago: efectivo\n\n¿Deseas agregar algo más o finalizamos el pedido así?"
+    }
+  ]
+}

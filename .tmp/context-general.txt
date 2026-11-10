@@ -1,0 +1,92 @@
+✔ food form and container remain distinct; weight and bags imply neither (2.113875ms)
+✔ requested dry food, pouch and can exclude each other even at shared weights (32.580167ms)
+✔ shared identity without food form asks a useful clarification (3.164958ms)
+✔ wet food without container retains both can and pouch (6.4665ms)
+✔ weight clarification inherits verified container and never turns it into dry (5.588708ms)
+✔ explicit format corrections replace old format and clear inherited pack (4.406833ms)
+✔ another named product or expired context does not inherit container (0.619417ms)
+✔ insufficient catalog format stays unverified (2.803125ms)
+✔ verified image evidence supplies format; explicit text can correct pictured container (3.221041ms)
+✔ contradictory formats require clarification even with one catalog option (8.015417ms)
+✔ semantic compression and brand-weight shortcut cannot erase requested container (3.393833ms)
+✔ normalized visual attributes and conversation state survive format correction without mutating old evidence (41.163625ms)
+✔ medicine sachets do not become wet food when interpreter category is absent (2.228208ms)
+✔ asking available sizes cannot promote an unverified food format (2.900708ms)
+[AI Usage Summary] cliente=tenant-a | usuario=anon | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=tenant-a | usuario=anon | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=tenant-a | usuario=anon | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=tenant-a | usuario=anon | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=tenant-a | usuario=anon | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=tenant-b | usuario=anon | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+✔ held-out pipeline: HORIZON correction keeps identity despite foreign candidates (62.2195ms)
+✔ held-out pipeline: MONTE correction keeps identity despite foreign candidates (12.265875ms)
+✔ held-out pipeline: product focus is scoped to tenant and conversation (8.553833ms)
+[AI Usage Summary] cliente=atributos | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=atributos | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=especie | usuario=test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+✔ aclaración x10kg conserva el peso completo, previo visual=false (7.654958ms)
+✔ aclaración x10.1kg conserva el peso completo, previo visual=false (0.437875ms)
+✔ aclaración x10,1kl conserva el peso completo, previo visual=false (0.99425ms)
+✔ aclaración 10kg conserva el peso completo, previo visual=false (0.245625ms)
+✔ aclaración por 10kg conserva el peso completo, previo visual=false (0.201208ms)
+✔ aclaración x3kg conserva el peso completo, previo visual=false (0.184666ms)
+✔ aclaración x10kg conserva el peso completo, previo visual=true (0.633791ms)
+✔ aclaración x10.1kg conserva el peso completo, previo visual=true (0.186666ms)
+✔ aclaración x10,1kl conserva el peso completo, previo visual=true (0.713875ms)
+✔ aclaración 10kg conserva el peso completo, previo visual=true (0.224333ms)
+✔ aclaración por 10kg conserva el peso completo, previo visual=true (0.18225ms)
+✔ aclaración x3kg conserva el peso completo, previo visual=true (0.184083ms)
+✔ peso y confirmacion completan la solicitud pendiente sin borrar sus atributos (1.752667ms)
+✔ no reutiliza identidad para un producto distinto, contexto vencido ni confirmacion tras ausencia (1.525083ms)
+✔ peso aislado responde la pregunta activa aunque el router devuelva toda la lista o una intención conversacional (0.610875ms)
+✔ producto existente pasa de peso faltante a carrito aunque router no solicite buscar (51.262459ms)
+✔ descripcion natural se vincula a nombres abreviados sin exigir referencia literal (18.83875ms)
+✔ responder especie conserva cachorro y pregunta solo tamano sin cambiar a premios (45.457541ms)
+✔ tamano solo se pregunta cuando distingue variantes compatibles del catalogo (7.939958ms)
+[AI Usage Summary] cliente=tenant-a | usuario=anon | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=tenant-a | usuario=anon | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=tenant-a | usuario=anon | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=tenant-a | usuario=anon | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=tenant-a | usuario=anon | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=tenant-a | usuario=anon | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=tenant-a | usuario=anon | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+✔ real UR: pregunta especie, recupera variantes caninas, confirma concentrado, conserva carrito (83.925417ms)
+✔ aclaración de formato sin repetir referencia conserva identidad y especie (salida real del router) (31.384666ms)
+✔ contexto general: especie desconocido, aclaración semántica sin nombre repetido (0.787791ms)
+✔ contexto general: tamano desconocido, aclaración semántica sin nombre repetido (0.190333ms)
+✔ contexto general: sabores desconocido, aclaración semántica sin nombre repetido (0.300833ms)
+✔ contexto general: presentacion desconocido, aclaración semántica sin nombre repetido (0.232333ms)
+✔ contexto general: cantidad desconocido, aclaración semántica sin nombre repetido (0.126083ms)
+✔ contexto general: marca desconocido, aclaración semántica sin nombre repetido (0.118709ms)
+✔ identidad: atributo traducido no altera código ni línea; marca ajena y variante nueva se rechazan (0.154084ms)
+✔ nueva consulta, contexto vencido y pedido confirmado nunca completan la referencia anterior (0.149208ms)
+✔ atributos ausentes conservan null, nunca perro ni cantidad uno por defecto (0.351ms)
+✔ aclaración de peso dentro de una frase reemplaza la selección anterior de todas las presentaciones (0.278084ms)
+✔ consulta interrumpida: el peso nuevo usa identidad respaldada en el lote anterior, no palabras sociales (15.142334ms)
+[AI Usage Summary] cliente=tenant-a | usuario=anon | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=tenant-a | usuario=anon | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=tenant-a | usuario=anon | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=tenant-a | usuario=anon | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+✔ recuperación acotada elimina consultas duplicadas y cancela un proveedor detenido (61.409458ms)
+✔ recuperación no aprende ausencia por error y alcanza estrategia alternativa tras candidatos incompatibles (1.3585ms)
+✔ validador descarta identidad incompatible: NOVA XY perro (0.266709ms)
+✔ validador descarta identidad incompatible: NOVA AB gato (1.062209ms)
+✔ validador descarta identidad incompatible: OTRA AB perro (1.0135ms)
+✔ validador descarta identidad incompatible: NOVA LATA AB perro (0.308166ms)
+✔ corrección semántica de especie conserva referencia y no propaga especie negada (0.2135ms)
+✔ entrada audio utiliza la misma continuidad y conserva estado al recargar (21.759209ms)
+✔ entrada image utiliza la misma continuidad y conserva estado al recargar (19.201875ms)
+✔ consultas duplicadas comparten recuperación sin desalinear productos (22.0835ms)
+✔ replay de RPC real mantiene selección y aclaraciones sin consultar red (74.707667ms)
+✔ una presentación no disponible conserva identidad al corregir solo peso, sin menú pendiente (16.101458ms)
+✔ no recupera identidad para marca distinta, nueva consulta, contexto vencido o formato incompatible (1.252083ms)
+✔ la corrección larga de peso conserva también una referencia validada en una consulta (0.735ms)
+✔ marcas con espacios distintos permiten hallar la línea, sin inventar presentación ni cruzar especie/formato (7.699958ms)
+ℹ tests 64
+ℹ suites 0
+ℹ pass 64
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 457.117292

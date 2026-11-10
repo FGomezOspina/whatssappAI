@@ -1,0 +1,194 @@
+{
+  "mode": "before",
+  "runAt": "2026-10-30T14:51:11.120Z",
+  "sourceScope": "Manual readings of displayed image previews and adviser/context reconstructions; not automatic vision, interpretation, cart or WhatsApp E2E",
+  "rawCatalogSha256": "88180af9eb2cbcc9f48413f7e6ba7d94b44232f854089636acc6d3bdb38db8bc",
+  "corpusSha256": "a7ef9115e8849def1a427a0806ff6bd281fe9db06449ef2c61f8dc513f8288d1",
+  "normalizedReferenceCount": 1063,
+  "summary": {
+    "correct": 7,
+    "wrong": 2,
+    "safe_abstention": 2,
+    "missed": 1
+  },
+  "rows": [
+    {
+      "id": "T01-01",
+      "input": "PRO PLAN FELINE UR concentrado",
+      "level": "alta",
+      "reference": "PRO PLAN FELINE UR",
+      "presentationIds": [
+        "ffc444ab-d5dd-433a-bd45-cc27e5c24db8"
+      ],
+      "presentationValid": null,
+      "reason": "nombre_exacto",
+      "clarification": null,
+      "pass": true,
+      "outcome": "correct",
+      "ms": 48.84170799999998
+    },
+    {
+      "id": "T01-02",
+      "input": "VIRBAC CAT UROLOGY 2 1.5kg",
+      "level": "alta",
+      "reference": "VIRBAC CAT UROLOGY 1",
+      "presentationIds": [
+        "af93a387-a869-465b-94b4-dd2772c1f47e"
+      ],
+      "presentationValid": true,
+      "reason": "nombre_exacto",
+      "clarification": null,
+      "pass": false,
+      "outcome": "wrong",
+      "ms": 58.10008399999998
+    },
+    {
+      "id": "T01-03",
+      "input": "VIRBAC UROLOGY 2 3kg",
+      "level": "alta",
+      "reference": "VIRBAC UROLOGY 2",
+      "presentationIds": [
+        "a150e063-8494-49a8-8bfb-dc65afdf62a8"
+      ],
+      "presentationValid": true,
+      "reason": "nombre_exacto",
+      "clarification": null,
+      "pass": true,
+      "outcome": "correct",
+      "ms": 49.987750000000005
+    },
+    {
+      "id": "T01-04",
+      "input": "HILLS FEL C/D 1.8kg",
+      "level": "alta",
+      "reference": "HILLS FEL C/D",
+      "presentationIds": [
+        "c31016c3-51ff-4720-8781-437d9cae07b1"
+      ],
+      "presentationValid": true,
+      "reason": "nombre_exacto",
+      "clarification": null,
+      "pass": true,
+      "outcome": "correct",
+      "ms": 35.67183299999999
+    },
+    {
+      "id": "T01-05",
+      "input": "ADVANCE CAT URINARY 3kg",
+      "level": "alta",
+      "reference": "ADVANCE CAT URINARY",
+      "presentationIds": [
+        "84ce8dea-b140-4318-8f22-e4de9be3a4f7",
+        "796ba95e-169d-47fa-b069-e62f1f877118"
+      ],
+      "presentationValid": true,
+      "reason": "nombre_exacto",
+      "clarification": null,
+      "pass": true,
+      "outcome": "correct",
+      "ms": 40.70920799999999
+    },
+    {
+      "id": "T01-06",
+      "input": "ROYAL CANIN URINARY S/O concentrado 1.5kg",
+      "level": "alta",
+      "reference": "ROYAL CANIN URINAY CAT S/O",
+      "presentationIds": [
+        "734115f2-dbf6-4341-8104-db81274ef071",
+        "a4bcd36e-b0e7-4da1-b300-574eacc49d50"
+      ],
+      "presentationValid": true,
+      "reason": "nombre_exacto",
+      "clarification": null,
+      "pass": true,
+      "outcome": "correct",
+      "ms": 42.05766699999998
+    },
+    {
+      "id": "T01-07",
+      "input": "PRO PLAN FELINE LATA UR 156g",
+      "level": "alta",
+      "reference": "PRO PLAN FELINE LATA UR",
+      "presentationIds": [
+        "81ad097e-5e4d-4c0d-b9d1-64e33cac0283"
+      ],
+      "presentationValid": false,
+      "reason": "nombre_exacto",
+      "clarification": null,
+      "pass": true,
+      "outcome": "correct",
+      "ms": 38.325624999999945
+    },
+    {
+      "id": "T01-08",
+      "input": "ROYAL CANIN URINARY SO gato lata",
+      "level": "baja",
+      "reference": null,
+      "presentationIds": [],
+      "presentationValid": null,
+      "reason": "sin_coincidencia_confiable",
+      "clarification": null,
+      "pass": true,
+      "outcome": "safe_abstention",
+      "ms": 44.055124999999975
+    },
+    {
+      "id": "T02-01",
+      "input": "2 Excellent gato adulto 1kg",
+      "level": "alta",
+      "reference": "EXCELLENT GATO ADULT",
+      "presentationIds": [
+        "752b60c7-2394-4d33-b989-46fe268affe0",
+        "b9b14806-889d-4a1e-80bd-f7605b3f9391",
+        "7f8d69bf-c637-420c-b572-c7d23916ad62"
+      ],
+      "presentationValid": true,
+      "reason": "nombre_exacto",
+      "clarification": null,
+      "pass": true,
+      "outcome": "correct",
+      "ms": 50.21170799999993
+    },
+    {
+      "id": "T03-01",
+      "input": "B FEX jarabe",
+      "level": "baja",
+      "reference": null,
+      "presentationIds": [],
+      "presentationValid": null,
+      "reason": "sin_coincidencia_confiable",
+      "clarification": null,
+      "pass": true,
+      "outcome": "safe_abstention",
+      "ms": 40.15741600000001
+    },
+    {
+      "id": "T03-02",
+      "input": "DERMOSYN spray",
+      "level": "alta",
+      "reference": "DERMOBEST SPRAY",
+      "presentationIds": [
+        "bce54f99-cd6f-4075-9674-ef6a1a19409a"
+      ],
+      "presentationValid": null,
+      "reason": "nombre_exacto",
+      "clarification": null,
+      "pass": false,
+      "outcome": "wrong",
+      "ms": 31.88474999999994
+    },
+    {
+      "id": "T03-03",
+      "input": "A LAPIEL crema",
+      "level": "baja",
+      "reference": null,
+      "presentationIds": [],
+      "presentationValid": null,
+      "reason": "sin_coincidencia_confiable",
+      "clarification": null,
+      "pass": false,
+      "outcome": "missed",
+      "ms": 33.607208000000014
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+[AI Usage Summary] cliente=tenant-a | usuario=anon | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=tenant-a | usuario=anon | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=tenant-a | usuario=anon | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=tenant-a | usuario=anon | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=tenant-a | usuario=anon | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=tenant-b | usuario=anon | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+✔ held-out pipeline: HORIZON correction keeps identity despite foreign candidates (42.928333ms)
+✔ held-out pipeline: MONTE correction keeps identity despite foreign candidates (8.007792ms)
+✔ held-out pipeline: product focus is scoped to tenant and conversation (4.727458ms)
+✔ una presentación no disponible conserva identidad al corregir solo peso, sin menú pendiente (13.40275ms)
+✔ no recupera identidad para marca distinta, nueva consulta, contexto vencido o formato incompatible (0.740208ms)
+✔ la corrección larga de peso conserva también una referencia validada en una consulta (0.182542ms)
+✔ marcas con espacios distintos permiten hallar la línea, sin inventar presentación ni cruzar especie/formato (5.64675ms)
+✔ consulta cambia formato por contexto; cantidad posterior conserva el formato y peso (0.437917ms)
+✔ redactor no puede asociar el peso solicitado a un candidato que solo registra otro peso (0.378375ms)
+✔ segmentación literal no pierde atributos aportados en mensajes consecutivos (0.23625ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 133.956

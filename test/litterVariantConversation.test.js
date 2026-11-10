@@ -47,7 +47,13 @@ test('aromas se descubren del catálogo también con otra familia y variantes nu
   assert.deepEqual(v.aclaracion.etiquetas.sort(), ['cedro', 'jazmin']);
 });
 
-for (const envase of ['100gr', 'lata', null]) test(`lista completa conserva variantes, cantidades y envase interpretado como ${envase}`, async () => {
+for (const verificado of [true, false]) for (const envase of ['100gr', 'lata', null]) test(`lista conserva variantes y cantidades; envase verificado=${verificado}, lectura=${envase}`, async () => {
+  // Explicit synthetic enrichment for this batch-flow test; never edits the real catalog.
+  const catalogo = structuredClone(require('../productos.json'));
+  for (const marca of catalogo) if (verificado && marca.marca === 'VETSOLUTION') for (const ref of marca.referencias) {
+    if (['VETSOLUTION CAT URINARY','VETSOLUTION CAT GASTROINTES'].includes(ref.nombre))
+      ref.metadata = { ...ref.metadata, envase:'lata' };
+  }
   const solicitudes = [
     { marca: 'EXCELLENT', referencia: 'EXCELLENT GATO URINARY', textoVisible: '1 kg Excellent Urinary gatos', especie: 'gato', presentacion: '1kg', cantidad: 1 },
     { marca: 'VETSOLUTION', referencia: 'VETSOLUTION CAT URINARY', textoVisible: '3 latas de Vet Solution Urinary', especie: 'gato', presentacion: '100gr', cantidad: 3 },
@@ -70,7 +76,7 @@ for (const envase of ['100gr', 'lata', null]) test(`lista completa conserva vari
     './aiInterpreter': { interpretarMensajeCliente: async args => {
       if (args.clasificacion.decisionHerramientas) return normalizarInterpretacion(structuredClone(decision));
       if (/kitten/i.test(args.mensaje)) { remapeosArena++; return null; }
-      const solicitud = solicitudes.find(p => args.mensaje.includes(p.referencia));
+      const solicitud = solicitudes.find(p => args.mensaje.includes(p.referencia) || args.mensaje.includes(p.textoVisible));
       const producto = solicitud === solicitudes[1] ? { ...solicitud, marca: 'VETSOLUTION', referencia: 'VETSOLUTION CAT URINARY' } : solicitud;
       return normalizarInterpretacion(structuredClone({ ...decision, productos: [], producto }));
     } },
@@ -82,7 +88,15 @@ for (const envase of ['100gr', 'lata', null]) test(`lista completa conserva vari
   assert.equal(remapeosArena, 0);
   assert.equal(estado.carrito.length, 0);
   assert.equal(estado.ultimaSolicitudProductos.length, 4);
-  assert.ok(estado.ultimaSolicitudProductos.every(p => p.estado === 'identificado'), respuesta);
-  assert.match(respuesta, /91\.400/);
+  if (verificado) {
+    assert.ok(estado.ultimaSolicitudProductos.every(p => p.estado === 'identificado'), respuesta);
+    assert.match(respuesta, /91\.400/);
+  } else {
+    assert.equal(estado.ultimaSolicitudProductos.filter(p => p.estado === 'identificado').length, 2, respuesta);
+    assert.match(respuesta, /verificar.*envase que pides/);
+    assert.match(respuesta, /57\.800/);
+    assert.doesNotMatch(respuesta, /25\.200|91\.400|83\.000/);
+    assert.equal(estado.ultimaSolicitudProductos.find(p => /urinary/i.test(p.referencia) && /vet/i.test(p.marca)).cantidad, 3);
+  }
   assert.match(respuesta, /1 x ARENA KITTEN TALCO 8kg: \$23\.800/);
 });

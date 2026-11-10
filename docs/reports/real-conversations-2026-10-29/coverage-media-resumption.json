@@ -1,0 +1,209 @@
+{
+  "phase": "Resumption after user confirms standalone window shows chats/images",
+  "interval": {
+    "from": "2026-10-28T00:00:00-05:00",
+    "through": "2026-10-29T18:46:00-05:00"
+  },
+  "status": "partial_completed_with_ui_block",
+  "ui": {
+    "screenshotRecovered": true,
+    "accessibilitySearchAndDateNavigation": true,
+    "coordinatesAndScroll": "noWindowsAvailable, including one retry after raising the exact WhatsApp window",
+    "imageRowAXClick": "Scrolls image into view; does not open original. Enter produced no change; composer remained empty.",
+    "deniedByAutoReview": false
+  },
+  "mediaFindings": [
+    {
+      "chat": "C09",
+      "case": "C09-01",
+      "at": "2026-10-29T15:30:00-05:00",
+      "observedPixels": "NEOSTRONG Pet milk, 500 g, leche en polvo; can with blue lid and dog/cat pictured",
+      "status": "visible_product_label_read",
+      "catalogCandidate": {
+        "reference": "PET MILK",
+        "id": "72f2d152-6051-4102-8524-5b9d3b161be0",
+        "presentation": "500gr",
+        "presentationId": "71ced2bf-af06-4e67-b8d8-b2da08e61961"
+      },
+      "limits": "Catalog brand field is PET rather than printed NEOSTRONG; exact product name and sole matching 500gr presentation support candidate. No manufacturer metadata verifies NEOSTRONG. Product pictured established; ordered quantity, final order and audio not established. Unsent AI suggestion of two cans explicitly ignored."
+    },
+    {
+      "chat": "C09",
+      "case": "C09-02",
+      "at": "2026-10-29T08:00:00-05:00",
+      "observedPixels": "Pouch with Petmilk label; bottom and weight not visible",
+      "status": "partial_label_read",
+      "context": "08:01 customer asks for this milk but the can;15:28 says Se me complicó la salida;15:30 can photo. Do not infer morning package size or final quantity."
+    },
+    {
+      "chat": "C03",
+      "at": "2026-10-28T09:55:00-05:00",
+      "status": "blurred_unreadable",
+      "limits": "Green package thumbnail visible but no legible identity. Original opening blocked by coordinate error; do not identify by color/price."
+    },
+    {
+      "chat": "C14",
+      "at": "2026-10-28T09:48:00-05:00",
+      "status": "blurred_unreadable",
+      "limits": "Quote thumbnail rendered but unreadable. No product names recovered; existing ambiguous gold unchanged."
+    },
+    {
+      "chat": "C16",
+      "at": "2026-10-29T14:09:00-05:00",
+      "status": "blurred_unreadable",
+      "limits": "Quote thumbnail unreadable; no presentation inferred from total price."
+    },
+    {
+      "chat": "C01",
+      "at": "2026-10-29T09:15:00-05:00",
+      "status": "blurred_unreadable",
+      "limits": "Alternative snack thumbnail still blurry; original inaccessible; existinggold unchanged."
+    },
+    {
+      "chat": "C11",
+      "at": "2026-10-29T15:35:00-05:00",
+      "status": "blurred_unreadable",
+      "limits": "No readable content; unsent AI payment suggestion ignored."
+    },
+    {
+      "chat": "C19",
+      "at": "2026-10-29T14:15:00-05:00",
+      "status": "blurred_unreadable",
+      "limits": "Four-itemquote rendered as blurrythumbnail; do not assert all requestedproducts were quoted."
+    }
+  ],
+  "newCustomers": [
+    {
+      "key": "C15",
+      "date": "2026-10-28–29",
+      "observedFrom": "28 07:55",
+      "observedThrough": "29 14:05",
+      "topic": "Three-product request: canine Royal Canin gastrointestinal7kg,2cans,and10Proplan feline pouches; forwarded old quote used as screenshot example",
+      "limits": "Dry7kg missing in snapshot; canned nominal reference confirmed; current pouchflavor unresolved. Do not infer five salmon from forwarded example. Date28and29 navigation; small09:22–09:24 gap remains."
+    },
+    {
+      "key": "C16",
+      "date": "2026-10-29",
+      "observedFrom": "11:31",
+      "observedThrough": "14:49",
+      "topic": "Me podrías enviar tres paquetes del contrato de proplan feline EN; commercial account accepts, sends unreadable quote",
+      "limits": "Older October10 request confirms spelling concentrado but is context only. Nominal reference confirmed; quantity3 explicit, package weight not specified by customer. Single catalog1.5kg pack is not independent quote evidence."
+    },
+    {
+      "key": "C17",
+      "date": "2026-10-29",
+      "observedFrom": "14:15",
+      "observedThrough": "14:22",
+      "topic": "A como tienes el nefrotec x60; account offers per-tablet and Nefrotec DS Vet30units",
+      "limits": "Requested60 and offered30 are not the same presentation; no customer acceptance. Prior Saturday order not counted."
+    },
+    {
+      "key": "C18",
+      "date": "2026-10-29",
+      "observedFrom": "11:23",
+      "observedThrough": "14:17",
+      "topic": "excellent Urinary x3Kl; additional monello7kl; pickup",
+      "limits": "Separate identity from C05. Excellent name+3kg confirmed; Monello species/line not established, multiple7kg references. Price not used."
+    },
+    {
+      "key": "C19",
+      "date": "2026-10-29",
+      "observedFrom": "13:01",
+      "observedThrough": "14:15",
+      "topic": "Four-item quote: CanisanD5ml,Enterochonic,Fortiflora,wetProplan canine gastrointestinal; dog clarified only for Fortiflora",
+      "limits": "Quote thumbnail unreadable. Canisan requested identity confirmed; Fortiflora joined manually with answerPerro. Two other mappings await quote evidence."
+    },
+    {
+      "key": "C20",
+      "date": "2026-10-29",
+      "observedFrom": "13:25",
+      "observedThrough": "14:14",
+      "topic": "Missed call,greeting and account greeting",
+      "limits": "No product request identified; excluded from benchmark."
+    },
+    {
+      "key": "C21",
+      "date": "2026-10-28–29",
+      "observedFrom": "28 12:28",
+      "observedThrough": "29 12:41",
+      "topic": "Bonnat Gastrointestinal dog quoted2kg; nextday three calls,then el chiquito with price",
+      "limits": "Bonnat not found in snapshot. Calls unavailable; small presentation cannot be inferred from price. Three calls are not voice notes."
+    },
+    {
+      "key": "C22",
+      "date": "2026-10-28–29",
+      "observedFrom": "28 17:47",
+      "observedThrough": "29 09:17",
+      "topic": "Excellent7.5kgadultcat requested evening,accepted nextmorning",
+      "limits": "Identity and pack explicit. Distinct header from C04; search for previous contact reached this commercial chat, so C04 was not re-inspected or merged."
+    }
+  ],
+  "newInWindowAudio": 0,
+  "audioTranscriptions": 0,
+  "productionChangesInThisPhase": 3,
+  "sideEffects": {
+    "messagesSent": 0,
+    "ordersCreated": 0,
+    "supabaseWrites": 0,
+    "openAICalls": 0,
+    "restarts": 0
+  },
+  "capturedAtUTC": "2026-10-30T03:52:23.069104+00:00",
+  "counts": {
+    "customerChatsReviewed": 22,
+    "supplierChatsExcluded": 1,
+    "analysisCases": 43,
+    "locallyScoredCases": 27,
+    "notEvaluableMediaDependentCases": 16,
+    "allInWindowChatsTotal": null
+  },
+  "evaluation": {
+    "currentTotal": {
+      "correct": 13,
+      "missed": 0,
+      "false_positive": 0,
+      "safe_abstention": 14,
+      "not_evaluable": 16
+    },
+    "newPhaseBefore": {
+      "correct": 5,
+      "missed": 2,
+      "false_positive": 1,
+      "safe_abstention": 5,
+      "not_evaluable": 2
+    },
+    "newPhaseAfter": {
+      "correct": 7,
+      "missed": 0,
+      "false_positive": 0,
+      "safe_abstention": 6,
+      "not_evaluable": 2
+    },
+    "developmentCases": [
+      "C15-01",
+      "C16-01",
+      "C19-01"
+    ],
+    "beforeCapture": "media-resumption-before.json was measured before the three runtime fixes, after correcting canonical500g label and marking development cases; includes previousOMfix. Do not regenerate with baselineflag as if it disabled later fixes.",
+    "previousCasesRevalidated": true,
+    "lastFullSuitePassed": 1054,
+    "fixtureSha256": "da1c7bd1ef6f8ab6d1a1acdb2810a8a1c58b76270a646fc00583bd9a49ca6c12",
+    "latencyLocalMs": {
+      "median": 54.3415829999999,
+      "p95": 122.42820799999981
+    },
+    "notEndToEnd": true
+  },
+  "runtimeScope": "Generic complete catalog-name priority, preserve one-letter variant before brand+pack shortcut, abstain when unrequestedwet format has incompatiblepack; explicit species-conflict guard accompanies literalpriority. No new brand names or reference aliases in code.",
+  "currentBlock": {
+    "action": "Open original product/quote images and paginate remaining chat list",
+    "target": "Standalone commercial Safari WhatsApp Web window",
+    "status": "failed_ui_capability_no_pending_action",
+    "reason": "Screenshots and accessible search/date controls work. Coordinateclick and scroll return noWindowsAvailable; one retry afterRaise sameerror. Selectedoffscreenchatcell returns cannotClickOffscreenElement. AXphoto click brings blurred thumbnail into view;Return leavesstateunchanged. No further retries after these verified failures.",
+    "deniedByAutoReview": false,
+    "interventionNeeded": "Restore native pointer/scroll access for this window, or provide a local export that includes media. User can currently viewimages; that does not establish tool access to originals.",
+    "audio": "No audio file recovered or locally transcribed;9 previouslyobservednotes remainexcluded. No installed transcriptionengine andnoinstallationauthorized.",
+    "composerEmptyVerified": true,
+    "searchCleared": true
+  }
+}

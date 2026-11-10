@@ -1,0 +1,149 @@
+{
+  "version": 2,
+  "privacy": "No real names, contacts, addresses, payment documents or media. Product-only retained text plus explicitly synthetic continuations.",
+  "catalogSnapshot": "../real-conversations-2026-10-30/catalog.json",
+  "catalogSha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+  "mode": "Real OpenAI only when opt-in; retrieval frozen, persistence in memory; no WhatsApp or real orders",
+  "cases": [
+    {
+      "id": "quote-address-reentry",
+      "catalogBrands": [
+        "ARENA MAIZ CAT"
+      ],
+      "initialState": {
+        "productosConsultados": [
+          {
+            "peso": "x 20kg",
+            "marca": "ARENA MAIZ CAT",
+            "stock": null,
+            "precio": 98000,
+            "cantidad": 1,
+            "categoria": "arena_sustrato",
+            "referencia": "ARENA MAIZ CAT",
+            "subcategoria": "arena",
+            "presentaciones": [
+              {
+                "peso": "x 10kg",
+                "stock": null,
+                "precio": 48800,
+                "metadata": {
+                  "llave": "1855",
+                  "codigo": "110010101855",
+                  "source": "productos.json",
+                  "codigos": [
+                    "110010101855"
+                  ],
+                  "nombre_original": "ARENA MAIZ CAT X 10KG"
+                },
+                "referenciaCatalogo": "ARENA MAIZ CAT"
+              },
+              {
+                "peso": "x 15kg",
+                "stock": null,
+                "precio": 61500,
+                "metadata": {
+                  "llave": "92",
+                  "codigo": "10201010092",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10201010092"
+                  ],
+                  "nombre_original": "ARENA MAIZ CAT X 15KG"
+                },
+                "referenciaCatalogo": "ARENA MAIZ CAT"
+              },
+              {
+                "peso": "x 20kg",
+                "stock": null,
+                "precio": 98000,
+                "metadata": {
+                  "llave": "1856",
+                  "codigo": "110010101856",
+                  "source": "productos.json",
+                  "codigos": [
+                    "110010101856"
+                  ],
+                  "nombre_original": "ARENA MAIZ CAT X 20KG"
+                },
+                "referenciaCatalogo": "ARENA MAIZ CAT"
+              },
+              {
+                "peso": "x 2kg",
+                "stock": null,
+                "precio": 11600,
+                "metadata": {
+                  "llave": "1853",
+                  "codigo": "110010101853",
+                  "source": "productos.json",
+                  "codigos": [
+                    "110010101853"
+                  ],
+                  "nombre_original": "ARENA MAIZ CAT X 2KG"
+                },
+                "referenciaCatalogo": "ARENA MAIZ CAT"
+              },
+              {
+                "peso": "x 4kg",
+                "stock": null,
+                "precio": 22900,
+                "metadata": {
+                  "llave": "1854",
+                  "codigo": "110010101854",
+                  "source": "productos.json",
+                  "codigos": [
+                    "110010101854"
+                  ],
+                  "nombre_original": "ARENA MAIZ CAT X 4KG"
+                },
+                "referenciaCatalogo": "ARENA MAIZ CAT"
+              }
+            ],
+            "contextoCreadoEn": "2026-11-05T16:52:34.211Z",
+            "familiaReferencia": "ARENA MAIZ CAT",
+            "referenciaCatalogo": "ARENA MAIZ CAT",
+            "referenciasEquivalentes": [
+              "ARENA MAIZ CAT"
+            ]
+          }
+        ],
+        "ultimaSolicitudProductos": [
+          {
+            "estado": "pendiente",
+            "accion": "consultar",
+            "contextoCreadoEn": "2026-10-31T16:24:48Z",
+            "pregunta": "¿Qué medicamento necesitas?"
+          }
+        ]
+      },
+      "history": [
+        {
+          "role": "user",
+          "content": "Buenos dias \nPara pedir una arena"
+        },
+        {
+          "role": "assistant",
+          "content": "Buenos días 😊  \n¿La arena la buscas para gato?"
+        },
+        {
+          "role": "user",
+          "content": "Arena de maíz cat de 20 kg"
+        },
+        {
+          "role": "assistant",
+          "content": "Sí, esa es ARENA MAIZ CAT x 20kg y vale $98.000. Las existencias están por confirmar. 🐱"
+        }
+      ],
+      "turns": [
+        {
+          "text": "Mz 8 casa 22 Conjunto Prueba\nSector de prueba",
+          "origin": "Synthetic replacement for private address; prior product-only turns original; state reconstructed from post-incident observation"
+        },
+        {
+          "text": "Nombre: Cliente Prueba; celular: 3000000000; pago: efectivo",
+          "origin": "Synthetic continuation; no final confirmation requested"
+        }
+      ]
+    }
+  ],
+  "parentVersion": 1
+}

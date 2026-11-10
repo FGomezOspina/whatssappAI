@@ -1,0 +1,18 @@
+{
+  "at": "2026-10-30T16:36:51.157Z",
+  "model": "gpt-5.4-mini",
+  "payload": "Synthetic greeting Hola; empty history, state and catalog; no customer data or images.",
+  "configuredClientUsed": true,
+  "successful": false,
+  "calls": [
+    {
+      "model": "gpt-5.2",
+      "status": "failed",
+      "ms": 22,
+      "httpStatus": null,
+      "code": null,
+      "type": null
+    }
+  ],
+  "interpretation": null
+}

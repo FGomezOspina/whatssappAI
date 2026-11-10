@@ -1,0 +1,59 @@
+{
+  "createdAt": "2026-10-30T17:53:09.607Z",
+  "originalMessage": "Corrijo el tamaño: de 2 kg, el mismo concentrado para perro. Solo consultar el precio.",
+  "persistedRouterProduct": {
+    "etapa": null,
+    "linea": null,
+    "marca": "ROYALCANIN",
+    "accion": "consultar",
+    "envase": null,
+    "tamano": null,
+    "especie": "perro",
+    "sabores": [],
+    "cantidad": null,
+    "mascotas": [],
+    "categoria": "comida",
+    "referencia": "ROYALCANIN GASTROINTESTINAL PERRO",
+    "condiciones": [
+      "gastrointestinal"
+    ],
+    "presentacion": "2 kg",
+    "subcategoria": "concentrado",
+    "textoVisible": "mismo concentrado para perro de 2 kg",
+    "mencionOriginal": "de 2 kg, el mismo concentrado para perro",
+    "intencionPresentaciones": "especifica"
+  },
+  "storedValidationTerms": [
+    "mismo",
+    "perro"
+  ],
+  "storedCandidates": [
+    {
+      "marca": "GEL",
+      "referencia": "GEL MANTEQUILLA MANI PERRO 2ONZ",
+      "presentaciones": [
+        "unidad"
+      ]
+    },
+    {
+      "marca": "TASTE OF THE WILD",
+      "referencia": "TASTE OF THE WILD ADULT PERRO",
+      "presentaciones": [
+        "1kg",
+        "2.2kg"
+      ]
+    },
+    {
+      "marca": "NUTRA NUGGETS",
+      "referencia": "NUTRA NUGGETS MANTEN PERRO",
+      "presentaciones": [
+        "7.5kg"
+      ]
+    }
+  ],
+  "lastResponse": "¿Te refieres al **TASTE OF THE WILD ADULT PERRO** en **2 kg**? 🙂",
+  "limits": [
+    "Exact full pre-turn state and full original router/intérprete/humanizer payloads were not captured. Persisted inbound interpretation is retained but not equivalent to every raw API output.",
+    "Evidence of first foreign candidate in this chain is the persisted candidate state, not the original SQL result body; new traced replay and deterministic reproductions are separate evidence."
+  ]
+}

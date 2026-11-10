@@ -1,0 +1,399 @@
+{
+  "capturedAt": "2026-10-30T22:24:29.111Z",
+  "scope": "Two reported Sandbox omissions; source is persisted messages, not inspected screenshots or raw vision output.",
+  "cart": [
+    []
+  ],
+  "ordersCount": 0,
+  "messages": [
+    {
+      "idHash": "ad283f3e1703",
+      "direction": "inbound",
+      "at": "2026-10-30T21:51:40.672327+00:00",
+      "text": "Para cotizar:\nEl nutra nugges cordero 7k perro\n\nEl br gato castrado de pollo 1k\n\nNexgart para perro de 40k",
+      "interpretation": {
+        "intencion": "consulta_producto",
+        "producto": null,
+        "productos": [
+          {
+            "marca": "NUTRA NUGGETS",
+            "linea": null,
+            "referencia": "NUTRA NUGGETS CORDERO",
+            "especie": "perro",
+            "subcategoria": "concentrado",
+            "envase": null,
+            "presentacion": "7k",
+            "cantidad": null,
+            "estado": "identificado",
+            "intencionPresentaciones": "especifica",
+            "presentacionesDisponibles": [
+              "1kg",
+              "3kg"
+            ],
+            "cotizacion": [],
+            "textoVisible": "nutra nugges cordero 7k perro",
+            "mencionOriginal": "El nutra nugges cordero 7k perro"
+          },
+          {
+            "marca": "BR CAT",
+            "linea": null,
+            "referencia": "BR CAT CASTRADO POLLO",
+            "especie": "gato",
+            "subcategoria": "concentrado",
+            "envase": null,
+            "presentacion": "1kg",
+            "cantidad": null,
+            "estado": "identificado",
+            "intencionPresentaciones": "especifica",
+            "presentacionesDisponibles": [
+              "10kg",
+              "1kg",
+              "3kg"
+            ],
+            "cotizacion": [
+              {
+                "referencia": "BR CAT CASTRADO POLLO",
+                "peso": "1kg",
+                "cantidad": 1
+              }
+            ],
+            "textoVisible": "br gato castrado de pollo 1k",
+            "mencionOriginal": "El br gato castrado de pollo 1k"
+          },
+          {
+            "marca": "NEXGARD",
+            "linea": null,
+            "referencia": "NEXGARD",
+            "especie": "perro",
+            "subcategoria": null,
+            "envase": null,
+            "presentacion": "25-50kg",
+            "cantidad": null,
+            "estado": "identificado",
+            "intencionPresentaciones": null,
+            "presentacionesDisponibles": [
+              "10-25 kg",
+              "2-4 kg",
+              "25-50 kg",
+              "4-10 kg"
+            ],
+            "cotizacion": [
+              {
+                "referencia": "NEXGARD",
+                "peso": "25-50 kg",
+                "cantidad": 1
+              }
+            ],
+            "textoVisible": "Nexgart para perro de 40k",
+            "mencionOriginal": "Nexgart para perro de 40k"
+          }
+        ]
+      }
+    },
+    {
+      "idHash": "570a9d671583",
+      "direction": "outbound",
+      "at": "2026-10-30T21:52:19.590297+00:00",
+      "text": "Presentaciones y precios unitarios:\n- BR CAT CASTRADO POLLO 1kg: $28.000\n- NEXGARD 25-50 kg: $56.900 — Mascota 1 (40 kg)"
+    },
+    {
+      "idHash": "8b362e33ba19",
+      "direction": "inbound",
+      "at": "2026-10-30T21:54:33.321087+00:00",
+      "text": "y nutra nuggets cordero 7kg?",
+      "interpretation": {
+        "intencion": "consulta_producto",
+        "producto": {
+          "marca": "NUTRA NUGGETS",
+          "linea": null,
+          "referencia": "NUTRA NUGGETS CORDERO",
+          "especie": "perro",
+          "subcategoria": "concentrado",
+          "envase": null,
+          "presentacion": "7kg",
+          "cantidad": null,
+          "intencionPresentaciones": "especifica",
+          "textoVisible": "nutra nuggets cordero 7kg",
+          "mencionOriginal": null
+        },
+        "productos": [
+          {
+            "marca": "NUTRA NUGGETS",
+            "linea": null,
+            "referencia": "NUTRA NUGGETS CORDERO",
+            "especie": "perro",
+            "subcategoria": "concentrado",
+            "envase": null,
+            "presentacion": "7kg",
+            "cantidad": null,
+            "intencionPresentaciones": "especifica",
+            "textoVisible": "nutra nuggets cordero 7kg",
+            "mencionOriginal": null
+          }
+        ]
+      }
+    },
+    {
+      "idHash": "bbdb3aa29906",
+      "direction": "outbound",
+      "at": "2026-10-30T21:55:13.879471+00:00",
+      "text": "¿Te sirve Nutra Nuggets Cordero en 1 kg o 3 kg?"
+    },
+    {
+      "idHash": "7cc53202f746",
+      "direction": "inbound",
+      "at": "2026-10-30T22:00:34.315995+00:00",
+      "text": "para cotizar:\nagility gold cachorro razas medianas",
+      "interpretation": {
+        "intencion": "consulta_producto",
+        "producto": {
+          "marca": "AGILITY",
+          "linea": "gold",
+          "referencia": "AGILITY GRAND CACH",
+          "especie": "perro",
+          "subcategoria": "concentrado",
+          "envase": null,
+          "presentacion": null,
+          "cantidad": null,
+          "intencionPresentaciones": null,
+          "textoVisible": "agility gold cachorro razas medianas",
+          "mencionOriginal": null
+        },
+        "productos": [
+          {
+            "marca": "AGILITY",
+            "linea": "gold",
+            "referencia": "AGILITY GRAND CACH",
+            "especie": "perro",
+            "subcategoria": "concentrado",
+            "envase": null,
+            "presentacion": null,
+            "cantidad": null,
+            "intencionPresentaciones": null,
+            "textoVisible": "agility gold cachorro razas medianas",
+            "mencionOriginal": null
+          }
+        ]
+      }
+    },
+    {
+      "idHash": "5de3d29b319f",
+      "direction": "outbound",
+      "at": "2026-10-30T22:01:13.174428+00:00",
+      "text": "Claro 🙂 AGILITY GRAND CACH para cachorro de perro está en 1.5 kg por $33.700, 3 kg por $65.400 y 15 kg por $299.900. ¿Cuál presentación te sirve?"
+    },
+    {
+      "idHash": "79f2de575a8f",
+      "direction": "inbound",
+      "at": "2026-10-30T22:06:28.374334+00:00",
+      "text": "Que precio tiene esas 2 referencias",
+      "interpretation": {
+        "intencion": "consulta_producto",
+        "producto": null,
+        "productos": [
+          {
+            "marca": "Hill's",
+            "linea": "Prescription Diet",
+            "referencia": "c/d Multicare",
+            "especie": "gato",
+            "subcategoria": "concentrado",
+            "envase": null,
+            "presentacion": null,
+            "cantidad": null,
+            "estado": "pendiente",
+            "intencionPresentaciones": null,
+            "presentacionesDisponibles": [],
+            "textoVisible": "Hill's Prescription Diet Urinary Care c/d Multicare para gato",
+            "mencionOriginal": "esas 2 referencias"
+          },
+          {
+            "marca": "ADVANCE",
+            "linea": "Veterinary Diets",
+            "referencia": "URINARY",
+            "especie": "perro",
+            "subcategoria": "concentrado",
+            "envase": null,
+            "presentacion": "1.5kg",
+            "cantidad": null,
+            "estado": "pendiente",
+            "intencionPresentaciones": "especifica",
+            "presentacionesDisponibles": [],
+            "textoVisible": "Advance Veterinary Diets Urinary",
+            "mencionOriginal": "esas 2 referencias"
+          }
+        ]
+      }
+    },
+    {
+      "idHash": "b44c763a59f3",
+      "direction": "outbound",
+      "at": "2026-10-30T22:07:21.50651+00:00",
+      "text": "¿Qué presentación necesitas de Hill's Prescription Diet Urinary Care c/d Multicare para gato?"
+    },
+    {
+      "idHash": "7b81e71b6c6e",
+      "direction": "inbound",
+      "at": "2026-10-30T22:07:59.131779+00:00",
+      "text": "Que presentación tienes",
+      "interpretation": {
+        "intencion": "consulta_producto",
+        "producto": {
+          "marca": "Hill's",
+          "linea": "Prescription Diet",
+          "referencia": "c/d Multicare",
+          "especie": "gato",
+          "subcategoria": "concentrado",
+          "envase": null,
+          "presentacion": null,
+          "cantidad": null,
+          "intencionPresentaciones": "todas",
+          "textoVisible": "presentación de Hill's Prescription Diet Urinary Care c/d Multicare para gato",
+          "mencionOriginal": "Que presentación tienes"
+        },
+        "productos": [
+          {
+            "marca": "Hill's",
+            "linea": "Prescription Diet",
+            "referencia": "c/d Multicare",
+            "especie": "gato",
+            "subcategoria": "concentrado",
+            "envase": null,
+            "presentacion": null,
+            "cantidad": null,
+            "intencionPresentaciones": "todas",
+            "textoVisible": "presentación de Hill's Prescription Diet Urinary Care c/d Multicare para gato",
+            "mencionOriginal": "Que presentación tienes"
+          }
+        ]
+      }
+    },
+    {
+      "idHash": "e56c1563a630",
+      "direction": "inbound",
+      "at": "2026-10-30T22:08:06.767072+00:00",
+      "text": "y el advance urinary?",
+      "interpretation": {
+        "intencion": "consulta_producto",
+        "producto": {
+          "marca": "ADVANCE",
+          "linea": "Veterinary Diets",
+          "referencia": "ADVANCE URINAY",
+          "especie": null,
+          "subcategoria": "concentrado",
+          "envase": null,
+          "presentacion": "1.5kg",
+          "cantidad": null,
+          "intencionPresentaciones": "especifica",
+          "textoVisible": "Advance urinary",
+          "mencionOriginal": null
+        },
+        "productos": [
+          {
+            "marca": "ADVANCE",
+            "linea": null,
+            "referencia": "ADVANCE CAT URINARY",
+            "especie": "gato",
+            "subcategoria": "concentrado",
+            "envase": null,
+            "presentacion": "3kg",
+            "cantidad": null,
+            "intencionPresentaciones": "especifica",
+            "textoVisible": "Advance Cat Urinary",
+            "mencionOriginal": null
+          },
+          {
+            "marca": "ADVANCE",
+            "linea": null,
+            "referencia": "ADVANCE URINAY",
+            "especie": "gato",
+            "subcategoria": "concentrado",
+            "envase": null,
+            "presentacion": "1.5kg",
+            "cantidad": null,
+            "intencionPresentaciones": "especifica",
+            "textoVisible": "Advance Urinary (gato)",
+            "mencionOriginal": null
+          }
+        ]
+      }
+    },
+    {
+      "idHash": "a76647158ae6",
+      "direction": "outbound",
+      "at": "2026-10-30T22:09:09.675998+00:00",
+      "text": "Cotización:\n- 1 x ADVANCE URINAY 1.5kg: $108.000\nTotal cotizado: $108.000\n\n¿Qué presentación necesitas de Hill's Prescription Diet Urinary Care c/d Multicare para gato?"
+    },
+    {
+      "idHash": "fba65b019ea7",
+      "direction": "inbound",
+      "at": "2026-10-30T22:09:48.302283+00:00",
+      "text": "que presentación tienes de Hills",
+      "interpretation": {
+        "intencion": "consulta_producto",
+        "producto": {
+          "marca": "Hill's",
+          "linea": "Prescription Diet",
+          "referencia": "c/d Multicare",
+          "especie": "gato",
+          "subcategoria": "concentrado",
+          "envase": null,
+          "presentacion": null,
+          "cantidad": null,
+          "intencionPresentaciones": "todas",
+          "textoVisible": "presentación de Hills",
+          "mencionOriginal": "que presentación tienes de Hills"
+        },
+        "productos": [
+          {
+            "marca": "Hill's",
+            "linea": "Prescription Diet",
+            "referencia": "c/d Multicare",
+            "especie": "gato",
+            "subcategoria": "concentrado",
+            "envase": null,
+            "presentacion": null,
+            "cantidad": null,
+            "intencionPresentaciones": "todas",
+            "textoVisible": "presentación de Hills",
+            "mencionOriginal": "que presentación tienes de Hills"
+          }
+        ]
+      }
+    },
+    {
+      "idHash": "18baab78ac25",
+      "direction": "outbound",
+      "at": "2026-10-30T22:10:28.540793+00:00",
+      "text": "¿La buscas para gato o para perro?"
+    },
+    {
+      "idHash": "96b60e672475",
+      "direction": "inbound",
+      "at": "2026-10-30T22:10:45.197427+00:00",
+      "text": "gato",
+      "interpretation": {
+        "intencion": "consulta_producto",
+        "producto": {
+          "marca": null,
+          "linea": null,
+          "referencia": null,
+          "especie": "gato",
+          "subcategoria": null,
+          "envase": null,
+          "presentacion": null,
+          "cantidad": null,
+          "intencionPresentaciones": "todas",
+          "textoVisible": "Hill's",
+          "mencionOriginal": null
+        },
+        "productos": []
+      }
+    },
+    {
+      "idHash": "527873f8146c",
+      "direction": "outbound",
+      "at": "2026-10-30T22:11:22.873422+00:00",
+      "text": "Gracias, queda pendiente de revisión por un asesor. Veo que es para gato y que la marca es HILLS, pero en este chat todavía no hay un asesor asignado. Puedo seguir ayudándote con otras consultas si lo necesitas."
+    }
+  ]
+}

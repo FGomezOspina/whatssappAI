@@ -1,0 +1,377 @@
+{
+  "version": 2,
+  "scope": {
+    "timezone": "America/Bogota",
+    "from": "2026-10-30T00:00:00-05:00",
+    "through": "2026-10-30T09:35:19-05:00",
+    "captureCutoffUtc": "2026-10-30T14:35:19Z",
+    "source": "Authorized WhatsApp Business Safari window, real commercial chats",
+    "coverage": "4 customer chats plus 1 commercial-coordination chat excluded; partial accessible coverage, pagination not completed",
+    "priorCorpus": "28-29 October v1 unchanged"
+  },
+  "pricingPolicy": "Prices retained only in source text, never used for identity or scoring; no database updates.",
+  "chats": [
+    {
+      "id": "T01",
+      "priority": true,
+      "sequence": [
+        {
+          "at": "08:08",
+          "direction": "customer",
+          "text": "Hola buenos dias"
+        },
+        {
+          "at": "08:08",
+          "direction": "customer",
+          "text": "Me puedes regalar los precios de los sgtes alimentos"
+        },
+        {
+          "at": "08:09",
+          "direction": "customer",
+          "media": "7 forwarded photos: 4-tile album + 3 single images",
+          "mediaOriginalFiles": [],
+          "view": "Human pixel inspection of rendered inline previews; original viewer/file not obtained"
+        },
+        {
+          "at": "09:27",
+          "direction": "business_account",
+          "text": "Buenos días, ya te cotizo"
+        },
+        {
+          "at": "09:31",
+          "direction": "business_account",
+          "text": "Pro plan feline UR 96.600\nVIRBAC UROLOGY 2 1.5KG 130.500\n3KG 253.000\nHILLS FEL C/D 1.8KG 161.000\nADVANCE URINARY 3KG 196.000\nROYAL CANIN URINARY 1.5KG 135.000\nPRO PLAN LATA UR 14.200\nROYAL CANIN URINARY LATA no lo manejamos"
+        }
+      ],
+      "replyAfterQuoteBeforeCutoff": null,
+      "inference": "No customer acceptance or chosen quantities visible before cutoff. Account output authorship corroborated by user, not inferred merely from Tú."
+    },
+    {
+      "id": "T02",
+      "sequence": [
+        {
+          "at": "09:09",
+          "direction": "customer",
+          "media": "audio 6 seconds, not transcribed"
+        },
+        {
+          "at": "09:11",
+          "direction": "business_account",
+          "text": "Excellent esterilizado x3kg no viene"
+        },
+        {
+          "at": "09:11",
+          "direction": "business_account",
+          "text": "Solo x1kl"
+        },
+        {
+          "at": "09:11",
+          "direction": "business_account",
+          "text": "De gato adulto normal si viene x3kl"
+        },
+        {
+          "at": "09:11",
+          "direction": "customer",
+          "text": "A y a cómo ese"
+        },
+        {
+          "at": "09:12",
+          "direction": "customer",
+          "text": "Por favor"
+        },
+        {
+          "at": "09:12",
+          "direction": "business_account",
+          "text": "Excellent gato adulto x3kl 56.000"
+        },
+        {
+          "at": "09:14",
+          "direction": "customer",
+          "text": "Me  envía dos  de adulto de kilo porfa"
+        },
+        {
+          "at": "09:14",
+          "direction": "customer",
+          "text": "1 paquete de churu porfs"
+        },
+        {
+          "at": "09:17",
+          "direction": "business_account",
+          "text": "Sabor de churus?"
+        },
+        {
+          "at": "09:22",
+          "direction": "customer",
+          "text": "Que no sea morrado"
+        },
+        {
+          "at": "09:22",
+          "direction": "customer",
+          "text": "Porfa"
+        }
+      ],
+      "excluded": "Payment/banking text excluded. Audio unavailable. Churu flavor/pack not verified; negative color is not a catalog flavor alias."
+    },
+    {
+      "id": "T03",
+      "sequence": [
+        {
+          "at": "09:25",
+          "direction": "customer",
+          "text": "Buen día...DE pronto tiene estos medicamentos y a qué precio?"
+        },
+        {
+          "at": "09:25",
+          "direction": "customer",
+          "media": "1 formula image, inline preview pixels read manually",
+          "productTextRead": [
+            "B FEX JARABE",
+            "DERMOSYN SPRAY",
+            "A LAPIEL CREMA"
+          ],
+          "redaction": "Animal identifiers, prescription/dose instructions and clinician details not transcribed."
+        },
+        {
+          "at": "09:27",
+          "direction": "business_account",
+          "text": "Buen día, claro que sí tenemos disponibles: B-FEX jarabe por $25.900; Dermosyn spray de 50 ml por $31.500 y de 100 ml por $44.300; Alapiel 30.300",
+          "transcription": "Visually verified text; AX duplicated bullets, not duplicated products."
+        },
+        {
+          "at": "09:29",
+          "direction": "customer",
+          "text": "Hasta que hora es el horario?"
+        },
+        {
+          "at": "09:34",
+          "direction": "business_account",
+          "text": "Hasta las 5:30"
+        },
+        {
+          "at": "09:35",
+          "direction": "customer",
+          "text": "Muchas gracias",
+          "cutoffCaution": "Minute precision only; not used for identity or acceptance because second relative to cutoff unavailable."
+        }
+      ],
+      "inference": "Inquiry after quote is about schedule, not a product selection. Two Dermosyn sizes are alternatives. No dosing advice inferred."
+    },
+    {
+      "id": "T04",
+      "sequence": [
+        {
+          "at": "09:00",
+          "direction": "customer",
+          "text": "Buenos dias, una pregunta, maneja estas gotas?"
+        },
+        {
+          "at": "09:00",
+          "direction": "customer",
+          "media": "1 photo, preview stayed blurred on two observations; original unavailable"
+        },
+        {
+          "at": "09:01",
+          "direction": "business_account",
+          "text": "Buenos dias, nos llegaria para hoy si dios quiere"
+        },
+        {
+          "at": "09:01",
+          "direction": "customer",
+          "text": "Y que costo tienen?"
+        },
+        {
+          "at": "09:02",
+          "direction": "business_account",
+          "text": "120.000"
+        }
+      ],
+      "laterContext": "Delivery question and fee at09:15-09:16, no product identity. Destination omitted.",
+      "excluded": "No legible label or nominal identity. Price alone never maps to a reference. Arrival expectation is not confirmed availability."
+    },
+    {
+      "id": "T05",
+      "excluded": "Commercial coordination about seller visit with two forwarded audios, not a new customer identification request. No attachments or prior payment documents opened."
+    }
+  ],
+  "probes": [
+    {
+      "id": "T01-01",
+      "origin": "real_conversation_manual_reconstruction",
+      "manualMatchingInput": "PRO PLAN FELINE UR concentrado",
+      "expected": {
+        "decision": "identify",
+        "referenceNames": [
+          "PRO PLAN FELINE UR"
+        ],
+        "referenceId": "c7bd39ca-5555-4f3f-a143-89720a5d49f5"
+      },
+      "evidence": "Album upper left: PURINA PRO PLAN Veterinary Diets UR, feline formula. Adviser Feline UR. Weight unreadable and absent from reply; catalog has 1.5kg but it is not a customer-selected weight.",
+      "automaticImageEvaluation": false
+    },
+    {
+      "id": "T01-02",
+      "origin": "real_conversation_manual_reconstruction",
+      "manualMatchingInput": "VIRBAC CAT UROLOGY 2 1.5kg",
+      "expected": {
+        "decision": "identify",
+        "referenceNames": [
+          "VIRBAC CAT UROLOGY 2"
+        ],
+        "referenceId": "d8b0baed-e736-4c23-b7d6-d70546849d82",
+        "presentationId": "f5ecff29-5301-4e12-8374-28a124df6ae2"
+      },
+      "evidence": "Adviser offers 1.5kg and 3kg under Urology2; photo says Virbac CAT Urology2, 3kg. 1.5kg is an offered alternative, not selected by customer.",
+      "automaticImageEvaluation": false
+    },
+    {
+      "id": "T01-03",
+      "origin": "real_conversation_manual_reconstruction",
+      "manualMatchingInput": "VIRBAC UROLOGY 2 3kg",
+      "expected": {
+        "decision": "identify",
+        "referenceNames": [
+          "VIRBAC UROLOGY 2",
+          "VIRBAC CAT UROLOGY 2"
+        ],
+        "referenceId": "d4765997-a923-40f7-bd5c-562ab26a2d10",
+        "presentationId": "a150e063-8494-49a8-8bfb-dc65afdf62a8"
+      },
+      "evidence": "Album upper right: CAT, UROLOGY, 2, 3kg. Adviser quotes this size separately. No customer choice of size after quote.",
+      "automaticImageEvaluation": false
+    },
+    {
+      "id": "T01-04",
+      "origin": "real_conversation_manual_reconstruction",
+      "manualMatchingInput": "HILLS FEL C/D 1.8kg",
+      "expected": {
+        "decision": "identify",
+        "referenceNames": [
+          "HILLS FEL C/D"
+        ],
+        "referenceId": "3539f23c-f725-4c1d-9d8b-2f83b5cc7bc2",
+        "presentationId": "c31016c3-51ff-4720-8781-437d9cae07b1"
+      },
+      "evidence": "Album lower left: Hills Prescription Diet Urinary Care c/d Multicare, cat image. Adviser provides 1.8kg. Weight from adviser, not legible photo.",
+      "automaticImageEvaluation": false
+    },
+    {
+      "id": "T01-05",
+      "origin": "real_conversation_manual_reconstruction",
+      "manualMatchingInput": "ADVANCE CAT URINARY 3kg",
+      "expected": {
+        "decision": "identify",
+        "referenceNames": [
+          "ADVANCE CAT URINARY"
+        ],
+        "referenceId": "d2e3344f-ea7d-4652-abf2-ef313c468bd2",
+        "presentationId": "84ce8dea-b140-4318-8f22-e4de9be3a4f7"
+      },
+      "evidence": "Album lower right: Advance Veterinary Diets Urinary. Small label/weight not reliably read. Adviser 3kg; species corroborated by catalog, not confidently read in preview.",
+      "automaticImageEvaluation": false
+    },
+    {
+      "id": "T01-06",
+      "origin": "real_conversation_manual_reconstruction",
+      "manualMatchingInput": "ROYAL CANIN URINARY S/O concentrado 1.5kg",
+      "expected": {
+        "decision": "identify",
+        "referenceNames": [
+          "ROYAL CANIN URINAY CAT S/O"
+        ],
+        "referenceId": "0505ae8c-32d8-46fa-8f7a-e2bd48c83ef2",
+        "presentationId": "a4bcd36e-b0e7-4da1-b300-574eacc49d50"
+      },
+      "evidence": "Fifth image bag: Royal Canin Urinary S/O, cat. Adviser 1.5kg. Catalog has typo URINAY; no price used.",
+      "automaticImageEvaluation": false
+    },
+    {
+      "id": "T01-07",
+      "origin": "real_conversation_manual_reconstruction",
+      "manualMatchingInput": "PRO PLAN FELINE LATA UR 156g",
+      "expected": {
+        "decision": "identify",
+        "referenceNames": [
+          "PRO PLAN FELINE LATA UR"
+        ],
+        "referenceId": "4d75980f-c69e-4fc1-bd00-3f1a9d7160ec",
+        "presentationVerified": false
+      },
+      "evidence": "Sixth image: PURINA PRO PLAN Veterinary Diets UR, feline, 5.5oz (156g), can. Adviser omits feline/size. Catalog has unidad with no gram value; identity supported, exact 156g mapping unverified.",
+      "automaticImageEvaluation": false
+    },
+    {
+      "id": "T01-08",
+      "origin": "real_conversation_manual_reconstruction",
+      "manualMatchingInput": "ROYAL CANIN URINARY SO gato lata",
+      "expected": {
+        "decision": "abstain",
+        "referenceNames": []
+      },
+      "evidence": "Seventh image: Royal Canin Urinary SO can, cat. Adviser explicitly says no lo manejamos. No corresponding wet can row found in active tenant snapshot. Never substitute dry bag.",
+      "automaticImageEvaluation": false
+    },
+    {
+      "id": "T02-01",
+      "origin": "real_conversation_manual_reconstruction",
+      "manualMatchingInput": "2 Excellent gato adulto 1kg",
+      "expected": {
+        "decision": "identify",
+        "referenceNames": [
+          "EXCELLENT GATO ADULT"
+        ],
+        "referenceId": "1d4e553d-e7e5-491f-9a9a-b0bc2c1cf779",
+        "presentationId": "752b60c7-2394-4d33-b989-46fe268affe0"
+      },
+      "evidence": "Manual contextual reconstruction: adviser adult3kg, client later requests two adult1kg. Earlier 6-second audio unavailable; do not infer its contents. Quantity2 independent of presentation1kg.",
+      "automaticImageEvaluation": false
+    },
+    {
+      "id": "T03-01",
+      "origin": "real_conversation_manual_image_reading",
+      "manualMatchingInput": "B FEX jarabe",
+      "expected": {
+        "decision": "abstain",
+        "referenceNames": []
+      },
+      "evidence": "Image says B FEX JARABE; adviser B-FEX jarabe. No corresponding name in1116 active raw rows; missing catalog candidate, not a typo-equivalence claim.",
+      "automaticImageEvaluation": false
+    },
+    {
+      "id": "T03-02",
+      "origin": "real_conversation_manual_image_reading",
+      "manualMatchingInput": "DERMOSYN spray",
+      "expected": {
+        "decision": "clarify",
+        "referenceNames": [
+          "DERMOSYN"
+        ],
+        "referenceId": "7a87b810-9fab-419d-83bc-4fb6298779fb"
+      },
+      "evidence": "Image and adviser identify Dermosyn spray; catalog name DERMOSYN with50ml/100ml but no declared spray form. Retain exact candidate and verify form; no Dermobest substitution.",
+      "automaticImageEvaluation": false
+    },
+    {
+      "id": "T03-03",
+      "origin": "real_conversation_manual_image_reading",
+      "manualMatchingInput": "A LAPIEL crema",
+      "expected": {
+        "decision": "clarify",
+        "referenceNames": [
+          "ALAPIEL"
+        ],
+        "referenceId": "9998d849-5fa6-456b-bbe2-9cfa46d492d7"
+      },
+      "evidence": "Image spaced A LAPIEL CREMA; adviser Alapiel; catalog ALAPIEL35gr lacks cream form metadata. Segmentation is catalog-derived. Weight not selected by client.",
+      "automaticImageEvaluation": false
+    }
+  ],
+  "pendingOpenAI": {
+    "authorized": false,
+    "originalMediaMissing": 9,
+    "audioMissing": 1,
+    "automaticImageCasesExcluded": 9,
+    "requires": "Recover original images/audio before same-media replay. Do not pass manualMatchingInput as original customer text or claim model perception. Keep this corpus immutable.",
+    "coordinationAudiosExcluded": 2
+  },
+  "parentVersion": 1
+}

@@ -1,0 +1,156 @@
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=45 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=si | continuarFlujo=si | interpretacion=recibida
+[Catalog Match] cliente=anonymous-isolated-sales | nivel=alta | razon=marca_y_presentacion | terminos="maiz cat" | score=0 | diferencia=0
+[Router] Interaccion | cliente=isolated-sales-validation | usuario=anonymous-isolated-sales | intencion=busqueda_producto | complejidad=normal | vision=no | audio=no | catalogoIA=undefined/undefined | estrategia=undefined | topScore=n/a | secondScore=n/a
+[Catalog Match] cliente=anonymous-isolated-sales | nivel=alta | razon=marca_y_presentacion | terminos="maiz cat" | score=0 | diferencia=0
+[OpenAI] Interpretacion IA | cliente=anonymous-isolated-sales | intencion=pedido_producto | accion=agregar | marca=ARENA MAIZ CAT | referencia=ARENA MAIZ CAT | etapa=null | tamano=null | presentacion=20kg | confianza=0.96
+[AI Usage Summary] cliente=isolated-sales-validation | usuario=anonymous-isolated-sales | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=45 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=si | continuarFlujo=si | interpretacion=recibida
+[Catalog Match] cliente=anonymous-isolated-sales | nivel=alta | razon=marca_y_presentacion | terminos="maiz cat" | score=0 | diferencia=0
+[Router] Interaccion | cliente=isolated-sales-validation | usuario=anonymous-isolated-sales | intencion=busqueda_producto | complejidad=normal | vision=no | audio=no | catalogoIA=undefined/undefined | estrategia=undefined | topScore=n/a | secondScore=n/a
+[Catalog Match] cliente=anonymous-isolated-sales | nivel=alta | razon=marca_y_presentacion | terminos="maiz cat" | score=0 | diferencia=0
+[OpenAI] Interpretacion IA | cliente=anonymous-isolated-sales | intencion=pedido_producto | accion=agregar | marca=ARENA MAIZ CAT | referencia=ARENA MAIZ CAT | etapa=null | tamano=null | presentacion=20kg | confianza=0.96
+[AI Usage Summary] cliente=isolated-sales-validation | usuario=anonymous-isolated-sales | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=16 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=no | continuarFlujo=si | interpretacion=recibida
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=59 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=no | continuarFlujo=si | interpretacion=recibida
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=45 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=si | continuarFlujo=si | interpretacion=recibida
+[Catalog Match] cliente=anonymous-isolated-sales | nivel=alta | razon=marca_y_presentacion | terminos="maiz cat" | score=0 | diferencia=0
+[Router] Interaccion | cliente=isolated-sales-validation | usuario=anonymous-isolated-sales | intencion=busqueda_producto | complejidad=normal | vision=no | audio=no | catalogoIA=undefined/undefined | estrategia=undefined | topScore=n/a | secondScore=n/a
+[Catalog Match] cliente=anonymous-isolated-sales | nivel=alta | razon=marca_y_presentacion | terminos="maiz cat" | score=0 | diferencia=0
+[OpenAI] Interpretacion IA | cliente=anonymous-isolated-sales | intencion=pedido_producto | accion=agregar | marca=ARENA MAIZ CAT | referencia=ARENA MAIZ CAT | etapa=null | tamano=null | presentacion=20kg | confianza=0.96
+[AI Usage Summary] cliente=isolated-sales-validation | usuario=anonymous-isolated-sales | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=16 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=no | continuarFlujo=si | interpretacion=recibida
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=59 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=no | continuarFlujo=si | interpretacion=recibida
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=28 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=no | continuarFlujo=no | interpretacion=recibida
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=44 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=no | continuarFlujo=no | interpretacion=recibida
+[Cart Operation] {"action":"modificar_cantidad","targetResolved":false,"mutationApplied":false,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"modificar_cantidad","targetResolved":true,"mutationApplied":false,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"modificar_cantidad","targetResolved":true,"mutationApplied":true,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"modificar_cantidad","targetResolved":false,"mutationApplied":false,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"modificar_cantidad","targetResolved":true,"mutationApplied":false,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"modificar_cantidad","targetResolved":true,"mutationApplied":true,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"agregar","targetResolved":false,"mutationApplied":false,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"agregar","targetResolved":true,"mutationApplied":false,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"agregar","targetResolved":true,"mutationApplied":true,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"agregar","targetResolved":false,"mutationApplied":false,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"agregar","targetResolved":true,"mutationApplied":false,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"agregar","targetResolved":true,"mutationApplied":true,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"quitar","targetResolved":false,"mutationApplied":false,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"quitar","targetResolved":true,"mutationApplied":false,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"quitar","targetResolved":true,"mutationApplied":true,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"quitar","targetResolved":false,"mutationApplied":false,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"quitar","targetResolved":true,"mutationApplied":false,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"quitar","targetResolved":true,"mutationApplied":true,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"mantener_solo","targetResolved":false,"mutationApplied":false,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"mantener_solo","targetResolved":true,"mutationApplied":false,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"mantener_solo","targetResolved":true,"mutationApplied":true,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"mantener_solo","targetResolved":false,"mutationApplied":false,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"mantener_solo","targetResolved":true,"mutationApplied":false,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"mantener_solo","targetResolved":true,"mutationApplied":true,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=16 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=no | continuarFlujo=si | interpretacion=recibida
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=59 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=no | continuarFlujo=no | interpretacion=recibida
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=28 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Cart Operation] {"action":"modificar_cantidad","targetResolved":false,"mutationApplied":false,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"modificar_cantidad","targetResolved":true,"mutationApplied":false,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"modificar_cantidad","targetResolved":true,"mutationApplied":true,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=16 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=no | continuarFlujo=si | interpretacion=recibida
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=23 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Cart Operation] {"action":"quitar","targetResolved":false,"mutationApplied":false,"catalogLookup":false,"target":"BETA BETA ARENA"}
+[Cart Operation] {"action":"quitar","targetResolved":true,"mutationApplied":false,"catalogLookup":false,"target":"BETA BETA ARENA"}
+[Cart Operation] {"action":"quitar","targetResolved":true,"mutationApplied":true,"catalogLookup":false,"target":"BETA BETA ARENA"}
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=16 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=no | continuarFlujo=si | interpretacion=recibida
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=59 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=no | continuarFlujo=no | interpretacion=recibida
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=28 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=no | continuarFlujo=no | interpretacion=recibida
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=44 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=no | continuarFlujo=no | interpretacion=recibida
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=28 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Cart Operation] {"action":"modificar_cantidad","targetResolved":false,"mutationApplied":false,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"modificar_cantidad","targetResolved":true,"mutationApplied":false,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"modificar_cantidad","targetResolved":true,"mutationApplied":true,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=16 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=no | continuarFlujo=si | interpretacion=recibida
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=23 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Cart Operation] {"action":"quitar","targetResolved":false,"mutationApplied":false,"catalogLookup":false,"target":"BETA BETA ARENA"}
+[Cart Operation] {"action":"quitar","targetResolved":true,"mutationApplied":false,"catalogLookup":false,"target":"BETA BETA ARENA"}
+[Cart Operation] {"action":"quitar","targetResolved":true,"mutationApplied":true,"catalogLookup":false,"target":"BETA BETA ARENA"}
+[Cart Operation] {"action":"modificar_cantidad","targetResolved":false,"mutationApplied":false,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"modificar_cantidad","targetResolved":true,"mutationApplied":false,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"modificar_cantidad","targetResolved":true,"mutationApplied":true,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"modificar_cantidad","targetResolved":false,"mutationApplied":false,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"modificar_cantidad","targetResolved":true,"mutationApplied":false,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"modificar_cantidad","targetResolved":true,"mutationApplied":true,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+✔ replay offline de la interpretación OpenAI guardada: dirección pide solo datos faltantes (45.841916ms)
+✔ replay completo en memoria: corrección dirección y factura=false (11.391916ms)
+✔ replay completo en memoria: corrección dirección y factura=true (11.646667ms)
+✔ carrito modificar_cantidad, datos completos=false: conserva entrega y vuelve a confirmar (0.795416ms)
+✔ carrito modificar_cantidad, datos completos=true: conserva entrega y vuelve a confirmar (0.261125ms)
+✔ carrito agregar, datos completos=false: conserva entrega y vuelve a confirmar (0.15125ms)
+✔ carrito agregar, datos completos=true: conserva entrega y vuelve a confirmar (0.143166ms)
+✔ carrito quitar, datos completos=false: conserva entrega y vuelve a confirmar (0.13125ms)
+✔ carrito quitar, datos completos=true: conserva entrega y vuelve a confirmar (0.124583ms)
+✔ carrito mantener_solo, datos completos=false: conserva entrega y vuelve a confirmar (0.743542ms)
+✔ carrito mantener_solo, datos completos=true: conserva entrega y vuelve a confirmar (0.420167ms)
+✔ conversación completa con cambios de carrito después de datos, factura=false (6.332667ms)
+✔ conversación completa con cambios de carrito después de datos, factura=true (9.107666ms)
+✔ retirar todas las unidades nunca solicita datos ni confirma un carrito vacío (0.327917ms)
+✔ datos de un pedido anterior requieren confirmar dirección antes de continuar (0.20425ms)
+[AI Usage Summary] cliente=progreso | usuario=progreso | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=progreso | usuario=progreso | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=progreso | usuario=progreso | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=progreso | usuario=progreso | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=progreso | usuario=progreso | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=progreso | usuario=progreso | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+✔ aceptar cotizacion (confirmar) ejecuta carrito, datos, pago y resumen sin depender de continuarFlujo (57.475792ms)
+✔ aceptar cotizacion (agregar) ejecuta carrito, datos, pago y resumen sin depender de continuarFlujo (9.182042ms)
+✔ mostrar carrito vacio da estado real y no promete un resumen inexistente (1.0545ms)
+✔ un si ambiguo o una consulta de precio no aceptan automaticamente una cotizacion (1.742209ms)
+✔ confirmar avance con carrito sin banderas pendientes ejecuta entrega (2.203167ms)
+✔ solicitud de envio convierte cotizacion persistida en carrito sin reconfirmar identidad (16.240791ms)
+✔ aceptacion sin repetir producto conserva la cantidad nueva y recupera aclaracion redundante (13.902584ms)
+[AI Usage Summary] cliente=prueba | usuario=prueba | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=prueba | usuario=prueba | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=prueba | usuario=prueba | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=prueba | usuario=prueba | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+✔ aclaracion ofrece referencias del peso y formato solicitado, sin latas ni juguetes (12.476417ms)
+✔ compra conserva su operacion tras aclarar referencia y reiniciar estado persistido (54.705958ms)
+✔ cotizacion conserva su operacion tras aclarar referencia y reiniciar estado persistido (16.278166ms)
+[AI Usage Summary] cliente=sales-test | usuario=synthetic | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=sales-test | usuario=synthetic | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=sales-test | usuario=synthetic | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=sales-test | usuario=synthetic | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=sales-test | usuario=synthetic | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=sales-test | usuario=synthetic | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=sales-test | usuario=synthetic | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+✔ direccion tras cotizacion con router otro; pendientes antiguos=false (53.92475ms)
+✔ direccion tras cotizacion con router otro; pendientes antiguos=true (5.8935ms)
+✔ cotizacion nueva, direccion, correccion y datos completos conservan dos unidades sin duplicar (11.90625ms)
+✔ direccion no equivale a compra: ¿Llegan a Calle 10 # 20-30? (1.126458ms)
+✔ direccion no equivale a compra: No quiero comprar, Calle 10 # 20-30 (1.174667ms)
+✔ direccion no equivale a compra: Si compro, Calle 10 # 20-30 (0.983333ms)
+✔ pago afirmativo retoma cotizacion; consulta de pago no compra (5.756459ms)
+✔ direccion entre varias presentaciones aclara sin comprar todas (1.136917ms)
+✔ direccion sin cotizacion conserva dato sin inventar productos (0.87275ms)
+✔ venta completa local hasta confirmacion, factura=false (6.438833ms)
+✔ venta completa local hasta confirmacion, factura=true (10.158667ms)
+ℹ tests 36
+ℹ suites 0
+ℹ pass 36
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 154.015708

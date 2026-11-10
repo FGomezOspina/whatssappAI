@@ -1,0 +1,100 @@
+{
+  "status": "matriz de identificación completada",
+  "summary": "Los 15 casos de la matriz tienen la decisión de identidad esperada en su última ejecución: ocho resoluciones de identidad/presentación o cantidad, tres abstenciones, dos aclaraciones, una presentación ausente y una recomendación. Incluye una nueva secuencia Royal Canin introducida y observada por Safari. No significa reconocimiento universal del catálogo.",
+  "localTests": "1125/1125",
+  "cases": [
+    {
+      "id": "S01",
+      "expected": "{\"reference\":\"CAT CHOW DELICARNE\",\"presentation\":\"500gr\"}",
+      "outcome": "pasa",
+      "evidence": "Recuperación única correcta; no repetida."
+    },
+    {
+      "id": "S02",
+      "expected": "{\"abstainUnavailablePresentation\":true,\"forbidWet\":true}",
+      "outcome": "pasa en identidad/presentación",
+      "evidence": "Nueva entrada UI 13:34:10; respuesta 13:34:53, entregada 13:34:54. No hay7kg; conservaRoyalCanin2kg. Redacción disponible no verifica stock."
+    },
+    {
+      "id": "S03",
+      "expected": "{\"reference\":\"ROYALCANIN GASTROINTESTINAL PERRO\",\"presentation\":\"2kg\",\"inherits\":\"S02\"}",
+      "outcome": "pasa",
+      "evidence": "Nueva corrección UI13:35:30; respuesta13:36:13, entregada13:36:14. ROYALCANIN GASTROINTESTINAL PERRO2kg, $129.000, stock por confirmar."
+    },
+    {
+      "id": "S04",
+      "expected": "{\"reference\":\"PRO PLAN CANINE UR\",\"presentation\":\"2kg\",\"oneBufferedReply\":true}",
+      "outcome": "pasa",
+      "evidence": "Dos entradas consecutivas, una respuesta correcta PRO PLAN CANINE UR 2kg."
+    },
+    {
+      "id": "S05",
+      "expected": "{\"reference\":\"PRO PLAN CANINE LATA UR\",\"format\":\"lata\",\"inherits\":\"S04\"}",
+      "outcome": "pasa",
+      "evidence": "Lata PRO PLAN CANINE LATA UR por $28.600, precio propio."
+    },
+    {
+      "id": "S06",
+      "expected": "{\"reference\":\"PRO PLAN POUCH FELINO KITTEN\",\"format\":\"sobre\",\"presentation\":\"85gr\"}",
+      "outcome": "pasa",
+      "evidence": "Respuesta visible: PRO PLAN POUCH FELINO KITTEN 85gr, $6.200; existencias por confirmar."
+    },
+    {
+      "id": "S07",
+      "expected": "{\"clarifyPack\":true,\"forbidUnitQuoteAsPack\":true}",
+      "outcome": "pasa",
+      "evidence": "Salida Kapso entregada 13:18:02 Colombia; observada en Safari al reanudar. No se repitió."
+    },
+    {
+      "id": "S08",
+      "expected": "{\"abstain\":true,\"forbidReference\":\"BR SNACK CAT SOFTY SKIN COAT\"}",
+      "outcome": "pasa (abstención segura)",
+      "evidence": "Entrada por compositor Safari 13:26; respuesta visible no sustituyó por Skin Coat de otra marca. Redacción extensa, pendiente de pulido."
+    },
+    {
+      "id": "S09",
+      "expected": "{\"reference\":\"DIAMOND INDOOR CAT\",\"presentation\":\"500gr\"}",
+      "outcome": "pasa",
+      "evidence": "Safari 13:27: DIAMOND INDOOR CAT 500gr por $19.500; catálogo y presentación correctos."
+    },
+    {
+      "id": "S10",
+      "expected": "{\"recommendation\":true,\"noCart\":true}",
+      "outcome": "pasa",
+      "evidence": "Tres opciones de gato cachorro: sobre Kitten, lata Kitten Loaf y concentrado Kitten. Pregunta formato; carrito vacío."
+    },
+    {
+      "id": "S11",
+      "expected": "{\"abstain\":true,\"noInventedProduct\":true}",
+      "outcome": "pasa (abstención segura)",
+      "evidence": "Tras recomendación, ZetaPruebaQ9 ZQ17 no se identificó ni heredó otro producto. Respuesta visible 13:30."
+    },
+    {
+      "id": "S12",
+      "expected": "{\"abstain\":true,\"forbidSubstitution\":\"ROYALCANIN GASTROINTESTINAL PERRO\"}",
+      "outcome": "pasa (abstención segura)",
+      "evidence": "Bonnat Gastrointestinal no fue sustituido por Royal Canin. Salida visible 13:31, sin cotización falsa."
+    },
+    {
+      "id": "S13",
+      "expected": "{\"reference\":\"PRO PLAN POUCH FELINO KITTEN\",\"presentation\":\"85gr\",\"quantity\":3,\"inherits\":\"S06\",\"noCart\":true}",
+      "outcome": "pasa",
+      "evidence": "Tres sobres Kitten 85gr: $6.200 c/u, total $18.600. Carrito vacío, cero pedidos."
+    },
+    {
+      "id": "S14",
+      "expected": "{\"reference\":\"CANISAN D\",\"presentation\":\"5ml\",\"noCart\":true}",
+      "outcome": "pasa",
+      "evidence": "CANISAN D de 5ml identificado, $21.500, salida visible 13:32."
+    },
+    {
+      "id": "S15",
+      "expected": "{\"clarifyFoodForm\":true,\"forbidForcedFormat\":true,\"noCart\":true}",
+      "outcome": "pasa (aclaración necesaria)",
+      "evidence": "Feline EN distinguió concentrado 1.5kg y lata por unidad; preguntó formato sin forzar ninguno. Visible 13:33."
+    }
+  ],
+  "persistence": "32 entradas nuevas procesadas, 29 salidas incluyendo la recuperación original Cat Chow, 29 ejecuciones con una llamada de envío por ejecución y cuatro grupos dobles de entrada. Ninguna entrada nueva pendiente, carrito vacío y cero pedidos.",
+  "remaining": "No quedan casos de texto de esta matriz sin ejecutar. Persisten límites: originales de imagen/audio no disponibles; cobertura de chats comerciales parcial; respuestas de abstención extensas; en el turno de 7kg la palabra disponible puede interpretarse como stock aunque stock es null. Se puntuó identidad y presentación, no se validó esa afirmación de existencias. La secuencia Royal Canin histórica tiene recibos Kapso pero no una captura exportada de su método de entrada. La nueva repetición13:34–13:36 sí fue introducida y observada por UI Safari y está entregada. No se borraron ni ocultaron fallos intermedios.",
+  "runtime": "Servidor local reanudado con autorización: PID43441, sesión temporal53681, inicio18:24:42UTC, huella bc886e1fa3a497300ae9d7a5a3169c0e669a210240094b66223585e456185d4e. No hay evidencia suficiente para explicar por qué terminó la sesión anterior. Sin instalación de servicio permanente, modelos intactos, captura de aprendizaje desactivada."
+}

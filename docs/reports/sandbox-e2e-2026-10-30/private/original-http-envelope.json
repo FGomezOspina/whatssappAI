@@ -1,0 +1,85 @@
+{
+  "requestId": "airt_3LO54p3oWCqeg25NJavR2r5JaiI",
+  "originalAt": "2026-10-29T17:14:44-05:00",
+  "payload": {
+    "type": "whatsapp.message.received",
+    "batch": true,
+    "data": [
+      {
+        "message": {
+          "context": null,
+          "from": "573158994163",
+          "from_parent_user_id": null,
+          "from_user_id": "CO.1030198442801005",
+          "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDFCRjdCQURDNjM1N0EyMkMyRgA=",
+          "kapso": {
+            "direction": "inbound",
+            "status": "delivered",
+            "processing_status": "pending",
+            "has_media": false,
+            "origin": "cloud_api",
+            "content": "Me dices el precio de cat chow delicrne, quinientos gramos?"
+          },
+          "text": {
+            "body": "Me dices el precio de cat chow delicrne, quinientos gramos?"
+          },
+          "timestamp": "1793312078",
+          "type": "text",
+          "username": null
+        },
+        "conversation": {
+          "id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "business_scoped_user_id": "CO.1030198442801005",
+          "contact_name": "distrifincapereira",
+          "created_at": "2026-10-28T11:49:47-03:00",
+          "kapso": {
+            "messages_count": 146,
+            "last_message_id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDFCRjdCQURDNjM1N0EyMkMyRgA=",
+            "last_message_type": "text",
+            "last_message_timestamp": "2026-10-29T22:14:38.708728Z",
+            "last_message_text": "Me dices el precio de cat chow delicrne, quinientos gramos?",
+            "last_inbound_at": "2026-10-29T22:14:38.708728Z",
+            "last_outbound_at": "2026-10-29T22:14:15.951173Z"
+          },
+          "last_active_at": "2026-10-29T19:14:38-03:00",
+          "metadata": {},
+          "parent_business_scoped_user_id": null,
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "status": "active",
+          "updated_at": "2026-10-29T19:14:38-03:00",
+          "username": null
+        },
+        "is_new_conversation": false,
+        "phone_number_id": "597907523413541"
+      }
+    ],
+    "batch_info": {
+      "size": 1,
+      "window_ms": 5000,
+      "first_sequence": 84,
+      "last_sequence": 84,
+      "conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b"
+    }
+  },
+  "body": "{\"type\":\"whatsapp.message.received\",\"batch\":true,\"data\":[{\"message\":{\"context\":null,\"from\":\"573158994163\",\"from_parent_user_id\":null,\"from_user_id\":\"CO.1030198442801005\",\"id\":\"wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDFCRjdCQURDNjM1N0EyMkMyRgA=\",\"kapso\":{\"direction\":\"inbound\",\"status\":\"delivered\",\"processing_status\":\"pending\",\"has_media\":false,\"origin\":\"cloud_api\",\"content\":\"Me dices el precio de cat chow delicrne, quinientos gramos?\"},\"text\":{\"body\":\"Me dices el precio de cat chow delicrne, quinientos gramos?\"},\"timestamp\":\"1793312078\",\"type\":\"text\",\"username\":null},\"conversation\":{\"id\":\"2135d638-ce1a-4c85-adce-be893117d55b\",\"business_scoped_user_id\":\"CO.1030198442801005\",\"contact_name\":\"distrifincapereira\",\"created_at\":\"2026-10-28T11:49:47-03:00\",\"kapso\":{\"messages_count\":146,\"last_message_id\":\"wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDFCRjdCQURDNjM1N0EyMkMyRgA=\",\"last_message_type\":\"text\",\"last_message_timestamp\":\"2026-10-29T22:14:38.708728Z\",\"last_message_text\":\"Me dices el precio de cat chow delicrne, quinientos gramos?\",\"last_inbound_at\":\"2026-10-29T22:14:38.708728Z\",\"last_outbound_at\":\"2026-10-29T22:14:15.951173Z\"},\"last_active_at\":\"2026-10-29T19:14:38-03:00\",\"metadata\":{},\"parent_business_scoped_user_id\":null,\"phone_number\":\"573158994163\",\"phone_number_id\":\"597907523413541\",\"status\":\"active\",\"updated_at\":\"2026-10-29T19:14:38-03:00\",\"username\":null},\"is_new_conversation\":false,\"phone_number_id\":\"597907523413541\"}],\"batch_info\":{\"size\":1,\"window_ms\":5000,\"first_sequence\":84,\"last_sequence\":84,\"conversation_id\":\"2135d638-ce1a-4c85-adce-be893117d55b\"}}",
+  "headers": {
+    "host": "lion-payee-flatfoot.ngrok-free.dev",
+    "user-agent": "Ruby",
+    "content-length": "1578",
+    "accept": "*/*",
+    "accept-encoding": "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
+    "baggage": "sentry-trace_id=99d79f6b3ec24682b3c36ca9ea3d178b,sentry-sample_rate=0.0003,sentry-sample_rand=0.415589,sentry-sampled=false,sentry-environment=production,sentry-release=ced9f1b680b3fc57feab35c60464f7b60556f621,sentry-public_key=8ca2cccc6fc9b2350baf295c391c484b,sentry-org_id=4507091170885632",
+    "content-type": "application/json",
+    "sentry-trace": "99d79f6b3ec24682b3c36ca9ea3d178b-51980a26e4714a02-0",
+    "x-batch-size": "1",
+    "x-forwarded-for": "74.220.48.221",
+    "x-forwarded-host": "lion-payee-flatfoot.ngrok-free.dev",
+    "x-forwarded-proto": "https",
+    "x-idempotency-key": "75eddea796688e3fdbaad1ffbcd2a251d647be193ef5c938a94c24d02cded816",
+    "x-webhook-batch": "true",
+    "x-webhook-event": "whatsapp.message.received",
+    "x-webhook-payload-version": "v2",
+    "x-webhook-signature": "bf08cb9a0e51bb4e925a8413f7a5a78f8b3352728db77b99e083decb3efeeffa"
+  }
+}

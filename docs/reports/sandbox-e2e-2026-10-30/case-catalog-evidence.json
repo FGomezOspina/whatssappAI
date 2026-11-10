@@ -1,0 +1,229 @@
+{
+  "snapshotAt": "2026-10-30T17:27:51.062Z",
+  "refs": [
+    {
+      "case": "S01",
+      "expected": {
+        "reference": "CAT CHOW DELICARNE",
+        "presentation": "500gr"
+      },
+      "matches": [
+        {
+          "id": "a9c84c8b-ed3a-44bf-be59-3095f8f73efa",
+          "name": "CAT CHOW DELICARNE",
+          "brand": "CAT CHOW",
+          "species": "gato",
+          "subcategory": "concentrado",
+          "presentations": [
+            {
+              "id": "ba538a9a-a545-4d2d-992b-823321d83795",
+              "weight": "x 1.5 kg",
+              "active": true,
+              "stock": null
+            },
+            {
+              "id": "93b7760d-897d-44c8-9ec2-bd432bec785f",
+              "weight": "x 15 kg",
+              "active": true,
+              "stock": null
+            },
+            {
+              "id": "f43c7bfb-05fa-44aa-b127-09216219716c",
+              "weight": "x 500 gr",
+              "active": true,
+              "stock": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "S03",
+      "expected": {
+        "reference": "ROYALCANIN GASTROINTESTINAL PERRO",
+        "presentation": "2kg",
+        "inherits": "S02"
+      },
+      "matches": [
+        {
+          "id": "2765c462-c1bf-43cf-babc-0750dd39caa0",
+          "name": "ROYALCANIN GASTROINTESTINAL PERRO",
+          "brand": "ROYALCANIN",
+          "species": "perro",
+          "subcategory": "concentrado",
+          "presentations": [
+            {
+              "id": "34ec64ae-9da7-4d33-8b71-31b24d2ae98a",
+              "weight": "2kg",
+              "active": true,
+              "stock": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "S04",
+      "expected": {
+        "reference": "PRO PLAN CANINE UR",
+        "presentation": "2kg",
+        "oneBufferedReply": true
+      },
+      "matches": [
+        {
+          "id": "900230bf-4cf5-4522-afb6-739f0275909f",
+          "name": "PRO PLAN CANINE UR",
+          "brand": "PRO PLAN",
+          "species": "perro",
+          "subcategory": "concentrado",
+          "presentations": [
+            {
+              "id": "81213977-ea5f-463e-a373-63bd31918289",
+              "weight": "2kg",
+              "active": true,
+              "stock": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "S05",
+      "expected": {
+        "reference": "PRO PLAN CANINE LATA UR",
+        "format": "lata",
+        "inherits": "S04"
+      },
+      "matches": [
+        {
+          "id": "38fbf049-d4c4-43c4-aef2-a8da499d11fa",
+          "name": "PRO PLAN CANINE LATA UR",
+          "brand": "PRO PLAN",
+          "species": "perro",
+          "subcategory": "comida_humeda",
+          "presentations": [
+            {
+              "id": "beedab12-eda7-430b-b146-c902edff5826",
+              "weight": "unidad",
+              "active": true,
+              "stock": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "S06",
+      "expected": {
+        "reference": "PRO PLAN POUCH FELINO KITTEN",
+        "format": "sobre",
+        "presentation": "85gr"
+      },
+      "matches": [
+        {
+          "id": "8f046478-8161-4273-bf42-72b9716a3eeb",
+          "name": "PRO PLAN POUCH FELINO KITTEN",
+          "brand": "PRO PLAN",
+          "species": "gato",
+          "subcategory": "comida_humeda",
+          "presentations": [
+            {
+              "id": "f77aafc1-4ff6-4e58-a886-f3ac9d8ee4d6",
+              "weight": "85gr",
+              "active": true,
+              "stock": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "S09",
+      "expected": {
+        "reference": "DIAMOND INDOOR CAT",
+        "presentation": "500gr"
+      },
+      "matches": [
+        {
+          "id": "1224f0d0-b4db-494b-8200-56c6e0dad19f",
+          "name": "DIAMOND INDOOR CAT",
+          "brand": "DIAMOND",
+          "species": "gato",
+          "subcategory": "concentrado",
+          "presentations": [
+            {
+              "id": "acbd88f0-9d53-46d7-aedd-2573272bfe0e",
+              "weight": "500gr",
+              "active": true,
+              "stock": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "S13",
+      "expected": {
+        "reference": "PRO PLAN POUCH FELINO KITTEN",
+        "presentation": "85gr",
+        "quantity": 3,
+        "inherits": "S06",
+        "noCart": true
+      },
+      "matches": [
+        {
+          "id": "8f046478-8161-4273-bf42-72b9716a3eeb",
+          "name": "PRO PLAN POUCH FELINO KITTEN",
+          "brand": "PRO PLAN",
+          "species": "gato",
+          "subcategory": "comida_humeda",
+          "presentations": [
+            {
+              "id": "f77aafc1-4ff6-4e58-a886-f3ac9d8ee4d6",
+              "weight": "85gr",
+              "active": true,
+              "stock": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "S14",
+      "expected": {
+        "reference": "CANISAN D",
+        "presentation": "5ml",
+        "noCart": true
+      },
+      "matches": [
+        {
+          "id": "659c1c72-4d59-4cec-8083-5662217332d5",
+          "name": "CANISAN D",
+          "brand": "CANISAN",
+          "species": "perro y gato",
+          "subcategory": "desparasitante",
+          "presentations": [
+            {
+              "id": "a3caa90d-88c2-4535-bbee-d7f212f99b25",
+              "weight": "10 ml",
+              "active": true,
+              "stock": null
+            },
+            {
+              "id": "d67ec5ee-9fcb-4a89-94fd-c0ff8f9a726d",
+              "weight": "2.5ml",
+              "active": true,
+              "stock": null
+            },
+            {
+              "id": "6b87dd3d-7b08-4a6a-8fe2-621c66b7fb79",
+              "weight": "5 ml",
+              "active": true,
+              "stock": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

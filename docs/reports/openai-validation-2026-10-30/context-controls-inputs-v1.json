@@ -1,0 +1,730 @@
+[
+  {
+    "id": "CONTEXT-T02",
+    "kind": "real_literal_retained_context",
+    "source": "docs/reports/real-conversations-2026-10-30/today-corpus-v2.json",
+    "sourceSha256": "a7ef9115e8849def1a427a0806ff6bd281fe9db06449ef2c61f8dc513f8288d1",
+    "message": "Me  envía dos  de adulto de kilo porfa",
+    "history": [
+      {
+        "direction": "outbound",
+        "body": "Excellent esterilizado x3kg no viene"
+      },
+      {
+        "direction": "outbound",
+        "body": "Solo x1kl"
+      },
+      {
+        "direction": "outbound",
+        "body": "De gato adulto normal si viene x3kl"
+      },
+      {
+        "direction": "inbound",
+        "body": "A y a cómo ese"
+      },
+      {
+        "direction": "inbound",
+        "body": "Por favor"
+      },
+      {
+        "direction": "outbound",
+        "body": "Excellent gato adulto x3kl 56.000"
+      }
+    ],
+    "catalog": [
+      {
+        "marca": "EXCELLENT",
+        "metadata": {
+          "id": "b3560253-2fc9-44fb-951c-e5c9dc45a595",
+          "equivalent_brands": [
+            "EXCELLENT",
+            "EXCELLET",
+            "EXCELLLET"
+          ]
+        },
+        "referencias": [
+          {
+            "nombre": "EXCELLENT ADULT SMALL",
+            "especie": "perro",
+            "categoria": "comida",
+            "subcategoria": "concentrado",
+            "etapa": "adulto",
+            "requiereConfirmacion": false,
+            "descripcion": "EXCELLENT ADULT SMALL",
+            "imagen": "",
+            "metadata": {
+              "source": "productos.json",
+              "original_names": [
+                "EXCELLENT ADULT SMALL",
+                "EXCELLENT ADULT SMALL 3KG"
+              ],
+              "id": "17404d6f-42ba-4c82-8527-a1b7a5ecf6c4",
+              "searchScore": 0,
+              "matchReason": null,
+              "aliases": [],
+              "equivalent_references": [
+                "EXCELLENT ADULT SMALL"
+              ]
+            },
+            "presentaciones": [
+              {
+                "peso": "3kg",
+                "precio": 64600,
+                "stock": null,
+                "metadata": {
+                  "llave": "705",
+                  "codigo": "10301010705",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10301010705"
+                  ],
+                  "nombre_original": "EXCELLENT ADULT SMALL 3KG",
+                  "id": "9164a61e-72da-46a2-aba0-3787562b300a",
+                  "source_reference": "EXCELLENT ADULT SMALL"
+                }
+              }
+            ]
+          },
+          {
+            "nombre": "EXCELLENT GATO ADULT",
+            "especie": "gato",
+            "categoria": "comida",
+            "subcategoria": "concentrado",
+            "etapa": "adulto",
+            "requiereConfirmacion": false,
+            "descripcion": "EXCELLENT GATO ADULT",
+            "imagen": "",
+            "metadata": {
+              "source": "productos.json",
+              "original_names": [
+                "EXCELLENT GATO ADULT",
+                "EXCELLENT GATO ADULT 1KG",
+                "EXCELLENT GATO ADULT 3KG",
+                "EXCELLENT GATO ADULT 7.5KG"
+              ],
+              "id": "1d4e553d-e7e5-491f-9a9a-b0bc2c1cf779",
+              "searchScore": 0,
+              "matchReason": null,
+              "aliases": [],
+              "equivalent_references": [
+                "EXCELLENT GATO ADULT"
+              ]
+            },
+            "presentaciones": [
+              {
+                "peso": "1kg",
+                "precio": 31000,
+                "stock": null,
+                "metadata": {
+                  "llave": "712",
+                  "codigo": "10301010712",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10301010712"
+                  ],
+                  "nombre_original": "EXCELLENT GATO ADULT 1KG",
+                  "id": "752b60c7-2394-4d33-b989-46fe268affe0",
+                  "source_reference": "EXCELLENT GATO ADULT"
+                }
+              },
+              {
+                "peso": "3kg",
+                "precio": 74700,
+                "stock": null,
+                "metadata": {
+                  "llave": "713",
+                  "codigo": "10301010713",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10301010713"
+                  ],
+                  "nombre_original": "EXCELLENT GATO ADULT 3KG",
+                  "id": "b9b14806-889d-4a1e-80bd-f7605b3f9391",
+                  "source_reference": "EXCELLENT GATO ADULT"
+                }
+              },
+              {
+                "peso": "7.5kg",
+                "precio": 163700,
+                "stock": null,
+                "metadata": {
+                  "llave": "714",
+                  "codigo": "10301010714",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10301010714"
+                  ],
+                  "nombre_original": "EXCELLENT GATO ADULT 7.5KG",
+                  "id": "7f8d69bf-c637-420c-b572-c7d23916ad62",
+                  "source_reference": "EXCELLENT GATO ADULT"
+                }
+              }
+            ]
+          },
+          {
+            "nombre": "EXCELLENT FORMULA",
+            "especie": "perro",
+            "categoria": "comida",
+            "subcategoria": "concentrado",
+            "etapa": null,
+            "requiereConfirmacion": false,
+            "descripcion": "EXCELLENT FORMULA",
+            "imagen": "",
+            "metadata": {
+              "source": "productos.json",
+              "original_names": [
+                "EXCELLENT FORMULA",
+                "EXCELLENT FORMULA 3KG"
+              ],
+              "id": "1f4ab27a-bdb1-48e6-9d30-b2810a292fd6",
+              "searchScore": 0,
+              "matchReason": null,
+              "aliases": [],
+              "equivalent_references": [
+                "EXCELLENT FORMULA"
+              ]
+            },
+            "presentaciones": [
+              {
+                "peso": "3kg",
+                "precio": 46900,
+                "stock": null,
+                "metadata": {
+                  "llave": "711",
+                  "codigo": "10301010711",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10301010711"
+                  ],
+                  "nombre_original": "EXCELLENT FORMULA 3KG",
+                  "id": "c79fe8ac-bc08-4bf8-ad9e-ed568215f446",
+                  "source_reference": "EXCELLENT FORMULA"
+                }
+              }
+            ]
+          },
+          {
+            "nombre": "EXCELLENT KITTEN",
+            "especie": "gato",
+            "categoria": "comida",
+            "subcategoria": "concentrado",
+            "etapa": "cachorro",
+            "requiereConfirmacion": false,
+            "descripcion": "EXCELLENT KITTEN",
+            "imagen": "",
+            "metadata": {
+              "source": "productos.json",
+              "original_names": [
+                "EXCELLENT KITTEN",
+                "EXCELLENT KITTEN 1KG"
+              ],
+              "id": "538fc303-a3ac-4160-8e11-7e125ff1dbfc",
+              "searchScore": 0,
+              "matchReason": null,
+              "aliases": [],
+              "equivalent_references": [
+                "EXCELLENT KITTEN"
+              ]
+            },
+            "presentaciones": [
+              {
+                "peso": "1kg",
+                "precio": 32700,
+                "stock": null,
+                "metadata": {
+                  "llave": "715",
+                  "codigo": "10301010715",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10301010715"
+                  ],
+                  "nombre_original": "EXCELLENT KITTEN 1KG",
+                  "id": "fe77910e-8276-4cbf-bffc-d01bf244c4f1",
+                  "source_reference": "EXCELLENT KITTEN"
+                }
+              }
+            ]
+          },
+          {
+            "nombre": "EXCELLENT GATO URINARY",
+            "especie": "gato",
+            "categoria": "comida",
+            "subcategoria": "concentrado",
+            "etapa": null,
+            "requiereConfirmacion": false,
+            "descripcion": "EXCELLENT GATO URINARY",
+            "imagen": "",
+            "metadata": {
+              "source": "productos.json",
+              "original_names": [
+                "EXCELLENT GATO URINARY",
+                "EXCELLENT GATO URINARY 1KG",
+                "EXCELLET GATO UNINARY",
+                "EXCELLET GATO UNINARY 7.5KG",
+                "EXCELLLET GATO URINARY",
+                "EXCELLLET GATO URINARY X 3KG"
+              ],
+              "id": "875e487b-64ab-4294-84f1-026f7a456550",
+              "searchScore": 0,
+              "matchReason": null,
+              "aliases": [],
+              "equivalent_references": [
+                "EXCELLENT GATO URINARY",
+                "EXCELLET GATO UNINARY",
+                "EXCELLLET GATO URINARY"
+              ]
+            },
+            "presentaciones": [
+              {
+                "peso": "1kg",
+                "precio": 34000,
+                "stock": null,
+                "metadata": {
+                  "llave": "707",
+                  "codigo": "10301010707",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10301010707"
+                  ],
+                  "nombre_original": "EXCELLENT GATO URINARY 1KG",
+                  "id": "5d4ec4b8-0840-491b-a0d9-996d94a83778",
+                  "source_reference": "EXCELLENT GATO URINARY"
+                }
+              },
+              {
+                "peso": "7.5kg",
+                "precio": 163700,
+                "stock": null,
+                "metadata": {
+                  "llave": "587",
+                  "codigo": "10301010587",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10301010587"
+                  ],
+                  "nombre_original": "EXCELLET GATO UNINARY 7.5KG",
+                  "id": "a665fe87-42b0-44c7-abfc-18760012e5db",
+                  "source_reference": "EXCELLET GATO UNINARY"
+                }
+              },
+              {
+                "peso": "x 3kg",
+                "precio": 81900,
+                "stock": null,
+                "metadata": {
+                  "llave": "2317",
+                  "codigo": "103010202317",
+                  "source": "productos.json",
+                  "codigos": [
+                    "103010202317"
+                  ],
+                  "nombre_original": "EXCELLLET GATO URINARY X 3KG",
+                  "id": "36f46180-5653-48ee-922c-540bd9024256",
+                  "source_reference": "EXCELLLET GATO URINARY"
+                }
+              }
+            ]
+          },
+          {
+            "nombre": "EXCELLENT SKIN",
+            "especie": "perro",
+            "categoria": "comida",
+            "subcategoria": "concentrado",
+            "etapa": null,
+            "requiereConfirmacion": false,
+            "descripcion": "EXCELLENT SKIN",
+            "imagen": "",
+            "metadata": {
+              "source": "productos.json",
+              "original_names": [
+                "EXCELLENT SKIN",
+                "EXCELLENT SKIN 3KG"
+              ],
+              "id": "8d24b5fd-83d6-4c80-bc3a-42f83a00a9ef",
+              "searchScore": 0,
+              "matchReason": null,
+              "aliases": [],
+              "equivalent_references": [
+                "EXCELLENT SKIN"
+              ]
+            },
+            "presentaciones": [
+              {
+                "peso": "3kg",
+                "precio": 72800,
+                "stock": null,
+                "metadata": {
+                  "llave": "2001",
+                  "codigo": "103010102001",
+                  "source": "productos.json",
+                  "codigos": [
+                    "103010102001"
+                  ],
+                  "nombre_original": "EXCELLENT SKIN 3KG",
+                  "id": "773e4149-f827-4182-ac9f-1cd78ac4c1b9",
+                  "source_reference": "EXCELLENT SKIN"
+                }
+              }
+            ]
+          },
+          {
+            "nombre": "EXCELLENT ESTERILIZED",
+            "especie": "gato",
+            "categoria": "comida",
+            "subcategoria": "concentrado",
+            "etapa": null,
+            "requiereConfirmacion": false,
+            "descripcion": "EXCELLENT ESTERILIZED",
+            "imagen": "",
+            "metadata": {
+              "source": "productos.json",
+              "original_names": [
+                "EXCELLENT ESTERILIZED",
+                "EXCELLENT ESTERILIZED 1KG"
+              ],
+              "id": "b12884bc-60f3-4ecd-a006-40db7f369628",
+              "searchScore": 0,
+              "matchReason": null,
+              "aliases": [],
+              "equivalent_references": [
+                "EXCELLENT ESTERILIZED"
+              ]
+            },
+            "presentaciones": [
+              {
+                "peso": "1kg",
+                "precio": 34000,
+                "stock": null,
+                "metadata": {
+                  "llave": "706",
+                  "codigo": "10301010706",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10301010706"
+                  ],
+                  "nombre_original": "EXCELLENT ESTERILIZED 1KG",
+                  "id": "55299d77-405e-4770-820c-06cc0df9e28b",
+                  "source_reference": "EXCELLENT ESTERILIZED"
+                }
+              }
+            ]
+          },
+          {
+            "nombre": "EXCELLENT ADULT RMG",
+            "especie": "perro",
+            "categoria": "comida",
+            "subcategoria": "concentrado",
+            "etapa": "adulto",
+            "requiereConfirmacion": false,
+            "descripcion": "EXCELLENT ADULT RMG",
+            "imagen": "",
+            "metadata": {
+              "source": "productos.json",
+              "original_names": [
+                "EXCELLENT ADULT RMG",
+                "EXCELLENT ADULT RMG 3KG"
+              ],
+              "id": "cc2d72a7-9a4c-4ebd-9309-a9c40a43ac14",
+              "searchScore": 0,
+              "matchReason": null,
+              "aliases": [],
+              "equivalent_references": [
+                "EXCELLENT ADULT RMG"
+              ]
+            },
+            "presentaciones": [
+              {
+                "peso": "3kg",
+                "precio": 61600,
+                "stock": null,
+                "metadata": {
+                  "llave": "710",
+                  "codigo": "10301010710",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10301010710"
+                  ],
+                  "nombre_original": "EXCELLENT ADULT RMG 3KG",
+                  "id": "6fe54713-a6a3-41f7-bbe0-b7315af1fdcd",
+                  "source_reference": "EXCELLENT ADULT RMG"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "expected": {
+      "brand": "EXCELLENT",
+      "reference": "EXCELLENT GATO ADULT",
+      "presentation": "1kg",
+      "quantity": 2
+    },
+    "limits": "Audio antecedent absent and excluded. Exact retained text history only; no invented dry-food antecedent. Interpretation fields + catalog identity checked; not end-to-end conversation flow."
+  },
+  {
+    "id": "S-WET-UNSPECIFIED",
+    "kind": "synthetic",
+    "message": "Cuánto vale la comida húmeda Nube gato adulto?",
+    "history": [],
+    "catalog": [
+      {
+        "marca": "NUBE",
+        "referencias": [
+          {
+            "nombre": "NUBE GATO ADULTO",
+            "categoria": "comida",
+            "subcategoria": "concentrado",
+            "especie": "gato",
+            "etapa": "adulto",
+            "presentaciones": [
+              {
+                "peso": "1kg",
+                "precio": null,
+                "stock": null
+              }
+            ]
+          },
+          {
+            "nombre": "NUBE LATA GATO ADULTO",
+            "categoria": "comida",
+            "subcategoria": "comida_humeda",
+            "especie": "gato",
+            "etapa": "adulto",
+            "presentaciones": [
+              {
+                "peso": "85g",
+                "precio": null,
+                "stock": null
+              }
+            ]
+          },
+          {
+            "nombre": "NUBE POUCH GATO ADULTO",
+            "categoria": "comida",
+            "subcategoria": "comida_humeda",
+            "especie": "gato",
+            "etapa": "adulto",
+            "presentaciones": [
+              {
+                "peso": "85g",
+                "precio": null,
+                "stock": null
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "expected": {
+      "form": "comida_humeda",
+      "container": null,
+      "decision": "clarify"
+    }
+  },
+  {
+    "id": "S-CAN-CORRECTION",
+    "kind": "synthetic",
+    "message": "No, mejor en lata, dos por favor",
+    "history": [
+      {
+        "direction": "inbound",
+        "body": "Quiero sobre Nube gato adulto de 85g"
+      },
+      {
+        "direction": "outbound",
+        "body": "¿Quieres dos sobres Nube gato adulto de 85g?"
+      }
+    ],
+    "catalog": [
+      {
+        "marca": "NUBE",
+        "referencias": [
+          {
+            "nombre": "NUBE GATO ADULTO",
+            "categoria": "comida",
+            "subcategoria": "concentrado",
+            "especie": "gato",
+            "etapa": "adulto",
+            "presentaciones": [
+              {
+                "peso": "1kg",
+                "precio": null,
+                "stock": null
+              }
+            ]
+          },
+          {
+            "nombre": "NUBE LATA GATO ADULTO",
+            "categoria": "comida",
+            "subcategoria": "comida_humeda",
+            "especie": "gato",
+            "etapa": "adulto",
+            "presentaciones": [
+              {
+                "peso": "85g",
+                "precio": null,
+                "stock": null
+              }
+            ]
+          },
+          {
+            "nombre": "NUBE POUCH GATO ADULTO",
+            "categoria": "comida",
+            "subcategoria": "comida_humeda",
+            "especie": "gato",
+            "etapa": "adulto",
+            "presentaciones": [
+              {
+                "peso": "85g",
+                "precio": null,
+                "stock": null
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "expected": {
+      "container": "lata",
+      "quantity": 2
+    }
+  },
+  {
+    "id": "S-DRY-CONTEXT",
+    "kind": "synthetic",
+    "message": "De un kilo, por favor",
+    "history": [
+      {
+        "direction": "inbound",
+        "body": "Cuánto vale el concentrado seco Nube gato adulto?"
+      },
+      {
+        "direction": "outbound",
+        "body": "¿Qué presentación necesitas del concentrado Nube gato adulto?"
+      }
+    ],
+    "catalog": [
+      {
+        "marca": "NUBE",
+        "referencias": [
+          {
+            "nombre": "NUBE GATO ADULTO",
+            "categoria": "comida",
+            "subcategoria": "concentrado",
+            "especie": "gato",
+            "etapa": "adulto",
+            "presentaciones": [
+              {
+                "peso": "1kg",
+                "precio": null,
+                "stock": null
+              }
+            ]
+          },
+          {
+            "nombre": "NUBE LATA GATO ADULTO",
+            "categoria": "comida",
+            "subcategoria": "comida_humeda",
+            "especie": "gato",
+            "etapa": "adulto",
+            "presentaciones": [
+              {
+                "peso": "85g",
+                "precio": null,
+                "stock": null
+              }
+            ]
+          },
+          {
+            "nombre": "NUBE POUCH GATO ADULTO",
+            "categoria": "comida",
+            "subcategoria": "comida_humeda",
+            "especie": "gato",
+            "etapa": "adulto",
+            "presentaciones": [
+              {
+                "peso": "85g",
+                "precio": null,
+                "stock": null
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "expected": {
+      "form": "concentrado",
+      "container": null,
+      "presentation": "1kg"
+    }
+  },
+  {
+    "id": "S-MULTI-TYPO",
+    "kind": "synthetic",
+    "message": "Cotízame 2 latas Nube gato adulto de 85g y 3 sobres Nuebe gato adulto de 85g",
+    "history": [],
+    "catalog": [
+      {
+        "marca": "NUBE",
+        "referencias": [
+          {
+            "nombre": "NUBE GATO ADULTO",
+            "categoria": "comida",
+            "subcategoria": "concentrado",
+            "especie": "gato",
+            "etapa": "adulto",
+            "presentaciones": [
+              {
+                "peso": "1kg",
+                "precio": null,
+                "stock": null
+              }
+            ]
+          },
+          {
+            "nombre": "NUBE LATA GATO ADULTO",
+            "categoria": "comida",
+            "subcategoria": "comida_humeda",
+            "especie": "gato",
+            "etapa": "adulto",
+            "presentaciones": [
+              {
+                "peso": "85g",
+                "precio": null,
+                "stock": null
+              }
+            ]
+          },
+          {
+            "nombre": "NUBE POUCH GATO ADULTO",
+            "categoria": "comida",
+            "subcategoria": "comida_humeda",
+            "especie": "gato",
+            "etapa": "adulto",
+            "presentaciones": [
+              {
+                "peso": "85g",
+                "precio": null,
+                "stock": null
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "expected": {
+      "action": "consultar",
+      "list": [
+        {
+          "container": "lata",
+          "quantity": 2
+        },
+        {
+          "container": "sobre",
+          "quantity": 3
+        }
+      ]
+    }
+  }
+]

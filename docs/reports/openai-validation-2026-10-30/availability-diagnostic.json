@@ -1,0 +1,103 @@
+{
+  "at": "2026-10-30T16:42:52.292Z",
+  "model": "gpt-5.4-mini",
+  "payload": "Synthetic greeting Hola; empty history, state and catalog; no customer data or images.",
+  "configuredClientUsed": true,
+  "successful": true,
+  "calls": [
+    {
+      "model": "gpt-5.4-mini",
+      "status": "success",
+      "ms": 2467,
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 216,
+        "total_tokens": 1176,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    }
+  ],
+  "interpretation": {
+    "recomendaciones": [],
+    "preguntaRecomendacion": null,
+    "solicitudComercialIndependiente": false,
+    "derivacionHumana": {
+      "necesaria": false,
+      "motivo": null
+    },
+    "seguimientoProducto": null,
+    "recursosAclaracion": {
+      "fotoDisponible": null,
+      "masDatosDisponibles": null
+    },
+    "resumenMemoria": null,
+    "continuarFlujo": false,
+    "compraContextual": null,
+    "solicitudesProductoDetectadas": null,
+    "consultaCatalogo": {
+      "tipo": null,
+      "presupuestoMaximo": null,
+      "necesaria": null,
+      "consulta": null
+    },
+    "respuestaConversacional": null,
+    "intencion": "otro",
+    "accion": null,
+    "confianza": 0.12,
+    "producto": {
+      "marca": null,
+      "referencia": null,
+      "linea": null,
+      "textoVisible": null,
+      "mencionOriginal": null,
+      "categoria": null,
+      "subcategoria": null,
+      "envase": null,
+      "especie": null,
+      "etapa": null,
+      "tamano": null,
+      "sabores": [],
+      "presentacion": null,
+      "intencionPresentaciones": null,
+      "mascotas": [],
+      "condiciones": [],
+      "cantidad": null
+    },
+    "productos": [],
+    "entrega": {
+      "tipo": null,
+      "direccion": null,
+      "direccionCompleta": null,
+      "sector": null,
+      "metodoPago": null,
+      "sede": null
+    },
+    "facturacion": {
+      "electronica": null,
+      "evidencia": null
+    },
+    "datosCliente": {
+      "nombre": null,
+      "cedula": null,
+      "correo": null,
+      "celular": null
+    },
+    "carrito": {
+      "operacion": null,
+      "cantidadObjetivo": null,
+      "cantidadDelta": null,
+      "aplicaAlUltimoProducto": null,
+      "razon": null
+    },
+    "faltanteSugerido": null
+  }
+}

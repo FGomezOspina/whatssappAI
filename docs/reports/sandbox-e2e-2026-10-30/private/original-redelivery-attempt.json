@@ -1,0 +1,8 @@
+{
+  "startedAt": "2026-10-30T17:25:54.335Z",
+  "messageId": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDFCRjdCQURDNjM1N0EyMkMyRgA=",
+  "status": "http_returned_processing_to_verify",
+  "httpStatus": 200,
+  "body": "OK",
+  "returnedAt": "2026-10-30T17:25:55.623Z"
+}

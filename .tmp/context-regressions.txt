@@ -1,0 +1,60 @@
+[AI Usage Summary] cliente=tenant-a | usuario=anon | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=tenant-a | usuario=anon | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=tenant-a | usuario=anon | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=tenant-a | usuario=anon | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=tenant-a | usuario=anon | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=tenant-b | usuario=anon | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=tenant-a | usuario=anon | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=tenant-a | usuario=anon | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=tenant-a | usuario=anon | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=tenant-a | usuario=anon | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=tenant-a | usuario=anon | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+✔ held-out pipeline: HORIZON correction keeps identity despite foreign candidates (44.029208ms)
+✔ held-out pipeline: MONTE correction keeps identity despite foreign candidates (13.288167ms)
+✔ held-out pipeline: product focus is scoped to tenant and conversation (6.769125ms)
+✔ buffer completo conserva formato literal aunque el intérprete segmente solo la identidad (4.140417ms)
+✔ cambio contextual de formato no recupera la cotización seca desde selección pendiente (7.044208ms)
+✖ cantidad contextual conserva sobre y peso sin modificar carrito (12.72825ms)
+[AI Usage Summary] cliente=synthetic | usuario=synthetic | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=synthetic | usuario=synthetic | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=synthetic | usuario=synthetic | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=synthetic | usuario=synthetic | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=synthetic | usuario=synthetic | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=synthetic | usuario=synthetic | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=synthetic | usuario=synthetic | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+✔ respuesta real con palabras adicionales conserva Spectra y resuelve 4kl (95.826ms)
+✔ aclaración larga conserva la acción de compra y la cantidad original (12.859458ms)
+✔ otro producto explícito cambia de consulta aunque haya una aclaración pendiente (8.500917ms)
+✔ funciona con identidad nueva de prueba y lenguaje largo, sin excepciones por marca (5.074166ms)
+✔ aclarar la etapa de un alimento también conserva la identidad, sin contar palabras (4.027666ms)
+✔ repetir la referencia base resuelve la eleccion pendiente y el peso: NEXGARD (4.334375ms)
+✔ repetir la referencia base resuelve la eleccion pendiente y el peso: PROTECCIONPRUEBA (4.754125ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 12
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 183.174709
+
+✖ failing tests:
+
+test at test/identityContextHeldOut.test.js:60:1
+✖ cantidad contextual conserva sobre y peso sin modificar carrito (12.72825ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /12[.,]000/. Input:
+  
+  'Te confirmo, esa referencia la manejamos:\n' +
+    '- HORIZON POUCH KITTEN 85gr: $4.000\n' +
+    'Las existencias están por confirmar.'
+  
+      at TestContext.<anonymous> (/Users/gomez/Documents/WhatsappVELTIA/test/identityContextHeldOut.test.js:65:82)
+      at async Test.run (node:internal/test_runner/test:1208:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Te confirmo, esa referencia la manejamos:\n- HORIZON POUCH KITTEN 85gr: $4.000\nLas existencias están por confirmar.',
+    expected: /12[.,]000/,
+    operator: 'match',
+    diff: 'simple'
+  }

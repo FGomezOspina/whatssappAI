@@ -1,0 +1,67 @@
+{
+  "version": 2,
+  "reviewedRevision": 1,
+  "privacy": "Only product requests/quote, minimal catalog fields and explicitly synthetic customer fields. No raw observation file loaded at runtime.",
+  "parentSha256": "0c32c6d9961ce6d9bb2c7a20d96631fad237c6f1cbd1a3fe80adb771c871fb89",
+  "catalogSnapshot": "../real-conversations-2026-10-30/catalog.json",
+  "catalogSha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+  "cases": [
+    {
+      "id": "quote-address-reentry",
+      "catalogBrands": [
+        "ARENA MAIZ CAT"
+      ],
+      "relativeQuoteAgeMs": 60000,
+      "relativePendingAgeMs": 172800000,
+      "initialState": {
+        "productosConsultados": [
+          {
+            "marca": "ARENA MAIZ CAT",
+            "referencia": "ARENA MAIZ CAT",
+            "peso": "x 20kg",
+            "precio": 98000,
+            "cantidad": 1,
+            "stock": null,
+            "categoria": "arena_sustrato",
+            "subcategoria": "arena"
+          }
+        ],
+        "ultimaSolicitudProductos": [
+          {
+            "estado": "pendiente",
+            "accion": "consultar",
+            "pregunta": "¿Qué medicamento necesitas?"
+          }
+        ]
+      },
+      "history": [
+        {
+          "role": "user",
+          "content": "Buenos dias \nPara pedir una arena"
+        },
+        {
+          "role": "assistant",
+          "content": "Buenos días 😊  \n¿La arena la buscas para gato?"
+        },
+        {
+          "role": "user",
+          "content": "Arena de maíz cat de 20 kg"
+        },
+        {
+          "role": "assistant",
+          "content": "Sí, esa es ARENA MAIZ CAT x 20kg y vale $98.000. Las existencias están por confirmar. 🐱"
+        }
+      ],
+      "turns": [
+        {
+          "text": "Mz 8 casa 22 Conjunto Prueba\nSector de prueba",
+          "origin": "Synthetic replacement for private address; prior product-only turns original; state reconstructed from post-incident observation"
+        },
+        {
+          "text": "Nombre: Cliente Prueba; celular: 3000000000; pago: efectivo",
+          "origin": "Synthetic continuation; no final confirmation requested"
+        }
+      ]
+    }
+  ]
+}

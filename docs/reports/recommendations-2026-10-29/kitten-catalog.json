@@ -1,0 +1,1028 @@
+{
+  "capturedAt": "2026-10-29T16:05:25.570Z",
+  "refs": [
+    {
+      "id": "0144805d-c4cb-4a58-8b25-ce742ead74c9",
+      "name": "DIAMOND KITTEN CAT",
+      "species": "gato",
+      "category": "comida",
+      "subcategory": "concentrado",
+      "life_stage": "cachorro",
+      "requires_confirmation": true,
+      "metadata": {
+        "source": "productos.json",
+        "original_names": [
+          "DIAMOND KITTEN CAT 2.7KG"
+        ]
+      },
+      "brand": {
+        "id": "92dbb137-08cd-4968-9529-6213b0330078",
+        "name": "DIAMOND",
+        "active": true,
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "647cd42a-86fe-4122-a318-1049cd069545",
+          "price": 85500,
+          "stock": null,
+          "active": true,
+          "weight": "2.7kg",
+          "metadata": {
+            "llave": "552",
+            "codigo": "10101010552",
+            "source": "productos.json",
+            "codigos": [
+              "10101010552"
+            ],
+            "nombre_original": "DIAMOND KITTEN CAT 2.7KG"
+          }
+        }
+      ]
+    },
+    {
+      "id": "07c854c3-f469-4d39-acff-e7ccfecc4574",
+      "name": "MONELLO CAT FILHOTES",
+      "species": "gato",
+      "category": "comida",
+      "subcategory": "concentrado",
+      "life_stage": "cachorro",
+      "requires_confirmation": false,
+      "metadata": {
+        "source": "productos.json",
+        "original_names": [
+          "MONELLO CAT FILHOTES X 1 KL"
+        ]
+      },
+      "brand": {
+        "id": "52a98dad-9a35-4b91-8ae9-e99220a014ae",
+        "name": "MONELLO",
+        "active": true,
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "9f039a34-26fb-4b9c-bf64-2b7c808f67de",
+          "price": 28500,
+          "stock": null,
+          "active": true,
+          "weight": "x 1 kg",
+          "metadata": {
+            "llave": "1067",
+            "codigo": "10301011067",
+            "source": "productos.json",
+            "codigos": [
+              "10301011067"
+            ],
+            "nombre_original": "MONELLO CAT FILHOTES X 1 KL"
+          }
+        }
+      ]
+    },
+    {
+      "id": "0e8a30fa-253f-4110-935f-dd1f0b2d91fa",
+      "name": "CAT CHOW GATITOS *",
+      "species": "gato",
+      "category": "comida",
+      "subcategory": "concentrado",
+      "life_stage": "cachorro",
+      "requires_confirmation": false,
+      "metadata": {
+        "source": "productos.json",
+        "original_names": [
+          "CAT CHOW GATITOS *1.5KL",
+          "CAT CHOW GATITOS *500GR"
+        ]
+      },
+      "brand": {
+        "id": "e5387fb6-3a07-4251-bd8d-3218b982aa60",
+        "name": "CAT CHOW",
+        "active": true,
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "6e77e431-910a-410f-b50d-3f3735099260",
+          "price": 38600,
+          "stock": null,
+          "active": true,
+          "weight": "1.5kg",
+          "metadata": {
+            "llave": "317",
+            "codigo": "10301020317",
+            "source": "productos.json",
+            "codigos": [
+              "10301020317"
+            ],
+            "nombre_original": "CAT CHOW GATITOS *1.5KL"
+          }
+        },
+        {
+          "id": "870945d1-b5d2-4703-8cc6-bb333035126f",
+          "price": 14000,
+          "stock": null,
+          "active": true,
+          "weight": "500gr",
+          "metadata": {
+            "llave": "318",
+            "codigo": "10301020318",
+            "source": "productos.json",
+            "codigos": [
+              "10301020318"
+            ],
+            "nombre_original": "CAT CHOW GATITOS *500GR"
+          }
+        }
+      ]
+    },
+    {
+      "id": "1a336a00-0749-49cf-83ca-9f74e7cba45a",
+      "name": "DIAMOND KITTEN",
+      "species": "gato",
+      "category": "comida",
+      "subcategory": "concentrado",
+      "life_stage": "cachorro",
+      "requires_confirmation": true,
+      "metadata": {
+        "source": "productos.json",
+        "original_names": [
+          "DIAMOND KITTEN 500GR"
+        ]
+      },
+      "brand": {
+        "id": "92dbb137-08cd-4968-9529-6213b0330078",
+        "name": "DIAMOND",
+        "active": true,
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "65e1fb50-1046-46da-86a2-8a0ae579705b",
+          "price": 19600,
+          "stock": null,
+          "active": true,
+          "weight": "500gr",
+          "metadata": {
+            "llave": "554",
+            "codigo": "10101010554",
+            "source": "productos.json",
+            "codigos": [
+              "10101010554"
+            ],
+            "nombre_original": "DIAMOND KITTEN 500GR"
+          }
+        }
+      ]
+    },
+    {
+      "id": "2c26a2b8-fc1c-4739-828a-fa65c491ac28",
+      "name": "AGILITY GATITO",
+      "species": "gato",
+      "category": "comida",
+      "subcategory": "concentrado",
+      "life_stage": "cachorro",
+      "requires_confirmation": false,
+      "metadata": {
+        "source": "productos.json",
+        "original_names": [
+          "AGILITY GATITO 1.5KG",
+          "AGILITY GATITO 3KG",
+          "AGILITY GATITO 500GR"
+        ]
+      },
+      "brand": {
+        "id": "593776a0-df25-475c-8f1d-e64287b7ed32",
+        "name": "AGILITY",
+        "active": true,
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "fe26111b-caec-495d-be78-ddd0acc5f29d",
+          "price": 45700,
+          "stock": null,
+          "active": true,
+          "weight": "1.5kg",
+          "metadata": {
+            "llave": "22",
+            "codigo": "10301010022",
+            "source": "productos.json",
+            "codigos": [
+              "10301010022"
+            ],
+            "nombre_original": "AGILITY GATITO 1.5KG"
+          }
+        },
+        {
+          "id": "20a16bf6-6052-43ad-8cb1-e4023fdce657",
+          "price": 86700,
+          "stock": null,
+          "active": true,
+          "weight": "3kg",
+          "metadata": {
+            "llave": "23",
+            "codigo": "10301010023",
+            "source": "productos.json",
+            "codigos": [
+              "10301010023"
+            ],
+            "nombre_original": "AGILITY GATITO 3KG"
+          }
+        },
+        {
+          "id": "b3831765-2420-4880-9cca-c03468aa0f81",
+          "price": 16900,
+          "stock": null,
+          "active": true,
+          "weight": "500gr",
+          "metadata": {
+            "llave": "24",
+            "codigo": "10301010024",
+            "source": "productos.json",
+            "codigos": [
+              "10301010024"
+            ],
+            "nombre_original": "AGILITY GATITO 500GR"
+          }
+        }
+      ]
+    },
+    {
+      "id": "46629447-2d0b-42a8-b55f-7b13e97e19a3",
+      "name": "MICHIKO VET GATITOS",
+      "species": "gato",
+      "category": "comida",
+      "subcategory": "comida_humeda",
+      "life_stage": "cachorro",
+      "requires_confirmation": false,
+      "metadata": {
+        "source": "productos.json",
+        "original_names": [
+          "MICHIKO VET GATITOS X 14GR 4SACHETS"
+        ]
+      },
+      "brand": {
+        "id": "9697cfe5-fd1a-4b45-9eca-de45716adf4f",
+        "name": "MICHIKO",
+        "active": true,
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "e1992e74-56ce-47a2-8185-06363c362f0e",
+          "price": 9900,
+          "stock": null,
+          "active": true,
+          "weight": "x 14gr",
+          "metadata": {
+            "llave": "337",
+            "codigo": "10501010337",
+            "source": "productos.json",
+            "codigos": [
+              "10501010337"
+            ],
+            "nombre_original": "MICHIKO VET GATITOS X 14GR 4SACHETS"
+          }
+        }
+      ]
+    },
+    {
+      "id": "466d365f-12a8-41c1-8398-4794739688ab",
+      "name": "MIRRINGO GATITO",
+      "species": "gato",
+      "category": "comida",
+      "subcategory": "concentrado",
+      "life_stage": "cachorro",
+      "requires_confirmation": false,
+      "metadata": {
+        "source": "productos.json",
+        "original_names": [
+          "MIRRINGO GATITO X 1KL",
+          "MIRRINGO GATITO X 500GR"
+        ]
+      },
+      "brand": {
+        "id": "cde1aaec-c218-4ebe-8034-c53f2918551d",
+        "name": "MIRRINGO",
+        "active": true,
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "e2c05d56-c82a-4786-9b86-65e3934fd6a1",
+          "price": 10800,
+          "stock": null,
+          "active": true,
+          "weight": "x 1kg",
+          "metadata": {
+            "llave": "1061",
+            "codigo": "10301021061",
+            "source": "productos.json",
+            "codigos": [
+              "10301021061"
+            ],
+            "nombre_original": "MIRRINGO GATITO X 1KL"
+          }
+        },
+        {
+          "id": "18c04ff4-acbd-49b7-a2a1-6a0de98707af",
+          "price": 5900,
+          "stock": null,
+          "active": true,
+          "weight": "x 500gr",
+          "metadata": {
+            "llave": "1062",
+            "codigo": "10301021062",
+            "source": "productos.json",
+            "codigos": [
+              "10301021062"
+            ],
+            "nombre_original": "MIRRINGO GATITO X 500GR"
+          }
+        }
+      ]
+    },
+    {
+      "id": "4af9a074-c4da-4fef-856a-1e56dee05847",
+      "name": "BR CAT GATITOS SALMON",
+      "species": "gato",
+      "category": "comida",
+      "subcategory": "concentrado",
+      "life_stage": "cachorro",
+      "requires_confirmation": false,
+      "metadata": {
+        "source": "productos.json",
+        "original_names": [
+          "BR CAT GATITOS SALMON 1KG",
+          "BR CAT GATITOS SALMON X 3KG"
+        ]
+      },
+      "brand": {
+        "id": "8cba4eb8-06c3-402d-92a8-e3c3fe5305f1",
+        "name": "BR CAT",
+        "active": true,
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "6cba9691-1d23-4ed2-8cb2-71aa87c27cea",
+          "price": 28000,
+          "stock": null,
+          "active": true,
+          "weight": "1kg",
+          "metadata": {
+            "llave": "2268",
+            "codigo": "103010202268",
+            "source": "productos.json",
+            "codigos": [
+              "103010202268"
+            ],
+            "nombre_original": "BR CAT GATITOS SALMON 1KG"
+          }
+        },
+        {
+          "id": "2a3aff2d-6a1a-42fc-879d-ebb9321d73e3",
+          "price": 81900,
+          "stock": null,
+          "active": true,
+          "weight": "x 3kg",
+          "metadata": {
+            "llave": "183",
+            "codigo": "10301020183",
+            "source": "productos.json",
+            "codigos": [
+              "10301020183"
+            ],
+            "nombre_original": "BR CAT GATITOS SALMON X 3KG"
+          }
+        }
+      ]
+    },
+    {
+      "id": "538fc303-a3ac-4160-8e11-7e125ff1dbfc",
+      "name": "EXCELLENT KITTEN",
+      "species": "gato",
+      "category": "comida",
+      "subcategory": "concentrado",
+      "life_stage": "cachorro",
+      "requires_confirmation": false,
+      "metadata": {
+        "source": "productos.json",
+        "original_names": [
+          "EXCELLENT KITTEN 1KG"
+        ]
+      },
+      "brand": {
+        "id": "b3560253-2fc9-44fb-951c-e5c9dc45a595",
+        "name": "EXCELLENT",
+        "active": true,
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "fe77910e-8276-4cbf-bffc-d01bf244c4f1",
+          "price": 32700,
+          "stock": null,
+          "active": true,
+          "weight": "1kg",
+          "metadata": {
+            "llave": "715",
+            "codigo": "10301010715",
+            "source": "productos.json",
+            "codigos": [
+              "10301010715"
+            ],
+            "nombre_original": "EXCELLENT KITTEN 1KG"
+          }
+        }
+      ]
+    },
+    {
+      "id": "6a973621-864e-44cb-a5f7-62e0e7059b93",
+      "name": "ROYAL CANIN LATA KITTEN LOAF",
+      "species": "gato",
+      "category": "comida",
+      "subcategory": "comida_humeda",
+      "life_stage": "cachorro",
+      "requires_confirmation": false,
+      "metadata": {
+        "source": "productos.json",
+        "original_names": [
+          "ROYAL CANIN LATA KITTEN LOAF"
+        ]
+      },
+      "brand": {
+        "id": "71f6a67d-928d-4fd2-b46b-604780d2f64d",
+        "name": "ROYAL CANIN",
+        "active": true,
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "e6b799bf-2f9e-47e7-9ce6-c02222436445",
+          "price": 10500,
+          "stock": null,
+          "active": true,
+          "weight": "unidad",
+          "metadata": {
+            "llave": "2440",
+            "codigo": "105010102440",
+            "source": "productos.json",
+            "codigos": [
+              "105010102440"
+            ],
+            "nombre_original": "ROYAL CANIN LATA KITTEN LOAF"
+          }
+        }
+      ]
+    },
+    {
+      "id": "6b5078a8-059c-45be-9439-c443591f2097",
+      "name": "CHUNKY GATICOS POLLO",
+      "species": "gato",
+      "category": "comida",
+      "subcategory": "concentrado",
+      "life_stage": "cachorro",
+      "requires_confirmation": false,
+      "metadata": {
+        "source": "productos.json",
+        "original_names": [
+          "CHUNKY GATICOS POLLO X 1.5",
+          "CHUNKY GATICOS POLLO X 500"
+        ]
+      },
+      "brand": {
+        "id": "e48317f3-bf9f-42c2-80b2-29d67f855994",
+        "name": "CHUNKY",
+        "active": true,
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "ce86b34a-8489-49a9-9815-35bd84fe89b4",
+          "price": 26400,
+          "stock": null,
+          "active": true,
+          "weight": "x 1",
+          "metadata": {
+            "llave": "379",
+            "codigo": "10301020379",
+            "source": "productos.json",
+            "codigos": [
+              "10301020379"
+            ],
+            "nombre_original": "CHUNKY GATICOS POLLO X 1.5"
+          }
+        },
+        {
+          "id": "8d266865-f223-4d9e-8218-f9a2de6b4d8e",
+          "price": 10500,
+          "stock": null,
+          "active": true,
+          "weight": "x 500",
+          "metadata": {
+            "llave": "380",
+            "codigo": "10301020380",
+            "source": "productos.json",
+            "codigos": [
+              "10301020380"
+            ],
+            "nombre_original": "CHUNKY GATICOS POLLO X 500"
+          }
+        }
+      ]
+    },
+    {
+      "id": "72b2a17f-92fe-4a4a-a1fd-7e442849bb23",
+      "name": "CAT CHOW GATITOS",
+      "species": "gato",
+      "category": "comida",
+      "subcategory": "concentrado",
+      "life_stage": "cachorro",
+      "requires_confirmation": false,
+      "metadata": {
+        "source": "productos.json",
+        "original_names": [
+          "CAT CHOW GATITOS X 8"
+        ]
+      },
+      "brand": {
+        "id": "e5387fb6-3a07-4251-bd8d-3218b982aa60",
+        "name": "CAT CHOW",
+        "active": true,
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "66f49600-be94-48c6-be9e-880a16702df5",
+          "price": 134000,
+          "stock": null,
+          "active": true,
+          "weight": "x 8",
+          "metadata": {
+            "llave": "319",
+            "codigo": "10301020319",
+            "source": "productos.json",
+            "codigos": [
+              "10301020319"
+            ],
+            "nombre_original": "CAT CHOW GATITOS X 8"
+          }
+        }
+      ]
+    },
+    {
+      "id": "7c9a45a0-2cbd-4f7e-9962-f74d6e8b5b08",
+      "name": "CHUNKY GATITOS",
+      "species": "gato",
+      "category": "comida",
+      "subcategory": "concentrado",
+      "life_stage": "cachorro",
+      "requires_confirmation": false,
+      "metadata": {
+        "source": "productos.json",
+        "original_names": [
+          "CHUNKY GATITOS X 8KG"
+        ]
+      },
+      "brand": {
+        "id": "e48317f3-bf9f-42c2-80b2-29d67f855994",
+        "name": "CHUNKY",
+        "active": true,
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "99416390-30d7-44f1-bf18-d47f79a31f2b",
+          "price": 120500,
+          "stock": null,
+          "active": true,
+          "weight": "x 8kg",
+          "metadata": {
+            "llave": "1815",
+            "codigo": "103010201815",
+            "source": "productos.json",
+            "codigos": [
+              "103010201815"
+            ],
+            "nombre_original": "CHUNKY GATITOS X 8KG"
+          }
+        }
+      ]
+    },
+    {
+      "id": "864ca5c6-38ad-4161-a25e-05b3ecb2b0fc",
+      "name": "ROYAL CANIN LATA BABY CAT TROCITOS",
+      "species": "gato",
+      "category": "comida",
+      "subcategory": "comida_humeda",
+      "life_stage": "cachorro",
+      "requires_confirmation": false,
+      "metadata": {
+        "source": "productos.json",
+        "original_names": [
+          "ROYAL CANIN LATA BABY CAT TROCITOS"
+        ]
+      },
+      "brand": {
+        "id": "71f6a67d-928d-4fd2-b46b-604780d2f64d",
+        "name": "ROYAL CANIN",
+        "active": true,
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "b9b064b3-dd54-4736-a8bf-164209487630",
+          "price": 10500,
+          "stock": null,
+          "active": true,
+          "weight": "unidad",
+          "metadata": {
+            "llave": "1520",
+            "codigo": "10401011520",
+            "source": "productos.json",
+            "codigos": [
+              "10401011520"
+            ],
+            "nombre_original": "ROYAL CANIN LATA BABY CAT TROCITOS"
+          }
+        }
+      ]
+    },
+    {
+      "id": "8f046478-8161-4273-bf42-72b9716a3eeb",
+      "name": "PRO PLAN POUCH FELINO KITTEN",
+      "species": "gato",
+      "category": "comida",
+      "subcategory": "comida_humeda",
+      "life_stage": "cachorro",
+      "requires_confirmation": false,
+      "metadata": {
+        "source": "productos.json",
+        "original_names": [
+          "PRO PLAN POUCH FELINO KITTEN 85GR"
+        ]
+      },
+      "brand": {
+        "id": "41ec8da4-b3f0-4527-a921-5c905c811397",
+        "name": "PRO PLAN",
+        "active": true,
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "f77aafc1-4ff6-4e58-a886-f3ac9d8ee4d6",
+          "price": 6200,
+          "stock": null,
+          "active": true,
+          "weight": "85gr",
+          "metadata": {
+            "llave": "1375",
+            "codigo": "10301011375",
+            "source": "productos.json",
+            "codigos": [
+              "10301011375"
+            ],
+            "nombre_original": "PRO PLAN POUCH FELINO KITTEN 85GR"
+          }
+        }
+      ]
+    },
+    {
+      "id": "96398068-65b7-4dad-b862-10682cfa0b78",
+      "name": "ROYAL CANIN PERSIAN KITTEN",
+      "species": "gato",
+      "category": "comida",
+      "subcategory": "concentrado",
+      "life_stage": "cachorro",
+      "requires_confirmation": false,
+      "metadata": {
+        "source": "productos.json",
+        "original_names": [
+          "ROYAL CANIN PERSIAN KITTEN 2KG"
+        ]
+      },
+      "brand": {
+        "id": "71f6a67d-928d-4fd2-b46b-604780d2f64d",
+        "name": "ROYAL CANIN",
+        "active": true,
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "3dc09c99-7833-429d-86c2-d2e3ed170271",
+          "price": 174000,
+          "stock": null,
+          "active": true,
+          "weight": "2kg",
+          "metadata": {
+            "llave": "1505",
+            "codigo": "10301021505",
+            "source": "productos.json",
+            "codigos": [
+              "10301021505"
+            ],
+            "nombre_original": "ROYAL CANIN PERSIAN KITTEN 2KG"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bac06106-16c1-46c3-b8cb-a1ff93401666",
+      "name": "OHMAIGAT GATITOS",
+      "species": "gato",
+      "category": "comida",
+      "subcategory": "concentrado",
+      "life_stage": "cachorro",
+      "requires_confirmation": false,
+      "metadata": {
+        "source": "productos.json",
+        "original_names": [
+          "OHMAIGAT GATITOS X 1.5 KL",
+          "OHMAIGAT GATITOS X 200 GR",
+          "OHMAIGAT GATITOS X 500 GR",
+          "OHMAIGAT GATITOS X 8 KL"
+        ]
+      },
+      "brand": {
+        "id": "86f247c3-8896-4cb1-80d1-7b7d089f1e4c",
+        "name": "OHMAIGAT",
+        "active": true,
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "35f73aba-b335-49cd-a614-efc76361c458",
+          "price": 36000,
+          "stock": null,
+          "active": true,
+          "weight": "x 1.5 kg",
+          "metadata": {
+            "llave": "1221",
+            "codigo": "10301021221",
+            "source": "productos.json",
+            "codigos": [
+              "10301021221"
+            ],
+            "nombre_original": "OHMAIGAT GATITOS X 1.5 KL"
+          }
+        },
+        {
+          "id": "b62d24de-255c-47df-9367-c329d087f0b3",
+          "price": 3800,
+          "stock": null,
+          "active": true,
+          "weight": "x 200 gr",
+          "metadata": {
+            "llave": "1220",
+            "codigo": "10301021220",
+            "source": "productos.json",
+            "codigos": [
+              "10301021220"
+            ],
+            "nombre_original": "OHMAIGAT GATITOS X 200 GR"
+          }
+        },
+        {
+          "id": "55b69025-08eb-467d-9f5b-c7256f0cedf1",
+          "price": 13600,
+          "stock": null,
+          "active": true,
+          "weight": "x 500 gr",
+          "metadata": {
+            "llave": "1222",
+            "codigo": "10301021222",
+            "source": "productos.json",
+            "codigos": [
+              "10301021222"
+            ],
+            "nombre_original": "OHMAIGAT GATITOS X 500 GR"
+          }
+        },
+        {
+          "id": "54858732-a76e-4d54-8569-7663a6f953fe",
+          "price": 112900,
+          "stock": null,
+          "active": true,
+          "weight": "x 8 kg",
+          "metadata": {
+            "llave": "1224",
+            "codigo": "10301021224",
+            "source": "productos.json",
+            "codigos": [
+              "10301021224"
+            ],
+            "nombre_original": "OHMAIGAT GATITOS X 8 KL"
+          }
+        }
+      ]
+    },
+    {
+      "id": "c35a4229-eaa4-4e4f-a60a-4815efe18eb4",
+      "name": "BR CAT GATITO POLLO",
+      "species": "gato",
+      "category": "comida",
+      "subcategory": "concentrado",
+      "life_stage": "cachorro",
+      "requires_confirmation": false,
+      "metadata": {
+        "source": "productos.json",
+        "original_names": [
+          "BR CAT GATITO POLLO 1KG",
+          "BR CAT GATITO POLLO 3KG"
+        ]
+      },
+      "brand": {
+        "id": "8cba4eb8-06c3-402d-92a8-e3c3fe5305f1",
+        "name": "BR CAT",
+        "active": true,
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "16efefd1-f5c3-4093-8db9-21b20f83ef81",
+          "price": 28000,
+          "stock": null,
+          "active": true,
+          "weight": "1kg",
+          "metadata": {
+            "llave": "180",
+            "codigo": "10301020180",
+            "source": "productos.json",
+            "codigos": [
+              "10301020180"
+            ],
+            "nombre_original": "BR CAT GATITO POLLO 1KG"
+          }
+        },
+        {
+          "id": "f7e25599-bf6a-4b1f-a97a-fb6357208379",
+          "price": 81900,
+          "stock": null,
+          "active": true,
+          "weight": "3kg",
+          "metadata": {
+            "llave": "181",
+            "codigo": "10301020181",
+            "source": "productos.json",
+            "codigos": [
+              "10301020181"
+            ],
+            "nombre_original": "BR CAT GATITO POLLO 3KG"
+          }
+        }
+      ]
+    },
+    {
+      "id": "d290dae5-d022-4730-bec5-f4895e38ce86",
+      "name": "BR CAT WILD KITTEN",
+      "species": "gato",
+      "category": "comida",
+      "subcategory": "concentrado",
+      "life_stage": "cachorro",
+      "requires_confirmation": false,
+      "metadata": {
+        "source": "productos.json",
+        "original_names": [
+          "BR CAT WILD KITTEN X 3KG"
+        ]
+      },
+      "brand": {
+        "id": "8cba4eb8-06c3-402d-92a8-e3c3fe5305f1",
+        "name": "BR CAT",
+        "active": true,
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "efdf6dd1-cf67-4255-b0a9-7056e2f4141c",
+          "price": 110000,
+          "stock": null,
+          "active": true,
+          "weight": "x 3kg",
+          "metadata": {
+            "llave": "2319",
+            "codigo": "103010202319",
+            "source": "productos.json",
+            "codigos": [
+              "103010202319"
+            ],
+            "nombre_original": "BR CAT WILD KITTEN X 3KG"
+          }
+        }
+      ]
+    },
+    {
+      "id": "e262d725-45fc-482d-b7f6-27dd1bb96f18",
+      "name": "DONKAT GATITO",
+      "species": "gato",
+      "category": "comida",
+      "subcategory": "concentrado",
+      "life_stage": "cachorro",
+      "requires_confirmation": false,
+      "metadata": {
+        "source": "productos.json",
+        "original_names": [
+          "DONKAT GATITO X 1 KL",
+          "DONKAT GATITO X 500 GR",
+          "DONKAT GATITO X 7 KL"
+        ]
+      },
+      "brand": {
+        "id": "c9325d3f-60de-42c7-a175-a57d4c0aacf2",
+        "name": "DONKAT",
+        "active": true,
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "28a4611a-169b-4fc1-a1e8-f2722375d2ba",
+          "price": 13600,
+          "stock": null,
+          "active": true,
+          "weight": "x 1 kg",
+          "metadata": {
+            "llave": "650",
+            "codigo": "10301020650",
+            "source": "productos.json",
+            "codigos": [
+              "10301020650"
+            ],
+            "nombre_original": "DONKAT GATITO X 1 KL"
+          }
+        },
+        {
+          "id": "162f4ca8-21fb-4cf7-8c7a-a6feb6fd7ea6",
+          "price": 6700,
+          "stock": null,
+          "active": true,
+          "weight": "x 500 gr",
+          "metadata": {
+            "llave": "651",
+            "codigo": "10301020651",
+            "source": "productos.json",
+            "codigos": [
+              "10301020651"
+            ],
+            "nombre_original": "DONKAT GATITO X 500 GR"
+          }
+        },
+        {
+          "id": "9cb5df73-70e5-4e99-9de1-4c4e311bcfe7",
+          "price": 88600,
+          "stock": null,
+          "active": true,
+          "weight": "x 7 kg",
+          "metadata": {
+            "llave": "652",
+            "codigo": "10301020652",
+            "source": "productos.json",
+            "codigos": [
+              "10301020652"
+            ],
+            "nombre_original": "DONKAT GATITO X 7 KL"
+          }
+        }
+      ]
+    },
+    {
+      "id": "eb1de02c-66cd-43dc-a5a6-af60953600c0",
+      "name": "ROYAL CANIN KITTEN",
+      "species": "gato",
+      "category": "comida",
+      "subcategory": "concentrado",
+      "life_stage": "cachorro",
+      "requires_confirmation": false,
+      "metadata": {
+        "source": "productos.json",
+        "original_names": [
+          "ROYAL CANIN KITTEN 400GR"
+        ]
+      },
+      "brand": {
+        "id": "71f6a67d-928d-4fd2-b46b-604780d2f64d",
+        "name": "ROYAL CANIN",
+        "active": true,
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "a28bce6d-edbf-457f-9bbd-996a42d4696f",
+          "price": 30000,
+          "stock": null,
+          "active": true,
+          "weight": "400gr",
+          "metadata": {
+            "llave": "2221",
+            "codigo": "103010202221",
+            "source": "productos.json",
+            "codigos": [
+              "103010202221"
+            ],
+            "nombre_original": "ROYAL CANIN KITTEN 400GR"
+          }
+        }
+      ]
+    }
+  ]
+}

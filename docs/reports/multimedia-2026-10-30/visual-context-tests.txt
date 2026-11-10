@@ -1,0 +1,17 @@
+✔ returning to an earlier quote retains its protected code and re-queries without cached prices (2.002292ms)
+✔ re-entry respects code, variant, species, format, explicit new request and expiry (0.340833ms)
+✔ brand-only clarification cannot select between two previously quoted references (0.092084ms)
+✔ actual saved failing router/state recovers C/D after Advance at the original episode time (1.559458ms)
+✔ pending image identity survives a shorter question and switching to another item (0.899542ms)
+✔ actual pending router with omitted reference retains the original image code (1.225792ms)
+✔ structured requested species cannot endorse a conflicting explicit catalog species (9.901375ms)
+✔ image species requires its own evidence, and explicit customer species takes priority (0.097041ms)
+✔ retained image evidence uses the same guarded identity matching on a later text turn (82.6275ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 133.255125

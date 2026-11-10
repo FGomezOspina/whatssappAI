@@ -1,0 +1,33 @@
+{
+  "capturedAt": "2026-10-29T20:28:12.597Z",
+  "files": [
+    {
+      "path": "src/services/aiContextOptimizer.js",
+      "sha256": "d825c48f15324297d181fa49bdf03a07654ffbe40fea70cf30f03e7d34d47f87"
+    },
+    {
+      "path": "src/services/aiInterpreter.js",
+      "sha256": "6f80a32302f1966b7d1c8bfd844faec1ebf4ebde5ad74f3fced656c787a31de5"
+    },
+    {
+      "path": "src/repositories/productRepository.js",
+      "sha256": "cc6662df57ca89363d819e4ca5c7f1406cec3b869fd5ccec15c38107aa7964fd"
+    },
+    {
+      "path": "src/services/catalogRecommendationService.js",
+      "sha256": "a1463ad5ff6fc11769f7945a59b926bdb4c8eec9e6eddf965623bcfbabe3f16d"
+    },
+    {
+      "path": "src/services/conversationService.js",
+      "sha256": "8fd769937524107533d65a1215ea47a632c85dc1ba9f18e732b73cbeec059b0d"
+    },
+    {
+      "path": "src/services/humanizer.js",
+      "sha256": "d738c0786b65d9873cbea215c4c77677cebe9e00adddb57e493e6e7d2bd66547"
+    },
+    {
+      "path": "src/verticals/petshop/orderLogic.js",
+      "sha256": "25a11efbbc6497bccc5ca6f196507c57f7a5131e84c5a6d1eff4c8de94148f18"
+    }
+  ]
+}

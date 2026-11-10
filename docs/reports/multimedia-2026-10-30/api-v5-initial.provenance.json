@@ -1,0 +1,6 @@
+{
+  "source": "api-v5-identity-evidence.jsonl",
+  "line": 1,
+  "transformation": "Exact first saved row; no content, state, timestamps or expectations changed",
+  "purpose": "Continue the same initial image episode with fixed context handling without paying for another image extraction"
+}

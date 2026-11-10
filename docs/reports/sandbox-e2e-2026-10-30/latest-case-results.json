@@ -1,0 +1,713 @@
+{
+  "at": "2026-10-30T18:37:28.597Z",
+  "scope": "Latest observation for each fixed expected case; previous failures retained in results.json",
+  "cases": [
+    {
+      "id": "S01",
+      "kind": "original_sandbox_recovered",
+      "expected": {
+        "reference": "CAT CHOW DELICARNE",
+        "presentation": "500gr"
+      },
+      "input": [],
+      "response": {
+        "id": "4aa412277938",
+        "direction": "outbound",
+        "text": "Claro, CAT CHOW DELICARNE x 500 gr te queda en $13.700. Las existencias están por confirmar. 🙂",
+        "at": "2026-10-30T17:26:30.000Z",
+        "atColombia": "2026-10-30 12:26:30",
+        "kapsoStatus": "delivered",
+        "kapsoProcessingStatus": "processed",
+        "origin": "cloud_api",
+        "targetMasked": "Sandbox WhatsApp …3541 / interlocutor …4163",
+        "statusEvents": [
+          {
+            "status": "sent",
+            "atColombia": "2026-10-30 12:26:31"
+          },
+          {
+            "status": "delivered",
+            "atColombia": "2026-10-30 12:26:31"
+          },
+          {
+            "status": "delivered",
+            "atColombia": "2026-10-30 12:26:32"
+          }
+        ]
+      },
+      "outcome": "pasa",
+      "providerElapsedMs": null
+    },
+    {
+      "id": "S02",
+      "kind": "controlled_synthetic",
+      "expected": {
+        "abstainUnavailablePresentation": true,
+        "forbidWet": true
+      },
+      "input": [
+        {
+          "id": "ec873e5a9248",
+          "direction": "inbound",
+          "text": "Solo consultar precio: Royal Canin gastrointestinal para perro, concentrado de 7 kg.",
+          "at": "2026-10-30T18:34:10.000Z",
+          "atColombia": "2026-10-30 13:34:10",
+          "kapsoStatus": "read",
+          "kapsoProcessingStatus": "pending",
+          "origin": "cloud_api",
+          "targetMasked": "Sandbox WhatsApp …3541 / interlocutor …4163",
+          "statusEvents": []
+        }
+      ],
+      "response": {
+        "id": "2f8b9a3dd1f6",
+        "direction": "outbound",
+        "text": "Para Royal Canin Gastrointestinal perro en 7 kg no tengo esa presentación disponible en este momento. La presentación disponible es 2 kg por $129.000 🐾",
+        "at": "2026-10-30T18:34:53.000Z",
+        "atColombia": "2026-10-30 13:34:53",
+        "kapsoStatus": "delivered",
+        "kapsoProcessingStatus": "processed",
+        "origin": "cloud_api",
+        "targetMasked": "Sandbox WhatsApp …3541 / interlocutor …4163",
+        "statusEvents": [
+          {
+            "status": "sent",
+            "atColombia": "2026-10-30 13:34:54"
+          },
+          {
+            "status": "delivered",
+            "atColombia": "2026-10-30 13:34:54"
+          }
+        ]
+      },
+      "outcome": "pasa",
+      "providerElapsedMs": 43000
+    },
+    {
+      "id": "S03",
+      "kind": "controlled_synthetic_context",
+      "expected": {
+        "reference": "ROYALCANIN GASTROINTESTINAL PERRO",
+        "presentation": "2kg",
+        "inherits": "S02"
+      },
+      "input": [
+        {
+          "id": "12fc6f1f6022",
+          "direction": "inbound",
+          "text": "Corrijo el tamaño: de 2 kg, el mismo concentrado para perro. Solo consultar el precio.",
+          "at": "2026-10-30T18:35:30.000Z",
+          "atColombia": "2026-10-30 13:35:30",
+          "kapsoStatus": "read",
+          "kapsoProcessingStatus": "pending",
+          "origin": "cloud_api",
+          "targetMasked": "Sandbox WhatsApp …3541 / interlocutor …4163",
+          "statusEvents": []
+        }
+      ],
+      "response": {
+        "id": "b24c1448ef98",
+        "direction": "outbound",
+        "text": "Sí, el ROYALCANIN GASTROINTESTINAL PERRO de 2 kg está en $129.000 🐾 Las existencias están por confirmar.",
+        "at": "2026-10-30T18:36:13.000Z",
+        "atColombia": "2026-10-30 13:36:13",
+        "kapsoStatus": "delivered",
+        "kapsoProcessingStatus": "processed",
+        "origin": "cloud_api",
+        "targetMasked": "Sandbox WhatsApp …3541 / interlocutor …4163",
+        "statusEvents": [
+          {
+            "status": "sent",
+            "atColombia": "2026-10-30 13:36:13"
+          },
+          {
+            "status": "delivered",
+            "atColombia": "2026-10-30 13:36:14"
+          }
+        ]
+      },
+      "outcome": "pasa",
+      "providerElapsedMs": 43000
+    },
+    {
+      "id": "S04",
+      "kind": "controlled_synthetic_burst",
+      "expected": {
+        "reference": "PRO PLAN CANINE UR",
+        "presentation": "2kg",
+        "oneBufferedReply": true
+      },
+      "input": [
+        {
+          "id": "702302de1525",
+          "direction": "inbound",
+          "text": "Solo consultar: Pro Plan UR para perro",
+          "at": "2026-10-30T18:08:12.000Z",
+          "atColombia": "2026-10-30 13:08:12",
+          "kapsoStatus": "delivered",
+          "kapsoProcessingStatus": "pending",
+          "origin": "cloud_api",
+          "targetMasked": "Sandbox WhatsApp …3541 / interlocutor …4163",
+          "statusEvents": []
+        },
+        {
+          "id": "ae1fef60fa08",
+          "direction": "inbound",
+          "text": "el concentrado de 2 kg",
+          "at": "2026-10-30T18:08:14.000Z",
+          "atColombia": "2026-10-30 13:08:14",
+          "kapsoStatus": "read",
+          "kapsoProcessingStatus": "pending",
+          "origin": "cloud_api",
+          "targetMasked": "Sandbox WhatsApp …3541 / interlocutor …4163",
+          "statusEvents": []
+        }
+      ],
+      "response": {
+        "id": "14a8350aca9c",
+        "direction": "outbound",
+        "text": "Claro 😊 PRO PLAN CANINE UR para perro en 2 kg está en $122.000. Las existencias están por confirmar.",
+        "at": "2026-10-30T18:09:00.000Z",
+        "atColombia": "2026-10-30 13:09:00",
+        "kapsoStatus": "delivered",
+        "kapsoProcessingStatus": "processed",
+        "origin": "cloud_api",
+        "targetMasked": "Sandbox WhatsApp …3541 / interlocutor …4163",
+        "statusEvents": [
+          {
+            "status": "sent",
+            "atColombia": "2026-10-30 13:09:00"
+          },
+          {
+            "status": "delivered",
+            "atColombia": "2026-10-30 13:09:00"
+          },
+          {
+            "status": "delivered",
+            "atColombia": "2026-10-30 13:09:01"
+          }
+        ]
+      },
+      "outcome": "pasa",
+      "providerElapsedMs": 48000
+    },
+    {
+      "id": "S05",
+      "kind": "controlled_synthetic_context",
+      "expected": {
+        "reference": "PRO PLAN CANINE LATA UR",
+        "format": "lata",
+        "inherits": "S04"
+      },
+      "input": [
+        {
+          "id": "f88069362a87",
+          "direction": "inbound",
+          "text": "Ahora cotízame la lata de esa misma línea UR para perro. Solo consulta.",
+          "at": "2026-10-30T18:13:40.000Z",
+          "atColombia": "2026-10-30 13:13:40",
+          "kapsoStatus": "read",
+          "kapsoProcessingStatus": "pending",
+          "origin": "cloud_api",
+          "targetMasked": "Sandbox WhatsApp …3541 / interlocutor …4163",
+          "statusEvents": []
+        }
+      ],
+      "response": {
+        "id": "5c0da53c629c",
+        "direction": "outbound",
+        "text": "Claro 😊 la lata PRO PLAN CANINE LATA UR para perro está en $28.600. Las existencias están por confirmar.",
+        "at": "2026-10-30T18:14:20.000Z",
+        "atColombia": "2026-10-30 13:14:20",
+        "kapsoStatus": "delivered",
+        "kapsoProcessingStatus": "processed",
+        "origin": "cloud_api",
+        "targetMasked": "Sandbox WhatsApp …3541 / interlocutor …4163",
+        "statusEvents": [
+          {
+            "status": "sent",
+            "atColombia": "2026-10-30 13:14:21"
+          },
+          {
+            "status": "delivered",
+            "atColombia": "2026-10-30 13:14:21"
+          },
+          {
+            "status": "delivered",
+            "atColombia": "2026-10-30 13:14:22"
+          }
+        ]
+      },
+      "outcome": "pasa",
+      "providerElapsedMs": 40000
+    },
+    {
+      "id": "S06",
+      "kind": "controlled_synthetic",
+      "expected": {
+        "reference": "PRO PLAN POUCH FELINO KITTEN",
+        "format": "sobre",
+        "presentation": "85gr"
+      },
+      "input": [
+        {
+          "id": "f76596eb5405",
+          "direction": "inbound",
+          "text": "Solo consultar: Pro Plan kitten para gatito, en sobre de 85 gramos.",
+          "at": "2026-10-30T18:15:07.000Z",
+          "atColombia": "2026-10-30 13:15:07",
+          "kapsoStatus": "read",
+          "kapsoProcessingStatus": "pending",
+          "origin": "cloud_api",
+          "targetMasked": "Sandbox WhatsApp …3541 / interlocutor …4163",
+          "statusEvents": []
+        }
+      ],
+      "response": {
+        "id": "302918851548",
+        "direction": "outbound",
+        "text": "Claro 😊 te confirmo el PRO PLAN POUCH FELINO KITTEN de 85gr en $6.200. Las existencias están por confirmar.",
+        "at": "2026-10-30T18:15:50.000Z",
+        "atColombia": "2026-10-30 13:15:50",
+        "kapsoStatus": "delivered",
+        "kapsoProcessingStatus": "processed",
+        "origin": "cloud_api",
+        "targetMasked": "Sandbox WhatsApp …3541 / interlocutor …4163",
+        "statusEvents": [
+          {
+            "status": "sent",
+            "atColombia": "2026-10-30 13:15:51"
+          },
+          {
+            "status": "delivered",
+            "atColombia": "2026-10-30 13:15:51"
+          },
+          {
+            "status": "delivered",
+            "atColombia": "2026-10-30 13:15:52"
+          }
+        ]
+      },
+      "outcome": "pasa",
+      "providerElapsedMs": 43000
+    },
+    {
+      "id": "S07",
+      "kind": "real_corpus_literal",
+      "expected": {
+        "clarifyPack": true,
+        "forbidUnitQuoteAsPack": true
+      },
+      "input": [
+        {
+          "id": "ff03b51b710c",
+          "direction": "inbound",
+          "text": "A como tienes el nefrotec x60",
+          "at": "2026-10-30T18:17:21.000Z",
+          "atColombia": "2026-10-30 13:17:21",
+          "kapsoStatus": "read",
+          "kapsoProcessingStatus": "pending",
+          "origin": "cloud_api",
+          "targetMasked": "Sandbox WhatsApp …3541 / interlocutor …4163",
+          "statusEvents": []
+        }
+      ],
+      "response": {
+        "id": "7f70c41ad595",
+        "direction": "outbound",
+        "text": "Tenemos opciones de nefrotec. ¿Necesitas un empaque cerrado de 60 unidades o unidades individuales? Necesito verificar esa presentación antes de cotizarla.",
+        "at": "2026-10-30T18:18:02.000Z",
+        "atColombia": "2026-10-30 13:18:02",
+        "kapsoStatus": "delivered",
+        "kapsoProcessingStatus": "processed",
+        "origin": "cloud_api",
+        "targetMasked": "Sandbox WhatsApp …3541 / interlocutor …4163",
+        "statusEvents": [
+          {
+            "status": "sent",
+            "atColombia": "2026-10-30 13:18:03"
+          },
+          {
+            "status": "delivered",
+            "atColombia": "2026-10-30 13:18:03"
+          }
+        ]
+      },
+      "outcome": "pasa",
+      "providerElapsedMs": 41000
+    },
+    {
+      "id": "S08",
+      "kind": "controlled_synthetic_from_real_identity",
+      "expected": {
+        "abstain": true,
+        "forbidReference": "BR SNACK CAT SOFTY SKIN COAT"
+      },
+      "input": [
+        {
+          "id": "7e15debe300c",
+          "direction": "inbound",
+          "text": "Solo consultar: Canitabs Skin Coat.",
+          "at": "2026-10-30T18:26:08.000Z",
+          "atColombia": "2026-10-30 13:26:08",
+          "kapsoStatus": "read",
+          "kapsoProcessingStatus": "pending",
+          "origin": "cloud_api",
+          "targetMasked": "Sandbox WhatsApp …3541 / interlocutor …4163",
+          "statusEvents": []
+        }
+      ],
+      "response": {
+        "id": "0d79dd79ea85",
+        "direction": "outbound",
+        "text": "Veo que consultas por Canitabs Skin Coat. Ahora mismo no me queda claro cuál es exactamente esa referencia, así que prefiero no darte una identificación que pueda confundirte. Si quieres, puedo intentar orientarte por la necesidad del producto, pero en este momento no tengo más datos para afinarlo.",
+        "at": "2026-10-30T18:26:54.000Z",
+        "atColombia": "2026-10-30 13:26:54",
+        "kapsoStatus": "delivered",
+        "kapsoProcessingStatus": "processed",
+        "origin": "cloud_api",
+        "targetMasked": "Sandbox WhatsApp …3541 / interlocutor …4163",
+        "statusEvents": [
+          {
+            "status": "sent",
+            "atColombia": "2026-10-30 13:26:55"
+          },
+          {
+            "status": "delivered",
+            "atColombia": "2026-10-30 13:26:55"
+          },
+          {
+            "status": "delivered",
+            "atColombia": "2026-10-30 13:26:56"
+          }
+        ]
+      },
+      "outcome": "pasa (abstención segura)",
+      "providerElapsedMs": 46000
+    },
+    {
+      "id": "S09",
+      "kind": "controlled_synthetic_typo",
+      "expected": {
+        "reference": "DIAMOND INDOOR CAT",
+        "presentation": "500gr"
+      },
+      "input": [
+        {
+          "id": "24e9b8aaf61c",
+          "direction": "inbound",
+          "text": "Solo consultar precio de diamon indor para gato, medio kilo",
+          "at": "2026-10-30T18:27:17.000Z",
+          "atColombia": "2026-10-30 13:27:17",
+          "kapsoStatus": "read",
+          "kapsoProcessingStatus": "pending",
+          "origin": "cloud_api",
+          "targetMasked": "Sandbox WhatsApp …3541 / interlocutor …4163",
+          "statusEvents": []
+        }
+      ],
+      "response": {
+        "id": "617f27d0bad6",
+        "direction": "outbound",
+        "text": "Te confirmo, esa referencia la manejamos: DIAMOND INDOOR CAT 500gr por $19.500. Las existencias están por confirmar. 😊",
+        "at": "2026-10-30T18:27:59.000Z",
+        "atColombia": "2026-10-30 13:27:59",
+        "kapsoStatus": "delivered",
+        "kapsoProcessingStatus": "processed",
+        "origin": "cloud_api",
+        "targetMasked": "Sandbox WhatsApp …3541 / interlocutor …4163",
+        "statusEvents": [
+          {
+            "status": "sent",
+            "atColombia": "2026-10-30 13:27:59"
+          },
+          {
+            "status": "delivered",
+            "atColombia": "2026-10-30 13:28:00"
+          }
+        ]
+      },
+      "outcome": "pasa",
+      "providerElapsedMs": 42000
+    },
+    {
+      "id": "S10",
+      "kind": "controlled_synthetic_recommendation",
+      "expected": {
+        "recommendation": true,
+        "noCart": true
+      },
+      "input": [
+        {
+          "id": "9a51176c5346",
+          "direction": "inbound",
+          "text": "Qué alimento me recomiendas para un gatito de seis meses? Solo quiero opciones, no comprar.",
+          "at": "2026-10-30T18:28:14.000Z",
+          "atColombia": "2026-10-30 13:28:14",
+          "kapsoStatus": "read",
+          "kapsoProcessingStatus": "pending",
+          "origin": "cloud_api",
+          "targetMasked": "Sandbox WhatsApp …3541 / interlocutor …4163",
+          "statusEvents": []
+        }
+      ],
+      "response": {
+        "id": "03cef01befa4",
+        "direction": "outbound",
+        "text": "Para un gatito de 6 meses, estas opciones sí corresponden a cachorro:  \n\n- PRO PLAN POUCH FELINO KITTEN 85gr: $6.200 — comida humeda, gato, cachorro.  \n- ROYAL CANIN LATA KITTEN LOAF unidad: $10.500 — comida humeda, gato, cachorro.  \n- ROYAL CANIN KITTEN 400gr: $30.000 — concentrado, gato, cachorro.  \n\nLos precios están registrados; las existencias están por confirmar. ¿Prefieres comida húmeda o concentrado?",
+        "at": "2026-10-30T18:28:51.000Z",
+        "atColombia": "2026-10-30 13:28:51",
+        "kapsoStatus": "delivered",
+        "kapsoProcessingStatus": "processed",
+        "origin": "cloud_api",
+        "targetMasked": "Sandbox WhatsApp …3541 / interlocutor …4163",
+        "statusEvents": [
+          {
+            "status": "sent",
+            "atColombia": "2026-10-30 13:28:52"
+          },
+          {
+            "status": "delivered",
+            "atColombia": "2026-10-30 13:28:52"
+          },
+          {
+            "status": "delivered",
+            "atColombia": "2026-10-30 13:28:53"
+          }
+        ]
+      },
+      "outcome": "pasa",
+      "providerElapsedMs": 37000
+    },
+    {
+      "id": "S11",
+      "kind": "controlled_synthetic_negative",
+      "expected": {
+        "abstain": true,
+        "noInventedProduct": true
+      },
+      "input": [
+        {
+          "id": "37db0ca152c2",
+          "direction": "inbound",
+          "text": "Solo consultar: marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos.",
+          "at": "2026-10-30T18:29:27.000Z",
+          "atColombia": "2026-10-30 13:29:27",
+          "kapsoStatus": "read",
+          "kapsoProcessingStatus": "pending",
+          "origin": "cloud_api",
+          "targetMasked": "Sandbox WhatsApp …3541 / interlocutor …4163",
+          "statusEvents": []
+        }
+      ],
+      "response": {
+        "id": "f2c8379a1f13",
+        "direction": "outbound",
+        "text": "No logro identificar con seguridad esa referencia. Si quieres, puedo ayudarte a orientarlo según la necesidad, pero no te confirmaría que sea ese producto solo con ese nombre y ese formato.",
+        "at": "2026-10-30T18:30:10.000Z",
+        "atColombia": "2026-10-30 13:30:10",
+        "kapsoStatus": "delivered",
+        "kapsoProcessingStatus": "processed",
+        "origin": "cloud_api",
+        "targetMasked": "Sandbox WhatsApp …3541 / interlocutor …4163",
+        "statusEvents": [
+          {
+            "status": "sent",
+            "atColombia": "2026-10-30 13:30:11"
+          },
+          {
+            "status": "delivered",
+            "atColombia": "2026-10-30 13:30:11"
+          }
+        ]
+      },
+      "outcome": "pasa (abstención segura)",
+      "providerElapsedMs": 43000
+    },
+    {
+      "id": "S12",
+      "kind": "real_corpus_identity_control",
+      "expected": {
+        "abstain": true,
+        "forbidSubstitution": "ROYALCANIN GASTROINTESTINAL PERRO"
+      },
+      "input": [
+        {
+          "id": "068b39d749d6",
+          "direction": "inbound",
+          "text": "Solo consultar: Bonnat Gastrointestinal para perro.",
+          "at": "2026-10-30T18:30:23.000Z",
+          "atColombia": "2026-10-30 13:30:23",
+          "kapsoStatus": "read",
+          "kapsoProcessingStatus": "pending",
+          "origin": "cloud_api",
+          "targetMasked": "Sandbox WhatsApp …3541 / interlocutor …4163",
+          "statusEvents": []
+        }
+      ],
+      "response": {
+        "id": "747c17474a52",
+        "direction": "outbound",
+        "text": "Con ese nombre no te lo puedo dejar confirmado. Si quieres, puedo ayudarte a orientarlo por la necesidad para perro y revisar qué encaja mejor; ¿te interesa que lo haga?",
+        "at": "2026-10-30T18:31:07.000Z",
+        "atColombia": "2026-10-30 13:31:07",
+        "kapsoStatus": "delivered",
+        "kapsoProcessingStatus": "processed",
+        "origin": "cloud_api",
+        "targetMasked": "Sandbox WhatsApp …3541 / interlocutor …4163",
+        "statusEvents": [
+          {
+            "status": "sent",
+            "atColombia": "2026-10-30 13:31:07"
+          },
+          {
+            "status": "delivered",
+            "atColombia": "2026-10-30 13:31:08"
+          }
+        ]
+      },
+      "outcome": "pasa (abstención segura)",
+      "providerElapsedMs": 44000
+    },
+    {
+      "id": "S13",
+      "kind": "controlled_synthetic_context",
+      "expected": {
+        "reference": "PRO PLAN POUCH FELINO KITTEN",
+        "presentation": "85gr",
+        "quantity": 3,
+        "inherits": "S06",
+        "noCart": true
+      },
+      "input": [
+        {
+          "id": "5d640fd1109b",
+          "direction": "inbound",
+          "text": "Ahora serían tres sobres del mismo producto, solo cotización.",
+          "at": "2026-10-30T18:16:07.000Z",
+          "atColombia": "2026-10-30 13:16:07",
+          "kapsoStatus": "read",
+          "kapsoProcessingStatus": "pending",
+          "origin": "cloud_api",
+          "targetMasked": "Sandbox WhatsApp …3541 / interlocutor …4163",
+          "statusEvents": []
+        }
+      ],
+      "response": {
+        "id": "3243c490ab40",
+        "direction": "outbound",
+        "text": "Claro 😊 tres sobres de PRO PLAN POUCH FELINO KITTEN de 85gr te quedan en $6.200 c/u, para un total de $18.600. Las existencias están por confirmar.",
+        "at": "2026-10-30T18:16:48.000Z",
+        "atColombia": "2026-10-30 13:16:48",
+        "kapsoStatus": "delivered",
+        "kapsoProcessingStatus": "processed",
+        "origin": "cloud_api",
+        "targetMasked": "Sandbox WhatsApp …3541 / interlocutor …4163",
+        "statusEvents": [
+          {
+            "status": "sent",
+            "atColombia": "2026-10-30 13:16:49"
+          },
+          {
+            "status": "delivered",
+            "atColombia": "2026-10-30 13:16:49"
+          }
+        ]
+      },
+      "outcome": "pasa",
+      "providerElapsedMs": 41000
+    },
+    {
+      "id": "S14",
+      "kind": "controlled_consultation_from_real_C19-01",
+      "expected": {
+        "reference": "CANISAN D",
+        "presentation": "5ml",
+        "noCart": true
+      },
+      "input": [
+        {
+          "id": "f6587da04b4a",
+          "direction": "inbound",
+          "text": "Solo consultar: Canisan D de 5ml.",
+          "at": "2026-10-30T18:31:39.000Z",
+          "atColombia": "2026-10-30 13:31:39",
+          "kapsoStatus": "read",
+          "kapsoProcessingStatus": "pending",
+          "origin": "cloud_api",
+          "targetMasked": "Sandbox WhatsApp …3541 / interlocutor …4163",
+          "statusEvents": []
+        }
+      ],
+      "response": {
+        "id": "457ba4093482",
+        "direction": "outbound",
+        "text": "Sí, CANISAN D de 5 ml está en $21.500. Las existencias están por confirmar. 🐾",
+        "at": "2026-10-30T18:32:19.000Z",
+        "atColombia": "2026-10-30 13:32:19",
+        "kapsoStatus": "delivered",
+        "kapsoProcessingStatus": "processed",
+        "origin": "cloud_api",
+        "targetMasked": "Sandbox WhatsApp …3541 / interlocutor …4163",
+        "statusEvents": [
+          {
+            "status": "sent",
+            "atColombia": "2026-10-30 13:32:19"
+          },
+          {
+            "status": "delivered",
+            "atColombia": "2026-10-30 13:32:20"
+          }
+        ]
+      },
+      "outcome": "pasa",
+      "providerElapsedMs": 40000
+    },
+    {
+      "id": "S15",
+      "kind": "controlled_consultation_from_real_C16-01",
+      "expected": {
+        "clarifyFoodForm": true,
+        "forbidForcedFormat": true,
+        "noCart": true
+      },
+      "input": [
+        {
+          "id": "94bb5e51dc05",
+          "direction": "inbound",
+          "text": "Solo consultar: proplan feline EN.",
+          "at": "2026-10-30T18:32:55.000Z",
+          "atColombia": "2026-10-30 13:32:55",
+          "kapsoStatus": "read",
+          "kapsoProcessingStatus": "pending",
+          "origin": "cloud_api",
+          "targetMasked": "Sandbox WhatsApp …3541 / interlocutor …4163",
+          "statusEvents": []
+        }
+      ],
+      "response": {
+        "id": "97a5eb4d691d",
+        "direction": "outbound",
+        "text": "Para gato, tengo estas dos opciones: PRO PLAN FELINE EN concentrado de 1.5 kg o PRO PLAN FELINE LATA EN comida húmeda por unidad. ¿Cuál forma busca? 🐾",
+        "at": "2026-10-30T18:33:36.000Z",
+        "atColombia": "2026-10-30 13:33:36",
+        "kapsoStatus": "delivered",
+        "kapsoProcessingStatus": "processed",
+        "origin": "cloud_api",
+        "targetMasked": "Sandbox WhatsApp …3541 / interlocutor …4163",
+        "statusEvents": [
+          {
+            "status": "sent",
+            "atColombia": "2026-10-30 13:33:36"
+          },
+          {
+            "status": "delivered",
+            "atColombia": "2026-10-30 13:33:36"
+          }
+        ]
+      },
+      "outcome": "pasa (aclaración necesaria)",
+      "providerElapsedMs": 41000
+    }
+  ]
+}

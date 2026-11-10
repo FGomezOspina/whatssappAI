@@ -5,18 +5,18 @@ const { esDescriptorReferencia } = require('../src/utils/catalogVariants');
 const { _internals: { consultaSolicitudProducto } } = require('../src/services/conversationService');
 const clasificacion = { intencion: 'busqueda_producto', perfilContexto: 'pedido' };
 
-for (const envase of ['lata', 'latas', null]) test(`envase ${envase} no descarta referencia cuyo catálogo solo contiene gramos`, () => {
+for (const envase of ['lata', 'latas', null]) test(`envase ${envase} conserva candidatos pero no confirma envase ausente del catálogo`, () => {
   const catalogo = [{ marca: 'NUTRICIONPRUEBA', referencias: [{ nombre: 'NUTRICIONPRUEBA URINARY',
     especie: 'gato', categoria: 'comida', presentaciones: [{ peso: '100gr', precio: 8000 }] }] }];
   const producto = { marca: 'NUTRICIONPRUEBA', referencia: 'Urinary', textoVisible: '3 latas de NUTRICIONPRUEBA Urinary',
     presentacion: envase, cantidad: 3, condiciones: ['urinary'] };
   const interpretacion = { producto, confianza: 1, intencion: 'consulta_producto', accion: 'consultar' };
   const v = validar({ mensaje: consultaSolicitudProducto(producto, producto.textoVisible), catalogo, interpretacion, clasificacion });
-  assert.equal(v.nivel, 'alta');
-  assert.equal(v.coincidencia.referencia, 'NUTRICIONPRUEBA URINARY');
-  const resuelta = aplicarCoincidenciaValidada(interpretacion, v);
-  assert.equal(resuelta.producto.presentacion, null);
-  assert.equal(resuelta.producto.cantidad, 3);
+  assert.equal(v.nivel, 'media');
+  assert.equal(v.razon, 'formato_catalogo_sin_verificar');
+  assert.ok(v.alternativas.some(p => p.referencia === 'NUTRICIONPRUEBA URINARY'));
+  assert.equal(v.coincidencia, null);
+  assert.equal(interpretacion.producto.cantidad, 3);
 });
 
 test('lata y latas mantienen la distinción con pouch cuando el catálogo especifica envases', () => {

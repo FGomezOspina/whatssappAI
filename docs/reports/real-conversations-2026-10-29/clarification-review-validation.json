@@ -1,0 +1,46 @@
+{
+  "checkedAt": "2026-10-30T14:30:46.972Z",
+  "suite": {
+    "tests": 1082,
+    "passed": 1082,
+    "failed": 0
+  },
+  "realCorpusSha256": "388f17fbcfc380c98bc93d1a8f252110f182b144cba8d0bd82e66647f3dca2c2",
+  "realOutcomesUnchanged": true,
+  "canonicalInputsUnchanged": true,
+  "canonicalBefore": {
+    "identified": 1011,
+    "clarification": 52,
+    "different_reference": 0
+  },
+  "canonicalAfter": {
+    "identified": 1022,
+    "clarification": 41,
+    "different_reference": 0
+  },
+  "latencyLocalMs": {
+    "median": 3.678541999999993,
+    "p95": 22.96124999999995
+  },
+  "review": {
+    "sameCases": 42,
+    "beforeConfirmed": 0,
+    "afterConfirmed": 12,
+    "afterClarifications": 28,
+    "differentFromHistoricalExpected": 2,
+    "invalidSyntheticInputs": 3,
+    "validInputSubset": {
+      "cases": 39,
+      "confirmed": 12,
+      "clarifications": 27,
+      "differentReferences": 0
+    }
+  },
+  "htmlSha256": "48265d13dc314de5736791b4320e67ff8c2ecef6d8aa7ce37adee5aa389861f4",
+  "productionFilesChangedThisReview": [
+    "src/utils/foodFormat.js",
+    "src/services/productMatchValidator.js"
+  ],
+  "noOpenAICalls": true,
+  "noBrowserInteractionsDuringReview": true
+}

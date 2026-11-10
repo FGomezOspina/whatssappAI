@@ -1,0 +1,9 @@
+{
+  "at": "2026-10-29T22:05:25.654Z",
+  "status": 200,
+  "health": {
+    "ok": true,
+    "provider": "kapso"
+  },
+  "runtime": "[Runtime] {\"pid\":18220,\"cwd\":\"/Users/gomez/Documents/WhatsappVELTIA\",\"startedAt\":\"2026-10-29T22:05:11.926Z\",\"sourceHash\":\"fe3840d617ebb1c3b26f08730c562cf8d25c3250a8773bd607d33dd51998875f\"}"
+}

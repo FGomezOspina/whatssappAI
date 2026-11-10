@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-29",
+  "command": "npm test",
+  "tests": 1039,
+  "pass": 1039,
+  "fail": 0,
+  "skipped": 0,
+  "duration_ms": 7205.577667,
+  "baseline_tests": 1027,
+  "new_regressions": 12,
+  "log": "/tmp/veltia-technical-notice-suite.log",
+  "git_diff_check": "clean",
+  "providers": "mocked for technical notice regressions",
+  "openai_calls": 0,
+  "kapso_sends": 0,
+  "supabase_writes": 0,
+  "runtime_restarted": false,
+  "runtime_loaded_local_fix": false
+}

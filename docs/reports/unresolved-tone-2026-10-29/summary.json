@@ -1,0 +1,150 @@
+{
+  "capturedAt": "2026-10-29T21:03:09.067Z",
+  "finalMatrix": [
+    {
+      "source": "final-scoped",
+      "case": "unresolved-tone",
+      "text": "Solo consultar: tienen marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos?",
+      "response": "Ahora mismo no puedo confirmar esa referencia exacta de ZetaPruebaQ9, ZQ17 en 4 kg. Si quieres, puedo ayudarte a revisar otras opciones similares, pero solo si te parece bien.\n\nPedido:\n- 1 x BR CAT SALMON 1kg: $30.500\nTotal: $30.500",
+      "ms": 22929,
+      "cartUnchanged": true,
+      "resources": {},
+      "openaiCalls": 4
+    },
+    {
+      "source": "final-scoped",
+      "case": "unresolved-tone",
+      "text": "No tengo foto ni más datos, ese es el nombre y son 4 kilos",
+      "response": "Entiendo, con ese nombre y 4 kg no me queda margen para afinar más. Si quieres, puedo revisar otras opciones parecidas con lo que ya me has dado; si prefieres, lo dejamos aquí.\n\nPedido:\n- 1 x BR CAT SALMON 1kg: $30.500\nTotal: $30.500",
+      "ms": 15131,
+      "cartUnchanged": true,
+      "resources": {
+        "fotoDisponible": false,
+        "masDatosDisponibles": false
+      },
+      "openaiCalls": 3
+    },
+    {
+      "source": "final-scoped",
+      "case": "unresolved-paraphrase",
+      "text": "Me puedes mirar el ZQ17 de ZetaPruebaQ9? Es bolsa de cuatro kilos, no tengo foto",
+      "response": "Gracias, tengo anotado que buscas el ZQ17 de ZetaPruebaQ9 en bolsa de 4 kg. Con esos datos, no puedo asegurarte cuál es exactamente. Si quieres, puedo revisar otras opciones con ese mismo nombre y formato; dime si te interesa.\n\nPedido:\n- 1 x BR CAT SALMON 1kg: $30.500\nTotal: $30.500",
+      "ms": 16270,
+      "cartUnchanged": true,
+      "resources": {
+        "fotoDisponible": false
+      },
+      "openaiCalls": 3
+    },
+    {
+      "source": "final-controls",
+      "case": "kitten-budget",
+      "text": "Me ayudas a elegir comida para mi gatita pequeña, tiene 4 meses. Máximo 30000 pesos",
+      "response": "Claro, para una gatita de 4 meses te sirven estas opciones dentro de tu presupuesto:\n\n- ROYAL CANIN KITTEN 400gr: $30.000 — concentrado, gato, cachorro.\n- BR CAT GATITOS SALMON 1kg: $28.000 — concentrado, gato, cachorro.\n- BR CAT GATITO POLLO 1kg: $28.000 — concentrado, gato, cachorro.\n\nSi quieres, te ayudo a elegir entre 400gr o 1kg según lo que te convenga más.\n\nLas existencias están por confirmar.",
+      "ms": 12381,
+      "cartUnchanged": true,
+      "resources": {},
+      "openaiCalls": 3
+    },
+    {
+      "source": "final-controls",
+      "case": "typo-clarified",
+      "text": "Solo quiero consultar precio de diamon indor para gato, el de medio kilo",
+      "response": "Entiendo que buscas el precio de Diamond Indoor Cat para gato, en presentación de 500 g. No puedo confirmarte el precio con lo que tengo ahora mismo. Si quieres, puedo revisar otras opciones relacionadas; dime y lo vemos.\n\nPedido:\n- 1 x BR CAT SALMON 1kg: $30.500\nTotal: $30.500",
+      "ms": 15907,
+      "cartUnchanged": true,
+      "resources": {},
+      "openaiCalls": 3
+    },
+    {
+      "source": "final-controls",
+      "case": "typo-clarified",
+      "text": "El nombre completo es DIAMOND INDOOR CAT, 500 gramos. Solo precio",
+      "response": "Te confirmo DIAMOND INDOOR CAT 500gr en $19.500. Las existencias están por confirmar. 🙂",
+      "ms": 15213,
+      "cartUnchanged": true,
+      "resources": {},
+      "openaiCalls": 3
+    }
+  ],
+  "e2e": {
+    "version": "intermediate before final resource constraints and scoped writing prompt",
+    "turns": [
+      {
+        "hash": "a7059f4a6d85",
+        "in": [
+          {
+            "id": "ca24b76b-1348-5597-e760-6a6bd8d82ef2",
+            "text": "Solo consultar: tienen marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos?",
+            "at": "2026-10-29T20:54:32.070547+00:00"
+          }
+        ],
+        "out": [
+          {
+            "id": "ab0426dc-d9f5-3e32-7955-aab4882db210",
+            "text": "Por ahora no puedo confirmar esa referencia. ¿Quieres que revisemos otras opciones? Mantengo tu elección sin sustituirla por otro producto.",
+            "at": "2026-10-29T20:54:57.561982+00:00"
+          }
+        ],
+        "persistedLatencyMs": 25491
+      },
+      {
+        "hash": "e38a6ddf6c98",
+        "in": [
+          {
+            "id": "e7107b38-b015-1b23-4941-9638f515b4f2",
+            "text": "Solo consultar: tienen marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos?",
+            "at": "2026-10-29T20:56:04.854968+00:00"
+          }
+        ],
+        "out": [
+          {
+            "id": "65fe8c91-ba7c-64dc-61ca-da3c1092351d",
+            "text": "Por ahora no puedo confirmarte esa referencia con seguridad. Si quieres, podemos revisar otras opciones parecidas. 🙂",
+            "at": "2026-10-29T20:56:31.862832+00:00"
+          }
+        ],
+        "persistedLatencyMs": 27008
+      }
+    ],
+    "kapso": [
+      {
+        "messageHash": "29b1133b7243be60",
+        "direction": "outbound",
+        "status": "delivered",
+        "text": "Por ahora no puedo confirmarte esa referencia con seguridad. Si quieres, podemos revisar otras opciones parecidas. 🙂",
+        "at": "2026-10-29T20:56:31.000Z"
+      },
+      {
+        "messageHash": "6403332766d11ea2",
+        "direction": "inbound",
+        "status": "read",
+        "text": "Solo consultar: tienen marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos?",
+        "at": "2026-10-29T20:55:57.000Z"
+      },
+      {
+        "messageHash": "69efc216eacc43e0",
+        "direction": "outbound",
+        "status": "delivered",
+        "text": "Por ahora no puedo confirmar esa referencia. ¿Quieres que revisemos otras opciones? Mantengo tu elección sin sustituirla por otro producto.",
+        "at": "2026-10-29T20:54:57.000Z"
+      },
+      {
+        "messageHash": "85555c3f9bd5a34b",
+        "direction": "inbound",
+        "status": "read",
+        "text": "Solo consultar: tienen marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos?",
+        "at": "2026-10-29T20:54:25.000Z"
+      }
+    ],
+    "duplicateEventKeys": 0,
+    "orders": 0,
+    "finalCart": [],
+    "attention": {
+      "estado": "pendiente",
+      "motivo": "criterio_veterinario",
+      "solicitadaEn": "2026-10-29T20:21:46.781Z"
+    },
+    "finalVersionE2E": "paused: user actively editing another WhatsApp chat"
+  }
+}

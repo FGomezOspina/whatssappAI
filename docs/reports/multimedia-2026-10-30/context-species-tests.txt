@@ -1,0 +1,33 @@
+[Cart Operation] {"action":"modificar_cantidad","targetResolved":false,"mutationApplied":false,"catalogLookup":false,"target":"CHURU CHURU"}
+[Cart Operation] {"action":"modificar_cantidad","targetResolved":true,"mutationApplied":false,"catalogLookup":false,"target":"CHURU CHURU"}
+[Cart Operation] {"action":"modificar_cantidad","targetResolved":true,"mutationApplied":true,"catalogLookup":false,"target":"CHURU CHURU"}
+[Cart Operation] {"action":"modificar_cantidad","targetResolved":false,"mutationApplied":false,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"modificar_cantidad","targetResolved":true,"mutationApplied":false,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"modificar_cantidad","targetResolved":true,"mutationApplied":true,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"modificar_cantidad","targetResolved":false,"mutationApplied":false,"catalogLookup":false,"target":"OTRO NO EXISTE"}
+[AI Usage] etapa=respuesta_producto | cliente=sin_cliente | usuario=desconocido | intencion=null | modelo=gpt-5.4-mini | productosEnviados=n/a | imagenes=0 | audios=0 | duracionMs=0 | tokensPrompt=0 | tokensCompletion=0 | tokensTotal=0
+[AI Usage] etapa=respuesta_producto | cliente=sin_cliente | usuario=desconocido | intencion=null | modelo=gpt-5.4-mini | productosEnviados=n/a | imagenes=0 | audios=0 | duracionMs=0 | tokensPrompt=0 | tokensCompletion=0 | tokensTotal=0
+[AI Usage] etapa=respuesta_producto | cliente=sin_cliente | usuario=desconocido | intencion=null | modelo=gpt-5.4-mini | productosEnviados=n/a | imagenes=0 | audios=0 | duracionMs=0 | tokensPrompt=0 | tokensCompletion=0 | tokensTotal=0
+✔ precio unitario depende de cantidad y de datos del catálogo (0.3515ms)
+✔ venta individual para ambas especies no elige una caja ni cambia otras variantes (53.946ms)
+✔ paquetes de unidades se convierten solamente para venta individual declarada (0.47125ms)
+✔ el carrito recalcula el descuento al sumar, bajar y volver a sumar unidades (17.440791ms)
+✔ cotizar cuatro unidades usa la tarifa correcta sin agregar al carrito (4.93425ms)
+✔ la recuperación aproximada compara marcas del cliente y conserva reglas de precio (1.381917ms)
+✔ cambiar un item sin consultar catálogo nunca redirige la operación al último del carrito (0.5315ms)
+✔ el redactor usa el precio vigente por cantidad y no exige el precio base (3.125625ms)
+✔ returning to an earlier quote retains its protected code and re-queries without cached prices (2.252875ms)
+✔ re-entry respects code, variant, species, format, explicit new request and expiry (0.384875ms)
+✔ brand-only clarification cannot select between two previously quoted references (0.099416ms)
+✔ actual saved failing router/state recovers C/D after Advance at the original episode time (1.714625ms)
+✔ pending image identity survives a shorter question and switching to another item (0.757708ms)
+✔ actual pending router with omitted reference retains the original image code (1.221417ms)
+✔ structured requested species cannot endorse a conflicting explicit catalog species (10.022958ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 132.016375

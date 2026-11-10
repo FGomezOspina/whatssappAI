@@ -1,0 +1,1948 @@
+{
+  "at": "2026-10-30T18:36:40.395Z",
+  "rows": [
+    {
+      "run": "be2495d3-4830-40ea-930e-332c523fb7dd",
+      "stage": "busqueda_candidatos",
+      "candidates": [
+        {
+          "marca": "ROYALCANIN",
+          "referencias": [
+            {
+              "nombre": "ROYALCANIN GASTROINTESTINAL PERRO",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "2kg"
+              ]
+            }
+          ]
+        },
+        {
+          "marca": "ROYAL CANIN",
+          "referencias": [
+            {
+              "nombre": "ROYAL CANIN CAT GASTROINTESTINAL",
+              "especie": "gato",
+              "etapa": null,
+              "presentaciones": [
+                "2kg"
+              ]
+            },
+            {
+              "nombre": "ROYAL CANIN YORKSHIRE ADULT",
+              "especie": "perro",
+              "etapa": "adulto",
+              "presentaciones": [
+                "1.1kg",
+                "4.5kg"
+              ]
+            },
+            {
+              "nombre": "ROYAL CANIN DOG PUPY INDOOR",
+              "especie": "perro",
+              "etapa": "cachorro",
+              "presentaciones": [
+                "1.5kg"
+              ]
+            },
+            {
+              "nombre": "ROYAL CANIN POMERANIAN ADULT",
+              "especie": "perro",
+              "etapa": "adulto",
+              "presentaciones": [
+                "1.5kg"
+              ]
+            },
+            {
+              "nombre": "ROYAL CANIN EXIGENT",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "3kg"
+              ]
+            },
+            {
+              "nombre": "ROYAL CANIN BEAUTY",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "150g"
+              ]
+            },
+            {
+              "nombre": "ROYAL CANIN MINI ADULT",
+              "especie": "perro",
+              "etapa": "adulto",
+              "presentaciones": [
+                "2kg"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "run": "be2495d3-4830-40ea-930e-332c523fb7dd",
+      "stage": "fuente_identidad",
+      "source": "Royal Canin gastrointestinal para perro, concentrado de 7 kg.",
+      "continued": null
+    },
+    {
+      "run": "be2495d3-4830-40ea-930e-332c523fb7dd",
+      "stage": "validacion_identidad",
+      "level": "alta",
+      "reason": "nombre_exacto",
+      "reference": "ROYALCANIN GASTROINTESTINAL PERRO",
+      "presentation": "7kg"
+    },
+    {
+      "run": "be2495d3-4830-40ea-930e-332c523fb7dd",
+      "stage": "redaccion_producto",
+      "output": "En ROYALCANIN GASTROINTESTINAL PERRO no tengo presentación de 7 kg en este momento.\n\nSí está disponible en 2 kg por $129.000."
+    },
+    {
+      "run": "f5136c8c-5245-4806-ae34-d46ade72af57",
+      "stage": "busqueda_candidatos",
+      "candidates": [
+        {
+          "marca": "ROYALCANIN",
+          "referencias": [
+            {
+              "nombre": "ROYALCANIN GASTROINTESTINAL PERRO",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "2kg"
+              ]
+            },
+            {
+              "nombre": "ROYALCANIN CALM CAT",
+              "especie": "gato",
+              "etapa": null,
+              "presentaciones": [
+                "2kg"
+              ]
+            },
+            {
+              "nombre": "ROYALCANIN HEPATIC CAT",
+              "especie": "gato",
+              "etapa": null,
+              "presentaciones": [
+                "2kg"
+              ]
+            }
+          ]
+        },
+        {
+          "marca": "ROYAL CANIN",
+          "referencias": [
+            {
+              "nombre": "ROYAL CANIN CAT GASTROINTESTINAL",
+              "especie": "gato",
+              "etapa": null,
+              "presentaciones": [
+                "2kg"
+              ]
+            },
+            {
+              "nombre": "ROYAL CANIN MINI ADULT",
+              "especie": "perro",
+              "etapa": "adulto",
+              "presentaciones": [
+                "2kg"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "run": "f5136c8c-5245-4806-ae34-d46ade72af57",
+      "stage": "fuente_identidad",
+      "source": "ROYALCANIN ROYALCANIN GASTROINTESTINAL PERRO perro concentrado 2kg",
+      "continued": "ROYALCANIN ROYALCANIN GASTROINTESTINAL PERRO perro concentrado 2kg"
+    },
+    {
+      "run": "f5136c8c-5245-4806-ae34-d46ade72af57",
+      "stage": "validacion_identidad",
+      "level": "alta",
+      "reason": "nombre_exacto",
+      "reference": "ROYALCANIN GASTROINTESTINAL PERRO",
+      "presentation": "2kg"
+    },
+    {
+      "run": "f5136c8c-5245-4806-ae34-d46ade72af57",
+      "stage": "redaccion_producto",
+      "output": "Sí, el ROYALCANIN GASTROINTESTINAL PERRO de 2 kg está en $129.000. Las existencias están por confirmar."
+    },
+    {
+      "run": "c3900e52-1375-4203-a104-9acd818c8051",
+      "stage": "busqueda_candidatos",
+      "candidates": [
+        {
+          "marca": "PRO PLAN",
+          "referencias": [
+            {
+              "nombre": "PRO PLAN CANINE UR",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "2kg"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN FELINE UR",
+              "especie": "gato",
+              "etapa": null,
+              "presentaciones": [
+                "1.5kg"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN CANINE LATA UR",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "unidad"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN CANINE HA",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "2.7kg",
+                "7.5kg"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN ADULT SMALL",
+              "especie": "perro",
+              "etapa": "adulto",
+              "presentaciones": [
+                "1kg",
+                "3 kg"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN PUPPY SMALL",
+              "especie": "perro",
+              "etapa": "cachorro",
+              "presentaciones": [
+                "1 kg",
+                "3kg"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN CANINE OM",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "18l",
+                "2kg"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN ADULT SMALL EXIGENT",
+              "especie": "perro",
+              "etapa": "adulto",
+              "presentaciones": [
+                "1kg",
+                "3kg"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "run": "c3900e52-1375-4203-a104-9acd818c8051",
+      "stage": "fuente_identidad",
+      "source": "Pro Plan UR para perro\nel concentrado de 2 kg",
+      "continued": null
+    },
+    {
+      "run": "c3900e52-1375-4203-a104-9acd818c8051",
+      "stage": "validacion_identidad",
+      "level": "alta",
+      "reason": "nombre_exacto",
+      "reference": "PRO PLAN CANINE UR",
+      "presentation": "2kg"
+    },
+    {
+      "run": "c3900e52-1375-4203-a104-9acd818c8051",
+      "stage": "redaccion_producto",
+      "output": "Sí, esa referencia la manejamos en 2 kg y está en $122.000. Las existencias están por confirmar. 🐶"
+    },
+    {
+      "run": "c3900e52-1375-4203-a104-9acd818c8051",
+      "stage": "redaccion_producto",
+      "output": "Sí, esa referencia la manejamos: PRO PLAN CANINE UR 2 kg está en $122.000. Las existencias están por confirmar."
+    },
+    {
+      "run": "d4a809d9-51c9-4ddf-abac-8395b6e3ae5c",
+      "stage": "busqueda_candidatos",
+      "candidates": [
+        {
+          "marca": "TOMMY",
+          "referencias": [
+            {
+              "nombre": "TOMMY POUCH PERRO",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "100gr"
+              ]
+            }
+          ]
+        },
+        {
+          "marca": "AGILITY",
+          "referencias": [
+            {
+              "nombre": "AGILITY EN LATA PERRO",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "360gr"
+              ]
+            }
+          ]
+        },
+        {
+          "marca": "POUCH",
+          "referencias": [
+            {
+              "nombre": "POUCH OPTIMUN PAG",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "3 l"
+              ]
+            },
+            {
+              "nombre": "POUCH CARE DOG PLAISER",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "100gr"
+              ]
+            }
+          ]
+        },
+        {
+          "marca": "PRO PLAN",
+          "referencias": [
+            {
+              "nombre": "PRO PLAN CANINE LATA UR",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "unidad"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN FELINE LATA UR",
+              "especie": "gato",
+              "etapa": null,
+              "presentaciones": [
+                "unidad"
+              ]
+            }
+          ]
+        },
+        {
+          "marca": "TASTE OF THE WILD",
+          "referencias": [
+            {
+              "nombre": "TASTE OF THE WILD ADULT PERRO",
+              "especie": "perro",
+              "etapa": "adulto",
+              "presentaciones": [
+                "1kg",
+                "2.2kg"
+              ]
+            }
+          ]
+        },
+        {
+          "marca": "CHUNKY",
+          "referencias": [
+            {
+              "nombre": "CHUNKY DELIGO POUCH PAG",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "3 l"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "run": "d4a809d9-51c9-4ddf-abac-8395b6e3ae5c",
+      "stage": "fuente_identidad",
+      "source": "la lata de esa misma línea UR para perro",
+      "continued": null
+    },
+    {
+      "run": "d4a809d9-51c9-4ddf-abac-8395b6e3ae5c",
+      "stage": "validacion_identidad",
+      "level": "media",
+      "reason": "similitud_media",
+      "presentation": null
+    },
+    {
+      "run": "d4a809d9-51c9-4ddf-abac-8395b6e3ae5c",
+      "stage": "redaccion_producto",
+      "output": "Claro, la lata de PRO PLAN CANINE LATA UR para perro en presentación unidad está en $122.000 🐶"
+    },
+    {
+      "run": "d4a809d9-51c9-4ddf-abac-8395b6e3ae5c",
+      "stage": "redaccion_producto",
+      "output": "¿Me confirmas si buscas la lata PRO PLAN CANINE UR, presentación unidad, para perro?"
+    },
+    {
+      "run": "3e0d2542-8b95-4151-9760-e951f06955a7",
+      "stage": "busqueda_candidatos",
+      "candidates": [
+        {
+          "marca": "PRO PLAN",
+          "referencias": [
+            {
+              "nombre": "PRO PLAN CANINE UR",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "2kg"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN CANINE LATA UR",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "unidad"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN FELINE UR",
+              "especie": "gato",
+              "etapa": null,
+              "presentaciones": [
+                "1.5kg"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN FELINE LATA UR",
+              "especie": "gato",
+              "etapa": null,
+              "presentaciones": [
+                "unidad"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN CANINE HA",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "2.7kg",
+                "7.5kg"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN CANINE OM",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "18l",
+                "2kg"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN PUPPY SMALL",
+              "especie": "perro",
+              "etapa": "cachorro",
+              "presentaciones": [
+                "1 kg",
+                "3kg"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN ADULT SMALL",
+              "especie": "perro",
+              "etapa": "adulto",
+              "presentaciones": [
+                "1kg",
+                "3 kg"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "run": "3e0d2542-8b95-4151-9760-e951f06955a7",
+      "stage": "fuente_identidad",
+      "source": "Pro Plan UR para perro",
+      "continued": null
+    },
+    {
+      "run": "3e0d2542-8b95-4151-9760-e951f06955a7",
+      "stage": "validacion_identidad",
+      "level": "media",
+      "reason": "formato_alimento_ambiguo",
+      "presentation": "2kg"
+    },
+    {
+      "run": "3e0d2542-8b95-4151-9760-e951f06955a7",
+      "stage": "redaccion_producto",
+      "output": "Sí, para perro está el PRO PLAN CANINE UR en presentación de 2 kg. ¿Lo buscas en concentrado o en comida húmeda? 🙂"
+    },
+    {
+      "run": "5b69fefc-4daf-47e0-aa55-0cd1ba82b0ef",
+      "stage": "busqueda_candidatos",
+      "candidates": [
+        {
+          "marca": "PRO PLAN",
+          "referencias": [
+            {
+              "nombre": "PRO PLAN CANINE UR",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "2kg"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN CANINE LATA UR",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "unidad"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN CANINE OM",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "18l",
+                "2kg"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN CANINE NF",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "2kg"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN CANINE EN",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "2kg"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN CANINE HA",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "2.7kg",
+                "7.5kg"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN CANINE LATA EN",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "unidad"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN CANINE LATA NF",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "unidad"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "run": "5b69fefc-4daf-47e0-aa55-0cd1ba82b0ef",
+      "stage": "fuente_identidad",
+      "source": "PRO PLAN UR PRO PLAN CANINE UR perro concentrado 2kg",
+      "continued": "PRO PLAN UR PRO PLAN CANINE UR perro concentrado 2kg"
+    },
+    {
+      "run": "5b69fefc-4daf-47e0-aa55-0cd1ba82b0ef",
+      "stage": "validacion_identidad",
+      "level": "alta",
+      "reason": "nombre_exacto",
+      "reference": "PRO PLAN CANINE UR",
+      "presentation": "2kg"
+    },
+    {
+      "run": "5b69fefc-4daf-47e0-aa55-0cd1ba82b0ef",
+      "stage": "redaccion_producto",
+      "output": "Sí, para perro está el PRO PLAN CANINE UR en presentación de 2 kg por $122.000. Las existencias están por confirmar. 🙂"
+    },
+    {
+      "run": "f82936b1-a5c5-43c0-8ed4-7563f9acb194",
+      "stage": "busqueda_candidatos",
+      "candidates": [
+        {
+          "marca": "TOMMY",
+          "referencias": [
+            {
+              "nombre": "TOMMY POUCH PERRO",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "100gr"
+              ]
+            }
+          ]
+        },
+        {
+          "marca": "AGILITY",
+          "referencias": [
+            {
+              "nombre": "AGILITY EN LATA PERRO",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "360gr"
+              ]
+            }
+          ]
+        },
+        {
+          "marca": "POUCH",
+          "referencias": [
+            {
+              "nombre": "POUCH OPTIMUN PAG",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "3 l"
+              ]
+            },
+            {
+              "nombre": "POUCH CARE DOG PLAISER",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "100gr"
+              ]
+            }
+          ]
+        },
+        {
+          "marca": "PRO PLAN",
+          "referencias": [
+            {
+              "nombre": "PRO PLAN CANINE LATA UR",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "unidad"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN FELINE LATA UR",
+              "especie": "gato",
+              "etapa": null,
+              "presentaciones": [
+                "unidad"
+              ]
+            }
+          ]
+        },
+        {
+          "marca": "TASTE OF THE WILD",
+          "referencias": [
+            {
+              "nombre": "TASTE OF THE WILD ADULT PERRO",
+              "especie": "perro",
+              "etapa": "adulto",
+              "presentaciones": [
+                "1kg",
+                "2.2kg"
+              ]
+            }
+          ]
+        },
+        {
+          "marca": "CHUNKY",
+          "referencias": [
+            {
+              "nombre": "CHUNKY DELIGO POUCH PAG",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "3 l"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "run": "f82936b1-a5c5-43c0-8ed4-7563f9acb194",
+      "stage": "fuente_identidad",
+      "source": "la lata de esa misma línea UR para perro",
+      "continued": null
+    },
+    {
+      "run": "f82936b1-a5c5-43c0-8ed4-7563f9acb194",
+      "stage": "validacion_identidad",
+      "level": "media",
+      "reason": "similitud_media",
+      "presentation": null
+    },
+    {
+      "run": "f82936b1-a5c5-43c0-8ed4-7563f9acb194",
+      "stage": "redaccion_producto",
+      "output": "Sí, para perro está el PRO PLAN CANINE LATA UR en presentación de unidad por $122.000. Las existencias están por confirmar. 🙂"
+    },
+    {
+      "run": "f82936b1-a5c5-43c0-8ed4-7563f9acb194",
+      "stage": "redaccion_producto",
+      "output": "¿Te refieres a la lata PRO PLAN CANINE UR para perro? Si sí, te la cotizo en unidad."
+    },
+    {
+      "run": "8239d857-aa5e-49e1-8741-e15884c5bd65",
+      "stage": "busqueda_candidatos",
+      "candidates": [
+        {
+          "marca": "PRO PLAN",
+          "referencias": [
+            {
+              "nombre": "PRO PLAN CANINE UR",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "2kg"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN FELINE UR",
+              "especie": "gato",
+              "etapa": null,
+              "presentaciones": [
+                "1.5kg"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN CANINE LATA UR",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "unidad"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN CANINE HA",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "2.7kg",
+                "7.5kg"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN ADULT SMALL",
+              "especie": "perro",
+              "etapa": "adulto",
+              "presentaciones": [
+                "1kg",
+                "3 kg"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN PUPPY SMALL",
+              "especie": "perro",
+              "etapa": "cachorro",
+              "presentaciones": [
+                "1 kg",
+                "3kg"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN CANINE OM",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "18l",
+                "2kg"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN ADULT SMALL EXIGENT",
+              "especie": "perro",
+              "etapa": "adulto",
+              "presentaciones": [
+                "1kg",
+                "3kg"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "run": "8239d857-aa5e-49e1-8741-e15884c5bd65",
+      "stage": "fuente_identidad",
+      "source": "Solo consultar: Pro Plan UR para perro\nel concentrado de 2 kg",
+      "continued": null
+    },
+    {
+      "run": "8239d857-aa5e-49e1-8741-e15884c5bd65",
+      "stage": "validacion_identidad",
+      "level": "alta",
+      "reason": "senales_convergentes",
+      "reference": "PRO PLAN CANINE UR",
+      "presentation": "2kg"
+    },
+    {
+      "run": "8239d857-aa5e-49e1-8741-e15884c5bd65",
+      "stage": "redaccion_producto",
+      "output": "Claro 😊 PRO PLAN CANINE UR para perro en 2 kg está en $122.000. Las existencias están por confirmar."
+    },
+    {
+      "run": "9b80b41b-e484-4637-a630-08d01513affe",
+      "stage": "busqueda_candidatos",
+      "candidates": [
+        {
+          "marca": "PRO PLAN",
+          "referencias": [
+            {
+              "nombre": "PRO PLAN CANINE UR",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "2kg"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN CANINE LATA UR",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "unidad"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN CANINE LATA EN",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "unidad"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN CANINE LATA NF",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "unidad"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN CANINE LATA OM",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "unidad"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN FELINE LATA UR",
+              "especie": "gato",
+              "etapa": null,
+              "presentaciones": [
+                "unidad"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN CANINE HA",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "2.7kg",
+                "7.5kg"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN CANINE OM",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "18l",
+                "2kg"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "run": "9b80b41b-e484-4637-a630-08d01513affe",
+      "stage": "fuente_identidad",
+      "source": "PRO PLAN UR PRO PLAN CANINE UR perro comida_humeda lata",
+      "continued": "PRO PLAN UR PRO PLAN CANINE UR perro comida_humeda lata"
+    },
+    {
+      "run": "9b80b41b-e484-4637-a630-08d01513affe",
+      "stage": "redaccion_producto",
+      "output": "Claro 😊 la lata de PRO PLAN CANINE UR para perro está en $122.000. Las existencias están por confirmar."
+    },
+    {
+      "run": "9b80b41b-e484-4637-a630-08d01513affe",
+      "stage": "redaccion_producto",
+      "output": "Claro 😊 PRO PLAN CANINE UR para perro en 2 kg está en $122.000. Las existencias están por confirmar. ¿Quieres agregar esa presentación al pedido?"
+    },
+    {
+      "run": "a79e83b3-af70-43c6-853e-525c78020eba",
+      "stage": "busqueda_candidatos",
+      "candidates": [
+        {
+          "marca": "PRO PLAN",
+          "referencias": [
+            {
+              "nombre": "PRO PLAN CANINE UR",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "2kg"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN CANINE LATA UR",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "unidad"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN CANINE LATA EN",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "unidad"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN CANINE LATA NF",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "unidad"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN CANINE LATA OM",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "unidad"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN FELINE LATA UR",
+              "especie": "gato",
+              "etapa": null,
+              "presentaciones": [
+                "unidad"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN CANINE HA",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "2.7kg",
+                "7.5kg"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN CANINE OM",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "18l",
+                "2kg"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "run": "a79e83b3-af70-43c6-853e-525c78020eba",
+      "stage": "fuente_identidad",
+      "source": "PRO PLAN UR PRO PLAN CANINE UR perro comida_humeda lata",
+      "continued": "PRO PLAN UR PRO PLAN CANINE UR perro comida_humeda lata"
+    },
+    {
+      "run": "a79e83b3-af70-43c6-853e-525c78020eba",
+      "stage": "validacion_identidad",
+      "level": "alta",
+      "reason": "nombre_exacto",
+      "reference": "PRO PLAN CANINE LATA UR",
+      "presentation": null
+    },
+    {
+      "run": "a79e83b3-af70-43c6-853e-525c78020eba",
+      "stage": "redaccion_producto",
+      "output": "Claro 😊 la lata PRO PLAN CANINE LATA UR para perro está en $28.600. Las existencias están por confirmar."
+    },
+    {
+      "run": "3df7cd72-6e09-49bc-a515-c92680200f29",
+      "stage": "busqueda_candidatos",
+      "candidates": [
+        {
+          "marca": "PRO PLAN",
+          "referencias": [
+            {
+              "nombre": "PRO PLAN POUCH FELINO KITTEN",
+              "especie": "gato",
+              "etapa": "cachorro",
+              "presentaciones": [
+                "85gr"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN POUCH FELINO ESTERELIZADOS",
+              "especie": "gato",
+              "etapa": null,
+              "presentaciones": [
+                "85gr"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN POUCH FELINO ADULT",
+              "especie": "gato",
+              "etapa": "adulto",
+              "presentaciones": [
+                "85gr"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN CANINE LATA EN",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "unidad"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN FELINE LATA EN",
+              "especie": "gato",
+              "etapa": null,
+              "presentaciones": [
+                "unidad"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN GATO STERILIZED",
+              "especie": "gato",
+              "etapa": null,
+              "presentaciones": [
+                "1kg",
+                "3kg"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN CANINE EN",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "2kg"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN FELINE EN",
+              "especie": "gato",
+              "etapa": null,
+              "presentaciones": [
+                "1.5kg"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "run": "3df7cd72-6e09-49bc-a515-c92680200f29",
+      "stage": "fuente_identidad",
+      "source": "Pro Plan kitten para gatito, en sobre de 85 gramos.",
+      "continued": null
+    },
+    {
+      "run": "3df7cd72-6e09-49bc-a515-c92680200f29",
+      "stage": "validacion_identidad",
+      "level": "alta",
+      "reason": "senales_convergentes",
+      "reference": "PRO PLAN POUCH FELINO KITTEN",
+      "presentation": "85g"
+    },
+    {
+      "run": "3df7cd72-6e09-49bc-a515-c92680200f29",
+      "stage": "redaccion_producto",
+      "output": "Claro 😊 te confirmo el PRO PLAN POUCH FELINO KITTEN de 85gr en $6.200. Las existencias están por confirmar."
+    },
+    {
+      "run": "388185f2-60b7-451e-a0db-17ffdb56657e",
+      "stage": "busqueda_candidatos",
+      "candidates": [
+        {
+          "marca": "PRO PLAN",
+          "referencias": [
+            {
+              "nombre": "PRO PLAN POUCH FELINO KITTEN",
+              "especie": "gato",
+              "etapa": "cachorro",
+              "presentaciones": [
+                "85gr"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN POUCH FELINO ADULT",
+              "especie": "gato",
+              "etapa": "adulto",
+              "presentaciones": [
+                "85gr"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN POUCH FELINO ESTERELIZADOS",
+              "especie": "gato",
+              "etapa": null,
+              "presentaciones": [
+                "85gr"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN POUCH CANINO ADULT",
+              "especie": "perro",
+              "etapa": "adulto",
+              "presentaciones": [
+                "100gr"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN GATO STERILIZED",
+              "especie": "gato",
+              "etapa": null,
+              "presentaciones": [
+                "1kg",
+                "3kg"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN GATO ADULT",
+              "especie": "gato",
+              "etapa": "adulto",
+              "presentaciones": [
+                "3kg"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN GATO URINARY",
+              "especie": "gato",
+              "etapa": null,
+              "presentaciones": [
+                "3kg"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN GATO NF RENAL",
+              "especie": "gato",
+              "etapa": null,
+              "presentaciones": [
+                "1.5kg"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "run": "388185f2-60b7-451e-a0db-17ffdb56657e",
+      "stage": "fuente_identidad",
+      "source": "PRO PLAN KITTEN PRO PLAN POUCH FELINO KITTEN gato cachorro comida_humeda sobre 85g",
+      "continued": "PRO PLAN KITTEN PRO PLAN POUCH FELINO KITTEN gato cachorro comida_humeda sobre 85g"
+    },
+    {
+      "run": "388185f2-60b7-451e-a0db-17ffdb56657e",
+      "stage": "validacion_identidad",
+      "level": "alta",
+      "reason": "nombre_exacto",
+      "reference": "PRO PLAN POUCH FELINO KITTEN",
+      "presentation": "85g"
+    },
+    {
+      "run": "388185f2-60b7-451e-a0db-17ffdb56657e",
+      "stage": "redaccion_producto",
+      "output": "Claro 😊 tres sobres de PRO PLAN POUCH FELINO KITTEN 85gr te quedan en $18.600. Las existencias están por confirmar."
+    },
+    {
+      "run": "388185f2-60b7-451e-a0db-17ffdb56657e",
+      "stage": "redaccion_producto",
+      "output": "Claro 😊 tres sobres de PRO PLAN POUCH FELINO KITTEN de 85gr te quedan en $6.200 c/u, para un total de $18.600. Las existencias están por confirmar."
+    },
+    {
+      "run": "9d75c5f8-5df8-4977-be8a-8c26a077843d",
+      "stage": "busqueda_candidatos",
+      "candidates": [
+        {
+          "marca": "NEFROTEC",
+          "referencias": [
+            {
+              "nombre": "NEFROTEC",
+              "especie": "otro",
+              "etapa": null,
+              "presentaciones": [
+                "tableta"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "run": "9d75c5f8-5df8-4977-be8a-8c26a077843d",
+      "stage": "fuente_identidad",
+      "source": "nefrotec x60",
+      "continued": null
+    },
+    {
+      "run": "9d75c5f8-5df8-4977-be8a-8c26a077843d",
+      "stage": "validacion_identidad",
+      "level": "media",
+      "reason": "unidades_empaque_por_confirmar",
+      "presentation": "x60"
+    },
+    {
+      "run": "2cdf4510-e79e-47a4-a7bc-116b39a08cb7",
+      "stage": "busqueda_candidatos",
+      "candidates": [
+        {
+          "marca": "BR",
+          "referencias": [
+            {
+              "nombre": "BR SNACK CAT SOFTY SKIN COAT",
+              "especie": "gato",
+              "etapa": null,
+              "presentaciones": [
+                "100gr"
+              ]
+            }
+          ]
+        },
+        {
+          "marca": "SNACK",
+          "referencias": [
+            {
+              "nombre": "SNACK TOMMY CAT SKIN COT",
+              "especie": "gato",
+              "etapa": null,
+              "presentaciones": [
+                "75gr"
+              ]
+            }
+          ]
+        },
+        {
+          "marca": "CHURUS",
+          "referencias": [
+            {
+              "nombre": "CHURUS SKIN",
+              "especie": "gato",
+              "etapa": null,
+              "presentaciones": [
+                "x14gr"
+              ]
+            }
+          ]
+        },
+        {
+          "marca": "EXCELLENT",
+          "referencias": [
+            {
+              "nombre": "EXCELLENT SKIN",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "3kg"
+              ]
+            }
+          ]
+        },
+        {
+          "marca": "PRO PLAN",
+          "referencias": [
+            {
+              "nombre": "PRO PLAN SENSITIVE SKIN",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "1kg"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN ADULT SMALL SENSITIVE SKIN",
+              "especie": "perro",
+              "etapa": "adulto",
+              "presentaciones": [
+                "3kg"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "run": "2cdf4510-e79e-47a4-a7bc-116b39a08cb7",
+      "stage": "fuente_identidad",
+      "source": "Canitabs Skin Coat",
+      "continued": null
+    },
+    {
+      "run": "2cdf4510-e79e-47a4-a7bc-116b39a08cb7",
+      "stage": "validacion_identidad",
+      "level": "baja",
+      "reason": "sin_coincidencia_confiable",
+      "presentation": null
+    },
+    {
+      "run": "2cdf4510-e79e-47a4-a7bc-116b39a08cb7",
+      "stage": "redaccion_producto",
+      "output": "{\"respuesta\":\"Veo que consultas por Canitabs Skin Coat. Ahora mismo no me queda claro cuál es exactamente esa referencia, así que prefiero no darte una identificación que pueda confundirte. Si quieres, puedo intentar orientarte por la necesidad del producto, pero en este momento no tengo más datos para afinarlo.\",\"siguientePaso\":\"explorar_necesidad\",\"datoSolicitado\":null}"
+    },
+    {
+      "run": "f1c80867-1121-45cd-97ff-35d005143db8",
+      "stage": "busqueda_candidatos",
+      "candidates": [
+        {
+          "marca": "VARA",
+          "referencias": [
+            {
+              "nombre": "VARA PARA GATO",
+              "especie": "gato",
+              "etapa": null,
+              "presentaciones": [
+                "unidad"
+              ]
+            }
+          ]
+        },
+        {
+          "marca": "DIAMOND",
+          "referencias": [
+            {
+              "nombre": "DIAMOND INDOOR",
+              "especie": "gato",
+              "etapa": null,
+              "presentaciones": [
+                "2.72kg"
+              ]
+            },
+            {
+              "nombre": "DIAMOND INDOOR CAT",
+              "especie": "gato",
+              "etapa": null,
+              "presentaciones": [
+                "500gr"
+              ]
+            }
+          ]
+        },
+        {
+          "marca": "AGILITY",
+          "referencias": [
+            {
+              "nombre": "AGILITY GATO AD",
+              "especie": "gato",
+              "etapa": "adulto",
+              "presentaciones": [
+                "1.5kg",
+                "3kg",
+                "500gr",
+                "7kg"
+              ]
+            }
+          ]
+        },
+        {
+          "marca": "DONKAT",
+          "referencias": [
+            {
+              "nombre": "DONKAT GATO",
+              "especie": "gato",
+              "etapa": null,
+              "presentaciones": [
+                "x 1 kg",
+                "x 500gr",
+                "x 7 kg"
+              ]
+            }
+          ]
+        },
+        {
+          "marca": "NUTRA NUGGETS",
+          "referencias": [
+            {
+              "nombre": "NUTRA NUGGETS MANTEN GATO",
+              "especie": "gato",
+              "etapa": null,
+              "presentaciones": [
+                "x 1kg",
+                "x 3 kg",
+                "x 7.5 kg"
+              ]
+            }
+          ]
+        },
+        {
+          "marca": "EXCELLENT",
+          "referencias": [
+            {
+              "nombre": "EXCELLENT GATO ADULT",
+              "especie": "gato",
+              "etapa": "adulto",
+              "presentaciones": [
+                "1kg",
+                "3kg",
+                "7.5kg"
+              ]
+            }
+          ]
+        },
+        {
+          "marca": "ADVOCATE",
+          "referencias": [
+            {
+              "nombre": "ADVOCATE GATO",
+              "especie": "gato",
+              "etapa": null,
+              "presentaciones": [
+                "4-8kg",
+                "hasta 4kg"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "run": "f1c80867-1121-45cd-97ff-35d005143db8",
+      "stage": "fuente_identidad",
+      "source": "diamon indor para gato, medio kilo",
+      "continued": null
+    },
+    {
+      "run": "f1c80867-1121-45cd-97ff-35d005143db8",
+      "stage": "validacion_identidad",
+      "level": "alta",
+      "reason": "nombre_exacto",
+      "reference": "DIAMOND INDOOR CAT",
+      "presentation": "500g"
+    },
+    {
+      "run": "f1c80867-1121-45cd-97ff-35d005143db8",
+      "stage": "redaccion_producto",
+      "output": "Te confirmo, esa referencia la manejamos: DIAMOND INDOOR CAT 500gr por $19.500. Las existencias están por confirmar. 😊"
+    },
+    {
+      "run": "1398e2ff-fc35-4f22-b966-e1fca38309da",
+      "stage": "busqueda_candidatos",
+      "candidates": []
+    },
+    {
+      "run": "1398e2ff-fc35-4f22-b966-e1fca38309da",
+      "stage": "fuente_identidad",
+      "source": "marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos.",
+      "continued": null
+    },
+    {
+      "run": "1398e2ff-fc35-4f22-b966-e1fca38309da",
+      "stage": "validacion_identidad",
+      "level": "baja",
+      "reason": "sin_coincidencia_confiable",
+      "presentation": "4kg"
+    },
+    {
+      "run": "1398e2ff-fc35-4f22-b966-e1fca38309da",
+      "stage": "redaccion_producto",
+      "output": "{\"respuesta\":\"No logro identificar con seguridad esa referencia. Si quieres, puedo ayudarte a orientarlo según la necesidad, pero no te confirmaría que sea ese producto solo con ese nombre y ese formato.\",\"siguientePaso\":\"explorar_necesidad\",\"datoSolicitado\":null}"
+    },
+    {
+      "run": "aa7b9528-8191-4ad6-b674-9122f24cd685",
+      "stage": "busqueda_candidatos",
+      "candidates": [
+        {
+          "marca": "ROYALCANIN",
+          "referencias": [
+            {
+              "nombre": "ROYALCANIN GASTROINTESTINAL PERRO",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "2kg"
+              ]
+            }
+          ]
+        },
+        {
+          "marca": "ROYAL CANIN",
+          "referencias": [
+            {
+              "nombre": "ROYAL CANIN CAT GASTROINTESTINAL",
+              "especie": "gato",
+              "etapa": null,
+              "presentaciones": [
+                "2kg"
+              ]
+            }
+          ]
+        },
+        {
+          "marca": "TASTE OF THE WILD",
+          "referencias": [
+            {
+              "nombre": "TASTE OF THE WILD ADULT PERRO",
+              "especie": "perro",
+              "etapa": "adulto",
+              "presentaciones": [
+                "1kg",
+                "2.2kg"
+              ]
+            }
+          ]
+        },
+        {
+          "marca": "TOTAL",
+          "referencias": [
+            {
+              "nombre": "TOTAL PERRO GRANDE",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "3und"
+              ]
+            },
+            {
+              "nombre": "TOTAL PERRO CHICO",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "2und"
+              ]
+            },
+            {
+              "nombre": "TOTAL PERRO MEDIANO",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "2und"
+              ]
+            }
+          ]
+        },
+        {
+          "marca": "ALBONDIGAS",
+          "referencias": [
+            {
+              "nombre": "ALBONDIGAS DOGO PERRO",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "50gr"
+              ]
+            }
+          ]
+        },
+        {
+          "marca": "NATURAL",
+          "referencias": [
+            {
+              "nombre": "NATURAL FRESHLY BAÑO SECO PERRO",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "x200"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "run": "aa7b9528-8191-4ad6-b674-9122f24cd685",
+      "stage": "fuente_identidad",
+      "source": "Bonnat Gastrointestinal para perro",
+      "continued": null
+    },
+    {
+      "run": "aa7b9528-8191-4ad6-b674-9122f24cd685",
+      "stage": "validacion_identidad",
+      "level": "baja",
+      "reason": "sin_coincidencia_confiable",
+      "presentation": null
+    },
+    {
+      "run": "aa7b9528-8191-4ad6-b674-9122f24cd685",
+      "stage": "redaccion_producto",
+      "output": "{\"respuesta\":\"Con ese nombre no te lo puedo dejar confirmado. Si quieres, puedo ayudarte a orientarlo por la necesidad para perro y revisar qué encaja mejor; ¿te interesa que lo haga?\",\"siguientePaso\":\"ofrecer_busqueda\",\"datoSolicitado\":null}"
+    },
+    {
+      "run": "d39908d3-a105-4cdd-a4e8-f1222b219448",
+      "stage": "busqueda_candidatos",
+      "candidates": [
+        {
+          "marca": "CANISAN",
+          "referencias": [
+            {
+              "nombre": "CANISAN D",
+              "especie": "perro y gato",
+              "etapa": null,
+              "presentaciones": [
+                "10 ml",
+                "2.5ml",
+                "5 ml"
+              ]
+            },
+            {
+              "nombre": "CANISAN F",
+              "especie": "perro y gato",
+              "etapa": null,
+              "presentaciones": [
+                "10ml",
+                "2.5ml",
+                "5ml"
+              ]
+            },
+            {
+              "nombre": "CANISAN PUPPY",
+              "especie": "perro",
+              "etapa": "cachorro",
+              "presentaciones": [
+                "2.5ml",
+                "5ml"
+              ]
+            },
+            {
+              "nombre": "CANISAN TABLETAS",
+              "especie": "perro y gato",
+              "etapa": null,
+              "presentaciones": [
+                "unidad"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "run": "d39908d3-a105-4cdd-a4e8-f1222b219448",
+      "stage": "fuente_identidad",
+      "source": "Canisan D de 5ml.",
+      "continued": null
+    },
+    {
+      "run": "d39908d3-a105-4cdd-a4e8-f1222b219448",
+      "stage": "validacion_identidad",
+      "level": "alta",
+      "reason": "nombre_exacto",
+      "reference": "CANISAN D",
+      "presentation": "5ml"
+    },
+    {
+      "run": "d39908d3-a105-4cdd-a4e8-f1222b219448",
+      "stage": "redaccion_producto",
+      "output": "Sí, CANISAN D de 5 ml está en $21.500. Las existencias están por confirmar. 🐾"
+    },
+    {
+      "run": "5627415e-6124-4e55-b2df-3f8e76749e37",
+      "stage": "busqueda_candidatos",
+      "candidates": [
+        {
+          "marca": "PRO PLAN",
+          "referencias": [
+            {
+              "nombre": "PRO PLAN FELINE EN",
+              "especie": "gato",
+              "etapa": null,
+              "presentaciones": [
+                "1.5kg"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN FELINE LATA EN",
+              "especie": "gato",
+              "etapa": null,
+              "presentaciones": [
+                "unidad"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN FELINE OM",
+              "especie": "gato",
+              "etapa": null,
+              "presentaciones": [
+                "1.5kg"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN FELINE UR",
+              "especie": "gato",
+              "etapa": null,
+              "presentaciones": [
+                "1.5kg"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN FELINE LATA NF",
+              "especie": "gato",
+              "etapa": null,
+              "presentaciones": [
+                "unidad"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN FELINE LATA UR",
+              "especie": "gato",
+              "etapa": null,
+              "presentaciones": [
+                "unidad"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN FELINE NF EARLY CARE",
+              "especie": "gato",
+              "etapa": null,
+              "presentaciones": [
+                "1.43kg"
+              ]
+            },
+            {
+              "nombre": "PRO PLAN CANINE EN",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "2kg"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "run": "5627415e-6124-4e55-b2df-3f8e76749e37",
+      "stage": "fuente_identidad",
+      "source": "proplan feline EN.",
+      "continued": null
+    },
+    {
+      "run": "5627415e-6124-4e55-b2df-3f8e76749e37",
+      "stage": "validacion_identidad",
+      "level": "media",
+      "reason": "formato_alimento_ambiguo",
+      "presentation": null
+    },
+    {
+      "run": "5627415e-6124-4e55-b2df-3f8e76749e37",
+      "stage": "redaccion_producto",
+      "output": "Para gato, tengo estas dos opciones: PRO PLAN FELINE EN concentrado de 1.5 kg o PRO PLAN FELINE LATA EN comida húmeda por unidad. ¿Cuál forma busca? 🐾"
+    },
+    {
+      "run": "f657cbea-71e7-4217-acde-14bcbde29035",
+      "stage": "busqueda_candidatos",
+      "candidates": [
+        {
+          "marca": "ROYALCANIN",
+          "referencias": [
+            {
+              "nombre": "ROYALCANIN GASTROINTESTINAL PERRO",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "2kg"
+              ]
+            }
+          ]
+        },
+        {
+          "marca": "ROYAL CANIN",
+          "referencias": [
+            {
+              "nombre": "ROYAL CANIN CAT GASTROINTESTINAL",
+              "especie": "gato",
+              "etapa": null,
+              "presentaciones": [
+                "2kg"
+              ]
+            },
+            {
+              "nombre": "ROYAL CANIN YORKSHIRE ADULT",
+              "especie": "perro",
+              "etapa": "adulto",
+              "presentaciones": [
+                "1.1kg",
+                "4.5kg"
+              ]
+            },
+            {
+              "nombre": "ROYAL CANIN DOG PUPY INDOOR",
+              "especie": "perro",
+              "etapa": "cachorro",
+              "presentaciones": [
+                "1.5kg"
+              ]
+            },
+            {
+              "nombre": "ROYAL CANIN POMERANIAN ADULT",
+              "especie": "perro",
+              "etapa": "adulto",
+              "presentaciones": [
+                "1.5kg"
+              ]
+            },
+            {
+              "nombre": "ROYAL CANIN EXIGENT",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "3kg"
+              ]
+            },
+            {
+              "nombre": "ROYAL CANIN BEAUTY",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "150g"
+              ]
+            },
+            {
+              "nombre": "ROYAL CANIN MINI ADULT",
+              "especie": "perro",
+              "etapa": "adulto",
+              "presentaciones": [
+                "2kg"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "run": "f657cbea-71e7-4217-acde-14bcbde29035",
+      "stage": "fuente_identidad",
+      "source": "Royal Canin gastrointestinal para perro, concentrado de 7 kg",
+      "continued": null
+    },
+    {
+      "run": "f657cbea-71e7-4217-acde-14bcbde29035",
+      "stage": "validacion_identidad",
+      "level": "alta",
+      "reason": "nombre_exacto",
+      "reference": "ROYALCANIN GASTROINTESTINAL PERRO",
+      "presentation": "7kg"
+    },
+    {
+      "run": "f657cbea-71e7-4217-acde-14bcbde29035",
+      "stage": "redaccion_producto",
+      "output": "Para Royal Canin Gastrointestinal perro en 7 kg no tengo esa presentación disponible en este momento. La presentación disponible es 2 kg por $129.000 🐾"
+    },
+    {
+      "run": "1d0fecc0-6212-46e6-bd69-47985e42bbef",
+      "stage": "busqueda_candidatos",
+      "candidates": [
+        {
+          "marca": "ROYALCANIN",
+          "referencias": [
+            {
+              "nombre": "ROYALCANIN GASTROINTESTINAL PERRO",
+              "especie": "perro",
+              "etapa": null,
+              "presentaciones": [
+                "2kg"
+              ]
+            },
+            {
+              "nombre": "ROYALCANIN CALM CAT",
+              "especie": "gato",
+              "etapa": null,
+              "presentaciones": [
+                "2kg"
+              ]
+            },
+            {
+              "nombre": "ROYALCANIN HEPATIC CAT",
+              "especie": "gato",
+              "etapa": null,
+              "presentaciones": [
+                "2kg"
+              ]
+            }
+          ]
+        },
+        {
+          "marca": "ROYAL CANIN",
+          "referencias": [
+            {
+              "nombre": "ROYAL CANIN CAT GASTROINTESTINAL",
+              "especie": "gato",
+              "etapa": null,
+              "presentaciones": [
+                "2kg"
+              ]
+            },
+            {
+              "nombre": "ROYAL CANIN MINI ADULT",
+              "especie": "perro",
+              "etapa": "adulto",
+              "presentaciones": [
+                "2kg"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "run": "1d0fecc0-6212-46e6-bd69-47985e42bbef",
+      "stage": "fuente_identidad",
+      "source": "ROYALCANIN gastrointestinal ROYALCANIN GASTROINTESTINAL PERRO perro concentrado 2kg",
+      "continued": "ROYALCANIN gastrointestinal ROYALCANIN GASTROINTESTINAL PERRO perro concentrado 2kg"
+    },
+    {
+      "run": "1d0fecc0-6212-46e6-bd69-47985e42bbef",
+      "stage": "validacion_identidad",
+      "level": "alta",
+      "reason": "nombre_exacto",
+      "reference": "ROYALCANIN GASTROINTESTINAL PERRO",
+      "presentation": "2kg"
+    },
+    {
+      "run": "1d0fecc0-6212-46e6-bd69-47985e42bbef",
+      "stage": "redaccion_producto",
+      "output": "Sí, el ROYALCANIN GASTROINTESTINAL PERRO de 2 kg está en $129.000 🐾 Las existencias están por confirmar."
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "at": "2026-10-30T18:37:28.598Z",
+  "cases": 15,
+  "expectedDecisionsMet": 15,
+  "latestOutcomes": {
+    "identified": 8,
+    "safeAbstention": 3,
+    "clarification": 2,
+    "presentationUnavailable": 1,
+    "recommendation": 1
+  },
+  "providerSeconds": {
+    "min": 37,
+    "max": 49,
+    "median": 42.5
+  },
+  "processingSecondsWithoutBuffer": {
+    "min": 25.926,
+    "max": 36.126,
+    "median": 32.01
+  },
+  "withBufferSeconds": {
+    "min": 30.929,
+    "max": 41.151,
+    "median": 37.014
+  },
+  "inboundCount": 32,
+  "unprocessed": 0,
+  "outboundCount": 29,
+  "sendsPerRun": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "outboundStates": {
+    "delivered": 29
+  },
+  "orders": 0,
+  "cart": [
+    []
+  ],
+  "usage": {
+    "calls": 122,
+    "promptTokens": 696628,
+    "completionTokens": 57533,
+    "totalTokens": 754161,
+    "models": [
+      "gpt-5.2",
+      "gpt-5.4",
+      "gpt-5.4-mini"
+    ],
+    "monetaryCost": null
+  }
+}

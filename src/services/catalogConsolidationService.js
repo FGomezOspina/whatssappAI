@@ -1,4 +1,5 @@
 const { normalizar, normalizarPeso, codigosReferencia } = require("../utils/text");
+const { identidadesNumericasCompatibles } = require('../utils/numericProductIdentity');
 
 const MIN_SIMILITUD_MARCA = 0.76;
 const MIN_SIMILITUD_REFERENCIA = 0.84;
@@ -107,6 +108,7 @@ function coberturaTokens(origen = [], destino = []) {
 }
 
 function referenciasCompatibles(marcaA, referenciaA, marcaB, referenciaB) {
+  if (!identidadesNumericasCompatibles(referenciaA.nombre, referenciaB.nombre)) return false;
   if (referenciaA.metadata?.duracion !== referenciaB.metadata?.duracion) return false;
   if (
     referenciaA.especie &&

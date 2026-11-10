@@ -1,0 +1,129 @@
+{
+  "at": "2026-11-05T17:34:34.445Z",
+  "plannedTurns": 12,
+  "successfulTurns": 2,
+  "blockedTurns": 1,
+  "unattemptedTurns": 9,
+  "completedScenarios": 0,
+  "plannedScenarios": 2,
+  "successfulApiCalls": 3,
+  "failedApiCalls": 1,
+  "preflightNetworkFailure": {
+    "code": "ENOTFOUND",
+    "separateAttempt": true
+  },
+  "blockingError": "429 credit_balance_exhausted",
+  "usage": {
+    "prompt": 15927,
+    "completion": 1066,
+    "total": 16993,
+    "cached": 10752
+  },
+  "cost": null,
+  "transport": "isolated in-memory harness, no WhatsApp",
+  "humanizer": "real configured model on first turn; operational summary preserved by existing flow on second",
+  "productionChangesInThisPhase": false,
+  "results": [
+    {
+      "index": 0,
+      "input": "Calle 10 # 20-30",
+      "response": "Listo, te quedó agregado 1 ARENA MAIZ CAT x 20kg por $98.000. Para el domicilio, falta verificar el costo de envío 😊\n\nPedido:\n- 1 x ARENA MAIZ CAT x 20kg: $98.000\nTotal: $98.000\n\nPuedes agregar algo más antes de confirmar. Para completar tu domicilio, ¿me compartes los datos que faltan?\n- nombre completo\n- celular\n- método de pago: efectivo/contraentrega, transferencia bancaria, tarjeta débito o crédito, o llave bre-B",
+      "latencyMs": 7345.668625,
+      "confirmed": false,
+      "waitingConfirmation": false,
+      "invoice": false,
+      "status": "passed",
+      "calls": [
+        {
+          "model": "gpt-5.4",
+          "ms": 6325,
+          "usage": {
+            "prompt_tokens": 7028,
+            "completion_tokens": 519,
+            "total_tokens": 7547,
+            "prompt_tokens_details": {
+              "cached_tokens": 5888,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        },
+        {
+          "model": "gpt-5.4-mini",
+          "ms": 982,
+          "usage": {
+            "prompt_tokens": 1565,
+            "completion_tokens": 37,
+            "total_tokens": 1602,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "input": "Nombre: Cliente Prueba; celular: 3000000000; pago: efectivo. No necesito factura electrónica.",
+      "response": "Pedido:\n- 1 x ARENA MAIZ CAT x 20kg: $98.000\nTotal: $98.000\n\nDatos de domicilio:\n- Dirección: Calle 10 # 20-30\n- Nombre: Cliente Prueba\n- Celular: 3000000000\n- Método de pago: efectivo\n\n¿Deseas agregar algo más o finalizamos el pedido así?",
+      "latencyMs": 5955.414333,
+      "confirmed": false,
+      "waitingConfirmation": true,
+      "invoice": false,
+      "status": "passed",
+      "calls": [
+        {
+          "model": "gpt-5.4",
+          "ms": 5947,
+          "usage": {
+            "prompt_tokens": 7334,
+            "completion_tokens": 510,
+            "total_tokens": 7844,
+            "prompt_tokens_details": {
+              "cached_tokens": 4864,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "input": "Mejor déjame dos bolsas de esa arena de 20kg",
+      "response": "No pude procesar tu mensaje en este momento por un problema temporal. Por favor, inténtalo nuevamente.",
+      "latencyMs": 450.32958300000064,
+      "confirmed": false,
+      "waitingConfirmation": true,
+      "invoice": false,
+      "status": "blocked",
+      "calls": [
+        {
+          "model": "gpt-5.4",
+          "ms": 448,
+          "error": {
+            "status": 429,
+            "code": "credit_balance_exhausted"
+          }
+        }
+      ]
+    }
+  ]
+}

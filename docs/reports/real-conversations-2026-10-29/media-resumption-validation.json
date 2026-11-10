@@ -1,0 +1,11 @@
+{
+  "after.json": true,
+  "followup-after.json": true,
+  "continuation-after.json": true,
+  "fixtureFrozen": true,
+  "noKnownPII": true,
+  "noActiveScript": true,
+  "rowsUnique": true,
+  "suitePassed": true,
+  "htmlSha256": "9d1851449648938777a3f407cdd97a4808fd697813be8f37669e1858e0460d40"
+}

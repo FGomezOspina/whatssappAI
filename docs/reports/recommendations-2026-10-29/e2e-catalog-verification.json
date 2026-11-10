@@ -1,0 +1,704 @@
+{
+  "at": "2026-10-29T20:23:31.643Z",
+  "references": [
+    {
+      "id": "0fbb9839-f4e1-4b92-ab6a-4cd7e22c8c3c",
+      "name": "HUESO 2-3",
+      "species": "perro",
+      "category": "snack",
+      "subcategory": "premio",
+      "life_stage": null,
+      "brand": {
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "17de3fa6-59ac-4f7d-9ee8-3425c78320a0",
+          "price": 28000,
+          "stock": null,
+          "active": true,
+          "weight": "x1kg"
+        },
+        {
+          "id": "81396021-1fab-454d-9a60-1441d70e80d5",
+          "price": 1200,
+          "stock": null,
+          "active": true,
+          "weight": "unidad"
+        }
+      ]
+    },
+    {
+      "id": "39db8b87-5eaa-4034-8772-338cb0672bb2",
+      "name": "GOLOSINAS",
+      "species": "perro",
+      "category": "snack",
+      "subcategory": "premio",
+      "life_stage": null,
+      "brand": {
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "5e5e9a6f-705d-48c7-b916-3d0032967e1d",
+          "price": 100,
+          "stock": null,
+          "active": true,
+          "weight": "x100"
+        },
+        {
+          "id": "fd5d4cab-1e3f-43ac-a202-d94e014280fd",
+          "price": 1000,
+          "stock": null,
+          "active": true,
+          "weight": "x1000"
+        },
+        {
+          "id": "9d131010-84bd-40d5-91d9-d8d51091ff97",
+          "price": 200,
+          "stock": null,
+          "active": true,
+          "weight": "x200"
+        }
+      ]
+    },
+    {
+      "id": "466d365f-12a8-41c1-8398-4794739688ab",
+      "name": "MIRRINGO GATITO",
+      "species": "gato",
+      "category": "comida",
+      "subcategory": "concentrado",
+      "life_stage": "cachorro",
+      "brand": {
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "e2c05d56-c82a-4786-9b86-65e3934fd6a1",
+          "price": 10800,
+          "stock": null,
+          "active": true,
+          "weight": "x 1kg"
+        },
+        {
+          "id": "18c04ff4-acbd-49b7-a2a1-6a0de98707af",
+          "price": 5900,
+          "stock": null,
+          "active": true,
+          "weight": "x 500gr"
+        }
+      ]
+    },
+    {
+      "id": "6a973621-864e-44cb-a5f7-62e0e7059b93",
+      "name": "ROYAL CANIN LATA KITTEN LOAF",
+      "species": "gato",
+      "category": "comida",
+      "subcategory": "comida_humeda",
+      "life_stage": "cachorro",
+      "brand": {
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "e6b799bf-2f9e-47e7-9ce6-c02222436445",
+          "price": 10500,
+          "stock": null,
+          "active": true,
+          "weight": "unidad"
+        }
+      ]
+    },
+    {
+      "id": "864ca5c6-38ad-4161-a25e-05b3ecb2b0fc",
+      "name": "ROYAL CANIN LATA BABY CAT TROCITOS",
+      "species": "gato",
+      "category": "comida",
+      "subcategory": "comida_humeda",
+      "life_stage": "cachorro",
+      "brand": {
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "b9b064b3-dd54-4736-a8bf-164209487630",
+          "price": 10500,
+          "stock": null,
+          "active": true,
+          "weight": "unidad"
+        }
+      ]
+    },
+    {
+      "id": "8cb303f6-ecf2-4d2d-8c8f-8cc2199e605b",
+      "name": "RASCADOR REDONDO GATOS",
+      "species": "gato",
+      "category": "juguete",
+      "subcategory": "juguete",
+      "life_stage": null,
+      "brand": {
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "73a97ada-afd3-4c8c-9f73-964ec51855e5",
+          "price": 22000,
+          "stock": null,
+          "active": true,
+          "weight": "unidad"
+        }
+      ]
+    },
+    {
+      "id": "8f046478-8161-4273-bf42-72b9716a3eeb",
+      "name": "PRO PLAN POUCH FELINO KITTEN",
+      "species": "gato",
+      "category": "comida",
+      "subcategory": "comida_humeda",
+      "life_stage": "cachorro",
+      "brand": {
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "f77aafc1-4ff6-4e58-a886-f3ac9d8ee4d6",
+          "price": 6200,
+          "stock": null,
+          "active": true,
+          "weight": "85gr"
+        }
+      ]
+    },
+    {
+      "id": "a6efe5ce-1788-45a2-88e0-3c0cb120b603",
+      "name": "GOLOSINAS 1500",
+      "species": "perro",
+      "category": "snack",
+      "subcategory": "premio",
+      "life_stage": null,
+      "brand": {
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "d5dd920e-f381-4b3f-bfc0-508723b5d14d",
+          "price": 1500,
+          "stock": null,
+          "active": true,
+          "weight": "unidad"
+        }
+      ]
+    },
+    {
+      "id": "a9c745dd-5ad5-443b-a7e1-dde3c3317b4a",
+      "name": "RASCADOR",
+      "species": "gato",
+      "category": "juguete",
+      "subcategory": "juguete",
+      "life_stage": null,
+      "brand": {
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "e9fac384-8fff-4684-a532-6cbc9a68e8d8",
+          "price": 16000,
+          "stock": null,
+          "active": true,
+          "weight": "unidad"
+        }
+      ]
+    },
+    {
+      "id": "bac06106-16c1-46c3-b8cb-a1ff93401666",
+      "name": "OHMAIGAT GATITOS",
+      "species": "gato",
+      "category": "comida",
+      "subcategory": "concentrado",
+      "life_stage": "cachorro",
+      "brand": {
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "35f73aba-b335-49cd-a614-efc76361c458",
+          "price": 36000,
+          "stock": null,
+          "active": true,
+          "weight": "x 1.5 kg"
+        },
+        {
+          "id": "b62d24de-255c-47df-9367-c329d087f0b3",
+          "price": 3800,
+          "stock": null,
+          "active": true,
+          "weight": "x 200 gr"
+        },
+        {
+          "id": "55b69025-08eb-467d-9f5b-c7256f0cedf1",
+          "price": 13600,
+          "stock": null,
+          "active": true,
+          "weight": "x 500 gr"
+        },
+        {
+          "id": "54858732-a76e-4d54-8569-7663a6f953fe",
+          "price": 112900,
+          "stock": null,
+          "active": true,
+          "weight": "x 8 kg"
+        }
+      ]
+    },
+    {
+      "id": "eb1de02c-66cd-43dc-a5a6-af60953600c0",
+      "name": "ROYAL CANIN KITTEN",
+      "species": "gato",
+      "category": "comida",
+      "subcategory": "concentrado",
+      "life_stage": "cachorro",
+      "brand": {
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "a28bce6d-edbf-457f-9bbd-996a42d4696f",
+          "price": 30000,
+          "stock": null,
+          "active": true,
+          "weight": "400gr"
+        }
+      ]
+    }
+  ],
+  "comparisons": [
+    {
+      "run": "390472b1-c816-4c29-beb3-9c989bf7be99",
+      "criteria": {
+        "categoria": "comida",
+        "subcategoria": null,
+        "especie": "gato",
+        "etapa": "cachorro",
+        "tamano": null,
+        "marca": null,
+        "sabores": [],
+        "condiciones": [],
+        "presentacion": null,
+        "presupuestoMaximo": null
+      },
+      "options": [
+        {
+          "id": "bac06106-16c1-46c3-b8cb-a1ff93401666",
+          "referencia": "OHMAIGAT GATITOS",
+          "peso": "x 200 gr",
+          "precio": 3800,
+          "verified": true,
+          "catalogSpecies": "gato",
+          "catalogStage": "cachorro",
+          "catalogCategory": "comida",
+          "stock": null
+        },
+        {
+          "id": "466d365f-12a8-41c1-8398-4794739688ab",
+          "referencia": "MIRRINGO GATITO",
+          "peso": "x 500gr",
+          "precio": 5900,
+          "verified": true,
+          "catalogSpecies": "gato",
+          "catalogStage": "cachorro",
+          "catalogCategory": "comida",
+          "stock": null
+        },
+        {
+          "id": "8f046478-8161-4273-bf42-72b9716a3eeb",
+          "referencia": "PRO PLAN POUCH FELINO KITTEN",
+          "peso": "85gr",
+          "precio": 6200,
+          "verified": true,
+          "catalogSpecies": "gato",
+          "catalogStage": "cachorro",
+          "catalogCategory": "comida",
+          "stock": null
+        }
+      ]
+    },
+    {
+      "run": "edf411a1-36fb-4bdd-99fa-e120082dde0a",
+      "criteria": {
+        "categoria": "comida",
+        "subcategoria": null,
+        "especie": "gato",
+        "etapa": "cachorro",
+        "tamano": null,
+        "marca": null,
+        "sabores": [],
+        "condiciones": [],
+        "presentacion": null,
+        "presupuestoMaximo": null
+      },
+      "options": [
+        {
+          "id": "bac06106-16c1-46c3-b8cb-a1ff93401666",
+          "referencia": "OHMAIGAT GATITOS",
+          "peso": "x 200 gr",
+          "precio": 3800,
+          "verified": true,
+          "catalogSpecies": "gato",
+          "catalogStage": "cachorro",
+          "catalogCategory": "comida",
+          "stock": null
+        },
+        {
+          "id": "8f046478-8161-4273-bf42-72b9716a3eeb",
+          "referencia": "PRO PLAN POUCH FELINO KITTEN",
+          "peso": "85gr",
+          "precio": 6200,
+          "verified": true,
+          "catalogSpecies": "gato",
+          "catalogStage": "cachorro",
+          "catalogCategory": "comida",
+          "stock": null
+        },
+        {
+          "id": "6a973621-864e-44cb-a5f7-62e0e7059b93",
+          "referencia": "ROYAL CANIN LATA KITTEN LOAF",
+          "peso": "unidad",
+          "precio": 10500,
+          "verified": true,
+          "catalogSpecies": "gato",
+          "catalogStage": "cachorro",
+          "catalogCategory": "comida",
+          "stock": null
+        }
+      ]
+    },
+    {
+      "run": "fca9606a-53e2-4abf-a5a4-796920cb660f",
+      "criteria": {
+        "categoria": "comida",
+        "subcategoria": null,
+        "especie": "gato",
+        "etapa": "cachorro",
+        "tamano": null,
+        "marca": null,
+        "sabores": [],
+        "condiciones": [],
+        "presentacion": null,
+        "presupuestoMaximo": null
+      },
+      "options": [
+        {
+          "id": "8f046478-8161-4273-bf42-72b9716a3eeb",
+          "referencia": "PRO PLAN POUCH FELINO KITTEN",
+          "peso": "85gr",
+          "precio": 6200,
+          "verified": true,
+          "catalogSpecies": "gato",
+          "catalogStage": "cachorro",
+          "catalogCategory": "comida",
+          "stock": null
+        },
+        {
+          "id": "6a973621-864e-44cb-a5f7-62e0e7059b93",
+          "referencia": "ROYAL CANIN LATA KITTEN LOAF",
+          "peso": "unidad",
+          "precio": 10500,
+          "verified": true,
+          "catalogSpecies": "gato",
+          "catalogStage": "cachorro",
+          "catalogCategory": "comida",
+          "stock": null
+        },
+        {
+          "id": "864ca5c6-38ad-4161-a25e-05b3ecb2b0fc",
+          "referencia": "ROYAL CANIN LATA BABY CAT TROCITOS",
+          "peso": "unidad",
+          "precio": 10500,
+          "verified": true,
+          "catalogSpecies": "gato",
+          "catalogStage": "cachorro",
+          "catalogCategory": "comida",
+          "stock": null
+        }
+      ]
+    },
+    {
+      "run": "6bf918a3-45fe-45d4-a27c-e8c0bdaaf07b",
+      "criteria": {
+        "categoria": "comida",
+        "subcategoria": null,
+        "especie": "gato",
+        "etapa": "cachorro",
+        "tamano": null,
+        "marca": null,
+        "sabores": [],
+        "condiciones": [],
+        "presentacion": null,
+        "presupuestoMaximo": null
+      },
+      "options": [
+        {
+          "id": "8f046478-8161-4273-bf42-72b9716a3eeb",
+          "referencia": "PRO PLAN POUCH FELINO KITTEN",
+          "peso": "85gr",
+          "precio": 6200,
+          "verified": true,
+          "catalogSpecies": "gato",
+          "catalogStage": "cachorro",
+          "catalogCategory": "comida",
+          "stock": null
+        },
+        {
+          "id": "6a973621-864e-44cb-a5f7-62e0e7059b93",
+          "referencia": "ROYAL CANIN LATA KITTEN LOAF",
+          "peso": "unidad",
+          "precio": 10500,
+          "verified": true,
+          "catalogSpecies": "gato",
+          "catalogStage": "cachorro",
+          "catalogCategory": "comida",
+          "stock": null
+        },
+        {
+          "id": "eb1de02c-66cd-43dc-a5a6-af60953600c0",
+          "referencia": "ROYAL CANIN KITTEN",
+          "peso": "400gr",
+          "precio": 30000,
+          "verified": true,
+          "catalogSpecies": "gato",
+          "catalogStage": "cachorro",
+          "catalogCategory": "comida",
+          "stock": null
+        }
+      ]
+    },
+    {
+      "run": "03916907-b2c6-4648-882d-8d6ccd07b0be",
+      "criteria": {
+        "categoria": "comida",
+        "subcategoria": null,
+        "especie": "gato",
+        "etapa": "cachorro",
+        "tamano": null,
+        "marca": null,
+        "sabores": [],
+        "condiciones": [],
+        "presentacion": null,
+        "presupuestoMaximo": null
+      },
+      "options": [
+        {
+          "id": "bac06106-16c1-46c3-b8cb-a1ff93401666",
+          "referencia": "OHMAIGAT GATITOS",
+          "peso": "x 200 gr",
+          "precio": 3800,
+          "verified": true,
+          "catalogSpecies": "gato",
+          "catalogStage": "cachorro",
+          "catalogCategory": "comida",
+          "stock": null
+        },
+        {
+          "id": "466d365f-12a8-41c1-8398-4794739688ab",
+          "referencia": "MIRRINGO GATITO",
+          "peso": "x 500gr",
+          "precio": 5900,
+          "verified": true,
+          "catalogSpecies": "gato",
+          "catalogStage": "cachorro",
+          "catalogCategory": "comida",
+          "stock": null
+        },
+        {
+          "id": "8f046478-8161-4273-bf42-72b9716a3eeb",
+          "referencia": "PRO PLAN POUCH FELINO KITTEN",
+          "peso": "85gr",
+          "precio": 6200,
+          "verified": true,
+          "catalogSpecies": "gato",
+          "catalogStage": "cachorro",
+          "catalogCategory": "comida",
+          "stock": null
+        }
+      ]
+    },
+    {
+      "run": "28cfa96f-35b0-4267-a1c8-8ea9f74945a1",
+      "criteria": {
+        "categoria": "comida",
+        "subcategoria": null,
+        "especie": "gato",
+        "etapa": "cachorro",
+        "tamano": null,
+        "marca": null,
+        "sabores": [],
+        "condiciones": [],
+        "presentacion": null,
+        "presupuestoMaximo": null
+      },
+      "options": [
+        {
+          "id": "bac06106-16c1-46c3-b8cb-a1ff93401666",
+          "referencia": "OHMAIGAT GATITOS",
+          "peso": "x 200 gr",
+          "precio": 3800,
+          "verified": true,
+          "catalogSpecies": "gato",
+          "catalogStage": "cachorro",
+          "catalogCategory": "comida",
+          "stock": null
+        },
+        {
+          "id": "466d365f-12a8-41c1-8398-4794739688ab",
+          "referencia": "MIRRINGO GATITO",
+          "peso": "x 500gr",
+          "precio": 5900,
+          "verified": true,
+          "catalogSpecies": "gato",
+          "catalogStage": "cachorro",
+          "catalogCategory": "comida",
+          "stock": null
+        },
+        {
+          "id": "8f046478-8161-4273-bf42-72b9716a3eeb",
+          "referencia": "PRO PLAN POUCH FELINO KITTEN",
+          "peso": "85gr",
+          "precio": 6200,
+          "verified": true,
+          "catalogSpecies": "gato",
+          "catalogStage": "cachorro",
+          "catalogCategory": "comida",
+          "stock": null
+        }
+      ]
+    },
+    {
+      "run": "3b1d4b2c-0a90-4c11-a620-e7563c89495d",
+      "criteria": {
+        "categoria": "snack",
+        "subcategoria": null,
+        "especie": "perro",
+        "etapa": "adulto",
+        "tamano": null,
+        "marca": null,
+        "sabores": [],
+        "condiciones": [],
+        "presentacion": null,
+        "presupuestoMaximo": 20000
+      },
+      "options": [
+        {
+          "id": "39db8b87-5eaa-4034-8772-338cb0672bb2",
+          "referencia": "GOLOSINAS",
+          "peso": "x100",
+          "precio": 100,
+          "verified": true,
+          "catalogSpecies": "perro",
+          "catalogStage": null,
+          "catalogCategory": "snack",
+          "stock": null
+        },
+        {
+          "id": "0fbb9839-f4e1-4b92-ab6a-4cd7e22c8c3c",
+          "referencia": "HUESO 2-3",
+          "peso": "unidad",
+          "precio": 1200,
+          "verified": true,
+          "catalogSpecies": "perro",
+          "catalogStage": null,
+          "catalogCategory": "snack",
+          "stock": null
+        },
+        {
+          "id": "a6efe5ce-1788-45a2-88e0-3c0cb120b603",
+          "referencia": "GOLOSINAS 1500",
+          "peso": "unidad",
+          "precio": 1500,
+          "verified": true,
+          "catalogSpecies": "perro",
+          "catalogStage": null,
+          "catalogCategory": "snack",
+          "stock": null
+        }
+      ]
+    },
+    {
+      "run": "b0ceee67-f57e-4fef-9db9-f65701314f98",
+      "criteria": {
+        "categoria": "juguete",
+        "subcategoria": null,
+        "especie": "gato",
+        "etapa": null,
+        "tamano": null,
+        "marca": null,
+        "sabores": [],
+        "condiciones": [],
+        "presentacion": null,
+        "presupuestoMaximo": 25000
+      },
+      "options": [
+        {
+          "id": "a9c745dd-5ad5-443b-a7e1-dde3c3317b4a",
+          "referencia": "RASCADOR",
+          "peso": "unidad",
+          "precio": 16000,
+          "verified": true,
+          "catalogSpecies": "gato",
+          "catalogStage": null,
+          "catalogCategory": "juguete",
+          "stock": null
+        },
+        {
+          "id": "8cb303f6-ecf2-4d2d-8c8f-8cc2199e605b",
+          "referencia": "RASCADOR REDONDO GATOS",
+          "peso": "unidad",
+          "precio": 22000,
+          "verified": true,
+          "catalogSpecies": "gato",
+          "catalogStage": null,
+          "catalogCategory": "juguete",
+          "stock": null
+        }
+      ]
+    },
+    {
+      "run": "63de71c4-9f29-420a-96c7-a24de96bfb46",
+      "criteria": {
+        "categoria": "juguete",
+        "subcategoria": null,
+        "especie": "gato",
+        "etapa": null,
+        "tamano": null,
+        "marca": null,
+        "sabores": [],
+        "condiciones": [],
+        "presentacion": null,
+        "presupuestoMaximo": 25000
+      },
+      "options": [
+        {
+          "id": "a9c745dd-5ad5-443b-a7e1-dde3c3317b4a",
+          "referencia": "RASCADOR",
+          "peso": "unidad",
+          "precio": 16000,
+          "verified": true,
+          "catalogSpecies": "gato",
+          "catalogStage": null,
+          "catalogCategory": "juguete",
+          "stock": null
+        },
+        {
+          "id": "8cb303f6-ecf2-4d2d-8c8f-8cc2199e605b",
+          "referencia": "RASCADOR REDONDO GATOS",
+          "peso": "unidad",
+          "precio": 22000,
+          "verified": true,
+          "catalogSpecies": "gato",
+          "catalogStage": null,
+          "catalogCategory": "juguete",
+          "stock": null
+        }
+      ]
+    }
+  ]
+}

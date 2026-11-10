@@ -1,0 +1,365 @@
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=45 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=si | continuarFlujo=si | interpretacion=recibida
+[Catalog Match] cliente=anonymous-isolated-sales | nivel=alta | razon=marca_y_presentacion | terminos="maiz cat" | score=0 | diferencia=0
+[Router] Interaccion | cliente=isolated-sales-validation | usuario=anonymous-isolated-sales | intencion=busqueda_producto | complejidad=normal | vision=no | audio=no | catalogoIA=undefined/undefined | estrategia=undefined | topScore=n/a | secondScore=n/a
+[Catalog Match] cliente=anonymous-isolated-sales | nivel=alta | razon=marca_y_presentacion | terminos="maiz cat" | score=0 | diferencia=0
+[OpenAI] Interpretacion IA | cliente=anonymous-isolated-sales | intencion=pedido_producto | accion=agregar | marca=ARENA MAIZ CAT | referencia=ARENA MAIZ CAT | etapa=null | tamano=null | presentacion=20kg | confianza=0.96
+[AI Usage Summary] cliente=isolated-sales-validation | usuario=anonymous-isolated-sales | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=45 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=si | continuarFlujo=si | interpretacion=recibida
+[Catalog Match] cliente=anonymous-isolated-sales | nivel=alta | razon=marca_y_presentacion | terminos="maiz cat" | score=0 | diferencia=0
+[Router] Interaccion | cliente=isolated-sales-validation | usuario=anonymous-isolated-sales | intencion=busqueda_producto | complejidad=normal | vision=no | audio=no | catalogoIA=undefined/undefined | estrategia=undefined | topScore=n/a | secondScore=n/a
+[Catalog Match] cliente=anonymous-isolated-sales | nivel=alta | razon=marca_y_presentacion | terminos="maiz cat" | score=0 | diferencia=0
+[OpenAI] Interpretacion IA | cliente=anonymous-isolated-sales | intencion=pedido_producto | accion=agregar | marca=ARENA MAIZ CAT | referencia=ARENA MAIZ CAT | etapa=null | tamano=null | presentacion=20kg | confianza=0.96
+[AI Usage Summary] cliente=isolated-sales-validation | usuario=anonymous-isolated-sales | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[OpenAI] Entrada preparada | cliente=anonymous-isolated-sales | textoChars=45 | imagenesVision=0 | audiosTranscritos=0 | multimediaFallback=0
+[Semantic Router] catalogo=si | continuarFlujo=si | interpretacion=recibida
+[Catalog Match] cliente=anonymous-isolated-sales | nivel=alta | razon=marca_y_presentacion | terminos="maiz cat" | score=0 | diferencia=0
+[Router] Interaccion | cliente=isolated-sales-validation | usuario=anonymous-isolated-sales | intencion=busqueda_producto | complejidad=normal | vision=no | audio=no | catalogoIA=undefined/undefined | estrategia=undefined | topScore=n/a | secondScore=n/a
+[Catalog Match] cliente=anonymous-isolated-sales | nivel=alta | razon=marca_y_presentacion | terminos="maiz cat" | score=0 | diferencia=0
+[OpenAI] Interpretacion IA | cliente=anonymous-isolated-sales | intencion=pedido_producto | accion=agregar | marca=ARENA MAIZ CAT | referencia=ARENA MAIZ CAT | etapa=null | tamano=null | presentacion=20kg | confianza=0.96
+[AI Usage Summary] cliente=isolated-sales-validation | usuario=anonymous-isolated-sales | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[Cart Operation] {"action":"modificar_cantidad","targetResolved":false,"mutationApplied":false,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"modificar_cantidad","targetResolved":true,"mutationApplied":false,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"modificar_cantidad","targetResolved":true,"mutationApplied":true,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"modificar_cantidad","targetResolved":false,"mutationApplied":false,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"modificar_cantidad","targetResolved":true,"mutationApplied":false,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"modificar_cantidad","targetResolved":true,"mutationApplied":true,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"agregar","targetResolved":false,"mutationApplied":false,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"agregar","targetResolved":true,"mutationApplied":false,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"agregar","targetResolved":true,"mutationApplied":true,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"agregar","targetResolved":false,"mutationApplied":false,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"agregar","targetResolved":true,"mutationApplied":false,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"agregar","targetResolved":true,"mutationApplied":true,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"quitar","targetResolved":false,"mutationApplied":false,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"quitar","targetResolved":true,"mutationApplied":false,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"quitar","targetResolved":true,"mutationApplied":true,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"quitar","targetResolved":false,"mutationApplied":false,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"quitar","targetResolved":true,"mutationApplied":false,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"quitar","targetResolved":true,"mutationApplied":true,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"mantener_solo","targetResolved":false,"mutationApplied":false,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"mantener_solo","targetResolved":true,"mutationApplied":false,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"mantener_solo","targetResolved":true,"mutationApplied":true,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"mantener_solo","targetResolved":false,"mutationApplied":false,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"mantener_solo","targetResolved":true,"mutationApplied":false,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+[Cart Operation] {"action":"mantener_solo","targetResolved":true,"mutationApplied":true,"catalogLookup":false,"target":"ALFA ALFA ADULTO"}
+✖ replay offline de la interpretación OpenAI guardada: dirección pide solo datos faltantes (59.688416ms)
+✖ replay completo en memoria: corrección dirección y factura=false (5.609ms)
+✖ replay completo en memoria: corrección dirección y factura=true (3.828583ms)
+✖ carrito modificar_cantidad, datos completos=false: conserva entrega y vuelve a confirmar (0.89025ms)
+✖ carrito modificar_cantidad, datos completos=true: conserva entrega y vuelve a confirmar (0.350291ms)
+✖ carrito agregar, datos completos=false: conserva entrega y vuelve a confirmar (0.140833ms)
+✖ carrito agregar, datos completos=true: conserva entrega y vuelve a confirmar (0.13725ms)
+✖ carrito quitar, datos completos=false: conserva entrega y vuelve a confirmar (0.112167ms)
+✖ carrito quitar, datos completos=true: conserva entrega y vuelve a confirmar (0.128208ms)
+✖ carrito mantener_solo, datos completos=false: conserva entrega y vuelve a confirmar (0.155666ms)
+✖ carrito mantener_solo, datos completos=true: conserva entrega y vuelve a confirmar (0.110333ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 0
+ℹ fail 11
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 136.094459
+
+✖ failing tests:
+
+test at test/checkoutNextStep.test.js:26:1
+✖ replay offline de la interpretación OpenAI guardada: dirección pide solo datos faltantes (59.688416ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /- nombre completo/. Input:
+  
+  'Listo, agregué al pedido:\n' +
+    '- 1 x ARENA MAIZ CAT x 20kg: $98.000\n' +
+    '\n' +
+    'Pedido:\n' +
+    '- 1 x ARENA MAIZ CAT x 20kg: $98.000\n' +
+    'Total: $98.000\n' +
+    '\n' +
+    '¿Quieres agregar algo más o avanzamos con la entrega?'
+  
+      at onlyMissing (/Users/gomez/Documents/WhatsappVELTIA/test/checkoutNextStep.test.js:21:10)
+      at TestContext.<anonymous> (/Users/gomez/Documents/WhatsappVELTIA/test/checkoutNextStep.test.js:29:3)
+      at async Test.run (node:internal/test_runner/test:1208:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Listo, agregué al pedido:\n- 1 x ARENA MAIZ CAT x 20kg: $98.000\n\nPedido:\n- 1 x ARENA MAIZ CAT x 20kg: $98.000\nTotal: $98.000\n\n¿Quieres agregar algo más o avanzamos con la entrega?',
+    expected: /- nombre completo/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at test/checkoutNextStep.test.js:37:38
+✖ replay completo en memoria: corrección dirección y factura=false (5.609ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /- nombre completo/. Input:
+  
+  'Listo, agregué al pedido:\n' +
+    '- 1 x ARENA MAIZ CAT x 20kg: $98.000\n' +
+    '\n' +
+    'Pedido:\n' +
+    '- 1 x ARENA MAIZ CAT x 20kg: $98.000\n' +
+    'Total: $98.000\n' +
+    '\n' +
+    '¿Quieres agregar algo más o avanzamos con la entrega?'
+  
+      at onlyMissing (/Users/gomez/Documents/WhatsappVELTIA/test/checkoutNextStep.test.js:21:10)
+      at TestContext.<anonymous> (/Users/gomez/Documents/WhatsappVELTIA/test/checkoutNextStep.test.js:39:3)
+      at async Test.run (node:internal/test_runner/test:1208:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Listo, agregué al pedido:\n- 1 x ARENA MAIZ CAT x 20kg: $98.000\n\nPedido:\n- 1 x ARENA MAIZ CAT x 20kg: $98.000\nTotal: $98.000\n\n¿Quieres agregar algo más o avanzamos con la entrega?',
+    expected: /- nombre completo/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at test/checkoutNextStep.test.js:37:38
+✖ replay completo en memoria: corrección dirección y factura=true (3.828583ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /- nombre completo/. Input:
+  
+  'Listo, agregué al pedido:\n' +
+    '- 1 x ARENA MAIZ CAT x 20kg: $98.000\n' +
+    '\n' +
+    'Pedido:\n' +
+    '- 1 x ARENA MAIZ CAT x 20kg: $98.000\n' +
+    'Total: $98.000\n' +
+    '\n' +
+    '¿Quieres agregar algo más o avanzamos con la entrega?'
+  
+      at onlyMissing (/Users/gomez/Documents/WhatsappVELTIA/test/checkoutNextStep.test.js:21:10)
+      at TestContext.<anonymous> (/Users/gomez/Documents/WhatsappVELTIA/test/checkoutNextStep.test.js:39:3)
+      at async Test.run (node:internal/test_runner/test:1208:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Listo, agregué al pedido:\n- 1 x ARENA MAIZ CAT x 20kg: $98.000\n\nPedido:\n- 1 x ARENA MAIZ CAT x 20kg: $98.000\nTotal: $98.000\n\n¿Quieres agregar algo más o avanzamos con la entrega?',
+    expected: /- nombre completo/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at test/checkoutNextStep.test.js:66:41
+✖ carrito modificar_cantidad, datos completos=false: conserva entrega y vuelve a confirmar (0.89025ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /- nombre completo/. Input:
+  
+  'Listo, ajusté la cantidad.\n' +
+    '\n' +
+    'Pedido:\n' +
+    '- 3 x ALFA ADULTO 1kg: $30.000\n' +
+    '- 1 x BETA ARENA 5kg: $20.000\n' +
+    'Total: $50.000\n' +
+    '\n' +
+    '¿Seguimos con la entrega o quieres cambiar algo más?'
+  
+      at onlyMissing (/Users/gomez/Documents/WhatsappVELTIA/test/checkoutNextStep.test.js:21:10)
+      at TestContext.<anonymous> (/Users/gomez/Documents/WhatsappVELTIA/test/checkoutNextStep.test.js:80:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Listo, ajusté la cantidad.\n\nPedido:\n- 3 x ALFA ADULTO 1kg: $30.000\n- 1 x BETA ARENA 5kg: $20.000\nTotal: $50.000\n\n¿Seguimos con la entrega o quieres cambiar algo más?',
+    expected: /- nombre completo/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at test/checkoutNextStep.test.js:66:41
+✖ carrito modificar_cantidad, datos completos=true: conserva entrega y vuelve a confirmar (0.350291ms)
+  AssertionError [ERR_ASSERTION]: Listo, ajusté la cantidad.
+  
+  Pedido:
+  - 3 x ALFA ADULTO 1kg: $30.000
+  - 1 x BETA ARENA 5kg: $20.000
+  Total: $50.000
+  
+  ¿Seguimos con la entrega o quieres cambiar algo más?
+  
+  false !== true
+  
+      at TestContext.<anonymous> (/Users/gomez/Documents/WhatsappVELTIA/test/checkoutNextStep.test.js:75:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/checkoutNextStep.test.js:66:41
+✖ carrito agregar, datos completos=false: conserva entrega y vuelve a confirmar (0.140833ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /- nombre completo/. Input:
+  
+  'Listo, ajusté la cantidad.\n' +
+    '\n' +
+    'Pedido:\n' +
+    '- 3 x ALFA ADULTO 1kg: $30.000\n' +
+    '- 1 x BETA ARENA 5kg: $20.000\n' +
+    'Total: $50.000\n' +
+    '\n' +
+    '¿Seguimos con la entrega o quieres cambiar algo más?'
+  
+      at onlyMissing (/Users/gomez/Documents/WhatsappVELTIA/test/checkoutNextStep.test.js:21:10)
+      at TestContext.<anonymous> (/Users/gomez/Documents/WhatsappVELTIA/test/checkoutNextStep.test.js:80:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Listo, ajusté la cantidad.\n\nPedido:\n- 3 x ALFA ADULTO 1kg: $30.000\n- 1 x BETA ARENA 5kg: $20.000\nTotal: $50.000\n\n¿Seguimos con la entrega o quieres cambiar algo más?',
+    expected: /- nombre completo/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at test/checkoutNextStep.test.js:66:41
+✖ carrito agregar, datos completos=true: conserva entrega y vuelve a confirmar (0.13725ms)
+  AssertionError [ERR_ASSERTION]: Listo, ajusté la cantidad.
+  
+  Pedido:
+  - 3 x ALFA ADULTO 1kg: $30.000
+  - 1 x BETA ARENA 5kg: $20.000
+  Total: $50.000
+  
+  ¿Seguimos con la entrega o quieres cambiar algo más?
+  
+  false !== true
+  
+      at TestContext.<anonymous> (/Users/gomez/Documents/WhatsappVELTIA/test/checkoutNextStep.test.js:75:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/checkoutNextStep.test.js:66:41
+✖ carrito quitar, datos completos=false: conserva entrega y vuelve a confirmar (0.112167ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /- nombre completo/. Input:
+  
+  'Listo, retiré ese producto del pedido.\n' +
+    '\n' +
+    'Pedido:\n' +
+    '- 1 x BETA ARENA 5kg: $20.000\n' +
+    'Total: $20.000\n' +
+    '\n' +
+    '¿Seguimos con la entrega o quieres cambiar algo más?'
+  
+      at onlyMissing (/Users/gomez/Documents/WhatsappVELTIA/test/checkoutNextStep.test.js:21:10)
+      at TestContext.<anonymous> (/Users/gomez/Documents/WhatsappVELTIA/test/checkoutNextStep.test.js:80:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Listo, retiré ese producto del pedido.\n\nPedido:\n- 1 x BETA ARENA 5kg: $20.000\nTotal: $20.000\n\n¿Seguimos con la entrega o quieres cambiar algo más?',
+    expected: /- nombre completo/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at test/checkoutNextStep.test.js:66:41
+✖ carrito quitar, datos completos=true: conserva entrega y vuelve a confirmar (0.128208ms)
+  AssertionError [ERR_ASSERTION]: Listo, retiré ese producto del pedido.
+  
+  Pedido:
+  - 1 x BETA ARENA 5kg: $20.000
+  Total: $20.000
+  
+  ¿Seguimos con la entrega o quieres cambiar algo más?
+  
+  false !== true
+  
+      at TestContext.<anonymous> (/Users/gomez/Documents/WhatsappVELTIA/test/checkoutNextStep.test.js:75:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/checkoutNextStep.test.js:66:41
+✖ carrito mantener_solo, datos completos=false: conserva entrega y vuelve a confirmar (0.155666ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /- nombre completo/. Input:
+  
+  'Listo, dejé el pedido solamente con eso.\n' +
+    '\n' +
+    'Pedido:\n' +
+    '- 1 x ALFA ADULTO 1kg: $10.000\n' +
+    'Total: $10.000\n' +
+    '\n' +
+    '¿Seguimos con la entrega o quieres cambiar algo más?'
+  
+      at onlyMissing (/Users/gomez/Documents/WhatsappVELTIA/test/checkoutNextStep.test.js:21:10)
+      at TestContext.<anonymous> (/Users/gomez/Documents/WhatsappVELTIA/test/checkoutNextStep.test.js:80:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Listo, dejé el pedido solamente con eso.\n\nPedido:\n- 1 x ALFA ADULTO 1kg: $10.000\nTotal: $10.000\n\n¿Seguimos con la entrega o quieres cambiar algo más?',
+    expected: /- nombre completo/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at test/checkoutNextStep.test.js:66:41
+✖ carrito mantener_solo, datos completos=true: conserva entrega y vuelve a confirmar (0.110333ms)
+  AssertionError [ERR_ASSERTION]: Listo, dejé el pedido solamente con eso.
+  
+  Pedido:
+  - 1 x ALFA ADULTO 1kg: $10.000
+  Total: $10.000
+  
+  ¿Seguimos con la entrega o quieres cambiar algo más?
+  
+  false !== true
+  
+      at TestContext.<anonymous> (/Users/gomez/Documents/WhatsappVELTIA/test/checkoutNextStep.test.js:75:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

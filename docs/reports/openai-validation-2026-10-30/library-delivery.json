@@ -1,0 +1,24 @@
+{
+  "operation": "replace_library_file",
+  "status": "succeeded",
+  "path": "/Informe-VELTIA-conversaciones-reales-28-29-octubre-2026.html",
+  "file_id": "file_0000000097a081f6ac2ea6d974e683e0",
+  "library_file_id": "libfile_d9a9e05b4c448191809eae46aa1a0618",
+  "file_name": "Informe-VELTIA-conversaciones-reales-28-29-octubre-2026.html",
+  "current_version_number": 8,
+  "restored_from_version_number": null,
+  "xattrs": [
+    {
+      "name": "user.library-file-version",
+      "value": "8"
+    }
+  ],
+  "directory_id": "libdir_44f6055841d48191b27c52ab423c4a51",
+  "mime_type": "text/html",
+  "library_artifact_type": "report",
+  "file_size_bytes": 82300,
+  "external_connectors_accessed": false,
+  "localPath": "/Users/gomez/Documents/WhatsappVELTIA/docs/reports/real-conversations-2026-10-29/Informe-VELTIA-conversaciones-reales-28-29-octubre-2026.html",
+  "localXattrsApplied": false,
+  "localMetadataFailure": "Bundled helper requires Python >=3.10; available python3 is incompatible (Path | int). No helper edits or installations; Library replacement itself succeeded."
+}

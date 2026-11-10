@@ -1,0 +1,42 @@
+{
+  "capturedAt": "2026-10-29T16:14:59.582Z",
+  "conversationPrefix": "9fe5732a",
+  "source": "Kapso API; screenshot matched by prefix and literal content",
+  "messages": [
+    {
+      "id": "wamid.HBgMNTczMTA0MTE0Mzk2FQIAEhgUM0FFMTdCNDlDNjNDNDFEMjg1ODYA",
+      "time": "2026-10-29T02:39:17.000Z",
+      "direction": "inbound",
+      "text": "No sé el nombre del producto",
+      "status": "read"
+    },
+    {
+      "id": "wamid.HBgMNTczMTA0MTE0Mzk2FQIAERgSOTQ4NkNGQkIxNTIwMkM4NjQyAA==",
+      "time": "2026-10-29T02:37:08.000Z",
+      "direction": "outbound",
+      "text": "No encuentro ALIMENTO GATO CACHORRO en el catálogo actual. No la he agregado al pedido. ¿Puedes confirmar el nombre completo y la presentación para revisarlo?",
+      "status": "sent"
+    },
+    {
+      "id": "wamid.HBgMNTczMTA0MTE0Mzk2FQIAEhgUM0FERkZEN0FFNzNGQzI5QTlBMjUA",
+      "time": "2026-10-29T02:36:39.000Z",
+      "direction": "inbound",
+      "text": "Qué alimento tiene para gato cachorro",
+      "status": "read"
+    },
+    {
+      "id": "wamid.HBgMNTczMTA0MTE0Mzk2FQIAERgSMjFDNEM0Q0M1NjhDNDVDQTAwAA==",
+      "time": "2026-10-29T02:34:13.000Z",
+      "direction": "outbound",
+      "text": "No encuentro ALIMENTO MI GATO MESES en el catálogo actual. No la he agregado al pedido. ¿Puedes confirmar el nombre completo y la presentación para revisarlo?",
+      "status": "sent"
+    },
+    {
+      "id": "wamid.HBgMNTczMTA0MTE0Mzk2FQIAEhgUM0E5NkNGRTgxRjMzRDY1QzMwRjQA",
+      "time": "2026-10-29T02:33:45.000Z",
+      "direction": "inbound",
+      "text": "Quiero un dimicilio para un alimento para mi gato de 6 meses que me recomienda",
+      "status": "read"
+    }
+  ]
+}

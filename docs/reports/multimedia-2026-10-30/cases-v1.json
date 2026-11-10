@@ -1,0 +1,403 @@
+{
+  "version": 1,
+  "source": "Persisted interpretation after processing, not raw model output; original requests unchanged. Replaying this extraction locally does not test vision.",
+  "cases": [
+    {
+      "id": "original-text-three-products",
+      "message": "Para cotizar:\nEl nutra nugges cordero 7k perro\n\nEl br gato castrado de pollo 1k\n\nNexgart para perro de 40k",
+      "at": "2026-10-30T21:51:40.672327+00:00",
+      "idHash": "ad283f3e1703",
+      "interpretation": {
+        "accion": "consultar",
+        "carrito": {
+          "razon": null,
+          "operacion": null,
+          "cantidadDelta": null,
+          "cantidadObjetivo": null,
+          "aplicaAlUltimoProducto": null
+        },
+        "producto": null,
+        "intencion": "consulta_producto",
+        "productos": [
+          {
+            "etapa": null,
+            "linea": null,
+            "marca": "NUTRA NUGGETS",
+            "accion": "consultar",
+            "envase": null,
+            "estado": "identificado",
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [
+              "cordero"
+            ],
+            "cantidad": null,
+            "mascotas": [],
+            "pregunta": null,
+            "categoria": "comida",
+            "cotizacion": [],
+            "referencia": "NUTRA NUGGETS CORDERO",
+            "condiciones": [],
+            "presentacion": "7k",
+            "subcategoria": "concentrado",
+            "textoVisible": "nutra nugges cordero 7k perro",
+            "mencionOriginal": "El nutra nugges cordero 7k perro",
+            "contextoCreadoEn": "2026-10-30T21:52:16.881Z",
+            "intencionPresentaciones": "especifica",
+            "presentacionesDisponibles": [
+              "1kg",
+              "3kg"
+            ]
+          },
+          {
+            "etapa": "adulto",
+            "linea": null,
+            "marca": "BR CAT",
+            "accion": "consultar",
+            "envase": null,
+            "estado": "identificado",
+            "tamano": null,
+            "especie": "gato",
+            "sabores": [
+              "pollo"
+            ],
+            "cantidad": null,
+            "mascotas": [],
+            "pregunta": null,
+            "categoria": "comida",
+            "cotizacion": [
+              {
+                "peso": "1kg",
+                "marca": "BR CAT",
+                "stock": null,
+                "precio": 28000,
+                "cantidad": 1,
+                "referencia": "BR CAT CASTRADO POLLO",
+                "presentaciones": [
+                  {
+                    "peso": "10kg",
+                    "stock": null,
+                    "precio": 264000,
+                    "metadata": {
+                      "llave": "177",
+                      "codigo": "10301020177",
+                      "source": "productos.json",
+                      "codigos": [
+                        "10301020177"
+                      ],
+                      "nombre_original": "BR CAT CASTRADO POLLO 10KG"
+                    },
+                    "referencia": "BR CAT CASTRADO POLLO"
+                  },
+                  {
+                    "peso": "1kg",
+                    "stock": null,
+                    "precio": 28000,
+                    "metadata": {
+                      "llave": "178",
+                      "codigo": "10301020178",
+                      "source": "productos.json",
+                      "codigos": [
+                        "10301020178"
+                      ],
+                      "nombre_original": "BR CAT CASTRADO POLLO 1KG"
+                    },
+                    "referencia": "BR CAT CASTRADO POLLO"
+                  },
+                  {
+                    "peso": "3kg",
+                    "stock": null,
+                    "precio": 81900,
+                    "metadata": {
+                      "llave": "179",
+                      "codigo": "10301020179",
+                      "source": "productos.json",
+                      "codigos": [
+                        "10301020179"
+                      ],
+                      "nombre_original": "BR CAT CASTRADO POLLO 3KG"
+                    },
+                    "referencia": "BR CAT CASTRADO POLLO"
+                  }
+                ],
+                "referenciaCatalogo": "BR CAT CASTRADO POLLO"
+              }
+            ],
+            "referencia": "BR CAT CASTRADO POLLO",
+            "condiciones": [
+              "castrado"
+            ],
+            "presentacion": "1kg",
+            "subcategoria": "concentrado",
+            "textoVisible": "br gato castrado de pollo 1k",
+            "mencionOriginal": "El br gato castrado de pollo 1k",
+            "contextoCreadoEn": "2026-10-30T21:52:16.887Z",
+            "intencionPresentaciones": "especifica",
+            "presentacionesDisponibles": [
+              "10kg",
+              "1kg",
+              "3kg"
+            ]
+          },
+          {
+            "etapa": null,
+            "linea": null,
+            "marca": "NEXGARD",
+            "accion": "consultar",
+            "envase": null,
+            "estado": "identificado",
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "mascotas": [
+              {
+                "nombre": "Mascota 1",
+                "pesoKg": 40
+              }
+            ],
+            "pregunta": null,
+            "categoria": "medicamento",
+            "cotizacion": [
+              {
+                "peso": "25-50 kg",
+                "marca": "NEXGARD",
+                "stock": null,
+                "precio": 56900,
+                "cantidad": 1,
+                "mascotas": [
+                  {
+                    "nombre": "Mascota 1",
+                    "pesoKg": 40
+                  }
+                ],
+                "referencia": "NEXGARD",
+                "tipoSeleccion": "peso",
+                "presentaciones": [
+                  {
+                    "peso": "10-25 kg",
+                    "stock": null,
+                    "precio": 49700,
+                    "metadata": {
+                      "llave": "1123",
+                      "codigo": "10101011123",
+                      "source": "productos.json",
+                      "codigos": [
+                        "10101011123"
+                      ],
+                      "rango_peso": {
+                        "desde_inclusivo": false
+                      },
+                      "nombre_original": "NEXGARD 10-25 KL"
+                    },
+                    "referencia": "NEXGARD"
+                  },
+                  {
+                    "peso": "2-4 kg",
+                    "stock": null,
+                    "precio": 39900,
+                    "metadata": {
+                      "llave": "1124",
+                      "codigo": "10101011124",
+                      "source": "productos.json",
+                      "codigos": [
+                        "10101011124"
+                      ],
+                      "nombre_original": "NEXGARD 2-4 KL"
+                    },
+                    "referencia": "NEXGARD"
+                  },
+                  {
+                    "peso": "25-50 kg",
+                    "stock": null,
+                    "precio": 56900,
+                    "metadata": {
+                      "llave": "1125",
+                      "codigo": "10101011125",
+                      "source": "productos.json",
+                      "codigos": [
+                        "10101011125"
+                      ],
+                      "nombre_original": "NEXGARD 25-50 KL"
+                    },
+                    "referencia": "NEXGARD"
+                  },
+                  {
+                    "peso": "4-10 kg",
+                    "stock": null,
+                    "precio": 42500,
+                    "metadata": {
+                      "llave": "1126",
+                      "codigo": "10101011126",
+                      "source": "productos.json",
+                      "codigos": [
+                        "10101011126"
+                      ],
+                      "nombre_original": "NEXGARD 4-10 KL"
+                    },
+                    "referencia": "NEXGARD"
+                  }
+                ],
+                "referenciaCatalogo": "NEXGARD"
+              }
+            ],
+            "referencia": "NEXGARD",
+            "condiciones": [],
+            "presentacion": "25-50kg",
+            "subcategoria": null,
+            "textoVisible": "Nexgart para perro de 40k",
+            "mencionOriginal": "Nexgart para perro de 40k",
+            "contextoCreadoEn": "2026-10-30T21:52:16.888Z",
+            "intencionPresentaciones": null,
+            "seleccionPresentaciones": {
+              "tipo": "peso",
+              "grupos": [
+                {
+                  "peso": "25-50 kg",
+                  "stock": null,
+                  "precio": 56900,
+                  "mascotas": [
+                    {
+                      "nombre": "Mascota 1",
+                      "pesoKg": 40
+                    }
+                  ],
+                  "metadata": {
+                    "llave": "1125",
+                    "codigo": "10101011125",
+                    "source": "productos.json",
+                    "codigos": [
+                      "10101011125"
+                    ],
+                    "nombre_original": "NEXGARD 25-50 KL"
+                  },
+                  "referencia": "NEXGARD"
+                }
+              ],
+              "mascotas": [
+                {
+                  "nombre": "Mascota 1",
+                  "pesoKg": 40
+                }
+              ],
+              "pendientes": []
+            },
+            "presentacionesDisponibles": [
+              "10-25 kg",
+              "2-4 kg",
+              "25-50 kg",
+              "4-10 kg"
+            ]
+          }
+        ],
+        "propuestaOperacion": null
+      }
+    },
+    {
+      "id": "original-image-two-products",
+      "message": "Que precio tiene esas 2 referencias",
+      "at": "2026-10-30T22:06:28.374334+00:00",
+      "idHash": "79f2de575a8f",
+      "interpretation": {
+        "accion": "consultar",
+        "carrito": {
+          "razon": null,
+          "operacion": null,
+          "cantidadDelta": null,
+          "cantidadObjetivo": null,
+          "aplicaAlUltimoProducto": null
+        },
+        "producto": null,
+        "intencion": "consulta_producto",
+        "productos": [
+          {
+            "etapa": null,
+            "linea": "Prescription Diet",
+            "marca": "Hill's",
+            "accion": "consultar",
+            "envase": null,
+            "estado": "pendiente",
+            "tamano": null,
+            "especie": "gato",
+            "sabores": [],
+            "cantidad": null,
+            "mascotas": [],
+            "pregunta": "¿Qué presentación necesitas de Hill's Prescription Diet Urinary Care c/d Multicare para gato?",
+            "categoria": "comida",
+            "observado": {
+              "envase": null,
+              "nombre": "Hill's Prescription Diet Urinary Care c/d Multicare",
+              "presentacion": null,
+              "formaAlimento": "concentrado",
+              "confianzaFormato": 0.82,
+              "confianzaIdentidad": 0.97,
+              "confianzaPresentacion": 0.12
+            },
+            "solicitud": {
+              "cantidadTexto": null,
+              "contextoVigente": false,
+              "cantidadContexto": null,
+              "presentacionTexto": null,
+              "presentacionContexto": null
+            },
+            "referencia": "c/d Multicare",
+            "condiciones": [
+              "urinary"
+            ],
+            "presentacion": null,
+            "subcategoria": "concentrado",
+            "textoVisible": "Hill's Prescription Diet Urinary Care c/d Multicare para gato",
+            "mencionOriginal": "esas 2 referencias",
+            "fuentePresentacion": null,
+            "requierePresentacion": true,
+            "intencionPresentaciones": null,
+            "presentacionesDisponibles": []
+          },
+          {
+            "etapa": null,
+            "linea": "Veterinary Diets",
+            "marca": "ADVANCE",
+            "accion": "consultar",
+            "envase": null,
+            "estado": "pendiente",
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "observado": {
+              "envase": null,
+              "nombre": "ADVANCE Veterinary Diets Urinary",
+              "presentacion": "1.5kg",
+              "formaAlimento": "concentrado",
+              "confianzaFormato": 0.84,
+              "confianzaIdentidad": 0.93,
+              "confianzaPresentacion": 0.9
+            },
+            "solicitud": {
+              "cantidadTexto": null,
+              "contextoVigente": false,
+              "cantidadContexto": null,
+              "presentacionTexto": null,
+              "presentacionContexto": null
+            },
+            "referencia": "URINARY",
+            "condiciones": [
+              "urinary"
+            ],
+            "presentacion": "1.5kg",
+            "subcategoria": "concentrado",
+            "textoVisible": "Advance Veterinary Diets Urinary",
+            "mencionOriginal": "esas 2 referencias",
+            "fuentePresentacion": "imagen",
+            "requierePresentacion": false,
+            "intencionPresentaciones": "especifica",
+            "presentacionesDisponibles": []
+          }
+        ],
+        "propuestaOperacion": null
+      }
+    }
+  ]
+}

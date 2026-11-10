@@ -1,0 +1,2092 @@
+{
+  "at": "2026-10-29T20:24:09.517Z",
+  "turns": [
+    {
+      "turnHash": "f06d783578cc5ce3",
+      "in": [
+        {
+          "id": "6bc9ba2c-299d-1406-d9ae-7a31ad3f591f",
+          "text": "Quiero un dimicilio para un alimento para mi gato de 6 meses que me recomienda",
+          "at": "2026-10-29T20:10:19.11405+00:00"
+        }
+      ],
+      "out": [
+        {
+          "id": "0227b8a8-b1fd-e33d-da8b-76156655cfe5",
+          "text": "Para tu gato cachorro, estas opciones coinciden con lo que buscas:\n\n- OHMAIGAT GATITOS x 200 gr: $3.800 — concentrado, gato, cachorro.\n- MIRRINGO GATITO x 500gr: $5.900 — concentrado, gato, cachorro.\n- PRO PLAN POUCH FELINO KITTEN 85gr: $6.200 — comida humeda, gato, cachorro.\n\nLos precios están registrados; las existencias están por confirmar.\n\n¿Cuál te gustaría revisar?",
+          "at": "2026-10-29T20:10:36.235339+00:00"
+        }
+      ],
+      "persistedLatencyMs": 17121
+    },
+    {
+      "turnHash": "16a8034bc60cbc99",
+      "in": [
+        {
+          "id": "1178e964-9927-e093-dac8-00fdc996e3f9",
+          "text": "Qué alimento tiene para gato cachorro",
+          "at": "2026-10-29T20:11:15.039708+00:00"
+        }
+      ],
+      "out": [
+        {
+          "id": "f0282c98-0110-2c4d-9527-994ff3894bd3",
+          "text": "Para tu gato cachorro, estas opciones coinciden con lo que buscas:\n\n- OHMAIGAT GATITOS x 200 gr: $3.800 — concentrado, gato, cachorro.\n- PRO PLAN POUCH FELINO KITTEN 85gr: $6.200 — comida humeda, gato, cachorro.\n- ROYAL CANIN LATA KITTEN LOAF unidad: $10.500 — comida humeda, gato, cachorro.\n\nLos precios están registrados; las existencias están por confirmar.\n\n¿Cuál te gustaría revisar?",
+          "at": "2026-10-29T20:11:34.226766+00:00"
+        }
+      ],
+      "persistedLatencyMs": 19187
+    },
+    {
+      "turnHash": "26aeb36141f13489",
+      "in": [
+        {
+          "id": "18d93df8-9eed-5593-6493-237f0bed619c",
+          "text": "No sé el nombre del producto",
+          "at": "2026-10-29T20:12:39.163897+00:00"
+        }
+      ],
+      "out": [
+        {
+          "id": "6f48dd4b-1d8e-a89d-4598-066eccfa9491",
+          "text": "Claro, para tu gato cachorro te puedo orientar con estas opciones:\n\n- PRO PLAN POUCH FELINO KITTEN 85gr: $6.200 — comida humeda, gato, cachorro.\n- ROYAL CANIN LATA KITTEN LOAF unidad: $10.500 — comida humeda, gato, cachorro.\n- ROYAL CANIN LATA BABY CAT TROCITOS unidad: $10.500 — comida humeda, gato, cachorro.\n\nLos precios están registrados; las existencias están por confirmar.\n\n¿Prefieres pouch o lata?",
+          "at": "2026-10-29T20:12:57.241037+00:00"
+        }
+      ],
+      "persistedLatencyMs": 18078
+    },
+    {
+      "turnHash": "118fb8f9c6483dc0",
+      "in": [
+        {
+          "id": "3e1df580-f934-5e0b-034d-953db101d67f",
+          "text": "Quiero un dimicilio para un alimento para mi gato de 6 meses que me recomienda",
+          "at": "2026-10-29T20:14:59.116334+00:00"
+        }
+      ],
+      "out": [
+        {
+          "id": "17dec521-9d8f-250c-a569-caab98f90da3",
+          "text": "Claro, para tu gato cachorro te puedo orientar con estas opciones:\n\n- PRO PLAN POUCH FELINO KITTEN 85gr: $6.200 — comida humeda, gato, cachorro.\n- ROYAL CANIN LATA KITTEN LOAF unidad: $10.500 — comida humeda, gato, cachorro.\n- ROYAL CANIN KITTEN 400gr: $30.000 — concentrado, gato, cachorro.\n\nLos precios están registrados; las existencias están por confirmar.\n\n¿Prefieres comida húmeda o concentrado?",
+          "at": "2026-10-29T20:15:18.202052+00:00"
+        }
+      ],
+      "persistedLatencyMs": 19086
+    },
+    {
+      "turnHash": "4feebd6fab0b81bd",
+      "in": [
+        {
+          "id": "e3a27996-7d3a-90d6-e856-ade82f7322e5",
+          "text": "Qué alimento tiene para gato cachorro",
+          "at": "2026-10-29T20:15:39.723316+00:00"
+        }
+      ],
+      "out": [
+        {
+          "id": "c41d129e-21b0-a07b-351c-058b479bebdd",
+          "text": "Claro, para gato cachorro tengo estas opciones:\n\n- OHMAIGAT GATITOS x 200 gr: $3.800 — concentrado, gato, cachorro.\n- MIRRINGO GATITO x 500gr: $5.900 — concentrado, gato, cachorro.\n- PRO PLAN POUCH FELINO KITTEN 85gr: $6.200 — comida humeda, gato, cachorro.\n\nLos precios están registrados; las existencias están por confirmar.\n\n¿Prefieres comida húmeda o concentrado?",
+          "at": "2026-10-29T20:15:59.419494+00:00"
+        }
+      ],
+      "persistedLatencyMs": 19696
+    },
+    {
+      "turnHash": "07f02b4ddb61aa24",
+      "in": [
+        {
+          "id": "0c7b0baa-9d55-1d59-0080-3bf8c1bebf51",
+          "text": "No sé el nombre del producto",
+          "at": "2026-10-29T20:16:20.94701+00:00"
+        }
+      ],
+      "out": [
+        {
+          "id": "ea658f21-965e-1f21-a73f-49f5ca5be29b",
+          "text": "Claro, para gato cachorro tienes estas opciones:\n\n- OHMAIGAT GATITOS x 200 gr: $3.800 — concentrado, gato, cachorro.\n- MIRRINGO GATITO x 500gr: $5.900 — concentrado, gato, cachorro.\n- PRO PLAN POUCH FELINO KITTEN 85gr: $6.200 — comida humeda, gato, cachorro.\n\nLos precios están registrados; las existencias están por confirmar.\n\n¿Prefieres comida húmeda o concentrado?",
+          "at": "2026-10-29T20:16:40.062002+00:00"
+        }
+      ],
+      "persistedLatencyMs": 19115
+    },
+    {
+      "turnHash": "98febbd3e205bfdf",
+      "in": [
+        {
+          "id": "04391d53-0cec-be2d-b6ef-e05a5e42d14d",
+          "text": "Ahora busco premios para mi perro adulto",
+          "at": "2026-10-29T20:17:12.846281+00:00"
+        },
+        {
+          "id": "a337c47f-3a94-7de5-8659-9f3c44bc9175",
+          "text": "Máximo 20000 pesos",
+          "at": "2026-10-29T20:17:12.901261+00:00"
+        }
+      ],
+      "out": [
+        {
+          "id": "67a32391-90ae-5853-2bb7-dc319501d321",
+          "text": "Para tu perro adulto, estas opciones coinciden con lo que buscas y están dentro de $20.000:\n\n- GOLOSINAS x100: $100 — premio, perro.\n- HUESO 2-3 unidad: $1.200 — premio, perro.\n- GOLOSINAS 1500 unidad: $1.500 — premio, perro.\n\nLos precios están registrados; las existencias están por confirmar.\n\n¿Cuál te gustaría revisar?",
+          "at": "2026-10-29T20:17:33.293219+00:00"
+        }
+      ],
+      "persistedLatencyMs": 20447
+    },
+    {
+      "turnHash": "07e2b70ad542b9b4",
+      "in": [
+        {
+          "id": "583b238f-7842-5d37-99ee-9b8fcb9e81d4",
+          "text": "Y para mi gato, un juguete de menos de 25000 pesos. Solo quiero opciones",
+          "at": "2026-10-29T20:17:54.251434+00:00"
+        }
+      ],
+      "out": [
+        {
+          "id": "380a9d7f-3ce6-fe92-f5ee-9880325ec902",
+          "text": "Para tu gato, estas opciones coinciden con lo que buscas y están dentro de $25.000:\n\n- RASCADOR unidad: $16.000 — juguete, gato.\n- RASCADOR REDONDO GATOS unidad: $22.000 — juguete, gato.\n\nLos precios están registrados; las existencias están por confirmar.\n\n¿Cuál te gustaría revisar?",
+          "at": "2026-10-29T20:18:11.376776+00:00"
+        }
+      ],
+      "persistedLatencyMs": 17125
+    },
+    {
+      "turnHash": "6c33aa506cb491b5",
+      "in": [
+        {
+          "id": "8df8920c-c4c7-c95c-82d9-06ad1dbe4410",
+          "text": "Cuánto vale Pro Plan UR",
+          "at": "2026-10-29T20:18:49.87806+00:00"
+        }
+      ],
+      "out": [
+        {
+          "id": "d089d2de-389c-57bd-63f0-894c73d6fe68",
+          "text": "¿Es para perro o para gato? 😊",
+          "at": "2026-10-29T20:19:10.772802+00:00"
+        }
+      ],
+      "persistedLatencyMs": 20894
+    },
+    {
+      "turnHash": "db10e57365010f98",
+      "in": [
+        {
+          "id": "1e0a56b7-c0df-92a7-5a3e-c2b0aa317b70",
+          "text": "Para perrito",
+          "at": "2026-10-29T20:19:33.102403+00:00"
+        }
+      ],
+      "out": [
+        {
+          "id": "150b07b9-01e9-92ee-11c0-2cc8d4f4a4bf",
+          "text": "Para perrito, ¿busca PRO PLAN CANINE UR de 2 kg o PRO PLAN CANINE LATA UR por unidad?",
+          "at": "2026-10-29T20:19:54.846468+00:00"
+        }
+      ],
+      "persistedLatencyMs": 21744
+    },
+    {
+      "turnHash": "dd528adab95d8ae4",
+      "in": [
+        {
+          "id": "153a9bfe-ef44-fcfd-3ce8-304ebbbaa173",
+          "text": "el concentrado",
+          "at": "2026-10-29T20:20:18.629386+00:00"
+        }
+      ],
+      "out": [],
+      "persistedLatencyMs": null
+    },
+    {
+      "turnHash": "b96fc626207d284e",
+      "in": [
+        {
+          "id": "db0fe1cb-8156-8d3a-3b43-cd20b5828527",
+          "text": "Solo consultar el precio, no lo agregues al pedido",
+          "at": "2026-10-29T20:20:35.18873+00:00"
+        }
+      ],
+      "out": [
+        {
+          "id": "1c239222-1f43-9066-6bcf-7c4d5733fe2c",
+          "text": "Presentaciones y precios unitarios:\n- PRO PLAN CANINE UR 2kg: $122.000",
+          "at": "2026-10-29T20:20:55.124257+00:00"
+        }
+      ],
+      "persistedLatencyMs": 19936
+    },
+    {
+      "turnHash": "d72ff3667100d2cb",
+      "in": [
+        {
+          "id": "94bbd3ff-1c5a-790f-5a18-01de1de36857",
+          "text": "Mi gato no puede orinar, ¿qué comida le doy para curarlo?",
+          "at": "2026-10-29T20:21:36.196491+00:00"
+        }
+      ],
+      "out": [
+        {
+          "id": "a871da67-5ea5-cb67-1208-de7be1bbb0bd",
+          "text": "Para orientarte sobre diagnóstico o tratamiento se necesita criterio veterinario. Dejo tu consulta pendiente de un asesor para que te ayude con la orientación especializada.",
+          "at": "2026-10-29T20:21:49.09973+00:00"
+        }
+      ],
+      "persistedLatencyMs": 12903
+    },
+    {
+      "turnHash": "2b2111c5e84dc26d",
+      "in": [
+        {
+          "id": "5efc2880-b7b2-478b-8919-8bf5d99af760",
+          "text": "Ahora solo quiero saber qué juguetes tienes para mi gato, hasta 25000 pesos",
+          "at": "2026-10-29T20:22:43.148911+00:00"
+        }
+      ],
+      "out": [
+        {
+          "id": "3ec9e407-c139-3d6b-743b-150475027635",
+          "text": "Claro, para tu gato tengo estas opciones dentro de $25.000:\n\n- RASCADOR unidad: $16.000 — juguete, gato.\n- RASCADOR REDONDO GATOS unidad: $22.000 — juguete, gato.\n\nLas existencias están por confirmar. ¿Cuál te gustaría revisar?",
+          "at": "2026-10-29T20:23:01.167882+00:00"
+        }
+      ],
+      "persistedLatencyMs": 18019
+    },
+    {
+      "turnHash": "0f08bf64a338b0b3",
+      "in": [
+        {
+          "id": "bf0152db-4d93-b3a3-fb89-63c6e0322410",
+          "text": "Solo consultar: tienen marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos?",
+          "at": "2026-10-29T20:23:23.114008+00:00"
+        }
+      ],
+      "out": [
+        {
+          "id": "613a364e-b1ae-8808-2b44-b2e16541533e",
+          "text": "No encuentro ZETAPRUEBAQ9 ZQ17 de 4kg en el catálogo actual. No la he agregado al pedido. ¿Puedes confirmar el nombre completo y la presentación para revisarlo?",
+          "at": "2026-10-29T20:23:45.34473+00:00"
+        }
+      ],
+      "persistedLatencyMs": 22230
+    }
+  ],
+  "inbound": 16,
+  "outbound": 14,
+  "allTurnsAnsweredOnce": false,
+  "duplicateEventKeys": 0,
+  "ordersCreated": 0,
+  "finalCart": [],
+  "kapso": [
+    {
+      "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSQkM1NzE4OTMwREQ0NDdCMjYxAA==",
+      "at": "2026-10-29T20:23:44.000Z",
+      "direction": "outbound",
+      "status": "delivered",
+      "text": "No encuentro ZETAPRUEBAQ9 ZQ17 de 4kg en el catálogo actual. No la he agregado al pedido. ¿Puedes confirmar el nombre completo y la presentación para revisarlo?"
+    },
+    {
+      "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDREMTQyRkI0OTk2Njg2QjU0MwA=",
+      "at": "2026-10-29T20:23:16.000Z",
+      "direction": "inbound",
+      "status": "read",
+      "text": "Solo consultar: tienen marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos?"
+    },
+    {
+      "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSNkZEMDRCQTEwOTZENkIyMTY0AA==",
+      "at": "2026-10-29T20:23:00.000Z",
+      "direction": "outbound",
+      "status": "delivered",
+      "text": "Claro, para tu gato tengo estas opciones dentro de $25.000:\n\n- RASCADOR unidad: $16.000 — juguete, gato.\n- RASCADOR REDONDO GATOS unidad: $22.000 — juguete, gato.\n\nLas existencias están por confirmar. ¿Cuál te gustaría revisar?"
+    },
+    {
+      "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDY0MzY4NjdDMzg0N0UzNTQ2NQA=",
+      "at": "2026-10-29T20:22:35.000Z",
+      "direction": "inbound",
+      "status": "read",
+      "text": "Ahora solo quiero saber qué juguetes tienes para mi gato, hasta 25000 pesos"
+    },
+    {
+      "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSREFGMTE4QUM0MjMwRTI2RDI4AA==",
+      "at": "2026-10-29T20:21:48.000Z",
+      "direction": "outbound",
+      "status": "delivered",
+      "text": "Para orientarte sobre diagnóstico o tratamiento se necesita criterio veterinario. Dejo tu consulta pendiente de un asesor para que te ayude con la orientación especializada."
+    },
+    {
+      "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDYyRjc2NjZCQUM4NjFGRUIzMgA=",
+      "at": "2026-10-29T20:21:28.000Z",
+      "direction": "inbound",
+      "status": "read",
+      "text": "Mi gato no puede orinar, ¿qué comida le doy para curarlo?"
+    },
+    {
+      "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSREVDNUQyOEMyNDc0QjQzQjMwAA==",
+      "at": "2026-10-29T20:20:54.000Z",
+      "direction": "outbound",
+      "status": "delivered",
+      "text": "Presentaciones y precios unitarios:\n- PRO PLAN CANINE UR 2kg: $122.000"
+    },
+    {
+      "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDIwRjM2OEFGMUJCMjFDQjRGQwA=",
+      "at": "2026-10-29T20:20:28.000Z",
+      "direction": "inbound",
+      "status": "read",
+      "text": "Solo consultar el precio, no lo agregues al pedido"
+    },
+    {
+      "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDEwRjJCOEM3OEEzRTg3Q0FDNgA=",
+      "at": "2026-10-29T20:20:11.000Z",
+      "direction": "inbound",
+      "status": "read",
+      "text": "el concentrado"
+    },
+    {
+      "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSRDI4MjlGMkRCQkU2NTJEQzhFAA==",
+      "at": "2026-10-29T20:19:54.000Z",
+      "direction": "outbound",
+      "status": "delivered",
+      "text": "Para perrito, ¿busca PRO PLAN CANINE UR de 2 kg o PRO PLAN CANINE LATA UR por unidad?"
+    },
+    {
+      "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDJBNDBFQjA2M0EwMDRGODkwOAA=",
+      "at": "2026-10-29T20:19:26.000Z",
+      "direction": "inbound",
+      "status": "read",
+      "text": "Para perrito"
+    },
+    {
+      "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSNUM5QjI2MUI0QjI0N0EzNkU2AA==",
+      "at": "2026-10-29T20:19:10.000Z",
+      "direction": "outbound",
+      "status": "delivered",
+      "text": "¿Es para perro o para gato? 😊"
+    },
+    {
+      "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDI5M0FDMzc4RjY1NjE0NTZFRgA=",
+      "at": "2026-10-29T20:18:43.000Z",
+      "direction": "inbound",
+      "status": "read",
+      "text": "Cuánto vale Pro Plan UR"
+    },
+    {
+      "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSOENGODhCNjAxRDJFMzQwOTc5AA==",
+      "at": "2026-10-29T20:18:10.000Z",
+      "direction": "outbound",
+      "status": "delivered",
+      "text": "Para tu gato, estas opciones coinciden con lo que buscas y están dentro de $25.000:\n\n- RASCADOR unidad: $16.000 — juguete, gato.\n- RASCADOR REDONDO GATOS unidad: $22.000 — juguete, gato.\n\nLos precios están registrados; las existencias están por confirmar.\n\n¿Cuál te gustaría revisar?"
+    },
+    {
+      "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDE5QjgwRjVFODkwMjY5N0RFMAA=",
+      "at": "2026-10-29T20:17:47.000Z",
+      "direction": "inbound",
+      "status": "read",
+      "text": "Y para mi gato, un juguete de menos de 25000 pesos. Solo quiero opciones"
+    },
+    {
+      "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSRTM3RDc4MjdBMjI3MUNEQkM3AA==",
+      "at": "2026-10-29T20:17:32.000Z",
+      "direction": "outbound",
+      "status": "delivered",
+      "text": "Para tu perro adulto, estas opciones coinciden con lo que buscas y están dentro de $20.000:\n\n- GOLOSINAS x100: $100 — premio, perro.\n- HUESO 2-3 unidad: $1.200 — premio, perro.\n- GOLOSINAS 1500 unidad: $1.500 — premio, perro.\n\nLos precios están registrados; las existencias están por confirmar.\n\n¿Cuál te gustaría revisar?"
+    },
+    {
+      "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDE0MkUwMDM0RTYxRTg5MzE2MQA=",
+      "at": "2026-10-29T20:17:06.000Z",
+      "direction": "inbound",
+      "status": "read",
+      "text": "Máximo 20000 pesos"
+    },
+    {
+      "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEFDN0Q2MzRBOTM2NUU0NkQ3QwA=",
+      "at": "2026-10-29T20:17:04.000Z",
+      "direction": "inbound",
+      "status": "delivered",
+      "text": "Ahora busco premios para mi perro adulto"
+    },
+    {
+      "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSM0Y0MEJGQzFFNEMzODYwQTM4AA==",
+      "at": "2026-10-29T20:16:39.000Z",
+      "direction": "outbound",
+      "status": "delivered",
+      "text": "Claro, para gato cachorro tienes estas opciones:\n\n- OHMAIGAT GATITOS x 200 gr: $3.800 — concentrado, gato, cachorro.\n- MIRRINGO GATITO x 500gr: $5.900 — concentrado, gato, cachorro.\n- PRO PLAN POUCH FELINO KITTEN 85gr: $6.200 — comida humeda, gato, cachorro.\n\nLos precios están registrados; las existencias están por confirmar.\n\n¿Prefieres comida húmeda o concentrado?"
+    },
+    {
+      "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDc5REYyOUIwMDVGMTdEMjczQgA=",
+      "at": "2026-10-29T20:16:13.000Z",
+      "direction": "inbound",
+      "status": "read",
+      "text": "No sé el nombre del producto"
+    },
+    {
+      "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSQjZGRDEwQUEwQTc0RUJBN0U1AA==",
+      "at": "2026-10-29T20:15:58.000Z",
+      "direction": "outbound",
+      "status": "delivered",
+      "text": "Claro, para gato cachorro tengo estas opciones:\n\n- OHMAIGAT GATITOS x 200 gr: $3.800 — concentrado, gato, cachorro.\n- MIRRINGO GATITO x 500gr: $5.900 — concentrado, gato, cachorro.\n- PRO PLAN POUCH FELINO KITTEN 85gr: $6.200 — comida humeda, gato, cachorro.\n\nLos precios están registrados; las existencias están por confirmar.\n\n¿Prefieres comida húmeda o concentrado?"
+    },
+    {
+      "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDNBRUE3QkU0MTNDMDVDNTlENAA=",
+      "at": "2026-10-29T20:15:32.000Z",
+      "direction": "inbound",
+      "status": "read",
+      "text": "Qué alimento tiene para gato cachorro"
+    },
+    {
+      "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSMkMzQzhGQ0M1RjI1RUJGQ0I3AA==",
+      "at": "2026-10-29T20:15:17.000Z",
+      "direction": "outbound",
+      "status": "delivered",
+      "text": "Claro, para tu gato cachorro te puedo orientar con estas opciones:\n\n- PRO PLAN POUCH FELINO KITTEN 85gr: $6.200 — comida humeda, gato, cachorro.\n- ROYAL CANIN LATA KITTEN LOAF unidad: $10.500 — comida humeda, gato, cachorro.\n- ROYAL CANIN KITTEN 400gr: $30.000 — concentrado, gato, cachorro.\n\nLos precios están registrados; las existencias están por confirmar.\n\n¿Prefieres comida húmeda o concentrado?"
+    },
+    {
+      "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDA0MDUzNDc5MEE4MTc1NTY3NQA=",
+      "at": "2026-10-29T20:14:50.000Z",
+      "direction": "inbound",
+      "status": "read",
+      "text": "Quiero un dimicilio para un alimento para mi gato de 6 meses que me recomienda"
+    },
+    {
+      "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSQjA2NDAzOTVEQzNEMDM5RTcxAA==",
+      "at": "2026-10-29T20:12:56.000Z",
+      "direction": "outbound",
+      "status": "delivered",
+      "text": "Claro, para tu gato cachorro te puedo orientar con estas opciones:\n\n- PRO PLAN POUCH FELINO KITTEN 85gr: $6.200 — comida humeda, gato, cachorro.\n- ROYAL CANIN LATA KITTEN LOAF unidad: $10.500 — comida humeda, gato, cachorro.\n- ROYAL CANIN LATA BABY CAT TROCITOS unidad: $10.500 — comida humeda, gato, cachorro.\n\nLos precios están registrados; las existencias están por confirmar.\n\n¿Prefieres pouch o lata?"
+    },
+    {
+      "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEEyQUREMTIzMTgyRkU4Njc2RgA=",
+      "at": "2026-10-29T20:12:31.000Z",
+      "direction": "inbound",
+      "status": "read",
+      "text": "No sé el nombre del producto"
+    },
+    {
+      "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSN0Q3QjZGMzQ0NEVDMEZEMEI2AA==",
+      "at": "2026-10-29T20:11:33.000Z",
+      "direction": "outbound",
+      "status": "delivered",
+      "text": "Para tu gato cachorro, estas opciones coinciden con lo que buscas:\n\n- OHMAIGAT GATITOS x 200 gr: $3.800 — concentrado, gato, cachorro.\n- PRO PLAN POUCH FELINO KITTEN 85gr: $6.200 — comida humeda, gato, cachorro.\n- ROYAL CANIN LATA KITTEN LOAF unidad: $10.500 — comida humeda, gato, cachorro.\n\nLos precios están registrados; las existencias están por confirmar.\n\n¿Cuál te gustaría revisar?"
+    },
+    {
+      "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDA5RUY2QUY5Q0Q2NjIyNUE1RQA=",
+      "at": "2026-10-29T20:11:07.000Z",
+      "direction": "inbound",
+      "status": "read",
+      "text": "Qué alimento tiene para gato cachorro"
+    },
+    {
+      "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSQUU1MjNFMThDODRFMUE2MEI4AA==",
+      "at": "2026-10-29T20:10:35.000Z",
+      "direction": "outbound",
+      "status": "delivered",
+      "text": "Para tu gato cachorro, estas opciones coinciden con lo que buscas:\n\n- OHMAIGAT GATITOS x 200 gr: $3.800 — concentrado, gato, cachorro.\n- MIRRINGO GATITO x 500gr: $5.900 — concentrado, gato, cachorro.\n- PRO PLAN POUCH FELINO KITTEN 85gr: $6.200 — comida humeda, gato, cachorro.\n\nLos precios están registrados; las existencias están por confirmar.\n\n¿Cuál te gustaría revisar?"
+    },
+    {
+      "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEYwQjc1MTc3QUQ5RDJCQUM3QQA=",
+      "at": "2026-10-29T20:10:09.000Z",
+      "direction": "inbound",
+      "status": "read",
+      "text": "Quiero un dimicilio para un alimento para mi gato de 6 meses que me recomienda"
+    }
+  ],
+  "pipeline": {
+    "runs": 15,
+    "statuses": [
+      {
+        "status": "sent",
+        "parts": 1
+      },
+      {
+        "status": "sent",
+        "parts": 1
+      },
+      {
+        "status": "sent",
+        "parts": 1
+      },
+      {
+        "status": "sent",
+        "parts": 1
+      },
+      {
+        "status": "sent",
+        "parts": 1
+      },
+      {
+        "status": "sent",
+        "parts": 1
+      },
+      {
+        "status": "sent",
+        "parts": 1
+      },
+      {
+        "status": "sent",
+        "parts": 1
+      },
+      {
+        "status": "sent",
+        "parts": 1
+      },
+      {
+        "status": "sent",
+        "parts": 1
+      },
+      {
+        "status": "superseded",
+        "confirmedParts": 0
+      },
+      {
+        "status": "sent",
+        "parts": 1
+      },
+      {
+        "status": "sent",
+        "parts": 1
+      },
+      {
+        "status": "sent",
+        "parts": 1
+      },
+      {
+        "status": "sent",
+        "parts": 1
+      }
+    ],
+    "medianMs": 20470,
+    "minMs": 14307,
+    "maxMs": 23267
+  },
+  "summaries": [
+    {
+      "run": "390472b1-c816-4c29-beb3-9c989bf7be99",
+      "etapa": "summary",
+      "outcome": {
+        "status": "sent",
+        "parts": 1
+      },
+      "grupos": {
+        "inbound_buffer": {
+          "llamadas": 1,
+          "ms": 5027
+        },
+        "supabase_attempt": {
+          "llamadas": 20,
+          "ms": 7605.68
+        },
+        "supabase_request": {
+          "llamadas": 20,
+          "ms": 7631.58
+        },
+        "save_inbound_message": {
+          "llamadas": 1,
+          "ms": 3559.85
+        },
+        "load_context": {
+          "llamadas": 1,
+          "ms": 209.63
+        },
+        "kapso_typing_mark_read": {
+          "llamadas": 1,
+          "ms": 934.33
+        },
+        "openai_request": {
+          "llamadas": 2,
+          "ms": 10001.05
+        },
+        "tool_save_order": {
+          "llamadas": 1,
+          "ms": 0.2
+        },
+        "agent_processing": {
+          "llamadas": 1,
+          "ms": 13454.28
+        },
+        "kapso_send": {
+          "llamadas": 1,
+          "ms": 1663.65
+        },
+        "save_response": {
+          "llamadas": 1,
+          "ms": 432.61
+        }
+      },
+      "supabaseTop3": [
+        {
+          "etapa": "supabase_request",
+          "numero": 1,
+          "ms": 1524.04,
+          "ok": true,
+          "operation": "GET client_channels",
+          "queryHash": "1d3045cb061d",
+          "select": "client_id,settings,display_name",
+          "filas": 1
+        },
+        {
+          "etapa": "supabase_request",
+          "numero": 3,
+          "ms": 620.41,
+          "ok": true,
+          "operation": "GET aivance_clients",
+          "queryHash": "2905ab536c18",
+          "select": "id,slug,name,vertical,business_type,owner_platform,settings",
+          "filas": 1
+        },
+        {
+          "etapa": "supabase_request",
+          "numero": 5,
+          "ms": 554.15,
+          "ok": true,
+          "operation": "GET client_delivery_rules",
+          "queryHash": "0fd8335005cb",
+          "select": "rule_type,name,value,metadata,priority",
+          "filas": 0
+        }
+      ],
+      "consultasRepetidas": [
+        [
+          "1d3045cb061d",
+          2
+        ],
+        [
+          "08ebcb9df2c6",
+          2
+        ],
+        [
+          "39f2bcf61d68",
+          2
+        ]
+      ],
+      "totalConBufferMs": 20584,
+      "totalProcesamientoMs": 15557
+    },
+    {
+      "run": "edf411a1-36fb-4bdd-99fa-e120082dde0a",
+      "etapa": "summary",
+      "outcome": {
+        "status": "sent",
+        "parts": 1
+      },
+      "grupos": {
+        "inbound_buffer": {
+          "llamadas": 1,
+          "ms": 5006
+        },
+        "supabase_attempt": {
+          "llamadas": 21,
+          "ms": 5043.61
+        },
+        "supabase_request": {
+          "llamadas": 21,
+          "ms": 5066.94
+        },
+        "save_inbound_message": {
+          "llamadas": 1,
+          "ms": 779.51
+        },
+        "kapso_typing_mark_read": {
+          "llamadas": 1,
+          "ms": 797.77
+        },
+        "load_context": {
+          "llamadas": 1,
+          "ms": 195.97
+        },
+        "openai_request": {
+          "llamadas": 2,
+          "ms": 9357.11
+        },
+        "tool_save_order": {
+          "llamadas": 1,
+          "ms": 0.03
+        },
+        "agent_processing": {
+          "llamadas": 1,
+          "ms": 12985.79
+        },
+        "kapso_send": {
+          "llamadas": 1,
+          "ms": 1543.42
+        },
+        "save_response": {
+          "llamadas": 1,
+          "ms": 418.86
+        }
+      },
+      "supabaseTop3": [
+        {
+          "etapa": "supabase_request",
+          "numero": 15,
+          "ms": 322.93,
+          "ok": true,
+          "operation": "POST whatsapp_messages",
+          "queryHash": "05dd593fa192",
+          "select": null,
+          "filas": 1
+        },
+        {
+          "etapa": "supabase_request",
+          "numero": 3,
+          "ms": 304.6,
+          "ok": true,
+          "operation": "POST whatsapp_messages",
+          "queryHash": "ca0248f41f95",
+          "select": null,
+          "filas": 1
+        },
+        {
+          "etapa": "supabase_request",
+          "numero": 13,
+          "ms": 293.17,
+          "ok": true,
+          "operation": "GET catalog_references",
+          "queryHash": "15f8390e0185",
+          "select": "id,name,species,category,subcategory,life_stage,requires_confirmation,description,metadata,brand:catalog_brands!inner(id,name,client_id,active),presentations:catalog_presentations(id,weight,price,stock,metadata,active)",
+          "filas": 21
+        }
+      ],
+      "consultasRepetidas": [
+        [
+          "1d3045cb061d",
+          2
+        ],
+        [
+          "08ebcb9df2c6",
+          2
+        ],
+        [
+          "05dd593fa192",
+          2
+        ]
+      ],
+      "totalConBufferMs": 19956,
+      "totalProcesamientoMs": 14950
+    },
+    {
+      "run": "fca9606a-53e2-4abf-a5a4-796920cb660f",
+      "etapa": "summary",
+      "outcome": {
+        "status": "sent",
+        "parts": 1
+      },
+      "grupos": {
+        "inbound_buffer": {
+          "llamadas": 1,
+          "ms": 5003
+        },
+        "supabase_attempt": {
+          "llamadas": 21,
+          "ms": 5017.61
+        },
+        "supabase_request": {
+          "llamadas": 21,
+          "ms": 5041.16
+        },
+        "save_inbound_message": {
+          "llamadas": 1,
+          "ms": 1546.89
+        },
+        "load_context": {
+          "llamadas": 1,
+          "ms": 185.36
+        },
+        "kapso_typing_mark_read": {
+          "llamadas": 1,
+          "ms": 860.36
+        },
+        "openai_request": {
+          "llamadas": 3,
+          "ms": 9210.35
+        },
+        "tool_save_order": {
+          "llamadas": 1,
+          "ms": 0.04
+        },
+        "agent_processing": {
+          "llamadas": 1,
+          "ms": 12038.2
+        },
+        "kapso_send": {
+          "llamadas": 1,
+          "ms": 2104.13
+        },
+        "save_response": {
+          "llamadas": 1,
+          "ms": 507.92
+        }
+      },
+      "supabaseTop3": [
+        {
+          "etapa": "supabase_request",
+          "numero": 1,
+          "ms": 462.72,
+          "ok": true,
+          "operation": "GET client_channels",
+          "queryHash": "1d3045cb061d",
+          "select": "client_id,settings,display_name",
+          "filas": 1
+        },
+        {
+          "etapa": "supabase_request",
+          "numero": 3,
+          "ms": 356.07,
+          "ok": true,
+          "operation": "GET aivance_clients",
+          "queryHash": "2905ab536c18",
+          "select": "id,slug,name,vertical,business_type,owner_platform,settings",
+          "filas": 1
+        },
+        {
+          "etapa": "supabase_request",
+          "numero": 6,
+          "ms": 324.48,
+          "ok": true,
+          "operation": "POST whatsapp_messages",
+          "queryHash": "82d7d1b4215b",
+          "select": null,
+          "filas": 1
+        }
+      ],
+      "consultasRepetidas": [
+        [
+          "1d3045cb061d",
+          2
+        ],
+        [
+          "08ebcb9df2c6",
+          2
+        ],
+        [
+          "16891d8cba2f",
+          2
+        ]
+      ],
+      "totalConBufferMs": 19656,
+      "totalProcesamientoMs": 14652
+    },
+    {
+      "run": "6bf918a3-45fe-45d4-a27c-e8c0bdaaf07b",
+      "etapa": "summary",
+      "outcome": {
+        "status": "sent",
+        "parts": 1
+      },
+      "grupos": {
+        "inbound_buffer": {
+          "llamadas": 1,
+          "ms": 5025
+        },
+        "supabase_attempt": {
+          "llamadas": 21,
+          "ms": 5052.08
+        },
+        "supabase_request": {
+          "llamadas": 21,
+          "ms": 5079.8
+        },
+        "save_inbound_message": {
+          "llamadas": 1,
+          "ms": 1597.59
+        },
+        "load_context": {
+          "llamadas": 1,
+          "ms": 329.39
+        },
+        "kapso_typing_mark_read": {
+          "llamadas": 1,
+          "ms": 838.02
+        },
+        "openai_request": {
+          "llamadas": 3,
+          "ms": 11043.03
+        },
+        "tool_save_order": {
+          "llamadas": 1,
+          "ms": 0.27
+        },
+        "agent_processing": {
+          "llamadas": 1,
+          "ms": 13936.82
+        },
+        "kapso_send": {
+          "llamadas": 1,
+          "ms": 1313.83
+        },
+        "save_response": {
+          "llamadas": 1,
+          "ms": 381.45
+        }
+      },
+      "supabaseTop3": [
+        {
+          "etapa": "supabase_request",
+          "numero": 1,
+          "ms": 544.29,
+          "ok": true,
+          "operation": "GET client_channels",
+          "queryHash": "1d3045cb061d",
+          "select": "client_id,settings,display_name",
+          "filas": 1
+        },
+        {
+          "etapa": "supabase_request",
+          "numero": 3,
+          "ms": 358.43,
+          "ok": true,
+          "operation": "GET aivance_clients",
+          "queryHash": "2905ab536c18",
+          "select": "id,slug,name,vertical,business_type,owner_platform,settings",
+          "filas": 1
+        },
+        {
+          "etapa": "supabase_request",
+          "numero": 3,
+          "ms": 328.47,
+          "ok": true,
+          "operation": "GET whatsapp_conversations",
+          "queryHash": "5889c8cc6a45",
+          "select": "*",
+          "filas": 1
+        }
+      ],
+      "consultasRepetidas": [
+        [
+          "1d3045cb061d",
+          2
+        ],
+        [
+          "08ebcb9df2c6",
+          2
+        ],
+        [
+          "31e7052131bd",
+          2
+        ]
+      ],
+      "totalConBufferMs": 20663,
+      "totalProcesamientoMs": 15638
+    },
+    {
+      "run": "03916907-b2c6-4648-882d-8d6ccd07b0be",
+      "etapa": "summary",
+      "outcome": {
+        "status": "sent",
+        "parts": 1
+      },
+      "grupos": {
+        "inbound_buffer": {
+          "llamadas": 1,
+          "ms": 5004
+        },
+        "supabase_attempt": {
+          "llamadas": 18,
+          "ms": 4540.93
+        },
+        "supabase_request": {
+          "llamadas": 18,
+          "ms": 4561.89
+        },
+        "save_inbound_message": {
+          "llamadas": 1,
+          "ms": 770.67
+        },
+        "kapso_typing_mark_read": {
+          "llamadas": 1,
+          "ms": 848.27
+        },
+        "load_context": {
+          "llamadas": 1,
+          "ms": 260.13
+        },
+        "openai_request": {
+          "llamadas": 3,
+          "ms": 10475.09
+        },
+        "tool_save_order": {
+          "llamadas": 1,
+          "ms": 0.02
+        },
+        "agent_processing": {
+          "llamadas": 1,
+          "ms": 13882.37
+        },
+        "kapso_send": {
+          "llamadas": 1,
+          "ms": 1178.14
+        },
+        "save_response": {
+          "llamadas": 1,
+          "ms": 402.19
+        }
+      },
+      "supabaseTop3": [
+        {
+          "etapa": "supabase_request",
+          "numero": 6,
+          "ms": 437.88,
+          "ok": true,
+          "operation": "POST whatsapp_conversations",
+          "queryHash": "880c4d99de94",
+          "select": null,
+          "filas": 1
+        },
+        {
+          "etapa": "supabase_request",
+          "numero": 11,
+          "ms": 360.44,
+          "ok": true,
+          "operation": "POST whatsapp_conversations",
+          "queryHash": "d15341db2204",
+          "select": null,
+          "filas": 1
+        },
+        {
+          "etapa": "supabase_request",
+          "numero": 1,
+          "ms": 356.42,
+          "ok": true,
+          "operation": "GET client_channels",
+          "queryHash": "1d3045cb061d",
+          "select": "client_id,settings,display_name",
+          "filas": 1
+        }
+      ],
+      "consultasRepetidas": [
+        [
+          "1d3045cb061d",
+          2
+        ],
+        [
+          "08ebcb9df2c6",
+          2
+        ],
+        [
+          "d03e3bcccaa5",
+          2
+        ]
+      ],
+      "totalConBufferMs": 20470,
+      "totalProcesamientoMs": 15466
+    },
+    {
+      "run": "28cfa96f-35b0-4267-a1c8-8ea9f74945a1",
+      "etapa": "summary",
+      "outcome": {
+        "status": "sent",
+        "parts": 1
+      },
+      "grupos": {
+        "inbound_buffer": {
+          "llamadas": 1,
+          "ms": 5003
+        },
+        "supabase_attempt": {
+          "llamadas": 21,
+          "ms": 4689.52
+        },
+        "supabase_request": {
+          "llamadas": 21,
+          "ms": 4719.28
+        },
+        "save_inbound_message": {
+          "llamadas": 1,
+          "ms": 1278.16
+        },
+        "load_context": {
+          "llamadas": 1,
+          "ms": 233.52
+        },
+        "kapso_typing_mark_read": {
+          "llamadas": 1,
+          "ms": 912.34
+        },
+        "openai_request": {
+          "llamadas": 3,
+          "ms": 10661.6
+        },
+        "tool_save_order": {
+          "llamadas": 1,
+          "ms": 0.03
+        },
+        "agent_processing": {
+          "llamadas": 1,
+          "ms": 13462.05
+        },
+        "kapso_send": {
+          "llamadas": 1,
+          "ms": 1500.22
+        },
+        "save_response": {
+          "llamadas": 1,
+          "ms": 457.91
+        }
+      },
+      "supabaseTop3": [
+        {
+          "etapa": "supabase_request",
+          "numero": 1,
+          "ms": 390.14,
+          "ok": true,
+          "operation": "GET client_channels",
+          "queryHash": "1d3045cb061d",
+          "select": "client_id,settings,display_name",
+          "filas": 1
+        },
+        {
+          "etapa": "supabase_request",
+          "numero": 10,
+          "ms": 322.1,
+          "ok": true,
+          "operation": "GET catalog_references",
+          "queryHash": "15f8390e0185",
+          "select": "id,name,species,category,subcategory,life_stage,requires_confirmation,description,metadata,brand:catalog_brands!inner(id,name,client_id,active),presentations:catalog_presentations(id,weight,price,stock,metadata,active)",
+          "filas": 21
+        },
+        {
+          "etapa": "supabase_request",
+          "numero": 15,
+          "ms": 252.03,
+          "ok": true,
+          "operation": "POST whatsapp_messages",
+          "queryHash": "42ce595676a6",
+          "select": null,
+          "filas": 1
+        }
+      ],
+      "consultasRepetidas": [
+        [
+          "1d3045cb061d",
+          2
+        ],
+        [
+          "08ebcb9df2c6",
+          2
+        ],
+        [
+          "7bd9f8297126",
+          2
+        ]
+      ],
+      "totalConBufferMs": 20426,
+      "totalProcesamientoMs": 15423
+    },
+    {
+      "run": "3b1d4b2c-0a90-4c11-a620-e7563c89495d",
+      "etapa": "summary",
+      "outcome": {
+        "status": "sent",
+        "parts": 1
+      },
+      "grupos": {
+        "inbound_buffer": {
+          "llamadas": 1,
+          "ms": 5002
+        },
+        "supabase_attempt": {
+          "llamadas": 24,
+          "ms": 6289.33
+        },
+        "supabase_request": {
+          "llamadas": 24,
+          "ms": 6317.02
+        },
+        "save_inbound_message": {
+          "llamadas": 2,
+          "ms": 1870.73
+        },
+        "kapso_typing_mark_read": {
+          "llamadas": 1,
+          "ms": 821.25
+        },
+        "load_context": {
+          "llamadas": 1,
+          "ms": 631.2
+        },
+        "openai_request": {
+          "llamadas": 3,
+          "ms": 10461.87
+        },
+        "tool_save_order": {
+          "llamadas": 1,
+          "ms": 0.03
+        },
+        "agent_processing": {
+          "llamadas": 1,
+          "ms": 14438.93
+        },
+        "kapso_send": {
+          "llamadas": 1,
+          "ms": 1422.59
+        },
+        "save_response": {
+          "llamadas": 1,
+          "ms": 491.89
+        }
+      },
+      "supabaseTop3": [
+        {
+          "etapa": "supabase_request",
+          "numero": 3,
+          "ms": 630.84,
+          "ok": true,
+          "operation": "GET whatsapp_conversations",
+          "queryHash": "5889c8cc6a45",
+          "select": "*",
+          "filas": 1
+        },
+        {
+          "etapa": "supabase_request",
+          "numero": 1,
+          "ms": 416.74,
+          "ok": true,
+          "operation": "GET client_channels",
+          "queryHash": "1d3045cb061d",
+          "select": "client_id,settings,display_name",
+          "filas": 1
+        },
+        {
+          "etapa": "supabase_request",
+          "numero": 1,
+          "ms": 398.97,
+          "ok": true,
+          "operation": "GET client_channels",
+          "queryHash": "1d3045cb061d",
+          "select": "client_id,settings,display_name",
+          "filas": 1
+        }
+      ],
+      "consultasRepetidas": [
+        [
+          "1d3045cb061d",
+          3
+        ],
+        [
+          "08ebcb9df2c6",
+          3
+        ],
+        [
+          "55bf6d4b4b38",
+          2
+        ],
+        [
+          "cf3ed036b3a4",
+          2
+        ]
+      ],
+      "totalConBufferMs": 21360,
+      "totalProcesamientoMs": 16356
+    },
+    {
+      "run": "b0ceee67-f57e-4fef-9db9-f65701314f98",
+      "etapa": "summary",
+      "outcome": {
+        "status": "sent",
+        "parts": 1
+      },
+      "grupos": {
+        "inbound_buffer": {
+          "llamadas": 1,
+          "ms": 4933
+        },
+        "supabase_attempt": {
+          "llamadas": 21,
+          "ms": 4959.95
+        },
+        "supabase_request": {
+          "llamadas": 21,
+          "ms": 4991.54
+        },
+        "save_inbound_message": {
+          "llamadas": 1,
+          "ms": 1270.09
+        },
+        "load_context": {
+          "llamadas": 1,
+          "ms": 323.84
+        },
+        "kapso_typing_mark_read": {
+          "llamadas": 1,
+          "ms": 982.23
+        },
+        "openai_request": {
+          "llamadas": 3,
+          "ms": 8593.16
+        },
+        "tool_save_order": {
+          "llamadas": 1,
+          "ms": 0.03
+        },
+        "agent_processing": {
+          "llamadas": 1,
+          "ms": 11673.6
+        },
+        "kapso_send": {
+          "llamadas": 1,
+          "ms": 1289.06
+        },
+        "save_response": {
+          "llamadas": 1,
+          "ms": 432.23
+        }
+      },
+      "supabaseTop3": [
+        {
+          "etapa": "supabase_request",
+          "numero": 10,
+          "ms": 357.61,
+          "ok": true,
+          "operation": "GET catalog_references",
+          "queryHash": "920865835dbd",
+          "select": "id,name,species,category,subcategory,life_stage,requires_confirmation,description,metadata,brand:catalog_brands!inner(id,name,client_id,active),presentations:catalog_presentations(id,weight,price,stock,metadata,active)",
+          "filas": 8
+        },
+        {
+          "etapa": "supabase_request",
+          "numero": 3,
+          "ms": 323.41,
+          "ok": true,
+          "operation": "GET whatsapp_conversations",
+          "queryHash": "5889c8cc6a45",
+          "select": "*",
+          "filas": 1
+        },
+        {
+          "etapa": "supabase_request",
+          "numero": 12,
+          "ms": 300.73,
+          "ok": true,
+          "operation": "POST whatsapp_messages",
+          "queryHash": "409c6e0ad9a0",
+          "select": null,
+          "filas": 1
+        }
+      ],
+      "consultasRepetidas": [
+        [
+          "1d3045cb061d",
+          2
+        ],
+        [
+          "08ebcb9df2c6",
+          2
+        ],
+        [
+          "409c6e0ad9a0",
+          2
+        ]
+      ],
+      "totalConBufferMs": 18329,
+      "totalProcesamientoMs": 13396
+    },
+    {
+      "run": "c5b7105e-a69c-4640-b217-fa4a2cc05464",
+      "etapa": "summary",
+      "outcome": {
+        "status": "sent",
+        "parts": 1
+      },
+      "grupos": {
+        "inbound_buffer": {
+          "llamadas": 1,
+          "ms": 5003
+        },
+        "supabase_attempt": {
+          "llamadas": 22,
+          "ms": 5843.2
+        },
+        "supabase_request": {
+          "llamadas": 22,
+          "ms": 5867.7
+        },
+        "save_inbound_message": {
+          "llamadas": 1,
+          "ms": 940.73
+        },
+        "kapso_typing_mark_read": {
+          "llamadas": 1,
+          "ms": 923
+        },
+        "load_context": {
+          "llamadas": 1,
+          "ms": 220.88
+        },
+        "openai_request": {
+          "llamadas": 3,
+          "ms": 10736.04
+        },
+        "tool_product_search": {
+          "llamadas": 1,
+          "ms": 840.69
+        },
+        "tool_save_order": {
+          "llamadas": 1,
+          "ms": 0.03
+        },
+        "agent_processing": {
+          "llamadas": 1,
+          "ms": 15076.83
+        },
+        "kapso_send": {
+          "llamadas": 1,
+          "ms": 1278.11
+        },
+        "save_response": {
+          "llamadas": 1,
+          "ms": 484.9
+        }
+      },
+      "supabaseTop3": [
+        {
+          "etapa": "supabase_request",
+          "numero": 13,
+          "ms": 806.25,
+          "ok": true,
+          "operation": "POST rpc/search_catalog_products",
+          "queryHash": "219dd5301262",
+          "select": null,
+          "filas": 20
+        },
+        {
+          "etapa": "supabase_request",
+          "numero": 1,
+          "ms": 415.21,
+          "ok": true,
+          "operation": "GET client_channels",
+          "queryHash": "1d3045cb061d",
+          "select": "client_id,settings,display_name",
+          "filas": 1
+        },
+        {
+          "etapa": "supabase_request",
+          "numero": 3,
+          "ms": 302.78,
+          "ok": true,
+          "operation": "GET aivance_clients",
+          "queryHash": "2905ab536c18",
+          "select": "id,slug,name,vertical,business_type,owner_platform,settings",
+          "filas": 1
+        }
+      ],
+      "consultasRepetidas": [
+        [
+          "1d3045cb061d",
+          2
+        ],
+        [
+          "08ebcb9df2c6",
+          2
+        ]
+      ],
+      "totalConBufferMs": 21846,
+      "totalProcesamientoMs": 16843
+    },
+    {
+      "run": "9db7404a-f07e-4412-bade-5f80f58765ee",
+      "etapa": "summary",
+      "outcome": {
+        "status": "sent",
+        "parts": 1
+      },
+      "grupos": {
+        "inbound_buffer": {
+          "llamadas": 1,
+          "ms": 5005
+        },
+        "supabase_attempt": {
+          "llamadas": 21,
+          "ms": 5974.75
+        },
+        "supabase_request": {
+          "llamadas": 21,
+          "ms": 5999.55
+        },
+        "save_inbound_message": {
+          "llamadas": 1,
+          "ms": 1045.63
+        },
+        "kapso_typing_mark_read": {
+          "llamadas": 1,
+          "ms": 868.25
+        },
+        "load_context": {
+          "llamadas": 1,
+          "ms": 305.08
+        },
+        "openai_request": {
+          "llamadas": 4,
+          "ms": 11563.56
+        },
+        "tool_product_search": {
+          "llamadas": 1,
+          "ms": 701.32
+        },
+        "tool_save_order": {
+          "llamadas": 1,
+          "ms": 0.04
+        },
+        "agent_processing": {
+          "llamadas": 1,
+          "ms": 15847.54
+        },
+        "kapso_send": {
+          "llamadas": 1,
+          "ms": 1385.53
+        },
+        "save_response": {
+          "llamadas": 1,
+          "ms": 525.21
+        }
+      },
+      "supabaseTop3": [
+        {
+          "etapa": "supabase_request",
+          "numero": 10,
+          "ms": 675.36,
+          "ok": true,
+          "operation": "POST rpc/search_catalog_products",
+          "queryHash": "5f401933539f",
+          "select": null,
+          "filas": 20
+        },
+        {
+          "etapa": "supabase_request",
+          "numero": 1,
+          "ms": 514.59,
+          "ok": true,
+          "operation": "GET client_channels",
+          "queryHash": "1d3045cb061d",
+          "select": "client_id,settings,display_name",
+          "filas": 1
+        },
+        {
+          "etapa": "supabase_request",
+          "numero": 12,
+          "ms": 490.99,
+          "ok": true,
+          "operation": "GET training_examples",
+          "queryHash": "6affe875db03",
+          "select": "intent,customer_message,ideal_response,notes,tags,priority",
+          "filas": 0
+        }
+      ],
+      "consultasRepetidas": [
+        [
+          "1d3045cb061d",
+          2
+        ],
+        [
+          "08ebcb9df2c6",
+          2
+        ]
+      ],
+      "totalConBufferMs": 22765,
+      "totalProcesamientoMs": 17760
+    },
+    {
+      "run": "f77f3823-6c3c-43bf-ba22-8530bf1a24f9",
+      "etapa": "summary",
+      "outcome": {
+        "status": "superseded",
+        "confirmedParts": 0
+      },
+      "grupos": {
+        "inbound_buffer": {
+          "llamadas": 1,
+          "ms": 5003
+        },
+        "supabase_attempt": {
+          "llamadas": 22,
+          "ms": 5399.25
+        },
+        "supabase_request": {
+          "llamadas": 22,
+          "ms": 5422.6
+        },
+        "save_inbound_message": {
+          "llamadas": 1,
+          "ms": 1199.63
+        },
+        "load_context": {
+          "llamadas": 1,
+          "ms": 234.07
+        },
+        "kapso_typing_mark_read": {
+          "llamadas": 1,
+          "ms": 867.42
+        },
+        "openai_request": {
+          "llamadas": 2,
+          "ms": 9800.44
+        },
+        "tool_product_search": {
+          "llamadas": 1,
+          "ms": 639.25
+        },
+        "tool_order_logic": {
+          "llamadas": 1,
+          "ms": 2.61
+        },
+        "tool_save_order": {
+          "llamadas": 1,
+          "ms": 0.03
+        },
+        "agent_processing": {
+          "llamadas": 1,
+          "ms": 13678.82
+        }
+      },
+      "supabaseTop3": [
+        {
+          "etapa": "supabase_request",
+          "numero": 10,
+          "ms": 611.41,
+          "ok": true,
+          "operation": "POST rpc/search_catalog_products",
+          "queryHash": "7dd4524af483",
+          "select": null,
+          "filas": 20
+        },
+        {
+          "etapa": "supabase_request",
+          "numero": 3,
+          "ms": 321.62,
+          "ok": true,
+          "operation": "GET aivance_clients",
+          "queryHash": "2905ab536c18",
+          "select": "id,slug,name,vertical,business_type,owner_platform,settings",
+          "filas": 1
+        },
+        {
+          "etapa": "supabase_request",
+          "numero": 4,
+          "ms": 293.6,
+          "ok": true,
+          "operation": "POST whatsapp_conversations",
+          "queryHash": "f58dd412c144",
+          "select": null,
+          "filas": 1
+        }
+      ],
+      "consultasRepetidas": [
+        [
+          "1d3045cb061d",
+          2
+        ],
+        [
+          "08ebcb9df2c6",
+          2
+        ]
+      ],
+      "totalConBufferMs": 18684,
+      "totalProcesamientoMs": 13681
+    },
+    {
+      "run": "03b9a452-6608-4b99-a99c-3e11897122d7",
+      "etapa": "summary",
+      "outcome": {
+        "status": "sent",
+        "parts": 1
+      },
+      "grupos": {
+        "inbound_buffer": {
+          "llamadas": 1,
+          "ms": 5002
+        },
+        "supabase_attempt": {
+          "llamadas": 21,
+          "ms": 5032.63
+        },
+        "supabase_request": {
+          "llamadas": 21,
+          "ms": 5053.28
+        },
+        "save_inbound_message": {
+          "llamadas": 1,
+          "ms": 627.09
+        },
+        "load_context": {
+          "llamadas": 1,
+          "ms": 289.82
+        },
+        "kapso_typing_mark_read": {
+          "llamadas": 1,
+          "ms": 854.2
+        },
+        "openai_request": {
+          "llamadas": 2,
+          "ms": 9880.62
+        },
+        "tool_product_search": {
+          "llamadas": 1,
+          "ms": 604.09
+        },
+        "tool_order_logic": {
+          "llamadas": 1,
+          "ms": 0.58
+        },
+        "tool_save_order": {
+          "llamadas": 1,
+          "ms": 0.05
+        },
+        "agent_processing": {
+          "llamadas": 1,
+          "ms": 13771.78
+        },
+        "kapso_send": {
+          "llamadas": 1,
+          "ms": 1387.94
+        },
+        "save_response": {
+          "llamadas": 1,
+          "ms": 395.63
+        }
+      },
+      "supabaseTop3": [
+        {
+          "etapa": "supabase_request",
+          "numero": 10,
+          "ms": 588.53,
+          "ok": true,
+          "operation": "POST rpc/search_catalog_products",
+          "queryHash": "13a6633f9e21",
+          "select": null,
+          "filas": 20
+        },
+        {
+          "etapa": "supabase_request",
+          "numero": 12,
+          "ms": 322.18,
+          "ok": true,
+          "operation": "GET training_examples",
+          "queryHash": "6affe875db03",
+          "select": "intent,customer_message,ideal_response,notes,tags,priority",
+          "filas": 0
+        },
+        {
+          "etapa": "supabase_request",
+          "numero": 16,
+          "ms": 298.6,
+          "ok": true,
+          "operation": "POST training_examples",
+          "queryHash": "6bb61b44419c",
+          "select": null,
+          "filas": 0
+        }
+      ],
+      "consultasRepetidas": [
+        [
+          "1d3045cb061d",
+          2
+        ],
+        [
+          "08ebcb9df2c6",
+          2
+        ]
+      ],
+      "totalConBufferMs": 20559,
+      "totalProcesamientoMs": 15557
+    },
+    {
+      "run": "4c8209a9-cdc2-4ee5-a11d-66c644c63825",
+      "etapa": "summary",
+      "outcome": {
+        "status": "sent",
+        "parts": 1
+      },
+      "grupos": {
+        "inbound_buffer": {
+          "llamadas": 1,
+          "ms": 5003
+        },
+        "supabase_attempt": {
+          "llamadas": 19,
+          "ms": 4443.11
+        },
+        "supabase_request": {
+          "llamadas": 19,
+          "ms": 4550.83
+        },
+        "save_inbound_message": {
+          "llamadas": 1,
+          "ms": 1402.2
+        },
+        "load_context": {
+          "llamadas": 1,
+          "ms": 343.05
+        },
+        "kapso_typing_mark_read": {
+          "llamadas": 1,
+          "ms": 955.95
+        },
+        "openai_request": {
+          "llamadas": 1,
+          "ms": 5058.44
+        },
+        "agent_processing": {
+          "llamadas": 1,
+          "ms": 7563.17
+        },
+        "kapso_send": {
+          "llamadas": 1,
+          "ms": 1269.55
+        },
+        "save_response": {
+          "llamadas": 1,
+          "ms": 469.25
+        }
+      },
+      "supabaseTop3": [
+        {
+          "etapa": "supabase_request",
+          "numero": 1,
+          "ms": 520.09,
+          "ok": true,
+          "operation": "GET client_channels",
+          "queryHash": "1d3045cb061d",
+          "select": "client_id,settings,display_name",
+          "filas": 1
+        },
+        {
+          "etapa": "supabase_request",
+          "numero": 3,
+          "ms": 342.67,
+          "ok": true,
+          "operation": "GET whatsapp_conversations",
+          "queryHash": "5889c8cc6a45",
+          "select": "*",
+          "filas": 1
+        },
+        {
+          "etapa": "supabase_request",
+          "numero": 3,
+          "ms": 302.77,
+          "ok": true,
+          "operation": "GET aivance_clients",
+          "queryHash": "2905ab536c18",
+          "select": "id,slug,name,vertical,business_type,owner_platform,settings",
+          "filas": 1
+        }
+      ],
+      "consultasRepetidas": [
+        [
+          "1d3045cb061d",
+          2
+        ],
+        [
+          "08ebcb9df2c6",
+          2
+        ],
+        [
+          "c54ebbfd21e6",
+          2
+        ]
+      ],
+      "totalConBufferMs": 14307,
+      "totalProcesamientoMs": 9304
+    },
+    {
+      "run": "63de71c4-9f29-420a-96c7-a24de96bfb46",
+      "etapa": "summary",
+      "outcome": {
+        "status": "sent",
+        "parts": 1
+      },
+      "grupos": {
+        "inbound_buffer": {
+          "llamadas": 1,
+          "ms": 5004
+        },
+        "supabase_attempt": {
+          "llamadas": 21,
+          "ms": 5247.61
+        },
+        "supabase_request": {
+          "llamadas": 21,
+          "ms": 5271.33
+        },
+        "save_inbound_message": {
+          "llamadas": 1,
+          "ms": 1222.46
+        },
+        "load_context": {
+          "llamadas": 1,
+          "ms": 293.72
+        },
+        "kapso_typing_mark_read": {
+          "llamadas": 1,
+          "ms": 956.71
+        },
+        "openai_request": {
+          "llamadas": 3,
+          "ms": 9089.47
+        },
+        "tool_save_order": {
+          "llamadas": 1,
+          "ms": 0.07
+        },
+        "agent_processing": {
+          "llamadas": 1,
+          "ms": 12544.01
+        },
+        "kapso_send": {
+          "llamadas": 1,
+          "ms": 1266.24
+        },
+        "save_response": {
+          "llamadas": 1,
+          "ms": 420.49
+        }
+      },
+      "supabaseTop3": [
+        {
+          "etapa": "supabase_request",
+          "numero": 6,
+          "ms": 703.94,
+          "ok": true,
+          "operation": "POST whatsapp_conversations",
+          "queryHash": "23fdc894b948",
+          "select": null,
+          "filas": 1
+        },
+        {
+          "etapa": "supabase_request",
+          "numero": 1,
+          "ms": 350.55,
+          "ok": true,
+          "operation": "GET client_channels",
+          "queryHash": "1d3045cb061d",
+          "select": "client_id,settings,display_name",
+          "filas": 1
+        },
+        {
+          "etapa": "supabase_request",
+          "numero": 10,
+          "ms": 300.79,
+          "ok": true,
+          "operation": "GET catalog_references",
+          "queryHash": "920865835dbd",
+          "select": "id,name,species,category,subcategory,life_stage,requires_confirmation,description,metadata,brand:catalog_brands!inner(id,name,client_id,active),presentations:catalog_presentations(id,weight,price,stock,metadata,active)",
+          "filas": 8
+        }
+      ],
+      "consultasRepetidas": [
+        [
+          "1d3045cb061d",
+          2
+        ],
+        [
+          "08ebcb9df2c6",
+          2
+        ],
+        [
+          "1ca992d80e45",
+          2
+        ]
+      ],
+      "totalConBufferMs": 19237,
+      "totalProcesamientoMs": 14233
+    },
+    {
+      "run": "e9a12f73-c781-4681-84be-369ff08d9c6f",
+      "etapa": "summary",
+      "outcome": {
+        "status": "sent",
+        "parts": 1
+      },
+      "grupos": {
+        "inbound_buffer": {
+          "llamadas": 1,
+          "ms": 5003
+        },
+        "supabase_attempt": {
+          "llamadas": 23,
+          "ms": 6827.82
+        },
+        "supabase_request": {
+          "llamadas": 23,
+          "ms": 6857.61
+        },
+        "save_inbound_message": {
+          "llamadas": 1,
+          "ms": 1038.81
+        },
+        "kapso_typing_mark_read": {
+          "llamadas": 1,
+          "ms": 923.82
+        },
+        "load_context": {
+          "llamadas": 1,
+          "ms": 317.15
+        },
+        "openai_request": {
+          "llamadas": 2,
+          "ms": 10874.13
+        },
+        "tool_product_search": {
+          "llamadas": 1,
+          "ms": 2247.42
+        },
+        "tool_save_order": {
+          "llamadas": 1,
+          "ms": 0.03
+        },
+        "agent_processing": {
+          "llamadas": 1,
+          "ms": 16358.73
+        },
+        "kapso_send": {
+          "llamadas": 1,
+          "ms": 1473.51
+        },
+        "save_response": {
+          "llamadas": 1,
+          "ms": 429.73
+        }
+      },
+      "supabaseTop3": [
+        {
+          "etapa": "supabase_request",
+          "numero": 1,
+          "ms": 549.87,
+          "ok": true,
+          "operation": "GET client_channels",
+          "queryHash": "1d3045cb061d",
+          "select": "client_id,settings,display_name",
+          "filas": 1
+        },
+        {
+          "etapa": "supabase_request",
+          "numero": 10,
+          "ms": 530.79,
+          "ok": true,
+          "operation": "POST rpc/search_catalog_products",
+          "queryHash": "8350536f2ee2",
+          "select": null,
+          "filas": 20
+        },
+        {
+          "etapa": "supabase_request",
+          "numero": 12,
+          "ms": 522.26,
+          "ok": true,
+          "operation": "POST rpc/search_catalog_products",
+          "queryHash": "5c4c2471c807",
+          "select": null,
+          "filas": 20
+        }
+      ],
+      "consultasRepetidas": [
+        [
+          "1d3045cb061d",
+          2
+        ],
+        [
+          "08ebcb9df2c6",
+          2
+        ]
+      ],
+      "totalConBufferMs": 23267,
+      "totalProcesamientoMs": 18264
+    }
+  ]
+}

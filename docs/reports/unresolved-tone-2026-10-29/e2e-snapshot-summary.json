@@ -1,0 +1,462 @@
+{
+  "at": "2026-10-29T21:33:51.443Z",
+  "runtime": {
+    "pid": 15799,
+    "cwd": "/Users/gomez/Documents/WhatsappVELTIA",
+    "startedAt": "2026-10-29T21:29:31.997Z",
+    "sourceHash": "65a1ff26f1d0e2b032ef870cda6ed8fe54a9fca5f97323673c342902d4dccea2"
+  },
+  "turns": [
+    {
+      "turnHash": "a58b1de5180ea970",
+      "in": [
+        {
+          "id": "466ff77d-36a3-9fed-4fb2-158ee843095c",
+          "text": "Solo consultar: tienen marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos?",
+          "at": "2026-10-29T21:30:06.640191+00:00"
+        }
+      ],
+      "out": [
+        {
+          "id": "3b0ed4b3-7524-305a-e6f7-15cc00d3d73e",
+          "text": "No lo puedo confirmar con seguridad con esos datos. Si te interesa, puedo ayudarte a orientar la búsqueda por la necesidad que tengas; dime para qué tipo de producto es y te sigo.",
+          "at": "2026-10-29T21:30:38.442218+00:00"
+        }
+      ],
+      "persistedLatencyMs": 31802
+    },
+    {
+      "turnHash": "18eedff8fe01dced",
+      "in": [
+        {
+          "id": "4d1cf2c7-617a-ec31-5aed-e159fda4ff8f",
+          "text": "No tengo foto ni más datos, ese es el nombre y son 4 kilos",
+          "at": "2026-10-29T21:31:08.862536+00:00"
+        }
+      ],
+      "out": [
+        {
+          "id": "4587c740-83d1-b1fc-4fed-e6768f86baa6",
+          "text": "Gracias, lo dejo registrado para revisión con la referencia y la presentación que indicaste. Por ahora no hay un asesor asignado en este chat ni se ha notificado a nadie, así que queda pendiente de revisión. Mientras tanto, puedo seguir ayudándote con cualquier otra consulta que tengas.",
+          "at": "2026-10-29T21:31:43.220596+00:00"
+        }
+      ],
+      "persistedLatencyMs": 34358
+    },
+    {
+      "turnHash": "cd60f68638717da2",
+      "in": [
+        {
+          "id": "f7dc8e33-fb0f-9b53-0629-61586acbe2b0",
+          "text": "Cuánto vale DIAMOND INDOOR CAT de 500 gramos?",
+          "at": "2026-10-29T21:32:46.416584+00:00"
+        }
+      ],
+      "out": [
+        {
+          "id": "1219458d-d6d0-2bc9-370e-309d0f573f79",
+          "text": "DIAMOND INDOOR CAT de 500 g te queda en $19.500. Las existencias están por confirmar. 🙂",
+          "at": "2026-10-29T21:33:15.035307+00:00"
+        }
+      ],
+      "persistedLatencyMs": 28619
+    }
+  ],
+  "kapso": [
+    {
+      "messageHash": "3a3d44bd46312ee2",
+      "direction": "outbound",
+      "status": "delivered",
+      "text": "DIAMOND INDOOR CAT de 500 g te queda en $19.500. Las existencias están por confirmar. 🙂",
+      "at": "2026-10-29T21:33:14.000Z"
+    },
+    {
+      "messageHash": "612a7bb63dc814b3",
+      "direction": "inbound",
+      "status": "read",
+      "text": "Cuánto vale DIAMOND INDOOR CAT de 500 gramos?",
+      "at": "2026-10-29T21:32:39.000Z"
+    },
+    {
+      "messageHash": "92863af6cb2b4730",
+      "direction": "outbound",
+      "status": "delivered",
+      "text": "Gracias, lo dejo registrado para revisión con la referencia y la presentación que indicaste. Por ahora no hay un asesor asignado en este chat ni se ha notificado a nadie, así que queda pendiente de revisión. Mientras tanto, puedo seguir ayudándote con cualquier otra consulta que tengas.",
+      "at": "2026-10-29T21:31:42.000Z"
+    },
+    {
+      "messageHash": "23c171c608dc15a0",
+      "direction": "inbound",
+      "status": "read",
+      "text": "No tengo foto ni más datos, ese es el nombre y son 4 kilos",
+      "at": "2026-10-29T21:31:02.000Z"
+    },
+    {
+      "messageHash": "f6c3ae8627e6b836",
+      "direction": "outbound",
+      "status": "delivered",
+      "text": "No lo puedo confirmar con seguridad con esos datos. Si te interesa, puedo ayudarte a orientar la búsqueda por la necesidad que tengas; dime para qué tipo de producto es y te sigo.",
+      "at": "2026-10-29T21:30:37.000Z"
+    },
+    {
+      "messageHash": "8cc84d954afd8974",
+      "direction": "inbound",
+      "status": "read",
+      "text": "Solo consultar: tienen marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos?",
+      "at": "2026-10-29T21:29:59.000Z"
+    }
+  ],
+  "runs": [
+    {
+      "run": "7bfe0cff-5676-40c1-a0f6-a3390f93a219",
+      "etapa": "summary",
+      "outcome": {
+        "status": "sent",
+        "parts": 1
+      },
+      "grupos": {
+        "inbound_buffer": {
+          "llamadas": 1,
+          "ms": 5025
+        },
+        "supabase_attempt": {
+          "llamadas": 29,
+          "ms": 7742.08
+        },
+        "supabase_request": {
+          "llamadas": 29,
+          "ms": 7784.49
+        },
+        "save_inbound_message": {
+          "llamadas": 1,
+          "ms": 1437.43
+        },
+        "load_context": {
+          "llamadas": 1,
+          "ms": 322.94
+        },
+        "kapso_typing_mark_read": {
+          "llamadas": 2,
+          "ms": 1670.07
+        },
+        "openai_request": {
+          "llamadas": 4,
+          "ms": 20553.82
+        },
+        "tool_product_search": {
+          "llamadas": 1,
+          "ms": 2151.44
+        },
+        "tool_save_order": {
+          "llamadas": 1,
+          "ms": 0.19
+        },
+        "agent_processing": {
+          "llamadas": 1,
+          "ms": 26410.11
+        },
+        "kapso_send": {
+          "llamadas": 1,
+          "ms": 1389.67
+        },
+        "save_response": {
+          "llamadas": 1,
+          "ms": 402.36
+        }
+      },
+      "supabaseTop3": [
+        {
+          "etapa": "supabase_request",
+          "numero": 13,
+          "ms": 566.45,
+          "ok": true,
+          "operation": "POST rpc/search_catalog_products",
+          "queryHash": "8350536f2ee2",
+          "select": null,
+          "filas": 20
+        },
+        {
+          "etapa": "supabase_request",
+          "numero": 1,
+          "ms": 552.32,
+          "ok": true,
+          "operation": "GET client_channels",
+          "queryHash": "1d3045cb061d",
+          "select": "client_id,settings,display_name",
+          "filas": 1
+        },
+        {
+          "etapa": "supabase_request",
+          "numero": 15,
+          "ms": 527.41,
+          "ok": true,
+          "operation": "POST rpc/search_catalog_products",
+          "queryHash": "5c4c2471c807",
+          "select": null,
+          "filas": 20
+        }
+      ],
+      "consultasRepetidas": [
+        [
+          "1d3045cb061d",
+          2
+        ],
+        [
+          "08ebcb9df2c6",
+          2
+        ],
+        [
+          "abd8cc2228d5",
+          2
+        ]
+      ],
+      "totalConBufferMs": 33232,
+      "totalProcesamientoMs": 28207
+    },
+    {
+      "run": "77c370d4-3d21-447e-8c58-3dde84745159",
+      "etapa": "summary",
+      "outcome": {
+        "status": "sent",
+        "parts": 1
+      },
+      "grupos": {
+        "inbound_buffer": {
+          "llamadas": 1,
+          "ms": 5004
+        },
+        "supabase_attempt": {
+          "llamadas": 33,
+          "ms": 8795.78
+        },
+        "supabase_request": {
+          "llamadas": 33,
+          "ms": 8964.95
+        },
+        "save_inbound_message": {
+          "llamadas": 1,
+          "ms": 1232.45
+        },
+        "load_context": {
+          "llamadas": 1,
+          "ms": 322.48
+        },
+        "kapso_typing_mark_read": {
+          "llamadas": 2,
+          "ms": 1703.24
+        },
+        "openai_request": {
+          "llamadas": 5,
+          "ms": 21566.85
+        },
+        "tool_product_search": {
+          "llamadas": 1,
+          "ms": 2834.54
+        },
+        "tool_save_order": {
+          "llamadas": 1,
+          "ms": 0.02
+        },
+        "agent_processing": {
+          "llamadas": 1,
+          "ms": 28787.39
+        },
+        "kapso_send": {
+          "llamadas": 1,
+          "ms": 1379.31
+        },
+        "save_response": {
+          "llamadas": 1,
+          "ms": 423.81
+        }
+      },
+      "supabaseTop3": [
+        {
+          "etapa": "supabase_request",
+          "numero": 15,
+          "ms": 598.35,
+          "ok": true,
+          "operation": "POST rpc/search_catalog_products",
+          "queryHash": "c012a69155f5",
+          "select": null,
+          "filas": 20
+        },
+        {
+          "etapa": "supabase_request",
+          "numero": 13,
+          "ms": 508.46,
+          "ok": true,
+          "operation": "POST rpc/search_catalog_products",
+          "queryHash": "49c172c7d6e5",
+          "select": null,
+          "filas": 20
+        },
+        {
+          "etapa": "supabase_request",
+          "numero": 10,
+          "ms": 505.86,
+          "ok": true,
+          "operation": "POST whatsapp_conversations",
+          "queryHash": "30f079d599be",
+          "select": null,
+          "filas": 1
+        }
+      ],
+      "consultasRepetidas": [
+        [
+          "1d3045cb061d",
+          2
+        ],
+        [
+          "08ebcb9df2c6",
+          2
+        ],
+        [
+          "468013f5d3cf",
+          2
+        ],
+        [
+          "8da9fa0c46d6",
+          2
+        ]
+      ],
+      "totalConBufferMs": 35597,
+      "totalProcesamientoMs": 30593
+    },
+    {
+      "run": "b0736a42-e217-43b9-97a5-604da624bf32",
+      "etapa": "summary",
+      "outcome": {
+        "status": "sent",
+        "parts": 1
+      },
+      "grupos": {
+        "inbound_buffer": {
+          "llamadas": 1,
+          "ms": 5004
+        },
+        "supabase_attempt": {
+          "llamadas": 24,
+          "ms": 6250.2
+        },
+        "supabase_request": {
+          "llamadas": 24,
+          "ms": 6282.95
+        },
+        "save_inbound_message": {
+          "llamadas": 1,
+          "ms": 1559.13
+        },
+        "load_context": {
+          "llamadas": 1,
+          "ms": 270.63
+        },
+        "kapso_typing_mark_read": {
+          "llamadas": 2,
+          "ms": 2052.22
+        },
+        "openai_request": {
+          "llamadas": 4,
+          "ms": 19586.33
+        },
+        "tool_product_search": {
+          "llamadas": 1,
+          "ms": 554.1
+        },
+        "tool_order_logic": {
+          "llamadas": 1,
+          "ms": 5.02
+        },
+        "tool_save_order": {
+          "llamadas": 1,
+          "ms": 0.02
+        },
+        "agent_processing": {
+          "llamadas": 1,
+          "ms": 23750.52
+        },
+        "kapso_send": {
+          "llamadas": 1,
+          "ms": 997.58
+        },
+        "save_response": {
+          "llamadas": 1,
+          "ms": 421.85
+        }
+      },
+      "supabaseTop3": [
+        {
+          "etapa": "supabase_request",
+          "numero": 1,
+          "ms": 536.4,
+          "ok": true,
+          "operation": "GET client_channels",
+          "queryHash": "1d3045cb061d",
+          "select": "client_id,settings,display_name",
+          "filas": 1
+        },
+        {
+          "etapa": "supabase_request",
+          "numero": 13,
+          "ms": 527.91,
+          "ok": true,
+          "operation": "POST rpc/search_catalog_products",
+          "queryHash": "0de5440db414",
+          "select": null,
+          "filas": 20
+        },
+        {
+          "etapa": "supabase_request",
+          "numero": 14,
+          "ms": 385.06,
+          "ok": true,
+          "operation": "POST whatsapp_conversations",
+          "queryHash": "ff875eeef64f",
+          "select": null,
+          "filas": 1
+        }
+      ],
+      "consultasRepetidas": [
+        [
+          "1d3045cb061d",
+          2
+        ],
+        [
+          "08ebcb9df2c6",
+          2
+        ],
+        [
+          "98157997b704",
+          2
+        ]
+      ],
+      "totalConBufferMs": 30176,
+      "totalProcesamientoMs": 25172
+    }
+  ],
+  "allTurnsAnsweredOnce": true,
+  "duplicateEventKeys": 0,
+  "ordersCreated": 0,
+  "finalCart": [],
+  "attention": {
+    "estado": "pendiente",
+    "motivo": "criterio_veterinario",
+    "solicitadaEn": "2026-10-29T20:21:46.781Z",
+    "consultaComercialPendiente": {
+      "estado": "pendiente",
+      "motivo": "producto_no_resuelto",
+      "politica": "revision_comercial_v1",
+      "asignacion": null,
+      "notificacion": "no_configurada",
+      "solicitadaEn": "2026-10-29T21:19:48.168Z",
+      "referenciaPendiente": {
+        "mensaje": "Solo consultar: tienen marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos?",
+        "terminos": [
+          "zetapruebaq9",
+          "zq17"
+        ],
+        "presentacion": "4kg"
+      }
+    }
+  }
+}

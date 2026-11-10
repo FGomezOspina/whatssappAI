@@ -1,0 +1,245 @@
+{
+  "at": "2026-10-30T17:06:04.301Z",
+  "status": "completed_authorized_component_validation",
+  "authorizationBlockResolved": true,
+  "scope": "Existing configured OpenAI interpreter + frozen local catalog retrieval and validation. No WhatsApp E2E, original image/audio perception or live Supabase retrieval.",
+  "model": [
+    "gpt-5.4-mini"
+  ],
+  "corpus": {
+    "manifestSha256": "41ad4fa7fec2aca7ace2c0b7016efb76ccbb7e0ccf4703b7d33300d9693f99a2",
+    "eligible": 39,
+    "excluded": 16,
+    "unchangedInputExpectationAndCatalog": true,
+    "kinds": {
+      "text": 10,
+      "Exact product span from customer selection of two products; not a full turn replay.": 1,
+      "Exact product span from customer selection; context requires cat variant, weight not available.": 1,
+      "contextual_adviser_restatement": 3,
+      "manually_read_image_label": 1,
+      "Exact customer product-bearing messages at 09:03,09:31,09:37 concatenated by auditor. Superseded Sin Aroma at 09:35 and adviser choice Lavanda/Talco at 09:36 supply gold context; this is NOT a test of automatic correction or segmentation.": 1,
+      "Exact product span separated manually from a two-product customer message; not a full-turn replay.": 1,
+      "Exact second product span; substitution depends on earlier phone call, not a request for the old named product.": 1,
+      "text_span": 6,
+      "manually_reconstructed_episode": 2,
+      "real_conversation_manual_reconstruction": 9,
+      "real_conversation_manual_image_reading": 3
+    }
+  },
+  "before": {
+    "correct": 20,
+    "safe_abstention": 14,
+    "missed": 1,
+    "wrong": 2,
+    "useful_clarification": 2
+  },
+  "after": {
+    "correct": 20,
+    "safe_abstention": 16,
+    "missed": 1,
+    "useful_clarification": 2
+  },
+  "groups": [
+    {
+      "group": "original_frozen",
+      "before": {
+        "correct": 12,
+        "safe_abstention": 12,
+        "missed": 1,
+        "wrong": 2
+      },
+      "after": {
+        "correct": 12,
+        "safe_abstention": 14,
+        "missed": 1
+      }
+    },
+    {
+      "group": "oct30_manual",
+      "before": {
+        "correct": 8,
+        "safe_abstention": 2,
+        "useful_clarification": 2
+      },
+      "after": {
+        "correct": 8,
+        "safe_abstention": 2,
+        "useful_clarification": 2
+      }
+    }
+  ],
+  "changedCases": [
+    {
+      "id": "C17-01",
+      "before": "wrong",
+      "after": "safe_abstention"
+    },
+    {
+      "id": "C21-01",
+      "before": "wrong",
+      "after": "safe_abstention"
+    }
+  ],
+  "currentPolicy": {
+    "before": 37,
+    "after": 39,
+    "total": 39,
+    "note": "Feline EN historical missed is retained in both tables. Its explicit current expectation is useful food-form clarification; never relabeled as a correct identity."
+  },
+  "latencyMs": {
+    "before": {
+      "min": 1642,
+      "median": 2207,
+      "p95": 2784,
+      "max": 5288,
+      "mean": 2274
+    },
+    "after": {
+      "min": 1851,
+      "median": 2794,
+      "p95": 3662,
+      "max": 4391,
+      "mean": 2891
+    },
+    "scope": "API completion per case, excluding preprocessing and WhatsApp delivery"
+  },
+  "usage": {
+    "successfulCalls": 104,
+    "prompt_tokens": 136112,
+    "completion_tokens": 36213,
+    "total_tokens": 172325,
+    "cached_prompt_tokens": 0,
+    "costUsd": null,
+    "costReason": "API returned tokens, not monetary cost. Earlier HTTP500/no-response attempts have unknown usage/cost; not counted as zero."
+  },
+  "contextControls": [
+    {
+      "id": "CONTEXT-T02",
+      "kind": "real_literal_retained_context",
+      "checks": {
+        "brand": true,
+        "identity": true,
+        "pack": true,
+        "quantity": true
+      },
+      "pass": true,
+      "rawAction": "agregar",
+      "normalizedAction": "agregar",
+      "scope": "Authentic API fields; current normalizer applied offline. Derived-identity matching is not full runtime context routing."
+    },
+    {
+      "id": "S-WET-UNSPECIFIED",
+      "kind": "synthetic",
+      "checks": {
+        "noInventedReference": true,
+        "noInventedContainer": true,
+        "noInventedPack": true,
+        "singleRequest": true,
+        "asksContainer": true
+      },
+      "pass": true,
+      "rawAction": "consultar",
+      "normalizedAction": "consultar",
+      "scope": "Authentic API fields; current normalizer applied offline. Derived-identity matching is not full runtime context routing."
+    },
+    {
+      "id": "S-CAN-CORRECTION",
+      "kind": "synthetic",
+      "checks": {
+        "container": true,
+        "quantity": true
+      },
+      "pass": true,
+      "rawAction": "agregar",
+      "normalizedAction": "agregar",
+      "scope": "Authentic API fields; current normalizer applied offline. Derived-identity matching is not full runtime context routing."
+    },
+    {
+      "id": "S-DRY-CONTEXT",
+      "kind": "synthetic",
+      "checks": {
+        "form": true,
+        "pack": true,
+        "noWetContainer": true
+      },
+      "pass": true,
+      "rawAction": "consultar",
+      "normalizedAction": "consultar",
+      "scope": "Authentic API fields; current normalizer applied offline. Derived-identity matching is not full runtime context routing."
+    },
+    {
+      "id": "S-MULTI-TYPO",
+      "kind": "synthetic",
+      "checks": {
+        "action": true,
+        "twoRequests": true,
+        "quantities": true,
+        "containers": true,
+        "allInquiries": true
+      },
+      "pass": true,
+      "rawAction": "agregar",
+      "normalizedAction": "consultar",
+      "scope": "Authentic API fields; current normalizer applied offline. Derived-identity matching is not full runtime context routing."
+    }
+  ],
+  "humanizer": {
+    "apiCalls": 2,
+    "wetClarification": "¿La estás buscando en lata o en sobre? 😊",
+    "packProblem": "First generated response offered individual tablet instead of preserving x60. Final deterministic pack clarification prevents that substitution, verified locally without another billable call.",
+    "genericControlsSkipped": 2
+  },
+  "localTests": {
+    "passed": 1110,
+    "failed": 0,
+    "log": "final-suite-1110.txt"
+  },
+  "canonical": {
+    "identified": 1022,
+    "clarification": 41,
+    "different_reference": 0
+  },
+  "productionFiles": [
+    {
+      "file": "src/services/productMatchValidator.js",
+      "sha256": "19bb8ec330ebf3c715c29d7f7b4b4bf9042f1224c86a33d8e20ee0708984c523",
+      "beforeSha256": "f1bc839a6c66c491ee1c31b70cef1f94bad42998383bc6c7ac14fb8df0174713"
+    },
+    {
+      "file": "src/services/aiContextOptimizer.js",
+      "sha256": "c369aae5901f2725bd938ca9a21d646d094da3150b51dc16fcf4b7a89bdbf897",
+      "beforeSha256": "07c8dd501a5366f2ef8335c339c9f01dbf5e44251dab510a9025d558ded87cba"
+    },
+    {
+      "file": "src/services/aiInterpreter.js",
+      "sha256": "ddc30674291c4c7f4215d5c4377449188af6f72e190ef3a835265a4660a4863b",
+      "beforeSha256": "39739baa9a0b36c7754175aa688f5d17cb9e2ef8e2ec4b6710ac33f94edc698f"
+    },
+    {
+      "file": "src/services/humanizer.js",
+      "sha256": "97367dd6a121445a55e8f6276ffb3b06fe71c6771f63692dcc028ccdf55d04bf",
+      "beforeSha256": "746453c195e4bdccad6c14c24dd097c4362e09e3f3b45e88c08c3eb34af0d092"
+    }
+  ],
+  "remaining": [
+    "Partial accessible chat coverage, not exhaustive",
+    "Original media missing: no automatic vision or audio test",
+    "Feline EN prior literal dry-food antecedent absent",
+    "Supplemental context matching is component testing; runtime routing, buffering, cart and delivery were not exercised live",
+    "No universal typo/product guarantee; no independent held-out evaluation after tuning",
+    "No deployment/restart/business DB writes; running service not updated"
+  ],
+  "library": {
+    "id": "libfile_d9a9e05b4c448191809eae46aa1a0618",
+    "version": 8,
+    "saved": true,
+    "fileId": "file_0000000097a081f6ac2ea6d974e683e0",
+    "localXattrsApplied": false,
+    "identitySidecar": "library-delivery.json"
+  },
+  "finalOfflineReplay": {
+    "file": "final-stored-response-revalidation-v5.json",
+    "all39DecisionsUnchanged": true,
+    "note": "The final catalog-name count safeguard was applied while the paid final run was already in progress. It does not affect these39 outputs; all39 authentic responses were revalidated offline against the final source. No extra paid replay was needed."
+  }
+}

@@ -1,0 +1,166 @@
+{
+  "at": "2026-10-30T22:33:30.897Z",
+  "rows": [
+    {
+      "id": "3539f23c-f725-4c1d-9d8b-2f83b5cc7bc2",
+      "name": "HILLS FEL C/D",
+      "species": "gato",
+      "category": "comida",
+      "subcategory": "concentrado",
+      "metadata": {
+        "source": "productos.json",
+        "original_names": [
+          "HILLS FEL C/D 1.8KG"
+        ]
+      },
+      "brand": {
+        "id": "7c516a6d-f980-433e-b7ff-d7f51a7d74b0",
+        "name": "HILLS",
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "c31016c3-51ff-4720-8781-437d9cae07b1",
+          "price": 161000,
+          "stock": null,
+          "active": true,
+          "weight": "1.8kg",
+          "metadata": {
+            "llave": "875",
+            "codigo": "10301010875",
+            "source": "productos.json",
+            "codigos": [
+              "10301010875"
+            ],
+            "nombre_original": "HILLS FEL C/D 1.8KG"
+          }
+        }
+      ]
+    },
+    {
+      "id": "5d345fa2-c8e2-4855-ae17-0c10a4c49695",
+      "name": "NUTRA NUGGETS CORDERO",
+      "species": "perro",
+      "category": "comida",
+      "subcategory": "concentrado",
+      "metadata": {
+        "source": "productos.json",
+        "original_names": [
+          "NUTRA NUGGETS CORDERO 3KG",
+          "NUTRA NUGGETS CORDERO 1KL"
+        ]
+      },
+      "brand": {
+        "id": "df0d35e7-7129-4144-bac8-d0ae87e1fc7e",
+        "name": "NUTRA NUGGETS",
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "6fd17553-a68b-4ebe-b249-6925e2ec07cc",
+          "price": 28900,
+          "stock": null,
+          "active": true,
+          "weight": "1kg",
+          "metadata": {
+            "llave": "1142",
+            "codigo": "10301011142",
+            "source": "productos.json",
+            "codigos": [
+              "10301011142"
+            ],
+            "nombre_original": "NUTRA NUGGETS CORDERO 1KL"
+          }
+        },
+        {
+          "id": "fe779e2d-3db5-482b-9365-fa965f2c4002",
+          "price": 76500,
+          "stock": null,
+          "active": true,
+          "weight": "3kg",
+          "metadata": {
+            "llave": "1141",
+            "codigo": "10301011141",
+            "source": "productos.json",
+            "codigos": [
+              "10301011141"
+            ],
+            "nombre_original": "NUTRA NUGGETS CORDERO 3KG"
+          }
+        }
+      ]
+    },
+    {
+      "id": "d2e3344f-ea7d-4652-abf2-ef313c468bd2",
+      "name": "ADVANCE CAT URINARY",
+      "species": "gato",
+      "category": "comida",
+      "subcategory": "concentrado",
+      "metadata": {
+        "source": "productos.json",
+        "original_names": [
+          "ADVANCE CAT URINARY 3KG"
+        ]
+      },
+      "brand": {
+        "id": "1badc2e6-2aff-4c3f-8be0-838bafe297ed",
+        "name": "ADVANCE",
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "84ce8dea-b140-4318-8f22-e4de9be3a4f7",
+          "price": 196000,
+          "stock": null,
+          "active": true,
+          "weight": "3kg",
+          "metadata": {
+            "llave": "2390",
+            "codigo": "103010202390",
+            "source": "productos.json",
+            "codigos": [
+              "103010202390"
+            ],
+            "nombre_original": "ADVANCE CAT URINARY 3KG"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ea9d70a6-4ef1-4585-b731-08dd18dba4b7",
+      "name": "ADVANCE URINAY",
+      "species": "gato",
+      "category": "comida",
+      "subcategory": "concentrado",
+      "metadata": {
+        "source": "productos.json",
+        "original_names": [
+          "ADVANCE URINAY 1.5KR"
+        ]
+      },
+      "brand": {
+        "id": "1badc2e6-2aff-4c3f-8be0-838bafe297ed",
+        "name": "ADVANCE",
+        "client_id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b"
+      },
+      "presentations": [
+        {
+          "id": "796ba95e-169d-47fa-b069-e62f1f877118",
+          "price": 108000,
+          "stock": null,
+          "active": true,
+          "weight": "1.5kg",
+          "metadata": {
+            "llave": "2260",
+            "codigo": "103010202260",
+            "source": "productos.json",
+            "codigos": [
+              "103010202260"
+            ],
+            "nombre_original": "ADVANCE URINAY 1.5KR"
+          }
+        }
+      ]
+    }
+  ]
+}

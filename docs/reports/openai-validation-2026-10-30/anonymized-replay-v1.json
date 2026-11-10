@@ -1,0 +1,1853 @@
+{
+  "version": 1,
+  "createdAt": "2026-10-30T16:39:24.359Z",
+  "authorization": {
+    "scope": "User permits relevant anonymized product requests and necessary context to OpenAI. No permission to send complete exports, personal details or unreviewed images.",
+    "currentExecutionBlock": "Automatic approval rejected network retry after HTTP500; no further OpenAI calls allowed without resolving that rejection."
+  },
+  "privacyReview": {
+    "reviewedInputs": 55,
+    "eligibleTextInputs": 39,
+    "excludedCases": 16,
+    "inputTextChanges": 0,
+    "reason": "Source fixtures were already anonymized product-only inputs. Reviewed all39 eligible texts; no customer names/phones/addresses/payment identifiers present. Frozen empty history and null state preserved.",
+    "notTransmitted": [
+      "whole chat sequences",
+      "adviser quotes",
+      "evidence notes",
+      "expected labels",
+      "customer identifiers",
+      "original images",
+      "audio",
+      "credentials"
+    ]
+  },
+  "cases": [
+    {
+      "id": "C01-01",
+      "group": "original_frozen",
+      "sourcePath": "docs/reports/real-conversations-2026-10-29/frozen-business-replay-v1.json",
+      "sourceSha256": "388f17fbcfc380c98bc93d1a8f252110f182b144cba8d0bd82e66647f3dca2c2",
+      "input": {
+        "message": "Buenos días Proplan OM x2k?",
+        "contextState": null,
+        "history": [],
+        "derivation": "text",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "confirmed_identity",
+        "referenceIds": [
+          "6c1d4eea-bf35-4d7f-8e4b-e9e075b03666"
+        ],
+        "reference": "PRO PLAN CANINE OM",
+        "presentationId": "980f6864-b771-475f-8e5b-5aaf225dc2f1",
+        "weight": "2kg",
+        "decision": "identify",
+        "annotation": null
+      },
+      "kind": "text",
+      "excluded": false,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-29/catalog.json",
+        "sha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+        "capturedAt": "2026-10-29T23:52:19.742Z",
+        "tenantId": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+        "references": 1063
+      },
+      "mediaSent": [],
+      "note": "Original frozen input preserved verbatim. No evidence notes, names, chat IDs, dates, quotations, or gold appended to model input."
+    },
+    {
+      "id": "C01-02",
+      "group": "original_frozen",
+      "sourcePath": "docs/reports/real-conversations-2026-10-29/frozen-business-replay-v1.json",
+      "sourceSha256": "388f17fbcfc380c98bc93d1a8f252110f182b144cba8d0bd82e66647f3dca2c2",
+      "input": {
+        "message": "Y churubites?",
+        "contextState": null,
+        "history": [],
+        "derivation": "text",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "ambiguous",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "abstain_or_clarify",
+        "annotation": null
+      },
+      "kind": "text",
+      "excluded": false,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-29/catalog.json",
+        "sha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+        "capturedAt": "2026-10-29T23:52:19.742Z",
+        "tenantId": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+        "references": 1063
+      },
+      "mediaSent": [],
+      "note": "Original frozen input preserved verbatim. No evidence notes, names, chat IDs, dates, quotations, or gold appended to model input."
+    },
+    {
+      "id": "C01-03",
+      "group": "original_frozen",
+      "sourcePath": "docs/reports/real-conversations-2026-10-29/frozen-business-replay-v1.json",
+      "sourceSha256": "388f17fbcfc380c98bc93d1a8f252110f182b144cba8d0bd82e66647f3dca2c2",
+      "input": {
+        "message": "Pollo con vegetales y el Proplan OM X2K",
+        "contextState": null,
+        "history": [],
+        "derivation": "multi_product",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "incomplete_media",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "excluded",
+        "annotation": null
+      },
+      "kind": "multi_product",
+      "excluded": true,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-29/catalog.json",
+        "sha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+        "capturedAt": "2026-10-29T23:52:19.742Z",
+        "tenantId": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+        "references": 1063
+      },
+      "mediaSent": [],
+      "note": "Original frozen input preserved verbatim. No evidence notes, names, chat IDs, dates, quotations, or gold appended to model input."
+    },
+    {
+      "id": "C02-01",
+      "group": "original_frozen",
+      "sourcePath": "docs/reports/real-conversations-2026-10-29/frozen-business-replay-v1.json",
+      "sourceSha256": "388f17fbcfc380c98bc93d1a8f252110f182b144cba8d0bd82e66647f3dca2c2",
+      "input": {
+        "message": "Buen día\nManejan arena de Sr gato",
+        "contextState": null,
+        "history": [],
+        "derivation": "text",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "unresolved",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "abstain_or_clarify",
+        "annotation": null
+      },
+      "kind": "text",
+      "excluded": false,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-29/catalog.json",
+        "sha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+        "capturedAt": "2026-10-29T23:52:19.742Z",
+        "tenantId": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+        "references": 1063
+      },
+      "mediaSent": [],
+      "note": "Original frozen input preserved verbatim. No evidence notes, names, chat IDs, dates, quotations, or gold appended to model input."
+    },
+    {
+      "id": "C02-02",
+      "group": "original_frozen",
+      "sourcePath": "docs/reports/real-conversations-2026-10-29/frozen-business-replay-v1.json",
+      "sourceSha256": "388f17fbcfc380c98bc93d1a8f252110f182b144cba8d0bd82e66647f3dca2c2",
+      "input": {
+        "message": "Está de pronto ?",
+        "contextState": null,
+        "history": [],
+        "derivation": "image_and_text",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "incomplete_media",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "excluded",
+        "annotation": null
+      },
+      "kind": "image_and_text",
+      "excluded": true,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-29/catalog.json",
+        "sha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+        "capturedAt": "2026-10-29T23:52:19.742Z",
+        "tenantId": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+        "references": 1063
+      },
+      "mediaSent": [],
+      "note": "Original frozen input preserved verbatim. No evidence notes, names, chat IDs, dates, quotations, or gold appended to model input."
+    },
+    {
+      "id": "C03-01",
+      "group": "original_frozen",
+      "sourcePath": "docs/reports/real-conversations-2026-10-29/frozen-business-replay-v1.json",
+      "sourceSha256": "388f17fbcfc380c98bc93d1a8f252110f182b144cba8d0bd82e66647f3dca2c2",
+      "input": {
+        "message": "tienen está arena\nde 20 kilos",
+        "contextState": null,
+        "history": [],
+        "derivation": "image_and_multi_message",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "incomplete_media",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "excluded",
+        "annotation": null
+      },
+      "kind": "image_and_multi_message",
+      "excluded": true,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-29/catalog.json",
+        "sha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+        "capturedAt": "2026-10-29T23:52:19.742Z",
+        "tenantId": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+        "references": 1063
+      },
+      "mediaSent": [],
+      "note": "Original frozen input preserved verbatim. No evidence notes, names, chat IDs, dates, quotations, or gold appended to model input."
+    },
+    {
+      "id": "C04-01",
+      "group": "original_frozen",
+      "sourcePath": "docs/reports/real-conversations-2026-10-29/frozen-business-replay-v1.json",
+      "sourceSha256": "388f17fbcfc380c98bc93d1a8f252110f182b144cba8d0bd82e66647f3dca2c2",
+      "input": {
+        "message": "metronidl",
+        "contextState": null,
+        "history": [],
+        "derivation": "Exact product span from customer selection of two products; not a full turn replay.",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "confirmed_reference_only",
+        "referenceIds": [
+          "b619c8fc-c47a-4fde-8439-23970f59070e"
+        ],
+        "reference": "METRONID",
+        "presentationId": null,
+        "weight": null,
+        "decision": "identify",
+        "annotation": null
+      },
+      "kind": "Exact product span from customer selection of two products; not a full turn replay.",
+      "excluded": false,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-29/catalog.json",
+        "sha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+        "capturedAt": "2026-10-29T23:52:19.742Z",
+        "tenantId": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+        "references": 1063
+      },
+      "mediaSent": [],
+      "note": "Original frozen input preserved verbatim. No evidence notes, names, chat IDs, dates, quotations, or gold appended to model input."
+    },
+    {
+      "id": "C04-02",
+      "group": "original_frozen",
+      "sourcePath": "docs/reports/real-conversations-2026-10-29/frozen-business-replay-v1.json",
+      "sourceSha256": "388f17fbcfc380c98bc93d1a8f252110f182b144cba8d0bd82e66647f3dca2c2",
+      "input": {
+        "message": "advocate",
+        "contextState": null,
+        "history": [],
+        "derivation": "Exact product span from customer selection; context requires cat variant, weight not available.",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "ambiguous",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "abstain_or_clarify",
+        "annotation": null
+      },
+      "kind": "Exact product span from customer selection; context requires cat variant, weight not available.",
+      "excluded": false,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-29/catalog.json",
+        "sha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+        "capturedAt": "2026-10-29T23:52:19.742Z",
+        "tenantId": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+        "references": 1063
+      },
+      "mediaSent": [],
+      "note": "Original frozen input preserved verbatim. No evidence notes, names, chat IDs, dates, quotations, or gold appended to model input."
+    },
+    {
+      "id": "C05-01",
+      "group": "original_frozen",
+      "sourcePath": "docs/reports/real-conversations-2026-10-29/frozen-business-replay-v1.json",
+      "sourceSha256": "388f17fbcfc380c98bc93d1a8f252110f182b144cba8d0bd82e66647f3dca2c2",
+      "input": {
+        "message": "Buenos días tiene arena king cat para pedir\n2\nbultos de 25 Kg a domicilio?",
+        "contextState": null,
+        "history": [],
+        "derivation": "text",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "confirmed_identity",
+        "referenceIds": [
+          "0f64c472-046a-45eb-9642-16572d656197"
+        ],
+        "reference": "ARENA KING CAT",
+        "presentationId": "3f1e5cf1-e027-4dcb-9797-395843147c0b",
+        "weight": "25kg",
+        "decision": "identify",
+        "annotation": null
+      },
+      "kind": "text",
+      "excluded": false,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-29/catalog.json",
+        "sha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+        "capturedAt": "2026-10-29T23:52:19.742Z",
+        "tenantId": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+        "references": 1063
+      },
+      "mediaSent": [],
+      "note": "Original frozen input preserved verbatim. No evidence notes, names, chat IDs, dates, quotations, or gold appended to model input."
+    },
+    {
+      "id": "C06-01",
+      "group": "original_frozen",
+      "sourcePath": "docs/reports/real-conversations-2026-10-29/frozen-business-replay-v1.json",
+      "sourceSha256": "388f17fbcfc380c98bc93d1a8f252110f182b144cba8d0bd82e66647f3dca2c2",
+      "input": {
+        "message": "Un bulto de chunky 25 kls",
+        "contextState": null,
+        "history": [],
+        "derivation": "contextual_adviser_restatement",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "ambiguous",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "abstain_or_clarify",
+        "annotation": null
+      },
+      "kind": "contextual_adviser_restatement",
+      "excluded": false,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-29/catalog.json",
+        "sha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+        "capturedAt": "2026-10-29T23:52:19.742Z",
+        "tenantId": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+        "references": 1063
+      },
+      "mediaSent": [],
+      "note": "Original frozen input preserved verbatim. No evidence notes, names, chat IDs, dates, quotations, or gold appended to model input."
+    },
+    {
+      "id": "C06-02",
+      "group": "original_frozen",
+      "sourcePath": "docs/reports/real-conversations-2026-10-29/frozen-business-replay-v1.json",
+      "sourceSha256": "388f17fbcfc380c98bc93d1a8f252110f182b144cba8d0bd82e66647f3dca2c2",
+      "input": {
+        "message": "6 de cuchuco",
+        "contextState": null,
+        "history": [],
+        "derivation": "contextual_adviser_restatement",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "confirmed_reference_only",
+        "referenceIds": [
+          "e15eb2e5-2baa-4e41-a056-9a0f13318c8a"
+        ],
+        "reference": "CUCHUCO",
+        "presentationId": null,
+        "weight": null,
+        "decision": "identify",
+        "annotation": null
+      },
+      "kind": "contextual_adviser_restatement",
+      "excluded": false,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-29/catalog.json",
+        "sha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+        "capturedAt": "2026-10-29T23:52:19.742Z",
+        "tenantId": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+        "references": 1063
+      },
+      "mediaSent": [],
+      "note": "Original frozen input preserved verbatim. No evidence notes, names, chat IDs, dates, quotations, or gold appended to model input."
+    },
+    {
+      "id": "C06-03",
+      "group": "original_frozen",
+      "sourcePath": "docs/reports/real-conversations-2026-10-29/frozen-business-replay-v1.json",
+      "sourceSha256": "388f17fbcfc380c98bc93d1a8f252110f182b144cba8d0bd82e66647f3dca2c2",
+      "input": {
+        "message": "4 de mistura",
+        "contextState": null,
+        "history": [],
+        "derivation": "contextual_adviser_restatement",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "confirmed_reference_only",
+        "referenceIds": [
+          "81a9fd45-651f-43ab-bc66-4d3aa455aa26"
+        ],
+        "reference": "MIXTURA",
+        "presentationId": null,
+        "weight": null,
+        "decision": "identify",
+        "annotation": null
+      },
+      "kind": "contextual_adviser_restatement",
+      "excluded": false,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-29/catalog.json",
+        "sha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+        "capturedAt": "2026-10-29T23:52:19.742Z",
+        "tenantId": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+        "references": 1063
+      },
+      "mediaSent": [],
+      "note": "Original frozen input preserved verbatim. No evidence notes, names, chat IDs, dates, quotations, or gold appended to model input."
+    },
+    {
+      "id": "C06-04",
+      "group": "original_frozen",
+      "sourcePath": "docs/reports/real-conversations-2026-10-29/frozen-business-replay-v1.json",
+      "sourceSha256": "388f17fbcfc380c98bc93d1a8f252110f182b144cba8d0bd82e66647f3dca2c2",
+      "input": {
+        "message": "",
+        "contextState": null,
+        "history": [],
+        "derivation": "audio",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "incomplete_media",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "excluded",
+        "annotation": null
+      },
+      "kind": "audio",
+      "excluded": true,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-29/catalog.json",
+        "sha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+        "capturedAt": "2026-10-29T23:52:19.742Z",
+        "tenantId": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+        "references": 1063
+      },
+      "mediaSent": [],
+      "note": "Original frozen input preserved verbatim. No evidence notes, names, chat IDs, dates, quotations, or gold appended to model input."
+    },
+    {
+      "id": "C06-05",
+      "group": "original_frozen",
+      "sourcePath": "docs/reports/real-conversations-2026-10-29/frozen-business-replay-v1.json",
+      "sourceSha256": "388f17fbcfc380c98bc93d1a8f252110f182b144cba8d0bd82e66647f3dca2c2",
+      "input": {
+        "message": "",
+        "contextState": null,
+        "history": [],
+        "derivation": "audio",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "incomplete_media",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "excluded",
+        "annotation": null
+      },
+      "kind": "audio",
+      "excluded": true,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-29/catalog.json",
+        "sha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+        "capturedAt": "2026-10-29T23:52:19.742Z",
+        "tenantId": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+        "references": 1063
+      },
+      "mediaSent": [],
+      "note": "Original frozen input preserved verbatim. No evidence notes, names, chat IDs, dates, quotations, or gold appended to model input."
+    },
+    {
+      "id": "C06-06",
+      "group": "original_frozen",
+      "sourcePath": "docs/reports/real-conversations-2026-10-29/frozen-business-replay-v1.json",
+      "sourceSha256": "388f17fbcfc380c98bc93d1a8f252110f182b144cba8d0bd82e66647f3dca2c2",
+      "input": {
+        "message": "",
+        "contextState": null,
+        "history": [],
+        "derivation": "audio",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "incomplete_media",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "excluded",
+        "annotation": null
+      },
+      "kind": "audio",
+      "excluded": true,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-29/catalog.json",
+        "sha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+        "capturedAt": "2026-10-29T23:52:19.742Z",
+        "tenantId": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+        "references": 1063
+      },
+      "mediaSent": [],
+      "note": "Original frozen input preserved verbatim. No evidence notes, names, chat IDs, dates, quotations, or gold appended to model input."
+    },
+    {
+      "id": "C07-01",
+      "group": "original_frozen",
+      "sourcePath": "docs/reports/real-conversations-2026-10-29/frozen-business-replay-v1.json",
+      "sourceSha256": "388f17fbcfc380c98bc93d1a8f252110f182b144cba8d0bd82e66647f3dca2c2",
+      "input": {
+        "message": "Depronto tienes CANITABS SKIN COAT ?",
+        "contextState": null,
+        "history": [],
+        "derivation": "text",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "unresolved",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "abstain_or_clarify",
+        "annotation": null
+      },
+      "kind": "text",
+      "excluded": false,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-29/catalog.json",
+        "sha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+        "capturedAt": "2026-10-29T23:52:19.742Z",
+        "tenantId": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+        "references": 1063
+      },
+      "mediaSent": [],
+      "note": "Original frozen input preserved verbatim. No evidence notes, names, chat IDs, dates, quotations, or gold appended to model input."
+    },
+    {
+      "id": "C06-07",
+      "group": "original_frozen",
+      "sourcePath": "docs/reports/real-conversations-2026-10-29/frozen-business-replay-v1.json",
+      "sourceSha256": "388f17fbcfc380c98bc93d1a8f252110f182b144cba8d0bd82e66647f3dca2c2",
+      "input": {
+        "message": "",
+        "contextState": null,
+        "history": [],
+        "derivation": "audio",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "incomplete_media",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "excluded",
+        "annotation": null
+      },
+      "kind": "audio",
+      "excluded": true,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-29/catalog.json",
+        "sha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+        "capturedAt": "2026-10-29T23:52:19.742Z",
+        "tenantId": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+        "references": 1063
+      },
+      "mediaSent": [],
+      "note": "Original frozen input preserved verbatim. No evidence notes, names, chat IDs, dates, quotations, or gold appended to model input."
+    },
+    {
+      "id": "C06-08",
+      "group": "original_frozen",
+      "sourcePath": "docs/reports/real-conversations-2026-10-29/frozen-business-replay-v1.json",
+      "sourceSha256": "388f17fbcfc380c98bc93d1a8f252110f182b144cba8d0bd82e66647f3dca2c2",
+      "input": {
+        "message": "",
+        "contextState": null,
+        "history": [],
+        "derivation": "audio",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "incomplete_media",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "excluded",
+        "annotation": null
+      },
+      "kind": "audio",
+      "excluded": true,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-29/catalog.json",
+        "sha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+        "capturedAt": "2026-10-29T23:52:19.742Z",
+        "tenantId": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+        "references": 1063
+      },
+      "mediaSent": [],
+      "note": "Original frozen input preserved verbatim. No evidence notes, names, chat IDs, dates, quotations, or gold appended to model input."
+    },
+    {
+      "id": "C06-09",
+      "group": "original_frozen",
+      "sourcePath": "docs/reports/real-conversations-2026-10-29/frozen-business-replay-v1.json",
+      "sourceSha256": "388f17fbcfc380c98bc93d1a8f252110f182b144cba8d0bd82e66647f3dca2c2",
+      "input": {
+        "message": "",
+        "contextState": null,
+        "history": [],
+        "derivation": "audio",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "incomplete_media",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "excluded",
+        "annotation": null
+      },
+      "kind": "audio",
+      "excluded": true,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-29/catalog.json",
+        "sha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+        "capturedAt": "2026-10-29T23:52:19.742Z",
+        "tenantId": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+        "references": 1063
+      },
+      "mediaSent": [],
+      "note": "Original frozen input preserved verbatim. No evidence notes, names, chat IDs, dates, quotations, or gold appended to model input."
+    },
+    {
+      "id": "C08-01",
+      "group": "original_frozen",
+      "sourcePath": "docs/reports/real-conversations-2026-10-29/frozen-business-replay-v1.json",
+      "sourceSha256": "388f17fbcfc380c98bc93d1a8f252110f182b144cba8d0bd82e66647f3dca2c2",
+      "input": {
+        "message": "",
+        "contextState": null,
+        "history": [],
+        "derivation": "audio",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "incomplete_media",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "excluded",
+        "annotation": null
+      },
+      "kind": "audio",
+      "excluded": true,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-29/catalog.json",
+        "sha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+        "capturedAt": "2026-10-29T23:52:19.742Z",
+        "tenantId": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+        "references": 1063
+      },
+      "mediaSent": [],
+      "note": "Original frozen input preserved verbatim. No evidence notes, names, chat IDs, dates, quotations, or gold appended to model input."
+    },
+    {
+      "id": "C08-02",
+      "group": "original_frozen",
+      "sourcePath": "docs/reports/real-conversations-2026-10-29/frozen-business-replay-v1.json",
+      "sourceSha256": "388f17fbcfc380c98bc93d1a8f252110f182b144cba8d0bd82e66647f3dca2c2",
+      "input": {
+        "message": "",
+        "contextState": null,
+        "history": [],
+        "derivation": "audio",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "incomplete_media",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "excluded",
+        "annotation": null
+      },
+      "kind": "audio",
+      "excluded": true,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-29/catalog.json",
+        "sha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+        "capturedAt": "2026-10-29T23:52:19.742Z",
+        "tenantId": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+        "references": 1063
+      },
+      "mediaSent": [],
+      "note": "Original frozen input preserved verbatim. No evidence notes, names, chat IDs, dates, quotations, or gold appended to model input."
+    },
+    {
+      "id": "C09-01",
+      "group": "original_frozen",
+      "sourcePath": "docs/reports/real-conversations-2026-10-29/frozen-business-replay-v1.json",
+      "sourceSha256": "388f17fbcfc380c98bc93d1a8f252110f182b144cba8d0bd82e66647f3dca2c2",
+      "input": {
+        "message": "NEOSTRONG Pet milk 500 g",
+        "contextState": null,
+        "history": [],
+        "derivation": "manually_read_image_label",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "confirmed_identity",
+        "referenceIds": [
+          "72f2d152-6051-4102-8524-5b9d3b161be0"
+        ],
+        "reference": "PET MILK",
+        "presentationId": "71ced2bf-af06-4e67-b8d8-b2da08e61961",
+        "weight": "500g",
+        "decision": "identify",
+        "annotation": null
+      },
+      "kind": "manually_read_image_label",
+      "excluded": false,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-29/catalog.json",
+        "sha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+        "capturedAt": "2026-10-29T23:52:19.742Z",
+        "tenantId": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+        "references": 1063
+      },
+      "mediaSent": [],
+      "note": "Original frozen input preserved verbatim. No evidence notes, names, chat IDs, dates, quotations, or gold appended to model input."
+    },
+    {
+      "id": "C09-02",
+      "group": "original_frozen",
+      "sourcePath": "docs/reports/real-conversations-2026-10-29/frozen-business-replay-v1.json",
+      "sourceSha256": "388f17fbcfc380c98bc93d1a8f252110f182b144cba8d0bd82e66647f3dca2c2",
+      "input": {
+        "message": "Tienes de esta leche pero el tarro",
+        "contextState": null,
+        "history": [],
+        "derivation": "image_and_text",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "incomplete_media",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "excluded",
+        "annotation": null
+      },
+      "kind": "image_and_text",
+      "excluded": true,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-29/catalog.json",
+        "sha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+        "capturedAt": "2026-10-29T23:52:19.742Z",
+        "tenantId": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+        "references": 1063
+      },
+      "mediaSent": [],
+      "note": "Original frozen input preserved verbatim. No evidence notes, names, chat IDs, dates, quotations, or gold appended to model input."
+    },
+    {
+      "id": "C09-03",
+      "group": "original_frozen",
+      "sourcePath": "docs/reports/real-conversations-2026-10-29/frozen-business-replay-v1.json",
+      "sourceSha256": "388f17fbcfc380c98bc93d1a8f252110f182b144cba8d0bd82e66647f3dca2c2",
+      "input": {
+        "message": "",
+        "contextState": null,
+        "history": [],
+        "derivation": "audio",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "incomplete_media",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "excluded",
+        "annotation": null
+      },
+      "kind": "audio",
+      "excluded": true,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-29/catalog.json",
+        "sha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+        "capturedAt": "2026-10-29T23:52:19.742Z",
+        "tenantId": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+        "references": 1063
+      },
+      "mediaSent": [],
+      "note": "Original frozen input preserved verbatim. No evidence notes, names, chat IDs, dates, quotations, or gold appended to model input."
+    },
+    {
+      "id": "C11-01",
+      "group": "original_frozen",
+      "sourcePath": "docs/reports/real-conversations-2026-10-29/frozen-business-replay-v1.json",
+      "sourceSha256": "388f17fbcfc380c98bc93d1a8f252110f182b144cba8d0bd82e66647f3dca2c2",
+      "input": {
+        "message": "",
+        "contextState": null,
+        "history": [],
+        "derivation": "image_unknown_purpose",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "incomplete_media",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "excluded",
+        "annotation": null
+      },
+      "kind": "image_unknown_purpose",
+      "excluded": true,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-29/catalog.json",
+        "sha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+        "capturedAt": "2026-10-29T23:52:19.742Z",
+        "tenantId": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+        "references": 1063
+      },
+      "mediaSent": [],
+      "note": "Original frozen input preserved verbatim. No evidence notes, names, chat IDs, dates, quotations, or gold appended to model input."
+    },
+    {
+      "id": "C12-01",
+      "group": "original_frozen",
+      "sourcePath": "docs/reports/real-conversations-2026-10-29/frozen-business-replay-v1.json",
+      "sourceSha256": "388f17fbcfc380c98bc93d1a8f252110f182b144cba8d0bd82e66647f3dca2c2",
+      "input": {
+        "message": "Arena de gatos de 25 kilos",
+        "contextState": null,
+        "history": [],
+        "derivation": "text",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "ambiguous",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "abstain_or_clarify",
+        "annotation": null
+      },
+      "kind": "text",
+      "excluded": false,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-29/catalog.json",
+        "sha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+        "capturedAt": "2026-10-29T23:52:19.742Z",
+        "tenantId": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+        "references": 1063
+      },
+      "mediaSent": [],
+      "note": "Original frozen input preserved verbatim. No evidence notes, names, chat IDs, dates, quotations, or gold appended to model input."
+    },
+    {
+      "id": "C12-02",
+      "group": "original_frozen",
+      "sourcePath": "docs/reports/real-conversations-2026-10-29/frozen-business-replay-v1.json",
+      "sourceSha256": "388f17fbcfc380c98bc93d1a8f252110f182b144cba8d0bd82e66647f3dca2c2",
+      "input": {
+        "message": "Arena de gatos de 25 kilos\nTienes kitten paw\nTalco",
+        "contextState": null,
+        "history": [],
+        "derivation": "Exact customer product-bearing messages at 09:03,09:31,09:37 concatenated by auditor. Superseded Sin Aroma at 09:35 and adviser choice Lavanda/Talco at 09:36 supply gold context; this is NOT a test of automatic correction or segmentation.",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "confirmed_identity",
+        "referenceIds": [
+          "60386af0-f266-462d-96e5-330d609d3c0e"
+        ],
+        "reference": "ARENA KITTEN TALCO",
+        "presentationId": "9a78f670-75f9-4aa9-b55b-3727e26dd273",
+        "weight": "25kg",
+        "decision": "identify",
+        "annotation": null
+      },
+      "kind": "Exact customer product-bearing messages at 09:03,09:31,09:37 concatenated by auditor. Superseded Sin Aroma at 09:35 and adviser choice Lavanda/Talco at 09:36 supply gold context; this is NOT a test of automatic correction or segmentation.",
+      "excluded": false,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-29/catalog.json",
+        "sha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+        "capturedAt": "2026-10-29T23:52:19.742Z",
+        "tenantId": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+        "references": 1063
+      },
+      "mediaSent": [],
+      "note": "Original frozen input preserved verbatim. No evidence notes, names, chat IDs, dates, quotations, or gold appended to model input."
+    },
+    {
+      "id": "C14-01",
+      "group": "original_frozen",
+      "sourcePath": "docs/reports/real-conversations-2026-10-29/frozen-business-replay-v1.json",
+      "sourceSha256": "388f17fbcfc380c98bc93d1a8f252110f182b144cba8d0bd82e66647f3dca2c2",
+      "input": {
+        "message": "un bravecto , perro de 20 kilos",
+        "contextState": null,
+        "history": [],
+        "derivation": "Exact product span separated manually from a two-product customer message; not a full-turn replay.",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "ambiguous",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "abstain_or_clarify",
+        "annotation": null
+      },
+      "kind": "Exact product span separated manually from a two-product customer message; not a full-turn replay.",
+      "excluded": false,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-29/catalog.json",
+        "sha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+        "capturedAt": "2026-10-29T23:52:19.742Z",
+        "tenantId": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+        "references": 1063
+      },
+      "mediaSent": [],
+      "note": "Original frozen input preserved verbatim. No evidence notes, names, chat IDs, dates, quotations, or gold appended to model input."
+    },
+    {
+      "id": "C14-02",
+      "group": "original_frozen",
+      "sourcePath": "docs/reports/real-conversations-2026-10-29/frozen-business-replay-v1.json",
+      "sourceSha256": "388f17fbcfc380c98bc93d1a8f252110f182b144cba8d0bd82e66647f3dca2c2",
+      "input": {
+        "message": "8 kilos de la comida que reemplaza Nutre can ligth, adultos",
+        "contextState": null,
+        "history": [],
+        "derivation": "Exact second product span; substitution depends on earlier phone call, not a request for the old named product.",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "unresolved",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "abstain_or_clarify",
+        "annotation": null
+      },
+      "kind": "Exact second product span; substitution depends on earlier phone call, not a request for the old named product.",
+      "excluded": false,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-29/catalog.json",
+        "sha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+        "capturedAt": "2026-10-29T23:52:19.742Z",
+        "tenantId": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+        "references": 1063
+      },
+      "mediaSent": [],
+      "note": "Original frozen input preserved verbatim. No evidence notes, names, chat IDs, dates, quotations, or gold appended to model input."
+    },
+    {
+      "id": "C16-01",
+      "group": "original_frozen",
+      "sourcePath": "docs/reports/real-conversations-2026-10-29/frozen-business-replay-v1.json",
+      "sourceSha256": "388f17fbcfc380c98bc93d1a8f252110f182b144cba8d0bd82e66647f3dca2c2",
+      "input": {
+        "message": "Me podrías enviar tres paquetes del contrato de proplan feline EN",
+        "contextState": null,
+        "history": [],
+        "derivation": "text",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "confirmed_reference_only",
+        "referenceIds": [
+          "eb5593d6-22be-497a-ab26-7b87c1320a9a"
+        ],
+        "reference": "PRO PLAN FELINE EN",
+        "presentationId": null,
+        "weight": null,
+        "decision": "clarify_food_form",
+        "annotation": "Historical nominal gold retained; frozen query lacks current food form. Old October10 context is not fabricated as fresh state."
+      },
+      "kind": "text",
+      "excluded": false,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-29/catalog.json",
+        "sha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+        "capturedAt": "2026-10-29T23:52:19.742Z",
+        "tenantId": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+        "references": 1063
+      },
+      "mediaSent": [],
+      "note": "Original frozen input preserved verbatim. No evidence notes, names, chat IDs, dates, quotations, or gold appended to model input."
+    },
+    {
+      "id": "C17-01",
+      "group": "original_frozen",
+      "sourcePath": "docs/reports/real-conversations-2026-10-29/frozen-business-replay-v1.json",
+      "sourceSha256": "388f17fbcfc380c98bc93d1a8f252110f182b144cba8d0bd82e66647f3dca2c2",
+      "input": {
+        "message": "A como tienes el nefrotec x60",
+        "contextState": null,
+        "history": [],
+        "derivation": "text",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "ambiguous",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "abstain_or_clarify",
+        "annotation": null
+      },
+      "kind": "text",
+      "excluded": false,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-29/catalog.json",
+        "sha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+        "capturedAt": "2026-10-29T23:52:19.742Z",
+        "tenantId": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+        "references": 1063
+      },
+      "mediaSent": [],
+      "note": "Original frozen input preserved verbatim. No evidence notes, names, chat IDs, dates, quotations, or gold appended to model input."
+    },
+    {
+      "id": "C18-01",
+      "group": "original_frozen",
+      "sourcePath": "docs/reports/real-conversations-2026-10-29/frozen-business-replay-v1.json",
+      "sourceSha256": "388f17fbcfc380c98bc93d1a8f252110f182b144cba8d0bd82e66647f3dca2c2",
+      "input": {
+        "message": "Tienes disponible excellent Urinary x 3 Kl",
+        "contextState": null,
+        "history": [],
+        "derivation": "text_span",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "confirmed_identity",
+        "referenceIds": [
+          "875e487b-64ab-4294-84f1-026f7a456550"
+        ],
+        "reference": "EXCELLENT GATO URINARY",
+        "presentationId": "36f46180-5653-48ee-922c-540bd9024256",
+        "weight": "3kg",
+        "decision": "identify",
+        "annotation": null
+      },
+      "kind": "text_span",
+      "excluded": false,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-29/catalog.json",
+        "sha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+        "capturedAt": "2026-10-29T23:52:19.742Z",
+        "tenantId": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+        "references": 1063
+      },
+      "mediaSent": [],
+      "note": "Original frozen input preserved verbatim. No evidence notes, names, chat IDs, dates, quotations, or gold appended to model input."
+    },
+    {
+      "id": "C18-02",
+      "group": "original_frozen",
+      "sourcePath": "docs/reports/real-conversations-2026-10-29/frozen-business-replay-v1.json",
+      "sourceSha256": "388f17fbcfc380c98bc93d1a8f252110f182b144cba8d0bd82e66647f3dca2c2",
+      "input": {
+        "message": "Y tienes monello de 7 kl",
+        "contextState": null,
+        "history": [],
+        "derivation": "text",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "ambiguous",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "abstain_or_clarify",
+        "annotation": null
+      },
+      "kind": "text",
+      "excluded": false,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-29/catalog.json",
+        "sha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+        "capturedAt": "2026-10-29T23:52:19.742Z",
+        "tenantId": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+        "references": 1063
+      },
+      "mediaSent": [],
+      "note": "Original frozen input preserved verbatim. No evidence notes, names, chat IDs, dates, quotations, or gold appended to model input."
+    },
+    {
+      "id": "C19-01",
+      "group": "original_frozen",
+      "sourcePath": "docs/reports/real-conversations-2026-10-29/frozen-business-replay-v1.json",
+      "sourceSha256": "388f17fbcfc380c98bc93d1a8f252110f182b144cba8d0bd82e66647f3dca2c2",
+      "input": {
+        "message": "Canisan D de 5ml",
+        "contextState": null,
+        "history": [],
+        "derivation": "text_span",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "confirmed_identity",
+        "referenceIds": [
+          "659c1c72-4d59-4cec-8083-5662217332d5"
+        ],
+        "reference": "CANISAN D",
+        "presentationId": "6b87dd3d-7b08-4a6a-8fe2-621c66b7fb79",
+        "weight": "5ml",
+        "decision": "identify",
+        "annotation": null
+      },
+      "kind": "text_span",
+      "excluded": false,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-29/catalog.json",
+        "sha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+        "capturedAt": "2026-10-29T23:52:19.742Z",
+        "tenantId": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+        "references": 1063
+      },
+      "mediaSent": [],
+      "note": "Original frozen input preserved verbatim. No evidence notes, names, chat IDs, dates, quotations, or gold appended to model input."
+    },
+    {
+      "id": "C19-02",
+      "group": "original_frozen",
+      "sourcePath": "docs/reports/real-conversations-2026-10-29/frozen-business-replay-v1.json",
+      "sourceSha256": "388f17fbcfc380c98bc93d1a8f252110f182b144cba8d0bd82e66647f3dca2c2",
+      "input": {
+        "message": "Enterochonic",
+        "contextState": null,
+        "history": [],
+        "derivation": "text_span_quote_pending",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "incomplete_media",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "excluded",
+        "annotation": null
+      },
+      "kind": "text_span_quote_pending",
+      "excluded": true,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-29/catalog.json",
+        "sha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+        "capturedAt": "2026-10-29T23:52:19.742Z",
+        "tenantId": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+        "references": 1063
+      },
+      "mediaSent": [],
+      "note": "Original frozen input preserved verbatim. No evidence notes, names, chat IDs, dates, quotations, or gold appended to model input."
+    },
+    {
+      "id": "C19-03",
+      "group": "original_frozen",
+      "sourcePath": "docs/reports/real-conversations-2026-10-29/frozen-business-replay-v1.json",
+      "sourceSha256": "388f17fbcfc380c98bc93d1a8f252110f182b144cba8d0bd82e66647f3dca2c2",
+      "input": {
+        "message": "Fortiflora\nPerro",
+        "contextState": null,
+        "history": [],
+        "derivation": "manually_reconstructed_episode",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "confirmed_reference_only",
+        "referenceIds": [
+          "02432bf0-7fc2-4e56-9c51-016ced59560b"
+        ],
+        "reference": "FORTIFLORA CANINE",
+        "presentationId": null,
+        "weight": null,
+        "decision": "identify",
+        "annotation": null
+      },
+      "kind": "manually_reconstructed_episode",
+      "excluded": false,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-29/catalog.json",
+        "sha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+        "capturedAt": "2026-10-29T23:52:19.742Z",
+        "tenantId": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+        "references": 1063
+      },
+      "mediaSent": [],
+      "note": "Original frozen input preserved verbatim. No evidence notes, names, chat IDs, dates, quotations, or gold appended to model input."
+    },
+    {
+      "id": "C19-04",
+      "group": "original_frozen",
+      "sourcePath": "docs/reports/real-conversations-2026-10-29/frozen-business-replay-v1.json",
+      "sourceSha256": "388f17fbcfc380c98bc93d1a8f252110f182b144cba8d0bd82e66647f3dca2c2",
+      "input": {
+        "message": "Lata humeda proplan gastronteric perros",
+        "contextState": null,
+        "history": [],
+        "derivation": "text_span_quote_pending",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "incomplete_media",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "excluded",
+        "annotation": null
+      },
+      "kind": "text_span_quote_pending",
+      "excluded": true,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-29/catalog.json",
+        "sha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+        "capturedAt": "2026-10-29T23:52:19.742Z",
+        "tenantId": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+        "references": 1063
+      },
+      "mediaSent": [],
+      "note": "Original frozen input preserved verbatim. No evidence notes, names, chat IDs, dates, quotations, or gold appended to model input."
+    },
+    {
+      "id": "C15-01",
+      "group": "original_frozen",
+      "sourcePath": "docs/reports/real-conversations-2026-10-29/frozen-business-replay-v1.json",
+      "sourceSha256": "388f17fbcfc380c98bc93d1a8f252110f182b144cba8d0bd82e66647f3dca2c2",
+      "input": {
+        "message": "Royal canin perro gastrointestinal de 7 kilos",
+        "contextState": null,
+        "history": [],
+        "derivation": "text_span",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "unresolved",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "abstain_or_clarify",
+        "annotation": null
+      },
+      "kind": "text_span",
+      "excluded": false,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-29/catalog.json",
+        "sha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+        "capturedAt": "2026-10-29T23:52:19.742Z",
+        "tenantId": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+        "references": 1063
+      },
+      "mediaSent": [],
+      "note": "Original frozen input preserved verbatim. No evidence notes, names, chat IDs, dates, quotations, or gold appended to model input."
+    },
+    {
+      "id": "C15-02",
+      "group": "original_frozen",
+      "sourcePath": "docs/reports/real-conversations-2026-10-29/frozen-business-replay-v1.json",
+      "sourceSha256": "388f17fbcfc380c98bc93d1a8f252110f182b144cba8d0bd82e66647f3dca2c2",
+      "input": {
+        "message": "Dos latas de Royal canin gastrointestinal perro",
+        "contextState": null,
+        "history": [],
+        "derivation": "text_span",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "confirmed_reference_only",
+        "referenceIds": [
+          "8e4abc47-4a11-4dc6-bfcb-2f85a851145f"
+        ],
+        "reference": "ROYAL CANIN DOG LATA GASTRO",
+        "presentationId": null,
+        "weight": null,
+        "decision": "identify",
+        "annotation": null
+      },
+      "kind": "text_span",
+      "excluded": false,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-29/catalog.json",
+        "sha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+        "capturedAt": "2026-10-29T23:52:19.742Z",
+        "tenantId": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+        "references": 1063
+      },
+      "mediaSent": [],
+      "note": "Original frozen input preserved verbatim. No evidence notes, names, chat IDs, dates, quotations, or gold appended to model input."
+    },
+    {
+      "id": "C15-03",
+      "group": "original_frozen",
+      "sourcePath": "docs/reports/real-conversations-2026-10-29/frozen-business-replay-v1.json",
+      "sourceSha256": "388f17fbcfc380c98bc93d1a8f252110f182b144cba8d0bd82e66647f3dca2c2",
+      "input": {
+        "message": "proplan comida mojada gato, 10 sobres",
+        "contextState": null,
+        "history": [],
+        "derivation": "text_span",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "ambiguous",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "abstain_or_clarify",
+        "annotation": null
+      },
+      "kind": "text_span",
+      "excluded": false,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-29/catalog.json",
+        "sha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+        "capturedAt": "2026-10-29T23:52:19.742Z",
+        "tenantId": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+        "references": 1063
+      },
+      "mediaSent": [],
+      "note": "Original frozen input preserved verbatim. No evidence notes, names, chat IDs, dates, quotations, or gold appended to model input."
+    },
+    {
+      "id": "C21-01",
+      "group": "original_frozen",
+      "sourcePath": "docs/reports/real-conversations-2026-10-29/frozen-business-replay-v1.json",
+      "sourceSha256": "388f17fbcfc380c98bc93d1a8f252110f182b144cba8d0bd82e66647f3dca2c2",
+      "input": {
+        "message": "muy buena tarde cómo estas?, tienes Bonnat Gastrointestinal para perro?",
+        "contextState": null,
+        "history": [],
+        "derivation": "text",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "unresolved",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "abstain_or_clarify",
+        "annotation": null
+      },
+      "kind": "text",
+      "excluded": false,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-29/catalog.json",
+        "sha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+        "capturedAt": "2026-10-29T23:52:19.742Z",
+        "tenantId": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+        "references": 1063
+      },
+      "mediaSent": [],
+      "note": "Original frozen input preserved verbatim. No evidence notes, names, chat IDs, dates, quotations, or gold appended to model input."
+    },
+    {
+      "id": "C21-02",
+      "group": "original_frozen",
+      "sourcePath": "docs/reports/real-conversations-2026-10-29/frozen-business-replay-v1.json",
+      "sourceSha256": "388f17fbcfc380c98bc93d1a8f252110f182b144cba8d0bd82e66647f3dca2c2",
+      "input": {
+        "message": "Mi hermano ya va por el chiquito\nEl de\n27.500",
+        "contextState": null,
+        "history": [],
+        "derivation": "manually_reconstructed_episode",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "unresolved",
+        "referenceIds": [],
+        "reference": null,
+        "presentationId": null,
+        "weight": null,
+        "decision": "abstain_or_clarify",
+        "annotation": null
+      },
+      "kind": "manually_reconstructed_episode",
+      "excluded": false,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-29/catalog.json",
+        "sha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+        "capturedAt": "2026-10-29T23:52:19.742Z",
+        "tenantId": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+        "references": 1063
+      },
+      "mediaSent": [],
+      "note": "Original frozen input preserved verbatim. No evidence notes, names, chat IDs, dates, quotations, or gold appended to model input."
+    },
+    {
+      "id": "C22-01",
+      "group": "original_frozen",
+      "sourcePath": "docs/reports/real-conversations-2026-10-29/frozen-business-replay-v1.json",
+      "sourceSha256": "388f17fbcfc380c98bc93d1a8f252110f182b144cba8d0bd82e66647f3dca2c2",
+      "input": {
+        "message": "Me gustaría pedir excellent 7,5 kg gato adulto a domicilio",
+        "contextState": null,
+        "history": [],
+        "derivation": "text_span",
+        "contextLimit": "The frozen component input is exactly the earlier benchmark query. Evidence notes are for reviewers, never added as model input or invented dialogue."
+      },
+      "expected": {
+        "historicalGold": "confirmed_identity",
+        "referenceIds": [
+          "1d4e553d-e7e5-491f-9a9a-b0bc2c1cf779"
+        ],
+        "reference": "EXCELLENT GATO ADULT",
+        "presentationId": "7f8d69bf-c637-420c-b572-c7d23916ad62",
+        "weight": "7.5kg",
+        "decision": "identify",
+        "annotation": null
+      },
+      "kind": "text_span",
+      "excluded": false,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-29/catalog.json",
+        "sha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+        "capturedAt": "2026-10-29T23:52:19.742Z",
+        "tenantId": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+        "references": 1063
+      },
+      "mediaSent": [],
+      "note": "Original frozen input preserved verbatim. No evidence notes, names, chat IDs, dates, quotations, or gold appended to model input."
+    },
+    {
+      "id": "T01-01",
+      "group": "oct30_manual",
+      "sourcePath": "docs/reports/real-conversations-2026-10-30/today-corpus-v2.json",
+      "sourceSha256": "a7ef9115e8849def1a427a0806ff6bd281fe9db06449ef2c61f8dc513f8288d1",
+      "input": {
+        "message": "PRO PLAN FELINE UR concentrado",
+        "history": [],
+        "contextState": null,
+        "derivation": "real_conversation_manual_reconstruction"
+      },
+      "expected": {
+        "decision": "identify",
+        "referenceNames": [
+          "PRO PLAN FELINE UR"
+        ],
+        "referenceId": "c7bd39ca-5555-4f3f-a143-89720a5d49f5"
+      },
+      "kind": "real_conversation_manual_reconstruction",
+      "excluded": false,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-30/catalog-after-v2.json",
+        "sha256": "c0a76a3a0daf36b160637bfc5e4a97875239f3751d98daaa0a938be2cef7ffd7"
+      },
+      "mediaSent": [],
+      "note": "Human transcription/reconstruction, not automatic image or original customer-message perception. Source chat sequences and adviser evidence excluded from model payload."
+    },
+    {
+      "id": "T01-02",
+      "group": "oct30_manual",
+      "sourcePath": "docs/reports/real-conversations-2026-10-30/today-corpus-v2.json",
+      "sourceSha256": "a7ef9115e8849def1a427a0806ff6bd281fe9db06449ef2c61f8dc513f8288d1",
+      "input": {
+        "message": "VIRBAC CAT UROLOGY 2 1.5kg",
+        "history": [],
+        "contextState": null,
+        "derivation": "real_conversation_manual_reconstruction"
+      },
+      "expected": {
+        "decision": "identify",
+        "referenceNames": [
+          "VIRBAC CAT UROLOGY 2"
+        ],
+        "referenceId": "d8b0baed-e736-4c23-b7d6-d70546849d82",
+        "presentationId": "f5ecff29-5301-4e12-8374-28a124df6ae2"
+      },
+      "kind": "real_conversation_manual_reconstruction",
+      "excluded": false,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-30/catalog-after-v2.json",
+        "sha256": "c0a76a3a0daf36b160637bfc5e4a97875239f3751d98daaa0a938be2cef7ffd7"
+      },
+      "mediaSent": [],
+      "note": "Human transcription/reconstruction, not automatic image or original customer-message perception. Source chat sequences and adviser evidence excluded from model payload."
+    },
+    {
+      "id": "T01-03",
+      "group": "oct30_manual",
+      "sourcePath": "docs/reports/real-conversations-2026-10-30/today-corpus-v2.json",
+      "sourceSha256": "a7ef9115e8849def1a427a0806ff6bd281fe9db06449ef2c61f8dc513f8288d1",
+      "input": {
+        "message": "VIRBAC UROLOGY 2 3kg",
+        "history": [],
+        "contextState": null,
+        "derivation": "real_conversation_manual_reconstruction"
+      },
+      "expected": {
+        "decision": "identify",
+        "referenceNames": [
+          "VIRBAC UROLOGY 2",
+          "VIRBAC CAT UROLOGY 2"
+        ],
+        "referenceId": "d4765997-a923-40f7-bd5c-562ab26a2d10",
+        "presentationId": "a150e063-8494-49a8-8bfb-dc65afdf62a8"
+      },
+      "kind": "real_conversation_manual_reconstruction",
+      "excluded": false,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-30/catalog-after-v2.json",
+        "sha256": "c0a76a3a0daf36b160637bfc5e4a97875239f3751d98daaa0a938be2cef7ffd7"
+      },
+      "mediaSent": [],
+      "note": "Human transcription/reconstruction, not automatic image or original customer-message perception. Source chat sequences and adviser evidence excluded from model payload."
+    },
+    {
+      "id": "T01-04",
+      "group": "oct30_manual",
+      "sourcePath": "docs/reports/real-conversations-2026-10-30/today-corpus-v2.json",
+      "sourceSha256": "a7ef9115e8849def1a427a0806ff6bd281fe9db06449ef2c61f8dc513f8288d1",
+      "input": {
+        "message": "HILLS FEL C/D 1.8kg",
+        "history": [],
+        "contextState": null,
+        "derivation": "real_conversation_manual_reconstruction"
+      },
+      "expected": {
+        "decision": "identify",
+        "referenceNames": [
+          "HILLS FEL C/D"
+        ],
+        "referenceId": "3539f23c-f725-4c1d-9d8b-2f83b5cc7bc2",
+        "presentationId": "c31016c3-51ff-4720-8781-437d9cae07b1"
+      },
+      "kind": "real_conversation_manual_reconstruction",
+      "excluded": false,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-30/catalog-after-v2.json",
+        "sha256": "c0a76a3a0daf36b160637bfc5e4a97875239f3751d98daaa0a938be2cef7ffd7"
+      },
+      "mediaSent": [],
+      "note": "Human transcription/reconstruction, not automatic image or original customer-message perception. Source chat sequences and adviser evidence excluded from model payload."
+    },
+    {
+      "id": "T01-05",
+      "group": "oct30_manual",
+      "sourcePath": "docs/reports/real-conversations-2026-10-30/today-corpus-v2.json",
+      "sourceSha256": "a7ef9115e8849def1a427a0806ff6bd281fe9db06449ef2c61f8dc513f8288d1",
+      "input": {
+        "message": "ADVANCE CAT URINARY 3kg",
+        "history": [],
+        "contextState": null,
+        "derivation": "real_conversation_manual_reconstruction"
+      },
+      "expected": {
+        "decision": "identify",
+        "referenceNames": [
+          "ADVANCE CAT URINARY"
+        ],
+        "referenceId": "d2e3344f-ea7d-4652-abf2-ef313c468bd2",
+        "presentationId": "84ce8dea-b140-4318-8f22-e4de9be3a4f7"
+      },
+      "kind": "real_conversation_manual_reconstruction",
+      "excluded": false,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-30/catalog-after-v2.json",
+        "sha256": "c0a76a3a0daf36b160637bfc5e4a97875239f3751d98daaa0a938be2cef7ffd7"
+      },
+      "mediaSent": [],
+      "note": "Human transcription/reconstruction, not automatic image or original customer-message perception. Source chat sequences and adviser evidence excluded from model payload."
+    },
+    {
+      "id": "T01-06",
+      "group": "oct30_manual",
+      "sourcePath": "docs/reports/real-conversations-2026-10-30/today-corpus-v2.json",
+      "sourceSha256": "a7ef9115e8849def1a427a0806ff6bd281fe9db06449ef2c61f8dc513f8288d1",
+      "input": {
+        "message": "ROYAL CANIN URINARY S/O concentrado 1.5kg",
+        "history": [],
+        "contextState": null,
+        "derivation": "real_conversation_manual_reconstruction"
+      },
+      "expected": {
+        "decision": "identify",
+        "referenceNames": [
+          "ROYAL CANIN URINAY CAT S/O"
+        ],
+        "referenceId": "0505ae8c-32d8-46fa-8f7a-e2bd48c83ef2",
+        "presentationId": "a4bcd36e-b0e7-4da1-b300-574eacc49d50"
+      },
+      "kind": "real_conversation_manual_reconstruction",
+      "excluded": false,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-30/catalog-after-v2.json",
+        "sha256": "c0a76a3a0daf36b160637bfc5e4a97875239f3751d98daaa0a938be2cef7ffd7"
+      },
+      "mediaSent": [],
+      "note": "Human transcription/reconstruction, not automatic image or original customer-message perception. Source chat sequences and adviser evidence excluded from model payload."
+    },
+    {
+      "id": "T01-07",
+      "group": "oct30_manual",
+      "sourcePath": "docs/reports/real-conversations-2026-10-30/today-corpus-v2.json",
+      "sourceSha256": "a7ef9115e8849def1a427a0806ff6bd281fe9db06449ef2c61f8dc513f8288d1",
+      "input": {
+        "message": "PRO PLAN FELINE LATA UR 156g",
+        "history": [],
+        "contextState": null,
+        "derivation": "real_conversation_manual_reconstruction"
+      },
+      "expected": {
+        "decision": "identify",
+        "referenceNames": [
+          "PRO PLAN FELINE LATA UR"
+        ],
+        "referenceId": "4d75980f-c69e-4fc1-bd00-3f1a9d7160ec",
+        "presentationVerified": false
+      },
+      "kind": "real_conversation_manual_reconstruction",
+      "excluded": false,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-30/catalog-after-v2.json",
+        "sha256": "c0a76a3a0daf36b160637bfc5e4a97875239f3751d98daaa0a938be2cef7ffd7"
+      },
+      "mediaSent": [],
+      "note": "Human transcription/reconstruction, not automatic image or original customer-message perception. Source chat sequences and adviser evidence excluded from model payload."
+    },
+    {
+      "id": "T01-08",
+      "group": "oct30_manual",
+      "sourcePath": "docs/reports/real-conversations-2026-10-30/today-corpus-v2.json",
+      "sourceSha256": "a7ef9115e8849def1a427a0806ff6bd281fe9db06449ef2c61f8dc513f8288d1",
+      "input": {
+        "message": "ROYAL CANIN URINARY SO gato lata",
+        "history": [],
+        "contextState": null,
+        "derivation": "real_conversation_manual_reconstruction"
+      },
+      "expected": {
+        "decision": "abstain",
+        "referenceNames": []
+      },
+      "kind": "real_conversation_manual_reconstruction",
+      "excluded": false,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-30/catalog-after-v2.json",
+        "sha256": "c0a76a3a0daf36b160637bfc5e4a97875239f3751d98daaa0a938be2cef7ffd7"
+      },
+      "mediaSent": [],
+      "note": "Human transcription/reconstruction, not automatic image or original customer-message perception. Source chat sequences and adviser evidence excluded from model payload."
+    },
+    {
+      "id": "T02-01",
+      "group": "oct30_manual",
+      "sourcePath": "docs/reports/real-conversations-2026-10-30/today-corpus-v2.json",
+      "sourceSha256": "a7ef9115e8849def1a427a0806ff6bd281fe9db06449ef2c61f8dc513f8288d1",
+      "input": {
+        "message": "2 Excellent gato adulto 1kg",
+        "history": [],
+        "contextState": null,
+        "derivation": "real_conversation_manual_reconstruction"
+      },
+      "expected": {
+        "decision": "identify",
+        "referenceNames": [
+          "EXCELLENT GATO ADULT"
+        ],
+        "referenceId": "1d4e553d-e7e5-491f-9a9a-b0bc2c1cf779",
+        "presentationId": "752b60c7-2394-4d33-b989-46fe268affe0"
+      },
+      "kind": "real_conversation_manual_reconstruction",
+      "excluded": false,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-30/catalog-after-v2.json",
+        "sha256": "c0a76a3a0daf36b160637bfc5e4a97875239f3751d98daaa0a938be2cef7ffd7"
+      },
+      "mediaSent": [],
+      "note": "Human transcription/reconstruction, not automatic image or original customer-message perception. Source chat sequences and adviser evidence excluded from model payload."
+    },
+    {
+      "id": "T03-01",
+      "group": "oct30_manual",
+      "sourcePath": "docs/reports/real-conversations-2026-10-30/today-corpus-v2.json",
+      "sourceSha256": "a7ef9115e8849def1a427a0806ff6bd281fe9db06449ef2c61f8dc513f8288d1",
+      "input": {
+        "message": "B FEX jarabe",
+        "history": [],
+        "contextState": null,
+        "derivation": "real_conversation_manual_image_reading"
+      },
+      "expected": {
+        "decision": "abstain",
+        "referenceNames": []
+      },
+      "kind": "real_conversation_manual_image_reading",
+      "excluded": false,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-30/catalog-after-v2.json",
+        "sha256": "c0a76a3a0daf36b160637bfc5e4a97875239f3751d98daaa0a938be2cef7ffd7"
+      },
+      "mediaSent": [],
+      "note": "Human transcription/reconstruction, not automatic image or original customer-message perception. Source chat sequences and adviser evidence excluded from model payload."
+    },
+    {
+      "id": "T03-02",
+      "group": "oct30_manual",
+      "sourcePath": "docs/reports/real-conversations-2026-10-30/today-corpus-v2.json",
+      "sourceSha256": "a7ef9115e8849def1a427a0806ff6bd281fe9db06449ef2c61f8dc513f8288d1",
+      "input": {
+        "message": "DERMOSYN spray",
+        "history": [],
+        "contextState": null,
+        "derivation": "real_conversation_manual_image_reading"
+      },
+      "expected": {
+        "decision": "clarify",
+        "referenceNames": [
+          "DERMOSYN"
+        ],
+        "referenceId": "7a87b810-9fab-419d-83bc-4fb6298779fb"
+      },
+      "kind": "real_conversation_manual_image_reading",
+      "excluded": false,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-30/catalog-after-v2.json",
+        "sha256": "c0a76a3a0daf36b160637bfc5e4a97875239f3751d98daaa0a938be2cef7ffd7"
+      },
+      "mediaSent": [],
+      "note": "Human transcription/reconstruction, not automatic image or original customer-message perception. Source chat sequences and adviser evidence excluded from model payload."
+    },
+    {
+      "id": "T03-03",
+      "group": "oct30_manual",
+      "sourcePath": "docs/reports/real-conversations-2026-10-30/today-corpus-v2.json",
+      "sourceSha256": "a7ef9115e8849def1a427a0806ff6bd281fe9db06449ef2c61f8dc513f8288d1",
+      "input": {
+        "message": "A LAPIEL crema",
+        "history": [],
+        "contextState": null,
+        "derivation": "real_conversation_manual_image_reading"
+      },
+      "expected": {
+        "decision": "clarify",
+        "referenceNames": [
+          "ALAPIEL"
+        ],
+        "referenceId": "9998d849-5fa6-456b-bbe2-9cfa46d492d7"
+      },
+      "kind": "real_conversation_manual_image_reading",
+      "excluded": false,
+      "redactions": [],
+      "catalog": {
+        "path": "docs/reports/real-conversations-2026-10-30/catalog-after-v2.json",
+        "sha256": "c0a76a3a0daf36b160637bfc5e4a97875239f3751d98daaa0a938be2cef7ffd7"
+      },
+      "mediaSent": [],
+      "note": "Human transcription/reconstruction, not automatic image or original customer-message perception. Source chat sequences and adviser evidence excluded from model payload."
+    }
+  ]
+}

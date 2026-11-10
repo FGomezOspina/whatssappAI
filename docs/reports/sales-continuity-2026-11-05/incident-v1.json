@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "source": "Supabase persisted Sandbox messages; not business-adviser conversation",
+  "capturedAt": "2026-11-05T16:35:34.970Z",
+  "conversation": "b724a3237b9c",
+  "redactions": [
+    {
+      "field": "address message body",
+      "reason": "Private address replaced; exact original retained only in private observation.json"
+    }
+  ],
+  "messages": [
+    {
+      "id": "aa0ff34b6e9e",
+      "at": "2026-11-05T16:21:23.425152+00:00",
+      "direction": "inbound",
+      "body": "Buenos dias \nPara pedir una arena",
+      "intent": null
+    },
+    {
+      "id": "e91666ac82cc",
+      "at": "2026-11-05T16:21:56.464047+00:00",
+      "direction": "outbound",
+      "body": "Buenos días 😊  \n¿La arena la buscas para gato?",
+      "intent": null
+    },
+    {
+      "id": "448655960082",
+      "at": "2026-11-05T16:22:44.021159+00:00",
+      "direction": "inbound",
+      "body": "Arena de maíz cat de 20 kg",
+      "intent": "consulta_producto"
+    },
+    {
+      "id": "b2abddcbd3d2",
+      "at": "2026-11-05T16:23:06.020017+00:00",
+      "direction": "outbound",
+      "body": "Sí, esa es ARENA MAIZ CAT x 20kg y vale $98.000. Las existencias están por confirmar. 🐱",
+      "intent": null
+    },
+    {
+      "id": "3630a0c9b007",
+      "at": "2026-11-05T16:23:26.477757+00:00",
+      "direction": "inbound",
+      "body": "[DIRECCIÓN PRIVADA: manzana, casa, conjunto y sector en dos líneas]",
+      "intent": "otro"
+    },
+    {
+      "id": "f8e9faf891e8",
+      "at": "2026-11-05T16:23:43.019849+00:00",
+      "direction": "outbound",
+      "body": "¿Puedes contarme un poco más sobre lo que necesitas?",
+      "intent": null
+    }
+  ],
+  "expected": {
+    "referenceId": "906dcade-aa4e-4c7b-b652-978353832387",
+    "presentationId": "cc48f1d0-28d7-47ef-9724-5536672c7eb7",
+    "weight": "x 20kg",
+    "quantity": 1,
+    "price": 98000,
+    "stock": null,
+    "next": "Reversible checkout, retain address, request only missing valid data; no final order"
+  }
+}

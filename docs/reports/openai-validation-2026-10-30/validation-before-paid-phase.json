@@ -1,0 +1,33 @@
+{
+  "at": "2026-10-30T16:41:36.468Z",
+  "status": "blocked_after_minimal_availability_check",
+  "customerCasesSent": 0,
+  "imagesSent": 0,
+  "audioSent": 0,
+  "eligiblePrepared": 39,
+  "excluded": 16,
+  "expectedAndInputPreserved": true,
+  "localTests": {
+    "passed": 1095,
+    "failed": 0
+  },
+  "diagnostic": {
+    "model": "gpt-5.4-mini",
+    "status": 500,
+    "ms": 15571,
+    "usage": null,
+    "cost": null
+  },
+  "retry": {
+    "status": "denied_before_execution",
+    "reason": "Automatic approval considered prior no-OpenAI-until-explicit-recharge restriction still active"
+  },
+  "productionFilesChangedThisPhase": [],
+  "manifestSha256": "41ad4fa7fec2aca7ace2c0b7016efb76ccbb7e0ccf4703b7d33300d9693f99a2",
+  "library": {
+    "id": "libfile_d9a9e05b4c448191809eae46aa1a0618",
+    "version": 7,
+    "saved": true,
+    "localXattrsApplied": false
+  }
+}

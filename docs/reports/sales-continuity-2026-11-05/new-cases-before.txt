@@ -1,0 +1,100 @@
+✖ direccion tras cotizacion con router otro; pendientes antiguos=false (33.150041ms)
+✖ direccion tras cotizacion con router otro; pendientes antiguos=true (2.052625ms)
+✖ pago afirmativo retoma cotizacion; consulta de pago no compra (1.958625ms)
+✖ direccion entre varias presentaciones aclara sin comprar todas (1.291917ms)
+✖ direccion sin cotizacion conserva dato sin inventar productos (0.905ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 0
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 79.310375
+
+✖ failing tests:
+
+test at test/salesContinuity.test.js:38:38
+✖ direccion tras cotizacion con router otro; pendientes antiguos=false (33.150041ms)
+  AssertionError [ERR_ASSERTION]: ¿Puedes contarme un poco más sobre lo que necesitas?
+  
+  0 !== 1
+  
+      at TestContext.<anonymous> (/Users/gomez/Documents/WhatsappVELTIA/test/salesContinuity.test.js:41:10)
+      at async Test.run (node:internal/test_runner/test:1208:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/salesContinuity.test.js:38:38
+✖ direccion tras cotizacion con router otro; pendientes antiguos=true (2.052625ms)
+  AssertionError [ERR_ASSERTION]: ¿Puedes contarme un poco más sobre lo que necesitas?
+  
+  0 !== 1
+  
+      at TestContext.<anonymous> (/Users/gomez/Documents/WhatsappVELTIA/test/salesContinuity.test.js:41:10)
+      at async Test.run (node:internal/test_runner/test:1208:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/salesContinuity.test.js:48:1
+✖ pago afirmativo retoma cotizacion; consulta de pago no compra (1.958625ms)
+  AssertionError [ERR_ASSERTION]: ¿Puedes contarme un poco más sobre lo que necesitas?
+  
+  0 !== 1
+  
+      at TestContext.<anonymous> (/Users/gomez/Documents/WhatsappVELTIA/test/salesContinuity.test.js:53:10)
+      at async Test.run (node:internal/test_runner/test:1208:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/salesContinuity.test.js:56:1
+✖ direccion entre varias presentaciones aclara sin comprar todas (1.291917ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /presentaci[oó]n/. Input:
+  
+  '¿Puedes contarme un poco más sobre lo que necesitas?'
+  
+      at TestContext.<anonymous> (/Users/gomez/Documents/WhatsappVELTIA/test/salesContinuity.test.js:60:10)
+      at async Test.run (node:internal/test_runner/test:1208:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '¿Puedes contarme un poco más sobre lo que necesitas?',
+    expected: /presentaci[oó]n/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at test/salesContinuity.test.js:63:1
+✖ direccion sin cotizacion conserva dato sin inventar productos (0.905ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /productos y cantidades/. Input:
+  
+  '¿Puedes contarme un poco más sobre lo que necesitas?'
+  
+      at TestContext.<anonymous> (/Users/gomez/Documents/WhatsappVELTIA/test/salesContinuity.test.js:65:53)
+      at async Test.run (node:internal/test_runner/test:1208:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '¿Puedes contarme un poco más sobre lo que necesitas?',
+    expected: /productos y cantidades/,
+    operator: 'match',
+    diff: 'simple'
+  }

@@ -1,0 +1,172 @@
+{
+  "version": 1,
+  "clientId": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+  "catalogSha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+  "window": {
+    "from": "2026-10-28T00:00:00-05:00",
+    "through": "2026-10-29T18:46:00-05:00"
+  },
+  "proposals": [
+    {
+      "caseId": "C01-01",
+      "status": "pending_human_review",
+      "clientId": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+      "source": {
+        "kind": "whatsapp_business_ui",
+        "profile": "distrifincapereira",
+        "conversationKey": "C01",
+        "observedAt": "2026-10-29T07:45:00-05:00",
+        "localEventKey": "C01-01",
+        "remoteMessageId": null,
+        "direction": "inbound",
+        "productText": "Buenos días Proplan OM x2k?",
+        "sourceSha256": "9e6273dbdfe36f70903c87d6a13eea32dcc8b160d5250df999466a0d89aa9ae7"
+      },
+      "target": {
+        "brand": "PRO PLAN",
+        "referenceId": "6c1d4eea-bf35-4d7f-8e4b-e9e075b03666",
+        "reference": "PRO PLAN CANINE OM",
+        "presentationId": "980f6864-b771-475f-8e5b-5aaf225dc2f1",
+        "weight": "2kg",
+        "quantity": null,
+        "catalogSha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403"
+      },
+      "evidence": "Inbound brand, OM and presentation; prior 20 Oct exchange explicitly confirms dog; adviser accepts at 08:52. Price excluded as identification proof.",
+      "scope": "confirmed_identity",
+      "review": {
+        "reviewedBy": null,
+        "reviewedAt": null,
+        "expiresAt": null
+      },
+      "activationBlockedBy": [
+        "Human verification of identity and source still required",
+        "Web observations have no whatsapp_messages UUID; never substitute a Sandbox message",
+        "Existing migration 010 remains unapplied; no database write is authorized"
+      ]
+    },
+    {
+      "caseId": "C04-01",
+      "status": "pending_human_review",
+      "clientId": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+      "source": {
+        "kind": "whatsapp_business_ui",
+        "profile": "distrifincapereira",
+        "conversationKey": "C04",
+        "observedAt": "2026-10-28T11:47:00-05:00",
+        "localEventKey": "C04-01",
+        "remoteMessageId": null,
+        "direction": "inbound",
+        "productText": "metronidl",
+        "sourceSha256": "b90282a99897c35bbd477c99fd3629ad13f2e80b4fe6b2d7306392556c56ea03"
+      },
+      "target": {
+        "brand": "METRONID",
+        "referenceId": "b619c8fc-c47a-4fde-8439-23970f59070e",
+        "reference": "METRONID",
+        "presentationId": null,
+        "weight": null,
+        "quantity": null,
+        "catalogSha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403"
+      },
+      "evidence": "Adviser at 11:24 lists Metronidl; customer repeats at 11:47. Unique catalog lexical counterpart METRONID. 15 ml vs 50 ml remains unverified without image; never infer from price.",
+      "scope": "confirmed_reference_only",
+      "review": {
+        "reviewedBy": null,
+        "reviewedAt": null,
+        "expiresAt": null
+      },
+      "activationBlockedBy": [
+        "Human verification of identity and source still required",
+        "Web observations have no whatsapp_messages UUID; never substitute a Sandbox message",
+        "Existing migration 010 remains unapplied; no database write is authorized"
+      ]
+    },
+    {
+      "caseId": "C05-01",
+      "status": "pending_human_review",
+      "clientId": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+      "source": {
+        "kind": "whatsapp_business_ui",
+        "profile": "distrifincapereira",
+        "conversationKey": "C05",
+        "observedAt": "2026-10-28T09:24:00-05:00",
+        "localEventKey": "C05-01",
+        "remoteMessageId": null,
+        "direction": "inbound",
+        "productText": "Buenos días tiene arena king cat para pedir\n2\nbultos de 25 Kg a domicilio?",
+        "sourceSha256": "9d2dcdcd0e9f8b4ba9661ce22d5a8d52a2379a11d793f4815dc16b05bd3278e2"
+      },
+      "target": {
+        "brand": "ARENA KING CAT",
+        "referenceId": "0f64c472-046a-45eb-9642-16572d656197",
+        "reference": "ARENA KING CAT",
+        "presentationId": "3f1e5cf1-e027-4dcb-9797-395843147c0b",
+        "weight": "x 25 kg",
+        "quantity": 2,
+        "catalogSha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403"
+      },
+      "evidence": "Customer names litter, brand and weight; adviser accepts 09:29; customer reiterates two sacks 10:17. No price used for mapping.",
+      "scope": "confirmed_identity",
+      "review": {
+        "reviewedBy": null,
+        "reviewedAt": null,
+        "expiresAt": null
+      },
+      "activationBlockedBy": [
+        "Human verification of identity and source still required",
+        "Web observations have no whatsapp_messages UUID; never substitute a Sandbox message",
+        "Existing migration 010 remains unapplied; no database write is authorized"
+      ]
+    }
+  ],
+  "excluded": [
+    {
+      "caseId": "C01-02",
+      "reason": "Insufficient identity evidence"
+    },
+    {
+      "caseId": "C01-03",
+      "reason": "Insufficient identity evidence"
+    },
+    {
+      "caseId": "C02-01",
+      "reason": "Insufficient identity evidence"
+    },
+    {
+      "caseId": "C02-02",
+      "reason": "Insufficient identity evidence"
+    },
+    {
+      "caseId": "C03-01",
+      "reason": "Insufficient identity evidence"
+    },
+    {
+      "caseId": "C04-02",
+      "reason": "Insufficient identity evidence"
+    },
+    {
+      "caseId": "C06-01",
+      "reason": "Insufficient identity evidence"
+    },
+    {
+      "caseId": "C06-02",
+      "reason": "Missing direct customer source"
+    },
+    {
+      "caseId": "C06-03",
+      "reason": "Missing direct customer source"
+    },
+    {
+      "caseId": "C06-04",
+      "reason": "Insufficient identity evidence"
+    },
+    {
+      "caseId": "C06-05",
+      "reason": "Insufficient identity evidence"
+    },
+    {
+      "caseId": "C06-06",
+      "reason": "Insufficient identity evidence"
+    }
+  ]
+}

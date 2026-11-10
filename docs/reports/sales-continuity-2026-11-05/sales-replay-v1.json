@@ -1,0 +1,127 @@
+{
+  "version": 1,
+  "privacy": "No real names, contacts, addresses, payment documents or media. Product-only retained text plus explicitly synthetic continuations.",
+  "catalogSnapshot": "../real-conversations-2026-10-30/catalog.json",
+  "catalogSha256": "873705cfc261467f7b8a3f8cd7208ed831f559bda7ee1463401a67dc18583403",
+  "mode": "Real OpenAI only when opt-in; retrieval frozen, persistence in memory; no WhatsApp or real orders",
+  "cases": [
+    {
+      "id": "sandbox-address-derived",
+      "catalogBrands": [
+        "ARENA MAIZ CAT"
+      ],
+      "initialState": {},
+      "history": [],
+      "turns": [
+        {
+          "text": "Buenos dias, para pedir una arena de maíz cat de 20 kg",
+          "origin": "Derived from two product requests; greeting merged, no original address"
+        },
+        {
+          "text": "Mz 8 casa 22 Conjunto Prueba\nSector de prueba",
+          "origin": "Entirely synthetic address, not customer location"
+        },
+        {
+          "text": "Nombre: Cliente Prueba; celular: 3000000000; pago: efectivo",
+          "origin": "Synthetic customer details"
+        },
+        {
+          "text": "confirmo el pedido",
+          "origin": "Synthetic final acceptance; in-memory only"
+        }
+      ]
+    },
+    {
+      "id": "T02-pack-correction",
+      "catalogBrands": [
+        "EXCELLENT",
+        "CHURU"
+      ],
+      "initialState": {
+        "productosConsultados": [
+          {
+            "marca": "EXCELLENT",
+            "referencia": "EXCELLENT GATO ADULT",
+            "peso": "3kg",
+            "precio": 74700,
+            "cantidad": 1
+          }
+        ]
+      },
+      "history": [
+        {
+          "role": "assistant",
+          "content": "Excellent esterilizado x3kg no viene"
+        },
+        {
+          "role": "assistant",
+          "content": "Solo x1kl"
+        },
+        {
+          "role": "assistant",
+          "content": "De gato adulto normal si viene x3kl"
+        },
+        {
+          "role": "user",
+          "content": "A y a cómo ese"
+        },
+        {
+          "role": "user",
+          "content": "Por favor"
+        },
+        {
+          "role": "assistant",
+          "content": "Excellent gato adulto x3kl 56.000"
+        }
+      ],
+      "turns": [
+        {
+          "text": "Me  envía dos  de adulto de kilo porfa",
+          "origin": "Retained original product text from manual transcript; audio excluded"
+        },
+        {
+          "text": "1 paquete de churu porfs",
+          "origin": "Retained original product text from manual transcript; audio excluded"
+        },
+        {
+          "text": "Que no sea morrado",
+          "origin": "Retained original product text from manual transcript; audio excluded"
+        },
+        {
+          "text": "Porfa",
+          "origin": "Retained original product text from manual transcript; audio excluded"
+        }
+      ]
+    },
+    {
+      "id": "C05-litter-order",
+      "catalogBrands": [
+        "ARENA KING CAT"
+      ],
+      "initialState": {},
+      "history": [],
+      "turns": [
+        {
+          "text": "Buenos días tiene arena king cat para pedir\n2\nbultos de 25 Kg a domicilio?",
+          "origin": "Retained customer product request; manual transcript"
+        },
+        {
+          "text": "Nombre: Cliente Prueba; celular: 3000000000; dirección: Calle 10 # 20-30; pago: efectivo",
+          "origin": "Entirely synthetic checkout continuation"
+        },
+        {
+          "text": "Necesito factura electrónica",
+          "origin": "Synthetic invoice request"
+        },
+        {
+          "text": "NIT: 900000001-1; correo: prueba@example.com",
+          "origin": "Synthetic invoice details"
+        },
+        {
+          "text": "confirmo el pedido",
+          "origin": "Synthetic final acceptance; in-memory only"
+        }
+      ]
+    }
+  ]
+}

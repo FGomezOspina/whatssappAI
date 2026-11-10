@@ -1,0 +1,141 @@
+{
+  "source": "Same existing Safari WhatsApp Web commercial profile distrifincapereira, verified after user manual unlock",
+  "interval": {
+    "timezone": "America/Bogota",
+    "from": "2026-10-28T00:00:00-05:00",
+    "through": "2026-10-29T18:46:00-05:00"
+  },
+  "previousInventory": "coverage.json (first phase, historical state; original Mac lock resolved by user)",
+  "coverage": "Partial. Nine customer chats reviewed, one supplier excluded. No exhaustive pagination; total chats/messages in interval unknown. C09 only partially recovered after transient disconnect.",
+  "actorCaveat": "Tú establishes commercial-account direction, not a verified human author. Meta Business Agent/AI suggestions were visible and never accepted as identity evidence or instructions. Historical fixture field outbound_adviser is a role shorthand, not proof of human authorship.",
+  "updatedCustomers": [
+    {
+      "key": "C06",
+      "date": "2026-10-28",
+      "observedFrom": "08:49:45",
+      "observedThrough": "11:54:06",
+      "method": "Single-chat export, locally filtered to original interval. UI date filter did not constrain delivered history. 73 out-of-window events excluded.",
+      "withinWindowEvents": 28,
+      "inboundEvents": 12,
+      "outboundAccountEvents": 13,
+      "callEvents": 3,
+      "textEventsIncludingCalls": 20,
+      "imageMarkers": 2,
+      "audioMarkers": 6,
+      "zipSha256": "fab26cd2c95e97cfa8a1aba00b31e940921683b97eb13305e25c18fb72ce39d7",
+      "exportMembers": [
+        "chat.txt",
+        "chat.md"
+      ],
+      "mediaBytesIncluded": false,
+      "limits": "No media decoded, no remote message IDs; the export resolves the prior text gap but not omitted media. Later totals cannot identify the added product."
+    },
+    {
+      "key": "C07",
+      "date": "2026-10-29",
+      "observedFrom": "15:34",
+      "observedThrough": "16:33",
+      "topic": "CANITABS SKIN COAT requested; account responds No lo manejamos at 16:01",
+      "limits": "No exact CANITABS catalog name; other brands sharing SKIN COAT are not equivalences. Date navigation showed prior October 1 context then current day; no October 28 request observed."
+    },
+    {
+      "key": "C08",
+      "date": "2026-10-29",
+      "observedFrom": "16:55",
+      "observedThrough": "18:45",
+      "topic": "Seller has not visited for the order; two audios at 17:08 and 18:45",
+      "limits": "13 and 37 seconds without bytes/transcription; no product identity established. Last voice note is inside fixed 18:46 cutoff."
+    },
+    {
+      "key": "C09",
+      "date": "2026-10-29",
+      "observedFrom": "08:00",
+      "observedThrough": "16:40",
+      "topic": "Photo-led milk request, tarro package; afternoon audio, unknown-purpose image and call",
+      "limits": "Morning recovered only after transient reconnect and reload. Photo 08:00 + request 08:01 accepted 08:52; no SKU inferred from price. Voice note 15:28 is 11s. Image 15:30 purpose unknown. No complete export or date-pagination verification."
+    }
+  ],
+  "counts": {
+    "customerChatsReviewed": 9,
+    "supplierChatsExcluded": 1,
+    "analysisCases": 24,
+    "locallyScoredCases": 10,
+    "notEvaluableMediaDependentCases": 14,
+    "historicalMessagesTotal": null,
+    "allInWindowChatsTotal": null
+  },
+  "media": {
+    "inWindowVoiceNotesObserved": 9,
+    "voiceNotesWithKnownDuration": 6,
+    "knownDurationSeconds": 93,
+    "unknownDurationVoiceNotes": 3,
+    "voiceNotesTranscribed": 0,
+    "fullImagesDecoded": 0,
+    "paidModelCalls": 0,
+    "localAudioAvailability": "Export contains omitted markers, no audio files. No installed whisper/whisper-cli/ffmpeg found; afconvert alone is not a transcription engine. No software installed, no external model invoked."
+  },
+  "uiBlock": {
+    "action": "Continue remaining chat pagination and open full product photographs/audio",
+    "target": "Existing commercial WhatsApp Web tab in Safari",
+    "status": "pending_manual_unlock",
+    "reason": "After two timeouts and transient exec-server disconnect, Mac tools reconnected. Safari reload briefly restored C09 text. Clicking its photo returned stale element ID; fresh AX then exposed only browser controls, screenshot blank. Raise, selecting the same active WhatsApp tab, and later state/screenshot verification did not restore page content. Final verification explicitly confirmed the Mac is locked again; manual unlock is required to continue.",
+    "manualUnlockPreviouslySucceeded": true,
+    "currentlyLockedNotEstablished": false,
+    "deniedByAutoReview": false,
+    "uncertainAction": "Prior date-navigation call timed out; no assumption that date filtering succeeded. Photo click failed with invalid element ID.",
+    "noFurtherMutation": "No message entry, no sending, no order, no server restart. No browser login, security setting change or alternate UI control technology used.",
+    "latestCheck": "Final supported getAXState explicitly reports: The Mac is locked and automatic unlock could not unlock it. Ask the user to unlock the Mac manually before continuing."
+  },
+  "evaluation": {
+    "originalFixture": "test/fixtures/distrifinca-business-2026-10-29.json",
+    "originalFixtureUnchanged": true,
+    "additionalFixture": "test/fixtures/distrifinca-business-followup-2026-10-29.json",
+    "supplementalMode": "Post-fix diagnostic holdout, no production tuning. Before uses ablation of sole normalizer, not a pre-observation recording.",
+    "combinedBefore": {
+      "correct": 4,
+      "missed": 1,
+      "false_positive": 0,
+      "safe_abstention": 5,
+      "not_evaluable": 14
+    },
+    "combinedAfter": {
+      "correct": 5,
+      "missed": 0,
+      "false_positive": 0,
+      "safe_abstention": 5,
+      "not_evaluable": 14
+    },
+    "fullSuiteLastVerifiedPassed": 1049,
+    "newProductionEditsInFollowup": 0,
+    "pendingReviewProposals": 3
+  },
+  "privacy": "Report and fixtures anonymized. Raw export retained locally, filtered records in private temporary directory; no raw export, catalog or media uploaded to Library.",
+  "sideEffects": {
+    "messagesSent": 0,
+    "ordersCreated": 0,
+    "supabaseWrites": 0,
+    "serverRestarts": 0,
+    "openAICalls": 0,
+    "note": "Normal read receipts may occur from opening chats. No explicit status, assignment or resolution actions."
+  },
+  "resumeChecks": [
+    {
+      "checkedAtUTC": "2026-10-30T00:55:35.995367+00:00",
+      "action": "Select existing Safari session through supported computer-use entry point",
+      "result": "The Mac is locked and automatic unlock could not unlock it. Ask the user to unlock the Mac manually before continuing.",
+      "status": "pending_manual_unlock",
+      "additionalChatsRead": 0,
+      "additionalMediaDecoded": 0,
+      "deniedByAutoReview": false
+    },
+    {
+      "checkedAtUTC": "2026-10-30T02:47:32.750401+00:00",
+      "action": "Select existing Safari session; reload existing commercial WhatsApp tab whose content was unavailable",
+      "result": "Mac accessible; WhatsApp loading screen says messages are downloading. No chat content read yet.",
+      "status": "waiting_whatsapp_message_load",
+      "additionalChatsRead": 0,
+      "additionalMediaDecoded": 0,
+      "deniedByAutoReview": false
+    }
+  ]
+}

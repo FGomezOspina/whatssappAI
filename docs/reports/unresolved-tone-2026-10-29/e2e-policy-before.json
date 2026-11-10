@@ -1,0 +1,4224 @@
+{
+  "at": "2026-10-29T21:18:42.789Z",
+  "source": "Kapso API + scoped Supabase reads; actual UI-originated Sandbox messages",
+  "tenant": {
+    "id": "1d2d79c4-19e0-4a6d-83f1-cf714ee7618b",
+    "slug": "distrifinca",
+    "resolution": "sandbox"
+  },
+  "messages": {
+    "data": [
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSMEIyRjdCMjdERkVBMkM4QTNDAA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Por ahora no puedo confirmarte esa referencia con seguridad. Si quieres, podemos revisar otras opciones parecidas. 🙂",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSMEIyRjdCMjdERkVBMkM4QTNDAA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793307392",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSMEIyRjdCMjdERkVBMkM4QTNDAA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793307392",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSMEIyRjdCMjdERkVBMkM4QTNDAA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793307393",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "Por ahora no puedo confirmarte esa referencia con seguridad. Si quieres, podemos revisar otras opciones parecidas. 🙂"
+        },
+        "timestamp": "1793307391",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDFCNzE4NTI3NzhERDY2QTEwOQA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Solo consultar: tienen marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos?"
+        },
+        "text": {
+          "body": "Solo consultar: tienen marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos?"
+        },
+        "timestamp": "1793307357",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSQjA5REIzMDFEREE0REQzREM2AA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Por ahora no puedo confirmar esa referencia. ¿Quieres que revisemos otras opciones? Mantengo tu elección sin sustituirla por otro producto.",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSQjA5REIzMDFEREE0REQzREM2AA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793307298",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSQjA5REIzMDFEREE0REQzREM2AA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793307298",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "Por ahora no puedo confirmar esa referencia. ¿Quieres que revisemos otras opciones? Mantengo tu elección sin sustituirla por otro producto."
+        },
+        "timestamp": "1793307297",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDRDNDlFMkFGODQ0MDQ2RDAwRgA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Solo consultar: tienen marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos?"
+        },
+        "text": {
+          "body": "Solo consultar: tienen marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos?"
+        },
+        "timestamp": "1793307265",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSQkM1NzE4OTMwREQ0NDdCMjYxAA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "No encuentro ZETAPRUEBAQ9 ZQ17 de 4kg en el catálogo actual. No la he agregado al pedido. ¿Puedes confirmar el nombre completo y la presentación para revisarlo?",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSQkM1NzE4OTMwREQ0NDdCMjYxAA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793305425",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSQkM1NzE4OTMwREQ0NDdCMjYxAA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793305426",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "No encuentro ZETAPRUEBAQ9 ZQ17 de 4kg en el catálogo actual. No la he agregado al pedido. ¿Puedes confirmar el nombre completo y la presentación para revisarlo?"
+        },
+        "timestamp": "1793305424",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDREMTQyRkI0OTk2Njg2QjU0MwA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Solo consultar: tienen marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos?"
+        },
+        "text": {
+          "body": "Solo consultar: tienen marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos?"
+        },
+        "timestamp": "1793305396",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSNkZEMDRCQTEwOTZENkIyMTY0AA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Claro, para tu gato tengo estas opciones dentro de $25.000:\n\n- RASCADOR unidad: $16.000 — juguete, gato.\n- RASCADOR REDONDO GATOS unidad: $22.000 — juguete, gato.\n\nLas existencias están por confirmar. ¿Cuál te gustaría revisar?",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSNkZEMDRCQTEwOTZENkIyMTY0AA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793305381",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSNkZEMDRCQTEwOTZENkIyMTY0AA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793305381",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSNkZEMDRCQTEwOTZENkIyMTY0AA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793305382",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "Claro, para tu gato tengo estas opciones dentro de $25.000:\n\n- RASCADOR unidad: $16.000 — juguete, gato.\n- RASCADOR REDONDO GATOS unidad: $22.000 — juguete, gato.\n\nLas existencias están por confirmar. ¿Cuál te gustaría revisar?"
+        },
+        "timestamp": "1793305380",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDY0MzY4NjdDMzg0N0UzNTQ2NQA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Ahora solo quiero saber qué juguetes tienes para mi gato, hasta 25000 pesos"
+        },
+        "text": {
+          "body": "Ahora solo quiero saber qué juguetes tienes para mi gato, hasta 25000 pesos"
+        },
+        "timestamp": "1793305355",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSREFGMTE4QUM0MjMwRTI2RDI4AA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Para orientarte sobre diagnóstico o tratamiento se necesita criterio veterinario. Dejo tu consulta pendiente de un asesor para que te ayude con la orientación especializada.",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSREFGMTE4QUM0MjMwRTI2RDI4AA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793305309",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSREFGMTE4QUM0MjMwRTI2RDI4AA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793305309",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSREFGMTE4QUM0MjMwRTI2RDI4AA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793305310",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "Para orientarte sobre diagnóstico o tratamiento se necesita criterio veterinario. Dejo tu consulta pendiente de un asesor para que te ayude con la orientación especializada."
+        },
+        "timestamp": "1793305308",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDYyRjc2NjZCQUM4NjFGRUIzMgA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Mi gato no puede orinar, ¿qué comida le doy para curarlo?"
+        },
+        "text": {
+          "body": "Mi gato no puede orinar, ¿qué comida le doy para curarlo?"
+        },
+        "timestamp": "1793305288",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSREVDNUQyOEMyNDc0QjQzQjMwAA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Presentaciones y precios unitarios:\n- PRO PLAN CANINE UR 2kg: $122.000",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSREVDNUQyOEMyNDc0QjQzQjMwAA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793305255",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSREVDNUQyOEMyNDc0QjQzQjMwAA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793305256",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "Presentaciones y precios unitarios:\n- PRO PLAN CANINE UR 2kg: $122.000"
+        },
+        "timestamp": "1793305254",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDIwRjM2OEFGMUJCMjFDQjRGQwA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Solo consultar el precio, no lo agregues al pedido"
+        },
+        "text": {
+          "body": "Solo consultar el precio, no lo agregues al pedido"
+        },
+        "timestamp": "1793305228",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDEwRjJCOEM3OEEzRTg3Q0FDNgA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "el concentrado"
+        },
+        "text": {
+          "body": "el concentrado"
+        },
+        "timestamp": "1793305211",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSRDI4MjlGMkRCQkU2NTJEQzhFAA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Para perrito, ¿busca PRO PLAN CANINE UR de 2 kg o PRO PLAN CANINE LATA UR por unidad?",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSRDI4MjlGMkRCQkU2NTJEQzhFAA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793305194",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSRDI4MjlGMkRCQkU2NTJEQzhFAA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793305195",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "Para perrito, ¿busca PRO PLAN CANINE UR de 2 kg o PRO PLAN CANINE LATA UR por unidad?"
+        },
+        "timestamp": "1793305194",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDJBNDBFQjA2M0EwMDRGODkwOAA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Para perrito"
+        },
+        "text": {
+          "body": "Para perrito"
+        },
+        "timestamp": "1793305166",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSNUM5QjI2MUI0QjI0N0EzNkU2AA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "¿Es para perro o para gato? 😊",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSNUM5QjI2MUI0QjI0N0EzNkU2AA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793305151",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSNUM5QjI2MUI0QjI0N0EzNkU2AA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793305151",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "¿Es para perro o para gato? 😊"
+        },
+        "timestamp": "1793305150",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDI5M0FDMzc4RjY1NjE0NTZFRgA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Cuánto vale Pro Plan UR"
+        },
+        "text": {
+          "body": "Cuánto vale Pro Plan UR"
+        },
+        "timestamp": "1793305123",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSOENGODhCNjAxRDJFMzQwOTc5AA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Para tu gato, estas opciones coinciden con lo que buscas y están dentro de $25.000:\n\n- RASCADOR unidad: $16.000 — juguete, gato.\n- RASCADOR REDONDO GATOS unidad: $22.000 — juguete, gato.\n\nLos precios están registrados; las existencias están por confirmar.\n\n¿Cuál te gustaría revisar?",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSOENGODhCNjAxRDJFMzQwOTc5AA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793305091",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSOENGODhCNjAxRDJFMzQwOTc5AA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793305092",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "Para tu gato, estas opciones coinciden con lo que buscas y están dentro de $25.000:\n\n- RASCADOR unidad: $16.000 — juguete, gato.\n- RASCADOR REDONDO GATOS unidad: $22.000 — juguete, gato.\n\nLos precios están registrados; las existencias están por confirmar.\n\n¿Cuál te gustaría revisar?"
+        },
+        "timestamp": "1793305090",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDE5QjgwRjVFODkwMjY5N0RFMAA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Y para mi gato, un juguete de menos de 25000 pesos. Solo quiero opciones"
+        },
+        "text": {
+          "body": "Y para mi gato, un juguete de menos de 25000 pesos. Solo quiero opciones"
+        },
+        "timestamp": "1793305067",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSRTM3RDc4MjdBMjI3MUNEQkM3AA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Para tu perro adulto, estas opciones coinciden con lo que buscas y están dentro de $20.000:\n\n- GOLOSINAS x100: $100 — premio, perro.\n- HUESO 2-3 unidad: $1.200 — premio, perro.\n- GOLOSINAS 1500 unidad: $1.500 — premio, perro.\n\nLos precios están registrados; las existencias están por confirmar.\n\n¿Cuál te gustaría revisar?",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSRTM3RDc4MjdBMjI3MUNEQkM3AA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793305053",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSRTM3RDc4MjdBMjI3MUNEQkM3AA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793305053",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSRTM3RDc4MjdBMjI3MUNEQkM3AA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793305054",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "Para tu perro adulto, estas opciones coinciden con lo que buscas y están dentro de $20.000:\n\n- GOLOSINAS x100: $100 — premio, perro.\n- HUESO 2-3 unidad: $1.200 — premio, perro.\n- GOLOSINAS 1500 unidad: $1.500 — premio, perro.\n\nLos precios están registrados; las existencias están por confirmar.\n\n¿Cuál te gustaría revisar?"
+        },
+        "timestamp": "1793305052",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDE0MkUwMDM0RTYxRTg5MzE2MQA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Máximo 20000 pesos"
+        },
+        "text": {
+          "body": "Máximo 20000 pesos"
+        },
+        "timestamp": "1793305026",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEFDN0Q2MzRBOTM2NUU0NkQ3QwA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "delivered",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Ahora busco premios para mi perro adulto"
+        },
+        "text": {
+          "body": "Ahora busco premios para mi perro adulto"
+        },
+        "timestamp": "1793305024",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSM0Y0MEJGQzFFNEMzODYwQTM4AA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Claro, para gato cachorro tienes estas opciones:\n\n- OHMAIGAT GATITOS x 200 gr: $3.800 — concentrado, gato, cachorro.\n- MIRRINGO GATITO x 500gr: $5.900 — concentrado, gato, cachorro.\n- PRO PLAN POUCH FELINO KITTEN 85gr: $6.200 — comida humeda, gato, cachorro.\n\nLos precios están registrados; las existencias están por confirmar.\n\n¿Prefieres comida húmeda o concentrado?",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSM0Y0MEJGQzFFNEMzODYwQTM4AA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793305000",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSM0Y0MEJGQzFFNEMzODYwQTM4AA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793305000",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSM0Y0MEJGQzFFNEMzODYwQTM4AA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793305001",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "Claro, para gato cachorro tienes estas opciones:\n\n- OHMAIGAT GATITOS x 200 gr: $3.800 — concentrado, gato, cachorro.\n- MIRRINGO GATITO x 500gr: $5.900 — concentrado, gato, cachorro.\n- PRO PLAN POUCH FELINO KITTEN 85gr: $6.200 — comida humeda, gato, cachorro.\n\nLos precios están registrados; las existencias están por confirmar.\n\n¿Prefieres comida húmeda o concentrado?"
+        },
+        "timestamp": "1793304999",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDc5REYyOUIwMDVGMTdEMjczQgA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "No sé el nombre del producto"
+        },
+        "text": {
+          "body": "No sé el nombre del producto"
+        },
+        "timestamp": "1793304973",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSQjZGRDEwQUEwQTc0RUJBN0U1AA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Claro, para gato cachorro tengo estas opciones:\n\n- OHMAIGAT GATITOS x 200 gr: $3.800 — concentrado, gato, cachorro.\n- MIRRINGO GATITO x 500gr: $5.900 — concentrado, gato, cachorro.\n- PRO PLAN POUCH FELINO KITTEN 85gr: $6.200 — comida humeda, gato, cachorro.\n\nLos precios están registrados; las existencias están por confirmar.\n\n¿Prefieres comida húmeda o concentrado?",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSQjZGRDEwQUEwQTc0RUJBN0U1AA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793304959",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSQjZGRDEwQUEwQTc0RUJBN0U1AA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793304960",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "Claro, para gato cachorro tengo estas opciones:\n\n- OHMAIGAT GATITOS x 200 gr: $3.800 — concentrado, gato, cachorro.\n- MIRRINGO GATITO x 500gr: $5.900 — concentrado, gato, cachorro.\n- PRO PLAN POUCH FELINO KITTEN 85gr: $6.200 — comida humeda, gato, cachorro.\n\nLos precios están registrados; las existencias están por confirmar.\n\n¿Prefieres comida húmeda o concentrado?"
+        },
+        "timestamp": "1793304958",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDNBRUE3QkU0MTNDMDVDNTlENAA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Qué alimento tiene para gato cachorro"
+        },
+        "text": {
+          "body": "Qué alimento tiene para gato cachorro"
+        },
+        "timestamp": "1793304932",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSMkMzQzhGQ0M1RjI1RUJGQ0I3AA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Claro, para tu gato cachorro te puedo orientar con estas opciones:\n\n- PRO PLAN POUCH FELINO KITTEN 85gr: $6.200 — comida humeda, gato, cachorro.\n- ROYAL CANIN LATA KITTEN LOAF unidad: $10.500 — comida humeda, gato, cachorro.\n- ROYAL CANIN KITTEN 400gr: $30.000 — concentrado, gato, cachorro.\n\nLos precios están registrados; las existencias están por confirmar.\n\n¿Prefieres comida húmeda o concentrado?",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSMkMzQzhGQ0M1RjI1RUJGQ0I3AA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793304918",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSMkMzQzhGQ0M1RjI1RUJGQ0I3AA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793304918",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSMkMzQzhGQ0M1RjI1RUJGQ0I3AA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793304919",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "Claro, para tu gato cachorro te puedo orientar con estas opciones:\n\n- PRO PLAN POUCH FELINO KITTEN 85gr: $6.200 — comida humeda, gato, cachorro.\n- ROYAL CANIN LATA KITTEN LOAF unidad: $10.500 — comida humeda, gato, cachorro.\n- ROYAL CANIN KITTEN 400gr: $30.000 — concentrado, gato, cachorro.\n\nLos precios están registrados; las existencias están por confirmar.\n\n¿Prefieres comida húmeda o concentrado?"
+        },
+        "timestamp": "1793304917",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDA0MDUzNDc5MEE4MTc1NTY3NQA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Quiero un dimicilio para un alimento para mi gato de 6 meses que me recomienda"
+        },
+        "text": {
+          "body": "Quiero un dimicilio para un alimento para mi gato de 6 meses que me recomienda"
+        },
+        "timestamp": "1793304890",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSQjA2NDAzOTVEQzNEMDM5RTcxAA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Claro, para tu gato cachorro te puedo orientar con estas opciones:\n\n- PRO PLAN POUCH FELINO KITTEN 85gr: $6.200 — comida humeda, gato, cachorro.\n- ROYAL CANIN LATA KITTEN LOAF unidad: $10.500 — comida humeda, gato, cachorro.\n- ROYAL CANIN LATA BABY CAT TROCITOS unidad: $10.500 — comida humeda, gato, cachorro.\n\nLos precios están registrados; las existencias están por confirmar.\n\n¿Prefieres pouch o lata?",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSQjA2NDAzOTVEQzNEMDM5RTcxAA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793304777",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSQjA2NDAzOTVEQzNEMDM5RTcxAA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793304777",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSQjA2NDAzOTVEQzNEMDM5RTcxAA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793304778",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "Claro, para tu gato cachorro te puedo orientar con estas opciones:\n\n- PRO PLAN POUCH FELINO KITTEN 85gr: $6.200 — comida humeda, gato, cachorro.\n- ROYAL CANIN LATA KITTEN LOAF unidad: $10.500 — comida humeda, gato, cachorro.\n- ROYAL CANIN LATA BABY CAT TROCITOS unidad: $10.500 — comida humeda, gato, cachorro.\n\nLos precios están registrados; las existencias están por confirmar.\n\n¿Prefieres pouch o lata?"
+        },
+        "timestamp": "1793304776",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEEyQUREMTIzMTgyRkU4Njc2RgA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "No sé el nombre del producto"
+        },
+        "text": {
+          "body": "No sé el nombre del producto"
+        },
+        "timestamp": "1793304751",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSN0Q3QjZGMzQ0NEVDMEZEMEI2AA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Para tu gato cachorro, estas opciones coinciden con lo que buscas:\n\n- OHMAIGAT GATITOS x 200 gr: $3.800 — concentrado, gato, cachorro.\n- PRO PLAN POUCH FELINO KITTEN 85gr: $6.200 — comida humeda, gato, cachorro.\n- ROYAL CANIN LATA KITTEN LOAF unidad: $10.500 — comida humeda, gato, cachorro.\n\nLos precios están registrados; las existencias están por confirmar.\n\n¿Cuál te gustaría revisar?",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSN0Q3QjZGMzQ0NEVDMEZEMEI2AA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793304694",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSN0Q3QjZGMzQ0NEVDMEZEMEI2AA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793304694",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSN0Q3QjZGMzQ0NEVDMEZEMEI2AA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793304695",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "Para tu gato cachorro, estas opciones coinciden con lo que buscas:\n\n- OHMAIGAT GATITOS x 200 gr: $3.800 — concentrado, gato, cachorro.\n- PRO PLAN POUCH FELINO KITTEN 85gr: $6.200 — comida humeda, gato, cachorro.\n- ROYAL CANIN LATA KITTEN LOAF unidad: $10.500 — comida humeda, gato, cachorro.\n\nLos precios están registrados; las existencias están por confirmar.\n\n¿Cuál te gustaría revisar?"
+        },
+        "timestamp": "1793304693",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDA5RUY2QUY5Q0Q2NjIyNUE1RQA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Qué alimento tiene para gato cachorro"
+        },
+        "text": {
+          "body": "Qué alimento tiene para gato cachorro"
+        },
+        "timestamp": "1793304667",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSQUU1MjNFMThDODRFMUE2MEI4AA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Para tu gato cachorro, estas opciones coinciden con lo que buscas:\n\n- OHMAIGAT GATITOS x 200 gr: $3.800 — concentrado, gato, cachorro.\n- MIRRINGO GATITO x 500gr: $5.900 — concentrado, gato, cachorro.\n- PRO PLAN POUCH FELINO KITTEN 85gr: $6.200 — comida humeda, gato, cachorro.\n\nLos precios están registrados; las existencias están por confirmar.\n\n¿Cuál te gustaría revisar?",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSQUU1MjNFMThDODRFMUE2MEI4AA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793304636",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSQUU1MjNFMThDODRFMUE2MEI4AA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793304636",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSQUU1MjNFMThDODRFMUE2MEI4AA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793304637",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "Para tu gato cachorro, estas opciones coinciden con lo que buscas:\n\n- OHMAIGAT GATITOS x 200 gr: $3.800 — concentrado, gato, cachorro.\n- MIRRINGO GATITO x 500gr: $5.900 — concentrado, gato, cachorro.\n- PRO PLAN POUCH FELINO KITTEN 85gr: $6.200 — comida humeda, gato, cachorro.\n\nLos precios están registrados; las existencias están por confirmar.\n\n¿Cuál te gustaría revisar?"
+        },
+        "timestamp": "1793304635",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEYwQjc1MTc3QUQ5RDJCQUM3QQA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Quiero un dimicilio para un alimento para mi gato de 6 meses que me recomienda"
+        },
+        "text": {
+          "body": "Quiero un dimicilio para un alimento para mi gato de 6 meses que me recomienda"
+        },
+        "timestamp": "1793304609",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSODkwQTgwMUM5OTJEQUJGNDUxAA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Presentaciones y precios unitarios:\n- PRO PLAN CANINE UR 2kg: $122.000",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSODkwQTgwMUM5OTJEQUJGNDUxAA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793233430",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSODkwQTgwMUM5OTJEQUJGNDUxAA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793233430",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "Presentaciones y precios unitarios:\n- PRO PLAN CANINE UR 2kg: $122.000"
+        },
+        "timestamp": "1793233429",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDYxRjJERUU1OENGRkVENjc0OQA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "el concentrado"
+        },
+        "text": {
+          "body": "el concentrado"
+        },
+        "timestamp": "1793233398",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSOTkwMENDMEI5NTkzMTRBQzlDAA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Para perrito, lo que me aparece es Pro Plan Canine UR de 2 kg o Pro Plan Canine Lata UR por unidad. ¿Cuál de las dos necesitas? 🙂\n\nPedido:\n- 1 x BR CAT SALMON x 1 kg: $30.500\n- 1 x ARENA KITTEN LAVANDA 8kg: $23.800\nTotal: $54.300",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSOTkwMENDMEI5NTkzMTRBQzlDAA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793233370",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSOTkwMENDMEI5NTkzMTRBQzlDAA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793233370",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "Para perrito, lo que me aparece es Pro Plan Canine UR de 2 kg o Pro Plan Canine Lata UR por unidad. ¿Cuál de las dos necesitas? 🙂\n\nPedido:\n- 1 x BR CAT SALMON x 1 kg: $30.500\n- 1 x ARENA KITTEN LAVANDA 8kg: $23.800\nTotal: $54.300"
+        },
+        "timestamp": "1793233369",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDNCQjk3ODU2NUE1MjQ0NEIwNgA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "para perrito"
+        },
+        "text": {
+          "body": "para perrito"
+        },
+        "timestamp": "1793233336",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSRjJGNkI0NDI5NTRDNUM5NzE3AA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Claro 🙂 ¿Es para perro o para gato? Con eso te confirmo el Pro Plan UR que aplica y su precio.\n\nPedido:\n- 1 x BR CAT SALMON x 1 kg: $30.500\n- 1 x ARENA KITTEN LAVANDA 8kg: $23.800\nTotal: $54.300",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSRjJGNkI0NDI5NTRDNUM5NzE3AA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793233325",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSRjJGNkI0NDI5NTRDNUM5NzE3AA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793233325",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "Claro 🙂 ¿Es para perro o para gato? Con eso te confirmo el Pro Plan UR que aplica y su precio.\n\nPedido:\n- 1 x BR CAT SALMON x 1 kg: $30.500\n- 1 x ARENA KITTEN LAVANDA 8kg: $23.800\nTotal: $54.300"
+        },
+        "timestamp": "1793233324",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMENGRjBBRERDRDZEN0Q5RDE3QgA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "y el tiene problemas urinarios, me recomendaron pro plan ur, cuanto cuesta?"
+        },
+        "text": {
+          "body": "y el tiene problemas urinarios, me recomendaron pro plan ur, cuanto cuesta?"
+        },
+        "timestamp": "1793233292",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSMzBGNEFGMTBFRUVEMjcxRDQ5AA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Para orientarte sobre diagnóstico o tratamiento se necesita criterio veterinario. Dejo tu consulta pendiente de un asesor para que te ayude con la orientación especializada.",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSMzBGNEFGMTBFRUVEMjcxRDQ5AA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793233276",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSMzBGNEFGMTBFRUVEMjcxRDQ5AA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793233276",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "Para orientarte sobre diagnóstico o tratamiento se necesita criterio veterinario. Dejo tu consulta pendiente de un asesor para que te ayude con la orientación especializada."
+        },
+        "timestamp": "1793233275",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEFDQUUxRjg0MDI2RjNCNDY3NwA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Mi perro está vomitando y con diarrea, ¿qué tratamiento y qué dosis le doy?"
+        },
+        "text": {
+          "body": "Mi perro está vomitando y con diarrea, ¿qué tratamiento y qué dosis le doy?"
+        },
+        "timestamp": "1793233250",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSRTU4NTI4QzFDQkU5QzlCMTk5AA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Con la información disponible todavía no puedo confirmar esa referencia en el catálogo. No he agregado un producto distinto. Si consigues el nombre completo o una foto del empaque, puedo revisarlo; también puedes consultar otra referencia.",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSRTU4NTI4QzFDQkU5QzlCMTk5AA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793233225",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSRTU4NTI4QzFDQkU5QzlCMTk5AA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793233226",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "Con la información disponible todavía no puedo confirmar esa referencia en el catálogo. No he agregado un producto distinto. Si consigues el nombre completo o una foto del empaque, puedo revisarlo; también puedes consultar otra referencia."
+        },
+        "timestamp": "1793233224",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEUzMUFCNTcyMkVCMkNDN0Q2NQA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "No tengo más datos ni foto de ese producto"
+        },
+        "text": {
+          "body": "No tengo más datos ni foto de ese producto"
+        },
+        "timestamp": "1793233198",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSMTM2M0QyRDkyMzAxMzcwNEJFAA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "No encuentro ZETAPRUEBAQ9 ZQ17 de 4kg en el catálogo actual. No la he agregado al pedido. ¿Puedes confirmar el nombre completo y la presentación para revisarlo?\n\nPedido:\n- 1 x BR CAT SALMON x 1 kg: $30.500\n- 1 x ARENA KITTEN LAVANDA 8kg: $23.800\nTotal: $54.300",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSMTM2M0QyRDkyMzAxMzcwNEJFAA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793233173",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSMTM2M0QyRDkyMzAxMzcwNEJFAA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793233174",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "No encuentro ZETAPRUEBAQ9 ZQ17 de 4kg en el catálogo actual. No la he agregado al pedido. ¿Puedes confirmar el nombre completo y la presentación para revisarlo?\n\nPedido:\n- 1 x BR CAT SALMON x 1 kg: $30.500\n- 1 x ARENA KITTEN LAVANDA 8kg: $23.800\nTotal: $54.300"
+        },
+        "timestamp": "1793233172",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDY0RkNBMUM0NkZCQUFEODUwRgA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "¿Tienen alimento marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos? Solo consultar."
+        },
+        "text": {
+          "body": "¿Tienen alimento marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos? Solo consultar."
+        },
+        "timestamp": "1793233140",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSMzc2Mjg3NTMzOERFNDFEQzJGAA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Sí, DIAMOND INDOOR CAT de 500 gr te queda en $19.500 🐾",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSMzc2Mjg3NTMzOERFNDFEQzJGAA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793233117",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSMzc2Mjg3NTMzOERFNDFEQzJGAA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793233117",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "Sí, DIAMOND INDOOR CAT de 500 gr te queda en $19.500 🐾"
+        },
+        "timestamp": "1793233116",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDIyQUQ3MzVGOEZEQTI1RTRFNAA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "el de 500 gramos, solo precio"
+        },
+        "text": {
+          "body": "el de 500 gramos, solo precio"
+        },
+        "timestamp": "1793233072",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEJGMDMwMDdBOUM0NURBNDM3OAA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "¿Cuánto vale Diamond indoor cat?"
+        },
+        "text": {
+          "body": "¿Cuánto vale Diamond indoor cat?"
+        },
+        "timestamp": "1793233067",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSMDY5NDhCRDREQTc0MDkzRkRBAA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "No encuentro SOLO de 500g en el catálogo actual. No la he agregado al pedido. ¿Puedes confirmar el nombre completo y la presentación para revisarlo?\n\nPedido:\n- 1 x BR CAT SALMON x 1 kg: $30.500\n- 1 x ARENA KITTEN LAVANDA 8kg: $23.800\nTotal: $54.300",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSMDY5NDhCRDREQTc0MDkzRkRBAA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793232927",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSMDY5NDhCRDREQTc0MDkzRkRBAA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793232927",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "No encuentro SOLO de 500g en el catálogo actual. No la he agregado al pedido. ¿Puedes confirmar el nombre completo y la presentación para revisarlo?\n\nPedido:\n- 1 x BR CAT SALMON x 1 kg: $30.500\n- 1 x ARENA KITTEN LAVANDA 8kg: $23.800\nTotal: $54.300"
+        },
+        "timestamp": "1793232926",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEQ2MzM0MEQ5MjZBOEZDMTIwMAA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "el de 500 gramos, solo precio"
+        },
+        "text": {
+          "body": "el de 500 gramos, solo precio"
+        },
+        "timestamp": "1793232880",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDdBM0QxQURBNEJGMzVBMjVBQwA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "¿Cuánto vale Diamond indoor cat?"
+        },
+        "text": {
+          "body": "¿Cuánto vale Diamond indoor cat?"
+        },
+        "timestamp": "1793232872",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSMjhCMTg4QzVCMjMzQjZFMkE1AA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "AGILITY GRAND CACH de 3 kg está en $65.400 🐶",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSMjhCMTg4QzVCMjMzQjZFMkE1AA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793232823",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSMjhCMTg4QzVCMjMzQjZFMkE1AA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793232823",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSMjhCMTg4QzVCMjMzQjZFMkE1AA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793232824",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "AGILITY GRAND CACH de 3 kg está en $65.400 🐶"
+        },
+        "timestamp": "1793232822",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDI0MDdFOUEyNzE3QUZBRUQzOQA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "el de 3 kilos, solo dime su precio"
+        },
+        "text": {
+          "body": "el de 3 kilos, solo dime su precio"
+        },
+        "timestamp": "1793232791",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSMDMwNTIzRkVBNDZDOUNDRjM0AA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Presentaciones y precios unitarios:\n- AGILITY GRAND CACH 1.5kg: $33.700\n- AGILITY GRAND CACH 3kg: $65.400\n- AGILITY GRAND CACH 15kg: $299.900",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSMDMwNTIzRkVBNDZDOUNDRjM0AA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793232747",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSMDMwNTIzRkVBNDZDOUNDRjM0AA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793232747",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "Presentaciones y precios unitarios:\n- AGILITY GRAND CACH 1.5kg: $33.700\n- AGILITY GRAND CACH 3kg: $65.400\n- AGILITY GRAND CACH 15kg: $299.900"
+        },
+        "timestamp": "1793232746",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEI0RTlBOTVERjNENDM5MzlENgA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "el de 3 kilos, solo dime su precio"
+        },
+        "text": {
+          "body": "el de 3 kilos, solo dime su precio"
+        },
+        "timestamp": "1793232716",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSODMyQkVDQjJFMUE3RjZFMTQzAA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Presentaciones y precios unitarios:\n- AGILITY GRAND CACH 1.5kg: $33.700\n- AGILITY GRAND CACH 3kg: $65.400\n- AGILITY GRAND CACH 15kg: $299.900",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSODMyQkVDQjJFMUE3RjZFMTQzAA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793232703",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSODMyQkVDQjJFMUE3RjZFMTQzAA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793232703",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "Presentaciones y precios unitarios:\n- AGILITY GRAND CACH 1.5kg: $33.700\n- AGILITY GRAND CACH 3kg: $65.400\n- AGILITY GRAND CACH 15kg: $299.900"
+        },
+        "timestamp": "1793232702",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDYzNDU2Qjk2MDJENjVFNkJDOAA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "para perro de raza grande"
+        },
+        "text": {
+          "body": "para perro de raza grande"
+        },
+        "timestamp": "1793232671",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSOUFDMENGNjBCRThDNzlEMUM3AA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "¿Es para perro o gato? Así te digo el Agility Gold para cachorro que corresponde 🐶\n\nPedido:\n- 1 x BR CAT SALMON x 1 kg: $30.500\n- 1 x ARENA KITTEN LAVANDA 8kg: $23.800\nTotal: $54.300",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSOUFDMENGNjBCRThDNzlEMUM3AA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793232665",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSOUFDMENGNjBCRThDNzlEMUM3AA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793232665",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSOUFDMENGNjBCRThDNzlEMUM3AA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793232666",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "¿Es para perro o gato? Así te digo el Agility Gold para cachorro que corresponde 🐶\n\nPedido:\n- 1 x BR CAT SALMON x 1 kg: $30.500\n- 1 x ARENA KITTEN LAVANDA 8kg: $23.800\nTotal: $54.300"
+        },
+        "timestamp": "1793232664",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEVBQTJCOUFFQzY3MzE3NEYwMAA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Ahora solo quiero saber cuánto vale Agility gold para cachorros"
+        },
+        "text": {
+          "body": "Ahora solo quiero saber cuánto vale Agility gold para cachorros"
+        },
+        "timestamp": "1793232632",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSMjJENEE2QjhEMDg1RTFGQjM5AA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "ROYALCANIN GASTROINTESTINAL PERRO 2kg está en $129.000. ¿Quieres que te lo deje agregado?",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSMjJENEE2QjhEMDg1RTFGQjM5AA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793232618",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSMjJENEE2QjhEMDg1RTFGQjM5AA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793232619",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "ROYALCANIN GASTROINTESTINAL PERRO 2kg está en $129.000. ¿Quieres que te lo deje agregado?"
+        },
+        "timestamp": "1793232617",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEMzMTQ4Q0VEQ0FDQTE4NjUxOQA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "¿Qué precio tiene royal canon gastrointestinal para perro de 2kg? Solo cotización."
+        },
+        "text": {
+          "body": "¿Qué precio tiene royal canon gastrointestinal para perro de 2kg? Solo cotización."
+        },
+        "timestamp": "1793232585",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSMkFBOUQ2QjkyQzAwN0FGOEFFAA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Presentaciones y precios unitarios:\n- PRO PLAN CANINE UR 2kg: $122.000",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSMkFBOUQ2QjkyQzAwN0FGOEFFAA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793232571",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSMkFBOUQ2QjkyQzAwN0FGOEFFAA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793232571",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSMkFBOUQ2QjkyQzAwN0FGOEFFAA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793232572",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "Presentaciones y precios unitarios:\n- PRO PLAN CANINE UR 2kg: $122.000"
+        },
+        "timestamp": "1793232570",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDMzNTc1QTUwMTE3OTUzMjE0OAA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "el concentrado"
+        },
+        "text": {
+          "body": "el concentrado"
+        },
+        "timestamp": "1793232544",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSQThGMUM5RTgzRTQ0REQ2QzMzAA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Sí, para perrito te puedo ofrecer PRO PLAN CANINE UR en 2 kg o PRO PLAN CANINE LATA UR en unidad. ¿Cuál de las dos necesitas? 🐾\n\nPedido:\n- 1 x BR CAT SALMON x 1 kg: $30.500\n- 1 x ARENA KITTEN LAVANDA 8kg: $23.800\nTotal: $54.300",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSQThGMUM5RTgzRTQ0REQ2QzMzAA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793232525",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSQThGMUM5RTgzRTQ0REQ2QzMzAA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793232525",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "Sí, para perrito te puedo ofrecer PRO PLAN CANINE UR en 2 kg o PRO PLAN CANINE LATA UR en unidad. ¿Cuál de las dos necesitas? 🐾\n\nPedido:\n- 1 x BR CAT SALMON x 1 kg: $30.500\n- 1 x ARENA KITTEN LAVANDA 8kg: $23.800\nTotal: $54.300"
+        },
+        "timestamp": "1793232524",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEI0RjNBNDRBRTcyOTZFMjNFMgA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "para perrito"
+        },
+        "text": {
+          "body": "para perrito"
+        },
+        "timestamp": "1793232500",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSNzkxNTc3Njc5NkJFOTgwRDFCAA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Claro, para ubicarte bien con Pro Plan UR, ¿es para perro o para gato? 🐾\n\nPedido:\n- 1 x BR CAT SALMON x 1 kg: $30.500\n- 1 x ARENA KITTEN LAVANDA 8kg: $23.800\nTotal: $54.300",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSNzkxNTc3Njc5NkJFOTgwRDFCAA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793232478",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSNzkxNTc3Njc5NkJFOTgwRDFCAA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793232478",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "Claro, para ubicarte bien con Pro Plan UR, ¿es para perro o para gato? 🐾\n\nPedido:\n- 1 x BR CAT SALMON x 1 kg: $30.500\n- 1 x ARENA KITTEN LAVANDA 8kg: $23.800\nTotal: $54.300"
+        },
+        "timestamp": "1793232477",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDhFRDI2RUEzOTFGNzY4MzhDQgA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "y el tiene problemas urinarios, me recomendaron pro plan ur, cuanto cuesta?"
+        },
+        "text": {
+          "body": "y el tiene problemas urinarios, me recomendaron pro plan ur, cuanto cuesta?"
+        },
+        "timestamp": "1793232448",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSQ0YzQUY2QjVCRUVEQTM4MUE1AA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Para orientarte sobre diagnóstico o tratamiento se necesita criterio veterinario. Dejo tu consulta pendiente de un asesor para que te ayude con la orientación especializada.",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSQ0YzQUY2QjVCRUVEQTM4MUE1AA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793232373",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSQ0YzQUY2QjVCRUVEQTM4MUE1AA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793232374",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "Para orientarte sobre diagnóstico o tratamiento se necesita criterio veterinario. Dejo tu consulta pendiente de un asesor para que te ayude con la orientación especializada."
+        },
+        "timestamp": "1793232372",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEY4RTlBNzcwNUEwNTQzNDZBRgA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "y el tiene problemas urinarios, me recomendaron pro plan ur, cuanto cuesta?"
+        },
+        "text": {
+          "body": "y el tiene problemas urinarios, me recomendaron pro plan ur, cuanto cuesta?"
+        },
+        "timestamp": "1793232353",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSQzlFMDc4MTdDODg4NjcxNDA3AA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Presentaciones y precios unitarios:\n- PRO PLAN CAT URINARY 1.5kg: $122.000\n- PRO PLAN GATO URINARY 3kg: $192.900",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSQzlFMDc4MTdDODg4NjcxNDA3AA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793232212",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSQzlFMDc4MTdDODg4NjcxNDA3AA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793232212",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "Presentaciones y precios unitarios:\n- PRO PLAN CAT URINARY 1.5kg: $122.000\n- PRO PLAN GATO URINARY 3kg: $192.900"
+        },
+        "timestamp": "1793232211",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDc1NTY3RjI0QkFBQTA2OTE1MwA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "el concentrado"
+        },
+        "text": {
+          "body": "el concentrado"
+        },
+        "timestamp": "1793232184",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSNjJFQzJGNTRFNDFDNzJBRDA0AA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Claro, te ayudo a encontrarlo. ¿Cuál referencia necesitas: PRO PLAN CANINE UR o PRO PLAN CANINE LATA UR?\n\nPedido:\n- 1 x BR CAT SALMON x 1 kg: $30.500\n- 1 x ARENA KITTEN LAVANDA 8kg: $23.800\nTotal: $54.300",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSNjJFQzJGNTRFNDFDNzJBRDA0AA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793231959",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSNjJFQzJGNTRFNDFDNzJBRDA0AA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793231959",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSNjJFQzJGNTRFNDFDNzJBRDA0AA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793231960",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "Claro, te ayudo a encontrarlo. ¿Cuál referencia necesitas: PRO PLAN CANINE UR o PRO PLAN CANINE LATA UR?\n\nPedido:\n- 1 x BR CAT SALMON x 1 kg: $30.500\n- 1 x ARENA KITTEN LAVANDA 8kg: $23.800\nTotal: $54.300"
+        },
+        "timestamp": "1793231958",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDEzNDJGQTc4QTVBOTgwOTE5MQA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "para perrito"
+        },
+        "text": {
+          "body": "para perrito"
+        },
+        "timestamp": "1793231929",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSRjdFRjY4ODYzNDBFRTI3NUFDAA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "¿Es para perro o gato? Con eso te digo el Pro Plan UR que corresponde y su precio 💬\n\nPedido:\n- 1 x BR CAT SALMON x 1 kg: $30.500\n- 1 x ARENA KITTEN LAVANDA 8kg: $23.800\nTotal: $54.300",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSRjdFRjY4ODYzNDBFRTI3NUFDAA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793231913",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSRjdFRjY4ODYzNDBFRTI3NUFDAA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793231913",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "¿Es para perro o gato? Con eso te digo el Pro Plan UR que corresponde y su precio 💬\n\nPedido:\n- 1 x BR CAT SALMON x 1 kg: $30.500\n- 1 x ARENA KITTEN LAVANDA 8kg: $23.800\nTotal: $54.300"
+        },
+        "timestamp": "1793231912",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDkzOTFBNUFCMEFFNjI1MEZFMwA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "y el tiene problemas urinarios, me recomendaron pro plan ur, cuanto cuesta?"
+        },
+        "text": {
+          "body": "y el tiene problemas urinarios, me recomendaron pro plan ur, cuanto cuesta?"
+        },
+        "timestamp": "1793231883",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSOTVBMDY2MzMwOTYzOTRBOEM3AA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Dejo tu consulta pendiente de un asesor para que pueda ayudarte a confirmar la referencia. Conservo lo que hemos conversado.",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSOTVBMDY2MzMwOTYzOTRBOEM3AA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793227463",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSOTVBMDY2MzMwOTYzOTRBOEM3AA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793227463",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "Dejo tu consulta pendiente de un asesor para que pueda ayudarte a confirmar la referencia. Conservo lo que hemos conversado."
+        },
+        "timestamp": "1793227462",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDdEMDEyMzczM0FDRTdFOTUxNgA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "para perrito"
+        },
+        "text": {
+          "body": "para perrito"
+        },
+        "timestamp": "1793227434",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSNjQ0RDdFQjJDMzBFMDhDMTMzAA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "¿Es para perro o para gato? Así te digo cuál Pro Plan UR te cuesta 🙂\n\nPedido:\n- 1 x BR CAT SALMON x 1 kg: $30.500\n- 1 x ARENA KITTEN LAVANDA 8kg: $23.800\nTotal: $54.300",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSNjQ0RDdFQjJDMzBFMDhDMTMzAA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793227425",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSNjQ0RDdFQjJDMzBFMDhDMTMzAA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793227426",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "¿Es para perro o para gato? Así te digo cuál Pro Plan UR te cuesta 🙂\n\nPedido:\n- 1 x BR CAT SALMON x 1 kg: $30.500\n- 1 x ARENA KITTEN LAVANDA 8kg: $23.800\nTotal: $54.300"
+        },
+        "timestamp": "1793227424",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEQ2MUExRUI3RDgyODMzRjU1QgA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "y el tiene problemas urinarios, me recomendaron pro plan ur, cuanto cuesta?"
+        },
+        "text": {
+          "body": "y el tiene problemas urinarios, me recomendaron pro plan ur, cuanto cuesta?"
+        },
+        "timestamp": "1793227395",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSRDQ5M0VCNjE5REE4NkVFRUMwAA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Pedido:\n- 1 x BR CAT SALMON x 1 kg: $30.500\n- 1 x ARENA KITTEN LAVANDA 8kg: $23.800\nTotal: $54.300\n\nPara completar tu domicilio, compárteme estos datos:\n- nombre completo\n- celular\n- método de pago: efectivo/contraentrega, transferencia bancaria, tarjeta débito o crédito, o llave bre-B",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSRDQ5M0VCNjE5REE4NkVFRUMwAA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793227387",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSRDQ5M0VCNjE5REE4NkVFRUMwAA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793227387",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "Pedido:\n- 1 x BR CAT SALMON x 1 kg: $30.500\n- 1 x ARENA KITTEN LAVANDA 8kg: $23.800\nTotal: $54.300\n\nPara completar tu domicilio, compárteme estos datos:\n- nombre completo\n- celular\n- método de pago: efectivo/contraentrega, transferencia bancaria, tarjeta débito o crédito, o llave bre-B"
+        },
+        "timestamp": "1793227386",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDNGQzRCMzg4ODJGQkZDMzNGRAA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Conjunto mirador del colibrí Carrera 2 norte 18-02\nTorre 2 apartamento 1003"
+        },
+        "text": {
+          "body": "Conjunto mirador del colibrí Carrera 2 norte 18-02\nTorre 2 apartamento 1003"
+        },
+        "timestamp": "1793227354",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDUxQzE3QjQzOUFCNzUzMTk5MAA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "delivered",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Para pedir por favor 1kg de BR FOR CAT sabor salmón \nY 8kg de arena KITTEN PAW olor LAVANDA"
+        },
+        "text": {
+          "body": "Para pedir por favor 1kg de BR FOR CAT sabor salmón \nY 8kg de arena KITTEN PAW olor LAVANDA"
+        },
+        "timestamp": "1793227349",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDhDOEY0RjVDMEYzOENGOTgzNAA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "delivered",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Hola buenos días"
+        },
+        "text": {
+          "body": "Hola buenos días"
+        },
+        "timestamp": "1793227344",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSRTZERjMwMTg0NTA4OTExQUQ5AA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Dejo tu consulta pendiente de un asesor para que pueda ayudarte a confirmar la referencia. Conservo lo que hemos conversado.",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSRTZERjMwMTg0NTA4OTExQUQ5AA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793224694",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSRTZERjMwMTg0NTA4OTExQUQ5AA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793224694",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSRTZERjMwMTg0NTA4OTExQUQ5AA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793224695",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "Dejo tu consulta pendiente de un asesor para que pueda ayudarte a confirmar la referencia. Conservo lo que hemos conversado."
+        },
+        "timestamp": "1793224693",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDA2NUM2NkQ2MUU0NzMwNDJBNgA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Para perrito"
+        },
+        "text": {
+          "body": "Para perrito"
+        },
+        "timestamp": "1793224666",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSQTdFMTBCNEY3RjE0QkYxRUFFAA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "¿Es para perro o gato? Con eso te confirmo el Pro Plan UR que te sirve y su precio 😊\n\nPedido:\n- 1 x BR CAT SALMON x 1 kg: $30.500\n- 1 x ARENA KITTEN LAVANDA 8kg: $23.800\nTotal: $54.300",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSQTdFMTBCNEY3RjE0QkYxRUFFAA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793224330",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSQTdFMTBCNEY3RjE0QkYxRUFFAA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793224330",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "¿Es para perro o gato? Con eso te confirmo el Pro Plan UR que te sirve y su precio 😊\n\nPedido:\n- 1 x BR CAT SALMON x 1 kg: $30.500\n- 1 x ARENA KITTEN LAVANDA 8kg: $23.800\nTotal: $54.300"
+        },
+        "timestamp": "1793224329",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMERBNkM0RkQ2QzA3MkEzQTM5QgA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "y el tiene problemas urinarios, me recomendaron pro plan ur, cuanto cuesta?"
+        },
+        "text": {
+          "body": "y el tiene problemas urinarios, me recomendaron pro plan ur, cuanto cuesta?"
+        },
+        "timestamp": "1793224301",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSRUVGM0FEM0QyMjJFNTMzNzU2AA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Pedido:\n- 1 x BR CAT SALMON x 1 kg: $30.500\n- 1 x ARENA KITTEN LAVANDA 8kg: $23.800\nTotal: $54.300\n\nPara completar tu domicilio, compárteme estos datos:\n- nombre completo\n- celular\n- método de pago: efectivo/contraentrega, transferencia bancaria, tarjeta débito o crédito, o llave bre-B",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSRUVGM0FEM0QyMjJFNTMzNzU2AA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793224288",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSRUVGM0FEM0QyMjJFNTMzNzU2AA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793224289",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "Pedido:\n- 1 x BR CAT SALMON x 1 kg: $30.500\n- 1 x ARENA KITTEN LAVANDA 8kg: $23.800\nTotal: $54.300\n\nPara completar tu domicilio, compárteme estos datos:\n- nombre completo\n- celular\n- método de pago: efectivo/contraentrega, transferencia bancaria, tarjeta débito o crédito, o llave bre-B"
+        },
+        "timestamp": "1793224287",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEFBMjI2OUU2ODc2QjY5REFBNwA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Conjunto mirador del colibrí Carrera 2 norte 18-02\nTorre 2 apartamento 1003"
+        },
+        "text": {
+          "body": "Conjunto mirador del colibrí Carrera 2 norte 18-02\nTorre 2 apartamento 1003"
+        },
+        "timestamp": "1793224256",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDBGMEU0RjRGRkVCOTQzMEYzNgA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "delivered",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Para pedir por favor 1kg de BR FOR CAT sabor salmón \nY 8kg de arena KITTEN PAW olor LAVANDA"
+        },
+        "text": {
+          "body": "Para pedir por favor 1kg de BR FOR CAT sabor salmón \nY 8kg de arena KITTEN PAW olor LAVANDA"
+        },
+        "timestamp": "1793224251",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEJFMzYwQTg1MjQ5RjU5OEEyNAA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "delivered",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Hola buenos días"
+        },
+        "text": {
+          "body": "Hola buenos días"
+        },
+        "timestamp": "1793224247",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDcyRUQ1OUY5RDg4NDIyMTVEOAA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "y el tiene problemas urinarios, me recomendaron pro plan ur, cuanto cuesta?"
+        },
+        "text": {
+          "body": "y el tiene problemas urinarios, me recomendaron pro plan ur, cuanto cuesta?"
+        },
+        "timestamp": "1793224168",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSODE3QjE3RkMwQTA2Njg1MjhFAA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Para orientarte sobre diagnóstico o tratamiento se necesita criterio veterinario. Dejo tu consulta pendiente de un asesor para que te ayude con la orientación especializada.",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSODE3QjE3RkMwQTA2Njg1MjhFAA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793224152",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSODE3QjE3RkMwQTA2Njg1MjhFAA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793224152",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "Para orientarte sobre diagnóstico o tratamiento se necesita criterio veterinario. Dejo tu consulta pendiente de un asesor para que te ayude con la orientación especializada."
+        },
+        "timestamp": "1793224151",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEZGMkUzOEQ0OUQyODczQjQ4RAA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Tengo un perrito de 8 anos y se rasca mucho, que le podría dar?"
+        },
+        "text": {
+          "body": "Tengo un perrito de 8 anos y se rasca mucho, que le podría dar?"
+        },
+        "timestamp": "1793224131",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSMkJENDI3QjE1OEEwN0Y3MkY0AA==",
+        "kapso": {
+          "direction": "outbound",
+          "status": "delivered",
+          "processing_status": "processed",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Pedido:\n- 1 x BR CAT SALMON x 1 kg: $30.500\n- 1 x ARENA KITTEN LAVANDA 8kg: $23.800\nTotal: $54.300\n\nPara completar tu domicilio, compárteme estos datos:\n- nombre completo\n- celular\n- método de pago: efectivo/contraentrega, transferencia bancaria, tarjeta débito o crédito, o llave bre-B",
+          "statuses": [
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSMkJENDI3QjE1OEEwN0Y3MkY0AA==",
+              "status": "sent",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793224121",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            },
+            {
+              "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAERgSMkJENDI3QjE1OEEwN0Y3MkY0AA==",
+              "status": "delivered",
+              "pricing": {
+                "type": "regular",
+                "billable": true,
+                "category": "service",
+                "pricing_model": "PMP"
+              },
+              "timestamp": "1793224121",
+              "recipient_id": "573158994163",
+              "recipient_user_id": "CO.1030198442801005"
+            }
+          ]
+        },
+        "text": {
+          "body": "Pedido:\n- 1 x BR CAT SALMON x 1 kg: $30.500\n- 1 x ARENA KITTEN LAVANDA 8kg: $23.800\nTotal: $54.300\n\nPara completar tu domicilio, compárteme estos datos:\n- nombre completo\n- celular\n- método de pago: efectivo/contraentrega, transferencia bancaria, tarjeta débito o crédito, o llave bre-B"
+        },
+        "timestamp": "1793224120",
+        "to": "573158994163",
+        "to_parent_user_id": null,
+        "to_user_id": null,
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDUwMTc1MjhCMjAxNkIwNkM2RgA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Conjunto mirador del colibrí Carrera 2 norte 18-02\nTorre 2 apartamento 1003"
+        },
+        "text": {
+          "body": "Conjunto mirador del colibrí Carrera 2 norte 18-02\nTorre 2 apartamento 1003"
+        },
+        "timestamp": "1793224089",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDUzQjA5OTkxNkNEQzVDQ0Y0MQA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "delivered",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Para pedir por favor 1kg de BR FOR CAT sabor salmón \nY 8kg de arena KITTEN PAW olor LAVANDA"
+        },
+        "text": {
+          "body": "Para pedir por favor 1kg de BR FOR CAT sabor salmón \nY 8kg de arena KITTEN PAW olor LAVANDA"
+        },
+        "timestamp": "1793224086",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEU4REYxNTMzQzMxNTg1QjY5RgA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "delivered",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "Hola buenos días"
+        },
+        "text": {
+          "body": "Hola buenos días"
+        },
+        "timestamp": "1793224085",
+        "type": "text",
+        "username": null
+      },
+      {
+        "context": null,
+        "from": "573158994163",
+        "from_parent_user_id": null,
+        "from_user_id": "CO.1030198442801005",
+        "id": "wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDYyMEQ0NzgxNkFGNEI0NUMyQwA=",
+        "kapso": {
+          "direction": "inbound",
+          "status": "read",
+          "processing_status": "pending",
+          "origin": "cloud_api",
+          "phone_number": "573158994163",
+          "phone_number_id": "597907523413541",
+          "has_media": false,
+          "whatsapp_conversation_id": "2135d638-ce1a-4c85-adce-be893117d55b",
+          "contact_name": "distrifincapereira",
+          "content": "y el tiene problemas urinarios, me recomendaron pro plan ur, cuanto cuesta?"
+        },
+        "text": {
+          "body": "y el tiene problemas urinarios, me recomendaron pro plan ur, cuanto cuesta?"
+        },
+        "timestamp": "1793222054",
+        "type": "text",
+        "username": null
+      }
+    ],
+    "paging": {
+      "cursors": {
+        "before": "eyJ2YWx1ZXMiOlsiMjAyNi0xMC0yOVQyMDo1NjozMS4yMDQwODdaIiwiODg4MzQyYjUtNzdmYS00YzgyLWFkYjEtNDg2OWFmN2U0ZGMwIl0sImNvbHVtbnMiOlsiY3JlYXRlZF9hdCIsImlkIl19",
+        "after": "eyJ2YWx1ZXMiOlsiMjAyNi0xMC0yOFQyMToxNDoxNC4wOTcwODRaIiwiNWU2MGY4NDMtNzRhZS00YWQxLWI2YjEtMmM2MGFjZjRkMDc0Il0sImNvbHVtbnMiOlsiY3JlYXRlZF9hdCIsImlkIl19"
+      },
+      "next": "eyJ2YWx1ZXMiOlsiMjAyNi0xMC0yOFQyMToxNDoxNC4wOTcwODRaIiwiNWU2MGY4NDMtNzRhZS00YWQxLWI2YjEtMmM2MGFjZjRkMDc0Il0sImNvbHVtbnMiOlsiY3JlYXRlZF9hdCIsImlkIl19",
+      "previous": null
+    }
+  },
+  "conversation": [
+    {
+      "state": {
+        "marca": null,
+        "carrito": [],
+        "entrega": {
+          "sede": null,
+          "tipo": null
+        },
+        "criterios": {},
+        "metodoPago": null,
+        "atencionHumana": {
+          "estado": "pendiente",
+          "motivo": "criterio_veterinario",
+          "solicitadaEn": "2026-10-29T20:21:46.781Z"
+        },
+        "datosDomicilio": {
+          "sector": "pedido"
+        },
+        "esperandoMarca": false,
+        "ultimaSeleccion": null,
+        "pedidoConfirmado": false,
+        "mensajesProcesados": [
+          "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEYwQjc1MTc3QUQ5RDJCQUM3QQA=",
+          "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDA5RUY2QUY5Q0Q2NjIyNUE1RQA=",
+          "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEEyQUREMTIzMTgyRkU4Njc2RgA=",
+          "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDA0MDUzNDc5MEE4MTc1NTY3NQA=",
+          "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDNBRUE3QkU0MTNDMDVDNTlENAA=",
+          "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDc5REYyOUIwMDVGMTdEMjczQgA=",
+          "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMEFDN0Q2MzRBOTM2NUU0NkQ3QwA=",
+          "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDE0MkUwMDM0RTYxRTg5MzE2MQA=",
+          "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDE5QjgwRjVFODkwMjY5N0RFMAA=",
+          "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDI5M0FDMzc4RjY1NjE0NTZFRgA=",
+          "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDJBNDBFQjA2M0EwMDRGODkwOAA=",
+          "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDEwRjJCOEM3OEEzRTg3Q0FDNgA=",
+          "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDIwRjM2OEFGMUJCMjFDQjRGQwA=",
+          "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDYyRjc2NjZCQUM4NjFGRUIzMgA=",
+          "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDY0MzY4NjdDMzg0N0UzNTQ2NQA=",
+          "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDREMTQyRkI0OTk2Njg2QjU0MwA=",
+          "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDRDNDlFMkFGODQ0MDQ2RDAwRgA=",
+          "597907523413541:wamid.HBgMNTczMTU4OTk0MTYzFQIAEhgWM0VCMDFCNzE4NTI3NzhERDY2QTEwOQA="
+        ],
+        "aclaracionIdentidad": {
+          "campo": null,
+          "consulta": "solo consultar tienen marca zetapruebaq9 referencia zq17 de 4 kilos",
+          "intentos": 3
+        },
+        "esperandoMetodoPago": false,
+        "productosPendientes": [],
+        "recomendacionActiva": {
+          "opciones": [
+            {
+              "marca": "RASCADOR",
+              "indice": 1,
+              "precio": 16000,
+              "referencia": "RASCADOR",
+              "referenceId": "a9c745dd-5ad5-443b-a7e1-dde3c3317b4a",
+              "presentacion": "unidad"
+            },
+            {
+              "marca": "RASCADOR",
+              "indice": 2,
+              "precio": 22000,
+              "referencia": "RASCADOR REDONDO GATOS",
+              "referenceId": "8cb303f6-ecf2-4d2d-8c8f-8cc2199e605b",
+              "presentacion": "unidad"
+            }
+          ],
+          "criterios": {
+            "etapa": null,
+            "marca": null,
+            "tamano": null,
+            "especie": "gato",
+            "sabores": [],
+            "categoria": "juguete",
+            "condiciones": [],
+            "presentacion": null,
+            "subcategoria": null,
+            "presupuestoMaximo": 25000
+          },
+          "actualizadoEn": "2026-10-29T20:22:55.001Z"
+        },
+        "seleccionesProducto": [
+          {
+            "etapa": null,
+            "linea": null,
+            "marca": "PRO PLAN",
+            "accion": "consultar",
+            "estado": "cotizado",
+            "tamano": null,
+            "especie": "perro",
+            "sabores": [],
+            "cantidad": null,
+            "mascotas": [],
+            "categoria": "comida",
+            "cotizacion": [
+              {
+                "peso": "2kg",
+                "marca": "PRO PLAN",
+                "stock": null,
+                "precio": 122000,
+                "cantidad": 1,
+                "mascotas": [],
+                "referencia": "PRO PLAN CANINE UR",
+                "tipoSeleccion": "alternativas",
+                "presentaciones": [
+                  {
+                    "peso": "2kg",
+                    "stock": null,
+                    "precio": 122000,
+                    "metadata": {
+                      "llave": "1387",
+                      "codigo": "10301011387",
+                      "source": "productos.json",
+                      "codigos": [
+                        "10301011387"
+                      ],
+                      "nombre_original": "PRO PLAN CANINE UR 2KG"
+                    },
+                    "referencia": "PRO PLAN CANINE UR"
+                  }
+                ],
+                "referenciaCatalogo": "PRO PLAN CANINE UR"
+              }
+            ],
+            "referencia": "PRO PLAN CANINE UR",
+            "condiciones": [],
+            "presentacion": null,
+            "subcategoria": "concentrado",
+            "textoVisible": "Solo consultar el precio, no lo agregues al pedido",
+            "nombreFamilia": "PRO PLAN CANINE UR",
+            "mencionOriginal": null,
+            "requierePresentacion": false,
+            "intencionPresentaciones": "todas",
+            "referenciasEquivalentes": [
+              "PRO PLAN CANINE UR"
+            ],
+            "seleccionPresentaciones": {
+              "tipo": "alternativas",
+              "grupos": [
+                {
+                  "peso": "2kg",
+                  "stock": null,
+                  "precio": 122000,
+                  "mascotas": [],
+                  "metadata": {
+                    "llave": "1387",
+                    "codigo": "10301011387",
+                    "source": "productos.json",
+                    "codigos": [
+                      "10301011387"
+                    ],
+                    "nombre_original": "PRO PLAN CANINE UR 2KG"
+                  },
+                  "referencia": "PRO PLAN CANINE UR"
+                }
+              ],
+              "pendientes": []
+            },
+            "coincidenciaVisualValidada": false,
+            "presentacionesEquivalentes": [
+              {
+                "peso": "2kg",
+                "stock": null,
+                "precio": 122000,
+                "metadata": {
+                  "llave": "1387",
+                  "codigo": "10301011387",
+                  "source": "productos.json",
+                  "codigos": [
+                    "10301011387"
+                  ],
+                  "nombre_original": "PRO PLAN CANINE UR 2KG"
+                },
+                "referencia": "PRO PLAN CANINE UR"
+              }
+            ]
+          }
+        ],
+        "alternativaPendiente": null,
+        "confirmacionPedidoId": null,
+        "esperandoPresupuesto": false,
+        "esperandoTipoEntrega": false,
+        "productosConsultados": [],
+        "esperandoSedeRecogida": false,
+        "memoriaConversacional": {
+          "hasta": {
+            "id": "6bc9ba2c-299d-1406-d9ae-7a31ad3f591f",
+            "created_at": "2026-10-29T20:10:19.11405+00:00"
+          },
+          "resumen": "El cliente solicita servicio a domicilio y pide recomendación de alimento para su gato de 6 meses. No se han indicado marca preferida, presupuesto, tamaño/presentación, necesidades especiales (esterilizado, alergias, condición médica) ni dirección/horario de entrega. Pendiente: recomendar opciones apropiadas para gatito (kitten) y recopilar datos para el envío (ubicación/dirección, método de pago, presentación/cantidad)."
+        },
+        "referenciasPendientes": null,
+        "facturacionElectronica": false,
+        "pendienteRecomendacion": false,
+        "ultimaConsultaProducto": {
+          "nivel": "baja",
+          "razon": "sin_coincidencia_confiable",
+          "fuente": "texto",
+          "creadoEn": "2026-10-29T20:56:27.892Z",
+          "etiqueta": "zetapruebaq9 zq17",
+          "terminos": [
+            "zetapruebaq9",
+            "zq17"
+          ],
+          "aclaracion": null,
+          "presentacion": "4kg",
+          "solicitudOriginal": {
+            "accion": "consultar",
+            "entrega": {
+              "sede": null,
+              "tipo": null,
+              "sector": null,
+              "direccion": null,
+              "metodoPago": null,
+              "direccionCompleta": null
+            },
+            "producto": {
+              "etapa": null,
+              "linea": null,
+              "marca": "ZetaPruebaQ9",
+              "accion": "consultar",
+              "tamano": null,
+              "especie": null,
+              "sabores": [],
+              "cantidad": null,
+              "mascotas": [],
+              "categoria": null,
+              "referencia": "ZQ17",
+              "condiciones": [],
+              "presentacion": "4 kilos",
+              "subcategoria": null,
+              "textoVisible": "tienen marca ZetaPruebaQ9 referencia ZQ17 de 4 kilos",
+              "mencionOriginal": null,
+              "pesoTextoOriginal": "4kg",
+              "intencionPresentaciones": "especifica"
+            },
+            "intencion": "consulta_producto"
+          },
+          "sinCoincidenciaInformada": true
+        },
+        "ultimoPedidoConfirmado": null,
+        "ultimoPedidoGuardadoAt": null,
+        "datosPreviosConfirmados": false,
+        "esperandoDatosDomicilio": false,
+        "ultimaPreguntaAsistente": "Por ahora no puedo confirmarte esa referencia con seguridad. Si quieres, podemos revisar otras opciones parecidas. 🙂",
+        "ultimoPedidoGuardadoKey": null,
+        "esperandoCambioDireccion": false,
+        "ultimaSolicitudProductos": [],
+        "instruccionesPagoEnviadas": false,
+        "ultimaInteraccionProducto": null,
+        "pedidoNuevoConDatosPrevios": false,
+        "esperandoConfirmacionPedido": false,
+        "ultimoTurnoContextoProducto": 2,
+        "historialProductosConsultados": [
+          {
+            "marca": "PRO PLAN",
+            "indice": 1,
+            "creadoEn": "2026-10-29T20:20:35.187Z",
+            "referencia": "PRO PLAN CANINE UR",
+            "actualizadoEn": "2026-10-29T20:20:52.398Z",
+            "presentaciones": [
+              {
+                "peso": "2kg",
+                "stock": null,
+                "precio": 122000,
+                "referenciaCatalogo": "PRO PLAN CANINE UR"
+              }
+            ],
+            "pendienteRespuesta": false,
+            "referenciasEquivalentes": [
+              "PRO PLAN CANINE UR"
+            ]
+          }
+        ],
+        "esperandoConfirmacionDomicilio": false,
+        "coincidenciasProductoPendientes": null,
+        "pedidoConfirmadoPendienteGuardar": false,
+        "esperandoConfirmacionDatosPrevios": false,
+        "esperandoActualizacionDatosCliente": false,
+        "esperandoConfirmacionRepetirPedido": false,
+        "esperandoConfirmacionDatosFacturacion": false
+      },
+      "status": "pendiente_asesor",
+      "last_interaction_at": "2026-10-29T20:56:31.39+00:00"
+    }
+  ],
+  "persisted": [],
+  "orders": []
+}

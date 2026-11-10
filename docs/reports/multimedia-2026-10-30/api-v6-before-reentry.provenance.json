@@ -1,0 +1,18 @@
+{
+  "sources": [
+    {
+      "file": "api-v5-initial.jsonl",
+      "lines": [
+        1
+      ]
+    },
+    {
+      "file": "api-v6-followups.jsonl",
+      "lines": [
+        1,
+        2
+      ]
+    }
+  ],
+  "transformation": "Exact rows and original timestamps/state; no new context or normalized messages added"
+}

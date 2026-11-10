@@ -1,0 +1,58 @@
+[AI Usage Summary] cliente=coverage-fixture | usuario=coverage-test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+[AI Usage Summary] cliente=coverage-fixture | usuario=coverage-test | interpreterPromptTokens=0 | humanizerPromptTokens=0 | humanizerSkipped=si | totalPromptTokens=0 | baselinePromptTokens=n/a | reduccionPct=n/a
+✖ original three-reference request reports unavailable pack alongside both quotes (553.589542ms)
+✔ two unresolved products from one image each receive an explicit outcome (2.822333ms)
+✔ commercial slash codes are case independent without treating ordinary lowercase words as codes (0.305834ms)
+✖ image identity with lowercase code preserves the exact commercial code and food form (67.954959ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 2
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 666.997291
+
+✖ failing tests:
+
+test at test/multiReferenceCoverage.test.js:46:1
+✖ original three-reference request reports unavailable pack alongside both quotes (553.589542ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /NUTRA NUGGETS CORDERO/i. Input:
+  
+  'Presentaciones y precios unitarios:\n' +
+    '- BR CAT CASTRADO POLLO 1kg: $28.000\n' +
+    '- NEXGARD 25-50 kg: $56.900 — Mascota 1 (40 kg)\n' +
+    '\n' +
+    'Para nutra nugges cordero 7k perro, ¿me confirmas el nombre completo que aparece en el empaque?'
+  
+      at TestContext.<anonymous> (/Users/gomez/Documents/WhatsappVELTIA/test/multiReferenceCoverage.test.js:51:10)
+      at async Test.run (node:internal/test_runner/test:1208:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Presentaciones y precios unitarios:\n- BR CAT CASTRADO POLLO 1kg: $28.000\n- NEXGARD 25-50 kg: $56.900 — Mascota 1 (40 kg)\n\nPara nutra nugges cordero 7k perro, ¿me confirmas el nombre completo que aparece en el empaque?',
+    expected: /NUTRA NUGGETS CORDERO/i,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at test/multiReferenceCoverage.test.js:74:1
+✖ image identity with lowercase code preserves the exact commercial code and food form (67.954959ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  'media' !== 'alta'
+  
+      at TestContext.<anonymous> (/Users/gomez/Documents/WhatsappVELTIA/test/multiReferenceCoverage.test.js:80:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'media',
+    expected: 'alta',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

@@ -52,7 +52,7 @@ function normalizarMarcasCatalogo(texto = "", catalogo = []) {
   for (let inicio = 0; inicio < palabras.length; inicio++) {
     let unidas = "";
     for (let fin = inicio; fin < Math.min(palabras.length, inicio + 5); fin++) {
-      unidas += normalizar(palabras[fin]);
+      unidas += normalizar(palabras[fin]).replace(/\s/g, "");
       const nombres = marcas.get(unidas);
       if (nombres?.size === 1) {
         palabras.splice(inicio, fin - inicio + 1, [...nombres][0]);
@@ -124,6 +124,7 @@ function normalizarPeso(texto = "") {
 }
 
 function extraerPesoTexto(texto = '') {
+  texto = require('./catalogQueryNormalization').normalizarMedidasBusqueda(textoSeguro(texto));
   const numero = '\\d+(?:[.,]\\d+)?';
   const unidad = '(?:kg|kl|kr|kilogramos?|kilos?|gramos?|gr|g|lb|libras?|ml|mg)';
   const rango = new RegExp(`${numero}\\s*(?:${unidad})?\\s*(?:[-–—]|a)\\s*${numero}\\s*${unidad}\\b`, 'i');
@@ -139,7 +140,12 @@ function codigosReferencia(nombre = "", marca = "") {
   // EN aislado sigue siendo un identificador valido de una dieta.
   const texto = textoSeguro(nombre).replace(/\bEN\s+(?:SALSA|GEL|POLVO|TABLETAS?|CAPSULAS?|TROZOS?|PATE|PATÉ|CALDO)\b/g,
     frase => frase.toLowerCase());
-  return [...new Set((texto.match(/\b(?:[A-Z]\/[A-Z]|[A-Z]{2})\b/g) || [])
+  const sinMedidas = texto.replace(/\b(?:x|por)\s*\d+(?:[.,]\d+)?\s*(?:kg|kl|kr|kilos?|kilogramos?|g|gr|gramos?|lb|libras?|ml|mg)\b/gi, ' ');
+  const alfanumericos = (sinMedidas.match(/\b[A-Za-z]+\d+[A-Za-z0-9]*\b/g) || [])
+    .filter(token => !/^x\d+$/i.test(token))
+    .map(token => token.toUpperCase());
+  const conBarra = (texto.match(/\b[A-Za-z]\/[A-Za-z]\b/g) || []).map(token => token.toUpperCase());
+  return [...new Set([...(texto.match(/\b[A-Z]{2}\b/g) || []), ...conBarra, ...alfanumericos]
     .filter(token => !/^(DE|LA|EL|LO|AL|UN)$/.test(token))
     .filter(token => !marcaTokens.has(token) && !/^(KG|KL|GR|ML|MG|LB|CM)$/.test(token)))];
 }

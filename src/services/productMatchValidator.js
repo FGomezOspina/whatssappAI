@@ -1,11 +1,13 @@
-const { formatoAlimento, formatoReferencia } = require('../utils/foodFormat');
+const { formatoAlimento, formatoReferencia, dimensionesAlimento, dimensionesReferencia, textoFormatoVigente, sinFormato } = require('../utils/foodFormat');
 const { nombresPresentaciones } = require('../utils/catalogSearchDocument');
 const { resolverLibraComercial } = require('../utils/commercialPresentation');
 const { esDescriptorReferencia, duracionTexto } = require('../utils/catalogVariants');
 const { usaRangosMascota, presentacionesParaPeso } = require('../utils/weightRanges');
 const { admiteEspecie } = require('../utils/catalogCommercialRules');
+const { normalizarMedidasBusqueda, corregirTokensCatalogo, normalizarKilosAbreviadosCatalogo } = require('../utils/catalogQueryNormalization');
 const { resolverEvidenciaInterpretacion } = require("./productEvidenceService");
 const { formatearPrecio, extraerPesoTexto, normalizarMarcasCatalogo, normalizar, normalizarPeso, codigosReferencia, contieneCondicionBolaPelo } = require("../utils/text");
+const { identidadesNumericasCompatibles, conflictoNumericoExplicito } = require('../utils/numericProductIdentity');
 
 const DEFAULT_HIGH_THRESHOLD = 0.84;
 const DEFAULT_MEDIUM_THRESHOLD = 0.68;
@@ -406,7 +408,7 @@ function atributosIdentidadVisual(texto = "") {
 
 function tokensDistintivos(texto = "", opciones = {}) {
   const codigosExplicitos = new Set((texto.match(/\b[A-Z]{2,5}\b/g) || []).map(normalizar));
-  let textoNormalizado = normalizarIdentidadProducto(texto);
+  let textoNormalizado = normalizarIdentidadProducto(normalizarMedidasBusqueda(texto));
   if (opciones.inferirEspeciePorRaza) {
     textoNormalizado = textoNormalizado.replace(
       /\b(?:r|raza|razas)\s+(?=pequena|pequeno|mediana|mediano|grande)/g,
@@ -457,6 +459,26 @@ function construirConsultaProductoContextual(
   mensaje = "",
   contextoProducto = null
 ) {
+  if (contextoProductoVigente(contextoProducto)) {
+    const actual = dimensionesAlimento(mensaje);
+    const resto = sinFormato(textoFormatoVigente(mensaje)).replace(/\b(?:no|el|la|en|lo|quiero|es|era|si|por|favor|de)\b/g, '').trim();
+    const soloFormato = !resto && (actual.forma || actual.envase);
+    const soloPeso = !tokensDistintivos(mensaje).length && obtenerPresentacionSolicitada(mensaje, null);
+    if ((soloFormato || soloPeso) && (contextoProducto.aclaracion || contextoProducto.nivel === 'alta')) {
+      const previa = contextoProducto.solicitudOriginal?.producto;
+      const identidadContexto = previa && require('./productRequestContext').solicitudRespaldada(previa, contextoProducto.terminos);
+      const base = sinFormato(identidadContexto ? require('./productRequestContext').consultaEstructurada({
+        ...identidadContexto, presentacion:null, cantidad:null, subcategoria:null, envase:null,
+      }) : (contextoProducto.terminos || []).join(' ') || contextoProducto.etiqueta || '');
+      const anterior = dimensionesAlimento([contextoProducto.formaAlimento, contextoProducto.envaseAlimento,
+        contextoProducto.terminos?.join(' ')].filter(Boolean).join(' '));
+      const forma = actual.forma || anterior.forma;
+      const envase = forma === 'concentrado' ? null : actual.envase || anterior.envase;
+      // Changing format changes the SKU; do not silently carry its old pack.
+      const peso = soloPeso ? obtenerPresentacionSolicitada(mensaje, null) : '';
+      return [base, forma, envase, peso].filter(Boolean).join(' ');
+    }
+  }
   if (contextoProductoVigente(contextoProducto) && contextoProducto.aclaracion) {
     const actuales = tokensDistintivos(mensaje);
     const valores = contextoProducto.aclaracion.valores || [];
@@ -639,6 +661,13 @@ function marcasExplicitasCompatibles(catalogo, mensaje) {
   return compatibles.filter(m => normalizar(m.marca).split(/\s+/).length === longitud);
 }
 
+function descriptorConversacional(token, mensaje) {
+  if (['como','estas','estan','muy','ahh','perdon','recuerdo','gustaria','envias',
+    'datafono','pago','tarjeta','efectivo','transferencia'].includes(token)) return true;
+  return /\b(?:bolsa|empaque)\b/.test(normalizar(mensaje)) &&
+    ['verde','azul','roja','rojo','negra','negro','blanca','blanco','amarilla','amarillo'].includes(token);
+}
+
 function consultaSemanticaRespaldada(mensaje, interpretacion, catalogo) {
   const nucleo = interpretacion?.producto?.textoVisible;
   if (!nucleo || !['consultar', 'agregar', 'nuevo_pedido'].includes(interpretacion?.accion)) return mensaje;
@@ -650,14 +679,25 @@ function consultaSemanticaRespaldada(mensaje, interpretacion, catalogo) {
   const vocabulario = new Set(catalogo.flatMap(m => m.referencias.flatMap(r =>
     normalizar([m.marca, r.nombre, ...(r.metadata?.aliases || [])].join(' ')).split(/\s+/))));
   if (originales.some(t => vocabulario.has(t) && !STOPWORDS.has(t) && !propuestos.includes(t))) return mensaje;
+  // Unknown commercial words matter too: extraction must not erase an absent
+  // brand merely because the supplied candidates do not contain it.
+  const atributosPropuestos = tokensDistintivos(nucleo);
+  if (tokensDistintivos(mensaje).some(t => t.length >= 4 && !atributosPropuestos.includes(t) &&
+      !descriptorConversacional(t, mensaje))) return mensaje;
   if (normalizarCategoria(mensaje) && normalizarCategoria(nucleo) !== normalizarCategoria(mensaje)) return mensaje;
   if (normalizarEspecie(mensaje) && normalizarEspecie(nucleo) !== normalizarEspecie(mensaje)) return mensaje;
+  const formatoOriginal = dimensionesAlimento(mensaje), formatoNucleo = dimensionesAlimento(nucleo);
+  if (['forma','envase','conflictoForma','conflictoEnvase'].some(c => formatoOriginal[c] !== formatoNucleo[c])) return mensaje;
   return [nucleo, extraerPesoTexto(mensaje)].filter(Boolean).join(' ');
 }
 
 // Una agrupacion comercial mas larga puede contener especie/linea. No debe
 // ocultar una referencia completa registrada bajo la marca raiz.
 function marcaCompatibleConIdentidad(marca, referencia, marcaConsultada, terminos = []) {
+  // Catalog groups sometimes differ only in word spacing. This admits the
+  // group to validation; species, line, format and pack still have to match.
+  const compacta = valor => normalizar(valor || '').replace(/\s+/g, '');
+  if (compacta(marca.marca) && compacta(marca.marca) === compacta(marcaConsultada)) return true;
   const raiz = tokensDistintivos(marca.marca);
   const agrupacion = tokensDistintivos(marcaConsultada);
   const nombre = tokensIdentidadVisual(referencia.nombre);
@@ -674,12 +714,15 @@ function marcaCompatibleConIdentidad(marca, referencia, marcaConsultada, termino
     .replace(/_/g, ' ').split(/\s+/);
   const auxiliares = token => Boolean(normalizarEspecie(token) || categorias.some(c =>
     c === token || (token.length > 4 && token === `${c}s`)));
-  const comerciales = tokensIdentidadVisual(marcaConsultada).filter(token => !auxiliares(token));
+  // A brand is lexical identity. Condition folding (e.g. derm* -> skin)
+  // must not make two distinct commercial brands interchangeable.
+  const comerciales = tokensDistintivos(marcaConsultada).filter(token => !auxiliares(token));
   if (!comerciales.length) return false;
   const pedida = tokensIdentidadVisual(terminos.join(' ')).filter(token => !auxiliares(token));
   return nombresReferencia(marca, referencia, terminos.join(' ')).slice(1).some(texto => {
     const registrada = tokensIdentidadVisual(texto);
-    return comerciales.every(t => registrada.some(r => equivale(t, r))) &&
+    const marcaRegistrada = tokensDistintivos(texto);
+    return comerciales.every(t => marcaRegistrada.some(r => equivale(t, r))) &&
       pedida.length && pedida.every(t => registrada.some(r => equivale(t, r)));
   });
 }
@@ -899,8 +942,8 @@ function puntuarItem(item, terminos, opciones = {}) {
 
 function normalizarEspecie(valor = "") {
   const texto = normalizar(valor || "");
-  if (/\b(gatos?|cats?|feline|felinos?|felinas?)\b/.test(texto)) return "gato";
-  if (/\b(perros?|dogs?|canine|caninos?|caninas?)\b/.test(texto)) return "perro";
+  if (/\b(gatos?|gatitos?|cats?|feline|felinos?|felinas?)\b/.test(texto)) return "gato";
+  if (/\b(perros?|perritos?|dogs?|canine|caninos?|caninas?)\b/.test(texto)) return "perro";
   if (/\b(ave|aves|pajaro|pajaros)\b/.test(texto)) return "ave";
   if (/\b(roedor|roedores|hamster|conejo|cobayo)\b/.test(texto)) return "roedor";
   if (/\b(pez|peces)\b/.test(texto)) return "pez";
@@ -1183,6 +1226,7 @@ function referenciasEquivalentes(itemA, itemB) {
   }
 
   // Equivalences are catalog data, never inferred from a shared brand or size.
+  if (!identidadesNumericasCompatibles(itemA.referencia.nombre, itemB.referencia.nombre)) return false;
   const equivalentes = referencia => (referencia.metadata?.equivalent_references || [])
     .map(normalizarIdentidadProducto);
   if (marcaA === marcaB && (
@@ -1207,6 +1251,7 @@ function referenciasEquivalentes(itemA, itemB) {
 function compatibleConSenales(item, interpretacion, mensaje = "") {
   const señales = señalesInterpretadas(interpretacion, mensaje);
   const categoriaReferencia = normalizarCategoria(item.referencia.categoria);
+  if (item.nombreLiteralCompleto && categoriaReferencia) señales.categoria = categoriaReferencia;
   const condicionesReferencia = condicionesProducto(
     `${item.referencia.nombre} ${item.referencia.descripcion || ""}`
   );
@@ -1429,6 +1474,7 @@ function ajustarPorSenales(item, mensaje, interpretacion, clasificacion = {}, va
     ? true : coincideIdentidadExacta;
   const señales = señalesInterpretadas(interpretacion, mensaje);
   const categoriaReferencia = normalizarCategoria(item.referencia.categoria);
+  if (item.nombreLiteralCompleto && categoriaReferencia) señales.categoria = categoriaReferencia;
   const especieReferencia = especieExplicita(item.referencia.nombre) ||
     normalizarEspecie(item.referencia.especie);
   const condicionesReferencia = condicionesProducto(
@@ -1717,17 +1763,29 @@ function obtenerPresentacionSolicitada(mensaje, interpretacion) {
     interpretacion?.producto ||
     (interpretacion?.productos?.length === 1 ? interpretacion.productos[0] : {});
   if (producto?.observado) return normalizarPeso(producto.presentacion || "");
-  return producto?.pesoTextoOriginal || extraerPesoTexto(mensaje) || (/\d/.test(producto.presentacion || '') ? normalizarPeso(producto.presentacion) : '');
+  // A trailing xN is a pack count, not the number of units ordered. Keep it
+  // even when the interpreter omits it, and never equate it to a single unit.
+  const unidadesEmpaque = normalizar(mensaje).match(/\bx\s*(\d+)\b(?!\s*(?:kg|g|gr|ml|mg|lb)\b)/)?.[1];
+  return producto?.pesoTextoOriginal || extraerPesoTexto(mensaje) ||
+    (unidadesEmpaque ? `x${unidadesEmpaque}` : '') ||
+    (/\d/.test(producto.presentacion || '') ? normalizarPeso(producto.presentacion) : '');
 }
 
 function presentacionCoincide(referencia, mensaje, interpretacion) {
   const solicitada = obtenerPresentacionSolicitada(mensaje, interpretacion);
+  if (conteoEnNombre(solicitada, referencia)) return null;
   if (resolverLibraComercial(solicitada || interpretacion?.producto?.presentacion, referencia)) return true;
   if (!solicitada) return null;
   if (usaRangosMascota(referencia)) return presentacionesParaPeso(referencia, solicitada).length > 0;
   return (referencia.presentaciones || []).some(
     (presentacion) => normalizarPeso(presentacion.peso) === solicitada
   );
+}
+
+function conteoEnNombre(solicitada, referencia) {
+  return /^x\d+$/.test(solicitada || '') &&
+    [...normalizar(referencia?.nombre || '').matchAll(/\bx\s*(\d+)\b/g)]
+      .some(m => `x${m[1]}` === solicitada);
 }
 
 function resolverPresentacionAproximada(referencia, solicitada) {
@@ -1827,10 +1885,16 @@ function validarCoincidenciaProducto({
   interpretacion = null,
   contextoProducto = null,
 } = {}) {
+  // Reuse the evidence of an earlier image without claiming a new image was
+  // processed or triggering an additional vision call. All attribute
+  // confidence/variant guards remain the same as on the original turn.
+  if (clasificacion.evidenciaVisualContextual && interpretacion?.producto?.observado?.nombre)
+    clasificacion = { ...clasificacion, requiereVision: true };
   if (!clasificacion.requiereVision) {
     mensaje = require('../utils/catalogDeclaredCodes').resolverCodigoDeclarado(mensaje, catalogo);
   }
   interpretacion = resolverEvidenciaInterpretacion(interpretacion);
+  const referenciaComercialSolicitada = interpretacion?.producto?.referencia;
   const evidenciaIdentidad = interpretacion?.producto?.observado;
   if (clasificacion.requiereVision && evidenciaIdentidad?.nombre &&
       Number(evidenciaIdentidad.confianzaIdentidad) >= 0.85) {
@@ -1882,11 +1946,24 @@ function validarCoincidenciaProducto({
     return { nivel: "no_aplica", razon: "sin_busqueda_especifica", terminos: [] };
   }
 
-  let mensajeRazonado = construirConsultaProductoContextual(mensaje, contextoProducto);
+  // Normalize a supported pack-size shorthand before both weight and SKU checks.
+  // This never adds an alias or changes catalog identity / presentation data.
+  if (!clasificacion.requiereVision) mensaje = normalizarKilosAbreviadosCatalogo(mensaje, catalogo);
+  let mensajeRazonado = normalizarMedidasBusqueda(construirConsultaProductoContextual(mensaje, contextoProducto));
+  const consultaAntesDeExtraccion = mensajeRazonado;
   if (!clasificacion.requiereVision && !contextoProducto) {
     mensajeRazonado = consultaSemanticaRespaldada(mensajeRazonado, interpretacion, catalogo);
   }
+  const extraccionSemanticaAplicada = normalizar(consultaAntesDeExtraccion) !== normalizar(mensajeRazonado);
   mensajeRazonado = normalizarMarcasCatalogo(mensajeRazonado, catalogo);
+  let identidadCorregida = false;
+  if (!clasificacion.requiereVision) {
+    // Correct only uniquely supported lexical tokens BEFORE deriving condition
+    // signals; otherwise a misspelled variant is penalized as if not requested.
+    const corregido = corregirTokensCatalogo(mensajeRazonado, catalogo, { normalizar, tokensDistintivos });
+    identidadCorregida = corregido !== mensajeRazonado;
+    mensajeRazonado = corregido;
+  }
   // Un descriptor de envase no crea una variante si el catálogo de esa
   // familia farmacéutica no lo distingue en ninguna referencia.
   const familia = catalogo.filter(m => ` ${normalizar(mensajeRazonado)} `.includes(` ${normalizar(m.marca)} `));
@@ -1942,6 +2019,18 @@ function validarCoincidenciaProducto({
     return { nivel: "no_aplica", razon: "consulta_generica", terminos: [] };
   }
 
+  // Punctuation variants can be separate catalog records with different packs.
+  // A bare name cannot establish which record was intended from hyphens alone.
+  const nombreCompacto = valor => normalizar(valor).replace(/[^a-z0-9]/g, '');
+  const homonimos = catalogo.flatMap(marca => marca.referencias.map(referencia => ({ marca, referencia, score:1 })))
+    .filter(item => nombreCompacto(item.referencia.nombre) === nombreCompacto(mensajeRazonado));
+  if (!clasificacion.requiereVision && homonimos.length > 1 &&
+      new Set(homonimos.map(item => `${item.marca.marca}:${item.referencia.nombre}`)).size > 1) {
+    return { nivel:'media', razon:'identidad_compartida_entre_registros', terminos, etiqueta:mensaje,
+      coincidencia:null, alternativas:homonimos.map(resumirAlternativa),
+      aclaracion:{campo:'presentacion',valores:[...new Set(homonimos.flatMap(item => item.referencia.presentaciones.map(p => p.peso)))]} };
+  }
+
   const marcaVisualExacta = clasificacion.requiereVision && interpretacion?.producto?.marca &&
     catalogo.find(marca => normalizar(marca.marca) === normalizar(interpretacion.producto.marca));
   const marcasExplicitas = marcasExplicitasCompatibles(catalogo, mensajeRazonado);
@@ -1951,6 +2040,7 @@ function validarCoincidenciaProducto({
     // categoría (p. ej. el alimento MAIZ frente a una consulta de arena).
     : marcaExactaConsultada(interpretacion
       ? catalogo.filter(m => !normalizarCategoria(mensajeRazonado) ||
+        m.referencias.some(r => normalizar(r.nombre) === normalizar(mensajeRazonado)) ||
         m.referencias.some(r => normalizarCategoria(r.categoria) === normalizarCategoria(mensajeRazonado)))
       : catalogo, terminos);
   const terminosIdentidad = terminos.filter((termino) => !TERMINOS_ATRIBUTO.has(termino));
@@ -1974,8 +2064,28 @@ function validarCoincidenciaProducto({
     } };
   }
   const categoriaSolicitada = normalizar(interpretacion?.producto?.categoria || '');
-  const formatoSolicitado = categoriaSolicitada && !['comida', 'alimento'].includes(categoriaSolicitada)
-    ? null : formatoAlimento(mensajeRazonado);
+  const dimensionesTexto = dimensionesAlimento(mensajeRazonado);
+  const familiaCategoria = catalogo.filter(m => !marcaExacta || normalizar(m.marca) === marcaExacta)
+    .flatMap(m => m.referencias || []);
+  const envaseNoAlimenticio = !categoriaSolicitada && familiaCategoria.length > 0 &&
+    familiaCategoria.every(r => r.categoria && !['comida','alimento'].includes(normalizar(r.categoria))) &&
+    (!/\b(?:comida|alimento|concentrado|cuido|humed[oa]|sec[oa])\b/.test(normalizar(mensajeRazonado)) ||
+      familiaCategoria.some(r => normalizar(r.nombre) === normalizar(mensajeRazonado)));
+  const observadoFormato = interpretacion?.producto?.observado;
+  const dimensionesVisuales = clasificacion.requiereVision && Number(observadoFormato?.confianzaIdentidad) >= 0.85
+    ? dimensionesAlimento([observadoFormato.nombre,
+      Number(observadoFormato.confianzaFormato) >= 0.85 ? observadoFormato.formaAlimento : null,
+      Number(observadoFormato.confianzaFormato) >= 0.85 ? observadoFormato.envase : null].filter(Boolean).join(' ')) : {};
+  const formaInferidaDeEnvase = dimensionesTexto.envase &&
+    !/\b(?:concentrado|cuido|humed[oa]s?|sec[oa]s?)\b/.test(normalizar(mensajeRazonado).replace(/_/g,' '));
+  const formasDeEnvaseNominal = formaInferidaDeEnvase ? [...new Set(catalogo.flatMap(m=>m.referencias)
+    .filter(r => normalizar(sinFormato(r.nombre)) === normalizar(sinFormato(mensajeRazonado)) &&
+      dimensionesReferencia(r).envase === dimensionesTexto.envase)
+    .map(r=>dimensionesReferencia(r).forma).filter(Boolean))] : [];
+  const formatoSolicitado = envaseNoAlimenticio || categoriaSolicitada && !['comida', 'alimento'].includes(categoriaSolicitada)
+    ? null : (formasDeEnvaseNominal.length === 1 ? formasDeEnvaseNominal[0] : null) || dimensionesTexto.forma || dimensionesVisuales.forma || null;
+  const envaseSolicitado = envaseNoAlimenticio || (categoriaSolicitada && !['comida','alimento'].includes(categoriaSolicitada)) ? null :
+    dimensionesTexto.envase || (!dimensionesTexto.conflictoEnvase && dimensionesTexto.forma !== 'concentrado' ? dimensionesVisuales.envase : null) || null;
   const formatoSeco = formatoSolicitado === "concentrado";
   const marcaPropuesta = interpretacion?.producto?.marca;
   const marcaLiteralSinGrupo = !clasificacion.requiereVision && !marcaExacta && marcaPropuesta &&
@@ -1985,7 +2095,9 @@ function validarCoincidenciaProducto({
   const marcaSinGrupo = (marcaLiteralSinGrupo ||
     (clasificacion.requiereVision && !marcaVisualExacta &&
       Number(interpretacion?.producto?.observado?.confianzaIdentidad) >= 0.85)) && marcaPropuesta;
-  const itemsEvaluados = catalogoPlano(catalogo, mensajeRazonado).filter(
+  const itemsEvaluados = catalogoPlano(catalogo, mensajeRazonado).map(item => ({ ...item,
+    nombreLiteralCompleto: normalizar(item.referencia.nombre) === normalizar(mensajeRazonado),
+  })).filter(
     (item) =>
       // Los atributos comunes no pueden confirmar una marca desconocida.
       // La identidad debe estar respaldada por la agrupación o sus referencias.
@@ -2001,10 +2113,12 @@ function validarCoincidenciaProducto({
           MIN_SIMILITUD_MARCA_VISUAL
       ) ||
       (marcaExacta.length <= 3 && itemCompatibleConConsultaParcial(item, terminos, mensajeRazonado))) &&
-      (!formatoSolicitado || !formatoReferencia(item.referencia) || formatoReferencia(item.referencia) === formatoSolicitado) &&
+      (!formatoSolicitado || !dimensionesReferencia(item.referencia).forma || dimensionesReferencia(item.referencia).forma === formatoSolicitado) &&
+      (!envaseSolicitado || !dimensionesReferencia(item.referencia).envase || dimensionesReferencia(item.referencia).envase === envaseSolicitado) &&
       (formatoSolicitado !== 'comida_humeda' || !item.referencia.categoria || ['comida', 'alimento'].includes(normalizar(item.referencia.categoria))) &&
       codigosSolicitados.every(codigo => codigosReferencia(item.referencia.nombre, item.marca.marca).includes(codigo)) &&
-      (!formatoSeco || !/\b(humed[oa]s?|latas?|pouche?s?|sobres?|juguetes?|snacks?)\b/.test(normalizar(
+      !conflictoNumericoExplicito(fuenteCodigos, item.referencia.nombre) &&
+      (!formatoSeco || !/\b(juguetes?|snacks?)\b/.test(normalizar(
         [item.referencia.nombre, item.referencia.categoria, item.referencia.subcategoria].join(" ")).replace(/_/g, " ")))
   );
   const lineasConsultaDisponibles = [
@@ -2093,7 +2207,12 @@ function validarCoincidenciaProducto({
 
   const pesoConsultaMarca = obtenerPresentacionSolicitada(mensajeRazonado, interpretacion);
   const tokensMarcaConsulta = marcaExacta ? normalizarIdentidadProducto(marcaExacta).split(/\s+/) : [];
-  if (!clasificacion.requiereVision && marcaExacta && pesoConsultaMarca && !puntuados.some(item => usaRangosMascota(item.referencia)) && terminos.every(token => tokensMarcaConsulta.includes(token))) {
+  // A full catalog name may contain a one-letter variant discarded by the
+  // lexical tokenizer. Let literal identity resolution run before brand+weight.
+  const nombreLiteralSolicitado = item =>
+    normalizar(item.referencia.nombre) !== normalizar(item.marca.marca) &&
+    ` ${normalizar(mensajeRazonado)} `.includes(` ${normalizar(item.referencia.nombre)} `);
+  if (!clasificacion.requiereVision && !formatoSolicitado && !envaseSolicitado && marcaExacta && pesoConsultaMarca && !puntuados.some(nombreLiteralSolicitado) && !puntuados.some(item => usaRangosMascota(item.referencia)) && terminos.every(token => tokensMarcaConsulta.includes(token))) {
     const compatibles = agruparReferenciasEquivalentes(puntuadosSinFiltrar.filter(item =>
       item.presentacionCoincide === true && item.especieCoincide !== false && item.categoriaCoincide !== false));
     if (compatibles.length) {
@@ -2114,6 +2233,32 @@ function validarCoincidenciaProducto({
     return tokensAlias.length === terminos.length && tokensAlias.every(token => terminos.includes(token));
   }));
   if (aliasesExactos.length) puntuados = aliasesExactos;
+  // Preserve a literal medicine candidate when the requested pharmaceutical
+  // form is absent from catalog evidence. Ask instead of substituting another
+  // brand or silently discarding the form to confirm a sale.
+  const formasFarmaceuticas = new Set(['crema', 'spray', 'jarabe', 'gel', 'gotas', 'pomada', 'solucion', 'tabletas', 'capsulas']);
+  const formaFarmaceuticaPedida = terminos.filter(t => formasFarmaceuticas.has(t));
+  const formaFarmaceuticaCatalogada = puntuados.some(item => {
+    const nombre = tokensDistintivos(item.referencia.nombre);
+    return formaFarmaceuticaPedida.every(t => nombre.includes(t)) &&
+      nombre.length && nombre.every(t => terminos.includes(t));
+  });
+  if (!clasificacion.requiereVision && marcaExacta && formaFarmaceuticaPedida.length && !formaFarmaceuticaCatalogada) {
+    const candidatosLiterales = puntuados.filter(item => {
+      const nombre = tokensDistintivos(item.referencia.nombre);
+      return normalizar(item.marca.marca) === marcaExacta &&
+        normalizarCategoria(item.referencia.categoria) === 'medicamento' &&
+        nombre.length && nombre.every(t => terminos.includes(t)) &&
+        terminos.every(t => nombre.includes(t) || formasFarmaceuticas.has(t)) &&
+        formaFarmaceuticaPedida.some(t => !item.nombres.some(n => tokensDistintivos(n).includes(t)));
+    });
+    if (candidatosLiterales.length) return { nivel:'media', razon:'forma_farmaceutica_por_confirmar',
+      terminos, etiqueta:mensaje, marcaExacta, coincidencia:null,
+      presentacionSolicitada:obtenerPresentacionSolicitada(mensajeRazonado, interpretacion), presentacionValida:null,
+      aclaracion:{campo:'referencia',valores:candidatosLiterales.map(i=>i.referencia.nombre),
+        pregunta:`Encontré ${candidatosLiterales.map(i=>i.referencia.nombre).join(', ')}, pero la ficha no confirma ${formaFarmaceuticaPedida.join(' ')}. Necesito verificar esa presentación.`},
+      alternativas:candidatosLiterales.map(resumirAlternativa) };
+  }
   // Un nombre puede venir separado por cantidad, peso o palabras sociales.
   // No dejar que los bonos de especie/categoría empaten una variante literal
   // con otras que comparten familia pero omiten parte de la identidad pedida.
@@ -2129,15 +2274,17 @@ function validarCoincidenciaProducto({
   }
   // Si el cliente escribe una variante completa, la referencia que solo lleva
   // la marca no compite con ella por compartir especie, categoria y peso.
-  const variantesExplicitas = puntuados.filter(item =>
-    normalizar(item.referencia.nombre) !== normalizar(item.marca.marca) &&
-    ` ${normalizar(mensajeRazonado)} `.includes(` ${normalizar(item.referencia.nombre)} `));
+  const variantesExplicitas = puntuados.filter(nombreLiteralSolicitado);
   if (variantesExplicitas.length) {
     // El nombre comercial completo prevalece sobre referencias que solo
     // comparten especie o marca. Si hay nombres anidados, gana el mas completo.
     const longitud = Math.max(...variantesExplicitas.map(item => normalizar(item.referencia.nombre).length));
     const exactas = variantesExplicitas.filter(item => normalizar(item.referencia.nombre).length === longitud);
     puntuados = puntuados.filter(item => exactas.some(exacta => item === exacta || referenciasEquivalentes(item, exacta)));
+    // Polite request wording or a quantity must not dilute a literal complete
+    // reference. Species, format and code compatibility have already filtered it.
+    if (!clasificacion.requiereVision) puntuados = puntuados.map(item => exactas.includes(item)
+      ? { ...item, score: Math.max(item.score, 1), coincidenciaReferenciaExacta: true } : item);
   }
   // Una referencia declarada de venta unitaria puede ser el nombre base de
   // una familia que también vende cajas. No elegir cajas no solicitadas.
@@ -2230,6 +2377,29 @@ function validarCoincidenciaProducto({
     razon = diferencia < margin ? "ambigua" : "similitud_media";
   }
 
+  // Brand/species/weight bonuses cannot compensate for an unrecognized
+  // commercial variant. Compare against declared names/aliases, not prose or
+  // the model's proposed name; short codes already have a stricter filter.
+  const marcaInterpretada = tokensDistintivos(interpretacion?.producto?.marca || '')
+    // Short grouping abbreviations do not prove a contradictory brand; their
+    // compatibility remains subject to the existing catalog/alias matcher.
+    .filter(token => token.length >= 4 && !normalizarCategoria(token) && !normalizarEspecie(token) && !TERMINOS_ATRIBUTO.has(token));
+  const identidadOriginal = tokensDistintivos(mensajeRazonado);
+  const marcaInterpretadaSinRespaldo = !clasificacion.requiereVision && marcaInterpretada.length &&
+    normalizar(marcaExacta || '') !== normalizar(interpretacion?.producto?.marca || '') &&
+    !marcaInterpretada.every(token => identidadOriginal.includes(token));
+  if (nivel === 'alta' && (identidadCorregida || marcaInterpretadaSinRespaldo ||
+      !clasificacion.requiereVision && extraccionSemanticaAplicada && !marcaExacta) && !coincidenciaReferenciaExacta) {
+    const identidad = terminos.filter(t => t.length >= 5 && !TERMINOS_ATRIBUTO.has(t) &&
+      !descriptorConversacional(t, mensajeRazonado) &&
+      !dimensionesAlimento(t).forma && !dimensionesAlimento(t).envase &&
+      !normalizarCategoria(t) && !normalizarEspecie(t));
+    const conocidos = [...new Set(primero.nombres.flatMap(n => tokensDistintivos(n)))];
+    if (identidad.some(t => !conocidos.some(c => similitudTokenFlexible(t,c) >= 0.72))) {
+      nivel = 'baja'; razon = 'variante_sin_respaldo';
+    }
+  }
+
   if (
     usaInterpretacion &&
     nivel === "alta" &&
@@ -2239,6 +2409,26 @@ function validarCoincidenciaProducto({
   ) {
     nivel = "media";
     razon = "entidad_multimedia_por_confirmar";
+  }
+
+  // An unrequested wet-food format with an incompatible pack is not a proven
+  // identity merely because species/condition words match. Keep clarification
+  // instead of silently converting a bulk-weight request into a can or pouch.
+  if (!clasificacion.requiereVision && nivel === 'alta' && !formatoSolicitado &&
+      primero?.presentacionCoincide === false && formatoReferencia(primero.referencia) === 'comida_humeda') {
+    nivel = 'media';
+    razon = 'formato_y_presentacion_por_confirmar';
+  }
+  const destinatarioExplicito = normalizar(mensajeRazonado).match(/\bpara\s+(?:un[ao]?\s+)?(perros?|gatos?)\b/)?.[1] ||
+    especieExplicita(mensajeRazonado);
+  const especieNombreLiteral = primero && especieExplicita(primero.referencia.nombre);
+  if (!clasificacion.requiereVision && nivel === 'alta' && destinatarioExplicito &&
+      primero && (especieNombreLiteral
+        ? especieNombreLiteral !== normalizarEspecie(destinatarioExplicito)
+        : (primero.referencia.especie || primero.referencia.metadata?.especies?.length) &&
+          !admiteEspecie(primero.referencia, normalizarEspecie(destinatarioExplicito)))) {
+    nivel = 'media';
+    razon = 'especie_por_confirmar';
   }
 
   let relevantes = puntuados.filter((item) =>
@@ -2254,6 +2444,55 @@ function validarCoincidenciaProducto({
     normalizarPeso(p.peso) === normalizarPeso(pesoPedido || "")));
   if (pesoPedido && delPeso.length) relevantes = delPeso;
   let aclaracion = null;
+  // Compare food form and container separately. Keep all plausible siblings
+  // when the customer has not selected the distinguishing format.
+  const especiesPendientes = !senalesConsulta.especie && new Set(relevantes.map(item =>
+    especieExplicita(item.referencia.nombre) || normalizarEspecie(item.referencia.especie)).filter(Boolean)).size > 1;
+  if (primero && marcaExacta && !especiesPendientes) {
+    // Keep codes and life stages: EN is not the preposition "en", and adult
+    // food must not become a therapeutic sibling after removing container words.
+    const clave = item => atributosIdentidadVisual(sinFormato(item.referencia.nombre)).sort().join(' ');
+    const familiaFormato = puntuadosSinFiltrar.filter(item => clave(item) === clave(primero) &&
+      item.especieCoincide !== false && item.presentacionCoincide !== false);
+    const formas = [...new Set(familiaFormato.map(item => dimensionesReferencia(item.referencia).forma).filter(Boolean))];
+    const envases = [...new Set(familiaFormato.map(item => dimensionesReferencia(item.referencia).envase).filter(Boolean))];
+    if ((!formatoSolicitado && formas.length > 1) || (!envaseSolicitado && envases.length > 1)) {
+      aclaracion = !formatoSolicitado && formas.length > 1
+        ? { campo:'forma_alimento', valores:formas } : { campo:'envase_alimento', valores:envases };
+      nivel = 'media'; razon = 'formato_alimento_ambiguo'; relevantes = familiaFormato;
+    }
+  }
+  if (nivel === 'alta' && primero) {
+    const registradas = dimensionesReferencia(primero.referencia);
+    if ((formatoSolicitado && !registradas.forma) || (envaseSolicitado && !registradas.envase)) {
+      nivel = 'media'; razon = 'formato_catalogo_sin_verificar';
+      aclaracion = { campo: !registradas.forma ? 'forma_alimento' : 'envase_alimento', valores:[] };
+    }
+  }
+  if (dimensionesTexto.conflictoForma || dimensionesTexto.conflictoEnvase) {
+    nivel = 'media'; razon = 'formato_solicitado_ambiguo';
+    aclaracion = dimensionesTexto.conflictoForma
+      ? { campo:'forma_alimento', valores:['concentrado','comida_humeda'] }
+      : { campo:'envase_alimento', valores:['sobre','lata'] };
+  }
+  // Un código exacto permite recuperar la familia aunque el empaque contenga
+  // descripciones largas, pero no autoriza borrar una variante comercial que
+  // el intérprete conservó en referencia. Contrastar nombres/metadatos; el
+  // nombre observado completo permanece como evidencia, no como alias nuevo.
+  if (nivel === 'alta' && codigosSolicitados.length &&
+      primero && referenciaComercialSolicitada &&
+      codigosReferencia(referenciaComercialSolicitada, interpretacion?.producto?.marca || '')
+        .some(codigo => codigosSolicitados.includes(codigo))) {
+    const declarados = new Set(primero.nombres.flatMap(nombre => tokensDistintivos(nombre)));
+    const variantesNoVerificadas = tokensDistintivos(referenciaComercialSolicitada)
+      .filter(t => !TERMINOS_ATRIBUTO.has(t) && !normalizarEspecie(t) && !normalizarCategoria(t) &&
+        !declarados.has(t) && !tokensDistintivos(marcaExacta || '').includes(t));
+    if (variantesNoVerificadas.length) {
+      nivel = 'media'; razon = 'variante_codificada_por_confirmar'; relevantes = [primero];
+      aclaracion = { campo: 'referencia', valores: [primero.referencia.nombre],
+        pregunta: `En el catálogo figura ${primero.referencia.nombre}, pero su ficha no confirma la variante «${variantesNoVerificadas.join(' ')}». ¿Esa es la referencia que necesitas?` };
+    }
+  }
   // Algunas familias se importan como marcas separadas por variante. La
   // identidad compartida y las diferencias salen del catálogo, no de una
   // lista de marcas o aromas escrita en el código.
@@ -2302,6 +2541,14 @@ function validarCoincidenciaProducto({
   }
 
   let pesoSeleccionado = obtenerPresentacionSolicitada(mensajeRazonado, interpretacion) || null;
+  // Counts embedded in a catalog commercial name identify that SKU. They do
+  // not invent a separate pack size when its sale presentation is unspecified.
+  if (conteoEnNombre(pesoSeleccionado, primero?.referencia)) pesoSeleccionado = null;
+  if (nivel === 'alta' && /^x\d+$/.test(pesoSeleccionado || '') &&
+      !presentacionCoincide(primero.referencia, mensajeRazonado, interpretacion)) {
+    nivel = 'media'; razon = 'unidades_empaque_por_confirmar';
+    aclaracion = { campo:'unidades_empaque', valores:[], solicitada:pesoSeleccionado };
+  }
   const referenciaRangos = primero?.items?.[0]?.referencia || primero?.referencia;
   const libraComercial = nivel === 'alta' && resolverLibraComercial(
     pesoSeleccionado || interpretacion?.producto?.presentacion ||
@@ -2312,7 +2559,8 @@ function validarCoincidenciaProducto({
   const identidadAntesDePresentacion = nivel === 'alta' && primero ? resumirAlternativa(primero) : null;
   let pesoMascota = null;
   if (nivel === 'alta' && referenciaRangos && usaRangosMascota(referenciaRangos)) {
-    pesoMascota = pesoSeleccionado;
+    // mg/ml printed in a commercial name are strength/volume, not body weight.
+    pesoMascota = /(?:kg|lb)$/.test(normalizarPeso(pesoSeleccionado || '')) ? pesoSeleccionado : null;
     const opciones = presentacionesParaPeso(referenciaRangos, pesoMascota || '');
     if (opciones.length === 1) pesoSeleccionado = normalizarPeso(opciones[0].peso);
     else {
@@ -2341,6 +2589,8 @@ function validarCoincidenciaProducto({
     pesoMascotaSolicitado: pesoMascota,
     identidadAntesDePresentacion,
     especieConocida: senalesConsulta.especie || null,
+    formaAlimento: formatoSolicitado || (nivel === 'alta' && primero ? dimensionesReferencia(primero.referencia).forma : null),
+    envaseAlimento: envaseSolicitado || (nivel === 'alta' && primero ? dimensionesReferencia(primero.referencia).envase : null),
     terminos: duracionSolicitada ? [...terminos, ...duracionSolicitada.split(" ")] : terminos,
     etiqueta: (
       terminosVisibles.length
@@ -2390,6 +2640,8 @@ function respuestaValidacionProducto(validacion = {}) {
     const opciones = (valores || []).map(valor => valor.replace(/_/g, " ")).join(" o ");
     const contexto = validacion.marcaExacta ? `Tenemos opciones de ${validacion.marcaExacta}. ` : "Claro, te ayudo a encontrarlo. ";
     const preguntas = {
+      forma_alimento: valores?.length ? `¿Lo necesitas como concentrado seco o comida húmeda?` : 'Para darte el precio correcto, primero necesito verificar que esa referencia corresponda al tipo de alimento que pides.',
+      envase_alimento: valores?.length ? '¿La comida húmeda la necesitas en sobre o en lata?' : 'Para darte el precio correcto, primero necesito verificar que esa referencia corresponda al envase que pides.',
       peso_mascota: validacion.aclaracion.motivo === 'peso_fuera_de_rangos'
         ? `No hay una presentación registrada para ${validacion.aclaracion.pesoSolicitado}. ¿Me confirmas el peso de tu mascota?`
         : validacion.aclaracion.motivo === 'limite_peso_ambiguo'
@@ -2398,6 +2650,7 @@ function respuestaValidacionProducto(validacion = {}) {
       precio: `El precio de esa presentación de ${opciones} está pendiente de confirmar; aún no puedo cotizarla.`,
       duracion: `¿Lo necesitas de ${opciones}?`,
       presentacion: `¿Qué presentación necesitas? Manejamos ${opciones}.`,
+      unidades_empaque: `¿Necesitas un empaque cerrado de ${validacion.aclaracion.solicitada?.slice(1)} unidades o unidades individuales? Necesito verificar esa presentación antes de cotizarla.`,
       referencia: `¿Cuál referencia necesitas: ${opciones}?`,
       especie: `¿Buscas para ${opciones}?`,
       categoria: `¿Qué tipo de producto buscas: ${opciones}?`,
@@ -2405,6 +2658,12 @@ function respuestaValidacionProducto(validacion = {}) {
       tamano: `¿Para qué tamaño lo buscas: ${opciones}?`,
       sabores: `¿Qué sabor prefieres: ${opciones}?`,
     };
+    if (['forma_alimento','envase_alimento'].includes(campo) && validacion.alternativas?.length) {
+      const opcionesCatalogo = validacion.alternativas.map(a => `${a.referenciaCatalogo || a.referencia}${
+        a.presentaciones?.length ? ': ' + [...new Set(a.presentaciones.map(p => p.peso))].join(', ') : ''}`);
+      return `Para distinguir la referencia, en el catálogo aparecen:\n${opcionesCatalogo.map(o => '- '+o).join('\n')}\n${preguntas[campo]}`;
+    }
+    if (validacion.aclaracion.pregunta) return validacion.aclaracion.pregunta;
     return contexto + preguntas[campo];
   }
 
@@ -2440,14 +2699,14 @@ function respuestaValidacionProducto(validacion = {}) {
 
   if (validacion.nivel === "baja" && !validacion.alternativas?.length) {
     const peso = validacion.presentacionSolicitada ? ` de ${validacion.presentacionSolicitada}` : "";
-    return `No encuentro ${etiquetaConsulta(validacion)}${peso} en el catálogo actual. No la he agregado al pedido. ¿Puedes confirmar el nombre completo y la presentación para revisarlo?`;
+    return `Todavía no puedo confirmar ${etiquetaConsulta(validacion)}${peso} con seguridad. ¿Quieres que revisemos otra opción?`;
   }
   const cierre = validacion.requiereVision
     ? "¿Me confirmas la referencia que necesitas?"
     : "¿Me confirmas la marca completa o la presentación para revisarlo mejor?";
-  return `Por ahora no encuentro ${etiquetaConsulta(
+  return `Todavía no puedo identificar ${etiquetaConsulta(
     validacion
-  )} en el catálogo actual. Puede que no lo manejemos o que esté escrito de otra forma. ${cierre}`;
+  )} con seguridad. ${cierre}`;
 }
 
 function aplicarCoincidenciaValidada(interpretacion, validacion) {
