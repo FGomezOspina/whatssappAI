@@ -921,9 +921,6 @@ async function procesarEventosEntrantes(eventos, { contextoPendiente = [] } = {}
       estado,cliente,vertical,historialReciente:historialSemantico,interpretacionIA:decisionSemantica,
       clasificacion:{...clasificacion,requiereOpenAI:true,recomendacionCatalogo:true},model:modeloHumanizador(clasificacion),
     });
-    const avisoStock='Las existencias están por confirmar.';
-    if (resultado.opciones.some(o=>o.presentacion.stock==null) &&
-        !/existencias est[aá]n por confirmar/i.test(respuesta)) respuesta += `\n\n${avisoStock}`;
     await guardarConversacionPersistida(evento.channelUserId,estado,{idsEventos,cliente,mensaje,respuesta});
     return respuesta;
   }
@@ -1056,7 +1053,7 @@ async function procesarEventosEntrantes(eventos, { contextoPendiente = [] } = {}
         [...new Set([...(pendienteUnidades.preferenciasNoVerificadas || []), mensaje.trim()])];
       // A preference is not a new SKU, a verified flavor alias or a reason to
       // escalate. Preserve it separately while asking the missing quantity.
-      const respuesta = [preferencia ? 'Tengo en cuenta tu preferencia; todavía falta confirmar su disponibilidad.' : null,
+      const respuesta = [preferencia ? 'Tengo en cuenta tu preferencia; todavía falta identificar esa variante.' : null,
         pendienteUnidades.pregunta, estado.carrito.length ? vertical.orderLogic.resumenCarrito(estado) : null].filter(Boolean).join('\n\n');
       await guardarConversacionPersistida(evento.channelUserId, estado, {cliente,idsEventos,mensaje,respuesta});
       return respuesta;
@@ -1411,7 +1408,7 @@ async function procesarEventosEntrantes(eventos, { contextoPendiente = [] } = {}
     solicitud: decisionSemantica.productos?.length > 1 ? null : decisionSemantica.producto,
   });
   if (catalogoIA.metadata?.errorBusqueda) {
-    const respuesta = "No pude consultar el catálogo por un problema temporal. Aún no puedo confirmar el precio o la disponibilidad; por favor, inténtalo nuevamente.";
+    const respuesta = "No pude consultar el catálogo por un problema temporal. Aún no puedo verificar la referencia ni el precio; por favor, inténtalo nuevamente.";
     await guardarConversacionPersistida(evento.channelUserId, estado, { idsEventos, cliente, mensaje, respuesta });
     return respuesta;
   }

@@ -106,7 +106,7 @@ test("selecciona por nombre completo sin volver a buscar ni pedir aclaración", 
   assert.equal(resultado.resuelta, true);
   assert.equal(resultado.seleccion.referencia, "ADVANCE CAT URINARY");
   assert.match(resultado.respuesta, /3kg: \$196\.000/);
-  assert.match(resultado.respuesta, /disponible/i);
+  assert.doesNotMatch(resultado.respuesta, /existencias|stock|disponibilidad|agotad/i);
   assert.match(resultado.respuesta, /agregar alguna presentación/i);
   assert.equal(estado.coincidenciasProductoPendientes, null);
   assert.equal(estado.ultimaSeleccion.referencia, "ADVANCE CAT URINARY");

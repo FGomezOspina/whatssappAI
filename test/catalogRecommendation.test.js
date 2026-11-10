@@ -31,9 +31,9 @@ test('descubrimiento semántico nunca sustituye referencia concreta, compra ni s
 test('recomendación conserva redacción contextual aunque el perfil inicial sea búsqueda de producto',()=>{
  assert.equal(omitirHumanizadorProducto('Opciones verificadas',{clasificacion:{perfilContexto:'producto',recomendacionCatalogo:true}}),false);
 });
-test('compatibilidad estricta: especie, etapa, categoría, presupuesto, precio y stock verificados',()=>{
+test('compatibilidad estricta: especie, etapa, categoría, presupuesto y precio verificados, sin filtrar por stock',()=>{
  const opciones=service.opcionesVerificables(catalogo,service.criteriosNecesidad(d({}, {presupuestoMaximo:20000})));
- assert.deepEqual(opciones.map(o=>o.id),['good']);
+ assert.deepEqual(opciones.map(o=>o.id),['no-stock','good']);
  assert.equal(service.opcionesVerificables(catalogo,service.criteriosNecesidad(d({presentacion:'3kg'}))).length,0);
 });
 test('consulta de referencia registrada con stock desconocido no afirma existencias ni cambia carrito',()=>{
@@ -42,7 +42,7 @@ test('consulta de referencia registrada con stock desconocido no afirma existenc
  const decision={...d({marca:'NUBE',referencia:'NUBE CRIA',presentacion:'500gr'}),intencion:'consulta_producto',confianza:1,productos:[],entrega:{},datosCliente:{},carrito:{operacion:null}};
  const reply=resolverConsultaCatalogo('precio NUBE CRIA 500gr',state,cat,decision);
  assert.match(reply,/15\.000/);
- assert.match(reply,/Las existencias están por confirmar\./);
+ assert.doesNotMatch(reply,/existencias|stock|agotad|confirmar.*disponibilidad/i);
  assert.doesNotMatch(reply,/está disponible|Claro, lo tenemos/);
  assert.equal(state.carrito.length,0);
 });

@@ -4,7 +4,7 @@ const { duracionSeleccionada, mismaSeleccionCotizada } = require('../utils/catal
 const clave = p => [p.marca, p.referenciaCatalogo || p.referencia, duracionSeleccionada(p)]
   .map(v => normalizar(v || '')).join(':');
 const cotizable = p => p.marca && p.referencia && (p.peso || p.presentacion) &&
-  p.stock !== false && p.precio != null && Number.isFinite(Number(p.precio)) && Number(p.precio) >= 0;
+  p.precio != null && Number.isFinite(Number(p.precio)) && Number(p.precio) >= 0;
 const pertenece = (seleccion, item) => clave(seleccion) === clave(item) ||
   (seleccion.cotizacion || []).some(c => mismaSeleccionCotizada(c, item) &&
     duracionSeleccionada(c) === duracionSeleccionada(item));

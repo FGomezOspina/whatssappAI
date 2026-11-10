@@ -48,7 +48,7 @@ function opcionesVerificables(catalogo, criterios) {
         (criterios.subcategoria && r.subcategoria!==criterios.subcategoria) ||
         (criterios.especie && !admiteEspecie(r,criterios.especie)) ||
         (criterios.etapa && r.etapa!==criterios.etapa && (criterios.categoria==='comida' || r.etapa))) continue;
-    const presentaciones=(r.presentaciones || []).filter(p=>p.stock!==false && p.precio!==null &&
+    const presentaciones=(r.presentaciones || []).filter(p=>p.precio!==null &&
       Number.isFinite(p.precio) && p.precio>0 && p.peso &&
       (!criterios.presentacion || normalizarPeso(p.peso)===normalizarPeso(criterios.presentacion)) &&
       (!criterios.presupuestoMaximo || p.precio<=criterios.presupuestoMaximo))
@@ -115,9 +115,7 @@ async function recomendarDesdeCatalogo({decision,mensaje,estado,cliente,vertical
   const destino=[criterios.especie,criterios.etapa].filter(Boolean).join(' ');
   const intro=`Para tu ${destino}, estas opciones coinciden con lo que buscas${criterios.presupuestoMaximo ? ` y están dentro de ${formatearPrecio(criterios.presupuestoMaximo)}` : ''}:`;
   const lineas=opciones.map(c=>`- ${c.referencia} ${c.presentacion.peso}: ${formatearPrecio(c.presentacion.precio)} — ${[c.subcategoria?.replace(/_/g,' '),c.especie,c.etapa].filter(Boolean).join(', ')}.`);
-  const nota=opciones.some(c=>c.presentacion.stock===null || c.presentacion.stock===undefined)
-    ? 'Los precios están registrados; las existencias están por confirmar.' : '';
-  return {respuesta:[intro,lineas.join('\n'),nota,'¿Cuál te gustaría revisar?'].filter(Boolean).join('\n\n'),
+  return {respuesta:[intro,lineas.join('\n'),'¿Cuál te gustaría revisar?'].filter(Boolean).join('\n\n'),
     criterios,opciones,motivo:'opciones_verificadas',incompleto:busqueda.incompleto};
 }
 module.exports={concretarRecomendacion,esExploracion,criteriosNecesidad,opcionesVerificables,validarSeleccion,recomendarDesdeCatalogo};

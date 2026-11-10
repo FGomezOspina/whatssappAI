@@ -1,0 +1,49 @@
+{
+  "date": "2026-11-10",
+  "baseCommit": "69ca029c5715439e5b7616142a34cf1b99bd1d58",
+  "nodeVersion": "v24.15.0",
+  "newTests": {
+    "total": 16,
+    "passed": 16,
+    "failed": 0,
+    "skipped": 0,
+    "durationMs": 126.43725
+  },
+  "finalSuite": {
+    "total": 1212,
+    "passed": 1212,
+    "failed": 0,
+    "skipped": 0,
+    "durationSeconds": 7.87,
+    "exitCode": 0
+  },
+  "isolation": {
+    "os": "macOS sandbox-exec",
+    "network": "deny network*",
+    "envFile": "deny file-read* of literal repository .env; verified EPERM",
+    "environment": "env -i",
+    "writeAllowance": "Only /tmp or /private/tmp catalogo-*.json fixtures in full suite; no writes in focused suite",
+    "openAICalls": 0,
+    "externalMessagesSent": 0,
+    "productionWrites": 0
+  },
+  "interpretation": "Handwritten semantic oracle; base humanizer passthrough",
+  "sourceReview": {
+    "visibleConversationFragments": 5,
+    "rawTranscriptsSaved": false,
+    "realContactsSaved": false,
+    "realPricesSaved": false,
+    "mediaDownloaded": false
+  },
+  "newTestSha256": "998e8acbbe3b75e58e211dfbdc25e800c361bf2cf74120349533ee80803ee284",
+  "syntheticCorpusSha256": "8bd1fdd2cfb57a5d6e913cc27f900d524192062755b8eda35be51ee7cf3a0d0e",
+  "productionFilesChanged": false,
+  "limitations": [
+    "Not a live OpenAI evaluation.",
+    "Not a WhatsApp end-to-end test.",
+    "No visual or audio understanding evaluation.",
+    "No payment reconciliation evaluation.",
+    "Passing tests assume the supplied semantic interpretation is correct.",
+    "Privacy pattern assertions are hygiene checks, not proof that arbitrary real transcripts are anonymous."
+  ]
+}

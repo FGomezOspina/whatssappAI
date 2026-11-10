@@ -1996,7 +1996,7 @@ function notaConfirmacionProducto(referencia = {}) {
   const atributos = atributosReferencia(referencia);
   if (!atributos.requiereConfirmacion && atributos.categoria !== "medicamento") return "";
 
-  return "Nota: este producto requiere confirmación responsable antes de venderlo. Te confirmo disponibilidad y precio, pero para uso, dosis o tratamiento es mejor validarlo con un veterinario.";
+  return "Nota: este producto requiere confirmación responsable antes de venderlo. Te confirmo la presentación y el precio, pero para uso, dosis o tratamiento es mejor validarlo con un veterinario.";
 }
 
 function resumenMarca(marca, referencias = marca.referencias) {
@@ -2918,13 +2918,10 @@ function tieneOtrasPresentaciones(item) {
 }
 
 function bloqueConsultaConfirmada(item, clave, opciones = {}) {
-  const stockSinConfirmar = (item.cotizarTodasPresentaciones
-    ? item.referencia.presentaciones || [] : [item.presentacion]).some(p => p && p.stock == null);
-  const lineasConsulta = lineasConsultaItem(item) + (stockSinConfirmar
-    ? '\nLas existencias están por confirmar.' : '');
-  const apertura = stockSinConfirmar ? 'Te confirmo, esa referencia la manejamos:' : elegirVariante(clave, [
-    "Claro, lo tenemos:",
-    "Sí, esa presentación está disponible:",
+  const lineasConsulta = lineasConsultaItem(item);
+  const apertura = elegirVariante(clave, [
+    "Claro, manejamos esa referencia:",
+    "Te confirmo esa presentación:",
     "Te confirmo, esa referencia la manejamos:",
   ]);
   if (item.presentacion && !item.cotizarTodasPresentaciones) {

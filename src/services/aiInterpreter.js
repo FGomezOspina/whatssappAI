@@ -1,3 +1,4 @@
+const { INSTRUCCIONES_SIN_EXISTENCIAS, serializarContextoComercial } = require('../utils/catalogInventoryPolicy');
 const { REGLA_DATOS_CIERRE } = require('../verticals/petshop/checkoutData');
 const { medir } = require('./pipelineTelemetry');
 const { contieneCondicionBolaPelo } = require("../utils/text");
@@ -367,6 +368,7 @@ async function interpretarMensajeCliente({
       vertical,
       model,
     });
+    solicitud.promptBase += `\n${INSTRUCCIONES_SIN_EXISTENCIAS}`;
     logDiagnosticoContexto(solicitud.diagnostico);
     const parametrosModelo = {
       model,
@@ -583,14 +585,14 @@ JSON exacto:
             ? [
                 {
                   type: "text",
-                  text: JSON.stringify(solicitud.contexto),
+                  text: serializarContextoComercial(solicitud.contexto),
                 },
                 ...urlsImagen.map((url) => ({
                   type: "image_url",
                   image_url: { url, detail: detalleVision() },
                 })),
               ]
-            : JSON.stringify(solicitud.contexto),
+            : serializarContextoComercial(solicitud.contexto),
         },
       ],
     };

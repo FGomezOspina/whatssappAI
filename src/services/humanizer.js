@@ -1,3 +1,4 @@
+const { INSTRUCCIONES_SIN_EXISTENCIAS, serializarContextoComercial, mencionaExistencias } = require('../utils/catalogInventoryPolicy');
 const { medir } = require('./pipelineTelemetry');
 const { precioPorCantidad } = require('../utils/catalogCommercialRules');
 const OpenAI = require("openai");
@@ -49,8 +50,6 @@ function extraerPrecios(texto = "") {
 }
 
 function conservaDatosCriticos(respuestaBase, respuestaHumanizada) {
-  if (respuestaBase.includes('Las existencias están por confirmar.') &&
-      !respuestaHumanizada.includes('Las existencias están por confirmar.')) return false;
   const tokensCriticos = extraerTokensCriticos(respuestaBase);
   const lineasCriticas = respuestaBase
     .split("\n")
@@ -330,6 +329,7 @@ async function humanizarRespuesta(mensajeCliente, respuestaBase, opciones = {}) 
       vertical: opciones.vertical,
       model,
     });
+    solicitud.promptBase += `\n${INSTRUCCIONES_SIN_EXISTENCIAS}`;
     logDiagnosticoContexto(solicitud.diagnostico);
     if (solicitud.excedePresupuesto) {
       opciones.onUsage?.({ skipped: true, reason: "presupuesto_contexto" });
@@ -393,7 +393,7 @@ ${promptCliente(opciones.cliente)}
         },
         {
           role: "user",
-          content: JSON.stringify(solicitud.contexto),
+          content: serializarContextoComercial(solicitud.contexto),
         },
       ],
     };
@@ -433,7 +433,7 @@ ${promptCliente(opciones.cliente)}
     });
 
     const respuesta = completion.choices[0].message.content.trim();
-    if (!respuesta || /\b(?:OCR|inteligencia artificial|como (?:una? )?(?:IA|modelo))\b|(?:analiz|interpret|disting|identific|proces)[^.!?\n]{0,60}(?:imagen|foto|empaque)|alcanc[eé] a (?:identificar|distinguir)/i.test(respuesta) || !conservaDatosCriticos(respuestaBase, respuesta) || !conservaAccionOperativa(respuestaBase, respuesta)) {
+    if (!respuesta || mencionaExistencias(respuesta) || /\b(?:OCR|inteligencia artificial|como (?:una? )?(?:IA|modelo))\b|(?:analiz|interpret|disting|identific|proces)[^.!?\n]{0,60}(?:imagen|foto|empaque)|alcanc[eé] a (?:identificar|distinguir)/i.test(respuesta) || !conservaDatosCriticos(respuestaBase, respuesta) || !conservaAccionOperativa(respuestaBase, respuesta)) {
       return respuestaBase;
     }
 
@@ -516,7 +516,7 @@ Devuelve JSON con respuesta (texto final), siguientePaso (pedir_dato, pedir_foto
 No comentes acciones de carrito o pedidos en esta respuesta: atiende solo la consulta sin resolver. El resumen real se adjunta por separado si corresponde. No menciones otras referencias concretas porque no hay alternativas validadas. Devuelve solo el JSON indicado.`;
   const promptGeneral = `Redacta autonomamente una respuesta de WhatsApp en español colombiano para atender el mensaje completo.
 Usa exclusivamente los hechos validados. Los precios unitarios y totales actuales sustituyen los de la ultima pregunta o mensajes anteriores; no reutilices importes historicos al cambiar cantidades. Los hechos operativos describen el resultado del motor, no son una plantilla ni texto que debas copiar.
-Si resultado.equivalenciaPresentacion existe, la presentacion solicitada esta registrada bajo ese nombre comercial. Responde con el peso y precio del catalogo; no la presentes como una alternativa diferente. La identidad registrada no confirma existencias. Solo afirma disponibilidad si stock es true. Si los hechos operativos incluyen "Las existencias están por confirmar.", conserva esa frase literalmente y no afirmes disponibilidad.
+Si resultado.equivalenciaPresentacion existe, la presentacion solicitada esta registrada bajo ese nombre comercial. Responde con el peso y precio del catalogo; no la presentes como una alternativa diferente. ${INSTRUCCIONES_SIN_EXISTENCIAS}
 Un detalle recordado del empaque puede servir como pista sin estar registrado. No afirmes colores o caracteristicas del empaque que los hechos no confirmen. Si la referencia esta validada, comunica sus datos y pregunta solo la presentacion pendiente; si varias referencias encajan, aclara antes de elegir.
 La ultimaPregunta es historica, no una aclaracion vigente. Si los resultados actuales tienen identidad y presentacion resueltas, no vuelvas a pedir peso, especie o referencia. Solo pregunta por atributos que figuren pendientes en los resultados actuales; el siguiente paso de domicilio se conserva por separado.
 Si especieConocida tiene valor, no preguntes si es para perro o gato. Conserva esa especie y pide únicamente la variante pendiente. No conviertas una referencia candidata en una referencia confirmada.
@@ -544,7 +544,7 @@ La revisión comercial YA quedó registrada después de buscar y agotar las acla
     let completion;
     try {
     completion = await medir('openai_request', () => openai.chat.completions.create({ model: modelo,
-      messages: [{ role: "system", content: prompt }, { role: "user", content: JSON.stringify(contexto) },
+      messages: [{ role: "system", content: prompt }, { role: "user", content: serializarContextoComercial(contexto) },
         ...(intento ? [
           ...(respuestaAnterior ? [{ role: "assistant", content: respuestaAnterior }] : []),
           { role: "system", content: opciones.revisionComercial?.registrada
@@ -600,9 +600,8 @@ La revisión comercial YA quedó registrada después de buscar y agotar las acla
     if (incierto && !conservaPresentacionCandidato(respuesta, hechos.alternativas)) {
       rechazar('presentacion_de_candidato_no_validada'); continue;
     }
-    if (respuestaOperativa?.includes('Las existencias están por confirmar.') &&
-        !respuesta.includes('Las existencias están por confirmar.')) {
-      rechazar('falta_advertencia_stock_desconocido'); continue;
+    if (mencionaExistencias(respuesta)) {
+      rechazar('mencion_existencias_no_permitida'); continue;
     }
     if (contexto.especieConocida && hechos.aclaracion?.campo !== 'especie' &&
         /[¿?][^?¿]*(?:perro[^?¿]*\bo\b[^?¿]*gato|gato[^?¿]*\bo\b[^?¿]*perro)[^?¿]*[?]/i.test(respuesta)) {

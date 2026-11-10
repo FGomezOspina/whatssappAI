@@ -804,38 +804,18 @@ function coincideReferenciaExplicita(mensaje, opcion) {
     });
 }
 
-function disponibilidadReferencia(referencia) {
-  const stocks = (referencia.presentaciones || [])
-    .map((presentacion) => presentacion.stock)
-    .filter((stock) => typeof stock === "boolean");
-  if (!stocks.length) return "Disponibilidad: por confirmar.";
-  if (stocks.some(Boolean)) return "Disponibilidad: disponible.";
-  return "Disponibilidad: sin existencias registradas.";
-}
-
+// Catalog membership, presentation and price are authoritative; legacy stock
+// fields are not an ordering constraint and are never shown to the customer.
 function respuestaSeleccion(marca, referencia, presentacionElegida = null) {
   const candidatas = presentacionElegida
     ? [presentacionElegida]
     : referencia.presentaciones || [];
   const presentaciones = candidatas
-    .map((presentacion) => {
-      const stock =
-        presentacion.stock === true
-          ? " - disponible"
-          : presentacion.stock === false
-            ? " - sin existencias"
-            : "";
-      return `- ${presentacion.peso}: ${formatearPrecio(
-        presentacion.precio
-      )}${stock}`;
-    })
+    .map(p => `- ${p.peso}: ${formatearPrecio(p.precio)}`)
     .join("\n");
-
   return `Perfecto, encontré ${referencia.nombre}.\n\nPresentaciones y precios:\n${
     presentaciones || "- Sin presentaciones activas"
-  }\n\n${disponibilidadReferencia(
-    referencia
-  )}\n\n¿Quieres agregar alguna presentación al pedido?`;
+  }\n\n¿Quieres agregar alguna presentación al pedido?`;
 }
 
 function respuestaAmbigua(contexto) {

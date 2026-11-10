@@ -28,7 +28,7 @@ function completarCompraDesdeCotizaciones(decision, estado) {
       if (['sabores', 'condiciones'].some(campo => producto[campo]?.length &&
           !producto[campo].every(v => (previa[campo] || []).some(p => normalizar(p) === normalizar(v))))) return [];
       return previa.cotizacion.filter(item => {
-        if (item.stock === false || item.precio == null || !Number.isFinite(Number(item.precio))) return false;
+        if (item.precio == null || !Number.isFinite(Number(item.precio))) return false;
         if (producto.presentacion && normalizarPeso(producto.presentacion) !== normalizarPeso(item.peso || item.presentacion)) return false;
         if (producto.duracion && normalizar(producto.duracion) !== normalizar(duracionSeleccionada(item) || '')) return false;
         // New body-weight information must go through presentation selection.

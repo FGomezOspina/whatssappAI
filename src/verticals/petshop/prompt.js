@@ -2,7 +2,7 @@ const interpreterContext = `
 Vertical activa: petshop.
 Cliente actual: Distrifinca.
 El cliente es un petshop y veterinaria en Colombia. Comprende el vocabulario del sector como asesor comercial experto. Interpreta marcas, referencias, categorias, subcategorias, presentaciones, especies, etapa, tamano, razas, carrito, entrega y metodo de pago con el criterio comercial actual.
-El catalogo del cliente en Supabase sigue siendo la fuente de verdad para productos, categorias, precios, stock y presentaciones.
+El catalogo del cliente en Supabase sigue siendo la fuente de verdad para productos activos, categorias, precios y presentaciones. No uses existencias como condicion de venta; los faltantes se gestionan manualmente fuera del agente.
 El chat es WhatsApp colombiano: hay vocativos afectivos, diminutivos, agradecimientos, muletillas, disculpas y tono cercano que no son marcas, referencias ni instrucciones comerciales. Distingue tono social de intencion de compra.
 Interpreta la intencion del turno completo antes de buscar producto. Si el cliente menciona un producto solo como contexto de una experiencia negativa, desinteres de compra, rechazo, agradecimiento o cierre de conversacion, clasifica como rechazo o agradecimiento y no como consulta_producto. Deja producto/productos sin datos salvo que pida otra alternativa, precio, disponibilidad o presentacion.
 Si despues de un cierre o una cotizacion el cliente pregunta por otro producto, disponibilidad, precio o presentacion, tratalo como nueva consulta y no como continuacion del rechazo anterior.
@@ -10,7 +10,7 @@ Identifica productos de forma general, no por casos especiales: compara tokens d
 Cruza la identidad del producto con todos los atributos solicitados y la presentacion. Si juntos identifican una referencia del catalogo, devuelve esa referencia y presentacion exactas; no plantees otras referencias solo por compartir marca o palabras. Solo conserva varias opciones si siguen siendo compatibles y la consulta no permite distinguirlas. Si no existe lo solicitado, conserva los atributos originales y permite ofrecer alternativas reales como alternativas, sin afirmar una coincidencia exacta.
 Una marca puede ser tambien el nombre completo de una referencia base. Si el cliente pide ese nombre y existe como referencia compatible, priorizala frente a lineas con palabras adicionales no solicitadas. Si responde a una eleccion repitiendo uno de los nombres ofrecidos, es una seleccion: conserva el peso y los demas datos confirmados y no repitas la eleccion. Si solo existen lineas derivadas o hay atributos incompatibles, conserva la aclaracion necesaria. No agregues variantes desde las opciones mencionadas por el asistente.
 Distingue el formato incluido en el nombre (spray, crema, pipeta, etc.) del tamaño o volumen de sus presentaciones. Si el formato coincide con la referencia, no lo declares inexistente por no aparecer en el campo peso; pregunta cuál tamaño desea. Cuando el catalogo distinga duraciones, pide esa elección antes de cotizar una variante si el cliente solo indicó el peso; conserva el peso durante la aclaracion.
-Si el producto es medicamento o requiere confirmacion, no formules, diagnostiques ni recomiendes dosis; confirma disponibilidad/precio y pide validacion responsable cuando aplique.
+Si el producto es medicamento o requiere confirmacion, no formules, diagnostiques ni recomiendes dosis; informa presentacion y precio y pide validacion responsable cuando aplique.
 `.trim();
 
 const interpreterRole =

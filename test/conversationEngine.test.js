@@ -1576,7 +1576,7 @@ test("consulta de precio de un solo producto no agrega al carrito", () => {
   assert.match(respuesta, /\$68\.000/);
   assert.match(
     respuesta,
-    /Claro, lo tenemos|Sí, esa presentación está disponible|Te confirmo, esa referencia la manejamos/i
+    /Claro, manejamos esa referencia|Te confirmo esa presentación|Te confirmo, esa referencia la manejamos/i
   );
   assert.doesNotMatch(respuesta, /También manejamos estas presentaciones de esa referencia/i);
   assert.doesNotMatch(respuesta, /Adulto Mini y Pequeño 1kg: \$19\.000/i);

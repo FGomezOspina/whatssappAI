@@ -55,7 +55,7 @@ function resolverPresentacionesIdentificadas({ validacion, producto = {}, mensaj
     .flatMap(m => m.referencias || []).filter(r => nombres.some(n => normalizar(n) === normalizar(r.nombre)));
   const referencia = referencias[0];
   if (!referencia) return validacion;
-  const presentaciones = (identidad.presentaciones || []).filter(p => p.stock !== false);
+  const presentaciones = identidad.presentaciones || [];
   const texto = producto.mencionOriginal || producto.textoVisible || mensaje;
   if (producto.intencionPresentaciones === 'especifica' && rangoPeso(producto.presentacion) && !mascotasDelTexto(texto).length) return validacion;
   const todas = solicitaTodas(texto, producto.intencionPresentaciones) ||

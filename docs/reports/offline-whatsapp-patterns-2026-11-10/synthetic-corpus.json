@@ -1,0 +1,125 @@
+{
+  "version": 1,
+  "created": "2026-11-10",
+  "mode": "synthetic-patterns-only",
+  "provenance": "Patrones observados manualmente en cinco conversaciones visibles de WhatsApp Business. Ningun texto, contacto, precio o catalogo real se conserva en este archivo.",
+  "limitations": [
+    "Interprete semantico escrito a mano; no mide comprension de OpenAI.",
+    "Sin lectura de imagenes, escucha de audios, conciliacion de pagos ni transporte WhatsApp.",
+    "Muestra acotada a fragmentos visibles; no representa una auditoria de todo el historial."
+  ],
+  "catalog": [
+    {
+      "marca": "FICTORA",
+      "referencias": [
+        {
+          "nombre": "FICTORA ADULTO",
+          "especie": "perro",
+          "categoria": "comida",
+          "etapa": "adulto",
+          "presentaciones": [
+            {
+              "peso": "4kg",
+              "precio": 12300,
+              "stock": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "marca": "NUBEX",
+      "referencias": [
+        {
+          "nombre": "NUBEX VEGETAL",
+          "especie": "gato",
+          "categoria": "arena_sustrato",
+          "presentaciones": [
+            {
+              "peso": "12kg",
+              "precio": 18700,
+              "stock": true
+            },
+            {
+              "peso": "6kg",
+              "precio": 9700,
+              "stock": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "id": "P01",
+      "pattern": "Confirmacion aplazada",
+      "text": "Todavia estoy comparando; mi decision sera mas tarde.",
+      "state": "quote",
+      "expected": "No agregar ni confirmar."
+    },
+    {
+      "id": "P02",
+      "pattern": "Compra adicional hipotetica",
+      "text": "Quiza agregue otro alimento cuando termine de comparar.",
+      "state": "quote",
+      "expected": "No crear una linea nueva."
+    },
+    {
+      "id": "P03",
+      "pattern": "Contenido del paquete frente a cantidad de compra",
+      "text": "¿Cuantas piezas contiene un paquete cerrado?",
+      "state": "cart",
+      "expected": "Conservar dos paquetes, no convertir la pregunta en unidades."
+    },
+    {
+      "id": "P04",
+      "pattern": "Correccion de etapa y color con evidencia incompleta",
+      "text": "La bolsa azul es de adulto; no estoy buscando la de cachorro.",
+      "state": "quote",
+      "expected": "No inventar una seleccion por color ni cambiar la etapa del producto existente."
+    },
+    {
+      "id": "P05",
+      "pattern": "Talla descartada sin alternativa elegida",
+      "text": "La talla menor no me sirve; aun no elijo otra.",
+      "state": "cart",
+      "expected": "No reemplazar ni sumar productos."
+    },
+    {
+      "id": "P06",
+      "pattern": "Comprobante pendiente de verificacion",
+      "text": "Adjunto un comprobante para que revisen el abono.",
+      "state": "cart",
+      "expected": "No confirmar pedido ni marcar pago validado a partir del texto."
+    },
+    {
+      "id": "P07",
+      "pattern": "Disponibilidad despues de imagen sin identidad fiable",
+      "text": "La foto nueva corresponde a otro articulo, ¿lo tienen?",
+      "state": "cart",
+      "expected": "No reutilizar el SKU anterior para cotizar o agregar el producto desconocido."
+    },
+    {
+      "id": "P08",
+      "pattern": "Fecha de entrega pendiente",
+      "text": "Puedo esperar hasta pasado mañana, pero falta acordar la entrega.",
+      "state": "cart",
+      "expected": "No inventar una fecha confirmada ni cerrar el pedido."
+    },
+    {
+      "id": "P09",
+      "pattern": "Agradecimiento sin compra",
+      "text": "Agradezco la informacion; la voy a revisar.",
+      "state": "quote",
+      "expected": "No transformar cortesia en aceptacion."
+    },
+    {
+      "id": "P10",
+      "pattern": "Consulta de pago frente a instruccion de pago",
+      "text": "¿Es posible pagar en efectivo?",
+      "state": "quote",
+      "expected": "No iniciar compra ni seleccionar pago por una pregunta."
+    }
+  ]
+}

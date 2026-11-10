@@ -157,12 +157,12 @@ test('una mascota nueva sin peso no hereda el peso de otra del contexto', async 
   assert.doesNotMatch(actual.respuesta, /45\.000|Luna/);
 });
 
-test('no cotiza presentaciones declaradas sin stock', () => {
+test('cotiza todas las presentaciones registradas independientemente del stock', () => {
   const referencia = catalogo[0].referencias[0];
   const v = { nivel: 'alta', coincidencia: { marca: 'NUTRIALFA', referencia: referencia.nombre,
     referenciaCatalogo: referencia.nombre, presentaciones: referencia.presentaciones.map((p, i) => ({ ...p, stock: i !== 0 })) } };
   const resultado = resolverPresentacionesIdentificadas({ validacion: v, catalogo,
     producto: { ...comida(), intencionPresentaciones: 'todas' } });
-  assert.equal(resultado.seleccionPresentaciones.grupos.length, 2);
-  assert.ok(resultado.seleccionPresentaciones.grupos.every(p => p.peso !== '1.5kg'));
+  assert.equal(resultado.seleccionPresentaciones.grupos.length, 3);
+  assert.ok(resultado.seleccionPresentaciones.grupos.some(p => p.peso === '1.5kg'));
 });

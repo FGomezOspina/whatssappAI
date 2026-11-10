@@ -25,7 +25,7 @@ Kapso es el proveedor activo de WhatsApp. Twilio pertenece solamente al antecede
 - Conserva contexto entre mensajes cortos como `de 4kl`, `asi esta bien` o `agrega los dos`.
 - Interpreta abreviaturas, errores de escritura y razas de mascotas sin programar una lista raza por raza.
 - Busca por nombre, descripcion, aliases, `metadata.original_names`, referencias equivalentes y contexto conversacional.
-- Usa categoria, subcategoria, especie, etapa, tamano, stock y `requiereConfirmacion` cuando el catalogo los trae.
+- Usa categoria, subcategoria, especie, etapa, tamano y `requiereConfirmacion` cuando el catalogo los trae.
 - Consolida dinamicamente marcas o referencias duplicadas por errores ortograficos y une sus presentaciones sin reglas por producto.
 - Combina candidatos de Supabase FTS con candidatos fuzzy locales antes de interpretar que una referencia no existe.
 - En imagenes pondera marca, linea o variante, especie, presentacion y sabor; si la primera lectura es ambigua puede ejecutar una segunda lectura enfocada.
@@ -178,6 +178,8 @@ Respuesta esperada:
 La IA interpreta el lenguaje humano y mantiene una conversacion agradable. El backend sigue siendo la fuente de verdad para marcas, referencias, presentaciones, precios y cambios reales del carrito.
 
 ### Reglas comerciales del catálogo
+
+El agente acepta pedidos solo de referencias y presentaciones activas verificadas en el catálogo, con precio válido. El campo legado `stock` no filtra opciones, no bloquea pedidos y no se comunica al cliente, aunque sea `false`, `null` o esté ausente. Los faltantes se gestionan manualmente. Esta política no permite inventar referencias o presentaciones ni sustituir variantes ambiguas; se mantienen la validación de identidad, la consulta por cliente y las cautelas veterinarias.
 
 Una referencia compartida por especies puede declarar `metadata.especies: ["perro", "gato"]`.
 La presentación admite `metadata.precios_por_cantidad: [{ "desde": 4, "precio": 3000 }]`;
